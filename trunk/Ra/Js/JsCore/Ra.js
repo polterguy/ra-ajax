@@ -12,6 +12,8 @@ Ra = {}
 // $ method, used to retrieve elements on document
 Ra.$ = function(id) {
   var el = document.getElementById(id);
+  if( !el )
+    return null;
   Ra.extend(el, Ra.Element.prototype);
   return el;
 }
@@ -71,6 +73,16 @@ Ra.extend(Ra.Element.prototype, {
 
   setVisible: function(value) {
     this.style.display = value ? '' : 'none';
+    return this;
+  },
+
+  remove: function() {
+    this.parentNode.removeChild(this);
+    // We cannot (obviously) return the "this" object here...
+  },
+
+  setContent: function(html) {
+    this.innerHTML = html;
     return this;
   }
 });
