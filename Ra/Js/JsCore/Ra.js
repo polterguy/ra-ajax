@@ -16,7 +16,7 @@ Ra.$ = function(id) {
 
 Ra.klass = function() {
   return function(){
-    return this.init(arguments);
+    return this.init.apply(this, arguments);
   };
 }
 
