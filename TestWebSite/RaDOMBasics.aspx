@@ -229,6 +229,19 @@ function checkRaElementReplaceWorks() {
   el.setVisible(true);
 }
 
+
+// Checks to see if remove works
+function checkRemove() {
+  var el = Ra.$('test');
+  el.remove();
+  var el2 = Ra.$('test');
+  if( el2 ) {
+    Ra.$('results').innerHTML = 'failure';
+  } else {
+    Ra.$('results').innerHTML = 'success';
+  }
+}
+
         </script>
     </head>
     <body>
@@ -237,8 +250,11 @@ function checkRaElementReplaceWorks() {
                 <div id="results">
                     Unknown
                 </div>
+                <div id="test">
+                    dummy
+                </div>
                 <ra:Button ID="Button1" runat="server" />
-                <input type="button" value="Test" onclick="checkRaElementReplaceWorks();" />
+                <input type="button" value="Test" onclick="checkRemove();" />
             </div>
         </form>
     </body>
