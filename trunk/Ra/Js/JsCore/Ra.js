@@ -45,6 +45,14 @@ Ra.Element = Ra.klass();
 
 
 Ra.extend(Ra.Element.prototype, {
+
+  // Sets content of element (wrapper around innerHTML)
+  setContent: function(html) {
+    this.innerHTML = html;
+    return this;
+  },
+
+  // Replaces element with given HTML
   replace: function(html) {
 
     // Storing id for later to be able to "re-extend" and return "this" back to caller
@@ -71,18 +79,76 @@ Ra.extend(Ra.Element.prototype, {
     return Ra.$(elId);
   },
 
+  // Set element to either visible or in-visible
   setVisible: function(value) {
     this.style.display = value ? '' : 'none';
     return this;
   },
 
+  // Removes element out of DOM
   remove: function() {
     this.parentNode.removeChild(this);
     // We cannot (obviously) return the "this" object here...
   },
 
-  setContent: function(html) {
-    this.innerHTML = html;
+  // Taken and modified from prototype.js
+  // Returns an object of { width, height } containing the width and height of the element
+  getDimensions: function() {
+    var display = this.style.display;
+    if (display != 'none' && display != null) // Safari bug
+      return {
+        width: this.offsetWidth, 
+        height: this.offsetHeight
+      };
+
+    // All *Width and *Height properties give 0 on elements with display none,
+    // so enable the element temporarily
+    var els = this.style;
+    var originalVisibility = els.visibility;
+    var originalPosition = els.position;
+    var originalDisplay = els.display;
+    els.visibility = 'hidden';
+    els.position = 'absolute';
+    els.display = 'block';
+    var originalWidth = element.clientWidth;
+    var originalHeight = element.clientHeight;
+    els.display = originalDisplay;
+    els.position = originalPosition;
+    els.visibility = originalVisibility;
+    return {
+      width: originalWidth, 
+      height: originalHeight
+    };
+  },
+
+  // Returns the height of the element
+  getHeight: function() {
+    return this.getDimensions().height;
+  },
+
+  // Returns the width of the element
+  getWidth: function() {
+    return this.getDimensions().width;
+  },
+
+  setWidth: function(value) {
+    this.style.width = value + 'px';
+    return this;
+  },
+
+  setHeight: function(value) {
+    this.style.height = value + 'px';
+    return this;
+  },
+
+  addClassName: function(className) {
+    this.className += (this.className ? ' ' : '') + className;
+    return this;
+  },
+
+  removeClassName: function(className) {
+    this.className = this.className.replace(
+      new RegExp("(^|\\s+)" + className + "(\\s+|$)"), ' ');
     return this;
   }
 });
