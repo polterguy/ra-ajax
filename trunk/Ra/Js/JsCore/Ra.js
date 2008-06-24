@@ -40,7 +40,11 @@ Ra.extend = function(inherited, base) {
 }
 
 
-// Element class, used as helper to manipulate DOM elements
+// =======================================
+// Ra.Element class
+// Used for DOM manipulation. 
+// Wraps a DOM element.
+// =======================================
 Ra.Element = Ra.klass();
 
 
@@ -91,7 +95,7 @@ Ra.extend(Ra.Element.prototype, {
     // We cannot (obviously) return the "this" object here...
   },
 
-  // Taken and modified from prototype.js
+  // Modified from prototype.js
   // Returns an object of { width, height } containing the width and height of the element
   getDimensions: function() {
     var display = this.style.display;
@@ -104,20 +108,20 @@ Ra.extend(Ra.Element.prototype, {
     // All *Width and *Height properties give 0 on elements with display none,
     // so enable the element temporarily
     var els = this.style;
-    var originalVisibility = els.visibility;
-    var originalPosition = els.position;
-    var originalDisplay = els.display;
+    var orVis = els.visibility;
+    var orPos = els.position;
+    var orDis = els.display;
     els.visibility = 'hidden';
     els.position = 'absolute';
     els.display = 'block';
-    var originalWidth = element.clientWidth;
-    var originalHeight = element.clientHeight;
-    els.display = originalDisplay;
-    els.position = originalPosition;
-    els.visibility = originalVisibility;
+    var orWidth = element.clientWidth;
+    var orHeight = element.clientHeight;
+    els.display = orDis;
+    els.position = orPos;
+    els.visibility = orVis;
     return {
-      width: originalWidth, 
-      height: originalHeight
+      width: orWidth, 
+      height: orHeight
     };
   },
 
@@ -131,24 +135,61 @@ Ra.extend(Ra.Element.prototype, {
     return this.getDimensions().width;
   },
 
+  // Sets the width, expects an INTEGER value, appends 'px' meaning this is a PIXEL operation
   setWidth: function(value) {
     this.style.width = value + 'px';
     return this;
   },
 
+  // Sets the height, expects an INTEGER value, appends 'px' meaning this is a PIXEL operation
   setHeight: function(value) {
     this.style.height = value + 'px';
     return this;
   },
 
+  // Appends a class name to the class of the element
   addClassName: function(className) {
     this.className += (this.className ? ' ' : '') + className;
     return this;
   },
 
+  // Removes a class name from the element
   removeClassName: function(className) {
     this.className = this.className.replace(
       new RegExp("(^|\\s+)" + className + "(\\s+|$)"), ' ').replace(/^\s+/, '').replace(/\s+$/, '');
+    return this;
+  },
+
+  // Sets opacity, expects a value between 0.0 and 1.0 where 0 == invisible and 1 == completely visible
+  setOpacity: function(value){
+    this.style.opacity = value == 1 ? '' : value < 0.0001 ? 0 : value;
+    return this;
+  },
+
+  // Returns opacity value of element 1 == completely visible and 0 == completely invisible
+  getOpacity: function() {
+    return this.style.opacity;
+  },
+
+  // Returns the integer value of the left styled position
+  getLeft: function(){
+    return parseInt(this.style.left, 10) || 0;
+  },
+
+  // Returns the integer value of the top styled position
+  getTop: function(){
+    return parseInt(this.style.top, 10) || 0;
+  },
+
+  // Sets the left position value of the element. Note the 'px' is appended meaning this is a PIXEL operation
+  setLeft: function(value) {
+    this.style.left = value + 'px';
+    return this;
+  },
+
+  // Sets the top position value of the element. Note the 'px' is appended meaning this is a PIXEL operation
+  setTop: function(value) {
+    this.style.top = value + 'px';
     return this;
   }
 });
