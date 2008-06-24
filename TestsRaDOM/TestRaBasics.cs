@@ -23,7 +23,28 @@ namespace TestsRaDOM
         public void TestDollar()
         {
             Browser.Eval("checkForRaDollar();");
-            AssertSuccess("Ra namespace doesn't exists");
+            AssertSuccess("Ra $ doesn't work");
+        }
+
+        [NUnit.Framework.Test]
+        public void TestCreateClass()
+        {
+            Browser.Eval("checkCreateClass();");
+            AssertSuccess("Ra classCreate doesn't work");
+        }
+
+        [NUnit.Framework.Test]
+        public void TestExtendExists()
+        {
+            Browser.Eval("checkExtend();");
+            AssertSuccess("Ra extend doesn't work");
+        }
+
+        [NUnit.Framework.Test]
+        public void TestExtendWorksSimple()
+        {
+            Browser.Eval("checkExtendFunctional();");
+            AssertSuccess("Ra extend doesn't work");
         }
     }
 }

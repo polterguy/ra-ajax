@@ -36,6 +36,35 @@ function checkForRaDollar() {
 }
 
 
+function checkCreateClass() {
+  var XX = Ra.klass();
+  if( XX )
+    Ra.$('results').innerHTML = 'success';
+  else
+    Ra.$('results').innerHTML = 'failure';
+}
+
+
+function checkExtend() {
+  if( Ra.extend )
+    Ra.$('results').innerHTML = 'success';
+  else
+    Ra.$('results').innerHTML = 'failure';
+}
+
+
+function checkExtendFunctional() {
+  var x = {};
+  Ra.extend(x, {
+    foo: true
+  });
+  if( x.foo )
+    Ra.$('results').innerHTML = 'success';
+  else
+    Ra.$('results').innerHTML = 'failure';
+}
+
+
         </script>
     </head>
     <body>
@@ -44,7 +73,7 @@ function checkForRaDollar() {
                 <div id="results">
                     Unknown
                 </div>
-                <ra:Button ID="Button1" runat="server" OnClientClick="checkForRa()" />
+                <ra:Button ID="Button1" runat="server" />
             </div>
         </form>
     </body>
