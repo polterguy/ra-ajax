@@ -102,5 +102,12 @@ namespace TestsRaDOM
             Browser.Eval("checkRaElementExtendWorks();");
             AssertSuccess("Ra extend doesn't work");
         }
+
+        [NUnit.Framework.Test]
+        public void TestElementReplace()
+        {
+            Browser.Eval("checkRaElementReplaceWorks();");
+            AssertSuccess("Ra.Element.replace doesn't work");
+        }
     }
 }
