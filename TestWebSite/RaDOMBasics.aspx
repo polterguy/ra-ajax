@@ -216,6 +216,19 @@ function checkRaElementReplaceWorks() {
   el.replace('<div id="results">success</div>');
 }
 
+
+// Checks to see setVisible works
+function checkRaElementReplaceWorks() {
+  var el = Ra.$('results');
+  el.setVisible(false);
+  if( el.style.display == 'none' ) {
+    Ra.$('results').innerHTML = 'success';
+  } else {
+    Ra.$('results').innerHTML = 'failure';
+  }
+  el.setVisible(true);
+}
+
         </script>
     </head>
     <body>
