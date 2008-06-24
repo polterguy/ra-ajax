@@ -95,5 +95,12 @@ namespace TestsRaDOM
             Browser.Eval("checkExtendInheritanceOverride();");
             AssertSuccess("Ra extend doesn't work");
         }
+
+        [NUnit.Framework.Test]
+        public void TestElementExtended()
+        {
+            Browser.Eval("checkRaElementExtendWorks();");
+            AssertSuccess("Ra extend doesn't work");
+        }
     }
 }

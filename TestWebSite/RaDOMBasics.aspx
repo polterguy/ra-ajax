@@ -197,6 +197,18 @@ function checkExtendInheritanceOverride() {
   }
 }
 
+
+// Checks to see if a DOM element fetched with Ra.$ contains the Ra specific
+// extensions
+function checkRaElementExtendWorks() {
+  var el = Ra.$('results');
+  if( el.replace ) {
+    Ra.$('results').innerHTML = 'success';
+  } else {
+    Ra.$('results').innerHTML = 'failure';
+  }
+}
+
         </script>
     </head>
     <body>

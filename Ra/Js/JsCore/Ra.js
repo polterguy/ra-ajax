@@ -11,7 +11,9 @@ Ra = {}
 
 // $ method, used to retrieve elements on document
 Ra.$ = function(id) {
-  return document.getElementById(id);
+  var el = document.getElementById(id);
+  Ra.extend(el, Ra.Element.prototype);
+  return el;
 }
 
 
@@ -34,6 +36,24 @@ Ra.extend = function(inherited, base) {
     inherited[prop] = base[prop];
   return inherited;
 }
+
+
+// Element class, used as helper to manipulate DOM elements
+Ra.Element = Ra.klass();
+
+
+Ra.extend(Ra.Element.prototype, {
+  replace: function(html) {
+  }
+});
+
+
+
+
+
+
+
+
 
 
 
