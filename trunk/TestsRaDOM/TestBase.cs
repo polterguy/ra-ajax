@@ -28,7 +28,7 @@ namespace TestsRaDOM
         {
             string success = Browser.Div("results").InnerHtml;
             Browser.Eval("init();");
-            Assert.AreEqual(success, "success", errMsg);
+            Assert.AreEqual("success", success, errMsg);
         }
 
         private void StartBrowser()

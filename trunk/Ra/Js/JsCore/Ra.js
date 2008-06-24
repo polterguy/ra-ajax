@@ -44,7 +44,22 @@ Ra.Element = Ra.klass();
 
 Ra.extend(Ra.Element.prototype, {
   replace: function(html) {
+
+    // Storing id for later to be able to "re-extend" and return "this" back to caller
     var elId = this.id;
+
+    // Creating node to wrap HTML content to replace this content with
+    if( this.outerHTML ) {
+      this.outerHTML = html;
+    } else {
+      var range = this.ownerDocument.createRange();
+      range.selectNode(this);
+      var newEl = range.createContextualFragment(html);
+
+      // Doing replacing
+      this.parentNode.replaceChild(newEl, this);
+    }
+
     // Since this effectively REPLACES the element the return
     // value will actually be another physical object so we need
     // to re-retrieve the element, extend it and return the "new" 

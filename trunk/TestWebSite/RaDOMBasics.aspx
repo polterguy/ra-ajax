@@ -209,6 +209,13 @@ function checkRaElementExtendWorks() {
   }
 }
 
+
+// Checks to see if Ra.Element.replace works
+function checkRaElementReplaceWorks() {
+  var el = Ra.$('results');
+  el.replace('<div id="results">success</div>');
+}
+
         </script>
     </head>
     <body>
@@ -218,6 +225,7 @@ function checkRaElementExtendWorks() {
                     Unknown
                 </div>
                 <ra:Button ID="Button1" runat="server" />
+                <input type="button" value="Test" onclick="checkRaElementReplaceWorks();" />
             </div>
         </form>
     </body>
