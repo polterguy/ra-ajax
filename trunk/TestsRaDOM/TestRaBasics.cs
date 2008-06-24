@@ -74,5 +74,19 @@ namespace TestsRaDOM
             Browser.Eval("checkExtendFunctionalMethodPrototypeWithInitArguments();");
             AssertSuccess("Ra extend doesn't work");
         }
+
+        [NUnit.Framework.Test]
+        public void TestExtendWorksPrototypeInstanceInitWithMultipleArgs()
+        {
+            Browser.Eval("checkExtendFunctionalMethodPrototypeWithMultipleInitArguments();");
+            AssertSuccess("Ra extend doesn't work");
+        }
+
+        [NUnit.Framework.Test]
+        public void TestExtendWithThisCheck()
+        {
+            Browser.Eval("checkExtendMethodPrototypeWithThisArgument();");
+            AssertSuccess("Ra extend doesn't work");
+        }
     }
 }
