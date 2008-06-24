@@ -43,7 +43,35 @@ namespace TestsRaDOM
         [NUnit.Framework.Test]
         public void TestExtendWorksSimple()
         {
-            Browser.Eval("checkExtendFunctional();");
+            Browser.Eval("checkExtendFunctionalSimple();");
+            AssertSuccess("Ra extend doesn't work");
+        }
+
+        [NUnit.Framework.Test]
+        public void TestExtendWorksSimpleMethod()
+        {
+            Browser.Eval("checkExtendFunctionalSimpleMethod();");
+            AssertSuccess("Ra extend doesn't work");
+        }
+
+        [NUnit.Framework.Test]
+        public void TestExtendWorksSimpleMethodInvoke()
+        {
+            Browser.Eval("checkExtendFunctionalMethodInvoke();");
+            AssertSuccess("Ra extend doesn't work");
+        }
+
+        [NUnit.Framework.Test]
+        public void TestExtendWorksPrototypeInstance()
+        {
+            Browser.Eval("checkExtendFunctionalMethodPrototype();");
+            AssertSuccess("Ra extend doesn't work");
+        }
+
+        [NUnit.Framework.Test]
+        public void TestExtendWorksPrototypeInstanceInitWithArgs()
+        {
+            Browser.Eval("checkExtendFunctionalMethodPrototypeWithInitArguments();");
             AssertSuccess("Ra extend doesn't work");
         }
     }

@@ -53,7 +53,7 @@ function checkExtend() {
 }
 
 
-function checkExtendFunctional() {
+function checkExtendFunctionalSimple() {
   var x = {};
   Ra.extend(x, {
     foo: true
@@ -62,6 +62,61 @@ function checkExtendFunctional() {
     Ra.$('results').innerHTML = 'success';
   else
     Ra.$('results').innerHTML = 'failure';
+}
+
+
+function checkExtendFunctionalSimpleMethod() {
+  var x = {};
+  Ra.extend(x, {
+    foo: function(){}
+  });
+  if( x.foo )
+    Ra.$('results').innerHTML = 'success';
+  else
+    Ra.$('results').innerHTML = 'failure';
+}
+
+
+function checkExtendFunctionalMethodInvoke() {
+  var x = {};
+  Ra.extend(x, {
+    foo: function(){
+      Ra.$('results').innerHTML = 'success';
+    }
+  });
+  x.foo();
+}
+
+
+function checkExtendFunctionalMethodPrototype() {
+  var X = Ra.klass();
+  Ra.extend(X.prototype, {
+    foo: 12,
+    init: function(){
+    }
+  });
+  var x = new X();
+  if( x.foo == 12 ) {
+    Ra.$('results').innerHTML = 'success';
+  } else {
+    Ra.$('results').innerHTML = 'failure';
+  }
+}
+
+
+function checkExtendFunctionalMethodPrototypeWithInitArguments() {
+  var X = Ra.klass();
+  Ra.extend(X.prototype, {
+    init: function(args){
+      this.foo = args[0];
+    }
+  });
+  var x = new X(12);
+  if( x.foo == 12 ) {
+    Ra.$('results').innerHTML = 'success';
+  } else {
+    Ra.$('results').innerHTML = 'failure';
+  }
 }
 
 
