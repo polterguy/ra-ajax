@@ -108,7 +108,7 @@ function checkExtendFunctionalMethodPrototypeWithInitArguments() {
   var X = Ra.klass();
   Ra.extend(X.prototype, {
     init: function(args){
-      this.foo = args[0];
+      this.foo = args;
     }
   });
   var x = new X(12);
