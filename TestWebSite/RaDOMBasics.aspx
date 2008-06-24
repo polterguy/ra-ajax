@@ -120,6 +120,42 @@ function checkExtendFunctionalMethodPrototypeWithInitArguments() {
 }
 
 
+function checkExtendFunctionalMethodPrototypeWithMultipleInitArguments() {
+  var X = Ra.klass();
+  Ra.extend(X.prototype, {
+    init: function(arg1, arg2){
+      this.foo = arg1;
+      this.bar = arg2;
+    }
+  });
+  var x = new X(5, 'test');
+  if( x.foo == 5 && x.bar == 'test' ) {
+    Ra.$('results').innerHTML = 'success';
+  } else {
+    Ra.$('results').innerHTML = 'failure';
+  }
+}
+
+
+function checkExtendMethodPrototypeWithThisArgument() {
+  var X = Ra.klass();
+  Ra.extend(X.prototype, {
+    init: function(arg1){
+      this.foo = arg1;
+    },
+    bar: function(){
+      if( this.foo == 7 ) {
+        Ra.$('results').innerHTML = 'success';
+      } else {
+        Ra.$('results').innerHTML = 'failure';
+      }
+    }
+  });
+  var x = new X(7);
+  x.bar();
+}
+
+
         </script>
     </head>
     <body>
