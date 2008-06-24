@@ -88,5 +88,12 @@ namespace TestsRaDOM
             Browser.Eval("checkExtendMethodPrototypeWithThisArgument();");
             AssertSuccess("Ra extend doesn't work");
         }
+
+        [NUnit.Framework.Test]
+        public void TestExtendWithInheritanceOverride()
+        {
+            Browser.Eval("checkExtendInheritanceOverride();");
+            AssertSuccess("Ra extend doesn't work");
+        }
     }
 }
