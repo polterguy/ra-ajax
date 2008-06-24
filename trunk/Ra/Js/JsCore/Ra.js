@@ -148,7 +148,7 @@ Ra.extend(Ra.Element.prototype, {
 
   removeClassName: function(className) {
     this.className = this.className.replace(
-      new RegExp("(^|\\s+)" + className + "(\\s+|$)"), ' ');
+      new RegExp("(^|\\s+)" + className + "(\\s+|$)"), ' ').replace(/^\s+/, '').replace(/\s+$/, '');
     return this;
   }
 });
