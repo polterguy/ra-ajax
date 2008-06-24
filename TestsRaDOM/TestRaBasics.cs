@@ -123,5 +123,70 @@ namespace TestsRaDOM
             Browser.Eval("checkRemove();");
             AssertSuccess("Ra.Element.remove doesn't work");
         }
+
+        [NUnit.Framework.Test]
+        public void TestSetContent()
+        {
+            Browser.Eval("checkSetContent();");
+            AssertSuccess("Ra.Element.setContent doesn't work");
+        }
+
+        [NUnit.Framework.Test]
+        public void TestGetWidth()
+        {
+            Browser.Eval("checkWidth();");
+            AssertSuccess("Ra.Element.getWidth doesn't work");
+        }
+
+        [NUnit.Framework.Test]
+        public void TestGetHeight()
+        {
+            Browser.Eval("checkHeight();");
+            AssertSuccess("Ra.Element.getHeight doesn't work");
+        }
+
+        [NUnit.Framework.Test]
+        public void TestSetHeight()
+        {
+            Browser.Eval("checkSetHeight();");
+            AssertSuccess("Ra.Element.setHeight doesn't work");
+        }
+
+        [NUnit.Framework.Test]
+        public void TestSetWidth()
+        {
+            Browser.Eval("checkSetWidth();");
+            AssertSuccess("Ra.Element.setWidth doesn't work");
+        }
+
+        [NUnit.Framework.Test]
+        public void TestAddClassName()
+        {
+            Browser.Eval("checkAddClassName();");
+            AssertSuccess("Ra.Element.addClassName doesn't work");
+        }
+
+        [NUnit.Framework.Test]
+        public void TestRemoveClassName()
+        {
+            Browser.Eval("checkRemoveClassName();");
+            AssertSuccess("Ra.Element.removeClassName doesn't work");
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

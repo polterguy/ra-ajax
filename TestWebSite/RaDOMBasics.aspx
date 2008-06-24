@@ -242,6 +242,86 @@ function checkRemove() {
   }
 }
 
+
+// Testing getWidth function
+function checkWidth() {
+  var el = Ra.$('test2');
+  if( el.getWidth() == 100 ) {
+    Ra.$('results').innerHTML = 'success';
+  } else {
+    Ra.$('results').innerHTML = 'failure';
+  }
+}
+
+
+// Testing getWidth function
+function checkHeight() {
+  var el = Ra.$('test2');
+  if( el.getHeight() == 150 ) {
+    Ra.$('results').innerHTML = 'success';
+  } else {
+    Ra.$('results').innerHTML = 'failure';
+  }
+}
+
+
+// Testing setHeight function
+function checkSetHeight() {
+  var el = Ra.$('test2');
+  el.setHeight(80);
+  if( el.getHeight() == 80 ) {
+    Ra.$('results').innerHTML = 'success';
+  } else {
+    Ra.$('results').innerHTML = 'failure';
+  }
+}
+
+
+// Testing setWidth function
+function checkSetWidth() {
+  var el = Ra.$('test2');
+  el.setHeight(110);
+  if( el.getHeight() == 110 ) {
+    Ra.$('results').innerHTML = 'success';
+  } else {
+    Ra.$('results').innerHTML = 'failure';
+  }
+}
+
+
+// Test adding class name
+function checkAddClassName() {
+  var el = Ra.$('test2');
+  el.addClassName('test');
+  if( el.className == 'test' ) {
+    Ra.$('results').innerHTML = 'success';
+  } else {
+    Ra.$('results').innerHTML = 'failure';
+  }
+  el.className = '';
+}
+
+
+// Test REMOVE class name
+function checkRemoveClassName() {
+  var el = Ra.$('test2');
+  el.addClassName('mambo');
+  el.addClassName('jambo');
+  el.removeClassName('mambo');
+  if( el.className == 'jambo' ) {
+    Ra.$('results').innerHTML = 'success';
+  } else {
+    Ra.$('results').innerHTML = 'failure';
+  }
+  el.className = '';
+}
+
+
+
+// Tests setContent
+function checkSetContent() {
+  Ra.$('results').setContent('success');
+}
         </script>
     </head>
     <body>
@@ -253,8 +333,11 @@ function checkRemove() {
                 <div id="test">
                     dummy
                 </div>
+                <div id="test2" style="width:100px;height:150px;">
+                    &nbsp;
+                </div>
                 <ra:Button ID="Button1" runat="server" />
-                <input type="button" value="Test" onclick="checkRemove();" />
+                <input type="button" value="Test" onclick="checkRemoveClassName();" />
             </div>
         </form>
     </body>
