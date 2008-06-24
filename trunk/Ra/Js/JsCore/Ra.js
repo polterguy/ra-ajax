@@ -67,6 +67,11 @@ Ra.extend(Ra.Element.prototype, {
     // We're asserting that the Element's ID will be UNCHANGED though
     // we technically have no guarantee of this what-so-ever...
     return Ra.$(elId);
+  },
+
+  setVisible: function(value) {
+    this.style.display = value ? '' : 'none';
+    return this;
   }
 });
 
