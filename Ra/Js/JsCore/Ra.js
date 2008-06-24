@@ -44,6 +44,14 @@ Ra.Element = Ra.klass();
 
 Ra.extend(Ra.Element.prototype, {
   replace: function(html) {
+    var elId = this.id;
+    // Since this effectively REPLACES the element the return
+    // value will actually be another physical object so we need
+    // to re-retrieve the element, extend it and return the "new" 
+    // object back to caller...
+    // We're asserting that the Element's ID will be UNCHANGED though
+    // we technically have no guarantee of this what-so-ever...
+    return Ra.$(elId);
   }
 });
 
