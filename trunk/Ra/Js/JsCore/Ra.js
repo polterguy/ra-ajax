@@ -223,7 +223,12 @@ Ra.Effect = Ra.klass();
 
 
 Ra.extend(Ra.Effect.prototype, {
+
   init: function(element, options){
+    this.initEffect(element, options);
+  },
+
+  initEffect: function(element, options) {
     this.options = Ra.extend({
       duration: 1.0,
       onStart: function(){},
@@ -252,9 +257,7 @@ Ra.extend(Ra.Effect.prototype, {
     }
   },
   
-  render: function(pos){
-    // Do nothing
-  }
+  render: function(pos){/* Do nothing */}
 });
 
 
@@ -265,6 +268,7 @@ Ra.Effect.Fade = Ra.klass();
 Ra.extend(Ra.Effect.Fade.prototype, Ra.Effect.prototype);
 
 Ra.extend(Ra.Effect.Fade.prototype, {
+
   render: function(pos){
     this.element.setOpacity(1.0 - pos);
   }
@@ -277,6 +281,7 @@ Ra.Effect.Appear = Ra.klass();
 Ra.extend(Ra.Effect.Appear.prototype, Ra.Effect.prototype);
 
 Ra.extend(Ra.Effect.Appear.prototype, {
+
   render: function(pos){
     this.element.setOpacity(pos);
   }
@@ -289,6 +294,7 @@ Ra.Effect.Highlight = Ra.klass();
 Ra.extend(Ra.Effect.Highlight.prototype, Ra.Effect.prototype);
 
 Ra.extend(Ra.Effect.Highlight.prototype, {
+
   render: function(pos){
     if( !this.oldColor )
       this.oldColor = this.element.style.backgroundColor;
@@ -303,6 +309,47 @@ Ra.extend(Ra.Effect.Highlight.prototype, {
 });
 
 
+
+// BlindUp effect
+Ra.Effect.BlindUp = Ra.klass();
+
+Ra.extend(Ra.Effect.BlindUp.prototype, Ra.Effect.prototype);
+
+Ra.extend(Ra.Effect.BlindUp.prototype, {
+
+  render: function(pos){
+    if( !this.originalHeight ) {
+      this.originalHeight = this.element.getHeight();
+    }
+    if( pos == 1.0 ) {
+      this.element.setVisible(false);
+    } else {
+      var newHeight = this.originalHeight * (1 - pos);
+      this.element.setHeight(newHeight);
+    }
+  }
+});
+
+
+// BlindDown effect
+Ra.Effect.BlindDown = Ra.klass();
+
+Ra.extend(Ra.Effect.BlindDown.prototype, Ra.Effect.prototype);
+
+Ra.extend(Ra.Effect.BlindDown.prototype, {
+
+  render: function(pos){
+    if( this.element.style.display == 'none' ) {
+      this.element.style.display = '';
+    }
+    if( pos == 1.0 ) {
+      this.element.setHeight(this.options.toHeight);
+    } else {
+      var newHeight = this.options.toHeight * pos;
+      this.element.setHeight(newHeight);
+    }
+  }
+});
 
 
 

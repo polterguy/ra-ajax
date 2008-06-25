@@ -372,8 +372,17 @@ function testFadeAndAppear() {
 
 
 
-function testHighlight() {
-  new Ra.Effect.Highlight('testAnimationDiv');
+function testBlind() {
+  new Ra.Effect.BlindUp('testAnimationDiv', {
+    onFinished: function(){
+      new Ra.Effect.BlindDown('testAnimationDiv', {
+        toHeight:200,
+        onFinished: function(){
+          Ra.$('results').setContent('success');
+        }
+      });
+    }
+  });
 }
 
 
@@ -396,7 +405,7 @@ function testHighlight() {
                     Howdy
                 </div>
                 <ra:Button ID="Button1" runat="server" />
-                <input type="button" id="textButton" value="Test" onclick="testHighlight();" />
+                <input type="button" id="textButton" value="Test" onclick="testBlind();" />
             </div>
         </form>
     </body>
