@@ -317,11 +317,59 @@ function checkRemoveClassName() {
 }
 
 
+function checkOpacity() {
+  var el = Ra.$('test2');
+  el.setOpacity(0.8);
+  if( el.getOpacity() == 0.8 ) {
+    Ra.$('results').innerHTML = 'success';
+  } else {
+    Ra.$('results').innerHTML = 'failure';
+  }
+  el.setOpacity(1);
+}
+
+
+function testPosition() {
+  var el = Ra.$('test2');
+  el.style.position = 'absolute';
+  el.setLeft(100).setTop(200);
+  if( el.getLeft() == 100 && el.getTop() == 200 ) {
+    Ra.$('results').innerHTML = 'success';
+  } else {
+    Ra.$('results').innerHTML = 'failure';
+  }
+  el.style.left = '';
+  el.style.top = '';
+  el.style.position = '';
+}
+
+
 
 // Tests setContent
 function checkSetContent() {
   Ra.$('results').setContent('success');
 }
+
+
+
+function testFadeAndAppear() {
+  new Ra.Effect.Fade('testAnimationDiv', {
+    onStart: function(){
+      this.element.style.backgroundColor = 'Blue';
+    },
+    onFinished: function(){
+      if( this.element.getOpacity() == 0 ) {
+        new Ra.Effect.Appear('testAnimationDiv', {
+          onFinished: function(){
+            if( this.element.getOpacity() == 1 )
+              Ra.$('results').setContent('success');
+          }
+        });
+      }
+    }
+  });
+}
+
         </script>
     </head>
     <body>
@@ -336,8 +384,11 @@ function checkSetContent() {
                 <div id="test2" style="width:100px;height:150px;">
                     &nbsp;
                 </div>
+                <div id="testAnimationDiv" style="width:100px;height:150px;background-color:Red;">
+                    Howdy
+                </div>
                 <ra:Button ID="Button1" runat="server" />
-                <input type="button" value="Test" onclick="checkRemoveClassName();" />
+                <input type="button" id="textButton" value="Test" onclick="testFadeAndAppear();" />
             </div>
         </form>
     </body>
