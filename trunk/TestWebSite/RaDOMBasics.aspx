@@ -353,15 +353,21 @@ function checkSetContent() {
 
 
 function testFadeAndAppear() {
-  new Ra.Effect.Fade('testAnimationDiv', {
+  new Ra.Effect('testAnimationDiv', {
+    onRender: function(pos) {
+      this.element.setOpacity(1.0 - pos);
+    },
     onStart: function(){
-      this.element.style.backgroundColor = '#0000FF';
+      this.element.setContent('testing');
     },
     onFinished: function(){
       if( this.element.getOpacity() == 0 ) {
-        new Ra.Effect.Appear('testAnimationDiv', {
+        new Ra.Effect('testAnimationDiv', {
+          onRender: function(pos) {
+            this.element.setOpacity(pos);
+          },
           onFinished: function(){
-            if( this.element.getOpacity() == 1 )
+            if( this.element.getOpacity() == 1 && this.element.innerHTML == 'testing')
               Ra.$('results').setContent('success');
           }
         });
@@ -371,19 +377,6 @@ function testFadeAndAppear() {
 }
 
 
-
-function testBlind() {
-  new Ra.Effect.BlindUp('testAnimationDiv', {
-    onFinished: function(){
-      new Ra.Effect.BlindDown('testAnimationDiv', {
-        toHeight:200,
-        onFinished: function(){
-          Ra.$('results').setContent('success');
-        }
-      });
-    }
-  });
-}
 
 
 
@@ -405,7 +398,7 @@ function testBlind() {
                     Howdy
                 </div>
                 <ra:Button ID="Button1" runat="server" />
-                <input type="button" id="textButton" value="Test" onclick="testBlind();" />
+                <input type="button" id="textButton" value="Test" onclick="testFadeAndAppear();" />
             </div>
         </form>
     </body>

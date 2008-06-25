@@ -194,14 +194,6 @@ namespace TestsRaDOM
             System.Threading.Thread.Sleep(2500);
             AssertSuccess("Ra.Element.Fade/Appear doesn't work");
         }
-
-        [NUnit.Framework.Test]
-        public void TestBlind()
-        {
-            Browser.Eval("testBlind();");
-            System.Threading.Thread.Sleep(2500);
-            AssertSuccess("Ra.Element.BlindUp/Down doesn't work");
-        }
     }
 }
 

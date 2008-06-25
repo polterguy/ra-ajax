@@ -215,6 +215,10 @@ Ra.extend(Ra.Element.prototype, {
 });
 
 
+
+
+
+
 // =======================================
 // Ra.Effect class
 // Base class for DHTML Effects
@@ -232,10 +236,11 @@ Ra.extend(Ra.Effect.prototype, {
     this.options = Ra.extend({
       duration: 1.0,
       onStart: function(){},
-      onFinished: function(){}
+      onFinished: function(){},
+      onRender: null
     }, options || {});
     this.element = Ra.$(element);
-    this.options.onStart.apply(this);
+    this.options.onStart.call(this);
     this.startTime = new Date().getTime();
     this.finishOn = this.startTime + (this.options.duration * 1000);
     this.loop();
@@ -245,7 +250,7 @@ Ra.extend(Ra.Effect.prototype, {
     var curTime = new Date().getTime();
     if( curTime >= this.finishOn ) {
       this.render(1.0);
-      this.options.onFinished.apply(this);
+      this.options.onFinished.call(this);
     } else {
       // One tick
       var delta = (curTime - this.startTime) / (this.options.duration * 1000);
@@ -257,100 +262,13 @@ Ra.extend(Ra.Effect.prototype, {
     }
   },
   
-  render: function(pos){/* Do nothing */}
-});
-
-
-
-// Fade effect
-Ra.Effect.Fade = Ra.klass();
-
-Ra.extend(Ra.Effect.Fade.prototype, Ra.Effect.prototype);
-
-Ra.extend(Ra.Effect.Fade.prototype, {
-
   render: function(pos){
-    this.element.setOpacity(1.0 - pos);
+    // You can create "generic" effects where you put in the Render method
+    // as part of the options through the options. If so this logic
+    // will kick in...
+    this.options.onRender.call(this, pos);
   }
 });
-
-
-// Appear effect
-Ra.Effect.Appear = Ra.klass();
-
-Ra.extend(Ra.Effect.Appear.prototype, Ra.Effect.prototype);
-
-Ra.extend(Ra.Effect.Appear.prototype, {
-
-  render: function(pos){
-    this.element.setOpacity(pos);
-  }
-});
-
-
-// Highlight effect
-Ra.Effect.Highlight = Ra.klass();
-
-Ra.extend(Ra.Effect.Highlight.prototype, Ra.Effect.prototype);
-
-Ra.extend(Ra.Effect.Highlight.prototype, {
-
-  render: function(pos){
-    if( !this.oldColor )
-      this.oldColor = this.element.style.backgroundColor;
-    if( pos == 1.0 ) {
-      this.element.style.backgroundColor = this.oldColor;
-    } else {
-      var val = Math.cos(0.5 - pos);
-      var yellow = (Math.round(val * 255)).toString(16);
-      this.element.style.backgroundColor = '#' + yellow + yellow + '00';
-    }
-  }
-});
-
-
-
-// BlindUp effect
-Ra.Effect.BlindUp = Ra.klass();
-
-Ra.extend(Ra.Effect.BlindUp.prototype, Ra.Effect.prototype);
-
-Ra.extend(Ra.Effect.BlindUp.prototype, {
-
-  render: function(pos){
-    if( !this.originalHeight ) {
-      this.originalHeight = this.element.getHeight();
-    }
-    if( pos == 1.0 ) {
-      this.element.setVisible(false);
-    } else {
-      var newHeight = this.originalHeight * (1 - pos);
-      this.element.setHeight(newHeight);
-    }
-  }
-});
-
-
-// BlindDown effect
-Ra.Effect.BlindDown = Ra.klass();
-
-Ra.extend(Ra.Effect.BlindDown.prototype, Ra.Effect.prototype);
-
-Ra.extend(Ra.Effect.BlindDown.prototype, {
-
-  render: function(pos){
-    if( this.element.style.display == 'none' ) {
-      this.element.style.display = '';
-    }
-    if( pos == 1.0 ) {
-      this.element.setHeight(this.options.toHeight);
-    } else {
-      var newHeight = this.options.toHeight * pos;
-      this.element.setHeight(newHeight);
-    }
-  }
-});
-
 
 
 
