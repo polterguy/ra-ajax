@@ -283,6 +283,26 @@ Ra.extend(Ra.Effect.Appear.prototype, {
 });
 
 
+// Highlight effect
+Ra.Effect.Highlight = Ra.klass();
+
+Ra.extend(Ra.Effect.Highlight.prototype, Ra.Effect.prototype);
+
+Ra.extend(Ra.Effect.Highlight.prototype, {
+  render: function(pos){
+    if( !this.oldColor )
+      this.oldColor = this.element.style.backgroundColor;
+    if( pos == 1.0 ) {
+      this.element.style.backgroundColor = this.oldColor;
+    } else {
+      var val = Math.cos(0.5 - pos);
+      var yellow = (Math.round(val * 255)).toString(16);
+      this.element.style.backgroundColor = '#' + yellow + yellow + '00';
+    }
+  }
+});
+
+
 
 
 

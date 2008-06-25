@@ -355,7 +355,7 @@ function checkSetContent() {
 function testFadeAndAppear() {
   new Ra.Effect.Fade('testAnimationDiv', {
     onStart: function(){
-      this.element.style.backgroundColor = 'Blue';
+      this.element.style.backgroundColor = '#0000FF';
     },
     onFinished: function(){
       if( this.element.getOpacity() == 0 ) {
@@ -369,6 +369,14 @@ function testFadeAndAppear() {
     }
   });
 }
+
+
+
+function testHighlight() {
+  new Ra.Effect.Highlight('testAnimationDiv');
+}
+
+
 
         </script>
     </head>
@@ -388,7 +396,7 @@ function testFadeAndAppear() {
                     Howdy
                 </div>
                 <ra:Button ID="Button1" runat="server" />
-                <input type="button" id="textButton" value="Test" onclick="testFadeAndAppear();" />
+                <input type="button" id="textButton" value="Test" onclick="testHighlight();" />
             </div>
         </form>
     </body>
