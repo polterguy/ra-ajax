@@ -194,6 +194,13 @@ namespace TestsRaDOM
             System.Threading.Thread.Sleep(2500);
             AssertSuccess("Ra.Element.Fade/Appear doesn't work");
         }
+
+        [NUnit.Framework.Test]
+        public void TestElementObserve()
+        {
+            Browser.Button("evtTestBtn").Click();
+            AssertSuccess("Ra.Element.observe doesn't work");
+        }
     }
 }
 

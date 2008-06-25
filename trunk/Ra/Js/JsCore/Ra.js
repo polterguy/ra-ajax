@@ -9,11 +9,11 @@
 Ra = {}
 
 Ra.Browser = {
-  IE:     !!(window.attachEvent && !window.opera),
-  Opera:  !!window.opera,
-  WebKit: navigator.userAgent.indexOf('AppleWebKit/') > -1,
-  Gecko:  navigator.userAgent.indexOf('Gecko') > -1 && navigator.userAgent.indexOf('KHTML') == -1,
-  MobileSafari: !!navigator.userAgent.match(/Apple.*Mobile.*Safari/)
+  IE:             window.attachEvent && !window.opera,
+  Opera:          !!window.opera,
+  WebKit:         navigator.userAgent.indexOf('AppleWebKit') != -1,
+  Gecko:          navigator.userAgent.indexOf('Gecko') != -1,
+  MobileSafari:   !!navigator.userAgent.match(/Apple.*Mobile.*Safari/)
 }
 
 // $ method, used to retrieve elements on document
@@ -168,7 +168,7 @@ Ra.extend(Ra.Element.prototype, {
   },
 
   // Sets opacity, expects a value between 0.0 and 1.0 where 0 == invisible and 1 == completely visible
-  setOpacity: function(value){
+  setOpacity: function(value) {
     if( Ra.Browser.IE ) {
       this.style.filter = 'alpha(opacity=' + (Math.round(value * 100)) + ')';
     } else {
@@ -192,12 +192,12 @@ Ra.extend(Ra.Element.prototype, {
   },
 
   // Returns the integer value of the left styled position
-  getLeft: function(){
+  getLeft: function() {
     return parseInt(this.style.left, 10) || 0;
   },
 
   // Returns the integer value of the top styled position
-  getTop: function(){
+  getTop: function() {
     return parseInt(this.style.top, 10) || 0;
   },
 
@@ -211,6 +211,18 @@ Ra.extend(Ra.Element.prototype, {
   setTop: function(value) {
     this.style.top = value + 'px';
     return this;
+  },
+
+  observe: function(evtName, func, callContext){
+    if (this.addEventListener) {
+      this.addEventListener(evtName, function(){
+        func.call(callContext);
+      }, false);
+    } else {
+      this.attachEvent("on" + evtName, function(){
+        func.call(callContext);
+      });
+    }
   }
 });
 
@@ -250,7 +262,7 @@ Ra.Effect = Ra.klass();
 
 Ra.extend(Ra.Effect.prototype, {
 
-  init: function(element, options){
+  init: function(element, options) {
     this.initEffect(element, options);
   },
 
@@ -269,7 +281,7 @@ Ra.extend(Ra.Effect.prototype, {
     this.loop();
   },
 
-  loop: function(){
+  loop: function() {
     var curTime = new Date().getTime();
     if( curTime >= this.finishOn ) {
       this.render(1.0);
@@ -284,11 +296,8 @@ Ra.extend(Ra.Effect.prototype, {
       }, 10);
     }
   },
-  
-  render: function(pos){
-    // You can create "generic" effects where you put in the Render method
-    // as part of the options through the options. If so this logic
-    // will kick in...
+
+  render: function(pos) {
     this.options.onRender.call(this, pos);
   }
 });
