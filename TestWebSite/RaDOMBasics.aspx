@@ -377,12 +377,21 @@ function testFadeAndAppear() {
 }
 
 
+function onLoadMethod() {
+  var el = Ra.$('evtTestBtn');
+  var tmp = 5;
+  el.observe('click', function(){
+    if( this == 5 )
+      Ra.$('results').setContent('success');
+  }, tmp);
+}
+
 
 
 
         </script>
     </head>
-    <body>
+    <body onload="onLoadMethod();">
         <form id="form1" runat="server">
             <div>
                 <div id="results">
@@ -399,6 +408,7 @@ function testFadeAndAppear() {
                 </div>
                 <ra:Button ID="Button1" runat="server" />
                 <input type="button" id="textButton" value="Test" onclick="testFadeAndAppear();" />
+                <input type="button" id="evtTestBtn" value="Event Test Button" />
             </div>
         </form>
     </body>
