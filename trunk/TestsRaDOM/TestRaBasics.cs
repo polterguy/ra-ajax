@@ -172,6 +172,28 @@ namespace TestsRaDOM
             Browser.Eval("checkRemoveClassName();");
             AssertSuccess("Ra.Element.removeClassName doesn't work");
         }
+
+        [NUnit.Framework.Test]
+        public void TestOpacity()
+        {
+            Browser.Eval("checkOpacity();");
+            AssertSuccess("Ra.Element.setOpacity/getOpacity doesn't work");
+        }
+
+        [NUnit.Framework.Test]
+        public void TestPositioning()
+        {
+            Browser.Eval("testPosition();");
+            AssertSuccess("Ra.Element.setLeft/setTop/getLeft/getTop doesn't work");
+        }
+
+        [NUnit.Framework.Test]
+        public void TestFadeAndAppear()
+        {
+            Browser.Eval("testFadeAndAppear();");
+            System.Threading.Thread.Sleep(2500);
+            AssertSuccess("Ra.Element.Fade/Appear doesn't work");
+        }
     }
 }
 

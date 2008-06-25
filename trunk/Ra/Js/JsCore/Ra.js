@@ -8,6 +8,13 @@
 // Creating main namespace
 Ra = {}
 
+Ra.Browser = {
+  IE:     !!(window.attachEvent && !window.opera),
+  Opera:  !!window.opera,
+  WebKit: navigator.userAgent.indexOf('AppleWebKit/') > -1,
+  Gecko:  navigator.userAgent.indexOf('Gecko') > -1 && navigator.userAgent.indexOf('KHTML') == -1,
+  MobileSafari: !!navigator.userAgent.match(/Apple.*Mobile.*Safari/)
+}
 
 // $ method, used to retrieve elements on document
 Ra.$ = function(id) {
@@ -162,13 +169,26 @@ Ra.extend(Ra.Element.prototype, {
 
   // Sets opacity, expects a value between 0.0 and 1.0 where 0 == invisible and 1 == completely visible
   setOpacity: function(value){
-    this.style.opacity = value == 1 ? '' : value < 0.0001 ? 0 : value;
+    if( Ra.Browser.IE ) {
+      this.style.filter = 'alpha(opacity=' + (Math.round(value * 100)) + ')';
+    } else {
+      this.style.opacity = value == 1 ? '' : value < 0.0001 ? 0 : value;
+    }
     return this;
   },
 
   // Returns opacity value of element 1 == completely visible and 0 == completely invisible
   getOpacity: function() {
-    return this.style.opacity;
+    if( Ra.Browser.IE ) {
+      var value = this.style.filter.match(/alpha\(opacity=(.*)\)/);
+      if( value[1] )
+        return parseFloat(value[1]) / 100;
+      return 1.0;
+    } else {
+      if( this.style.opacity == '' )
+        return 1.0;
+      return this.style.opacity;
+    }
   },
 
   // Returns the integer value of the left styled position
@@ -195,8 +215,72 @@ Ra.extend(Ra.Element.prototype, {
 });
 
 
+// =======================================
+// Ra.Effect class
+// Base class for DHTML Effects
+// =======================================
+Ra.Effect = Ra.klass();
 
 
+Ra.extend(Ra.Effect.prototype, {
+  init: function(element, options){
+    this.options = Ra.extend({
+      duration: 1.0,
+      onStart: function(){},
+      onFinished: function(){}
+    }, options || {});
+    this.element = Ra.$(element);
+    this.options.onStart.apply(this);
+    this.startTime = new Date().getTime();
+    this.finishOn = this.startTime + (this.options.duration * 1000);
+    this.loop();
+  },
+
+  loop: function(){
+    var curTime = new Date().getTime();
+    if( curTime >= this.finishOn ) {
+      this.render(1.0);
+      this.options.onFinished.apply(this);
+    } else {
+      // One tick
+      var delta = (curTime - this.startTime) / (this.options.duration * 1000);
+      this.render(delta);
+      var T = this;
+      setTimeout(function(){
+        T.loop();
+      }, 10);
+    }
+  },
+  
+  render: function(pos){
+    // Do nothing
+  }
+});
+
+
+
+// Fade effect
+Ra.Effect.Fade = Ra.klass();
+
+Ra.extend(Ra.Effect.Fade.prototype, Ra.Effect.prototype);
+
+Ra.extend(Ra.Effect.Fade.prototype, {
+  render: function(pos){
+    this.element.setOpacity(1.0 - pos);
+  }
+});
+
+
+// Appear effect
+Ra.Effect.Appear = Ra.klass();
+
+Ra.extend(Ra.Effect.Appear.prototype, Ra.Effect.prototype);
+
+Ra.extend(Ra.Effect.Appear.prototype, {
+  render: function(pos){
+    this.element.setOpacity(pos);
+  }
+});
 
 
 
