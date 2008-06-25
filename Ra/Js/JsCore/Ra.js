@@ -219,10 +219,32 @@ Ra.extend(Ra.Element.prototype, {
 
 
 
-// =======================================
+// ==============================================================================
 // Ra.Effect class
 // Base class for DHTML Effects
-// =======================================
+// This class is used e.g. like this to create a fading effect
+//  new Ra.Effect('testAnimationDiv', {
+//    onRender: function(pos) {
+//      this.element.setOpacity(1.0 - pos);
+//    }
+//  });
+// Possible options are;
+//  * duration == number of seconds the effect spends running
+//  * onStart == method called before effect starts looping
+//  * onFinished == method called when effect is finished running
+// The onRender will be called with the Effect as the "this" parameter
+// and the "pos" parameter passed will be a value between 0.0 and 1.0 
+// indicating how much of the effect "duration" have passed.
+// The element passed as the first parameter to the constructor
+// is accessible through the "this.element" member and is a Ra extended
+// DOM element meaning it has all the extension methods from the 
+// Ra.Element class available for use.
+// You can pass null as the element parameter in which case (of course) 
+// no DOM element will be associated with the Effect.
+// Also the onStart and the onFinish will pass the this parameter as
+// the Effect instance meaning you can store in e.g. onStart variables in
+// the this pointer needed for later use in e.g. onRender calls.
+// ==============================================================================
 Ra.Effect = Ra.klass();
 
 
@@ -239,7 +261,8 @@ Ra.extend(Ra.Effect.prototype, {
       onFinished: function(){},
       onRender: null
     }, options || {});
-    this.element = Ra.$(element);
+    if( element )
+      this.element = Ra.$(element);
     this.options.onStart.call(this);
     this.startTime = new Date().getTime();
     this.finishOn = this.startTime + (this.options.duration * 1000);
