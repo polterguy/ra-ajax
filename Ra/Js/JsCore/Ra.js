@@ -213,6 +213,9 @@ Ra.extend(Ra.Element.prototype, {
     return this;
   },
 
+  // Observes an event with the given "func" parameter.
+  // The callContext will be the "this" pointer in the 
+  // function call to the "func" when called.
   observe: function(evtName, func, callContext){
     if (this.addEventListener) {
       this.addEventListener(evtName, function(){
@@ -262,10 +265,13 @@ Ra.Effect = Ra.klass();
 
 Ra.extend(Ra.Effect.prototype, {
 
+  // CTOR
   init: function(element, options) {
     this.initEffect(element, options);
   },
 
+  // CTOR implementation to support inheritance 
+  // without having to repeat all of this content
   initEffect: function(element, options) {
     this.options = Ra.extend({
       duration: 1.0,
@@ -281,6 +287,7 @@ Ra.extend(Ra.Effect.prototype, {
     this.loop();
   },
 
+  // Called once every 10 millisecond. Heartbeat of animation
   loop: function() {
     var curTime = new Date().getTime();
     if( curTime >= this.finishOn ) {
@@ -297,6 +304,10 @@ Ra.extend(Ra.Effect.prototype, {
     }
   },
 
+  // Called by loop every 10 milliesond with "position" of animation
+  // Position will be a number betweeb 0.0 and 1.0 where 0.0 == beginning and 1.0 == end
+  // and anything between the position of the animation meaning if duration == 3 seconds
+  // then after 2 seconds the position will equal 0.6666666.
   render: function(pos) {
     this.options.onRender.call(this, pos);
   }
