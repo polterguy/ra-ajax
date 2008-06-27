@@ -230,6 +230,20 @@ namespace TestsRaDOM
             Browser.Button("testFormCallback").Click();
             AssertSuccess("Ra.Form basics doesn't work");
         }
+
+        [NUnit.Framework.Test]
+        public void TestFormSubmitNoCallingContext()
+        {
+            Browser.Button("testFormCallback2").Click();
+            AssertSuccess("Ra.Form basics doesn't work");
+        }
+
+        [NUnit.Framework.Test]
+        public void TestFormSubmitWithError()
+        {
+            Browser.Button("testFormCallbackError").Click();
+            AssertSuccess("Ra.Form submit with error doesn't work");
+        }
     }
 }
 
