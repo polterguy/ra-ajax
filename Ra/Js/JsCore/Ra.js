@@ -255,6 +255,75 @@ Ra.extend(Ra.Element.prototype, {
 
 
 
+// ==============================================================================
+// Ra.XHR class
+// Used as wrapper around XMLHTTPRequest object
+// ==============================================================================
+
+Ra.XHR = Ra.klass();
+
+Ra.XHR.activeRequest = false;
+
+Ra.extend(Ra.XHR.prototype, {
+
+  init: function(url, options) {
+    this.initXHR(url, options);
+  },
+
+  initXHR: function(url, options) {
+    if( Ra.XHR.activeRequest )
+      throw 'Can\'t have more than one active XHR request at the time...';
+    Ra.XHR.activeRequest = true;
+    this.url = url;
+    this.options = Ra.extend({
+      onSuccess:    function(){},
+      onError:      function(){},
+      body:         ''
+    }, options || {});
+    this.start();
+  },
+
+  start: function(){
+
+    // Getting transport
+    this.xhr = new XMLHttpRequest();
+    if( !this.xhr )
+      this.xhr = new ActiveXObject('Msxml2.XMLHTTP');
+    if( !this.xhr )
+      this.xhr = new ActiveXObject('Microsoft.XMLHTTP');
+
+    // Opening transport and setting headers
+    this.xhr.open('POST', this.url, true);
+    this.xhr.setRequestHeader('Accept', 'text/javascript, text/html, application/xml, text/xml, */*');
+    this.xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+
+    // Setting body of request
+    this.xhr.send(this.options.body);
+
+    // Now we can start checking for readyState (waiting for request to be finished)
+    var T = this;
+    this.xhr.onreadystatechange = function() {
+      if( T.xhr.readyState == 4 )
+        T._finished();
+    };
+  },
+
+  // Called when request is finished
+  _finished: function(){
+    if( this.xhr.status >= 200 && this.xhr.status < 300 )
+      this.options.onSuccess(this.xhr.responseText);
+    else
+      this.options.onError(this.xhr.status, this.xhr.responseText);
+
+    // Resetting active requests back to false to allow next request to run
+    Ra.XHR.activeRequest = false;
+  }
+});
+
+
+
+
+
 
 // ==============================================================================
 // Ra.Effect class

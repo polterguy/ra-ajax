@@ -209,6 +209,20 @@ namespace TestsRaDOM
             Browser.Button("evtTestBtn2").Click();
             AssertSuccess("Ra.Element.stopObserving doesn't work");
         }
+
+        [NUnit.Framework.Test]
+        public void TestXHRBasics()
+        {
+            Browser.Button("testXHR").Click();
+            AssertSuccess("Ra.XHR basics doesn't work");
+        }
+
+        [NUnit.Framework.Test]
+        public void TestXHRSingleParameter()
+        {
+            Browser.Button("testXHRParams").Click();
+            AssertSuccess("Ra.XHR basics doesn't work");
+        }
     }
 }
 
