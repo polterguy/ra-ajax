@@ -443,6 +443,38 @@ function testCallback() {
 
 
 
+function testCallback2() {
+  var form = new Ra.Form(null, {
+    args:'testingForm=testing',
+    onFinished: function(response){
+      // In case of NULL calling context, we will get in here with options as "this" pointer
+      if( this.args == 'testingForm=testing' ) {
+        if( response == 'this worked' )
+          Ra.$('results').setContent('success');
+      }
+    }
+  });
+  form.callback();
+}
+
+
+
+
+function testCallbackError() {
+  var form = new Ra.Form(null, {
+    args:'testingForm=testingError',
+    onFinished: function(response){
+      Ra.$('results').setContent('failure');
+    },
+    onError: function(status, response){
+      if( status == 500 && response.indexOf('TESTING ERROR HANDLER IN FORM / XHR') != -1)
+        Ra.$('results').setContent('success');
+    }
+  });
+  form.callback();
+}
+
+
 
 
 
@@ -479,6 +511,8 @@ function testCallback() {
                 <input type="button" id="testXHR" value="Test XHR" onclick="testXHRBasics();" />
                 <input type="button" id="testXHRParams" value="Test XHR params" onclick="testXHRParameters();" />
                 <input type="button" id="testFormCallback" value="Test Form Callback" onclick="testCallback();" />
+                <input type="button" id="testFormCallback2" value="Test Form Callback" onclick="testCallback2();" />
+                <input type="button" id="testFormCallbackError" value="Test Form Callback - WITH ERROR" onclick="testCallbackError();" />
             </div>
         </form>
     </body>
