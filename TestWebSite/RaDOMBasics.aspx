@@ -427,6 +427,24 @@ function testXHRParameters() {
 
 
 
+function testCallback() {
+  var form = new Ra.Form(null, {
+    args:'testingForm=testing'
+  });
+  form.callback(function(response){
+    if( this == 5 ) {
+      if( response == 'this worked' )
+        Ra.$('results').setContent('success');
+    }
+  }, 5);
+}
+
+
+
+
+
+
+
         </script>
     </head>
     <body onload="onLoadMethod();">
@@ -444,13 +462,21 @@ function testXHRParameters() {
                 <div id="testAnimationDiv" style="width:100px;height:150px;background-color:Red;">
                     Howdy
                 </div>
+                <textarea name="something" id="xxx">
+                    dsfo sdfoi sdf
+                </textarea>
+                <select name="sdf" id="asdsa">
+                    <option id="qwe" title="qwerty" />
+                    <option id="Option1" selected="selected" value="Option1" title="qwerty2" />
+                </select>
                 <ra:Button ID="Button1" runat="server" />
-                <input type="button" id="textButton" value="Test" />
+                <input type="button" id="textButton" value="Test" onclick="alert(new Ra.Form().serializeForm());" />
                 <input type="button" id="evtTestBtn" value="Event Test Button" />
                 <input type="button" id="evtTestBtn2" value="Event Test Button - removed observer" />
                 <input type="button" id="evtTestBtnPre" value="Set to success" />
                 <input type="button" id="testXHR" value="Test XHR" onclick="testXHRBasics();" />
                 <input type="button" id="testXHRParams" value="Test XHR params" onclick="testXHRParameters();" />
+                <input type="button" id="testFormCallback" value="Test Form Callback" onclick="testCallback();" />
             </div>
         </form>
     </body>

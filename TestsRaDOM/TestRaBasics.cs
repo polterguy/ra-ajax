@@ -223,6 +223,13 @@ namespace TestsRaDOM
             Browser.Button("testXHRParams").Click();
             AssertSuccess("Ra.XHR basics doesn't work");
         }
+
+        [NUnit.Framework.Test]
+        public void TestFormSubmit()
+        {
+            Browser.Button("testFormCallback").Click();
+            AssertSuccess("Ra.Form basics doesn't work");
+        }
     }
 }
 
