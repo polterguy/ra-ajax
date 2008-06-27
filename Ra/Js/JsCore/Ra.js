@@ -32,6 +32,8 @@ Ra.klass = function() {
   return function(){
     if( this.init )
       return this.init.apply(this, arguments);
+    else
+      throw 'Cannot have a Ra class without an init method...';
   };
 }
 
@@ -132,28 +134,6 @@ Ra.extend(Ra.Element.prototype, {
     };
   },
 
-  // Returns the height of the element
-  getHeight: function() {
-    return this.getDimensions().height;
-  },
-
-  // Returns the width of the element
-  getWidth: function() {
-    return this.getDimensions().width;
-  },
-
-  // Sets the width, expects an INTEGER value, appends 'px' meaning this is a PIXEL operation
-  setWidth: function(value) {
-    this.style.width = value + 'px';
-    return this;
-  },
-
-  // Sets the height, expects an INTEGER value, appends 'px' meaning this is a PIXEL operation
-  setHeight: function(value) {
-    this.style.height = value + 'px';
-    return this;
-  },
-
   // Appends a class name to the class of the element
   addClassName: function(className) {
     this.className += (this.className ? ' ' : '') + className;
@@ -191,20 +171,42 @@ Ra.extend(Ra.Element.prototype, {
     }
   },
 
+  // Returns the width of the element
+  getWidth: function() {
+    return this.getDimensions().width;
+  },
+
+  // Sets the width, expects an INTEGER value, appends 'px' meaning this is a PIXEL operation
+  setWidth: function(value) {
+    this.style.width = value + 'px';
+    return this;
+  },
+
+  // Returns the height of the element
+  getHeight: function() {
+    return this.getDimensions().height;
+  },
+
+  // Sets the height, expects an INTEGER value, appends 'px' meaning this is a PIXEL operation
+  setHeight: function(value) {
+    this.style.height = value + 'px';
+    return this;
+  },
+
   // Returns the integer value of the left styled position
   getLeft: function() {
     return parseInt(this.style.left, 10) || 0;
-  },
-
-  // Returns the integer value of the top styled position
-  getTop: function() {
-    return parseInt(this.style.top, 10) || 0;
   },
 
   // Sets the left position value of the element. Note the 'px' is appended meaning this is a PIXEL operation
   setLeft: function(value) {
     this.style.left = value + 'px';
     return this;
+  },
+
+  // Returns the integer value of the top styled position
+  getTop: function() {
+    return parseInt(this.style.top, 10) || 0;
   },
 
   // Sets the top position value of the element. Note the 'px' is appended meaning this is a PIXEL operation
@@ -322,6 +324,13 @@ Ra.extend(Ra.XHR.prototype, {
   }
 });
 
+
+
+
+// Serializes a form
+Ra.serializeForm = function() {
+  var retVal = '';
+}
 
 
 

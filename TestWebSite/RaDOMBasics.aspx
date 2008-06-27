@@ -172,6 +172,7 @@ function checkExtendMethodPrototypeWithThisArgument() {
 function checkExtendInheritanceOverride() {
   var Class1 = Ra.klass();
   Ra.extend(Class1.prototype, {
+    init: function(){},
     foo: function() {
       this.x1 = 5;
     },
