@@ -345,16 +345,29 @@ Ra.extend(Ra.Form.prototype, {
     this.form = form || document.getElementsByTagName('form')[0];
 
     this.options = Ra.extend({
-      args: '',
-      url:  this.form.action
+      args:           '',
+      url:            this.form.action,
+      onFinished:     function(){},
+      onError:        function(){},
+      callingContext: null
     }, options || {});
   },
 
-  callback: function(finished, callingContext) {
+  callback: function() {
+    var T = this;
     var xhr = new Ra.XHR(this.options.url, {
       body: this.serializeForm() + '&' + this.options.args,
-      onSuccess: function(response){
-        finished.call(callingContext, response);
+      onSuccess: function(response) {
+        if( !T.options.callingContext )
+          T.options.onFinished(response)
+        else
+          T.options.onFinished.call(T.options.callingContext, response);
+      },
+      onError: function(status, response) {
+        if( !T.options.callingContext )
+          T.options.onError(status, response)
+        else
+          T.options.onError.call(T.options.callingContext, status, response);
       }
     });
   },

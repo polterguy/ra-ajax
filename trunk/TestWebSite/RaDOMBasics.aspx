@@ -429,14 +429,16 @@ function testXHRParameters() {
 
 function testCallback() {
   var form = new Ra.Form(null, {
-    args:'testingForm=testing'
+    args:'testingForm=testing',
+    onFinished: function(response){
+      if( this == 5 ) {
+        if( response == 'this worked' )
+          Ra.$('results').setContent('success');
+      }
+    },
+    callingContext: 5
   });
-  form.callback(function(response){
-    if( this == 5 ) {
-      if( response == 'this worked' )
-        Ra.$('results').setContent('success');
-    }
-  }, 5);
+  form.callback();
 }
 
 
