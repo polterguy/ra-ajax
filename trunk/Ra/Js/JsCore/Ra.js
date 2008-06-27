@@ -262,6 +262,8 @@ Ra.extend(Ra.Element.prototype, {
 
 Ra.XHR = Ra.klass();
 
+// True if an ongoing request is in progress
+// Ra.XHR does not allow more than one active request at the time...
 Ra.XHR.activeRequest = false;
 
 Ra.extend(Ra.XHR.prototype, {
@@ -272,7 +274,7 @@ Ra.extend(Ra.XHR.prototype, {
 
   initXHR: function(url, options) {
     if( Ra.XHR.activeRequest )
-      throw 'Can\'t have more than one active XHR request at the time...';
+      throw 'Cannot have more than one active XHR request at the time...';
     Ra.XHR.activeRequest = true;
     this.url = url;
     this.options = Ra.extend({
