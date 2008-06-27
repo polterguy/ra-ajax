@@ -201,6 +201,14 @@ namespace TestsRaDOM
             Browser.Button("evtTestBtn").Click();
             AssertSuccess("Ra.Element.observe doesn't work");
         }
+
+        [NUnit.Framework.Test]
+        public void TestElementStopObserving()
+        {
+            Browser.Button("evtTestBtnPre").Click();
+            Browser.Button("evtTestBtn2").Click();
+            AssertSuccess("Ra.Element.stopObserving doesn't work");
+        }
     }
 }
 
