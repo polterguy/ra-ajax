@@ -102,7 +102,7 @@ Ra.extend(Ra.Element.prototype, {
     // We cannot (obviously) return the "this" object here...
   },
 
-  // Modified from prototype.js
+  // Inspired from prototype.js
   // Returns an object of { width, height } containing the width and height of the element
   getDimensions: function() {
     var display = this.style.display;
@@ -217,15 +217,37 @@ Ra.extend(Ra.Element.prototype, {
   // The callContext will be the "this" pointer in the 
   // function call to the "func" when called.
   observe: function(evtName, func, callContext){
+
+    // Creating wrapper to wrap around function event handler
+    // Note that this logic only handles ONE event handler per event type / element
+    if( !this._wrappers )
+      this._wrappers = new Array();
+    var wr = function() {
+      func.call(callContext);
+    };
+    this._wrappers[evtName] = wr;
+
+    // Adding up event handler
     if (this.addEventListener) {
-      this.addEventListener(evtName, function(){
-        func.call(callContext);
-      }, false);
+      this.addEventListener(evtName, wr, false);
     } else {
-      this.attachEvent("on" + evtName, function(){
-        func.call(callContext);
-      });
+      this.attachEvent('on' + evtName, wr);
     }
+    return this;
+  },
+
+  stopObserving: function(evtName, func) {
+
+    // Retrieving event handler wrapper
+    var wr = this._wrappers[evtName];
+
+    // Removing event handler from list
+    if (this.removeEventListener) {
+      this.removeEventListener(evtName, wr, false);
+    } else {
+      this.detachEvent('on' + evtName, wr);
+    }
+    return this;
   }
 });
 

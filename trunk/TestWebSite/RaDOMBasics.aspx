@@ -379,11 +379,24 @@ function testFadeAndAppear() {
 
 function onLoadMethod() {
   var el = Ra.$('evtTestBtn');
-  var tmp = 5;
   el.observe('click', function(){
     if( this == 5 )
       Ra.$('results').setContent('success');
-  }, tmp);
+  }, 5);
+
+  el = Ra.$('evtTestBtnPre');
+  el.observe('click', function(){
+    Ra.$('results').setContent('success');
+  });
+
+  el = Ra.$('evtTestBtn2');
+  var func = function() {
+    Ra.$('results').setContent('failure');
+  };
+  el.observe('click', func, null);
+
+  el = Ra.$('evtTestBtn2');
+  el.stopObserving('click', func);
 }
 
 
@@ -409,6 +422,8 @@ function onLoadMethod() {
                 <ra:Button ID="Button1" runat="server" />
                 <input type="button" id="textButton" value="Test" onclick="testFadeAndAppear();" />
                 <input type="button" id="evtTestBtn" value="Event Test Button" />
+                <input type="button" id="evtTestBtn2" value="Event Test Button - removed observer" />
+                <input type="button" id="evtTestBtnPre" value="Set to success" />
             </div>
         </form>
     </body>
