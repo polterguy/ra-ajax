@@ -26,6 +26,23 @@ public partial class RaDOMBasics : System.Web.UI.Page
                 // Do nothing...!
             }
         }
+        if (Request.Params["testingForm"] == "testingParams1")
+        {
+            if (Request.Params["testingInput"] == "testing input for form")
+            {
+                Response.Clear();
+                Response.Write("this worked");
+                Response.Flush();
+                try
+                {
+                    Response.End();
+                }
+                catch
+                {
+                    // Do nothing...!
+                }
+            }
+        }
         if (Request.Params["testingForm"] == "testingError")
         {
             throw new Exception("TESTING ERROR HANDLER IN FORM / XHR");
