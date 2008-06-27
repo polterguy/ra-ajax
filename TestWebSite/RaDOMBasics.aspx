@@ -478,6 +478,21 @@ function testCallbackError() {
 
 
 
+function testCallbackFormValues() {
+  var form = new Ra.Form(null, {
+    args:'testingForm=testingParams1',
+    onFinished: function(response) {
+      // In case of NULL calling context, we will get in here with options as "this" pointer
+      if( response == 'this worked' ) {
+        Ra.$('results').setContent('success');
+      }
+    }
+  });
+  form.callback();
+}
+
+
+
 
         </script>
     </head>
@@ -496,13 +511,7 @@ function testCallbackError() {
                 <div id="testAnimationDiv" style="width:100px;height:150px;background-color:Red;">
                     Howdy
                 </div>
-                <textarea name="something" id="xxx">
-                    dsfo sdfoi sdf
-                </textarea>
-                <select name="sdf" id="asdsa">
-                    <option id="qwe" title="qwerty" />
-                    <option id="Option1" selected="selected" value="Option1" title="qwerty2" />
-                </select>
+                <input type="text" name="testingInput" value="testing input for form" />
                 <ra:Button ID="Button1" runat="server" />
                 <input type="button" id="textButton" value="Test" onclick="alert(new Ra.Form().serializeForm());" />
                 <input type="button" id="evtTestBtn" value="Event Test Button" />
@@ -513,6 +522,7 @@ function testCallbackError() {
                 <input type="button" id="testFormCallback" value="Test Form Callback" onclick="testCallback();" />
                 <input type="button" id="testFormCallback2" value="Test Form Callback" onclick="testCallback2();" />
                 <input type="button" id="testFormCallbackError" value="Test Form Callback - WITH ERROR" onclick="testCallbackError();" />
+                <input type="button" id="testFormCallbackWithTextInputField" value="Test Form Callback - WITH FORM VALUES" onclick="testCallbackFormValues();" />
             </div>
         </form>
     </body>

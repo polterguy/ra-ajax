@@ -244,6 +244,13 @@ namespace TestsRaDOM
             Browser.Button("testFormCallbackError").Click();
             AssertSuccess("Ra.Form submit with error doesn't work");
         }
+
+        [NUnit.Framework.Test]
+        public void TestFormSubmitParams1()
+        {
+            Browser.Button("testFormCallbackWithTextInputField").Click();
+            AssertSuccess("Ra.Form submit with parameters doesn't work");
+        }
     }
 }
 
