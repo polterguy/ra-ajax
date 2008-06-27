@@ -327,10 +327,87 @@ Ra.extend(Ra.XHR.prototype, {
 
 
 
-// Serializes a form
-Ra.serializeForm = function() {
-  var retVal = '';
-}
+
+
+
+// ==============================================================================
+// Ra.Form class
+// Used as wrapper around form elements to create callbacks
+// and so on.
+// ==============================================================================
+
+Ra.Form = Ra.klass();
+
+Ra.extend(Ra.Form.prototype, {
+
+  init: function(form, options) {
+    // If no form is given we automagically wrap the FIRST form on page
+    this.form = form || document.getElementsByTagName('form')[0];
+
+    this.options = Ra.extend({
+      args: '',
+      url:  this.form.action
+    }, options || {});
+  },
+
+  callback: function(finished, callingContext) {
+    var xhr = new Ra.XHR(this.options.url, {
+      body: this.serializeForm() + '&' + this.options.args,
+      onSuccess: function(response){
+        finished.call(callingContext, response);
+      }
+    });
+  },
+
+  // Serializes a form
+  // Will return a string which is a vald HTTP POST body for the given form
+  // If no form is given, it will search for the _FIRST_ form on the page
+  serializeForm: function() {
+
+    // Return value
+    var retVal = '';
+
+    // Getting ALL elements inside of form element
+    var els = this.form.getElementsByTagName('*');
+
+    // Looping through all elements inside of form and checking to see if they're "form elements"
+    for( var idx = 0; idx < els.length; idx++ ) {
+      var el = els[idx];
+
+      // According to the HTTP/HTML specs we shouldn't serialize invisible form elements
+      if( el.style.display != 'none' && !el.disabled ) {
+        switch(el.tagName.toLowerCase()) {
+          case 'input':
+            switch( el.type ) {
+              case 'checkbox':
+              case 'radio':
+                if( el.checked ) {
+                  if( retVal.length > 0 )
+                    retVal += '&';
+                  retVal += el.name + '=' + encodeURIComponent(el.value);
+                }
+                break;
+              case 'hidden':
+              case 'password':
+              case 'text':
+                if( retVal.length > 0 )
+                  retVal += '&';
+                retVal += el.name + '=' + encodeURIComponent(el.value);
+                break;
+            }
+            break;
+          case 'select':
+          case 'textarea':
+            if( retVal.length > 0 )
+              retVal += '&';
+            retVal += el.name + '=' + encodeURIComponent(el.value);
+            break;
+        }
+      }
+    }
+    return retVal;
+  }
+});
 
 
 

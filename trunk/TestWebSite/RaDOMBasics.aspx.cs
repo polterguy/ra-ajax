@@ -12,6 +12,20 @@ public partial class RaDOMBasics : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Request.Params["testingForm"] == "testing")
+        {
+            Response.Clear();
+            Response.Write("this worked");
+            Response.Flush();
+            try
+            {
+                Response.End();
+            }
+            catch
+            {
+                // Do nothing...!
+            }
+        }
         if (Request.Params["testingXHR"] == "true")
         {
             Response.Clear();
