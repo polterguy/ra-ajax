@@ -12,6 +12,19 @@ public partial class RaDOMBasics : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Request.Params["testingXHR"] == "true")
+        {
+            Response.Clear();
+            Response.Write("works");
+            Response.Flush();
+            try
+            {
+                Response.End();
+            }
+            catch
+            {
+                // Do nothing...!
+            }
+        }
     }
 }

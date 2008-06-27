@@ -402,6 +402,30 @@ function onLoadMethod() {
 
 
 
+function testXHRBasics() {
+  new Ra.XHR('RaDOMBasics.aspx', {
+    onSuccess: function(response) {
+      Ra.$('results').setContent('success');
+    }
+  });
+}
+
+
+
+
+function testXHRParameters() {
+  new Ra.XHR('RaDOMBasics.aspx', {
+    body: 'testingXHR=true',
+    onSuccess: function(response) {
+      if( response == 'works' )
+        Ra.$('results').setContent('success');
+    }
+  });
+}
+
+
+
+
         </script>
     </head>
     <body onload="onLoadMethod();">
@@ -420,10 +444,12 @@ function onLoadMethod() {
                     Howdy
                 </div>
                 <ra:Button ID="Button1" runat="server" />
-                <input type="button" id="textButton" value="Test" onclick="testFadeAndAppear();" />
+                <input type="button" id="textButton" value="Test" />
                 <input type="button" id="evtTestBtn" value="Event Test Button" />
                 <input type="button" id="evtTestBtn2" value="Event Test Button - removed observer" />
                 <input type="button" id="evtTestBtnPre" value="Set to success" />
+                <input type="button" id="testXHR" value="Test XHR" onclick="testXHRBasics();" />
+                <input type="button" id="testXHRParams" value="Test XHR params" onclick="testXHRParameters();" />
             </div>
         </form>
     </body>
