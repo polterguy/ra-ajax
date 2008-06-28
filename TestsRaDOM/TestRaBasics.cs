@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using NUnit.Framework;
 
-namespace TestsRaDOM
+namespace NUnitTests
 {
     [TestFixture]
     public class TestRaBasics : TestBase

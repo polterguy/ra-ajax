@@ -5,7 +5,7 @@ using NUnit.Framework;
 using WatiN.Core;
 using WatiN.Core.Interfaces;
 
-namespace TestsRaDOM
+namespace NUnitTests
 {
     public abstract class TestBase
     {

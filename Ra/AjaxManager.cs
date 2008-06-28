@@ -23,7 +23,7 @@ namespace Ra
             }
         }
 
-        private Page CurrentPage
+        public Page CurrentPage
         {
             get { return ((Page)HttpContext.Current.CurrentHandler); }
         }

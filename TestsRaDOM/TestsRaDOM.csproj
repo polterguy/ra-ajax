@@ -46,6 +46,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TestControlBasics.cs" />
     <Compile Include="TestBase.cs" />
     <Compile Include="TestRaBasics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

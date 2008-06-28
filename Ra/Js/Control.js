@@ -18,10 +18,27 @@ Ra.Control = Ra.klass();
 Ra.Control._controls = new Array();
 
 
+// Static method to retrieve a specific Ra control
+// Pass in an ID and get the Ra.Control instance of the Control with the given ID
+Ra.Control.$ = function(id) {
+  for( var idx = 0; idx < Ra.Control._controls.length; idx++ ) {
+    if( Ra.Control._controls[idx].element.id == id )
+      return Ra.Control._controls[idx];
+  }
+  return null;
+}
+
+
 Ra.extend(Ra.Control.prototype, {
 
   // CTOR
   init: function(element, options) {
+
+    // Forward call to enable inheritance
+    this.initControl(element, options);
+  },
+
+  initControl: function(element, options) {
 
     // Wrapping DOM element
     this.element = Ra.$(element);
@@ -33,12 +50,59 @@ Ra.extend(Ra.Control.prototype, {
     }, options || {});
 
     // Registering control
-    Ra.Control._controls.add(this);
+    Ra.Control._controls.push(this);
 
     // Creating event handlers for the client-side events needed to be dispatched 
     // back to server
     this.initEvents();
   },
+
+  // This is the method being called from the server-side when
+  // we have signals sent to this control.
+  // To handle specific data transfers for your controls
+  // create a method with the exact same name as the "key" value
+  // of the JSON value in your overridden Control class.
+  // Normally these methods should be easy to spot in an extended control
+  // since they should (by convention) start with a CAPITAL letter to
+  // mimick the looks of a property...
+  handleJSON: function(json) {
+    var obj = eval('(' + json + ')');
+
+    // Looping through all "top-level" objects and calling the functions for those keys
+    for( var idxKey in obj ) {
+      this[idxKey](obj[idxKey]);
+    }
+    return this;
+  },
+
+
+  // JSON parser methods, called by server through the handleJSON function
+  // These functions are easy to spot since they all starts with a CAPITAL letter (by convention)
+  CssClass: function(value) {
+    this.element.className = value;
+    return this;
+  },
+
+  // Expects and array of OBJECTS where each object is a key/value object
+  // and the key is the name of the style property and the value its value
+  AddStyle: function(values) {
+    for( var idx = 0; idx < values.length; idx++ ) {
+      this.element.style[values[idx][0]] = values[idx][1];
+    }
+    return this;
+  },
+
+  // Expects an ARRAY of strings where each value is a style property
+  // which will be removed
+  RemoveStyle: function(key, value) {
+    for( var idxValue in value ) {
+      this.element.style[idxValue] = '';
+      delete this.element.style[idxValue];
+    }
+    return this;
+  },
+
+
 
   // Initializes all events on control
   initEvents: function() {
