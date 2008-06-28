@@ -32,9 +32,13 @@ function init() {
 // parsing works for the Ra.Control class
 function checkJSONBasics() {
   var ctrl = Ra.Control.$('Button1');
+
   ctrl.handleJSON('{"CssClass" : "testClass", "AddStyle" : [["width", "150px"], ["fontWeight", "bold"]]}');
+
   if( ctrl.element.className == 'testClass' && ctrl.element.style.width == '150px' && ctrl.element.style.fontWeight == 'bold') {
+
     ctrl.handleJSON('{"RemoveStyle" : ["width", "fontWeight"]}');
+
     if( !ctrl.element.style.width && !ctrl.element.style.fontWeight ) {
       Ra.$('results').setContent('success');
     }

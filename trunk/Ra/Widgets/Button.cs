@@ -7,10 +7,15 @@ namespace Ra.Widgets
 {
     [DefaultProperty("Text")]
     [ASP.ToolboxData("<{0}:Button runat=server />")]
-    public class Button : ASP.Control
+    public class Button : ASP.Control, IRaControl
     {
+        public event EventHandler Clicked;
+
         protected override void OnInit(EventArgs e)
         {
+            // To initialize control
+            AjaxManager.Instance.InitializeControl(this);
+
             AjaxManager.Instance.IncludeMainRaScript();
             AjaxManager.Instance.IncludeMainControlScripts();
 
@@ -18,7 +23,7 @@ namespace Ra.Widgets
                 string.Format(@"
 <script type=""text/javascript"">
 function loaded() {{
-  new Ra.Control('{0}');
+  new Ra.Control('{0}', {{evts: ['click']}});
 }}
 
 setTimeout(loaded, 10);
@@ -32,6 +37,19 @@ setTimeout(loaded, 10);
         {
             writer.Write("<input type=\"button\" value=\"Value\" id=\"{0}\" />", ClientID);
             base.Render(writer);
+        }
+
+        public void DispatchEvent(string name)
+        {
+            switch (name)
+            {
+                case "click":
+                    if (Clicked != null)
+                        Clicked(this, new EventArgs());
+                    break;
+                default:
+                    throw new ApplicationException("Unknown event fired for control");
+            }
         }
     }
 }
