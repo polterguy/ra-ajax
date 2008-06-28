@@ -169,9 +169,9 @@ Ra.extend(Ra.Element.prototype, {
   },
 
   // Observes an event with the given "func" parameter.
-  // The callContext will be the "this" pointer in the 
+  // The callingContext will be the "this" pointer in the 
   // function call to the "func" when called.
-  observe: function(evtName, func, callContext, extraParams){
+  observe: function(evtName, func, callingContext, extraParams){
 
     // Creating wrapper to wrap around function event handler
     // Note that this logic only handles ONE event handler per event type / element
@@ -180,9 +180,9 @@ Ra.extend(Ra.Element.prototype, {
 
     var wr = function() {
       if( extraParams )
-        func.apply(callContext, extraParams);
+        func.apply(callingContext, extraParams);
       else
-        func.call(callContext);
+        func.call(callingContext);
     };
 
     this._wrappers[evtName] = wr;
@@ -434,11 +434,11 @@ Ra.extend(Ra.Ajax.prototype, {
       onAfter: function(){},
 
       // Calling context (this pointer) for onBefore and onAfter
-      callContext: null
+      callingContext: null
     }, options || {});
 
     // Adding up the this request into the list of queued Ajax requests
-    Ra.Ajax._activeRequests.add(this);
+    Ra.Ajax._activeRequests.push(this);
     if( !Ra.XHR.activeRequest ) {
       this.start();
     } else {
@@ -449,19 +449,19 @@ Ra.extend(Ra.Ajax.prototype, {
   start: function() {
 
     // Raising "onBefore" event
-    if( this.options.callContext )
-      this.options.onBefore.call(this.options.callContext);
+    if( this.options.callingContext )
+      this.options.onBefore.call(this.options.callingContext);
     else
       this.options.onBefore();
 
     // Starting actual request
-    new Ra.XHR(this.options.form, {
+    var form = new Ra.Form(this.options.form, {
       args: this.options.args,
-      callContext: this,
-      onSuccess: function(response) {
+      callingContext: this,
+      onFinished: function(response) {
         this.sliceRequest();
-        if( this.options.callContext )
-          this.options.onAfter.call(this.options.callContext, response);
+        if( this.options.callingContext )
+          this.options.onAfter.call(this.options.callingContext, response);
         else
           this.options.onAfter(response);
       },
@@ -469,11 +469,12 @@ Ra.extend(Ra.Ajax.prototype, {
         this.sliceRequest();
       }
     });
+    form.callback();
   },
 
   // Removes request out of queue
   sliceRequest: function() {
-    Ra.Ajax._activeRequests[0].slice(0, 1);
+    Ra.Ajax._activeRequests = Ra.Ajax._activeRequests.slice(1);
   }
 });
 

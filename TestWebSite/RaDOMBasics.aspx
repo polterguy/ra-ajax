@@ -451,6 +451,54 @@ function testCallbackFormValuesMultiple() {
 
 
 
+function testMultipleRequests() {
+  Ra.$('results').innerHTML = '';
+  new Ra.Ajax({
+    args: 'id=0',
+    onAfter: function(r) {
+      Ra.$('results').innerHTML += r;
+    }
+  });
+  new Ra.Ajax({
+    args: 'id=1',
+    onAfter: function(r) {
+      Ra.$('results').innerHTML += r;
+    }
+  });
+  new Ra.Ajax({
+    args: 'id=2',
+    onAfter: function(r) {
+      Ra.$('results').innerHTML += r;
+    }
+  });
+  new Ra.Ajax({
+    args: 'id=3',
+    onAfter: function(r) {
+      Ra.$('results').innerHTML += r;
+    }
+  });
+  new Ra.Ajax({
+    args: 'id=4',
+    onAfter: function(r) {
+      Ra.$('results').innerHTML += r;
+    }
+  });
+  new Ra.Ajax({
+    args: 'id=5',
+    onAfter: function(r) {
+      Ra.$('results').innerHTML += r;
+    }
+  });
+  new Ra.Ajax({
+    args: 'id=6',
+    onAfter: function(r) {
+      Ra.$('results').innerHTML += r;
+    }
+  });
+}
+
+
+
 
         </script>
     </head>
@@ -501,6 +549,7 @@ function testCallbackFormValuesMultiple() {
                 <input type="button" id="testFormCallbackWithTextInputField" value="Test Form Callback - WITH FORM VALUES" onclick="testCallbackFormValues();" />
                 <input type="button" id="testFormCallbackWithWeirdTextInputField" value="Test Form Callback - WITH WEIRD FORM VALUES" onclick="testCallbackFormValuesWeird();" />
                 <input type="button" id="testFormCallbackMultiple" value="Test Form Callback - Multiple Values" onclick="testCallbackFormValuesMultiple();" />
+                <input type="button" id="testMultipleRequestsBtn" value="Test Ra.Ajax - Multiple requests" onclick="testMultipleRequests();" />
             </div>
         </form>
     </body>

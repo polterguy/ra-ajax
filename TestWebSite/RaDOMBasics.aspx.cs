@@ -26,6 +26,43 @@ public partial class RaDOMBasics : System.Web.UI.Page
                 // Do nothing...!
             }
         }
+        if (Request.Params["id"] != null)
+        {
+            Response.Clear();
+            switch (Request.Params["id"])
+            {
+                case "0":
+                    Response.Write("s");
+                    break;
+                case "1":
+                    Response.Write("u");
+                    break;
+                case "2":
+                    Response.Write("c");
+                    break;
+                case "3":
+                    Response.Write("c");
+                    break;
+                case "4":
+                    Response.Write("e");
+                    break;
+                case "5":
+                    Response.Write("s");
+                    break;
+                case "6":
+                    Response.Write("s");
+                    break;
+            }
+            Response.Flush();
+            try
+            {
+                Response.End();
+            }
+            catch
+            {
+                // Do nothing...!
+            }
+        }
         if (Request.Params["testingForm"] == "testingParamsMultiple")
         {
             if (Request.Params["testCheckBox"] == "on" &&
