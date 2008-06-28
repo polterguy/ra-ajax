@@ -7,7 +7,7 @@ namespace Ra.Widgets
 {
     [DefaultProperty("Text")]
     [ASP.ToolboxData("<{0}:Button runat=server />")]
-    public class Button : ASP.Control, IRaControl
+    public class Button : RaControl, IRaControl
     {
         public event EventHandler Clicked;
 
@@ -16,30 +16,39 @@ namespace Ra.Widgets
             // To initialize control
             AjaxManager.Instance.InitializeControl(this);
 
+            // Including JavaScript
             AjaxManager.Instance.IncludeMainRaScript();
             AjaxManager.Instance.IncludeMainControlScripts();
 
-            AjaxManager.Instance.CurrentPage.ClientScript.RegisterClientScriptBlock(typeof(Button), "register", 
-                string.Format(@"
-<script type=""text/javascript"">
-function loaded() {{
-  new Ra.Control('{0}', {{evts: ['click']}});
-}}
+            // Registering control with the AjaxManager
+            AjaxManager.Instance.CurrentPage.RegisterRequiresControlState(this);
 
-setTimeout(loaded, 10);
-
-</script>
-", ClientID));
             base.OnInit(e);
         }
 
         protected override void Render(System.Web.UI.HtmlTextWriter writer)
         {
-            writer.Write("<input type=\"button\" value=\"Value\" id=\"{0}\" />", ClientID);
-            base.Render(writer);
+            switch (Phase)
+            {
+                case RenderingPhase.Destroy:
+                    // TODO: Destroy control
+                    break;
+                case RenderingPhase.Invisible:
+                    // Do NOTHING
+                    break;
+                case RenderingPhase.MadeVisibleThisRequest:
+                    // Replace wrapper span for control
+                    break;
+                case RenderingPhase.PropertyChanges:
+                    // Serialize JSON changes to control
+                    break;
+                case RenderingPhase.RenderHtml:
+                    writer.Write("<input type=\"button\" value=\"Value\" id=\"{0}\" />", ClientID);
+                    break;
+            }
         }
 
-        public void DispatchEvent(string name)
+        public override void DispatchEvent(string name)
         {
             switch (name)
             {

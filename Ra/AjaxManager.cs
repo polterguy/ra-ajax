@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Web.UI;
 using System.Web;
 using System.IO;
+using Ra.Widgets;
 
 [assembly: WebResource("Ra.Js.JsCore.Ra.js", "text/javascript")]
 [assembly: WebResource("Ra.Js.Control.js", "text/javascript")]
@@ -11,8 +12,6 @@ namespace Ra
 {
     public sealed class AjaxManager
     {
-        private List<Control> _raControls = new List<Control>();
-
         public static AjaxManager Instance
         {
             get
@@ -21,6 +20,13 @@ namespace Ra
                     ((Page)HttpContext.Current.CurrentHandler).Items["_AjaxManagerInstance"] = new AjaxManager();
                 return (AjaxManager)((Page)HttpContext.Current.CurrentHandler).Items["_AjaxManagerInstance"];
             }
+        }
+
+        private List<RaControl> _raControls = new List<RaControl>();
+
+        public List<RaControl> RaControls
+        {
+            get { return _raControls; }
         }
 
         public Page CurrentPage
@@ -33,10 +39,9 @@ namespace Ra
             get { return CurrentPage.Request.Params["__RA_CALLBACK"] == "true"; }
         }
 
-        public void InitializeControl(Control ctrl)
+        public void InitializeControl(RaControl ctrl)
         {
             _raControls.Add(ctrl);
-
             if (IsCallback)
             {
                 // This is a Ra Ajax callback, we need to wait until the Page Load 
@@ -44,14 +49,19 @@ namespace Ra
                 // wants to fire an event and do so...
                 CurrentPage.LoadComplete += CurrentPage_LoadComplete;
             }
+            else
+            {
+                // We STILL need a FILTER on the Response object
+                CurrentPage.Response.Filter = new PostbackFilter(CurrentPage.Response.Filter);
+            }
         }
 
         void CurrentPage_LoadComplete(object sender, EventArgs e)
         {
             // Finding the Control which initiated the request
             string idOfControl = CurrentPage.Request.Params["__RA_CONTROL"];
-            Control ctrl = _raControls.Find(
-                delegate(Control idx)
+            RaControl ctrl = _raControls.Find(
+                delegate(RaControl idx)
                 {
                     return idx.ClientID == idOfControl;
                 });
@@ -87,10 +97,27 @@ namespace Ra
             CurrentPage.ClientScript.RegisterClientScriptResource(typeof(AjaxManager), "Ra.Js.Control.js");
         }
 
-        internal void Render(Stream next)
+        internal void RenderCallback(Stream next)
         {
             TextWriter writer = new StreamWriter(next);
             writer.Write("thomas");
+            writer.Flush();
+        }
+
+        internal void RenderPostback(Stream next, MemoryStream content)
+        {
+            // First reading the WHOLE page content into memory since we need
+            // to add up the "register control" script for all of our visible controls
+            content.Position = 0;
+            TextReader reader = new StreamReader(content);
+            string wholePageContent = reader.ReadToEnd();
+
+            // Now replacing the parts BELOW the </body> element to give room 
+            // for our "register control" scripts...
+
+            // Now writing everything back to client (or next Filter)
+            TextWriter writer = new StreamWriter(next);
+            writer.Write(wholePageContent);
             writer.Flush();
         }
     }
