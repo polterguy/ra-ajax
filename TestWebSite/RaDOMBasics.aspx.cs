@@ -26,9 +26,51 @@ public partial class RaDOMBasics : System.Web.UI.Page
                 // Do nothing...!
             }
         }
+        if (Request.Params["testingForm"] == "testingParamsMultiple")
+        {
+            if (Request.Params["testCheckBox"] == "on" &&
+                Request.Params["testCheckBox2"] == null &&
+                Request.Params["testRadio"] == "on" &&
+                Request.Params["testRadio2"] == null &&
+                Request.Params["testButton"] == null &&
+                Request.Params["testHidden"] == "testing value &&& $$ ££__//" &&
+                Request.Params["testPwd"] == "testing password" &&
+                Request.Params["testShouldnt"] == null &&
+                Request.Params["testSelect"] == "sel2")
+            {
+                Response.Clear();
+                Response.Write("this worked");
+                Response.Flush();
+                try
+                {
+                    Response.End();
+                }
+                catch
+                {
+                    // Do nothing...!
+                }
+            }
+        }
         if (Request.Params["testingForm"] == "testingParams1")
         {
             if (Request.Params["testingInput"] == "testing input for form")
+            {
+                Response.Clear();
+                Response.Write("this worked");
+                Response.Flush();
+                try
+                {
+                    Response.End();
+                }
+                catch
+                {
+                    // Do nothing...!
+                }
+            }
+        }
+        if (Request.Params["testingForm"] == "testingParams2")
+        {
+            if (Request.Params["testingInput2"] == "testing input for form with $€//@#£&&&__{[]} funny")
             {
                 Response.Clear();
                 Response.Write("this worked");

@@ -494,6 +494,38 @@ function testCallbackFormValues() {
 
 
 
+function testCallbackFormValuesWeird() {
+  var form = new Ra.Form(null, {
+    args:'testingForm=testingParams2',
+    onFinished: function(response) {
+      // In case of NULL calling context, we will get in here with options as "this" pointer
+      if( response == 'this worked' ) {
+        Ra.$('results').setContent('success');
+      }
+    }
+  });
+  form.callback();
+}
+
+
+
+
+function testCallbackFormValuesMultiple() {
+  var form = new Ra.Form(null, {
+    args:'testingForm=testingParamsMultiple',
+    onFinished: function(response) {
+      // In case of NULL calling context, we will get in here with options as "this" pointer
+      if( response == 'this worked' ) {
+        Ra.$('results').setContent('success');
+      }
+    }
+  });
+  form.callback();
+}
+
+
+
+
         </script>
     </head>
     <body onload="onLoadMethod();">
@@ -512,6 +544,21 @@ function testCallbackFormValues() {
                     Howdy
                 </div>
                 <input type="text" name="testingInput" value="testing input for form" />
+                <input type="text" name="testingInput2" value="testing input for form with $€//@#£&&&__{[]} funny" />
+
+                <input type="checkbox" name="testCheckBox" checked="checked" />
+                <input type="checkbox" name="testCheckBox2" />
+                <input type="radio" name="testRadio" checked="checked" />
+                <input type="radio" name="testRadio2" />
+                <input type="button" name="testButton" value="Testing button" />
+                <input type="hidden" name="testHidden" value="testing value &&& $$ ££__//" />
+                <input type="password" name="testPwd" value="testing password" />
+                <input type="text" disabled="disabled" name="testShouldnt" value="Shouldnt pass" />
+                <select name="testSelect">
+                    <option value="sel1" />
+                    <option value="sel2" selected="selected" />
+                </select>
+                
                 <ra:Button ID="Button1" runat="server" />
                 <input type="button" id="textButton" value="Test" onclick="alert(new Ra.Form().serializeForm());" />
                 <input type="button" id="evtTestBtn" value="Event Test Button" />
@@ -523,6 +570,8 @@ function testCallbackFormValues() {
                 <input type="button" id="testFormCallback2" value="Test Form Callback" onclick="testCallback2();" />
                 <input type="button" id="testFormCallbackError" value="Test Form Callback - WITH ERROR" onclick="testCallbackError();" />
                 <input type="button" id="testFormCallbackWithTextInputField" value="Test Form Callback - WITH FORM VALUES" onclick="testCallbackFormValues();" />
+                <input type="button" id="testFormCallbackWithWeirdTextInputField" value="Test Form Callback - WITH WEIRD FORM VALUES" onclick="testCallbackFormValuesWeird();" />
+                <input type="button" id="testFormCallbackMultiple" value="Test Form Callback - Multiple Values" onclick="testCallbackFormValuesMultiple();" />
             </div>
         </form>
     </body>
