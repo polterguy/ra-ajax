@@ -2,6 +2,14 @@
 // ==============================================================================
 // Ra.Control class
 // Wraps a server-side Ra Ajax Control
+// Every Control in Ra have its client-side object
+// attached to it to help facilitate with event listening,
+// server dispatching and so on.
+// This is the "bas class" for those Client-Side objects.
+// Also many server-side controls will use this class directly
+// since there will be little use for creating specific wrappers
+// for all controls since this class will be sufficiant enough
+// for wrapping the server-side control.
 // ==============================================================================
 Ra.Control = Ra.klass();
 
@@ -105,7 +113,7 @@ Ra.extend(Ra.Control.prototype, {
 
   // Implementation of destroy
   // Basically unlisetens all events and removes object out 
-  // of regsitered controls collection
+  // of registered controls collection
   _destroyControlImpl: function() {
 
     // Unlistening all event observers to avoid leaking memory
