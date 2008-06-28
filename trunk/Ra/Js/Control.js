@@ -78,13 +78,16 @@ Ra.extend(Ra.Control.prototype, {
 
   // JSON parser methods, called by server through the handleJSON function
   // These functions are easy to spot since they all starts with a CAPITAL letter (by convention)
+  
+  // Expects only a string
   CssClass: function(value) {
     this.element.className = value;
     return this;
   },
 
-  // Expects and array of OBJECTS where each object is a key/value object
-  // and the key is the name of the style property and the value its value
+  // Expects and array of arrays where each object is a key/value object
+  // and the key (first sub-item in array) is the name of the style property 
+  // and the value (second sub-item array) its value
   AddStyle: function(values) {
     for( var idx = 0; idx < values.length; idx++ ) {
       this.element.style[values[idx][0]] = values[idx][1];
@@ -94,10 +97,9 @@ Ra.extend(Ra.Control.prototype, {
 
   // Expects an ARRAY of strings where each value is a style property
   // which will be removed
-  RemoveStyle: function(key, value) {
-    for( var idxValue in value ) {
-      this.element.style[idxValue] = '';
-      delete this.element.style[idxValue];
+  RemoveStyle: function(values) {
+    for( var idx = 0; idx < values.length; idx++ ) {
+      this.element.style[values[idx]] = '';
     }
     return this;
   },
