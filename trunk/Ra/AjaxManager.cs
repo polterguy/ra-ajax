@@ -5,6 +5,7 @@ using System.Web.UI;
 using System.Web;
 
 [assembly: WebResource("Ra.Js.JsCore.Ra.js", "text/javascript")]
+[assembly: WebResource("Ra.Js.Control.js", "text/javascript")]
 
 namespace Ra
 {
@@ -30,6 +31,11 @@ namespace Ra
         public void IncludeMainRaScript()
         {
             CurrentPage.ClientScript.RegisterClientScriptResource(typeof(AjaxManager), "Ra.Js.JsCore.Ra.js");
+        }
+
+        public void IncludeMainControlScripts()
+        {
+            CurrentPage.ClientScript.RegisterClientScriptResource(typeof(AjaxManager), "Ra.Js.Control.js");
         }
     }
 }

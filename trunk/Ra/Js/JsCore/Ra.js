@@ -6,6 +6,9 @@
 
 
 // Creating main namespace
+// All of Ra is contained inside of this namespace
+// Ra does neither modify any system objects, except when using the Ra.$ method
+// Ra will extend the DOM object with the Ra specific methods
 Ra = {}
 
 Ra.Browser = {
@@ -211,7 +214,6 @@ Ra.extend(Ra.Element.prototype, {
 // Ra.XHR class
 // Used as wrapper around XMLHTTPRequest object
 // ==============================================================================
-
 Ra.XHR = Ra.klass();
 
 // True if an ongoing request is in progress
@@ -285,7 +287,6 @@ Ra.extend(Ra.XHR.prototype, {
 // Used as wrapper around form elements to create callbacks
 // and so on.
 // ==============================================================================
-
 Ra.Form = Ra.klass();
 
 Ra.extend(Ra.Form.prototype, {
@@ -371,6 +372,109 @@ Ra.extend(Ra.Form.prototype, {
     return retVal;
   }
 });
+
+
+
+
+
+
+
+
+
+
+// ==============================================================================
+// Ra.Ajax
+// Ra.Ajax handles Ajax requests in a que for you
+// to make sure there will never be more than one active
+// request at any given time.
+// This is to avoid having the server and the client getting out
+// of sync.
+// Also this class automatically serializes the given form (defaults to the
+// first form if none give) and handles everything transparently for you.
+// ==============================================================================
+Ra.Ajax = Ra.klass();
+
+
+// Static list of queued Ajax requests
+Ra.Ajax._activeRequests = new Array();
+
+// Starting message queue pump dispatching all active requests sequentially
+Ra.Ajax._startPumping = function() {
+  if( !Ra.XHR.activeRequest ) {
+    Ra.Ajax._activeRequests[0].start();
+  } else {
+    setTimeout(function() {
+      Ra.Ajax._startPumping();
+    }, 50);
+  }
+}
+
+
+Ra.extend(Ra.Ajax.prototype, {
+  init: function(options) {
+    this.options = Ra.extend({
+
+      // Extra arguments passed to the server
+      args:'',
+
+      // Form to submit
+      form: null, // Defaults to first form on page
+
+      // Called BEFORE request starts (remember this is a queue and it 
+      // might take some time after creating this instance before the request 
+      // actually is initiated)
+      onBefore: function(){},
+
+      // Called AFTER the request is finished with the given response
+      onAfter: function(){},
+
+      // Calling context (this pointer) for onBefore and onAfter
+      callContext: null
+    }, options || {});
+
+    // Adding up the this request into the list of queued Ajax requests
+    Ra.Ajax._activeRequests.add(this);
+    if( !Ra.XHR.activeRequest ) {
+      this.start();
+    } else {
+      Ra.Ajax._startPumping();
+    }
+  },
+
+  start: function() {
+
+    // Raising "onBefore" event
+    if( this.options.callContext )
+      this.options.onBefore.call(this.options.callContext);
+    else
+      this.options.onBefore();
+
+    // Starting actual request
+    new Ra.XHR(this.options.form, {
+      args: this.options.args,
+      callContext: this,
+      onSuccess: function(response) {
+        this.sliceRequest();
+        if( this.options.callContext )
+          this.options.onAfter.call(this.options.callContext, response);
+        else
+          this.options.onAfter(response);
+      },
+      onError: function() {
+        this.sliceRequest();
+      }
+    });
+  },
+
+  // Removes request out of queue
+  sliceRequest: function() {
+    Ra.Ajax._activeRequests[0].slice(0, 1);
+  }
+});
+
+
+
+
 
 
 
