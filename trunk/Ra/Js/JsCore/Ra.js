@@ -171,15 +171,20 @@ Ra.extend(Ra.Element.prototype, {
   // Observes an event with the given "func" parameter.
   // The callContext will be the "this" pointer in the 
   // function call to the "func" when called.
-  observe: function(evtName, func, callContext){
+  observe: function(evtName, func, callContext, extraParams){
 
     // Creating wrapper to wrap around function event handler
     // Note that this logic only handles ONE event handler per event type / element
     if( !this._wrappers )
       this._wrappers = new Array();
+
     var wr = function() {
-      func.call(callContext);
+      if( extraParams )
+        func.apply(callContext, extraParams);
+      else
+        func.call(callContext);
     };
+
     this._wrappers[evtName] = wr;
 
     // Adding up event handler
