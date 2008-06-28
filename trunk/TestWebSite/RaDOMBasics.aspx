@@ -218,19 +218,6 @@ function checkRaElementReplaceWorks() {
 }
 
 
-// Checks to see setVisible works
-function checkRaElementReplaceWorks() {
-  var el = Ra.$('results');
-  el.setVisible(false);
-  if( el.style.display == 'none' ) {
-    Ra.$('results').innerHTML = 'success';
-  } else {
-    Ra.$('results').innerHTML = 'failure';
-  }
-  el.setVisible(true);
-}
-
-
 // Checks to see if remove works
 function checkRemove() {
   var el = Ra.$('test');
@@ -243,51 +230,6 @@ function checkRemove() {
   }
 }
 
-
-// Testing getWidth function
-function checkWidth() {
-  var el = Ra.$('test2');
-  if( el.getWidth() == 100 ) {
-    Ra.$('results').innerHTML = 'success';
-  } else {
-    Ra.$('results').innerHTML = 'failure';
-  }
-}
-
-
-// Testing getWidth function
-function checkHeight() {
-  var el = Ra.$('test2');
-  if( el.getHeight() == 150 ) {
-    Ra.$('results').innerHTML = 'success';
-  } else {
-    Ra.$('results').innerHTML = 'failure';
-  }
-}
-
-
-// Testing setHeight function
-function checkSetHeight() {
-  var el = Ra.$('test2');
-  el.setHeight(80);
-  if( el.getHeight() == 80 ) {
-    Ra.$('results').innerHTML = 'success';
-  } else {
-    Ra.$('results').innerHTML = 'failure';
-  }
-}
-
-
-// Testing setWidth function
-function checkSetWidth() {
-  var el = Ra.$('test2');
-  el.setHeight(110);
-  if( el.getHeight() == 110 ) {
-    Ra.$('results').innerHTML = 'success';
-  } else {
-    Ra.$('results').innerHTML = 'failure';
-  }
-}
 
 
 // Test adding class name
@@ -328,22 +270,6 @@ function checkOpacity() {
   }
   el.setOpacity(1);
 }
-
-
-function testPosition() {
-  var el = Ra.$('test2');
-  el.style.position = 'absolute';
-  el.setLeft(100).setTop(200);
-  if( el.getLeft() == 100 && el.getTop() == 200 ) {
-    Ra.$('results').innerHTML = 'success';
-  } else {
-    Ra.$('results').innerHTML = 'failure';
-  }
-  el.style.left = '';
-  el.style.top = '';
-  el.style.position = '';
-}
-
 
 
 // Tests setContent
@@ -558,9 +484,12 @@ function testCallbackFormValuesMultiple() {
                     <option value="sel1" />
                     <option value="sel2" selected="selected" />
                 </select>
-                
+
+                <!-- To inject Ra core scripts onto form -->
                 <ra:Button ID="Button1" runat="server" />
-                <input type="button" id="textButton" value="Test" onclick="alert(new Ra.Form().serializeForm());" />
+
+
+                <input type="button" id="textButton" value="Test" onclick="checkRaElementReplaceWorks();" />
                 <input type="button" id="evtTestBtn" value="Event Test Button" />
                 <input type="button" id="evtTestBtn2" value="Event Test Button - removed observer" />
                 <input type="button" id="evtTestBtnPre" value="Set to success" />
