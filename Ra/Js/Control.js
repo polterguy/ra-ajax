@@ -46,7 +46,7 @@ Ra.extend(Ra.Control.prototype, {
     // Setting default options
     this.options = Ra.extend({
       // Defaults here...
-      serverEvents: []
+      evts: []
     }, options || {});
 
     // Registering control
@@ -58,7 +58,7 @@ Ra.extend(Ra.Control.prototype, {
   },
 
   // This is the method being called from the server-side when
-  // we have signals sent to this control.
+  // we have messages sent to this control.
   // To handle specific data transfers for your controls
   // create a method with the exact same name as the "key" value
   // of the JSON value in your overridden Control class.
@@ -76,16 +76,19 @@ Ra.extend(Ra.Control.prototype, {
   },
 
 
+
   // JSON parser methods, called by server through the handleJSON function
-  // These functions are easy to spot since they all starts with a CAPITAL letter (by convention)
+  // These functions are easy to spot since they all starts with a CAPITAL 
+  // letter (by convention) and they all take ONE parameter.
   
+
   // Expects only a string
   CssClass: function(value) {
     this.element.className = value;
     return this;
   },
 
-  // Expects and array of arrays where each object is a key/value object
+  // Expects and array of arrays where each array-item is a key/value object
   // and the key (first sub-item in array) is the name of the style property 
   // and the value (second sub-item array) its value
   AddStyle: function(values) {
@@ -96,7 +99,7 @@ Ra.extend(Ra.Control.prototype, {
   },
 
   // Expects an ARRAY of strings where each value is a style property
-  // which will be removed
+  // which will be removed from the style collection of the control
   RemoveStyle: function(values) {
     for( var idx = 0; idx < values.length; idx++ ) {
       this.element.style[values[idx]] = '';
@@ -108,7 +111,7 @@ Ra.extend(Ra.Control.prototype, {
 
   // Initializes all events on control
   initEvents: function() {
-    var evts = this.options.serverEvents;
+    var evts = this.options.evts;
     for( var idx = 0; idx < evts.length; idx++ ) {
       this.element.observe(evts[idx], this.onEvent, this, [evts[idx]]);
     }
@@ -118,8 +121,8 @@ Ra.extend(Ra.Control.prototype, {
   // which we will use to know how to call our server
   onEvent: function(evt) {
     new Ra.Ajax({
-      args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=' + evt,
-      onSuccess: this.onFinishedRequest,
+      args:'__RA_CALLBACK=true&__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=' + evt,
+      onAfter: this.onFinishedRequest,
       callingContext: this
     });
   },
@@ -183,7 +186,7 @@ Ra.extend(Ra.Control.prototype, {
   _destroyControlImpl: function() {
 
     // Unlistening all event observers to avoid leaking memory
-    var evts = this.options.serverEvents;
+    var evts = this.options.evts;
     for( var idx = 0; idx < evts.length; idx++ ) {
       this.element.stopObserving(evts[idx][0], this.onEvent);
     }

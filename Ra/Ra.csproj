@@ -35,6 +35,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CallbackFilter.cs" />
+    <Compile Include="IRaControl.cs" />
     <Compile Include="Widgets\Button.cs" />
     <Compile Include="AjaxManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
