@@ -12,6 +12,7 @@ namespace Ra.Widgets
         protected override void OnInit(EventArgs e)
         {
             AjaxManager.Instance.IncludeMainRaScript();
+            AjaxManager.Instance.IncludeMainControlScripts();
             base.OnInit(e);
         }
     }
