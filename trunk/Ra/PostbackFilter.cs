@@ -3,11 +3,12 @@ using System.IO;
 
 namespace Ra
 {
-    internal class CallbackFilter : Stream
+    internal class PostbackFilter : Stream
     {
         private Stream _next;
+        private MemoryStream _stream = new MemoryStream();
 
-        public CallbackFilter(Stream next)
+        public PostbackFilter(Stream next)
         {
             _next = next;
         }
@@ -40,7 +41,7 @@ namespace Ra
 
         public override void Close()
         {
-            AjaxManager.Instance.RenderCallback(_next);
+            AjaxManager.Instance.RenderPostback(_next, _stream);
             base.Close();
         }
 
@@ -64,6 +65,7 @@ namespace Ra
 
         public override void Write(byte[] buffer, int offset, int count)
         {
+            _stream.Write(buffer, offset, count);
         }
     }
 }
