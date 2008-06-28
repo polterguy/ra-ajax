@@ -92,12 +92,6 @@ Ra.extend(Ra.Element.prototype, {
     return Ra.$(elId);
   },
 
-  // Set element to either visible or in-visible
-  setVisible: function(value) {
-    this.style.display = value ? '' : 'none';
-    return this;
-  },
-
   // Removes element out of DOM
   remove: function() {
     this.parentNode.removeChild(this);
@@ -169,50 +163,6 @@ Ra.extend(Ra.Element.prototype, {
         return 1.0;
       return this.style.opacity;
     }
-  },
-
-  // Returns the width of the element
-  getWidth: function() {
-    return this.getDimensions().width;
-  },
-
-  // Sets the width, expects an INTEGER value, appends 'px' meaning this is a PIXEL operation
-  setWidth: function(value) {
-    this.style.width = value + 'px';
-    return this;
-  },
-
-  // Returns the height of the element
-  getHeight: function() {
-    return this.getDimensions().height;
-  },
-
-  // Sets the height, expects an INTEGER value, appends 'px' meaning this is a PIXEL operation
-  setHeight: function(value) {
-    this.style.height = value + 'px';
-    return this;
-  },
-
-  // Returns the integer value of the left styled position
-  getLeft: function() {
-    return parseInt(this.style.left, 10) || 0;
-  },
-
-  // Sets the left position value of the element. Note the 'px' is appended meaning this is a PIXEL operation
-  setLeft: function(value) {
-    this.style.left = value + 'px';
-    return this;
-  },
-
-  // Returns the integer value of the top styled position
-  getTop: function() {
-    return parseInt(this.style.top, 10) || 0;
-  },
-
-  // Sets the top position value of the element. Note the 'px' is appended meaning this is a PIXEL operation
-  setTop: function(value) {
-    this.style.top = value + 'px';
-    return this;
   },
 
   // Observes an event with the given "func" parameter.

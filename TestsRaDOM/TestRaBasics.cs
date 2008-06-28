@@ -132,34 +132,6 @@ namespace TestsRaDOM
         }
 
         [NUnit.Framework.Test]
-        public void TestGetWidth()
-        {
-            Browser.Eval("checkWidth();");
-            AssertSuccess("Ra.Element.getWidth doesn't work");
-        }
-
-        [NUnit.Framework.Test]
-        public void TestGetHeight()
-        {
-            Browser.Eval("checkHeight();");
-            AssertSuccess("Ra.Element.getHeight doesn't work");
-        }
-
-        [NUnit.Framework.Test]
-        public void TestSetHeight()
-        {
-            Browser.Eval("checkSetHeight();");
-            AssertSuccess("Ra.Element.setHeight doesn't work");
-        }
-
-        [NUnit.Framework.Test]
-        public void TestSetWidth()
-        {
-            Browser.Eval("checkSetWidth();");
-            AssertSuccess("Ra.Element.setWidth doesn't work");
-        }
-
-        [NUnit.Framework.Test]
         public void TestAddClassName()
         {
             Browser.Eval("checkAddClassName();");
@@ -178,13 +150,6 @@ namespace TestsRaDOM
         {
             Browser.Eval("checkOpacity();");
             AssertSuccess("Ra.Element.setOpacity/getOpacity doesn't work");
-        }
-
-        [NUnit.Framework.Test]
-        public void TestPositioning()
-        {
-            Browser.Eval("testPosition();");
-            AssertSuccess("Ra.Element.setLeft/setTop/getLeft/getTop doesn't work");
         }
 
         [NUnit.Framework.Test]
