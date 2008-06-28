@@ -21,7 +21,7 @@ Ra.extend(Ra.Control.prototype, {
     // Setting default options
     this.options = Ra.extend({
       // Defaults here...
-      serverEvents: {}
+      serverEvents: []
     }, options || {});
 
     // Registering control
@@ -36,14 +36,22 @@ Ra.extend(Ra.Control.prototype, {
   initEvents: function() {
     var evts = this.options.serverEvents;
     for( var idx = 0; idx < evts.length; idx++ ) {
-      this.element.observe(evts[idx][0], this.onEvent, this, [evts[idx]]);
+      this.element.observe(evts[idx], this.onEvent, this, [evts[idx]]);
     }
   },
 
   // Called when an event is raised, tha parameter passed is the this.options.serverEvent instance 
   // which we will use to know how to call our server
   onEvent: function(evt) {
-    
+    new Ra.Ajax({
+      args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=' + evt,
+      onSuccess: this.onFinishedRequest,
+      callingContext: this
+    });
+  },
+
+  onFinishedRequest: function(response){
+    alert(response);
   },
 
   // Called when control is destroyed

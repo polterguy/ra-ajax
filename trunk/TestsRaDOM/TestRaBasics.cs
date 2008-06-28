@@ -230,6 +230,14 @@ namespace TestsRaDOM
             Browser.Button("testFormCallbackMultiple").Click();
             AssertSuccess("Ra.Form submit with parameters doesn't work");
         }
+
+        [NUnit.Framework.Test]
+        public void TestMultipleQueuedAjaxRequests()
+        {
+            Browser.Button("testMultipleRequestsBtn").Click();
+            System.Threading.Thread.Sleep(1000);
+            AssertSuccess("Ra.Ajax with multiple queue requests doesn't work");
+        }
     }
 }
 
