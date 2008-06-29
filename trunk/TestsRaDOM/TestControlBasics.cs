@@ -18,6 +18,14 @@ namespace NUnitTests
             Browser.Button("testJSONBasicsBtn").Click();
             AssertSuccess("Ra JSON serialization doesn't work");
         }
+
+        [NUnit.Framework.Test]
+        public void TestSettingButtonInVisible()
+        {
+            Browser.Button("testCallback").Click();
+            Browser.Eval("checkThatButtonWasDeleted();");
+            AssertSuccess("Ra Control was not removed out of collection when set to invisible");
+        }
     }
 }
 
