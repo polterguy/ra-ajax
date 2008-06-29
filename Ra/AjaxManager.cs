@@ -4,6 +4,8 @@ using System.Web.UI;
 using System.Web;
 using System.IO;
 using Ra.Widgets;
+using System.Text;
+using System.Text.RegularExpressions;
 
 [assembly: WebResource("Ra.Js.JsCore.Ra.js", "text/javascript")]
 [assembly: WebResource("Ra.Js.Control.js", "text/javascript")]
@@ -112,8 +114,25 @@ namespace Ra
             TextReader reader = new StreamReader(content);
             string wholePageContent = reader.ReadToEnd();
 
+            // Stringbuilder to hold our "register script" parts...
+            StringBuilder builder = new StringBuilder();
+            builder.Append("<script type=\"text/javascript\">");
+
             // Now replacing the parts BELOW the </body> element to give room 
             // for our "register control" scripts...
+            foreach (RaControl idx in RaControls)
+            {
+                if (idx.Phase == RaControl.RenderingPhase.MadeVisibleThisRequest || idx.Phase == RaControl.RenderingPhase.RenderHtml)
+                    builder.Append(idx.GetClientSideScript());
+
+            }
+
+            // Adding script closing element
+            builder.Append("</script></body>");
+
+            //wholePageContent = wholePageContent.Replace("</body>", "</body>" + builder.ToString());
+            Regex reg = new Regex("</body>", RegexOptions.IgnoreCase);
+            wholePageContent = reg.Replace(wholePageContent, builder.ToString());
 
             // Now writing everything back to client (or next Filter)
             TextWriter writer = new StreamWriter(next);

@@ -61,7 +61,12 @@ namespace Ra.Widgets
             // called and control within this method is Visible then this is the 
             // first rendering of the control and we need to render the "replace of wrapper span" logic
             if (_controlRenderingState == RenderingPhase.Invisible && Visible)
-                _controlRenderingState = RenderingPhase.MadeVisibleThisRequest;
+            {
+                if (AjaxManager.Instance.IsCallback)
+                    _controlRenderingState = RenderingPhase.MadeVisibleThisRequest;
+                else
+                    _controlRenderingState = RenderingPhase.RenderHtml;
+            }
 
             else if (_controlRenderingState == RenderingPhase.PropertyChanges && !Visible)
             {
@@ -87,5 +92,7 @@ namespace Ra.Widgets
         }
 
         public abstract void DispatchEvent(string name);
+
+        public abstract string GetClientSideScript();
     }
 }
