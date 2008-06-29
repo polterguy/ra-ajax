@@ -60,5 +60,10 @@ namespace Ra.Widgets
                     throw new ApplicationException("Unknown event fired for control");
             }
         }
+
+        public override string GetClientSideScript()
+        {
+            return string.Format("new Ra.Control('{0}', {{evts:['click']}});", ClientID);
+        }
     }
 }
