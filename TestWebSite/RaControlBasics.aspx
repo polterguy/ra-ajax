@@ -45,6 +45,13 @@ function checkJSONBasics() {
   }
 }
 
+
+function checkThatButtonWasDeleted() {
+  var btn = Ra.Control.$('setInVisible');
+  if( !btn )
+    Ra.$('results').setContent('success');
+}
+
 </script>
 
 
