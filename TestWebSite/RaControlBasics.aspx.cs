@@ -15,4 +15,9 @@ public partial class RaControlBasics : System.Web.UI.Page
     {
 
     }
+
+    protected void foo(object sender, EventArgs e)
+    {
+        Button2.Visible = !Button2.Visible;
+    }
 }
