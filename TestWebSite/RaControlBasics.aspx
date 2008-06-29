@@ -52,6 +52,24 @@ function checkThatButtonWasDeleted() {
     Ra.$('results').setContent('success');
 }
 
+
+
+function checkThatButtonWasCreated() {
+  var btn = Ra.Control.$('setVisible');
+  if( btn )
+    Ra.$('results').innerHTML += 'ess';
+}
+
+
+
+
+
+function checkThatButtonIsInitiallyCreatedInVisible() {
+  var btn = Ra.Control.$('setVisible');
+  if( !btn )
+    Ra.$('results').innerHTML = 'succ';
+}
+
 </script>
 
 
@@ -68,9 +86,19 @@ function checkThatButtonWasDeleted() {
                     runat="server" />
 
                 <ra:Button 
+                    ID="setVisible" 
+                    Visible="false"
+                    runat="server" />
+
+                <ra:Button 
                     ID="testCallback" 
                     runat="server" 
                     OnClicked="testCallback_Clicked" />
+
+                <ra:Button 
+                    ID="testCallbackSetButtonVisible" 
+                    runat="server" 
+                    OnClicked="testCallbackSetButtonVisible_Clicked" />
 
                 <ra:Button 
                     ID="setInVisible" 

@@ -31,7 +31,7 @@ charge for this right somewhere down the line.
 If you want to collaborate with me by creating extension 
 projects, porting Ra to PHP, J2EE or something similar then please
 let me know by writing an email to polterguy@gmail.com and we'll 
-probably ome up with something we both will be happy about.
+probably come up with something we both will be happy about. :)
 
 Ra Ajax is also in its entirety licensed under the GPL version 3. 
 

@@ -16,8 +16,8 @@ public partial class RaControlBasics : System.Web.UI.Page
         setInVisible.Visible = false;
     }
 
-    protected void foo2(object sender, EventArgs e)
+    protected void testCallbackSetButtonVisible_Clicked(object sender, EventArgs e)
     {
-        setInVisible.Visible = false;
+        setVisible.Visible = true;
     }
 }

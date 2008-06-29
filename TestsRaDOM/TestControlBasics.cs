@@ -26,6 +26,15 @@ namespace NUnitTests
             Browser.Eval("checkThatButtonWasDeleted();");
             AssertSuccess("Ra Control was not removed out of collection when set to invisible");
         }
+
+        [NUnit.Framework.Test]
+        public void TestSettingButtonInVisibleMadeVisible()
+        {
+            Browser.Eval("checkThatButtonIsInitiallyCreatedInVisible();");
+            Browser.Button("testCallbackSetButtonVisible").Click();
+            Browser.Eval("checkThatButtonWasCreated();");
+            AssertSuccess("Ra Control was not removed out of collection when set to invisible");
+        }
     }
 }
 
