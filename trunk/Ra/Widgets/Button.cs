@@ -11,6 +11,7 @@ namespace Ra.Widgets
     {
         public event EventHandler Clicked;
 
+        // Override this one to handle events fired on the client-side
         public override void DispatchEvent(string name)
         {
             switch (name)
@@ -24,6 +25,7 @@ namespace Ra.Widgets
             }
         }
 
+        // Override this one to create specific initialization script for your widgets
         public override string GetClientSideScript()
         {
             if( Clicked == null )
@@ -32,6 +34,7 @@ namespace Ra.Widgets
                 return string.Format("new Ra.Control('{0}', {{evts:['click']}});", ClientID);
         }
 
+        // Override this one to create specific HTML for your widgets
         public override string GetHTML()
         {
             return string.Format("<input type=\"button\" value=\"Value\" id=\"{0}\" />", ClientID);
