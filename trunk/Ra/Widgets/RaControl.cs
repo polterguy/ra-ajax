@@ -106,7 +106,7 @@ namespace Ra.Widgets
             return Phase;
         }
 
-        protected override void Render(System.Web.UI.HtmlTextWriter writer)
+        public override void RenderControl(HtmlTextWriter writer)
         {
             switch (Phase)
             {
@@ -114,7 +114,7 @@ namespace Ra.Widgets
                     // TODO: Destroy control
                     break;
                 case RenderingPhase.Invisible:
-                    // Do NOTHING
+                    writer.Write(GetInvisibleHTML());
                     break;
                 case RenderingPhase.MadeVisibleThisRequest:
                     // Replace wrapper span for control
@@ -136,5 +136,12 @@ namespace Ra.Widgets
 
         // The HTML for the control
         public abstract string GetHTML();
+
+        // The INVISIBLE HTML for the control
+
+        public virtual string GetInvisibleHTML()
+        {
+            return string.Format("<span id=\"{0}\" style=\"display:none;\">&nbsp;</span>", ClientID);
+        }
     }
 }
