@@ -128,7 +128,7 @@ Ra.extend(Ra.Control.prototype, {
   },
 
   onFinishedRequest: function(response){
-    alert(response);
+    eval(response);
   },
 
   // Called when control is destroyed
@@ -143,7 +143,7 @@ Ra.extend(Ra.Control.prototype, {
     // Then we must destroy all those objects (including self)
     for( var idx = 0; idx < Ra.Control._controls.length; idx++ ) {
       if( this.element.id.indexOf(Ra.Control._controls[idx].element.id) == 0 ) {
-        childrenAnSelf.add(Ra.Control._controls[idx]);
+        childrenAndSelf.push(Ra.Control._controls[idx]);
       }
     }
 
@@ -177,7 +177,7 @@ Ra.extend(Ra.Control.prototype, {
   _destroyImpl: function() {
 
     // Forward call to allow overriding in inherited classes...
-    this.destroyControlImpl();
+    this._destroyControlImpl();
   },
 
   // Implementation of destroy
@@ -200,7 +200,7 @@ Ra.extend(Ra.Control.prototype, {
     }
 
     // Removes control out from registered controls collection
-    Ra.Control._controls.splice(idxToRemove, 1);
+    Ra.Control._controls = Ra.Control._controls.splice(idxToRemove, 1);
   }
 });
 

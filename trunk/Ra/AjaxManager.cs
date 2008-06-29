@@ -49,12 +49,16 @@ namespace Ra
                 // This is a Ra Ajax callback, we need to wait until the Page Load 
                 // events are finished loading and then find the control which
                 // wants to fire an event and do so...
-                CurrentPage.LoadComplete += CurrentPage_LoadComplete;
+                // Though we only add this Event Handler ONCE
+                if (_raControls.Count == 1)
+                    CurrentPage.LoadComplete += CurrentPage_LoadComplete;
             }
             else
             {
                 // We STILL need a FILTER on the Response object
-                CurrentPage.Response.Filter = new PostbackFilter(CurrentPage.Response.Filter);
+                // Though we only add this filter ONCE...!!
+                if (_raControls.Count == 1)
+                    CurrentPage.Response.Filter = new PostbackFilter(CurrentPage.Response.Filter);
             }
         }
 
@@ -99,13 +103,64 @@ namespace Ra
             CurrentPage.ClientScript.RegisterClientScriptResource(typeof(AjaxManager), "Ra.Js.Control.js");
         }
 
-        internal void RenderCallback(Stream next)
+        // We only come here if this is a Ra Ajax Callback (IsCallback == true)
+        // We don't really care about the HTML rendered by the page here.
+        // We just short-circut the whole HTML rendering phase here and only render
+        // back changes to the client
+        internal void RenderCallback(Stream next, MemoryStream content)
         {
             TextWriter writer = new StreamWriter(next);
-            writer.Write("thomas");
+            foreach (RaControl idx in RaControls)
+            {
+                switch (idx.Phase)
+                {
+                    case RaControl.RenderingPhase.Destroy:
+                        writer.WriteLine("Ra.Control.$('{0}').destroy();", idx.ClientID);
+                        break;
+                    case RaControl.RenderingPhase.Invisible:
+                        // Do nothing...
+                        break;
+                    case RaControl.RenderingPhase.MadeVisibleThisRequest:
+                        // Rendering replace logic and register script logic
+                        writer.WriteLine("Ra.$('{0}').replace('{1}');", 
+                            idx.ClientID, 
+                            idx.GetHTML().Replace("\\", "\\\\").Replace("'", "\\'"));
+                        writer.WriteLine(idx.GetClientSideScript());
+                        break;
+                    case RaControl.RenderingPhase.PropertyChanges:
+                        // Render JSON changes
+                        break;
+                    case RaControl.RenderingPhase.RenderHtml:
+                        // Should NOT be possible...!
+                        break;
+                }
+            }
+
+            // Retrieving ViewState changes and returning back to client
+            content.Position = 0;
+            TextReader reader = new StreamReader(content);
+            string wholePageContent = reader.ReadToEnd();
+            string viewStateStart = "<input type=\"hidden\" name=\"__VIEWSTATE\" id=\"__VIEWSTATE\" value=\"";
+            string viewStateValue = GetHiddenInputValue(wholePageContent, viewStateStart);
+            writer.WriteLine("Ra.$('__VIEWSTATE').value = '{0}';", viewStateValue);
+            
             writer.Flush();
         }
 
+        private string GetHiddenInputValue(string html, string marker)
+        {
+            string value = null;
+            int i = html.IndexOf(marker);
+            if (i != -1)
+            {
+                value = html.Substring(i + marker.Length);
+                value = value.Substring(0, value.IndexOf('\"'));
+            }
+            return value;
+        }
+
+        // Here we are if this is a POSTBACK or the initial rendering of the page... (Page.IsPostBack == false)
+        // The content parameter is a stream containing the entire page's HTML output
         internal void RenderPostback(Stream next, MemoryStream content)
         {
             // First reading the WHOLE page content into memory since we need
@@ -124,13 +179,12 @@ namespace Ra
             {
                 if (idx.Phase == RaControl.RenderingPhase.MadeVisibleThisRequest || idx.Phase == RaControl.RenderingPhase.RenderHtml)
                     builder.Append(idx.GetClientSideScript());
-
             }
 
             // Adding script closing element
             builder.Append("</script></body>");
 
-            //wholePageContent = wholePageContent.Replace("</body>", "</body>" + builder.ToString());
+            // Replacing the </body> element with the client-side object creation scripts for the Ra Controls...
             Regex reg = new Regex("</body>", RegexOptions.IgnoreCase);
             wholePageContent = reg.Replace(wholePageContent, builder.ToString());
 

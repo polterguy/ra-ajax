@@ -29,6 +29,21 @@ namespace Ra.Widgets
             set { _controlRenderingState = value; }
         }
 
+        protected override void OnInit(EventArgs e)
+        {
+            // To initialize control
+            AjaxManager.Instance.InitializeControl(this);
+
+            // Including JavaScript
+            AjaxManager.Instance.IncludeMainRaScript();
+            AjaxManager.Instance.IncludeMainControlScripts();
+
+            // Registering control with the AjaxManager
+            AjaxManager.Instance.CurrentPage.RegisterRequiresControlState(this);
+
+            base.OnInit(e);
+        }
+
         // The next three methods are in order in regarding to the sequence
         // they are being dispatched in the Page life cycle
         // Since OnPreRender occurs before the Control State is being saved
@@ -38,61 +53,78 @@ namespace Ra.Widgets
         protected override void LoadControlState(object savedState)
         {
             if (savedState != null)
-                _controlRenderingState = (RenderingPhase)savedState;
+                Phase = (RenderingPhase)savedState;
+
+            // If the ControlState was stored previously with a Destroy value
+            // then the control is logically now Invisible
+            if (Phase == RenderingPhase.Destroy)
+                Phase = RenderingPhase.Invisible;
 
             // If this method is being called and we don't have the Invisible property 
             // we have previously saved the RenderingPhase meaning the control must 
             // logically be set to PropertyChanges...
-            if (_controlRenderingState != RenderingPhase.Invisible)
-                _controlRenderingState = RenderingPhase.PropertyChanges;
-
-            // If the ControlState was stored previously with a Destroy value
-            // then the control is logically now INvisible
-            else if (_controlRenderingState == RenderingPhase.Destroy)
-                _controlRenderingState = RenderingPhase.Invisible;
+            else if (Phase != RenderingPhase.Invisible)
+                Phase = RenderingPhase.PropertyChanges;
         }
 
-        protected override void OnPreRender(EventArgs e)
+        protected override object SaveControlState()
         {
-            // Since this method is called by the Page Life Cycle BEFORE SaveControlState
-            // we can safely manipulate the RenderPhase property here.
-
-            // If control is INvisible acording to RenderingPhase and still this method is 
+            // If control is Invisible acording to RenderingPhase and still this method is 
             // called and control within this method is Visible then this is the 
             // first rendering of the control and we need to render the "replace of wrapper span" logic
-            if (_controlRenderingState == RenderingPhase.Invisible && Visible)
+            if (Phase == RenderingPhase.Invisible && Visible)
             {
                 if (AjaxManager.Instance.IsCallback)
-                    _controlRenderingState = RenderingPhase.MadeVisibleThisRequest;
+                    Phase = RenderingPhase.MadeVisibleThisRequest;
                 else
-                    _controlRenderingState = RenderingPhase.RenderHtml;
+                    Phase = RenderingPhase.RenderHtml;
             }
 
-            else if (_controlRenderingState == RenderingPhase.PropertyChanges && !Visible)
+            else if (Phase == RenderingPhase.PropertyChanges && !Visible)
             {
-                _controlRenderingState = RenderingPhase.Destroy;
+                Phase = RenderingPhase.Destroy;
 
                 // We ALSO must loop through all CHILD controls and set their state to Invisible...!
                 foreach (RaControl idx in AjaxManager.Instance.RaControls)
                 {
                     // Checking to see if this is a CHILD control of the this widget...
-                    if (idx.ClientID.IndexOf(this.ClientID) == 0)
+                    if (idx.ClientID != this.ClientID && idx.ClientID.IndexOf(this.ClientID) == 0)
                         idx.Phase = RenderingPhase.Invisible;
                 }
             }
 
-            base.OnPreRender(e);
+            return Phase;
         }
 
-        protected override object SaveControlState()
+        protected override void Render(System.Web.UI.HtmlTextWriter writer)
         {
-            if (_controlRenderingState != RenderingPhase.Invisible)
-                return _controlRenderingState;
-            return null;
+            switch (Phase)
+            {
+                case RenderingPhase.Destroy:
+                    // TODO: Destroy control
+                    break;
+                case RenderingPhase.Invisible:
+                    // Do NOTHING
+                    break;
+                case RenderingPhase.MadeVisibleThisRequest:
+                    // Replace wrapper span for control
+                    break;
+                case RenderingPhase.PropertyChanges:
+                    // Serialize JSON changes to control
+                    break;
+                case RenderingPhase.RenderHtml:
+                    writer.Write(GetHTML());
+                    break;
+            }
         }
 
+        // Used for dispatching events for the Control
         public abstract void DispatchEvent(string name);
 
+        // Used to retrieve the client-side initialization script
         public abstract string GetClientSideScript();
+
+        // The HTML for the control
+        public abstract string GetHTML();
     }
 }
