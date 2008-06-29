@@ -54,12 +54,6 @@ namespace Ra.Widgets
             base.OnInit(e);
         }
 
-        // The next three methods are in order in regarding to the sequence
-        // they are being dispatched in the Page life cycle
-        // Since OnPreRender occurs before the Control State is being saved
-        // We can in OnPreRender create the "state machine" which determines how
-        // the control should be rendered...
-
         protected override void LoadControlState(object savedState)
         {
             if (savedState != null)
@@ -76,6 +70,10 @@ namespace Ra.Widgets
             else if (Phase != RenderingPhase.Invisible)
                 Phase = RenderingPhase.PropertyChanges;
         }
+
+        // SaveControlState will be called BEFORE the RenderControl is being called by the ASP.NET
+        // runtime. This means that in the SaveControlState we can set up the "stat machine" which
+        // determines which state the control is in in regards to rendering.
 
         protected override object SaveControlState()
         {
