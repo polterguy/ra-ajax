@@ -25,6 +25,7 @@ namespace Ra
         }
 
         private List<RaControl> _raControls = new List<RaControl>();
+        private bool _supressFilters;
 
         public List<RaControl> RaControls
         {
@@ -39,6 +40,13 @@ namespace Ra
         public bool IsCallback
         {
             get { return CurrentPage.Request.Params["__RA_CALLBACK"] == "true"; }
+        }
+
+        // Set this one to true to bypass the Response.Filter logic and toss in your own version of it...
+        public bool SupressAjaxFilters
+        {
+            get { return _supressFilters; }
+            set { _supressFilters = value; }
         }
 
         public void InitializeControl(RaControl ctrl)
@@ -57,7 +65,7 @@ namespace Ra
             {
                 // We STILL need a FILTER on the Response object
                 // Though we only add this filter ONCE...!!
-                if (_raControls.Count == 1)
+                if (_raControls.Count == 1 && !SupressAjaxFilters)
                     CurrentPage.Response.Filter = new PostbackFilter(CurrentPage.Response.Filter);
             }
         }
@@ -89,8 +97,9 @@ namespace Ra
 
         void CurrentPage_PreRender(object sender, EventArgs e)
         {
-            // Since you can concatenate filters, we need to "keep track" of the previous one...
-            CurrentPage.Response.Filter = new CallbackFilter(CurrentPage.Response.Filter);
+            if (!SupressAjaxFilters)
+                // Since you can concatenate filters, we need to "keep track" of the previous one...
+                CurrentPage.Response.Filter = new CallbackFilter(CurrentPage.Response.Filter);
         }
 
         public void IncludeMainRaScript()
