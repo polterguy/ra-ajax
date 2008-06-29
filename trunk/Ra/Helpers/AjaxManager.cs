@@ -59,7 +59,12 @@ namespace Ra
                 // wants to fire an event and do so...
                 // Though we only add this Event Handler ONCE
                 if (_raControls.Count == 1)
+                {
                     CurrentPage.LoadComplete += CurrentPage_LoadComplete;
+                    if (!SupressAjaxFilters)
+                        // Since you can concatenate filters, we need to "keep track" of the previous one...
+                        CurrentPage.Response.Filter = new CallbackFilter(CurrentPage.Response.Filter);
+                }
             }
             else
             {
@@ -90,16 +95,6 @@ namespace Ra
                 throw new ApplicationException("A control which was not a Ra Control initiated a callback, implement the IRaControl interface on the control");
             }
             raCtrl.DispatchEvent(eventName);
-
-            // Handling the PreRender event to do our filtering there
-            CurrentPage.PreRender += CurrentPage_PreRender;
-        }
-
-        void CurrentPage_PreRender(object sender, EventArgs e)
-        {
-            if (!SupressAjaxFilters)
-                // Since you can concatenate filters, we need to "keep track" of the previous one...
-                CurrentPage.Response.Filter = new CallbackFilter(CurrentPage.Response.Filter);
         }
 
         public void IncludeMainRaScript()
@@ -146,14 +141,19 @@ namespace Ra
             }
 
             // Retrieving ViewState changes and returning back to client
+            writer.WriteLine("Ra.$('__VIEWSTATE').value = '{0}';", GetViewState(content));
+            
+            writer.Flush();
+        }
+
+        private string GetViewState(MemoryStream content)
+        {
             content.Position = 0;
             TextReader reader = new StreamReader(content);
             string wholePageContent = reader.ReadToEnd();
             string viewStateStart = "<input type=\"hidden\" name=\"__VIEWSTATE\" id=\"__VIEWSTATE\" value=\"";
             string viewStateValue = GetHiddenInputValue(wholePageContent, viewStateStart);
-            writer.WriteLine("Ra.$('__VIEWSTATE').value = '{0}';", viewStateValue);
-            
-            writer.Flush();
+            return viewStateValue;
         }
 
         private string GetHiddenInputValue(string html, string marker)
