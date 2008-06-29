@@ -13,10 +13,6 @@ furnished to do so, subject to the following conditions:
 * If you modify the Software you cannot redistribute it in code form creating
   what's commonly referred to as a "fork".
 
-* If you modify or extends the Software you cannot redistribute it as a 
-  library, toolkit or as a product with the same or significantly the same
-  functionality as Ra Ajax itself.
-
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
