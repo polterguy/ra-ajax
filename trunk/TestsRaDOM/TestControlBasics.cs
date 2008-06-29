@@ -13,7 +13,7 @@ namespace NUnitTests
         }
 
         [NUnit.Framework.Test]
-        public void TestRaNamespace()
+        public void TestJSONBasics()
         {
             Browser.Button("testJSONBasicsBtn").Click();
             AssertSuccess("Ra JSON serialization doesn't work");

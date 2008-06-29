@@ -10,7 +10,13 @@ using System.Web.UI.HtmlControls;
 
 public partial class RaDOMBasics : System.Web.UI.Page 
 {
-    protected void Page_Load(object sender, EventArgs e)
+    protected override void OnPreInit(EventArgs e)
+    {
+        Ra.AjaxManager.Instance.SupressAjaxFilters = true;
+        base.OnPreInit(e);
+    }
+
+    protected void Page_Init(object sender, EventArgs e)
     {
         if (Request.Params["testingForm"] == "testing")
         {

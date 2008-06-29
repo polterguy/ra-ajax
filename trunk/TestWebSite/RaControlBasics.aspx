@@ -56,14 +56,17 @@ function checkJSONBasics() {
                     Unknown
                 </div>
 
-                <!-- To inject Ra core scripts onto form -->
                 <ra:Button 
                     ID="Button1" 
-                    runat="server" 
-                    OnClicked="foo" />
+                    runat="server" />
 
                 <ra:Button 
-                    ID="Button2" 
+                    ID="testCallback" 
+                    runat="server" 
+                    OnClicked="testCallback_Clicked" />
+
+                <ra:Button 
+                    ID="setInVisible" 
                     runat="server" />
                 
                 <input type="button" value="Test JSON Basics" id="testJSONBasicsBtn" onclick="checkJSONBasics();" />

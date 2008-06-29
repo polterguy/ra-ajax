@@ -11,13 +11,13 @@ using System.Web.UI.HtmlControls;
 
 public partial class RaControlBasics : System.Web.UI.Page
 {
-    protected void Page_Load(object sender, EventArgs e)
+    protected void testCallback_Clicked(object sender, EventArgs e)
     {
-
+        setInVisible.Visible = false;
     }
 
-    protected void foo(object sender, EventArgs e)
+    protected void foo2(object sender, EventArgs e)
     {
-        Button2.Visible = !Button2.Visible;
+        setInVisible.Visible = false;
     }
 }
