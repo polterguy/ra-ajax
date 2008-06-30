@@ -30,6 +30,8 @@ namespace Ra.Widgets
                 if (idx.ToLower() != idx)
                     throw new ApplicationException("Cannot have a style property which contains uppercase letters");
 
+                // Transforming from CSS file syntax to DOM syntax, e.g. background-color ==> backgroundColor
+                // and border-style ==> borderStyle
                 while (idx.IndexOf('-') != -1)
                 {
                     int where = idx.IndexOf('-');
@@ -47,6 +49,8 @@ namespace Ra.Widgets
                 if (idx.ToLower() != idx)
                     throw new ApplicationException("Cannot have a style property which contains uppercase letters");
 
+                // Transforming from CSS file syntax to DOM syntax, e.g. background-color ==> backgroundColor
+                // and border-style ==> borderStyle
                 while (idx.IndexOf('-') != -1)
                 {
                     int where = idx.IndexOf('-');

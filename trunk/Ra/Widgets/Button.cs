@@ -27,7 +27,11 @@ namespace Ra.Widgets
         public string Text
         {
             get { return ViewState["Text"] == null ? "" : (string)ViewState["Text"]; }
-            set { ViewState["Text"] = value; }
+            set
+            {
+                ViewState["Text"] = value;
+                SetJSONValueString("Value", Text);
+            }
         }
 
         #endregion

@@ -104,8 +104,16 @@ Ra.extend(Ra.Control.prototype, {
     }
   },
 
+  // Expects only a Text string, does a replace on the innerHTML with the updated text string
+  // Useful for labels, textareas and so on...
   Text: function(value) {
     this.element.setContent(value);
+  },
+
+  // Expects a text value, sets the "value" of the control to the given value
+  // Useful for TextBoxes (input type="text") and so on...
+  Value: function(value) {
+    this.element.value = value;
   },
 
 
