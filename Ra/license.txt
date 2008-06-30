@@ -1,4 +1,20 @@
-Copyright (c) 2008 Thomas Hansen (polterguy@gmail.com)
+
+Intentions;
+You may use this Software as you wish in both closed and Open Source projects
+and you can redistribute it as you wish, but if you modify Ra you cannot 
+distribute the modified version in code form. This is to prevent Ra from 
+forking. You can however modify and extend Ra as much as you wish, though
+then you are only free to distribute Ra in object form. This gives you the
+right to modify Ra if you wish for your OWN purpose but does not enable you
+to "fork" Ra. Basically this is the pure MIT X11 license with a Fork exception.
+
+If you must form Ra for some reasons you are free to do so as long as you
+obey by the GPL license terms since Ra is Dual Licensed and also licensed under
+the GPL version 3 license.
+
+ -- License Starts --
+
+Copyright (c) 2008 Thomas Hansen - polterguy@gmail.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -10,8 +26,10 @@ furnished to do so, subject to the following conditions:
 * The above copyright notice and this permission notice shall be included in
   all copies or substantial portions of the Software.
 
-* If you modify the Software you cannot redistribute it in code form creating
-  what's commonly referred to as a "fork".
+* If you Modify or Extend the Software you cannot redistribute it in code 
+  form creating what's commonly referred to as a "fork". Modify means changing
+  code contained in the Software. Extend means add to the Software itself
+  and does not stop you from consuming the modified Software in another project.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -20,3 +38,5 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+
+ -- License Ends --
