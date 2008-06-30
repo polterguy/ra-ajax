@@ -70,6 +70,17 @@ function checkThatButtonIsInitiallyCreatedInVisible() {
     Ra.$('results').innerHTML = 'succ';
 }
 
+
+
+function checkCssClass() {
+  var btn = Ra.Control.$('testCssClass');
+  if( Ra.Control.$('testCssClass').element.className == 'someClass' && !Ra.Control.$('testCssClassNoClass').element.className)
+    Ra.$('results').innerHTML = 'success';
+}
+
+
+
+
 </script>
 
 
@@ -108,8 +119,20 @@ function checkThatButtonIsInitiallyCreatedInVisible() {
                     ID="setInVisible" 
                     Text="This one will become in-visible"
                     runat="server" />
-                
+
+                <ra:Button 
+                    ID="testCssClass" 
+                    Text="Verify CssClass"
+                    CssClass="someClass"
+                    runat="server" />
+
+                <ra:Button 
+                    ID="testCssClassNoClass" 
+                    Text="Verify NO CssClass"
+                    runat="server" />
+
                 <input type="button" value="Test JSON Basics" id="testJSONBasicsBtn" onclick="checkJSONBasics();" />
+                <input type="button" value="Dummy Test Button" id="Button2" onclick="checkCssClass();" />
             </div>
         </form>
     </body>

@@ -30,9 +30,16 @@ namespace Ra.Widgets
             set { ViewState["Text"] = value; }
         }
 
+        [DefaultValue("")]
+        public string CssClass
+        {
+            get { return ViewState["CssClass"] == null ? "" : (string)ViewState["CssClass"]; }
+            set { ViewState["CssClass"] = value; }
+        }
+
         #endregion
 
-        # region [ -- Overridden (abstract/virtual) methods from RaControl -- ]
+        #region [ -- Overridden (abstract/virtual) methods from RaControl -- ]
 
         // Override this one to handle events fired on the client-side
         public override void DispatchEvent(string name)
@@ -60,9 +67,11 @@ namespace Ra.Widgets
         // Override this one to create specific HTML for your widgets
         public override string GetHTML()
         {
-            return string.Format("<input type=\"button\" id=\"{0}\" value=\"{1}\" />", 
+            string cssClass = CssClass == null ? "" : " class=\"" + CssClass + "\"";
+            return string.Format("<input type=\"button\" id=\"{0}\" value=\"{1}\"{2} />", 
                 ClientID,
-                Text.Replace("\\", "\\\\").Replace("'", "\\'"));
+                Text.Replace("\\", "\\\\").Replace("'", "\\'"),
+                cssClass);
         }
 
         #endregion

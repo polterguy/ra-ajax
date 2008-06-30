@@ -35,6 +35,13 @@ namespace NUnitTests
             Browser.Eval("checkThatButtonWasCreated();");
             AssertSuccess("Ra Control was not removed out of collection when set to invisible");
         }
+
+        [NUnit.Framework.Test]
+        public void TestCheckCssClass()
+        {
+            Browser.Eval("checkCssClass();");
+            AssertSuccess("Ra Control was not removed out of collection when set to invisible");
+        }
     }
 }
 
