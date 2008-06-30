@@ -19,7 +19,7 @@ namespace Ra.Widgets
     [ASP.ToolboxData("<{0}:Button runat=server />")]
     public class Button : RaWebControl, IRaControl
     {
-        public event EventHandler Clicked;
+        public event EventHandler Click;
 
         #region [ -- Properties -- ]
 
@@ -44,8 +44,8 @@ namespace Ra.Widgets
             switch (name)
             {
                 case "click":
-                    if (Clicked != null)
-                        Clicked(this, new EventArgs());
+                    if (Click != null)
+                        Click(this, new EventArgs());
                     break;
                 default:
                     throw new ApplicationException("Unknown event fired for control");
@@ -55,7 +55,7 @@ namespace Ra.Widgets
         // Override this one to create specific initialization script for your widgets
         public override string GetClientSideScript()
         {
-            if( Clicked == null )
+            if( Click == null )
                 return string.Format("new Ra.Control('{0}');", ClientID);
             else
                 return string.Format("new Ra.Control('{0}', {{evts:['click']}});", ClientID);

@@ -119,13 +119,13 @@ function checkStylesAfterServerChange() {
                     ID="testCallback" 
                     runat="server" 
                     Text="Test Callback and set button to IN-visible"
-                    OnClicked="testCallback_Clicked" />
+                    OnClick="testCallback_Click" />
 
                 <ra:Button 
                     ID="testCallbackSetButtonVisible" 
                     runat="server" 
                     Text="Test set button to Visible"
-                    OnClicked="testCallbackSetButtonVisible_Clicked" />
+                    OnClick="testCallbackSetButtonVisible_Click" />
 
                 <ra:Button 
                     ID="setInVisible" 
@@ -146,13 +146,13 @@ function checkStylesAfterServerChange() {
                 <ra:Button 
                     ID="testAddStyles" 
                     Text="Test Add Styles"
-                    OnClicked="testAddStyles_Clicked"
+                    OnClick="testAddStyles_Click"
                     runat="server" />
 
                 <ra:Button 
                     ID="testSettingTextProperty" 
                     Text="Test Change Text value"
-                    OnClicked="testSettingTextProperty_Clicked"
+                    OnClick="testSettingTextProperty_Click"
                     runat="server" />
 
                 <input type="button" value="Test JSON Basics" id="testJSONBasicsBtn" onclick="checkJSONBasics();" />

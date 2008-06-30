@@ -64,6 +64,11 @@ namespace Ra.Widgets
             }
         }
 
+        internal bool HasJSONValueDictionary(string key)
+        {
+            return _JSONValues.ContainsKey(key);
+        }
+
         public void SetJSONValueString(string key, string value)
         {
             if (this.IsTrackingViewState)

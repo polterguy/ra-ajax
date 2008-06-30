@@ -11,23 +11,23 @@ using System.Web.UI.HtmlControls;
 
 public partial class RaControlBasics : System.Web.UI.Page
 {
-    protected void testCallback_Clicked(object sender, EventArgs e)
+    protected void testCallback_Click(object sender, EventArgs e)
     {
         setInVisible.Visible = false;
     }
 
-    protected void testCallbackSetButtonVisible_Clicked(object sender, EventArgs e)
+    protected void testCallbackSetButtonVisible_Click(object sender, EventArgs e)
     {
         setVisible.Visible = true;
     }
 
-    protected void testAddStyles_Clicked(object sender, EventArgs e)
+    protected void testAddStyles_Click(object sender, EventArgs e)
     {
         testAddStyles.Style["width"] = "150px";
         testAddStyles.Style["font-weight"] = "bold";
     }
 
-    protected void testSettingTextProperty_Clicked(object sender, EventArgs e)
+    protected void testSettingTextProperty_Click(object sender, EventArgs e)
     {
         testSettingTextProperty.Text = "New Text";
     }
