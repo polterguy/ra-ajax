@@ -2,6 +2,19 @@
  * Ra Ajax, Copyright 2008 - Thomas Hansen
  * All JS methods and objects are inside of the
  * Ra namespace.
+ *
+ * Ra is Dual Licensed software, it is licensed under both an MITish license and a
+ * pure GPL version 3 license. The licenses should exist on disc where you extracted Ra
+ * and will be named license.txt
+ * 
+ * A general talk about function and conventions in Ra...
+ * To inherit one class from another use the Ra.extend function, very similar to prototype, 
+ * though for efficiency purposes there are NO $super in Ra.
+ * Functions and properties not ment "fiddling with" (overriding, changing or anything like that)
+ * starts by convention with an underscore (_)
+ * You may some times be encouraged to USE methods that starts with underscores, though mostly not even that
+ * but NEVER override them. They're to be considered "final" by convention.
+ * 
  */
 
 
