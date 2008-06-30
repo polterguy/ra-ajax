@@ -72,7 +72,6 @@ Ra.extend(Ra.Control.prototype, {
     for( var idxKey in obj ) {
       this[idxKey](obj[idxKey]);
     }
-    return this;
   },
 
 
@@ -132,8 +131,22 @@ Ra.extend(Ra.Control.prototype, {
     eval(response);
   },
 
+
+
   // Called when control is destroyed
+  // This one will un-register the control in the control collection, clean up
+  // any resources consumed by the control and replace the DOM element with a
+  // wrapper span...
+  // This one will also destroy all CHILD controls of the control...
+  // If you override this method you probably will want to call the base
+  // implementation called "_destroyImpl"!
   destroy: function() {
+
+    // Forward calling to enable inheritance...
+    this._destroyImpl();
+  },
+
+  _destroyImpl: function() {
 
     // Since some controls may be children of the "this" widget we must
     // collect all those widgets too and call destroy on those too
@@ -160,7 +173,7 @@ Ra.extend(Ra.Control.prototype, {
 
     // Now looping through and destroying all objects
     for( var idx = 0; idx < childrenAndSelf.length; idx++ ) {
-      childrenAndSelf[idx]._destroyImpl();
+      childrenAndSelf[idx]._destroyOnlyThisImpl();
     }
 
     // Replacing the control's HTML with a "wrapper span" so we can re-create it later
@@ -171,15 +184,19 @@ Ra.extend(Ra.Control.prototype, {
     this.element.replace('<span id="' + this.element.id + '" style="display:none;" />');
   },
 
+
+
   // Destruction implementation
   // If you override this (which you often will end up doing) in your own derived classes
   // then you should make sure you call the _destroyControlImpl method to make
   // sure you don't leak memory and gets the "basic" functionality from destroy...
-  _destroyImpl: function() {
+  _destroyOnlyThisImpl: function() {
 
     // Forward call to allow overriding in inherited classes...
     this._destroyControlImpl();
   },
+
+
 
   // Implementation of destroy
   // Basically unlisetens all events and removes object out 
