@@ -16,10 +16,17 @@ namespace Ra.Widgets
     public class StyleCollection
     {
         private RaWebControl _control;
+        private bool _isTrackingViewState;
+        private Dictionary<string, string> _beforeViewStateDictionary = new Dictionary<string, string>();
 
         public StyleCollection(RaWebControl control)
         {
             _control = control;
+        }
+
+        internal void TrackViewState()
+        {
+            _isTrackingViewState = true;
         }
 
         public string this[string idx]
@@ -38,10 +45,24 @@ namespace Ra.Widgets
                     idx = idx.Substring(0, where) + idx.Substring(where + 1, 1).ToUpper() + idx.Substring(where + 2);
                 }
 
-                Dictionary<string, string> styles = _control.GetJSONValueDictionary("AddStyle");
-                if (styles.ContainsKey(idx))
-                    return styles[idx];
-                return null;
+                if (_isTrackingViewState)
+                {
+                    Dictionary<string, string> styles = _control.GetJSONValueDictionary("AddStyle");
+                    if (styles.ContainsKey(idx))
+                        return styles[idx];
+                    else
+                    {
+                        if (_beforeViewStateDictionary.ContainsKey(idx))
+                            return _beforeViewStateDictionary[idx];
+                        return null;
+                    }
+                }
+                else
+                {
+                    if (_beforeViewStateDictionary.ContainsKey(idx))
+                        return _beforeViewStateDictionary[idx];
+                    return null;
+                }
             }
             set
             {
@@ -57,9 +78,28 @@ namespace Ra.Widgets
                     idx = idx.Substring(0, where) + idx.Substring(where + 1, 1).ToUpper() + idx.Substring(where + 2);
                 }
 
-                Dictionary<string, string> styles = _control.GetJSONValueDictionary("AddStyle");
-                styles[idx] = value;
+                if (_isTrackingViewState)
+                {
+                    Dictionary<string, string> styles = _control.GetJSONValueDictionary("AddStyle");
+                    styles[idx] = value;
+                }
+                else
+                {
+                    _beforeViewStateDictionary[idx] = value;
+                }
             }
+        }
+
+        internal Dictionary<string, string> GetStylesForViewState()
+        {
+            if (_control.HasJSONValueDictionary("AddStyle"))
+                return _control.GetJSONValueDictionary("AddStyle");
+            return null;
+        }
+
+        internal void SetStylesFromViewState(Dictionary<string, string> values)
+        {
+            _beforeViewStateDictionary = values;
         }
     }
 }

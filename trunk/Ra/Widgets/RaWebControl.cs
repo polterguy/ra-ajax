@@ -11,6 +11,7 @@
 using System;
 using System.Web.UI;
 using System.ComponentModel;
+using System.Collections.Generic;
 
 namespace Ra.Widgets
 {
@@ -23,6 +24,44 @@ namespace Ra.Widgets
             _styles = new StyleCollection(this);
         }
 
+        protected override void TrackViewState()
+        {
+            base.TrackViewState();
+            Style.TrackViewState();
+        }
+
+        protected override object SaveViewState()
+        {
+            object[] content = new object[2];
+
+            Dictionary<string, string> styles = Style.GetStylesForViewState();
+            if (styles == null)
+                styles = new Dictionary<string, string>();
+            string[] styleStrings = new string[styles.Count];
+            int idxNo = 0;
+            foreach (string idxKey in styles.Keys)
+            {
+                styleStrings[idxNo++] = idxKey + ":" + styles[idxKey];
+            }
+            content[0] = styleStrings;
+            content[1] = base.SaveViewState();
+            return content;
+        }
+
+        protected override void LoadViewState(object savedState)
+        {
+            object[] content = savedState as object[];
+            string[] styles = content[0] as string[];
+            Dictionary<string, string> styleDictionary = new Dictionary<string, string>();
+            foreach (string idx in styles)
+            {
+                string[] raw = idx.Split(':');
+                styleDictionary[raw[0]] = raw[1];
+            }
+            Style.SetStylesFromViewState(styleDictionary);
+            base.LoadViewState(content[1]);
+        }
+
         #region [ -- Properties -- ]
 
         [DefaultValue("")]
@@ -32,6 +71,7 @@ namespace Ra.Widgets
             set { ViewState["CssClass"] = value; }
         }
 
+        // TODO: Serialize Style to ViewState
         public StyleCollection Style
         {
             get { return _styles; }
