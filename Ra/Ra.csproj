@@ -36,12 +36,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Filters\CallbackFilter.cs" />
+    <Compile Include="Helpers\StyleCollection.cs" />
     <Compile Include="Interfaces\IRaControl.cs" />
     <Compile Include="Filters\PostbackFilter.cs" />
     <Compile Include="Widgets\Button.cs" />
     <Compile Include="Helpers\AjaxManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Widgets\RaControl.cs" />
+    <Compile Include="Widgets\RaWebControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Js\JsCore\Ra.js" />

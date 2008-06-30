@@ -20,4 +20,10 @@ public partial class RaControlBasics : System.Web.UI.Page
     {
         setVisible.Visible = true;
     }
+
+    protected void testAddStyles_Clicked(object sender, EventArgs e)
+    {
+        testAddStyles.Style["width"] = "150px";
+        testAddStyles.Style["font-weight"] = "bold";
+    }
 }

@@ -153,6 +153,13 @@ namespace Ra
 
                     case RaControl.RenderingPhase.PropertyChanges:
                         // Render JSON changes
+                        string JSON = idx.SerializeJSON();
+                        if (JSON != null)
+                        {
+                            writer.WriteLine("Ra.Control.$('{0}').handleJSON('{1}');",
+                                idx.ClientID,
+                                JSON);
+                        }
                         break;
 
                     case RaControl.RenderingPhase.RenderHtml:

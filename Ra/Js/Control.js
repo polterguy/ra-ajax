@@ -104,14 +104,6 @@ Ra.extend(Ra.Control.prototype, {
     }
   },
 
-  // Expects an ARRAY of strings where each value is a style property
-  // which will be removed from the style collection of the control
-  RemoveStyle: function(values) {
-    for( var idx = 0; idx < values.length; idx++ ) {
-      this.element.style[values[idx]] = '';
-    }
-  },
-
   Text: function(value) {
     this.element.setContent(value);
   },

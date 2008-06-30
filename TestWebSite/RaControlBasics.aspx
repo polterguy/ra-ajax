@@ -36,12 +36,7 @@ function checkJSONBasics() {
   ctrl.handleJSON('{"CssClass" : "testClass", "AddStyle" : [["width", "150px"], ["fontWeight", "bold"]]}');
 
   if( ctrl.element.className == 'testClass' && ctrl.element.style.width == '150px' && ctrl.element.style.fontWeight == 'bold') {
-
-    ctrl.handleJSON('{"RemoveStyle" : ["width", "fontWeight"]}');
-
-    if( !ctrl.element.style.width && !ctrl.element.style.fontWeight ) {
-      Ra.$('results').setContent('success');
-    }
+    Ra.$('results').setContent('success');
   }
 }
 
@@ -77,6 +72,22 @@ function checkCssClass() {
   if( Ra.Control.$('testCssClass').element.className == 'someClass' && !Ra.Control.$('testCssClassNoClass').element.className)
     Ra.$('results').innerHTML = 'success';
 }
+
+
+
+
+
+function checkStylesAfterServerChange() {
+  var el = Ra.Control.$('testAddStyles');
+  if( el.element.style.width.toLowerCase() == '150px' && 
+    el.element.style.fontWeight.toLowerCase() == 'bold' ) {
+    Ra.$('results').innerHTML = 'success';
+  }
+}
+
+
+
+
 
 
 
@@ -131,8 +142,14 @@ function checkCssClass() {
                     Text="Verify NO CssClass"
                     runat="server" />
 
+                <ra:Button 
+                    ID="testAddStyles" 
+                    Text="Test Add Styles"
+                    OnClicked="testAddStyles_Clicked"
+                    runat="server" />
+
                 <input type="button" value="Test JSON Basics" id="testJSONBasicsBtn" onclick="checkJSONBasics();" />
-                <input type="button" value="Dummy Test Button" id="Button2" onclick="checkCssClass();" />
+                <input type="button" value="Dummy Test Button" id="Button2" onclick="checkStylesAfterServerChange();" />
             </div>
         </form>
     </body>
