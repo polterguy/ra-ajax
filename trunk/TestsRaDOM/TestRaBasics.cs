@@ -13,147 +13,147 @@ namespace NUnitTests
         }
 
         [NUnit.Framework.Test]
-        public void TestRaNamespace()
+        public void RaNamespace()
         {
             Browser.Eval("checkForRa();");
             AssertSuccess("Ra namespace doesn't exists");
         }
 
         [NUnit.Framework.Test]
-        public void TestDollar()
+        public void Dollar()
         {
             Browser.Eval("checkForRaDollar();");
             AssertSuccess("Ra $ doesn't work");
         }
 
         [NUnit.Framework.Test]
-        public void TestCreateClass()
+        public void CreateClass()
         {
             Browser.Eval("checkCreateClass();");
             AssertSuccess("Ra classCreate doesn't work");
         }
 
         [NUnit.Framework.Test]
-        public void TestExtendExists()
+        public void ExtendExists()
         {
             Browser.Eval("checkExtend();");
             AssertSuccess("Ra extend doesn't work");
         }
 
         [NUnit.Framework.Test]
-        public void TestExtendWorksSimple()
+        public void ExtendWorksSimple()
         {
             Browser.Eval("checkExtendFunctionalSimple();");
             AssertSuccess("Ra extend doesn't work");
         }
 
         [NUnit.Framework.Test]
-        public void TestExtendWorksSimpleMethod()
+        public void ExtendWorksSimpleMethod()
         {
             Browser.Eval("checkExtendFunctionalSimpleMethod();");
             AssertSuccess("Ra extend doesn't work");
         }
 
         [NUnit.Framework.Test]
-        public void TestExtendWorksSimpleMethodInvoke()
+        public void ExtendWorksSimpleMethodInvoke()
         {
             Browser.Eval("checkExtendFunctionalMethodInvoke();");
             AssertSuccess("Ra extend doesn't work");
         }
 
         [NUnit.Framework.Test]
-        public void TestExtendWorksPrototypeInstance()
+        public void ExtendWorksPrototypeInstance()
         {
             Browser.Eval("checkExtendFunctionalMethodPrototype();");
             AssertSuccess("Ra extend doesn't work");
         }
 
         [NUnit.Framework.Test]
-        public void TestExtendWorksPrototypeInstanceInitWithArgs()
+        public void ExtendWorksPrototypeInstanceInitWithArgs()
         {
             Browser.Eval("checkExtendFunctionalMethodPrototypeWithInitArguments();");
             AssertSuccess("Ra extend doesn't work");
         }
 
         [NUnit.Framework.Test]
-        public void TestExtendWorksPrototypeInstanceInitWithMultipleArgs()
+        public void ExtendWorksPrototypeInstanceInitWithMultipleArgs()
         {
             Browser.Eval("checkExtendFunctionalMethodPrototypeWithMultipleInitArguments();");
             AssertSuccess("Ra extend doesn't work");
         }
 
         [NUnit.Framework.Test]
-        public void TestExtendWithThisCheck()
+        public void ExtendWithThisCheck()
         {
             Browser.Eval("checkExtendMethodPrototypeWithThisArgument();");
             AssertSuccess("Ra extend doesn't work");
         }
 
         [NUnit.Framework.Test]
-        public void TestExtendWithInheritanceOverride()
+        public void ExtendWithInheritanceOverride()
         {
             Browser.Eval("checkExtendInheritanceOverride();");
             AssertSuccess("Ra extend doesn't work");
         }
 
         [NUnit.Framework.Test]
-        public void TestElementExtended()
+        public void ElementExtended()
         {
             Browser.Eval("checkRaElementExtendWorks();");
             AssertSuccess("Ra extend doesn't work");
         }
 
         [NUnit.Framework.Test]
-        public void TestElementReplace()
+        public void ElementReplace()
         {
             Browser.Eval("checkRaElementReplaceWorks();");
             AssertSuccess("Ra.Element.replace doesn't work");
         }
 
         [NUnit.Framework.Test]
-        public void TestElementSetVisible()
+        public void ElementSetVisible()
         {
             Browser.Eval("checkRaElementReplaceWorks();");
             AssertSuccess("Ra.Element.setVisible doesn't work");
         }
 
         [NUnit.Framework.Test]
-        public void TestRemove()
+        public void Remove()
         {
             Browser.Eval("checkRemove();");
             AssertSuccess("Ra.Element.remove doesn't work");
         }
 
         [NUnit.Framework.Test]
-        public void TestSetContent()
+        public void SetContent()
         {
             Browser.Eval("checkSetContent();");
             AssertSuccess("Ra.Element.setContent doesn't work");
         }
 
         [NUnit.Framework.Test]
-        public void TestAddClassName()
+        public void AddClassName()
         {
             Browser.Eval("checkAddClassName();");
             AssertSuccess("Ra.Element.addClassName doesn't work");
         }
 
         [NUnit.Framework.Test]
-        public void TestRemoveClassName()
+        public void RemoveClassName()
         {
             Browser.Eval("checkRemoveClassName();");
             AssertSuccess("Ra.Element.removeClassName doesn't work");
         }
 
         [NUnit.Framework.Test]
-        public void TestOpacity()
+        public void Opacity()
         {
             Browser.Eval("checkOpacity();");
             AssertSuccess("Ra.Element.setOpacity/getOpacity doesn't work");
         }
 
         [NUnit.Framework.Test]
-        public void TestFadeAndAppear()
+        public void FadeAndAppear()
         {
             Browser.Eval("testFadeAndAppear();");
             System.Threading.Thread.Sleep(2500);
@@ -161,14 +161,14 @@ namespace NUnitTests
         }
 
         [NUnit.Framework.Test]
-        public void TestElementObserve()
+        public void ElementObserve()
         {
             Browser.Button("evtTestBtn").Click();
             AssertSuccess("Ra.Element.observe doesn't work");
         }
 
         [NUnit.Framework.Test]
-        public void TestElementStopObserving()
+        public void ElementStopObserving()
         {
             Browser.Button("evtTestBtnPre").Click();
             Browser.Button("evtTestBtn2").Click();
@@ -176,63 +176,63 @@ namespace NUnitTests
         }
 
         [NUnit.Framework.Test]
-        public void TestXHRBasics()
+        public void XHRBasics()
         {
             Browser.Button("testXHR").Click();
             AssertSuccess("Ra.XHR basics doesn't work");
         }
 
         [NUnit.Framework.Test]
-        public void TestXHRSingleParameter()
+        public void XHRSingleParameter()
         {
             Browser.Button("testXHRParams").Click();
             AssertSuccess("Ra.XHR basics doesn't work");
         }
 
         [NUnit.Framework.Test]
-        public void TestFormSubmit()
+        public void FormSubmit()
         {
             Browser.Button("testFormCallback").Click();
             AssertSuccess("Ra.Form basics doesn't work");
         }
 
         [NUnit.Framework.Test]
-        public void TestFormSubmitNoCallingContext()
+        public void FormSubmitNoCallingContext()
         {
             Browser.Button("testFormCallback2").Click();
             AssertSuccess("Ra.Form basics doesn't work");
         }
 
         [NUnit.Framework.Test]
-        public void TestFormSubmitWithError()
+        public void FormSubmitWithError()
         {
             Browser.Button("testFormCallbackError").Click();
             AssertSuccess("Ra.Form submit with error doesn't work");
         }
 
         [NUnit.Framework.Test]
-        public void TestFormSubmitParams1()
+        public void FormSubmitParams1()
         {
             Browser.Button("testFormCallbackWithTextInputField").Click();
             AssertSuccess("Ra.Form submit with parameters doesn't work");
         }
 
         [NUnit.Framework.Test]
-        public void TestFormSubmitParamsWeird()
+        public void FormSubmitParamsWeird()
         {
             Browser.Button("testFormCallbackWithWeirdTextInputField").Click();
             AssertSuccess("Ra.Form submit with parameters doesn't work");
         }
 
         [NUnit.Framework.Test]
-        public void TestFormSubmitParamsMultiple()
+        public void FormSubmitParamsMultiple()
         {
             Browser.Button("testFormCallbackMultiple").Click();
             AssertSuccess("Ra.Form submit with parameters doesn't work");
         }
 
         [NUnit.Framework.Test]
-        public void TestMultipleQueuedAjaxRequests()
+        public void MultipleQueuedAjaxRequests()
         {
             Browser.Button("testMultipleRequestsBtn").Click();
             System.Threading.Thread.Sleep(1000);
