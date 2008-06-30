@@ -13,14 +13,14 @@ namespace NUnitTests
         }
 
         [NUnit.Framework.Test]
-        public void TestJSONBasics()
+        public void JSONBasics()
         {
             Browser.Button("testJSONBasicsBtn").Click();
             AssertSuccess("Ra JSON serialization doesn't work");
         }
 
         [NUnit.Framework.Test]
-        public void TestSettingButtonInVisible()
+        public void SettingButtonInVisible()
         {
             Browser.Button("testCallback").Click();
             Browser.Eval("checkThatButtonWasDeleted();");
@@ -28,7 +28,7 @@ namespace NUnitTests
         }
 
         [NUnit.Framework.Test]
-        public void TestSettingButtonInVisibleMadeVisible()
+        public void SettingButtonInVisibleMadeVisible()
         {
             Browser.Eval("checkThatButtonIsInitiallyCreatedInVisible();");
             Browser.Button("testCallbackSetButtonVisible").Click();
@@ -37,18 +37,25 @@ namespace NUnitTests
         }
 
         [NUnit.Framework.Test]
-        public void TestCheckCssClass()
+        public void CheckCssClass()
         {
             Browser.Eval("checkCssClass();");
             AssertSuccess("Ra Control CssClass was not serialized on initial rendering");
         }
 
         [NUnit.Framework.Test]
-        public void TestCheckStyleSerialization()
+        public void CheckStyleSerialization()
         {
             Browser.Button("testAddStyles").Click();
             Browser.Eval("checkStylesAfterServerChange();");
             AssertSuccess("Ra Control Style serialization / JSON serialization didn't work");
+        }
+
+        [NUnit.Framework.Test]
+        public void SetTextOfButton()
+        {
+            Browser.Button("testSettingTextProperty").Click();
+            Assert.AreEqual("New Text", Browser.Button("testSettingTextProperty").Text);
         }
     }
 }
