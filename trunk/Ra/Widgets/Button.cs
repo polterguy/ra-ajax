@@ -17,7 +17,7 @@ namespace Ra.Widgets
 {
     [DefaultProperty("Text")]
     [ASP.ToolboxData("<{0}:Button runat=server />")]
-    public class Button : RaControl, IRaControl
+    public class Button : RaWebControl, IRaControl
     {
         public event EventHandler Clicked;
 
@@ -28,13 +28,6 @@ namespace Ra.Widgets
         {
             get { return ViewState["Text"] == null ? "" : (string)ViewState["Text"]; }
             set { ViewState["Text"] = value; }
-        }
-
-        [DefaultValue("")]
-        public string CssClass
-        {
-            get { return ViewState["CssClass"] == null ? "" : (string)ViewState["CssClass"]; }
-            set { ViewState["CssClass"] = value; }
         }
 
         #endregion

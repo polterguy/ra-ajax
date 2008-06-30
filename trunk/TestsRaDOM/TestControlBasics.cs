@@ -33,14 +33,22 @@ namespace NUnitTests
             Browser.Eval("checkThatButtonIsInitiallyCreatedInVisible();");
             Browser.Button("testCallbackSetButtonVisible").Click();
             Browser.Eval("checkThatButtonWasCreated();");
-            AssertSuccess("Ra Control was not removed out of collection when set to invisible");
+            AssertSuccess("Ra Control was not created");
         }
 
         [NUnit.Framework.Test]
         public void TestCheckCssClass()
         {
             Browser.Eval("checkCssClass();");
-            AssertSuccess("Ra Control was not removed out of collection when set to invisible");
+            AssertSuccess("Ra Control CssClass was not serialized on initial rendering");
+        }
+
+        [NUnit.Framework.Test]
+        public void TestCheckStyleSerialization()
+        {
+            Browser.Button("testAddStyles").Click();
+            Browser.Eval("checkStylesAfterServerChange();");
+            AssertSuccess("Ra Control Style serialization / JSON serialization didn't work");
         }
     }
 }

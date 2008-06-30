@@ -9,7 +9,9 @@
  */
 
 using System;
+using System.Collections.Generic;
 using System.Web.UI;
+using System.Text;
 
 namespace Ra.Widgets
 {
@@ -37,6 +39,69 @@ namespace Ra.Widgets
         {
             get { return _controlRenderingState; }
             set { _controlRenderingState = value; }
+        }
+
+        private Dictionary<string, object> _JSONValues = new Dictionary<string, object>();
+
+        public Dictionary<string, string> GetJSONValueDictionary(string key)
+        {
+            if (!_JSONValues.ContainsKey(key))
+            {
+                _JSONValues[key] = new Dictionary<string, string>();
+            }
+            return (Dictionary<string, string>)_JSONValues[key];
+        }
+
+        public virtual string SerializeJSON()
+        {
+            // Short circuting
+            if (_JSONValues.Count == 0)
+                return null;
+
+            StringBuilder builder = new StringBuilder();
+            builder.Append("{");
+
+            bool first = true;
+            foreach (string idxKey in _JSONValues.Keys)
+            {
+                if (first)
+                    first = false;
+                else
+                    builder.Append(",");
+                object idxValue = _JSONValues[idxKey];
+                SerializeJSONValue(idxKey, idxValue, builder);
+            }
+            builder.Append("}");
+            return builder.ToString();
+        }
+
+        protected virtual void SerializeJSONValue(string key, object value, StringBuilder builder)
+        {
+            // TODO: Create more general approach, this one only handles TWO level deep JSON objects...
+            if (value.GetType() == typeof(string))
+            {
+                builder.AppendFormat("\"{0}\":\"{1}\"",
+                    key,
+                    value.ToString().Replace("\\", "\\\\").Replace("\"", "\\\""));
+                return;
+            }
+            if (value.GetType() == typeof(Dictionary<string, string>))
+            {
+                Dictionary<string, string> values = value as Dictionary<string, string>;
+                builder.AppendFormat("\"{0}\":[", key);
+                bool first = true;
+                foreach (string idxKey in values.Keys)
+                {
+                    if (first)
+                        first = false;
+                    else
+                        builder.Append(",");
+                    builder.AppendFormat("[\"{0}\",\"{1}\"]", 
+                        idxKey,
+                        values[idxKey].Replace("\\", "\\\\").Replace("\"", "\\\""));
+                }
+                builder.Append("]");
+            }
         }
 
         protected override void OnInit(EventArgs e)
