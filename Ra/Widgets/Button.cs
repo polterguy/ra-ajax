@@ -11,6 +11,19 @@ namespace Ra.Widgets
     {
         public event EventHandler Clicked;
 
+        #region [ -- Properties -- ]
+
+        [DefaultValue("")]
+        public string Text
+        {
+            get { return ViewState["Text"] == null ? "" : (string)ViewState["Text"]; }
+            set { ViewState["Text"] = value; }
+        }
+
+        #endregion
+
+        # region [ -- Overridden (abstract/virtual) methods from RaControl -- ]
+
         // Override this one to handle events fired on the client-side
         public override void DispatchEvent(string name)
         {
@@ -37,7 +50,11 @@ namespace Ra.Widgets
         // Override this one to create specific HTML for your widgets
         public override string GetHTML()
         {
-            return string.Format("<input type=\"button\" value=\"Value\" id=\"{0}\" />", ClientID);
+            return string.Format("<input type=\"button\" id=\"{0}\" value=\"{1}\" />", 
+                ClientID,
+                Text.Replace("\\", "\\\\").Replace("'", "\\'"));
         }
+
+        #endregion
     }
 }

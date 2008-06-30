@@ -83,25 +83,30 @@ function checkThatButtonIsInitiallyCreatedInVisible() {
 
                 <ra:Button 
                     ID="Button1" 
+                    Text="Text JSON messaging to Control"
                     runat="server" />
 
                 <ra:Button 
                     ID="setVisible" 
                     Visible="false"
+                    Text="This was in-visible before"
                     runat="server" />
 
                 <ra:Button 
                     ID="testCallback" 
                     runat="server" 
+                    Text="Test Callback and set button to IN-visible"
                     OnClicked="testCallback_Clicked" />
 
                 <ra:Button 
                     ID="testCallbackSetButtonVisible" 
                     runat="server" 
+                    Text="Test set button to Visible"
                     OnClicked="testCallbackSetButtonVisible_Clicked" />
 
                 <ra:Button 
                     ID="setInVisible" 
+                    Text="This one will become in-visible"
                     runat="server" />
                 
                 <input type="button" value="Test JSON Basics" id="testJSONBasicsBtn" onclick="checkJSONBasics();" />

@@ -64,9 +64,8 @@ namespace Ra.Widgets
             if (Phase == RenderingPhase.Destroy)
                 Phase = RenderingPhase.Invisible;
 
-            // If this method is being called and we don't have the Invisible property 
-            // we have previously saved the RenderingPhase meaning the control must 
-            // logically be set to PropertyChanges...
+            // If the Phase was previously saved with any other value than Invisible/Destroy
+            // then the control must logically be in PropertyChanges mode...
             else if (Phase != RenderingPhase.Invisible)
                 Phase = RenderingPhase.PropertyChanges;
         }
@@ -77,31 +76,42 @@ namespace Ra.Widgets
 
         protected override object SaveControlState()
         {
-            // If control is Invisible acording to RenderingPhase and still this method is 
-            // called and control within this method is Visible then this is the 
-            // first rendering of the control and we need to render the "replace of wrapper span" logic
+            // If control is Invisible acording to RenderingPhase and still control is
+            // logicall Visible then this is the first rendering of the control
             if (Phase == RenderingPhase.Invisible && Visible)
             {
+                // If it's an Ajax Callback e need to run the "replace logic"
+                // If it's NOT an Ajax Callback then we just render the HTML plain...
                 if (AjaxManager.Instance.IsCallback)
                     Phase = RenderingPhase.MadeVisibleThisRequest;
                 else
                     Phase = RenderingPhase.RenderHtml;
             }
 
-            else if (Phase == RenderingPhase.PropertyChanges && !Visible)
+            // If control state is not Invisible but still Control is logically not Visible
+            // we need to run the "destroy logic" by setting its rendering phase to Destroy
+            else if (Phase != RenderingPhase.Invisible && !Visible)
             {
+                // Setting rendering phase to destroy
                 Phase = RenderingPhase.Destroy;
 
                 // We ALSO must loop through all CHILD controls and set their state to Invisible...!
+                // We don't HAVE to explicitly destroy the child controls from the server since
+                // our JavaScript API will make sure of that for us...
                 foreach (RaControl idx in AjaxManager.Instance.RaControls)
                 {
-                    // Checking to see if this is a CHILD control of the this widget...
-                    if (idx.ClientID != this.ClientID && idx.ClientID.IndexOf(this.ClientID) == 0)
+                    if (IsChildControl(idx))
                         idx.Phase = RenderingPhase.Invisible;
                 }
             }
 
+            // Returning Phase to the ControlState serialization logic of the runtime
             return Phase;
+        }
+
+        private bool IsChildControl(RaControl idx)
+        {
+            return idx.ClientID != this.ClientID && idx.ClientID.IndexOf(this.ClientID) == 0;
         }
 
         public override void RenderControl(HtmlTextWriter writer)
@@ -110,18 +120,25 @@ namespace Ra.Widgets
             {
                 case RenderingPhase.Destroy:
                     // TODO: Destroy control
+                    // Handled in AjaxManager.RenderCallback
                     break;
                 case RenderingPhase.Invisible:
-                    writer.Write(GetInvisibleHTML());
+                    // We must render the Wrapper Span, but ONLY if this is NOT an Ajax Callback...
+                    if (!AjaxManager.Instance.IsCallback)
+                        writer.Write(GetInvisibleHTML());
                     break;
                 case RenderingPhase.MadeVisibleThisRequest:
                     // Replace wrapper span for control
+                    // Handled in AjaxManager.RenderCallback
                     break;
                 case RenderingPhase.PropertyChanges:
                     // Serialize JSON changes to control
+                    // Handled in AjaxManager.RenderCallback
                     break;
                 case RenderingPhase.RenderHtml:
-                    writer.Write(GetHTML());
+                    // We must render the HTML for the Control, but ONLY if this is NOT an Ajax Callback
+                    if (!AjaxManager.Instance.IsCallback)
+                        writer.Write(GetHTML());
                     break;
             }
         }
@@ -136,7 +153,6 @@ namespace Ra.Widgets
         public abstract string GetHTML();
 
         // The INVISIBLE HTML for the control
-
         public virtual string GetInvisibleHTML()
         {
             return string.Format("<span id=\"{0}\" style=\"display:none;\">&nbsp;</span>", ClientID);

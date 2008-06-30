@@ -85,7 +85,6 @@ Ra.extend(Ra.Control.prototype, {
   // Expects only a string
   CssClass: function(value) {
     this.element.className = value;
-    return this;
   },
 
   // Expects and array of arrays where each array-item is a key/value object
@@ -95,7 +94,6 @@ Ra.extend(Ra.Control.prototype, {
     for( var idx = 0; idx < values.length; idx++ ) {
       this.element.style[values[idx][0]] = values[idx][1];
     }
-    return this;
   },
 
   // Expects an ARRAY of strings where each value is a style property
@@ -104,7 +102,10 @@ Ra.extend(Ra.Control.prototype, {
     for( var idx = 0; idx < values.length; idx++ ) {
       this.element.style[values[idx]] = '';
     }
-    return this;
+  },
+
+  Text: function(value) {
+    this.element.setContent(value);
   },
 
 

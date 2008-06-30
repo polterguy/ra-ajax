@@ -51,35 +51,39 @@ namespace Ra
 
         public void InitializeControl(RaControl ctrl)
         {
-            _raControls.Add(ctrl);
-            if (IsCallback)
+            // We store all Ra Controls in a list for easily access later down the road...
+            RaControls.Add(ctrl);
+
+            // Making sure we only run the initialization logic ONCE...!!
+            if (RaControls.Count == 1)
             {
-                // This is a Ra Ajax callback, we need to wait until the Page Load 
-                // events are finished loading and then find the control which
-                // wants to fire an event and do so...
-                // Though we only add this Event Handler ONCE
-                if (_raControls.Count == 1)
+                if (IsCallback)
                 {
+                    // This is a Ra Ajax callback, we need to wait until the Page Load 
+                    // events are finished loading and then find the control which
+                    // wants to fire an event and do so...
                     CurrentPage.LoadComplete += CurrentPage_LoadComplete;
+
+                    // Checking to see if the Filtering logic has been supressed
                     if (!SupressAjaxFilters)
-                        // Since you can concatenate filters, we need to "keep track" of the previous one...
                         CurrentPage.Response.Filter = new CallbackFilter(CurrentPage.Response.Filter);
                 }
-            }
-            else
-            {
-                // We STILL need a FILTER on the Response object
-                // Though we only add this filter ONCE...!!
-                if (_raControls.Count == 1 && !SupressAjaxFilters)
-                    CurrentPage.Response.Filter = new PostbackFilter(CurrentPage.Response.Filter);
+                else
+                {
+                    // Checking to see if the Filtering logic has been supressed
+                    if (!SupressAjaxFilters)
+                        CurrentPage.Response.Filter = new PostbackFilter(CurrentPage.Response.Filter);
+                }
             }
         }
 
+        // This is the place where we're dispatching RA events.
+        // We should only be here is a Ra Control has created an Ajax Callback
         void CurrentPage_LoadComplete(object sender, EventArgs e)
         {
             // Finding the Control which initiated the request
             string idOfControl = CurrentPage.Request.Params["__RA_CONTROL"];
-            RaControl ctrl = _raControls.Find(
+            RaControl ctrl = RaControls.Find(
                 delegate(RaControl idx)
                 {
                     return idx.ClientID == idOfControl;
@@ -94,6 +98,8 @@ namespace Ra
             {
                 throw new ApplicationException("A control which was not a Ra Control initiated a callback, implement the IRaControl interface on the control");
             }
+
+            // Dispatching the event to our Ra Control...
             raCtrl.DispatchEvent(eventName);
         }
 
@@ -121,9 +127,12 @@ namespace Ra
                     case RaControl.RenderingPhase.Destroy:
                         writer.WriteLine("Ra.Control.$('{0}').destroy();", idx.ClientID);
                         break;
+
                     case RaControl.RenderingPhase.Invisible:
                         // Do nothing...
+                        // Handled in RaControl.RenderControl
                         break;
+
                     case RaControl.RenderingPhase.MadeVisibleThisRequest:
                         // Rendering replace logic and register script logic
                         writer.WriteLine("Ra.$('{0}').replace('{1}');", 
@@ -131,11 +140,15 @@ namespace Ra
                             idx.GetHTML().Replace("\\", "\\\\").Replace("'", "\\'"));
                         writer.WriteLine(idx.GetClientSideScript());
                         break;
+
                     case RaControl.RenderingPhase.PropertyChanges:
                         // Render JSON changes
                         break;
+
                     case RaControl.RenderingPhase.RenderHtml:
-                        // Should NOT be possible...!
+                        // This control is a Child control of another Control which was made visible 
+                        // this request...
+                        // Handled in RaControl.RenderControl
                         break;
                 }
             }
