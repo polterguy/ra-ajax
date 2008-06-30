@@ -1,3 +1,12 @@
+/*
+ * Ra Ajax, Copyright 2008 - Thomas Hansen polterguy@gmail.com
+ *
+ * Ra is Dual Licensed software, it is licensed under both an MITish license and a
+ * pure GPL version 3 license. The licenses should exist on disc where you extracted Ra
+ * and will be named license.txt
+ * 
+ */
+
 
 // ==============================================================================
 // Ra.Control class
