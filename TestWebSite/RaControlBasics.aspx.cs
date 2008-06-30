@@ -26,4 +26,9 @@ public partial class RaControlBasics : System.Web.UI.Page
         testAddStyles.Style["width"] = "150px";
         testAddStyles.Style["font-weight"] = "bold";
     }
+
+    protected void testSettingTextProperty_Clicked(object sender, EventArgs e)
+    {
+        testSettingTextProperty.Text = "New Text";
+    }
 }

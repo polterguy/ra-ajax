@@ -45,11 +45,29 @@ namespace Ra.Widgets
 
         public Dictionary<string, string> GetJSONValueDictionary(string key)
         {
-            if (!_JSONValues.ContainsKey(key))
+            if (this.IsTrackingViewState)
             {
-                _JSONValues[key] = new Dictionary<string, string>();
+                if (!_JSONValues.ContainsKey(key))
+                {
+                    _JSONValues[key] = new Dictionary<string, string>();
+                }
+                return (Dictionary<string, string>)_JSONValues[key];
             }
-            return (Dictionary<string, string>)_JSONValues[key];
+            else
+            {
+                // If we're NOT tracking ViewState yet we're not bothering to store
+                // changes in the _JSONValues at all since they might occur due
+                // to declarative syntax in e.g. .ASPX file or OnInit or some other
+                // places...
+                // Though to avoid runtime failure we're returning a "dummy" object here...
+                return new Dictionary<string, string>();
+            }
+        }
+
+        public void SetJSONValueString(string key, string value)
+        {
+            if (this.IsTrackingViewState)
+                _JSONValues[key] = value;
         }
 
         public virtual string SerializeJSON()

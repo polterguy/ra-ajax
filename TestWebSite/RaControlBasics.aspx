@@ -148,6 +148,12 @@ function checkStylesAfterServerChange() {
                     OnClicked="testAddStyles_Clicked"
                     runat="server" />
 
+                <ra:Button 
+                    ID="testSettingTextProperty" 
+                    Text="Test Change Text value"
+                    OnClicked="testSettingTextProperty_Clicked"
+                    runat="server" />
+
                 <input type="button" value="Test JSON Basics" id="testJSONBasicsBtn" onclick="checkJSONBasics();" />
                 <input type="button" value="Dummy Test Button" id="Button2" onclick="checkStylesAfterServerChange();" />
             </div>
