@@ -30,7 +30,7 @@ namespace Ra.Widgets
             set
             {
                 ViewState["Text"] = value;
-                SetJSONValueString("Value", Text);
+                SetJSONValueString("Value", value);
             }
         }
 

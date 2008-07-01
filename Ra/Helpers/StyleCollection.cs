@@ -47,9 +47,18 @@ namespace Ra.Widgets
 
                 if (_isTrackingViewState)
                 {
-                    Dictionary<string, string> styles = _control.GetJSONValueDictionary("AddStyle");
-                    if (styles.ContainsKey(idx))
-                        return styles[idx];
+                    if (_control.HasJSONValueDictionary("AddStyle"))
+                    {
+                        Dictionary<string, string> styles = _control.GetJSONValueDictionary("AddStyle");
+                        if (styles.ContainsKey(idx))
+                            return styles[idx];
+                        else
+                        {
+                            if (_beforeViewStateDictionary.ContainsKey(idx))
+                                return _beforeViewStateDictionary[idx];
+                            return null;
+                        }
+                    }
                     else
                     {
                         if (_beforeViewStateDictionary.ContainsKey(idx))

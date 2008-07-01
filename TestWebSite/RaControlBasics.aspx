@@ -1,6 +1,6 @@
 <%@ Page 
     Language="C#" 
-    AutoEventWireup="true" 
+    AutoEventWireup="true"
     CodeFile="RaControlBasics.aspx.cs" 
     Inherits="RaControlBasics" %>
 
