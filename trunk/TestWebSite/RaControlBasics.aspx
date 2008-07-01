@@ -92,7 +92,7 @@ function checkStylesAfterServerChange() {
 
 function checkStylesWasSerialized() {
   var el = Ra.$('testStyleSerialized');
-  if( el.style.width == '150px' )
+  if( el.style.width == '150px' && el.style.height == '100px' )
     Ra.$('results').innerHTML = 'success';
 }
 
