@@ -18,6 +18,13 @@ namespace NUnitTests
             Browser.Eval("verifyLabelIsRendered();");
             AssertSuccess("Ra JSON serialization doesn't work");
         }
+
+        [NUnit.Framework.Test]
+        public void ChangeValueOfLabel()
+        {
+            Browser.Button("textChangeLabelValue").Click();
+            Assert.AreEqual("New value", Browser.Span("testChangeValue").Text);
+        }
     }
 }
 

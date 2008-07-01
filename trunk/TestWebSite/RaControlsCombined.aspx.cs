@@ -11,8 +11,8 @@ using System.Web.UI.HtmlControls;
 
 public partial class RaControlsCombined : System.Web.UI.Page
 {
-    protected void Page_Load(object sender, EventArgs e)
+    protected void textChangeLabelValue_Click(object sender, EventArgs e)
     {
-
+        testChangeValue.Text = "New value";
     }
 }
