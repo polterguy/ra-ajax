@@ -1,4 +1,14 @@
-﻿using System.Reflection;
+﻿/*
+ * Ra Ajax - An Ajax Library for Mono ++
+ * Copyright 2008 - Thomas Hansen polterguy@gmail.com
+ * This code is licensed under an MIT(ish) kind of license which 
+ * can be found in the license.txt file on disc in addition to that 
+ * the code also is licensed under a pure GPL license for those that
+ * cannot for some reasons obey by rules in the MIT(ish) kind of license.
+ * 
+ */
+
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Web.UI;
@@ -6,13 +16,13 @@ using System.Web.UI;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Ra")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Ra Ajax")]
+[assembly: AssemblyDescription("An Ajax library for ASP.NET and Mono")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Ra")]
-[assembly: AssemblyCopyright("Copyright ©  2008")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyProduct("Ra Ajax")]
+[assembly: AssemblyCopyright("Copyright ©  2008 - Thomas Hansen")]
+[assembly: AssemblyTrademark("Ra Ajax")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -32,8 +42,8 @@ using System.Web.UI;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("1.0.11.0")]
-[assembly: AssemblyFileVersion("1.0.11.0")]
+[assembly: AssemblyVersion("0.3.11.0")]
+[assembly: AssemblyFileVersion("0.3.11.0")]
 
 
 
