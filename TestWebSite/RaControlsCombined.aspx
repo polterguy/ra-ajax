@@ -39,6 +39,9 @@ function verifyLabelIsRendered() {
         <form id="form1" runat="server">
             <div>
                 <ra:Label runat="server" ID="lbl" Text="Some label" />
+                <br />
+                <ra:Label runat="server" ID="testChangeValue" Text="Some value" />
+                <ra:Button runat="server" ID="textChangeLabelValue" OnClick="textChangeLabelValue_Click" Text="Test changing value of label" />
             </div>
         </form>
     </body>
