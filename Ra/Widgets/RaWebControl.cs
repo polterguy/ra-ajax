@@ -126,6 +126,20 @@ namespace Ra.Widgets
             }
         }
 
+        protected virtual string GetStyleHTMLFormatedAttribute()
+        {
+            string style = Style.ToString();
+            if (style.Length > 0)
+                style = string.Format(" style=\"{0}\"", style);
+            return style;
+        }
+
+        protected virtual string GetCssClassHTMLFormatedAttribute()
+        {
+            string cssClass = string.IsNullOrEmpty(CssClass) ? "" : " class=\"" + CssClass + "\"";
+            return cssClass;
+        }
+
         #endregion
     }
 }
