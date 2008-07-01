@@ -12,6 +12,7 @@ using System;
 using System.Web.UI;
 using System.ComponentModel;
 using System.Collections.Generic;
+using Ra.Helpers;
 
 namespace Ra.Widgets
 {
@@ -91,10 +92,10 @@ namespace Ra.Widgets
             set { ViewState["CssClass"] = value; }
         }
 
-        // TODO: Serialize Style to ViewState
         public StyleCollection Style
         {
             get { return _styles; }
+            set { _styles = value; }
         }
 
         #endregion

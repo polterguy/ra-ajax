@@ -129,6 +129,9 @@ namespace Ra.Widgets
 
         protected override void OnInit(EventArgs e)
         {
+            if (DesignMode)
+                return;
+
             // To initialize control
             AjaxManager.Instance.InitializeControl(this);
 
@@ -204,6 +207,9 @@ namespace Ra.Widgets
 
         public override void RenderControl(HtmlTextWriter writer)
         {
+            if (DesignMode)
+                return;
+
             switch (Phase)
             {
                 case RenderingPhase.Destroy:

@@ -167,9 +167,51 @@ function checkStylesAfterServerChange() {
                     OnClick="testVerifyStyleValue_Click"
                     runat="server" />
 
+                <br />
+                <br />
+
+                <ra:Button 
+                    ID="Button3" 
+                    Text="Verify Style properties serialized from .ASPX" 
+                    runat="server" />
+
+                <br />
+                <br />
+
                 <input type="button" value="Test JSON Basics" id="testJSONBasicsBtn" onclick="checkJSONBasics();" />
                 <input type="button" value="Dummy Test Button" id="Button2" onclick="checkStylesAfterServerChange();" />
             </div>
         </form>
     </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

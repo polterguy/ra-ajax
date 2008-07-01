@@ -10,6 +10,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using Ra.Helpers;
+using System.ComponentModel.Design.Serialization;
 
 namespace Ra.Widgets
 {
@@ -22,6 +25,11 @@ namespace Ra.Widgets
         public StyleCollection(RaWebControl control)
         {
             _control = control;
+        }
+
+        public RaWebControl Control
+        {
+            get { return _control; }
         }
 
         internal void TrackViewState()
@@ -109,6 +117,18 @@ namespace Ra.Widgets
         internal void SetStylesFromViewState(Dictionary<string, string> values)
         {
             _beforeViewStateDictionary = values;
+        }
+
+        public override string ToString()
+        {
+            string retVal = "";
+            if (this._beforeViewStateDictionary == null)
+                return "";
+            foreach (string idxKey in this._beforeViewStateDictionary.Keys)
+            {
+                retVal += idxKey + ":" + _beforeViewStateDictionary[idxKey] + ";";
+            }
+            return retVal;
         }
     }
 }
