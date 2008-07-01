@@ -47,6 +47,7 @@
     <Compile Include="Widgets\Label.cs" />
     <Compile Include="Widgets\RaControl.cs" />
     <Compile Include="Widgets\RaWebControl.cs" />
+    <Compile Include="Widgets\TextBox.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Js\JsCore\Ra.js" />

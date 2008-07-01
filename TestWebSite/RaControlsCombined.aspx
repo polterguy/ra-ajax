@@ -56,6 +56,12 @@ function verifyAccessKeyWorks() {
                 <ra:Label runat="server" ID="testChangeValue" Text="Some value" />
                 <ra:Button runat="server" ID="textChangeLabelValue" OnClick="textChangeLabelValue_Click" Text="Test changing value of label" />
                 <ra:Button runat="server" ID="accessKeyButton" OnClick="accessKeyButton_Click" Text="Test AccessKey property" AccessKey="1" />
+                
+                <br />
+                <br />
+                
+                <ra:TextBox runat="server" ID="txtBox" Text="Value of text box" />
+                <ra:Button runat="server" ID="testChangeTextBoxValue" Text="Change textbox value" OnClick="testChangeTextBoxValue_Click" />
             </div>
         </form>
     </body>
