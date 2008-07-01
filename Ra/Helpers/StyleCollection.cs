@@ -128,6 +128,14 @@ namespace Ra.Widgets
             {
                 retVal += idxKey + ":" + _beforeViewStateDictionary[idxKey] + ";";
             }
+            if (_control.HasJSONValueDictionary("AddStyle"))
+            {
+                Dictionary<string, string> jsonStyles = _control.GetJSONValueDictionary("AddStyle");
+                foreach (string idxKey in jsonStyles.Keys)
+                {
+                    retVal += idxKey + ":" + jsonStyles[idxKey] + ";";
+                }
+            }
             return retVal;
         }
     }

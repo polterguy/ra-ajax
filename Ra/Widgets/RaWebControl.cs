@@ -16,7 +16,7 @@ using Ra.Helpers;
 
 namespace Ra.Widgets
 {
-    public abstract class RaWebControl : RaControl
+    public abstract class RaWebControl : RaControl, IAttributeAccessor
     {
         StyleCollection _styles;
 
@@ -92,10 +92,38 @@ namespace Ra.Widgets
             set { ViewState["CssClass"] = value; }
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [Browsable(true)]
         public StyleCollection Style
         {
             get { return _styles; }
-            set { _styles = value; }
+        }
+
+        #endregion
+
+        #region IAttributeAccessor Members
+
+        public string GetAttribute(string key)
+        {
+            if (key.ToLower() == "style")
+            {
+                // TODO: Implement...!!
+                return "color:Red;";
+            }
+            return null;
+        }
+
+        public void SetAttribute(string key, string value)
+        {
+            if (key.ToLower() == "style")
+            {
+                string[] styles = value.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (string idx in styles)
+                {
+                    string[] keyValue = idx.Split(':');
+                    Style[keyValue[0]] = keyValue[1];
+                }
+            }
         }
 
         #endregion
