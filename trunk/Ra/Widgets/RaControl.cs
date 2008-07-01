@@ -130,7 +130,7 @@ namespace Ra.Widgets
         protected override void OnInit(EventArgs e)
         {
             if (DesignMode)
-                return;
+                throw new ApplicationException("Ra Ajax doesn't support Design time");
 
             // To initialize control
             AjaxManager.Instance.InitializeControl(this);
@@ -208,7 +208,7 @@ namespace Ra.Widgets
         public override void RenderControl(HtmlTextWriter writer)
         {
             if (DesignMode)
-                return;
+                throw new ApplicationException("Ra Ajax doesn't support Design time");
 
             switch (Phase)
             {
