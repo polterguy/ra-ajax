@@ -11,6 +11,11 @@ using System.Web.UI.HtmlControls;
 
 public partial class RaControlBasics : System.Web.UI.Page
 {
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        testStyleSerialized.Style["height"] = "100px";
+    }
+
     protected void testCallback_Click(object sender, EventArgs e)
     {
         setInVisible.Visible = false;
