@@ -62,6 +62,19 @@ function verifyAccessKeyWorks() {
                 
                 <ra:TextBox runat="server" ID="txtBox" Text="Value of text box" />
                 <ra:Button runat="server" ID="testChangeTextBoxValue" Text="Change textbox value" OnClick="testChangeTextBoxValue_Click" />
+                
+                <br />
+                <br />
+                
+                <ra:TextBox runat="server" ID="testCallBack" Text="default text" OnTextChanged="testCallBack_TextChanged" />
+                
+                <br />
+                <br />
+                
+                <ra:TextBox runat="server" ID="txtComplexValue" Text="Some & complex __@£$%% value" />
+                <ra:Button runat="server" ID="changeToComplexValue" Text="Change textbox to complex value" OnClick="changeToComplexValue_Click" />
+                <ra:Button runat="server" ID="verifyComplexValue" Text="Verify complex value changed" OnClick="verifyComplexValue_Click" />
+                
             </div>
         </form>
     </body>

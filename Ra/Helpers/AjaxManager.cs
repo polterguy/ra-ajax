@@ -156,7 +156,7 @@ namespace Ra
                         string JSON = idx.SerializeJSON();
                         if (JSON != null)
                         {
-                            writer.WriteLine("Ra.Control.$('{0}').handleJSON('{1}');",
+                            writer.WriteLine("Ra.Control.$('{0}').handleJSON({1});",
                                 idx.ClientID,
                                 JSON);
                         }

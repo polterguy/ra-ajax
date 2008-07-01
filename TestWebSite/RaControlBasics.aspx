@@ -33,7 +33,7 @@ function init() {
 function checkJSONBasics() {
   var ctrl = Ra.Control.$('Button1');
 
-  ctrl.handleJSON('{"CssClass" : "testClass", "AddStyle" : [["width", "150px"], ["fontWeight", "bold"]]}');
+  ctrl.handleJSON({"CssClass" : "testClass", "AddStyle" : [["width", "150px"], ["fontWeight", "bold"]]});
 
   if( ctrl.element.className == 'testClass' && ctrl.element.style.width == '150px' && ctrl.element.style.fontWeight == 'bold') {
     Ra.$('results').setContent('success');
