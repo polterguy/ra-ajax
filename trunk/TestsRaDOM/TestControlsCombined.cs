@@ -39,6 +39,27 @@ namespace NUnitTests
             Browser.Button("testChangeTextBoxValue").Click();
             Assert.AreEqual("New text", Browser.TextField("txtBox").Text);
         }
+
+        [NUnit.Framework.Test]
+        public void ChangeValueOfTextBoxToComplexValue()
+        {
+            Browser.Button("changeToComplexValue").Click();
+            Browser.Button("verifyComplexValue").Click();
+            Assert.AreEqual("success", Browser.Button("verifyComplexValue").Text);
+        }
+
+        // TODO: Figure out how to test this...
+        //[NUnit.Framework.Test]
+        //public void ChangeValueOfTextBoxAndCallback()
+        //{
+        //    Browser.TextField("testCallBack").Focus();
+        //    Browser.TextField("testCallBack").Value = "testing value";
+
+        //    // Need to remove focus...
+        //    Browser.TextField("testCallBack").
+
+        //    Assert.AreEqual("After change", Browser.TextField("testCallBack").Text);
+        //}
     }
 }
 

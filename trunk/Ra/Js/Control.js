@@ -74,7 +74,7 @@ Ra.extend(Ra.Control.prototype, {
   // since they should (by convention) start with a CAPITAL letter to
   // mimick the looks of a property...
   handleJSON: function(json) {
-    var obj = eval('(' + json + ')');
+    var obj = eval(json);
 
     // Looping through all "top-level" objects and calling the functions for those keys
     for( var idxKey in obj ) {

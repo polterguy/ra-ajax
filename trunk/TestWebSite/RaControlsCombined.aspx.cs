@@ -25,4 +25,22 @@ public partial class RaControlsCombined : System.Web.UI.Page
     {
         txtBox.Text = "New text";
     }
+
+    protected void testCallBack_TextChanged(object sender, EventArgs e)
+    {
+        testCallBack.Text = "After change";
+    }
+
+    protected void changeToComplexValue_Click(object sender, EventArgs e)
+    {
+        txtComplexValue.Text = "&\"'''//\\";
+    }
+
+    protected void verifyComplexValue_Click(object sender, EventArgs e)
+    {
+        if (txtComplexValue.Text == "&\"'''//\\")
+        {
+            verifyComplexValue.Text = "success";
+        }
+    }
 }
