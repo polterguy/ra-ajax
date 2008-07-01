@@ -31,4 +31,17 @@ public partial class RaControlBasics : System.Web.UI.Page
     {
         testSettingTextProperty.Text = "New Text";
     }
+
+    protected void testChangeStyleValue_Click(object sender, EventArgs e)
+    {
+        testChangeStyleValue.Style["color"] = "Yellow";
+    }
+
+    protected void testVerifyStyleValue_Click(object sender, EventArgs e)
+    {
+        if (testChangeStyleValue.Style["color"] == "Yellow")
+        {
+            testVerifyStyleValue.Text = "success";
+        }
+    }
 }
