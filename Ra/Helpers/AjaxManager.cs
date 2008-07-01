@@ -217,7 +217,7 @@ namespace Ra
             foreach (RaControl idx in RaControls)
             {
                 if (idx.Phase == RaControl.RenderingPhase.MadeVisibleThisRequest || idx.Phase == RaControl.RenderingPhase.RenderHtml)
-                    builder.Append(idx.GetClientSideScript());
+                    builder.AppendLine(idx.GetClientSideScript());
             }
 
             // Adding script closing element

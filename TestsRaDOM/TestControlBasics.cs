@@ -57,6 +57,16 @@ namespace NUnitTests
             Browser.Button("testSettingTextProperty").Click();
             Assert.AreEqual("New Text", Browser.Button("testSettingTextProperty").Text);
         }
+
+        [NUnit.Framework.Test]
+        public void ViewStateSerializationOfStyleProperty()
+        {
+            Browser.Button("testChangeStyleValue").Click();
+            System.Threading.Thread.Sleep(1000);
+            Browser.Button("testVerifyStyleValue").Click();
+            System.Threading.Thread.Sleep(1000);
+            Assert.AreEqual("success", Browser.Button("testVerifyStyleValue").Text);
+        }
     }
 }
 
