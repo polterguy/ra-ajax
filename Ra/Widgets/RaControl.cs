@@ -238,10 +238,14 @@ namespace Ra.Widgets
         }
 
         // Used for dispatching events for the Control
-        public abstract void DispatchEvent(string name);
+        public virtual void DispatchEvent(string name)
+        { }
 
         // Used to retrieve the client-side initialization script
-        public abstract string GetClientSideScript();
+        public virtual string GetClientSideScript()
+        {
+            return string.Format("new Ra.Control('{0}');", ClientID);
+        }
 
         // The HTML for the control
         public abstract string GetHTML();

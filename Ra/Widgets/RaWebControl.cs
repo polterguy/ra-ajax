@@ -129,7 +129,7 @@ namespace Ra.Widgets
         protected virtual string GetStyleHTMLFormatedAttribute()
         {
             string style = Style.ToString();
-            if (style.Length > 0)
+            if (!string.IsNullOrEmpty(style))
                 style = string.Format(" style=\"{0}\"", style);
             return style;
         }
