@@ -15,4 +15,9 @@ public partial class RaControlsCombined : System.Web.UI.Page
     {
         testChangeValue.Text = "New value";
     }
+
+    protected void accessKeyButton_Click(object sender, EventArgs e)
+    {
+        accessKeyButton.Text = "clicked";
+    }
 }

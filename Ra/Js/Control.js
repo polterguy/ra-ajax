@@ -109,6 +109,11 @@ Ra.extend(Ra.Control.prototype, {
     this.element.setContent(value);
   },
 
+  // Expects a single character - Sets the access key (ALT + value) for giving focus to control
+  AccessKey: function(value) {
+    this.element.accesskey = value;
+  },
+
   // Expects a text value, sets the "value" of the control to the given value
   // Useful for TextBoxes (input type="text") and so on...
   Value: function(value) {
