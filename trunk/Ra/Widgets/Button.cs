@@ -65,11 +65,15 @@ namespace Ra.Widgets
         // Override this one to create specific HTML for your widgets
         public override string GetHTML()
         {
-            string cssClass = CssClass == null ? "" : " class=\"" + CssClass + "\"";
-            return string.Format("<input type=\"button\" id=\"{0}\" value=\"{1}\"{2} />", 
+            string cssClass = string.IsNullOrEmpty(CssClass) ? "" : " class=\"" + CssClass + "\"";
+            string style = Style.ToString();
+            if (style.Length > 0)
+                style = string.Format(" style=\"{0}\"", style);
+            return string.Format("<input type=\"button\" id=\"{0}\" value=\"{1}\"{2}{3} />", 
                 ClientID,
                 Text.Replace("\\", "\\\\").Replace("'", "\\'"),
-                cssClass);
+                cssClass,
+                style);
         }
 
         #endregion

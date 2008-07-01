@@ -90,6 +90,18 @@ function checkStylesAfterServerChange() {
 
 
 
+function checkStylesWasSerialized() {
+  var el = Ra.$('testStyleSerialized');
+  if( el.style.width == '150px' )
+    Ra.$('results').innerHTML = 'success';
+}
+
+
+
+
+
+
+
 
 
 
@@ -171,8 +183,9 @@ function checkStylesAfterServerChange() {
                 <br />
 
                 <ra:Button 
-                    ID="Button3" 
+                    ID="testStyleSerialized" 
                     Text="Verify Style properties serialized from .ASPX" 
+                    style="width:150px;"
                     runat="server" />
 
                 <br />
