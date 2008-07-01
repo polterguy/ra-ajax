@@ -30,6 +30,19 @@ function verifyLabelIsRendered() {
 }
 
 
+
+
+function verifyAccessKeyWorks() {
+  if( Ra.$('accessKeyButton').accesskey == '1' )
+    Ra.$('results').setContent('success');
+}
+
+
+
+
+
+
+
         </script>
     </head>
     <body>
@@ -42,6 +55,7 @@ function verifyLabelIsRendered() {
                 <br />
                 <ra:Label runat="server" ID="testChangeValue" Text="Some value" />
                 <ra:Button runat="server" ID="textChangeLabelValue" OnClick="textChangeLabelValue_Click" Text="Test changing value of label" />
+                <ra:Button runat="server" ID="accessKeyButton" OnClick="accessKeyButton_Click" Text="Test AccessKey property" AccessKey="1" />
             </div>
         </form>
     </body>

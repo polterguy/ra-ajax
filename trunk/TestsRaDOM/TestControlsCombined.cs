@@ -25,6 +25,13 @@ namespace NUnitTests
             Browser.Button("textChangeLabelValue").Click();
             Assert.AreEqual("New value", Browser.Span("testChangeValue").Text);
         }
+
+        [NUnit.Framework.Test]
+        public void VerifyAccessKeyWorks()
+        {
+            Browser.Eval("verifyAccessKeyWorks();");
+            Assert.AreEqual("New value", Browser.Span("testChangeValue").Text);
+        }
     }
 }
 
