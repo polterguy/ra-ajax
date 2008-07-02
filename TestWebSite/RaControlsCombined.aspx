@@ -69,6 +69,15 @@ function verifyControlsDoesnJSONWhenNotChanged() {
 
 
 
+function verifyColsAndRowsOfTextAreaWasChanged() {
+  var el = Ra.$('textArea');
+  if( el.rows == 60 && el.cols == 10 )
+    Ra.$('results').setContent('success');
+}
+
+
+
+
 
         </script>
     </head>
@@ -105,10 +114,11 @@ function verifyControlsDoesnJSONWhenNotChanged() {
                 <br />
                 <br />
 
-                <ra:TextBox runat="server" ID="textArea" TextMode="MultiLine" Text="Text of textarea" />
+                <ra:TextArea runat="server" ID="textArea" Text="Text of textarea" />
                 <ra:Button runat="server" ID="testTextArea" Text="Test text area" OnClick="testTextArea_Click" />
                 <ra:Button runat="server" ID="testTextArea2" Text="Test text area2" OnClick="testTextArea2_Click" />
                 <ra:Button runat="server" ID="testTextArea3" Text="Test text area3" OnClick="testTextArea3_Click" />
+                <ra:Button runat="server" ID="changeColsRowsOfTextArea" Text="Change size of textarea" OnClick="changeColsRowsOfTextArea_Click" />
                 
                 <br />
                 <br />

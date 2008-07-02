@@ -59,7 +59,8 @@ namespace Ra.Widgets
                 // changes in the _JSONValues at all since they might occur due
                 // to declarative syntax in e.g. .ASPX file or OnInit or some other
                 // places...
-                // Though to avoid runtime failure we're returning a "dummy" object here...
+                // Though to avoid runtime failure and scattering if checks all over the place
+                // we're returning a "dummy" object here...
                 return new Dictionary<string, string>();
             }
         }
@@ -73,6 +74,15 @@ namespace Ra.Widgets
         {
             if (this.IsTrackingViewState)
                 _JSONValues[key] = value;
+        }
+
+        public void SetJSONGenericValue(string key, string value)
+        {
+            if (this.IsTrackingViewState)
+            {
+                Dictionary<string, string> generic = this.GetJSONValueDictionary("Generic");
+                generic[key] = value;
+            }
         }
 
         public virtual string SerializeJSON()

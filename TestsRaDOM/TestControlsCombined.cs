@@ -61,6 +61,13 @@ namespace NUnitTests
         }
 
         [NUnit.Framework.Test]
+        public void ChangeRowsAndColsOfTextArea()
+        {
+            Browser.Button("changeColsRowsOfTextArea").Click();
+            Browser.Eval("verifyColsAndRowsOfTextAreaWasChanged();");
+        }
+
+        [NUnit.Framework.Test]
         public void VerifyValueOfPasswordIsCorrect()
         {
             Browser.Button("testPassword").Click();

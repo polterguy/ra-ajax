@@ -18,14 +18,8 @@ namespace Ra.Widgets
 {
     [DefaultProperty("Text")]
     [ASP.ToolboxData("<{0}:TextBox runat=server />")]
-    public class TextBox : RaWebControl, IRaControl
+    public class TextArea : RaWebControl, IRaControl
     {
-        public enum TextBoxMode
-        {
-            SingleLine,
-            Password
-        };
-
         public event EventHandler TextChanged;
 
         #region [ -- Properties -- ]
@@ -54,15 +48,27 @@ namespace Ra.Widgets
             }
         }
 
-        [DefaultValue(TextBox.TextBoxMode.SingleLine)]
-        public TextBoxMode TextMode
+        [DefaultValue(20)]
+        public int Columns
         {
-            get { return ViewState["TextMode"] == null ? TextBoxMode.SingleLine : (TextBoxMode)ViewState["TextMode"]; }
+            get { return ViewState["Columns"] == null ? 20 : (int)ViewState["Columns"]; }
             set
             {
-                if (value != TextMode)
-                    SetJSONValueString("Type", value == TextBoxMode.Password ? "text" : "password");
-                ViewState["TextMode"] = value;
+                if (value != Columns)
+                    SetJSONGenericValue("cols", value.ToString());
+                ViewState["Columns"] = value;
+            }
+        }
+
+        [DefaultValue(3)]
+        public int Rows
+        {
+            get { return ViewState["Rows"] == null ? 3 : (int)ViewState["Rows"]; }
+            set
+            {
+                if (value != Rows)
+                    SetJSONGenericValue("rows", value.ToString());
+                ViewState["Rows"] = value;
             }
         }
 
@@ -128,13 +134,14 @@ namespace Ra.Widgets
         public override string GetHTML()
         {
             string accessKey = string.IsNullOrEmpty(AccessKey) ? "" : string.Format(" accesskey=\"{0}\"", AccessKey);
-            return string.Format("<input type=\"{5}\" id=\"{0}\" value=\"{1}\"{2}{3}{4} />",
+            return string.Format("<textarea id=\"{0}\" rows=\"{5}\" cols=\"{6}\"{2}{3}{4}>{1}</textarea>",
                 ClientID,
                 Text.Replace("\\", "\\\\").Replace("'", "\\'"),
                 GetCssClassHTMLFormatedAttribute(),
                 GetStyleHTMLFormatedAttribute(),
                 accessKey,
-                (TextMode == TextBoxMode.SingleLine ? "text" : "password"));
+                Rows,
+                Columns);
         }
 
         #endregion
