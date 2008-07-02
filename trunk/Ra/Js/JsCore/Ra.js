@@ -358,6 +358,11 @@ Ra.extend(Ra.Form.prototype, {
       var el = els[idx];
 
       // According to the HTTP/HTML specs we shouldn't serialize invisible form elements
+      // Note that Ra controls does NOE have a "name" but used the "id" attribute for
+      // serializing form values back to the server.
+      // Though to support serialization of NONE Ra Controls (and pure HTML elements)
+      // we check for the "name" attribute first and if it doesn't exists we use the
+      // "id" attribute for the POST parameter.
       if( el.style.display != 'none' && !el.disabled ) {
         switch(el.tagName.toLowerCase()) {
           case 'input':
@@ -367,7 +372,7 @@ Ra.extend(Ra.Form.prototype, {
                 if( el.checked ) {
                   if( retVal.length > 0 )
                     retVal += '&';
-                  retVal += el.id + '=' + encodeURIComponent(el.value);
+                  retVal += (el.name || el.id) + '=' + encodeURIComponent(el.value);
                 }
                 break;
               case 'hidden':
@@ -375,7 +380,7 @@ Ra.extend(Ra.Form.prototype, {
               case 'text':
                 if( retVal.length > 0 )
                   retVal += '&';
-                retVal += el.id + '=' + encodeURIComponent(el.value);
+                retVal += (el.name || el.id) + '=' + encodeURIComponent(el.value);
                 break;
             }
             break;
@@ -383,7 +388,7 @@ Ra.extend(Ra.Form.prototype, {
           case 'textarea':
             if( retVal.length > 0 )
               retVal += '&';
-            retVal += el.id + '=' + encodeURIComponent(el.value);
+            retVal += (el.name || el.id) + '=' + encodeURIComponent(el.value);
             break;
         }
       }

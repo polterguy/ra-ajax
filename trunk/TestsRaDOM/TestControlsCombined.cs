@@ -60,6 +60,13 @@ namespace NUnitTests
             Assert.AreEqual("success", Browser.TextField("textArea").Text);
         }
 
+        [NUnit.Framework.Test]
+        public void VerifyValueOfPasswordIsCorrect()
+        {
+            Browser.Button("testPassword").Click();
+            Assert.AreEqual("success", Browser.Button("testPassword").Text);
+        }
+
         // TODO: Figure out how to test this...
         //[NUnit.Framework.Test]
         //public void ChangeValueOfTextBoxAndCallback()
