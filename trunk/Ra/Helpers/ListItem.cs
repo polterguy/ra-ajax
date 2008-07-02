@@ -15,8 +15,6 @@ using System.Web.UI.WebControls;
 
 namespace Ra.Widgets
 {
-    [TypeConverter(typeof(ExpandableObjectConverter))]
-    [ControlBuilder(typeof(ListItemControlBuilder))]
     public class ListItem
     {
         private string _value;
