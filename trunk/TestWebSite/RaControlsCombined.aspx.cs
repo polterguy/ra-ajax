@@ -75,4 +75,9 @@ public partial class RaControlsCombined : System.Web.UI.Page
             testPassword.Text = "success";
         }
     }
+
+    protected void testPassword2_Click(object sender, EventArgs e)
+    {
+        password2.Text = "success";
+    }
 }
