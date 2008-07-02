@@ -42,6 +42,16 @@ function verifyAccessKeyWorks() {
 
 
 
+function verifyPasswordValueChanged() {
+  if( Ra.$('password2').value == 'success' )
+    Ra.$('results').setContent('success');
+}
+
+
+
+
+
+
 
         </script>
     </head>
@@ -88,6 +98,9 @@ function verifyAccessKeyWorks() {
                 
                 <ra:TextBox runat="server" ID="password" TextMode="Password" Text="Password Text" />
                 <ra:Button runat="server" ID="testPassword" Text="Verify password value" OnClick="testPassword_Click" />
+
+                <ra:TextBox runat="server" ID="password2" TextMode="Password" Text="Password Text" />
+                <ra:Button runat="server" ID="testPassword2" Text="Verify password CHANGES" OnClick="testPassword2_Click" />
 
             </div>
         </form>

@@ -67,6 +67,14 @@ namespace NUnitTests
             Assert.AreEqual("success", Browser.Button("testPassword").Text);
         }
 
+        [NUnit.Framework.Test]
+        public void CheckPasswordValueChanges()
+        {
+            Browser.Button("testPassword2").Click();
+            Browser.Eval("verifyPasswordValueChanged();");
+            AssertSuccess("Password value didn't change");
+        }
+
         // TODO: Figure out how to test this...
         //[NUnit.Framework.Test]
         //public void ChangeValueOfTextBoxAndCallback()
