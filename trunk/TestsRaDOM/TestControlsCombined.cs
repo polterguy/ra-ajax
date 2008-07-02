@@ -90,6 +90,13 @@ namespace NUnitTests
             AssertSuccess("Image button values wasnt serialized");
         }
 
+        [NUnit.Framework.Test]
+        public void CheckDefaultSerializationOfDropDownList()
+        {
+            Browser.Eval("verifyDropDownListInitiallySerializedCorrect();");
+            AssertSuccess("DropDownList didn't render initial HTML correct");
+        }
+
         //[NUnit.Framework.Test]
         //public void VerifyDisabledControlsArentPassed()
         //{
