@@ -93,9 +93,11 @@ namespace Ra.Widgets
             string retVal = "";
             foreach (ListItem idx in Items)
             {
-                retVal += string.Format("<option value=\"{0}\">{1}</option>", 
+                retVal += string.Format("<option value=\"{0}\"{2}{3}>{1}</option>",
                     idx.Value,
-                    idx.Text);
+                    idx.Text,
+                    (idx.Enabled ? "" : "disabled=\"disabled\""),
+                    (idx.Selected ? "selected=\"selected\"" : ""));
             }
             return retVal;
         }
