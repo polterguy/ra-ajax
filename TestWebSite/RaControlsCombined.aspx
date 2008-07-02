@@ -77,11 +77,18 @@ function verifyAccessKeyWorks() {
                 
                 <br />
                 <br />
+
                 <ra:TextBox runat="server" ID="textArea" TextMode="MultiLine" Text="Text of textarea" />
                 <ra:Button runat="server" ID="testTextArea" Text="Test text area" OnClick="testTextArea_Click" />
                 <ra:Button runat="server" ID="testTextArea2" Text="Test text area2" OnClick="testTextArea2_Click" />
                 <ra:Button runat="server" ID="testTextArea3" Text="Test text area3" OnClick="testTextArea3_Click" />
                 
+                <br />
+                <br />
+                
+                <ra:TextBox runat="server" ID="password" TextMode="Password" Text="Password Text" />
+                <ra:Button runat="server" ID="testPassword" Text="Verify password value" OnClick="testPassword_Click" />
+
             </div>
         </form>
     </body>

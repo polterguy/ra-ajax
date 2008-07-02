@@ -71,6 +71,9 @@ namespace Ra.Widgets
 
         protected override void OnInit(EventArgs e)
         {
+            // Since if ViewState is DISABLED we will NEVER come into LoadViewState we need to
+            // have the same logic in OnInit since we really should modify the Text value to
+            // the postback value BEFORE Page_Load event is fired...
             if (!this.IsViewStateEnabled && AjaxManager.Instance.CurrentPage.IsPostBack)
             {
                 string valueOfTextBox = AjaxManager.Instance.CurrentPage.Request.Params[ClientID];
@@ -83,6 +86,10 @@ namespace Ra.Widgets
         protected override void LoadViewState(object savedState)
         {
             base.LoadViewState(savedState);
+
+            // Since if ViewState is DISABLED we will NEVER come into this bugger we need to
+            // have the same logic in OnInit since we really should modify the Text value to
+            // the postback value BEFORE Page_Load event is fired...
             if (AjaxManager.Instance.CurrentPage.IsPostBack)
             {
                 string valueOfTextBox = AjaxManager.Instance.CurrentPage.Request.Params[ClientID];
