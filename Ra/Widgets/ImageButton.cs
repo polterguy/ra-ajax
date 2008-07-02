@@ -25,14 +25,14 @@ namespace Ra.Widgets
         #region [ -- Properties -- ]
 
         [DefaultValue("")]
-        public string Src
+        public string ImageUrl
         {
-            get { return ViewState["Src"] == null ? "" : (string)ViewState["Src"]; }
+            get { return ViewState["ImageUrl"] == null ? "" : (string)ViewState["ImageUrl"]; }
             set
             {
-                if (value != Src)
+                if (value != ImageUrl)
                     SetJSONGenericValue("src", value);
-                ViewState["Src"] = value;
+                ViewState["ImageUrl"] = value;
             }
         }
 
@@ -90,7 +90,7 @@ namespace Ra.Widgets
         // Override this one to create specific HTML for your widgets
         public override string GetHTML()
         {
-            if (string.IsNullOrEmpty(Src) || string.IsNullOrEmpty(AlternateText))
+            if (string.IsNullOrEmpty(ImageUrl) || string.IsNullOrEmpty(AlternateText))
                 throw new ApplicationException("Cannot have empty Src or AlternateText of ImageButton");
             string accessKey = string.IsNullOrEmpty(AccessKey) ? "" : string.Format(" accesskey=\"{0}\"", AccessKey);
 
@@ -98,7 +98,7 @@ namespace Ra.Widgets
             // to prevent the form from submitting for ImageButtons...
             return string.Format("<input onclick=\"return false;\" type=\"image\" id=\"{0}\" src=\"{1}\" alt=\"{5}\"{2}{3}{4} />",
                 ClientID,
-                Src,
+                ImageUrl,
                 GetCssClassHTMLFormatedAttribute(),
                 GetStyleHTMLFormatedAttribute(),
                 accessKey,
