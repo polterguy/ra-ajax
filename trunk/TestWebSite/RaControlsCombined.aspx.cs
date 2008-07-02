@@ -112,4 +112,8 @@ public partial class RaControlsCombined : System.Web.UI.Page
         imgBtn.ImageUrl = "testImage2.png";
         imgBtn.AlternateText = "New alternate text";
     }
+
+    protected void foo(object sender, EventArgs e)
+    {
+    }
 }
