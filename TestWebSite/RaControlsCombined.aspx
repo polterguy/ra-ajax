@@ -88,6 +88,31 @@ function verifyImageButtonUpdated() {
 
 
 
+// Doing a couple of "random" checks against our DropDownList...
+function verifyDropDownListInitiallySerializedCorrect() {
+  var el = Ra.$('dropDownListTest');
+  if( el.options.length == 4) {
+    if( el.options[0].value == 'valueOfFirst' ) {
+      if( el.options[2].innerHTML == 'Text of third' ) {
+        if( el.options[1].selected ) {
+          if( !el.options[0].selected ) {
+            if( el.options[2].disabled ) {
+              if( !el.options[1].disabled ) {
+                Ra.$('results').setContent('success');
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
         </script>
     </head>
     <body>
@@ -162,12 +187,13 @@ function verifyImageButtonUpdated() {
                 <br />
                 <br />
                 
-                <ra:DropDownList runat="server" ID="select" OnSelectedIndexChanged="foo">
+                <ra:DropDownList runat="server" ID="dropDownListTest" OnSelectedIndexChanged="foo">
                     <ra:ListItem Text="Text of first" Value="valueOfFirst" />
                     <ra:ListItem Text="Text of second" Value="valueOfSecond" Selected="true" />
                     <ra:ListItem Text="Text of third" Value="valueOfThird" Enabled="false" />
                     <ra:ListItem Text="Text of fourth" Value="valueOfFourth" />
                 </ra:DropDownList>
+                <input type="button" value="Dummy test DropDownList" onclick="verifyDropDownListInitiallySerializedCorrect();" />
                 
             </div>
         </form>
