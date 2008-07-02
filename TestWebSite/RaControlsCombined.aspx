@@ -162,6 +162,10 @@ function verifyImageButtonUpdated() {
                 <br />
                 <br />
                 
+                <ra:DropDownList runat="server" ID="select" OnSelectedIndexChanged="foo">
+                    <ra:ListItem Text="Text of first" Value="valueOfFirst" />
+                </ra:DropDownList>
+                
             </div>
         </form>
     </body>
