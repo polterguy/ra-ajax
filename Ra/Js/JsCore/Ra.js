@@ -363,10 +363,14 @@ Ra.extend(Ra.Form.prototype, {
       // Though to support serialization of NONE Ra Controls (and pure HTML elements)
       // we check for the "name" attribute first and if it doesn't exists we use the
       // "id" attribute for the POST parameter.
+      // Note also that we obey by the HTML standard in that we DO NOT submit values from 
+      // input elements which are disabled
       if( el.style.display != 'none' && !el.disabled ) {
         switch(el.tagName.toLowerCase()) {
           case 'input':
             switch( el.type ) {
+              // Note we SKIP Buttons and Submits since there are no reasons as to why we 
+              // should submit those anyway
               case 'checkbox':
               case 'radio':
                 if( el.checked ) {
