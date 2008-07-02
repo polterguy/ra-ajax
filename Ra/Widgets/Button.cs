@@ -30,8 +30,9 @@ namespace Ra.Widgets
             get { return ViewState["Text"] == null ? "" : (string)ViewState["Text"]; }
             set
             {
+                if (value != Text)
+                    SetJSONValueString("Value", value);
                 ViewState["Text"] = value;
-                SetJSONValueString("Value", value);
             }
         }
 
@@ -41,8 +42,9 @@ namespace Ra.Widgets
             get { return ViewState["AccessKey"] == null ? "" : (string)ViewState["AccessKey"]; }
             set
             {
+                if (value != AccessKey)
+                    SetJSONValueString("AccessKey", value);
                 ViewState["AccessKey"] = value;
-                SetJSONValueString("AccessKey", value);
             }
         }
 

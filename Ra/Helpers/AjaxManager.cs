@@ -93,6 +93,11 @@ namespace Ra
         {
             // Finding the Control which initiated the request
             string idOfControl = CurrentPage.Request.Params["__RA_CONTROL"];
+            
+            // Checking to see if this is a "non-Control" callback...
+            if (idOfControl == null)
+                return;
+
             RaControl ctrl = RaControls.Find(
                 delegate(RaControl idx)
                 {
