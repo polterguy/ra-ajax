@@ -119,6 +119,19 @@ Ra.extend(Ra.Control.prototype, {
     this.element.value = value;
   },
 
+  // Expects a type - defines type of control (text, password etc...)
+  Type: function(value) {
+    this.element.type = value;
+  },
+
+  // Expects any value, will set that property of the element
+  // Useful for sending "generic" attributes over to the element
+  Generic: function(values) {
+    for( var idx = 0; idx < values.length; idx++ ) {
+      this.element[values[idx][0]] = values[idx][1];
+    }
+  },
+
 
 
   // Initializes all events on control

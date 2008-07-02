@@ -41,7 +41,7 @@ namespace Ra.Widgets
         // Override this one to create specific HTML for your widgets
         public override string GetHTML()
         {
-            return string.Format("<span type=\"button\" id=\"{0}\"{2}{3}>{1}</span>",
+            return string.Format("<span id=\"{0}\"{2}{3}>{1}</span>",
                 ClientID,
                 Text.Replace("\\", "\\\\").Replace("'", "\\'"),
                 GetCssClassHTMLFormatedAttribute(),

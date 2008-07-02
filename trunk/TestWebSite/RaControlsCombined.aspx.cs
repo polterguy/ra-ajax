@@ -88,4 +88,10 @@ public partial class RaControlsCombined : System.Web.UI.Page
     {
         password2.Text = "success";
     }
+
+    protected void changeColsRowsOfTextArea_Click(object sender, EventArgs e)
+    {
+        textArea.Columns = 60;
+        textArea.Rows = 10;
+    }
 }
