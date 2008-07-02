@@ -82,6 +82,14 @@ namespace NUnitTests
             AssertSuccess("Password value didn't change");
         }
 
+        [NUnit.Framework.Test]
+        public void CheckImageButtonsValuesChanged()
+        {
+            Browser.Button("imgBtn").Click();
+            Browser.Eval("verifyImageButtonUpdated();");
+            AssertSuccess("Image button values wasnt serialized");
+        }
+
         //[NUnit.Framework.Test]
         //public void VerifyDisabledControlsArentPassed()
         //{

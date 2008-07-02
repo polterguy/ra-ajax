@@ -106,4 +106,10 @@ public partial class RaControlsCombined : System.Web.UI.Page
             verifyDisabledControlsDoesnPass.Text = "failure";
         }
     }
+
+    protected void imgBtn_Click(object sender, EventArgs e)
+    {
+        imgBtn.Src = "testImage2.png";
+        imgBtn.AlternateText = "New alternate text";
+    }
 }

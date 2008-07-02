@@ -79,6 +79,15 @@ function verifyColsAndRowsOfTextAreaWasChanged() {
 
 
 
+function verifyImageButtonUpdated() {
+  var el = Ra.$('imgBtn');
+  if( el.src.indexOf('testImage2.png') != -1 && el.alt == 'New alternate text' )
+    Ra.$('results').setContent('success');
+}
+
+
+
+
         </script>
     </head>
     <body>
@@ -143,6 +152,12 @@ function verifyColsAndRowsOfTextAreaWasChanged() {
                 <ra:TextBox runat="server" ID="textBoxDisabled" Text="Text" Enabled="false" />
                 <ra:TextArea runat="server" ID="textAreaDisabled" Text="Text" Enabled="false" />
                 <ra:Button runat="server" ID="verifyDisabledControlsDoesnPass" Text="Verify disabled controls doesnt pass" OnClick="verifyDisabledControlsDoesnPass_Click" />
+
+                <br />
+                <br />
+                
+                <ra:ImageButton runat="server" ID="imgBtn" Src="testImage1.png" AlternateText="Some text" OnClick="imgBtn_Click" />
+                <input type="button" value="Dummy Test Button" id="Button2" onclick="verifyImageButtonUpdated();" />
             </div>
         </form>
     </body>
