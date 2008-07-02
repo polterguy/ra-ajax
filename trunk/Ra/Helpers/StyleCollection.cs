@@ -83,6 +83,11 @@ namespace Ra.Widgets
             }
             set
             {
+                // We do NOT set styles if value is the same since that will just pass on
+                // redundant value back to the client which the client already have set
+                if (this[idx] == value)
+                    return;
+
                 // Easy validation
                 if (idx.ToLower() != idx)
                     throw new ApplicationException("Cannot have a style property which contains uppercase letters");
