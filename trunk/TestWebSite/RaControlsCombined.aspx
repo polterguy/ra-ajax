@@ -51,6 +51,23 @@ function verifyPasswordValueChanged() {
 
 
 
+function verifyControlsDoesnJSONWhenNotChanged() {
+  var form = new Ra.Ajax({
+    raCallback:true,
+    onAfter: function(response){
+      if( response.indexOf('testLblDoesntJson') == -1 &&
+        response.indexOf('testTextBoxDoesntJson') == -1 &&
+        response.indexOf('testButtonDoesntJson') == -1 ) {
+        Ra.$('results').setContent('success');
+      }
+    }
+  });
+}
+
+
+
+
+
 
 
         </script>
@@ -102,6 +119,13 @@ function verifyPasswordValueChanged() {
                 <ra:TextBox runat="server" ID="password2" TextMode="Password" Text="Password Text" />
                 <ra:Button runat="server" ID="testPassword2" Text="Verify password CHANGES" OnClick="testPassword2_Click" />
 
+                <br />
+                <br />
+                
+                <ra:Label runat="server" ID="testLblDoesntJson" />
+                <ra:TextBox runat="server" ID="testTextBoxDoesntJson" />
+                <ra:Button runat="server" ID="testButtonDoesntJson" />
+                <input type="button" value="Test unchanged values doesn't JSON" onclick="verifyControlsDoesnJSONWhenNotChanged();" />
             </div>
         </form>
     </body>

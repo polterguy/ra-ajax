@@ -134,7 +134,8 @@ Ra.extend(Ra.Control.prototype, {
   // which we will use to know how to call our server
   onEvent: function(evt) {
     new Ra.Ajax({
-      args:'__RA_CALLBACK=true&__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=' + evt,
+      args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=' + evt,
+      raCallback:true,
       onAfter: this.onFinishedRequest,
       callingContext: this
     });

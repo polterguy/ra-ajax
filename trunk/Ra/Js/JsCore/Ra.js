@@ -433,13 +433,15 @@ Ra.Ajax._startPumping = function() {
   }
 }
 
-
 Ra.extend(Ra.Ajax.prototype, {
   init: function(options) {
     this.options = Ra.extend({
 
       // Extra arguments passed to the server
       args:'',
+
+      // Used to track on the server whether or not this is a Ra Ajax Callback
+      raCallback: false,
 
       // Form to submit
       form: null, // Defaults to first form on page
@@ -488,6 +490,12 @@ Ra.extend(Ra.Ajax.prototype, {
         this.sliceRequest();
       }
     });
+    if( this.options.raCallback ) {
+      if( form.options.args != null && form.options.args.length > 0 ) {
+        form.options.args += '&';
+      }
+      form.options.args += '__RA_CALLBACK=true';
+    }
     form.callback();
   },
 

@@ -28,8 +28,9 @@ namespace Ra.Widgets
             get { return ViewState["Text"] == null ? "" : (string)ViewState["Text"]; }
             set
             {
+                if( value != Text )
+                    SetJSONValueString("Text", value);
                 ViewState["Text"] = value;
-                SetJSONValueString("Text", value);
             }
         }
 
