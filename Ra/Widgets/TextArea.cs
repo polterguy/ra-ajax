@@ -48,6 +48,18 @@ namespace Ra.Widgets
             }
         }
 
+        [DefaultValue(true)]
+        public bool Enabled
+        {
+            get { return ViewState["Enabled"] == null ? true : (bool)ViewState["Enabled"]; }
+            set
+            {
+                if (value != Enabled)
+                    SetJSONGenericValue("disabled", (value ? "disabled" : ""));
+                ViewState["Enabled"] = value;
+            }
+        }
+
         [DefaultValue(20)]
         public int Columns
         {
@@ -81,7 +93,7 @@ namespace Ra.Widgets
             // Since if ViewState is DISABLED we will NEVER come into LoadViewState we need to
             // have the same logic in OnInit since we really should modify the Text value to
             // the postback value BEFORE Page_Load event is fired...
-            if (!this.IsViewStateEnabled && AjaxManager.Instance.CurrentPage.IsPostBack)
+            if (Enabled && !this.IsViewStateEnabled && AjaxManager.Instance.CurrentPage.IsPostBack)
             {
                 string valueOfTextBox = AjaxManager.Instance.CurrentPage.Request.Params[ClientID];
                 if (valueOfTextBox != Text)
@@ -97,7 +109,7 @@ namespace Ra.Widgets
             // Since if ViewState is DISABLED we will NEVER come into this bugger we need to
             // have the same logic in OnInit since we really should modify the Text value to
             // the postback value BEFORE Page_Load event is fired...
-            if (AjaxManager.Instance.CurrentPage.IsPostBack)
+            if (Enabled && AjaxManager.Instance.CurrentPage.IsPostBack)
             {
                 string valueOfTextBox = AjaxManager.Instance.CurrentPage.Request.Params[ClientID];
                 if (valueOfTextBox != Text)
@@ -134,14 +146,15 @@ namespace Ra.Widgets
         public override string GetHTML()
         {
             string accessKey = string.IsNullOrEmpty(AccessKey) ? "" : string.Format(" accesskey=\"{0}\"", AccessKey);
-            return string.Format("<textarea id=\"{0}\" rows=\"{5}\" cols=\"{6}\"{2}{3}{4}>{1}</textarea>",
+            return string.Format("<textarea id=\"{0}\" rows=\"{5}\" cols=\"{6}\"{2}{3}{4}{7}>{1}</textarea>",
                 ClientID,
                 Text.Replace("\\", "\\\\").Replace("'", "\\'"),
                 GetCssClassHTMLFormatedAttribute(),
                 GetStyleHTMLFormatedAttribute(),
                 accessKey,
                 Rows,
-                Columns);
+                Columns,
+                (Enabled ? "" : " disabled=\"disabled\""));
         }
 
         #endregion

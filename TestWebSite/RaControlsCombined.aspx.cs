@@ -94,4 +94,16 @@ public partial class RaControlsCombined : System.Web.UI.Page
         textArea.Columns = 60;
         textArea.Rows = 10;
     }
+
+    protected void verifyDisabledControlsDoesnPass_Click(object sender, EventArgs e)
+    {
+        if (Request.Params["textBoxDisabled"] == null && Request.Params["textBoxDisabled"] == null)
+        {
+            verifyDisabledControlsDoesnPass.Text = "success";
+        }
+        else
+        {
+            verifyDisabledControlsDoesnPass.Text = "failure";
+        }
+    }
 }
