@@ -156,8 +156,12 @@ function verifyImageButtonUpdated() {
                 <br />
                 <br />
                 
-                <ra:ImageButton runat="server" ID="imgBtn" Src="testImage1.png" AlternateText="Some text" OnClick="imgBtn_Click" />
+                <ra:ImageButton runat="server" ID="imgBtn" ImageUrl="testImage1.png" AlternateText="Some text" OnClick="imgBtn_Click" />
                 <input type="button" value="Dummy Test Button" id="Button2" onclick="verifyImageButtonUpdated();" />
+
+                <br />
+                <br />
+                
             </div>
         </form>
     </body>

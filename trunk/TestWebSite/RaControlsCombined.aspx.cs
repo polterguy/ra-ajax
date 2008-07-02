@@ -109,7 +109,7 @@ public partial class RaControlsCombined : System.Web.UI.Page
 
     protected void imgBtn_Click(object sender, EventArgs e)
     {
-        imgBtn.Src = "testImage2.png";
+        imgBtn.ImageUrl = "testImage2.png";
         imgBtn.AlternateText = "New alternate text";
     }
 }
