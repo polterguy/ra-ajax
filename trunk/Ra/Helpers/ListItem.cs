@@ -19,6 +19,20 @@ namespace Ra.Widgets
     {
         private string _value;
         private string _text;
+        private bool _enabled = true;
+        private bool _selected;
+
+        public bool Selected
+        {
+            get { return _selected; }
+            set { _selected = value; }
+        }
+
+        public bool Enabled
+        {
+            get { return _enabled; }
+            set { _enabled = value; }
+        }
 
         public string Text
         {

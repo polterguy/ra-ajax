@@ -164,6 +164,9 @@ function verifyImageButtonUpdated() {
                 
                 <ra:DropDownList runat="server" ID="select" OnSelectedIndexChanged="foo">
                     <ra:ListItem Text="Text of first" Value="valueOfFirst" />
+                    <ra:ListItem Text="Text of second" Value="valueOfSecond" Selected="true" />
+                    <ra:ListItem Text="Text of third" Value="valueOfThird" Enabled="false" />
+                    <ra:ListItem Text="Text of fourth" Value="valueOfFourth" />
                 </ra:DropDownList>
                 
             </div>
