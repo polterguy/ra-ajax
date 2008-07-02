@@ -23,16 +23,18 @@ namespace Ra.Widgets
             MadeVisibleThisRequest,
             RenderHtml,
             Destroy,
-            PropertyChanges
+            PropertyChanges,
+            ReRender
         };
 
         // Used to track if control has been rendered previously
-        // Ra has five rendering states;
+        // Ra has 6 rendering states;
         // * Invisible controls (not rendered)
         // * Controls being made visible this request (render HTML and run replace on wrapper span)
         // * Controls visible initially or parent container control set to visible this rendering (pure HTML rendering)
         // * Controls being set to invisible (render destroy)
         // * Controls already visible but have property changes (JSON serialization of properties and method results)
+        // * Control needs to be re-rendered
         private RenderingPhase _controlRenderingState = RenderingPhase.Invisible;
 
         internal RenderingPhase Phase
@@ -223,7 +225,6 @@ namespace Ra.Widgets
             switch (Phase)
             {
                 case RenderingPhase.Destroy:
-                    // TODO: Destroy control
                     // Handled in AjaxManager.RenderCallback
                     break;
                 case RenderingPhase.Invisible:
@@ -243,6 +244,9 @@ namespace Ra.Widgets
                     // We must render the HTML for the Control, but ONLY if this is NOT an Ajax Callback
                     if (!AjaxManager.Instance.IsCallback)
                         writer.Write(GetHTML());
+                    break;
+                case RenderingPhase.ReRender:
+                    // Handled in AjaxManager.RenderCallback
                     break;
             }
         }
@@ -264,6 +268,12 @@ namespace Ra.Widgets
         public virtual string GetInvisibleHTML()
         {
             return string.Format("<span id=\"{0}\" style=\"display:none;\">&nbsp;</span>", ClientID);
+        }
+
+        internal void SignalizeReRender()
+        {
+            if (this.IsTrackingViewState)
+                Phase = RenderingPhase.ReRender;
         }
     }
 }

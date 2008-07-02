@@ -11,18 +11,21 @@
 using System;
 using System.Collections.Generic;
 using System.Collections;
+using System.Web.UI;
 
 namespace Ra.Widgets
 {
-    public class ListItemCollection : ICollection, IList<ListItem>
+    public class ListItemCollection : ICollection, IList<ListItem>, IStateManager
     {
         private List<ListItem> _list = new List<ListItem>();
-        private RaWebControl _control;
+        private RaControl _control;
 
-        public ListItemCollection(RaWebControl control)
+        public ListItemCollection(RaControl control)
         {
             _control = control;
         }
+
+
 
         #region ICollection Members
 
@@ -43,10 +46,12 @@ namespace Ra.Widgets
 
         public object SyncRoot
         {
-            get { return null; }
+            get { return _list; }
         }
 
         #endregion
+
+
 
         #region IEnumerable Members
 
@@ -56,6 +61,8 @@ namespace Ra.Widgets
         }
 
         #endregion
+
+
 
         #region IList<ListItem> Members
 
@@ -67,11 +74,13 @@ namespace Ra.Widgets
         public void Insert(int index, ListItem item)
         {
             _list.Insert(index, item);
+            _control.SignalizeReRender();
         }
 
         public void RemoveAt(int index)
         {
             _list.RemoveAt(index);
+            _control.SignalizeReRender();
         }
 
         public ListItem this[int index]
@@ -83,21 +92,26 @@ namespace Ra.Widgets
             set
             {
                 _list[index] = value;
+                _control.SignalizeReRender();
             }
         }
 
         #endregion
+
+
 
         #region ICollection<ListItem> Members
 
         public void Add(ListItem item)
         {
             _list.Add(item);
+            _control.SignalizeReRender();
         }
 
         public void Clear()
         {
             _list.Clear();
+            _control.SignalizeReRender();
         }
 
         public bool Contains(ListItem item)
@@ -117,16 +131,68 @@ namespace Ra.Widgets
 
         public bool Remove(ListItem item)
         {
+            _control.SignalizeReRender();
             return _list.Remove(item);
         }
 
         #endregion
+
+
 
         #region IEnumerable<ListItem> Members
 
         IEnumerator<ListItem> IEnumerable<ListItem>.GetEnumerator()
         {
             return _list.GetEnumerator();
+        }
+
+        #endregion
+
+        #region IStateManager Members
+
+        private bool _trackingViewState;
+        public bool IsTrackingViewState
+        {
+            get { return _trackingViewState; }
+        }
+
+        public void LoadViewState(object state)
+        {
+            _list.Clear();
+            object[] values = state as object[];
+            int count = (int)values[0];
+            for (int idx = 0; idx < count; idx++)
+            {
+                object[] listItemViewState = values[idx + 1] as object[];
+                ListItem idxItem = new ListItem();
+                idxItem.Enabled = (bool)listItemViewState[0];
+                idxItem.Selected = (bool)listItemViewState[1];
+                idxItem.Text = listItemViewState[2].ToString();
+                idxItem.Value = listItemViewState[3].ToString();
+                _list.Add(idxItem);
+            }
+        }
+
+        public object SaveViewState()
+        {
+            object[] retVal = new object[Count + 1];
+            retVal[0] = Count;
+            int idxNo = 1;
+            foreach (ListItem idxItem in this)
+            {
+                object[] listItemViewState = new object[4];
+                listItemViewState[0] = idxItem.Enabled;
+                listItemViewState[1] = idxItem.Selected;
+                listItemViewState[2] = idxItem.Text;
+                listItemViewState[3] = idxItem.Value;
+                retVal[idxNo++] = listItemViewState;
+            }
+            return retVal;
+        }
+
+        public void TrackViewState()
+        {
+            _trackingViewState = true;
         }
 
         #endregion
