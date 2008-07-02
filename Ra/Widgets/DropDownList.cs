@@ -43,10 +43,34 @@ namespace Ra.Widgets
             }
         }
 
+        protected override void TrackViewState()
+        {
+            Items.TrackViewState();
+            base.TrackViewState();
+        }
+
+        protected override void LoadViewState(object savedState)
+        {
+            object[] content = savedState as object[];
+            Items.LoadViewState(content[0]);
+            base.LoadViewState(content[1]);
+        }
+
+        protected override object SaveViewState()
+        {
+            object[] retVal = new object[2];
+            retVal[0] = Items.SaveViewState();
+            retVal[1] =  base.SaveViewState();
+            return retVal;
+        }
+
         [ASP.PersistenceMode(ASP.PersistenceMode.InnerDefaultProperty)]
         public ListItemCollection Items
         {
-            get { return _listItems; }
+            get
+            {
+                return _listItems;
+            }
         }
 
         #endregion

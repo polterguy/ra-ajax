@@ -40,24 +40,8 @@ namespace Ra.Widgets
         {
             object[] content = new object[2];
 
-            Dictionary<string, string> styles = Style.GetStylesForViewState();
-
-            // For easiness we ALWAYS save the Style collection, even though there's nothing to save
-            // This will take up _VERY_ few bytes of extra data on the ViewState
-            if (styles == null)
-                styles = new Dictionary<string, string>();
-
-            // For optimalization issues we're "flattening" the Dictionary since
-            // if we serialize the dictionary "raw" it'll become HUGE...!!
-            string[] styleStrings = new string[styles.Count];
-            int idxNo = 0;
-            foreach (string idxKey in styles.Keys)
-            {
-                styleStrings[idxNo++] = idxKey + ":" + styles[idxKey];
-            }
-
             // This order we must remember for the LoadViewState logic ;)
-            content[0] = styleStrings;
+            content[0] = Style.SaveViewState();
             content[1] = base.SaveViewState();
             return content;
         }
@@ -66,16 +50,8 @@ namespace Ra.Widgets
         protected override void LoadViewState(object savedState)
         {
             object[] content = savedState as object[];
-            string[] styles = content[0] as string[];
-            Dictionary<string, string> styleDictionary = new Dictionary<string, string>();
 
-            // Looping through the "flattened" Dictionary to reload into real Dictionary...
-            foreach (string idx in styles)
-            {
-                string[] raw = idx.Split(':');
-                styleDictionary[raw[0]] = raw[1];
-            }
-            Style.SetStylesFromViewState(styleDictionary);
+            Style.LoadViewState(content[0]);
 
             // When we save the ViewState we save the base class object as the second instance in the array...
             base.LoadViewState(content[1]);

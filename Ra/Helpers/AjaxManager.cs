@@ -172,6 +172,13 @@ namespace Ra
                         // this request...
                         // Handled in RaControl.RenderControl
                         break;
+                    case RaControl.RenderingPhase.ReRender:
+                        writer.WriteLine("Ra.Control.$('{0}').destroy();", idx.ClientID);
+                        writer.WriteLine("Ra.$('{0}').replace('{1}');",
+                            idx.ClientID,
+                            idx.GetHTML().Replace("\\", "\\\\").Replace("'", "\\'"));
+                        writer.WriteLine(idx.GetClientSideScript());
+                        break;
                 }
             }
 

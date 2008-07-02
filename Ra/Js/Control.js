@@ -242,10 +242,11 @@ Ra.extend(Ra.Control.prototype, {
       if( Ra.Control._controls[idx].element.id == this.element.id )
         // We have found our instance, idxToRemove now should contain the index of the control
         break;
+      idxToRemove += 1;
     }
 
     // Removes control out from registered controls collection
-    Ra.Control._controls = Ra.Control._controls.splice(idxToRemove, 1);
+    Ra.Control._controls.splice(idxToRemove, 1);
   }
 });
 

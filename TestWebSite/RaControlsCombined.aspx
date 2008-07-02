@@ -187,13 +187,17 @@ function verifyDropDownListInitiallySerializedCorrect() {
                 <br />
                 <br />
                 
-                <ra:DropDownList runat="server" ID="dropDownListTest" OnSelectedIndexChanged="foo">
+                <ra:DropDownList runat="server" ID="dropDownListTest" OnSelectedIndexChanged="dropDownListTest_SelectedIndexChanged">
                     <ra:ListItem Text="Text of first" Value="valueOfFirst" />
                     <ra:ListItem Text="Text of second" Value="valueOfSecond" Selected="true" />
                     <ra:ListItem Text="Text of third" Value="valueOfThird" Enabled="false" />
                     <ra:ListItem Text="Text of fourth" Value="valueOfFourth" />
                 </ra:DropDownList>
                 <input type="button" value="Dummy test DropDownList" onclick="verifyDropDownListInitiallySerializedCorrect();" />
+                
+                <br />
+                <br />
+                <ra:Button runat="server" ID="deleteFromDDL" Text="Delete from DropDownList" OnClick="deleteFromDDL_Click" />
                 
             </div>
         </form>
