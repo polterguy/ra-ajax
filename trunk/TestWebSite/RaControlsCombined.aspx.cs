@@ -43,4 +43,28 @@ public partial class RaControlsCombined : System.Web.UI.Page
             verifyComplexValue.Text = "success";
         }
     }
+
+    protected void testTextArea_Click(object sender, EventArgs e)
+    {
+        if (textArea.Text == "Text of textarea")
+        {
+            textArea.Text = "success1";
+        }
+    }
+
+    protected void testTextArea2_Click(object sender, EventArgs e)
+    {
+        if (textArea.Text == "success1")
+        {
+            textArea.Text = "success2";
+        }
+    }
+
+    protected void testTextArea3_Click(object sender, EventArgs e)
+    {
+        if (textArea.Text == "changed")
+        {
+            textArea.Text = "success";
+        }
+    }
 }

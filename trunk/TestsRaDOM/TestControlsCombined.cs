@@ -48,6 +48,18 @@ namespace NUnitTests
             Assert.AreEqual("success", Browser.Button("verifyComplexValue").Text);
         }
 
+        [NUnit.Framework.Test]
+        public void ChangeValueOfTextAreaAndCheckLoadPostBackData()
+        {
+            Browser.Button("testTextArea").Click();
+            Assert.AreEqual("success1", Browser.TextField("textArea").Text);
+            Browser.Button("testTextArea2").Click();
+            Assert.AreEqual("success2", Browser.TextField("textArea").Text);
+            Browser.TextField("textArea").Value = "changed";
+            Browser.Button("testTextArea3").Click();
+            Assert.AreEqual("success", Browser.TextField("textArea").Text);
+        }
+
         // TODO: Figure out how to test this...
         //[NUnit.Framework.Test]
         //public void ChangeValueOfTextBoxAndCallback()

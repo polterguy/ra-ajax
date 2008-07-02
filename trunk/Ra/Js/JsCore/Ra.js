@@ -367,7 +367,7 @@ Ra.extend(Ra.Form.prototype, {
                 if( el.checked ) {
                   if( retVal.length > 0 )
                     retVal += '&';
-                  retVal += el.name + '=' + encodeURIComponent(el.value);
+                  retVal += el.id + '=' + encodeURIComponent(el.value);
                 }
                 break;
               case 'hidden':
@@ -375,7 +375,7 @@ Ra.extend(Ra.Form.prototype, {
               case 'text':
                 if( retVal.length > 0 )
                   retVal += '&';
-                retVal += el.name + '=' + encodeURIComponent(el.value);
+                retVal += el.id + '=' + encodeURIComponent(el.value);
                 break;
             }
             break;
@@ -383,7 +383,7 @@ Ra.extend(Ra.Form.prototype, {
           case 'textarea':
             if( retVal.length > 0 )
               retVal += '&';
-            retVal += el.name + '=' + encodeURIComponent(el.value);
+            retVal += el.id + '=' + encodeURIComponent(el.value);
             break;
         }
       }
