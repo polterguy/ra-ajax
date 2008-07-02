@@ -136,6 +136,13 @@ function verifyColsAndRowsOfTextAreaWasChanged() {
                 <ra:TextBox runat="server" ID="testTextBoxDoesntJson" />
                 <ra:Button runat="server" ID="testButtonDoesntJson" />
                 <input type="button" value="Test unchanged values doesn't JSON" onclick="verifyControlsDoesnJSONWhenNotChanged();" />
+
+                <br />
+                <br />
+                
+                <ra:TextBox runat="server" ID="textBoxDisabled" Text="Text" Enabled="false" />
+                <ra:TextArea runat="server" ID="textAreaDisabled" Text="Text" Enabled="false" />
+                <ra:Button runat="server" ID="verifyDisabledControlsDoesnPass" Text="Verify disabled controls doesnt pass" OnClick="verifyDisabledControlsDoesnPass_Click" />
             </div>
         </form>
     </body>
