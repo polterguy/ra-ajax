@@ -159,6 +159,20 @@ Ra.extend(Ra.Control.prototype, {
 
 
 
+  reRender: function(html) {
+
+    // Unlistening all event observers to avoid leaking memory
+    var evts = this.options.evts;
+    for( var idx = 0; idx < evts.length; idx++ ) {
+      this.element.stopObserving(evts[idx][0], this.onEvent);
+    }
+
+    this.element = this.element.replace(html);
+
+    // Then we must RE init the events
+    this.initEvents();
+  },
+
   // Called when control is destroyed
   // This one will un-register the control in the control collection, clean up
   // any resources consumed by the control and replace the DOM element with a
@@ -169,39 +183,10 @@ Ra.extend(Ra.Control.prototype, {
   destroy: function() {
 
     // Forward calling to enable inheritance...
-    this._destroyControl();
-  },
+    this._destroyChildControls();
 
-  // This function will search for child controls and make sure those too are detroyed...
-  _destroyControl: function() {
-
-    // Since some controls may be children of the "this" widget we must
-    // collect all those widgets too and call destroy on those too
-    var childrenAndSelf = new Array();
-
-    // First we must find all the objects which are CHILD objects
-    // to the current one (being destroyed)
-    // Then we must destroy all those objects (including self)
-    for( var idx = 0; idx < Ra.Control._controls.length; idx++ ) {
-      if( this.element.id.indexOf(Ra.Control._controls[idx].element.id) == 0 ) {
-        childrenAndSelf.push(Ra.Control._controls[idx]);
-      }
-    }
-
-    // Sorting all elements in REVERSE order
-    // This is to make sure we destroy the objects in depth first order
-    childrenAndSelf.reverse(function(a, b) {
-      if( a.element.id < b.element.id )
-        return -1;
-      if( a.element.id > b.element.id )
-        return 1;
-      return 0;
-    });
-
-    // Now looping through and destroying all objects
-    for( var idx = 0; idx < childrenAndSelf.length; idx++ ) {
-      childrenAndSelf[idx].destroyThis();
-    }
+    // Destroying this
+    this.destroyThis();
 
     // Replacing the control's HTML with a "wrapper span" so we can re-create it later
     // in its exactly correct position...
@@ -211,11 +196,47 @@ Ra.extend(Ra.Control.prototype, {
     this.element.replace('<span id="' + this.element.id + '" style="display:none;" />');
   },
 
+  // This function will search for child controls and make sure those too are detroyed...
+  _destroyChildControls: function() {
+
+    // Since some controls may be children of the "this" widget we must
+    // collect all those widgets too and call destroy on those too
+    var children = new Array();
+
+    // First we must find all the objects which are CHILD objects
+    // to the current one (being destroyed)
+    // Then we must destroy all those objects (including self)
+    for( var idx = 0; idx < Ra.Control._controls.length; idx++ ) {
+
+      // Checking to see that this is NOT the "this" control
+      if( Ra.Control._controls[idx].element.id.length > this.element.id ) {
+        if( this.element.id.indexOf(Ra.Control._controls[idx].element.id) == 0 ) {
+          children.push(Ra.Control._controls[idx]);
+        }
+      }
+    }
+
+    // Sorting all elements in REVERSE order
+    // This is to make sure we destroy the objects in depth first order
+    children.reverse(function(a, b) {
+      if( a.element.id < b.element.id )
+        return -1;
+      if( a.element.id > b.element.id )
+        return 1;
+      return 0;
+    });
+
+    // Now looping through and destroying all objects
+    for( var idx = 0; idx < children.length; idx++ ) {
+      children[idx].destroyThis();
+    }
+  },
+
 
 
   // Destruction implementation
   // If you override this (which you often will end up doing) in your own derived classes
-  // then you should make sure you call the _destroyControlImpl method to make
+  // then you should make sure you call the _destroyThisControl method to make
   // sure you don't leak memory and gets the "basic" functionality from destroy...
   destroyThis: function() {
 

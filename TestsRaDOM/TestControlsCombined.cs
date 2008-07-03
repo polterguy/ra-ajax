@@ -97,6 +97,21 @@ namespace NUnitTests
             AssertSuccess("DropDownList didn't render initial HTML correct");
         }
 
+        [NUnit.Framework.Test]
+        public void DeleteFromDropDownList()
+        {
+            Browser.Button("deleteFromDDL").Click();
+            Browser.Eval("verifyAfterDelete1();");
+            AssertSuccess("Deleting items from DropDownList didn't work");
+
+            Browser.Button("deleteFromDDL").Click();
+            Browser.Eval("verifyAfterDelete2();");
+            AssertSuccess("Deleting items from DropDownList didn't work");
+
+            Browser.Button("submitFromDeletedDDL").Click();
+            Assert.AreEqual("success", Browser.Button("submitFromDeletedDDL").Value);
+        }
+
         //[NUnit.Framework.Test]
         //public void VerifyDisabledControlsArentPassed()
         //{

@@ -13,6 +13,7 @@ using System.ComponentModel;
 using WEBCTRLS = System.Web.UI.WebControls;
 using ASP = System.Web.UI;
 using Ra.Helpers;
+using System.Collections.Generic;
 
 namespace Ra.Widgets
 {
@@ -43,25 +44,16 @@ namespace Ra.Widgets
             }
         }
 
-        protected override void TrackViewState()
+        [DefaultValue(true)]
+        public bool Enabled
         {
-            Items.TrackViewState();
-            base.TrackViewState();
-        }
-
-        protected override void LoadViewState(object savedState)
-        {
-            object[] content = savedState as object[];
-            Items.LoadViewState(content[0]);
-            base.LoadViewState(content[1]);
-        }
-
-        protected override object SaveViewState()
-        {
-            object[] retVal = new object[2];
-            retVal[0] = Items.SaveViewState();
-            retVal[1] =  base.SaveViewState();
-            return retVal;
+            get { return ViewState["Enabled"] == null ? true : (bool)ViewState["Enabled"]; }
+            set
+            {
+                if (value != Enabled)
+                    SetJSONGenericValue("disabled", (value ? "disabled" : ""));
+                ViewState["Enabled"] = value;
+            }
         }
 
         [ASP.PersistenceMode(ASP.PersistenceMode.InnerDefaultProperty)]
@@ -73,7 +65,61 @@ namespace Ra.Widgets
             }
         }
 
+        private string _selectedItemValue;
+        public ListItem SelectedItem
+        {
+            get
+            {
+                return Items.Find(
+                    delegate(ListItem idx)
+                    {
+                        return idx.Value == _selectedItemValue;
+                    });
+            }
+        }
+
         #endregion
+
+        protected override void TrackViewState()
+        {
+            Items.TrackViewState();
+            base.TrackViewState();
+        }
+
+        protected override void LoadViewState(object savedState)
+        {
+            object[] content = savedState as object[];
+            Items.LoadViewState(content[0]);
+            base.LoadViewState(content[1]);
+
+            // Since if ViewState is DISABLED we will NEVER come into this bugger we need to
+            // have the same logic in OnInit since we really should modify the Text value to
+            // the postback value BEFORE Page_Load event is fired...
+            if (Enabled && AjaxManager.Instance.CurrentPage.IsPostBack)
+            {
+                _selectedItemValue = AjaxManager.Instance.CurrentPage.Request.Params[ClientID];
+            }
+        }
+
+        protected override object SaveViewState()
+        {
+            object[] retVal = new object[2];
+            retVal[0] = Items.SaveViewState();
+            retVal[1] = base.SaveViewState();
+            return retVal;
+        }
+
+        protected override void OnInit(EventArgs e)
+        {
+            // Since if ViewState is DISABLED we will NEVER come into LoadViewState we need to
+            // have the same logic in OnInit since we really should modify the Text value to
+            // the postback value BEFORE Page_Load event is fired...
+            if (Enabled && !this.IsViewStateEnabled && AjaxManager.Instance.CurrentPage.IsPostBack)
+            {
+                _selectedItemValue = AjaxManager.Instance.CurrentPage.Request.Params[ClientID];
+            }
+            base.OnInit(e);
+        }
 
         #region [ -- Overridden (abstract/virtual) methods from RaControl -- ]
 
@@ -104,12 +150,13 @@ namespace Ra.Widgets
         public override string GetHTML()
         {
             string accessKey = string.IsNullOrEmpty(AccessKey) ? "" : string.Format(" accesskey=\"{0}\"", AccessKey);
-            return string.Format("<select id=\"{0}\"{1}{2}{3}>{4}</select>", 
+            return string.Format("<select id=\"{0}\"{1}{2}{3}{5}>{4}</select>",
                 ClientID,
                 GetCssClassHTMLFormatedAttribute(),
                 GetStyleHTMLFormatedAttribute(),
                 accessKey,
-                GetHTMLForOptions());
+                GetHTMLForOptions(),
+                (Enabled ? "" : "disabled=\"disabled\""));
         }
 
         private string GetHTMLForOptions()

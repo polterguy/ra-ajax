@@ -113,12 +113,42 @@ public partial class RaControlsCombined : System.Web.UI.Page
         imgBtn.AlternateText = "New alternate text";
     }
 
-    protected void deleteFromDDL_Click(object sender, EventArgs e)
-    {
-        dropDownListTest.Items.RemoveAt(0);
-    }
-
     protected void dropDownListTest_SelectedIndexChanged(object sender, EventArgs e)
     {
     }
+
+    protected void deleteFromDDL_Click(object sender, EventArgs e)
+    {
+        dropDownListTestDelete.Items.RemoveAt(0);
+    }
+
+    protected void submitFromDeletedDDL_Click(object sender, EventArgs e)
+    {
+        if (dropDownListTestDelete.SelectedItem.Value == "valueOfFourth")
+            submitFromDeletedDDL.Text = "success";
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

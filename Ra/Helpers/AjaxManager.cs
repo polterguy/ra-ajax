@@ -173,11 +173,9 @@ namespace Ra
                         // Handled in RaControl.RenderControl
                         break;
                     case RaControl.RenderingPhase.ReRender:
-                        writer.WriteLine("Ra.Control.$('{0}').destroy();", idx.ClientID);
-                        writer.WriteLine("Ra.$('{0}').replace('{1}');",
+                        writer.WriteLine("Ra.Control.$('{0}').reRender('{1}');",
                             idx.ClientID,
                             idx.GetHTML().Replace("\\", "\\\\").Replace("'", "\\'"));
-                        writer.WriteLine(idx.GetClientSideScript());
                         break;
                 }
             }
