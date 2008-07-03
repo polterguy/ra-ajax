@@ -60,6 +60,18 @@ namespace Ra.Widgets
             }
         }
 
+        [DefaultValue(true)]
+        public bool Enabled
+        {
+            get { return ViewState["Enabled"] == null ? true : (bool)ViewState["Enabled"]; }
+            set
+            {
+                if (value != Enabled)
+                    SetJSONGenericValue("disabled", (value ? "" : "disabled"));
+                ViewState["Enabled"] = value;
+            }
+        }
+
         #endregion
 
         #region [ -- Overridden (abstract/virtual) methods from RaControl -- ]
@@ -96,13 +108,14 @@ namespace Ra.Widgets
 
             // Note that since the input type="image" creates a SUBMIT button we need to handle the onclick and return false 
             // to prevent the form from submitting for ImageButtons...
-            return string.Format("<input onclick=\"return false;\" type=\"image\" id=\"{0}\" src=\"{1}\" alt=\"{5}\"{2}{3}{4} />",
+            return string.Format("<input onclick=\"return false;\" type=\"image\" id=\"{0}\" src=\"{1}\" alt=\"{5}\"{2}{3}{4}{6} />",
                 ClientID,
                 ImageUrl,
                 GetCssClassHTMLFormatedAttribute(),
                 GetStyleHTMLFormatedAttribute(),
                 accessKey,
-                AlternateText);
+                AlternateText,
+                (Enabled ? "" : "disabled=\"disabled\""));
         }
 
         #endregion
