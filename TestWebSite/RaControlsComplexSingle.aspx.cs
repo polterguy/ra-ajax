@@ -48,4 +48,18 @@ public partial class RaControlsComplexSingle : System.Web.UI.Page
         chkChangeStyle.Style["height"] = "200px";
         chkChangeStyle.Style["display"] = "block";
     }
+
+    protected void btnToggleStyle_Click(object sender, EventArgs e)
+    {
+        if (chkToggleStyle.Style["color"] == "Red")
+        {
+            chkToggleStyle.Style["color"] = "Yellow";
+            chkToggleStyle.Style["width"] = "100px";
+        }
+        else
+        {
+            chkToggleStyle.Style["color"] = "Red";
+            chkToggleStyle.Style["width"] = "200px";
+        }
+    }
 }

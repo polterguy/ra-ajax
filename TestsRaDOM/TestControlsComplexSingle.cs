@@ -73,6 +73,31 @@ namespace NUnitTests
             Browser.Eval("verifyStylesChanged();");
             AssertSuccess("CheckBox didn't change style correct");
         }
+
+        [NUnit.Framework.Test]
+        public void ToggleStyleOfCheckBox()
+        {
+            Browser.Button("btnToggleStyle").Click();
+            Browser.Eval("verifyTogglingOfStylesON();");
+            AssertSuccess("CheckBox wasn't set to visible correct");
+
+            Browser.Button("btnToggleStyle").Click();
+            Browser.Eval("verifyTogglingOfStylesOFF();");
+            AssertSuccess("CheckBox wasn't set to visible correct");
+
+            Browser.Button("btnToggleStyle").Click();
+            Browser.Eval("verifyTogglingOfStylesON();");
+            AssertSuccess("CheckBox wasn't set to visible correct");
+
+            Browser.Button("btnToggleStyle").Click();
+            Browser.Eval("verifyTogglingOfStylesOFF();");
+            AssertSuccess("CheckBox wasn't set to visible correct");
+
+            Browser.Button("btnToggleStyle").Click();
+            Browser.Eval("verifyTogglingOfStylesON();");
+            AssertSuccess("CheckBox wasn't set to visible correct");
+
+        }
     }
 }
 

@@ -96,6 +96,28 @@ function verifyStylesChanged() {
 
 
 
+function verifyTogglingOfStylesON() {
+  var el = Ra.$('chkToggleStyle');
+  if( el.style.width == '200px')
+    Ra.$('results').setContent('success');
+}
+
+
+
+
+
+
+function verifyTogglingOfStylesOFF() {
+  var el = Ra.$('chkToggleStyle');
+  if( el.style.width == '100px')
+    Ra.$('results').setContent('success');
+}
+
+
+
+
+
+
         </script>
     </head>
     <body>
@@ -126,6 +148,11 @@ function verifyStylesChanged() {
                 
                 <ra:CheckBox runat="server" Text="Changes style" ID="chkChangeStyle" />
                 <ra:Button runat="server" ID="btnChangeChkStyle" Text="Changes style of checkbox" OnClick="btnChangeChkStyle_Click" />
+
+                <br />
+                
+                <ra:CheckBox runat="server" Text="Toggle style" ID="chkToggleStyle" />
+                <ra:Button runat="server" ID="btnToggleStyle" Text="Toggles style of checkbox" OnClick="btnToggleStyle_Click" />
             </div>
         </form>
     </body>
