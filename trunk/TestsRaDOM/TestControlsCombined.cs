@@ -126,6 +126,34 @@ namespace NUnitTests
             Assert.AreEqual("success", Browser.Button("selectNewDDLValue").Value);
         }
 
+        [NUnit.Framework.Test]
+        public void DisabledEnabledDDL()
+        {
+            Browser.Button("disabledDDL").Click();
+            Assert.AreEqual(false, Browser.SelectList("testDisabledDDL").Enabled);
+
+            Browser.Button("enabledDDL").Click();
+            Assert.AreEqual(true, Browser.SelectList("testDisabledDDL").Enabled);
+
+        }
+
+        [NUnit.Framework.Test]
+        public void DisableButton()
+        {
+            Assert.AreEqual(true, Browser.Button("disableButton").Enabled);
+            Browser.Button("disableButton").Click();
+            Assert.AreEqual(false, Browser.Button("disableButton").Enabled);
+        }
+
+        // TODO: Figure out how to test this...
+        //[NUnit.Framework.Test]
+        //public void DisableTextBox()
+        //{
+        //    Assert.AreEqual(true, Browser.TextField("disabledTextBox").Enabled);
+        //    Browser.TextField("disabledTextBox").Value = "now it should be disabled";
+        //    Assert.AreEqual(false, Browser.Button("disabledTextBox").Enabled);
+        //}
+
         //[NUnit.Framework.Test]
         //public void VerifyDisabledControlsArentPassed()
         //{

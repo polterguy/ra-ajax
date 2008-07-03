@@ -48,6 +48,18 @@ namespace Ra.Widgets
             }
         }
 
+        [DefaultValue(true)]
+        public bool Enabled
+        {
+            get { return ViewState["Enabled"] == null ? true : (bool)ViewState["Enabled"]; }
+            set
+            {
+                if (value != Enabled)
+                    SetJSONGenericValue("disabled", (value ? "" : "disabled"));
+                ViewState["Enabled"] = value;
+            }
+        }
+
         #endregion
 
         #region [ -- Overridden (abstract/virtual) methods from RaControl -- ]

@@ -51,7 +51,7 @@ namespace Ra.Widgets
             set
             {
                 if (value != Enabled)
-                    SetJSONGenericValue("disabled", (value ? "disabled" : ""));
+                    SetJSONGenericValue("disabled", (value ? "" : "disabled"));
                 ViewState["Enabled"] = value;
             }
         }
