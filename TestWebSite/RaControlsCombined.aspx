@@ -255,7 +255,8 @@ function verifyAfterDelete2() {
                 <br />
                 
                 <ra:Button runat="server" ID="disableButton" Text="Disables" OnClick="disableButton_Click" />
-                <ra:TextBox runat="server" ID="disabledTextBox" Text="Disables" OnTextChanged="disabledTextBox_Click" />
+                <ra:TextBox runat="server" ID="disabledTextBox" Text="Disables" />
+                <ra:Button runat="server" ID="willDisableTextBox" Text="Disables TextBox" OnClick="willDisableTextBox_Click" />
                 
             </div>
         </form>
