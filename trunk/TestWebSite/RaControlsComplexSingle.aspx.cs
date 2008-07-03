@@ -83,4 +83,10 @@ public partial class RaControlsComplexSingle : System.Web.UI.Page
         rdo1.Text = rdo1.Checked.ToString();
         rdo2.Text = rdo2.Checked.ToString();
     }
+
+    protected void btnChangeImg_Click(object sender, EventArgs e)
+    {
+        img.ImageUrl = "testImage2.png";
+        img.AlternateText = "New text";
+    }
 }
