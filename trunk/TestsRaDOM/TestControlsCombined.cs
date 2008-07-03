@@ -145,14 +145,14 @@ namespace NUnitTests
             Assert.AreEqual(false, Browser.Button("disableButton").Enabled);
         }
 
-        // TODO: Figure out how to test this...
-        //[NUnit.Framework.Test]
-        //public void DisableTextBox()
-        //{
-        //    Assert.AreEqual(true, Browser.TextField("disabledTextBox").Enabled);
-        //    Browser.TextField("disabledTextBox").Value = "now it should be disabled";
-        //    Assert.AreEqual(false, Browser.Button("disabledTextBox").Enabled);
-        //}
+        [NUnit.Framework.Test]
+        public void DisableTextBox()
+        {
+            Assert.AreEqual(true, Browser.TextField("disabledTextBox").Enabled);
+            Browser.Button("willDisableTextBox").Click();
+            Assert.AreEqual(false, Browser.TextField("disabledTextBox").Enabled);
+            Assert.AreEqual("is now disabled", Browser.TextField("disabledTextBox").Value);
+        }
 
         //[NUnit.Framework.Test]
         //public void VerifyDisabledControlsArentPassed()
