@@ -128,6 +128,24 @@ function verifyAccessKeyForCheckBox() {
 
 
 
+function verifyCheckBoxDisabled() {
+  if( Ra.$('disabledCheckBox_CTRL').disabled == 'disabled')
+    Ra.$('results').setContent('success');
+}
+
+
+
+
+
+function verifyCheckBoxEnabled() {
+  if( Ra.$('disabledCheckBox_CTRL').disabled != 'disabled')
+    Ra.$('results').setContent('success');
+}
+
+
+
+
+
         </script>
     </head>
     <body>
@@ -167,6 +185,11 @@ function verifyAccessKeyForCheckBox() {
                 <br />
                 
                 <ra:CheckBox runat="server" Text="Access key 1" ID="chkAccKey" AccessKey="1" OnCheckedChanged="chkAccKey_CheckedChanged" />
+
+                <br />
+                
+                <ra:CheckBox runat="server" Text="Disabled checkbox" ID="disabledCheckBox" Enabled="false" OnCheckedChanged="disabledCheckBox_CheckedChanged" />
+                <ra:Button runat="server" ID="btnEnabledCheckBox" Text="Enables checkbox" OnClick="btnEnabledCheckBox_Click" />
             </div>
         </form>
     </body>

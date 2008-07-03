@@ -67,4 +67,14 @@ public partial class RaControlsComplexSingle : System.Web.UI.Page
     {
         chkAccKey.Text = "It was accessed...";
     }
+
+    protected void disabledCheckBox_CheckedChanged(object sender, EventArgs e)
+    {
+        disabledCheckBox.Text = "Clicked";
+    }
+
+    protected void btnEnabledCheckBox_Click(object sender, EventArgs e)
+    {
+        disabledCheckBox.Enabled = !disabledCheckBox.Enabled;
+    }
 }
