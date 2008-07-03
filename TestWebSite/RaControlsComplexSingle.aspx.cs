@@ -25,4 +25,14 @@ public partial class RaControlsComplexSingle : System.Web.UI.Page
     {
         chkSetInVisible.Visible = false;
     }
+
+    protected void btnSetChkVisible_Click(object sender, EventArgs e)
+    {
+        chkSetVisible.Visible = true;
+    }
+
+    protected void chkSetVisible_CheckedChanged(object sender, EventArgs e)
+    {
+        btnSetChkVisible.Text = "Checkbox clicked";
+    }
 }
