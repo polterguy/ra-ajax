@@ -98,6 +98,14 @@ namespace NUnitTests
             AssertSuccess("CheckBox wasn't set to visible correct");
 
         }
+
+        // TODO: Doesn't work, probably IE8...
+        [NUnit.Framework.Test]
+        public void AccessKeyOfCheckBox()
+        {
+            Browser.Eval("verifyAccessKeyForCheckBox();");
+            AssertSuccess("CheckBox didn't have AccessKey working");
+        }
     }
 }
 
