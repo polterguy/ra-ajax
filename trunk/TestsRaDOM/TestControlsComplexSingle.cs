@@ -25,7 +25,15 @@ namespace NUnitTests
         {
             Browser.Button("setChkToInvisible").Click();
             Browser.Eval("verifyCheckBoxInVisible();");
-            AssertSuccess("CheckBox wasn't set to invivible correct");
+            AssertSuccess("CheckBox wasn't set to invisible correct");
+        }
+
+        [NUnit.Framework.Test]
+        public void SetCheckBoxToVisible()
+        {
+            Browser.Button("btnSetChkVisible").Click();
+            Browser.Eval("verifyCheckBoxVisible();");
+            AssertSuccess("CheckBox wasn't set to visible correct");
         }
     }
 }

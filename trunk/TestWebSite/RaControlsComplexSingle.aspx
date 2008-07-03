@@ -40,6 +40,22 @@ function verifyCheckBoxInVisible() {
 
 
 
+function verifyCheckBoxVisible() {
+  var ctrl = Ra.Control.$('chkSetVisible');
+  if( ctrl ) {
+    var el = Ra.$('chkSetVisible');
+    if( el && el.style.display != 'none') {
+      if( Ra.$('chkSetVisible_LBL').innerHTML == 'Set this to visible')
+        Ra.$('results').setContent('success');
+    }
+  }
+}
+
+
+
+
+
+
         </script>
     </head>
     <body>
@@ -52,6 +68,10 @@ function verifyCheckBoxInVisible() {
                 <ra:CheckBox runat="server" ID="chk" Text="Text of checkbox" OnCheckedChanged="chk_CheckedChanged" />
                 <ra:CheckBox runat="server" ID="chkSetInVisible" Text="Set this to invisible" />
                 <ra:Button runat="server" ID="setChkToInvisible" Text="Sets checkbox to invisible" OnClick="setChkToInvisible_Click" />
+                <br />
+
+                <ra:CheckBox Visible="false" runat="server" ID="chkSetVisible" Text="Set this to visible" OnCheckedChanged="chkSetVisible_CheckedChanged" />
+                <ra:Button runat="server" ID="btnSetChkVisible" Text="Sets checkbox to visible" OnClick="btnSetChkVisible_Click" />
             </div>
         </form>
     </body>
