@@ -99,6 +99,16 @@ namespace NUnitTests
 
         }
 
+        [NUnit.Framework.Test]
+        public void ChangeImageValues()
+        {
+            Assert.AreEqual("Original", Browser.Image("img").Alt);
+            Assert.IsTrue(Browser.Image("img").Src.IndexOf("testImage1.png") != -1);
+            Browser.Button("btnChangeImg").Click();
+            Assert.AreEqual("New text", Browser.Image("img").Alt);
+            Assert.IsTrue(Browser.Image("img").Src.IndexOf("testImage2.png") != -1);
+        }
+
         // TODO: Doesn't work, probably IE8...
         //[NUnit.Framework.Test]
         //public void AccessKeyOfCheckBox()

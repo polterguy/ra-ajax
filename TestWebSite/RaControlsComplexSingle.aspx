@@ -196,6 +196,11 @@ function verifyCheckBoxEnabled() {
                 <ra:RadioButton runat="server" Text="Radio 1" ID="rdo1" OnCheckedChanged="rdo_CheckedChanged" GroupName="RdoGroup1" />
                 <ra:RadioButton runat="server" Text="Radio 2" ID="rdo2" OnCheckedChanged="rdo_CheckedChanged" GroupName="RdoGroup1" />
 
+                <br />
+                
+                <ra:Image runat="server" ID="img" ImageUrl="testImage1.png" AlternateText="Original" />
+                <ra:Button runat="server" ID="btnChangeImg" Text="Changes values of image" OnClick="btnChangeImg_Click" />
+
             </div>
         </form>
     </body>
