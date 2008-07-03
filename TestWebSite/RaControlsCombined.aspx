@@ -270,6 +270,7 @@ function verifyAfterDelete2() {
                     <ra:ListItem Text="Text of second" Value="valueOfSecond" Selected="true" />
                 </ra:DropDownList>
                 <ra:ImageButton Enabled="false" runat="server" ID="imgDisabled" AlternateText="xxx" ImageUrl="testImage1.png" />
+
                 
             </div>
         </form>
