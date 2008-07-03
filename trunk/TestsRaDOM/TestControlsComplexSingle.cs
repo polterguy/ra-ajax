@@ -1,0 +1,47 @@
+using System;
+using System.Threading;
+using NUnit.Framework;
+
+namespace NUnitTests
+{
+    [TestFixture]
+    public class TestControlsComplexSingle : TestBase
+    {
+        protected override string Url
+        {
+            get { return "RaControlsComplexSingle.aspx"; }
+        }
+
+        // TODO: Clicking checkbox doesn't work...
+        //[NUnit.Framework.Test]
+        //public void ClickCheckBox()
+        //{
+        //    Browser.CheckBox("chk_CTRL").Click();
+        //    Assert.AreEqual("New text", Browser.Label("chk_LBL").Text);
+        //}
+
+        [NUnit.Framework.Test]
+        public void SetCheckBoxToInVisible()
+        {
+            Browser.Button("setChkToInvisible").Click();
+            Browser.Eval("verifyCheckBoxInVisible();");
+            AssertSuccess("CheckBox wasn't set to invivible correct");
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

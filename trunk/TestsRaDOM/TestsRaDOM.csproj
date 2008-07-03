@@ -46,6 +46,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TestControlsComplexSingle.cs" />
     <Compile Include="TestControlsCombined.cs" />
     <Compile Include="TestControlNoViewState.cs" />
     <Compile Include="TestControlBasics.cs" />

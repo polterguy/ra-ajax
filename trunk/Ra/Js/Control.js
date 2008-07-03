@@ -54,8 +54,22 @@ Ra.extend(Ra.Control.prototype, {
     // Setting default options
     this.options = Ra.extend({
       // Defaults here...
-      evts: []
+      evts: [],
+
+      // If set defines the element of the actual control
+      ctrl: null,
+
+      // If set defines the element of an associated label which contains the text value and so on...
+      label: null
     }, options || {});
+
+    // Checking to see if a "real" control was passed
+    if( this.options.ctrl )
+      this.options.ctrl = Ra.$(this.options.ctrl);
+
+    // Checking to see if an extra Label was passed
+    if( this.options.label )
+      this.options.label = Ra.$(this.options.label);
 
     // Registering control
     Ra.Control._controls.push(this);
@@ -105,30 +119,30 @@ Ra.extend(Ra.Control.prototype, {
   // Expects only a Text string, does a replace on the innerHTML with the updated text string
   // Useful for labels, textareas and so on...
   Text: function(value) {
-    this.element.setContent(value);
+    (this.options.label || this.element).setContent(value);
   },
 
   // Expects a single character - Sets the access key (ALT + value) for giving focus to control
   AccessKey: function(value) {
-    this.element.accesskey = value;
+    (this.options.ctrl || this.element).accesskey = value;
   },
 
   // Expects a text value, sets the "value" of the control to the given value
   // Useful for TextBoxes (input type="text") and so on...
   Value: function(value) {
-    this.element.value = value;
+    (this.options.label || this.element).value = value;
   },
 
   // Expects a type - defines type of control (text, password etc...)
   Type: function(value) {
-    this.element.type = value;
+    (this.options.ctrl || this.element).type = value;
   },
 
   // Expects any value, will set that property of the element
   // Useful for sending "generic" attributes over to the element
   Generic: function(values) {
     for( var idx = 0; idx < values.length; idx++ ) {
-      this.element[values[idx][0]] = values[idx][1];
+      (this.options.ctrl || this.element)[values[idx][0]] = values[idx][1];
     }
   },
 
@@ -138,7 +152,7 @@ Ra.extend(Ra.Control.prototype, {
   initEvents: function() {
     var evts = this.options.evts;
     for( var idx = 0; idx < evts.length; idx++ ) {
-      this.element.observe(evts[idx], this.onEvent, this, [evts[idx]]);
+      (this.options.ctrl || this.element).observe(evts[idx], this.onEvent, this, [evts[idx]]);
     }
   },
 
@@ -164,7 +178,7 @@ Ra.extend(Ra.Control.prototype, {
     // Unlistening all event observers to avoid leaking memory
     var evts = this.options.evts;
     for( var idx = 0; idx < evts.length; idx++ ) {
-      this.element.stopObserving(evts[idx][0], this.onEvent);
+      (this.options.ctrl || this.element).stopObserving(evts[idx][0], this.onEvent);
     }
 
     this.element = this.element.replace(html);
@@ -254,7 +268,7 @@ Ra.extend(Ra.Control.prototype, {
     // Unlistening all event observers to avoid leaking memory
     var evts = this.options.evts;
     for( var idx = 0; idx < evts.length; idx++ ) {
-      this.element.stopObserving(evts[idx][0], this.onEvent);
+      (this.options.ctrl || this.element).stopObserving(evts[idx][0], this.onEvent);
     }
 
     // Looping through registered controls to remove the "this instance"
