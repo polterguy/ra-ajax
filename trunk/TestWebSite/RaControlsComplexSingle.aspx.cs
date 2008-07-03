@@ -40,4 +40,12 @@ public partial class RaControlsComplexSingle : System.Web.UI.Page
     {
         chkToggle.Visible = !chkToggle.Visible;
     }
+
+    protected void btnChangeChkStyle_Click(object sender, EventArgs e)
+    {
+        chkChangeStyle.Style["color"] = "Red";
+        chkChangeStyle.Style["width"] = "400px";
+        chkChangeStyle.Style["height"] = "200px";
+        chkChangeStyle.Style["display"] = "block";
+    }
 }
