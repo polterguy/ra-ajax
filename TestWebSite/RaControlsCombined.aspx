@@ -211,7 +211,7 @@ function verifyAfterDelete2() {
                 <br />
                 <br />
                 
-                <ra:DropDownList runat="server" ID="dropDownListTest" OnSelectedIndexChanged="dropDownListTest_SelectedIndexChanged">
+                <ra:DropDownList runat="server" ID="dropDownListTest">
                     <ra:ListItem Text="Text of first" Value="valueOfFirst" />
                     <ra:ListItem Text="Text of second" Value="valueOfSecond" Selected="true" />
                     <ra:ListItem Text="Text of third" Value="valueOfThird" Enabled="false" />
@@ -221,7 +221,7 @@ function verifyAfterDelete2() {
                 
                 <br />
                 <br />
-                <ra:DropDownList runat="server" ID="dropDownListTestDelete" OnSelectedIndexChanged="dropDownListTest_SelectedIndexChanged">
+                <ra:DropDownList runat="server" ID="dropDownListTestDelete">
                     <ra:ListItem Text="Text of first" Value="valueOfFirst" />
                     <ra:ListItem Text="Text of second" Value="valueOfSecond" Selected="true" />
                     <ra:ListItem Text="Text of third" Value="valueOfThird" Enabled="false" />
@@ -229,6 +229,17 @@ function verifyAfterDelete2() {
                 </ra:DropDownList>
                 <ra:Button runat="server" ID="deleteFromDDL" Text="Delete from DropDownList" OnClick="deleteFromDDL_Click" />
                 <ra:Button runat="server" ID="submitFromDeletedDDL" Text="Submit after delete" OnClick="submitFromDeletedDDL_Click" />
+                
+                <br />
+                <br />
+                
+                <ra:DropDownList runat="server" ID="dropDownListCallback" OnSelectedIndexChanged="dropDownListCallback_SelectedIndexChanged">
+                    <ra:ListItem Text="Text of first" Value="valueOfFirst" />
+                    <ra:ListItem Text="Text of second" Value="valueOfSecond" Selected="true" />
+                    <ra:ListItem Text="Text of third" Value="valueOfThird" Enabled="false" />
+                    <ra:ListItem Text="Text of fourth" Value="valueOfFourth" />
+                </ra:DropDownList>
+                <ra:Button runat="server" ID="selectNewDDLValue" Text="Selects new DDL value" OnClick="selectNewDDLValue_Click" />
                 
             </div>
         </form>
