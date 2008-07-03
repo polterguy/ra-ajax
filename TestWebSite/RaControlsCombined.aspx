@@ -241,6 +241,22 @@ function verifyAfterDelete2() {
                 </ra:DropDownList>
                 <ra:Button runat="server" ID="selectNewDDLValue" Text="Selects new DDL value" OnClick="selectNewDDLValue_Click" />
                 
+                <br />
+                <br />
+                
+                <ra:DropDownList runat="server" ID="testDisabledDDL">
+                    <ra:ListItem Text="Text of first" Value="valueOfFirst" />
+                    <ra:ListItem Text="Text of second" Value="valueOfSecond" Selected="true" />
+                </ra:DropDownList>
+                <ra:Button runat="server" ID="disabledDDL" Text="Disable DDL" OnClick="disabledDDL_Click" />
+                <ra:Button runat="server" ID="enabledDDL" Text="Enabled DDL" OnClick="enabledDDL_Click" />
+                
+                <br />
+                <br />
+                
+                <ra:Button runat="server" ID="disableButton" Text="Disables" OnClick="disableButton_Click" />
+                <ra:TextBox runat="server" ID="disabledTextBox" Text="Disables" OnTextChanged="disabledTextBox_Click" />
+                
             </div>
         </form>
     </body>
