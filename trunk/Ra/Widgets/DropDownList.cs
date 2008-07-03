@@ -76,6 +76,13 @@ namespace Ra.Widgets
                         return idx.Value == _selectedItemValue;
                     });
             }
+            set
+            {
+                if (IsTrackingViewState)
+                {
+                    this.SetJSONValueString("Value", value.Value);
+                }
+            }
         }
 
         #endregion

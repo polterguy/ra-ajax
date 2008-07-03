@@ -112,6 +112,20 @@ namespace NUnitTests
             Assert.AreEqual("success", Browser.Button("submitFromDeletedDDL").Value);
         }
 
+        [NUnit.Framework.Test]
+        public void ChangeSelectedValueOfDDLFromButton()
+        {
+            Browser.Button("selectNewDDLValue").Click();
+            Assert.AreEqual("Text of fourth", Browser.SelectList("dropDownListCallback").SelectedItem);
+        }
+
+        [NUnit.Framework.Test]
+        public void ChangeSelectedValueOfDDLFromDDLChangeEvent()
+        {
+            Browser.SelectList("dropDownListCallback").SelectByValue("valueOfFirst");
+            Assert.AreEqual("success", Browser.Button("selectNewDDLValue").Value);
+        }
+
         //[NUnit.Framework.Test]
         //public void VerifyDisabledControlsArentPassed()
         //{
