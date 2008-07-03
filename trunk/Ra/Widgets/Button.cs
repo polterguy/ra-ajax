@@ -91,12 +91,13 @@ namespace Ra.Widgets
         public override string GetHTML()
         {
             string accessKey = string.IsNullOrEmpty(AccessKey) ? "" : string.Format(" accesskey=\"{0}\"", AccessKey);
-            return string.Format("<input type=\"button\" id=\"{0}\" value=\"{1}\"{2}{3}{4} />", 
+            return string.Format("<input type=\"button\" id=\"{0}\" value=\"{1}\"{2}{3}{4}{5} />", 
                 ClientID,
                 Text.Replace("\\", "\\\\").Replace("'", "\\'"),
                 GetCssClassHTMLFormatedAttribute(),
                 GetStyleHTMLFormatedAttribute(),
-                accessKey);
+                accessKey,
+                (Enabled ? "" : "disabled=\"disabled\""));
         }
 
         #endregion
