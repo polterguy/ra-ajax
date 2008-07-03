@@ -18,7 +18,7 @@ public partial class RaControlsComplexSingle : System.Web.UI.Page
 
     protected void chk_CheckedChanged(object sender, EventArgs e)
     {
-        chk.Text = "New text";
+        chk.Text = chk.Checked.ToString();
     }
 
     protected void setChkToInvisible_Click(object sender, EventArgs e)
@@ -76,5 +76,11 @@ public partial class RaControlsComplexSingle : System.Web.UI.Page
     protected void btnEnabledCheckBox_Click(object sender, EventArgs e)
     {
         disabledCheckBox.Enabled = !disabledCheckBox.Enabled;
+    }
+
+    protected void rdo_CheckedChanged(object sender, EventArgs e)
+    {
+        rdo1.Text = rdo1.Checked.ToString();
+        rdo2.Text = rdo2.Checked.ToString();
     }
 }

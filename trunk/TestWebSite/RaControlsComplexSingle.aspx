@@ -190,6 +190,12 @@ function verifyCheckBoxEnabled() {
                 
                 <ra:CheckBox runat="server" Text="Disabled checkbox" ID="disabledCheckBox" Enabled="false" OnCheckedChanged="disabledCheckBox_CheckedChanged" />
                 <ra:Button runat="server" ID="btnEnabledCheckBox" Text="Enables checkbox" OnClick="btnEnabledCheckBox_Click" />
+
+                <br />
+                
+                <ra:RadioButton runat="server" Text="Radio 1" ID="rdo1" OnCheckedChanged="rdo_CheckedChanged" GroupName="RdoGroup1" />
+                <ra:RadioButton runat="server" Text="Radio 2" ID="rdo2" OnCheckedChanged="rdo_CheckedChanged" GroupName="RdoGroup1" />
+
             </div>
         </form>
     </body>

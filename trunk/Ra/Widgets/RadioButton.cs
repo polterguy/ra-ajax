@@ -17,8 +17,8 @@ using Ra.Helpers;
 namespace Ra.Widgets
 {
     [DefaultProperty("Text")]
-    [ASP.ToolboxData("<{0}:CheckBox runat=server />")]
-    public class CheckBox : RaWebControl, IRaControl
+    [ASP.ToolboxData("<{0}:RadioButton runat=server />")]
+    public class RadioButton : RaWebControl, IRaControl
     {
         public event EventHandler CheckedChanged;
 
@@ -33,6 +33,18 @@ namespace Ra.Widgets
                 if (value != Text)
                     SetJSONValueString("Text", value);
                 ViewState["Text"] = value;
+            }
+        }
+
+        [DefaultValue("")]
+        public string GroupName
+        {
+            get { return ViewState["GroupName"] == null ? "" : (string)ViewState["GroupName"]; }
+            set
+            {
+                if (value != GroupName)
+                    SetJSONGenericValue("name", value);
+                ViewState["GroupName"] = value;
             }
         }
 
@@ -132,13 +144,15 @@ namespace Ra.Widgets
         public override string GetHTML()
         {
             string accessKey = string.IsNullOrEmpty(AccessKey) ? "" : string.Format(" accesskey=\"{0}\"", AccessKey);
-            return string.Format("<span id=\"{0}\"><input type=\"checkbox\" value=\"{0}\" id=\"{0}_CTRL\"{2}{3}{4}{5} /><label id=\"{0}_LBL\" for=\"{0}_CTRL\">{1}</label></span>",
+            string groupName = string.IsNullOrEmpty(GroupName) ? "" : string.Format(" name=\"{0}\"", GroupName);
+            return string.Format("<span id=\"{0}\"><input type=\"radio\" value=\"{0}\" id=\"{0}_CTRL\"{2}{3}{4}{5}{6} /><label id=\"{0}_LBL\" for=\"{0}_CTRL\">{1}</label></span>",
                 ClientID,
                 Text.Replace("\\", "\\\\").Replace("'", "\\'"),
                 GetCssClassHTMLFormatedAttribute(),
                 GetStyleHTMLFormatedAttribute(),
                 accessKey,
-                (Enabled ? "" : "disabled=\"disabled\""));
+                (Enabled ? "" : "disabled=\"disabled\""),
+                groupName);
         }
 
         #endregion
