@@ -154,6 +154,12 @@ public partial class RaControlsCombined : System.Web.UI.Page
         disabledTextBox.Enabled = false;
         disabledTextBox.Text = "is now disabled";
     }
+
+    protected void willDisableTextArea_Click(object sender, EventArgs e)
+    {
+        disabledTextArea.Enabled = false;
+        disabledTextArea.Text = "is now disabled";
+    }
 }
 
 
