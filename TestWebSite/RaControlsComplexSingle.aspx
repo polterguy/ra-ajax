@@ -118,6 +118,16 @@ function verifyTogglingOfStylesOFF() {
 
 
 
+
+function verifyAccessKeyForCheckBox() {
+  if( Ra.$('chkAccKey_CTRL').accesskey == '1')
+    Ra.$('results').setContent('success');
+}
+
+
+
+
+
         </script>
     </head>
     <body>
@@ -153,6 +163,10 @@ function verifyTogglingOfStylesOFF() {
                 
                 <ra:CheckBox runat="server" Text="Toggle style" ID="chkToggleStyle" />
                 <ra:Button runat="server" ID="btnToggleStyle" Text="Toggles style of checkbox" OnClick="btnToggleStyle_Click" />
+
+                <br />
+                
+                <ra:CheckBox runat="server" Text="Access key 1" ID="chkAccKey" AccessKey="1" OnCheckedChanged="chkAccKey_CheckedChanged" />
             </div>
         </form>
     </body>

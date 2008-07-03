@@ -62,4 +62,9 @@ public partial class RaControlsComplexSingle : System.Web.UI.Page
             chkToggleStyle.Style["width"] = "200px";
         }
     }
+
+    protected void chkAccKey_CheckedChanged(object sender, EventArgs e)
+    {
+        chkAccKey.Text = "It was accessed...";
+    }
 }
