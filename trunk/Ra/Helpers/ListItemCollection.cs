@@ -25,6 +25,16 @@ namespace Ra.Widgets
             _control = control;
         }
 
+        public ListItem Find(Predicate<ListItem> functor)
+        {
+            foreach (ListItem idx in _list)
+            {
+                if (functor(idx))
+                    return idx;
+            }
+            return null;
+        }
+
 
 
         #region ICollection Members

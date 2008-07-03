@@ -113,6 +113,30 @@ function verifyDropDownListInitiallySerializedCorrect() {
 
 
 
+function verifyAfterDelete1() {
+  var el = Ra.$('dropDownListTestDelete');
+  if( el.options.length == 3 && el.options[0].innerHTML == 'Text of second') {
+    Ra.$('results').setContent('success');
+  }
+}
+
+
+
+
+
+
+function verifyAfterDelete2() {
+  var el = Ra.$('dropDownListTestDelete');
+  if( el.options.length == 2 && el.options[0].innerHTML == 'Text of third') {
+    Ra.$('results').setContent('success');
+  }
+}
+
+
+
+
+
+
         </script>
     </head>
     <body>
@@ -197,7 +221,14 @@ function verifyDropDownListInitiallySerializedCorrect() {
                 
                 <br />
                 <br />
+                <ra:DropDownList runat="server" ID="dropDownListTestDelete" OnSelectedIndexChanged="dropDownListTest_SelectedIndexChanged">
+                    <ra:ListItem Text="Text of first" Value="valueOfFirst" />
+                    <ra:ListItem Text="Text of second" Value="valueOfSecond" Selected="true" />
+                    <ra:ListItem Text="Text of third" Value="valueOfThird" Enabled="false" />
+                    <ra:ListItem Text="Text of fourth" Value="valueOfFourth" />
+                </ra:DropDownList>
                 <ra:Button runat="server" ID="deleteFromDDL" Text="Delete from DropDownList" OnClick="deleteFromDDL_Click" />
+                <ra:Button runat="server" ID="submitFromDeletedDDL" Text="Submit after delete" OnClick="submitFromDeletedDDL_Click" />
                 
             </div>
         </form>
