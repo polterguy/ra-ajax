@@ -35,4 +35,9 @@ public partial class RaControlsComplexSingle : System.Web.UI.Page
     {
         btnSetChkVisible.Text = "Checkbox clicked";
     }
+
+    protected void btnToggleChk_Click(object sender, EventArgs e)
+    {
+        chkToggle.Visible = !chkToggle.Visible;
+    }
 }

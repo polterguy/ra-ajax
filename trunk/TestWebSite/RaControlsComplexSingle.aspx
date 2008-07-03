@@ -56,6 +56,37 @@ function verifyCheckBoxVisible() {
 
 
 
+function verifyToggleCheckBoxInVisible() {
+  var ctrl = Ra.Control.$('chkToggle');
+  if( !ctrl ) {
+    var el = Ra.$('chkToggle');
+    if( el && el.style.display == 'none') {
+      Ra.$('results').setContent('success');
+    }
+  }
+}
+
+
+
+
+
+
+function verifyToggleCheckBoxVisible() {
+  var ctrl = Ra.Control.$('chkToggle');
+  if( ctrl ) {
+    var el = Ra.$('chkToggle');
+    if( el && el.style.display != 'none') {
+      if( Ra.$('chkToggle_LBL').innerHTML == 'Toggles with button')
+        Ra.$('results').setContent('success');
+    }
+  }
+}
+
+
+
+
+
+
         </script>
     </head>
     <body>
@@ -68,10 +99,16 @@ function verifyCheckBoxVisible() {
                 <ra:CheckBox runat="server" ID="chk" Text="Text of checkbox" OnCheckedChanged="chk_CheckedChanged" />
                 <ra:CheckBox runat="server" ID="chkSetInVisible" Text="Set this to invisible" />
                 <ra:Button runat="server" ID="setChkToInvisible" Text="Sets checkbox to invisible" OnClick="setChkToInvisible_Click" />
+
                 <br />
 
                 <ra:CheckBox Visible="false" runat="server" ID="chkSetVisible" Text="Set this to visible" OnCheckedChanged="chkSetVisible_CheckedChanged" />
                 <ra:Button runat="server" ID="btnSetChkVisible" Text="Sets checkbox to visible" OnClick="btnSetChkVisible_Click" />
+
+                <br />
+                
+                <ra:CheckBox runat="server" ID="chkToggle" Text="Toggles with button" />
+                <ra:Button runat="server" ID="btnToggleChk" Text="Toggles checkbox" OnClick="btnToggleChk_Click" />
             </div>
         </form>
     </body>
