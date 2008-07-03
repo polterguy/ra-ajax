@@ -86,6 +86,15 @@ function verifyToggleCheckBoxVisible() {
 
 
 
+function verifyStylesChanged() {
+  var el = Ra.$('chkChangeStyle');
+  if( el.style.width == '400px' && el.style.height == '200px' )
+    Ra.$('results').setContent('success');
+}
+
+
+
+
 
         </script>
     </head>
@@ -97,6 +106,9 @@ function verifyToggleCheckBoxVisible() {
             <br />
             <div>
                 <ra:CheckBox runat="server" ID="chk" Text="Text of checkbox" OnCheckedChanged="chk_CheckedChanged" />
+
+                <br />
+
                 <ra:CheckBox runat="server" ID="chkSetInVisible" Text="Set this to invisible" />
                 <ra:Button runat="server" ID="setChkToInvisible" Text="Sets checkbox to invisible" OnClick="setChkToInvisible_Click" />
 
@@ -109,6 +121,11 @@ function verifyToggleCheckBoxVisible() {
                 
                 <ra:CheckBox runat="server" ID="chkToggle" Text="Toggles with button" />
                 <ra:Button runat="server" ID="btnToggleChk" Text="Toggles checkbox" OnClick="btnToggleChk_Click" />
+
+                <br />
+                
+                <ra:CheckBox runat="server" Text="Changes style" ID="chkChangeStyle" />
+                <ra:Button runat="server" ID="btnChangeChkStyle" Text="Changes style of checkbox" OnClick="btnChangeChkStyle_Click" />
             </div>
         </form>
     </body>

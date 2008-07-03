@@ -13,6 +13,7 @@ namespace NUnitTests
         }
 
         // TODO: Clicking checkbox doesn't work...
+        // Probably bug due to IE8...
         //[NUnit.Framework.Test]
         //public void ClickCheckBox()
         //{
@@ -63,6 +64,14 @@ namespace NUnitTests
             Browser.Eval("verifyToggleCheckBoxVisible();");
             AssertSuccess("CheckBox wasn't set to visible correct");
 
+        }
+
+        [NUnit.Framework.Test]
+        public void ChangeStyleOfCheckBox()
+        {
+            Browser.Button("btnChangeChkStyle").Click();
+            Browser.Eval("verifyStylesChanged();");
+            AssertSuccess("CheckBox didn't change style correct");
         }
     }
 }
