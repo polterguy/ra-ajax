@@ -260,6 +260,17 @@ function verifyAfterDelete2() {
                 <ra:TextArea runat="server" ID="disabledTextArea" Text="Disables" />
                 <ra:Button runat="server" ID="willDisableTextArea" Text="Disables TextArea" OnClick="willDisableTextArea_Click" />
                 
+                <br />
+                <br />
+                
+                <ra:Button Enabled="false" runat="server" ID="btnDisabled" Text="Disabled" />
+                <ra:TextBox Enabled="false" runat="server" ID="txtDisabled" Text="Disabled" />
+                <ra:TextArea Enabled="false" runat="server" ID="txtAreaDisabled" Text="Disabled" />
+                <ra:DropDownList Enabled="false" runat="server" ID="ddlDisabled">
+                    <ra:ListItem Text="Text of second" Value="valueOfSecond" Selected="true" />
+                </ra:DropDownList>
+                <ra:ImageButton Enabled="false" runat="server" ID="imgDisabled" AlternateText="xxx" ImageUrl="testImage1.png" />
+                
             </div>
         </form>
     </body>

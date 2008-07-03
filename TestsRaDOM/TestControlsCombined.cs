@@ -163,6 +163,16 @@ namespace NUnitTests
             Assert.AreEqual("is now disabled", Browser.TextField("disabledTextArea").Value);
         }
 
+        [NUnit.Framework.Test]
+        public void VerifyControlsRendersInitiallyDisabled()
+        {
+            Assert.AreEqual(false, Browser.Button("btnDisabled").Enabled);
+            Assert.AreEqual(false, Browser.TextField("txtDisabled").Enabled);
+            Assert.AreEqual(false, Browser.TextField("txtAreaDisabled").Enabled);
+            Assert.AreEqual(false, Browser.SelectList("ddlDisabled").Enabled);
+            Assert.AreEqual(false, Browser.Button("imgDisabled").Enabled);
+        }
+
         //[NUnit.Framework.Test]
         //public void VerifyDisabledControlsArentPassed()
         //{
