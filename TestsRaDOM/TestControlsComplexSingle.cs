@@ -35,6 +35,35 @@ namespace NUnitTests
             Browser.Eval("verifyCheckBoxVisible();");
             AssertSuccess("CheckBox wasn't set to visible correct");
         }
+
+        [NUnit.Framework.Test]
+        public void ToggleCheckBoxMultipleTimes()
+        {
+            Browser.Button("btnToggleChk").Click();
+            Browser.Eval("verifyToggleCheckBoxInVisible();");
+            AssertSuccess("CheckBox wasn't set to visible correct");
+
+            Browser.Button("btnToggleChk").Click();
+            Browser.Eval("verifyToggleCheckBoxVisible();");
+            AssertSuccess("CheckBox wasn't set to visible correct");
+
+            Browser.Button("btnToggleChk").Click();
+            Browser.Eval("verifyToggleCheckBoxInVisible();");
+            AssertSuccess("CheckBox wasn't set to visible correct");
+
+            Browser.Button("btnToggleChk").Click();
+            Browser.Eval("verifyToggleCheckBoxVisible();");
+            AssertSuccess("CheckBox wasn't set to visible correct");
+
+            Browser.Button("btnToggleChk").Click();
+            Browser.Eval("verifyToggleCheckBoxInVisible();");
+            AssertSuccess("CheckBox wasn't set to visible correct");
+
+            Browser.Button("btnToggleChk").Click();
+            Browser.Eval("verifyToggleCheckBoxVisible();");
+            AssertSuccess("CheckBox wasn't set to visible correct");
+
+        }
     }
 }
 
