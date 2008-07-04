@@ -365,7 +365,7 @@ Ra.extend(Ra.Form.prototype, {
       // "id" attribute for the POST parameter.
       // Note also that we obey by the HTML standard in that we DO NOT submit values from 
       // input elements which are disabled
-      if( el.style.display != 'none' && !el.disabled ) {
+      if( !el.disabled ) {
         switch(el.tagName.toLowerCase()) {
           case 'input':
             switch( el.type ) {
@@ -376,7 +376,7 @@ Ra.extend(Ra.Form.prototype, {
                 if( el.checked ) {
                   if( retVal.length > 0 )
                     retVal += '&';
-                  retVal += (el.name || el.id) + '=' + encodeURIComponent(el.value);
+                  retVal += el.name + '=' + encodeURIComponent(el.value);
                 }
                 break;
               case 'hidden':
@@ -384,7 +384,7 @@ Ra.extend(Ra.Form.prototype, {
               case 'text':
                 if( retVal.length > 0 )
                   retVal += '&';
-                retVal += (el.name || el.id) + '=' + encodeURIComponent(el.value);
+                retVal += el.name + '=' + encodeURIComponent(el.value);
                 break;
             }
             break;
@@ -392,7 +392,7 @@ Ra.extend(Ra.Form.prototype, {
           case 'textarea':
             if( retVal.length > 0 )
               retVal += '&';
-            retVal += (el.name || el.id) + '=' + encodeURIComponent(el.value);
+            retVal += el.name + '=' + encodeURIComponent(el.value);
             break;
         }
       }
