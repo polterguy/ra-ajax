@@ -128,11 +128,50 @@ namespace Ra
             CurrentPage.ClientScript.RegisterClientScriptResource(typeof(AjaxManager), "Ra.Js.Control.js");
         }
 
+        private MemoryStream _memStream;
+        private HtmlTextWriter _writer;
+        public HtmlTextWriter Writer
+        {
+            get
+            {
+                if (_writer == null)
+                {
+                    _memStream = new MemoryStream();
+                    TextWriter tw = new StreamWriter(_memStream);
+                    _writer = new HtmlTextWriter(tw);
+                }
+                return _writer;
+            }
+        }
+
         // We only come here if this is a Ra Ajax Callback (IsCallback == true)
         // We don't really care about the HTML rendered by the page here.
         // We just short-circut the whole HTML rendering phase here and only render
         // back changes to the client
         internal void RenderCallback(Stream next, MemoryStream content)
+        {
+            Writer.Flush();
+            _memStream.Flush();
+            _memStream.Position = 0;
+            TextReader readerContent = new StreamReader(_memStream);
+            string allContent = readerContent.ReadToEnd();
+            TextWriter writer = new StreamWriter(next);
+            writer.WriteLine(allContent);
+
+            // Retrieving ViewState (+++) changes and returning back to client
+            content.Position = 0;
+            TextReader reader = new StreamReader(content);
+            string wholePageContent = reader.ReadToEnd();
+
+            if (wholePageContent.IndexOf("__VIEWSTATE") != -1)
+                writer.WriteLine("Ra.$('__VIEWSTATE').value = '{0}';", GetViewState(wholePageContent, "__VIEWSTATE"));
+            if (wholePageContent.IndexOf("__EVENTVALIDATION") != -1)
+                writer.WriteLine("Ra.$('__EVENTVALIDATION').value = '{0}';", GetViewState(wholePageContent, "__EVENTVALIDATION"));
+            
+            writer.Flush();
+        }
+
+        /*internal void RenderCallback(Stream next, MemoryStream content)
         {
             TextWriter writer = new StreamWriter(next);
             foreach (RaControl idx in RaControls)
@@ -152,7 +191,7 @@ namespace Ra
                         // Rendering replace logic and register script logic
                         writer.WriteLine("Ra.$('{0}').replace('{1}');", 
                             idx.ClientID, 
-                            idx.GetHTML().Replace("\\", "\\\\").Replace("'", "\\'").Replace("\r", "\\r").Replace("\n", "\\n"));
+                            idx.GetHTML().Replace("\\", "\\\\").Replace("'", "\\'").Replace("\r\n);
                         writer.WriteLine(idx.GetClientSideScript());
                         break;
 
@@ -191,7 +230,7 @@ namespace Ra
                 writer.WriteLine("Ra.$('__EVENTVALIDATION').value = '{0}';", GetViewState(wholePageContent, "__EVENTVALIDATION"));
             
             writer.Flush();
-        }
+        }*/
 
         private string GetViewState(string wholePageContent, string searchString)
         {
@@ -226,13 +265,12 @@ namespace Ra
             StringBuilder builder = new StringBuilder();
             builder.Append("<script type=\"text/javascript\">");
 
-            // Now replacing the parts BELOW the </body> element to give room 
-            // for our "register control" scripts...
-            foreach (RaControl idx in RaControls)
-            {
-                if (idx.Phase == RaControl.RenderingPhase.MadeVisibleThisRequest || idx.Phase == RaControl.RenderingPhase.RenderHtml)
-                    builder.AppendLine(idx.GetClientSideScript());
-            }
+            Writer.Flush();
+            _memStream.Flush();
+            _memStream.Position = 0;
+            TextReader readerContent = new StreamReader(_memStream);
+            string allContent = readerContent.ReadToEnd();
+            builder.Append(allContent);
 
             // Adding script closing element
             builder.Append("</script></body>");

@@ -103,6 +103,12 @@ function verifyPanel3DoesExist() {
                     <ra:Button runat="server" ID="btnTest" Text="Changes text" OnClick="btnTest_Click" />
                 </ra:Panel>
 
+                <br />
+
+                <ra:Panel runat="server" ID="pnlControlsINVisible" Visible="false">
+                    <ra:Button runat="server" ID="btnTestINVisible" Text="Should be registered" OnClick="btnTestINVisible_Click" />
+                </ra:Panel>
+                <ra:Button runat="server" ID="setPnlVisible" Text="Sets panel with controls to visible" OnClick="setPnlVisible_Click" />
 
             </div>
         </form>
