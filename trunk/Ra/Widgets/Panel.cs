@@ -33,18 +33,59 @@ namespace Ra.Widgets
                 GetStyleHTMLFormatedAttribute());
         }
 
+        public override string GetClientSideScript()
+        {
+            string tmp = base.GetClientSideScript();
+            tmp += GetChildrenClientSideScript(Controls);
+            return tmp;
+        }
+
+        private string GetChildrenClientSideScript(ASP.ControlCollection controls)
+        {
+            string retVal = "";
+            foreach (ASP.Control idx in controls)
+            {
+                if (idx is RaControl)
+                {
+                    retVal += (idx as RaControl).GetClientSideScript();
+                }
+                retVal += GetChildrenClientSideScript(idx.Controls);
+            }
+            return retVal;
+        }
+
         private string GetChildControlsHTML()
         {
+            // Must set all children to RenderHtml to get this to work...
+            SetAllChildrenToRenderHtml(Controls);
+
+            // Streaming Controls into Memory Stream and returning HTML as string...
             MemoryStream stream = new MemoryStream();
             TextWriter writer = new StreamWriter(stream);
             ASP.HtmlTextWriter htmlWriter = new System.Web.UI.HtmlTextWriter(writer);
+
+            // Render children
             RenderChildren(htmlWriter);
             htmlWriter.Flush();
             writer.Flush();
+
+            // Return string representation of HTML
             stream.Position = 0;
             TextReader reader = new StreamReader(stream);
             string retVal = reader.ReadToEnd();
             return retVal;
+        }
+
+        private void SetAllChildrenToRenderHtml(ASP.ControlCollection controls)
+        {
+            foreach (ASP.Control idx in controls)
+            {
+                if (idx is RaControl)
+                {
+                    (idx as RaControl).Phase = RenderingPhase.RenderHtml;
+                }
+                SetAllChildrenToRenderHtml(idx.Controls);
+            }
         }
 
         #endregion

@@ -80,6 +80,14 @@ namespace NUnitTests
             Browser.Button("pnlControls_btnTest").Click();
             Assert.AreEqual("clicked", Browser.Button("pnlControls_btnTest").Text);
         }
+
+        [NUnit.Framework.Test]
+        public void ShowPanelAndClickButtonInside()
+        {
+            Browser.Button("setPnlVisible").Click();
+            Browser.Button("pnlControlsINVisible_btnTestINVisible").Click();
+            Assert.AreEqual("clicked", Browser.Button("pnlControlsINVisible_btnTestINVisible").Text);
+        }
     }
 }
 
