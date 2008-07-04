@@ -130,7 +130,7 @@ Ra.extend(Ra.Control.prototype, {
   // Expects a text value, sets the "value" of the control to the given value
   // Useful for TextBoxes (input type="text") and so on...
   Value: function(value) {
-    (this.options.label || this.element).value = value;
+    this.element.value = value;
   },
 
   // Expects a type - defines type of control (text, password etc...)
