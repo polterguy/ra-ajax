@@ -141,6 +141,13 @@ namespace NUnitTests
             Assert.AreEqual("True", Browser.Label("rdoNG2_LBL").InnerHtml);
         }
 
+        [NUnit.Framework.Test]
+        public void TestHiddenField()
+        {
+            Browser.Button("btnHid1").Click();
+            Assert.AreEqual("testing hidden", Browser.Button("btnHid1").Text);
+        }
+
         // TODO: Doesn't work, probably IE8...
         //[NUnit.Framework.Test]
         //public void AccessKeyOfCheckBox()

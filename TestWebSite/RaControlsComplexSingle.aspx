@@ -220,7 +220,11 @@ function clickRadioButtonNG(which) {
                 
                 <ra:Image runat="server" ID="img" ImageUrl="testImage1.png" AlternateText="Original" />
                 <ra:Button runat="server" ID="btnChangeImg" Text="Changes values of image" OnClick="btnChangeImg_Click" />
-
+                
+                <br />
+                
+                <ra:HiddenField runat="server" ID="hid1" Value="testing hidden" />
+                <ra:Button runat="server" ID="btnHid1" Text="Checks hidden field" OnClick="btnHid1_Click" />
             </div>
         </form>
     </body>
