@@ -28,9 +28,28 @@
                 <asp:CheckBox runat="server" ID="chk2" Checked="true" />
                 <asp:RadioButton runat="server" ID="rdo1" />
                 <asp:RadioButton runat="server" ID="rdo2" Checked="true" />
-                <ra:Button runat="server" ID="btn" Text="Submits form with Ajax" OnClick="btn_Click" />
+                <ra:Button runat="server" ID="btn" Text="Submits form with RA-Ajax" OnClick="btn_Click" />
                 <br />
                 <ra:Label runat="server" ID="lbl" Text="Set to values" />
+
+                <br />
+                <br />
+
+                <ra:TextBox runat="server" ID="txtRa" Text="text" />
+                <ra:TextArea runat="server" ID="txtAreaRa" Text="text" />
+                <ra:DropDownList runat="server" ID="ddlRa">
+                    <ra:ListItem Value="first" />
+                    <ra:ListItem Value="second" Selected="true" />
+                </ra:DropDownList>
+                <ra:CheckBox runat="server" ID="chk1Ra" />
+                <ra:CheckBox runat="server" ID="chk2Ra" Checked="true" />
+                <ra:RadioButton runat="server" ID="rdo1Ra" />
+                <ra:RadioButton runat="server" ID="rdo2Ra" Checked="true" />
+
+                <asp:Button runat="server" ID="btnASP" Text="Submits form with NON-Ajax" OnClick="btnASP_Click" />
+                <br />
+                <asp:Label runat="server" ID="lblASP" Text="Set to values" />
+
             </div>
         </form>
     </body>

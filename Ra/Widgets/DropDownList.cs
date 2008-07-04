@@ -157,7 +157,7 @@ namespace Ra.Widgets
         public override string GetHTML()
         {
             string accessKey = string.IsNullOrEmpty(AccessKey) ? "" : string.Format(" accesskey=\"{0}\"", AccessKey);
-            return string.Format("<select id=\"{0}\"{1}{2}{3}{5}>{4}</select>",
+            return string.Format("<select name=\"{0}\" id=\"{0}\"{1}{2}{3}{5}>{4}</select>",
                 ClientID,
                 GetCssClassHTMLFormatedAttribute(),
                 GetStyleHTMLFormatedAttribute(),
@@ -173,7 +173,7 @@ namespace Ra.Widgets
             {
                 retVal += string.Format("<option value=\"{0}\"{2}{3}>{1}</option>",
                     idx.Value,
-                    idx.Text,
+                    (string.IsNullOrEmpty(idx.Text) ? idx.Value : idx.Text),
                     (idx.Enabled ? "" : "disabled=\"disabled\""),
                     (idx.Selected ? "selected=\"selected\"" : ""));
             }

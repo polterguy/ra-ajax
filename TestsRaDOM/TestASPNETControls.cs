@@ -13,10 +13,17 @@ namespace NUnitTests
         }
 
         [NUnit.Framework.Test]
-        public void SubmitFormWithLotsOfASPNETControls()
+        public void SubmitFormWithLotsOfASPNETControlsThroughRaAjax()
         {
             Browser.Button("btn").Click();
             Assert.AreEqual("texttextsecondFalseTrueFalseTrue", Browser.Span("lbl").Text);
+        }
+
+        [NUnit.Framework.Test]
+        public void SubmitFormWithLotsOfRaAjaxControlsThroughASPNET()
+        {
+            Browser.Button("btnASP").Click();
+            Assert.AreEqual("texttextsecondFalseTrueFalseTrue", Browser.Span("lblASP").Text);
         }
     }
 }

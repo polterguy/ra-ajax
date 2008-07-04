@@ -159,6 +159,14 @@ namespace Ra.Widgets
 
         protected override void LoadControlState(object savedState)
         {
+            // Checking to see if this is NOT a Ra Ajax Callback, because if it isn't the control needs to render its HTML
+            // and the Register control script...
+            if (!AjaxManager.Instance.IsCallback)
+            {
+                Phase = RenderingPhase.RenderHtml;
+                return;
+            }
+
             if (savedState != null)
                 Phase = (RenderingPhase)savedState;
 

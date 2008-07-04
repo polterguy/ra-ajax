@@ -72,7 +72,7 @@ namespace Ra.Widgets
             }
         }
 
-        [DefaultValue(3)]
+        [DefaultValue(2)]
         public int Rows
         {
             get { return ViewState["Rows"] == null ? 3 : (int)ViewState["Rows"]; }
@@ -146,7 +146,7 @@ namespace Ra.Widgets
         public override string GetHTML()
         {
             string accessKey = string.IsNullOrEmpty(AccessKey) ? "" : string.Format(" accesskey=\"{0}\"", AccessKey);
-            return string.Format("<textarea id=\"{0}\" rows=\"{5}\" cols=\"{6}\"{2}{3}{4}{7}>{1}</textarea>",
+            return string.Format("<textarea id=\"{0}\" name=\"{0}\" rows=\"{5}\" cols=\"{6}\"{2}{3}{4}{7}>{1}</textarea>",
                 ClientID,
                 Text.Replace("\\", "\\\\").Replace("'", "\\'"),
                 GetCssClassHTMLFormatedAttribute(),

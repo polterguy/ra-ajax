@@ -21,4 +21,15 @@ public partial class ASPNETControlsIntegration : System.Web.UI.Page
             rdo1.Checked +
             rdo2.Checked;
     }
+
+    protected void btnASP_Click(object sender, EventArgs e)
+    {
+        lblASP.Text = txtRa.Text +
+            txtAreaRa.Text +
+            ddlRa.SelectedItem.Value +
+            chk1Ra.Checked +
+            chk2Ra.Checked +
+            rdo1Ra.Checked +
+            rdo2Ra.Checked;
+    }
 }
