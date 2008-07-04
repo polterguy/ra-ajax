@@ -93,7 +93,7 @@ namespace Ra.Widgets
             // the postback value BEFORE Page_Load event is fired...
             if (Enabled && !this.IsViewStateEnabled && AjaxManager.Instance.CurrentPage.IsPostBack)
             {
-                bool valueOfChecked = AjaxManager.Instance.CurrentPage.Request.Params[ClientID] == ClientID;
+                bool valueOfChecked = AjaxManager.Instance.CurrentPage.Request.Params[GroupName] == ClientID;
                 if (valueOfChecked != Checked)
                     Checked = valueOfChecked;
             }
@@ -109,7 +109,7 @@ namespace Ra.Widgets
             // the postback value BEFORE Page_Load event is fired...
             if (Enabled && AjaxManager.Instance.CurrentPage.IsPostBack)
             {
-                bool valueOfChecked = AjaxManager.Instance.CurrentPage.Request.Params[ClientID] == ClientID;
+                bool valueOfChecked = AjaxManager.Instance.CurrentPage.Request.Params[GroupName] == ClientID;
                 if (valueOfChecked != Checked)
                     Checked = valueOfChecked;
             }

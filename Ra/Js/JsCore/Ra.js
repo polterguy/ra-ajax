@@ -376,7 +376,7 @@ Ra.extend(Ra.Form.prototype, {
                 if( el.checked ) {
                   if( retVal.length > 0 )
                     retVal += '&';
-                  retVal += el.value + '=' + encodeURIComponent(el.value);
+                  retVal += (el.name || el.id) + '=' + encodeURIComponent(el.value);
                 }
                 break;
               case 'hidden':
