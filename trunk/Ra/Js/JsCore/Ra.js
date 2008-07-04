@@ -357,15 +357,11 @@ Ra.extend(Ra.Form.prototype, {
     for( var idx = 0; idx < els.length; idx++ ) {
       var el = els[idx];
 
-      // According to the HTTP/HTML specs we shouldn't serialize invisible form elements
-      // Note that Ra controls does NOE have a "name" but used the "id" attribute for
-      // serializing form values back to the server.
-      // Though to support serialization of NONE Ra Controls (and pure HTML elements)
-      // we check for the "name" attribute first and if it doesn't exists we use the
-      // "id" attribute for the POST parameter.
-      // Note also that we obey by the HTML standard in that we DO NOT submit values from 
-      // input elements which are disabled
-      if( !el.disabled ) {
+      // According to the HTTP/HTML specs we shouldn't serialize disabled controls
+      // Notice also that according to the HTTP/HTML standards we should also serialize the
+      // name/value pair meaning that the name attribute are being used as the ID of the control
+      // Though for Ra controls the name attribute will have the same value as the ID attribute
+      if( !el.disabled && el.name && el.name.length > 0 ) {
         switch(el.tagName.toLowerCase()) {
           case 'input':
             switch( el.type ) {
