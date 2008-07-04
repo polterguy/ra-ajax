@@ -72,7 +72,13 @@ namespace NUnitTests
             Assert.IsTrue(Browser.Span("pnlToggle").Exists);
             Browser.Eval("verifyPanel3DoesntExist();");
             AssertSuccess("Panel did exist when it was NOT supposed to");
+        }
 
+        [NUnit.Framework.Test]
+        public void ClickButtonInPanel()
+        {
+            Browser.Button("btnTest").Click();
+            Assert.AreEqual("clicked", Browser.Button("btnTest").Text);
         }
     }
 }

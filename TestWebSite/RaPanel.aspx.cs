@@ -25,4 +25,9 @@ public partial class RaPanel : System.Web.UI.Page
     {
         pnlToggle.Visible = !pnlToggle.Visible;
     }
+
+    protected void btnTest_Click(object sender, EventArgs e)
+    {
+        btnTest.Text = "clicked";
+    }
 }
