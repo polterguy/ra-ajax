@@ -52,6 +52,20 @@ function verifyPanel2DoesExist() {
 
 
 
+function verifyPanel3DoesntExist() {
+  if( !Ra.Control.$('pnlToggle') )
+    Ra.$('results').setContent('success');
+}
+
+
+
+function verifyPanel3DoesExist() {
+  if( Ra.Control.$('pnlToggle') )
+    Ra.$('results').setContent('success');
+}
+
+
+
         </script>
 
     </head>
@@ -75,6 +89,13 @@ function verifyPanel2DoesExist() {
                     Panel is visible, make INvisible
                 </ra:Panel>
                 <ra:Button runat="server" ID="btnMakeINVisible" Text="Make panel in-visible" OnClick="btnMakeINVisible_Click" />
+
+                <br />
+
+                <ra:Panel runat="server" ID="pnlToggle">
+                    Panel is here
+                </ra:Panel>
+                <ra:Button runat="server" ID="btnToggle" Text="Toggle panel" OnClick="btnToggle_Click" />
 
 
             </div>
