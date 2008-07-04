@@ -95,4 +95,44 @@ public partial class RaControlsComplexSingle : System.Web.UI.Page
         img.ImageUrl = "testImage2.png";
         img.AlternateText = "New text";
     }
+
+    protected void btnHid1_Click(object sender, EventArgs e)
+    {
+        btnHid1.Text = hid1.Value;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
