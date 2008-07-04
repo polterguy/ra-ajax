@@ -97,6 +97,12 @@ function verifyPanel3DoesExist() {
                 </ra:Panel>
                 <ra:Button runat="server" ID="btnToggle" Text="Toggle panel" OnClick="btnToggle_Click" />
 
+                <br />
+
+                <ra:Panel runat="server" ID="pnlControls">
+                    <ra:Button runat="server" ID="btnTest" Text="Changes text" OnClick="btnTest_Click" />
+                </ra:Panel>
+
 
             </div>
         </form>
