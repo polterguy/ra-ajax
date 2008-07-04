@@ -180,7 +180,7 @@ namespace Ra
                 }
             }
 
-            // Retrieving ViewState changes and returning back to client
+            // Retrieving ViewState (+++) changes and returning back to client
             content.Position = 0;
             TextReader reader = new StreamReader(content);
             string wholePageContent = reader.ReadToEnd();

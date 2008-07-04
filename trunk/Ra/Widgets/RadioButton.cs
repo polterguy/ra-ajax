@@ -93,7 +93,9 @@ namespace Ra.Widgets
             // the postback value BEFORE Page_Load event is fired...
             if (Enabled && !this.IsViewStateEnabled && AjaxManager.Instance.CurrentPage.IsPostBack)
             {
-                bool valueOfChecked = AjaxManager.Instance.CurrentPage.Request.Params[ClientID] == "on";
+                bool valueOfChecked = 
+                    AjaxManager.Instance.CurrentPage.Request.Params[
+                        string.IsNullOrEmpty(GroupName) ? ClientID : GroupName] == ClientID;
                 if (valueOfChecked != Checked)
                     Checked = valueOfChecked;
             }
@@ -109,7 +111,9 @@ namespace Ra.Widgets
             // the postback value BEFORE Page_Load event is fired...
             if (Enabled && AjaxManager.Instance.CurrentPage.IsPostBack)
             {
-                bool valueOfChecked = AjaxManager.Instance.CurrentPage.Request.Params[ClientID] == "on";
+                bool valueOfChecked =
+                    AjaxManager.Instance.CurrentPage.Request.Params[
+                        string.IsNullOrEmpty(GroupName) ? ClientID : GroupName] == ClientID;
                 if (valueOfChecked != Checked)
                     Checked = valueOfChecked;
             }
@@ -144,8 +148,8 @@ namespace Ra.Widgets
         public override string GetHTML()
         {
             string accessKey = string.IsNullOrEmpty(AccessKey) ? "" : string.Format(" accesskey=\"{0}\"", AccessKey);
-            string groupName = string.IsNullOrEmpty(GroupName) ? "" : string.Format(" name=\"{0}\"", GroupName);
-            return string.Format("<span id=\"{0}\"><input type=\"radio\" name=\"{0}\" id=\"{0}_CTRL\"{2}{3}{4}{5}{6}{7} /><label id=\"{0}_LBL\" for=\"{0}_CTRL\">{1}</label></span>",
+            string groupName = string.IsNullOrEmpty(GroupName) ? string.Format(" name=\"{0}\"", ClientID) : string.Format(" name=\"{0}\"", GroupName);
+            return string.Format("<span id=\"{0}\"><input type=\"radio\" value=\"{0}\" id=\"{0}_CTRL\"{2}{3}{4}{5}{6}{7} /><label id=\"{0}_LBL\" for=\"{0}_CTRL\">{1}</label></span>",
                 ClientID,
                 Text.Replace("\\", "\\\\").Replace("'", "\\'"),
                 GetCssClassHTMLFormatedAttribute(),
