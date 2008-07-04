@@ -125,6 +125,22 @@ namespace NUnitTests
             Assert.AreEqual("False", Browser.Label("rdo2_LBL").InnerHtml);
         }
 
+        [NUnit.Framework.Test]
+        public void ChangeRDOValuesNoGroupNameAndCallback()
+        {
+            Browser.Eval("clickRadioButtonNG(2);");
+            Assert.AreEqual(false, Browser.RadioButton("rdoNG1_CTRL").Checked);
+            Assert.AreEqual(true, Browser.RadioButton("rdoNG2_CTRL").Checked);
+            Assert.AreEqual("False", Browser.Label("rdoNG1_LBL").InnerHtml);
+            Assert.AreEqual("True", Browser.Label("rdoNG2_LBL").InnerHtml);
+
+            Browser.Eval("clickRadioButtonNG(1);");
+            Assert.AreEqual(true, Browser.RadioButton("rdoNG1_CTRL").Checked);
+            Assert.AreEqual(true, Browser.RadioButton("rdoNG2_CTRL").Checked);
+            Assert.AreEqual("True", Browser.Label("rdoNG1_LBL").InnerHtml);
+            Assert.AreEqual("True", Browser.Label("rdoNG2_LBL").InnerHtml);
+        }
+
         // TODO: Doesn't work, probably IE8...
         //[NUnit.Framework.Test]
         //public void AccessKeyOfCheckBox()

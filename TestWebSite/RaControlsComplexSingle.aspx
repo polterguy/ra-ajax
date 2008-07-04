@@ -153,6 +153,14 @@ function clickRadioButton(which) {
 
 
 
+function clickRadioButtonNG(which) {
+  Ra.$('rdoNG' + which + '_CTRL').click();
+  Ra.Control.$('rdoNG' + which).onEvent('change');
+}
+
+
+
+
         </script>
     </head>
     <body>
@@ -202,6 +210,11 @@ function clickRadioButton(which) {
                 
                 <ra:RadioButton runat="server" Text="Radio 1" ID="rdo1" OnCheckedChanged="rdo_CheckedChanged" GroupName="RdoGroup1" />
                 <ra:RadioButton runat="server" Text="Radio 2" ID="rdo2" OnCheckedChanged="rdo_CheckedChanged" GroupName="RdoGroup1" />
+
+                <br />
+                
+                <ra:RadioButton runat="server" Text="Radio 1" ID="rdoNG1" OnCheckedChanged="rdoNG_CheckedChanged" />
+                <ra:RadioButton runat="server" Text="Radio 2" ID="rdoNG2" OnCheckedChanged="rdoNG_CheckedChanged" />
 
                 <br />
                 
