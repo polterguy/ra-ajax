@@ -77,8 +77,8 @@ namespace NUnitTests
         [NUnit.Framework.Test]
         public void ClickButtonInPanel()
         {
-            Browser.Button("btnTest").Click();
-            Assert.AreEqual("clicked", Browser.Button("btnTest").Text);
+            Browser.Button("pnlControls_btnTest").Click();
+            Assert.AreEqual("clicked", Browser.Button("pnlControls_btnTest").Text);
         }
     }
 }

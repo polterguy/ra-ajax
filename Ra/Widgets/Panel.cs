@@ -19,7 +19,7 @@ namespace Ra.Widgets
 {
     [DefaultProperty("CssClass")]
     [ASP.ToolboxData("<{0}:Panel runat=server></{0}:Panel>")]
-    public class Panel : RaWebControl, IRaControl
+    public class Panel : RaWebControl, IRaControl, ASP.INamingContainer
     {
         #region [ -- Overridden (abstract/virtual) methods from RaControl -- ]
 

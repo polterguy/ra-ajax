@@ -20,10 +20,7 @@ namespace Ra.Widgets
         public enum RenderingPhase
         {
             Invisible,
-            MadeVisibleThisRequest,
-            RenderHtml,
-            Destroy,
-            PropertyChanges,
+            Visible,
             ReRender
         };
 
@@ -159,65 +156,20 @@ namespace Ra.Widgets
 
         protected override void LoadControlState(object savedState)
         {
-            // Checking to see if this is NOT a Ra Ajax Callback, because if it isn't the control needs to render its HTML
-            // and the Register control script...
             if (!AjaxManager.Instance.IsCallback)
-            {
-                Phase = RenderingPhase.RenderHtml;
-                return;
-            }
-
+                Phase = RenderingPhase.Invisible;
             if (savedState != null)
                 Phase = (RenderingPhase)savedState;
-
-            // If the ControlState was stored previously with a Destroy value
-            // then the control is logically now Invisible
-            if (Phase == RenderingPhase.Destroy)
-                Phase = RenderingPhase.Invisible;
-
-            // If the Phase was previously saved with any other value than Invisible/Destroy
-            // then the control must logically be in PropertyChanges mode...
-            else if (Phase != RenderingPhase.Invisible)
-                Phase = RenderingPhase.PropertyChanges;
         }
-
-        // SaveControlState will be called BEFORE the RenderControl is being called by the ASP.NET
-        // runtime. This means that in the SaveControlState we can set up the "stat machine" which
-        // determines which state the control is in in regards to rendering.
 
         protected override object SaveControlState()
         {
-            // If control is Invisible acording to RenderingPhase and still control is
-            // logicall Visible then this is the first rendering of the control
-            if (Phase == RenderingPhase.Invisible && Visible)
-            {
-                // If it's an Ajax Callback e need to run the "replace logic"
-                // If it's NOT an Ajax Callback then we just render the HTML plain...
-                if (AjaxManager.Instance.IsCallback)
-                    Phase = RenderingPhase.MadeVisibleThisRequest;
-                else
-                    Phase = RenderingPhase.RenderHtml;
-            }
-
-            // If control state is not Invisible but still Control is logically not Visible
-            // we need to run the "destroy logic" by setting its rendering phase to Destroy
-            else if (Phase != RenderingPhase.Invisible && !Visible)
-            {
-                // Setting rendering phase to destroy
-                Phase = RenderingPhase.Destroy;
-
-                // We ALSO must loop through all CHILD controls and set their state to Invisible...!
-                // We don't HAVE to explicitly destroy the child controls from the server since
-                // our JavaScript API will make sure of that for us...
-                foreach (RaControl idx in AjaxManager.Instance.RaControls)
-                {
-                    if (IsChildControl(idx))
-                        idx.Phase = RenderingPhase.Invisible;
-                }
-            }
-
-            // Returning Phase to the ControlState serialization logic of the runtime
-            return Phase;
+            if (Phase == RenderingPhase.ReRender)
+                return RenderingPhase.Visible;
+            if (Visible)
+                return RenderingPhase.Visible;
+            else
+                return RenderingPhase.Invisible;
         }
 
         private bool IsChildControl(RaControl idx)
@@ -230,32 +182,59 @@ namespace Ra.Widgets
             if (DesignMode)
                 throw new ApplicationException("Ra Ajax doesn't support Design time");
 
-            switch (Phase)
+            if (Visible)
             {
-                case RenderingPhase.Destroy:
-                    // Handled in AjaxManager.RenderCallback
-                    break;
-                case RenderingPhase.Invisible:
-                    // We must render the Wrapper Span, but ONLY if this is NOT an Ajax Callback...
-                    if (!AjaxManager.Instance.IsCallback)
-                        writer.Write(GetInvisibleHTML());
-                    break;
-                case RenderingPhase.MadeVisibleThisRequest:
-                    // Replace wrapper span for control
-                    // Handled in AjaxManager.RenderCallback
-                    break;
-                case RenderingPhase.PropertyChanges:
-                    // Serialize JSON changes to control
-                    // Handled in AjaxManager.RenderCallback
-                    break;
-                case RenderingPhase.RenderHtml:
-                    // We must render the HTML for the Control, but ONLY if this is NOT an Ajax Callback
-                    if (!AjaxManager.Instance.IsCallback)
-                        writer.Write(GetHTML());
-                    break;
-                case RenderingPhase.ReRender:
-                    // Handled in AjaxManager.RenderCallback
-                    break;
+                if (AjaxManager.Instance.IsCallback)
+                {
+                    if (Phase == RenderingPhase.Invisible)
+                    {
+                        // Control was made Visible THIS request...!
+                        AjaxManager.Instance.Writer.WriteLine("Ra.$('{0}').replace('{1}');",
+                            ClientID,
+                            GetHTML().Replace("\\", "\\\\").Replace("'", "\\'").Replace("\r", "\\r").Replace("\n", "\\n"));
+                        AjaxManager.Instance.Writer.WriteLine(GetClientSideScript());
+                    }
+                    else if (Phase == RenderingPhase.Visible)
+                    {
+                        // JSON changes, control was visible also previous request...
+                        string JSON = SerializeJSON();
+                        if (JSON != null)
+                        {
+                            AjaxManager.Instance.Writer.WriteLine("Ra.Control.$('{0}').handleJSON({1});",
+                                ClientID,
+                                JSON);
+                        }
+                    }
+                    else if (Phase == RenderingPhase.ReRender)
+                    {
+                        AjaxManager.Instance.Writer.WriteLine("Ra.Control.$('{0}').reRender('{1}');",
+                            ClientID,
+                            GetHTML().Replace("\\", "\\\\").Replace("'", "\\'").Replace("\r", "\\r").Replace("\n", "\\n"));
+                    }
+                    RenderChildren(writer);
+                }
+                else
+                {
+                    writer.Write(GetHTML());
+                    AjaxManager.Instance.Writer.WriteLine(GetClientSideScript());
+                }
+            }
+            else // if (!Visible)
+            {
+                if (AjaxManager.Instance.IsCallback)
+                {
+                    if (Phase == RenderingPhase.ReRender || Phase == RenderingPhase.Visible)
+                    {
+                        if (AjaxManager.Instance.IsCallback)
+                        {
+                            AjaxManager.Instance.Writer.WriteLine("Ra.Control.$('{0}').destroy();", ClientID);
+                        }
+                    }
+                }
+                else
+                {
+                    writer.Write(GetInvisibleHTML());
+                }
             }
         }
 

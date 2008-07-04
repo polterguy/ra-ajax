@@ -33,7 +33,7 @@ namespace Ra.Widgets
 
         void _control_PreRender(object sender, EventArgs e)
         {
-            if (_control.Phase == RaControl.RenderingPhase.PropertyChanges && _jsonChanges.Count > 0)
+            if (_control.Phase == RaControl.RenderingPhase.Visible && _jsonChanges.Count > 0)
             {
                 Dictionary<string, string> styles = _control.GetJSONValueDictionary("AddStyle");
                 foreach (string idxKey in _jsonChanges.Keys)

@@ -30,4 +30,15 @@ public partial class RaPanel : System.Web.UI.Page
     {
         btnTest.Text = "clicked";
     }
+
+    protected void setPnlVisible_Click(object sender, EventArgs e)
+    {
+        pnlControlsINVisible.Visible = !pnlControlsINVisible.Visible;
+        btnTestINVisible.Text = "should click";
+    }
+
+    protected void btnTestINVisible_Click(object sender, EventArgs e)
+    {
+        btnTestINVisible.Text = "clicked";
+    }
 }
