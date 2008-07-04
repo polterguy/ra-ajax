@@ -181,17 +181,20 @@ namespace Ra
             }
 
             // Retrieving ViewState changes and returning back to client
-            writer.WriteLine("Ra.$('__VIEWSTATE').value = '{0}';", GetViewState(content, "__VIEWSTATE"));
-            writer.WriteLine("Ra.$('__EVENTVALIDATION').value = '{0}';", GetViewState(content, "__EVENTVALIDATION"));
+            content.Position = 0;
+            TextReader reader = new StreamReader(content);
+            string wholePageContent = reader.ReadToEnd();
+
+            if (wholePageContent.IndexOf("__VIEWSTATE") != -1)
+                writer.WriteLine("Ra.$('__VIEWSTATE').value = '{0}';", GetViewState(wholePageContent, "__VIEWSTATE"));
+            if (wholePageContent.IndexOf("__EVENTVALIDATION") != -1)
+                writer.WriteLine("Ra.$('__EVENTVALIDATION').value = '{0}';", GetViewState(wholePageContent, "__EVENTVALIDATION"));
             
             writer.Flush();
         }
 
-        private string GetViewState(MemoryStream content, string searchString)
+        private string GetViewState(string wholePageContent, string searchString)
         {
-            content.Position = 0;
-            TextReader reader = new StreamReader(content);
-            string wholePageContent = reader.ReadToEnd();
             string viewStateStart = string.Format("<input type=\"hidden\" name=\"{0}\" id=\"{0}\" value=\"", searchString);
             string viewStateValue = GetHiddenInputValue(wholePageContent, viewStateStart);
             return viewStateValue;
