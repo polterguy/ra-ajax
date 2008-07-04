@@ -20,4 +20,9 @@ public partial class RaPanel : System.Web.UI.Page
     {
         pnlVisible.Visible = false;
     }
+
+    protected void btnToggle_Click(object sender, EventArgs e)
+    {
+        pnlToggle.Visible = !pnlToggle.Visible;
+    }
 }

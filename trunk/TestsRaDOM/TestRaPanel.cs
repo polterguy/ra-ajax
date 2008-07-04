@@ -41,6 +41,39 @@ namespace NUnitTests
             Browser.Eval("verifyPanel2DoesntExist();");
             AssertSuccess("Panel did exist when it was NOT supposed to");
         }
+
+        [NUnit.Framework.Test]
+        public void TogglePanel()
+        {
+            Assert.IsTrue(Browser.Div("pnlToggle").Exists);
+            Browser.Eval("verifyPanel3DoesExist();");
+            AssertSuccess("Panel didn't exist when it was supposed to");
+            Browser.Button("btnToggle").Click();
+            Assert.IsTrue(Browser.Span("pnlToggle").Exists);
+            Browser.Eval("verifyPanel3DoesntExist();");
+            AssertSuccess("Panel did exist when it was NOT supposed to");
+
+            Browser.Button("btnToggle").Click();
+            Assert.IsTrue(Browser.Div("pnlToggle").Exists);
+            Browser.Eval("verifyPanel3DoesExist();");
+            AssertSuccess("Panel didn't exist when it was supposed to");
+
+            Browser.Button("btnToggle").Click();
+            Assert.IsTrue(Browser.Span("pnlToggle").Exists);
+            Browser.Eval("verifyPanel3DoesntExist();");
+            AssertSuccess("Panel did exist when it was NOT supposed to");
+
+            Browser.Button("btnToggle").Click();
+            Assert.IsTrue(Browser.Div("pnlToggle").Exists);
+            Browser.Eval("verifyPanel3DoesExist();");
+            AssertSuccess("Panel didn't exist when it was supposed to");
+
+            Browser.Button("btnToggle").Click();
+            Assert.IsTrue(Browser.Span("pnlToggle").Exists);
+            Browser.Eval("verifyPanel3DoesntExist();");
+            AssertSuccess("Panel did exist when it was NOT supposed to");
+
+        }
     }
 }
 
