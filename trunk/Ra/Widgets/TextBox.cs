@@ -140,7 +140,7 @@ namespace Ra.Widgets
         public override string GetHTML()
         {
             string accessKey = string.IsNullOrEmpty(AccessKey) ? "" : string.Format(" accesskey=\"{0}\"", AccessKey);
-            return string.Format("<input type=\"{5}\" id=\"{0}\" value=\"{1}\"{2}{3}{4}{6} />",
+            return string.Format("<input type=\"{5}\" id=\"{0}\" name=\"{0}\" value=\"{1}\"{2}{3}{4}{6} />",
                 ClientID,
                 Text.Replace("\\", "\\\\").Replace("'", "\\'"),
                 GetCssClassHTMLFormatedAttribute(),

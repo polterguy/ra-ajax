@@ -36,13 +36,13 @@ namespace Ra.Widgets
 
         public string Text
         {
-            get { return _text; }
+            get { return string.IsNullOrEmpty(_text) ? "" : _text; }
             set { _text = value; }
         }
 
         public string Value
         {
-            get { return _value; }
+            get { return string.IsNullOrEmpty(_value) ? "" : _value; }
             set { _value = value; }
         }
     }
