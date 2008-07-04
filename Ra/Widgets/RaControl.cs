@@ -21,17 +21,11 @@ namespace Ra.Widgets
         {
             Invisible,
             Visible,
-            ReRender
+            ReRender,
+            RenderHtml
         };
 
         // Used to track if control has been rendered previously
-        // Ra has 6 rendering states;
-        // * Invisible controls (not rendered)
-        // * Controls being made visible this request (render HTML and run replace on wrapper span)
-        // * Controls visible initially or parent container control set to visible this rendering (pure HTML rendering)
-        // * Controls being set to invisible (render destroy)
-        // * Controls already visible but have property changes (JSON serialization of properties and method results)
-        // * Control needs to be re-rendered
         private RenderingPhase _controlRenderingState = RenderingPhase.Invisible;
 
         internal RenderingPhase Phase
@@ -164,7 +158,7 @@ namespace Ra.Widgets
 
         protected override object SaveControlState()
         {
-            if (Phase == RenderingPhase.ReRender)
+            if (Phase == RenderingPhase.ReRender || Phase == RenderingPhase.RenderHtml)
                 return RenderingPhase.Visible;
             if (Visible)
                 return RenderingPhase.Visible;
@@ -210,6 +204,10 @@ namespace Ra.Widgets
                         AjaxManager.Instance.Writer.WriteLine("Ra.Control.$('{0}').reRender('{1}');",
                             ClientID,
                             GetHTML().Replace("\\", "\\\\").Replace("'", "\\'").Replace("\r", "\\r").Replace("\n", "\\n"));
+                    }
+                    else if (Phase == RenderingPhase.RenderHtml)
+                    {
+                        writer.Write(GetHTML());
                     }
                     RenderChildren(writer);
                 }
