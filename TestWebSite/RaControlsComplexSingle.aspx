@@ -145,6 +145,13 @@ function verifyCheckBoxEnabled() {
 
 
 
+function clickRadioButton(which) {
+  Ra.$('rdo' + which + '_CTRL').click();
+  Ra.Control.$('rdo' + which).onEvent('change');
+}
+
+
+
 
         </script>
     </head>
