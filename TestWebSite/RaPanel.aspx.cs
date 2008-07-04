@@ -15,4 +15,9 @@ public partial class RaPanel : System.Web.UI.Page
     {
         pnlInvisible.Visible = true;
     }
+
+    protected void btnMakeINVisible_Click(object sender, EventArgs e)
+    {
+        pnlVisible.Visible = false;
+    }
 }

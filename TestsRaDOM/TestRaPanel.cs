@@ -29,6 +29,18 @@ namespace NUnitTests
             Browser.Eval("verifyPanelDoesExist();");
             AssertSuccess("Panel did NO exist when it was supposed to");
         }
+
+        [NUnit.Framework.Test]
+        public void MakePanelINVisible()
+        {
+            Assert.IsTrue(Browser.Div("pnlVisible").Exists);
+            Browser.Eval("verifyPanel2DoesExist();");
+            AssertSuccess("Panel didn't exist when it was supposed to");
+            Browser.Button("btnMakeINVisible").Click();
+            Assert.IsTrue(Browser.Span("pnlVisible").Exists);
+            Browser.Eval("verifyPanel2DoesntExist();");
+            AssertSuccess("Panel did exist when it was NOT supposed to");
+        }
     }
 }
 
