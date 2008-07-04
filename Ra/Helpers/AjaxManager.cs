@@ -152,7 +152,7 @@ namespace Ra
                         // Rendering replace logic and register script logic
                         writer.WriteLine("Ra.$('{0}').replace('{1}');", 
                             idx.ClientID, 
-                            idx.GetHTML().Replace("\\", "\\\\").Replace("'", "\\'"));
+                            idx.GetHTML().Replace("\\", "\\\\").Replace("'", "\\'").Replace("\r", "\\r").Replace("\n", "\\n"));
                         writer.WriteLine(idx.GetClientSideScript());
                         break;
 

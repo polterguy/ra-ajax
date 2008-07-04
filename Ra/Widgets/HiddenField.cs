@@ -67,12 +67,6 @@ namespace Ra.Widgets
             }
         }
 
-        // Override this one to create specific initialization script for your widgets
-        public override string GetClientSideScript()
-        {
-            return string.Format("new Ra.Control('{0}');", ClientID);
-        }
-
         // Override this one to create specific HTML for your widgets
         public override string GetHTML()
         {

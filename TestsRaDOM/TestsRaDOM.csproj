@@ -46,6 +46,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TestRaPanel.cs" />
     <Compile Include="TestASPNETControls.cs" />
     <Compile Include="TestControlsComplexSingle.cs" />
     <Compile Include="TestControlsCombined.cs" />
