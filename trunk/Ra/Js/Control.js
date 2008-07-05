@@ -223,8 +223,8 @@ Ra.extend(Ra.Control.prototype, {
     for( var idx = 0; idx < Ra.Control._controls.length; idx++ ) {
 
       // Checking to see that this is NOT the "this" control
-      if( Ra.Control._controls[idx].element.id.length > this.element.id ) {
-        if( this.element.id.indexOf(Ra.Control._controls[idx].element.id) == 0 ) {
+      if( Ra.Control._controls[idx].element.id.length > this.element.id.length ) {
+        if( Ra.Control._controls[idx].element.id.indexOf(this.element.id) == 0 ) {
           children.push(Ra.Control._controls[idx]);
         }
       }

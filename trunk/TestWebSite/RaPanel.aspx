@@ -75,6 +75,13 @@ function verifyOnlyOneDOMElInsidePanel() {
 
 
 
+function verifyPanelInnerAndButtonDestroyed() {
+  if( !Ra.Control.$('pnlRec3') && !Ra.Control.$('pnlRec3_pnlRec4') && !Ra.Control.$('pnlRec3_pnlRec4_btnRec2') )
+    Ra.$('results').setContent('success');
+}
+
+
+
         </script>
 
     </head>
@@ -136,6 +143,7 @@ function verifyOnlyOneDOMElInsidePanel() {
                     </ra:Panel>
                 </ra:Panel>
                 <ra:Button runat="server" ID="btnShowPnlRec2" Text="Shows recursive panels" OnClick="btnShowPnlRec2_Click" />
+                <input type="button" id="xxx" onclick="verifyPanelInnerAndButtonDestroyed();" value="dummy test" />
 
             </div>
         </form>
