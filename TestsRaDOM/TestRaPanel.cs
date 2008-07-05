@@ -88,6 +88,15 @@ namespace NUnitTests
             Browser.Button("pnlControlsINVisible_btnTestINVisible").Click();
             Assert.AreEqual("clicked", Browser.Button("pnlControlsINVisible_btnTestINVisible").Text);
         }
+
+        [NUnit.Framework.Test]
+        public void ShowRecursivePanels()
+        {
+            Browser.Button("btnShowPnlRec").Click();
+            Browser.Button("btnShowPnlRec").Click();
+            Browser.Button("pnlRec1_pnlRec2_btnRec1").Click();
+            Assert.AreEqual("clicked", Browser.Button("pnlRec1_pnlRec2_btnRec1").Text);
+        }
     }
 }
 

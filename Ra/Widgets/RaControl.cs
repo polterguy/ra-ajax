@@ -228,6 +228,10 @@ namespace Ra.Widgets
                             AjaxManager.Instance.Writer.WriteLine("Ra.Control.$('{0}').destroy();", ClientID);
                         }
                     }
+                    else if (Phase == RenderingPhase.RenderHtml)
+                    {
+                        writer.Write(GetInvisibleHTML());
+                    }
                 }
                 else
                 {
