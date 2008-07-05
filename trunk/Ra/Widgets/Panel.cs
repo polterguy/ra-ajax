@@ -45,11 +45,14 @@ namespace Ra.Widgets
             string retVal = "";
             foreach (ASP.Control idx in controls)
             {
-                if (idx is RaControl)
+                if (idx.Visible)
                 {
-                    retVal += (idx as RaControl).GetClientSideScript();
+                    if (idx is RaControl)
+                    {
+                        retVal += (idx as RaControl).GetClientSideScript();
+                    }
+                    retVal += GetChildrenClientSideScript(idx.Controls);
                 }
-                retVal += GetChildrenClientSideScript(idx.Controls);
             }
             return retVal;
         }

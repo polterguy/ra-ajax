@@ -110,6 +110,15 @@ function verifyPanel3DoesExist() {
                 </ra:Panel>
                 <ra:Button runat="server" ID="setPnlVisible" Text="Sets panel with controls to visible" OnClick="setPnlVisible_Click" />
 
+                <br />
+
+                <ra:Panel runat="server" ID="pnlRec1" Visible="false">
+                    <ra:Panel runat="server" ID="pnlRec2" Visible="false">
+                        <ra:Button runat="server" ID="btnRec1" Text="Changes text" OnClick="btnRec1_Click" />
+                    </ra:Panel>
+                </ra:Panel>
+                <ra:Button runat="server" ID="btnShowPnlRec" Text="Shows recursive panels" OnClick="btnShowPnlRec_Click" />
+
             </div>
         </form>
     </body>
