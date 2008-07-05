@@ -54,4 +54,14 @@ public partial class RaPanel : System.Web.UI.Page
         else
             pnlRec1.Visible = true;
     }
+
+    protected void btnShowPnlRec2_Click(object sender, EventArgs e)
+    {
+        pnlRec3.Visible = true;
+    }
+
+    protected void btnRec2_Click(object sender, EventArgs e)
+    {
+        btnRec2.Text = "clicked";
+    }
 }
