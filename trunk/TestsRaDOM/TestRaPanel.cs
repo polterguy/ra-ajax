@@ -104,6 +104,9 @@ namespace NUnitTests
             Browser.Button("btnShowPnlRec2").Click();
             Browser.Button("pnlRec3_pnlRec4_btnRec2").Click();
             Assert.AreEqual("clicked", Browser.Button("pnlRec3_pnlRec4_btnRec2").Text);
+
+            Browser.Eval("verifyOnlyOneDOMElInsidePanel();");
+            AssertSuccess("Panel did not render correctly when made visible");
         }
     }
 }
