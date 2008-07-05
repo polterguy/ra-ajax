@@ -66,6 +66,15 @@ function verifyPanel3DoesExist() {
 
 
 
+
+function verifyOnlyOneDOMElInsidePanel() {
+  var el = Ra.$('pnlRec3');
+  if( el.childNodes.length == 1 )
+    Ra.$('results').setContent('success');
+}
+
+
+
         </script>
 
     </head>
