@@ -113,6 +113,14 @@ namespace NUnitTests
             Browser.Eval("verifyPanelInnerAndButtonDestroyed();");
             AssertSuccess("Panel did not render correctly when made visible");
         }
+
+        [NUnit.Framework.Test]
+        public void ChangeStyleOfPanel()
+        {
+            Browser.Button("btnSetPnlStyle").Click();
+            Browser.Eval("verifyPanelStyle();");
+            AssertSuccess("Panel did not change style correctly");
+        }
     }
 }
 
