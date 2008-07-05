@@ -82,6 +82,25 @@ function verifyPanelInnerAndButtonDestroyed() {
 
 
 
+
+
+
+function verifyPanelStyle() {
+  var ctrl = Ra.Control.$('pnlStyle');
+  if( ctrl.element.style.borderWidth == '3px' && 
+    ctrl.element.style.borderStyle.toLowerCase() == 'dashed' && 
+    ctrl.element.style.borderColor.toLowerCase() == 'yellow' ) {
+    Ra.$('results').setContent('success');
+  }
+}
+
+
+
+
+
+
+
+
         </script>
 
     </head>
@@ -144,6 +163,14 @@ function verifyPanelInnerAndButtonDestroyed() {
                 </ra:Panel>
                 <ra:Button runat="server" ID="btnShowPnlRec2" Text="Shows recursive panels" OnClick="btnShowPnlRec2_Click" />
                 <input type="button" id="xxx" onclick="verifyPanelInnerAndButtonDestroyed();" value="dummy test" />
+                
+                <br />
+                <br />
+                <ra:Panel runat="server" ID="pnlStyle">
+                    Testing panel
+                </ra:Panel>
+                <ra:Button runat="server" ID="btnSetPnlStyle" Text="Change style of Panel" OnClick="btnSetPnlStyle_Click" />
+                <input type="button" id="dummyTestPanel" onclick="verifyPanelStyle();" value="dummy test styles" />
 
             </div>
         </form>

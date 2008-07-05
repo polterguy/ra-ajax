@@ -64,4 +64,32 @@ public partial class RaPanel : System.Web.UI.Page
     {
         btnRec2.Text = "clicked";
     }
+
+    protected void btnSetPnlStyle_Click(object sender, EventArgs e)
+    {
+        pnlStyle.Style["border-width"] = "3px";
+        pnlStyle.Style["border-style"] = "dashed";
+        pnlStyle.Style["border-color"] = "Yellow";
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
