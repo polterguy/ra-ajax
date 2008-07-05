@@ -107,6 +107,11 @@ namespace NUnitTests
 
             Browser.Eval("verifyOnlyOneDOMElInsidePanel();");
             AssertSuccess("Panel did not render correctly when made visible");
+
+            // Now making INvisible again (and verify controls are destroyed)
+            Browser.Button("btnShowPnlRec2").Click();
+            Browser.Eval("verifyPanelInnerAndButtonDestroyed();");
+            AssertSuccess("Panel did not render correctly when made visible");
         }
     }
 }

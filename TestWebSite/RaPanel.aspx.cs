@@ -57,7 +57,7 @@ public partial class RaPanel : System.Web.UI.Page
 
     protected void btnShowPnlRec2_Click(object sender, EventArgs e)
     {
-        pnlRec3.Visible = true;
+        pnlRec3.Visible = !pnlRec3.Visible;
     }
 
     protected void btnRec2_Click(object sender, EventArgs e)
