@@ -187,6 +187,7 @@ namespace Ra.Widgets
                             ClientID,
                             GetHTML().Replace("\\", "\\\\").Replace("'", "\\'").Replace("\r", "\\r").Replace("\n", "\\n"));
                         AjaxManager.Instance.Writer.WriteLine(GetClientSideScript());
+                        RenderChildren(writer);
                     }
                     else if (Phase == RenderingPhase.Visible)
                     {
@@ -198,18 +199,19 @@ namespace Ra.Widgets
                                 ClientID,
                                 JSON);
                         }
+                        RenderChildren(writer);
                     }
                     else if (Phase == RenderingPhase.ReRender)
                     {
                         AjaxManager.Instance.Writer.WriteLine("Ra.Control.$('{0}').reRender('{1}');",
                             ClientID,
                             GetHTML().Replace("\\", "\\\\").Replace("'", "\\'").Replace("\r", "\\r").Replace("\n", "\\n"));
+                        RenderChildren(writer);
                     }
                     else if (Phase == RenderingPhase.RenderHtml)
                     {
                         writer.Write(GetHTML());
                     }
-                    RenderChildren(writer);
                 }
                 else
                 {
