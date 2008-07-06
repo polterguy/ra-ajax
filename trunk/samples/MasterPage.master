@@ -9,12 +9,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
     <head runat="server">
         <title>Untitled Page</title>
+        <link href="media/MainStyles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <form id="form1" runat="server">
-            <div>
-                <asp:contentplaceholder id="ContentPlaceHolder1" runat="server">
-                </asp:contentplaceholder>
+            <div id="wholePageDiv">
+                <div id="contentPlusBorders">
+                    <div id="wholeContentDiv">
+                        <div id="logoPartDiv">&nbsp;</div>
+                        <div id="navigation">
+                            <ul class="links">
+                                <li>
+                                    <a href="Default.aspx" title="Ra Ajax Samples Home">Ra Ajax samples home</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="contentOfPageDiv">
+                            <asp:contentplaceholder id="ContentPlaceHolder1" runat="server">
+                            </asp:contentplaceholder>
+                        </div>
+                    </div>
+                </div>
             </div>
         </form>
     </body>
