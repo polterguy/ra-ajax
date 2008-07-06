@@ -7,6 +7,7 @@
 
 using System;
 using Ra.Widgets;
+using System.IO;
 
 public partial class MasterPage : System.Web.UI.MasterPage
 {
@@ -24,6 +25,37 @@ public partial class MasterPage : System.Web.UI.MasterPage
         pnlShowCode.Visible = true;
         Effect effect = new EffectRollDown(pnlShowCode, 1.0M, 600);
         effect.Render();
+        GetCSharpCode();
+    }
+
+    private void GetCSharpCode()
+    {
+        string path = this.Request.PhysicalPath + ".cs";
+        using (TextReader reader = new StreamReader(File.OpenRead(path)))
+        {
+            string allCode = reader.ReadToEnd();
+            allCode = ReplaceCodeEntities(allCode, "keyword", new string[] { 
+                "class", 
+                "using", 
+                "if", 
+                "else", 
+                "public", 
+                "partial", 
+                "protected", 
+                "void", 
+                "object"});
+            lblCode.Text = allCode;
+        }
+    }
+
+    private string ReplaceCodeEntities(string allCode, string cssClass, string[] words)
+    {
+        string retVal = allCode;
+        foreach (string idx in words)
+        {
+            retVal = retVal.Replace(idx, string.Format("<span class=\"{1}\">{0}</span>", idx, cssClass));
+        }
+        return retVal;
     }
 
     protected void closeShowCode_Click(object sender, EventArgs e)

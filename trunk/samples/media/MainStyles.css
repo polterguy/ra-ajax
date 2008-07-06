@@ -72,7 +72,7 @@ html, body, form
 	left:0px;
 	background-color:#fefedd;
 	z-index:1000;
-	overflow:hidden;
+	overflow:auto;
 	border-bottom:solid 1px #ddd;
 }
 
@@ -84,7 +84,12 @@ html, body, form
 
 
 
-
+/* Classes for code-formatting...
+ */
+.keyword
+{
+	color:Blue;
+}
 
 
 

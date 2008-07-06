@@ -11,7 +11,10 @@
     Namespace="Ra.Widgets" 
     TagPrefix="ra" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Content 
+    ID="Content1" 
+    ContentPlaceHolderID="ContentPlaceHolder1" 
+    Runat="Server">
     <h1>Ra Ajax Samples Home</h1>
     <p>
         Ra Ajax is an <strong>Ajax library for ASP.NET and Mono</strong> but its general nature on the client-side
@@ -36,7 +39,9 @@
                 First name:
             </td>
             <td>
-                <ra:TextBox runat="server" ID="txtFirstName" />
+                <ra:TextBox 
+                    runat="server" 
+                    ID="txtFirstName" />
             </td>
         </tr>
         <tr>
@@ -44,12 +49,20 @@
                 Surname:
             </td>
             <td>
-                <ra:TextBox runat="server" ID="txtSurname" />
+                <ra:TextBox 
+                    runat="server" 
+                    ID="txtSurname" />
             </td>
         </tr>
         <tr>
-            <td colspan="2" style="text-align:right;">
-                <ra:Button runat="server" ID="btnSubmit" Text="Save" OnClick="btnSubmit_Click" />
+            <td 
+                colspan="2" 
+                style="text-align:right;">
+                <ra:Button 
+                    runat="server" 
+                    ID="btnSubmit" 
+                    Text="Save" 
+                    OnClick="btnSubmit_Click" />
             </td>
         </tr>
     </table>
@@ -58,8 +71,11 @@
         runat="server" 
         ID="pnlResults" 
         Visible="false" 
-        style="border:solid 1px Black;background-color:Yellow;width:400px;text-align:center;padding:25px;float:left;display:none;">
-        <ra:Label runat="server" ID="lblResults" style="font-weight:bold;" />
+        style="border:solid 1px Black;background-color:Yellow;width:400px;padding:25px;float:left;display:none;">
+        <ra:Label 
+            runat="server" 
+            ID="lblResults" 
+            style="font-weight:bold;" />
         <p>
             Notice how there was no "custom JavaScript" written to show this Panel. Everything was done on the
             server in pure C# and resembles the ASP.NET WebControls way of writing Web Applications.
