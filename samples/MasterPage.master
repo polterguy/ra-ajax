@@ -33,11 +33,17 @@
                                 Text="Close" 
                                 OnClick="closeShowCode_Click" 
                                 style="position:absolute;top:5px;right:5px;" />
+                            <ra:Button 
+                                runat="server" 
+                                ID="switchCodeType" 
+                                Text="Switch to .ASPX" 
+                                OnClick="switchCodeType_Click" 
+                                style="position:absolute;top:5px;left:5px;" />
                              <pre>
                                  <ra:Label 
                                     runat="server" 
                                     ID="lblCode" 
-                                    style="position:absolute;top:25px;left:15px;" 
+                                    style="position:absolute;top:35px;left:15px;" 
                                     Text="Howdy" />
                              </pre>
                         </ra:Panel>

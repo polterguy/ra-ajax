@@ -117,7 +117,7 @@ namespace Ra.Widgets
             {
                 builder.AppendFormat("\"{0}\":\"{1}\"",
                     key,
-                    value.ToString().Replace("\\", "\\\\").Replace("\"", "\\\""));
+                    value.ToString().Replace("\\", "\\\\").Replace("\"", "\\\"").Replace("\n", "\\n").Replace("\r", "\\r"));
                 return;
             }
             if (value.GetType() == typeof(Dictionary<string, string>))
