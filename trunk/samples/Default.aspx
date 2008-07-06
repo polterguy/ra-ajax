@@ -17,9 +17,9 @@
         Ra Ajax is an <strong>Ajax library for ASP.NET and Mono</strong> but its general nature on the client-side
         will make it very useful also for other server-side bindings like PHP, J2EE RubyOnRails etc. Ra Ajax
         is licensed under an MIT(ish) license which basically says <em>"use as you wish, but don't fork the code"</em>.
-        Ra Ajax is built around the consumption that JavaScript is hard and not something Application Developers should
+        Ra Ajax is built around the assumption that JavaScript is hard and not something Application Developers should
         spend time on doing. Every single sample here in the samples section is written entirely without <em>one line
-        of JavaScript</em>. This makes you;
+        of Custom JavaScript</em>. This makes you;
     </p>
     <ul>
         <li>More productive</li>
