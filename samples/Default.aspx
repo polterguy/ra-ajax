@@ -58,7 +58,7 @@
         runat="server" 
         ID="pnlResults" 
         Visible="false" 
-        style="border:solid 1px Black;background-color:Yellow;width:400px;text-align:center;padding:25px;float:left;">
+        style="border:solid 1px Black;background-color:Yellow;width:400px;text-align:center;padding:25px;float:left;display:none;">
         <ra:Label runat="server" ID="lblResults" />
         <p>
             Notice how there was no "custom JavaScript" written to show this Panel. Everything was done on the

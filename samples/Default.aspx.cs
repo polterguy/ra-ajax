@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
+using Ra.Widgets;
 
 public partial class _Default : System.Web.UI.Page
 {
@@ -30,5 +31,7 @@ public partial class _Default : System.Web.UI.Page
                 txtFirstName.Text,
                 txtSurname.Text);
         }
+        Effect effect = new EffectFadeIn(pnlResults, 2.0M);
+        effect.Render();
     }
 }

@@ -144,6 +144,22 @@ namespace Ra
             }
         }
 
+        private MemoryStream _memStreamBack;
+        private HtmlTextWriter _writerBack;
+        public HtmlTextWriter WriterAtBack
+        {
+            get
+            {
+                if (_writerBack == null)
+                {
+                    _memStreamBack = new MemoryStream();
+                    TextWriter tw = new StreamWriter(_memStreamBack);
+                    _writerBack = new HtmlTextWriter(tw);
+                }
+                return _writerBack;
+            }
+        }
+
         // We only come here if this is a Ra Ajax Callback (IsCallback == true)
         // We don't really care about the HTML rendered by the page here.
         // We just short-circut the whole HTML rendering phase here and only render
@@ -167,7 +183,14 @@ namespace Ra
                 writer.WriteLine("Ra.$('__VIEWSTATE').value = '{0}';", GetViewState(wholePageContent, "__VIEWSTATE"));
             if (wholePageContent.IndexOf("__EVENTVALIDATION") != -1)
                 writer.WriteLine("Ra.$('__EVENTVALIDATION').value = '{0}';", GetViewState(wholePageContent, "__EVENTVALIDATION"));
-            
+
+            WriterAtBack.Flush();
+            _memStreamBack.Flush();
+            _memStreamBack.Position = 0;
+            readerContent = new StreamReader(_memStreamBack);
+            string allContentAtBack = readerContent.ReadToEnd();
+            writer.WriteLine(allContentAtBack);
+
             writer.Flush();
         }
 
