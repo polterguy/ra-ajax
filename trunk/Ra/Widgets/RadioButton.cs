@@ -151,7 +151,7 @@ namespace Ra.Widgets
             string groupName = string.IsNullOrEmpty(GroupName) ? string.Format(" name=\"{0}\"", ClientID) : string.Format(" name=\"{0}\"", GroupName);
             return string.Format("<span id=\"{0}\"><input type=\"radio\" value=\"{0}\" id=\"{0}_CTRL\"{2}{3}{4}{5}{6}{7} /><label id=\"{0}_LBL\" for=\"{0}_CTRL\">{1}</label></span>",
                 ClientID,
-                Text.Replace("\\", "\\\\").Replace("'", "\\'"),
+                Text,
                 GetCssClassHTMLFormatedAttribute(),
                 GetStyleHTMLFormatedAttribute(),
                 accessKey,

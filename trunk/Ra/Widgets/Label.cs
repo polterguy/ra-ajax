@@ -43,7 +43,7 @@ namespace Ra.Widgets
         {
             return string.Format("<span id=\"{0}\"{2}{3}>{1}</span>",
                 ClientID,
-                Text.Replace("\\", "\\\\").Replace("'", "\\'"),
+                Text,
                 GetCssClassHTMLFormatedAttribute(),
                 GetStyleHTMLFormatedAttribute());
         }

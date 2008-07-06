@@ -72,7 +72,7 @@ namespace Ra.Widgets
         {
             return string.Format("<input type=\"hidden\" id=\"{0}\" name=\"{0}\" value=\"{1}\" />",
                 ClientID,
-                Value.Replace("\\", "\\\\").Replace("'", "\\'"));
+                Value);
         }
 
         #endregion

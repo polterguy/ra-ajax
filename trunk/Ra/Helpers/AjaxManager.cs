@@ -171,67 +171,6 @@ namespace Ra
             writer.Flush();
         }
 
-        /*internal void RenderCallback(Stream next, MemoryStream content)
-        {
-            TextWriter writer = new StreamWriter(next);
-            foreach (RaControl idx in RaControls)
-            {
-                switch (idx.Phase)
-                {
-                    case RaControl.RenderingPhase.Destroy:
-                        writer.WriteLine("Ra.Control.$('{0}').destroy();", idx.ClientID);
-                        break;
-
-                    case RaControl.RenderingPhase.Invisible:
-                        // Do nothing...
-                        // Handled in RaControl.RenderControl
-                        break;
-
-                    case RaControl.RenderingPhase.MadeVisibleThisRequest:
-                        // Rendering replace logic and register script logic
-                        writer.WriteLine("Ra.$('{0}').replace('{1}');", 
-                            idx.ClientID, 
-                            idx.GetHTML().Replace("\\", "\\\\").Replace("'", "\\'").Replace("\r\n);
-                        writer.WriteLine(idx.GetClientSideScript());
-                        break;
-
-                    case RaControl.RenderingPhase.PropertyChanges:
-                        // Render JSON changes
-                        string JSON = idx.SerializeJSON();
-                        if (JSON != null)
-                        {
-                            writer.WriteLine("Ra.Control.$('{0}').handleJSON({1});",
-                                idx.ClientID,
-                                JSON);
-                        }
-                        break;
-
-                    case RaControl.RenderingPhase.RenderHtml:
-                        // This control is a Child control of another Control which was made visible 
-                        // this request...
-                        // Handled in RaControl.RenderControl
-                        break;
-                    case RaControl.RenderingPhase.ReRender:
-                        writer.WriteLine("Ra.Control.$('{0}').reRender('{1}');",
-                            idx.ClientID,
-                            idx.GetHTML().Replace("\\", "\\\\").Replace("'", "\\'"));
-                        break;
-                }
-            }
-
-            // Retrieving ViewState (+++) changes and returning back to client
-            content.Position = 0;
-            TextReader reader = new StreamReader(content);
-            string wholePageContent = reader.ReadToEnd();
-
-            if (wholePageContent.IndexOf("__VIEWSTATE") != -1)
-                writer.WriteLine("Ra.$('__VIEWSTATE').value = '{0}';", GetViewState(wholePageContent, "__VIEWSTATE"));
-            if (wholePageContent.IndexOf("__EVENTVALIDATION") != -1)
-                writer.WriteLine("Ra.$('__EVENTVALIDATION').value = '{0}';", GetViewState(wholePageContent, "__EVENTVALIDATION"));
-            
-            writer.Flush();
-        }*/
-
         private string GetViewState(string wholePageContent, string searchString)
         {
             string viewStateStart = string.Format("<input type=\"hidden\" name=\"{0}\" id=\"{0}\" value=\"", searchString);

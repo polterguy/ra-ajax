@@ -142,7 +142,7 @@ namespace Ra.Widgets
             string accessKey = string.IsNullOrEmpty(AccessKey) ? "" : string.Format(" accesskey=\"{0}\"", AccessKey);
             return string.Format("<input type=\"{5}\" id=\"{0}\" name=\"{0}\" value=\"{1}\"{2}{3}{4}{6} />",
                 ClientID,
-                Text.Replace("\\", "\\\\").Replace("'", "\\'"),
+                Text,
                 GetCssClassHTMLFormatedAttribute(),
                 GetStyleHTMLFormatedAttribute(),
                 accessKey,
