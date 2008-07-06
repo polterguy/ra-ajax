@@ -234,6 +234,13 @@ namespace Ra
             string allContent = readerContent.ReadToEnd();
             builder.Append(allContent);
 
+            WriterAtBack.Flush();
+            _memStreamBack.Flush();
+            _memStreamBack.Position = 0;
+            readerContent = new StreamReader(_memStreamBack);
+            string allContentAtBack = readerContent.ReadToEnd();
+            builder.Append(allContentAtBack);
+
             // Adding script closing element
             builder.Append("</script></body>");
 
