@@ -105,7 +105,10 @@ namespace Ra.Widgets
                 string[] raw = idx.Split(':');
                 styleDictionary[raw[0]] = raw[1];
             }
-            _beforeViewStateDictionary = styleDictionary;
+            foreach (string idxKey in styleDictionary.Keys)
+            {
+                _beforeViewStateDictionary[idxKey] = styleDictionary[idxKey];
+            }
         }
 
         public object SaveViewState()

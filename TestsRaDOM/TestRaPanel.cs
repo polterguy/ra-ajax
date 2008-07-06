@@ -121,6 +121,15 @@ namespace NUnitTests
             Browser.Eval("verifyPanelStyle();");
             AssertSuccess("Panel did not change style correctly");
         }
+
+        [NUnit.Framework.Test]
+        public void ChangeStyleThenMakeVisible()
+        {
+            Browser.Button("btnChangeStyleBeforeVisible").Click();
+            Browser.Button("btnSetVisibleAfterStyleChange").Click();
+            Browser.Eval("verifyPanelStyleAfterVisible();");
+            AssertSuccess("Style serialization of invisible controls doesn't work correctly");
+        }
     }
 }
 

@@ -71,6 +71,17 @@ public partial class RaPanel : System.Web.UI.Page
         pnlStyle.Style["border-style"] = "dashed";
         pnlStyle.Style["border-color"] = "Yellow";
     }
+
+    protected void btnChangeStyleBeforeVisible_Click(object sender, EventArgs e)
+    {
+        testStyleInvisible.Style["height"] = "100px";
+    }
+
+    protected void btnSetVisibleAfterStyleChange_Click(object sender, EventArgs e)
+    {
+        testStyleInvisible.Style["color"] = "Yellow";
+        testStyleInvisible.Visible = true;
+    }
 }
 
 

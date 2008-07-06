@@ -101,6 +101,18 @@ function verifyPanelStyle() {
 
 
 
+function verifyPanelStyleAfterVisible() {
+  var ctrl = Ra.Control.$('testStyleInvisible');
+  if( ctrl.element.style.width == '250px' && ctrl.element.style.height == '100px' && ctrl.element.style.color.toLowerCase() == 'yellow')
+    Ra.$('results').setContent('success');
+}
+
+
+
+
+
+
+
         </script>
 
     </head>
@@ -165,12 +177,20 @@ function verifyPanelStyle() {
                 <input type="button" id="xxx" onclick="verifyPanelInnerAndButtonDestroyed();" value="dummy test" />
                 
                 <br />
-                <br />
+
                 <ra:Panel runat="server" ID="pnlStyle">
                     Testing panel
                 </ra:Panel>
                 <ra:Button runat="server" ID="btnSetPnlStyle" Text="Change style of Panel" OnClick="btnSetPnlStyle_Click" />
                 <input type="button" id="dummyTestPanel" onclick="verifyPanelStyle();" value="dummy test styles" />
+                
+                <br />
+
+                <ra:Panel runat="server" ID="testStyleInvisible" Visible="false" style="width:250px;">
+                    Testing panel style
+                </ra:Panel>
+                <ra:Button runat="server" ID="btnChangeStyleBeforeVisible" Text="Change style" OnClick="btnChangeStyleBeforeVisible_Click" />
+                <ra:Button runat="server" ID="btnSetVisibleAfterStyleChange" Text="Set visible" OnClick="btnSetVisibleAfterStyleChange_Click" />
 
             </div>
         </form>
