@@ -4,9 +4,15 @@
 	padding:0;
 }
 
+html, body, form
+{
+	height:100%;
+}
+
 #wholePageDiv
 {
 	width:100%;
+	height:100%;
 }
 
 #contentPlusBorders
@@ -15,6 +21,7 @@
 	background:Transparent url(bg.png) repeat-y;
 	margin-left:auto;
 	margin-right:auto;
+	height:100%;
 }
 
 #wholeContentDiv
@@ -22,7 +29,7 @@
 	width:1024px;
 	margin-left:auto;
 	margin-right:auto;
-	min-height:800px;
+	position:relative;
 }
 
 #logoPartDiv
@@ -34,9 +41,7 @@
 #navigation
 {
 	width:224px;
-	background-color:Yellow;
 	float:left;
-	min-height:500px;
 }
 
 .links
@@ -56,6 +61,19 @@
 	float:left;
 	width:770px;
 	padding:15px;
+}
+
+.showCodeDiv
+{
+	float:left;
+	width:1024px;
+	position:absolute;
+	top:259px;
+	left:0px;
+	background-color:#fefedd;
+	z-index:1000;
+	overflow:hidden;
+	border-bottom:solid 1px #ddd;
 }
 
 #contentOfPageDiv p

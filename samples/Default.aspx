@@ -23,8 +23,8 @@
     </p>
     <ul>
         <li>More productive</li>
-        <li>Less frustrated</li>
         <li>More happy</li>
+        <li>More wealthy</li>
     </ul>
     <p>
         Try out the Ra Ajax "Hello World" application below.
@@ -59,7 +59,7 @@
         ID="pnlResults" 
         Visible="false" 
         style="border:solid 1px Black;background-color:Yellow;width:400px;text-align:center;padding:25px;float:left;display:none;">
-        <ra:Label runat="server" ID="lblResults" />
+        <ra:Label runat="server" ID="lblResults" style="font-weight:bold;" />
         <p>
             Notice how there was no "custom JavaScript" written to show this Panel. Everything was done on the
             server in pure C# and resembles the ASP.NET WebControls way of writing Web Applications.
