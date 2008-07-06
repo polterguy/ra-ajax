@@ -36,6 +36,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Effects\EffectFadeOut.cs" />
     <Compile Include="Effects\Effect.cs" />
     <Compile Include="Effects\EffectFadeIn.cs" />
     <Compile Include="Filters\CallbackFilter.cs" />
