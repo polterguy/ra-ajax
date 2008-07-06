@@ -30,7 +30,7 @@
         Try out the Ra Ajax "Hello World" application below.
     </p>
     <br />
-    <table>
+    <table style="float:left;">
         <tr>
             <td>
                 First name:
@@ -58,7 +58,7 @@
         runat="server" 
         ID="pnlResults" 
         Visible="false" 
-        style="border:solid 1px Black;background-color:Yellow;width:300px;text-align:center;padding:25px;">
+        style="border:solid 1px Black;background-color:Yellow;width:400px;text-align:center;padding:25px;float:left;">
         <ra:Label runat="server" ID="lblResults" />
         <p>
             Notice how there was no "custom JavaScript" written to show this Panel. Everything was done on the

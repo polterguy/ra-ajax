@@ -56,6 +56,12 @@ Ra.extend(Ra.Control.prototype, {
       // Defaults here...
       evts: [],
 
+      // If true, focus will be set to control initially
+      focus: false,
+
+      // If true, the contents of the control will be initially selected
+      select: false,
+
       // If set defines the element of the actual control
       ctrl: null,
 
@@ -70,6 +76,14 @@ Ra.extend(Ra.Control.prototype, {
     // Checking to see if an extra Label was passed
     if( this.options.label )
       this.options.label = Ra.$(this.options.label);
+
+    // Setting focus to control (of we should)
+    if( this.options.focus )
+      this.element.focus();
+
+    // Selecting contents of control (if we should)
+    if( this.options.select )
+      this.element.select();
 
     // Registering control
     Ra.Control._controls.push(this);
@@ -131,6 +145,16 @@ Ra.extend(Ra.Control.prototype, {
   // Useful for TextBoxes (input type="text") and so on...
   Value: function(value) {
     this.element.value = value;
+  },
+
+  // Sets focus to control
+  Focus: function(value) {
+    this.element.focus();
+  },
+
+  // Selects a range from e.g. a TextBox
+  Select: function() {
+    this.element.select();
   },
 
   // Expects a type - defines type of control (text, password etc...)

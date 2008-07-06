@@ -78,6 +78,17 @@ namespace Ra.Widgets
             }
         }
 
+        protected bool _hasSetFocus;
+        public override void Focus()
+        {
+            _hasSetFocus = true;
+            if (AjaxManager.Instance.IsCallback)
+            {
+                SetJSONValueString("Focus", "");
+            }
+            base.Focus();
+        }
+
         public virtual string SerializeJSON()
         {
             // Short circuting
@@ -249,7 +260,10 @@ namespace Ra.Widgets
         // Used to retrieve the client-side initialization script
         public virtual string GetClientSideScript()
         {
-            return string.Format("new Ra.Control('{0}');", ClientID);
+            if (_hasSetFocus)
+                return string.Format("new Ra.Control('{0}', {{focus:true}});", ClientID);
+            else
+                return string.Format("new Ra.Control('{0}');", ClientID);
         }
 
         // The HTML for the control
