@@ -26,6 +26,36 @@ public partial class MasterPage : System.Web.UI.MasterPage
         Effect effect = new EffectRollDown(pnlShowCode, 1.0M, 600);
         effect.Render();
         GetCSharpCode();
+        ViewState["code"] = "C#";
+    }
+
+    protected void switchCodeType_Click(object sender, EventArgs e)
+    {
+        Effect effect = new EffectFadeIn(pnlShowCode, 0.5M);
+        effect.Render();
+        if (ViewState["code"].ToString() == "C#")
+        {
+            ViewState["code"] = ".ASPX";
+            GetASPXCode();
+            switchCodeType.Text = "Switch to C# code";
+        }
+        else
+        {
+            ViewState["code"] = "C#";
+            GetCSharpCode();
+            switchCodeType.Text = "Switch to .ASPX";
+        }
+    }
+
+    private void GetASPXCode()
+    {
+        string path = this.Request.PhysicalPath;
+        using (TextReader reader = new StreamReader(File.OpenRead(path)))
+        {
+            string allCode = reader.ReadToEnd();
+            allCode = allCode.Replace("<", "&lt;").Replace(">", "&gt;");
+            lblCode.Text = allCode;
+        }
     }
 
     private void GetCSharpCode()
@@ -39,11 +69,14 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 "using", 
                 "if", 
                 "else", 
+                "int", 
                 "public", 
                 "partial", 
                 "protected", 
                 "void", 
                 "object"});
+            allCode = allCode.Replace("/*", "<span class=\"comment\">/*");
+            allCode = allCode.Replace("*/", "*/</span>");
             lblCode.Text = allCode;
         }
     }
