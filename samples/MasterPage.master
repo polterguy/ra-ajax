@@ -33,6 +33,13 @@
                                 Text="Close" 
                                 OnClick="closeShowCode_Click" 
                                 style="position:absolute;top:5px;right:5px;" />
+                             <pre>
+                                 <ra:Label 
+                                    runat="server" 
+                                    ID="lblCode" 
+                                    style="position:absolute;top:25px;left:15px;" 
+                                    Text="Howdy" />
+                             </pre>
                         </ra:Panel>
                         <div id="navigation">
                             <ul class="links">
