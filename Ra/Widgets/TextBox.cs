@@ -80,6 +80,16 @@ namespace Ra.Widgets
 
         #endregion
 
+        private bool _hasSetSelect;
+        public void Select()
+        {
+            _hasSetSelect = true;
+            if (AjaxManager.Instance.IsCallback)
+            {
+                SetJSONValueString("Select", "");
+            }
+        }
+
         #region [ -- Overridden (abstract/virtual) methods from RaControl -- ]
 
         protected override void OnInit(EventArgs e)
@@ -131,9 +141,45 @@ namespace Ra.Widgets
         public override string GetClientSideScript()
         {
             if (TextChanged == null)
-                return string.Format("new Ra.Control('{0}');", ClientID);
+            {
+                if (_hasSetFocus || _hasSetSelect)
+                {
+                    string options = "";
+                    if (_hasSetFocus)
+                        options += "focus:true";
+                    if (_hasSetSelect)
+                    {
+                        if (options.Length > 0)
+                            options += ",";
+                        options += "select:true";
+                    }
+                    return string.Format("new Ra.Control('{0}',{{{1}}});", ClientID, options);
+                }
+                else
+                {
+                    return string.Format("new Ra.Control('{0}');", ClientID);
+                }
+            }
             else
-                return string.Format("new Ra.Control('{0}', {{evts:['change']}});", ClientID);
+            {
+                if (_hasSetFocus || _hasSetSelect)
+                {
+                    string options = "";
+                    if (_hasSetFocus)
+                        options += "focus:true";
+                    if (_hasSetSelect)
+                    {
+                        if (options.Length > 0)
+                            options += ",";
+                        options += "select:true";
+                    }
+                    return string.Format("new Ra.Control('{0}',{{evts:['change'],{1}}});", ClientID, options);
+                }
+                else
+                {
+                    return string.Format("new Ra.Control('{0}',{{evts:['change']}});", ClientID);
+                }
+            }
         }
 
         // Override this one to create specific HTML for your widgets
