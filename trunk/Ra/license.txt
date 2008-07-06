@@ -1,5 +1,5 @@
 
-Intentions;
+Intentions with license;
 You may use this Software as you wish in both closed and Open Source projects
 and you can redistribute it as you wish, but if you modify Ra you cannot 
 distribute the modified version in code form. This is to prevent Ra from 
@@ -8,9 +8,8 @@ then you are only free to distribute Ra in object form. This gives you the
 right to modify Ra if you wish for your OWN purpose but does not enable you
 to "fork" Ra. Basically this is the pure MIT X11 license with a Fork exception.
 
-If you must form Ra for some reasons you are free to do so as long as you
-obey by the GPL license terms since Ra is Dual Licensed and also licensed under
-the GPL version 3 license.
+If you must fork Ra for some reasons you are free to do so though then your
+forked version of Ra will have to be licensed as GPL version 3.
 
  -- License Starts --
 
