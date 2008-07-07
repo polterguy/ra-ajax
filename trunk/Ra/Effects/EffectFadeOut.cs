@@ -25,7 +25,7 @@ namespace Ra.Widgets
         public override void Render()
         {
             AjaxManager.Instance.WriterAtBack.WriteLine(@"
-new Ra.Effect('{0}', {{
+Ra.E('{0}', {{
   onStart: function() {{
     this.element.setOpacity(1);
     this.element.style.display = '';

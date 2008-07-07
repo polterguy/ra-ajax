@@ -563,6 +563,12 @@ Ra.extend(Ra.Ajax.prototype, {
 Ra.Effect = Ra.klass();
 
 
+// Shorthand (optimized) version of constructor to Ra.Effect
+Ra.E = function(el, options) {
+  return new Ra.Effect(el, options);
+};
+
+
 Ra.extend(Ra.Effect.prototype, {
 
   // CTOR
