@@ -17,7 +17,13 @@ Ra Ajax is the copyright of Thomas Hansen - polterguy@gmail.com
 The license for Ra Ajax can be found on disc in the same folder as this 
 file and is an MITish kind of license. Basically it says that you can use
 Ra Ajax free of charge for anything you wish as long as you;
-*DO NOT FORK THE LIBRARY*!
+ * DO NOT FORK THE LIBRARY!
+ * DO NOT WORK FOR A GOVERNMENTAL ORGANIZATION WHICH CURRENTLY IS 
+   OCCUPYING ANOTHER COUNTRY!
+If in doubt, read the license.txt file.
+If you cannot obey by those two simple rules then you are free to use
+Ra Ajax under the terms of the GPL version 3 which I unfortunately
+cannot modify due to legal reasons.
 
 If you want to collaborate with me by creating extension 
 projects, porting Ra to PHP, J2EE or something similar then please
