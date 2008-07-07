@@ -73,7 +73,7 @@
                         </div>
                         <div id="contentOfPageDiv">
                             <asp:contentplaceholder 
-                                id="ContentPlaceHolder1" 
+                                id="cnt1" 
                                 runat="server">
                             </asp:contentplaceholder>
                             <div 

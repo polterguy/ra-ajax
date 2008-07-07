@@ -258,9 +258,9 @@ namespace Ra.Widgets
         public virtual string GetClientSideScript()
         {
             if (_hasSetFocus)
-                return string.Format("new Ra.Control('{0}', {{focus:true}});", ClientID);
+                return string.Format("Ra.C('{0}', {{focus:true}});", ClientID);
             else
-                return string.Format("new Ra.Control('{0}');", ClientID);
+                return string.Format("Ra.C('{0}');", ClientID);
         }
 
         // The HTML for the control
