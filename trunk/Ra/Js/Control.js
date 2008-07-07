@@ -22,6 +22,14 @@
 Ra.Control = Ra.klass();
 
 
+// "Optimized" constructor for creating a new Ra.Control without having to use the "new" keyword and
+// the whole name of the Control class...
+// Saves a significant amount of "dynamic" data for Ra...
+Ra.C = function(el, options) {
+  return new Ra.Control(el, options);
+};
+
+
 // Static array which contains all the client-side registered controls
 Ra.Control._controls = [];
 

@@ -146,9 +146,9 @@ namespace Ra.Widgets
         public override string GetClientSideScript()
         {
             if (SelectedIndexChanged == null)
-                return string.Format("new Ra.Control('{0}');", ClientID);
+                return string.Format("Ra.C('{0}');", ClientID);
             else
-                return string.Format("new Ra.Control('{0}', {{evts:['change']}});", ClientID);
+                return string.Format("Ra.C('{0}', {{evts:['change']}});", ClientID);
         }
 
         // Override this one to create specific HTML for your widgets

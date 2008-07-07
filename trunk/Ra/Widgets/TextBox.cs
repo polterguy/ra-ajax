@@ -151,11 +151,11 @@ namespace Ra.Widgets
                             options += ",";
                         options += "select:true";
                     }
-                    return string.Format("new Ra.Control('{0}',{{{1}}});", ClientID, options);
+                    return string.Format("Ra.C('{0}',{{{1}}});", ClientID, options);
                 }
                 else
                 {
-                    return string.Format("new Ra.Control('{0}');", ClientID);
+                    return string.Format("Ra.C('{0}');", ClientID);
                 }
             }
             else
@@ -171,11 +171,11 @@ namespace Ra.Widgets
                             options += ",";
                         options += "select:true";
                     }
-                    return string.Format("new Ra.Control('{0}',{{evts:['change'],{1}}});", ClientID, options);
+                    return string.Format("Ra.C('{0}',{{evts:['change'],{1}}});", ClientID, options);
                 }
                 else
                 {
-                    return string.Format("new Ra.Control('{0}',{{evts:['change']}});", ClientID);
+                    return string.Format("Ra.C('{0}',{{evts:['change']}});", ClientID);
                 }
             }
         }

@@ -13,7 +13,7 @@
 
 <asp:Content 
     ID="Content1" 
-    ContentPlaceHolderID="ContentPlaceHolder1" 
+    ContentPlaceHolderID="cnt1" 
     Runat="Server">
 
     <h1>About me</h1>

@@ -8,7 +8,7 @@
 
 <asp:Content 
     ID="Content1" 
-    ContentPlaceHolderID="ContentPlaceHolder1" 
+    ContentPlaceHolderID="cnt1" 
     Runat="Server">
 
     <h1>Facts about Ra Ajax</h1>
