@@ -32,13 +32,13 @@
                                 ID="closeShowCode" 
                                 Text="Close" 
                                 OnClick="closeShowCode_Click" 
-                                style="position:absolute;top:5px;right:5px;" />
+                                style="position:absolute;top:5px;right:5px;width:120px;" />
                             <ra:Button 
                                 runat="server" 
                                 ID="switchCodeType" 
                                 Text="Switch to .ASPX" 
                                 OnClick="switchCodeType_Click" 
-                                style="position:absolute;top:5px;left:5px;" />
+                                style="position:absolute;top:5px;left:5px;width:120px;" />
                              <pre>
                                  <ra:Label 
                                     runat="server" 
@@ -52,7 +52,12 @@
                                 <li>
                                     <a 
                                         href="Default.aspx" 
-                                        title="Ra Ajax Samples Home">Ra Ajax samples home</a>
+                                        title="Ra Ajax Samples Home">Ra Ajax Samples Home</a>
+                                </li>
+                                <li>
+                                    <a 
+                                        href="Advantages.aspx" 
+                                        title="Ra Ajax Advantages">Ra Ajax Advantages</a>
                                 </li>
                             </ul>
                         </div>
