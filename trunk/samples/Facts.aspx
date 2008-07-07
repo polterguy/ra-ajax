@@ -15,7 +15,7 @@
     <p>
         Ra Ajax is an Ajax library for ASP.NET - both the 
         <a href="http://www.mono-project.com/Main_Page">Mono</a> version and the Microsoft 
-        version. This means you can use Ra Ajax our of the box together with Visual Studio, 
+        version. This means you can use Ra Ajax out of the box together with Visual Studio, 
         IIS, Windows Server and Linux/Apache/Mono etc.
     </p>
     <br />
