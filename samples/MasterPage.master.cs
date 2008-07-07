@@ -67,6 +67,8 @@ public partial class MasterPage : System.Web.UI.MasterPage
             allCode = ReplaceCodeEntities(allCode, "keyword", new string[] { 
                 "class", 
                 "using", 
+                "string", 
+                "foreach", 
                 "if", 
                 "else", 
                 "int", 
