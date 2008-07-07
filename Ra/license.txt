@@ -30,6 +30,10 @@ furnished to do so, subject to the following conditions:
   code contained in the Software. Extend means add to the Software itself
   and does not stop you from consuming the modified Software in another project.
 
+* The Software should be used for good and not for evil purposes. Meaning
+  you cannot create Weapons of Mass Destruction guidance systems with it
+  or anything similar.
+
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
