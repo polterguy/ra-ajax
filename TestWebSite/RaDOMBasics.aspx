@@ -280,7 +280,7 @@ function checkSetContent() {
 
 
 function testFadeAndAppear() {
-  new Ra.Effect('testAnimationDiv', {
+  Ra.E('testAnimationDiv', {
     onRender: function(pos) {
       this.element.setOpacity(1.0 - pos);
     },
