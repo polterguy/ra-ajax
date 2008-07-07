@@ -1,4 +1,21 @@
 ﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets"/>
+
+  <ItemGroup>
+    <ScriptFiles Include="JsCompressed\Js\Control.js"/>
+    <ScriptFiles Include="JsCompressed\Js\JsCore\Ra.js"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ZipFiles Include="Js\**\*.js" />
+  </ItemGroup>
+
+  <Target Name="compress_js">
+    <Zip Files="@(ZipFiles)" ZipFileName="original_js.zip" />
+    <Unzip ZipFileName="original_js.zip" TargetDirectory="JsCompressed/"/>
+    <JSCompress Files="%(ScriptFiles.FullPath)"></JSCompress>
+  </Target>
+
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -71,15 +88,21 @@
     <EmbeddedResource Include="Js\Control.js" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="JsCompressed\Js\JsCore\Ra.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="JsCompressed\Js\Control.js" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="license.txt" />
     <Content Include="ReadMe.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
+       Other similar extension points exist, see Microsoft.Common.targets. -->
   <Target Name="BeforeBuild">
+    <CallTarget Targets="compress_js"/>
   </Target>
   <Target Name="AfterBuild">
   </Target>
-  -->
 </Project>

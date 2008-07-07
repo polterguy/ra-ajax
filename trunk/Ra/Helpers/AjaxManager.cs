@@ -15,8 +15,13 @@ using Ra.Widgets;
 using System.Text;
 using System.Text.RegularExpressions;
 
+#if DEBUG
 [assembly: WebResource("Ra.Js.JsCore.Ra.js", "text/javascript")]
 [assembly: WebResource("Ra.Js.Control.js", "text/javascript")]
+#else
+[assembly: WebResource("Ra.JsCompressed.Js.JsCore.Ra.js", "text/javascript")]
+[assembly: WebResource("Ra.JsCompressed.Js.Control.js", "text/javascript")]
+#endif
 
 namespace Ra
 {
@@ -118,12 +123,20 @@ namespace Ra
 
         public void IncludeMainRaScript()
         {
+#if DEBUG
             CurrentPage.ClientScript.RegisterClientScriptResource(typeof(AjaxManager), "Ra.Js.JsCore.Ra.js");
+#else
+            CurrentPage.ClientScript.RegisterClientScriptResource(typeof(AjaxManager), "Ra.JsCompressed.Js.JsCore.Ra.js");
+#endif
         }
 
         public void IncludeMainControlScripts()
         {
+#if DEBUG
             CurrentPage.ClientScript.RegisterClientScriptResource(typeof(AjaxManager), "Ra.Js.Control.js");
+#else
+            CurrentPage.ClientScript.RegisterClientScriptResource(typeof(AjaxManager), "Ra.JsCompressed.Js.Control.js");
+#endif
         }
 
         private MemoryStream _memStream;
