@@ -58,10 +58,22 @@
         architectural jobs. I don't do VB.NET, Silverlight, ActiveX or WinForms development. 
         If you are unsure about whether or not you can afford me then you probably can't. 
         If you are unsure whether or not your project is interesting enough to spike my 
-        interest, then it is probably not. If I can get to use Ra Ajax you'll get an instant 
-        discount. If I can start at the beginning of the project instead of 3 months past 
-        due-date you will also get an instant discount. If the project is an Open Source 
-        projects you will instantly get a MASSIVE discount.
+        interest, then it is probably not. 
+    </p>
+    <p>
+        If I can get to use Ra Ajax you'll get an instant discount. If I can start at the 
+        beginning of the project instead of 3 months past due-date you will also get an 
+        instant discount. If the project is in its nature important to the world and of 
+        "helping character" you will get an instant discount. If the project is an Open 
+        Source projects you will get an instant discount. If I can use Ra Ajax to develop
+        Open Source components which I myself can keep the copyright for you will get a 
+        *MASSIVE* discount.
+    </p>
+    <p>
+        I live in Porsgrunn/Norway but might be interested in temporary moving to attend very 
+        interesting projects, especially if the location is warm, project interesting and the 
+        money big. I can also work from Norway on remote locations if the project is of such a 
+        character.
     </p>
 
 </asp:Content>
