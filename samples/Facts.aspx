@@ -59,6 +59,23 @@
         so I need them as my friends ;)
     </p>
     <br />
+    <h2>No learning curve</h2>
+    <p>
+        Ra Ajax comes with virtually no learning curve due to its closely coupling to
+        the ASP.NET WebControl nature. If you have done conventional ASP.NET 
+        development with WebControls then learning Ra Ajax will feel like a breeze
+        to you.
+    </p>
+    <br />
+    <h2>Is Ra Ajax related to ASP.NET AJAX</h2>
+    <p>
+        No. ASP.NET AJAX is a library created by and maintained by Microsoft. Ra Ajax
+        shares no common code with ASP.NET AJAX and is created around a completely
+        different model. While ASP.NET AJAX has a very rich client-side JavaScript
+        API, Ra Ajax is created around the assumption that you should never have to 
+        do JavaScript development yourself.
+    </p>
+    <br />
     <h2>Is Ra Ajax a commercial project?</h2>
     <p>
         No. Currently I don't think Ra Ajax is mature enough to be a commercially 
