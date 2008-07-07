@@ -39,7 +39,7 @@
     <h2>Lightweight</h2>
     <p>
         Ra Ajax is very lightweight which means if you use it your applications will be 
-        more responsive, demand less resources and run faster. Ra has less than 30KB of
+        more responsive, demand less resources and run faster. Ra has less than 15KB of
         JavaScript in total which means that Ra can easily be used in front end websites
         without stalling the user experience at all.
     </p>

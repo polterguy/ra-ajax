@@ -26,7 +26,7 @@
         I am born in 1974 and my name is Thomas Hansen. I have three kids whom I hope will 
         get to inherit a better place than what I currently can give them. I think Open 
         Source, Open Standards and Freedom of Information are some of the prime tools for
-        me to succeed in leaving this place in a better shape than what is currently is in.
+        me to succeed in leaving this place in a better shape than what it currently is in.
     </p>
     <p>
         I have been obsessed with writing system libraries large portions of my life and
@@ -40,27 +40,42 @@
     </p>
     <p>
         I have an intense believe in the Open Web and Ajax as the foundation for the third
-        system development platform, and I feel that it is imperative that the tools for
-        this platform belongs to the world and not to a specific group, organization, company
-        or person.
+        generation of system development platforms, and I feel that it is imperative that the 
+        tools for this platform belongs to the world and not to a specific group, organization, 
+        company or person. I dislike EEE, FUD and LockIn technology.
     </p>
     <p>
         I am proud to be an <strong>Open Web Advocate and Evangelist</strong>!
     </p>
     <h2>Hire me?</h2>
+    <ra:Panel 
+        runat="server" 
+        ID="pnlEmail" 
+        Visible="false" 
+        style="padding:25px;background-color:Yellow;border:solid 1px Black;overflow:hidden;">
+        Sorry, just had to show off Ra Ajax ;)
+        <br />
+        My email address is; <strong>polterguy@gmail.com</strong>
+    </ra:Panel>
     <p>
         I might be available for hire if you have an interesting project that spikes my
         interest. If you're interested, please 
-        <a href="mailto:polterguy@gmail.com">drop me a note</a> explaining what you'd like 
-        me to do. I am highly qualified in Ajax, ASP.NET, all acronyms starting with OO and
-        I have numerous times very successfully done coaching in projects which is the role
-        I am most happy with. You will get most value for your money if I can coach and do 
-        architectural jobs. I don't do VB.NET, Silverlight, ActiveX or WinForms development. 
+        <ra:Button 
+            runat="server" 
+            Text="drop me a note" 
+            ID="drop" 
+            style="border:none;background-color:White;color:Blue;padding:0px;margin:0px;cursor:pointer;"
+            OnClick="drop_click" />
+        explaining what you'd like me to do. I am highly qualified in Ajax, ASP.NET, all 
+        acronyms starting with OO and I have numerous times very successfully done coaching 
+        in projects which is the role I am most happy with. You will get most value for 
+        your money if I can coach and do architectural jobs. I don't do VB.NET, Silverlight, 
+        ActiveX or WinForms development. 
     </p>
     <p>
         If I can get to use Ra Ajax you'll get an instant discount. If I can start at the 
         beginning of the project instead of 3 months past due-date you will also get an 
-        instant discount. If the project is in its nature important to the world and of 
+        instant discount. If the project in its nature is important to the world and of 
         "helping character" you will get an instant discount. If the project is an Open 
         Source projects you will get an instant discount. If I can use Ra Ajax to develop
         Open Source components which I myself can keep the copyright for you will get a 
