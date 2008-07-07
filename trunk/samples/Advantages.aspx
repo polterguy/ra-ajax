@@ -21,7 +21,7 @@
         When using Ra Ajax your apps will be;
     </p>
     <ul>
-        <li><strong>Faster</strong> - Ra Ajax has less than 30KB of JavaScript and 
+        <li><strong>Faster</strong> - Ra Ajax has less than 15KB of JavaScript and 
             virtually no overhead on the server.</li>
         <li><strong>Maintainable</strong> - Due to that Ra Ajax abstracts away 
             JavaScript your code (which will be in pure C# or VB.NET) will be 
