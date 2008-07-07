@@ -36,7 +36,7 @@
         unfortunately was lost out of my hands some time back ago and Ra Ajax is my third
         and hopefully last GUI library. Though every time I build a new GUI library I get better
         at it, and the knowledge also learned from writing Gaia Ajax Widgets have been very 
-        important for me in order to build Ra Ajax (in my opinion) perfect.
+        important for me in order to build Ra Ajax.
     </p>
     <p>
         I have an intense believe in the Open Web and Ajax as the foundation for the third
@@ -71,10 +71,12 @@
         role I am most happy with. You will get most value for your money if I can coach 
         and do architectural jobs. I don't do VB.NET, Silverlight, ActiveX or WinForms 
         development. I have been programming almost every day since I was 8 years old and
-        I have been project leads several times and among other things I am the founder and
-        "father" of Gaia Ajax Widgets which can be found at the
-        <a href="http://ajaxwidgets.com">Gaia website</a>. BTW, I still own 25% of the 
-        shares in Gaiaware AS if you are interested in buying them.
+        I have been project leads mostly in the later years and among other things I am 
+        the founder and "father" of Gaia Ajax Widgets and Gaiaware AS which can be found 
+        at the <a href="http://ajaxwidgets.com">Gaia website</a>. 
+        <br />
+        BTW, I still own 25% of the shares in Gaiaware AS if you are interested in buying 
+        them.
     </p>
     <p>
         If I can get to use Ra Ajax you'll get an instant discount. If I can start at the 
