@@ -31,13 +31,14 @@ html, body, form
 #logoPartDiv
 {
 	height:259px;
-	background:Transparent url(sun.png) no-repeat;
+	background:Transparent url(sun.jpg) no-repeat;
 }
 
 #navigation
 {
 	width:224px;
 	float:left;
+	padding-top:35px;
 }
 
 .links
@@ -61,8 +62,8 @@ html, body, form
 #contentOfPageDiv
 {
 	float:left;
-	width:770px;
-	padding:15px;
+	width:730px;
+	padding:35px;
 }
 
 .showCodeDiv
