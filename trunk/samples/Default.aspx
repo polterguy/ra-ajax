@@ -15,6 +15,7 @@
     ID="Content1" 
     ContentPlaceHolderID="ContentPlaceHolder1" 
     Runat="Server">
+
     <h1>Ra Ajax Samples Home</h1>
     <p>
         Ra Ajax is an <strong>Ajax library for ASP.NET and Mono</strong> but its general nature on the client-side

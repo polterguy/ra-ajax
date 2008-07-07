@@ -84,7 +84,6 @@ namespace Ra.Widgets
             {
                 SetJSONValueString("Focus", "");
             }
-            base.Focus();
         }
 
         public virtual string SerializeJSON()
