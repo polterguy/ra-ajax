@@ -52,7 +52,7 @@
         runat="server" 
         ID="pnlEmail" 
         Visible="false" 
-        style="padding:25px;background-color:Yellow;border:solid 1px Black;overflow:hidden;">
+        style="padding:25px;background-color:Yellow;border:solid 1px Black;overflow:hidden;height:1px;">
         Sorry, just had to show off Ra Ajax ;)
         <br />
         My email address is; <strong>polterguy@gmail.com</strong>
@@ -67,10 +67,14 @@
             style="border:none;background-color:White;color:Blue;padding:0px;margin:0px;cursor:pointer;"
             OnClick="drop_click" />
         explaining what you'd like me to do. I am highly qualified in Ajax, ASP.NET, all 
-        acronyms starting with OO and I have numerous times very successfully done coaching 
-        in projects which is the role I am most happy with. You will get most value for 
-        your money if I can coach and do architectural jobs. I don't do VB.NET, Silverlight, 
-        ActiveX or WinForms development. 
+        acronyms starting with OO and I have much experience with coaching which is the 
+        role I am most happy with. You will get most value for your money if I can coach 
+        and do architectural jobs. I don't do VB.NET, Silverlight, ActiveX or WinForms 
+        development. I have been programming almost every day since I was 8 years old and
+        I have been project leads several times and among other things I am the founder and
+        "father" of Gaia Ajax Widgets which can be found at the
+        <a href="http://ajaxwidgets.com">Gaia website</a>. BTW, I still own 25% of the 
+        shares in Gaiaware AS if you are interested in buying them.
     </p>
     <p>
         If I can get to use Ra Ajax you'll get an instant discount. If I can start at the 

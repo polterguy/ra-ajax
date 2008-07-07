@@ -20,10 +20,10 @@
     <p>
         Ra Ajax is an <strong>Ajax library for ASP.NET and Mono</strong> but its general nature on the client-side
         will make it very useful also for other server-side bindings like PHP, J2EE RubyOnRails etc. Ra Ajax
-        is licensed under an MIT(ish) license which basically says <em>"use as you wish, but don't fork the code"</em>.
-        Ra Ajax is built around the assumption that JavaScript is hard and not something Application Developers should
-        spend time on doing. Every single sample here in the samples section is written entirely without <em>one line
-        of Custom JavaScript</em>. This makes you;
+        is licensed under an MIT(ish) license which basically says <em>"use as you wish, but don't fork the code and
+        don't use it if you work for an agressive military power"</em>. Ra Ajax is built around the assumption that 
+        JavaScript is hard and not something Application Developers should spend time on doing. Every single sample 
+        here in the samples section is written entirely without <em>one line of Custom JavaScript</em>. This makes you;
     </p>
     <ul>
         <li>More productive</li>
@@ -34,7 +34,7 @@
         Try out the Ra Ajax "Hello World" application below.
     </p>
     <br />
-    <div style="float:left;height:300px;">
+    <div style="float:left;height:200px;">
         <table>
             <tr>
                 <td>
@@ -84,5 +84,12 @@
             server in pure C# and resembles the ASP.NET WebControls way of writing Web Applications.
         </p>
     </ra:Panel>
+    <h2 style="clear:both;">Up running in minutes</h2>
+    <p>
+        Thanx to Ra Ajax' close resemblance to the ASP.NET WebControls method of development
+        you will virtually be up running minutes after downloading Ra Ajax. Meaning if you
+        know how to use the ASP.NET Buttons, Labels and CheckBoxes - you already also know
+        how to use the Ra Ajax Buttons, CheckBoxes and Labels.
+    </p>
 </asp:Content>
 
