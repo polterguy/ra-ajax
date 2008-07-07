@@ -26,8 +26,8 @@
     </p>
     <ul>
         <li>More productive</li>
-        <li>More happy</li>
         <li>More wealthy</li>
+        <li>More happy</li>
     </ul>
     <p>
         Try out the Ra Ajax "Hello World" application below.
