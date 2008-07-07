@@ -59,6 +59,11 @@
                                         href="Advantages.aspx" 
                                         title="Ra Ajax Advantages">Ra Ajax Advantages</a>
                                 </li>
+                                <li>
+                                    <a 
+                                        href="Facts.aspx" 
+                                        title="Ra Ajax Facts">Facts about Ra Ajax</a>
+                                </li>
                             </ul>
                         </div>
                         <div id="contentOfPageDiv">
@@ -76,6 +81,8 @@
                                     OnClick="btnShowCode_Click" />
                             </div>
                         </div>
+                        <div style="clear:both;">&nbsp;</div>
+                        <div style="text-align:center;padding:15px;">Copyright(c) 2008 - <a href="mailto:polterguy@gmail.com">Thomas Hansen</a></div>
                     </div>
                 </div>
             </div>

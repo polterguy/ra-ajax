@@ -42,6 +42,27 @@
     <br />
     <ra:Label style="color:Green;" runat="server" ID="lblResults" />
     <br />
+    <ra:RadioButton 
+        runat="server" 
+        ID="rdo1" 
+        Text="Pay with Visa" 
+        GroupName="Payment" 
+        OnCheckedChanged="rdo_CheckedChanged" />
+    <ra:RadioButton 
+        runat="server" 
+        ID="rdo2" 
+        Text="Run with the groceries" 
+        GroupName="Payment" 
+        OnCheckedChanged="rdo_CheckedChanged" />
+    <br />
+    <ra:Panel 
+        runat="server" 
+        ID="panelResults" 
+        style="display:none;width:500px;padding:15px;border:solid 1px Black;">
+        <ra:Label 
+            runat="server" 
+            ID="lblEndResults" />
+    </ra:Panel>
 
 </asp:Content>
 
