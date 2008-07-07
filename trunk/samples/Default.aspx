@@ -34,39 +34,41 @@
         Try out the Ra Ajax "Hello World" application below.
     </p>
     <br />
-    <table style="float:left;">
-        <tr>
-            <td>
-                First name:
-            </td>
-            <td>
-                <ra:TextBox 
-                    runat="server" 
-                    ID="txtFirstName" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Surname:
-            </td>
-            <td>
-                <ra:TextBox 
-                    runat="server" 
-                    ID="txtSurname" />
-            </td>
-        </tr>
-        <tr>
-            <td 
-                colspan="2" 
-                style="text-align:right;">
-                <ra:Button 
-                    runat="server" 
-                    ID="btnSubmit" 
-                    Text="Save" 
-                    OnClick="btnSubmit_Click" />
-            </td>
-        </tr>
-    </table>
+    <div style="float:left;height:300px;">
+        <table>
+            <tr>
+                <td>
+                    First name:
+                </td>
+                <td>
+                    <ra:TextBox 
+                        runat="server" 
+                        ID="txtFirstName" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Surname:
+                </td>
+                <td>
+                    <ra:TextBox 
+                        runat="server" 
+                        ID="txtSurname" />
+                </td>
+            </tr>
+            <tr>
+                <td 
+                    colspan="2" 
+                    style="text-align:right;">
+                    <ra:Button 
+                        runat="server" 
+                        ID="btnSubmit" 
+                        Text="Save" 
+                        OnClick="btnSubmit_Click" />
+                </td>
+            </tr>
+        </table>
+    </div>
 
     <ra:Panel 
         runat="server" 

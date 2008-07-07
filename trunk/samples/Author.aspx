@@ -56,9 +56,6 @@
         I have numerous times very successfully done coaching in projects which is the role
         I am most happy with. You will get most value for your money if I can coach and do 
         architectural jobs. I don't do VB.NET, Silverlight, ActiveX or WinForms development. 
-        If you are unsure about whether or not you can afford me then you probably can't. 
-        If you are unsure whether or not your project is interesting enough to spike my 
-        interest, then it is probably not. 
     </p>
     <p>
         If I can get to use Ra Ajax you'll get an instant discount. If I can start at the 
@@ -71,9 +68,9 @@
     </p>
     <p>
         I live in Porsgrunn/Norway but might be interested in temporary moving to attend very 
-        interesting projects, especially if the location is warm, project interesting and the 
-        money big. I can also work from Norway on remote locations if the project is of such a 
-        character.
+        interesting projects, especially if the location is warm and the project is interesting. 
+        I can also work from Norway on remote locations if the project is of such a character. 
+        I speak and write English and Norwegian fluently.
     </p>
 
 </asp:Content>
