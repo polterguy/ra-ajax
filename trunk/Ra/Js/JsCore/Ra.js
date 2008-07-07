@@ -23,7 +23,7 @@
 // All of Ra is contained inside of this namespace
 // Ra does neither modify any system objects, except when using the Ra.$ method
 // Ra will extend the DOM object with the Ra specific methods
-Ra = {}
+var Ra = {};
 
 Ra.Browser = {
   IE:             window.attachEvent && !window.opera,
@@ -31,28 +31,30 @@ Ra.Browser = {
   WebKit:         navigator.userAgent.indexOf('AppleWebKit') != -1,
   Gecko:          navigator.userAgent.indexOf('Gecko') != -1,
   MobileSafari:   !!navigator.userAgent.match(/Apple.*Mobile.*Safari/)
-}
+};
 
 // $ method, used to retrieve elements on document
 Ra.$ = function(id) {
   var el = document.getElementById(id);
-  if( !el )
+  if( !el ) {
     return null;
+  }
   Ra.extend(el, Ra.Element.prototype);
   return el;
-}
+};
 
 
 // To create a class which will automatically call "init" on objects 
 // when created with the arguments applied
 Ra.klass = function() {
   return function(){
-    if( this.init )
+    if( this.init ) {
       return this.init.apply(this, arguments);
-    else
+    } else {
       throw 'Cannot have a Ra class without an init method...';
+    }
   };
-}
+};
 
 
 // Takes one base object and one inherited object where all
@@ -60,10 +62,11 @@ Ra.klass = function() {
 // inherited object. The inherited object is returned
 // for creating better syntax
 Ra.extend = function(inherited, base) {
-  for (var prop in base)
+  for (var prop in base) {
     inherited[prop] = base[prop];
+  }
   return inherited;
-}
+};
 
 
 // =======================================
@@ -119,11 +122,13 @@ Ra.extend(Ra.Element.prototype, {
   // Returns an object of { width, height } containing the width and height of the element
   getDimensions: function() {
     var display = this.style.display;
-    if (display != 'none' && display != null) // Safari bug
+    if (display != 'none' && display !== null) {
+      // Safari bug
       return {
         width: this.offsetWidth, 
         height: this.offsetHeight
       };
+    }
 
     // All *Width and *Height properties give 0 on elements with display none,
     // so enable the element temporarily
@@ -134,8 +139,8 @@ Ra.extend(Ra.Element.prototype, {
     els.visibility = 'hidden';
     els.position = 'absolute';
     els.display = 'block';
-    var orWidth = element.clientWidth;
-    var orHeight = element.clientHeight;
+    var orWidth = this.clientWidth;
+    var orHeight = this.clientHeight;
     els.display = orDis;
     els.position = orPos;
     els.visibility = orVis;
@@ -172,12 +177,14 @@ Ra.extend(Ra.Element.prototype, {
   getOpacity: function() {
     if( Ra.Browser.IE ) {
       var value = this.style.filter.match(/alpha\(opacity=(.*)\)/);
-      if( value[1] )
+      if( value[1] ) {
         return parseFloat(value[1]) / 100;
+      }
       return 1.0;
     } else {
-      if( this.style.opacity == '' )
+      if( this.style.opacity === '' ) {
         return 1.0;
+      }
       return this.style.opacity;
     }
   },
@@ -189,14 +196,16 @@ Ra.extend(Ra.Element.prototype, {
 
     // Creating wrapper to wrap around function event handler
     // Note that this logic only handles ONE event handler per event type / element
-    if( !this._wrappers )
-      this._wrappers = new Array();
+    if( !this._wrappers ) {
+      this._wrappers = [];
+    }
 
     var wr = function() {
-      if( extraParams )
+      if( extraParams ) {
         func.apply(callingContext, extraParams);
-      else
+      } else {
         func.call(callingContext);
+      }
     };
 
     this._wrappers[evtName] = wr;
@@ -246,8 +255,9 @@ Ra.extend(Ra.XHR.prototype, {
   },
 
   initXHR: function(url, options) {
-    if( Ra.XHR.activeRequest )
+    if( Ra.XHR.activeRequest ) {
       throw 'Cannot have more than one active XHR request at the time...';
+    }
     Ra.XHR.activeRequest = true;
     this.url = url;
     this.options = Ra.extend({
@@ -262,10 +272,12 @@ Ra.extend(Ra.XHR.prototype, {
 
     // Getting transport
     this.xhr = new XMLHttpRequest();
-    if( !this.xhr )
+    if( !this.xhr ) {
       this.xhr = new ActiveXObject('Msxml2.XMLHTTP');
-    if( !this.xhr )
+    }
+    if( !this.xhr ) {
       this.xhr = new ActiveXObject('Microsoft.XMLHTTP');
+    }
 
     // Opening transport and setting headers
     this.xhr.open('POST', this.url, true);
@@ -278,17 +290,19 @@ Ra.extend(Ra.XHR.prototype, {
     // Now we can start checking for readyState (waiting for request to be finished)
     var T = this;
     this.xhr.onreadystatechange = function() {
-      if( T.xhr.readyState == 4 )
+      if( T.xhr.readyState == 4 ) {
         T._finished();
+      }
     };
   },
 
   // Called when request is finished
   _finished: function(){
-    if( this.xhr.status >= 200 && this.xhr.status < 300 )
+    if( this.xhr.status >= 200 && this.xhr.status < 300 ) {
       this.options.onSuccess(this.xhr.responseText);
-    else
+    } else {
       this.options.onError(this.xhr.status, this.xhr.responseText);
+    }
 
     // Resetting active requests back to false to allow next request to run
     Ra.XHR.activeRequest = false;
@@ -328,16 +342,18 @@ Ra.extend(Ra.Form.prototype, {
     var xhr = new Ra.XHR(this.options.url, {
       body: this.serializeForm() + '&' + this.options.args,
       onSuccess: function(response) {
-        if( !T.options.callingContext )
-          T.options.onFinished(response)
-        else
+        if( !T.options.callingContext ) {
+          T.options.onFinished(response);
+        } else {
           T.options.onFinished.call(T.options.callingContext, response);
+        }
       },
       onError: function(status, response) {
-        if( !T.options.callingContext )
-          T.options.onError(status, response)
-        else
+        if( !T.options.callingContext ) {
+          T.options.onError(status, response);
+        } else {
           T.options.onError.call(T.options.callingContext, status, response);
+        }
       }
     });
   },
@@ -370,24 +386,27 @@ Ra.extend(Ra.Form.prototype, {
               case 'checkbox':
               case 'radio':
                 if( el.checked ) {
-                  if( retVal.length > 0 )
+                  if( retVal.length > 0 ) {
                     retVal += '&';
+                  }
                   retVal += el.name + '=' + encodeURIComponent(el.value);
                 }
                 break;
               case 'hidden':
               case 'password':
               case 'text':
-                if( retVal.length > 0 )
+                if( retVal.length > 0 ) {
                   retVal += '&';
+                }
                 retVal += el.name + '=' + encodeURIComponent(el.value);
                 break;
             }
             break;
           case 'select':
           case 'textarea':
-            if( retVal.length > 0 )
+            if( retVal.length > 0 ) {
               retVal += '&';
+            }
             retVal += el.name + '=' + encodeURIComponent(el.value);
             break;
         }
@@ -420,7 +439,7 @@ Ra.Ajax = Ra.klass();
 
 
 // Static list of queued Ajax requests
-Ra.Ajax._activeRequests = new Array();
+Ra.Ajax._activeRequests = [];
 
 // Starting message queue pump dispatching all active requests sequentially
 Ra.Ajax._startPumping = function() {
@@ -431,7 +450,7 @@ Ra.Ajax._startPumping = function() {
       Ra.Ajax._startPumping();
     }, 50);
   }
-}
+};
 
 Ra.extend(Ra.Ajax.prototype, {
   init: function(options) {
@@ -470,10 +489,11 @@ Ra.extend(Ra.Ajax.prototype, {
   start: function() {
 
     // Raising "onBefore" event
-    if( this.options.callingContext )
+    if( this.options.callingContext ) {
       this.options.onBefore.call(this.options.callingContext);
-    else
+    } else {
       this.options.onBefore();
+    }
 
     // Starting actual request
     var form = new Ra.Form(this.options.form, {
@@ -481,17 +501,18 @@ Ra.extend(Ra.Ajax.prototype, {
       callingContext: this,
       onFinished: function(response) {
         this.sliceRequest();
-        if( this.options.callingContext )
+        if( this.options.callingContext ) {
           this.options.onAfter.call(this.options.callingContext, response);
-        else
+        } else {
           this.options.onAfter(response);
+        }
       },
       onError: function() {
         this.sliceRequest();
       }
     });
     if( this.options.raCallback ) {
-      if( form.options.args != null && form.options.args.length > 0 ) {
+      if( form.options.args !== null && form.options.args.length > 0 ) {
         form.options.args += '&';
       }
       form.options.args += '__RA_CALLBACK=true';
@@ -558,8 +579,9 @@ Ra.extend(Ra.Effect.prototype, {
       onFinished: function(){},
       onRender: null
     }, options || {});
-    if( element )
+    if( element ) {
       this.element = Ra.$(element);
+    }
     this.options.onStart.call(this);
     this.startTime = new Date().getTime();
     this.finishOn = this.startTime + (this.options.duration * 1000);
@@ -591,6 +613,7 @@ Ra.extend(Ra.Effect.prototype, {
     this.options.onRender.call(this, pos);
   }
 });
+
 
 
 
