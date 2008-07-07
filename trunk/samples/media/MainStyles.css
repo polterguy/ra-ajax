@@ -104,3 +104,15 @@ html, body, form
 
 
 
+/* Special stuff
+ */
+.ajaxImageButton
+{
+	border:solid 1px White;
+}
+
+.ajaxImageButton:hover
+{
+	border:solid 1px #eee;
+}
+
