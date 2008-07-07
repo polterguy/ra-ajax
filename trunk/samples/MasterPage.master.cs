@@ -31,7 +31,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
     protected void switchCodeType_Click(object sender, EventArgs e)
     {
-        Effect effect = new EffectFadeIn(pnlShowCode, 0.5M);
+        Effect effect = new EffectFadeIn(lblCode, 0.5M);
         effect.Render();
         if (ViewState["code"].ToString() == "C#")
         {
