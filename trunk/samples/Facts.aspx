@@ -22,10 +22,12 @@
     <h2>License</h2>
     <p>
         Ra Ajax is licensed under an MIT(ish) kind of license which basically says; <em>"Use
-        as you wish but don't fork Ra"</em>. Read the <em>license.txt</em> which can be found 
-        in the main folder on disc when downloading Ra. This among other things means that you
-        can use Ra for free in commercial projects if you like. Without putting restrictions
-        on your derived works. Ra is also licensed under the GPL3 license if you prefer this.
+        as you wish as long as you don't work for an agressive military government and you 
+        don't fork Ra"</em>. Read the <em>license.txt</em> which can be found in the main 
+        folder on disc when downloading Ra. This among other things means that you can use 
+        Ra for free in commercial/proprietary projects if you like. Without putting 
+        restrictions on your derived works. Ra is also licensed under the GPL3 license if 
+        you prefer this.
     </p>
     <br />
     <h2>JavaScript</h2>
@@ -41,7 +43,9 @@
         Ra Ajax is very lightweight which means if you use it your applications will be 
         more responsive, demand less resources and run faster. Ra has less than 15KB of
         JavaScript in total which means that Ra can easily be used in front end websites
-        without stalling the user experience at all.
+        without stalling the user experience at all. This web page scores more than 80
+        in <a href="http://developer.yahoo.com/yslow/">YSlow</a> which is the highest
+        I know about for an Ajax Framework with server-side bindings.
     </p>
     <br />
     <h2>Runs on everything</h2>
