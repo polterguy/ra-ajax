@@ -23,18 +23,19 @@ Ra.Control = Ra.klass();
 
 
 // Static array which contains all the client-side registered controls
-Ra.Control._controls = new Array();
+Ra.Control._controls = [];
 
 
 // Static method to retrieve a specific Ra control
 // Pass in an ID and get the Ra.Control instance of the Control with the given ID
 Ra.Control.$ = function(id) {
   for( var idx = 0; idx < Ra.Control._controls.length; idx++ ) {
-    if( Ra.Control._controls[idx].element.id == id )
+    if( Ra.Control._controls[idx].element.id == id ) {
       return Ra.Control._controls[idx];
+    }
   }
   return null;
-}
+};
 
 
 Ra.extend(Ra.Control.prototype, {
@@ -70,20 +71,24 @@ Ra.extend(Ra.Control.prototype, {
     }, options || {});
 
     // Checking to see if a "real" control was passed
-    if( this.options.ctrl )
+    if( this.options.ctrl ) {
       this.options.ctrl = Ra.$(this.options.ctrl);
+    }
 
     // Checking to see if an extra Label was passed
-    if( this.options.label )
+    if( this.options.label ) {
       this.options.label = Ra.$(this.options.label);
+    }
 
     // Setting focus to control (of we should)
-    if( this.options.focus )
+    if( this.options.focus ) {
       this.element.focus();
+    }
 
     // Selecting contents of control (if we should)
-    if( this.options.select )
+    if( this.options.select ) {
       this.element.select();
+    }
 
     // Registering control
     Ra.Control._controls.push(this);
@@ -183,7 +188,7 @@ Ra.extend(Ra.Control.prototype, {
   // Called when an event is raised, tha parameter passed is the this.options.serverEvent instance 
   // which we will use to know how to call our server
   onEvent: function(evt) {
-    new Ra.Ajax({
+    var x = new Ra.Ajax({
       args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=' + evt,
       raCallback:true,
       onAfter: this.onFinishedRequest,
@@ -239,7 +244,7 @@ Ra.extend(Ra.Control.prototype, {
 
     // Since some controls may be children of the "this" widget we must
     // collect all those widgets too and call destroy on those too
-    var children = new Array();
+    var children = [];
 
     // First we must find all the objects which are CHILD objects
     // to the current one (being destroyed)
@@ -248,7 +253,7 @@ Ra.extend(Ra.Control.prototype, {
 
       // Checking to see that this is NOT the "this" control
       if( Ra.Control._controls[idx].element.id.length > this.element.id.length ) {
-        if( Ra.Control._controls[idx].element.id.indexOf(this.element.id) == 0 ) {
+        if( Ra.Control._controls[idx].element.id.indexOf(this.element.id) === 0 ) {
           children.push(Ra.Control._controls[idx]);
         }
       }
@@ -257,16 +262,17 @@ Ra.extend(Ra.Control.prototype, {
     // Sorting all elements in REVERSE order
     // This is to make sure we destroy the objects in depth first order
     children.reverse(function(a, b) {
-      if( a.element.id < b.element.id )
+      if( a.element.id < b.element.id ) {
         return -1;
-      if( a.element.id > b.element.id )
+      } else if( a.element.id > b.element.id ) {
         return 1;
+      }
       return 0;
     });
 
     // Now looping through and destroying all objects
-    for( var idx = 0; idx < children.length; idx++ ) {
-      children[idx].destroyThis();
+    for( var idxChild = 0; idxChild < children.length; idxChild++ ) {
+      children[idxChild].destroyThis();
     }
   },
 
@@ -296,12 +302,12 @@ Ra.extend(Ra.Control.prototype, {
     }
 
     // Looping through registered controls to remove the "this instance"
-    var idxToRemove = 0;
-    for( var idx = 0; idx < Ra.Control._controls.length; idx++ ) {
-      if( Ra.Control._controls[idx].element.id == this.element.id )
+    var idxToRemove;
+    for( idxToRemove = 0; idxToRemove < Ra.Control._controls.length; idxToRemove++ ) {
+      if( Ra.Control._controls[idxToRemove].element.id == this.element.id ) {
         // We have found our instance, idxToRemove now should contain the index of the control
         break;
-      idxToRemove += 1;
+      }
     }
 
     // Removes control out from registered controls collection
