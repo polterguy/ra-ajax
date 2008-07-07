@@ -28,6 +28,7 @@ public partial class Controls : System.Web.UI.Page
     protected void imgBtn_Click(object sender, EventArgs e)
     {
         imgBtn.AlternateText = "New alternate text";
+        lblIMGButton.Text = "ImageButton was clicked";
     }
 
     protected void btn3_Click(object sender, EventArgs e)

@@ -81,7 +81,10 @@
         ImageUrl="media/ajax.png" 
         OnClick="imgBtn_Click"
         CssClass="ajaxImageButton" />
-    Ajax ImageButton
+    <ra:Label
+        runat="server" 
+        ID="lblIMGButton" 
+        Text="Ajax ImageButton" />
     <br />
     <br />
     <ra:Label 
