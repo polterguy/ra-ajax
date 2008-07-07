@@ -55,14 +55,16 @@
         GroupName="Payment" 
         OnCheckedChanged="rdo_CheckedChanged" />
     <br />
-    <ra:Panel 
-        runat="server" 
-        ID="panelResults" 
-        style="display:none;width:500px;padding:15px;border:solid 1px Black;">
-        <ra:Label 
+    <div style="float:left;height:300px;">
+        <ra:Panel 
             runat="server" 
-            ID="lblEndResults" />
-    </ra:Panel>
+            ID="panelResults" 
+            style="display:none;width:500px;padding:15px;border:solid 1px Black;">
+            <ra:Label 
+                runat="server" 
+                ID="lblEndResults" />
+        </ra:Panel>
+    </div>
 
 </asp:Content>
 
