@@ -279,7 +279,7 @@ namespace Ra.Widgets
             return string.Format("<span id=\"{0}\" style=\"display:none;\">&nbsp;</span>", ClientID);
         }
 
-        internal void SignalizeReRender()
+        public void SignalizeReRender()
         {
             if (this.IsTrackingViewState)
                 Phase = RenderingPhase.ReRender;

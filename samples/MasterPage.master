@@ -50,33 +50,33 @@
                         <div id="navigation">
                             <ul class="links">
                                 <li>
-                                    <a 
-                                        href="Default.aspx" 
+                                    <a runat="server"
+                                        href="~/Default.aspx" 
                                         title="Ra Ajax Samples Home">Ra Ajax Samples Home</a>
                                 </li>
                                 <li>
-                                    <a 
-                                        href="Advantages.aspx" 
+                                    <a runat="server"
+                                        href="~/Advantages.aspx" 
                                         title="Ra Ajax Advantages">Ra Ajax Advantages</a>
                                 </li>
                                 <li>
-                                    <a 
-                                        href="Controls.aspx" 
+                                    <a runat="server"
+                                        href="~/Controls.aspx" 
                                         title="Ra Ajax Controls">Ajax Controls in Ra</a>
                                 </li>
                                 <li>
-                                    <a 
-                                        href="Facts.aspx" 
+                                    <a runat="server"
+                                        href="~/Facts.aspx" 
                                         title="Ra Ajax Facts">Facts about Ra Ajax</a>
                                 </li>
                                 <li>
-                                    <a 
-                                        href="Author.aspx" 
+                                    <a runat="server"
+                                        href="~/Author.aspx" 
                                         title="About me">About me (hire me)</a>
                                 </li>
                                 <li>
-                                    <a 
-                                        href="Forums/Forums.aspx" 
+                                    <a runat="server"
+                                        href="~/Forums/Forums.aspx" 
                                         title="Forums">Ra Ajax Forums</a>
                                 </li>
                             </ul>
