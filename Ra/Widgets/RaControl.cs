@@ -223,8 +223,15 @@ namespace Ra.Widgets
                 }
                 else
                 {
-                    writer.Write(GetHTML());
-                    AjaxManager.Instance.Writer.WriteLine(GetClientSideScript());
+                    if (Phase == RenderingPhase.RenderHtml)
+                    {
+                        writer.Write(GetHTML());
+                    }
+                    else
+                    {
+                        writer.Write(GetHTML());
+                        AjaxManager.Instance.Writer.WriteLine(GetClientSideScript());
+                    }
                 }
             }
             else // if (!Visible)
