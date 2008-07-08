@@ -30,6 +30,7 @@
             // Creating default forum post
             Entity.ForumPost defPost = new Entity.ForumPost();
             defPost.Body = "This is a sample forum post";
+            defPost.Url = "default-post-for-forums.forum";
             defPost.Created = DateTime.Now;
             defPost.Header = "Default post";
             defPost.Operator = oper;

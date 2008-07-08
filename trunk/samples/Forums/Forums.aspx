@@ -112,7 +112,9 @@
             <ItemTemplate>
                 <tr>
                     <td>
-                        <%# Eval("Header") %>
+                        <a runat="server" href='<%# "~/Forums/" + Eval("Url") %>'>
+                            <%# Eval("Header") %>
+                        </a>
                     </td>
                     <td>
                         <%# Eval("Operator.Username") %>
