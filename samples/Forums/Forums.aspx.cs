@@ -72,6 +72,10 @@ public partial class Forums_Forums : System.Web.UI.Page
 
     protected void newSubmit_Click(object sender, EventArgs e)
     {
+        // Simple valdation
+        if (header.Text.Length < 5)
+            return;
+
         // Creating new post
         ForumPost post = new ForumPost();
         post.Body = body.Text;

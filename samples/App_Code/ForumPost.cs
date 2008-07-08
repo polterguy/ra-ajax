@@ -1,5 +1,6 @@
 using System;
 using Castle.ActiveRecord;
+using NHibernate.Expression;
 
 namespace Entity
 {
@@ -11,6 +12,14 @@ namespace Entity
         private string _header;
         private string _body;
         private Operator _operator;
+        private string _url;
+
+        [Property]
+        public string Url
+        {
+            get { return _url; }
+            set { _url = value; }
+        }
 
         [BelongsTo]
         public Operator Operator
@@ -51,5 +60,53 @@ namespace Entity
         {
             return Count();
         }
+
+        public override void Save()
+        {
+            Url = Header.ToLower();
+            int index = 0;
+            while (index < Url.Length)
+            {
+                if (("abcdefghijklmnopqrstuvwxyz0123456789").IndexOf(Url[index]) == -1)
+                {
+                    Url = Url.Substring(0, index) + "-" + Url.Substring(index + 1);
+                }
+                index += 1;
+            }
+            int countOfOldWithSameURL = ForumPost.Count(Expression.Eq("Url", Url));
+            if (countOfOldWithSameURL > 0)
+                Url += countOfOldWithSameURL.ToString();
+            base.Save();
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
