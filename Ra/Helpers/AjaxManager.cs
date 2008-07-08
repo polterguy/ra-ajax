@@ -121,22 +121,33 @@ namespace Ra
             raCtrl.DispatchEvent(eventName);
         }
 
+        private List<string> _scriptIncludes = new List<string>();
+        private bool _hasIncludedMainRaScript;
+        private bool _hasIncludedMainRaControlScript;
         public void IncludeMainRaScript()
         {
+            if (_hasIncludedMainRaScript)
+                return;
+            _hasIncludedMainRaScript = true;
 #if DEBUG
-            CurrentPage.ClientScript.RegisterClientScriptResource(typeof(AjaxManager), "Ra.Js.JsCore.Ra.js");
+            string resource = CurrentPage.ClientScript.GetWebResourceUrl(typeof(AjaxManager), "Ra.Js.JsCore.Ra.js");
 #else
-            CurrentPage.ClientScript.RegisterClientScriptResource(typeof(AjaxManager), "Ra.JsCompressed.Js.JsCore.Ra.js");
+            string resource = CurrentPage.ClientScript.GetWebResourceUrl(typeof(AjaxManager), "Ra.JsCompressed.Js.JsCore.Ra.js");
 #endif
+            _scriptIncludes.Add(resource);
         }
 
         public void IncludeMainControlScripts()
         {
+            if (_hasIncludedMainRaControlScript)
+                return;
+            _hasIncludedMainRaControlScript = true;
 #if DEBUG
-            CurrentPage.ClientScript.RegisterClientScriptResource(typeof(AjaxManager), "Ra.Js.Control.js");
+            string resource = CurrentPage.ClientScript.GetWebResourceUrl(typeof(AjaxManager), "Ra.Js.Control.js");
 #else
-            CurrentPage.ClientScript.RegisterClientScriptResource(typeof(AjaxManager), "Ra.JsCompressed.Js.Control.js");
+            string resource = CurrentPage.ClientScript.GetWebResourceUrl(typeof(AjaxManager), "Ra.JsCompressed.Js.Control.js");
 #endif
+            _scriptIncludes.Add(resource);
         }
 
         private MemoryStream _memStream;
@@ -236,6 +247,11 @@ namespace Ra
 
             // Stringbuilder to hold our "register script" parts...
             StringBuilder builder = new StringBuilder();
+            foreach (string idx in _scriptIncludes)
+            {
+                string scriptInclusion = string.Format("<script src=\"{0}\" type=\"text/javascript\"></script>\r\n", idx);
+                builder.Append(scriptInclusion);
+            }
             builder.Append("<script type=\"text/javascript\">");
 
             Writer.Flush();
@@ -253,7 +269,8 @@ namespace Ra
             builder.Append(allContentAtBack);
 
             // Adding script closing element
-            builder.Append("</script></body>");
+            builder.Append("</script>");
+            builder.Append("</body>");
 
             // Replacing the </body> element with the client-side object creation scripts for the Ra Controls...
             Regex reg = new Regex("</body>", RegexOptions.IgnoreCase);
