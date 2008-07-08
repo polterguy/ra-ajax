@@ -84,6 +84,9 @@
             </tr>
         </table>
     </ra:Panel>
+    <div style="height:500px;">
+        &nbsp;
+    </div>
 
 </asp:Content>
 

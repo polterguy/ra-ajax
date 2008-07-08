@@ -47,7 +47,7 @@ public partial class Forums_Post : System.Web.UI.Page
 
         // Creating new post
         ForumPost post = new ForumPost();
-        post.Body = body.Text;
+        post.Body = body.Text.Replace("\r\n", "<br />").Replace("\n", "<br />");
         post.Created = DateTime.Now;
         post.Header = header.Text;
         post.Operator = Operator.Current;
@@ -58,9 +58,14 @@ public partial class Forums_Post : System.Web.UI.Page
         
         post.Save();
 
-        // Removing panel
+        // Flashing panel
         Effect effect = new EffectFadeIn(pnlReply, 0.4M);
         effect.Render();
+
+        effect = new EffectFadeIn(postsWrapper, 0.4M);
+        effect.Render();
+        body.Focus();
+        body.Select();
 
         // Re-rendering posts to get the newly added item
         DataBindReplies(parent);
