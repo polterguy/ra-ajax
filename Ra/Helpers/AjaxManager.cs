@@ -130,8 +130,18 @@ namespace Ra
                 return;
             _hasIncludedMainRaScript = true;
 #if DEBUG
+            if (this.SupressAjaxFilters)
+            {
+                // Need to explicitly include JS files if filters are surpressed...
+                CurrentPage.ClientScript.RegisterClientScriptResource(typeof(AjaxManager), "Ra.Js.JsCore.Ra.js");
+            }
             string resource = CurrentPage.ClientScript.GetWebResourceUrl(typeof(AjaxManager), "Ra.Js.JsCore.Ra.js");
 #else
+            if (this.SupressAjaxFilters)
+            {
+                // Need to explicitly include JS files if filters are surpressed...
+                CurrentPage.ClientScript.RegisterClientScriptResource(typeof(AjaxManager), "Ra.JsCompressed.Js.JsCore.Ra.js");
+            }
             string resource = CurrentPage.ClientScript.GetWebResourceUrl(typeof(AjaxManager), "Ra.JsCompressed.Js.JsCore.Ra.js");
 #endif
             _scriptIncludes.Add(resource);
@@ -143,8 +153,18 @@ namespace Ra
                 return;
             _hasIncludedMainRaControlScript = true;
 #if DEBUG
+            if (this.SupressAjaxFilters)
+            {
+                // Need to explicitly include JS files if filters are surpressed...
+                CurrentPage.ClientScript.RegisterClientScriptResource(typeof(AjaxManager), "Ra.Js.Control.js");
+            }
             string resource = CurrentPage.ClientScript.GetWebResourceUrl(typeof(AjaxManager), "Ra.Js.Control.js");
 #else
+            if (this.SupressAjaxFilters)
+            {
+                // Need to explicitly include JS files if filters are surpressed...
+                CurrentPage.ClientScript.RegisterClientScriptResource(typeof(AjaxManager), "Ra.JsCompressed.Js.Control.js");
+            }
             string resource = CurrentPage.ClientScript.GetWebResourceUrl(typeof(AjaxManager), "Ra.JsCompressed.Js.Control.js");
 #endif
             _scriptIncludes.Add(resource);
