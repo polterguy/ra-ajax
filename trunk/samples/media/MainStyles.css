@@ -122,3 +122,13 @@ img
 	border:solid 1px #eee;
 }
 
+.forumTable
+{
+	margin-top:25px;
+	width:100%;
+	background-color:#f9f9f9;
+}
+
+.forumTable tr td
+{
+}

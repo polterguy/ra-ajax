@@ -16,6 +16,9 @@ public partial class Forums_Post : System.Web.UI.Page
             dateParent.InnerHtml = post.Created.ToString("dd.MMM yy - HH:mm");
             contentParent.InnerHtml = post.Body;
             this.Title = post.Header;
+            header.Text = "Re: " + post.Header;
+            header.Focus();
+            header.Select();
 
             // Binding replies...
             DataBindReplies(post);

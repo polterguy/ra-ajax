@@ -23,12 +23,11 @@
     <ra:Panel runat="server" ID="postsWrapper">
         <asp:Repeater runat="server" ID="repReplies">
             <HeaderTemplate>
-                <table>
             </HeaderTemplate>
             <FooterTemplate>
-                </table>
             </FooterTemplate>
             <ItemTemplate>
+                <table class="forumTable">
                     <tr>
                         <td>
                             <%# Eval("Header") %>
@@ -45,13 +44,14 @@
                             <%# Eval("Body") %>
                         </td>
                     </tr>
+                </table>
             </ItemTemplate>
         </asp:Repeater>
     </ra:Panel>
     
     <ra:Panel 
         runat="server" 
-        style="background-color:Yellow;border:solid 1px #333;padding:15px;width:70%;margin-left:auto;margin-right:auto;"
+        style="background-color:#f9f9f9;border:solid 1px #333;padding:15px;width:70%;margin-top:50px;"
         ID="pnlReply">
         <table>
             <tr>
