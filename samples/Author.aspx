@@ -29,7 +29,7 @@
         me to succeed in leaving this place in a better shape than what it currently is in.
     </p>
     <p>
-        I have been obsessed with writing system libraries large portions of my life and
+        I have been obsessed with writing developer libraries large portions of my life and
         I have had a particular strong leaning towards GUI libraries. Ra Ajax is my third
         GUI library. My first GUI library was <a href="http://smartwinlib.org">SmartWin++</a>,
         my second GUI library was <a href="http://ajaxwidgets.com">Gaia Ajax Widgets</a> whom
@@ -42,7 +42,7 @@
         I have an intense believe in the Open Web and Ajax as the foundation for the third
         generation of system development platforms, and I feel that it is imperative that the 
         tools for this platform belongs to the world and not to a specific group, organization, 
-        company or person. I dislike EEE, FUD and LockIn technology.
+        company or person.
     </p>
     <p>
         I am proud to be an <strong>Open Web Advocate and Evangelist</strong>!
@@ -69,11 +69,12 @@
         explaining what you'd like me to do. I am highly qualified in Ajax, ASP.NET, all 
         acronyms starting with OO and I have much experience with coaching which is the 
         role I am most happy with. You will get most value for your money if I can coach 
-        and do architectural jobs. I don't do VB.NET, Silverlight, ActiveX or WinForms 
-        development. I have been programming almost every day since I was 8 years old and
-        I have been project leads mostly in the later years and among other things I am 
-        the founder and "father" of Gaia Ajax Widgets and Gaiaware AS which can be found 
-        at the <a href="http://ajaxwidgets.com">Gaia website</a>. 
+        and do architectural jobs in teams of domain experts and hired developers. I don't 
+        do VB.NET, Silverlight, ActiveX or WinForms development and I do not work for 
+        military organizations. I have been programming almost every day since I was 8 
+        years old and I have been project leads mostly in the later years and among other 
+        things I am the founder and "father" of Gaia Ajax Widgets and Gaiaware AS which 
+        can be found at the <a href="http://ajaxwidgets.com">Gaia website</a>. 
         <br />
         BTW, I still own 25% of the shares in Gaiaware AS if you are interested in buying 
         them.
