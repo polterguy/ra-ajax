@@ -32,10 +32,10 @@
     <br />
     <h2>JavaScript</h2>
     <p>
-        Ra is made with the assumption that JavaScript is <em>evil</em> and not something
+        Ra is made with the assumption that JavaScript is <em>hard</em> and not something
         Application Developers should do themselves. Ra tries to abstract away JavaScript
-        as much as possible and you can probably create very complex applications without
-        having to use JavaScript at all.
+        as much as possible and you can probably create very complex Ajax Applications 
+        with Ra Ajax without having to use JavaScript at all.
     </p>
     <br />
     <h2>Lightweight</h2>
@@ -43,9 +43,8 @@
         Ra Ajax is very lightweight which means if you use it your applications will be 
         more responsive, demand less resources and run faster. Ra has less than 15KB of
         JavaScript in total which means that Ra can easily be used in front end websites
-        without stalling the user experience at all. This web page scores more than 80
-        in <a href="http://developer.yahoo.com/yslow/">YSlow</a> which is the highest
-        I know about for an Ajax Framework with server-side bindings.
+        without stalling the user experience. This web page scores more than 80 in 
+        <a href="http://developer.yahoo.com/yslow/">YSlow</a>.
     </p>
     <br />
     <h2>Runs on everything</h2>
@@ -63,8 +62,7 @@
     <p>
         Ra Ajax comes with virtually no learning curve due to its closely coupling to
         the ASP.NET WebControl nature. If you have done conventional ASP.NET 
-        development with WebControls then learning Ra Ajax will feel like a breeze
-        to you.
+        development with WebControls then learning Ra Ajax will feel like a breeze.
     </p>
     <br />
     <h2>Is Ra Ajax related to ASP.NET AJAX</h2>
@@ -78,12 +76,12 @@
     <br />
     <h2>Is Ra Ajax a commercial project?</h2>
     <p>
-        No. Currently I don't think Ra Ajax is mature enough to be a commercially 
-        backed project. This means you can use Ra Ajax for free in your Closed 
-        Source projects. Though I cannot guarantee you that I will never charge 
-        for support, help, custom work, upgrades and new versions as Ra Ajax 
-        matures and demands more resources on my behalf. Though you will always be
-        able to use Ra Ajax for free in Open Source projects. And Ra Ajax will always
+        No. Currently Ra Ajax is not mature enough to be a commercially backed 
+        project. This means you can use Ra Ajax for free in your Closed Source 
+        projects. Though I cannot guarantee you that I will never charge for 
+        support, help, custom work, upgrades and new versions as Ra Ajax matures 
+        and demands more resources on my behalf. Though you will always be able 
+        to use Ra Ajax for free in Open Source projects. And Ra Ajax will always
         be Open Source.
     </p>
 
