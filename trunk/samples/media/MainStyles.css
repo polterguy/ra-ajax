@@ -8,6 +8,11 @@ html, body, form
 {
 }
 
+img
+{
+	border:none;
+}
+
 #wholePageDiv
 {
 }
