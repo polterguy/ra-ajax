@@ -50,6 +50,10 @@ public partial class MasterPage : System.Web.UI.MasterPage
     private void GetASPXCode()
     {
         string path = this.Request.PhysicalPath;
+        if (path.IndexOf(".forum") != -1)
+        {
+            path = this.Request.PhysicalApplicationPath + "Forums\\Post.aspx.cs";
+        }
         using (TextReader reader = new StreamReader(File.OpenRead(path)))
         {
             string allCode = reader.ReadToEnd();
@@ -61,6 +65,10 @@ public partial class MasterPage : System.Web.UI.MasterPage
     private void GetCSharpCode()
     {
         string path = this.Request.PhysicalPath + ".cs";
+        if( path.IndexOf(".forum") != -1 )
+        {
+	        path = this.Request.PhysicalApplicationPath + "Forums\\Post.aspx.cs";
+        }
         using (TextReader reader = new StreamReader(File.OpenRead(path)))
         {
             string allCode = reader.ReadToEnd();
