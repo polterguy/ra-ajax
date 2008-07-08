@@ -13,6 +13,14 @@ namespace Entity
         private string _body;
         private Operator _operator;
         private string _url;
+        private int _parentPost;
+
+        [Property]
+        public int ParentPost
+        {
+            get { return _parentPost; }
+            set { _parentPost = value; }
+        }
 
         [Property]
         public string Url
@@ -76,6 +84,7 @@ namespace Entity
             int countOfOldWithSameURL = ForumPost.Count(Expression.Eq("Url", Url));
             if (countOfOldWithSameURL > 0)
                 Url += countOfOldWithSameURL.ToString();
+            Url += ".forum";
             base.Save();
         }
     }

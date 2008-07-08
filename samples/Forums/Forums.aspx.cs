@@ -41,7 +41,7 @@ public partial class Forums_Forums : System.Web.UI.Page
     {
         List<ForumPost> postsToBind = new List<ForumPost>();
         int idxNo = 0;
-        foreach (ForumPost idx in ForumPost.FindAll(Order.Desc("Created")))
+        foreach (ForumPost idx in ForumPost.FindAll(Order.Desc("Created"), Expression.Eq("ParentPost", 0)))
         {
             if (idxNo > 10)
                 break;
