@@ -91,7 +91,7 @@
         use the ASP.NET Buttons, Labels and CheckBoxes - you already also know how to use 
         the Ra Ajax Buttons, CheckBoxes and Labels.
     </p>
-    <h2>Lighter than air</h2>
+    <h2>Lighter than air - faster than lightning</h2>
     <p>
         If you use e.g. <a href="http://getfirebug.com/">FireBug</a> and check out the size
         of this webpage you might be surprised. This entire webpage, which is a 
