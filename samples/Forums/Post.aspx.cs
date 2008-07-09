@@ -57,7 +57,7 @@ public partial class Forums_Post : System.Web.UI.Page
 
         // Creating new post
         ForumPost post = new ForumPost();
-        post.Body = body.Text.Replace("\r\n", "<br />").Replace("\n", "<br />");
+        post.Body = body.Text;
         post.Created = DateTime.Now;
         post.Header = header.Text;
         post.Operator = Operator.Current;

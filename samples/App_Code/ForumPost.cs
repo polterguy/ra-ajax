@@ -1,6 +1,7 @@
 using System;
 using Castle.ActiveRecord;
 using NHibernate.Expression;
+using System.Text.RegularExpressions;
 
 namespace Entity
 {
@@ -84,6 +85,7 @@ namespace Entity
 
         public override void Save()
         {
+            // Building UNIQUE friendly URL
             Url = Header.ToLower();
             int index = 0;
             while (index < Url.Length)
@@ -94,10 +96,19 @@ namespace Entity
                 }
                 index += 1;
             }
-            int countOfOldWithSameURL = ForumPost.Count(Expression.Eq("Url", Url));
+            int countOfOldWithSameURL = ForumPost.Count(Expression.Like("Url", Url + "%.forum"));
             if (countOfOldWithSameURL > 0)
-                Url += countOfOldWithSameURL.ToString();
+                Url += (countOfOldWithSameURL + 1).ToString();
             Url += ".forum";
+
+            // Replacing URLs with a href links...
+            Body = Regex.Replace(
+                " " + Body,
+                "(?<spaceChar>\\s+)(?<linkType>http://|https://)(?<link>\\S+)", 
+                "${spaceChar}<a href=\"${linkType}${link}\" rel=\"nofollow\">${link}</a>").Trim(); 
+
+            // Replacing CR/LF with <br /> elements...
+            Body = Body.Replace("\r\n", "<br />").Replace("\n", "<br />");
             base.Save();
         }
     }
