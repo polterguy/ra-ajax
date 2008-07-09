@@ -52,7 +52,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
         string path = this.Request.PhysicalPath;
         if (path.IndexOf(".forum") != -1)
         {
-            path = this.Request.PhysicalApplicationPath + "Forums\\Post.aspx.cs";
+            path = this.Request.PhysicalApplicationPath + "Forums\\Post.aspx";
         }
         using (TextReader reader = new StreamReader(File.OpenRead(path)))
         {

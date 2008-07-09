@@ -2,6 +2,8 @@ using System;
 using Castle.ActiveRecord;
 using System.Web;
 using NHibernate.Expression;
+using System.Configuration;
+using System.Web.Mail;
 
 namespace Entity
 {
@@ -11,6 +13,22 @@ namespace Entity
         private int _id;
         private string _userName;
         private string _pwd;
+        private string _email;
+        private bool _confirmed;
+
+        [Property]
+        public bool Confirmed
+        {
+            get { return _confirmed; }
+            set { _confirmed = value; }
+        }
+
+        [Property]
+        public string Email
+        {
+            get { return _email; }
+            set { _email = value; }
+        }
 
         [Property]
         public string Pwd
@@ -19,7 +37,7 @@ namespace Entity
             set { _pwd = value; }
         }
 
-        [Property]
+        [Property(Unique=true)]
         public string Username
         {
             get { return _userName; }
@@ -53,6 +71,17 @@ namespace Entity
                 Expression.Eq("Pwd", password));
             HttpContext.Current.Session["__CurrentOperator"] = oper;
             return oper != null;
+        }
+
+        public void SendEmail(string subject, string body)
+        {
+            MailMessage msg = new MailMessage();
+            msg.Subject = subject;
+            msg.Body = body;
+            msg.To = this.Email;
+            msg.From = ConfigurationSettings.AppSettings["fromEmailAddress"];
+            SmtpMail.SmtpServer = ConfigurationSettings.AppSettings["smtpServer"];
+            SmtpMail.Send(msg);
         }
     }
 }

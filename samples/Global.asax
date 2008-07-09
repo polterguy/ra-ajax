@@ -26,6 +26,7 @@
             oper.Username = "admin";
             oper.Pwd = "admin";
             oper.Create();
+            oper.Email = "someone@somewhere.com";
 
             // Creating default forum post
             Entity.ForumPost defPost = new Entity.ForumPost();

@@ -14,6 +14,19 @@ namespace Entity
         private Operator _operator;
         private string _url;
         private int _parentPost;
+        private int _noReplies = -1;
+
+        public int NoReplies
+        {
+            get
+            {
+                if (_noReplies == -1)
+                {
+                    _noReplies = Count(Expression.Eq("ParentPost", Id));
+                }
+                return _noReplies;
+            }
+        }
 
         [Property]
         public int ParentPost

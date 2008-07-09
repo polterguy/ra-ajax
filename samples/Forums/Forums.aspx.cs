@@ -18,6 +18,21 @@ public partial class Forums_Forums : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
+            string newUserRegistration = Request.Params["idNewUser"];
+            if (newUserRegistration != null)
+            {
+                Operator oper = Operator.FindOne(
+                    Expression.Eq("Username", newUserRegistration),
+                    Expression.Eq("Confirmed", false));
+                if (oper != null)
+                {
+                    oper.Confirmed = true;
+                    oper.Save();
+                    pnlConfirmRegistration.Visible = true;
+                    newUserWelcome.InnerHtml = string.Format("Welcome as a new user {0}", oper.Username);
+                    Operator.Login(oper.Username, oper.Pwd);
+                }
+            }
             DataBindForumPosts();
         }
 
@@ -59,6 +74,57 @@ public partial class Forums_Forums : System.Web.UI.Page
             pnlLogin.Visible = false;
             pnlLoggedIn.Visible = true;
             usernameLoggedIn.Text = Operator.Current.Username;
+        }
+    }
+
+    protected void register_Click(object sender, EventArgs e)
+    {
+        if (Operator.Login(username.Text, pwd.Text))
+        {
+            pnlLogin.Visible = false;
+            pnlLoggedIn.Visible = true;
+            usernameLoggedIn.Text = Operator.Current.Username;
+        }
+        else
+        {
+            pnlRegister.Visible = true;
+            pnlLogin.Visible = false;
+            newUsername.Text = username.Text;
+            newUsername.Focus();
+            newUsername.Select();
+            newPassword.Text = pwd.Text;
+            newPasswordRepeat.Text = pwd.Text;
+        }
+    }
+
+    protected void finishRegister_Click(object sender, EventArgs e)
+    {
+        if (newPassword.Text != newPasswordRepeat.Text)
+        {
+            newPassword.Text = "";
+            newPasswordRepeat.Text = "";
+            return;
+        }
+        else
+        {
+            Operator oper = new Operator();
+            oper.Email = newEmail.Text;
+            oper.Pwd = newPassword.Text;
+            oper.Username = newUsername.Text;
+            oper.Save();
+            oper.SendEmail(
+                "Please confirm registration", 
+                string.Format(
+@"This message was automatically sent from the forums at http://ra-ajax.org due to registering a new user.
+If you where not the one registering at Ra-Ajax then please just ignore this message or delete it.
+
+To confirm your registration and activate your user account please go to;
+{0}?idNewUser={1}
+
+Have a nice day :)", 
+                Request.Url.ToString(),
+                oper.Username));
+            pnlRegister.Visible = false;
         }
     }
 
