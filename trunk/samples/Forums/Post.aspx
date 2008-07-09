@@ -16,6 +16,13 @@
     ContentPlaceHolderID="cnt1" 
     Runat="Server">
 
+    <div 
+        runat="server" 
+        id="pnlLinkToLogin" 
+        style="position:absolute;top:290px;right:5px;background-color:Yellow;border:solid 1px #333;padding:15px;">
+        Login at <a href="Forums.aspx">Main forum page</a> to post or reply.
+    </div>
+
     <h1 runat="server" id="headerParent"></h1>
     <i runat="server" id="dateParent"></i>
     <p runat="server" id="contentParent"></p>

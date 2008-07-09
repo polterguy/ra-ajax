@@ -9,6 +9,16 @@ public partial class Forums_Post : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
+            // Hiding LoginPanel (if we should)
+            if (Operator.Current == null)
+            {
+                pnlLinkToLogin.Visible = true;
+            }
+            else
+            {
+                pnlLinkToLogin.Visible = false;
+            }
+
             // Retrieving post...
             string idOfPost = Request.Params["id"] + ".forum";
             ForumPost post = ForumPost.FindOne(Expression.Eq("Url", idOfPost));

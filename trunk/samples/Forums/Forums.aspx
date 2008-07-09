@@ -60,6 +60,70 @@
                         ID="login" 
                         Text="Login" 
                         OnClick="login_Click" />
+                    or 
+                    <ra:Button 
+                        runat="server" 
+                        ID="register" 
+                        Text="Register" 
+                        OnClick="register_Click" />
+                </td>
+            </tr>
+        </table>
+    </ra:Panel>
+    <ra:Panel 
+        runat="server" 
+        Visible="false"
+        ID="pnlConfirmRegistration" 
+        style="position:absolute;top:190px;right:5px;background-color:Yellow;border:solid 1px #333;padding:15px;">
+        <span runat="server" id="newUserWelcome"></span>
+    </ra:Panel>
+    <ra:Panel 
+        runat="server" 
+        ID="pnlRegister" 
+        Visible="false"
+        style="position:absolute;top:290px;left:250px;background-color:Yellow;border:solid 1px #333;padding:15px;">
+        <table>
+            <tr>
+                <td>Username</td>
+                <td>
+                    <ra:TextBox 
+                        runat="server" 
+                        ID="newUsername" />
+                </td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td>
+                    <ra:TextBox 
+                        runat="server" 
+                        ID="newPassword" 
+                        TextMode="password" />
+                </td>
+            </tr>
+            <tr>
+                <td>Repeat password</td>
+                <td>
+                    <ra:TextBox 
+                        runat="server" 
+                        ID="newPasswordRepeat" 
+                        TextMode="password" />
+                </td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>
+                    <ra:TextBox 
+                        runat="server" 
+                        ID="newEmail" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <ra:Button 
+                        runat="server" 
+                        ID="finishRegister" 
+                        Text="Finish" 
+                        OnClick="finishRegister_Click" />
                 </td>
             </tr>
         </table>
@@ -105,6 +169,12 @@
         <asp:Repeater runat="server" ID="forumPostsRepeater">
             <HeaderTemplate>
                 <table>
+                    <tr>
+                        <th>Header</th>
+                        <th>Username</th>
+                        <th>Date</th>
+                        <th>Replies</th>
+                    </tr>
             </HeaderTemplate>
             <FooterTemplate>
                 </table>
@@ -120,7 +190,10 @@
                         <%# Eval("Operator.Username") %>
                     </td>
                     <td>
-                        <%# Eval("Created") %>
+                        <%# ((DateTime)Eval("Created")).ToString("dd.MMM yy - HH:mm")%>
+                    </td>
+                    <td>
+                        <%# Eval("NoReplies") %>
                     </td>
                 </tr>
             </ItemTemplate>
