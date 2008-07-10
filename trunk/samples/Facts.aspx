@@ -55,7 +55,7 @@
         as you have a browser with at least rudimentary JavaScript capabilities Ra 
         Ajax will work. In addition you can also use both Linux and Windows Servers
         as the back-end for your applications. The slogan could probably be; 
-        <em>"Compile once, deploy once, run all over the place"</em>. 
+        <em>"Compile once, deploy anywhere, run all over the place"</em>. 
     </p>
     <br />
     <h2>No learning curve</h2>

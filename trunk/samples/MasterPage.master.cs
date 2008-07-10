@@ -18,6 +18,11 @@ public partial class MasterPage : System.Web.UI.MasterPage
             Effect effect = new EffectFadeIn(btnShowCode, 2.0M);
             effect.Render();
         }
+
+        // There's a bug in FireFox which causes the back button (and CTRL+R) to
+        // not reload the page which shuts down everything (also normal ASP.NET WebControls)
+        // which we can bypass by informing the client to NOT cache the pages themselves at all
+        Response.Cache.SetNoStore();
     }
 
     protected void btnShowCode_Click(object sender, EventArgs e)
@@ -83,6 +88,10 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 "public", 
                 "partial", 
                 "protected", 
+                "private", 
+                "false",
+                "true",
+                "null",
                 "void", 
                 "object"});
             allCode = allCode.Replace("/*", "<span class=\"comment\">/*");

@@ -58,7 +58,7 @@ public partial class Forums_Forums : System.Web.UI.Page
         int idxNo = 0;
         foreach (ForumPost idx in ForumPost.FindAll(Order.Desc("Created"), Expression.Eq("ParentPost", 0)))
         {
-            if (idxNo > 10)
+            if (idxNo >= 50) // We only show the 50 last ones...
                 break;
             postsToBind.Add(idx);
             idxNo += 1;
@@ -88,13 +88,36 @@ public partial class Forums_Forums : System.Web.UI.Page
         else
         {
             pnlRegister.Visible = true;
-            pnlLogin.Visible = false;
+            pnlRegister.Style["display"] = "";
+            newUsername.Focus();
+            newUsername.Select();
+
+            // Fading in/out panels...
+            Effect effect = new EffectFadeOut(pnlLogin, 0.6M);
+            effect.Render();
+            effect = new EffectFadeIn(pnlRegister, 0.6M);
+            effect.Render();
+
             newUsername.Text = username.Text;
             newUsername.Focus();
             newUsername.Select();
             newPassword.Text = pwd.Text;
             newPasswordRepeat.Text = pwd.Text;
         }
+    }
+
+    protected void btnCancelRegistration_Click(object sender, EventArgs e)
+    {
+        pnlLogin.Visible = true;
+
+        // Fading in/out panels...
+        Effect effect = new EffectFadeIn(pnlLogin, 0.6M);
+        effect.Render();
+        effect = new EffectFadeOut(pnlRegister, 0.6M);
+        effect.Render();
+        pnlLogin.Style["display"] = "";
+        username.Focus();
+        username.Select();
     }
 
     protected void finishRegister_Click(object sender, EventArgs e)
@@ -121,9 +144,13 @@ If you where not the one registering at Ra-Ajax then please just ignore this mes
 To confirm your registration and activate your user account please go to;
 {0}?idNewUser={1}
 
+Your username is; {1}
+Your password is; {2}
+
 Have a nice day :)", 
                 Request.Url.ToString(),
-                oper.Username));
+                oper.Username,
+                oper.Pwd));
             pnlRegister.Visible = false;
         }
     }
@@ -133,7 +160,50 @@ Have a nice day :)",
         pnlNewPost.Visible = true;
         Effect effect = new EffectFadeIn(pnlNewPost, 0.4M);
         effect.Render();
+        pnlNewPost.Style["display"] = "";
         header.Focus();
+        header.Select();
+    }
+
+    protected void btnChangeProfile_Click(object sender, EventArgs e)
+    {
+        if (changePassword.Text != changePasswordConfirm.Text)
+        {
+            return;
+        }
+        Effect effect = new EffectFadeOut(pnlProfile, 0.4M);
+        effect.Render();
+
+        Operator.Current.Pwd = changePassword.Text;
+        Operator.Current.BlogURL = changeBlogURL.Text;
+        Operator.Current.Email = changeEmail.Text;
+        Operator.Current.Save();
+    }
+
+    protected void btnCancelSavingProfile_Click(object sender, EventArgs e)
+    {
+        Effect effect = new EffectFadeOut(pnlProfile, 0.4M);
+        effect.Render();
+    }
+
+    protected void profile_Click(object sender, EventArgs e)
+    {
+        pnlProfile.Visible = true;
+        Effect effect = new EffectFadeIn(pnlProfile, 0.4M);
+        effect.Render();
+        changePassword.Text = Operator.Current.Pwd;
+        changePassword.Focus();
+        changePassword.Select();
+        changePasswordConfirm.Text = Operator.Current.Pwd;
+        changeBlogURL.Text = Operator.Current.BlogURL;
+        changeEmail.Text = Operator.Current.Email;
+    }
+
+    protected void newPostCancel_Click(object sender, EventArgs e)
+    {
+        // Removing panel
+        Effect effect = new EffectFadeOut(pnlNewPost, 0.4M);
+        effect.Render();
     }
 
     protected void newSubmit_Click(object sender, EventArgs e)

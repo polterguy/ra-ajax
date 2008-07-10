@@ -16,6 +16,13 @@
     ContentPlaceHolderID="cnt1" 
     Runat="Server">
 
+    <h1>Forums for Ra Ajax</h1>
+    <p style="width:450px;">
+        Feel free to post your questions here and I will try to answer as best I can, though remember that
+        Ra Ajax is a NON-commercial project which means that I don't get paid for helping you. If you are 
+        a senior ASP.NET/Ra Ajax developer yourself and like to help out the project then answering forum
+        questions is the place to start :)
+    </p>
     <ra:Panel 
         runat="server" 
         ID="pnlLoggedIn" 
@@ -30,6 +37,12 @@
             ID="createNewPost" 
             OnClick="createNewPost_Click"
             Text="New post" />
+        <br />
+        <ra:Button 
+            runat="server" 
+            ID="profile" 
+            OnClick="profile_Click"
+            Text="Profile" />
     </ra:Panel>
     <ra:Panel 
         runat="server" 
@@ -81,7 +94,7 @@
         runat="server" 
         ID="pnlRegister" 
         Visible="false"
-        style="position:absolute;top:290px;left:250px;background-color:Yellow;border:solid 1px #333;padding:15px;">
+        style="position:absolute;top:290px;right:5px;background-color:Yellow;border:solid 1px #333;padding:15px;">
         <table>
             <tr>
                 <td>Username</td>
@@ -118,16 +131,83 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td colspan="2" style="text-align:right;">
                     <ra:Button 
                         runat="server" 
                         ID="finishRegister" 
                         Text="Finish" 
                         OnClick="finishRegister_Click" />
+                    <ra:Button 
+                        runat="server" 
+                        ID="btnCancelRegistration" 
+                        Text="Cancel" 
+                        OnClick="btnCancelRegistration_Click" />
                 </td>
             </tr>
         </table>
     </ra:Panel>
+
+    <ra:Panel 
+        runat="server" 
+        ID="pnlProfile" 
+        Visible="false"
+        style="position:absolute;top:290px;left:250px;background-color:Yellow;border:solid 1px #333;padding:15px;">
+        <table>
+            <tr>
+                <td>Password</td>
+                <td>
+                    <ra:TextBox 
+                        runat="server" 
+                        ID="changePassword" 
+                        style="width:250px;"
+                        TextMode="password" />
+                </td>
+            </tr>
+            <tr>
+                <td>Repeat password</td>
+                <td>
+                    <ra:TextBox 
+                        runat="server" 
+                        ID="changePasswordConfirm" 
+                        style="width:250px;"
+                        TextMode="password" />
+                </td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>
+                    <ra:TextBox 
+                        runat="server" 
+                        style="width:250px;"
+                        ID="changeEmail" />
+                </td>
+            </tr>
+            <tr>
+                <td>Blog URL</td>
+                <td>
+                    <ra:TextBox 
+                        runat="server" 
+                        style="width:250px;"
+                        ID="changeBlogURL" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align:right;">
+                    <ra:Button 
+                        runat="server" 
+                        ID="btnChangeProfile" 
+                        Text="Save" 
+                        OnClick="btnChangeProfile_Click" />
+                    <ra:Button 
+                        runat="server" 
+                        ID="btnCancelSavingProfile" 
+                        Text="Cancel" 
+                        OnClick="btnCancelSavingProfile_Click" />
+                </td>
+            </tr>
+        </table>
+    </ra:Panel>
+
     <ra:Panel 
         runat="server" 
         ID="pnlNewPost" 
@@ -160,6 +240,11 @@
                         ID="newSubmit" 
                         OnClick="newSubmit_Click"
                         Text="Save" />
+                    <ra:Button 
+                        runat="server" 
+                        ID="newPostCancel" 
+                        OnClick="newPostCancel_Click"
+                        Text="Discard" />
                 </td>
             </tr>
         </table>
