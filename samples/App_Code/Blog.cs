@@ -14,7 +14,7 @@ namespace Entity
         private string _body;
         private string _url;
 
-        [Property]
+        [Property(Unique=true)]
         public string Url
         {
             get { return _url; }
@@ -71,7 +71,7 @@ namespace Entity
                 }
                 index += 1;
             }
-            int countOfOldWithSameURL = ForumPost.Count(Expression.Like("Url", Url + "%.forum"));
+            int countOfOldWithSameURL = ForumPost.Count(Expression.Like("Url", Url + "%.blog"));
             if (countOfOldWithSameURL > 0)
                 Url += (countOfOldWithSameURL + 1).ToString();
             Url += ".blog";
