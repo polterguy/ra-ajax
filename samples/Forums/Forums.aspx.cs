@@ -75,6 +75,12 @@ public partial class Forums_Forums : System.Web.UI.Page
             pnlLoggedIn.Visible = true;
             usernameLoggedIn.Text = Operator.Current.Username;
         }
+        else
+        {
+            lblError.Text = "Couldn't log you in";
+            Effect effect = new EffectFadeIn(lblError, 0.4M);
+            effect.Render();
+        }
     }
 
     protected void register_Click(object sender, EventArgs e)
@@ -157,6 +163,7 @@ Have a nice day :)",
 
     protected void createNewPost_Click(object sender, EventArgs e)
     {
+        lblErrorPost.Text = "";
         pnlNewPost.Visible = true;
         Effect effect = new EffectFadeIn(pnlNewPost, 0.4M);
         effect.Render();
@@ -169,6 +176,9 @@ Have a nice day :)",
     {
         if (changePassword.Text != changePasswordConfirm.Text)
         {
+            lblErrorProfile.Text = "Passwords didn't match";
+            Effect effect2 = new EffectFadeIn(lblErrorProfile, 0.4M);
+            effect2.Render();
             return;
         }
         Effect effect = new EffectFadeOut(pnlProfile, 0.4M);
@@ -182,6 +192,7 @@ Have a nice day :)",
 
     protected void btnCancelSavingProfile_Click(object sender, EventArgs e)
     {
+        lblErrorProfile.Text = "";
         Effect effect = new EffectFadeOut(pnlProfile, 0.4M);
         effect.Render();
     }
@@ -211,7 +222,12 @@ Have a nice day :)",
     {
         // Simple valdation
         if (header.Text.Length < 5)
+        {
+            lblErrorPost.Text = "Header of post is too short";
+            Effect effect2 = new EffectFadeIn(lblErrorPost, 0.4M);
+            effect2.Render();
             return;
+        }
 
         // Creating new post
         ForumPost post = new ForumPost();
