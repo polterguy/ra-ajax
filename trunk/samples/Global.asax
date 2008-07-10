@@ -28,6 +28,7 @@
             oper.Email = "someone@somewhere.com";
             oper.IsAdmin = true;
             oper.Confirmed = true;
+            oper.Signature = "Here's your signature";
             oper.Create();
 
             // Creating default forum post

@@ -35,6 +35,10 @@ public partial class Forums_Post : System.Web.UI.Page
             headerParent.InnerHtml = post.Header;
             dateParent.InnerHtml = post.Created.ToString("dd.MMM yy - HH:mm");
             contentParent.InnerHtml = post.Body;
+            operatorInfo.InnerHtml =
+                string.Format("Posted by; {0} who have {1} posts",
+                    post.Operator.Username,
+                    post.Operator.NumberOfPosts);
             this.Title = post.Header;
             header.Text = "Re: " + post.Header;
             header.Focus();
@@ -68,6 +72,9 @@ public partial class Forums_Post : System.Web.UI.Page
         // Creating new post
         ForumPost post = new ForumPost();
         post.Body = body.Text;
+        post.Body += string.Format(@"
+-- 
+<em>{0}</em>", Operator.Current.Signature);
         post.Created = DateTime.Now;
         post.Header = header.Text;
         post.Operator = Operator.Current;

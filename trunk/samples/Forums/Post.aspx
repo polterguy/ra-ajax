@@ -26,6 +26,7 @@
     <h1 runat="server" id="headerParent"></h1>
     <i runat="server" id="dateParent"></i>
     <p runat="server" id="contentParent"></p>
+    <em runat="server" id="operatorInfo"></em>
 
     <ra:Panel runat="server" ID="postsWrapper">
         <asp:Repeater runat="server" ID="repReplies">
@@ -34,24 +35,12 @@
             <FooterTemplate>
             </FooterTemplate>
             <ItemTemplate>
-                <table class="forumTable">
-                    <tr>
-                        <td>
-                            <%# Eval("Header") %>
-                        </td>
-                        <td>
-                            <%# Eval("Operator.Username") %>
-                        </td>
-                        <td>
-                            <%# Eval("Created") %>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="3">
-                            <%# Eval("Body") %>
-                        </td>
-                    </tr>
-                </table>
+                <div class="forumReply">
+                    <h3><%# Eval("Header") %></h3>
+                    <em><%# ((DateTime)Eval("Created")).ToString("d.MMM yy - HH:mm") %></em>
+                    <p><%# Eval("Body") %></p>
+                    <i>Posted by <%# Eval("Operator.Username") %> who have <%# Eval("Operator.NumberOfPosts")%> posts</i>
+                </div>
             </ItemTemplate>
         </asp:Repeater>
     </ra:Panel>
