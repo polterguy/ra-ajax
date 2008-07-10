@@ -36,7 +36,7 @@ namespace Entity
             set { _parentPost = value; }
         }
 
-        [Property]
+        [Property(Unique=true)]
         public string Url
         {
             get { return _url; }

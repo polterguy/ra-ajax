@@ -48,6 +48,9 @@ public partial class Blog : System.Web.UI.Page
     protected void btnCreate_Click(object sender, EventArgs e)
     {
         pnlNewBlog.Visible = true;
+        pnlNewBlog.Style["display"] = "";
+        txtHeader.Focus();
+        txtHeader.Select();
         Effect effect = new EffectFadeIn(pnlNewBlog, 0.4M);
         effect.Render();
     }

@@ -4,6 +4,7 @@
     AutoEventWireup="true" 
     CodeFile="Blog.aspx.cs" 
     Inherits="Blog" 
+    ValidateRequest="false"
     Title="Untitled Page" %>
 
 <%@ Register 
@@ -24,7 +25,7 @@
                 <h3>
                     <a href='<%# Eval("Url") %>'><%# Eval("Header") %></a>
                 </h3>
-                <i><%# ((DateTime)Eval("Created")).ToString("dd.MMM yy - HH:mm") %></i>
+                <i><%# ((DateTime)Eval("Created")).ToString("dd.MMM yy") %></i>
                 <br />
             </ItemTemplate>
         </asp:Repeater>

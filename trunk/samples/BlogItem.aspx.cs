@@ -24,6 +24,8 @@ public partial class BlogItem : System.Web.UI.Page
                 Response.Redirect("Default.aspx", true);
             header.InnerHtml = blog.Header;
             body.InnerHtml = blog.Body;
+            date.InnerHtml = blog.Created.ToString("dd.MMM yy");
+            Title = blog.Header;
         }
     }
 }
