@@ -4,7 +4,10 @@
 
     void Application_Start(object sender, EventArgs e) 
     {
-        // Code that runs on application startup
+        // Setting number of viewers to ZERO
+        Entity.Operator.ViewersCount = 0;
+        
+        // Initializing Castle
         Castle.ActiveRecord.ActiveRecordStarter.Initialize(
             Castle.ActiveRecord.Framework.Config.ActiveRecordSectionHandler.Instance,
             new Type[] { 
@@ -19,7 +22,9 @@
         }
         catch
         {
-            // Letting ActiveRecord create our schema :)
+            // Letting ActiveRecord create our schema since the schema was obviously NOT correct
+            // or created (warning; this logic might corrupt your database if you do changes to 
+            // the schema)
             Castle.ActiveRecord.ActiveRecordStarter.CreateSchema();
 
             // Creating default operator
@@ -53,10 +58,12 @@
 
     void Session_Start(object sender, EventArgs e) 
     {
+        Entity.Operator.ViewersCount += 1;
     }
 
     void Session_End(object sender, EventArgs e) 
     {
+        Entity.Operator.ViewersCount -= 1;
     }
        
 </script>

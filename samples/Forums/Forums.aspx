@@ -275,7 +275,7 @@
         </table>
     </ra:Panel>
 
-    <ra:Panel runat="server" ID="postsWrapper">
+    <ra:Panel runat="server" ID="postsWrapper" style="margin-bottom:25px;">
         <asp:Repeater runat="server" ID="forumPostsRepeater">
             <HeaderTemplate>
                 <table>
@@ -309,6 +309,10 @@
             </ItemTemplate>
         </asp:Repeater>
     </ra:Panel>
+    <ra:Label 
+        runat="server"
+        style="font-style:italic;"
+        ID="informationLabel" />
     <div style="height:500px;">
         &nbsp;
     </div>

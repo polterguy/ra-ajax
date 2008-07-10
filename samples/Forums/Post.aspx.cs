@@ -74,7 +74,7 @@ public partial class Forums_Post : System.Web.UI.Page
         post.Body = body.Text;
         post.Body += string.Format(@"
 -- 
-<em>{0}</em>", Operator.Current.Signature);
+<em> {0} </em>", Operator.Current.Signature);
         post.Created = DateTime.Now;
         post.Header = header.Text;
         post.Operator = Operator.Current;

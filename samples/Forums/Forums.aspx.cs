@@ -18,6 +18,7 @@ public partial class Forums_Forums : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
+            // Checking to see if this is a "confirm user" request
             string newUserRegistration = Request.Params["idNewUser"];
             if (newUserRegistration != null)
             {
@@ -33,7 +34,16 @@ public partial class Forums_Forums : System.Web.UI.Page
                     Operator.Login(oper.Username, oper.Pwd);
                 }
             }
+
+            // Databinding forum posts
             DataBindForumPosts();
+
+            // Retrieving information about database
+            informationLabel.Text = 
+                    string.Format("{0} registered users have posted {1} posts into these forums. There are currently {2} people online browsing these forums.",
+                        Operator.GetCount(),
+                        ForumPost.GetCount(),
+                        Operator.ViewersCount);
         }
 
         // Checking to see if user is logged in
@@ -239,7 +249,7 @@ Have a nice day :)",
         post.Operator = Operator.Current;
         post.Body += string.Format(@"
 -- 
-<em>{0}</em>", Operator.Current.Signature);
+<em> {0} </em>", Operator.Current.Signature);
         post.Save();
 
         // Removing panel
