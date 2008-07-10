@@ -189,6 +189,7 @@ Have a nice day :)",
     protected void profile_Click(object sender, EventArgs e)
     {
         pnlProfile.Visible = true;
+        pnlProfile.Style["display"] = "";
         Effect effect = new EffectFadeIn(pnlProfile, 0.4M);
         effect.Render();
         changePassword.Text = Operator.Current.Pwd;
