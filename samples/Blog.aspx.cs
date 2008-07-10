@@ -19,6 +19,9 @@ public partial class Blog : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
+            // To support File Uploading...
+            Form.Enctype = "multipart/form-data";
+
             string bloggerUserName = Request.Params["blogger"];
             if (string.IsNullOrEmpty(bloggerUserName))
                 Response.Redirect("Default.aspx", true);
@@ -63,6 +66,11 @@ public partial class Blog : System.Web.UI.Page
         Effect effect = new EffectFadeIn(pnlImages, 0.4M);
         effect.Render();
 
+        DataBindImages();
+    }
+
+    private void DataBindImages()
+    {
         // Databinding images
         string[] files = Directory.GetFiles(Server.MapPath("~/media/UserImages"));
         for (int idx = 0; idx < files.Length; idx++)
@@ -71,6 +79,13 @@ public partial class Blog : System.Web.UI.Page
         }
         repImages.DataSource = files;
         repImages.DataBind();
+    }
+
+    protected void btnUploadFile_Click(object sender, EventArgs e)
+    {
+        uploadImage.SaveAs(Server.MapPath("~/media/UserImages/" + uploadImage.FileName));
+        DataBindImages();
+        pnlImages.SignalizeReRender();
     }
 
     protected void btnImagesClose_Click(object sender, EventArgs e)

@@ -95,6 +95,14 @@
             ID="btnImagesClose" 
             OnClick="btnImagesClose_Click"
             Text="Close" />
+        <asp:FileUpload 
+            runat="server" 
+            ID="uploadImage" />
+        <asp:Button 
+            runat="server" 
+            ID="btnUploadFile" 
+            OnClick="btnUploadFile_Click"
+            Text="Upload file" />
         <br />
         <asp:Repeater runat="server" ID="repImages">
             <ItemTemplate>
