@@ -79,6 +79,8 @@ public partial class Forums_Forums : System.Web.UI.Page
         {
             lblError.Text = "Couldn't log you in";
             Effect effect = new EffectFadeIn(lblError, 0.4M);
+            username.Focus();
+            username.Select();
             effect.Render();
         }
     }
@@ -185,7 +187,7 @@ Have a nice day :)",
         effect.Render();
 
         Operator.Current.Pwd = changePassword.Text;
-        Operator.Current.BlogURL = changeBlogURL.Text;
+        Operator.Current.Signature = changeSignature.Text;
         Operator.Current.Email = changeEmail.Text;
         Operator.Current.Save();
     }
@@ -207,7 +209,7 @@ Have a nice day :)",
         changePassword.Focus();
         changePassword.Select();
         changePasswordConfirm.Text = Operator.Current.Pwd;
-        changeBlogURL.Text = Operator.Current.BlogURL;
+        changeSignature.Text = Operator.Current.Signature;
         changeEmail.Text = Operator.Current.Email;
     }
 
@@ -235,6 +237,9 @@ Have a nice day :)",
         post.Created = DateTime.Now;
         post.Header = header.Text;
         post.Operator = Operator.Current;
+        post.Body += string.Format(@"
+-- 
+<em>{0}</em>", Operator.Current.Signature);
         post.Save();
 
         // Removing panel

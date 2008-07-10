@@ -191,12 +191,13 @@
                 </td>
             </tr>
             <tr>
-                <td>Blog URL</td>
+                <td style="vertical-align:top;">Signature</td>
                 <td>
-                    <ra:TextBox 
+                    <ra:TextArea 
+                        Columns="40" 
+                        Rows="5" 
                         runat="server" 
-                        style="width:250px;"
-                        ID="changeBlogURL" />
+                        ID="changeSignature" />
                 </td>
             </tr>
             <tr>

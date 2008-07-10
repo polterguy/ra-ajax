@@ -16,13 +16,13 @@ namespace Entity
         private string _email;
         private bool _confirmed;
         private bool _isAdmin;
-        private string _blogUrl;
+        private string _signature;
 
         [Property]
-        public string BlogURL
+        public string Signature
         {
-            get { return _blogUrl; }
-            set { _blogUrl = value; }
+            get { return _signature; }
+            set { _signature = value; }
         }
 
         [Property]
@@ -98,6 +98,14 @@ namespace Entity
             msg.From = ConfigurationSettings.AppSettings["fromEmailAddress"];
             SmtpMail.SmtpServer = ConfigurationSettings.AppSettings["smtpServer"];
             SmtpMail.Send(msg);
+        }
+
+        public int NumberOfPosts
+        {
+            get
+            {
+                return ForumPost.GetCount(Expression.Eq("Operator", this));
+            }
         }
     }
 }

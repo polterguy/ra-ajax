@@ -50,14 +50,14 @@ namespace Entity
             set { _operator = value; }
         }
 
-        [Property]
+        [Property(Length=8000)]
         public string Body
         {
             get { return _body; }
             set { _body = value; }
         }
 
-        [Property]
+        [Property(Length=150)]
         public string Header
         {
             get { return _header; }
@@ -78,15 +78,17 @@ namespace Entity
             set { _id = value; }
         }
 
-        public static int GetCount()
+        public static int GetCount(params ICriterion[] criteria)
         {
-            return Count();
+            return Count(criteria);
         }
 
         public override void Save()
         {
             // Building UNIQUE friendly URL
             Url = Header.ToLower();
+            if (Url.Length > 100)
+                Url = Url.Substring(0, 100);
             int index = 0;
             while (index < Url.Length)
             {
