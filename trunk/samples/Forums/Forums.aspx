@@ -81,6 +81,14 @@
                         OnClick="register_Click" />
                 </td>
             </tr>
+            <tr>
+                <td colspan="2">
+                    <ra:Label 
+                        runat="server" 
+                        style="color:Red;"
+                        ID="lblError" />
+                </td>
+            </tr>
         </table>
     </ra:Panel>
     <ra:Panel 
@@ -205,6 +213,14 @@
                         OnClick="btnCancelSavingProfile_Click" />
                 </td>
             </tr>
+            <tr>
+                <td colspan="2">
+                    <ra:Label 
+                        runat="server" 
+                        ID="lblErrorProfile" 
+                        style="color:Red;" />
+                </td>
+            </tr>
         </table>
     </ra:Panel>
 
@@ -245,6 +261,14 @@
                         ID="newPostCancel" 
                         OnClick="newPostCancel_Click"
                         Text="Discard" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <ra:Label 
+                        runat="server" 
+                        style="color:Red;"
+                        ID="lblErrorPost" />
                 </td>
             </tr>
         </table>
