@@ -17,6 +17,13 @@ namespace Entity
         private bool _confirmed;
         private bool _isAdmin;
         private string _signature;
+        private static int _viewersCount;
+
+        public static int ViewersCount
+        {
+            get { return _viewersCount; }
+            set { _viewersCount = value; }
+        }
 
         [Property]
         public string Signature
