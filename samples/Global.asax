@@ -25,8 +25,10 @@
             Entity.Operator oper = new Entity.Operator();
             oper.Username = "admin";
             oper.Pwd = "admin";
-            oper.Create();
             oper.Email = "someone@somewhere.com";
+            oper.IsAdmin = true;
+            oper.Confirmed = true;
+            oper.Create();
 
             // Creating default forum post
             Entity.ForumPost defPost = new Entity.ForumPost();

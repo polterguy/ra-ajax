@@ -1,3 +1,11 @@
+/*
+ * Ra Ajax - An Ajax Library for Mono ++
+ * Copyright 2008 - Thomas Hansen polterguy@gmail.com
+ * This code is licensed under an MIT(ish) kind of license which 
+ * can be found in the license.txt file on disc.
+ * 
+ */
+
 using System;
 using Entity;
 using NHibernate.Expression;
@@ -21,7 +29,9 @@ public partial class Forums_Post : System.Web.UI.Page
 
             // Retrieving post...
             string idOfPost = Request.Params["id"] + ".forum";
-            ForumPost post = ForumPost.FindOne(Expression.Eq("Url", idOfPost));
+            ForumPost post = ForumPost.FindOne(Expression.Eq("Url", idOfPost), Expression.Eq("ParentPost", 0));
+            if (post == null)
+                Response.Redirect("Forums.aspx", true);
             headerParent.InnerHtml = post.Header;
             dateParent.InnerHtml = post.Created.ToString("dd.MMM yy - HH:mm");
             contentParent.InnerHtml = post.Body;

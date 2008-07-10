@@ -15,6 +15,22 @@ namespace Entity
         private string _pwd;
         private string _email;
         private bool _confirmed;
+        private bool _isAdmin;
+        private string _blogUrl;
+
+        [Property]
+        public string BlogURL
+        {
+            get { return _blogUrl; }
+            set { _blogUrl = value; }
+        }
+
+        [Property]
+        public bool IsAdmin
+        {
+            get { return _isAdmin; }
+            set { _isAdmin = value; }
+        }
 
         [Property]
         public bool Confirmed
