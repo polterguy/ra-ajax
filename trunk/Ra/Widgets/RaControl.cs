@@ -179,6 +179,11 @@ namespace Ra.Widgets
             return idx.ClientID != this.ClientID && idx.ClientID.IndexOf(this.ClientID) == 0;
         }
 
+        protected virtual string GetChildrenClientSideScript()
+        {
+            return "";
+        }
+
         public override void RenderControl(HtmlTextWriter writer)
         {
             if (DesignMode)
@@ -215,6 +220,7 @@ namespace Ra.Widgets
                             ClientID,
                             GetHTML().Replace("\\", "\\\\").Replace("'", "\\'").Replace("\r", "\\r").Replace("\n", "\\n"));
                         RenderChildren(writer);
+                        AjaxManager.Instance.Writer.WriteLine(GetChildrenClientSideScript());
                     }
                     else if (Phase == RenderingPhase.RenderHtml)
                     {
@@ -282,7 +288,9 @@ namespace Ra.Widgets
         public void SignalizeReRender()
         {
             if (this.IsTrackingViewState)
+            {
                 Phase = RenderingPhase.ReRender;
+            }
         }
     }
 }

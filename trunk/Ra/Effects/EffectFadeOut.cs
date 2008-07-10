@@ -32,7 +32,6 @@ Ra.E('{0}', {{
   }},
   onFinished: function() {{
     this.element.style.display = 'none';
-    this.element.setOpacity(1);
   }},
   onRender: function(pos) {{
     this.element.setOpacity(1.0 - pos);

@@ -38,6 +38,11 @@ namespace Ra.Widgets
             return tmp;
         }
 
+        protected override string GetChildrenClientSideScript()
+        {
+            return GetChildrenClientSideScript(Controls);
+        }
+
         private string GetChildrenClientSideScript(ASP.ControlCollection controls)
         {
             string retVal = "";
