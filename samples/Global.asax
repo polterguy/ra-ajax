@@ -12,6 +12,7 @@
             Castle.ActiveRecord.Framework.Config.ActiveRecordSectionHandler.Instance,
             new Type[] { 
                 typeof(Entity.ForumPost),
+                typeof(Entity.Blog),
                 typeof(Entity.Operator)
             });
 
@@ -29,12 +30,13 @@
 
             // Creating default operator
             Entity.Operator oper = new Entity.Operator();
-            oper.Username = "admin";
-            oper.Pwd = "admin";
-            oper.Email = "someone@somewhere.com";
+            oper.Username = "thomas";
+            oper.Pwd = "thomas";
+            oper.Email = "polterguy@gmail.com";
             oper.IsAdmin = true;
             oper.Confirmed = true;
             oper.Signature = "Here's your signature";
+            oper.IsBlogger = true;
             oper.Create();
 
             // Creating default forum post
@@ -45,6 +47,15 @@
             defPost.Header = "Default post";
             defPost.Operator = oper;
             defPost.Create();
+            
+            // Creating default blog
+            Entity.Blog blog = new Entity.Blog();
+            blog.Operator = oper;
+            blog.Created = DateTime.Now;
+            blog.Header = "Default blog";
+            blog.Url = "default-blog.blog";
+            blog.Body = "Howdy, this is a blog";
+            blog.Create();
         }
     }
     

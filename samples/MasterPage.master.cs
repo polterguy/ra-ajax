@@ -8,6 +8,8 @@
 using System;
 using Ra.Widgets;
 using System.IO;
+using Entity;
+using NHibernate.Expression;
 
 public partial class MasterPage : System.Web.UI.MasterPage
 {
@@ -15,8 +17,19 @@ public partial class MasterPage : System.Web.UI.MasterPage
     {
         if (!IsPostBack)
         {
+            // Adding effect to Show-Code button
             Effect effect = new EffectFadeIn(btnShowCode, 2.0M);
             effect.Render();
+
+            // Iterating through all bloggers showing links to them...
+            blogLinksWrapper.Text += "<ul class=\"links\">";
+            foreach (Operator idx in Operator.FindAll(Order.Asc("Created"), Expression.Eq("IsBlogger", true)))
+            {
+                blogLinksWrapper.Text += string.Format("\r\n<li><a href=\"{0}\">Blog of {1}</a></li>",
+                    (Request.Url.ToString().Substring(0, Request.Url.ToString().LastIndexOf('/') + 1).Replace("/Forums", "") + idx.Username + ".blogger"),
+                    idx.Username);
+            }
+            blogLinksWrapper.Text += "</ul>";
         }
 
         // There's a bug in FireFox which causes the back button (and CTRL+R) to

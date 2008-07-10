@@ -1,53 +1,24 @@
 using System;
 using Castle.ActiveRecord;
 using NHibernate.Expression;
-using System.Text.RegularExpressions;
 
 namespace Entity
 {
-    [ActiveRecord(Table="ForumPosts")]
-    public class ForumPost : ActiveRecordBase<ForumPost>
+    [ActiveRecord(Table="Blogs")]
+    public class Blog : ActiveRecordBase<Blog>
     {
         private int _id;
         private DateTime _created;
+        private Operator _operator;
         private string _header;
         private string _body;
-        private Operator _operator;
         private string _url;
-        private int _parentPost;
-        private int _noReplies = -1;
-
-        public int NoReplies
-        {
-            get
-            {
-                if (_noReplies == -1)
-                {
-                    _noReplies = Count(Expression.Eq("ParentPost", Id));
-                }
-                return _noReplies;
-            }
-        }
-
-        [Property]
-        public int ParentPost
-        {
-            get { return _parentPost; }
-            set { _parentPost = value; }
-        }
 
         [Property]
         public string Url
         {
             get { return _url; }
             set { _url = value; }
-        }
-
-        [BelongsTo]
-        public Operator Operator
-        {
-            get { return _operator; }
-            set { _operator = value; }
         }
 
         [Property(ColumnType="StringClob")]
@@ -57,11 +28,18 @@ namespace Entity
             set { _body = value; }
         }
 
-        [Property(Length=150)]
+        [Property]
         public string Header
         {
             get { return _header; }
             set { _header = value; }
+        }
+
+        [BelongsTo]
+        public Operator Operator
+        {
+            get { return _operator; }
+            set { _operator = value; }
         }
 
         [Property]
@@ -76,11 +54,6 @@ namespace Entity
         {
             get { return _id; }
             set { _id = value; }
-        }
-
-        public static int GetCount(params ICriterion[] criteria)
-        {
-            return Count(criteria);
         }
 
         public override void Save()
@@ -101,13 +74,7 @@ namespace Entity
             int countOfOldWithSameURL = ForumPost.Count(Expression.Like("Url", Url + "%.forum"));
             if (countOfOldWithSameURL > 0)
                 Url += (countOfOldWithSameURL + 1).ToString();
-            Url += ".forum";
-
-            // Replacing URLs with a href links...
-            Body = Regex.Replace(
-                " " + Body,
-                "(?<spaceChar>\\s+)(?<linkType>http://|https://)(?<link>\\S+)", 
-                "${spaceChar}<a href=\"${linkType}${link}\" rel=\"nofollow\">${link}</a>").Trim(); 
+            Url += ".blog";
 
             // Replacing CR/LF with <br /> elements...
             Body = Body.Replace("\r\n", "<br />").Replace("\n", "<br />");
@@ -115,9 +82,6 @@ namespace Entity
         }
     }
 }
-
-
-
 
 
 

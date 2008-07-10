@@ -17,12 +17,28 @@ namespace Entity
         private bool _confirmed;
         private bool _isAdmin;
         private string _signature;
+        private bool _isBlogger;
+        private DateTime _created;
         private static int _viewersCount;
 
         public static int ViewersCount
         {
             get { return _viewersCount; }
             set { _viewersCount = value; }
+        }
+
+        [Property]
+        public DateTime Created
+        {
+            get { return _created; }
+            set { _created = value; }
+        }
+
+        [Property]
+        public bool IsBlogger
+        {
+            get { return _isBlogger; }
+            set { _isBlogger = value; }
         }
 
         [Property]
@@ -113,6 +129,13 @@ namespace Entity
             {
                 return ForumPost.GetCount(Expression.Eq("Operator", this));
             }
+        }
+
+        public override void Save()
+        {
+            if (Id == 0)
+                Created = DateTime.Now;
+            base.Save();
         }
     }
 }
