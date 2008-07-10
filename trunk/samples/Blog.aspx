@@ -79,6 +79,34 @@
             ID="btnCancelSave" 
             Text="Cancel" 
             OnClick="btnCancelSave_Click" />
+         <ra:Button 
+            runat="server" 
+            ID="btnImages" 
+            Text="Images" 
+            OnClick="btnImages_Click" />
+    </ra:Panel>
+    <ra:Panel 
+        runat="server" 
+        ID="pnlImages"
+        Visible="false"
+        style="position:absolute;top:315px;left:275px;background-color:Yellow;border:solid 1px #333;padding:15px;width:450px;height:450px;overflow:auto;">
+        <ra:Button 
+            runat="server" 
+            ID="btnImagesClose" 
+            OnClick="btnImagesClose_Click"
+            Text="Close" />
+        <br />
+        <asp:Repeater runat="server" ID="repImages">
+            <ItemTemplate>
+                <img src='<%# Container.DataItem %>' alt='Blog image' />
+                <br />
+                <asp:TextBox 
+                    runat="server" 
+                    style="width:440px;font-size:small;"
+                    Text='<%# "&lt;img src=\"" + Container.DataItem + "\" alt=\"Blog image\" />"%>' />
+                <br />
+            </ItemTemplate>
+        </asp:Repeater>
     </ra:Panel>
     <div style="height:500px;">&nbsp;</div>
 
