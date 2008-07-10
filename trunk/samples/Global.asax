@@ -14,6 +14,7 @@
 
         try
         {
+            // This one will throw an exception if the schema is incorrect or not created...
             int dummyToCheckIfDataBaseHasSchema = Entity.Operator.GetCount();
         }
         catch
