@@ -80,6 +80,7 @@
                                         title="Forums">Ra Ajax Forums</a>
                                 </li>
                             </ul>
+                            <asp:Literal runat="server" ID="blogLinksWrapper" />
                         </div>
                         <div id="contentOfPageDiv">
                             <asp:contentplaceholder 
