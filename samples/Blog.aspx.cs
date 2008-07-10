@@ -53,6 +53,54 @@ public partial class Blog : System.Web.UI.Page
         txtHeader.Select();
         Effect effect = new EffectFadeIn(pnlNewBlog, 0.4M);
         effect.Render();
+        hidBlogId.Value = "";
+    }
+
+    protected void EditBlog(object sender, EventArgs e)
+    {
+        pnlNewBlog.Visible = true;
+        pnlNewBlog.Style["display"] = "";
+        txtHeader.Focus();
+        txtHeader.Select();
+        Effect effect = new EffectFadeIn(pnlNewBlog, 0.4M);
+        effect.Render();
+
+        Ra.Widgets.HiddenField hid = (sender as System.Web.UI.Control).Parent.Controls[1] as Ra.Widgets.HiddenField;
+        if (hid == null) // Mono doesn't add a Literal Control if you create space between controls...
+            hid = (sender as System.Web.UI.Control).Parent.Controls[0] as Ra.Widgets.HiddenField;
+        int blogId = Int32.Parse(hid.Value);
+        Entity.Blog blog = Entity.Blog.FindOne(Expression.Eq("Id", blogId));
+        txtHeader.Text = blog.Header;
+        hidBlogId.Value = blog.Id.ToString();
+        txtBody.Text = blog.Body;
+    }
+
+    protected void DeleteBlog(object sender, EventArgs e)
+    {
+        Ra.Widgets.HiddenField hid = (sender as System.Web.UI.Control).Parent.Controls[1] as Ra.Widgets.HiddenField;
+        if (hid == null) // Mono doesn't add a Literal Control if you create space between controls...
+            hid = (sender as System.Web.UI.Control).Parent.Controls[0] as Ra.Widgets.HiddenField;
+        int blogId = Int32.Parse(hid.Value);
+        Entity.Blog blog = Entity.Blog.FindOne(Expression.Eq("Id", blogId));
+        blog.Delete();
+
+        // Re-render blogs
+        string bloggerUserName = Request.Params["blogger"];
+        if (string.IsNullOrEmpty(bloggerUserName))
+            Response.Redirect("Default.aspx", true);
+        Operator oper = Operator.FindOne(Expression.Eq("Username", bloggerUserName));
+        if (oper == null)
+            Response.Redirect("Default.aspx", true);
+        DataBindBlogs(oper);
+        blogWrapper.SignalizeReRender();
+        Effect effect = new EffectFadeIn(blogWrapper, 0.4M);
+        effect.Render();
+    }
+
+    protected void btnCancelSave_Click(object sender, EventArgs e)
+    {
+        Effect effect = new EffectFadeOut(pnlNewBlog, 0.4M);
+        effect.Render();
     }
 
     protected void btnSave_Click(object sender, EventArgs e)
@@ -64,11 +112,19 @@ public partial class Blog : System.Web.UI.Page
         if (oper == null)
             Response.Redirect("Default.aspx", true);
 
-        Entity.Blog blog = new Entity.Blog();
+        Entity.Blog blog = null;
+        if( hidBlogId.Value == "")
+        {
+            blog = new Entity.Blog();
+            blog.Created = DateTime.Now;
+        }
+        else
+        {
+            blog = Entity.Blog.FindOne(Expression.Eq("Id", Int32.Parse(hidBlogId.Value)));
+        }
         blog.Header = txtHeader.Text;
         blog.Body = txtBody.Text;
         blog.Operator = Operator.Current;
-        blog.Created = DateTime.Now;
         blog.Save();
 
         DataBindBlogs(oper);

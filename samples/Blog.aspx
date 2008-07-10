@@ -22,9 +22,22 @@
     <ra:Panel runat="server" ID="blogWrapper">
         <asp:Repeater runat="server" ID="repBlogs">
             <ItemTemplate>
+                <ra:HiddenField ID="HiddenField1" 
+                    runat="server" 
+                    Value='<%# Eval("Id") %>' />
                 <h3>
                     <a href='<%# Eval("Url") %>'><%# Eval("Header") %></a>
                 </h3>
+                <ra:Button 
+                    runat="server" 
+                    Visible='<%# Entity.Operator.Current != null && Entity.Operator.Current.Id == ((Entity.Operator)Eval("Operator")).Id %>'
+                    OnClick="EditBlog"
+                    Text="Edit" />
+                <ra:Button 
+                    runat="server" 
+                    Visible='<%# Entity.Operator.Current != null && Entity.Operator.Current.Id == ((Entity.Operator)Eval("Operator")).Id %>'
+                    OnClick="DeleteBlog"
+                    Text="Delete" />
                 <i><%# ((DateTime)Eval("Created")).ToString("dd.MMM yy") %></i>
                 <br />
             </ItemTemplate>
@@ -41,6 +54,10 @@
         ID="pnlNewBlog"
         Visible="false"
         style="position:absolute;top:290px;left:250px;background-color:Yellow;border:solid 1px #333;padding:15px;width:500px;height:500px;">
+        <ra:HiddenField 
+            runat="server" 
+            Value=""
+            ID="hidBlogId" />
         <ra:TextBox 
             runat="server" 
             style="width:450px;"
@@ -57,6 +74,11 @@
             ID="btnSave" 
             Text="Save blog" 
             OnClick="btnSave_Click" />
+         <ra:Button 
+            runat="server" 
+            ID="btnCancelSave" 
+            Text="Cancel" 
+            OnClick="btnCancelSave_Click" />
     </ra:Panel>
     <div style="height:500px;">&nbsp;</div>
 

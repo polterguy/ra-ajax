@@ -58,23 +58,27 @@ namespace Entity
 
         public override void Save()
         {
-            // Building UNIQUE friendly URL
-            Url = Header.ToLower();
-            if (Url.Length > 100)
-                Url = Url.Substring(0, 100);
-            int index = 0;
-            while (index < Url.Length)
+            // Checking to see if this is FIRST saving and if it is create a new friendly URL...
+            if (Id == 0)
             {
-                if (("abcdefghijklmnopqrstuvwxyz0123456789").IndexOf(Url[index]) == -1)
+                // Building UNIQUE friendly URL
+                Url = Header.ToLower();
+                if (Url.Length > 100)
+                    Url = Url.Substring(0, 100);
+                int index = 0;
+                while (index < Url.Length)
                 {
-                    Url = Url.Substring(0, index) + "-" + Url.Substring(index + 1);
+                    if (("abcdefghijklmnopqrstuvwxyz0123456789").IndexOf(Url[index]) == -1)
+                    {
+                        Url = Url.Substring(0, index) + "-" + Url.Substring(index + 1);
+                    }
+                    index += 1;
                 }
-                index += 1;
+                int countOfOldWithSameURL = Blog.Count(Expression.Like("Url", Url + "%.blog"));
+                if (countOfOldWithSameURL > 0)
+                    Url += (countOfOldWithSameURL + 1).ToString();
+                Url += ".blog";
             }
-            int countOfOldWithSameURL = ForumPost.Count(Expression.Like("Url", Url + "%.blog"));
-            if (countOfOldWithSameURL > 0)
-                Url += (countOfOldWithSameURL + 1).ToString();
-            Url += ".blog";
 
             // Replacing CR/LF with <br /> elements...
             Body = Body.Replace("\r\n", "<br />").Replace("\n", "<br />");

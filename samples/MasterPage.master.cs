@@ -72,6 +72,14 @@ public partial class MasterPage : System.Web.UI.MasterPage
         {
             path = this.Request.PhysicalApplicationPath + "Forums\\Post.aspx";
         }
+        else if (path.IndexOf(".blogger") != -1)
+        {
+            path = this.Request.PhysicalApplicationPath + "Blog.aspx";
+        }
+        else if (path.IndexOf(".blog") != -1)
+        {
+            path = this.Request.PhysicalApplicationPath + "BlogItem.aspx";
+        }
         using (TextReader reader = new StreamReader(File.OpenRead(path)))
         {
             string allCode = reader.ReadToEnd();
@@ -86,6 +94,14 @@ public partial class MasterPage : System.Web.UI.MasterPage
         if( path.IndexOf(".forum") != -1 )
         {
 	        path = this.Request.PhysicalApplicationPath + "Forums\\Post.aspx.cs";
+        }
+        else if (path.IndexOf(".blogger") != -1)
+        {
+            path = this.Request.PhysicalApplicationPath + "Blog.aspx.cs";
+        }
+        else if (path.IndexOf(".blog") != -1)
+        {
+            path = this.Request.PhysicalApplicationPath + "BlogItem.aspx.cs";
         }
         using (TextReader reader = new StreamReader(File.OpenRead(path)))
         {
