@@ -11,6 +11,7 @@ using Entity;
 using NHibernate.Expression;
 using System.Collections.Generic;
 using Ra.Widgets;
+using System.IO;
 
 public partial class Blog : System.Web.UI.Page
 {
@@ -54,6 +55,30 @@ public partial class Blog : System.Web.UI.Page
         Effect effect = new EffectFadeIn(pnlNewBlog, 0.4M);
         effect.Render();
         hidBlogId.Value = "";
+    }
+
+    protected void btnImages_Click(object sender, EventArgs e)
+    {
+        pnlImages.Visible = true;
+        Effect effect = new EffectFadeIn(pnlImages, 0.4M);
+        effect.Render();
+
+        // Databinding images
+        string[] files = Directory.GetFiles(Server.MapPath("~/media/UserImages"));
+        for (int idx = 0; idx < files.Length; idx++)
+        {
+            files[idx] = files[idx].Replace(Server.MapPath("~"), Request.Url.ToString().Substring(0, Request.Url.ToString().LastIndexOf("/"))).Replace("\\", "/");
+        }
+        repImages.DataSource = files;
+        repImages.DataBind();
+    }
+
+    protected void btnImagesClose_Click(object sender, EventArgs e)
+    {
+        Effect effect = new EffectFadeOut(pnlImages, 0.4M);
+        effect.Render();
+        txtHeader.Focus();
+        txtHeader.Select();
     }
 
     protected void EditBlog(object sender, EventArgs e)

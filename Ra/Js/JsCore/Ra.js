@@ -44,6 +44,22 @@ Ra.$ = function(id) {
 };
 
 
+// $F method, returns an existing element or create a hidden field with the given ID
+// and injects into the first form element on the page
+Ra.$F = function(id) {
+  var el = document.getElementById(id);
+  if( !el ) {
+    el = document.createElement('input');
+    el.id = id;
+    el.type = 'hidden';
+    el.name = id;
+    document.getElementsByTagName('form')[0].appendChild(el);
+  }
+  Ra.extend(el, Ra.Element.prototype);
+  return el;
+};
+
+
 // To create a class which will automatically call "init" on objects 
 // when created with the arguments applied
 Ra.klass = function() {

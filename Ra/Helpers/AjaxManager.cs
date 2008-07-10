@@ -222,9 +222,9 @@ namespace Ra
             string wholePageContent = reader.ReadToEnd();
 
             if (wholePageContent.IndexOf("__VIEWSTATE") != -1)
-                writer.WriteLine("Ra.$('__VIEWSTATE').value = '{0}';", GetViewState(wholePageContent, "__VIEWSTATE"));
+                writer.WriteLine("Ra.$F('__VIEWSTATE').value = '{0}';", GetViewState(wholePageContent, "__VIEWSTATE"));
             if (wholePageContent.IndexOf("__EVENTVALIDATION") != -1)
-                writer.WriteLine("Ra.$('__EVENTVALIDATION').value = '{0}';", GetViewState(wholePageContent, "__EVENTVALIDATION"));
+                writer.WriteLine("Ra.$F('__EVENTVALIDATION').value = '{0}';", GetViewState(wholePageContent, "__EVENTVALIDATION"));
 
             WriterAtBack.Flush();
             _memStreamBack.Flush();
