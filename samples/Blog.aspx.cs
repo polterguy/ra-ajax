@@ -239,7 +239,7 @@ public partial class Blog : System.Web.UI.Page
         Entity.Blog blog = Entity.Blog.FindOne(Expression.Eq("Id", blogId));
         txtHeader.Text = blog.Header;
         hidBlogId.Value = blog.Id.ToString();
-        txtBody.Text = blog.Body;
+        txtBody.Text = blog.Body.Replace("<br />", "\r\n");
     }
 
     protected void DeleteBlog(object sender, EventArgs e)

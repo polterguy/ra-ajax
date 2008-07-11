@@ -101,6 +101,17 @@ namespace Entity
                 }
                 index += 1;
             }
+            Url = Url.Trim('-');
+            bool found = true;
+            while (found)
+            {
+                found = false;
+                if (Url.IndexOf("--") != -1)
+                {
+                    Url = Url.Replace("--", "-");
+                    found = true;
+                }
+            }
             int countOfOldWithSameURL = ForumPost.Count(Expression.Like("Url", Url + "%.forum"));
             if (countOfOldWithSameURL > 0)
                 Url += (countOfOldWithSameURL + 1).ToString();
