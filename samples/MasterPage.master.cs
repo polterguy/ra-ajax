@@ -106,6 +106,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
         using (TextReader reader = new StreamReader(File.OpenRead(path)))
         {
             string allCode = reader.ReadToEnd();
+            allCode = allCode.Replace("<", "&lt;").Replace(">", "&gt;");
             allCode = ReplaceCodeEntities(allCode, "keyword", new string[] { 
                 "class", 
                 "using", 
