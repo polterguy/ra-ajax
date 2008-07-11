@@ -26,6 +26,21 @@ public partial class BlogItem : System.Web.UI.Page
             body.InnerHtml = blog.Body;
             date.InnerHtml = blog.Created.ToString("dd.MMM yy");
             Title = blog.Header;
+
+            // To support RSS
+            string headerRssLink =
+                string.Format(@"
+<link 
+    rel=""Alternate"" 
+    type=""application/rss+xml"" 
+    href=""{0}?rss=true"" 
+    title=""Ravings from {1}"" />",
+                Request.Url.AbsolutePath.Substring(0, Request.Url.AbsolutePath.LastIndexOf("/") + 1) + blog.Operator.Username + ".blogger",
+                blog.Operator.Username);
+            System.Web.UI.WebControls.Literal litRss = new System.Web.UI.WebControls.Literal();
+            litRss.Text = headerRssLink;
+            Header.Controls.Add(litRss);
+
         }
     }
 }

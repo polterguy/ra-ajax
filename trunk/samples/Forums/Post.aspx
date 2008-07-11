@@ -23,6 +23,7 @@
         Login at <a href="Forums.aspx">Main forum page</a> to post or reply.
     </div>
 
+    <a href="~/Forums/Forums.aspx" runat="server" style="position:absolute;left:5px;top:265px;text-decoration:none;">Back to forum posts view</a>
     <h1 runat="server" id="headerParent"></h1>
     <i runat="server" id="dateParent"></i>
     <p runat="server" id="contentParent"></p>

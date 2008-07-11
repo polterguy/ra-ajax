@@ -77,6 +77,17 @@ namespace Entity
                     }
                     index += 1;
                 }
+                Url = Url.Trim('-');
+                bool found = true;
+                while (found)
+                {
+                    found = false;
+                    if (Url.IndexOf("--") != -1)
+                    {
+                        Url = Url.Replace("--", "-");
+                        found = true;
+                    }
+                }
                 int countOfOldWithSameURL = Blog.Count(Expression.Like("Url", Url + "%.blog"));
                 if (countOfOldWithSameURL > 0)
                     Url += (countOfOldWithSameURL + 1).ToString();
