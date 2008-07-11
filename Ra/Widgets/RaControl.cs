@@ -287,6 +287,8 @@ namespace Ra.Widgets
 
         public void SignalizeReRender()
         {
+            if (!AjaxManager.Instance.IsCallback || Phase == RenderingPhase.Invisible)
+                return;
             if (this.IsTrackingViewState)
             {
                 Phase = RenderingPhase.ReRender;

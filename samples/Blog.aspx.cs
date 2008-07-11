@@ -67,6 +67,7 @@ public partial class Blog : System.Web.UI.Page
         effect.Render();
 
         DataBindImages();
+        pnlImages.SignalizeReRender();
     }
 
     private void DataBindImages()
