@@ -12,6 +12,7 @@ using NHibernate.Expression;
 using System.Collections.Generic;
 using Ra.Widgets;
 using System.IO;
+using System.Xml;
 
 public partial class Blog : System.Web.UI.Page
 {
@@ -19,15 +20,137 @@ public partial class Blog : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            // To support File Uploading...
-            Form.Enctype = "multipart/form-data";
-
+            // Retrieving blogger username
             string bloggerUserName = Request.Params["blogger"];
             if (string.IsNullOrEmpty(bloggerUserName))
                 Response.Redirect("Default.aspx", true);
             Operator oper = Operator.FindOne(Expression.Eq("Username", bloggerUserName));
             if (oper == null)
                 Response.Redirect("Default.aspx", true);
+
+            if (Request.Params["rss"] == "true")
+            {
+                // Retrieving last 50 blogs for blogger
+                List<Entity.Blog> blogs = new List<Entity.Blog>();
+                int idxNo = 0;
+                foreach (Entity.Blog idx in Entity.Blog.FindAll(Order.Desc("Created"), Expression.Eq("Operator", oper)))
+                {
+                    if (idxNo++ > 50)
+                        break;
+                    blogs.Add(idx);
+                }
+
+                // Spitting out RSS back to client...
+                //Response.Clear();
+                Response.ContentType = "text/xml";
+
+                // Creating RSS
+                XmlDocument doc = new XmlDocument();
+
+                // RSS node
+                XmlNode rss = doc.CreateNode(XmlNodeType.Element, "rss", "");
+                XmlAttribute version = doc.CreateAttribute("version");
+                version.Value = "2.0";
+                rss.Attributes.Append(version);
+                doc.AppendChild(rss);
+
+                // channel node
+                XmlNode channel = doc.CreateNode(XmlNodeType.Element, "channel", "");
+                rss.AppendChild(channel);
+
+                // Title node
+                XmlNode title = doc.CreateNode(XmlNodeType.Element, "title", "");
+                XmlNode titleContent = doc.CreateNode(XmlNodeType.Text, null, null);
+                titleContent.Value = "Ravings from " + oper.Username;
+                title.AppendChild(titleContent);
+                channel.AppendChild(title);
+
+                // link node
+                XmlNode link = doc.CreateNode(XmlNodeType.Element, "link", "");
+                XmlNode linkContent = doc.CreateNode(XmlNodeType.Text, "", "");
+                linkContent.Value = Request.Url.AbsoluteUri.Substring(0, Request.Url.AbsoluteUri.IndexOf("?"));
+                link.AppendChild(linkContent);
+                channel.AppendChild(link);
+
+                // description
+                XmlNode description = doc.CreateNode(XmlNodeType.Element, "description", "");
+                XmlNode descriptionContent = doc.CreateNode(XmlNodeType.Text, "", "");
+                descriptionContent.Value = "Far side software ravings from " + oper.Username;
+                description.AppendChild(descriptionContent);
+                channel.AppendChild(description);
+
+                // generator
+                XmlNode generator = doc.CreateNode(XmlNodeType.Element, "generator", "");
+                XmlNode generatorContent = doc.CreateNode(XmlNodeType.Text, "", "");
+                generatorContent.Value = "Custom made RSS creator";
+                generator.AppendChild(generatorContent);
+                channel.AppendChild(generator);
+
+                // Items
+                foreach (Entity.Blog idx in blogs)
+                {
+                    // Item
+                    XmlNode item = doc.CreateNode(XmlNodeType.Element, "item", "");
+
+                    // Title
+                    XmlNode titleR = doc.CreateNode(XmlNodeType.Element, "title", "");
+                    XmlNode titleRContent = doc.CreateNode(XmlNodeType.Text, "", "");
+                    titleRContent.Value = idx.Header;
+                    titleR.AppendChild(titleRContent);
+                    item.AppendChild(titleR);
+
+                    // link
+                    XmlNode linkR = doc.CreateNode(XmlNodeType.Element, "link", "");
+                    XmlNode linkRContent = doc.CreateNode(XmlNodeType.Text, "", "");
+                    linkRContent.Value = Request.Url.AbsoluteUri.Substring(0, Request.Url.AbsoluteUri.LastIndexOf("/") + 1) + idx.Url;
+                    linkR.AppendChild(linkRContent);
+                    item.AppendChild(linkR);
+
+                    // description
+                    XmlNode descriptionR = doc.CreateNode(XmlNodeType.Element, "description", "");
+                    XmlNode descriptionRContent = doc.CreateNode(XmlNodeType.Text, "", "");
+                    descriptionRContent.Value = idx.Body;
+                    descriptionR.AppendChild(descriptionRContent);
+                    item.AppendChild(descriptionR);
+
+                    // pubDate
+                    XmlNode pub = doc.CreateNode(XmlNodeType.Element, "pubDate", "");
+                    XmlNode pubContent = doc.CreateNode(XmlNodeType.Text, "", "");
+                    pubContent.Value = idx.Created.ToString("ddd, dd MMM yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                    pub.AppendChild(pubContent);
+                    item.AppendChild(pub);
+
+                    channel.AppendChild(item);
+                }
+
+                // Saving to response
+                doc.Save(Response.OutputStream);
+                try
+                {
+                    Response.End();
+                }
+                catch
+                {
+                    return;
+                }
+            }
+
+            // To support File Uploading...
+            Form.Enctype = "multipart/form-data";
+
+            // To support RSS
+            string headerRssLink = 
+                string.Format(@"
+<link 
+    rel=""Alternate"" 
+    type=""application/rss+xml"" 
+    href=""{0}?rss=true"" 
+    title=""Ravings from {1}"" />", 
+                Request.Url.AbsolutePath,
+                oper.Username);
+            System.Web.UI.WebControls.Literal litRss = new System.Web.UI.WebControls.Literal();
+            litRss.Text = headerRssLink;
+            Header.Controls.Add(litRss);
 
             btnCreate.Visible = Operator.Current != null && oper.Id == Operator.Current.Id;
 
@@ -41,8 +164,11 @@ public partial class Blog : System.Web.UI.Page
     private void DataBindBlogs(Operator oper)
     {
         List<Entity.Blog> blogs = new List<Entity.Blog>();
+        int idxNo = 0;
         foreach (Entity.Blog idx in Entity.Blog.FindAll(Order.Desc("Created"), Expression.Eq("Operator", oper)))
         {
+            if (idxNo++ > 50)
+                break;
             blogs.Add(idx);
         }
         repBlogs.DataSource = blogs;

@@ -21,14 +21,17 @@ namespace Entity
             set { _url = value; }
         }
 
-        [Property(ColumnType="StringClob", SqlType="TEXT")]
+        // Note that all reference documentation on ActiveRecord says we should use NTEXT but doesn't mention
+        // that MySQL's name for the same DbType is "TEXT" and NOT NTEXT...!
+        // NTEXT as SqlType will throw exception when using MySQL
+        [Property(ColumnType = "StringClob", SqlType = "TEXT")]
         public string Body
         {
             get { return _body; }
             set { _body = value; }
         }
 
-        [Property]
+        [Property(Length=150)]
         public string Header
         {
             get { return _header; }
