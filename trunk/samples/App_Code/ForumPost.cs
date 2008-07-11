@@ -50,7 +50,7 @@ namespace Entity
             set { _operator = value; }
         }
 
-        [Property(ColumnType="StringClob")]
+        [Property(ColumnType = "StringClob", SqlType = "TEXT")]
         public string Body
         {
             get { return _body; }
