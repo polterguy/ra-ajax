@@ -88,7 +88,7 @@
                                 ID="pnlCrappyBrowser" 
                                 Visible="false"
                                 style="width:350px;background-color:Yellow;border:solid 1px Black;padding:15px;">
-                                You seem to be using a crappy browser. (Internet Explorer)
+                                You seem to be using a broken browser. (Internet Explorer)
                                 Please visit <a href="http://getfirefox.com">GetFireFox.com</a> for a real one!
                                 <br />
                                 <ra:Button 
