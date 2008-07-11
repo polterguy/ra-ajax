@@ -154,7 +154,6 @@ public partial class Blog : System.Web.UI.Page
 
             btnCreate.Visible = Operator.Current != null && oper.Id == Operator.Current.Id;
 
-            header.InnerHtml += oper.Username;
             Title = "Blog of " + oper.Username;
 
             DataBindBlogs(oper);

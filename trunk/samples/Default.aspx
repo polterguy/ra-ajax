@@ -102,5 +102,31 @@
         80. Ra Ajax can easily be incorporated into your front end websites without your 
         users even noticing any overhead at all for the initial download.
     </p>
+    <h2>This website...</h2>
+    <p>
+        ...is entirely created using Ra Ajax and actually the samples website for Ra Ajax. It uses 
+        <a href="http://www.castleproject.org/ActiveRecord/">ActiveRecord</a> for database
+        abstraction and <a href="http://www.urlrewriting.net/149/en/home.html">Url Rewriting</a>
+        based on <a href="http://weblogs.asp.net/fmarguerie/">Fabrice</a>'s work. Everything you 
+        see here, including the forums and blogs is Open Source and part of the Ra Ajax download
+        and can be consumed in your own projects as you wish. But please rewrite the TEXT of the 
+        static pages if you do so since otherwise Google will penaltize websites if it finds what 
+        it considers "duplicate content".
+    </p>
+    <p>
+        If you see a page you're curious about how is being implemented then you can easily view
+        the source of that page by clicking the "Show code" button which can be found at the 
+        top/right corner of all the webpages at this website.
+    </p>
+    <p>
+        Every single page at this website is extremely optimized for Search Engine Visibility (SEO),
+        load speed, execution speed and so on. Every page at this website scores almost 90 in 
+        <a href="http://developer.yahoo.com/yslow/">YSlow</a> which BTW is a marvelous tool for
+        web-developers to optimize their websites.
+    </p>
+    <p>
+        This website should serve as a very good starting point for your own website projects if
+        you need forum support and blogging coupled with static pages or "functional pages".
+    </p>
 </asp:Content>
 

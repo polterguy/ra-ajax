@@ -18,7 +18,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
         if (!IsPostBack)
         {
             // Adding effect to Show-Code button
-            Effect effect = new EffectFadeIn(btnShowCode, 2.0M);
+            Effect effect = new EffectFadeIn(btnShowCode, 0.6M);
             effect.Render();
 
             // Iterating through all bloggers showing links to them...
