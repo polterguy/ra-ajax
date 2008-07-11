@@ -17,6 +17,14 @@ public partial class MasterPage : System.Web.UI.MasterPage
     {
         if (!IsPostBack)
         {
+            // Morphing in/out the GetFireFox panel
+            if (Request.Browser.Browser == "IE")
+            {
+                pnlCrappyBrowser.Visible = true;
+                Effect effect2 = new EffectFadeIn(pnlCrappyBrowser, 0.4M);
+                effect2.Render();
+            }
+
             // Adding effect to Show-Code button
             Effect effect = new EffectFadeIn(btnShowCode, 0.6M);
             effect.Render();
@@ -45,6 +53,12 @@ public partial class MasterPage : System.Web.UI.MasterPage
         effect.Render();
         GetCSharpCode();
         ViewState["code"] = "C#";
+    }
+
+    protected void closeIE_Click(object sender, EventArgs e)
+    {
+        Effect effect = new EffectFadeOut(pnlCrappyBrowser, 0.4M);
+        effect.Render();
     }
 
     protected void switchCodeType_Click(object sender, EventArgs e)
