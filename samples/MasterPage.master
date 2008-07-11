@@ -83,6 +83,20 @@
                             <asp:Literal runat="server" ID="blogLinksWrapper" />
                         </div>
                         <div id="contentOfPageDiv">
+                            <ra:Panel 
+                                runat="server" 
+                                ID="pnlCrappyBrowser" 
+                                Visible="false"
+                                style="width:350px;background-color:Yellow;border:solid 1px Black;padding:15px;">
+                                You seem to be using a crappy browser. (Internet Explorer)
+                                Please visit <a href="http://getfirefox.com">GetFireFox.com</a> for a real one!
+                                <br />
+                                <ra:Button 
+                                    runat="server" 
+                                    ID="closeIE" 
+                                    Text="Close panel" 
+                                    OnClick="closeIE_Click" />
+                            </ra:Panel>
                             <asp:contentplaceholder 
                                 id="cnt1" 
                                 runat="server">
@@ -95,6 +109,7 @@
                                     ID="btnShowCode" 
                                     Text="Show code" 
                                     OnClick="btnShowCode_Click" />
+                                <br />
                             </div>
                         </div>
                         <div style="clear:both;">&nbsp;</div>
