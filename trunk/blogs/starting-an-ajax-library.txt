@@ -1,0 +1,71 @@
+How to create an Ajax Library part 1 - Decisions
+
+
+At this website I will create an Ajax Library focusing on server-side bindings to abstract away JavaScript for ASP.NET and <a href="http://www.mono-project.com/Main_Page">Mono</a> but the lessons learned here will also be useful for others building Ajax libraries. Even if you're doing it towards J2EE, Python, PHP or not even using a server-side framework at all. 
+
+The end product will be a complete server-side binded Ajax Library for ASP.NET and Mono's ASP.NET implementation working with every JavaScript enabled browser on the planet.
+
+This is the first part where I will write about the initial decisions you need to actively think about *before* starting out.
+
+
+<h3>Use 3rd party JavaScript Frameworks?</h3>
+There exists a lot of really great JavaScript frameworks out there like <a href="http://www.prototypejs.org/">Prototype.js</a>, <a href="http://jquery.com/">jQuery</a>, <a href="http://mootools.net/">Moo Tools</a> and <a href="http://dojotoolkit.org/">Dojo Toolkit</a>. All of them are great in their ways as JavaScript Frameworks and will give you a serious boost in the beginning if you choose to build your JavaScript foundation on top of them, but the problem is in their nature. They are <b>*JavaScript* Frameworks</b> and at least when we're building Ra Ajax we don't really need a great JavaScript Framework. We need the "bare minimum" of a JavaScript Framework since we're creating a server-side binded Ajax library. So by choosing those Framework you will get a head start, but you will also get a LOT of overhead which you really don't need and you especially don't want in regards to download and bandwidth-bloat.
+
+So we will start out with our own "custom rolled" JavaScript Framework which will contain nothing but the "bare minimum" needed to abstract away the server-side bindings. This will *significantly* reduce the amount of JavaScript the browser clients will have to download when running code using our Ajax Library.
+
+
+<h3>Support Mono or not?</h3>
+Many people unfortunately look at <a href="http://www.mono-project.com/Main_Page">Mono</a> as a "child's toy version of .Net". This is first of all *wrong* and might several years ago have had some truth to it, but today Mono is powering really advanced and great things like the scripting engine of <a href="http://secondlife.com/">Second Life</a>, <a href="http://unity3d.com/">Unity 3D</a> and many more really great living, advanced and vivid projects. Mono is something we should support since it gives the users of our Ajax Library a choice in regards to deploying their applications on Linux and a pure Open Source stack or "only Windows servers". Most of Mono is also MIT and LGPL licensed which means that if <a href="http://www.novell.com/">Novell</a> decides to abandon it, Mono will be INSTANTLY forked and live on as a community project since it by nature enables .Net applications to be running on Linux on a pure Open Source stack. But by choosing to support Mono we also add up some small overhead on our Ajax Library since Mono does not implement everything ASP.NET implements like Themes, ViewStateModeById and has a slightly different model for databinding repeaters and so on. This means we need to at least occassionally TEST on Mono to make sure we're not going down a "blind path". Though this testing is not hard and in fact to support Internet Explorer is orders of magnitudes more difficult than to support Mono. Believe me, I've done this before ;)
+
+
+<h3>Partial rendering?</h3>
+Partial Rendering is a word more or less coined and made popular by <a href="http://weblogs.asp.net/despos/">Dino Esposito</a> and basically means to render HTML within some container HTML element. This is the way <a href="http://www.asp.net/ajax/">ASP.NET AJAX</a> works and is an easy way to implement Ajax behavior. Unfortunately there are lots of senior Ajax developers who have continously bashed this way of creating Ajax Libraries including Dino at <a href="http://www.dotnetrocks.com/default.aspx?showNum=281">DotNetRocks.com</a> (podcast) and myself. Another approach is to implement an API on the client-side like for instance <a href="http://ajaxwidgets.com/">Gaia Ajax Widgets</a> have done. (my former project/company)
+
+This basically works by having a client-side API for the server-side Ajax Widgets which the widgets themselves communicate back and forth towards. This has a very interesting side-effect. The client becomes STATEFUL!
+
+Statefulness is a Design Pattern which you should avoid in *all other circumstances* but fact is that without a stateful client for your Ajax Library you will be doomed into doing all of your advanced Widget manipulation with JavaScript and the whole idea of abstracting away JavaScript goes completely out the window. The lack of a client-side stateful pattern is the reason why Microsoft are resorting to using weird constructs like WebServices and such to populate their AutoCompleters and so on. So we will not do Partial Rendering in Ra Ajax unless we really have to. This means that when we initially show a Widget we will do partial rendering, and when we are re-creating and manipulating the child control collection of our Widget we will do partial rendering, but apart from that we will never do Partial Rendering!
+
+
+<h3>Inherit from the System.Web.UI.WebControls controls?</h3>
+Another more difficult-to-understand choice we need to make is to whether or not we will inherit our Ajax Controls from the controls inside the WebControls namespace like for instance the System.Web.UI.WebControls.TextBox Control. This decision took me a year to understand the implications of. By inheriting from TextBox, Label, CheckBox and so on from ASP.NET we get controls that are 100% compatible with the ASP.NET Controls. Unfortunately we also inherit a lot of <a href="http://www.google.com/search?hl=en&q=liskow+substitution+principle&btnG=Search">LSP</a> problems. LSP problems are also really obscure and they tend to "stack up" and form leaky abstractions which unfortunately have a way of accumulating every time you add another layer of abstraction. In addition the level of <a href="http://en.wikipedia.org/wiki/Cohesion_(computer_science)">Cohesion</a> in the ASP.NET controls are not very good. So by inheriting from the ASP.NET WebControls you gain some but you will also constantly be at war against the LSP and Cohesion problems inside of the WebControl hierarchy. I know because when I created <a href="http://ajaxwidgets.com">Gaia Ajax Widgets</a> I constantly battled the problems from the native ASP.NET Controls. The ASP.NET model is actually quite good, unfortunately the WebControls themselves are not a part of Microsoft's greatest achievements...
+
+An example of such a problem is the fact that the CssStyleCollection class is implemented as sealed and with an internal constructor in ASP.NET. This means that it is *impossible* to override the functionality of it in your core. The way we solved this in Gaia Ajax Widgets was to read the properties of the Style collection property during OnInit of the control and then later "diff" the changes and send those back to the client. Far from optimal in addition to that it made the code orders of magnitudes more complex. In addition when going down this path we also had to add up Reflection to read the other properties since when you have started down the "diff path" you tend to want to continue with one uniform solution. This added runtime overhead for our server which was quite expensive and costed us a lot of development time to optimize. Not to mention that to turn off ViewState effectively becomes impossible.
+
+It is actually easier to implement your own version of CssStyleCollection than it is to re-use the one already existing in ASP.NET.
+
+In addition the WebControls have a lot of redundant properties like BackgroundColor, Font, etc. In fact a TON of properties which you also must track which is nothing more than redundant versions of the Style property keys which makes it not only more complex for you but also more complex for your users since they have "two paths" into the same problem. Always have ONE path where possible. Never implement two solutions where one will suffice.
+
+We will choose NOT to inherit from the TextBox, Label, CheckBox and so on and instead create our own controls from scratch which in fact by experience I know is easier than to think you can re-use the ASP.NET WebControls. This will save us a TON of time battling both the differences between Mono and Microsoft ASP.NET and also battling the lack of LSP and Cohesion in the ASP.NET WebControls.
+
+
+<h3>License choice</h3>
+Maybe the hardes part figuring out is which license you will want to use. For Ra Ajax I choose an MITish kind of license which basically says; <em>"If you do not work for an agressive military power you can use this library as you wish, but you cannot fork it"</em>. The reason why I choose this license is first of all because I think that the Open Web is really important and that we need the Open Web to prevail. Second of all I think it will take many months before our project will be of commercial quality which means that as long as we're developing and the library is not commercially ready, users can use it for free helping us find bugs and report feature requests and so on. To not use an Open Source license for a Framework (ANY type of Framework) today will basically not work! Coders are being more and more used to consuming Open Source libraries, and they will want to see the code for whatever they're using. If you don't Open Source your Ajax Library you will get *zero* users! This fits at least me perfectly since I happen to love Open Source. Later on if you decide to go "commercial" with your project you will also get to hire the best developers for your company instead of "second class" developers willing to work for Closed Source libraries. The best System Developers tend to be drawn towards Open Souce code! You will also get a lot of publicity simply because you choose an Open Source model! Not to mention that it is <b>the right thing to do</b>! Innovation should be OPEN, especially the RIA Framework of the 3rd Millennium!
+
+
+<h3>Open Standards</h3>
+Should you follow Open Standards as proposed by the <a href="http://www.w3.org/">W3C</a>?
+
+There are three answer to that question;
+YES,
+YES,
+and ...YES!
+
+Without following the standards where possible your software will be outdated before you can count to ...zip...!
+By following the standards as given to us by W3C.org you practically have a guarantee that your software also will work in the future. TCP/IP is still here, almost unchanged, even though it was created almost 40 years ago. TCP/IP was created as an Open Standard and because of that software written to use the TCP/IP standard in the early 70s still function. If you choose to build on "some favorite ActiveX component" your software piece is very likely NOT to make it more than 5 years from now. Use Open Standards where possible, and glue in the "missing pieces" completely loosely coupled where you HAVE to. 95% of YouTube is STILL JavaScript and HTML! And even Adobe doesn't use Adobe Flex for their forums! And microsoft.com is HTML and JavaScript, NOT Silverlight!
+
+If you follow the standards where you can it is higly likely that your software will still be here 150 years from now in some form, just like the railroad tracks from the 18th Century across the world is still here today. Because they choose to standardize the track size! And today mostly everything can be built purely on top of the Open Web. Even video and Canvas is coming in HTML5!
+
+
+<h3>Wrapping up...</h3>
+This was the first blog post in a series of blog posts where I will try to completely walk you through the process of building an Ajax Library, focusing on ASP.NET and <a href="http://www.mono-project.com/Main_Page">Mono</a>. When I finish this series we will have created an entire Ajax Library, bottoms up. And you will have access to all the information needed to reproduce the Ajax Library yourself.
+
+Feel free to subscribe to my blog by clicking the yellow RSS icon at the address bar of your browser to get to the URL. Also if you register at this website which can be done at <a href="Forums/Forums.aspx">the forums section</a> I will send you an email every time I write up another blog. Sometimes I will write about other things to "fill in the blanks" or because I am dedicated to also other aspects in life then just Ajax Libraries, but all my "Create an Ajax Library" blogs will also be sent to you then.
+
+At the end of this process I might even wrap up the stuff and put into a book or something, but I really despise dead forrest distribution, so it'll probably be licensed under the <a href="http://www.gnu.org/copyleft/fdl.html">GNU Free Documentation License</a> or some <a href="http://creativecommons.org/">Creative Commons</a> ("Some Rights Reserved" license) for your convenience.
+
+Until next time, have a nice day :)
+
+
+Thomas Hansen
+
+
