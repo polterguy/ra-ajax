@@ -174,3 +174,14 @@ img
 	text-decoration:underline;
 }
 
+.blog pre
+{
+	font-size:1.2em;
+	line-height:1.0em;
+}
+
+.blog code
+{
+	font-size:1.2em;
+}
+
