@@ -93,6 +93,12 @@ Ra.extend = function(inherited, base) {
 Ra.Element = Ra.klass();
 
 
+// Note that this class is an "abstract class" which means you cannot create
+// new objects like this; var x = new Ra.Element; since it doesn't implement
+// the "init" function.
+// The only usage for this class is actually to serve as a wrapper for the
+// Ra.$ function in which it is being used as a template for extending DOM
+// elements...
 Ra.extend(Ra.Element.prototype, {
 
   // Sets content of element (wrapper around innerHTML)
