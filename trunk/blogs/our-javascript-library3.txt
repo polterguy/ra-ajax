@@ -109,6 +109,8 @@ In addition the Effect class have a "duration" property and onStart and onFinish
 
 Now whatever you glue into the "loop" delegate through the onRender option is 100% up to you to decide, but basically with these two extremely lightweighted constructs you can create any JavaScript Effect you wish.
 
+In fact this JavaScript Effect class is what I am using myself when you click the "Show code" button at the top right corner of this page.
+
 Until next time, have a nice day :)
 
 
