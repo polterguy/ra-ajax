@@ -1,0 +1,140 @@
+How to create an Ajax Library part 1 - Unit Testing our Ajax Library
+
+
+When creating a library, any library, Unit Testing is more important than in anything else you can create in your system development life. And the reason is that while it is possible (all though impractical) to manually test all the steps and different sequences of steps in an "application". This is virtually *IMPOSSIBLE* for a library since you can never guess all the different usage scenarios for a library or an API.
+
+And all though a lot of problems can be excluded by having a conscious relationship to words like <a href="http://en.wikipedia.org/wiki/Cohesion_(computer_science)">Cohesion</a> and LSP, you can never completely be safe without a *lot* of Unit Tests for your library.
+
+So when creating an Ajax Library Unit Testing is more important than ever before in your professional system development life.
+
+
+<h3>nUnit and WatiN</h3>
+My personal preferences are to use <a href="http://www.nunit.org/">nUnit</a> and <a href="http://watin.sourceforge.net/">WatiN</a>.
+
+nUnit is an incredibly famous tool currently maintained by <a href="http://blogs.nunit.com/">Charlie Poole</a> which I met at the <a href="http://www.mono-project.com/">Mono</a> Summit in Madrid in 2007 and had a great time together with. nUnit is a brilliant Unit Testing framework for .Net and Charlie has done a *great* job on nUnit.
+
+WatiN is a very versatile tool for "simulating" user interaction in Internet Explorer or FireFox. It basically simulates user interaction by "clicking" buttons and making you able to manipulate the browser programmatically from your code. And combined with nUnit WatiN is a brilliant tool for creating Unit Tests for your Ajax Library. In fact you can even use them even if you do not use .Net as your development platform, though then the tests must be written in a .Net language.
+
+
+<h3>Some code samples</h3>
+This is the "base class" I use for testing Ra Ajax;
+<pre>
+using System;
+using System.Diagnostics;
+using System.Configuration;
+using NUnit.Framework;
+using WatiN.Core;
+using WatiN.Core.Interfaces;
+
+namespace NUnitTests
+{
+    public abstract class TestBase
+    {
+        private Process _server;
+        private IBrowser _browser;
+
+        protected IBrowser Browser
+        {
+            get { return _browser; }
+        }
+
+        [NUnit.Framework.TestFixtureSetUp]
+        public void Init()
+        {
+            StartWebDev();
+            StartBrowser();
+        }
+
+        protected void AssertSuccess(string errMsg)
+        {
+            string success = Browser.Div("results").InnerHtml;
+            Browser.Eval("init();");
+            Assert.AreEqual("success", success, errMsg);
+        }
+
+        private void StartBrowser()
+        {
+            string url = ConfigurationSettings.AppSettings["DefaultPageUrl"] + Url;
+            _browser = WatiN.Core.BrowserFactory.Create(BrowserType.InternetExplorer);
+            _browser.GoTo(url);
+        }
+
+        private void StartWebDev()
+        {
+            string webServerExePath = (string)ConfigurationSettings.AppSettings["WebServerExePath"];
+            _server = new Process();
+            _server = Process.Start(webServerExePath, GetWebServerArguments());
+        }
+
+        protected abstract string Url
+        {
+            get;
+        }
+
+        [NUnit.Framework.TestFixtureTearDown]
+        public void End()
+        {
+            _server.Kill();
+            _browser.Dispose();
+        }
+
+
+        private static string GetWebServerArguments()
+        {
+            string args = String.Format("/port:{0} /path:\"{1}\"", GetPort(), GetWebApplicationPath());
+            return args;
+        }
+
+        private static string GetPort()
+        {
+            string port = ConfigurationSettings.AppSettings["Port"] as String;
+            return port;
+        }
+
+        private static string GetWebApplicationPath()
+        {
+            string webApplicationPath = ConfigurationSettings.AppSettings["WebApplicationPath"] as String;
+            return webApplicationPath;
+        }
+    }
+}
+</pre>
+
+The above class is just an abstract class which helps you to start WebDev which is a WOS (Webserver On a Stick) included in Microsoft Visual Studio. In addition it helps you to create an instance of the IBrowser object from WatiN. The above class just tests with Internet Explorer, but you can easily extend it to also test with FireFox since WatiN as of from its latest release also have support for FireFox.
+
+Then when I "consume" the above class creating concrete implementations of my tests it will look something like this;
+<pre>
+using System;
+using System.Threading;
+using NUnit.Framework;
+
+namespace NUnitTests
+{
+    [TestFixture]
+    public class TestRaControlBasics : TestBase
+    {
+        protected override string Url
+        {
+            get { return "RaControlBasics.aspx"; }
+        }
+
+        [NUnit.Framework.Test]
+        public void JSONBasics()
+        {
+            Browser.Button("testJSONBasicsBtn").Click();
+            AssertSuccess("Ra JSON serialization doesn't work");
+        }
+    }
+}
+</pre>
+The above code assumes a webpage named <em>RaControlBasics.aspx</em> which must contain an input element looking like this; &lt;input type="button" id="testJSONBasicsBtn"...
+
+The above code will then CLICK that button and afterwards run the AssertSuccess function from the base class. The AssertSuccess method again assumes the existance of a JavaScript function called "init" which must exist in the global space of your webpage and it will Assert that the a DOM element with the id of "results" have the value of "success".
+
+Ra Ajax is publicly available from <a href="http://code.google.com/p/ra-ajax/">Google Code - Ra Ajax</a> and the complete Subversion branch can be publicly accessed from there. And the complete Unit Test Suite I use for Ra Ajax can be seen there coupled with the above concepts.
+
+
+<h3>FireBug</h3>
+Another tool I rely on 100% is <a href="http://getfirebug.com/">FireBug</a> which I find invaluable when debugging Ra Ajax. If you want to do advanced JavaScript development then this tool is not a choice, it is AIR! FireBug is basically what brought JavaScript development from the stoneage and into the technology age all by itself!
+
+
