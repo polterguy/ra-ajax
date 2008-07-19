@@ -1,4 +1,4 @@
-How to create an Ajax Library part 3 - Creating a JavaScript Effect class
+How to create an Ajax Library part 4 - Creating a JavaScript Effect class
 
 
 This is the fourth chapter in our <em>"How to create an Ajax Library"</em> series of articles. If you haven't already you should read <a href="how-to-create-an-ajax-library-part-3-the-element-class-and-the-function.blog">the Element class and the $ function</a> first.
