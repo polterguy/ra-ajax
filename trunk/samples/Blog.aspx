@@ -25,10 +25,7 @@
             significantly larger importance than anything else in this world...
         </p>
         <p>
-            All code at this blog is licensed under the MIT license, but the library Ra Ajax
-            is licensed under an MIT(ish) license which basically just adds up a "no fork" 
-            exception to the MIT license. But to use code-snippets from this blog is free as you 
-            wish under the terms of the MIT license which you probably can google for yourself.
+            <em>All code at this blog is licensed under the MIT license.</em>
         </p>
 
         <ra:Panel runat="server" ID="blogWrapper">
