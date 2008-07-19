@@ -135,5 +135,11 @@ Now I realize that this isn't "perfect OO inheritance" the way LSP defines it, b
 
 And more importantly; our JavaScript files will be orders of magnitudes smaller due to using those basic ideas! And in Ajax <em>size matters</em>. Size is everything when dealing with JavaScript!
 
+Until next time, have a nice day :)
+
+
+Thomas Hansen
+
+
 
 
