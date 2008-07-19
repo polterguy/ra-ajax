@@ -1,0 +1,131 @@
+How to create an Ajax Library part 7 - The Ra.Ajax class
+
+
+This is the seventh chapter in our <em>"How to create an Ajax Library"</em> series of articles. If you haven't already you should read <a href="how-to-create-an-ajax-library-part-6-serializing-your-forms.blog">serializing forms</a> first.
+
+We have in our previous chapters built all the building blocks we need on the client for our <em>JavaScript library</em> except the final and most crucial step which is our Ra.Ajax class. This class wraps around our Ra.Form class which again wraps around our Ra.XHR class and glues them together building our <em>Ajax request queue</em> which makes it possible for us to after we've created this class start doing the server-side gluing.
+
+There is now only one task left which we haven't semantically looked at which is queueing of Ajax Requests, this is the class where we will do those parts.
+
+As we spoke about a couple of chapters ago, to queue up Ajax Requests and not enable more than one Ajax Request to execute at the same time is crucial. If we do not do this then the server and the client will "run out of sync" since you will very likely create a request which changes some form elements or values of those which then will be serialized before they're changed in your second request which again will put your client and your server into an "undefined state". And especially for ASP.NET which heavily relies on the ViewState (__VIEWSTATE hidden field value) this step is crucial.
+
+
+<h3>The ViewState problem</h3>
+ASP.NET has a hidden field on its webforms which can be found by looking at the code for your ASP.NET webpage and search for "__VIEWSTATE". This field holds values for ASP.NET WebControls and helps the server and the client to know about the state and values of its controls. 
+
+The ViewState has a bad reputation which unfortunately is completely not deserved. The ViewState is a beautiful construct which most developers who have done some advanced development in JSP or Servlets in J2EE are very jealous of. But for Ajax Libraries it holds one problem.
+
+The problem with the ViewState in an Ajax Library is that if you start an Ajax Request then the __VIEWSTATE hidden field value will be serialized and sent back to the server, but then if you start another Ajax Request *BEFORE* the first Ajax Request has returned then the __VIEWSTATE value of the second Ajax Request will *NOT* be the correct value since the __VIEWSTATE field will be updated on the server in your first request and then the old __VIEWSTATE value will be garbage. So if you do not queue up Ajax Requests and execute them sequentially you will get a lot of really weird and obscur problems. ASP.NET AJAX does not sequentially execute Ajax Request in a queue and if you google for ASP.NET AJAX combined with __VIEWSTATE you will get a feeling for the kind of problems you can run into.
+
+The way around this problem is to queue up Ajax Requests and *WAIT* until the first one is *COMPLETELY* finished executing before we're starting the form serialization process of the second one. This is a very beautiful construct and solves a lot of headache for ourselves and for our users.
+
+
+<h3>I get it, show moe some code!</h3>
+Here is our code for our Ra.Ajax class which will be the "endpoint API parts" for our Ajax Requests.
+<pre>
+Ra.Ajax = Ra.klass();
+
+
+// Static list of queued Ajax requests
+Ra.Ajax._activeRequests = [];
+
+// Starting message queue pump dispatching all active requests sequentially
+Ra.Ajax._startPumping = function() {
+  if( !Ra.XHR.activeRequest ) {
+    Ra.Ajax._activeRequests[0].start();
+  } else {
+    setTimeout(function() {
+      Ra.Ajax._startPumping();
+    }, 50);
+  }
+};
+
+Ra.extend(Ra.Ajax.prototype, {
+  init: function(options) {
+    this.options = Ra.extend({
+
+      // Extra arguments passed to the server
+      args:'',
+
+      // Used to track on the server whether or not this is a Ra Ajax Callback
+      raCallback: false,
+
+      // Form to submit
+      form: null, // Defaults to first form on page
+
+      // Called BEFORE request starts (remember this is a queue and it 
+      // might take some time after creating this instance before the request 
+      // actually is initiated)
+      onBefore: function(){},
+
+      // Called AFTER the request is finished with the given response
+      onAfter: function(){},
+
+      // Calling context (this pointer) for onBefore and onAfter
+      callingContext: null
+    }, options || {});
+
+    // Adding up the this request into the list of queued Ajax requests
+    Ra.Ajax._activeRequests.push(this);
+    if( !Ra.XHR.activeRequest ) {
+      this.start();
+    } else {
+      Ra.Ajax._startPumping();
+    }
+  },
+
+  start: function() {
+
+    // Raising "onBefore" event
+    if( this.options.callingContext ) {
+      this.options.onBefore.call(this.options.callingContext);
+    } else {
+      this.options.onBefore();
+    }
+
+    // Starting actual request
+    var form = new Ra.Form(this.options.form, {
+      args: this.options.args,
+      callingContext: this,
+      onFinished: function(response) {
+        this.sliceRequest();
+        if( this.options.callingContext ) {
+          this.options.onAfter.call(this.options.callingContext, response);
+        } else {
+          this.options.onAfter(response);
+        }
+      },
+      onError: function() {
+        this.sliceRequest();
+      }
+    });
+    if( this.options.raCallback ) {
+      if( form.options.args !== null && form.options.args.length > 0 ) {
+        form.options.args += '&';
+      }
+      form.options.args += '__RA_CALLBACK=true';
+    }
+    form.callback();
+  },
+
+  // Removes request out of queue
+  sliceRequest: function() {
+    Ra.Ajax._activeRequests = Ra.Ajax._activeRequests.slice(1);
+  }
+});
+</pre>
+As you can see the above code has one "static" field (Ra.Ajax._activeRequests which is an array of queued requests) and a "static" function which is the <em>Ra.Ajax._startPumping</em> function. These two concepts together form up our Ajax Request queue. In our _startPumping function we basically just checks to see if there is an existing active request and if there are we wait 50 milliseconds before running the same logic again. Then when there are not an active Ajax Request we execute the first request in our "queue" of requests. Then when the Ajax Request is finished we remove that Ajax Request out of the queue in the <em>sliceRequest</em> function and allow the next Ajax Request to start executing serializing form elements and calling into our server.
+
+This logic was an invention of yours truly (me) which I spent quite a significant amount of braincells on a couple of years ago when I got into weird bugs with Gaia Ajax Widgets in combination with more than one Timer Control on the same page.
+
+And the simplicity and beauty of the solution was quite amazing I must admit myself and like all art it was just matter of "discovering what was hidden". <em>Good artists steal, great artists steal with pride. Creation is the business of the universe, humans are only here to discover what the universe itself put out here for us.</em> ;)
+
+The rest of the Ajax logic we handled in our <a href="how-to-create-an-ajax-library-part-6-serializing-your-forms.blog">serializing form elements</a> article and our <a href="how-to-create-an-ajax-library-part-5-wrapping-the-xmlhttprequest-xhr-object.blog">wrapping the XHR object</a> article.
+
+So that's about it for now, until next time, have a nice day :)
+
+
+Thomas Hansen
+
+
+
