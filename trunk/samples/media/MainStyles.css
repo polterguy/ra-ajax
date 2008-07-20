@@ -185,3 +185,46 @@ img
 	font-size:1.2em;
 }
 
+
+
+/* Calendar specific CSS
+ */
+.calendar
+{
+	background-color:Yellow;
+	font-size:0.7em;
+	display:inline-block;
+	border:solid 1px Black;
+}
+
+.calendar select
+{
+	border:none;
+	margin-right:15px;
+}
+
+.calendar a
+{
+	text-decoration:none;
+	color:#555;
+	padding:1px;
+	border:solid 1px Yellow;
+}
+
+.calendar a:hover
+{
+	border:solid 1px #999;
+}
+
+.calendar a.offMonth
+{
+	color:#999;
+}
+
+.calendar a.selected
+{
+	background-color:#ddf;
+}
+
+
+

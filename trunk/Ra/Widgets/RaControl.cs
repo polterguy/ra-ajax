@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Web.UI;
 using System.Text;
+using System.ComponentModel;
 
 namespace Ra.Widgets
 {
@@ -26,7 +27,8 @@ namespace Ra.Widgets
         // Used to track if control has been rendered previously
         private RenderingPhase _controlRenderingState = RenderingPhase.Invisible;
 
-        internal RenderingPhase Phase
+        [Browsable(false)]
+        public RenderingPhase Phase
         {
             get { return _controlRenderingState; }
             set { _controlRenderingState = value; }
