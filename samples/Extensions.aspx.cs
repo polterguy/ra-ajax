@@ -20,4 +20,14 @@ public partial class Extensions : System.Web.UI.Page
     {
         selectedDate.Text = calendar.Value.ToString("MMMM dd, yyyy", System.Globalization.CultureInfo.InvariantCulture);
     }
+
+    protected void calendarDTP_SelectedValueChanged(object sender, EventArgs e)
+    {
+        lblDate.Text = calendarDTP.Value.ToString("MMMM dd, yyyy", System.Globalization.CultureInfo.InvariantCulture);
+    }
+
+    protected void btnPickDate_Click(object sender, EventArgs e)
+    {
+        calendarDTP.Visible = !calendarDTP.Visible;
+    }
 }

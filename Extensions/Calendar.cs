@@ -153,17 +153,22 @@ namespace Ra.Extensions
             }
 
             HTML.HtmlTable tbl = new HTML.HtmlTable();
+            tbl.EnableViewState = false;
             tbl.ID = "tbl_" + Value.ToString("dd_MM_yyyy", System.Globalization.CultureInfo.InvariantCulture);
 
             // Creating header row (with month and year picker)
             HTML.HtmlTableRow headerRow = new HTML.HtmlTableRow();
+            headerRow.EnableViewState = false;
             headerRow.ID = "head_" + Value.ToString("dd_MM_yyyy", System.Globalization.CultureInfo.InvariantCulture);
             HTML.HtmlTableCell headerCell = new HTML.HtmlTableCell();
+            headerCell.EnableViewState = false;
+            headerCell.Style["text-align"] = "center";
             headerCell.ID = "headC_" + Value.ToString("dd_MM_yyyy", System.Globalization.CultureInfo.InvariantCulture);
             headerCell.ColSpan = 7;
 
             // Year DropDownList
             DropDownList year = new DropDownList();
+            year.EnableViewState = false;
             year.ID = "year_" + Value.ToString("dd_MM_yyyy", System.Globalization.CultureInfo.InvariantCulture);
             for (int idxYear = Value.Year - 25; idxYear < Value.Year + 25; idxYear++)
             {
@@ -179,6 +184,7 @@ namespace Ra.Extensions
 
             // Month DropDownList
             DropDownList month = new DropDownList();
+            month.EnableViewState = false;
             month.ID = "month_" + Value.ToString("dd_MM_yyyy", System.Globalization.CultureInfo.InvariantCulture);
             for (int idxMonth = 1; idxMonth < 13; idxMonth++)
             {
@@ -199,10 +205,12 @@ namespace Ra.Extensions
             while (true)
             {
                 HTML.HtmlTableRow row = new HTML.HtmlTableRow();
+                row.EnableViewState = false;
                 row.ID = idxDate.ToString("MM_dd", System.Globalization.CultureInfo.InvariantCulture) + Value.ToString("dd_MM_yyyy", System.Globalization.CultureInfo.InvariantCulture);
                 for (int idx = 0; idx < 7; idx++)
                 {
                     HTML.HtmlTableCell cell = new HTML.HtmlTableCell();
+                    cell.EnableViewState = false;
                     cell.ID = idxDate.ToString("cell_MM_dd", System.Globalization.CultureInfo.InvariantCulture) + Value.ToString("dd_MM_yyyy", System.Globalization.CultureInfo.InvariantCulture);
 
                     // Creating actual LinkButton which is the "clickable part" of the calendar days
@@ -217,6 +225,7 @@ namespace Ra.Extensions
                     else if (idxDate.Month != Value.Month)
                         btn.CssClass = "offMonth";
                     btn.Click += new EventHandler(btn_Click);
+                    btn.EnableViewState = false;
                     cell.Controls.Add(btn);
 
                     row.Cells.Add(cell);
