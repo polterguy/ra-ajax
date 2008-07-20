@@ -163,7 +163,11 @@ One particulary great set of functions which I am found of is the <em>setOpacity
     }
   }
 </pre>
-The reason why the setOpacity and getOpacity are of special interest to us is because IE doesn't implement the opacity on DOM elements even remotely close to the way all other browsers implement this feature. By adding the above two functions you have a uniform way of changing the opacity of your DOM elements without needing to check the browser type every time you do so. Notice also that we're using a Ra.Browser type in this function, this logic looks something like this;
+The reason why the setOpacity and getOpacity are of special interest to us is because IE doesn't implement the opacity on DOM elements even remotely close to the way all other browsers implement this feature. By adding the above two functions you have a uniform way of changing the opacity of your DOM elements without needing to check the browser type every time you do so. 
+
+
+<h3>Checking the browser type</h3>
+Notice also that we're using a Ra.Browser type in this function, this logic looks something like this;
 <pre>
 Ra.Browser = {
   IE:             window.attachEvent && !window.opera,
@@ -173,7 +177,7 @@ Ra.Browser = {
   MobileSafari:   !!navigator.userAgent.match(/Apple.*Mobile.*Safari/)
 };
 </pre>
-The above code is mostly inspired by <a href="http://www.prototypejs.org/">Prototype.js</a> and borrowed from Sam Stephenson with pride :)
+The above code is mostly inspired by <a href="http://www.prototypejs.org/">Prototype.js</a> and borrowed from Sam Stephenson with pride. It checks which browser the user is accessing your page with. And if the user is using Internet Explorer than the Ra.Browser.IE will be <em>true</em>, but all other values be <em>false</em>. If the user is using some WebKit based browser like for instance Safari then the Ra.Browser.WebKit value will be true and so on.
 
 
 <h3>The $ function</h3>

@@ -20,7 +20,7 @@ The problem with the ViewState in an Ajax Library is that if you start an Ajax R
 The way around this problem is to queue up Ajax Requests and *WAIT* until the first one is *COMPLETELY* finished executing before we're starting the form serialization process of the second one. This is a very beautiful construct and solves a lot of headache for ourselves and for our users.
 
 
-<h3>I get it, show moe some code!</h3>
+<h3>I get it, show me some code!</h3>
 Here is our code for our Ra.Ajax class which will be the "endpoint API parts" for our Ajax Requests.
 <pre>
 Ra.Ajax = Ra.klass();
