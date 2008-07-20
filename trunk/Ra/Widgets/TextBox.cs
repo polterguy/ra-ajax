@@ -171,11 +171,11 @@ namespace Ra.Widgets
                             options += ",";
                         options += "select:true";
                     }
-                    return string.Format("Ra.C('{0}',{{evts:['change'],{1}}});", ClientID, options);
+                    return string.Format("Ra.C('{0}',{{evts:[['change']],{1}}});", ClientID, options);
                 }
                 else
                 {
-                    return string.Format("Ra.C('{0}',{{evts:['change']}});", ClientID);
+                    return string.Format("Ra.C('{0}',{{evts:[['change']]}});", ClientID);
                 }
             }
         }

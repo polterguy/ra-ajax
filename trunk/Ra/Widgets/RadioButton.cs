@@ -139,7 +139,7 @@ namespace Ra.Widgets
             if (CheckedChanged == null)
                 return string.Format("Ra.C('{0}', {{ctrl:'{0}_CTRL', label:'{0}_LBL'}});", ClientID);
             else
-                return string.Format("Ra.C('{0}', {{ctrl:'{0}_CTRL', label:'{0}_LBL', evts:['change']}});", ClientID);
+                return string.Format("Ra.C('{0}', {{ctrl:'{0}_CTRL', label:'{0}_LBL', evts:[['change']]}});", ClientID);
         }
 
         // Override this one to create specific HTML for your widgets
