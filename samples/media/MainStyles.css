@@ -191,10 +191,10 @@ img
  */
 .calendar
 {
-	background-color:Yellow;
+	background:Transparent url(calendar.png) no-repeat;
 	font-size:0.7em;
 	display:inline-block;
-	border:solid 1px Black;
+	border:outset 4px #999;
 }
 
 .calendar select
@@ -202,14 +202,26 @@ img
 	border:none;
 	margin:0 5px 0 5px;
 	font-size:0.8em;
+	background-color:Transparent;
+	color:#bb5;
+}
+
+.calendar table tr.weekdays td
+{
+	color:#ddd;
+}
+
+.calendar table tr td.weekno
+{
+	color:#bbb;
 }
 
 .calendar a
 {
 	text-decoration:none;
-	color:#555;
+	color:#dd7;
 	padding:1px;
-	border:solid 1px Yellow;
+	border:solid 1px Transparent;
 }
 
 .calendar a:hover
@@ -219,12 +231,12 @@ img
 
 .calendar a.offMonth
 {
-	color:#999;
+	color:#bbb;
 }
 
 .calendar a.selected
 {
-	background-color:#ddf;
+	border:solid 1px Yellow;
 }
 
 
