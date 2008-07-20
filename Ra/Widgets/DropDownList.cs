@@ -82,6 +82,12 @@ namespace Ra.Widgets
             {
                 if (IsTrackingViewState)
                 {
+                    foreach (ListItem idx in Items)
+                    {
+                        if (idx != value)
+                            idx.Selected = false;
+                    }
+                    _selectedItemValue = value.Value;
                     this.SetJSONValueString("Value", value.Value);
                 }
             }
@@ -201,11 +207,16 @@ namespace Ra.Widgets
             string retVal = "";
             foreach (ListItem idx in Items)
             {
+                bool isSelected = false;
+                if (_selectedItemValue != null)
+                    isSelected = _selectedItemValue == idx.Value;
+                else
+                    isSelected = idx.Selected;
                 retVal += string.Format("<option value=\"{0}\"{2}{3}>{1}</option>",
                     idx.Value,
                     (string.IsNullOrEmpty(idx.Text) ? idx.Value : idx.Text),
                     (idx.Enabled ? "" : "disabled=\"disabled\""),
-                    (idx.Selected ? "selected=\"selected\"" : ""));
+                    (isSelected ? "selected=\"selected\"" : ""));
             }
             return retVal;
         }

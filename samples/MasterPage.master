@@ -71,6 +71,11 @@
                                 </li>
                                 <li>
                                     <a runat="server"
+                                        href="~/Extensions.aspx" 
+                                        title="Ra Ajax Extension Controls">Extending Ra Ajax</a>
+                                </li>
+                                <li>
+                                    <a runat="server"
                                         href="~/Author.aspx" 
                                         title="About me">About me (hire me)</a>
                                 </li>

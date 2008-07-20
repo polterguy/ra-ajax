@@ -43,5 +43,18 @@ namespace Ra.Widgets
             get { return string.IsNullOrEmpty(_value) ? "" : _value; }
             set { _value = value; }
         }
+
+        public override bool Equals(object obj)
+        {
+            ListItem rhs = obj as ListItem;
+            if (rhs == null)
+                return false;
+            return rhs.Value == Value && rhs.Text == Text;
+        }
+
+        public override int GetHashCode()
+        {
+            return (Value + Text).GetHashCode();
+        }
     }
 }
