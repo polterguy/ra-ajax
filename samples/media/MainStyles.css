@@ -84,7 +84,7 @@ img
 	border-bottom:solid 1px #ddd;
 }
 
-#contentOfPageDiv p
+#contentOfPageDiv div
 {
 	text-align:justify;
 }

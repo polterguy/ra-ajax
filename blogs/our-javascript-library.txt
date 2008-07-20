@@ -5,7 +5,7 @@ This is the second chapter in our <em>"How to create an Ajax Library"</em> serie
 
 In this chapter we will focus on the "core JavaScript library". As I concluded with in the first chapter we will not build on existing JavaScript libraries but rather build our own since we don't really need a JavaScript library since we're going to completely abstract away the very concept of JavaScript. Hence a fully fledged JavaScript library like Dojo Toolkit, jQuery, MooTools or Prototype.js however brilliantly put together will still be too fat for our needs.
 
-But we still need a basic JavaScript core library to abstract away things like the XMLHTTPRequest, OO class construction, DOM Element manipulation, HTTP Forms etc. In this article we will look at the needs we have for such a libary and end up with a complete JavaScript Ajax core library of our own.
+But we still need a basic JavaScript core library to abstract away things like the XMLHTTPRequest, OO class construction, DOM Element manipulation, HTTP form serialization etc. In this article we will look at the needs we have for such a libary and end up with a complete JavaScript Ajax core library of our own.
 
 
 <h3>Our JavaScript needs</h3>
