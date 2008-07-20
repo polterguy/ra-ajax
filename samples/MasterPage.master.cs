@@ -43,7 +43,8 @@ public partial class MasterPage : System.Web.UI.MasterPage
         // There's a bug in FireFox which causes the back button (and CTRL+R) to
         // not reload the page which shuts down everything (also normal ASP.NET WebControls)
         // which we can bypass by informing the client to NOT cache the pages themselves at all
-        Response.Cache.SetNoStore();
+        if (Request.Browser.Browser == "Firefox" && Request.Url.ToString().IndexOf(".blog?") == -1 && Request.Url.ToString().IndexOf(".blogger?") == -1)
+            Response.Cache.SetNoStore();
     }
 
     protected void btnShowCode_Click(object sender, EventArgs e)

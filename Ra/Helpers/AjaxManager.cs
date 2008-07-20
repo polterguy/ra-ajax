@@ -269,7 +269,8 @@ namespace Ra
             StringBuilder builder = new StringBuilder();
             foreach (string idx in _scriptIncludes)
             {
-                string scriptInclusion = string.Format("<script src=\"{0}\" type=\"text/javascript\"></script>\r\n", idx);
+                string script = idx.Replace("&", "&amp;");
+                string scriptInclusion = string.Format("<script src=\"{0}\" type=\"text/javascript\"></script>\r\n", script);
                 builder.Append(scriptInclusion);
             }
             builder.Append("<script type=\"text/javascript\">");

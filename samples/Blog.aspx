@@ -34,9 +34,9 @@
                     <ra:HiddenField ID="HiddenField1" 
                         runat="server" 
                         Value='<%# Eval("Id") %>' />
-                    <h2>
+                    <h3>
                         <a href='<%# Eval("Url") %>'><%# Eval("Header") %></a>
-                    </h2>
+                    </h3>
                     <ra:Button 
                         runat="server" 
                         Visible='<%# Entity.Operator.Current != null && Entity.Operator.Current.Id == ((Entity.Operator)Eval("Operator")).Id %>'

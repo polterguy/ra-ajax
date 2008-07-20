@@ -13,7 +13,9 @@
     <div class="blog">
         <h1 runat="server" id="header"></h1>
         <i class="date" runat="server" id="date"></i>
-        <p runat="server" id="body"></p>
+        <br />
+        <br />
+        <div runat="server" id="body"></div>
     </div>
 
 </asp:Content>
