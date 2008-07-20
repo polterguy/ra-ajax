@@ -20,6 +20,10 @@ namespace Ra.Widgets
     {
         public event EventHandler TextChanged;
 
+        public event EventHandler MouseOver;
+
+        public event EventHandler MouseOut;
+
         #region [ -- Properties -- ]
 
         [DefaultValue("")]
@@ -136,6 +140,14 @@ namespace Ra.Widgets
                     if (TextChanged != null)
                         TextChanged(this, new EventArgs());
                     break;
+                case "mouseover":
+                    if (MouseOver != null)
+                        MouseOver(this, new EventArgs());
+                    break;
+                case "mouseout":
+                    if (MouseOut != null)
+                        MouseOut(this, new EventArgs());
+                    break;
                 default:
                     throw new ApplicationException("Unknown event fired for control");
             }
@@ -144,7 +156,22 @@ namespace Ra.Widgets
         // Override this one to create specific initialization script for your widgets
         public override string GetClientSideScript()
         {
-            if (TextChanged == null)
+            string evts = "";
+            if (TextChanged != null)
+                evts += "['change']";
+            if (MouseOver != null)
+            {
+                if (evts.Length != 0)
+                    evts += ",";
+                evts += "['mouseover']";
+            }
+            if (MouseOut != null)
+            {
+                if (evts.Length != 0)
+                    evts += ",";
+                evts += "['mouseout']";
+            }
+            if (evts.Length == 0)
             {
                 if (_hasSetFocus || _hasSetSelect)
                 {
@@ -177,11 +204,11 @@ namespace Ra.Widgets
                             options += ",";
                         options += "select:true";
                     }
-                    return string.Format("Ra.C('{0}',{{evts:[['change']],{1}}});", ClientID, options);
+                    return string.Format("Ra.C('{0}',{{evts:[{2}],{1}}});", ClientID, options, evts);
                 }
                 else
                 {
-                    return string.Format("Ra.C('{0}',{{evts:[['change']]}});", ClientID);
+                    return string.Format("Ra.C('{0}',{{evts:[{1}]}});", ClientID, evts);
                 }
             }
         }
