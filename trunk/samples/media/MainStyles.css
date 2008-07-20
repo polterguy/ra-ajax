@@ -240,4 +240,36 @@ img
 }
 
 
+/* AutoCompleter specific styles
+ */
+.auto
+{
+	border:solid 1px Black;
+	background-color:Yellow;
+	width:600px;
+	padding:5px;
+	position:absolute;
+	z-index:100;
+}
+
+.auto ul
+{
+	list-style-type:none;
+	font-size:0.7em;
+}
+
+.auto a
+{
+	text-decoration:none;
+}
+
+.auto a:hover
+{
+	text-decoration:underline;
+	color:Black;
+}
+
+
+
+
 
