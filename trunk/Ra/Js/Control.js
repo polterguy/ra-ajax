@@ -137,6 +137,8 @@ Ra.extend(Ra.Control.prototype, {
   // Expects and array of arrays where each array-item is a key/value object
   // and the key (first sub-item in array) is the name of the style property 
   // and the value (second sub-item array) its value
+  // Note you can also use this one to REMOVE styles by having an empty string 
+  // as the "value" part.
   AddStyle: function(values) {
     for( var idx = 0; idx < values.length; idx++ ) {
       this.element.style[values[idx][0]] = values[idx][1];
@@ -161,7 +163,7 @@ Ra.extend(Ra.Control.prototype, {
   },
 
   // Sets focus to control
-  Focus: function(value) {
+  Focus: function() {
     this.element.focus();
   },
 

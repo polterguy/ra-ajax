@@ -144,6 +144,14 @@
         ID="lnkBtn" 
         Text="Link button" 
         OnClick="lnkBtn_Click" />
+    <br />
+    <br />
+    <ra:LinkButton 
+        runat="server" 
+        ID="hoverLnkBtn" 
+        OnMouseOver="hover"
+        OnMouseOut="hoverOut"
+        Text="Hover over me" />
 
 </asp:Content>
 
