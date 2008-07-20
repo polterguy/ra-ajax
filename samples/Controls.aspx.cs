@@ -62,4 +62,14 @@ public partial class Controls : System.Web.UI.Page
     {
         lnkBtn.Text = "You clicked me :)";
     }
+
+    protected void hover(object sender, EventArgs e)
+    {
+        hoverLnkBtn.Text = "HOVERED!!";
+    }
+
+    protected void hoverOut(object sender, EventArgs e)
+    {
+        hoverLnkBtn.Text = "No hover";
+    }
 }
