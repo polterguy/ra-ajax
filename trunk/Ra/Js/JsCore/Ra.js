@@ -67,7 +67,7 @@ Ra.$F = function(id) {
 // To create a class which will automatically call "init" on objects 
 // when created with the arguments applied
 Ra.klass = function() {
-  return function(){
+  return function() {
     if( this.init ) {
       return this.init.apply(this, arguments);
     } else {
@@ -218,7 +218,7 @@ Ra.extend(Ra.Element.prototype, {
   // Observes an event with the given "func" parameter.
   // The callingContext will be the "this" pointer in the 
   // function call to the "func" when called.
-  observe: function(evtName, func, callingContext, extraParams){
+  observe: function(evtName, func, callingContext, extraParams) {
 
     // Creating wrapper to wrap around function event handler
     // Note that this logic only handles ONE event handler per event type / element
@@ -287,14 +287,14 @@ Ra.extend(Ra.XHR.prototype, {
     Ra.XHR.activeRequest = true;
     this.url = url;
     this.options = Ra.extend({
-      onSuccess:    function(){},
-      onError:      function(){},
+      onSuccess:    function() {},
+      onError:      function() {},
       body:         ''
     }, options || {});
     this.start();
   },
 
-  start: function(){
+  start: function() {
 
     // Getting transport
     this.xhr = new XMLHttpRequest();
@@ -323,7 +323,7 @@ Ra.extend(Ra.XHR.prototype, {
   },
 
   // Called when request is finished
-  _finished: function(){
+  _finished: function() {
     if( this.xhr.status >= 200 && this.xhr.status < 300 ) {
       this.options.onSuccess(this.xhr.responseText);
     } else {
@@ -357,8 +357,8 @@ Ra.extend(Ra.Form.prototype, {
     this.options = Ra.extend({
       args:           '',
       url:            this.form.action,
-      onFinished:     function(){},
-      onError:        function(){},
+      onFinished:     function() {},
+      onError:        function() {},
       callingContext: null
     }, options || {});
   },
@@ -494,10 +494,10 @@ Ra.extend(Ra.Ajax.prototype, {
       // Called BEFORE request starts (remember this is a queue and it 
       // might take some time after creating this instance before the request 
       // actually is initiated)
-      onBefore: function(){},
+      onBefore: function() {},
 
       // Called AFTER the request is finished with the given response
-      onAfter: function(){},
+      onAfter: function() {},
 
       // Calling context (this pointer) for onBefore and onAfter
       callingContext: null
@@ -607,8 +607,8 @@ Ra.extend(Ra.Effect.prototype, {
   initEffect: function(element, options) {
     this.options = Ra.extend({
       duration: 1.0,
-      onStart: function(){},
-      onFinished: function(){},
+      onStart: function() {},
+      onFinished: function() {},
       onRender: null
     }, options || {});
     if( element ) {
@@ -631,7 +631,7 @@ Ra.extend(Ra.Effect.prototype, {
       var delta = (curTime - this.startTime) / (this.options.duration * 1000);
       this.render(delta);
       var T = this;
-      setTimeout(function(){
+      setTimeout(function() {
         T.loop();
       }, 10);
     }

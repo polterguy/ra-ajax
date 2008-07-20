@@ -216,7 +216,7 @@ Ra.extend(Ra.Control.prototype, {
     }
   },
 
-  onFinishedRequest: function(response){
+  onFinishedRequest: function(response) {
     eval(response);
   },
 
