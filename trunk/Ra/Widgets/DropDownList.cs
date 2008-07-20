@@ -23,6 +23,10 @@ namespace Ra.Widgets
 
         public event EventHandler SelectedIndexChanged;
 
+        public event EventHandler MouseOver;
+
+        public event EventHandler MouseOut;
+
         public DropDownList()
         {
             _listItems = new ListItemCollection(this);
@@ -137,6 +141,14 @@ namespace Ra.Widgets
                     if (SelectedIndexChanged != null)
                         SelectedIndexChanged(this, new EventArgs());
                     break;
+                case "mouseover":
+                    if (MouseOver != null)
+                        MouseOver(this, new EventArgs());
+                    break;
+                case "mouseout":
+                    if (MouseOut != null)
+                        MouseOut(this, new EventArgs());
+                    break;
                 default:
                     throw new ApplicationException("Unknown event fired for control");
             }
@@ -145,10 +157,30 @@ namespace Ra.Widgets
         // Override this one to create specific initialization script for your widgets
         public override string GetClientSideScript()
         {
-            if (SelectedIndexChanged == null)
+            string evts = "";
+            if (SelectedIndexChanged != null)
+                evts += "['change']";
+            if (MouseOver != null)
+            {
+                if (evts.Length != 0)
+                    evts += ",";
+                evts += "['mouseover']";
+            }
+            if (MouseOut != null)
+            {
+                if (evts.Length != 0)
+                    evts += ",";
+                evts += "['mouseout']";
+            }
+            if (evts.Length == 0)
+            {
+                // No events
                 return string.Format("Ra.C('{0}');", ClientID);
+            }
             else
-                return string.Format("Ra.C('{0}', {{evts:[['change']]}});", ClientID);
+            {
+                return string.Format("Ra.C('{0}', {{evts:[{1}]}});", ClientID, evts);
+            }
         }
 
         // Override this one to create specific HTML for your widgets

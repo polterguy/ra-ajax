@@ -20,6 +20,10 @@ namespace Ra.Widgets
     {
         public event EventHandler CheckedChanged;
 
+        public event EventHandler MouseOver;
+
+        public event EventHandler MouseOut;
+
         #region [ -- Properties -- ]
 
         [DefaultValue("")]
@@ -112,6 +116,14 @@ namespace Ra.Widgets
                     if (CheckedChanged != null)
                         CheckedChanged(this, new EventArgs());
                     break;
+                case "mouseover":
+                    if (MouseOver != null)
+                        MouseOver(this, new EventArgs());
+                    break;
+                case "mouseout":
+                    if (MouseOut != null)
+                        MouseOut(this, new EventArgs());
+                    break;
                 default:
                     throw new ApplicationException("Unknown event fired for control");
             }
@@ -120,10 +132,30 @@ namespace Ra.Widgets
         // Override this one to create specific initialization script for your widgets
         public override string GetClientSideScript()
         {
-            if (CheckedChanged == null)
-                return string.Format("Ra.C('{0}', {{ctrl:'{0}_CTRL', label:'{0}_LBL'}});", ClientID);
+            string evts = "";
+            if (CheckedChanged != null)
+                evts += "['change']";
+            if (MouseOver != null)
+            {
+                if (evts.Length != 0)
+                    evts += ",";
+                evts += "['mouseover']";
+            }
+            if (MouseOut != null)
+            {
+                if (evts.Length != 0)
+                    evts += ",";
+                evts += "['mouseout']";
+            }
+            if (evts.Length == 0)
+            {
+                // No events
+                return string.Format("Ra.C('{0}', {{ctrl:'{0}_CTRL',label:'{0}_LBL'}});", ClientID);
+            }
             else
-                return string.Format("Ra.C('{0}', {{ctrl:'{0}_CTRL', label:'{0}_LBL', evts:[['change']]}});", ClientID);
+            {
+                return string.Format("Ra.C('{0}', {{ctrl:'{0}_CTRL',label:'{0}_LBL',evts:[{1}]}});", ClientID, evts);
+            }
         }
 
         // Override this one to create specific HTML for your widgets

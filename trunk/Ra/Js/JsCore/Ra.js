@@ -225,12 +225,10 @@ Ra.extend(Ra.Element.prototype, {
     if( !this._wrappers ) {
       this._wrappers = [];
     }
-
     var wr = function(event) {
       if( extraParams ) {
-        var paramsWrapper = extraParams;
-        paramsWrapper.push(event || window.event);
-        return func.apply(callingContext, paramsWrapper);
+        extraParams.push([event || window.event]);
+        return func.apply(callingContext, extraParams);
       } else {
         return func.apply(callingContext, [event || window.event]);
       }

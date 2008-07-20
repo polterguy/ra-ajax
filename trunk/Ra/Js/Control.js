@@ -191,20 +191,24 @@ Ra.extend(Ra.Control.prototype, {
   initEvents: function() {
     var evts = this.options.evts;
     for( var idx = 0; idx < evts.length; idx++ ) {
-      (this.options.ctrl || this.element).observe(evts[idx][0], this.onEvent, this, [evts[idx]]);
+      (this.options.ctrl || this.element).observe(
+        evts[idx][0], 
+        this.onEvent, 
+        this, 
+        [evts[idx][0], evts[idx][1]] );
     }
   },
 
   // Called when an event is raised, the parameter passed is the this.options.serverEvent instance 
   // which we will use to know how to call our server
-  onEvent: function(evt, domEvt) {
+  onEvent: function(evt, shouldStop, domEvt) {
     var x = new Ra.Ajax({
-      args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=' + evt[0],
+      args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=' + evt,
       raCallback:true,
       onAfter: this.onFinishedRequest,
       callingContext: this
     });
-    if( evt[1] ) {
+    if( shouldStop ) {
       // Event is supposed to be stopped
       domEvt.stopped = true;
       domEvt.cancelBubble = true;
