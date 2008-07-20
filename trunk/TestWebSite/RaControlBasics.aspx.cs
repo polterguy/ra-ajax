@@ -49,4 +49,9 @@ public partial class RaControlBasics : System.Web.UI.Page
             testVerifyStyleValue.Text = "success";
         }
     }
+
+    protected void testLinkButton_Click(object sender, EventArgs e)
+    {
+        testLinkButton.Text = "success";
+    }
 }
