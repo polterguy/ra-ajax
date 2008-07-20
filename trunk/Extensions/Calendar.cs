@@ -143,6 +143,38 @@ namespace Ra.Extensions
             }
         }
 
+        private int GetWeekNumber(DateTime dt)
+        {
+            int year = dt.Year;
+            DateTime week1;
+            if (dt >= new DateTime(year, 12, 29))
+            {
+                week1 = GetWeekOneDate(year + 1);
+                if (dt < week1)
+                {
+                    week1 = GetWeekOneDate(year);
+                }
+            }
+            else
+            {
+                week1 = GetWeekOneDate(year);
+                if (dt < week1)
+                {
+                    week1 = GetWeekOneDate(--year);
+                }
+            }
+            return ((dt - week1).Days / 7 + 1);
+        }
+
+        private DateTime GetWeekOneDate(int year)
+        {
+            DateTime date = new DateTime(year, 1, 4);
+            int dayNum = (int)date.DayOfWeek; // 0==Sunday, 6==Saturday
+            if (dayNum == 0)
+                dayNum = 7;
+            return date.AddDays(1 - dayNum);
+        }
+
         private void CreateCalendarControls()
         {
             // Finding date to start on
@@ -152,10 +184,108 @@ namespace Ra.Extensions
                 idxDate = idxDate.AddDays(-1);
             }
 
+            // Creating table to wrap the whole thing inside of
             HTML.HtmlTable tbl = new HTML.HtmlTable();
             tbl.EnableViewState = false;
             tbl.ID = "tbl_" + Value.ToString("dd_MM_yyyy", System.Globalization.CultureInfo.InvariantCulture);
 
+            // Creating the header row which contains the Year and Month DropDownLists
+            CreateYearMonthPicker(tbl);
+
+            // Creating Weekdays at top of calendar
+            HTML.HtmlTableRow rowDays = new HTML.HtmlTableRow();
+            rowDays.EnableViewState = false;
+            rowDays.Cells.Add(new HTML.HtmlTableCell());
+            rowDays.Attributes.Add("class", "weekdays");
+            DateTime idxWeekDay = idxDate;
+            for (int idx = 0; idx < 7; idx++)
+            {
+                HTML.HtmlTableCell cell = new HTML.HtmlTableCell();
+                cell.EnableViewState = false;
+                cell.InnerHtml = idxWeekDay.ToString("ddd", System.Threading.Thread.CurrentThread.CurrentUICulture);
+                rowDays.Cells.Add(cell);
+                idxWeekDay = idxWeekDay.AddDays(1);
+            }
+            tbl.Rows.Add(rowDays);
+
+            // Looping through creating childcontrols
+            while (true)
+            {
+                HTML.HtmlTableRow row = new HTML.HtmlTableRow();
+                row.EnableViewState = false;
+                row.ID = idxDate.ToString("MM_dd", System.Globalization.CultureInfo.InvariantCulture) + Value.ToString("dd_MM_yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                
+                // Creating week number cell
+                // Calculates according to ISO-8601
+                HTML.HtmlTableCell week = new HTML.HtmlTableCell();
+                week.EnableViewState = false;
+                week.Attributes.Add("class", "weekno");
+                week.InnerHtml = GetWeekNumber(idxDate).ToString();
+                row.Cells.Add(week);
+
+                // Creating week cells for actual dates...
+                for (int idx = 0; idx < 7; idx++)
+                {
+                    HTML.HtmlTableCell cell = new HTML.HtmlTableCell();
+                    cell.EnableViewState = false;
+                    cell.ID = idxDate.ToString("cell_MM_dd", System.Globalization.CultureInfo.InvariantCulture) + Value.ToString("dd_MM_yyyy", System.Globalization.CultureInfo.InvariantCulture);
+
+                    // Creating actual LinkButton which is the "clickable part" of the calendar days
+                    LinkButton btn = new LinkButton();
+                    btn.Text = idxDate.Day.ToString();
+                    btn.ID = idxDate.ToString("yyyy_MM_dd", System.Globalization.CultureInfo.InvariantCulture);
+                    if (idxDate == Value.Date)
+                    {
+                        btn.CssClass = "selected";
+                        SelectedValueBtn = btn;
+                    }
+                    else if (idxDate.Month != Value.Month)
+                        btn.CssClass = "offMonth";
+                    btn.Click += new EventHandler(btn_Click);
+                    btn.EnableViewState = false;
+                    cell.Controls.Add(btn);
+
+                    row.Cells.Add(cell);
+
+                    idxDate = idxDate.AddDays(1);
+                }
+                tbl.Rows.Add(row);
+                if (idxDate.Month != Value.Month)
+                    break;
+            }
+
+            HTML.HtmlTableRow bottomRow = new HTML.HtmlTableRow();
+            bottomRow.EnableViewState = false;
+            bottomRow.ID = "stat_" + Value.ToString("dd_MM_yyyy", System.Globalization.CultureInfo.InvariantCulture);
+            HTML.HtmlTableCell bottomCell = new HTML.HtmlTableCell();
+            bottomCell.EnableViewState = false;
+            bottomCell.Style["text-align"] = "center";
+            bottomCell.ID = "headC_" + Value.ToString("dd_MM_yyyy", System.Globalization.CultureInfo.InvariantCulture);
+            bottomCell.ColSpan = 8;
+            LinkButton today = new LinkButton();
+            today.Text = DateTime.Now.ToString("MMMM d, yyyy", System.Threading.Thread.CurrentThread.CurrentUICulture);
+            today.Click += new EventHandler(today_Click);
+            today.EnableViewState = false;
+            bottomCell.Controls.Add(today);
+            bottomRow.Cells.Add(bottomCell);
+            tbl.Rows.Add(bottomRow);
+
+            // Rooting the Table as the LAST thing we do...!
+            Controls.Add(tbl);
+        }
+
+        void today_Click(object sender, EventArgs e)
+        {
+            Value = DateTime.Now.Date;
+            SignalizeReRender();
+            Controls.Clear();
+            CreateCalendarControls();
+            if (SelectedValueChanged != null)
+                SelectedValueChanged(this, new EventArgs());
+        }
+
+        private void CreateYearMonthPicker(HTML.HtmlTable tbl)
+        {
             // Creating header row (with month and year picker)
             HTML.HtmlTableRow headerRow = new HTML.HtmlTableRow();
             headerRow.EnableViewState = false;
@@ -164,7 +294,7 @@ namespace Ra.Extensions
             headerCell.EnableViewState = false;
             headerCell.Style["text-align"] = "center";
             headerCell.ID = "headC_" + Value.ToString("dd_MM_yyyy", System.Globalization.CultureInfo.InvariantCulture);
-            headerCell.ColSpan = 7;
+            headerCell.ColSpan = 8;
 
             // Year DropDownList
             DropDownList year = new DropDownList();
@@ -200,43 +330,6 @@ namespace Ra.Extensions
 
             headerRow.Cells.Add(headerCell);
             tbl.Rows.Add(headerRow);
-
-            // Looping through creating childcontrols
-            while (true)
-            {
-                HTML.HtmlTableRow row = new HTML.HtmlTableRow();
-                row.EnableViewState = false;
-                row.ID = idxDate.ToString("MM_dd", System.Globalization.CultureInfo.InvariantCulture) + Value.ToString("dd_MM_yyyy", System.Globalization.CultureInfo.InvariantCulture);
-                for (int idx = 0; idx < 7; idx++)
-                {
-                    HTML.HtmlTableCell cell = new HTML.HtmlTableCell();
-                    cell.EnableViewState = false;
-                    cell.ID = idxDate.ToString("cell_MM_dd", System.Globalization.CultureInfo.InvariantCulture) + Value.ToString("dd_MM_yyyy", System.Globalization.CultureInfo.InvariantCulture);
-
-                    // Creating actual LinkButton which is the "clickable part" of the calendar days
-                    LinkButton btn = new LinkButton();
-                    btn.Text = idxDate.Day.ToString();
-                    btn.ID = idxDate.ToString("yyyy_MM_dd", System.Globalization.CultureInfo.InvariantCulture);
-                    if (idxDate == Value.Date)
-                    {
-                        btn.CssClass = "selected";
-                        SelectedValueBtn = btn;
-                    }
-                    else if (idxDate.Month != Value.Month)
-                        btn.CssClass = "offMonth";
-                    btn.Click += new EventHandler(btn_Click);
-                    btn.EnableViewState = false;
-                    cell.Controls.Add(btn);
-
-                    row.Cells.Add(cell);
-
-                    idxDate = idxDate.AddDays(1);
-                }
-                tbl.Rows.Add(row);
-                if (idxDate.Month != Value.Month)
-                    break;
-            }
-            Controls.Add(tbl);
         }
 
         void month_SelectedIndexChanged(object sender, EventArgs e)
