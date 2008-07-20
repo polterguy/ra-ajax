@@ -57,4 +57,9 @@ public partial class Controls : System.Web.UI.Page
     {
         txtBox.Text = "Did you see the update?";
     }
+
+    protected void lnkBtn_Click(object sender, EventArgs e)
+    {
+        lnkBtn.Text = "You clicked me :)";
+    }
 }

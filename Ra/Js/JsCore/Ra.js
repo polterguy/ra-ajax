@@ -25,6 +25,10 @@
 // Ra will extend the DOM object with the Ra specific methods
 var Ra = {};
 
+// Empty function useful for different things like for instance "killing events" and similar constructs
+Ra.emptyFunction = function() {}
+
+// Browser helper, returns true for whatever browser you're within
 Ra.Browser = {
   IE:             window.attachEvent && !window.opera,
   Opera:          !!window.opera,
@@ -222,11 +226,13 @@ Ra.extend(Ra.Element.prototype, {
       this._wrappers = [];
     }
 
-    var wr = function() {
+    var wr = function(event) {
       if( extraParams ) {
-        func.apply(callingContext, extraParams);
+        var paramsWrapper = extraParams;
+        paramsWrapper.push(event || window.event);
+        return func.apply(callingContext, paramsWrapper);
       } else {
-        func.call(callingContext);
+        return func.apply(callingContext, [event || window.event]);
       }
     };
 

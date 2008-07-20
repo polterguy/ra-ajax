@@ -148,7 +148,7 @@ namespace Ra.Widgets
             if (SelectedIndexChanged == null)
                 return string.Format("Ra.C('{0}');", ClientID);
             else
-                return string.Format("Ra.C('{0}', {{evts:['change']}});", ClientID);
+                return string.Format("Ra.C('{0}', {{evts:[['change']]}});", ClientID);
         }
 
         // Override this one to create specific HTML for your widgets

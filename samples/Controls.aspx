@@ -137,6 +137,13 @@
         ID="txtBox" 
         Text="Write something here and move focus" 
         OnTextChanged="txtBox_TextChanged" />
+    <br />
+    <br />
+    <ra:LinkButton 
+        runat="server" 
+        ID="lnkBtn" 
+        Text="Link button" 
+        OnClick="lnkBtn_Click" />
 
 </asp:Content>
 

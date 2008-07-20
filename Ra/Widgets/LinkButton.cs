@@ -15,8 +15,8 @@ using Ra.Helpers;
 namespace Ra.Widgets
 {
     [DefaultProperty("Text")]
-    [ASP.ToolboxData("<{0}:Button runat=server />")]
-    public class Button : RaWebControl, IRaControl
+    [ASP.ToolboxData("<{0}:LinkButton runat=server />")]
+    public class LinkButton : RaWebControl, IRaControl
     {
         public event EventHandler Click;
 
@@ -29,7 +29,7 @@ namespace Ra.Widgets
             set
             {
                 if (value != Text)
-                    SetJSONValueString("Value", value);
+                    SetJSONValueString("Text", value);
                 ViewState["Text"] = value;
             }
         }
@@ -43,18 +43,6 @@ namespace Ra.Widgets
                 if (value != AccessKey)
                     SetJSONValueString("AccessKey", value);
                 ViewState["AccessKey"] = value;
-            }
-        }
-
-        [DefaultValue(true)]
-        public bool Enabled
-        {
-            get { return ViewState["Enabled"] == null ? true : (bool)ViewState["Enabled"]; }
-            set
-            {
-                if (value != Enabled)
-                    SetJSONGenericValue("disabled", (value ? "" : "disabled"));
-                ViewState["Enabled"] = value;
             }
         }
 
@@ -82,20 +70,19 @@ namespace Ra.Widgets
             if( Click == null )
                 return string.Format("Ra.C('{0}');", ClientID);
             else
-                return string.Format("Ra.C('{0}', {{evts:[['click']]}});", ClientID);
+                return string.Format("Ra.C('{0}', {{evts:[['click', true]]}});", ClientID);
         }
 
         // Override this one to create specific HTML for your widgets
         public override string GetHTML()
         {
             string accessKey = string.IsNullOrEmpty(AccessKey) ? "" : string.Format(" accesskey=\"{0}\"", AccessKey);
-            return string.Format("<input type=\"button\" id=\"{0}\" value=\"{1}\"{2}{3}{4}{5} />", 
+            return string.Format("<a href=\"javascript:Ra.emptyFunction();\" id=\"{0}\"{2}{3}{4}>{1}</a>", 
                 ClientID,
                 Text,
                 GetCssClassHTMLFormatedAttribute(),
                 GetStyleHTMLFormatedAttribute(),
-                accessKey,
-                (Enabled ? "" : "disabled=\"disabled\""));
+                accessKey);
         }
 
         #endregion
