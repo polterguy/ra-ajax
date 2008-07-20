@@ -260,7 +260,7 @@ namespace Ra.Extensions
             HTML.HtmlTableCell bottomCell = new HTML.HtmlTableCell();
             bottomCell.EnableViewState = false;
             bottomCell.Style["text-align"] = "center";
-            bottomCell.ID = "headC_" + Value.ToString("dd_MM_yyyy", System.Globalization.CultureInfo.InvariantCulture);
+            bottomCell.ID = "bottC_" + Value.ToString("dd_MM_yyyy", System.Globalization.CultureInfo.InvariantCulture);
             bottomCell.ColSpan = 8;
             LinkButton today = new LinkButton();
             today.Text = DateTime.Now.ToString("MMMM d, yyyy", System.Threading.Thread.CurrentThread.CurrentUICulture);

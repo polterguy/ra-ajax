@@ -199,15 +199,45 @@ Ra.extend(Ra.Control.prototype, {
     }
   },
 
+  checkValueForKeyUp: function() {
+    // This logic will actually HALT the Ajax Request until the user have NOT 
+    // typed anything into the Control for more than 0.5 seconds...
+    if( this.element.value == this._oldValue ) {
+      var x = new Ra.Ajax({
+        args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=keyup',
+        raCallback:true,
+        onAfter: this.onFinishedRequest,
+        callingContext: this
+      });
+    } else {
+      this._oldValue = this.element.value;
+      var T = this;
+      setTimeout(function() {
+        T.checkValueForKeyUp();
+      }, 500);
+    }
+  },
+
   // Called when an event is raised, the parameter passed is the this.options.serverEvent instance 
   // which we will use to know how to call our server
   onEvent: function(evt, shouldStop, domEvt) {
-    var x = new Ra.Ajax({
-      args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=' + evt,
-      raCallback:true,
-      onAfter: this.onFinishedRequest,
-      callingContext: this
-    });
+    if( evt == 'keyup' ) {
+      // This one needs SPECIAL handling to not drain resources
+      if( !this._oldValue ) {
+        this._oldValue = this.element.value;
+        var T = this;
+        setTimeout(function() {
+          T.checkValueForKeyUp();
+        }, 500);
+      }
+    } else {
+      var x = new Ra.Ajax({
+        args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=' + evt,
+        raCallback:true,
+        onAfter: this.onFinishedRequest,
+        callingContext: this
+      });
+    }
     if( shouldStop ) {
       // Event is supposed to be stopped
       domEvt.stopped = true;
@@ -217,6 +247,8 @@ Ra.extend(Ra.Control.prototype, {
   },
 
   onFinishedRequest: function(response) {
+    if( this._oldValue )
+      delete this._oldValue;
     eval(response);
   },
 
