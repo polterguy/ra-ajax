@@ -72,6 +72,13 @@ namespace NUnitTests
             Browser.Eval("checkStylesWasSerialized();");
             AssertSuccess("Serialization of RaWebControl styles didn't work");
         }
+
+        [NUnit.Framework.Test]
+        public void LinkButtonBasics()
+        {
+            Browser.Link("testLinkButton").Click();
+            Assert.AreEqual("success", Browser.Link("testLinkButton").Text);
+        }
     }
 }
 

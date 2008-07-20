@@ -179,6 +179,12 @@ function checkStylesWasSerialized() {
                     OnClick="testVerifyStyleValue_Click"
                     runat="server" />
 
+                <ra:LinkButton 
+                    ID="testLinkButton" 
+                    Text="Test LinkButton"
+                    OnClick="testLinkButton_Click"
+                    runat="server" />
+
                 <br />
                 <br />
 
