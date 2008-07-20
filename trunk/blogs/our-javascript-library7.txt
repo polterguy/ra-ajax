@@ -25,7 +25,7 @@ Here is the complete code for our core JavaScript Ajax library for your convenie
 var Ra = {};
 
 Ra.Browser = {
-  IE:             window.attachEvent && !window.opera,
+  IE:             window.attachEvent &amp;&amp; !window.opera,
   Opera:          !!window.opera,
   WebKit:         navigator.userAgent.indexOf('AppleWebKit') != -1,
   Gecko:          navigator.userAgent.indexOf('Gecko') != -1,
@@ -258,7 +258,7 @@ Ra.extend(Ra.XHR.prototype, {
 
   // Called when request is finished
   _finished: function(){
-    if( this.xhr.status >= 200 && this.xhr.status < 300 ) {
+    if( this.xhr.status >= 200 &amp;&amp; this.xhr.status < 300 ) {
       this.options.onSuccess(this.xhr.responseText);
     } else {
       this.options.onError(this.xhr.status, this.xhr.responseText);
@@ -300,7 +300,7 @@ Ra.extend(Ra.Form.prototype, {
   callback: function() {
     var T = this;
     var xhr = new Ra.XHR(this.options.url, {
-      body: this.serializeForm() + '&' + this.options.args,
+      body: this.serializeForm() + '&amp;' + this.options.args,
       onSuccess: function(response) {
         if( !T.options.callingContext ) {
           T.options.onFinished(response);
@@ -337,7 +337,7 @@ Ra.extend(Ra.Form.prototype, {
       // Notice also that according to the HTTP/HTML standards we should also serialize the
       // name/value pair meaning that the name attribute are being used as the ID of the control
       // Though for Ra controls the name attribute will have the same value as the ID attribute
-      if( !el.disabled && el.name && el.name.length > 0 ) {
+      if( !el.disabled &amp;&amp; el.name &amp;&amp; el.name.length > 0 ) {
         switch(el.tagName.toLowerCase()) {
           case 'input':
             switch( el.type ) {
@@ -347,7 +347,7 @@ Ra.extend(Ra.Form.prototype, {
               case 'radio':
                 if( el.checked ) {
                   if( retVal.length > 0 ) {
-                    retVal += '&';
+                    retVal += '&amp;';
                   }
                   retVal += el.name + '=' + encodeURIComponent(el.value);
                 }
@@ -356,7 +356,7 @@ Ra.extend(Ra.Form.prototype, {
               case 'password':
               case 'text':
                 if( retVal.length > 0 ) {
-                  retVal += '&';
+                  retVal += '&amp;';
                 }
                 retVal += el.name + '=' + encodeURIComponent(el.value);
                 break;
@@ -365,7 +365,7 @@ Ra.extend(Ra.Form.prototype, {
           case 'select':
           case 'textarea':
             if( retVal.length > 0 ) {
-              retVal += '&';
+              retVal += '&amp;';
             }
             retVal += el.name + '=' + encodeURIComponent(el.value);
             break;
@@ -472,8 +472,8 @@ Ra.extend(Ra.Ajax.prototype, {
       }
     });
     if( this.options.raCallback ) {
-      if( form.options.args !== null && form.options.args.length > 0 ) {
-        form.options.args += '&';
+      if( form.options.args !== null &amp;&amp; form.options.args.length > 0 ) {
+        form.options.args += '&amp;';
       }
       form.options.args += '__RA_CALLBACK=true';
     }
@@ -574,7 +574,7 @@ Ra.extend(Ra.Effect.prototype, {
   }
 });
 </pre>
-
+Feel free to use the above code under the terms of the MIT license.
 
 Have a nice day, and in case I don't see you a nice evening and night too until we meet again :)
 
