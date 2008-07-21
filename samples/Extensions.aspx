@@ -69,14 +69,18 @@
         runat="server" 
         ID="calendarDTP" 
         Visible="false"
-        OnSelectedValueChanged="calendarDTP_SelectedValueChanged"
+        OnSelectedValueChanged="calendarDTP_SelectedValueChanged" 
+        OnDateClicked="calendarDTP_DateClicked"
         CssClass="calendar"
+        style="position:absolute;"
         Value="2008.07.20 23:54" />
     <p>
         And the Calendar Control is 100% localizable which is done in C# on the server so you can localize it to any 
         language you wish. By default it uses the System.Threading.Thread.CurrentThread.CurrentUICulture CultureInfo.
-        And the whole thing will probably work like all other Ra Ajax Controls on any browser including browsers for
-        iPhone, WindowsMobile, Linux, Mac OS X, etc...
+        The whole thing will probably work like a charm like all other Ra Ajax Controls on any relatively standard 
+        compliant browser including browsers for iPhone, WindowsMobile, Linux, Mac OS X, etc. If you want to see
+        an easier way of creating complex Ajax functionality without even having to create your own Ajax Extension
+        Control then you can have a look at the <a href="Flexible.aspx">Ajax AutoCompleter Example</a>.
     </p>
 
 </asp:Content>

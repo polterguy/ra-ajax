@@ -51,7 +51,7 @@
                             <ul class="links">
                                 <li>
                                     <a runat="server"
-                                        href="~/Default.aspx" 
+                                        href="~/" 
                                         title="Ra Ajax Samples Home">Ra Ajax Samples Home</a>
                                 </li>
                                 <li>

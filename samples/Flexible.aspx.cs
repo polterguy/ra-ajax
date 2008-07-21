@@ -1,14 +1,15 @@
+/*
+ * Ra Ajax - An Ajax Library for Mono ++
+ * Copyright 2008 - Thomas Hansen polterguy@gmail.com
+ * This code is licensed under an MIT(ish) kind of license which 
+ * can be found in the license.txt file on disc.
+ * 
+ */
+
 using System;
-using System.Data;
-using System.Configuration;
-using System.Collections;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using NHibernate.Expression;
+using System.Web.UI.WebControls;
+using Ra.Widgets;
 
 public partial class Flexible : System.Web.UI.Page
 {
@@ -21,6 +22,8 @@ public partial class Flexible : System.Web.UI.Page
     protected void txt_KeyUp(object sender, EventArgs e)
     {
         lbl.Text = txt.Text;
+        Effect effect = new EffectFadeIn(lbl, 0.4M);
+        effect.Render();
     }
 
     protected void autoTxt_KeyUp(object sender, EventArgs e)

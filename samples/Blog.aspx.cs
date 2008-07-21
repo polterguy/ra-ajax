@@ -23,10 +23,10 @@ public partial class Blog : System.Web.UI.Page
             // Retrieving blogger username
             string bloggerUserName = Request.Params["blogger"];
             if (string.IsNullOrEmpty(bloggerUserName))
-                Response.Redirect("Default.aspx", true);
+                Response.Redirect("~", true);
             Operator oper = Operator.FindOne(Expression.Eq("Username", bloggerUserName));
             if (oper == null)
-                Response.Redirect("Default.aspx", true);
+                Response.Redirect("~", true);
 
             if (Request.Params["rss"] == "true")
             {
@@ -253,10 +253,10 @@ public partial class Blog : System.Web.UI.Page
         // Re-render blogs
         string bloggerUserName = Request.Params["blogger"];
         if (string.IsNullOrEmpty(bloggerUserName))
-            Response.Redirect("Default.aspx", true);
+            Response.Redirect("~", true);
         Operator oper = Operator.FindOne(Expression.Eq("Username", bloggerUserName));
         if (oper == null)
-            Response.Redirect("Default.aspx", true);
+            Response.Redirect("~", true);
         DataBindBlogs(oper);
         blogWrapper.SignalizeReRender();
         Effect effect = new EffectFadeIn(blogWrapper, 0.4M);
@@ -273,10 +273,10 @@ public partial class Blog : System.Web.UI.Page
     {
         string bloggerUserName = Request.Params["blogger"];
         if (string.IsNullOrEmpty(bloggerUserName))
-            Response.Redirect("Default.aspx", true);
+            Response.Redirect("~", true);
         Operator oper = Operator.FindOne(Expression.Eq("Username", bloggerUserName));
         if (oper == null)
-            Response.Redirect("Default.aspx", true);
+            Response.Redirect("~", true);
 
         Entity.Blog blog = null;
         if( hidBlogId.Value == "")

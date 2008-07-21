@@ -1,13 +1,12 @@
+/*
+ * Ra Ajax - An Ajax Library for Mono ++
+ * Copyright 2008 - Thomas Hansen polterguy@gmail.com
+ * This code is licensed under an MIT(ish) kind of license which 
+ * can be found in the license.txt file on disc.
+ * 
+ */
+
 using System;
-using System.Data;
-using System.Configuration;
-using System.Collections;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 
 public partial class Facts : System.Web.UI.Page
 {
