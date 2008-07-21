@@ -35,6 +35,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calendar.cs" />
+    <Compile Include="TabView.cs" />
+    <Compile Include="TabControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

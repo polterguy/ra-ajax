@@ -273,6 +273,83 @@ img
 }
 
 
+/* TabControl styles
+ */
+.tab-control
+{
+	width:600px;
+}
 
+.tab-control .tab-header
+{
+}
+
+.tab-control .tab-header ul
+{
+	padding:0;
+	margin:0;
+}
+
+.tab-control .tab-header ul li
+{
+	list-style-type:none;
+	display:inline;
+	padding-right:2px;
+}
+
+.tab-control .tab-header ul li a
+{
+	text-decoration:none;
+	margin:4px;
+	color:#333;
+}
+
+.tab-control .tab-header ul li a:hover
+{
+	color:#666;
+}
+
+
+
+.tab-control .tab-header ul li span.left
+{
+	background:Transparent url(tabcontrol.png) no-repeat;
+	width:3px;
+}
+
+.tab-control .tab-header ul li span.center
+{
+	background:Transparent url(tabcontrol.png) repeat-x scroll 0 -50px;
+}
+
+.tab-control .tab-header ul li span.right
+{
+	background:Transparent url(tabcontrol.png) no-repeat -2px 0px;
+	width:3px;
+}
+
+
+
+.tab-control .tab-header ul li.active span.left
+{
+	background:Transparent url(tabcontrol.png) no-repeat scroll 0 -100px;
+}
+
+.tab-control .tab-header ul li.active span.center
+{
+	background:Transparent url(tabcontrol.png) repeat-x scroll 0 -150px;
+}
+
+.tab-control .tab-header ul li.active span.right
+{
+	background:Transparent url(tabcontrol.png) no-repeat scroll -2px -100px;
+}
+
+
+.tab-control .content
+{
+	padding:15px;
+	background-color:#e1e1e1;
+}
 
 
