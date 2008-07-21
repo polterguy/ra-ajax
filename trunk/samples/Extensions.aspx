@@ -27,6 +27,7 @@
         to the code model in Ra Ajax. Here you can see an <em>Ajax Calendar control</em> I have 
         created without <em>one single line of custom JavaScript</em>.
     </p>
+    <h3>Ajax Calendar</h3>
     <ra:Label 
         runat="server" 
         ID="selectedDate" 
@@ -78,9 +79,38 @@
         And the Calendar Control is 100% localizable which is done in C# on the server so you can localize it to any 
         language you wish. By default it uses the System.Threading.Thread.CurrentThread.CurrentUICulture CultureInfo.
         The whole thing will probably work like a charm like all other Ra Ajax Controls on any relatively standard 
-        compliant browser including browsers for iPhone, WindowsMobile, Linux, Mac OS X, etc. If you want to see
-        an easier way of creating complex Ajax functionality without even having to create your own Ajax Extension
-        Control then you can have a look at the <a href="Flexible.aspx">Ajax AutoCompleter Example</a>.
+        compliant browser including browsers for iPhone, WindowsMobile, Linux, Mac OS X, etc. 
+    </p>
+    <h3>Ajax TabControl</h3>
+    <p>
+        Here's another example of how to create an Ajax Extension control yourself. This time we have created an 
+        <em>Ajax TabControl</em> for you. Also this Ajax Control is completely written without one line of
+        Custom JavaScript and completely created in C#. The TabControl works by being a wrapper around a collection
+        of Ra Panels and then it will only show ONE of those panels at the same time. Then the user can switch
+        active panel by a set of buttons at the top of it.
+    </p>
+    <ext:TabControl runat="server" ID="tab" CssClass="tab-control">
+        <ext:TabView Caption="Tab view 1" runat="server" ID="tab1" CssClass="content">
+            Here you can see an example of an <em>Ajax TabControl</em> and as you can see
+            it is also possible to add up other Ajax Controls into the TabControl just
+            as if it was a normal Panel. Try clicking the LinkButton below...
+            <br />
+            <ra:LinkButton 
+                runat="server" 
+                ID="lnkTest" 
+                Text="Click me..."
+                OnClick="lnkTest_Click" />
+        </ext:TabView>
+        <ext:TabView Caption="Tab view 2" runat="server" ID="tab2" CssClass="content">
+            TabView 2
+        </ext:TabView>
+        <ext:TabView Caption="Third" runat="server" ID="tab3" CssClass="content">
+            Another TabView...
+        </ext:TabView>
+    </ext:TabControl>
+    <p>
+        If you want to see an easier way of creating complex Ajax functionality without even having to create your 
+        own Ajax Extension Control then you can have a look at the <a href="Flexible.aspx">Ajax AutoCompleter Example</a>.
     </p>
 
 </asp:Content>

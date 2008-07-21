@@ -11,9 +11,9 @@ using Ra.Widgets;
 
 public partial class Extensions : System.Web.UI.Page
 {
-    protected void Page_Load(object sender, EventArgs e)
+    protected void lnkTest_Click(object sender, EventArgs e)
     {
-
+        lnkTest.Text = "I was clicked :)";
     }
 
     protected void calendar_SelectedValueChanged(object sender, EventArgs e)
