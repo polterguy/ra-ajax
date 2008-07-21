@@ -195,6 +195,9 @@ img
 	font-size:0.7em;
 	display:inline-block;
 	border:outset 4px #999;
+	/* IE hack */
+	*float:left;
+	*display:inline;
 }
 
 .calendar select

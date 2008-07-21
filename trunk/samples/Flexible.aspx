@@ -36,12 +36,16 @@
     <br />
     <ra:Label 
         runat="server" 
+        Text="Watch me change"
+        style="font-style:italic;"
         ID="lbl" />
     <p>
         Now by combining a TextBox with the KeyUp event together with a Panel we can do really nice things. 
         Below is an Ajax AutoCompleter created by combining an Ajax Panel together with a TextBox with the
         KeyUp event handled. By typing into the TextBox below you will actually query through my blogs
-        and return the blogs which contains whatever phrase you're typing in.
+        and return the blogs which contains whatever phrase you're typing in. Try for instance to type in;
+        <em>how to create an ajax library</em> to search through my articles about "How to create an Ajax 
+        Library".
     </p>
     <ra:TextBox 
         runat="server" 

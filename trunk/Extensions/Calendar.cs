@@ -22,6 +22,8 @@ namespace Ra.Extensions
     {
         public event EventHandler SelectedValueChanged;
 
+        public event EventHandler DateClicked;
+
         public DateTime Value
         {
             get { return ViewState["Value"] == null ? DateTime.MinValue : (DateTime)ViewState["Value"]; }
@@ -282,6 +284,8 @@ namespace Ra.Extensions
             CreateCalendarControls();
             if (SelectedValueChanged != null)
                 SelectedValueChanged(this, new EventArgs());
+            if (DateClicked != null)
+                DateClicked(this, new EventArgs());
         }
 
         private void CreateYearMonthPicker(HTML.HtmlTable tbl)
@@ -377,6 +381,8 @@ namespace Ra.Extensions
                 if (SelectedValueChanged != null)
                     SelectedValueChanged(this, new EventArgs());
             }
+            if (DateClicked != null)
+                DateClicked(this, new EventArgs());
         }
     }
 }

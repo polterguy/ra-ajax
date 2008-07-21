@@ -18,10 +18,10 @@ public partial class BlogItem : System.Web.UI.Page
         {
             string blogId = Request.Params["id"];
             if (string.IsNullOrEmpty(blogId))
-                Response.Redirect("Default.aspx", true);
+                Response.Redirect("~", true);
             Entity.Blog blog = Entity.Blog.FindOne(Expression.Eq("Url", blogId + ".blog"));
             if (blog == null)
-                Response.Redirect("Default.aspx", true);
+                Response.Redirect("~", true);
             header.InnerHtml = blog.Header;
             body.InnerHtml = blog.Body;
             date.InnerHtml = blog.Created.ToString("MMMM dd, yyyy", System.Globalization.CultureInfo.InvariantCulture);
