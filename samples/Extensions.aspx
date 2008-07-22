@@ -114,9 +114,16 @@
             <ext:Calendar 
                 runat="server" 
                 ID="calTab" 
-                OnSelectedValueChanged="calTab_SelectedValueChanged"
+                OnSelectedValueChanged="calTab_SelectedValueChanged" 
+                OnRenderDay="calTab_RenderDay"
                 CssClass="calendar"
                 Value="2008.07.20 23:54" />
+            <br />
+            In the above calendar we have added up an Event Handler for the RenderDay Event and
+            added up the "holidays for planet Venus in green" as you can see. We could have
+            taken this WAY further by even add up our own CONTROLS for specific dates and so
+            on to create a "complete calendar" for whatever we wish. But we've kept the sample
+            small, light and consice to make it easy to understand.
         </ext:TabView>
         <ext:TabView Caption="Third" runat="server" ID="tab3" CssClass="content">
             While here we just have some very stupid text to show that <em>this is also</em> pure
