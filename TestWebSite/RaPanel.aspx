@@ -164,6 +164,11 @@ function verifyPanelStyleAfterVisible() {
                         <ra:Button runat="server" ID="btnRec1" Text="Changes text" OnClick="btnRec1_Click" />
                     </ra:Panel>
                 </ra:Panel>
+                <ra:Panel runat="server" ID="pnlRecVisible1">
+                    <ra:Panel runat="server" ID="pnlRecVisible2">
+                        <ra:Button runat="server" ID="btnRecVisible" Text="Recursive Changes Text" OnClick="btnRecVisible_Click" />
+                    </ra:Panel>
+                </ra:Panel>
                 <ra:Button runat="server" ID="btnShowPnlRec" Text="Shows recursive panels" OnClick="btnShowPnlRec_Click" />
 
                 <br />

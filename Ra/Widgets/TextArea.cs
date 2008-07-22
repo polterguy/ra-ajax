@@ -154,8 +154,12 @@ namespace Ra.Widgets
         }
 
         // Override this one to create specific initialization script for your widgets
+        private bool _scriptRetrieved;
         public override string GetClientSideScript()
         {
+            if (_scriptRetrieved)
+                return "";
+            _scriptRetrieved = true;
             string evts = "";
             if (TextChanged != null)
                 evts += "['change']";
@@ -184,11 +188,11 @@ namespace Ra.Widgets
                             options += ",";
                         options += "select:true";
                     }
-                    return string.Format("Ra.C('{0}',{{{1}}});", ClientID, options);
+                    return string.Format("\r\nRa.C('{0}',{{{1}}});", ClientID, options);
                 }
                 else
                 {
-                    return string.Format("Ra.C('{0}');", ClientID);
+                    return string.Format("\r\nRa.C('{0}');", ClientID);
                 }
             }
             else

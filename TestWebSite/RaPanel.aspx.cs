@@ -82,6 +82,11 @@ public partial class RaPanel : System.Web.UI.Page
         testStyleInvisible.Style["color"] = "Yellow";
         testStyleInvisible.Visible = true;
     }
+
+    protected void btnRecVisible_Click(object sender, EventArgs e)
+    {
+        btnRecVisible.Text += "x";
+    }
 }
 
 
