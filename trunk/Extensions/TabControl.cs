@@ -67,8 +67,13 @@ namespace Ra.Extensions
                 TabView view = Controls[idx] as TabView;
                 HTML.HtmlGenericControl li = new HTML.HtmlGenericControl("li");
 
+                string cssClass = "";
                 if (tabView == ActiveTabViewIndex)
-                    li.Attributes.Add("class", "active");
+                    cssClass += "active ";
+                if (tabView == 0)
+                    cssClass += "first ";
+                if (!string.IsNullOrEmpty(cssClass))
+                    li.Attributes.Add("class", cssClass);
 
                 HTML.HtmlGenericControl left = new HTML.HtmlGenericControl("span");
                 left.Attributes.Add("class", "left");
