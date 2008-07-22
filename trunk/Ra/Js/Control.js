@@ -256,11 +256,13 @@ Ra.extend(Ra.Control.prototype, {
 
   reRender: function(html) {
 
-    // Unlistening all event observers to avoid leaking memory
-    var evts = this.options.evts;
-    for( var idx = 0; idx < evts.length; idx++ ) {
-      (this.options.ctrl || this.element).stopObserving(evts[idx][0], this.onEvent);
-    }
+    // Since we're re-rendering the control we have to destroy 
+    // the child controls in addition to unlistening all the event handlers
+    // for the "this control" before re initializing the event handlers again 
+    // after replacing the HTML.
+    // The "new child controls" will initialize themselves...
+    this._destroyChildControls();
+    this._unlistenEventHandlers();
 
     this.element = this.element.replace(html);
 
@@ -347,11 +349,8 @@ Ra.extend(Ra.Control.prototype, {
   // of registered controls collection
   _destroyThisControl: function() {
 
-    // Unlistening all event observers to avoid leaking memory
-    var evts = this.options.evts;
-    for( var idx = 0; idx < evts.length; idx++ ) {
-      (this.options.ctrl || this.element).stopObserving(evts[idx][0], this.onEvent);
-    }
+    // Unregistering the event handlers for this control
+    this._unlistenEventHandlers();
 
     // Looping through registered controls to remove the "this instance"
     var idxToRemove;
@@ -364,6 +363,16 @@ Ra.extend(Ra.Control.prototype, {
 
     // Removes control out from registered controls collection
     Ra.Control._controls.splice(idxToRemove, 1);
+  },
+
+
+
+  _unlistenEventHandlers: function() {
+    // Unlistening all event observers to avoid leaking memory
+    var evts = this.options.evts;
+    for( var idx = 0; idx < evts.length; idx++ ) {
+      (this.options.ctrl || this.element).stopObserving(evts[idx][0], this.onEvent);
+    }
   }
 });
 

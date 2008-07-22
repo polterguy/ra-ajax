@@ -270,12 +270,16 @@ namespace Ra.Widgets
         { }
 
         // Used to retrieve the client-side initialization script
+        private bool _scriptRetrieved;
         public virtual string GetClientSideScript()
         {
+            if (_scriptRetrieved)
+                return "";
+            _scriptRetrieved = true;
             if (_hasSetFocus)
-                return string.Format("Ra.C('{0}', {{focus:true}});", ClientID);
+                return string.Format("\r\nRa.C('{0}', {{focus:true}});", ClientID);
             else
-                return string.Format("Ra.C('{0}');", ClientID);
+                return string.Format("\r\nRa.C('{0}');", ClientID);
         }
 
         // The HTML for the control

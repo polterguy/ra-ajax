@@ -130,6 +130,13 @@ namespace NUnitTests
             Browser.Eval("verifyPanelStyleAfterVisible();");
             AssertSuccess("Style serialization of invisible controls doesn't work correctly");
         }
+
+        [NUnit.Framework.Test]
+        public void VerifyNoDoubleEventsOnRecursivePanelsAndButton()
+        {
+            Browser.Button("pnlRecVisible1_pnlRecVisible2_btnRecVisible").Click();
+            Assert.AreEqual("Recursive Changes Textx", Browser.Button("pnlRecVisible1_pnlRecVisible2_btnRecVisible").Text);
+        }
     }
 }
 
