@@ -39,4 +39,11 @@ public partial class Extensions : System.Web.UI.Page
         Effect effect = new EffectFadeIn(calendarDTP, 0.4M);
         effect.Render();
     }
+
+    protected void calTab_SelectedValueChanged(object sender, EventArgs e)
+    {
+        lblCalTab.Text = calTab.Value.ToString("dddd, MMMM dd, yyyy", System.Threading.Thread.CurrentThread.CurrentUICulture);
+        Effect effect = new EffectFadeIn(lblCalTab, 0.4M);
+        effect.Render();
+    }
 }
