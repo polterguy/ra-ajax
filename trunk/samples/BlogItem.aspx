@@ -16,6 +16,17 @@
         <br />
         <br />
         <div runat="server" id="body"></div>
+        <a 
+            style="font-size:10px;" 
+            runat="server" 
+            id="previous" 
+            title="Previous blog">&lt;&lt; Previous</a>
+        <br />
+        <a 
+            style="font-size:10px;" 
+            runat="server" 
+            id="next" 
+            title="Next blog">Next &gt;&gt;</a>
     </div>
 
 </asp:Content>

@@ -20,6 +20,8 @@ namespace Ra.Extensions
     [ASP.ToolboxData("<{0}:TabControl runat=server></{0}:TabControl>")]
     public class TabControl : Panel, ASP.INamingContainer
     {
+        public event EventHandler ActiveTabViewChanged;
+
         [DefaultValue(0)]
         public int ActiveTabViewIndex
         {
@@ -112,6 +114,8 @@ namespace Ra.Extensions
             SignalizeReRender();
             Controls.RemoveAt(0);
             CreateChildTabViews();
+            if (ActiveTabViewChanged != null)
+                ActiveTabViewChanged(this, new EventArgs());
         }
 
         protected override void OnPreRender(EventArgs e)
