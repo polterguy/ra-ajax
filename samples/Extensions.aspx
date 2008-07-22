@@ -102,10 +102,28 @@
                 OnClick="lnkTest_Click" />
         </ext:TabView>
         <ext:TabView Caption="Tab view 2" runat="server" ID="tab2" CssClass="content">
-            TabView 2
+            Here we even threw in an Ajax Calendar more just for the fun of it :)
+            <br />
+            <ra:Label 
+                runat="server" 
+                ID="lblCalTab" 
+                Style="font-style:italic;color:Gray;"
+                Text="Select a date" />
+            <br />
+            <br />
+            <ext:Calendar 
+                runat="server" 
+                ID="calTab" 
+                OnSelectedValueChanged="calTab_SelectedValueChanged"
+                CssClass="calendar"
+                Value="2008.07.20 23:54" />
         </ext:TabView>
         <ext:TabView Caption="Third" runat="server" ID="tab3" CssClass="content">
-            Another TabView...
+            While here we just have some very stupid text to show that <em>this is also</em> pure
+            <span style="color:Yellow;">HTML</span> which can be manipulated <strong>just</strong>
+            like any other HTML in your forms :)
+            <h3>HOWDY :)</h3>
+            <img src="media/ajax.png" alt="Ajax logo" />
         </ext:TabView>
     </ext:TabControl>
     <p>
