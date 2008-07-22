@@ -18,11 +18,28 @@ using HTML = System.Web.UI.HtmlControls;
 namespace Ra.Extensions
 {
     [ASP.ToolboxData("<{0}:Calendar runat=server />")]
-    public class Calendar : RaWebControl, IRaControl, ASP.INamingContainer
+    public class Calendar : Panel, ASP.INamingContainer
     {
         public event EventHandler SelectedValueChanged;
 
         public event EventHandler DateClicked;
+
+        protected override void LoadViewState(object savedState)
+        {
+            base.LoadViewState(savedState);
+
+            // Since we're dependant upon that the ViewState has finished loading before
+            // we initialize the ChildControls since how the child controls (and which)
+            // child controls are being re-created is dependant upon a ViewState saved value
+            // this is the earliest possible time we can reload the ChildControls for the
+            // Control
+            EnsureChildControls();
+        }
+
+        protected override void CreateChildControls()
+        {
+            CreateCalendarControls();
+        }
 
         public DateTime Value
         {
@@ -41,103 +58,6 @@ namespace Ra.Extensions
             {
                 ViewState["StartsOn"] = value;
             }
-        }
-
-        #region [ -- Overridden (abstract/virtual) methods from RaControl -- ]
-
-        // Override this one to create specific HTML for your widgets
-        public override string GetHTML()
-        {
-            return string.Format("<div id=\"{0}\"{2}{3}>{1}</div>",
-                ClientID,
-                GetChildControlsHTML(),
-                GetCssClassHTMLFormatedAttribute(),
-                GetStyleHTMLFormatedAttribute());
-        }
-
-        private bool _scriptRetrieved;
-        public override string GetClientSideScript()
-        {
-            if (_scriptRetrieved)
-                return "";
-            _scriptRetrieved = true;
-            string tmp = base.GetClientSideScript();
-            tmp += GetChildrenClientSideScript(Controls);
-            return tmp;
-        }
-
-        protected override string GetChildrenClientSideScript()
-        {
-            return GetChildrenClientSideScript(Controls);
-        }
-
-        private string GetChildrenClientSideScript(ASP.ControlCollection controls)
-        {
-            string retVal = "";
-            foreach (ASP.Control idx in controls)
-            {
-                if (idx.Visible)
-                {
-                    if (idx is RaControl)
-                    {
-                        retVal += (idx as RaControl).GetClientSideScript();
-                    }
-                    retVal += GetChildrenClientSideScript(idx.Controls);
-                }
-            }
-            return retVal;
-        }
-
-        private string GetChildControlsHTML()
-        {
-            // Must set all children to RenderHtml to get this to work...
-            SetAllChildrenToRenderHtml(Controls);
-
-            // Streaming Controls into Memory Stream and returning HTML as string...
-            MemoryStream stream = new MemoryStream();
-            TextWriter writer = new StreamWriter(stream);
-            ASP.HtmlTextWriter htmlWriter = new System.Web.UI.HtmlTextWriter(writer);
-
-            // Render children
-            RenderChildren(htmlWriter);
-            htmlWriter.Flush();
-            writer.Flush();
-
-            // Return string representation of HTML
-            stream.Position = 0;
-            TextReader reader = new StreamReader(stream);
-            string retVal = reader.ReadToEnd();
-            return retVal;
-        }
-
-        private void SetAllChildrenToRenderHtml(ASP.ControlCollection controls)
-        {
-            foreach (ASP.Control idx in controls)
-            {
-                if (idx is RaControl)
-                {
-                    (idx as RaControl).Phase = RenderingPhase.RenderHtml;
-                }
-                SetAllChildrenToRenderHtml(idx.Controls);
-            }
-        }
-
-        #endregion
-
-        // IMPORTANT!!
-        // When we have controls which contains "special" child controls we need
-        // to make sure those controls are being RE-created in the OnLoad overridden method of
-        // the Control.
-        // This logic is being done in the next two methods...!
-        protected override void OnLoad(EventArgs e)
-        {
-            EnsureChildControls();
-            base.OnLoad(e);
-        }
-
-        protected override void CreateChildControls()
-        {
-            CreateCalendarControls();
         }
 
         private LinkButton SelectedValueBtn
@@ -280,18 +200,6 @@ namespace Ra.Extensions
             Controls.Add(tbl);
         }
 
-        void today_Click(object sender, EventArgs e)
-        {
-            Value = DateTime.Now.Date;
-            SignalizeReRender();
-            Controls.Clear();
-            CreateCalendarControls();
-            if (SelectedValueChanged != null)
-                SelectedValueChanged(this, new EventArgs());
-            if (DateClicked != null)
-                DateClicked(this, new EventArgs());
-        }
-
         private void CreateYearMonthPicker(HTML.HtmlTable tbl)
         {
             // Creating header row (with month and year picker)
@@ -338,6 +246,18 @@ namespace Ra.Extensions
 
             headerRow.Cells.Add(headerCell);
             tbl.Rows.Add(headerRow);
+        }
+
+        void today_Click(object sender, EventArgs e)
+        {
+            Value = DateTime.Now.Date;
+            SignalizeReRender();
+            Controls.Clear();
+            CreateCalendarControls();
+            if (SelectedValueChanged != null)
+                SelectedValueChanged(this, new EventArgs());
+            if (DateClicked != null)
+                DateClicked(this, new EventArgs());
         }
 
         void month_SelectedIndexChanged(object sender, EventArgs e)

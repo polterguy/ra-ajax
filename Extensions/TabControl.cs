@@ -18,8 +18,25 @@ using HTML = System.Web.UI.HtmlControls;
 namespace Ra.Extensions
 {
     [ASP.ToolboxData("<{0}:TabControl runat=server></{0}:TabControl>")]
-    public class TabControl : Panel
+    public class TabControl : Panel, ASP.INamingContainer
     {
+        protected override void LoadViewState(object savedState)
+        {
+            base.LoadViewState(savedState);
+
+            // Since we're dependant upon that the ViewState has finished loading before
+            // we initialize the ChildControls since how the child controls (and which)
+            // child controls are being re-created is dependant upon a ViewState saved value
+            // this is the earliest possible time we can reload the ChildControls for the
+            // Control
+            EnsureChildControls();
+        }
+
+        protected override void CreateChildControls()
+        {
+            CreateChildTabViews();
+        }
+
         [DefaultValue(0)]
         public int ActiveTabViewIndex
         {
@@ -28,22 +45,6 @@ namespace Ra.Extensions
             {
                 ViewState["SelectedViewIndex"] = value;
             }
-        }
-
-        // IMPORTANT!!
-        // When we have controls which contains "special" child controls we need
-        // to make sure those controls are being RE-created in the OnLoad overridden method of
-        // the Control.
-        // This logic is being done in the next two methods...!
-        protected override void OnLoad(EventArgs e)
-        {
-            EnsureChildControls();
-            base.OnLoad(e);
-        }
-
-        protected override void CreateChildControls()
-        {
-            CreateChildTabViews();
         }
 
         private void CreateChildTabViews()
