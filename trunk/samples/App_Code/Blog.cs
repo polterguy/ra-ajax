@@ -1,6 +1,7 @@
 using System;
 using Castle.ActiveRecord;
 using NHibernate.Expression;
+using System.Web;
 
 namespace Entity
 {
@@ -92,11 +93,31 @@ namespace Entity
                 if (countOfOldWithSameURL > 0)
                     Url += (countOfOldWithSameURL + 1).ToString();
                 Url += ".blog";
-            }
 
-            // Replacing CR/LF with <br /> elements...
-            Body = Body.Replace("\r\n", "<br />").Replace("\n", "<br />");
-            base.Save();
+                // Creating comments forum thread
+                ForumPost forum = new ForumPost();
+                string baseUrl = HttpContext.Current.Request.Url.ToString();
+                baseUrl = baseUrl.Substring(0, baseUrl.LastIndexOf("/") + 1) + "Forums/";
+                forum.Body = "This is an auto generated forum thread about the blog; <a href=\"" +
+                    baseUrl.Replace("/Forums", "") + this.Url +
+                    "\">" + this.Header + "</a>";
+                forum.Created = DateTime.Now;
+                forum.Header = "Comments about; " + this.Header;
+                forum.Operator = this.Operator;
+                forum.Save();
+
+                Body += "\r\n\r\n<a href=\"" + baseUrl + forum.Url + "\">Comments</a>\r\n\r\n";
+
+                // Replacing CR/LF with <br /> elements...
+                Body = Body.Replace("\r\n", "<br />").Replace("\n", "<br />");
+                base.Save();
+            }
+            else
+            {
+                // Replacing CR/LF with <br /> elements...
+                Body = Body.Replace("\r\n", "<br />").Replace("\n", "<br />");
+                base.Save();
+            }
         }
     }
 }

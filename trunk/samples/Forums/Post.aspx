@@ -20,7 +20,9 @@
         runat="server" 
         id="pnlLinkToLogin" 
         style="position:absolute;top:290px;right:5px;background-color:Yellow;border:solid 1px #333;padding:15px;">
-        Login at <a href="Forums.aspx">Main forum page</a> to post or reply.
+        Login or create user at 
+        <br />
+        <a href="Forums.aspx">Main forum page</a> to post or reply.
     </div>
 
     <a href="~/Forums/Forums.aspx" runat="server" style="position:absolute;left:5px;top:265px;text-decoration:none;">Back to forum posts view</a>
