@@ -16,6 +16,7 @@ public partial class BlogItem : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
+            // Finding "this" blog
             string blogId = Request.Params["id"];
             if (string.IsNullOrEmpty(blogId))
                 Response.Redirect("~", true);
@@ -41,6 +42,25 @@ public partial class BlogItem : System.Web.UI.Page
             litRss.Text = headerRssLink;
             Header.Controls.Add(litRss);
 
+            // Finding previous blog
+            Entity.Blog previousBlog = Entity.Blog.FindFirst(Order.Desc("Id"), Expression.Lt("Id", blog.Id));
+            if (previousBlog != null)
+            {
+                previous.HRef = previousBlog.Url;
+                previous.InnerHtml += " - " + previousBlog.Header;
+            }
+            else
+                previous.Visible = false;
+
+            // Finding next blog
+            Entity.Blog nextBlog = Entity.Blog.FindFirst(Order.Asc("Id"), Expression.Gt("Id", blog.Id));
+            if (nextBlog != null)
+            {
+                next.HRef = nextBlog.Url;
+                next.InnerHtml = nextBlog.Header + " - " + next.InnerHtml;
+            }
+            else
+                next.Visible = false;
         }
     }
 }
