@@ -8,6 +8,7 @@
 
 using System;
 using Ra.Widgets;
+using Ra.Extensions;
 
 public partial class Extensions : System.Web.UI.Page
 {
@@ -45,5 +46,34 @@ public partial class Extensions : System.Web.UI.Page
         lblCalTab.Text = calTab.Value.ToString("dddd, MMMM dd, yyyy", System.Threading.Thread.CurrentThread.CurrentUICulture);
         Effect effect = new EffectFadeIn(lblCalTab, 0.4M);
         effect.Render();
+
+        if (calTab.Value.Date == new DateTime(2008, 7, 3))
+        {
+            lblCalTab.Text += " <strong>Holiday on planet VENUS ;)</strong>";
+        }
+        if (calTab.Value.Date == new DateTime(2008, 7, 11))
+        {
+            lblCalTab.Text += " <strong>Holiday on planet VENUS ;)</strong>";
+        }
+        if (calTab.Value.Date == new DateTime(2008, 7, 15))
+        {
+            lblCalTab.Text += " <strong>Holiday on planet VENUS ;)</strong>";
+        }
+    }
+
+    protected void calTab_RenderDay(object sender, Calendar.RenderDayEventArgs e)
+    {
+        if (e.Date == new DateTime(2008, 7, 3))
+        {
+            e.Cell.Attributes.Add("class", "holidayOnVenus");
+        }
+        if (e.Date == new DateTime(2008, 7, 11))
+        {
+            e.Cell.Attributes.Add("class", "holidayOnVenus");
+        }
+        if (e.Date == new DateTime(2008, 7, 15))
+        {
+            e.Cell.Attributes.Add("class", "holidayOnVenus");
+        }
     }
 }

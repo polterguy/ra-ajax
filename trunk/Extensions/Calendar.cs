@@ -20,9 +20,33 @@ namespace Ra.Extensions
     [ASP.ToolboxData("<{0}:Calendar runat=server />")]
     public class Calendar : Panel, ASP.INamingContainer
     {
+        public class RenderDayEventArgs : EventArgs
+        {
+            private DateTime _date;
+            private HTML.HtmlTableCell _cell;
+
+            public HTML.HtmlTableCell Cell
+            {
+                get { return _cell; }
+            }
+
+            public DateTime Date
+            {
+                get { return _date; }
+            }
+
+            internal RenderDayEventArgs(DateTime date, HTML.HtmlTableCell cell)
+            {
+                _date = date;
+                _cell = cell;
+            }
+        }
+
         public event EventHandler SelectedValueChanged;
 
         public event EventHandler DateClicked;
+
+        public event EventHandler<RenderDayEventArgs> RenderDay;
 
         public DateTime Value
         {
@@ -160,6 +184,9 @@ namespace Ra.Extensions
             btn.EnableViewState = false;
             cell.Controls.Add(btn);
 
+            if (RenderDay != null)
+                RenderDay(this, new RenderDayEventArgs(idxDate.Date, cell));
+
             row.Cells.Add(cell);
 
             idxDate = idxDate.AddDays(1);
@@ -242,22 +269,17 @@ namespace Ra.Extensions
             headerCell.ColSpan = 8;
 
             // Year DropDownList
-            DropDownList year = new DropDownList();
-            year.EnableViewState = false;
-            year.ID = "year_" + Value.ToString("dd_MM_yyyy", System.Globalization.CultureInfo.InvariantCulture);
-            for (int idxYear = Value.Year - 25; idxYear < Value.Year + 25; idxYear++)
-            {
-                ListItem idxItem = new ListItem();
-                idxItem.Text = idxYear.ToString();
-                idxItem.Value = idxYear.ToString();
-                if (idxYear == Value.Year)
-                    idxItem.Selected = true;
-                year.Items.Add(idxItem);
-            }
-            year.SelectedIndexChanged += new EventHandler(year_SelectedIndexChanged);
-            headerCell.Controls.Add(year);
+            CreateYearPicker(headerCell);
 
             // Month DropDownList
+            CreateMonthPicker(headerCell);
+
+            headerRow.Cells.Add(headerCell);
+            tbl.Rows.Add(headerRow);
+        }
+
+        private void CreateMonthPicker(HTML.HtmlTableCell headerCell)
+        {
             DropDownList month = new DropDownList();
             month.EnableViewState = false;
             month.ID = "month_" + Value.ToString("dd_MM_yyyy", System.Globalization.CultureInfo.InvariantCulture);
@@ -272,9 +294,24 @@ namespace Ra.Extensions
             }
             month.SelectedIndexChanged += new EventHandler(month_SelectedIndexChanged);
             headerCell.Controls.Add(month);
+        }
 
-            headerRow.Cells.Add(headerCell);
-            tbl.Rows.Add(headerRow);
+        private void CreateYearPicker(HTML.HtmlTableCell headerCell)
+        {
+            DropDownList year = new DropDownList();
+            year.EnableViewState = false;
+            year.ID = "year_" + Value.ToString("dd_MM_yyyy", System.Globalization.CultureInfo.InvariantCulture);
+            for (int idxYear = Value.Year - 25; idxYear < Value.Year + 25; idxYear++)
+            {
+                ListItem idxItem = new ListItem();
+                idxItem.Text = idxYear.ToString();
+                idxItem.Value = idxYear.ToString();
+                if (idxYear == Value.Year)
+                    idxItem.Selected = true;
+                year.Items.Add(idxItem);
+            }
+            year.SelectedIndexChanged += new EventHandler(year_SelectedIndexChanged);
+            headerCell.Controls.Add(year);
         }
 
         void today_Click(object sender, EventArgs e)

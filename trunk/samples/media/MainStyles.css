@@ -242,6 +242,11 @@ img
 	border:solid 1px Yellow;
 }
 
+.calendar .holidayOnVenus a
+{
+	color:#0f0;
+}
+
 
 /* AutoCompleter specific styles
  */
