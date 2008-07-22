@@ -20,6 +20,16 @@ namespace Ra.Extensions
     [ASP.ToolboxData("<{0}:TabControl runat=server></{0}:TabControl>")]
     public class TabControl : Panel, ASP.INamingContainer
     {
+        [DefaultValue(0)]
+        public int ActiveTabViewIndex
+        {
+            get { return ViewState["SelectedViewIndex"] == null ? 0 : (int)ViewState["SelectedViewIndex"]; }
+            set
+            {
+                ViewState["SelectedViewIndex"] = value;
+            }
+        }
+
         protected override void LoadViewState(object savedState)
         {
             base.LoadViewState(savedState);
@@ -35,16 +45,6 @@ namespace Ra.Extensions
         protected override void CreateChildControls()
         {
             CreateChildTabViews();
-        }
-
-        [DefaultValue(0)]
-        public int ActiveTabViewIndex
-        {
-            get { return ViewState["SelectedViewIndex"] == null ? 0 : (int)ViewState["SelectedViewIndex"]; }
-            set
-            {
-                ViewState["SelectedViewIndex"] = value;
-            }
         }
 
         private void CreateChildTabViews()
