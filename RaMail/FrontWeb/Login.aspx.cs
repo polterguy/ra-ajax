@@ -18,7 +18,7 @@ public partial class Login : System.Web.UI.Page
         if (Operator.Login(Login1.UserName, Login1.Password))
         {
             e.Authenticated = true;
-            FormsAuthentication.RedirectFromLoginPage(Operator.Current.Username, true);
+            FormsAuthentication.RedirectFromLoginPage(Operator.Current.Username, Login1.RememberMeSet);
         }
     }
 }

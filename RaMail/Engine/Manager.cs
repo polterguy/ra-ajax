@@ -26,7 +26,9 @@ namespace Engine
             Castle.ActiveRecord.ActiveRecordStarter.Initialize(
                 Castle.ActiveRecord.Framework.Config.ActiveRecordSectionHandler.Instance,
                 new Type[] { 
-                    typeof(Entities.Operator)
+                    typeof(Entities.Operator),
+                    typeof(Entities.Email),
+                    typeof(Entities.Account)
                 });
 
             try
@@ -40,6 +42,8 @@ namespace Engine
                 // or created (warning; this logic might corrupt your database if you do changes to 
                 // the schema)
                 Castle.ActiveRecord.ActiveRecordStarter.CreateSchema();
+
+                // Creating default operator
                 Entities.Operator oper = new Engine.Entities.Operator();
                 oper.Username = "admin";
                 oper.Password = "admin";
