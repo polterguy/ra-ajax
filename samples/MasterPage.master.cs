@@ -10,6 +10,7 @@ using Ra.Widgets;
 using System.IO;
 using Entity;
 using NHibernate.Expression;
+using System.Web;
 
 public partial class MasterPage : System.Web.UI.MasterPage
 {
@@ -17,6 +18,21 @@ public partial class MasterPage : System.Web.UI.MasterPage
     {
         if (!IsPostBack)
         {
+            // Checking remember me feature
+            if (Request.Cookies["userId"] != null)
+            {
+                HttpCookie rem = Request.Cookies["userId"];
+                string userName = rem.Value;
+                Operator.Login(userName);
+            }
+
+            if (Operator.Current == null)
+                logout.Visible = false;
+            else
+            {
+                logout.Text += " " + Operator.Current.Username;
+            }
+
             // Morphing in/out the GetFireFox panel
             if (Request.Browser.Browser == "IE")
             {
@@ -45,6 +61,12 @@ public partial class MasterPage : System.Web.UI.MasterPage
         // which we can bypass by informing the client to NOT cache the pages themselves at all
         if (Request.Browser.Browser == "Firefox" && Request.Url.ToString().IndexOf(".blog?") == -1 && Request.Url.ToString().IndexOf(".blogger?") == -1)
             Response.Cache.SetNoStore();
+    }
+
+    protected void logout_Click(object sender, EventArgs e)
+    {
+        Response.Cookies["userId"].Value = "__mumbo__jumbo";
+        Response.Redirect("~");
     }
 
     protected void btnShowCode_Click(object sender, EventArgs e)

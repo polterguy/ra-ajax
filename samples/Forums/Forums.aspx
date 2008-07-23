@@ -68,6 +68,14 @@
             </tr>
             <tr>
                 <td colspan="2">
+                    <ra:CheckBox 
+                        runat="server" 
+                        ID="remember" 
+                        Text="Remember me" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
                     <ra:Button 
                         runat="server" 
                         ID="login" 

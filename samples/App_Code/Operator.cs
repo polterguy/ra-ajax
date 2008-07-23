@@ -137,6 +137,13 @@ namespace Entity
                 Created = DateTime.Now;
             base.Save();
         }
+
+        public static void Login(string username)
+        {
+            Operator oper = Operator.FindOne(
+                Expression.Eq("Username", username));
+            HttpContext.Current.Session["__CurrentOperator"] = oper;
+        }
     }
 }
 
