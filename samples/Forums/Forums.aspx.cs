@@ -67,7 +67,16 @@ public partial class Forums_Forums : System.Web.UI.Page
     {
         List<ForumPost> postsToBind = new List<ForumPost>();
         int idxNo = 0;
-        foreach (ForumPost idx in ForumPost.FindAll(Order.Desc("Created"), Expression.Eq("ParentPost", 0)))
+        ForumPost[] posts = null;
+        if (search.Text.Trim() == "")
+            posts = ForumPost.FindAll(Order.Desc("Created"), Expression.Eq("ParentPost", 0));
+        else
+            posts = ForumPost.FindAll(Order.Desc("Created"), 
+                Expression.Eq("ParentPost", 0),
+                Expression.Or(
+                    Expression.Like("Header", search.Text.Trim(), MatchMode.Anywhere),
+                    Expression.Like("Body", search.Text.Trim(), MatchMode.Anywhere)));
+        foreach (ForumPost idx in posts)
         {
             if (idxNo >= 50) // We only show the 50 last ones...
                 break;
@@ -235,6 +244,12 @@ Have a nice day :)",
         // Removing panel
         Effect effect = new EffectFadeOut(pnlNewPost, 0.4M);
         effect.Render();
+    }
+
+    protected void search_KeyUp(object sender, EventArgs e)
+    {
+        DataBindForumPosts();
+        postsWrapper.SignalizeReRender();
     }
 
     protected void newSubmit_Click(object sender, EventArgs e)

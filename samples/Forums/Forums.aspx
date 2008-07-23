@@ -283,6 +283,11 @@
         </table>
     </ra:Panel>
 
+    Search: 
+    <ra:TextBox 
+        runat="server" 
+        OnKeyUp="search_KeyUp"
+        ID="search" />
     <ra:Panel runat="server" ID="postsWrapper" style="margin-bottom:25px;">
         <asp:Repeater runat="server" ID="forumPostsRepeater">
             <HeaderTemplate>
