@@ -63,6 +63,20 @@ public partial class Forums_Forums : System.Web.UI.Page
         }
     }
 
+    private int Page
+    {
+        get
+        {
+            if (ViewState["Page"] == null)
+                return 0;
+            return (int)ViewState["Page"];
+        }
+        set
+        {
+            ViewState["Page"] = value;
+        }
+    }
+
     private void DataBindForumPosts()
     {
         List<ForumPost> postsToBind = new List<ForumPost>();
@@ -78,13 +92,40 @@ public partial class Forums_Forums : System.Web.UI.Page
                     Expression.Like("Body", search.Text.Trim(), MatchMode.Anywhere)));
         foreach (ForumPost idx in posts)
         {
-            if (idxNo >= 50) // We only show the 50 last ones...
+            if (idxNo < Page)
+            {
+                idxNo += 1;
+                continue;
+            }
+            if (idxNo >= Page + 5) // We only show the 50 last ones...
                 break;
             postsToBind.Add(idx);
             idxNo += 1;
         }
+        if (postsToBind.Count == 0)
+            next.Visible = false;
+        else
+            next.Visible = true;
+        if (Page == 0)
+            previous.Visible = false;
+        else
+            previous.Visible = true;
         forumPostsRepeater.DataSource = postsToBind;
         forumPostsRepeater.DataBind();
+    }
+
+    protected void previous_Click(object sender, EventArgs e)
+    {
+        Page = Math.Max(0, Page - 5);
+        DataBindForumPosts();
+        postsWrapper.SignalizeReRender();
+    }
+
+    protected void next_Click(object sender, EventArgs e)
+    {
+        Page += 5;
+        DataBindForumPosts();
+        postsWrapper.SignalizeReRender();
     }
 
     protected void login_Click(object sender, EventArgs e)
@@ -248,6 +289,7 @@ Have a nice day :)",
 
     protected void search_KeyUp(object sender, EventArgs e)
     {
+        Page = 0;
         DataBindForumPosts();
         postsWrapper.SignalizeReRender();
     }
