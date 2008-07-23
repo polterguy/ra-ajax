@@ -170,6 +170,17 @@ namespace Ra
             _scriptIncludes.Add(resource);
         }
 
+        public void IncludeScriptFromResource(Type type, string name)
+        {
+            if (this.SupressAjaxFilters)
+            {
+                // Need to explicitly include JS files if filters are surpressed...
+                CurrentPage.ClientScript.RegisterClientScriptResource(type, name);
+            }
+            string resource = CurrentPage.ClientScript.GetWebResourceUrl(type, name);
+            _scriptIncludes.Add(resource);
+        }
+
         private MemoryStream _memStream;
         private HtmlTextWriter _writer;
         public HtmlTextWriter Writer
