@@ -322,6 +322,18 @@
             </ItemTemplate>
         </asp:Repeater>
     </ra:Panel>
+    <ra:LinkButton 
+        runat="server" 
+        ID="previous" 
+        OnClick="previous_Click"
+        Text="&lt;&lt; Previous" />
+    |
+    <ra:LinkButton 
+        runat="server" 
+        ID="next" 
+        OnClick="next_Click"
+        Text="Next &gt;&gt;" />
+    <br />
     <ra:Label 
         runat="server"
         style="font-style:italic;"
