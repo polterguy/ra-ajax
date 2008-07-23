@@ -52,5 +52,11 @@ namespace Engine.Entities
             Current = oper;
             return oper != null;
         }
+
+        public static void Login(string username)
+        {
+            Operator oper = Operator.FindOne(Expression.Eq("Username", username));
+            Current = oper;
+        }
     }
 }
