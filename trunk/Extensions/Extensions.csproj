@@ -35,6 +35,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calendar.cs" />
+    <Compile Include="Timer.cs" />
     <Compile Include="TabView.cs" />
     <Compile Include="TabControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -44,6 +45,9 @@
       <Project>{82727C73-0B10-4F58-93F4-841E9397302C}</Project>
       <Name>Ra</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Timer.js" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -69,6 +69,12 @@ namespace Ra.Widgets
                 _JSONValues[key] = value;
         }
 
+        public void SetJSONValueBool(string key, bool value)
+        {
+            if (this.IsTrackingViewState)
+                _JSONValues[key] = value;
+        }
+
         public void SetJSONGenericValue(string key, string value)
         {
             if (this.IsTrackingViewState)
@@ -119,6 +125,13 @@ namespace Ra.Widgets
                 builder.AppendFormat("\"{0}\":\"{1}\"",
                     key,
                     value.ToString().Replace("\\", "\\\\").Replace("\"", "\\\"").Replace("\n", "\\n").Replace("\r", "\\r"));
+                return;
+            }
+            if (value.GetType() == typeof(bool))
+            {
+                builder.AppendFormat("\"{0}\":{1}",
+                    key,
+                    value);
                 return;
             }
             if (value.GetType() == typeof(Dictionary<string, string>))

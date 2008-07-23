@@ -81,6 +81,11 @@
                                 </li>
                                 <li>
                                     <a runat="server"
+                                        href="~/Timer.aspx" 
+                                        title="Ajax Timers">Ajax Timers</a>
+                                </li>
+                                <li>
+                                    <a runat="server"
                                         href="~/Author.aspx" 
                                         title="About me">About me (hire me)</a>
                                 </li>
