@@ -152,6 +152,12 @@
         OnMouseOver="hover"
         OnMouseOut="hoverOut"
         Text="Hover over me" />
+    <p>
+        In the above LinkButton we're handling the MouseOut and MouseOver events which are server side events
+        for most controls in Ra Ajax. Not only does Ra Ajax have support for all the known events like OnClick
+        and OnSelectionChanged events, but it also have support for many more meaning you gain more expressiveness
+        for your applications.
+    </p>
 
 </asp:Content>
 
