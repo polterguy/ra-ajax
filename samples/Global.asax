@@ -13,6 +13,7 @@
             new Type[] { 
                 typeof(Entity.ForumPost),
                 typeof(Entity.Blog),
+                typeof(Entity.Todo),
                 typeof(Entity.Operator)
             });
 

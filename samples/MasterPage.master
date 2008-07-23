@@ -94,6 +94,11 @@
                                         href="~/Forums/Forums.aspx" 
                                         title="Forums">Ra Ajax Forums</a>
                                 </li>
+                                <li>
+                                    <a runat="server"
+                                        href="~/Todo.aspx" 
+                                        title="TODO list">TODO list</a>
+                                </li>
                             </ul>
                             <asp:Literal runat="server" ID="blogLinksWrapper" />
                         </div>

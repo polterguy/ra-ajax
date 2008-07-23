@@ -84,9 +84,10 @@
         beginning of the project instead of 3 months past due-date you will also get an 
         instant discount. If the project in its nature is important to the world and of 
         "helping character" you will get an instant discount. If the project is an Open 
-        Source projects you will get an instant discount. If I can use Ra Ajax to develop
-        Open Source components which I myself can keep the copyright for you will get a 
-        *MASSIVE* discount.
+        Source projects you will get an instant discount. If the project is to be deployed 
+        on <a href="http://www.mono-project.com/">Mono</a> you will get an instant discount. 
+        If I can use Ra Ajax to develop Open Source components to run on Mono which I myself 
+        can keep the copyright for you will get a *MASSIVE* discount.
     </p>
     <p>
         I live in Porsgrunn/Norway but might be interested in temporary moving to attend very 
