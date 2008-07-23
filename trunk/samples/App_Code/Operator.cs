@@ -107,7 +107,8 @@ namespace Entity
         {
             Operator oper = Operator.FindOne(
                 Expression.Eq("Username", username), 
-                Expression.Eq("Pwd", password));
+                Expression.Eq("Pwd", password),
+                Expression.Eq("Confirmed", true));
             HttpContext.Current.Session["__CurrentOperator"] = oper;
             return oper != null;
         }
