@@ -11,6 +11,7 @@ using Entity;
 using NHibernate.Expression;
 using System.Collections.Generic;
 using Ra.Widgets;
+using System.Web;
 
 public partial class Forums_Forums : System.Web.UI.Page
 {
@@ -84,6 +85,12 @@ public partial class Forums_Forums : System.Web.UI.Page
             pnlLogin.Visible = false;
             pnlLoggedIn.Visible = true;
             usernameLoggedIn.Text = Operator.Current.Username;
+            if (remember.Checked)
+            {
+                HttpCookie rem = new HttpCookie("userId", username.Text);
+                rem.Expires = DateTime.Now.AddMonths(24);
+                Response.Cookies.Add(rem);
+            }
         }
         else
         {

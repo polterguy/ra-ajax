@@ -130,6 +130,12 @@
                                     Text="Show code" 
                                     OnClick="btnShowCode_Click" />
                                 <br />
+                                <asp:LinkButton 
+                                    runat="server" 
+                                    ID="logout" 
+                                    style="text-decoration:none;color:Yellow;"
+                                    Text="Logout" 
+                                    OnClick="logout_Click" />
                             </div>
                         </div>
                         <div style="clear:both;">&nbsp;</div>
