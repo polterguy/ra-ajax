@@ -90,3 +90,10 @@ a:hover
 	margin-left:auto;
 	margin-right:auto;
 }
+
+
+.inplaceedit a
+{
+	color:#0c0;
+	font-style:italic;
+}

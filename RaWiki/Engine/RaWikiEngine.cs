@@ -43,6 +43,7 @@ namespace Engine
                 oper.Password = "admin";
                 oper.Confirmed = true;
                 oper.IsAdmin = true;
+                oper.Created = DateTime.Now;
                 oper.Save();
             }
         }

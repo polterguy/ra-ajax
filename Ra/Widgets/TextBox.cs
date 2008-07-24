@@ -32,6 +32,8 @@ namespace Ra.Widgets
 
         public event EventHandler KeyUp;
 
+        public event EventHandler Blur;
+
         #region [ -- Properties -- ]
 
         [DefaultValue("")]
@@ -148,6 +150,10 @@ namespace Ra.Widgets
                     if (KeyUp != null)
                         KeyUp(this, new EventArgs());
                     break;
+                case "blur":
+                    if (Blur != null)
+                        Blur(this, new EventArgs());
+                    break;
                 default:
                     throw new ApplicationException("Unknown event fired for control");
             }
@@ -180,6 +186,12 @@ namespace Ra.Widgets
                 if (evts.Length != 0)
                     evts += ",";
                 evts += "['keyup']";
+            }
+            if (Blur != null)
+            {
+                if (evts.Length != 0)
+                    evts += ",";
+                evts += "['blur']";
             }
             if (evts.Length == 0)
             {
