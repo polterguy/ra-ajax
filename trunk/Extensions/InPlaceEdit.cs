@@ -71,7 +71,10 @@ namespace Ra.Extensions
 
         void _link_Click(object sender, EventArgs e)
         {
-            _text.Text = _link.Text;
+            if (_link.Text == "[null]")
+                _text.Text = "";
+            else
+                _text.Text = _link.Text;
             _text.Visible = true;
             _link.Visible = false;
             _text.Focus();
@@ -82,6 +85,8 @@ namespace Ra.Extensions
         {
             _link.CssClass = CssClass;
             _text.CssClass = CssClass;
+            if (string.IsNullOrEmpty(_link.Text))
+                _link.Text = "[null]";
             base.OnPreRender(e);
         }
 
