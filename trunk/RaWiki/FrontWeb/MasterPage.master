@@ -26,7 +26,7 @@
                             <ra:Panel 
                                 runat="server" 
                                 Visible="false"
-                                style="padding:5px;background-color:Yellow;border:solid 1px #999;display:inline-block;"
+                                style="position:absolute;right:5px;width:150px;padding:5px;background-color:Yellow;border:solid 1px #999;display:inline-block;"
                                 ID="welcomePnl">
                                 <ra:Label 
                                     runat="server" 
@@ -41,7 +41,7 @@
                             </ra:Panel>
                             <ra:Panel 
                                 runat="server" 
-                                style="padding:5px;background-color:Yellow;border:solid 1px #999;display:inline-block;"
+                                style="position:absolute;right:5px;padding:5px;background-color:Yellow;border:solid 1px #999;display:inline-block;"
                                 ID="loginPnl">
                                 <table>
                                     <tr>
@@ -68,6 +68,11 @@
                                                 ID="loginBtn" 
                                                 OnClick="loginBtn_Click"
                                                 Text="Login" />
+                                            <ra:LinkButton 
+                                                runat="server"
+                                                ID="register" 
+                                                OnClick="register_Click"
+                                                Text="Register" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -77,6 +82,48 @@
                                             style="color:Red;"
                                             ID="errLogin" />
                                     </td>
+                                    </tr>
+                                </table>
+                            </ra:Panel>
+                            <ra:Panel 
+                                runat="server" 
+                                Visible="false"
+                                style="position:absolute;right:5px;padding:5px;background-color:Yellow;border:solid 1px #999;display:inline-block;"
+                                ID="registerPnl">
+                                <table>
+                                    <tr>
+                                        <td>Username</td>
+                                        <td>
+                                            <ra:TextBox 
+                                                runat="server" 
+                                                ID="regUsername" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Password</td>
+                                        <td>
+                                            <ra:TextBox 
+                                                runat="server" 
+                                                TextMode="Password"
+                                                ID="regPassword" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email</td>
+                                        <td>
+                                            <ra:TextBox 
+                                                runat="server" 
+                                                ID="regEmail" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" style="text-align:right;">
+                                            <ra:Button 
+                                                runat="server" 
+                                                ID="regBtn" 
+                                                OnClick="regBtn_Click"
+                                                Text="Register" />
+                                        </td>
                                     </tr>
                                 </table>
                             </ra:Panel>

@@ -11,8 +11,8 @@
     ContentPlaceHolderID="cnt1" 
     Runat="Server">
 
-    <h1>Ra Wiki</h1>
-    <p>
+    <h1 runat="server" id="header">Ra Wiki</h1>
+    <p runat="server" id="content">
         An Open Source wiki system.
     </p>
 

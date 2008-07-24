@@ -30,6 +30,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
     protected void loginBtn_Click(object sender, EventArgs e)
     {
+        errLogin.Text = "";
         if (Operator.Login(username.Text, password.Text))
         {
             Effect effect = new EffectFadeOut(loginPnl, 0.4M);
@@ -54,10 +55,38 @@ public partial class MasterPage : System.Web.UI.MasterPage
         effect.Render();
         welcome.Text = "Welcome ";
         effect = new EffectFadeIn(loginPnl, 0.4M);
-        loginPnl.Style["display"] = "";
+        loginPnl.Style["display"] = ""; // Otherwise focus won't work...
         effect.Render();
         username.Text = "";
         password.Text = "";
+        username.Focus();
+        loginPnl.Visible = true;
+    }
+
+    protected void register_Click(object sender, EventArgs e)
+    {
+        errLogin.Text = "";
+        Effect effect = new EffectFadeOut(loginPnl, 0.4M);
+        effect.Render();
+        registerPnl.Visible = true;
+        effect = new EffectFadeIn(registerPnl, 0.4M);
+        effect.Render();
+        regUsername.Focus();
+    }
+
+    protected void regBtn_Click(object sender, EventArgs e)
+    {
+        Operator n = new Operator();
+        n.Password = regPassword.Text;
+        n.Username = regUsername.Text;
+        n.Email = regEmail.Text;
+        n.Register();
+        Effect effect = new EffectFadeOut(registerPnl, 0.4M);
+        effect.Render();
+        effect = new EffectFadeIn(loginPnl, 0.4M);
+        effect.Render();
+        errLogin.Text = "A confirmation email has been sent to your email, you must confirm your email by clicking this email before you can login to Ra Wiki";
+        loginPnl.Style["display"] = "";
         username.Focus();
     }
 }
