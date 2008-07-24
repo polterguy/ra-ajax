@@ -4,7 +4,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{D44754D6-DCF7-4F8C-B324-D1F0D983CB88}</ProjectGuid>
+    <ProjectGuid>{0853FA48-D327-485C-A687-4071B0D1F3C4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Engine</RootNamespace>
@@ -29,22 +29,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Castle.ActiveRecord, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
-    <Reference Include="Indy.Sockets, Version=10.0.83.25407, Culture=neutral, PublicKeyToken=a53fc71c313ee02d">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\References\Indy.Sockets.dll</HintPath>
-    </Reference>
     <Reference Include="NHibernate, Version=1.2.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account.cs" />
-    <Compile Include="Email.cs" />
-    <Compile Include="Manager.cs" />
-    <Compile Include="Operator.cs" />
+    <Compile Include="Entities\Operator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RaWikiEngine.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

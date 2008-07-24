@@ -4,8 +4,7 @@
 
     void Application_Start(object sender, EventArgs e) 
     {
-        // Initializing Engine
-        Engine.Manager.Instance.Initialize();
+        Engine.RaWikiEngine.Instance.Initialize();
     }
     
     void Application_End(object sender, EventArgs e) 

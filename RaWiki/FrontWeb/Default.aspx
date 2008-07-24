@@ -2,8 +2,8 @@
     Language="C#" 
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
-    CodeFile="Login.aspx.cs" 
-    Inherits="Login" 
+    CodeFile="Default.aspx.cs" 
+    Inherits="_Default" 
     Title="Untitled Page" %>
 
 <asp:Content 
@@ -11,8 +11,10 @@
     ContentPlaceHolderID="cnt1" 
     Runat="Server">
 
-    <h1>Please login</h1>
-    <asp:Login ID="Login1" runat="server" OnAuthenticate="Login1_Authenticate">
-    </asp:Login>
+    <h1>Ra Wiki</h1>
+    <p>
+        An Open Source wiki system.
+    </p>
+
 </asp:Content>
 
