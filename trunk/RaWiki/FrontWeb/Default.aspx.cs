@@ -3,6 +3,32 @@ using Engine.Entities;
 
 public partial class _Default : System.Web.UI.Page
 {
+    protected override void OnInit(EventArgs e)
+    {
+        Operator.LoggedIn += new EventHandler(Operator_LoggedIn);
+        Operator.LoggedOut += new EventHandler(Operator_LoggedOut);
+        base.OnInit(e);
+    }
+
+    protected override void OnPreRender(EventArgs e)
+    {
+        // Since they are STATIC Event Handlers on Operator type we need to REMOVE them again...!
+        Operator.LoggedIn -= new EventHandler(Operator_LoggedIn);
+        Operator.LoggedOut -= new EventHandler(Operator_LoggedOut);
+        base.OnPreRender(e);
+    }
+
+    void Operator_LoggedOut(object sender, EventArgs e)
+    {
+        adminMode.Visible = false;
+    }
+
+    private void Operator_LoggedIn(object sender, EventArgs e)
+    {
+        if (Operator.Current.IsAdmin)
+            adminMode.Visible = true;
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -16,6 +42,11 @@ public partial class _Default : System.Web.UI.Page
                 ApproveNewUser();
             }
         }
+    }
+
+    protected void adminMode_Click(object sender, EventArgs e)
+    {
+        adminWrapper.Visible = true;
     }
 
     private void ApproveNewUser()

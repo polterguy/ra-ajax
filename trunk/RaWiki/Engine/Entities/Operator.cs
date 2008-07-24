@@ -18,6 +18,10 @@ namespace Engine.Entities
         private string _email;
         private bool _adminApproved;
 
+        public static event EventHandler LoggedIn;
+
+        public static event EventHandler LoggedOut;
+
         [Property]
         public bool AdminApproved
         {
@@ -84,6 +88,11 @@ namespace Engine.Entities
                 Expression.Eq("Password", password),
                 Expression.Eq("Confirmed", true));
             HttpContext.Current.Session["__CurrentOperator"] = oper;
+
+            if (oper != null)
+                if (LoggedIn != null)
+                    LoggedIn(typeof(Operator), new EventArgs());
+
             return oper != null;
         }
 
@@ -92,11 +101,16 @@ namespace Engine.Entities
             Operator oper = Operator.FindOne(
                 Expression.Eq("Username", username));
             HttpContext.Current.Session["__CurrentOperator"] = oper;
+            if (oper != null)
+                if (LoggedIn != null)
+                    LoggedIn(typeof(Operator), new EventArgs());
         }
 
         public static void Logout()
         {
             HttpContext.Current.Session["__CurrentOperator"] = null;
+            if (LoggedOut != null)
+                LoggedOut(typeof(Operator), new EventArgs());
         }
 
         public void Register()
