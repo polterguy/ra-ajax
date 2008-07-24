@@ -35,6 +35,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calendar.cs" />
+    <Compile Include="InPlaceEdit.cs" />
     <Compile Include="Timer.cs" />
     <Compile Include="TabView.cs" />
     <Compile Include="TabControl.cs" />

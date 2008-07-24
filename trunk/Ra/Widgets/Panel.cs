@@ -86,7 +86,7 @@ namespace Ra.Widgets
             return retVal;
         }
 
-        private void SetAllChildrenToRenderHtml(ASP.ControlCollection controls)
+        protected virtual void SetAllChildrenToRenderHtml(ASP.ControlCollection controls)
         {
             foreach (ASP.Control idx in controls)
             {

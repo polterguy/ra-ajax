@@ -21,6 +21,8 @@ public partial class _Default : System.Web.UI.Page
     void Operator_LoggedOut(object sender, EventArgs e)
     {
         adminMode.Visible = false;
+        adminWrapper.Visible = false;
+        AdminMode1.SetToInvisible();
     }
 
     private void Operator_LoggedIn(object sender, EventArgs e)
@@ -33,6 +35,8 @@ public partial class _Default : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
+            if (Operator.Current != null)
+                Operator_LoggedIn(this, new EventArgs());
             if (Request.Params["idNewUserConfirmation"] != null)
             {
                 ConfirmNewUser();

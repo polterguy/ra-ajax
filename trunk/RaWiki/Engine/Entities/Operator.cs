@@ -17,10 +17,18 @@ namespace Engine.Entities
         private bool _isAdmin;
         private string _email;
         private bool _adminApproved;
+        private DateTime _created;
 
         public static event EventHandler LoggedIn;
 
         public static event EventHandler LoggedOut;
+
+        [Property]
+        public DateTime Created
+        {
+            get { return _created; }
+            set { _created = value; }
+        }
 
         [Property]
         public bool AdminApproved
@@ -181,6 +189,13 @@ To approve user {0} to login to your wiki please click this link;
             }
             oper.Save();
             return oper;
+        }
+
+        public override void Save()
+        {
+            if (Id == 0)
+                Created = DateTime.Now;
+            base.Save();
         }
     }
 }
