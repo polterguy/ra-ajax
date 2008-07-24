@@ -1,6 +1,6 @@
 /*
  * Ra Ajax - An Ajax Library for Mono ++
- * Copyright 2008 - Thomas Hansen polterguy@gmail.com
+ * Copyright 2008 - Thomas Hansen thomas@ra-ajax.org
  * This code is licensed under an MIT(ish) kind of license which 
  * can be found in the license.txt file on disc.
  * 
