@@ -97,10 +97,7 @@ namespace Entity
 
         public static Operator Current
         {
-            get
-            {
-                return HttpContext.Current.Session["__CurrentOperator"] as Operator;
-            }
+            get { return HttpContext.Current.Session["__CurrentOperator"] as Operator; }
         }
 
         public static bool Login(string username, string password)
