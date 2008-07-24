@@ -41,6 +41,7 @@ namespace Engine
                 Operator oper = new Operator();
                 oper.Username = "admin";
                 oper.Password = "admin";
+                oper.Confirmed = true;
                 oper.Save();
             }
         }

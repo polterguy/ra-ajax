@@ -22,12 +22,71 @@
                 <div id="contentPlusBorders">
                     <div id="wholeContentDiv">
                         <div id="logoPartDiv">&nbsp;</div>
+                        <div id="loginDiv">
+                            <ra:Panel 
+                                runat="server" 
+                                Visible="false"
+                                style="padding:5px;background-color:Yellow;border:solid 1px #999;display:inline-block;"
+                                ID="welcomePnl">
+                                <ra:Label 
+                                    runat="server" 
+                                    Text="Welcome "
+                                    ID="welcome" />
+                                <br />
+                                <ra:LinkButton 
+                                    runat="server" 
+                                    ID="logout" 
+                                    Text="Logout" 
+                                    OnClick="logout_Click" />
+                            </ra:Panel>
+                            <ra:Panel 
+                                runat="server" 
+                                style="padding:5px;background-color:Yellow;border:solid 1px #999;display:inline-block;"
+                                ID="loginPnl">
+                                <table>
+                                    <tr>
+                                        <td>Username</td>
+                                        <td>
+                                            <ra:TextBox 
+                                                runat="server" 
+                                                ID="username" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Password</td>
+                                        <td>
+                                            <ra:TextBox 
+                                                runat="server" 
+                                                TextMode="password"
+                                                ID="password" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" style="text-align:right;">
+                                            <ra:Button 
+                                                runat="server"
+                                                ID="loginBtn" 
+                                                OnClick="loginBtn_Click"
+                                                Text="Login" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    <td colspan="2">
+                                        <ra:Label 
+                                            runat="server" 
+                                            style="color:Red;"
+                                            ID="errLogin" />
+                                    </td>
+                                    </tr>
+                                </table>
+                            </ra:Panel>
+                        </div>
                         <div id="navigation">
                             <ul class="links">
                                 <li>
                                     <a runat="server"
-                                        href="~/" 
-                                        title="Ra Ajax Samples Home">Ra Ajax Samples Home</a>
+                                        href="http://ra-ajax.org" 
+                                        title="Ra Ajax Samples Home">Created with Ra-Ajax</a>
                                 </li>
                             </ul>
                         </div>
