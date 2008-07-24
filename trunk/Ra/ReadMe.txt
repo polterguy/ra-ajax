@@ -5,14 +5,14 @@
 Ra Ajax is an Ajax Library for Mono and Microsoft ASP.NET. Ra Ajax is very 
 modular meaning that parts of the JavaScript parts would easily be 
 transferable to any other platforms like PHP or J2EE. If you would like 
-to do so then please contact me at polterguy@gmail.com. It is also very
+to do so then please contact me at thomas@ra-ajax.org. It is also very
 modular on the server side meaning you can easily create your own Ajax 
 widgets with it. Though most people would hopefully find all their Ajax 
 needs fulfilled in Ra itself. :)
 
 Ra Ajax is hosted at; http://code.google.com/p/ra-ajax/
 
-Ra Ajax is the copyright of Thomas Hansen - polterguy@gmail.com
+Ra Ajax is the copyright of Thomas Hansen - thomas@ra-ajax.org
 
 The license for Ra Ajax can be found on disc in the same folder as this 
 file and is an MITish kind of license. Basically it says that you can use
@@ -27,7 +27,7 @@ cannot modify due to legal reasons.
 
 If you want to collaborate with me by creating extension 
 projects, porting Ra to PHP, J2EE or something similar then please
-let me know by writing an email to polterguy@gmail.com and we'll 
+let me know by writing an email to thomas@ra-ajax.org and we'll 
 probably come up with something we both will be happy about. :)
 
 Ra Ajax is also in its entirety licensed under the GPL version 3. 

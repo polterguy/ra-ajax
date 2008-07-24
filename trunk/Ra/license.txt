@@ -18,7 +18,7 @@ version 3 which I cannot unfortunately modify for my ethical needs.
 
  -- License Starts --
 
-Copyright (c) 2008 Thomas Hansen - polterguy@gmail.com
+Copyright (c) 2008 Thomas Hansen - thomas@ra-ajax.org
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -39,12 +39,12 @@ furnished to do so, subject to the following conditions:
   other things that if you work for a governmental organization with armed troops 
   engaged in combats in foreign countries which have not been sent there by a
   UN resolution you cannot use the Software in your work.
-  If in doubt send an email to polterguy@gmail.com and ask for permission as to
+  If in doubt send an email to thomas@ra-ajax.org and ask for permission as to
   whether or not you can use this Software explaining what you want to 
   build and who you work for and how you intend to license your project.
   Exceptions to this rule MAY be given if you bend over backwards in regards
   to all other ethical perspectives of your project. Though an email from
-  me - Thomas Hansen (polterguy@gmail.com) is mandatory under such circumstances.
+  me - Thomas Hansen (thomas@ra-ajax.org) is mandatory under such circumstances.
 
 * If I should die or due to any other reasons be permanently inable to maintain
   Ra Ajax then you are free to use Ra Ajax under the LGPL version 3 as published
