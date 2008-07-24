@@ -24,6 +24,11 @@ public partial class AdminMode : System.Web.UI.UserControl
         DataBindUsers();
     }
 
+    protected void closeUsers_Click(object sender, EventArgs e)
+    {
+        users.Visible = false;
+    }
+
     private void DataBindUsers()
     {
         repUsers.DataSource = Operator.FindAll();
@@ -57,7 +62,25 @@ public partial class AdminMode : System.Web.UI.UserControl
         oper.Save();
     }
 
-    private int GetId(InPlaceEdit btn)
+    protected void IsAdminChanged(object sender, EventArgs e)
+    {
+        CheckBox btn = sender as CheckBox;
+        int id = GetId(btn);
+        Operator oper = Operator.FindOne(Expression.Eq("Id", id));
+        oper.IsAdmin = btn.Checked;
+        oper.Save();
+    }
+
+    protected void ConfirmedChanged(object sender, EventArgs e)
+    {
+        CheckBox btn = sender as CheckBox;
+        int id = GetId(btn);
+        Operator oper = Operator.FindOne(Expression.Eq("Id", id));
+        oper.Confirmed = btn.Checked;
+        oper.Save();
+    }
+
+    private int GetId(System.Web.UI.Control btn)
     {
         HiddenField hid = btn.Parent.Controls[0] as HiddenField;
         if (hid == null)
