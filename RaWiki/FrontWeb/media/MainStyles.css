@@ -84,3 +84,9 @@ a:hover
 }
 
 
+#contentOfPageDiv div.actionbar
+{
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+}

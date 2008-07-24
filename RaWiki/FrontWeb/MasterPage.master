@@ -132,6 +132,11 @@
                             <ul class="links">
                                 <li>
                                     <a runat="server"
+                                        href="~" 
+                                        title="Ra Wiki Home">Ra Wiki home</a>
+                                </li>
+                                <li>
+                                    <a runat="server"
                                         href="http://ra-ajax.org" 
                                         title="Ra Ajax Samples Home">Created with Ra-Ajax</a>
                                 </li>
