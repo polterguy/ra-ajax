@@ -22,6 +22,27 @@ public partial class AdminMode : System.Web.UI.UserControl
         Effect effect = new EffectFadeIn(users, 0.4M);
         effect.Render();
         DataBindUsers();
+        nUsername.Focus();
+    }
+
+    protected void nCreate_Click(object sender, EventArgs e)
+    {
+        Operator o = new Operator();
+        o.AdminApproved = true;
+        o.Confirmed = true;
+        o.Created = DateTime.Now;
+        o.Email = nEmail.Text;
+        o.IsAdmin = nIsAdmin.Checked;
+        o.Password = nPassword.Text;
+        o.Username = nUsername.Text;
+        o.Save();
+        DataBindUsers();
+        repUsersWrapper.SignalizeReRender();
+        nUsername.Text = "";
+        nPassword.Text = "";
+        nEmail.Text = "";
+        nIsAdmin.Checked = false;
+        nUsername.Focus();
     }
 
     protected void closeUsers_Click(object sender, EventArgs e)
@@ -78,6 +99,16 @@ public partial class AdminMode : System.Web.UI.UserControl
         Operator oper = Operator.FindOne(Expression.Eq("Id", id));
         oper.Confirmed = btn.Checked;
         oper.Save();
+    }
+
+    protected void DeleteUser(object sender, EventArgs e)
+    {
+        LinkButton btn = sender as LinkButton;
+        int id = GetId(btn);
+        Operator oper = Operator.FindOne(Expression.Eq("Id", id));
+        oper.Delete();
+        users.SignalizeReRender();
+        DataBindUsers();
     }
 
     private int GetId(System.Web.UI.Control btn)

@@ -23,6 +23,8 @@ namespace Engine
             Castle.ActiveRecord.ActiveRecordStarter.Initialize(
                 Castle.ActiveRecord.Framework.Config.ActiveRecordSectionHandler.Instance,
                 new Type[] { 
+                    typeof(Article),
+                    typeof(ArticleRevision),
                     typeof(Operator)
             });
 

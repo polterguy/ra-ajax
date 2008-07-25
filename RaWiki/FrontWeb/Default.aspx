@@ -34,6 +34,22 @@
             ID="AdminMode1" 
             runat="server" />
     </ra:Panel>
+    <ra:Panel 
+        runat="server" 
+        style="width:100%;background-color:Yellow;border:solid 1px #999;padding:5px;position:relative;margin-top:25px;"
+        Visible="false"
+        ID="createArticlePnl">
+        Article name 
+        <ra:TextBox 
+            runat="server" 
+            style="width:200px;"
+            ID="nArticleName" />
+        <ra:Button 
+            runat="server" 
+            ID="createArticleBtn" 
+            OnClick="createArticleBtn_Click"
+            Text="Create" />
+    </ra:Panel>
 
     <div class="actionbar">
         <ra:LinkButton 
@@ -42,6 +58,12 @@
             OnClick="adminMode_Click"
             Visible="false"
             Text="Admin" />
+        <ra:LinkButton 
+            runat="server" 
+            ID="createArticle" 
+            OnClick="createArticle_Click"
+            Visible="false"
+            Text="Create article" />
     </div>
 
 </asp:Content>

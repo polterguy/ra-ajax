@@ -325,7 +325,22 @@ Ra.extend(Ra.XHR.prototype, {
   // Called when request is finished
   _finished: function() {
     if( this.xhr.status >= 200 && this.xhr.status < 300 ) {
-      this.options.onSuccess(this.xhr.responseText);
+      if( this.xhr.status == 278 ) {
+        // Since 302 and 301 redirects are 100% transparent according to the w3c working draft
+        // and all known implementations we need some OTHER mechanism to trap REDIRECTS!
+        // This is being done by the server with a status code of _278_
+        var headers = this.xhr.getAllResponseHeaders().split('\n');
+        for( var idx = 0; idx < headers.length; idx++ ) {
+          if( headers[idx].indexOf('Location') != -1 ) {
+            // Found NEW location
+            var nLoc = headers[idx].substr(10);
+            window.location = nLoc;
+            break;
+          }
+        }
+      } else {
+        this.options.onSuccess(this.xhr.responseText);
+      }
     } else {
       this.options.onError(this.xhr.status, this.xhr.responseText);
     }
