@@ -1,5 +1,6 @@
 using System;
 using Engine.Entities;
+using Ra;
 
 public partial class _Default : System.Web.UI.Page
 {
@@ -23,12 +24,14 @@ public partial class _Default : System.Web.UI.Page
         adminMode.Visible = false;
         adminWrapper.Visible = false;
         AdminMode1.SetToInvisible();
+        createArticle.Visible = false;
     }
 
     private void Operator_LoggedIn(object sender, EventArgs e)
     {
         if (Operator.Current.IsAdmin)
             adminMode.Visible = true;
+        createArticle.Visible = true;
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -46,6 +49,21 @@ public partial class _Default : System.Web.UI.Page
                 ApproveNewUser();
             }
         }
+    }
+
+    protected void createArticle_Click(object sender, EventArgs e)
+    {
+        createArticlePnl.Visible = true;
+        nArticleName.Focus();
+        nArticleName.Select();
+        nArticleName.Text = "Type in name of article here";
+    }
+
+    protected void createArticleBtn_Click(object sender, EventArgs e)
+    {
+        string url = Article.CreateUniqueFriendlyURL(nArticleName.Text);
+        url = url + ".wiki?name=" + Server.UrlEncode(nArticleName.Text);
+        AjaxManager.Instance.Redirect(url);
     }
 
     protected void adminMode_Click(object sender, EventArgs e)

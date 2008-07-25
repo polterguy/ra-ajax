@@ -79,7 +79,9 @@ namespace Ra
 
                     // Checking to see if the Filtering logic has been supressed
                     if (!SupressAjaxFilters)
+                    {
                         CurrentPage.Response.Filter = new CallbackFilter(CurrentPage.Response.Filter);
+                    }
                 }
                 else
                 {
@@ -181,6 +183,22 @@ namespace Ra
             _scriptIncludes.Add(resource);
         }
 
+        private string _redirectUrl;
+        public void Redirect(string url)
+        {
+            if (!IsCallback)
+                CurrentPage.Response.Redirect(url);
+            else
+            {
+                CurrentPage.Response.AddHeader("Location", url);
+                // Note that ue to w3c standardizing the XHR should TRANSPARENTLY
+                // do 301 and 302 redirects we need another mechanism to inform client side that
+                // the user code is RE-directing to another page!
+                CurrentPage.Response.StatusCode = 278;
+                _redirectUrl = url;
+            }
+        }
+
         private MemoryStream _memStream;
         private HtmlTextWriter _writer;
         public HtmlTextWriter Writer
@@ -219,32 +237,39 @@ namespace Ra
         // back changes to the client
         internal void RenderCallback(Stream next, MemoryStream content)
         {
-            Writer.Flush();
-            _memStream.Flush();
-            _memStream.Position = 0;
-            TextReader readerContent = new StreamReader(_memStream);
-            string allContent = readerContent.ReadToEnd();
-            TextWriter writer = new StreamWriter(next);
-            writer.WriteLine(allContent);
+            if (string.IsNullOrEmpty(_redirectUrl))
+            {
+                Writer.Flush();
+                _memStream.Flush();
+                _memStream.Position = 0;
+                TextReader readerContent = new StreamReader(_memStream);
+                string allContent = readerContent.ReadToEnd();
+                TextWriter writer = new StreamWriter(next);
+                writer.WriteLine(allContent);
 
-            // Retrieving ViewState (+++) changes and returning back to client
-            content.Position = 0;
-            TextReader reader = new StreamReader(content);
-            string wholePageContent = reader.ReadToEnd();
+                // Retrieving ViewState (+++) changes and returning back to client
+                content.Position = 0;
+                TextReader reader = new StreamReader(content);
+                string wholePageContent = reader.ReadToEnd();
 
-            if (wholePageContent.IndexOf("__VIEWSTATE") != -1)
-                writer.WriteLine("Ra.$F('__VIEWSTATE').value = '{0}';", GetViewState(wholePageContent, "__VIEWSTATE"));
-            if (wholePageContent.IndexOf("__EVENTVALIDATION") != -1)
-                writer.WriteLine("Ra.$F('__EVENTVALIDATION').value = '{0}';", GetViewState(wholePageContent, "__EVENTVALIDATION"));
+                if (wholePageContent.IndexOf("__VIEWSTATE") != -1)
+                    writer.WriteLine("Ra.$F('__VIEWSTATE').value = '{0}';", GetViewState(wholePageContent, "__VIEWSTATE"));
+                if (wholePageContent.IndexOf("__EVENTVALIDATION") != -1)
+                    writer.WriteLine("Ra.$F('__EVENTVALIDATION').value = '{0}';", GetViewState(wholePageContent, "__EVENTVALIDATION"));
 
-            WriterAtBack.Flush();
-            _memStreamBack.Flush();
-            _memStreamBack.Position = 0;
-            readerContent = new StreamReader(_memStreamBack);
-            string allContentAtBack = readerContent.ReadToEnd();
-            writer.WriteLine(allContentAtBack);
+                WriterAtBack.Flush();
+                _memStreamBack.Flush();
+                _memStreamBack.Position = 0;
+                readerContent = new StreamReader(_memStreamBack);
+                string allContentAtBack = readerContent.ReadToEnd();
+                writer.WriteLine(allContentAtBack);
 
-            writer.Flush();
+                writer.Flush();
+            }
+            else
+            {
+                ;// Do nothing, headers changed in setter
+            }
         }
 
         private string GetViewState(string wholePageContent, string searchString)
