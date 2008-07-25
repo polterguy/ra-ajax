@@ -23,10 +23,16 @@
 
     <ext:TabControl runat="server" ID="tab" CssClass="tab-control">
         <ext:TabView runat="server" ID="tab1" Caption="Read" CssClass="content">
-            <h1 runat="server" id="header_read">Wiki Header</h1>
+            <h1 runat="server" id="header_read"></h1>
         </ext:TabView>
         <ext:TabView runat="server" ID="tab2" Caption="Edit" CssClass="content">
-            <h1 runat="server" id="header_write">Wiki Header</h1>
+            <h1 runat="server" id="header_edit">
+                Create article; 
+                <ext:InPlaceEdit 
+                    runat="server" 
+                    ID="headerInPlace" 
+                    style="display:inline;" />
+            </h1>
         </ext:TabView>
     </ext:TabControl>
 

@@ -28,13 +28,21 @@ namespace Ra.Extensions
         [DefaultValue("")]
         public string Text
         {
-            get { return _link.Text; }
-            set { _link.Text = value; }
+            get
+            {
+                if (ViewState["Text"] == null)
+                    return "";
+                return (string)ViewState["Text"];
+            }
+            set
+            {
+                ViewState["Text"] = value;
+            }
         }
 
-        protected override void OnLoad(EventArgs e)
+        protected override void LoadViewState(object savedState)
         {
-            base.OnLoad(e);
+            base.LoadViewState(savedState);
             EnsureChildControls();
         }
 
@@ -48,6 +56,7 @@ namespace Ra.Extensions
             // Creating LinkButton
             _link.ID = "btn";
             _link.Click += new EventHandler(_link_Click);
+            _link.Text = Text;
             Controls.Add(_link);
 
             // Creating TextBox
@@ -64,6 +73,7 @@ namespace Ra.Extensions
             _link.Text = _text.Text;
             _text.Visible = false;
             _link.Visible = true;
+            Text = _link.Text;
 
             if (TextChanged != null)
                 TextChanged(this, new EventArgs());
