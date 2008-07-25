@@ -33,6 +33,10 @@
                     ID="headerInPlace" 
                     style="display:inline;" />
             </h1>
+            <ext:RichEdit 
+                runat="server" 
+                style="border:solid 1px #999;padding:5px;"
+                ID="richedit" />
         </ext:TabView>
     </ext:TabControl>
 

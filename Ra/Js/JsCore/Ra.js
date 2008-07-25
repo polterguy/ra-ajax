@@ -111,6 +111,10 @@ Ra.extend(Ra.Element.prototype, {
     return this;
   },
 
+  getContent: function() {
+    return this.innerHTML;
+  },
+
   // Replaces element with given HTML
   replace: function(html) {
 

@@ -13,9 +13,17 @@ public partial class Wiki : System.Web.UI.Page
             _article = Article.FindOne(Expression.Eq("Url", url));
             if (_article == null)
             {
+                // Checking to see if user is LOGGED IN and if NOT redirect since we
+                // don't allo editing of articles for users not logged in
+                if (Operator.Current == null)
+                    Response.Redirect("~");
+
                 // Create mode...
                 headerInPlace.Text = Request.Params["name"];
                 tab.ActiveTabViewIndex = 1;
+                richedit.Text = "Just edit this content directly.<br />And save it when you feel for it.<br />";
+                richedit.Text += "Use the toolbar at the top for formatting of your text<br />";
+                richedit.Text += "Note that the Ra RichEdit works in such a way that you must FIRST create your text and THEN choose your formatting options...";
             }
         }
     }
