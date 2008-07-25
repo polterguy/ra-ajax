@@ -14,8 +14,7 @@ public partial class Wiki : System.Web.UI.Page
             if (_article == null)
             {
                 // Create mode...
-                header_write.InnerHtml = "Create article; " + Request.Params["name"];
-                header_read.InnerHtml = Request.Params["name"];
+                headerInPlace.Text = Request.Params["name"];
                 tab.ActiveTabViewIndex = 1;
             }
         }
