@@ -33,11 +33,48 @@
                     runat="server" 
                     ID="headerInPlace" />
             </h1>
-            <ra:Button 
+            <ra:ImageButton 
                 runat="server" 
                 ID="bold" 
-                Text="Bold" 
+                ImageUrl="media/x.png" 
+                CssClass="editor-bold" 
+                AlternateText="Make bold"
                 OnClick="bold_Click" />
+            <ra:ImageButton 
+                runat="server" 
+                ID="italic" 
+                ImageUrl="media/x.png" 
+                CssClass="editor-italic" 
+                AlternateText="Make italic"
+                OnClick="italic_Click" />
+            <ra:ImageButton 
+                runat="server" 
+                ID="underscore" 
+                ImageUrl="media/x.png" 
+                CssClass="editor-underscore" 
+                AlternateText="Make underscore"
+                OnClick="underscore_Click" />
+            <ra:ImageButton 
+                runat="server" 
+                ID="strike" 
+                ImageUrl="media/x.png" 
+                CssClass="editor-strike" 
+                AlternateText="Make strikethrough"
+                OnClick="strike_Click" />
+            <ra:ImageButton 
+                runat="server" 
+                ID="bullets" 
+                ImageUrl="media/x.png" 
+                CssClass="editor-bullets" 
+                AlternateText="Make bulleted list"
+                OnClick="bullets_Click" />
+            <ra:ImageButton 
+                runat="server" 
+                ID="numbers" 
+                ImageUrl="media/x.png" 
+                CssClass="editor-numbers" 
+                AlternateText="Make numbered list"
+                OnClick="numbers_Click" />
             <ext:RichEdit 
                 runat="server" 
                 OnKeyUp="richedit_KeyUp"
