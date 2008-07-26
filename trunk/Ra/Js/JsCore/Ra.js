@@ -367,6 +367,8 @@ Ra.extend(Ra.XHR.prototype, {
 // ==============================================================================
 Ra.Form = Ra.klass();
 
+Ra.Form.preSerializers = [];
+
 Ra.extend(Ra.Form.prototype, {
 
   init: function(form, options) {
@@ -407,6 +409,11 @@ Ra.extend(Ra.Form.prototype, {
   // Will return a string which is a vald HTTP POST body for the given form
   // If no form is given, it will search for the _FIRST_ form on the page
   serializeForm: function() {
+
+    // Calling out to all of our pre-serialization handlers
+    for( var idx = 0; idx < Ra.Form.preSerializers.length; idx++ ) {
+      Ra.Form.preSerializers[idx].handler.call(Ra.Form.preSerializers[idx].context);
+    }
 
     // Return value
     var retVal = '';

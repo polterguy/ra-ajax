@@ -22,6 +22,8 @@ namespace Ra.Extensions
     [ASP.ToolboxData("<{0}:RichEdit runat=server></{0}:RichEdit>")]
     public class RichEdit : RaWebControl
     {
+        public event EventHandler KeyUp;
+
         [DefaultValue("")]
         public string Text
         {
@@ -36,8 +38,44 @@ namespace Ra.Extensions
 
         protected override void OnInit(EventArgs e)
         {
+            if (!this.IsViewStateEnabled && AjaxManager.Instance.CurrentPage.IsPostBack)
+            {
+                // Making sure we get our NEW value loaded...
+                string value = Page.Request.Params[ClientID + "__VALUE"];
+                ViewState["Text"] = value;
+            }
             base.OnInit(e);
             AjaxManager.Instance.IncludeScriptFromResource(typeof(Timer), "Extensions.RichEdit.js");
+
+            // In order to get the innerHTML to work correctly with reporting back XHTML
+            // we need to make the MIME type of the page to the type given below...
+            // Note that this might have side effects...!
+            AjaxManager.Instance.CurrentPage.Response.ContentType = "application/xhtml+xml";
+        }
+
+        protected override void LoadViewState(object savedState)
+        {
+            base.LoadViewState(savedState);
+
+            if (AjaxManager.Instance.CurrentPage.IsPostBack)
+            {
+                // Making sure we get our NEW value loaded...
+                string value = Page.Request.Params[ClientID + "__VALUE"];
+                ViewState["Text"] = value;
+            }
+        }
+
+        public override void DispatchEvent(string name)
+        {
+            switch (name)
+            {
+                case "keyup":
+                    if (KeyUp != null)
+                        KeyUp(this, new EventArgs());
+                    break;
+                default:
+                    throw new ArgumentException("Unknown event sent to RichEdit");
+            }
         }
 
         private bool _scriptRetrieved;
@@ -46,8 +84,14 @@ namespace Ra.Extensions
             if (_scriptRetrieved)
                 return "";
             _scriptRetrieved = true;
-            return string.Format("\r\nnew Ra.RichEdit('{0}', {{label:'{0}_LBL'}});", 
-                ClientID);
+            string evts = "";
+            if (KeyUp != null)
+                evts += "[['keyup']]";
+            if (evts.Length > 0)
+                evts = ",evts:" + evts;
+            return string.Format("\r\nnew Ra.RichEdit('{0}', {{label:'{0}_LBL'{1},ctrl:'{0}_LBL'{1}}});", 
+                ClientID,
+                evts);
         }
 
         public override string GetHTML()
@@ -56,7 +100,7 @@ namespace Ra.Extensions
             // to make sure we submit the new value back to server whan changes occurs...
             // In additiont we've also got a hidden input field which serves as the "selected text"
             // field and contains the value which is currently selected in the RichEdit...
-            return string.Format("<div id=\"{0}\"{2}{3}><div id=\"{0}_LBL\">{1}</div><input type=\"hidden\" id=\"{0}__VALUE\" /><input type=\"hidden\" id=\"{0}__SELECTED\" /></div>",
+            return string.Format("<div id=\"{0}\"{2}{3}><div id=\"{0}_LBL\">{1}</div><input type=\"hidden\" id=\"{0}__VALUE\" name=\"{0}__VALUE\" /><input type=\"hidden\" id=\"{0}__SELECTED\" name=\"{0}__SELECTED\" /></div>",
                 ClientID,
                 Text,
                 GetCssClassHTMLFormatedAttribute(),

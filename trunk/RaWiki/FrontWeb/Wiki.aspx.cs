@@ -5,6 +5,7 @@ using NHibernate.Expression;
 public partial class Wiki : System.Web.UI.Page
 {
     private Article _article;
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -26,5 +27,10 @@ public partial class Wiki : System.Web.UI.Page
                 richedit.Text += "Note that the Ra RichEdit works in such a way that you must FIRST create your text and THEN choose your formatting options...";
             }
         }
+    }
+
+    protected void richedit_KeyUp(object sender, EventArgs e)
+    {
+        dummy.Text = richedit.Text;//.Replace("<", "&lt;").Replace(">", "&gt;");
     }
 }

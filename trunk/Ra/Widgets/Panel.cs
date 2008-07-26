@@ -64,7 +64,7 @@ namespace Ra.Widgets
             return retVal;
         }
 
-        private string GetChildControlsHTML()
+        protected virtual string GetChildControlsHTML()
         {
             // Must set all children to RenderHtml to get this to work...
             SetAllChildrenToRenderHtml(Controls);
