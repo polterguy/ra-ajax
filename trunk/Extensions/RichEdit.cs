@@ -36,6 +36,21 @@ namespace Ra.Extensions
             }
         }
 
+        private string _selection;
+        [Browsable(false)]
+        public string Selection
+        {
+            get { return _selection; }
+            set
+            {
+                if (value != Selection)
+                {
+                    _selection = value;
+                    SetJSONValueString("Paste", value);
+                }
+            }
+        }
+
         protected override void OnInit(EventArgs e)
         {
             if (!this.IsViewStateEnabled && AjaxManager.Instance.CurrentPage.IsPostBack)
@@ -43,6 +58,8 @@ namespace Ra.Extensions
                 // Making sure we get our NEW value loaded...
                 string value = Page.Request.Params[ClientID + "__VALUE"];
                 ViewState["Text"] = value;
+
+                _selection = Page.Request.Params[ClientID + "__SELECTED"];
             }
             base.OnInit(e);
             AjaxManager.Instance.IncludeScriptFromResource(typeof(Timer), "Extensions.RichEdit.js");
@@ -62,6 +79,8 @@ namespace Ra.Extensions
                 // Making sure we get our NEW value loaded...
                 string value = Page.Request.Params[ClientID + "__VALUE"];
                 ViewState["Text"] = value;
+
+                _selection = Page.Request.Params[ClientID + "__SELECTED"];
             }
         }
 

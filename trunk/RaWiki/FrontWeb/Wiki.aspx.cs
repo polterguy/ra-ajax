@@ -31,6 +31,13 @@ public partial class Wiki : System.Web.UI.Page
 
     protected void richedit_KeyUp(object sender, EventArgs e)
     {
-        dummy.Text = richedit.Text;//.Replace("<", "&lt;").Replace(">", "&gt;");
+        dummy.Text = richedit.Text;
+        dummy.Text += "\r\n\r\n";
+        dummy.Text += richedit.Selection;
+    }
+
+    protected void bold_Click(object sender, EventArgs e)
+    {
+        richedit.Selection = "<strong>" + richedit.Selection + "</strong>";
     }
 }

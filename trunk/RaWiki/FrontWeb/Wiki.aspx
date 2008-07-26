@@ -33,6 +33,11 @@
                     runat="server" 
                     ID="headerInPlace" />
             </h1>
+            <ra:Button 
+                runat="server" 
+                ID="bold" 
+                Text="Bold" 
+                OnClick="bold_Click" />
             <ext:RichEdit 
                 runat="server" 
                 OnKeyUp="richedit_KeyUp"
