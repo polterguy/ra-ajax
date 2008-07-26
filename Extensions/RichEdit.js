@@ -118,7 +118,7 @@ Ra.extend(Ra.RichEdit.prototype, {
 
   Paste: function(value) {
     var sel = this._getSelection();
-    if( sel ) {
+    if( !sel ) {
       this._restoreSelection(sel);
       var newContent = sel.createContextualFragment(value);
       sel.deleteContents();

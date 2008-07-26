@@ -40,4 +40,29 @@ public partial class Wiki : System.Web.UI.Page
     {
         richedit.Selection = "<strong>" + richedit.Selection + "</strong>";
     }
+
+    protected void italic_Click(object sender, EventArgs e)
+    {
+        richedit.Selection = "<em>" + richedit.Selection + "</em>";
+    }
+
+    protected void underscore_Click(object sender, EventArgs e)
+    {
+        richedit.Selection = "<span style=\"text-decoration:underline;\">" + richedit.Selection + "</span>";
+    }
+
+    protected void strike_Click(object sender, EventArgs e)
+    {
+        richedit.Selection = "<span style=\"text-decoration:line-through;\">" + richedit.Selection + "</span>";
+    }
+
+    protected void bullets_Click(object sender, EventArgs e)
+    {
+        richedit.Selection = "<ul><li>" + richedit.Selection + "</li></ul>";
+    }
+
+    protected void numbers_Click(object sender, EventArgs e)
+    {
+        richedit.Selection = "<ol><li>" + richedit.Selection + "</li></ol>";
+    }
 }
