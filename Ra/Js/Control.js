@@ -199,10 +199,14 @@ Ra.extend(Ra.Control.prototype, {
     }
   },
 
+  getValue: function() {
+    return (this.options.ctrl || this.element).value;
+  },
+
   checkValueForKeyUp: function() {
     // This logic will actually HALT the Ajax Request until the user have NOT 
     // typed anything into the Control for more than 0.5 seconds...
-    if( this.element.value == this._oldValue ) {
+    if( this.getValue() == this._oldValue ) {
       var x = new Ra.Ajax({
         args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=keyup',
         raCallback:true,
@@ -210,7 +214,7 @@ Ra.extend(Ra.Control.prototype, {
         callingContext: this
       });
     } else {
-      this._oldValue = this.element.value;
+      this._oldValue = this.getValue();
       var T = this;
       setTimeout(function() {
         T.checkValueForKeyUp();
@@ -224,7 +228,7 @@ Ra.extend(Ra.Control.prototype, {
     if( evt == 'keyup' ) {
       // This one needs SPECIAL handling to not drain resources
       if( !this._oldValue ) {
-        this._oldValue = this.element.value;
+        this._oldValue = this.getValue();
         var T = this;
         setTimeout(function() {
           T.checkValueForKeyUp();
