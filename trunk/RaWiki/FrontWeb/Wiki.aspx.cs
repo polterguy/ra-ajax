@@ -2,6 +2,7 @@ using System;
 using Engine.Entities;
 using NHibernate.Expression;
 using Ra.Widgets;
+using Ra;
 
 public partial class Wiki : System.Web.UI.Page
 {
@@ -9,10 +10,10 @@ public partial class Wiki : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        string url = Request.Params["id"];
+        _article = Article.FindOne(Expression.Eq("Url", url));
         if (!IsPostBack)
         {
-            string url = Request.Params["id"];
-            _article = Article.FindOne(Expression.Eq("Url", url));
             if (_article == null)
             {
                 // Checking to see if user is LOGGED IN and if NOT redirect since we
@@ -23,10 +24,37 @@ public partial class Wiki : System.Web.UI.Page
                 // Create mode...
                 headerInPlace.Text = Request.Params["name"];
                 tab.ActiveTabViewIndex = 1;
-                richedit.Text = "Just edit this content directly.<br />And save it when you feel for it.<br />";
+                richedit.Text = "<p>Just edit this content directly.<br />And save it when you feel for it.<br />";
                 richedit.Text += "Use the toolbar at the top for formatting of your text<br />";
-                richedit.Text += "Note that the Ra RichEdit works in such a way that you must FIRST create your text and THEN choose your formatting options...";
+                richedit.Text += "Note that the Ra RichEdit works in such a way that you must FIRST create your text and THEN choose your formatting options...</p>";
             }
+            else
+            {
+                header_read.InnerText = _article.Header;
+                content.Text = _article.Body;
+            }
+        }
+        else
+        {
+            dummy.Text = richedit.Text;
+        }
+    }
+
+    protected void richedit_Dummy(object sender, EventArgs e)
+    {
+    }
+
+    protected void tab_ActiveTabViewChanged(object sender, EventArgs e)
+    {
+        if (tab.ActiveTabViewIndex == 0)
+        {
+            header_read.InnerText = headerInPlace.Text;
+            content.Text = richedit.Text;
+        }
+        else if (tab.ActiveTabViewIndex == 1)
+        {
+            headerInPlace.Text = header_read.InnerText;
+            richedit.Text = content.Text;
         }
     }
 
@@ -97,5 +125,89 @@ public partial class Wiki : System.Web.UI.Page
             txtLnk.Text,
             title.Text,
             richedit.Selection);
+    }
+
+    protected void cancelLnk_Click(object sender, EventArgs e)
+    {
+        Effect effect = new EffectFadeOut(pnlLnk, 0.4M);
+        effect.Render();
+    }
+
+    protected void save_Click(object sender, EventArgs e)
+    {
+        if (_article == null)
+        {
+            // New article
+            _article = new Article();
+            _article.Created = DateTime.Now;
+            string url = Request.Params["id"];
+            _article.Url = url;
+            _article.Header = headerInPlace.Text;
+            _article.Body = richedit.Text;
+
+            // Creating "content" for 1st revision
+            ArticleRevision r = new ArticleRevision();
+            r.Body = richedit.Text;
+            r.Created = DateTime.Now;
+            r.Header = headerInPlace.Text;
+            r.Save();
+
+            _article.Revisions.Add(r);
+            _article.Save();
+        }
+        else
+        {
+            // Creating "content" for revision
+            ArticleRevision r = new ArticleRevision();
+            r.Body = richedit.Text;
+            r.Created = DateTime.Now;
+            r.Header = headerInPlace.Text;
+            r.Save();
+
+            _article.Revisions.Add(r);
+            _article.Header = headerInPlace.Text;
+            _article.Body = richedit.Text;
+            _article.Save();
+        }
+        string nUrl = this.Request.Url.ToString();
+        nUrl = nUrl.Substring(0, nUrl.IndexOf('?'));
+        AjaxManager.Instance.Redirect(nUrl);
+    }
+
+    protected void template_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        switch (template.SelectedItem.Value)
+        {
+            case "normal":
+                richedit.Text = @"
+<p><em>This is a small ingress which basically is to serve as an ""intro"" for your article.</em></p>
+<h2>Paragraph header</h2>
+<p>This is a paragraph</p>
+<h2>Paragraph other header</h2>
+<p>And this is another paragraph. Notice that in the Ra Wiki you really don't want to have an H1 element since the
+article name will automatically become the H1 and all documents should have one and ONLY one H1 element.
+So the above header(s) are H2 elements to serve as ""sub-headers"".</p>
+<p>And by constraining the user options for the Rich Editing a bit we're actually able to construct perfectly valid XHTML markup!</p>
+";
+                break;
+            case "list":
+                richedit.Text = @"
+<p><em>This is a small ingress which basically is to serve as an ""intro"" for your article.</em></p>
+<ul>
+    <li>First list item</li>
+    <li>Second list item</li>
+    <li>Third list item</li>
+</ul>
+<p>Explanation to above list</p>
+<ol>
+    <li>First list item</li>
+    <li>Second list item</li>
+    <li>Third list item</li>
+</ol>
+<p>Explanation to above list</p>
+";
+                break;
+        }
+        template.SelectedItem = template.Items[0];
     }
 }

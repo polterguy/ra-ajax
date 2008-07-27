@@ -95,6 +95,7 @@ namespace Ra.Extensions
         {
             _link.CssClass = CssClass;
             _text.CssClass = CssClass;
+            _link.Text = Text;
             if (string.IsNullOrEmpty(_link.Text))
                 _link.Text = "[null]";
             base.OnPreRender(e);

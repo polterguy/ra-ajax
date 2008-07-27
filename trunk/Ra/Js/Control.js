@@ -90,7 +90,7 @@ Ra.extend(Ra.Control.prototype, {
 
     // Setting focus to control (of we should)
     if( this.options.focus ) {
-      this.element.focus();
+      this.Focus();
     }
 
     // Selecting contents of control (if we should)

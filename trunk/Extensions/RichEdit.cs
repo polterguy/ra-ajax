@@ -63,11 +63,17 @@ namespace Ra.Extensions
             }
             base.OnInit(e);
             AjaxManager.Instance.IncludeScriptFromResource(typeof(Timer), "Extensions.RichEdit.js");
+        }
 
+        protected override void OnPreRender(EventArgs e)
+        {
             // In order to get the innerHTML to work correctly with reporting back XHTML
             // we need to make the MIME type of the page to the type given below...
             // Note that this might have side effects...!
-            AjaxManager.Instance.CurrentPage.Response.ContentType = "application/xhtml+xml";
+            /*if (Visible)
+                AjaxManager.Instance.CurrentPage.Response.ContentType = "application/xhtml+xml";*/
+
+            base.OnPreRender(e);
         }
 
         protected override void LoadViewState(object savedState)
@@ -108,9 +114,18 @@ namespace Ra.Extensions
                 evts += "[['keyup']]";
             if (evts.Length > 0)
                 evts = ",evts:" + evts;
-            return string.Format("\r\nnew Ra.RichEdit('{0}', {{label:'{0}_LBL'{1},ctrl:'{0}_LBL'{1}}});", 
-                ClientID,
-                evts);
+            if (_hasSetFocus)
+            {
+                return string.Format("\r\nnew Ra.RichEdit('{0}', {{focus:true,label:'{0}_LBL'{1},ctrl:'{0}_LBL'{1}}});",
+                    ClientID,
+                    evts);
+            }
+            else
+            {
+                return string.Format("\r\nnew Ra.RichEdit('{0}', {{label:'{0}_LBL'{1},ctrl:'{0}_LBL'{1}}});",
+                    ClientID,
+                    evts);
+            }
         }
 
         public override string GetHTML()

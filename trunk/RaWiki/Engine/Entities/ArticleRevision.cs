@@ -18,7 +18,7 @@ namespace Engine.Entities
             set { _created = value; }
         }
 
-        [Property]
+        [Property(ColumnType = "StringClob", SqlType = "TEXT")]
         public string Body
         {
             get { return _body; }
