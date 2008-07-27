@@ -72,17 +72,29 @@ Ra.extend(Ra.RichEdit.prototype, {
     }
   },
 
-  _restoreSelection: function(storedSelection) {
-    if (storedSelection) {
+  _restoreSelection: function(sl) {
+    if (sl) {
       if (window.getSelection) {
         var selection = window.getSelection();
         selection.removeAllRanges();
-        selection.addRange(storedSelection);
+        selection.addRange(sl);
       } else if (document.selection && document.body.createTextRange) {
         var range = document.body.createTextRange();
-        range.moveToBookmark(storedSelection);
+        range.moveToBookmark(sl);
         range.select();
       }
+    }
+  },
+
+  Paste: function(value) {
+    var sel = this._getSelection();
+    if( sel ) {
+      if( !value || value.length == 0 ) {
+        document.execCommand('delete', false, null);
+      } else {
+        document.execCommand('inserthtml', false, value);
+      }
+      this._selection = null;
     }
   },
 
@@ -108,22 +120,24 @@ Ra.extend(Ra.RichEdit.prototype, {
     this.getValueElement().value = retVal;
 
     var selection = this._getSelection();
-    if( selection )
-      this.getSelectedElement().value = selection.toString();
+    if( selection ) {
+      var rng = selection.cloneContents();
+      var el = document.createElement('div');
+      el.appendChild(rng);
+      var val = el.innerHTML;
+      for( var idx = 0; idx < toRemove.length; idx++ ) {
+        while(true) {
+          if( val.indexOf(toRemove[idx]) == -1 )
+            break;
+          val = val.replace(toRemove[idx], '');
+        }
+      }
+      this.getSelectedElement().value = val;
+    }
   },
 
   getValue: function() {
     return this.options.ctrl.getContent();
-  },
-
-  Paste: function(value) {
-    var sel = this._getSelection();
-    if( sel ) {
-      var newContent = sel.createContextualFragment(value);
-      sel.deleteContents();
-      sel.insertNode(newContent);
-      this._selection = null;
-    }
   },
 
   destroyThis: function() {
