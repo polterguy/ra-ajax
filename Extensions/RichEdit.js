@@ -89,11 +89,12 @@ Ra.extend(Ra.RichEdit.prototype, {
   Paste: function(value) {
     var sel = this._getSelection();
     if( sel ) {
-      if( !value || value.length == 0 ) {
-        document.execCommand('delete', false, null);
-      } else {
-        document.execCommand('inserthtml', false, value);
-      }
+      // document.execCommand will insert HTML as HTML and NOT as XHTML so
+      // we can't use that one for our purposes...!
+      // Therefor the "funny hack" here for inserting HTML text...
+      var newContent = sel.createContextualFragment(value);
+      sel.deleteContents();
+      sel.insertNode(newContent);
       this._selection = null;
     }
   },
@@ -119,12 +120,24 @@ Ra.extend(Ra.RichEdit.prototype, {
     // Setting the hidden field value to get it back to the server
     this.getValueElement().value = retVal;
 
+    // Since we want to return back the HTML and NOT the TEXT content of the current selection
+    // to support multiple nested formattings we need to go through this "little hack"
+    // to get to the XHTML value of the current selection...
+    // Dirty, but at the moment the only way I know about to retrieve XHTML valid content from
+    // a Range object...
     var selection = this._getSelection();
     if( selection ) {
+
+      // Creating a "dummy HTML DOM element" which we append the
+      // range contents into for then later retrieve the XHTML by 
+      // using the innerHTML on that "dummy element"
       var rng = selection.cloneContents();
       var el = document.createElement('div');
       el.appendChild(rng);
       var val = el.innerHTML;
+
+      // Looping through removing the stupid XML namespaces plus some mozilla 
+      // specific non compliant attributes...
       for( var idx = 0; idx < toRemove.length; idx++ ) {
         while(true) {
           if( val.indexOf(toRemove[idx]) == -1 )
@@ -132,7 +145,13 @@ Ra.extend(Ra.RichEdit.prototype, {
           val = val.replace(toRemove[idx], '');
         }
       }
+
+      // Now we have the "selected HTML string" of the RichEdit and we can set the 
+      // hidden fields value to that value to make sure it goes back to the server...
       this.getSelectedElement().value = val;
+    } else {
+      // No current selection, setting the hidden field value to EMPTY!
+      this.getSelectedElement().value = '';
     }
   },
 
