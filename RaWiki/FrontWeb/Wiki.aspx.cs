@@ -53,8 +53,17 @@ public partial class Wiki : System.Web.UI.Page
         }
         else if (tab.ActiveTabViewIndex == 1)
         {
-            headerInPlace.Text = header_read.InnerText;
-            richedit.Text = content.Text;
+            // Verifying Operator is logged in, confirmed and so on...
+            if (Operator.Current != null && Operator.Current.Confirmed && Operator.Current.AdminApproved)
+            {
+                headerInPlace.Text = header_read.InnerText;
+                richedit.Text = content.Text;
+            }
+            else
+            {
+                tab.SetActiveTabViewIndex(0);
+                content.Text += "<br /><br /><span style=\"color:Red;\">You must be logged in with a confirmed and approved user to edit wikis.</span>";
+            }
         }
     }
 
@@ -169,9 +178,11 @@ public partial class Wiki : System.Web.UI.Page
             _article.Body = richedit.Text;
             _article.Save();
         }
-        string nUrl = this.Request.Url.ToString();
-        nUrl = nUrl.Substring(0, nUrl.IndexOf('?'));
-        AjaxManager.Instance.Redirect(nUrl);
+
+        // Going to "preview mode"
+        tab.SetActiveTabViewIndex(0);
+        header_read.InnerText = headerInPlace.Text;
+        content.Text = richedit.Text;
     }
 
     protected void template_SelectedIndexChanged(object sender, EventArgs e)
