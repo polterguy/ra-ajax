@@ -102,16 +102,10 @@
             </ra:Panel>
             <ext:RichEdit 
                 runat="server" 
-                OnKeyUp="richedit_KeyUp"
                 style="border:solid 1px #999;padding:5px;"
                 ID="richedit" />
         </ext:TabView>
     </ext:TabControl>
-    <ra:TextArea 
-        runat="server" 
-        ID="dummy" 
-        Columns="80" 
-        Rows="15" />
 
 </asp:Content>
 
