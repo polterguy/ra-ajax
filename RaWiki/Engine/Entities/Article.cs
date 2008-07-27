@@ -2,6 +2,7 @@ using System;
 using Castle.ActiveRecord;
 using System.Collections.Generic;
 using NHibernate.Expression;
+using System.Collections;
 
 namespace Engine.Entities
 {
@@ -11,6 +12,16 @@ namespace Engine.Entities
         private int _id;
         private string _url;
         private DateTime _created;
+        private IList _revisions = new ArrayList();
+        private string _header;
+        private string _body;
+
+        [HasMany(typeof(ArticleRevision), Table = "ArticleRevisions", ColumnKey = "ArticleId")]
+        public IList Revisions
+        {
+            get { return _revisions; }
+            set { _revisions = value; }
+        }
 
         [Property]
         public DateTime Created
@@ -31,6 +42,20 @@ namespace Engine.Entities
         {
             get { return _id; }
             set { _id = value; }
+        }
+
+        [Property]
+        public string Header
+        {
+            get { return _header; }
+            set { _header = value; }
+        }
+
+        [Property(ColumnType = "StringClob", SqlType = "TEXT")]
+        public string Body
+        {
+            get { return _body; }
+            set { _body = value; }
         }
 
         public static int GetCount()
@@ -60,6 +85,14 @@ namespace Engine.Entities
 
             // Trimming away excessive leadin and trailing "-"
             url = url.Trim('-');
+
+            // Trimming away all DOUBLE, TRIPLE and so on "--" from Url
+            while (true)
+            {
+                if (url.IndexOf("--") == -1)
+                    break;
+                url = url.Replace("--", "-");
+            }
 
             // Checking uniqueness, and if not unique appending a number to the URL
             // Note this also works with DELETED articles meaning it'll pick the FIRST available number to append

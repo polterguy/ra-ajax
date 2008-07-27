@@ -253,5 +253,21 @@ a:hover
 
 
 
+/* Search CSS
+ */
+.search
+{
+	border:solid 1px #999;
+	background-color:Yellow;
+	font-size:11px;
+	padding:5px;
+}
+
+.search ul
+{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
 
 

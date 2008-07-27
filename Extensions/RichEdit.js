@@ -94,8 +94,7 @@ Ra.extend(Ra.RichEdit.prototype, {
       // document.execCommand will insert HTML as HTML and NOT as XHTML so
       // we can't use that one for our purposes...!
       // Therefor the "funny hack" here for inserting HTML text...
-      var newContent;
-      newContent = sel.createContextualFragment(value); // User has a selection
+      var newContent = sel.createContextualFragment(value); // User has a selection
       sel.deleteContents();
       sel.insertNode(newContent);
       this._selection = null;

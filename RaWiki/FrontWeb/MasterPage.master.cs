@@ -8,6 +8,8 @@
 using System;
 using Engine.Entities;
 using Ra.Widgets;
+using NHibernate.Expression;
+using Castle.ActiveRecord.Queries;
 
 public partial class MasterPage : System.Web.UI.MasterPage
 {
@@ -24,6 +26,38 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 loginPnl.Visible = false;
                 welcome.Text += Operator.Current.Username;
                 welcomePnl.Visible = true;
+                search.Focus();
+            }
+        }
+    }
+
+    protected void search_KeyUp(object sender, EventArgs e)
+    {
+        if (search.Text.Trim().Length == 0)
+        {
+            searchResults.Visible = false;
+        }
+        else
+        {
+            searchResults.Visible = true;
+            searchResults.Controls.Clear();
+            searchResults.SignalizeReRender();
+            int idxNo = 0;
+            SimpleQuery<Article> q = new SimpleQuery<Article>(@"
+from Article a where a.Header like '%" + search.Text + "%'");
+            Article[] articles = q.Execute();
+            foreach (Article idx in articles)
+            {
+                System.Web.UI.WebControls.Literal lit = new System.Web.UI.WebControls.Literal();
+                if (idxNo == 0)
+                {
+                    lit.Text += "<ul>";
+                }
+                lit.Text += string.Format("<li><a href=\"{0}.wiki\">{1}</a></li>", idx.Url, idx.Header);
+                if (idxNo == articles.Length)
+                    lit.Text += "</ul>";
+                searchResults.Controls.Add(lit);
+                idxNo += 1;
             }
         }
     }

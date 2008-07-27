@@ -85,6 +85,18 @@
                                     </tr>
                                 </table>
                             </ra:Panel>
+                            <div style="position:absolute;right:5px;top:226px;width:200px;color:Yellow;">
+                                Search <ra:TextBox 
+                                    runat="server" 
+                                    OnKeyUp="search_KeyUp"
+                                    ID="search" />
+                                <ra:Panel 
+                                    runat="server" 
+                                    Visible="false"
+                                    CssClass="search"
+                                    ID="searchResults">
+                                </ra:Panel>
+                            </div>
                             <ra:Panel 
                                 runat="server" 
                                 Visible="false"
