@@ -31,7 +31,11 @@ Ra.extend(Ra.RichEdit.prototype, {
   },
 
   initRichEdit: function() {
-    this.options.label.contentEditable = true;
+    var lbl = Ra.$(this.element.id + '_LBL');
+    
+    lbl.contentEditable = true;
+    this.options.label = lbl;
+    this.options.ctrl = lbl;
 
     // We must have a preSerializer handler to make sure we serialize 
     // the value back to the server
@@ -105,28 +109,21 @@ Ra.extend(Ra.RichEdit.prototype, {
     // This function will be called just before the form is serialized 
     // before pushing back a request to the server so here we set the 
     // value of our hidden value field(s)
-    var retVal = this.options.label.getContent();
+    var val = this.options.label.getContent();
 
-    // In application/xhtml+xml mode browser adds up "garbage attributes" to the innerHTML
-    // which ends up poluting the end XHTML. This garbage should be REMOVED before transfering
-    // the value of the control back to the server...
-    var toRemove = [' xmlns="http://www.w3.org/1999/xhtml"', ' _moz_dirty=""', ' type="_moz"'];
+      // Looping through swapping non-XHTML-conforming HTML with CONFORMING HTML
+    var toRemove = [{from:'<br>', to:'<br/>'}];
     for( var idx = 0; idx < toRemove.length; idx++ ) {
       while(true) {
-        if( retVal.indexOf(toRemove[idx]) == -1 )
+        if( val.indexOf(toRemove[idx].from) == -1 )
           break;
-        retVal = retVal.replace(toRemove[idx], '');
+        val = val.replace(toRemove[idx].from, toRemove[idx].to);
       }
     }
 
     // Setting the hidden field value to get it back to the server
-    this.getValueElement().value = retVal;
+    this.getValueElement().value = val;
 
-    // Since we want to return back the HTML and NOT the TEXT content of the current selection
-    // to support multiple nested formattings we need to go through this "little hack"
-    // to get to the XHTML value of the current selection...
-    // Dirty, but at the moment the only way I know about to retrieve XHTML valid content from
-    // a Range object...
     var selection = this._selection;
     if( selection ) {
 
@@ -136,15 +133,14 @@ Ra.extend(Ra.RichEdit.prototype, {
       var rng = selection.cloneContents();
       var el = document.createElement('div');
       el.appendChild(rng);
-      var val = el.innerHTML;
+      val = el.innerHTML;
 
-      // Looping through removing the stupid XML namespaces plus some mozilla 
-      // specific non compliant attributes...
+      // Looping through swapping non-XHTML-conforming HTML with CONFORMING HTML
       for( var idx = 0; idx < toRemove.length; idx++ ) {
         while(true) {
-          if( val.indexOf(toRemove[idx]) == -1 )
+          if( val.indexOf(toRemove[idx].from) == -1 )
             break;
-          val = val.replace(toRemove[idx], '');
+          val = val.replace(toRemove[idx].from, toRemove[idx].to);
         }
       }
 

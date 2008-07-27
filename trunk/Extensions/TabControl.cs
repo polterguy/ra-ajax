@@ -118,6 +118,14 @@ namespace Ra.Extensions
                 ActiveTabViewChanged(this, new EventArgs());
         }
 
+        public void SetActiveTabViewIndex(int idx)
+        {
+            ActiveTabViewIndex = idx;
+            SignalizeReRender();
+            Controls.RemoveAt(0);
+            CreateChildTabViews();
+        }
+
         protected override void OnPreRender(EventArgs e)
         {
             int litCount = 0;
