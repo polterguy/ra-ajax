@@ -201,46 +201,54 @@ a:hover
 
 /* WYSIWYG editor
  */
-.editor-bold
+
+.editor-btn
 {
 	width:16px;
 	height:16px;
+	border:solid 1px #F0F0EA;
+}
+
+.editor-btn:hover
+{
+	width:16px;
+	height:16px;
+	border:outset 1px Black;
+}
+
+.editor-bold
+{
 	background:Transparent url(editor.png) no-repeat scroll 0 0;
 }
 
 .editor-italic
 {
-	width:16px;
-	height:16px;
 	background:Transparent url(editor.png) no-repeat scroll 0 -15px;
 }
 
 .editor-underscore
 {
-	width:16px;
-	height:16px;
 	background:Transparent url(editor.png) no-repeat scroll 0 -30px;
 }
 
 .editor-strike
 {
-	width:16px;
-	height:16px;
 	background:Transparent url(editor.png) no-repeat scroll 0 -45px;
 }
 
 .editor-bullets
 {
-	width:16px;
-	height:16px;
 	background:Transparent url(editor.png) no-repeat scroll 0 -60px;
 }
 
 .editor-numbers
 {
-	width:16px;
-	height:16px;
 	background:Transparent url(editor.png) no-repeat scroll 0 -75px;
+}
+
+.editor-link
+{
+	background:Transparent url(editor.png) no-repeat scroll 0 -92px;
 }
 
 

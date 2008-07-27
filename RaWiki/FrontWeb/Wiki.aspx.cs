@@ -1,6 +1,7 @@
 using System;
 using Engine.Entities;
 using NHibernate.Expression;
+using Ra.Widgets;
 
 public partial class Wiki : System.Web.UI.Page
 {
@@ -72,7 +73,7 @@ public partial class Wiki : System.Web.UI.Page
     {
         string content = richedit.Selection;
         if (string.IsNullOrEmpty(content))
-            content = "&nbsp;";
+            content = "content";
         richedit.Selection = "<ul><li>" + content + "</li></ul>";
     }
 
@@ -80,7 +81,28 @@ public partial class Wiki : System.Web.UI.Page
     {
         string content = richedit.Selection;
         if (string.IsNullOrEmpty(content))
-            content = "&nbsp;";
+            content = "content";
         richedit.Selection = "<ol><li>" + content + "</li></ol>";
+    }
+
+    protected void link_Click(object sender, EventArgs e)
+    {
+        pnlLnk.Visible = true;
+        Effect effect = new EffectFadeIn(pnlLnk, 0.4M);
+        effect.Render();
+        pnlLnk.Style["display"] = "";
+        txtLnk.Focus();
+        txtLnk.Select();
+        txtLnk.Text = "http://";
+    }
+
+    protected void createLnk_Click(object sender, EventArgs e)
+    {
+        Effect effect = new EffectFadeOut(pnlLnk, 0.4M);
+        effect.Render();
+        richedit.Selection = string.Format("<a href=\"{0}\" title=\"{1}\" rel=\"nofollow\">{2}</a>",
+            txtLnk.Text,
+            title.Text,
+            richedit.Selection);
     }
 }
