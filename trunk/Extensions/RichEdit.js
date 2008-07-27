@@ -87,12 +87,15 @@ Ra.extend(Ra.RichEdit.prototype, {
   },
 
   Paste: function(value) {
-    var sel = this._getSelection();
+    var sel = this._selection;
     if( sel ) {
+      this.options.label.focus();
+
       // document.execCommand will insert HTML as HTML and NOT as XHTML so
       // we can't use that one for our purposes...!
       // Therefor the "funny hack" here for inserting HTML text...
-      var newContent = sel.createContextualFragment(value);
+      var newContent;
+      newContent = sel.createContextualFragment(value); // User has a selection
       sel.deleteContents();
       sel.insertNode(newContent);
       this._selection = null;
@@ -125,7 +128,7 @@ Ra.extend(Ra.RichEdit.prototype, {
     // to get to the XHTML value of the current selection...
     // Dirty, but at the moment the only way I know about to retrieve XHTML valid content from
     // a Range object...
-    var selection = this._getSelection();
+    var selection = this._selection;
     if( selection ) {
 
       // Creating a "dummy HTML DOM element" which we append the

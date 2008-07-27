@@ -37,44 +37,69 @@
                 runat="server" 
                 ID="bold" 
                 ImageUrl="media/x.png" 
-                CssClass="editor-bold" 
+                CssClass="editor-bold editor-btn" 
                 AlternateText="Make bold"
                 OnClick="bold_Click" />
             <ra:ImageButton 
                 runat="server" 
                 ID="italic" 
                 ImageUrl="media/x.png" 
-                CssClass="editor-italic" 
+                CssClass="editor-italic editor-btn" 
                 AlternateText="Make italic"
                 OnClick="italic_Click" />
             <ra:ImageButton 
                 runat="server" 
                 ID="underscore" 
                 ImageUrl="media/x.png" 
-                CssClass="editor-underscore" 
+                CssClass="editor-underscore editor-btn" 
                 AlternateText="Make underscore"
                 OnClick="underscore_Click" />
             <ra:ImageButton 
                 runat="server" 
                 ID="strike" 
                 ImageUrl="media/x.png" 
-                CssClass="editor-strike" 
+                CssClass="editor-strike editor-btn" 
                 AlternateText="Make strikethrough"
                 OnClick="strike_Click" />
             <ra:ImageButton 
                 runat="server" 
                 ID="bullets" 
                 ImageUrl="media/x.png" 
-                CssClass="editor-bullets" 
+                CssClass="editor-bullets editor-btn" 
                 AlternateText="Make bulleted list"
                 OnClick="bullets_Click" />
             <ra:ImageButton 
                 runat="server" 
                 ID="numbers" 
                 ImageUrl="media/x.png" 
-                CssClass="editor-numbers" 
+                CssClass="editor-numbers editor-btn" 
                 AlternateText="Make numbered list"
                 OnClick="numbers_Click" />
+            <ra:ImageButton 
+                runat="server" 
+                ID="link" 
+                ImageUrl="media/x.png" 
+                CssClass="editor-link editor-btn" 
+                AlternateText="Make hyperlink"
+                OnClick="link_Click" />
+            <ra:Panel 
+                runat="server" 
+                ID="pnlLnk" 
+                style="background-color:Yellow;padding:5px;"
+                Visible="false">
+                URL: <ra:TextBox 
+                    runat="server" 
+                    ID="txtLnk" />
+                Title: <ra:TextBox 
+                    runat="server" 
+                    Text="title of link"
+                    ID="title" />
+                <ra:Button 
+                    runat="server" 
+                    ID="createLnk" 
+                    OnClick="createLnk_Click"
+                    Text="Create link" />
+            </ra:Panel>
             <ext:RichEdit 
                 runat="server" 
                 OnKeyUp="richedit_KeyUp"
