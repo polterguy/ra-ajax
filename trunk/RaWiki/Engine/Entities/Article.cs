@@ -18,6 +18,14 @@ namespace Engine.Entities
         private string _header;
         private string _body;
         private DateTime _changed;
+        private bool _siteWide;
+
+        [Property]
+        public bool SiteWide
+        {
+            get { return _siteWide; }
+            set { _siteWide = value; }
+        }
 
         [Property]
         public DateTime Changed

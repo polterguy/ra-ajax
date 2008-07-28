@@ -122,6 +122,7 @@ public partial class Wiki : System.Web.UI.Page
         else if (tab.ActiveTabViewIndex == 1)
         {
             // Edit mode
+            siteWide.Visible = Operator.Current.IsAdmin;
 
             // Verifying Operator is logged in, confirmed and so on...
             if (Operator.Current != null && Operator.Current.Confirmed && Operator.Current.AdminApproved)
@@ -458,6 +459,7 @@ public partial class Wiki : System.Web.UI.Page
             _article.Url = url;
             _article.Header = headerInPlace.Text;
             _article.Body = richedit.Text;
+            _article.SiteWide = siteWide.Checked;
 
             // Creating "content" for 1st revision
             ArticleRevision r = new ArticleRevision();
@@ -481,6 +483,7 @@ public partial class Wiki : System.Web.UI.Page
             _article.Revisions.Add(r);
             _article.Header = headerInPlace.Text;
             _article.Body = richedit.Text;
+            _article.SiteWide = siteWide.Checked;
             _article.Save();
         }
 
