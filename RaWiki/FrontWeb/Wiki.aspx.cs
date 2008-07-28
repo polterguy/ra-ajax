@@ -58,6 +58,7 @@ public partial class Wiki : System.Web.UI.Page
             }
             else
             {
+                Title = _article.Header;
                 header_read.InnerText = _article.Header;
                 content.Text = FormatContent(_article.Body);
                 content.Text += string.Format(@"
@@ -423,6 +424,15 @@ public partial class Wiki : System.Web.UI.Page
     {
         Effect effect = new EffectFadeOut(pnlLnk, 0.4M);
         effect.Render();
+    }
+
+    protected void keepSessionTimer_Tick(object sender, EventArgs e)
+    {
+        // Just s dummy timer to make sure we NEVER get session timeout when
+        // editing a wiki...!
+        // Therefor we have a dummy timer on the Edit TabView whos only
+        // purpose is to "tick" the server to update the session every
+        // 120 seconds...
     }
 
     protected void save_Click(object sender, EventArgs e)
