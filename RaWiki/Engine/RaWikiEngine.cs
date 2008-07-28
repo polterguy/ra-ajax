@@ -40,6 +40,7 @@ namespace Engine
                 // the schema)
                 Castle.ActiveRecord.ActiveRecordStarter.CreateSchema();
 
+                // Creating default operator
                 Operator oper = new Operator();
                 oper.Username = "admin";
                 oper.Password = "admin";
@@ -47,7 +48,29 @@ namespace Engine
                 oper.AdminApproved = true; // Default user obviously must be auto admin approved...
                 oper.IsAdmin = true;
                 oper.Created = DateTime.Now;
-                oper.Save();
+                oper.SaveAndFlush();
+
+                // Creating default article
+                Article a = new Article();
+                a.Body = @"
+This id the default article created for you by the system, also a default user have been created with 
+the username of ""admin"" and the password of ""admin"". Needless to say both should be changed as 
+soon as possible.
+";
+                a.Changed = DateTime.Now;
+                a.Created = DateTime.Now;
+                a.Header = "Welcome to the Ra Wiki system";
+                a.SiteWide = false;
+                a.Url = "default";
+                ArticleRevision r = new ArticleRevision();
+                r.Article = a;
+                r.Body = a.Body;
+                r.Created = a.Created;
+                r.Header = a.Header;
+                r.Operator = oper;
+                a.Revisions.Add(r);
+                a.Save();
+                r.Save();
             }
         }
     }

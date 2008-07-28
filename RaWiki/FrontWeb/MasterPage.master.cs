@@ -46,6 +46,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 welcome.Text += Operator.Current.Username;
                 welcomePnl.Visible = true;
                 search.Focus();
+                linkToAdmin.Visible = Operator.Current.IsAdmin;
             }
 
             // Creating the links to the last changed articles...
@@ -57,11 +58,15 @@ public partial class MasterPage : System.Web.UI.MasterPage
     private void CreateSiteWideLinks()
     {
         int idxNo = 0;
+        string url = Request.Url.ToString();
+        url = url.Substring(0, url.LastIndexOf("/") + 1);
         foreach (Article idx in Article.FindAll(Expression.Eq("SiteWide", true)))
         {
             if (idxNo == 0)
                 startingPoint.Text += "<ul class=\"links\"><li>{Start Here}</li>";
-            startingPoint.Text += string.Format("<li><a href=\"{0}.wiki\">{1}</a></li>", idx.Url, idx.Header);
+            startingPoint.Text += string.Format("<li><a href=\"{0}\">{1}</a></li>",
+                (idx.Url == "default" ? url : idx.Url + ".wiki"),
+                idx.Header);
             idxNo += 1;
         }
         if (idxNo > 0)
@@ -71,11 +76,15 @@ public partial class MasterPage : System.Web.UI.MasterPage
     private void CreateLastChanges()
     {
         int idxNo = 0;
+        string url = Request.Url.ToString();
+        url = url.Substring(0, url.LastIndexOf("/") + 1);
         foreach (Article idx in Article.FindAll(Order.Desc("Changed")))
         {
             if (idxNo == 0)
                 lastArticles.Text += "<ul class=\"links\"><li>{Last Changes}</li>";
-            lastArticles.Text += string.Format("<li><a href=\"{0}.wiki\">{1}</a></li>", idx.Url, idx.Header);
+            lastArticles.Text += string.Format("<li><a href=\"{0}\">{1}</a></li>",
+                (idx.Url == "default" ? url : idx.Url + ".wiki"), 
+                idx.Header);
             idxNo += 1;
             if (idxNo > 50)
                 break;
@@ -123,6 +132,7 @@ from Article a where a.Header like '%" + search.Text + "%'");
             Effect effect = new EffectFadeOut(loginPnl, 0.4M);
             effect.Render();
             welcome.Text += Operator.Current.Username;
+            linkToAdmin.Visible = Operator.Current.IsAdmin;
             welcomePnl.Visible = true;
             effect = new EffectFadeIn(welcomePnl, 0.4M);
             effect.Render();
