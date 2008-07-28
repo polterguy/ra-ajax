@@ -29,19 +29,40 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 search.Focus();
             }
 
-            int idxNo = 0;
-            foreach (Article idx in Article.FindAll(Order.Desc("Changed")))
-            {
-                if (idxNo == 0)
-                    lastArticles.Text += "<ul class=\"links\"><li>{Last Changes}</li>";
-                lastArticles.Text += string.Format("<li><a href=\"{0}.wiki\">{1}</a></li>", idx.Url, idx.Header);
-                idxNo += 1;
-                if (idxNo > 50)
-                    break;
-            }
-            if (idxNo > 0)
-                lastArticles.Text += "</ul>";
+            // Creating the links to the last changed articles...
+            CreateLastChanges();
+            CreateSiteWideLinks();
         }
+    }
+
+    private void CreateSiteWideLinks()
+    {
+        int idxNo = 0;
+        foreach (Article idx in Article.FindAll(Expression.Eq("SiteWide", true)))
+        {
+            if (idxNo == 0)
+                startingPoint.Text += "<ul class=\"links\"><li>{Start Here}</li>";
+            startingPoint.Text += string.Format("<li><a href=\"{0}.wiki\">{1}</a></li>", idx.Url, idx.Header);
+            idxNo += 1;
+        }
+        if (idxNo > 0)
+            startingPoint.Text += "</ul>";
+    }
+
+    private void CreateLastChanges()
+    {
+        int idxNo = 0;
+        foreach (Article idx in Article.FindAll(Order.Desc("Changed")))
+        {
+            if (idxNo == 0)
+                lastArticles.Text += "<ul class=\"links\"><li>{Last Changes}</li>";
+            lastArticles.Text += string.Format("<li><a href=\"{0}.wiki\">{1}</a></li>", idx.Url, idx.Header);
+            idxNo += 1;
+            if (idxNo > 50)
+                break;
+        }
+        if (idxNo > 0)
+            lastArticles.Text += "</ul>";
     }
 
     protected void search_KeyUp(object sender, EventArgs e)
