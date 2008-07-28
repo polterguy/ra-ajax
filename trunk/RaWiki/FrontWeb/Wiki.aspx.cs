@@ -123,6 +123,7 @@ public partial class Wiki : System.Web.UI.Page
         {
             // Edit mode
             siteWide.Visible = Operator.Current.IsAdmin;
+            siteWide.Checked = _article == null ? false : _article.SiteWide;
 
             // Verifying Operator is logged in, confirmed and so on...
             if (Operator.Current != null && Operator.Current.Confirmed && Operator.Current.AdminApproved)

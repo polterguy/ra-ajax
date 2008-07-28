@@ -163,7 +163,6 @@
                 Text="Save" />
             <ra:CheckBox 
                 runat="server" 
-                Checked="false"
                 ID="siteWide" 
                 Text="Site wide link" />
 

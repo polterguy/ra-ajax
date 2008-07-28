@@ -10,6 +10,7 @@ using Engine.Entities;
 using Ra.Widgets;
 using NHibernate.Expression;
 using Castle.ActiveRecord.Queries;
+using System.Configuration;
 
 public partial class MasterPage : System.Web.UI.MasterPage
 {
@@ -17,6 +18,24 @@ public partial class MasterPage : System.Web.UI.MasterPage
     {
         if (!IsPostBack)
         {
+            switch (ConfigurationSettings.AppSettings["contentLicense"])
+            {
+                case "by-nc-sa":
+                    contentLicense.NavigateUrl = "http://creativecommons.org/licenses/by-nc-sa/3.0/legalcode";
+                    contentLicense.Text = "Creative Commons - Attribution Non-commercial Share Alike";
+                    break;
+                case "by-sa":
+                    contentLicense.NavigateUrl = "http://creativecommons.org/licenses/by-sa/3.0/legalcode";
+                    contentLicense.Text = "Creative Commons - Attribution Share Alike";
+                    break;
+                case "GFDL":
+                    contentLicense.NavigateUrl = "http://www.gnu.org/licenses/fdl.txt";
+                    contentLicense.Text = "GNU Free Documentation License";
+                    break;
+                default:
+                    throw new ArgumentException("Invalid license found in configuration file");
+            }
+
             if (Operator.Current == null)
             {
                 username.Focus();
