@@ -295,3 +295,16 @@ a.non-existant
 	color:#c44;
 	text-decoration:line-through;
 }
+
+
+
+/* Other special formatting
+ */
+blockquote
+{
+	background:Transparent url(blockquote.png) no-repeat;
+	margin:0;
+	padding-left:30px;
+	color:#999;
+}
+

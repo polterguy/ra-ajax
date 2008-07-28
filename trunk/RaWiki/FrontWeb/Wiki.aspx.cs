@@ -375,6 +375,29 @@ public partial class Wiki : System.Web.UI.Page
         richedit.Selection = "<ol><li>" + content + "</li></ol>";
     }
 
+    protected void formattingDDL_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        string content = richedit.Selection;
+        if (string.IsNullOrEmpty(content))
+            content = "content";
+        switch (formattingDDL.SelectedItem.Value)
+        {
+            case "h2":
+                richedit.Selection = "<h2>" + content + "</h2>";
+                break;
+            case "h3":
+                richedit.Selection = "<h3>" + content + "</h3>";
+                break;
+            case "paragraph":
+                richedit.Selection = "<p>" + content + "</p>";
+                break;
+            case "quote":
+                richedit.Selection = "<blockquote>" + content + "</blockquote>";
+                break;
+        }
+        formattingDDL.SelectedItem = formattingDDL.Items[0];
+    }
+
     protected void link_Click(object sender, EventArgs e)
     {
         pnlLnk.Visible = true;
