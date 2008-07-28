@@ -146,6 +146,34 @@
                 Text="Save" />
 
         </ext:TabView>
+
+        <ext:TabView 
+            runat="server" 
+            ID="whatlinks" 
+            Caption="What links here" 
+            CssClass="content">
+
+            <h1>What links here </h1>
+            <asp:Repeater runat="server" ID="repLinks">
+                <HeaderTemplate>
+                    <table>
+                </HeaderTemplate>
+                <FooterTemplate>
+                    </table>
+                </FooterTemplate>
+                <ItemTemplate>
+                    <tr>
+                        <td>
+                            <a href='<%# Eval("Url") + ".wiki" %>'>
+                                <%# Eval("Header") %>
+                            </a>
+                        </td>
+                    </tr>
+                </ItemTemplate>
+            </asp:Repeater>
+
+        </ext:TabView>
+
     </ext:TabControl>
     <ra:Button 
         runat="server" 

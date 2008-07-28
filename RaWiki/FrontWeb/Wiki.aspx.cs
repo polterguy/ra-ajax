@@ -79,8 +79,15 @@ public partial class Wiki : System.Web.UI.Page
             string name = values.Length > 1 ? values[1].Trim() : values[0].Trim();
             string cssClass = "exists";
             if (Article.FindAll(Expression.Eq("Url", url)).Length == 0)
+            {
                 cssClass = "non-existant";
-            string urlElement = string.Format(@"<a{3} class=""{2}"" href=""{0}.wiki"">{1}</a>",
+                url += ".wiki?name=" + name;
+            }
+            else
+            {
+                url += ".wiki";
+            }
+            string urlElement = string.Format(@"<a{3} class=""{2}"" href=""{0}"">{1}</a>",
             url,
             name,
             cssClass,
@@ -94,10 +101,13 @@ public partial class Wiki : System.Web.UI.Page
     {
         if (tab.ActiveTabViewIndex == 0)
         {
-            header_read.InnerText = headerInPlace.Text;
-            content.Text = FormatContent(richedit.Text);
-            warning.Visible = true;
-            warning.Text = "Remember to SAVE your articles when editing!";
+            if (headerInPlace.Text.Length > 0 || richedit.Text.Length > 0)
+            {
+                header_read.InnerText = headerInPlace.Text;
+                content.Text = FormatContent(richedit.Text);
+                warning.Visible = true;
+                warning.Text = "Remember to SAVE your articles when editing!";
+            }
         }
         else if (tab.ActiveTabViewIndex == 1)
         {
@@ -114,6 +124,15 @@ public partial class Wiki : System.Web.UI.Page
                 warning.Text += "You must be logged in with a confirmed and approved user to edit wikis.";
             }
             warning.Visible = false;
+        }
+        else if (tab.ActiveTabViewIndex == 2)
+        {
+            if( _article != null )
+            {
+                Article[] articles = Article.FindAll(Expression.Like("Body", "%[" + _article.Url + "%]%", MatchMode.Anywhere));
+                repLinks.DataSource = articles;
+                repLinks.DataBind();
+            }
         }
     }
 

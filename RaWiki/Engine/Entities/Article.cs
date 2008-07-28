@@ -55,7 +55,12 @@ namespace Engine.Entities
         [Property]
         public string Header
         {
-            get { return _header; }
+            get
+            {
+                if (string.IsNullOrEmpty(_header))
+                    return "[null]";
+                return _header;
+            }
             set { _header = value; }
         }
 
