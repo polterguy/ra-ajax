@@ -217,7 +217,7 @@ namespace Engine.Entities
                 articleUrl = articleUrl.Substring(0, articleUrl.IndexOf("?"));
             foreach (Operator idx in Operator.FindAll(Expression.Eq("IsAdmin", true)))
             {
-                if (idx.Id != Operator.Current.Id)
+                if (Operator.Current != null && idx.Id != Operator.Current.Id)
                 {
                     idx.SendEmail(
                         "Someone created an article at the Ra Wiki",

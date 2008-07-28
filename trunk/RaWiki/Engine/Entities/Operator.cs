@@ -86,7 +86,7 @@ namespace Engine.Entities
 
         public static Operator Current
         {
-            get { return HttpContext.Current.Session["__CurrentOperator"] as Operator; }
+            get { return HttpContext.Current.Session == null ? null : HttpContext.Current.Session["__CurrentOperator"] as Operator; }
         }
 
         public static bool Login(string username, string password)
@@ -125,7 +125,7 @@ namespace Engine.Entities
         {
             this.Save();
             string confirmUrl = HttpContext.Current.Request.Url.ToString();
-            confirmUrl = confirmUrl.Substring(0, confirmUrl.LastIndexOf("/") + 1);
+            confirmUrl = confirmUrl.Substring(0, confirmUrl.LastIndexOf("/") + 1) + "Admin.aspx";
             string header = string.Format(@"Welcome as a new Ra Wiki user {0}", Username);
             string body = string.Format(
 @"This message was automatically sent from the forums at {0} due to registering a new user.
@@ -182,6 +182,7 @@ Have a nice day :)
             else
             {
                 string confirmUrl = HttpContext.Current.Request.Url.ToString();
+                confirmUrl = confirmUrl.Substring(0, confirmUrl.LastIndexOf("/") + 1) + "Admin.aspx";
                 foreach (Operator idx in Operator.FindAll(Expression.Eq("IsAdmin", true)))
                 {
                     string subject = string.Format("Please approve {0} for login at the Ra Wiki", oper.Username);

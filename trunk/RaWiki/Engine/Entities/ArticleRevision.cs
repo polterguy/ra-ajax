@@ -62,7 +62,8 @@ namespace Engine.Entities
 
         public override void Save()
         {
-            Operator = Engine.Entities.Operator.Current;
+            if (Engine.Entities.Operator.Current != null)
+                Operator = Engine.Entities.Operator.Current;
             base.Save();
         }
     }

@@ -38,6 +38,17 @@
                                     ID="logout" 
                                     Text="Logout" 
                                     OnClick="logout_Click" />
+                                <br />
+                                <ra:Panel 
+                                    runat="server" 
+                                    ID="linkToAdmin" 
+                                    Visible="false">
+                                    <asp:HyperLink 
+                                        runat="server" 
+                                        ID="linkToAdminLnk" 
+                                        NavigateUrl="~/Admin.aspx" 
+                                        Text="Admin interface" />
+                                </ra:Panel>
                             </ra:Panel>
                             <ra:Panel 
                                 runat="server" 
