@@ -203,9 +203,6 @@ public partial class Wiki : System.Web.UI.Page
         if (next != null)
             articleLastContent = next.Body;
 
-        //articleFirstContent = articleFirstContent.Replace("<", "&lt;").Replace(">", "&gt;");
-        //articleLastContent = articleLastContent.Replace("<", "&lt;").Replace(">", "&gt;");
-
         // Removing HTML formatting
         articleFirstContent = Regex.Replace(
             articleFirstContent,
@@ -220,9 +217,49 @@ public partial class Wiki : System.Web.UI.Page
         // Getting diff
         string diffContent = GetDiff(articleFirstContent, articleLastContent);
 
-        litRevisions.Text = "<br/><br/><h2>Additions and deletions for revisions</h2><p><em>Note that all formatting is removed. Additions are green and deletions are red</em></p>" + diffContent;
+        litRevisions.Text = "<br/><br/><h2>Additions and deletions for revisions</h2><p><em>Note that all formatting is removed meaning that if there was only formatting changes to the revision no changes will show. Additions are green and deletions are red</em></p>" + diffContent;
 
         revView.SignalizeReRender();
+    }
+
+    protected void RevertToRevision(object sender, EventArgs e)
+    {
+        // Finding Id of revision
+        Button btn = sender as Button;
+        HiddenField hid = btn.Parent.Controls[0] as HiddenField;
+        if (hid == null)
+            hid = btn.Parent.Controls[1] as HiddenField;
+        int id = Int32.Parse(hid.Value);
+
+        // Retrieving revision texts
+
+        // Current revision
+        List<ArticleRevision> revs = GetRevisions();
+        ArticleRevision revision = revs.Find(
+            delegate(ArticleRevision rev)
+            {
+                return rev.Id == id;
+            });
+        ArticleRevision nRev = new ArticleRevision();
+        nRev.Article = revision.Article;
+        nRev.Body = revision.Body;
+        nRev.Header = revision.Header;
+        nRev.Operator = Operator.Current;
+        nRev.Created = DateTime.Now;
+        nRev.Article.Body = nRev.Body;
+        nRev.Article.Header = nRev.Header;
+        nRev.Save();
+        nRev.Article.Save();
+
+        string url = Request.Params["id"];
+        _article = Article.FindOne(Expression.Eq("Url", url));
+        header_read.InnerText = _article.Header;
+        content.Text = FormatContent(_article.Body);
+
+        revs = GetRevisions();
+        repRevisions.DataSource = revs;
+        repRevisions.DataBind();
+        repRevisionsWrapper.SignalizeReRender();
     }
 
     private static string GetDiff(string articleFirstContent, string articleLastContent)
