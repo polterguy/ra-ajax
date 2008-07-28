@@ -36,6 +36,11 @@
 
             <h1 runat="server" id="header_read"></h1>
             <asp:Literal runat="server" ID="content" />
+            <ra:Label 
+                runat="server" 
+                ID="warning" 
+                style="color:Red;margin-top:25px;display:block;"
+                Visible="false" />
 
         </ext:TabView>
 
@@ -132,7 +137,6 @@
             </ra:Panel>
             <ext:RichEdit 
                 runat="server" 
-                OnKeyUp="richedit_Dummy"
                 style="border:solid 1px #999;padding:5px;"
                 ID="richedit" />
             <ra:Button 
@@ -140,7 +144,6 @@
                 ID="save" 
                 OnClick="save_Click"
                 Text="Save" />
-            <ra:TextArea runat="server" id="dummy" Columns="80" Rows="20" />
 
         </ext:TabView>
     </ext:TabControl>

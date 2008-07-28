@@ -53,7 +53,7 @@ namespace Ra.Extensions
 
         protected override void OnInit(EventArgs e)
         {
-            if (!this.IsViewStateEnabled && AjaxManager.Instance.CurrentPage.IsPostBack)
+            if (!this.IsViewStateEnabled && AjaxManager.Instance.CurrentPage.IsPostBack && this.Visible)
             {
                 // Making sure we get our NEW value loaded...
                 string value = Page.Request.Params[ClientID + "__VALUE"];
@@ -69,7 +69,7 @@ namespace Ra.Extensions
         {
             base.LoadViewState(savedState);
 
-            if (AjaxManager.Instance.CurrentPage.IsPostBack)
+            if (AjaxManager.Instance.CurrentPage.IsPostBack && this.Visible)
             {
                 // Making sure we get our NEW value loaded...
                 string value = Page.Request.Params[ClientID + "__VALUE"];

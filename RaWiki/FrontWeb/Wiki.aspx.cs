@@ -3,6 +3,7 @@ using Engine.Entities;
 using NHibernate.Expression;
 using Ra.Widgets;
 using Ra;
+using System.Text.RegularExpressions;
 
 public partial class Wiki : System.Web.UI.Page
 {
@@ -31,17 +32,28 @@ public partial class Wiki : System.Web.UI.Page
             else
             {
                 header_read.InnerText = _article.Header;
-                content.Text = _article.Body;
+                content.Text = FormatContent(_article.Body);
             }
-        }
-        else
-        {
-            dummy.Text = richedit.Text;
         }
     }
 
-    protected void richedit_Dummy(object sender, EventArgs e)
+    private string FormatContent(string content)
     {
+        foreach (Match idx in Regex.Matches(content, "(?<wikiLinks>\\[[^\\]]+\\])"))
+        {
+            string[] values = idx.Value.Trim('[', ']').Split('|');
+            string url = values[0].Trim();
+            string name = values.Length > 1 ? values[1].Trim() : values[0].Trim();
+            string cssClass = "exists";
+            if (Article.FindAll(Expression.Eq("Url", url)).Length == 0)
+                cssClass = "non-existant";
+            string urlElement = string.Format(@"<a class=""{2}"" href=""{0}.wiki"">{1}</a>",
+            url,
+            name,
+            cssClass);
+            content = content.Replace(idx.Value, urlElement);
+        }
+        return content;
     }
 
     protected void tab_ActiveTabViewChanged(object sender, EventArgs e)
@@ -49,7 +61,9 @@ public partial class Wiki : System.Web.UI.Page
         if (tab.ActiveTabViewIndex == 0)
         {
             header_read.InnerText = headerInPlace.Text;
-            content.Text = richedit.Text;
+            content.Text = FormatContent(richedit.Text);
+            warning.Visible = true;
+            warning.Text = "Remember to SAVE your articles when editing!";
         }
         else if (tab.ActiveTabViewIndex == 1)
         {
@@ -57,13 +71,15 @@ public partial class Wiki : System.Web.UI.Page
             if (Operator.Current != null && Operator.Current.Confirmed && Operator.Current.AdminApproved)
             {
                 headerInPlace.Text = header_read.InnerText;
-                richedit.Text = content.Text;
+                if (_article != null && richedit.Text == "")
+                    richedit.Text = _article.Body;
             }
             else
             {
                 tab.SetActiveTabViewIndex(0);
-                content.Text += "<br /><br /><span style=\"color:Red;\">You must be logged in with a confirmed and approved user to edit wikis.</span>";
+                warning.Text += "You must be logged in with a confirmed and approved user to edit wikis.";
             }
+            warning.Visible = false;
         }
     }
 
@@ -182,7 +198,7 @@ public partial class Wiki : System.Web.UI.Page
         // Going to "preview mode"
         tab.SetActiveTabViewIndex(0);
         header_read.InnerText = headerInPlace.Text;
-        content.Text = richedit.Text;
+        content.Text = FormatContent(richedit.Text);
     }
 
     protected void template_SelectedIndexChanged(object sender, EventArgs e)

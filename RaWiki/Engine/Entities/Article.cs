@@ -16,7 +16,7 @@ namespace Engine.Entities
         private string _header;
         private string _body;
 
-        [HasMany(typeof(ArticleRevision), Table = "ArticleRevisions", ColumnKey = "ArticleId")]
+        [HasMany(typeof(ArticleRevision))]
         public IList Revisions
         {
             get { return _revisions; }

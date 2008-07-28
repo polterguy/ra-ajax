@@ -44,6 +44,7 @@ namespace Engine
                 oper.Username = "admin";
                 oper.Password = "admin";
                 oper.Confirmed = true;
+                oper.AdminApproved = true; // Default user obviously must be auto admin approved...
                 oper.IsAdmin = true;
                 oper.Created = DateTime.Now;
                 oper.Save();
