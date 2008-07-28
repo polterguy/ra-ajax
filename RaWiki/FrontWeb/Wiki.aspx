@@ -171,6 +171,16 @@
             CssClass="content">
 
             <h1>What links here </h1>
+            <p>
+                To link to this page from another page in this wiki, please use this text;
+                <ext:InPlaceEdit 
+                    runat="server" 
+                    style="color:#494;font-weight:bold;" 
+                    ID="linkToThis" />
+                You can modify the last parts, but please use the wiki link to maintain the integrity
+                of the data in the wiki and make it possible to track pages etc instead of "normal links"
+                since they will not be counted and used to create relationships between pages.
+            </p>
             <asp:Repeater runat="server" ID="repLinks">
                 <HeaderTemplate>
                     <table>

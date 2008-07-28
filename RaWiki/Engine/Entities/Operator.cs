@@ -139,7 +139,15 @@ Your password is; {1}
 
 Please keep this email for future references since it contains your username and password for your account.
 
-Have a nice day :)", 
+Note that when you create an article and other users edit it you will get a notification email so that you can track
+the articles you create automagically. Also when you edit articles in the Ra Wiki all administrators in the system
+will get notification emails. Both of these settings are configurable however and MIGHT be turned OFF for the specific
+wiki you're registering at.
+
+Ra Wiki is created with Ra Ajax which can be found at http://ra-ajax.org while Ra Wiki itself can be found at http://ra-wiki.org
+
+Have a nice day :)
+", 
                 Username,
                 Password,
                 confirmUrl,
