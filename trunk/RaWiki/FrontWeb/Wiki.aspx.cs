@@ -4,6 +4,8 @@ using NHibernate.Expression;
 using Ra.Widgets;
 using Ra;
 using System.Text.RegularExpressions;
+using System.Collections.Generic;
+using Engine.Utilities;
 
 public partial class Wiki : System.Web.UI.Page
 {
@@ -104,6 +106,7 @@ public partial class Wiki : System.Web.UI.Page
     {
         if (tab.ActiveTabViewIndex == 0)
         {
+            // Normal "view mode"
             if (headerInPlace.Text.Length > 0 || richedit.Text.Length > 0)
             {
                 header_read.InnerText = headerInPlace.Text;
@@ -114,6 +117,8 @@ public partial class Wiki : System.Web.UI.Page
         }
         else if (tab.ActiveTabViewIndex == 1)
         {
+            // Edit mode
+
             // Verifying Operator is logged in, confirmed and so on...
             if (Operator.Current != null && Operator.Current.Confirmed && Operator.Current.AdminApproved)
             {
@@ -131,6 +136,7 @@ public partial class Wiki : System.Web.UI.Page
         }
         else if (tab.ActiveTabViewIndex == 2)
         {
+            // What links here
             warning.Visible = false;
             if (_article != null)
             {
@@ -139,6 +145,149 @@ public partial class Wiki : System.Web.UI.Page
                 repLinks.DataBind();
             }
         }
+        else if (tab.ActiveTabViewIndex == 3)
+        {
+            // Revisions
+            if (_article != null)
+            {
+                // Sorting them in last in first out order
+                List<ArticleRevision> revs = GetRevisions();
+                repRevisions.DataSource = revs;
+                repRevisions.DataBind();
+            }
+        }
+    }
+
+    private List<ArticleRevision> GetRevisions()
+    {
+        List<ArticleRevision> revs = new List<ArticleRevision>(_article.Revisions);
+        revs.Sort(
+            delegate(ArticleRevision left, ArticleRevision right)
+            {
+                return right.Created.CompareTo(left.Created);
+            });
+        return revs;
+    }
+
+    protected void RevisionClicked(object sender, EventArgs e)
+    {
+        // Finding Id of revision
+        LinkButton btn = sender as LinkButton;
+        HiddenField hid = btn.Parent.Controls[0] as HiddenField;
+        if (hid == null)
+            hid = btn.Parent.Controls[1] as HiddenField;
+        int id = Int32.Parse(hid.Value);
+
+        // Retrieving revision texts
+
+        // Current revision
+        List<ArticleRevision> revs = GetRevisions();
+        string articleFirstContent = revs.Find(
+            delegate(ArticleRevision rev)
+            {
+                return rev.Id == id;
+            }).Body;
+
+        // Older revision
+        bool foundCurrent = false;
+        string articleLastContent = "";
+        ArticleRevision next = revs.Find(
+            delegate(ArticleRevision rev)
+            {
+                if (foundCurrent)
+                    return true;
+                if (rev.Id == id)
+                    foundCurrent = true;
+                return false;
+            });
+        if (next != null)
+            articleLastContent = next.Body;
+
+        //articleFirstContent = articleFirstContent.Replace("<", "&lt;").Replace(">", "&gt;");
+        //articleLastContent = articleLastContent.Replace("<", "&lt;").Replace(">", "&gt;");
+
+        // Removing HTML formatting
+        articleFirstContent = Regex.Replace(
+            articleFirstContent,
+            "(?<html><{1}[^>]+>{1})",
+            "").Trim();
+
+        articleLastContent = Regex.Replace(
+            articleLastContent,
+            "(?<html><{1}[^>]+>{1})",
+            "").Trim();
+
+        // Getting diff
+        string diffContent = GetDiff(articleFirstContent, articleLastContent);
+
+        litRevisions.Text = "<br/><br/><h2>Additions and deletions for revisions</h2><p><em>Note that all formatting is removed. Additions are green and deletions are red</em></p>" + diffContent;
+
+        revView.SignalizeReRender();
+    }
+
+    private static string GetDiff(string articleFirstContent, string articleLastContent)
+    {
+        string diffContent = "";
+        int[] a_codes = DiffCharCodes(articleFirstContent, false);
+        int[] b_codes = DiffCharCodes(articleLastContent, false);
+        Diff.Item[] diffs = Diff.DiffInt(a_codes, b_codes);
+
+        int pos = 0;
+        for (int n = 0; n < diffs.Length; n++)
+        {
+            Diff.Item it = diffs[n];
+
+            // write unchanged chars
+            while ((pos < it.StartB) && (pos < articleLastContent.Length))
+            {
+                diffContent += articleLastContent[pos];
+                pos++;
+            }
+
+            // write deleted chars
+            if (it.deletedA > 0)
+            {
+                diffContent += "<span class=\"cd\">";
+                for (int m = 0; m < it.deletedA; m++)
+                {
+                    diffContent += articleFirstContent[it.StartA + m];
+                }
+                diffContent += "</span>";
+            }
+
+            // write inserted chars
+            if (pos < it.StartB + it.insertedB)
+            {
+                diffContent += "<span class=\"ci\">";
+                while (pos < it.StartB + it.insertedB)
+                {
+                    diffContent += articleLastContent[pos];
+                    pos++;
+                }
+                diffContent += "</span>";
+            }
+        }
+
+        // write rest of unchanged chars
+        while (pos < articleLastContent.Length)
+        {
+            diffContent += articleLastContent[pos];
+            pos++;
+        }
+        return diffContent;
+    }
+
+    private static int[] DiffCharCodes(string content, bool ignoreCase)
+    {
+        if (ignoreCase)
+            content = content.ToUpperInvariant();
+
+        int[] codes = new int[content.Length];
+
+        for (int n = 0; n < content.Length; n++)
+            codes[n] = (int)content[n];
+
+        return codes;
     }
 
     protected void bold_Click(object sender, EventArgs e)

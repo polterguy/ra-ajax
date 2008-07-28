@@ -11,6 +11,14 @@ namespace Engine.Entities
         private string _body;
         private DateTime _created;
         private Article _article;
+        private Operator _operator;
+
+        [BelongsTo]
+        public Operator Operator
+        {
+            get { return _operator; }
+            set { _operator = value; }
+        }
 
         [BelongsTo]
         public Article Article
@@ -50,6 +58,12 @@ namespace Engine.Entities
         public static int GetCount()
         {
             return Count();
+        }
+
+        public override void Save()
+        {
+            Operator = Engine.Entities.Operator.Current;
+            base.Save();
         }
     }
 }
