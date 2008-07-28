@@ -46,6 +46,12 @@
 
         <ext:TabView runat="server" ID="tab2" Caption="Edit" CssClass="content">
 
+            <ext:Timer 
+                runat="server" 
+                ID="keepSessionTimer" 
+                OnTick="keepSessionTimer_Tick" 
+                Milliseconds="120000" />
+
             <h1 runat="server" id="header_edit">
                 Create article; 
                 <ext:InPlaceEdit 

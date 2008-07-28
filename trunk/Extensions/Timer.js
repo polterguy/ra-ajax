@@ -31,12 +31,14 @@ Ra.extend(Ra.Timer.prototype, {
   },
 
   tick: function(){
-    var x = new Ra.Ajax({
-      args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=tick',
-      raCallback:true,
-      onAfter: this.onFinishedTicking,
-      callingContext: this
-    });
+    if( this.options.enabled ) {
+      var x = new Ra.Ajax({
+        args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=tick',
+        raCallback:true,
+        onAfter: this.onFinishedTicking,
+        callingContext: this
+      });
+    }
   },
 
   Enabled: function(value) {
@@ -47,5 +49,14 @@ Ra.extend(Ra.Timer.prototype, {
     this.onFinishedRequest(response);
     if( this.options.enabled )
       this.start();
+  },
+
+  destroyThis: function() {
+
+    // Making sure we STOP ticking
+    this.options.enabled = false;
+
+    // Forward call to allow overriding in inherited classes...
+    this._destroyThisControl();
   }
 });
