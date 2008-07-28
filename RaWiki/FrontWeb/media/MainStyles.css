@@ -284,4 +284,14 @@ a.non-existant
 }
 
 
+.cd
+{
+	color:#0b0;
+	font-weight:bold;
+}
 
+.ci
+{
+	color:#c44;
+	text-decoration:line-through;
+}

@@ -174,6 +174,43 @@
 
         </ext:TabView>
 
+        <ext:TabView 
+            runat="server" 
+            ID="revisions" 
+            Caption="Revisions" 
+            CssClass="content">
+
+            <h1>Revisions of article</h1>
+            <asp:Repeater runat="server" ID="repRevisions">
+                <HeaderTemplate>
+                    <table>
+                </HeaderTemplate>
+                <FooterTemplate>
+                    </table>
+                </FooterTemplate>
+                <ItemTemplate>
+                    <tr>
+                        <td>
+                            <ra:HiddenField 
+                                runat="server" 
+                                Value='<%# Eval("Id") %>' />
+                            <%# Eval("Operator.Username") %>
+                        </td>
+                        <td>
+                            <ra:LinkButton 
+                                runat="server" 
+                                OnClick="RevisionClicked"
+                                Text='<%# ((DateTime)Eval("Created")).ToString("dddd, dd MMM yyyy - HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture) %>' />
+                        </td>
+                    </tr>
+                </ItemTemplate>
+            </asp:Repeater>
+            <ra:Panel runat="server" ID="revView">
+                <asp:Literal runat="server" ID="litRevisions" />
+            </ra:Panel>
+
+        </ext:TabView>
+
     </ext:TabControl>
     <ra:Button 
         runat="server" 

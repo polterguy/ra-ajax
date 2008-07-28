@@ -36,6 +36,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Utilities\Diff.cs" />
     <Compile Include="Entities\Article.cs" />
     <Compile Include="Entities\ArticleRevision.cs" />
     <Compile Include="Entities\Operator.cs" />

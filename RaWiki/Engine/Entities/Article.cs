@@ -12,7 +12,7 @@ namespace Engine.Entities
         private int _id;
         private string _url;
         private DateTime _created;
-        private IList _revisions = new ArrayList();
+        private IList<ArticleRevision> _revisions = new List<ArticleRevision>();
         private string _header;
         private string _body;
         private DateTime _changed;
@@ -25,7 +25,7 @@ namespace Engine.Entities
         }
 
         [HasMany(typeof(ArticleRevision), Cascade=ManyRelationCascadeEnum.All)]
-        public IList Revisions
+        public IList<ArticleRevision> Revisions
         {
             get { return _revisions; }
             set { _revisions = value; }
