@@ -24,7 +24,7 @@ namespace Engine.Entities
             set { _changed = value; }
         }
 
-        [HasMany(typeof(ArticleRevision))]
+        [HasMany(typeof(ArticleRevision), Cascade=ManyRelationCascadeEnum.All)]
         public IList Revisions
         {
             get { return _revisions; }
