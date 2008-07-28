@@ -147,6 +147,12 @@
 
         </ext:TabView>
     </ext:TabControl>
+    <ra:Button 
+        runat="server" 
+        ID="delete" 
+        Text="Delete article" 
+        style="margin-top:25px;"
+        OnClick="delete_Click" />
 
 </asp:Content>
 

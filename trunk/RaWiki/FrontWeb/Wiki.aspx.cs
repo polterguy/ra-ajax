@@ -9,6 +9,31 @@ public partial class Wiki : System.Web.UI.Page
 {
     private Article _article;
 
+    protected override void OnInit(EventArgs e)
+    {
+        Operator.LoggedIn += new EventHandler(Operator_LoggedIn);
+        Operator.LoggedOut += new EventHandler(Operator_LoggedOut);
+        base.OnInit(e);
+    }
+
+    void Operator_LoggedOut(object sender, EventArgs e)
+    {
+        delete.Visible = Operator.Current != null && Operator.Current.IsAdmin;
+    }
+
+    void Operator_LoggedIn(object sender, EventArgs e)
+    {
+        delete.Visible = Operator.Current != null && Operator.Current.IsAdmin;
+    }
+
+    protected override void OnPreRender(EventArgs e)
+    {
+        // Since they are STATIC Event Handlers on Operator type we need to REMOVE them again...!
+        Operator.LoggedIn -= new EventHandler(Operator_LoggedIn);
+        Operator.LoggedOut -= new EventHandler(Operator_LoggedOut);
+        base.OnPreRender(e);
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
         string url = Request.Params["id"];
@@ -35,6 +60,14 @@ public partial class Wiki : System.Web.UI.Page
                 content.Text = FormatContent(_article.Body);
             }
         }
+        delete.Visible = Operator.Current != null && Operator.Current.IsAdmin;
+    }
+
+    protected void delete_Click(object sender, EventArgs e)
+    {
+        _article.Delete();
+        string url = Request.Url.ToString().Substring(0, Request.Url.ToString().LastIndexOf("/"));
+        AjaxManager.Instance.Redirect(url);
     }
 
     private string FormatContent(string content)
@@ -47,10 +80,11 @@ public partial class Wiki : System.Web.UI.Page
             string cssClass = "exists";
             if (Article.FindAll(Expression.Eq("Url", url)).Length == 0)
                 cssClass = "non-existant";
-            string urlElement = string.Format(@"<a class=""{2}"" href=""{0}.wiki"">{1}</a>",
+            string urlElement = string.Format(@"<a{3} class=""{2}"" href=""{0}.wiki"">{1}</a>",
             url,
             name,
-            cssClass);
+            cssClass,
+            (cssClass == "exists" ? "" : " rel=\"nofollow\""));
             content = content.Replace(idx.Value, urlElement);
         }
         return content;
