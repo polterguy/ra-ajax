@@ -58,6 +58,9 @@ public partial class Wiki : System.Web.UI.Page
             {
                 header_read.InnerText = _article.Header;
                 content.Text = FormatContent(_article.Body);
+                content.Text += string.Format(@"
+<p><em>Last changed; {0}</em></p>",
+                    _article.Changed.ToString("dddd, dd MMM, yyyy", System.Globalization.CultureInfo.InvariantCulture));
             }
         }
         delete.Visible = Operator.Current != null && Operator.Current.IsAdmin;
@@ -117,17 +120,19 @@ public partial class Wiki : System.Web.UI.Page
                 headerInPlace.Text = header_read.InnerText;
                 if (_article != null && richedit.Text == "")
                     richedit.Text = _article.Body;
+                warning.Visible = false;
             }
             else
             {
                 tab.SetActiveTabViewIndex(0);
-                warning.Text += "You must be logged in with a confirmed and approved user to edit wikis.";
+                warning.Text = "You must be logged in with a confirmed and approved user to edit wikis.";
+                warning.Visible = true;
             }
-            warning.Visible = false;
         }
         else if (tab.ActiveTabViewIndex == 2)
         {
-            if( _article != null )
+            warning.Visible = false;
+            if (_article != null)
             {
                 Article[] articles = Article.FindAll(Expression.Like("Body", "%[" + _article.Url + "%]%", MatchMode.Anywhere));
                 repLinks.DataSource = articles;
