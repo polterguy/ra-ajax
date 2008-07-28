@@ -42,8 +42,10 @@ public partial class Wiki : System.Web.UI.Page
         _article = Article.FindOne(Expression.Eq("Url", url));
         if (!IsPostBack)
         {
+            linkToThis.Text = "[" + url + " | ";
             if (_article == null)
             {
+                linkToThis.Text += "Some anchor name]";
                 // Checking to see if user is LOGGED IN and if NOT redirect since we
                 // don't allo editing of articles for users not logged in
                 if (Operator.Current == null)
@@ -58,6 +60,7 @@ public partial class Wiki : System.Web.UI.Page
             }
             else
             {
+                linkToThis.Text += _article.Header + "]";
                 Title = _article.Header;
                 header_read.InnerText = _article.Header;
                 content.Text = FormatContent(_article.Body);
@@ -141,7 +144,16 @@ public partial class Wiki : System.Web.UI.Page
             warning.Visible = false;
             if (_article != null)
             {
-                Article[] articles = Article.FindAll(Expression.Like("Body", "%[" + _article.Url + "%]%", MatchMode.Anywhere));
+                List<Article> articles = 
+                    new List<Article>(Article.FindAll(Expression.Like("Body", "%[" + _article.Url + "%]%", MatchMode.Anywhere)));
+
+                // Some articles might point to OTHER wiki entries which are merely STARTING with the url of this one
+                articles.RemoveAll(
+                    delegate(Article idx)
+                    {
+                        char tmp = idx.Body[idx.Body.IndexOf("[" + _article.Url) + 1 + _article.Url.Length];
+                        return tmp != ' ' && tmp != ']' && tmp != '|';
+                    });
                 repLinks.DataSource = articles;
                 repLinks.DataBind();
             }

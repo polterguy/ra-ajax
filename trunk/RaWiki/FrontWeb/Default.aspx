@@ -33,10 +33,14 @@
         other wiki systems.
     </p>
     <p>
-        In default mode you must be logged in and confirm your email address to be able to 
-        edit wikis, but browsing is completely open for all. Notic that all though Ra Wiki
-        uses WYSIWYG editors for editing content you can still link to links inside the wiki
-        itself by using the common "wiki linking" logic which is constructed like this;
+        In default mode you must be logged in with a confirmed email address to be able to 
+        edit wikis, but browsing is completely open for all. This is by design to reduce spam
+        in your wikis. 
+    </p>
+    <p>
+        Notic that all though Ra Wiki uses WYSIWYG editors for editing content you can still 
+        link to links inside the wiki itself by using the common "wiki linking" logic which 
+        is constructed like this;
         <br />
         [some-url | anchor text of link]
         <br />
