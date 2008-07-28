@@ -102,6 +102,17 @@
                     CssClass="editor-link editor-btn" 
                     AlternateText="Make hyperlink"
                     OnClick="link_Click" />
+                Formatting; 
+                <ra:DropDownList 
+                    runat="server" 
+                    OnSelectedIndexChanged="formattingDDL_SelectedIndexChanged"
+                    ID="formattingDDL">
+                    <ra:ListItem Text="Choose formatting..." Value="none" />
+                    <ra:ListItem Text="Header 2" Value="h2" />
+                    <ra:ListItem Text="Header 3" Value="h3" />
+                    <ra:ListItem Text="New Paragraph" Value="paragraph" />
+                    <ra:ListItem Text="Quote" Value="quote" />
+                </ra:DropDownList>
                 Templates; 
                 <ra:DropDownList 
                     runat="server" 
