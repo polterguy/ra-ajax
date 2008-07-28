@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using NHibernate.Expression;
 using System.Collections;
 using System.Web;
+using System.Configuration;
 
 namespace Engine.Entities
 {
@@ -139,46 +140,83 @@ namespace Engine.Entities
 
         public override void Save()
         {
+            NotifyRelatedOperatorsOfChanges();
+            Changed = DateTime.Now;
+            base.Save();
+        }
+
+        private void NotifyRelatedOperatorsOfChanges()
+        {
             if (Id == 0)
             {
                 // Sending email to all admins
-                string articleUrl = HttpContext.Current.Request.Url.ToString();
-                if (articleUrl.IndexOf("?") != -1)
-                    articleUrl = articleUrl.Substring(0, articleUrl.IndexOf("?"));
-                foreach (Operator idx in Operator.FindAll(Expression.Eq("IsAdmin", true)))
-                {
-                    if (idx.Id != Operator.Current.Id)
-                    {
-                        idx.SendEmail(
-                            "Someone created an article at the Ra Wiki",
-                            string.Format(@"To see the new revision, please click here;
-{0}", articleUrl));
-                    }
-                }
+                if (ConfigurationSettings.AppSettings["notifyAdminsOfChanges"] == "true")
+                    SendAllAdminsEmailAboutNewArticle();
             }
             else
             {
-                // Sending email to original creator
-                List<ArticleRevision> revs = new List<ArticleRevision>(Revisions);
-                revs.Sort(
-                    delegate(ArticleRevision left, ArticleRevision right)
+                // Sending email to original creator AND all Admins
+                SendAllAdminsAndOPEmailAboutChangedArticle();
+            }
+        }
+
+        private void SendAllAdminsAndOPEmailAboutChangedArticle()
+        {
+            List<ArticleRevision> revs = new List<ArticleRevision>(Revisions);
+            revs.Sort(
+                delegate(ArticleRevision left, ArticleRevision right)
+                {
+                    return right.Created.CompareTo(left.Created);
+                });
+            Operator oper = revs[revs.Count - 1].Operator;
+            List<Operator> admins = new List<Operator>();
+            
+            // Checking to see if we SHOULD notify admins of new articles
+            if (ConfigurationSettings.AppSettings["notifyAdminsOfChanges"] == "true")
+                admins.AddRange(Operator.FindAll(Expression.Eq("IsAdmin", true)));
+
+            // Checking to see if we should notify original creator of changes
+            if (ConfigurationSettings.AppSettings["notifyOriginalCreatorOfChanges"] == "true")
+            {
+                if (admins.Find(
+                    delegate(Operator idxOper)
                     {
-                        return right.Created.CompareTo(left.Created);
-                    });
-                Operator oper = revs[revs.Count - 1].Operator;
-                if (oper.Id != Operator.Current.Id)
+                        return oper.Id == idxOper.Id;
+                    }) == null)
+                    admins.Add(oper);
+            }
+
+            // Looping through sending emails
+            foreach (Operator idxOper in admins)
+            {
+                if (idxOper.Id != Operator.Current.Id)
                 {
                     string articleUrl = HttpContext.Current.Request.Url.ToString();
                     if (articleUrl.IndexOf("?") != -1)
                         articleUrl = articleUrl.Substring(0, articleUrl.IndexOf("?"));
-                    oper.SendEmail(
+                    idxOper.SendEmail(
                         "Someone edited your article at the Ra Wiki",
                         string.Format(@"To see the new revision, please click here;
 {0}", articleUrl));
                 }
             }
-            Changed = DateTime.Now;
-            base.Save();
+        }
+
+        private static void SendAllAdminsEmailAboutNewArticle()
+        {
+            string articleUrl = HttpContext.Current.Request.Url.ToString();
+            if (articleUrl.IndexOf("?") != -1)
+                articleUrl = articleUrl.Substring(0, articleUrl.IndexOf("?"));
+            foreach (Operator idx in Operator.FindAll(Expression.Eq("IsAdmin", true)))
+            {
+                if (idx.Id != Operator.Current.Id)
+                {
+                    idx.SendEmail(
+                        "Someone created an article at the Ra Wiki",
+                        string.Format(@"To see the new revision, please click here;
+{0}", articleUrl));
+                }
+            }
         }
     }
 }
