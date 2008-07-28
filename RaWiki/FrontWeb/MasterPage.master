@@ -160,6 +160,9 @@
                                 id="cnt1" 
                                 runat="server">
                             </asp:contentplaceholder>
+                            <div style="height:200px;">
+                                &nbsp;
+                            </div>
                         </div>
                         <div style="clear:both;">&nbsp;</div>
                         <div style="text-align:center;padding:15px;">
