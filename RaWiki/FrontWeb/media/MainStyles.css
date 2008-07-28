@@ -53,13 +53,14 @@ a:hover
 
 #navigation
 {
-	width:224px;
+	width:174px;
 	float:left;
 	padding-top:35px;
 }
 
 .links
 {
+	text-align:left;
 	list-style-type:none;
 	font-size:smaller;
 }
@@ -67,7 +68,7 @@ a:hover
 #contentOfPageDiv
 {
 	float:left;
-	width:730px;
+	width:780px;
 	padding:35px;
 }
 
@@ -99,7 +100,7 @@ a:hover
  */
 .tab-control
 {
-	width:95%;
+	width:100%;
 }
 
 .tab-control .tab-header

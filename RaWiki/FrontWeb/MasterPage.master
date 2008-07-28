@@ -165,7 +165,7 @@
                                 id="cnt1" 
                                 runat="server">
                             </asp:contentplaceholder>
-                            <div style="height:200px;">
+                            <div style="height:100px;">
                                 &nbsp;
                             </div>
                         </div>
@@ -179,7 +179,15 @@
                                     width="88" />
                             </a>
                         </div>
-                        <div style="text-align:center;padding:15px;">Created with <a href="http://ra-ajax.org">Ra Ajax</a></div>
+                        <div style="text-align:center;padding:15px;">
+                            <p>Created with <a href="http://ra-ajax.org">Ra Ajax</a></p>
+                            <p>
+                                All content at this wiki is licensed under 
+                                <asp:HyperLink 
+                                    runat="server" 
+                                    ID="contentLicense" />
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
