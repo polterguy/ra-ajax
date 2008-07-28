@@ -153,6 +153,7 @@
                                         title="Ra Ajax Samples Home">Created with Ra-Ajax</a>
                                 </li>
                             </ul>
+                            <asp:Literal runat="server" ID="lastArticles" />
                         </div>
                         <div id="contentOfPageDiv">
                             <asp:contentplaceholder 

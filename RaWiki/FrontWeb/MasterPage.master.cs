@@ -28,6 +28,19 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 welcomePnl.Visible = true;
                 search.Focus();
             }
+
+            int idxNo = 0;
+            foreach (Article idx in Article.FindAll(Order.Desc("Changed")))
+            {
+                if (idxNo == 0)
+                    lastArticles.Text += "<ul class=\"links\"><li>{Last Changes}</li>";
+                lastArticles.Text += string.Format("<li><a href=\"{0}.wiki\">{1}</a></li>", idx.Url, idx.Header);
+                idxNo += 1;
+                if (idxNo > 50)
+                    break;
+            }
+            if (idxNo > 0)
+                lastArticles.Text += "</ul>";
         }
     }
 
@@ -73,6 +86,7 @@ from Article a where a.Header like '%" + search.Text + "%'");
             welcomePnl.Visible = true;
             effect = new EffectFadeIn(welcomePnl, 0.4M);
             effect.Render();
+            search.Focus();
         }
         else
         {

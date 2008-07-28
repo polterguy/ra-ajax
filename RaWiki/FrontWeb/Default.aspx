@@ -23,7 +23,27 @@
 
     <h1>Ra Wiki</h1>
     <p runat="server" id="content">
-        Ra Wiki - A wiki system for those who expects more!
+        <em>Ra Wiki - A wiki system for those who expects more!</em>
+    </p>
+    <p>
+        Ra Wiki is a fully ajaxified Wiki system for ASP.NET and Mono. Due to not forcing
+        users to using Wiki syntax when editing but rather a full WYSIWYG editor it
+        gives you far easier use. And due to that it is heavily built around the concept
+        of <em>Ajax</em> it will be experienced as far more responsive in use than most 
+        other wiki systems.
+    </p>
+    <p>
+        In default mode you must be logged in and confirm your email address to be able to 
+        edit wikis, but browsing is completely open for all. Notic that all though Ra Wiki
+        uses WYSIWYG editors for editing content you can still link to links inside the wiki
+        itself by using the common "wiki linking" logic which is constructed like this;
+        <br />
+        [some-url | anchor text of link]
+        <br />
+        Notice though that the URL is without the .wiki end parts.
+    </p>
+    <p>
+        Also this default page is easy to edit to configure as you wish it to be.
     </p>
 
     <ra:Panel 

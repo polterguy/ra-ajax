@@ -15,6 +15,14 @@ namespace Engine.Entities
         private IList _revisions = new ArrayList();
         private string _header;
         private string _body;
+        private DateTime _changed;
+
+        [Property]
+        public DateTime Changed
+        {
+            get { return _changed; }
+            set { _changed = value; }
+        }
 
         [HasMany(typeof(ArticleRevision))]
         public IList Revisions
@@ -121,6 +129,12 @@ namespace Engine.Entities
                 url += idxFree.ToString();
             }
             return url;
+        }
+
+        public override void Save()
+        {
+            Changed = DateTime.Now;
+            base.Save();
         }
     }
 }
