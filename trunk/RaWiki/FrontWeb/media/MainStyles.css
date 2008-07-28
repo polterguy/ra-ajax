@@ -271,3 +271,17 @@ a:hover
 }
 
 
+/* Special link CSS for existing and non-existing wiki links
+ */
+a.exists
+{
+	color:#00f;
+}
+
+a.non-existant
+{
+	color:#f00;
+}
+
+
+

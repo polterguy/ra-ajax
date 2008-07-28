@@ -10,6 +10,14 @@ namespace Engine.Entities
         private string _header;
         private string _body;
         private DateTime _created;
+        private Article _article;
+
+        [BelongsTo]
+        public Article Article
+        {
+            get { return _article; }
+            set { _article = value; }
+        }
 
         [Property]
         public DateTime Created
