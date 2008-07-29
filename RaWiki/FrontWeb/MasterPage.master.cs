@@ -142,7 +142,7 @@ from Article a where a.Header like '%" + search.Text + "%'");
         }
         else
         {
-            errLogin.Text = "Wrong username/password";
+            errLogin.Text = "Couldn't log you in, either wrong username/password combination or your user is yet noe confirmed or approved...";
             Effect effect = new EffectFadeIn(errLogin, 0.4M);
             effect.Render();
         }

@@ -101,6 +101,15 @@ public partial class AdminMode : System.Web.UI.UserControl
         oper.Save();
     }
 
+    protected void AdminApprovedChanged(object sender, EventArgs e)
+    {
+        CheckBox btn = sender as CheckBox;
+        int id = GetId(btn);
+        Operator oper = Operator.FindOne(Expression.Eq("Id", id));
+        oper.AdminApproved = btn.Checked;
+        oper.Save();
+    }
+    
     protected void DeleteUser(object sender, EventArgs e)
     {
         LinkButton btn = sender as LinkButton;
