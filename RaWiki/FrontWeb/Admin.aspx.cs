@@ -77,7 +77,7 @@ public partial class Admin : System.Web.UI.Page
         {
             if (Operator.Current.IsAdmin)
             {
-                Operator oper = Operator.ConfirmNewUser(Request.Params["idNewUserConfirmation"], Request.Params["seed"]);
+                Operator oper = Operator.ConfirmNewUser(Request.Params["approveUser"], Request.Params["seed"]);
                 content.InnerHtml = string.Format(@"
 User {0} is now approved and can log into the wiki.
 ", oper.Username);

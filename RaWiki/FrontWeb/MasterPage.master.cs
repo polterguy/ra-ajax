@@ -46,7 +46,6 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 welcome.Text += Operator.Current.Username;
                 welcomePnl.Visible = true;
                 search.Focus();
-                linkToAdmin.Visible = Operator.Current.IsAdmin;
             }
 
             // Creating the links to the last changed articles...
@@ -108,6 +107,8 @@ public partial class MasterPage : System.Web.UI.MasterPage
             SimpleQuery<Article> q = new SimpleQuery<Article>(@"
 from Article a where a.Header like '%" + search.Text + "%'");
             Article[] articles = q.Execute();
+            string url = Request.Url.ToString();
+            url = url.Substring(0, url.LastIndexOf("/") + 1);
             foreach (Article idx in articles)
             {
                 System.Web.UI.WebControls.Literal lit = new System.Web.UI.WebControls.Literal();
@@ -115,7 +116,9 @@ from Article a where a.Header like '%" + search.Text + "%'");
                 {
                     lit.Text += "<ul>";
                 }
-                lit.Text += string.Format("<li><a href=\"{0}.wiki\">{1}</a></li>", idx.Url, idx.Header);
+                lit.Text += string.Format("<li><a href=\"{0}\">{1}</a></li>",
+                    (idx.Url == "default" ? url : idx.Url + ".wiki"), 
+                    idx.Header);
                 if (idxNo == articles.Length)
                     lit.Text += "</ul>";
                 searchResults.Controls.Add(lit);
@@ -132,7 +135,6 @@ from Article a where a.Header like '%" + search.Text + "%'");
             Effect effect = new EffectFadeOut(loginPnl, 0.4M);
             effect.Render();
             welcome.Text += Operator.Current.Username;
-            linkToAdmin.Visible = Operator.Current.IsAdmin;
             welcomePnl.Visible = true;
             effect = new EffectFadeIn(welcomePnl, 0.4M);
             effect.Render();
