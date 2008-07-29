@@ -77,19 +77,19 @@ public partial class Admin : System.Web.UI.Page
         {
             if (Operator.Current.IsAdmin)
             {
-                Operator oper = Operator.ConfirmNewUser(Request.Params["approveUser"], Request.Params["seed"]);
+                Operator oper = Operator.ApproveNewUser(Request.Params["approveUser"], Request.Params["seed"]);
                 content.InnerHtml = string.Format(@"
 User {0} is now approved and can log into the wiki.
 ", oper.Username);
             }
             else
             {
-                content.InnerHtml = "You must be logged in as an administrator to approve new users";
+                content.InnerHtml = "You must be logged in as an administrator to approve new users.";
             }
         }
         else
         {
-            content.InnerHtml = "You must be logged in as an administrator to approve new users";
+            content.InnerHtml = "You must be logged in as an administrator to approve new users, <strong>just log in with your admin account and REFRESH this page to approve the user</strong>.";
         }
     }
 
@@ -97,11 +97,11 @@ User {0} is now approved and can log into the wiki.
     {
         Operator oper = Operator.ConfirmNewUser(Request.Params["idNewUserConfirmation"], Request.Params["seed"]);
         content.InnerHtml = string.Format(@"
-Welcome as a new user {0}.
+<strong>Welcome as a new user {0}</strong>.
 <br />
 {1}", oper.Username,
                       (oper.AdminApproved ?
                         "You can now login with your username and your password" :
-                        "An administrator at this wiki must approve your membership before you can login"));
+                        "<strong>An administrator at this wiki must approve your membership before you can login</strong>"));
     }
 }

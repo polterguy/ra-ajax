@@ -36,6 +36,7 @@
                         <th>Email</th>
                         <th>Admin</th>
                         <th>Confirmed</th>
+                        <th>Admin Approved</th>
                         <th>Delete user</th>
                     </tr>
             </HeaderTemplate>
@@ -82,6 +83,12 @@
                             runat="server" 
                             OnCheckedChanged="ConfirmedChanged"
                             Checked='<%# Eval("Confirmed") %>' />
+                    </td>
+                    <td>
+                        <ra:CheckBox 
+                            runat="server" 
+                            OnCheckedChanged="AdminApprovedChanged"
+                            Checked='<%# Eval("AdminApproved") %>' />
                     </td>
                     <td>
                         <ra:LinkButton 

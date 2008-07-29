@@ -94,6 +94,7 @@ namespace Engine.Entities
             Operator oper = Operator.FindOne(
                 Expression.Eq("Username", username),
                 Expression.Eq("Password", password),
+                Expression.Eq("AdminApproved", true),
                 Expression.Eq("Confirmed", true));
             HttpContext.Current.Session["__CurrentOperator"] = oper;
 
@@ -166,6 +167,32 @@ Have a nice day :)
             SmtpMail.Send(msg);
         }
 
+        public static Operator ApproveNewUser(string username, string seed)
+        {
+            if (Operator.Current == null || !Operator.Current.IsAdmin)
+            {
+                throw new ArgumentException("You must be logged in as an ADMIN to approve new users");
+            }
+            Operator oper = Operator.FindOne(Expression.Eq("Username", username));
+            if (oper == null)
+                throw new ArgumentException("No such user");
+            if (seed != (oper.Username + oper.Password).GetHashCode().ToString())
+                throw new ArgumentException("Incorrect seed");
+            if (oper.AdminApproved)
+                return oper;
+
+            oper.AdminApproved = true;
+            oper.Save();
+            string confirmUrl = HttpContext.Current.Request.Url.ToString();
+            confirmUrl = confirmUrl.Substring(0, confirmUrl.LastIndexOf("/") + 1);
+            oper.SendEmail("You have been approved at the Ra Wiki", string.Format(@"
+Admin {0} have approved you for login at the Ra Wiki, welcome :)
+You can now start editing and creating articles at {1}", 
+                Operator.Current.Username,
+                confirmUrl));
+            return oper;
+        }
+
         public static Operator ConfirmNewUser(string username, string seed)
         {
             Operator oper = Operator.FindOne(Expression.Eq("Username", username));
@@ -173,6 +200,10 @@ Have a nice day :)
                 throw new ArgumentException("No such user");
             if( seed != (oper.Username + oper.Password).GetHashCode().ToString())
                 throw new ArgumentException("Incorrect seed");
+
+            // User was already confirmed, returning so that we don't keep on sending admins new confirm emails....
+            if (oper.Confirmed)
+                return oper;
             oper.Confirmed = true;
             bool autoApproved = ConfigurationSettings.AppSettings["autoApproveNewUsers"] == "true";
             if (autoApproved)
