@@ -73,6 +73,11 @@
             ID="createArticleBtn" 
             OnClick="createArticleBtn_Click"
             Text="Create" />
+        <p>
+            Notice that you can also create articles "as you write" by creating wiki links to pages that doesn't
+            yet exist direcly inline into the text you're writing. Then when clicking these wiki links afterwards
+            you will get to create that page.
+        </p>
     </ra:Panel>
 
     <div class="actionbar">
