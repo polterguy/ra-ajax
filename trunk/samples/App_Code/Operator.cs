@@ -136,8 +136,15 @@ namespace Entity
             base.Save();
         }
 
+        public static void Logout()
+        {
+            HttpContext.Current.Session["__CurrentOperator"] = null;
+        }
+
         public static void Login(string username)
         {
+            if (username == "__mumbo__jumbo")
+                return;
             Operator oper = Operator.FindOne(
                 Expression.Eq("Username", username));
             HttpContext.Current.Session["__CurrentOperator"] = oper;
