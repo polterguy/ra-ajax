@@ -26,7 +26,8 @@
         Often you need to periodically poll the server to check for some condition or something. 
         For such circumstances the <em>Ra Ajax Timer</em> might come in handy. Like all other Ra
         Ajax Controls it too follows the complete Page Life cycle meaning you can do whatever you 
-        wish in the Tick Event Handler.
+        wish in the Tick Event Handler. Here we are just creating some random <em>Ajax Effects</em>
+        on the page to illustrate visually that we're going to the server between polls.
     </p>
     <ext:Timer 
         runat="server" 
@@ -37,10 +38,15 @@
         runat="server" 
         ID="pnlTimer" 
         style="position:absolute;border:solid 1px Black;background-color:Yellow;width:400px;height:200px;padding:25px;float:left;">
-        Follow this one as it grows randomly around due to the timer which creates an Ajax Effect on the server
-        and updates the label below.
-        <br />
-        <ra:Label runat="server" ID="date" style="font-style:italic;color:#999;" Text="Date" />
+        <p style="z-index:100;">
+            Follow this one as it grows randomly around due to the timer which creates an Ajax Effect on the server
+            and updates the label below.
+            <br />
+            <ra:Label runat="server" ID="date" style="font-style:italic;color:#999;" Text="Date" />
+        </p>
+        <ra:Panel runat="server" ID="pnlTimer2" style="z-index:99;background-color:Red;position:absolute;width:25px;height:25px;top:0px;left:0px;">
+            &nbsp;
+        </ra:Panel>
     </ra:Panel>
     <div style="height:300px;">&nbsp;</div>
     <p>

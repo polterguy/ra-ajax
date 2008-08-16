@@ -42,6 +42,14 @@
         <asp:Repeater runat="server" ID="repTodo">
             <HeaderTemplate>
                 <table>
+                    <tr>
+                        <th>Date</th>
+                        <th>Type</th>
+                        <th>Header</th>
+                        <th>Operator</th>
+                        <th>Finished</th>
+                        <th>Body</th>
+                    </tr>
             </HeaderTemplate>
             <FooterTemplate>
                 </table>
@@ -52,7 +60,7 @@
                         <ra:HiddenField 
                             runat="server" 
                             Value='<%# Eval("Id") %>' />
-                        <%# ((DateTime)Eval("Created")).ToString("MMMM d, yyyy", System.Globalization.CultureInfo.InvariantCulture) %>
+                        <%# ((DateTime)Eval("Created")).ToString("MMM d, yyyy", System.Globalization.CultureInfo.InvariantCulture) %>
                     </td>
                     <td style="vertical-align:top;">
                         <%# Eval("TypeOfTodo") %>

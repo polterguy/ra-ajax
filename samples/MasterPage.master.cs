@@ -66,6 +66,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
     protected void logout_Click(object sender, EventArgs e)
     {
         Response.Cookies["userId"].Value = "__mumbo__jumbo";
+        Operator.Logout();
         Response.Redirect("~");
     }
 

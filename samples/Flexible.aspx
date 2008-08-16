@@ -66,8 +66,8 @@
     </p>
     <p>
         If you create a nice Ajax Extension Control by combining other controls together then please let me know
-        by <a href="mailto:polterguy@gmail.com">sending me an email</a> since I am very interested in getting
-        to know the different ways my library is being used :)
+        by <a href="mailto:polterguy@gmail.com">sending me an email</a> or <a href="Forums/Forums.aspx">posting in our forums</a> 
+        since we are very interested in getting to know the different ways our library is being used :)
     </p>
 
 </asp:Content>
