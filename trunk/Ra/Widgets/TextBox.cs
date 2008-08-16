@@ -26,13 +26,15 @@ namespace Ra.Widgets
 
         public event EventHandler TextChanged;
 
+        public event EventHandler Blur;
+
+        public event EventHandler Focused;
+
         public event EventHandler MouseOver;
 
         public event EventHandler MouseOut;
 
         public event EventHandler KeyUp;
-
-        public event EventHandler Blur;
 
         #region [ -- Properties -- ]
 
@@ -154,6 +156,10 @@ namespace Ra.Widgets
                     if (Blur != null)
                         Blur(this, new EventArgs());
                     break;
+                case "focus":
+                    if (Focused != null)
+                        Focused(this, new EventArgs());
+                    break;
                 default:
                     throw new ApplicationException("Unknown event fired for control");
             }
@@ -192,6 +198,12 @@ namespace Ra.Widgets
                 if (evts.Length != 0)
                     evts += ",";
                 evts += "['blur']";
+            }
+            if (Focused != null)
+            {
+                if (evts.Length != 0)
+                    evts += ",";
+                evts += "['focus']";
             }
             if (evts.Length == 0)
             {
