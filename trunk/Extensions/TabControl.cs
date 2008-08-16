@@ -120,6 +120,8 @@ namespace Ra.Extensions
 
         public void SetActiveTabViewIndex(int idx)
         {
+            if (idx == ActiveTabViewIndex)
+                return;
             ActiveTabViewIndex = idx;
             SignalizeReRender();
             Controls.RemoveAt(0);

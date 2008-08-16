@@ -29,15 +29,5 @@ namespace Ra.Extensions
                 ViewState["Caption"] = value;
             }
         }
-
-        protected override void Render(System.Web.UI.HtmlTextWriter writer)
-        {
-            base.Render(writer);
-        }
-
-        public override void RenderControl(System.Web.UI.HtmlTextWriter writer)
-        {
-            base.RenderControl(writer);
-        }
     }
 }

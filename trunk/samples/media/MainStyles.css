@@ -381,3 +381,36 @@ img
 }
 
 
+
+
+/* Accordion
+ */
+.accordion-control
+{
+	border:solid 1px Black;
+}
+
+.accordion-control .content
+{
+	background-color:#F0F0EA;
+}
+
+.accordion-control .body
+{
+	padding:5px;
+	border-bottom:solid 1px Black;
+}
+
+.accordion-control .content .accordion-header
+{
+	border-bottom:solid 1px Black;
+}
+
+.accordion-control .content .accordion-header a
+{
+	text-decoration:none;
+	padding:5px;
+	display:block;
+	font-weight:bold;
+}
+
