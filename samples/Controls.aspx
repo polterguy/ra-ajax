@@ -135,6 +135,8 @@
     <ra:TextBox 
         runat="server" 
         ID="txtBox" 
+        OnBlur="blur"
+        OnFocused="focus"
         Text="Write something here and move focus" 
         OnTextChanged="txtBox_TextChanged" />
     <br />

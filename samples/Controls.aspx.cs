@@ -16,6 +16,16 @@ public partial class Controls : System.Web.UI.Page
         btn.Text = "Clicked";
     }
 
+    protected void blur(object sender, EventArgs e)
+    {
+        chk.Text = "blur";
+    }
+
+    protected void focus(object sender, EventArgs e)
+    {
+        chk.Text = "focus";
+    }
+
     protected void chk_CheckedChanged(object sender, EventArgs e)
     {
         chk.Text = "Clicked";

@@ -100,7 +100,7 @@
         This includes the images, CSS, content and JavaScript. The entire JavaScript in Ra 
         Ajax is minified less than 15KB in size. Not to mention its YSlow score of more than 
         80. Ra Ajax can easily be incorporated into your front end websites without your 
-        users even noticing any overhead at all for the initial download.
+        users even noticing any overhead at all for the initial download or the Ajax Callbacks.
     </p>
     <h2>This website...</h2>
     <p>
@@ -126,7 +126,8 @@
     </p>
     <p>
         This website should serve as a very good starting point for your own website projects if
-        you need forum support and blogging coupled with static pages or "functional pages".
+        you need forum support, basic TODO lists (bugtracker) and blogging coupled with static pages or 
+        "functional pages".
     </p>
 </asp:Content>
 

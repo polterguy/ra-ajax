@@ -20,6 +20,10 @@ namespace Ra.Widgets
     {
         public event EventHandler Click;
 
+        public event EventHandler Blur;
+
+        public event EventHandler Focused;
+
         public event EventHandler MouseOver;
 
         public event EventHandler MouseOut;
@@ -83,6 +87,14 @@ namespace Ra.Widgets
                     if (MouseOut != null)
                         MouseOut(this, new EventArgs());
                     break;
+                case "blur":
+                    if (Blur != null)
+                        Blur(this, new EventArgs());
+                    break;
+                case "focus":
+                    if (Focused != null)
+                        Focused(this, new EventArgs());
+                    break;
                 default:
                     throw new ApplicationException("Unknown event fired for control");
             }
@@ -109,6 +121,18 @@ namespace Ra.Widgets
                 if (evts.Length != 0)
                     evts += ",";
                 evts += "['mouseout']";
+            }
+            if (Blur != null)
+            {
+                if (evts.Length != 0)
+                    evts += ",";
+                evts += "['blur']";
+            }
+            if (Focused != null)
+            {
+                if (evts.Length != 0)
+                    evts += ",";
+                evts += "['focus']";
             }
             if (evts.Length == 0)
             {
