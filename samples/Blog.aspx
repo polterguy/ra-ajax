@@ -18,7 +18,7 @@
     Runat="Server">
     <div class="blog">
 
-        <h1>Software Cravings</h1>
+        <h1>Software Cravings at the wall of Ajax</h1>
         <p>
             A blog about Open Source, Open Standards, Open Web, RIA, Ajax, Philosophy, 42, 
             <a href="http://www.mono-project.com/Main_Page">Mono</a> and other things of 
@@ -34,9 +34,9 @@
                     <ra:HiddenField ID="HiddenField1" 
                         runat="server" 
                         Value='<%# Eval("Id") %>' />
-                    <h3>
+                    <h2>
                         <a href='<%# Eval("Url") %>'><%# Eval("Header") %></a>
-                    </h3>
+                    </h2>
                     <ra:Button 
                         runat="server" 
                         Visible='<%# Entity.Operator.Current != null && Entity.Operator.Current.Id == ((Entity.Operator)Eval("Operator")).Id %>'

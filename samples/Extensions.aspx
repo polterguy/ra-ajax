@@ -27,7 +27,7 @@
         to the code model in Ra Ajax. Here you can see an <em>Ajax Calendar control</em> I have 
         created without <em>one single line of custom JavaScript</em>.
     </p>
-    <h3>Ajax Calendar</h3>
+    <h2>Ajax Calendar</h2>
     <ra:Label 
         runat="server" 
         ID="selectedDate" 
@@ -81,7 +81,7 @@
         The whole thing will probably work like a charm like all other Ra Ajax Controls on any relatively standard 
         compliant browser including browsers for iPhone, WindowsMobile, Linux, Mac OS X, etc. 
     </p>
-    <h3>Ajax TabControl</h3>
+    <h2>Ajax TabControl</h2>
     <p>
         Here's another example of how to create an Ajax Extension control yourself. This time we have created an 
         <em>Ajax TabControl</em> for you. Also this Ajax Control is completely written without one line of
@@ -135,7 +135,7 @@
     </ext:TabControl>
 
     <p>&nbsp;</p>
-    <h3>Ajax Accordion</h3>
+    <h2>Ajax Accordion</h2>
     <p>
         Here is an example of an <em>Ajax Accordion</em> which is a part of the Ra Ajax Extension controls project.
         This control too is written entirely as a server side Ajax Control meaning there's no JavaScript written
