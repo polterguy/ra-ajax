@@ -387,23 +387,27 @@ img
  */
 .accordion-control
 {
-	border:solid 1px Black;
 }
 
 .accordion-control .content
 {
-	background-color:#F0F0EA;
 }
 
 .accordion-control .body
 {
-	padding:5px;
-	border-bottom:solid 1px Black;
+	overflow:hidden;
+	background-color:#f0f0ea;
+}
+
+.accordion-control .body-content
+{
+	border-top:solid 1px #e0e0da;
+	padding:15px;
 }
 
 .accordion-control .content .accordion-header
 {
-	border-bottom:solid 1px Black;
+	background:Transparent url(tabcontrol.png) repeat-x scroll 0px -53px;
 }
 
 .accordion-control .content .accordion-header a
@@ -413,4 +417,8 @@ img
 	display:block;
 	font-weight:bold;
 }
+
+
+
+
 

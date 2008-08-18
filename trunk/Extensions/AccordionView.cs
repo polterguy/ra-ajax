@@ -71,11 +71,13 @@ namespace Ra.Extensions
         {
             private string _idRemove;
             private string _idShow;
+            private Accordion _parent;
 
-            public EffectChange(string idRemove, string idShow)
+            public EffectChange(string idRemove, string idShow, Accordion parent)
             {
                 _idRemove = idRemove;
                 _idShow = idShow;
+                _parent = parent;
             }
 
             public override void Render()
@@ -84,20 +86,22 @@ namespace Ra.Extensions
 Ra.E('{0}', {{
   onStart: function() {{
     this.other = Ra.$('{1}');
-    this.other.setOpacity(0);
+    this.otherToHeight = this.other.getDimensions().height;
+    this.elementFromHeight = this.element.getDimensions().height;
+    this.other.style.height = '0px';
     this.other.style.display = '';
   }},
   onRender: function(pos) {{
-    this.element.setOpacity(1.0 - pos);
-    this.other.setOpacity(pos);
+    this.other.style.height = (this.otherToHeight * pos) + 'px';
+    this.element.style.height = (this.elementFromHeight * (1.0 - pos)) + 'px';
   }},
   onFinished: function() {{
-    this.element.setOpacity(0);
-    this.other.setOpacity(1);
     this.element.style.display = 'none';
+    this.element.style.height = '';
+    this.other.style.height = this.otherToHeight + 'px';
   }},
-  duration:0.4
-}});", _idRemove, _idShow);
+  duration:{2}
+}});", _idRemove, _idShow, _parent.AnimationSpeed.ToString(System.Globalization.CultureInfo.InvariantCulture));
             }
         }
 
@@ -122,7 +126,7 @@ Ra.E('{0}', {{
                         idxNoThis += 1;
                 }
             }
-            Effect effect = new EffectChange(oldActiveClientId, ClientID + "_CHILDREN");
+            Effect effect = new EffectChange(oldActiveClientId, ClientID + "_CHILDREN", Parent as Accordion);
             effect.Render();
             (Parent as Accordion).ActiveAccordionViewIndex = idxNoThis;
             (Parent as Accordion).RaiseActiveChanged();
@@ -132,10 +136,12 @@ Ra.E('{0}', {{
         {
             Controls[0].RenderControl(writer);
             writer.Write("<div class=\"body\" id=\"{0}_CHILDREN\"{1}>", ClientID, IsActive() ? "" : " style=\"display:none;\"");
+            writer.Write("<div class=\"body-content\">");
             for (int idx = 1; idx < Controls.Count; idx++)
             {
                 Controls[idx].RenderControl(writer);
             }
+            writer.Write("</div>");
             writer.Write("</div>");
         }
 

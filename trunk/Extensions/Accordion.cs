@@ -33,6 +33,21 @@ namespace Ra.Extensions
             }
         }
 
+        [DefaultValue(0.4)]
+        public decimal AnimationSpeed
+        {
+            get
+            {
+                if (ViewState["AnimationSpeed"] == null)
+                    return 0.4M;
+                return (decimal)ViewState["AnimationSpeed"];
+            }
+            set
+            {
+                ViewState["AnimationSpeed"] = value;
+            }
+        }
+
         [Browsable(false)]
         public IEnumerable<AccordionView> Views
         {
