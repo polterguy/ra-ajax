@@ -39,7 +39,7 @@
             </FooterTemplate>
             <ItemTemplate>
                 <div class="forumReply">
-                    <h3><%# Eval("Header") %></h3>
+                    <h2><%# Eval("Header") %></h2>
                     <em><%# ((DateTime)Eval("Created")).ToString("d.MMM yy - HH:mm") %></em>
                     <p><%# Eval("Body") %></p>
                     <i>Posted by <%# Eval("Operator.Username") %> who have <%# Eval("Operator.NumberOfPosts")%> posts</i>
