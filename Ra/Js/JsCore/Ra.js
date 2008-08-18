@@ -164,15 +164,12 @@ Ra.extend(Ra.Element.prototype, {
     // so enable the element temporarily
     var els = this.style;
     var orVis = els.visibility;
-    var orPos = els.position;
     var orDis = els.display;
     els.visibility = 'hidden';
-    els.position = 'absolute';
     els.display = 'block';
     var orWidth = this.clientWidth;
     var orHeight = this.clientHeight;
     els.display = orDis;
-    els.position = orPos;
     els.visibility = orVis;
     return {
       width: orWidth, 

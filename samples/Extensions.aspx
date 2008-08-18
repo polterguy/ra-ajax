@@ -141,18 +141,40 @@
         This control too is written entirely as a server side Ajax Control meaning there's no JavaScript written
         especially to create this control.
     </p>
-    <ext:Accordion runat="server" ID="acc" CssClass="accordion-control" style="width:75%;">
-        <ext:AccordionView Caption="Accordion view 1" runat="server" ID="acc1" CssClass="content">
+    <ext:Accordion 
+        runat="server" 
+        ID="acc" 
+        CssClass="accordion-control" 
+        AnimationSpeed="0.2"
+        style="width:75%;height:170px;">
+
+        <ext:AccordionView 
+            Caption="Accordion view 1" 
+            runat="server" 
+            ID="acc1" 
+            CssClass="content">
             Here is an example of an Ajax Accordion.
         </ext:AccordionView>
-        <ext:AccordionView Caption="Accordion view 2" runat="server" ID="acc2" CssClass="content">
+
+        <ext:AccordionView 
+            Caption="Accordion view 2" 
+            runat="server" 
+            ID="acc2" 
+            CssClass="content">
             This one too works just like the Ajax TabControl in that it is 100% written on the
             server as a server control in C#.
         </ext:AccordionView>
-        <ext:AccordionView Caption="Third" runat="server" ID="acc3" CssClass="content">
+
+        <ext:AccordionView 
+            Caption="Third" 
+            runat="server" 
+            ID="acc3" 
+            CssClass="content">
             So as you can see it is very easy to create your own Ajax Extension Controls with Ra Ajax.
         </ext:AccordionView>
+
     </ext:Accordion>
+
     <p>
         If you want to see an easier way of creating complex Ajax functionality without even having to create your 
         own Ajax Extension Control then you can have a look at the <a href="Flexible.aspx">Ajax AutoCompleter Example</a>.
