@@ -6,6 +6,8 @@ using Ra;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using Engine.Utilities;
+using System.Configuration;
+using System.IO;
 
 public partial class Wiki : System.Web.UI.Page
 {
@@ -28,6 +30,46 @@ public partial class Wiki : System.Web.UI.Page
         delete.Visible = Operator.Current != null && Operator.Current.IsAdmin;
     }
 
+    protected void btnShowImages_Click(object sender, EventArgs e)
+    {
+        imagesPnl.Visible = true;
+        Effect effect = new EffectRollDown(imagesPnl, 0.4M, 500);
+        effect.Render();
+        DataBindImages();
+    }
+
+    private void DataBindImages()
+    {
+        List<string> imgFiles = new List<string>();
+        foreach (string idx in Directory.GetFiles(Server.MapPath("~/Images")))
+        {
+            imgFiles.Add("Images/" + idx.Substring(idx.LastIndexOf("\\") + 1));
+        }
+        repImages.DataSource = imgFiles;
+        repImages.DataBind();
+    }
+
+    protected void ImageSelected(object sender, EventArgs e)
+    {
+        ImageButton btn = sender as ImageButton;
+        richedit.Selection = string.Format("<img src=\"{0}\" alt=\"Wiki Image\" />", btn.ImageUrl);
+        Effect effect = new EffectRollUp(imagesPnl, 0.4M, 500);
+        effect.Render();
+    }
+
+    protected void btnUploadFile_Click(object sender, EventArgs e)
+    {
+        uploadImage.SaveAs(Server.MapPath("~/Images/" + uploadImage.FileName));
+        DataBindImages();
+        imagesPnl.SignalizeReRender();
+    }
+
+    protected void closeImages_Click(object sender, EventArgs e)
+    {
+        Effect effect = new EffectRollUp(imagesPnl, 0.4M, 500);
+        effect.Render();
+    }
+
     protected override void OnPreRender(EventArgs e)
     {
         // Since they are STATIC Event Handlers on Operator type we need to REMOVE them again...!
@@ -38,6 +80,10 @@ public partial class Wiki : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        // To support File Uploading...
+        Form.Enctype = "multipart/form-data";
+
+        warning.Visible = false;
         string url = Request.Params["id"];
         if (url == null)
         {
@@ -70,9 +116,12 @@ public partial class Wiki : System.Web.UI.Page
                 Title = _article.Header;
                 header_read.InnerText = _article.Header;
                 content.Text = FormatContent(_article.Body);
-                content.Text += string.Format(@"
+                if (ConfigurationSettings.AppSettings["showLastChanged"] == "true")
+                {
+                    content.Text += string.Format(@"
 <p><em>Last changed; {0}</em></p>",
-                    _article.Changed.ToString("dddd, dd MMM, yyyy", System.Globalization.CultureInfo.InvariantCulture));
+                        _article.Changed.ToString("dddd, dd MMM, yyyy", System.Globalization.CultureInfo.InvariantCulture));
+                }
             }
         }
         delete.Visible = Operator.Current != null && Operator.Current.IsAdmin;

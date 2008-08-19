@@ -38,7 +38,13 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
             if (Operator.Current == null)
             {
-                username.Focus();
+                if (ConfigurationSettings.AppSettings["showLoginBox"] != "true" && Request.Params["login"] == null)
+                {
+                    loginPnl.Visible = false;
+                    search.Focus();
+                }
+                else
+                    username.Focus();
             }
             else
             {
@@ -74,22 +80,25 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
     private void CreateLastChanges()
     {
-        int idxNo = 0;
-        string url = Request.Url.ToString();
-        url = url.Substring(0, url.LastIndexOf("/") + 1);
-        foreach (Article idx in Article.FindAll(Order.Desc("Changed")))
+        if (ConfigurationSettings.AppSettings["showLastChanges"] == "true")
         {
-            if (idxNo == 0)
-                lastArticles.Text += "<ul class=\"links\"><li>{Last Changes}</li>";
-            lastArticles.Text += string.Format("<li><a href=\"{0}\">{1}</a></li>",
-                (idx.Url == "default" ? url : idx.Url + ".wiki"), 
-                idx.Header);
-            idxNo += 1;
-            if (idxNo > 50)
-                break;
+            int idxNo = 0;
+            string url = Request.Url.ToString();
+            url = url.Substring(0, url.LastIndexOf("/") + 1);
+            foreach (Article idx in Article.FindAll(Order.Desc("Changed")))
+            {
+                if (idxNo == 0)
+                    lastArticles.Text += "<ul class=\"links\"><li>{Last Changes}</li>";
+                lastArticles.Text += string.Format("<li><a href=\"{0}\">{1}</a></li>",
+                    (idx.Url == "default" ? url : idx.Url + ".wiki"),
+                    idx.Header);
+                idxNo += 1;
+                if (idxNo > 50)
+                    break;
+            }
+            if (idxNo > 0)
+                lastArticles.Text += "</ul>";
         }
-        if (idxNo > 0)
-            lastArticles.Text += "</ul>";
     }
 
     protected void search_KeyUp(object sender, EventArgs e)

@@ -22,6 +22,38 @@
     ContentPlaceHolderID="cnt1" 
     Runat="Server">
 
+    <ra:Panel 
+        runat="server" 
+        ID="imagesPnl" 
+        Visible="false"
+        style="width:800px;background-color:Yellow;position:absolute;border:solid 1px Black;overflow:auto;padding:15px;">
+        <ra:Button 
+            runat="server" 
+            ID="closeImages" 
+            OnClick="closeImages_Click"
+            Text="Close" />
+        <asp:FileUpload 
+            runat="server" 
+            ID="uploadImage" />
+        <asp:Button 
+            runat="server" 
+            ID="btnUploadFile" 
+            OnClick="btnUploadFile_Click"
+            Text="Upload file" />
+        <br />
+        <div style="overflow:auto;border:solid 1px Black;height:95%;">
+            <asp:Repeater runat="server" id="repImages">
+                <ItemTemplate>
+                    <ra:ImageButton 
+                        ImageUrl='<%# Container.DataItem %>' 
+                        AlternateText="Image" 
+                        OnClick="ImageSelected"
+                        runat="server" />
+                </ItemTemplate>
+            </asp:Repeater>
+        </div>
+    </ra:Panel>
+
     <ext:TabControl 
         runat="server" 
         ID="tab" 
@@ -44,7 +76,11 @@
 
         </ext:TabView>
 
-        <ext:TabView runat="server" ID="tab2" Caption="Edit" CssClass="content">
+        <ext:TabView 
+            runat="server" 
+            ID="tab2" 
+            Caption="Edit" 
+            CssClass="content">
 
             <ext:Timer 
                 runat="server" 
@@ -128,6 +164,11 @@
                     <ra:ListItem Text="Normal" Value="normal" />
                     <ra:ListItem Text="List" Value="list" />
                 </ra:DropDownList>
+                <ra:Button 
+                    runat="server" 
+                    ID="btnShowImages" 
+                    OnClick="btnShowImages_Click"
+                    Text="Images" />
             </div>
             <ra:Panel 
                 runat="server" 

@@ -52,8 +52,9 @@ namespace Engine
 
                 // Creating default article
                 Article a = new Article();
+                a.SiteWide = true;
                 a.Body = @"
-This id the default article created for you by the system, also a default user have been created with 
+This is the default article created for you by the system, also a default user have been created with 
 the username of ""admin"" and the password of ""admin"". Needless to say both should be changed as 
 soon as possible.
 ";
