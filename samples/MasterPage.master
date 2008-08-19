@@ -101,6 +101,9 @@
                                 </li>
                             </ul>
                             <asp:Literal runat="server" ID="blogLinksWrapper" />
+                            <ul class="links">
+                                <li><a href="http://code.google.com/p/ra-ajax/">Download Ra-Ajax</a></li>
+                            </ul>
                         </div>
                         <div id="contentOfPageDiv">
                             <ra:Panel 

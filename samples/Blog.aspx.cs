@@ -201,7 +201,7 @@ public partial class Blog : System.Web.UI.Page
         string[] files = Directory.GetFiles(Server.MapPath("~/media/UserImages"));
         for (int idx = 0; idx < files.Length; idx++)
         {
-            files[idx] = files[idx].Replace(Server.MapPath("~"), Request.Url.ToString().Substring(0, Request.Url.ToString().LastIndexOf("/"))).Replace("\\", "/");
+            files[idx] = files[idx].Replace(Server.MapPath("~"), Request.Url.ToString().Substring(0, Request.Url.ToString().LastIndexOf("/") + 1)).Replace("\\", "/");
         }
         repImages.DataSource = files;
         repImages.DataBind();

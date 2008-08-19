@@ -1,6 +1,8 @@
 How to create an Ajax Library part 1 - Decisions
 
 
+<img src="http://ra-ajax.org/media/UserImages/ajax.jpg" alt="Blog image" />
+
 At this website I will create an Ajax Library focusing on server-side bindings to abstract away JavaScript for ASP.NET and <a href="http://www.mono-project.com/Main_Page">Mono</a> but the lessons learned here will also be useful for others building Ajax libraries. Even if you're doing it towards J2EE, Python, PHP or not even using a server-side framework at all.
 
 If you use the lessons learned here to implement an Ajax Framework for another server-side framework, I would appreciate knowing about it so that I can link to your website where your project recides :)
@@ -46,31 +48,12 @@ We will choose NOT to inherit from the TextBox, Label, CheckBox and so on and in
 
 
 <h3>License choice</h3>
-Maybe the hardest part figuring out is which license you will want to use. For Ra Ajax I choose an MITish kind of license which basically says; <em>"If you do not work for an agressive military power you can use this library as you wish, but you cannot fork it"</em>. The reason why I choose this license is first of all because I think that the Open Web is really important and that we need the Open Web to prevail and by choosing a very permissive license for our Ajax Library we're basically making sure of that our Ajax Library will be used by a lot of users. And by choosing to add up a "no fork" clause we're making sure of that we're not working for free for companies who want to create a commercial library selling our work. In addition the no-fork clause also makes sure that we can later down the road change license to e.g. a Dual License system where we can have some kind of GPL version for Open Source developers and a "commercial license" for people who want to make closed source software with our library. Now I might end up just LGPL license the whole thing later down the road, but at least I want to be able to have a choice. And if we go with a "pure MIT license" we basically do not have that choice. So by having an MIT license with a no-fork exception we are basically as permissive as we possibly can be without creating damage for ourselves later down the road. 
+Maybe the hardest part figuring out is which license you will want to use. For Ra Ajax I choose the LGPL license which basically says; <em>"Use as you wish but don't steal the code and close it"</em>. The reason why I choose this license is first of all because I have had <a href="http://ra-ajax.org/goodbye-gaia-ajax-widgets-hello-ra-ajax.blog">threats about being sued by my previous employer</a> which means that I cannot have any financial incentives at all behind this effort. In addition I think that the Open Web is really important and that we need the Open Web to prevail and by choosing a very permissive license for our Ajax Library we're basically making sure of that our Ajax Library will be used by a lot of users. 
 
 To not use an Open Source license for a Framework (ANY type of Framework) today will basically not work! Coders are being more and more used to consuming Open Source libraries, and they will want to see the code for whatever they're using. If you don't Open Source your Ajax Library you will probably get *zero* users! This fits at least me perfectly since I happen to love Open Source. Later on if you decide to go "commercial" with your project you will also get to hire the best developers for your company instead of "second class" developers willing to work for Closed Source libraries. The best System Developers tend to be drawn towards Open Souce code! You will also get a lot of publicity simply because you choose an Open Source model! Not to mention that it is <b>the right thing to do</b>! Innovation should be OPEN, especially the RIA Framework of the 3rd Millennium!
 
-Then the "not work for agressive military regime" parts I choose simply because I can. I think the world really need companies and people to stop working for military agressive governemts. If all did then all the agressive military powers on the planet would have to use stone axes to go to wars which effectively would eliminate war as we know it today!
 
-
-<h3>Here is our complete license for Ra Ajax;</h3>
-Copyright (c) 2008 Thomas Hansen - polterguy@gmail.com
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-* If you Modify or Extend the Software you cannot redistribute it in code form creating what's commonly referred to as a "fork". Modify means changing code contained in the Software. Extend means add to the Software itself and does not stop you from consuming the modified Software in another project.
-
-* The Software should be used for good and not evil purposes. This means among other things that if you work for a governmental organization with armed troops engaged in combats in foreign countries which have not been sent there by a UN resolution you cannot use the Software in your work. If in doubt send an email to polterguy@gmail.com and ask for permission as to whether or not you can use this Software explaining what you want to build and who you work for and how you intend to license your project. Exceptions to this rule MAY be given if you bend over backwards in regards to all other ethical perspectives of your project. Though an email from me - Thomas Hansen (polterguy@gmail.com) is mandatory under such circumstances.
-
-* If I should die or due to any other reasons be permanently inable to maintain Ra Ajax then you are free to use Ra Ajax under the LGPL version 3 as published by the Free Software Foundation.
-
-* If I am not able to release a new version of Ra Ajax in more than 365 consecutive days (one year) then you are free to use Ra Ajax under the LGPL version 3 as published by the Free Software Foundation.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-<b>Note that all CODE snippets at this blog is licensed as a "pure" MIT license</b>, meaning you can copy and paste code as you wish from this blog into your own code if you wish. Also if you'd like to re-use my license then you are free to do so under the terms of the GNU Free Document License, meaning you can re-use my license text as you wish, but if you change the license text you must also let other users use the license text under the terms of the GNU Free Document License terms.
+<b>Note that all CODE snippets at this blog is licensed as a pure MIT license</b>, meaning you can copy and paste code as you wish from this blog into your own code if you wish.
 
 
 <h3>Open Standards</h3>
