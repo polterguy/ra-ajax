@@ -19,11 +19,11 @@
     <h1>Ra Ajax Samples Home</h1>
     <p>
         Ra Ajax is an <strong>Ajax library for ASP.NET and Mono</strong> but its general nature on the client-side
-        will make it very useful also for other server-side bindings like PHP, J2EE RubyOnRails etc. Ra Ajax
-        is licensed under an MIT(ish) license which basically says <em>"use as you wish, but don't fork the code and
-        don't use it if you work for an agressive military power"</em>. Ra Ajax is built around the assumption that 
-        JavaScript is hard and not something Application Developers should spend time on doing. Every single sample 
-        here in the samples section is written entirely without <em>one line of Custom JavaScript</em>. This makes you;
+        will make it very useful also for other server-side bindings like PHP, J2EE RubyOnRails etc all though other 
+        bindings than towards ASP.NET is not included. Ra Ajax is licensed under the <a href="http://www.gnu.org/licenses/lgpl.html">LGPL3 license</a>. 
+        Ra Ajax is built around the assumption that JavaScript is hard and not something Application Developers should 
+        spend time on doing. Every single sample here in the samples section is written entirely without <em>one line 
+        of Custom JavaScript</em>. This makes you;
     </p>
     <ul>
         <li>More productive</li>
