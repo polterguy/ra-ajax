@@ -21,13 +21,12 @@
     <br />
     <h2>License</h2>
     <p>
-        Ra Ajax is licensed under an MIT(ish) kind of license which basically says; <em>"Use
-        as you wish as long as you don't work for an agressive military government and you 
-        don't fork Ra"</em>. Read the <em>license.txt</em> which can be found in the main 
-        folder on disc when downloading Ra. This among other things means that you can use 
-        Ra for free in commercial/proprietary projects if you like. Without putting 
-        restrictions on your derived works. Ra is also licensed under the GPL3 license if 
-        you prefer this.
+        Ra Ajax is licensed under the <a href="http://www.gnu.org/licenses/lgpl.html">LGPL version 3</a> 
+        Open Source license. This basically means that you can use it for free as you wish, you can 
+        fork the library and you don't even have to tell me (or anyone else) that you're using it. Though
+        if you create changes in the "core library" you are obliged to also release those changes in code
+        form under the LGPL licence terms to those you distribute that modified library to. Basically
+        Ra-Ajax is <em>free as in free beer and as in freedom</em>.
     </p>
     <br />
     <h2>JavaScript</h2>
@@ -76,13 +75,22 @@
     <br />
     <h2>Is Ra Ajax a commercial project?</h2>
     <p>
-        No. Currently Ra Ajax is not mature enough to be a commercially backed 
-        project. This means you can use Ra Ajax for free in your Closed Source 
-        projects. Though I cannot guarantee you that I will never charge for 
-        support, help, custom work, upgrades and new versions as Ra Ajax matures 
-        and demands more resources on my behalf. Though you will always be able 
-        to use Ra Ajax for free in Open Source projects. And Ra Ajax will always
-        be Open Source.
+        NO! Ra-Ajax is not a commercial product and everything in the library is done 
+        on a completely voluntary basis. We wanted to create a business model around 
+        Ra-Ajax but since <a href="http://gaiaware.net">Gaiaware AS</a> (a company Thomas 
+        Hansen founded a couple of years ago) threatened us
+        with lawsuits if we were to create a <em>competing product</em> we felt it was 
+        better to remove all financial incentives behind the library itself and just have
+        it as a <em>hobby project</em> to remove all doubt. Read the whole 
+        <a href="goodbye-gaia-ajax-widgets-hello-ra-ajax.blog">Gaia versus Ra Ajax story here</a>. 
+        Though there are <a href="Forums/Forums.aspx">forums</a> where you can ask for support if you're 
+        stuck and hopefully lots of people in our hopefully growing community in addition 
+        to that the developers at Ra Software will always be able to answer your requests. We
+        also have a <a href="Todo.aspx">bugtracker</a> which we monitor if you find bugs and such. In 
+        addition all the developers at Ra Software will always use Ra-Ajax as their main tool
+        when developing other applications which will be our "bread and butter" applications which
+        will drive the development of Ra-Ajax forward for you. So Ra-Ajax is very unlikely going
+        to be abandoned anytime soon even though it is not a commercial product.
     </p>
 
 </asp:Content>

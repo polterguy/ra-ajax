@@ -18,10 +18,12 @@
 
     <h1>Forums for Ra Ajax</h1>
     <p style="width:450px;">
-        Feel free to post your questions here and I will try to answer as best I can, though remember that
-        Ra Ajax is a NON-commercial project which means that I don't get paid for helping you. If you are 
-        a senior ASP.NET/Ra Ajax developer yourself and like to help out the project then answering forum
-        questions is the place to start :)
+        Feel free to post your questions here and hopefully someone will try to answer as best they can, though 
+        remember that Ra Ajax is a NON-commercial project which means that none of the people answering you 
+        won't get paid for helping you. If you are a senior ASP.NET/Ra Ajax developer yourself and like to 
+        help out the project then answering forum questions is the place to start :)
+        <br />
+        Politeness helps :)
     </p>
     <ra:Panel 
         runat="server" 
