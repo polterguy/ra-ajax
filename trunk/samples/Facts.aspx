@@ -92,6 +92,23 @@
         will drive the development of Ra-Ajax forward for you. So Ra-Ajax is very unlikely going
         to be abandoned anytime soon even though it is not a commercial product.
     </p>
+    <br />
+    <h2>Why create yet another Ajax Library?</h2>
+    <p>
+        First of all because we need Open Source/Open Web tools for our own needs in our other 
+        "bread and butter" applications. In addition there is nothing more fun than writing
+        an Ajax Library :)
+        <br />
+        We in Ra Software have intense believe in the Open Web and Ajax and while there exists
+        great portable Open Source tools for almost every possible thing here in this world, Ajax
+        for ASP.NET is virtually a "dark spot". Currently there exists only - 
+        <a href="http://ajaxwidgets.com">Gaia Ajax Widgets</a> which has some greatness within, 
+        though we in Ra Software do not believe that Gaia will stay 
+        <a href="http://www.mono-project.com/Main_Page">Mono</a> compatible. For us Mono compatibility
+        is crucial. Also owning our own foundation is crucial for us and since 
+        <a href="goodbye-gaia-ajax-widgets-hello-ra-ajax.blog">Gaia Ajax Widgets was lost</a> for 
+        us in Ra Software we had little choice but starting our own Ajax for ASP.NET initiative.
+    </p>
 
 </asp:Content>
 

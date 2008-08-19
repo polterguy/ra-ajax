@@ -95,6 +95,7 @@
     <EmbeddedResource Include="JsCompressed\Js\Control.js" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="license-GPL.txt" />
     <Content Include="license.txt" />
     <Content Include="ReadMe.txt" />
   </ItemGroup>
