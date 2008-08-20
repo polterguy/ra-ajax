@@ -27,6 +27,17 @@
             runat="server" 
             id="next" 
             title="Next blog">Next &gt;&gt;</a>
+        <h3>Copyright</h3>
+        <p>
+            All content at my this blog is the Copyright of <a href="http://ra-ajax.org">Ra Software AS</a> 
+            but can freely be distributed under the terms of 
+            <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation License</a> which means you 
+            are <em>encouraged to copy, modify and redistribute all the content at this website</em> as much as 
+            you wish. I would particlurary encourage people with their own blogs, webserver and so on to 
+            redistribute any content they wish on their own server. Though redistribution must happen under the 
+            terms of the GFDL version 1.2. Also occassionally I may publish content which is not the copyright
+            of mine. Obviously that content must meet the requirements of the original copyright holder.
+        </p>
     </div>
 
 </asp:Content>

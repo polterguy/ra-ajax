@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Timer.aspx.cs" 
-    Inherits="Timer" 
+    Inherits="Samples.Timer" 
     Title="Untitled Page" %>
 
 <%@ Register 
