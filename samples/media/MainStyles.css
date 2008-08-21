@@ -4,17 +4,9 @@
 	padding:0;
 }
 
-html, body, form
-{
-}
-
 img
 {
 	border:none;
-}
-
-#wholePageDiv
-{
 }
 
 #contentPlusBorders
@@ -23,14 +15,16 @@ img
 	background:Transparent url(bg.png) repeat-y;
 	margin-left:auto;
 	margin-right:auto;
+	overflow:auto;
+	padding:0 16px 15px 16px;
+	position:relative;
 }
 
-#wholeContentDiv
+.showCodeButtons
 {
-	width:1024px;
-	margin-left:auto;
-	margin-right:auto;
-	position:relative;
+	position:absolute;
+	right:65px;
+	top:5px;
 }
 
 #logoPartDiv
@@ -39,11 +33,35 @@ img
 	background:Transparent url(sun.jpg) no-repeat;
 }
 
+.showCodeDiv
+{
+	top:259px;
+	left:16px;
+	width:1024px;
+	position:absolute;
+	background-color:#fefedd;
+	z-index:1000;
+	overflow:auto;
+	border-bottom:solid 1px #ddd;
+}
+
 #navigation
 {
 	width:224px;
 	float:left;
 	padding-top:35px;
+}
+
+#wholeContentDiv
+{
+	float:left;
+}
+
+#contentOfPageDiv
+{
+	float:left;
+	width:730px;
+	padding:35px;
 }
 
 .links
@@ -62,26 +80,6 @@ img
 {
 	text-decoration:underline;
 	color:#000;
-}
-
-#contentOfPageDiv
-{
-	float:left;
-	width:730px;
-	padding:35px;
-}
-
-.showCodeDiv
-{
-	float:left;
-	width:1024px;
-	position:absolute;
-	top:259px;
-	left:0px;
-	background-color:#fefedd;
-	z-index:1000;
-	overflow:auto;
-	border-bottom:solid 1px #ddd;
 }
 
 #contentOfPageDiv div
