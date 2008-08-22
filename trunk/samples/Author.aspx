@@ -31,9 +31,9 @@
     <h2>Kariem Ali</h2>
     <p>
         Kariem is from Alexandria in Egypt and have been working together with Thomas almost since the beginning
-        of Gaiaware and Gaia Ajax Widgets. Kariem is born in 1984 and have previously been working a lot with
+        of Gaiaware and Gaia Ajax Widgets. Kariem is born in 1982 and have previously been working a lot with
         <a href="http://www.dotnetnuke.com">DotNetNuke</a> in addition to obviously also a lot of Ajax and JavaScript.
-        Kariem speaks English and Egyptian Arabic fluently.
+        Kariem speaks English and Arabic fluently.
     </p>
     <h2>Hire us</h2>
     <p>
