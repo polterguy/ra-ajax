@@ -10,8 +10,8 @@ There is now only one task left which we haven't semantically looked at which is
 As we spoke about a couple of chapters ago, to queue up Ajax Requests and not enable more than one Ajax Request to execute at the same time is crucial. If we do not do this then the server and the client will "run out of sync" since you will very likely create a request which changes some form elements or values of those which then will be serialized before they're changed in your second request which again will put your client and your server into an "undefined state". And especially for ASP.NET which heavily relies on the ViewState (__VIEWSTATE hidden field value) this step is crucial.
 
 
-<h3>The ViewState problem</h3>
-ASP.NET has a hidden field on its webforms which can be found by looking at the code for your ASP.NET webpage and search for "__VIEWSTATE". This field holds values for ASP.NET WebControls and helps the server and the client to know about the state and values of its controls. 
+<h2>The ViewState problem</h2>
+ASP.NET has a hidden field on its webforms which can be found by looking at the code for your ASP.NET webpage and search for "<em>__VIEWSTATE</em>". This field holds values for ASP.NET WebControls and helps the server and the client to know about the state and values of its controls. 
 
 The ViewState has a bad reputation which unfortunately is completely not deserved. The ViewState is a beautiful construct which most developers who have done some advanced development in JSP or Servlets in J2EE are very jealous of. But for Ajax Libraries it holds one problem.
 
@@ -20,7 +20,7 @@ The problem with the ViewState in an Ajax Library is that if you start an Ajax R
 The way around this problem is to queue up Ajax Requests and *WAIT* until the first one is *COMPLETELY* finished executing before we're starting the form serialization process of the second one. This is a very beautiful construct and solves a lot of headache for ourselves and for our users.
 
 
-<h3>I get it, show me some code!</h3>
+<h2>I get it, show me some code!</h2>
 Here is our code for our Ra.Ajax class which will be the "endpoint API parts" for our Ajax Requests.
 <pre>
 Ra.Ajax = Ra.klass();
@@ -118,7 +118,7 @@ As you can see the above code has one "static" field (Ra.Ajax._activeRequests wh
 
 This logic was an invention of yours truly (me) which I spent quite a significant amount of braincells on a couple of years ago when I got into weird bugs with Gaia Ajax Widgets in combination with more than one Timer Control on the same page.
 
-And the simplicity and beauty of the solution was quite amazing I must admit myself and like all art it was just matter of "discovering what was hidden". <em>Good artists steal, great artists steal with pride. Creation is the business of the universe, humans are only here to discover what the universe itself put out here for us.</em> ;)
+And the simplicity and beauty of the solution was quite amazing I must admit myself and like all art it was just matter of "discovering what was hidden". <em>Creation is the business of the universe, humans are only here to discover what the universe itself put out here for us.</em> ;)
 
 The rest of the Ajax logic we handled in our <a href="how-to-create-an-ajax-library-part-6-serializing-your-forms.blog">serializing form elements</a> article and our <a href="how-to-create-an-ajax-library-part-5-wrapping-the-xmlhttprequest-xhr-object.blog">wrapping the XHR object</a> article.
 

@@ -6,7 +6,7 @@ This is the sixth chapter in our <em>"How to create an Ajax Library"</em> series
 In this chapter I will walk you through one of the most important steps while building your Ajax Requests, and at the end of the chapter we will have some beautiful code you can use which easily abstract away your web forms and makes it very easy to serialize web forms in JavaScript for creating Ajax Requests and callback to the server to retrieve data or manipulate the page back on the client.
 
 
-<h3>Why bother with forms?</h3>
+<h2>Why bother with forms?</h2>
 Forms might seem dull and uninteresting. At least not interesting enough to get their own chapter, but first of all to serialize a form is the definitely most important thing you can do in an Ajax Library, especially for a completely server-side binded Ajax Library. And second of all serializing forms might seem a little bit surprising for some since it builds on top of *two* standards. It uses both the HTTP standard and the (X)HTML standard which makes them slightly overlap which again makes the process slightly more complex than if it only used one standard.
 
 Also our Ajax Library should completely abstract away the very concept of JavaScript and we will build it on top of ASP.NET both to leverage the existing infrastructure in ASP.NET and also to make sure it is compatible with as much existing code as possible. And since ASP.NET are very strongly coupled towards HTTP/HTML forms we also need to be so. In addition this gives us the additional benefit of being able to also serialize "non-Ra Ajax" form elements which means that we can serialize back to the server also values of controls which are NOT Ra Ajax controls. This gives us a gigantic transparency benefit which will make our Ajax Library completely transparent to both the server and other existing 3rd party controls.
@@ -14,7 +14,7 @@ Also our Ajax Library should completely abstract away the very concept of JavaSc
 But even for the people among you who do not build your Ajax Libraries on top of ASP.NET there will be many very interesting points in this article, so follow up while we dive down deep into HTTP/HTML web forms.
 
 
-<h3>The code</h3>
+<h2>The code</h2>
 <pre>
 Ra.Form = Ra.klass();
 
@@ -113,7 +113,7 @@ Ra.extend(Ra.Form.prototype, {
 });
 </pre>
 
-<h3>The explanation of the code</h3>
+<h2>The explanation of the code</h2>
 There are a couple of things to notice in the above code. First of all if no form are given to the constructor (init function) we take the first form available on the page. This is convenient for ASP.NET developers since ASP.NET basically only have support for one form per page. Or rather it HAS support for multiple forms, but to use them is so difficult that most ASP.NET developers choose to skip having more than one form per page. Also notice how we're by default using the <em>action</em> attribute of the form for the URL for our Ajax Request if not explicitly overridden in the options parameter. In addition our form class uses the Ra.XHR object directly itself and creates Ajax Requests back to the server itself in the callback function. This could probably be different and is just a matter of personal choice. I like as small code as possible so using the form class for me means to also use the XMLHTTPRequest which makes this logicical for me.
 
 Also another very interesting thing from the HTTP standard is the fact that we're *not* serializing form elements which are <em>disabled</em>. This is the correct behavior according to the HTTP standard and therefor we choose to do it likewise. In addition when creating HTTP POST requests posting forms back to the server then the HTTP standard also sugests that you do this by having the <em>name attribute</em> as the parameter name, so we'll have to copy this logic ourselves, all though it IS tempting to use the id attribute on this point. Remember the first chapter <a href="how-to-create-an-ajax-library-part-1-decisions.blog">decisions</a> where our conclusion was that we should obey by existing standards and that this is more important than *anything else* in our Ajax library.

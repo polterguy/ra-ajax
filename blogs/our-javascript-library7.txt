@@ -8,7 +8,7 @@ And that was about it, after this chapter most of our code will be closely coupl
 Remember that <em>creation is just discovering what's already there waiting to be found</em> and that I have done a lot of discovering in the concept of Ajax due to having worked with Ajax a lot and created both Gaia Ajax Widgets and Ra Ajax.
 
 
-<h3>Complete code</h3>
+<h2>Complete code</h2>
 Here is the complete code for our core JavaScript Ajax library for your convenience. The complete size of this library is less than 12KB when minified with <a href="http://www.crockford.com/javascript/jsmin.html">JSMin</a> while <a href="http://www.prototypejs.org/">Prototype.js</a> is more than 120KB of JavaScript (before minification, roughly 50% of that when minified) and <a href="http://jquery.com/">jQuery</a> is more than 54KB when minified. So as you can see by creating our own custom JavaScript library we have effectively reduced the download size for our users by more than 80%. As I said in <a href="how-to-create-an-ajax-library-part-1-decisions.blog">decisions when creating an Ajax Library</a> we do not need a <em>general purpose JavaScript library</em> and by creating our own <em>custom JavaScript library</em> we have landed on a way sweater place than we could possibly achieve with a general purpose JavaScript library.
 <pre>
 /*

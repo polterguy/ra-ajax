@@ -5,7 +5,7 @@ This is the fourth chapter in our <em>"How to create an Ajax Library"</em> serie
 
 Every JavaScript library with respect for itself will need to have some sort of <em>DHTML JavaScript Effect Library</em> abstractions. These Effects will be used for flashing up and animating parts of the screen when some user interactions are being executed. You can see a sample of these kinds of effects in the <a href="http://script.aculo.us/">ScriptAculous</a> JavaScript library created by my very skilled JavaScript name brother <em>Thomas Fuchs</em>.
 
-The secret behind most JavaScript Effect libraries is that they have two corner stones which they wrap around. The first corner stone is a DOM element and the second is an execution loop which does some kind of change to that DOM Element. Now id we dig really down and think hard about those two issues we can actually vapor away everything else but those two concerns which means that our JavaScript Effect library will be extremely small an lightweight. 
+The secret behind most JavaScript Effect libraries is that they have two corner stones which they wrap around. The first corner stone is a DOM element and the second is an execution loop which does some kind of change to that DOM Element. Now if we dig really down and think hard about those two issues we can actually vapor away everything else but those two concerns which means that our JavaScript Effect library will be extremely small an lightweight. 
 
 I think that some JavaScript code here is a brilliant way to show what I mean;
 <pre>
@@ -102,7 +102,7 @@ Ra.Effect('someOtherDOMElement', {
 As you can see the above Effect class is making it possible for us to create almost any effects we want to without constraining the user to a certain predefined set of Effects simply by exploiting the two "corner stones of effect classes".
 
 
-<h3>How it works</h3>
+<h2>How it works</h2>
 If you take a look at the Effect class one more time you will see that it takes a delegate to a JavaScript function through its "options" argument. This delegate will be called every 10th millisecond with an integer which will have a value between 0.0 and 1.0 depending upon "how far into the effect loop cycle" we currently are. Meaning when 35% of the Effects rendering time have passed the value will be 0.35 and when 70% of the effect rendering time have passed that value will be 0.7 and so on.
 
 In addition the Effect class have a "duration" property and onStart and onFinished functions. The duration is how many seconds the Effect will use for its rendering phase and the onStart and onFinished functions will be called respectively before the effect starts looping and when it is finished looping.
