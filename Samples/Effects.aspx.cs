@@ -13,22 +13,33 @@ public partial class Effects : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!IsPostBack)
+        {
+            // TODO: Doesn't work...
+            btn.Focus();
+        }
     }
 
     protected void btn_Click(object sender, EventArgs e)
     {
+        btn.Enabled = false;
+        btn2.Enabled = true;
         Effect effect = new EffectSize(pnl, 0.6M, 300, 300);
         effect.Render();
     }
 
     protected void btn2_Click(object sender, EventArgs e)
     {
+        btn2.Enabled = false;
+        btn3.Enabled = true;
         Effect effect = new EffectFadeOut(pnl, 0.6M);
         effect.Render();
     }
 
     protected void btn3_Click(object sender, EventArgs e)
     {
+        btn3.Enabled = false;
+        btn2.Enabled = true;
         Effect effect = new EffectFadeIn(pnl, 0.6M);
         effect.Render();
     }

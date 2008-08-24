@@ -40,7 +40,8 @@
     <ra:Button 
         runat="server" 
         ID="btn2" 
-        OnClick="btn2_Click"
+        OnClick="btn2_Click" 
+        Enabled="false"
         Text="Click me too" />
     <p>
         And finally the button below here
@@ -49,11 +50,17 @@
         runat="server" 
         ID="btn3" 
         OnClick="btn3_Click"
+        Enabled="false"
         Text="Click me too" />
     <p>
         And as normal no JavaScript knowledge is required to use these constructs, take a look at 
         the source code for this page by clicking the "Show code" button at the top/right corner.
         Also this is just a small subset of the Ajax Effects that exists in Ra-Ajax.
+    </p>
+    <p>
+        And you can see here that we've created our Effects in the Click event handler of a button.
+        You can of course create Ajax Effects on the server side from any Ra-Ajax Event Handler if 
+        you wish.
     </p>
 </asp:Content>
 
