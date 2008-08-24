@@ -108,6 +108,13 @@ pageTracker._trackPageview();
                         id="cnt1" 
                         runat="server">
                     </asp:contentplaceholder>
+                    <p>
+                        <em>Ra-Ajax is Open Source (LGPL) and free of charge to use. It is written as an implementation of my 
+                        <a href="http://ra-ajax.org/how-to-create-an-ajax-library-part-1-decisions.blog">How to create an Ajax Library book</a>
+                        and can freely be used in commercial/proprietary projects for free. It can be downloaded 
+                        <a href="http://code.google.com/p/ra-ajax/">here</a>.</em> Send me <a href="mailto:thomas@ra-ajax.org">email</a>
+                        if you would like to participate in the development of it :)
+                    </p>
                 </div>
                 <div style="text-align:center;padding:15px;">
                     <a href="http://validator.w3.org/check?uri=referer">

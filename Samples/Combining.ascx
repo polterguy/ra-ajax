@@ -13,18 +13,33 @@
     <tr>
         <td>Name</td>
         <td>
-            <ra:TextBox runat="server" ID="name" />
+            <ra:TextBox 
+                runat="server" 
+                ID="name" />
         </td>
     </tr>
     <tr>
         <td>Age</td>
         <td>
-            <ra:TextBox runat="server" ID="age" />
+            <ra:TextBox 
+                runat="server" 
+                ID="age" />
         </td>
     </tr>
     <tr>
         <td colspan="2">
-            <ra:Button runat="server" ID="submit" Text="Submit" OnClick="submit_Click" />
+            <ra:Label 
+                runat="server" 
+                ID="err" 
+                style="color:Red;font-style:italic;" />
+        </td>
+    <tr>
+        <td colspan="2">
+            <ra:Button 
+                runat="server" 
+                ID="Button1" 
+                Text="Submit" 
+                OnClick="submit_Click" />
         </td>
     </tr>
 </table>
