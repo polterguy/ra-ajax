@@ -24,6 +24,7 @@ public partial class Effects : System.Web.UI.Page
     {
         btn.Enabled = false;
         btn2.Enabled = true;
+        btn2.Focus();
         Effect effect = new EffectSize(pnl, 0.6M, 300, 300);
         effect.Render();
     }
@@ -32,6 +33,7 @@ public partial class Effects : System.Web.UI.Page
     {
         btn2.Enabled = false;
         btn3.Enabled = true;
+        btn3.Focus();
         Effect effect = new EffectFadeOut(pnl, 0.6M);
         effect.Render();
     }
@@ -40,6 +42,7 @@ public partial class Effects : System.Web.UI.Page
     {
         btn3.Enabled = false;
         btn2.Enabled = true;
+        btn2.Focus();
         Effect effect = new EffectFadeIn(pnl, 0.6M);
         effect.Render();
     }
