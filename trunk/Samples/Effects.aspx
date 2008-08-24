@@ -26,6 +26,7 @@
         runat="server" 
         ID="btn" 
         Text="Click me" 
+        AccessKey="G"
         OnClick="btn_Click" />
     <br />
     <ra:Panel 
@@ -42,6 +43,7 @@
         ID="btn2" 
         OnClick="btn2_Click" 
         Enabled="false"
+        AccessKey="H"
         Text="Click me too" />
     <p>
         And finally the button below here
@@ -50,7 +52,8 @@
         runat="server" 
         ID="btn3" 
         OnClick="btn3_Click"
-        Enabled="false"
+        Enabled="false" 
+        AccessKey="J"
         Text="Click me too" />
     <p>
         And as normal no JavaScript knowledge is required to use these constructs, take a look at 
@@ -68,7 +71,17 @@
         Notice another little nifty thing which is that in this sample we're also moving the Focus 
         around to exactly the button we want. This too is done in C# on the server-side. This can
         be seen by that you can actually just click space on your keyboard instead of having to
-        use your mouse to click the buttons.
+        use your mouse to click the buttons. You can move focus around in Ra-Ajax pages exactly
+        as you wish.
+    </p>
+    <br />
+    <h2>Ajax with Keyboard Shortcuts</h2>
+    <p>
+        The buttons on this page have in order of appearance the keyboard shortcuts of "G", "H" and 
+        "J". Meaning the top button have the keyboard shortcut "G". In FireFox you activate Keyboard
+        Shortcuts by combining them with ALT + SHIFT. This means that if you use the keyboard combination
+        of ALT+SHIFT+G you will click the top button, ALT+SHIFT+H the second button and so on. This
+        can be set declaratively by using the <em>AccessKey</em> property of the Ra-Ajax WebControls.
     </p>
 </asp:Content>
 
