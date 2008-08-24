@@ -208,12 +208,31 @@ namespace Ra.Widgets
             }
             if (evts.Length == 0)
             {
-                // No events
-                return string.Format("\r\nRa.C('{0}');", ClientID);
+                if (_hasSetFocus)
+                {
+                    string options = "";
+                    if (_hasSetFocus)
+                        options += "focus:true";
+                    return string.Format("\r\nRa.C('{0}',{{{1}}});", ClientID, options);
+                }
+                else
+                {
+                    return string.Format("\r\nRa.C('{0}');", ClientID);
+                }
             }
             else
             {
-                return string.Format("\r\nRa.C('{0}', {{evts:[{1}]}});", ClientID, evts);
+                if (_hasSetFocus)
+                {
+                    string options = "";
+                    if (_hasSetFocus)
+                        options += "focus:true";
+                    return string.Format("Ra.C('{0}',{{evts:[{2}],{1}}});", ClientID, options, evts);
+                }
+                else
+                {
+                    return string.Format("Ra.C('{0}',{{evts:[{1}]}});", ClientID, evts);
+                }
             }
         }
 
