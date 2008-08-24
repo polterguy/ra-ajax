@@ -52,13 +52,13 @@ public partial class Todo : System.Web.UI.Page
         t.TypeOfTodo = type.SelectedItem.Text;
         t.Save();
         DataBindTodoList();
-        repWrapper.SignalizeReRender();
+        repWrapper.ReRender();
     }
 
     protected void viewFinished_CheckedChanged(object sender, EventArgs e)
     {
         DataBindTodoList();
-        repWrapper.SignalizeReRender();
+        repWrapper.ReRender();
     }
 
     protected void FinishedChecked(object sender, EventArgs e)
@@ -71,7 +71,7 @@ public partial class Todo : System.Web.UI.Page
         todo.Finished = ctrl.Checked;
         todo.Save();
         DataBindTodoList();
-        repWrapper.SignalizeReRender();
+        repWrapper.ReRender();
     }
 
     protected void ClickDetails(object sender, EventArgs e)
@@ -94,6 +94,6 @@ public partial class Todo : System.Web.UI.Page
     protected void filter_KeyUp(object sender, EventArgs e)
     {
         DataBindTodoList();
-        repWrapper.SignalizeReRender();
+        repWrapper.ReRender();
     }
 }

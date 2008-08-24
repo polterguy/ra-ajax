@@ -9,38 +9,43 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 
-public partial class Combining : System.Web.UI.UserControl
+namespace UC
 {
-    public event EventHandler Saved;
-
-    protected void Page_Load(object sender, EventArgs e)
+    public partial class Combining : System.Web.UI.UserControl
     {
-        if (!IsPostBack)
-            name.Focus();
-        err.Text = "";
-    }
+        public event EventHandler Saved;
 
-    protected void submit_Click(object sender, EventArgs e)
-    {
-        int x;
-        if (!Int32.TryParse(age.Text, out x))
+        protected void Page_Load(object sender, EventArgs e)
         {
-            err.Text = "Age is not an integer value...";
+            if (!IsPostBack)
+                name.Focus();
+            err.Text = "";
         }
-        else
+
+        protected void submit_Click(object sender, EventArgs e)
         {
-            if (Saved != null)
-                Saved(this, new EventArgs());
+            int x;
+            if (!Int32.TryParse(age.Text, out x))
+            {
+                err.Text = "Age is not an integer value...";
+                age.Focus();
+                age.Select();
+            }
+            else
+            {
+                if (Saved != null)
+                    Saved(this, new EventArgs());
+            }
         }
-    }
 
-    public string Name
-    {
-        get { return name.Text; }
-    }
+        public string Name
+        {
+            get { return name.Text; }
+        }
 
-    public int Age
-    {
-        get { return Int32.Parse(age.Text); }
+        public int Age
+        {
+            get { return Int32.Parse(age.Text); }
+        }
     }
 }

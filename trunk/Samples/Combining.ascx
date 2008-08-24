@@ -2,7 +2,7 @@
     Language="C#" 
     AutoEventWireup="true" 
     CodeFile="Combining.ascx.cs" 
-    Inherits="Combining" %>
+    Inherits="UC.Combining" %>
 
 <%@ Register 
     Assembly="Ra" 

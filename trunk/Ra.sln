@@ -32,6 +32,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions", "Extensions\Ex
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "C:\...\ra-website\", "ra-website\", "{4DC4671C-06B9-4E25-B4E5-31159740BB80}"
 	ProjectSection(WebsiteProperties) = preProject
+		ProjectReferences = "{82727C73-0B10-4F58-93F4-841E9397302C}|Ra.dll;{DA39B87F-8E68-4461-9C24-5778921497A5}|Extensions.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/ra-website"
 		Debug.AspNetCompiler.PhysicalPath = "ra-website\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\ra-website\"

@@ -36,7 +36,7 @@ public partial class Flexible : System.Web.UI.Page
         {
             autoPnl.Visible = true;
             autoPnl.Controls.Clear();
-            autoPnl.SignalizeReRender();
+            autoPnl.ReRender();
             int idxNo = 0;
             Entity.Blog[] blogs = Entity.Blog.FindAll(Expression.Like("Header", autoTxt.Text, MatchMode.Anywhere));
             foreach (Entity.Blog idx in blogs)

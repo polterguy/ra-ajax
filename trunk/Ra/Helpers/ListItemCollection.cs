@@ -82,13 +82,13 @@ namespace Ra.Widgets
         public void Insert(int index, ListItem item)
         {
             _list.Insert(index, item);
-            _control.SignalizeReRender();
+            _control.ReRender();
         }
 
         public void RemoveAt(int index)
         {
             _list.RemoveAt(index);
-            _control.SignalizeReRender();
+            _control.ReRender();
         }
 
         public ListItem this[int index]
@@ -100,7 +100,7 @@ namespace Ra.Widgets
             set
             {
                 _list[index] = value;
-                _control.SignalizeReRender();
+                _control.ReRender();
             }
         }
 
@@ -113,13 +113,13 @@ namespace Ra.Widgets
         public void Add(ListItem item)
         {
             _list.Add(item);
-            _control.SignalizeReRender();
+            _control.ReRender();
         }
 
         public void Clear()
         {
             _list.Clear();
-            _control.SignalizeReRender();
+            _control.ReRender();
         }
 
         public bool Contains(ListItem item)
@@ -139,7 +139,7 @@ namespace Ra.Widgets
 
         public bool Remove(ListItem item)
         {
-            _control.SignalizeReRender();
+            _control.ReRender();
             return _list.Remove(item);
         }
 

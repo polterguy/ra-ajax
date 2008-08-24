@@ -118,14 +118,14 @@ public partial class Forums_Forums : System.Web.UI.Page
     {
         Page = Math.Max(0, Page - 5);
         DataBindForumPosts();
-        postsWrapper.SignalizeReRender();
+        postsWrapper.ReRender();
     }
 
     protected void next_Click(object sender, EventArgs e)
     {
         Page += 5;
         DataBindForumPosts();
-        postsWrapper.SignalizeReRender();
+        postsWrapper.ReRender();
     }
 
     protected void login_Click(object sender, EventArgs e)
@@ -291,7 +291,7 @@ Have a nice day :)",
     {
         Page = 0;
         DataBindForumPosts();
-        postsWrapper.SignalizeReRender();
+        postsWrapper.ReRender();
     }
 
     protected void newSubmit_Click(object sender, EventArgs e)
@@ -322,7 +322,7 @@ Have a nice day :)",
 
         // Re-rendering posts to get the newly added item
         DataBindForumPosts();
-        postsWrapper.SignalizeReRender();
+        postsWrapper.ReRender();
     }
 }
 

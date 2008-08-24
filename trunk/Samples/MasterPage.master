@@ -14,7 +14,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
     <head runat="server">
         <title>Untitled Page</title>
-        <link href="media/MainStyles.css" rel="stylesheet" type="text/css" />
+        <link href="media/MainStyles-2.css" rel="stylesheet" type="text/css" />
 
         <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
@@ -66,17 +66,17 @@ pageTracker._trackPageview();
                 <div id="navigation">
                     <ul class="links">
                         <li>
-                            <a runat="server"
-                                href="http://ra-ajax.org" 
-                                title="Back to main Ra-Ajax website">Back to main Ra-Ajax website</a>
+                            <a href="http://code.google.com/p/ra-ajax/">Download Ra-Ajax</a>
                         </li>
                         <li>
-                            <a href="http://code.google.com/p/ra-ajax/">Download Ra-Ajax</a>
+                            <a runat="server"
+                                href="http://ra-ajax.org" 
+                                title="Back to main Ra-Ajax website">Main Ra-Ajax website</a>
                         </li>
                     </ul>
                     <ul class="links">
                         <li>
-                            <a href="Default.aspx">Ra-Ajax Samples - Start Here</a>
+                            <a runat="server" href="~">Ra-Ajax Samples - Start Here</a>
                         </li>
                         <li>
                             <a href="Flexible.aspx">Ra-Ajax Samples - Event System</a>
@@ -86,6 +86,9 @@ pageTracker._trackPageview();
                         </li>
                         <li>
                             <a href="Combining.aspx">Ra-Ajax Samples - Combining</a>
+                        </li>
+                        <li>
+                            <a href="Dynamic.aspx">Ra-Ajax Samples - Dynamic Controls</a>
                         </li>
                     </ul>
                 </div>

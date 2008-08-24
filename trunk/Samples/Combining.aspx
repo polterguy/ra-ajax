@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Combining.aspx.cs" 
-    Inherits="Combining" 
+    Inherits="Samples.Combining" 
     Title="Combining Ra Ajax Controls" %>
 
 <%@ Register 
@@ -83,5 +83,6 @@
         widgets and want to license them as Open Source so that we can link to your website or maybe even add 
         it into the main Ra-Ajax project :)
     </p>
+    <a href="Dynamic.aspx">On to "Dynamic Ajax Controls"...</a>
 </asp:Content>
 
