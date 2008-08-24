@@ -50,6 +50,7 @@
         style="font-style:italic;color:#999;"
         ID="lblResults" />
     <br />
+    <br />
     <h2>Ra-Ajax Extension Controls (WebControls)</h2>
     <p>
         The example below is a <em>Ra-Ajax Extension Controls</em> built as a server-side control

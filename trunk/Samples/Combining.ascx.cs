@@ -17,12 +17,21 @@ public partial class Combining : System.Web.UI.UserControl
     {
         if (!IsPostBack)
             name.Focus();
+        err.Text = "";
     }
 
     protected void submit_Click(object sender, EventArgs e)
     {
-        if (Saved != null)
-            Saved(this, new EventArgs());
+        int x;
+        if (!Int32.TryParse(age.Text, out x))
+        {
+            err.Text = "Age is not an integer value...";
+        }
+        else
+        {
+            if (Saved != null)
+                Saved(this, new EventArgs());
+        }
     }
 
     public string Name
@@ -30,8 +39,8 @@ public partial class Combining : System.Web.UI.UserControl
         get { return name.Text; }
     }
 
-    public string Age
+    public int Age
     {
-        get { return age.Text; }
+        get { return Int32.Parse(age.Text); }
     }
 }
