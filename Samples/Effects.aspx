@@ -83,5 +83,6 @@
         of ALT+SHIFT+G you will click the top button, ALT+SHIFT+H the second button and so on. This
         can be set declaratively by using the <em>AccessKey</em> property of the Ra-Ajax WebControls.
     </p>
+    <a href="Combining.aspx">On to "Combining Controls"...</a>
 </asp:Content>
 
