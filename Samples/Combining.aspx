@@ -73,5 +73,15 @@
         <br />
         <em>(though sometimes it helps to know JavaScript and sometimes you will need it ;)</em>
     </p>
+    <p>
+        The above <em>Ajax Calendar</em> is also included as part of the Ra-Ajax Extension project.
+    </p>
+    <br />
+    <h2>Let us know...</h2>
+    <p>
+        ...by sending us and <a href="mailto:thomas@ra-ajax.org">email</a> if you create really cool extension 
+        widgets and want to license them as Open Source so that we can link to your website or maybe even add 
+        it into the main Ra-Ajax project :)
+    </p>
 </asp:Content>
 
