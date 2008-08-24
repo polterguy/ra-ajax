@@ -202,7 +202,6 @@ namespace Ra.Widgets
                 {
                     return string.Format("Ra.C('{0}',{{ctrl:'{0}_CTRL',label:'{0}_LBL',evts:[{1}]}});", ClientID, evts);
                 }
-                return string.Format("\r\nRa.C('{0}', {{ctrl:'{0}_CTRL',label:'{0}_LBL',evts:[{1}]}});", ClientID, evts);
             }
         }
 
