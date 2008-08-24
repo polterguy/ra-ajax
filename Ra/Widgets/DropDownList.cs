@@ -76,6 +76,8 @@ namespace Ra.Widgets
         {
             get
             {
+                if (_selectedItemValue == null)
+                    return Items[0];
                 return Items.Find(
                     delegate(ListItem idx)
                     {

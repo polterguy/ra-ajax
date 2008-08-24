@@ -111,7 +111,7 @@ namespace Ra.Extensions
             LinkButton btn = sender as LinkButton;
             int newIdx = Int32.Parse(btn.ID.Replace("tab_view_btn", ""));
             ActiveTabViewIndex = newIdx;
-            SignalizeReRender();
+            ReRender();
             Controls.RemoveAt(0);
             CreateChildTabViews();
             if (ActiveTabViewChanged != null)
@@ -123,7 +123,7 @@ namespace Ra.Extensions
             if (idx == ActiveTabViewIndex)
                 return;
             ActiveTabViewIndex = idx;
-            SignalizeReRender();
+            ReRender();
             Controls.RemoveAt(0);
             CreateChildTabViews();
         }

@@ -304,7 +304,7 @@ namespace Ra.Widgets
             return string.Format("<span id=\"{0}\" style=\"display:none;\">&nbsp;</span>", ClientID);
         }
 
-        public void SignalizeReRender()
+        public void ReRender()
         {
             if (!AjaxManager.Instance.IsCallback || Phase == RenderingPhase.Invisible)
                 return;

@@ -192,7 +192,7 @@ public partial class Blog : System.Web.UI.Page
         effect.Render();
 
         DataBindImages();
-        pnlImages.SignalizeReRender();
+        pnlImages.ReRender();
     }
 
     private void DataBindImages()
@@ -211,7 +211,7 @@ public partial class Blog : System.Web.UI.Page
     {
         uploadImage.SaveAs(Server.MapPath("~/media/UserImages/" + uploadImage.FileName));
         DataBindImages();
-        pnlImages.SignalizeReRender();
+        pnlImages.ReRender();
     }
 
     protected void btnImagesClose_Click(object sender, EventArgs e)
@@ -258,7 +258,7 @@ public partial class Blog : System.Web.UI.Page
         if (oper == null)
             Response.Redirect("~", true);
         DataBindBlogs(oper);
-        blogWrapper.SignalizeReRender();
+        blogWrapper.ReRender();
         Effect effect = new EffectFadeIn(blogWrapper, 0.4M);
         effect.Render();
     }
@@ -294,7 +294,7 @@ public partial class Blog : System.Web.UI.Page
         blog.Save();
 
         DataBindBlogs(oper);
-        blogWrapper.SignalizeReRender();
+        blogWrapper.ReRender();
         Effect effect = new EffectFadeIn(blogWrapper, 0.4M);
         effect.Render();
 

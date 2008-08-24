@@ -96,6 +96,6 @@ public partial class Forums_Post : System.Web.UI.Page
 
         // Re-rendering posts to get the newly added item
         DataBindReplies(parent);
-        postsWrapper.SignalizeReRender();
+        postsWrapper.ReRender();
     }
 }

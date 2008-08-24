@@ -317,7 +317,7 @@ namespace Ra.Extensions
         void today_Click(object sender, EventArgs e)
         {
             Value = DateTime.Now.Date;
-            SignalizeReRender();
+            ReRender();
             Controls.Clear();
             CreateCalendarControls();
             if (SelectedValueChanged != null)
@@ -334,7 +334,7 @@ namespace Ra.Extensions
             if (Value.Date != newValue.Date)
             {
                 Value = newValue;
-                SignalizeReRender();
+                ReRender();
                 Controls.Clear();
                 CreateCalendarControls();
                 if (SelectedValueChanged != null)
@@ -350,7 +350,7 @@ namespace Ra.Extensions
             if (Value.Date != newValue.Date)
             {
                 Value = newValue;
-                SignalizeReRender();
+                ReRender();
                 Controls.Clear();
                 CreateCalendarControls();
                 if (SelectedValueChanged != null)
@@ -365,7 +365,7 @@ namespace Ra.Extensions
             if (Value.Date != newValue.Date)
             {
                 Value = newValue;
-                SignalizeReRender();
+                ReRender();
                 Controls.Clear();
                 CreateCalendarControls();
                 if (SelectedValueChanged != null)
