@@ -4,7 +4,7 @@
     AutoEventWireup="true" 
     CodeFile="Default.aspx.cs" 
     Inherits="_Default" 
-    Title="Ra Ajax Samples - Home" %>
+    Title="Ra Ajax - Home" %>
 
 <%@ Register 
     Assembly="Ra" 
@@ -16,7 +16,7 @@
     ContentPlaceHolderID="cnt1" 
     Runat="Server">
 
-    <h1>Ra Ajax Samples Home</h1>
+    <h1>Ra Ajax Home</h1>
     <p>
         Ra Ajax is an <strong>Ajax library for ASP.NET and Mono</strong> but its general nature on the client-side
         will make it very useful also for other server-side bindings like PHP, J2EE RubyOnRails etc all though other 

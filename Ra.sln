@@ -26,30 +26,49 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "C:\...\TestWebSite\", "Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestsRaDOM", "TestsRaDOM\TestsRaDOM.csproj", "{DB118D01-8674-4843-9A57-F99B810E4D16}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "C:\...\samples\", "samples\", "{36B38C7B-C516-44BB-AE02-FD3270010C65}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceCacher", "ResourceCacher\ResourceCacher.csproj", "{D71BF1F1-FA92-4CA7-B76F-7E239CC2D69C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions", "Extensions\Extensions.csproj", "{DA39B87F-8E68-4461-9C24-5778921497A5}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "C:\...\ra-website\", "ra-website\", "{4DC4671C-06B9-4E25-B4E5-31159740BB80}"
 	ProjectSection(WebsiteProperties) = preProject
-		ProjectReferences = "{82727C73-0B10-4F58-93F4-841E9397302C}|Ra.dll;{D71BF1F1-FA92-4CA7-B76F-7E239CC2D69C}|ResourceCacher.dll;{DA39B87F-8E68-4461-9C24-5778921497A5}|Extensions.dll;"
-		Debug.AspNetCompiler.VirtualPath = "/samples"
-		Debug.AspNetCompiler.PhysicalPath = "samples\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\samples\"
+		Debug.AspNetCompiler.VirtualPath = "/ra-website"
+		Debug.AspNetCompiler.PhysicalPath = "ra-website\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\ra-website\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/samples"
-		Release.AspNetCompiler.PhysicalPath = "samples\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\samples\"
+		Release.AspNetCompiler.VirtualPath = "/ra-website"
+		Release.AspNetCompiler.PhysicalPath = "ra-website\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\ra-website\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "4000"
-		DefaultWebSiteLanguage = "Visual C#"
+		VWDPort = "1309"
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceCacher", "ResourceCacher\ResourceCacher.csproj", "{D71BF1F1-FA92-4CA7-B76F-7E239CC2D69C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions", "Extensions\Extensions.csproj", "{DA39B87F-8E68-4461-9C24-5778921497A5}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "C:\...\Samples\", "Samples\", "{66DF84FF-39F5-4A1D-ACA0-594C6A17A19B}"
+	ProjectSection(WebsiteProperties) = preProject
+		ProjectReferences = "{82727C73-0B10-4F58-93F4-841E9397302C}|Ra.dll;{DA39B87F-8E68-4461-9C24-5778921497A5}|Extensions.dll;{D71BF1F1-FA92-4CA7-B76F-7E239CC2D69C}|ResourceCacher.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/Samples"
+		Debug.AspNetCompiler.PhysicalPath = "Samples\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Samples\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/Samples"
+		Release.AspNetCompiler.PhysicalPath = "Samples\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\Samples\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "4979"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -91,16 +110,6 @@ Global
 		{DB118D01-8674-4843-9A57-F99B810E4D16}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DB118D01-8674-4843-9A57-F99B810E4D16}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{DB118D01-8674-4843-9A57-F99B810E4D16}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{36B38C7B-C516-44BB-AE02-FD3270010C65}.Debug|.NET.ActiveCfg = Debug|.NET
-		{36B38C7B-C516-44BB-AE02-FD3270010C65}.Debug|.NET.Build.0 = Debug|.NET
-		{36B38C7B-C516-44BB-AE02-FD3270010C65}.Debug|Any CPU.ActiveCfg = Debug|.NET
-		{36B38C7B-C516-44BB-AE02-FD3270010C65}.Debug|Mixed Platforms.ActiveCfg = Debug|.NET
-		{36B38C7B-C516-44BB-AE02-FD3270010C65}.Debug|Mixed Platforms.Build.0 = Debug|.NET
-		{36B38C7B-C516-44BB-AE02-FD3270010C65}.Release|.NET.ActiveCfg = Debug|.NET
-		{36B38C7B-C516-44BB-AE02-FD3270010C65}.Release|.NET.Build.0 = Debug|.NET
-		{36B38C7B-C516-44BB-AE02-FD3270010C65}.Release|Any CPU.ActiveCfg = Debug|.NET
-		{36B38C7B-C516-44BB-AE02-FD3270010C65}.Release|Mixed Platforms.ActiveCfg = Debug|.NET
-		{36B38C7B-C516-44BB-AE02-FD3270010C65}.Release|Mixed Platforms.Build.0 = Debug|.NET
 		{D71BF1F1-FA92-4CA7-B76F-7E239CC2D69C}.Debug|.NET.ActiveCfg = Debug|Any CPU
 		{D71BF1F1-FA92-4CA7-B76F-7E239CC2D69C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D71BF1F1-FA92-4CA7-B76F-7E239CC2D69C}.Debug|Any CPU.Build.0 = Debug|Any CPU
@@ -121,6 +130,26 @@ Global
 		{DA39B87F-8E68-4461-9C24-5778921497A5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DA39B87F-8E68-4461-9C24-5778921497A5}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{DA39B87F-8E68-4461-9C24-5778921497A5}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{4DC4671C-06B9-4E25-B4E5-31159740BB80}.Debug|.NET.ActiveCfg = Debug|.NET
+		{4DC4671C-06B9-4E25-B4E5-31159740BB80}.Debug|.NET.Build.0 = Debug|.NET
+		{4DC4671C-06B9-4E25-B4E5-31159740BB80}.Debug|Any CPU.ActiveCfg = Debug|.NET
+		{4DC4671C-06B9-4E25-B4E5-31159740BB80}.Debug|Mixed Platforms.ActiveCfg = Debug|.NET
+		{4DC4671C-06B9-4E25-B4E5-31159740BB80}.Debug|Mixed Platforms.Build.0 = Debug|.NET
+		{4DC4671C-06B9-4E25-B4E5-31159740BB80}.Release|.NET.ActiveCfg = Debug|.NET
+		{4DC4671C-06B9-4E25-B4E5-31159740BB80}.Release|.NET.Build.0 = Debug|.NET
+		{4DC4671C-06B9-4E25-B4E5-31159740BB80}.Release|Any CPU.ActiveCfg = Debug|.NET
+		{4DC4671C-06B9-4E25-B4E5-31159740BB80}.Release|Mixed Platforms.ActiveCfg = Debug|.NET
+		{4DC4671C-06B9-4E25-B4E5-31159740BB80}.Release|Mixed Platforms.Build.0 = Debug|.NET
+		{66DF84FF-39F5-4A1D-ACA0-594C6A17A19B}.Debug|.NET.ActiveCfg = Debug|.NET
+		{66DF84FF-39F5-4A1D-ACA0-594C6A17A19B}.Debug|.NET.Build.0 = Debug|.NET
+		{66DF84FF-39F5-4A1D-ACA0-594C6A17A19B}.Debug|Any CPU.ActiveCfg = Debug|.NET
+		{66DF84FF-39F5-4A1D-ACA0-594C6A17A19B}.Debug|Mixed Platforms.ActiveCfg = Debug|.NET
+		{66DF84FF-39F5-4A1D-ACA0-594C6A17A19B}.Debug|Mixed Platforms.Build.0 = Debug|.NET
+		{66DF84FF-39F5-4A1D-ACA0-594C6A17A19B}.Release|.NET.ActiveCfg = Debug|.NET
+		{66DF84FF-39F5-4A1D-ACA0-594C6A17A19B}.Release|.NET.Build.0 = Debug|.NET
+		{66DF84FF-39F5-4A1D-ACA0-594C6A17A19B}.Release|Any CPU.ActiveCfg = Debug|.NET
+		{66DF84FF-39F5-4A1D-ACA0-594C6A17A19B}.Release|Mixed Platforms.ActiveCfg = Debug|.NET
+		{66DF84FF-39F5-4A1D-ACA0-594C6A17A19B}.Release|Mixed Platforms.Build.0 = Debug|.NET
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

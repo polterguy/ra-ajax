@@ -23,10 +23,11 @@
     <p>
         Ra Ajax is licensed under the <a href="http://www.gnu.org/licenses/lgpl.html">LGPL version 3</a> 
         Open Source license. This basically means that you can use it for free as you wish, you can 
-        fork the library and you don't even have to tell me (or anyone else) that you're using it. Though
-        if you create changes in the "core library" you are obliged to also release those changes in code
-        form under the LGPL licence terms to those you distribute that modified library to. Basically
-        Ra-Ajax is <em>free as in free beer and as in freedom</em>.
+        fork the library and you don't even have to tell me (or anyone else) that you're using it. You
+        can use it in Closed Source projects or in Open Source projects. You can also create Closed Source
+        Extension Widgets for it. Though if you create changes in the "core library" you are obliged to 
+        also release those changes in code form under the LGPL licence terms to those you distribute 
+        that modified library to. Basically Ra-Ajax is <em>free as in free beer and as in freedom</em>.
     </p>
     <br />
     <h2>JavaScript</h2>
@@ -96,10 +97,11 @@
     <h2>Why create yet another Ajax Library?</h2>
     <p>
         First of all because we need Open Source/Open Web tools for our own needs in our other 
-        "bread and butter" applications. In addition there is nothing more fun than writing
-        an Ajax Library :)
+        "bread and butter" applications. We also need great Ajax Libraries when 
+        <a href="Author.aspx">working as consultants</a>. In addition there is nothing more 
+        fun than writing Ajax Libraries :)
         <br />
-        We in Ra Software have intense believe in the Open Web and Ajax and while there exists
+        We in Ra Software have an intense believe in the Open Web and Ajax and while there exists
         great portable Open Source tools for almost every possible thing here in this world, Ajax
         for ASP.NET is virtually a "dark spot". Currently there exists only - 
         <a href="http://ajaxwidgets.com">Gaia Ajax Widgets</a> which has some greatness within, 
