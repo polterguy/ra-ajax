@@ -62,5 +62,13 @@
         You can of course create Ajax Effects on the server side from any Ra-Ajax Event Handler if 
         you wish.
     </p>
+    <br />
+    <h2>Moving focus around</h2>
+    <p>
+        Notice another little nifty thing which is that in this sample we're also moving the Focus 
+        around to exactly the button we want. This too is done in C# on the server-side. This can
+        be seen by that you can actually just click space on your keyboard instead of having to
+        use your mouse to click the buttons.
+    </p>
 </asp:Content>
 
