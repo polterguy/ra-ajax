@@ -87,5 +87,102 @@
         of the panel. This is *crucial* since if you don't follow this rule you will end up wasting a 
         lot of bandwidth and might get into obscure bugs and so on.
     </p>
+    <br />
+    <h2>Important to remember about Dynamic Controls</h2>
+    <p>
+        First of all ALWAYS make sure you re-create the *exact same* set of controls on *every single 
+        request* after you have initially created them. In this page we're doing this by storing a value
+        in the ViewState which says "which specific control" we have created and then in the Page_Load
+        we check to see which "type of control" to re-create. Intuitively for a sample which tries to
+        do something similar as this webpage most people would think that they can just use the 
+        value of the DropDownList. This will not work correctly since when the user want to change 
+        the control by selecting a new item in the DropDownList the NEW control will be loaded in
+        the Page_Load though it shouldn't be created before the SelectedIndexChanged Event Handler
+        of the DropDownList. Therefor the "funny roundtrip" to the ViewState value...
+    </p>
+    <p>
+        NEVER call the <em>ReRender</em> method UNLESS you are CHANGING the controls in your Panel
+        or whatever control you're using as the Parent Control. If you do you will use way more
+        bandwidth than you should and waste a lot of wire. Though...
+    </p>
+    <p>
+        ...ALWAYS call <em>ReRender</em> when you have changed the <em>Controls Collection</em> of
+        your Parent Control. Unless you do this none of your new controls will get rendered back to 
+        the client. Or you will get "funny" bugs...
+    </p>
+    <p>
+        Below is the important code to notice in this example, stripped for all the "boiler code" so
+        that you can see the dampened solution alone.
+    </p>
+    <pre>
+// To re-create already created controls
+protected void Page_Load(object sender, EventArgs e)
+{
+    if (ViewState["control"].Equals("custom"))
+    {
+        LoadCustomControls();
+    }
+    else
+    {
+        System.Web.UI.Control ctrl = 
+            LoadControl(ViewState["control"].ToString() + ".ascx");
+        pnlDynamicControls.Controls.Add(ctrl);
+    }
+}
+    </pre>
+    <pre>
+// To load up a NEW control collection into the Parent Control
+protected void dropper_SelectedIndexChanged(object sender, EventArgs e)
+{
+    // Must remove the "old" collection of controls from the Control
+    pnlDynamicControls.Controls.Clear();
+    if (dropper.SelectedItem.Value == "custom")
+    {
+        LoadCustomControls();
+    }
+    else
+    {
+        System.Web.UI.Control ctrl = 
+            LoadControl(dropper.SelectedItem.Value + ".ascx");
+        pnlDynamicControls.Controls.Add(ctrl);
+    }
+
+    // Making sure the Panel is re-rendered since otherwise the controls
+    // will not be rendered to the client or obscure bugs will show up...
+    pnlDynamicControls.ReRender();
+
+    // Making sure we store "which type of control(s)" we have loaded 
+    // into our "Parent Control"
+    ViewState["control"] = dropper.SelectedItem.Value;
+}
+    </pre>
+    <br />
+    <h2>HTTP is *StateLess*</h2>
+    <p>
+        To Windows and beginning ASP.NET developers the fact that we need to "re-create" 
+        the controls on every single postback/callback and so on might seem unintuitive
+        but remember that HTTP is a STATELESS protocoll which means that when the server
+        is finished serving your request it is gone forever. Even the fact that you have
+        ever been to the server at all is "gone". This means that the page itself must
+        remember "which controls" to load. Normally for static controls the .ASPX file
+        will handle this for you through its "magic". But for Dynamically Created Controls
+        it has no mechanism to know "which controls to reload". This means YOU must take
+        care of which controls to reload.
+    </p>
+    <p>
+        This is NOT unique for Ra-Ajax but rather a general problem for all applications
+        built on top of ASP.NET and in fact the HTTP protocol too. But for some obscure 
+        reason it seems to show up a LOT more often in Ajax Frameworks than in "normal
+        conventional" ASP.NET applications. I guess with power comes the lust to do more... ;)
+    </p>
+    <p>
+        If you are stuck with problems regarding Dynamically Created Ra-Ajax Controls then
+        please make sure you read and understand what says here since chances are that
+        you are doing something wrong when creating them, re-creating them, deleting the
+        "old ones" or calling ReRender. Then if you are still stuck, feel free to post
+        a question in our <a href="http://ra-ajax.org/Forums/Forums.aspx">forums</a> asking 
+        for help :)
+    </p>
+    <a href="Ajax-Button.aspx">On to Ajax Button Sample</a>
 </asp:Content>
 
