@@ -3,7 +3,8 @@ using Castle.ActiveRecord;
 using System.Web;
 using NHibernate.Expression;
 using System.Configuration;
-using System.Web.Mail;
+using System.Net.Mail;
+using System.Net;
 
 namespace Entity
 {
@@ -115,10 +116,18 @@ namespace Entity
             MailMessage msg = new MailMessage();
             msg.Subject = subject;
             msg.Body = body;
-            msg.To = this.Email;
-            msg.From = ConfigurationSettings.AppSettings["fromEmailAddress"];
-            SmtpMail.SmtpServer = ConfigurationSettings.AppSettings["smtpServer"];
-            SmtpMail.Send(msg);
+            msg.To.Add(new MailAddress(this.Email));
+            msg.From = new MailAddress(ConfigurationSettings.AppSettings["fromEmailAddress"]);
+            SmtpClient smtp = new SmtpClient(ConfigurationSettings.AppSettings["smtpServer"]);
+            smtp.Port = Int32.Parse(ConfigurationSettings.AppSettings["smtpServerPort"]);
+            
+            string userName = ConfigurationSettings.AppSettings["smtpServerUserName"];
+            if (!string.IsNullOrEmpty(userName))
+            {
+                smtp.Credentials = new NetworkCredential(userName,
+                    ConfigurationSettings.AppSettings["smtpServerPassword"]);
+            }
+            smtp.Send(msg);
         }
 
         public int NumberOfPosts
