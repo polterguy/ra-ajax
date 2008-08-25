@@ -70,7 +70,11 @@
     <p>
         Now if you combine those two reasons above you effectively get Ra-Ajax in a nutshell. None of the Ra-Ajax
         Controls are inheriting indirectly or in any ways from the <em>System.Web.UI.WebControls.WebControl</em> class.
-        This is intentionally and virtually saved us for months of work and debugging when creating Ra-Ajax.
+        This is intentionally and virtually saved us for months of work and debugging when creating Ra-Ajax. It also
+        created a far superior product and did put us in a WAY sweater spot than what we could achieve if we were
+        trying to implement support for the "native Style" property and support all the redundant properties in 
+        WebControl.
     </p>
+    <a href="Ajax-DropDownList.aspx">On top Ajax DropDownList</a>
 </asp:Content>
 

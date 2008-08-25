@@ -90,6 +90,18 @@ pageTracker._trackPageview();
                         <li>
                             <a href="Dynamic.aspx">Ra-Ajax Samples - Dynamic Controls</a>
                         </li>
+                        <li>
+                            <a href="Ajax-Button.aspx">Ra-Ajax Samples - Button</a>
+                        </li>
+                        <li>
+                            <a href="Ajax-CheckBox.aspx">Ra-Ajax Samples - CheckBox</a>
+                        </li>
+                        <li>
+                            <a href="Ajax-DropDownList.aspx">Ra-Ajax Samples - DropDownList</a>
+                        </li>
+                        <li>
+                            <a href="Ajax-HiddenField.aspx">Ra-Ajax Samples - HiddenField</a>
+                        </li>
                     </ul>
                 </div>
                 <div id="contentOfPageDiv">
