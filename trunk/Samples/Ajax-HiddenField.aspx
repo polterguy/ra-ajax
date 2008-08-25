@@ -113,5 +113,15 @@
         Ohh yeah, and there were no UpdatePanels and no Trigger Collections. In fact the code is *EXACTLY*
         the same code you would have written in a "conventional" ASP.NET WebControl solution... ;)
     </p>
+    <p>
+        UpdatePanels might be easy to implement and look cool on stage when demoing. But they surely aren't 
+        easy to use when you dive into something of higher complexity than Hello World. And they sure don't 
+        look that nice when you have fifty of them, each having a trigger collection of 15 items...
+    </p>
+    <p>
+        Join the <em>"Say no to UpdatePanels movement"</em> and 
+        <a href="http://code.google.com/p/ra-ajax">download Ra-Ajax TODAY</a>... ;)
+    </p>
+    <a href="Ajax-Image.aspx">On to Ajax Image</a>
 </asp:Content>
 
