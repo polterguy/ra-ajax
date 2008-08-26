@@ -39,7 +39,7 @@
         <br />
         PS!
         <br />
-        Images taken from <em>WIKIPEDIA</em> which means they're supposed to be some kind of GDPL thingie... ;)
+        Images taken from <em>WIKIPEDIA</em> which means they're supposed to be some kind of GFDL thingie... ;)
     </p>
     <br />
     <h2>Ajax JavaScript and Security</h2>

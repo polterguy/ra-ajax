@@ -417,6 +417,11 @@ img
 }
 
 
-
-
-
+.richeditor
+{
+	border:solid 1px #999;
+	background-color:Yellow;
+	width:75%;
+	height:250px;
+	padding:15px;
+}
