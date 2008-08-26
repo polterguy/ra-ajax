@@ -11,11 +11,22 @@ using Ra.Widgets;
 
 public partial class AjaxImage : System.Web.UI.Page
 {
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        Image1.Visible = false;
+    }
+
     protected void btn_Click(object sender, EventArgs e)
     {
         img.ImageUrl = 
             img.ImageUrl == "media/Pooh_Shepard_1926.png" ?
                 "media/180px-Winniethepooh.png" : 
                 "media/Pooh_Shepard_1926.png";
+    }
+
+    // If you can get to call this method you will get $100 :)
+    public void HackApplication()
+    {
+        Image1.Visible = true;
     }
 }
