@@ -133,5 +133,6 @@
         JavaScript Ajax solutions CAN be secure. Ra-Ajax solutions ARE secure (unless you deliberately 
         make them in-secure ;)
     </p>
+    <a href="Ajax-ImageButton.aspx">On to Ajax ImageButton Sample</a>
 </asp:Content>
 
