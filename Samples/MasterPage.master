@@ -117,6 +117,15 @@ pageTracker._trackPageview();
                         <li>
                             <a href="Ajax-Panel.aspx">Ra-Ajax Samples - Panel</a>
                         </li>
+                        <li>
+                            <a href="Ajax-RadioButton.aspx">Ra-Ajax Samples - RadioButton</a>
+                        </li>
+                        <li>
+                            <a href="Ajax-TextArea.aspx">Ra-Ajax Samples - TextArea</a>
+                        </li>
+                        <li>
+                            <a href="Ajax-TextBox.aspx">Ra-Ajax Samples - TextBox</a>
+                        </li>
                     </ul>
                 </div>
                 <div id="contentOfPageDiv">

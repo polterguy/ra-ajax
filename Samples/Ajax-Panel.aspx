@@ -79,4 +79,5 @@
         <em>ReRender</em> method on the Panel as described in the 
         <a href="Dynamic.aspx">Dynamic Ajax Controls</a> example.
     </p>
+    <a href="Ajax-RadioButton.aspx">On to Ajax RadioButton</a>
 </asp:Content>
