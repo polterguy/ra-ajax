@@ -126,6 +126,18 @@ pageTracker._trackPageview();
                         <li>
                             <a href="Ajax-TextBox.aspx">Ra-Ajax Samples - TextBox</a>
                         </li>
+                        <li>
+                            <a href="Ajax-Accordion.aspx">Ra-Ajax Samples - Accordion</a>
+                        </li>
+                        <li>
+                            <a href="Ajax-Calendar.aspx">Ra-Ajax Samples - Calendar</a>
+                        </li>
+                        <li>
+                            <a href="Ajax-InPlaceEdit.aspx">Ra-Ajax Samples - InPlaceEdit</a>
+                        </li>
+                        <li>
+                            <a href="Ajax-RichEdit.aspx">Ra-Ajax Samples - RichEdit</a>
+                        </li>
                     </ul>
                 </div>
                 <div id="contentOfPageDiv">
@@ -147,12 +159,25 @@ pageTracker._trackPageview();
                         id="cnt1" 
                         runat="server">
                     </asp:contentplaceholder>
+                    <hr />
+                    <br />
+                    <h3>Copyright notice</h3>
                     <p>
-                        <em>Ra-Ajax is Open Source (LGPL) and free of charge to use. It is written as an implementation of my 
-                        <a href="http://ra-ajax.org/how-to-create-an-ajax-library-part-1-decisions.blog">How to create an Ajax Library book</a>
-                        and can freely be used in commercial/proprietary projects for free. It can be downloaded 
-                        <a href="http://code.google.com/p/ra-ajax/">here</a>.</em> Send me <a href="mailto:thomas@ra-ajax.org">email</a>
-                        if you would like to participate in the development of it :)
+                        <em>
+                            Ra-Ajax is Open Source (LGPL) and free of charge to use. It is written as an implementation of my 
+                            <a href="http://ra-ajax.org/how-to-create-an-ajax-library-part-1-decisions.blog">How to create an Ajax Library book</a>
+                            and can freely be used in commercial/proprietary projects for free. It can be downloaded 
+                            <a href="http://code.google.com/p/ra-ajax/">here</a>. Send me <a href="mailto:thomas@ra-ajax.org">email</a>
+                            if you would like to participate in the development of it :)
+                        </em>
+                    </p>
+                    <p>
+                        <em>
+                            All the content (written text) at this webpage is licensed under the 
+                            <a href="http://www.gnu.org/copyleft/fdl.html">GNU Free Documentation License</a>
+                            which means you are *encouraged* to copy/modify/redistribute and so on the text
+                            portions of this page under the terms of the GFDL.
+                        </em>
                     </p>
                 </div>
                 <div style="text-align:center;padding:15px;">

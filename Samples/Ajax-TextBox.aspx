@@ -74,4 +74,5 @@
         encourage most Ajax developers to do since the ViewState actually is a very beautiful concept
         and makes developing Ajax Applications (and "normal" web applications) in ASP.NET far easier.
     </p>
+    <a href="Ajax-Accordion.aspx">On to Ajax Accordion</a>
 </asp:Content>
