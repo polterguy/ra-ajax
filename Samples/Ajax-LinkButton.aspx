@@ -118,5 +118,6 @@
         then it does NOT implement an Ajax Queue which is crucial in order to avoid creating really obscure
         and impossible to track down bugs later down the road for you...
     </p>
+    <a href="Ajax-Panel.aspx">On to Ajax Panel</a>
 </asp:Content>
 
