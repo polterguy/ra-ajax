@@ -14,8 +14,8 @@ public partial class AjaxRadioButton : System.Web.UI.Page
 {
     protected void rdo1_CheckedChanged(object sender, EventArgs e)
     {
-        HelloWorld1.Visible = rdo1.Checked;
-        Combining1.Visible = !rdo1.Checked;
+        HelloWorld1.Visible = !rdo1.Checked;
+        Combining1.Visible = rdo1.Checked;
         pnl.ReRender();
     }
 }

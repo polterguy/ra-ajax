@@ -18,8 +18,11 @@
 
     <h1>Ra Ajax Samples</h1>
     <p>
-        Welcome to the main Ajax Samples of Ra-Ajax. Below you can find the "Hello World" application. Type
-        something into the textbox and click the Submit button.
+        Welcome to the main Ajax Samples of Ra-Ajax. These samples are written in such a way that it makes
+        a lot sense to read them <em>sequentially</em> which means that you should start on the top at the 
+        <em>Start Here</em> sample and work your way down as you read on. And then later for reference 
+        purposes you can go directly to whichever topic you are stuck with. Here we start with the 
+        <em>Hello World</em> application. Type something into the textbox and click the Submit button.
     </p>
     <ra:TextBox 
         runat="server" 
@@ -71,7 +74,7 @@
         increase the bandwidth usage a LOT.
     </p>
     <p>
-        None of this really matters though before you start creating really advanced stuff, imagine the below.
+        None of this really matters though before you start creating really "advanced" stuff, imagine the below.
     </p>
     <br />
     <ra:Panel runat="server" ID="pnl" style="background-color:Yellow;border:solid 1px Black;padding:15px;height:100px;">
@@ -94,8 +97,11 @@
         scenario" where you are changing some of the Panel's properties as the user is writing inside of a TextBox 
         inside the panel. That would destroy focus from the TextBox as you are writing in addition to that if you 
         wrote something while the Ajax Request was going towards the server you would also loose those changes in 
-        the TextBox. In Ra-Ajax the above Ajax Response for the Panel looks like this;
-        <br />
+        the TextBox. And in fact that one simple example above is *impossible* in a Partial Rendering Ajax Framework
+        since when rerendered the Button would loose the focus while in a framework similar to Ra-Ajax that's not 
+        a problem. In Ra-Ajax the above Ajax Response for the Panel looks like this;
+    </p>
+    <p>
         <em>Ra.Control.$('ctl00_cnt1_pnl').handleJSON({"AddStyle":[["backgroundColor","Yellow"]]});</em>
     </p>
     <br />

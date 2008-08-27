@@ -26,7 +26,7 @@
         The <em>Ajax InPlaceEdit Control</em> was originally being made famous by 
         <a href="http://mir.aculo.us/">Thomas Fuchs</a> the original author behind
         <a href="http://script.aculo.us/">ScriptAculous</a>. The Ra-Ajax InPlaceEdit is created without using
-        any "custom JavaScript" and actually a very good starting point for your own "Custom Ajax Controls".
+        any <em>custom JavaScript</em> and actually a very good starting point for your own <em>Custom Ajax Controls</em>.
     </p>
     <ext:InPlaceEdit 
         runat="server" 
@@ -41,16 +41,16 @@
         style="color:#999;font-style:italic;" />
     <br />
     <p>
-        Try to click the above InPlaceEdit and then when you're finished writing the "new text" just click
-        TAB or with the mouse move the focus *away* from the InPlaceEdit above...
+        Try to click the above InPlaceEdit and then when you're finished writing the new text just click
+        TAB or with the mouse move the focus away from the InPlaceEdit above...
     </p>
     <br />
     <h2>Why give away innovation for free?</h2>
     <p>
         I don't expect everyone to understand this, but I think of IT the same way many others think
         of <em>education, books and knowledge</em>. I think that in order to continue what Gutenberg
-        started some 500 years ago we must acknowledge that the <em>access to IT and information</em>
-        is a <strong>basic human right</strong>! I believe that the only way we can achieve that is by
+        started some 500 years ago we must acknowledge that the access to IT and information
+        is a <em>basic human right</em>! I believe that the only way we can achieve that is by
         <em>commoditizing IT</em> which to some extend is similar to what happened with electricity
         more than 100 years ago. IT today is roughly where electricity was 100 years ago. Only the
         richest people on the planet could afford it and it was very expensive.
@@ -62,13 +62,13 @@
     </p>
     <p>
         YouTube, Google, Wikipedia, OLPC and others are doing a great job in regards to "helping out"
-        but in order to make this happen we must *all* pull. And the only thing I am really good at is
+        but in order to make this happen we must all pull. And the only thing I am really good at is
         to create great Ajax Libraries!
     </p>
     <p>
         So I make great Ajax Libraries and I give them away to the entire world hoping that I will
         be able to make a living out of consuming those Ajax Libraries myself as a consultant in a 
-        company maybe owned by YOU!
+        company maybe owned by you!
     </p>
     <p>
         If you want to hire me (or my friend Kariem) then take a look at 
@@ -78,10 +78,10 @@
     <br />
     <h2>Open Innovation, Open Web and Open Source</h2>
     <p>
-        These are our PRIME tools to make sure IT becomes a <em>commodity</em>. And by giving away to 
+        These are our prime tools to make sure IT becomes a <em>commodity</em>. And by giving away to 
         the world Ra-Ajax for free I am hopefully making my contribution in regards to all three of the 
-        points above. I *LOVE* Open Source, Open Web and Open Innovation. And I think that currently
-        Ajax from a conceptual point of view is that "one soldier" at the very first line of soldiers
+        points above. I love Open Source, Open Web and Open Innovation. And I think that currently
+        Ajax from a conceptual point of view is that <em>one soldier at the very first line of soldiers</em>
         in the battle for <em>commoditization of information and information technology</em>.
     </p>
     <p>
@@ -89,8 +89,7 @@
         me or Kariem. I just must say that all though I have strong ideas about the Open Web, Open Source
         and Open Innovation I am still able to work on an hourly basis for your cause unless it directly
         goes in the exact opposite direction of mine. I too realize that me and Kariem must have bread
-        and butter to survive. So unless you ask us to do Silverlight or Adobe Flex development we're
-        mostly able to do what you ask of us. I hope this clarified things for you so that you don't look
+        and butter to survive. I hope this clarified things for you so that you don't look
         at us as "fanatics". :)
     </p>
     <p>

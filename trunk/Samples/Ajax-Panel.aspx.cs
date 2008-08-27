@@ -12,6 +12,15 @@ using System.Threading;
 
 public partial class AjaxPanel : System.Web.UI.Page
 {
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!IsPostBack)
+        {
+            txt.Focus();
+            txt.Select();
+        }
+    }
+
     protected void lnk_Click(object sender, EventArgs e)
     {
         pnl.Style["background-color"] = pnl.Style["background-color"] == "Yellow" ? "Orange" : "Yellow";

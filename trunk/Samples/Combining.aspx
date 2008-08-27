@@ -67,7 +67,7 @@
         style="font-style:italic;color:#999;"
         ID="selectedDate" />
     <p>
-        In fact the above <em>Ajax Calendar Control</em> is entirely build purely as a server-side 
+        In fact the above <em>Ajax Calendar Control</em> is entirely built purely as a server-side 
         Ajax Control, reusing only existing Ra-Ajax Controls like <em>LinkButton, Panel, Label, DropDownList</em>
         and so on. So you don't even have to know JavaScript for creating your own Ajax Extension controls :)
         <br />

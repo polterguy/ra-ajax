@@ -11,6 +11,15 @@ using Ra.Widgets;
 
 public partial class AjaxTextBox : System.Web.UI.Page
 {
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!IsPostBack)
+        {
+            txt.Select();
+            txt.Focus();
+        }
+    }
+
     protected void btn_Click(object sender, EventArgs e)
     {
         lbl.Text = txt.Text;

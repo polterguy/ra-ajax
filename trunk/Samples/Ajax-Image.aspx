@@ -57,22 +57,22 @@
     <p>
         In a JavaScript Ajax solution this is also *possible* to do, though it is very tempting to take "shortcuts"
         and just embed the image URL in some JavaScript file or something, or call a WebServer which resides on
-        some other server or application pool (meaning cookies and/or session is not transfered unless you *explicitly*
+        some other server or application pool (meaning cookies and/or session is not transfered unless you explicitly
         tells it to do so) etc...
     </p>
     <br />
     <h2>Does JavaScript Ajax Solutions broaden the "Attack Surface"...</h2>
     <p>
-        ...not by itself, but often they TEND to do so in practice since you're developing in a Language 
+        ...not by itself, but often they tendt to do so in practice since you're developing in a Language 
         that is sent to the client, which means the client can look at your code and potentially also exploit
-        your code. But IF you do everything 100% correct then this is not a problem, though if you're developing
+        your code. But if you do everything 100% correct then this is not a problem, though if you're developing
         in JavaScript yourself it is very easy to "leak" Business Logic into the client area which again means
         that others can take advantage of that leakage.
     </p>
     <br />
-    <h2>Ra-Ajax does NOT expose Business Logic</h2>
+    <h2>Ra-Ajax does not expose Business Logic</h2>
     <p>
-        In Ra-Ajax (and other similar server-side frameworks) this is NOT the case. In Ra-Ajax you will
+        In Ra-Ajax (and other similar server-side frameworks) this is not the case. In Ra-Ajax you will
         have all your logic on the server which means you can authenticate and authorize on the same logic 
         as the rest of your application and you don't <em>expose business logic</em>.
     </p>
@@ -96,8 +96,8 @@
         Click the "View Source" of your browser and verify that you cannot see anything apart from an
         <em>empty span</em> while if you click "Show Code" at the top/right corner of your browser you
         will see that the empty span is in fact an Ajax Image and you can see it's URL and so on. Though
-        this is because I *WANT* you to be able to see that fact, NOT because you conspired to
-        hack my systems and due to me leaking JavaScript and Business Logic into the client.
+        this is because I <em>want you to be able to see that fact, not because you conspired to
+        hack my systems</em> or due to me leaking JavaScript and Business Logic into the client.
     </p>
     <br />
     <h2>I will give you $100</h2>
@@ -105,13 +105,13 @@
         The first person who manages to hack Ra-Ajax so that the above Ajax Image is visible on
         my servers and documents it and sends me the instructions of how he did it so that I can
         reproduce it myself I will give $100. I will even write about him and his solution here
-        with a link to a website of his/hers choice. Note they must hack <em>Ra-Ajax</em> and NOT 
-        hack Widows Server, IIS or ASP.NET. There can be security holes in both the Apache, Linux,
+        with a link to a website of his/hers choice. Note they must hack <em>Ra-Ajax</em> and not 
+        hack Windows Server, IIS or ASP.NET etc. There can be security holes in both the Apache, Linux,
         Mono, ASP.NET, IIS, Windows Server and so on that makes this possible somehow. But to hack 
         Ra-Ajax so that the above image is shown I am willing to bet $100 on that it is impossible!
     </p>
     <p>
-        I have even made it EASIER for you to hack by embedding a public method on my class
+        I have even made it easier for you to hack by embedding a public method on my class
         called "HackApplication" which will if you manage to call it actually make the above
         Image visible. This function you can see if you click "Show Code".
     </p>

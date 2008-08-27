@@ -73,42 +73,43 @@
         <li>Different UI for different User Roles</li>
         <li>Different Content for Different Agents</li>
         <li>Different "modes" of your application (edit and preview mode)</li>
+        <li>Generic content built from e.g. a database settings collection, XML file etc</li>
         <li>etc...</li>
     </ul>
     <p>
-        The whole secret is just understanding *WHEN* to call the <em>ReRender method</em>. Use the ReRender
-        ONLY when you are deleting, changing or adding to the Control Collection of your Ajax Controls.
+        The whole secret is just understanding when to call the <em>ReRender method</em>. Use the ReRender
+        only when you are deleting, changing or adding to the Control Collection of your Ajax Controls.
     </p>
     <br />
     <h2>When to use the ReRender Method</h2>
     <p>
-        If you look at the source code for this page you will for instance see that we are NOT using it 
-        <em>"everytime we reload the controls"</em> but in fact ONLY when we CHANGE the controls inside 
-        of the panel. This is *crucial* since if you don't follow this rule you will end up wasting a 
+        If you look at the source code for this page you will see that we are not using ReRender
+        <em>"everytime we reload the controls"</em> but in fact only when we change the controls inside 
+        of the panel. This is crucial since if you don't follow this rule you will end up wasting a 
         lot of bandwidth and might get into obscure bugs and so on.
     </p>
     <br />
     <h2>Important to remember about Dynamic Controls</h2>
     <p>
-        First of all ALWAYS make sure you re-create the *exact same* set of controls on *every single 
-        request* after you have initially created them. In this page we're doing this by storing a value
+        First of all always make sure you re-create the <em>exact same set of controls</em> on every single 
+        request after you have initially created them. In this page we're doing this by storing a value
         in the ViewState which says "which specific control" we have created and then in the Page_Load
         we check to see which "type of control" to re-create. Intuitively for a sample which tries to
         do something similar as this webpage most people would think that they can just use the 
         value of the DropDownList. This will not work correctly since when the user want to change 
-        the control by selecting a new item in the DropDownList the NEW control will be loaded in
+        the control by selecting a new item in the DropDownList the <em>new control</em> will be loaded in
         the Page_Load though it shouldn't be created before the SelectedIndexChanged Event Handler
         of the DropDownList. Therefor the "funny roundtrip" to the ViewState value...
     </p>
     <p>
-        NEVER call the <em>ReRender</em> method UNLESS you are CHANGING the controls in your Panel
+        Never call the <em>ReRender</em> method unless you are changing the controls in your Panel
         or whatever control you're using as the Parent Control. If you do you will use way more
         bandwidth than you should and waste a lot of wire. Though...
     </p>
     <p>
-        ...ALWAYS call <em>ReRender</em> when you have changed the <em>Controls Collection</em> of
+        ...always call <em>ReRender</em> when you have changed the <em>Controls Collection</em> of
         your Parent Control. Unless you do this none of your new controls will get rendered back to 
-        the client. Or you will get "funny" bugs...
+        the client and you will get "funny" bugs...
     </p>
     <p>
         Below is the important code to notice in this example, stripped for all the "boiler code" so
@@ -157,22 +158,22 @@ protected void dropper_SelectedIndexChanged(object sender, EventArgs e)
 }
     </pre>
     <br />
-    <h2>HTTP is *StateLess*</h2>
+    <h2>HTTP is stateless</h2>
     <p>
-        To Windows and beginning ASP.NET developers the fact that we need to "re-create" 
+        To Windows, GTK, Qt and beginning ASP.NET developers the fact that we need to "re-create" 
         the controls on every single postback/callback and so on might seem unintuitive
-        but remember that HTTP is a STATELESS protocoll which means that when the server
+        but remember that HTTP is a stateless protocoll which means that when the server
         is finished serving your request it is gone forever. Even the fact that you have
         ever been to the server at all is "gone". This means that the page itself must
-        remember "which controls" to load. Normally for static controls the .ASPX file
+        remember "which controls" to load. Normally for static controls the .aspx file
         will handle this for you through its "magic". But for Dynamically Created Controls
-        it has no mechanism to know "which controls to reload". This means YOU must take
+        it has no mechanism to know "which controls to reload". This means you must take
         care of which controls to reload.
     </p>
     <p>
-        This is NOT unique for Ra-Ajax but rather a general problem for all applications
+        This is not unique for Ra-Ajax but rather a general problem for all applications
         built on top of ASP.NET and in fact the HTTP protocol too. But for some obscure 
-        reason it seems to show up a LOT more often in Ajax Frameworks than in "normal
+        reason it seems to show up a lot more often in Ajax Frameworks than in "normal
         conventional" ASP.NET applications. I guess with power comes the lust to do more... ;)
     </p>
     <p>

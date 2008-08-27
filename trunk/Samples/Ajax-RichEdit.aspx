@@ -40,31 +40,30 @@
         OnClick="boldBtn_Click" />
     <br />
     <br />
-    <h2>This is a really CRAPPY Ajax RichEditor...</h2>
+    <h2>This is a really crappy Ajax RichEditor...</h2>
     <p>
         ...and I agree *100%* ;)
         <br />
-        The thing about the <em>Ra-Ajax RichEdit control</em> is that it is 100% *GENERIC*. This means that
-        you can create <strong>any WYSIWYG RichEditor</strong> you want yourself out of it! In fact by utilizing
+        The thing about the <em>Ra-Ajax RichEdit control</em> is that it is 100% generic. This means that
+        you can create <em>any WYSIWYG RichEditor</em> you want yourself out of it! In fact by utilizing
         this Ajax RichEditor you can create support for anything you wish yourself. And if you want to reuse it
         then you can create that functionality as a UserControl or even better a WebControl.
     </p>
     <p>
-        Instead of pushing MY view about how a WYSIWYG RichEditor for the web should look like we have chosen to
-        give you the "basic tools" needed to go completely berserk and create a WYSIWYG RichEditor just the
-        way YOU want it to be :)
+        Instead of pushing my view about how a WYSIWYG RichEditor for the web should look like we have chosen to
+        give you the basic tools needed to create a WYSIWYG RichEditor just the way you want it to be.
     </p>
     <p>
         In our <a href="http://ra-wiki.org">Wiki system</a> we are actually using this RichEditor and we 
         have support for adding Images and all the rich formatting you can dream of. So instead of giving
-        you a "fully fledged" and "way too fat" JavaScript file which tries to solve everything for you
+        you a "fully fledged and way too fat" JavaScript file which tries to solve everything for you
         (hint; check the JS size of most WYSIWYG Editors available today) we have given you the
         equivalent of the Windows API RichEdit control which you (and others) can use for creating the
-        Ajax RichEdit of their dreams.
+        Ajax RichEdit for your needs.
     </p>
     <p>
-        This does not mean that we won't create a "better" RichEdit later down the road which also will
-        be an "out of the box automagically fully working thing". But it means that we see the need for
+        This does not mean that we won't create a full WYSIWYG RichEdit later down the road which also will
+        be an out of the box automagically fully working thing. But it means that we see the need for
         others to be able to create just the WYSIWYG RichEditor they themselves need instead of we
         creating something we guess you might need.
     </p>
@@ -92,14 +91,11 @@
     </p>
     <p>
         Also I still despite of studying other RichEditors out there (DojoToolkit one among others) haven't had 
-        my "aha" moment in regards to how to modify the *cursor behavior* which means that currently the RichEditor 
+        my aha moment in regards to how to modify the cursor behavior which means that currently the RichEditor 
         can only modify text which is already selected! This is a missing feature of this Ajax Editor and all 
         suggestions is recieved with gratitude. Here's my <a href="mailto:thomas@ra-ajax.org">email</a> for those 
         with brilliant ideas about how to do just that. Among other things this means that you cannot just "insert"
-        things, you must *replace* things ONLY!
-    </p>
-    <p>
-        Still very flexible I think... :)
+        things, you must replace selected text only!
     </p>
     <br />
     <h2>Security issues</h2>
