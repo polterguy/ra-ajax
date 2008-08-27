@@ -20,13 +20,16 @@
     <p>
         This is our <em>Ajax DropDownList</em> reference sample. All though we try to create most samples 
         like a "story" giving away clues to important things about Ra-Ajax as we progress which means that
-        you definitely *should* read them all sequentially and rather return to them for "reference purposes". 
-        The "Control Samples" obviously have to be more of "bread and butter" constructions. Here you can 
-        see how you can use our <em>Ajax DropDownList</em> in your own projects. We're just handling the 
-        MouseOut, MouseOver and the SelectedIdexChanged events, but there are also others for Focus events 
-        and Blur events. In case you haven't noticed yet you should click the "Show code" button in the 
-        top/right corner since a large reason to use Ra-Ajax is its beautiful code model which enables you 
-        to write complex Ajax Applications <em>without even knowing what JavaScript IS</em>.
+        you definitely should read them all sequentially and rather return to specific samples for reference 
+        purposes later. The specific Control Samples obviously have to be more of a bread and butter construction. 
+    </p>
+    <p>
+        Here you can see how you can use our <em>Ajax DropDownList</em> in your own projects. We're just 
+        handling the <em>MouseOut, MouseOver and the SelectedIndexChanged events</em>, but there are also others for 
+        Focus events and Blur events. In case you haven't noticed yet you should click the "Show code" button 
+        in the top/right corner since a large reason to use Ra-Ajax is the fact that it enables 
+        you to write complex Ajax Applications <em>without even knowing what JavaScript IS</em> and keeping the
+        same <em>Code Model</em> as you would do in conventional non-Ajax ASP.NET Applications.
     </p>
     <ra:DropDownList 
         runat="server" 
@@ -56,11 +59,11 @@
     <br />
     <h2>Ra-Ajax and Partial Rendering</h2>
     <p>
-        Ra-Ajax does not use <em>Partial Rendering</em> almost at all, only when strictly necessary Ra-Ajax
+        Ra-Ajax does not use <em>Partial Rendering</em> almost at all. Only when strictly necessary Ra-Ajax
         will turn to Partial Rendering. Instead Ra-Ajax sends JSON from the server which defines which 
         properties on the controls that have changed. Then this JSON maps to methods in the <em>Control.js</em>
         JavaScript file. Which JSON is sent is determined according to which properties have been changed
-        on the server. This means that only the things you actually change on all controls will be sent
+        on the server. This means that only the things you actually change on your controls will be sent
         from the server and back to the client. Then the changed properties will be sent from the JavaScript
         JSON handler and to the specific method which handles just "that" JSON value. For instance if you
         check out the Ajax Request sent back from the server when you hover over the Ajax DropDownList above
@@ -87,23 +90,23 @@
         will set the innerHTML (through the <em>Ra.Element.setContent</em> function) of the DOM element.
     </p>
     <br />
-    <h2>Advantages of "ditching" Partial Rendering</h2>
+    <h2>Advantages of ditching Partial Rendering</h2>
     <p>
         Partial Rendering is very easy to implement, however it has significant disadvantages to the alternatives
         which among other things includes <em>Custom JavaScript</em> plus the method of Ra-Ajax. First of all
         it is almost impossible to do complex things without resorting to Custom JavaScript. Imagine if you
         had a Panel and inside that Panel you had a DropDownList or a TextBox. Then when the user selects the 
         "wrong value" you want the background-color of that Panel to become Red to signalize this to the user.
-        Now if you had a DropDownList the DropDownList would *loose focus* if you were to do this with Partial 
-        Rendering. Even worse though it is for a TextBox since then you could even run the risk of that the user
-        had written something into the TextBox after the Ajax Request was being initiated but BEFORE the Ajax 
-        Request had returned. This would then when the TextBox was "re-drawn" since it was inside of the Panel
-        remove characters that you actually had written and make writing of text inside that TextBox almost 
+        Now if you had a DropDownList the DropDownList would loose focus if you were to do this with Partial 
+        Rendering. Even worse though is the TextBox sample since then you could even run the risk of that the user
+        had written something into the TextBox after the Ajax Request was being initiated but before the Ajax 
+        Request had returned. This would then when the TextBox was re-rendered in the Partial Rendering phase 
+        remove characters that you actually had written and make writing text inside that TextBox almost 
         impossible.
     </p>
     <p>
         The other disadvantage it has is that Partial Rendering significantly increases the amount of bandwidth 
-        usage! Let me repeat that again; <strong>Partial Rendering significantly increases the bandwidth usage!</strong>
+        usage! Let me repeat that again; <em>Partial Rendering significantly increases the bandwidth usage!</em>
         To such an extend that some tests can see orders of magnitudes more bandwidth usage with Partial Rendering
         than the Ra-Ajax way of doing this.
     </p>

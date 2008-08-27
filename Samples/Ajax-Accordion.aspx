@@ -43,7 +43,7 @@
             Here is an example of an Ajax Accordion. Now the thing to pay particular notice of
             in regards to the Ra-Ajax Accordion is that it will actually let you define the
             size of individual AccordionViews as you wish yourself. This means that the size of
-            the Accordion you are currently reading in which is quite LARGE will NOT affect the
+            the Accordion you are currently reading in which is quite large will not affect the
             size of the next accordions which you can see that when you activate one of the other
             Accordions then the total surface of the Accordion viewport will actually shrink.
         </ext:AccordionView>
@@ -75,7 +75,7 @@
             runat="server" 
             ID="AccordionView1" 
             CssClass="content">
-            Now the Ra-Ajax Accordion is also a <a href="Ajax-Panel.aspx">Ajax Panel</a> which
+            Now the Ra-Ajax Accordion is also an <a href="Ajax-Panel.aspx">Ajax Panel</a> which
             means that you can embed other complex Ajax Controls like for instance an Ajax Calendar
             within it with no problems.
             <br />
@@ -120,21 +120,21 @@
     <p>
         If you want to create an Ajax Library with <em>more than 18 Ajax Controls within as Ra-Ajax consists of</em> then
         you must be able to <em>generalize as much as possible</em>. In Ra-Ajax we have done this by first of all
-        *not* using a general purpose JavaScript framework as our foundation. Secondly we have also created our 
+        not using a general purpose JavaScript framework as our foundation. Secondly we have also created our 
         Control.js file in such a way that most of our Ajax Controls (including this Ajax Accordion) don't need their own
         "custom JavaScript" file.
     </p>
     <p>
-        In fact most of our Ajax Controls are sharing the *same* JavaScript file since it is written so that all
+        In fact most of our Ajax Controls are sharing the same JavaScript file since it is written so that all
         Ajax Controls (or at least most of them) should be able to share the same JavaScript file.
     </p>
     <p>
         Now if you start out with a General Purpose JavaScript framework you will start out with an "initial penalty"
         depending upon which JavaScript Framework you choose of some specific KB which will come in addition to
-        your "custom JavaScript" logic. I have created a table for you below which shows the "initial penalty" only, 
+        your custom JavaScript logic. I have created a table for you below which shows this initial penalty, 
         though you can probably add to that penalty with quite a substantial bit since you will also need your
-        "own custom" JavaScript. This is true if you are creating your own Ajax Library on TOP of these JavaScript
-        frameworks and also if you consume them directly as standalone Frameworks.
+        own custom JavaScript. This is true if you are creating your own Ajax Library on top of these JavaScript
+        frameworks and also true if you consume them directly as standalone Frameworks.
     </p>
     <br />
     <h2>Size of well known JavaScript Ajax Frameworks</h2>
@@ -165,9 +165,14 @@
         When you minify a JavaScript library it normally becomes half the size, when you gzip it again
         it normally becomes half the size of that again. Ra-Ajax "core" JavaScript files are 32 KB
         before minification and before gzipping. After minification but before gzipping 
-        <strong>Ra-Ajax consists of in total are 11.6 KB</strong>. In fact that is such a ridicilously
+        <strong>Ra-Ajax consists of in total 11.6 KB JavaScript</strong>. In fact that is such a ridicilously
         low number that the whole point about gzipping JavaScript libraries makes no sense at all for 
         Ra-Ajax.
+    </p>
+    <p>
+        So even though all of the above JavaScript Ajax Frameworks are brilliantly written by some of the best
+        JavaScript developers in the world, and tuned down to <em>the last byte of JavaScript</em> they
+        will still make you start out with an initial penalty when creating your Rich Internet Applications.
     </p>
     <p>
         To be fair you can probably add up another 5 KB of JavaScript if you use the <em>Ajax RichEditor</em>
@@ -175,6 +180,21 @@
         Ajax Framework with 18 Ajax Controls within which almost completely abstracts away the entire concept 
         of JavaScript for developers and makes it possible for them to exclusively focus on developing
         in a safe, compiled and well known language of their choice on the server.
+    </p>
+    <br />
+    <h2>Is Ra-Ajax a RIA Framework?</h2>
+    <p>
+        Since Ra-Ajax has such extremely small amounts of JavaScript it is probably not even fair to call
+        it a RIA Framework. While most other Ajax Libraries and Frameworks claims to be RIA Frameworks
+        Ra-Ajax has such small amount of JavaScript that you could probably just as easily create also 
+        normal websites with it where load speed, responsiveness and all that matters to such an extent that
+        you normally wouldn't even consider using an Ajax Framework at all.
+    </p>
+    <p>
+        Suggestions here might include front ends of CMS systems, forum sites, your personal blogging system
+        and so on. And due to the LGPL nature of Ra-Ajax you can do this just as you wish yourself without
+        wondering about license costs and such. The LGPL license gives you the right to use Ra-Ajax in
+        closed source/proprietary projects just as you wish :)
     </p>
     <br />
     <h2>Ajax Controls in Ra-Ajax</h2>
@@ -202,7 +222,7 @@
         <li>RadioButton</li>
         <li>TextArea</li>
         <li>TextBox</li>
-        <li>++ a whole BUNCH of DHTML Ajax Effects...</li>
+        <li>++ a whole bunch of DHTML Ajax Effects...</li>
     </ul>
     <br />
     <h2>Here comes the magic ;)</h2>
@@ -216,7 +236,7 @@
     <p>
         The Ajax Accordion control is itself composed of other already existing Ajax Controls like the 
         <em>Ajax Panel, Ajax LinkButton and Ajax Effects</em>. This makes it possible to create actually
-        billions of Ajax Controls and *still* have no more than 11.6 KB of JavaScript. In fact of the above
+        billions of Ajax Controls and still have no more than 11.6 KB of JavaScript. In fact of the above
         Ajax Controls the only ones which needs their own "custom JavaScript" file are the Ajax Timer and
         the Ajax RichEdit. Even our Ajax InPlaceEdit is created utilizing the LinkButton and the Label and 
         nothing else...
@@ -238,7 +258,7 @@
     <p>
         Ohh yeah, and if you are a "JavaScript Guru" then feel free to create Ajax Controls which actually 
         needs their own JavaScript file. Though 99% of the time you need a new Ajax Control I believe that
-        you will *not* need to resort to JavaScript ;)
+        you will not need to resort to JavaScript ;)
     </p>
     <a href="Ajax-Calendar.aspx">On to Ajax Calendar</a>
 </asp:Content>

@@ -29,10 +29,10 @@
     <h1>Ajax RadioButton Sample</h1>
     <p>
         And <em>Ajax RadioButton</em> is no more than an Ajax Wrapper around the <em>&lt;input type="radio"</em> HTML
-        FORM element. Imagine having Ajax Controls which instead of generating JavaScript events when you interact
+        form element. Imagine having Ajax Controls which instead of generating JavaScript events when you interact
         with their DOM events it would create Ajax Requests to your server from which you have full access to the
         entire DOM structure within and can do almost everything you can do within their JavaScript DOM events
-        counterparts. The Ajax RadioButton (and all other Ra-Ajax Controls) are those Ajax Controls in fact.
+        counterparts. The Ajax RadioButton (and all other Ra-Ajax Controls) are created like that in fact.
     </p>
     <ra:RadioButton 
         runat="server" 
@@ -63,19 +63,19 @@
 
     </ra:Panel>
     <br />
-    <h2>Run your Ajax Apps *everywhere*</h2>
+    <h2>Run your Ajax Apps everywhere</h2>
     <p>
         Ra-Ajax is still quite immature, but its goal is to be able to run Ajax on every single platform
         in the world which have a browser which implements the <em>XMLHTTPRequest</em> and also have the
-        capacity to do some DOM manipulation. This is VERY easy in Ra-Ajax due to that Ra-Ajax almost 
+        capacity to do some DOM manipulation. This is very easy in Ra-Ajax due to that Ra-Ajax almost 
         doesn't have any JavaScript at all. In fact the entire JavaScript for Ra-Ajax is 11.6KB of JavaScript as
-        of this writing (26th of August 2008). Now to port JavaScript to all the different browsers is *the* 
+        of this writing (26th of August 2008). Now to port JavaScript to all the different browsers is the 
         most difficult and time consuming job any Ajax Framework developer does. And by reducing that job by 
         orders of magnitudes until there is almost no JavaScript left to port that job becomes significantly 
         easier compared to if we would have to port something which was way larger.
     </p>
     <p>
-        At the same time by following Open Web Standards *everywhere possible* and not being tempted to
+        At the same time by following Open Web Standards everywhere possible and not being tempted to
         have the <em>core Ajax Logic</em> depend upon having <em>"special attributes"</em> on DOM elements
         or have <em>"block-level DOM elements inside of inline DOM elements"</em> and so on this job becomes
         far easier.

@@ -61,6 +61,10 @@
         JavaScript method in <em>Control.js</em> which is the <em>Ajax Control JavaScript wrapper file</em> for
         most Ra-Ajax controls.
     </p>
+    <p>
+        But all this is completely abstracted away so you don't have to think of anything else than changing
+        styles for your controls by using the <em>Style property</em> of your Ajax Controls.
+    </p>
     <a href="Ajax-CheckBox.aspx">On top Ajax CheckBox sample</a>
 </asp:Content>
 

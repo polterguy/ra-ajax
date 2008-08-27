@@ -46,7 +46,7 @@
         Obviously the above sample is a very useless example of an Ajax Timer, a more appropriate example
         of using the Ajax Timer class would maybe be a Chat Client. Or maybe an email system which polls the
         server every n'th minute to check for new emails and so on. We are using the Ajax Timer in our
-        own <a href="http://ra-wiki.org">Wiki System</a> to make sure the user does NOT get a Session
+        own <a href="http://ra-wiki.org">Wiki System</a> to make sure the user does not get a Session
         timeout when he is editing a wiki entry. This works since every time you call into the server
         in ASP.NET it will reset the "minutes to session timeout" countdown...
     </p>
@@ -54,13 +54,14 @@
     <h2>Features of the Ra-Ajax Timer</h2>
     <p>
         The Ra-Ajax Timer have a property called <em>Milliseconds</em> which is the number of Milliseconds
-        between every time it will raise the <em>OnTick event</em>. It has (obviously ;) an event called
+        between every time it will raise the <em>OnTick event</em>. It has (obviously) an event called
         <em>Tick</em> which is raised every n'th Millisecond. And the third important property it has is
-        <em>Enabled</em> which if false will make the Ajax Timer *NOT* raise the Tick event and "stop".
+        <em>Enabled</em> which if false will make the Ajax Timer not raise the Tick event and actually stop
+        polling the server raising the Tick Event.
     </p>
     <p>
         The Timer does repeat every n'th Millisecond which means that this is a <em>repeating timer</em>
-        Ajax Control. If you need a Timer which does NOT repeat and only raises the Tick event once then
+        Ajax Control. If you need a Timer which does not repeat and only raises the Tick event once then
         just set the <em>Enabled property</em> to <em>false</em> in the first Tick event and it will stop
         polling the server.
     </p>
@@ -70,12 +71,17 @@
         is obviously extremely unwise) set the Ajax Timer Millisecond property to 1 and it will not
         "go berserk" and do a "client-side stack overflow" for you since the setTimeout JavaScript
         function will not be called before the previous Tick Event is returned from the server. This
-        is a nifty feature which will ensure that it also works "mostly predictable" in also clients
-        with "extremely small amounts of bandwidth" even though the amount of data transfered between
+        is a nifty feature which will ensure that it also works mostly predictable in also clients
+        with extremely small amounts of bandwidth even though the amount of data transfered between
         Ticks is very large.
     </p>
     <p>
         Though be careful with it. Used unwisely the Ajax Timer may very well "slashdot" your servers 
         even though that was not your intention...
+    </p>
+    <p>
+        You will also experience better and more responsive solutions if you try to reduce the number 
+        of timers per page. Normally I would encourage most solutions to not use more than one Ajax 
+        Timer per page.
     </p>
 </asp:Content>

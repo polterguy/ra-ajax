@@ -31,7 +31,7 @@
         Try to click the above Ajax LinkButton and see the changes.
     </p>
     <p>
-        The Ajax LinkButton is useful whenever you need a "button" but you don't want to use a "normal" Button
+        The Ajax LinkButton is useful whenever you need a "button" but you don't want to use a normal Button
         (<em>&lt;input type="button"...</em>) but rather would have something which renders like a hyperlink.
     </p>
     <br />
@@ -46,21 +46,21 @@
         at the same time. This is the source of many problems, including the <em>__VIEWSTATE and Ajax problem</em>.
         The problem is due to the fact that when you create an Ajax Request which goes towards your server, 
         then you may actually do something which changes the DOM structure on the client in that Ajax Request. 
-        Then if you allow *another* Ajax Request to start before the first one has returned then whatever FORM values
+        Then if you allow another Ajax Request to start before the first one has returned then whatever form values
         the second Ajax Request fetches to send back to the server might be completely wrong and "undefined"
         since their values have been changed in the first Ajax Request which still haven't returned.
     </p>
     <p>
         The reason why so many sees this as a ViewState problem is that it most commonly shows up as a ViewState
-        problem since no matter what you do on the server to manipulate your UI then the ViewState WILL be changed
+        problem since no matter what you do on the server to manipulate your UI then the ViewState will be changed
         and then when you create your second Ajax Request (before the first one have returned) then whatever
-        ViewState you submit on your SECOND Ajax Request will NOT be the correct one since this ViewState value
+        ViewState you submit on your second Ajax Request will not be the correct one since this ViewState value
         was collected before the second Request was returned.
     </p>
     <p>
         This is in fact nothing else than variations on the problems we used to have in multi threading 
         applications when we were doing conventional desktop programming. You might think of it like a 
-        variation on a <em>Race Condition</em>.
+        variation on a <em>Race Condition problem</em>.
     </p>
     <br />
     <h2>Ra-Ajax and its Ajax queue</h2>
@@ -83,14 +83,14 @@
         OnClick="lnk2_Click" />
     <br />
     <p>
-        When you click the first Ajax LinkButton then there is an *INTENTIONAL* Sleep of 5 seconds to simulate
+        When you click the first Ajax LinkButton then there is an intentional Sleep of 5 seconds to simulate
         a lengthy request or job. Then when you click the second LinkButton (hopefully you managed to do this 
-        before the first ones returned) you will see that nothing happens and the request is not even dispatched
-        *before* the first Ajax Request returns. In most Ajax Frameworks I am aware of (including ASP.NET AJAX) 
+        before the first one returned) you will see that nothing happens and the request is not even dispatched
+        before the first Ajax Request returns. In most Ajax Frameworks I am aware of (including ASP.NET AJAX) 
         the second Ajax Request would be allowed to start before the first one returned and change the Text of
         that LinkButton to <em>"Then QUICKLY click this LinkButton before the other one returnsI am CLICKED --"</em>.
         Then when the first Ajax Request returns the Text of the second LinkButton will be changed to; 
-        <em>"-- watch me as, "</em>. This is semantically *WRONG*! If you want to test this with another Ajax 
+        <em>"-- watch me as, "</em>. This is semantically wrong! If you want to test this with another Ajax 
         Framework to see if it handles your Ajax Queue correctly you can copy the logic code from the codebehind 
         of this page into a sample built around your favorite Ajax Framework and see how it handles the above 
         sample.
@@ -115,7 +115,7 @@
     </ul>
     <p>
         If your favorite Ajax Framework doesn't display the results according to the above logic
-        then it does NOT implement an Ajax Queue which is crucial in order to avoid creating really obscure
+        then it does not implement an Ajax Queue which is crucial in order to avoid creating really obscure
         and impossible to track down bugs later down the road for you...
     </p>
     <a href="Ajax-Panel.aspx">On to Ajax Panel</a>
