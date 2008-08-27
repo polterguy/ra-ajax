@@ -138,6 +138,9 @@ pageTracker._trackPageview();
                         <li>
                             <a href="Ajax-RichEdit.aspx">Ra-Ajax Samples - RichEdit</a>
                         </li>
+                        <li>
+                            <a href="Ajax-Timer.aspx">Ra-Ajax Samples - Timer</a>
+                        </li>
                     </ul>
                 </div>
                 <div id="contentOfPageDiv">

@@ -85,7 +85,21 @@
         of changing formatting for your users. Etc...
     </p>
     <p>
-        Very flexible...
+        For those of you who wants to implement one of these beasts on your own there is one very important
+        tips in regards to doing so. When the RichEdit looses Focus you must store the current Range object
+        since otherwise you won't be able to know which parts the user has selected when the user clicks
+        buttons and such to change the formatting of the "currently selected text".
+    </p>
+    <p>
+        Also I still despite of studying other RichEditors out there (DojoToolkit one among others) haven't had 
+        my "aha" moment in regards to how to modify the *cursor behavior* which means that currently the RichEditor 
+        can only modify text which is already selected! This is a missing feature of this Ajax Editor and all 
+        suggestions is recieved with gratitude. Here's my <a href="mailto:thomas@ra-ajax.org">email</a> for those 
+        with brilliant ideas about how to do just that. Among other things this means that you cannot just "insert"
+        things, you must *replace* things ONLY!
+    </p>
+    <p>
+        Still very flexible I think... :)
     </p>
     <br />
     <h2>Security issues</h2>
@@ -121,4 +135,5 @@
         is a very good starting point for you when developing your own Ajax Extension Controls on top
         of Ra-Ajax :)
     </p>
+    <a href="Ajax-Timer.aspx">On to Ajax Timers</a>
 </asp:Content>
