@@ -50,7 +50,7 @@
         <a href="http://weblogs.asp.net/despos/archive/2007/09/19/partial-rendering-misses-ajax-architectural-points.aspx">Partial Rendering</a>
         as seldom as possible but relies instead on sending changes back to the client from the server
         as <a href="http://www.json.org/">JSON</a> which then again is mapped towards functions on the 
-        Client Side JavaScript. Only when *absolutely* neccessary Ra-Ajax will actually resort to Partial 
+        Client Side JavaScript. Only when absolutely neccessary Ra-Ajax will actually resort to Partial 
         Rendering and render HTML back from the Server.
     </p>
     <p>

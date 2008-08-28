@@ -19,7 +19,7 @@ using HTML = System.Web.UI.HtmlControls;
 
 namespace Ra.Extensions
 {
-    [ASP.ToolboxData("<{0}:Timer runat=server />")]
+    [ASP.ToolboxData("<{0}:Timer runat=\"server\" />")]
     public class Timer : RaControl
     {
         public event EventHandler Tick;

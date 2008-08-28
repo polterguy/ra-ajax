@@ -184,6 +184,6 @@ protected void dropper_SelectedIndexChanged(object sender, EventArgs e)
         a question in our <a href="http://ra-ajax.org/Forums/Forums.aspx">forums</a> asking 
         for help :)
     </p>
-    <a href="Ajax-Button.aspx">On to Ajax Button Sample</a>
+    <a href="Ajax-Comet.aspx">On to Ajax Comet Sample</a>
 </asp:Content>
 

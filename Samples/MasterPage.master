@@ -14,7 +14,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
     <head runat="server">
         <title>Untitled Page</title>
-        <link href="media/MainStyles-2.css" rel="stylesheet" type="text/css" />
+        <link href="media/MainStyles-3.css" rel="stylesheet" type="text/css" />
 
         <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
@@ -89,6 +89,9 @@ pageTracker._trackPageview();
                         </li>
                         <li>
                             <a href="Dynamic.aspx">Ra-Ajax Samples - Dynamic Controls</a>
+                        </li>
+                        <li>
+                            <a href="Ajax-Comet.aspx">Ra-Ajax Samples - Comet</a>
                         </li>
                         <li>
                             <a href="Ajax-Button.aspx">Ra-Ajax Samples - Button</a>
