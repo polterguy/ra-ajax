@@ -13,8 +13,6 @@ namespace Ra.Widgets
 {
     public class EffectMove : Effect
     {
-        private Control _control;
-        private decimal _seconds;
         private int _left;
         private int _top;
 
@@ -44,32 +42,35 @@ namespace Ra.Widgets
             _top = top;
         }
 
-        public override void Render()
+        public override string RenderChainedOnStart()
         {
-            AjaxManager.Instance.WriterAtBack.WriteLine(@"
-Ra.E('{0}', {{
-  onStart: function() {{
+            return @"
     this.startL = parseInt(this.element.style.left, 10);
     this.startT = parseInt(this.element.style.top, 10);
-  }},
-  onFinished: function() {{
-    this.element.style.left = {2}+'px';
-    this.element.style.top = {3}+'px';
-  }},
-  onRender: function(pos) {{
-    var deltaL = ({2} - this.startL) * pos;
+";
+        }
+
+        public override string RenderChainedOnFinished()
+        {
+            return string.Format(@"
+    this.element.style.left = {0}+'px';
+    this.element.style.top = {1}+'px';
+",
+                _left, _top);
+        }
+
+        public override string RenderChainedOnRender()
+        {
+            return string.Format(@"
+    var deltaL = ({0} - this.startL) * pos;
     var newL = parseInt(deltaL + this.startL, 10);
     this.element.style.left = newL + 'px';
 
-    var deltaT = ({3} - this.startT) * pos;
+    var deltaT = ({1} - this.startT) * pos;
     var newT = parseInt(deltaT + this.startT, 10);
     this.element.style.top = newT + 'px';
-  }},
-  duration:{1}
-}});", _control.ClientID,
-     _seconds.ToString(System.Globalization.CultureInfo.InvariantCulture),
-     _left,
-     _top);
+",
+                _left, _top);
         }
     }
 }

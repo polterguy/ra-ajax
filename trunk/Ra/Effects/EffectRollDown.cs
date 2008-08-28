@@ -13,8 +13,6 @@ namespace Ra.Widgets
 {
     public class EffectRollDown : Effect
     {
-        private Control _control;
-        private decimal _seconds;
         private int _toHeight;
 
         public EffectRollDown(Control control, decimal seconds, int toHeight)
@@ -24,24 +22,28 @@ namespace Ra.Widgets
             _toHeight = toHeight;
         }
 
-        public override void Render()
+        public override string RenderChainedOnStart()
         {
-            AjaxManager.Instance.WriterAtBack.WriteLine(@"
-Ra.E('{0}', {{
-  onStart: function() {{
+            return @"
     this.element.style.height = '0px';
     this.element.style.display = '';
-  }},
-  onFinished: function() {{
-    this.element.style.height = '{2}px';
-  }},
-  onRender: function(pos) {{
-    this.element.style.height = parseInt({2}*pos) + 'px';
-  }},
-  duration:{1}
-}});", _control.ClientID,
-     _seconds.ToString(System.Globalization.CultureInfo.InvariantCulture),
-     _toHeight);
+";
+        }
+
+        public override string RenderChainedOnFinished()
+        {
+            return string.Format(@"
+    this.element.style.height = '{0}px';
+",
+                _toHeight);
+        }
+
+        public override string RenderChainedOnRender()
+        {
+            return string.Format(@"
+    this.element.style.height = parseInt({0}*pos) + 'px';
+",
+                _toHeight);
         }
     }
 }

@@ -13,32 +13,32 @@ namespace Ra.Widgets
 {
     public class EffectFadeIn : Effect
     {
-        private Control _control;
-        private decimal _seconds;
-
         public EffectFadeIn(Control control, decimal seconds)
         {
             _control = control;
             _seconds = seconds;
         }
 
-        public override void Render()
+        public override string RenderChainedOnStart()
         {
-            AjaxManager.Instance.WriterAtBack.WriteLine(@"
-Ra.E('{0}', {{
-  onStart: function() {{
+            return @"
     this.element.setOpacity(0);
     this.element.style.display = '';
-  }},
-  onFinished: function() {{
+";
+        }
+
+        public override string RenderChainedOnFinished()
+        {
+            return @"
     this.element.setOpacity(1);
-  }},
-  onRender: function(pos) {{
+";
+        }
+
+        public override string RenderChainedOnRender()
+        {
+            return @"
     this.element.setOpacity(pos);
-  }},
-  duration:{1}
-}});", _control.ClientID,
-     _seconds.ToString(System.Globalization.CultureInfo.InvariantCulture));
+";
         }
     }
 }

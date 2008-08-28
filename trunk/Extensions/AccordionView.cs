@@ -84,24 +84,45 @@ namespace Ra.Extensions
             {
                 AjaxManager.Instance.WriterAtBack.WriteLine(@"
 Ra.E('{0}', {{
-  onStart: function() {{
+  onStart: function() {{{2}}},
+  onFinished: function() {{{3}}},
+  onRender: function(pos) {{{4}}},
+  duration:{1}
+}});", 
+                    _idRemove, 
+                    _parent.AnimationSpeed.ToString(System.Globalization.CultureInfo.InvariantCulture),
+                    RenderChainedOnStart(),
+                    RenderChainedOnFinished(),
+                    RenderChainedOnRender());
+            }
+
+            public override string RenderChainedOnStart()
+            {
+                return string.Format(@"
     this.other = Ra.$('{1}');
     this.otherToHeight = this.other.getDimensions().height;
     this.elementFromHeight = this.element.getDimensions().height;
     this.other.style.height = '0px';
     this.other.style.display = '';
-  }},
-  onRender: function(pos) {{
-    this.other.style.height = (this.otherToHeight * pos) + 'px';
-    this.element.style.height = (this.elementFromHeight * (1.0 - pos)) + 'px';
-  }},
-  onFinished: function() {{
+",
+                    _idRemove, _idShow);
+            }
+
+            public override string RenderChainedOnFinished()
+            {
+                return @"
     this.element.style.display = 'none';
     this.element.style.height = '';
     this.other.style.height = this.otherToHeight + 'px';
-  }},
-  duration:{2}
-}});", _idRemove, _idShow, _parent.AnimationSpeed.ToString(System.Globalization.CultureInfo.InvariantCulture));
+";
+            }
+
+            public override string RenderChainedOnRender()
+            {
+                return @"
+    this.other.style.height = (this.otherToHeight * pos) + 'px';
+    this.element.style.height = (this.elementFromHeight * (1.0 - pos)) + 'px';
+";
             }
         }
 
