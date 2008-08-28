@@ -111,7 +111,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
         {
             searchResults.Visible = true;
             searchResults.Controls.Clear();
-            searchResults.SignalizeReRender();
+            searchResults.ReRender();
             int idxNo = 0;
             SimpleQuery<Article> q = new SimpleQuery<Article>(@"
 from Article a where a.Header like '%" + search.Text + "%'");

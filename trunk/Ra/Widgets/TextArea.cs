@@ -28,6 +28,8 @@ namespace Ra.Widgets
 
         public event EventHandler MouseOut;
 
+        public event EventHandler KeyUp;
+
         #region [ -- Properties -- ]
 
         [DefaultValue("")]
@@ -152,6 +154,10 @@ namespace Ra.Widgets
                     if (MouseOut != null)
                         MouseOut(this, new EventArgs());
                     break;
+                case "keyup":
+                    if (KeyUp != null)
+                        KeyUp(this, new EventArgs());
+                    break;
                 case "blur":
                     if (Blur != null)
                         Blur(this, new EventArgs());
@@ -186,6 +192,12 @@ namespace Ra.Widgets
                 if (evts.Length != 0)
                     evts += ",";
                 evts += "['mouseout']";
+            }
+            if (KeyUp != null)
+            {
+                if (evts.Length != 0)
+                    evts += ",";
+                evts += "['keyup']";
             }
             if (Blur != null)
             {

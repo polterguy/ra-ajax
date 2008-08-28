@@ -35,7 +35,7 @@ Ra.extend(Ra.Timer.prototype, {
       var x = new Ra.Ajax({
         args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=tick',
         raCallback:true,
-        onAfter: this.onFinishedTicking,
+        onSuccess: this.onFinishedTicking,
         callingContext: this
       });
     }

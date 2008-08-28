@@ -61,7 +61,7 @@ public partial class Wiki : System.Web.UI.Page
     {
         uploadImage.SaveAs(Server.MapPath("~/Images/" + uploadImage.FileName));
         DataBindImages();
-        imagesPnl.SignalizeReRender();
+        imagesPnl.ReRender();
     }
 
     protected void closeImages_Click(object sender, EventArgs e)
@@ -298,7 +298,7 @@ public partial class Wiki : System.Web.UI.Page
 
         litRevisions.Text = "<br/><br/><h2>Additions and deletions for revisions</h2><p><em>Note that all formatting is removed meaning that if there was only formatting changes to the revision no changes will show. Additions are green and deletions are red</em></p>" + diffContent;
 
-        revView.SignalizeReRender();
+        revView.ReRender();
     }
 
     protected void RevertToRevision(object sender, EventArgs e)
@@ -338,7 +338,7 @@ public partial class Wiki : System.Web.UI.Page
         revs = GetRevisions();
         repRevisions.DataSource = revs;
         repRevisions.DataBind();
-        repRevisionsWrapper.SignalizeReRender();
+        repRevisionsWrapper.ReRender();
     }
 
     private static string GetDiff(string articleFirstContent, string articleLastContent)

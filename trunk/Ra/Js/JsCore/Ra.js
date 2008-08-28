@@ -520,9 +520,12 @@ Ra.extend(Ra.Ajax.prototype, {
       onBefore: function() {},
 
       // Called AFTER the request is finished with the given response
-      onAfter: function() {},
+      onSuccess: function() {},
 
-      // Calling context (this pointer) for onBefore and onAfter
+      // Called AFTER the request is finished with the given response if an error occurs
+      onError: function() {},
+
+      // Calling context (this pointer) for onBefore and onSuccess
       callingContext: null
     }, options || {});
 
@@ -551,13 +554,14 @@ Ra.extend(Ra.Ajax.prototype, {
       onFinished: function(response) {
         this.sliceRequest();
         if( this.options.callingContext ) {
-          this.options.onAfter.call(this.options.callingContext, response);
+          this.options.onSuccess.call(this.options.callingContext, response);
         } else {
-          this.options.onAfter(response);
+          this.options.onSuccess(response);
         }
       },
-      onError: function() {
+      onError: function(status, fullTrace) {
         this.sliceRequest();
+        this.options.onError(status, fullTrace);
       }
     });
     if( this.options.raCallback ) {

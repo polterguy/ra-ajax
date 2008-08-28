@@ -30,7 +30,7 @@
     <ext:RichEdit 
         runat="server" 
         ID="richeditor" 
-        CssClass="richeditor"
+        style="border:solid 1px #999;background-color:Yellow;width:75%;height:250px;padding:15px;"
         Text="<p>Try to edit this text. This is an <em>Ajax RichEditor</em> try editing the text within here...</p>" />
     <br />
     <ra:Button 
@@ -100,7 +100,7 @@
     <br />
     <h2>Security issues</h2>
     <p>
-        Though to use this Ajax RichEditor you must turn OFF the RequestValidation. This can be done on
+        Though to use this Ajax RichEditor you must turn off the RequestValidation. This can be done on
         the Page directive by setting the <em>ValidateRequest</em> to false. The reason why is because the
         semantics behind the RichEditor is that it will store the HTML parts of the RichEdit surface
         as a value in an input of type hidden. (HiddenField)
