@@ -36,6 +36,7 @@ public partial class _Default : System.Web.UI.Page
         // This line of code is actually *VERY* convenient since setting an element's
         // opacity so that it works for all different browsers is a *NIGHTMARE*...!
         // Ra-Ajax completely abstracts away that problem...
+        // This works on ALL browser 100% transparently
         pnl.Style[Styles.opacity] = "0.5";
     }
 }
