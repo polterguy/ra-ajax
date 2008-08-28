@@ -146,7 +146,10 @@ Ra.extend(Ra.Control.prototype, {
   // as the "value" part.
   AddStyle: function(values) {
     for( var idx = 0; idx < values.length; idx++ ) {
-      this.element.style[values[idx][0]] = values[idx][1];
+      if( values[idx][0] == 'opacity' )
+        this.element.setOpacity(values[idx][1]);
+      else
+        this.element.style[values[idx][0]] = values[idx][1];
     }
   },
 

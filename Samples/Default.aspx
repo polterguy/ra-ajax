@@ -77,7 +77,7 @@
         None of this really matters though before you start creating really "advanced" stuff, imagine the below.
     </p>
     <br />
-    <ra:Panel runat="server" ID="pnl" style="background-color:Yellow;border:solid 1px Black;padding:15px;height:100px;">
+    <ra:Panel runat="server" ID="pnl" style="background-color:Yellow;border:solid 1px Black;padding:15px;">
         <ra:Button 
             runat="server" 
             ID="submit2" 
@@ -85,6 +85,14 @@
             OnClick="submit2_Click" />
         <br />
         Notice how the background-color of this panel changes as you click the above button...
+        <br />
+        If you look at the source for this page you will see that we're setting the style property
+        from an enum which maps towards the styles in the CSS2 standard. This ensures typesafety and less
+        typing errors.
+        <br />
+        Also Ra-Ajax have support for setting <em>opacity</em> through the opacity style value which
+        abstracts away the problems of setting the opacity for different browsers (which is a nightmare
+        to do by "hand")
     </ra:Panel>
     <br />
     <h2>Partial Rendering</h2>
