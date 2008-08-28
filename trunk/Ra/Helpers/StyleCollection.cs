@@ -76,6 +76,46 @@ namespace Ra.Widgets
             }
         }
 
+        public string this[Styles idx]
+        {
+            get
+            {
+                string styleString = TransformStyleToString(idx);
+                return this[styleString];
+            }
+            set
+            {
+                string styleString = TransformStyleToString(idx);
+                this[styleString] = value;
+            }
+        }
+
+        private static string TransformStyleToString(Styles idx)
+        {
+            string tmp = "";
+            switch (idx)
+            {
+                case Styles.floating:
+                    tmp = "clear";
+                    break;
+                default:
+                    tmp = idx.ToString();
+                    break;
+            }
+            string styleString = "";
+            foreach (char idxChar in tmp)
+            {
+                if (char.IsUpper(idxChar))
+                {
+                    styleString += "-";
+                    styleString += char.ToLower(idxChar);
+                }
+                else
+                    styleString += idxChar;
+            }
+            return styleString;
+        }
+
         public override string ToString()
         {
             string retVal = "";

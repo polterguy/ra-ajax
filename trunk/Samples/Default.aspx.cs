@@ -31,6 +31,7 @@ public partial class _Default : System.Web.UI.Page
 
     protected void submit2_Click(object sender, EventArgs e)
     {
-        pnl.Style["background-color"] = pnl.Style["background-color"] == "Orange" ? "Yellow" : "Orange";
+        pnl.Style[Styles.backgroundColor] = pnl.Style[Styles.backgroundColor] == "Orange" ? "Yellow" : "Orange";
+        pnl.Style[Styles.opacity] = "0.5";
     }
 }
