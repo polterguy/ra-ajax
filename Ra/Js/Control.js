@@ -34,6 +34,11 @@ Ra.C = function(el, options) {
 Ra.Control._controls = [];
 
 
+Ra.Control.errorHandler = function(status, fullTrace) {
+  alert(status + '\r\n' + fullTrace);
+}
+
+
 // Static method to retrieve a specific Ra control
 // Pass in an ID and get the Ra.Control instance of the Control with the given ID
 Ra.Control.$ = function(id) {
@@ -210,7 +215,7 @@ Ra.extend(Ra.Control.prototype, {
       var x = new Ra.Ajax({
         args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=keyup',
         raCallback:true,
-        onAfter: this.onFinishedRequest,
+        onSuccess: this.onFinishedRequest,
         callingContext: this
       });
     } else {
@@ -238,7 +243,8 @@ Ra.extend(Ra.Control.prototype, {
       var x = new Ra.Ajax({
         args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=' + evt,
         raCallback:true,
-        onAfter: this.onFinishedRequest,
+        onSuccess: this.onFinishedRequest,
+        onError: this.onFailedRequest,
         callingContext: this
       });
     }
@@ -254,6 +260,12 @@ Ra.extend(Ra.Control.prototype, {
     if( this._oldValue )
       delete this._oldValue;
     eval(response);
+  },
+
+  onFailedRequest: function(status, fullTrace) {
+    if( this._oldValue )
+      delete this._oldValue;
+    Ra.Control.errorHandler(status, fullTrace);
   },
 
 

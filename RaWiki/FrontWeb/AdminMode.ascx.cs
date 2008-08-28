@@ -37,7 +37,7 @@ public partial class AdminMode : System.Web.UI.UserControl
         o.Username = nUsername.Text;
         o.Save();
         DataBindUsers();
-        repUsersWrapper.SignalizeReRender();
+        repUsersWrapper.ReRender();
         nUsername.Text = "";
         nPassword.Text = "";
         nEmail.Text = "";
@@ -116,7 +116,7 @@ public partial class AdminMode : System.Web.UI.UserControl
         int id = GetId(btn);
         Operator oper = Operator.FindOne(Expression.Eq("Id", id));
         oper.Delete();
-        users.SignalizeReRender();
+        users.ReRender();
         DataBindUsers();
     }
 

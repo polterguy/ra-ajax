@@ -36,7 +36,7 @@ Ra.E('{0}', {{
     this.element.style.height = '{2}px';
   }},
   onRender: function(pos) {{
-    this.element.style.height = ({2}*pos) + 'px';
+    this.element.style.height = parseInt({2}*pos) + 'px';
   }},
   duration:{1}
 }});", _control.ClientID,
