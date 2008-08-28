@@ -9,6 +9,12 @@ img
 	border:none;
 }
 
+a
+{
+	text-decoration:none;
+	color:Blue;
+}
+
 #contentPlusBorders
 {
 	width:1056px;

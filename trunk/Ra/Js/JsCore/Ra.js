@@ -282,16 +282,23 @@ Ra.extend(Ra.XHR.prototype, {
   },
 
   initXHR: function(url, options) {
-    if( Ra.XHR.activeRequest ) {
-      throw 'Cannot have more than one active XHR request at the time...';
-    }
-    Ra.XHR.activeRequest = true;
     this.url = url;
     this.options = Ra.extend({
       onSuccess:    function() {},
       onError:      function() {},
-      body:         ''
+      onTimeout:    function() {},
+      body:         '',
+      queue:        true
     }, options || {});
+    if( Ra.XHR.activeRequest && this.options.queue ) {
+      // We only throw exception if there is an existing XHR request from before AND
+      // the queue is not explicitly overridden with a "false" value
+      throw 'Cannot have more than one active XHR request at the time...';
+    }
+    // If the queue option is set to true we set the activeRequest to true so that
+    // the next XHR request (with queue options set) will throw an exception
+    if( this.options.queue )
+      Ra.XHR.activeRequest = true;
     this.start();
   },
 
@@ -325,29 +332,35 @@ Ra.extend(Ra.XHR.prototype, {
 
   // Called when request is finished
   _finished: function() {
-    if( this.xhr.status >= 200 && this.xhr.status < 300 ) {
-      if( this.xhr.status == 278 ) {
-        // Since 302 and 301 redirects are 100% transparent according to the w3c working draft
-        // and all known implementations we need some OTHER mechanism to trap REDIRECTS!
-        // This is being done by the server with a status code of _278_
-        var headers = this.xhr.getAllResponseHeaders().split('\n');
-        for( var idx = 0; idx < headers.length; idx++ ) {
-          if( headers[idx].indexOf('Location') != -1 ) {
-            // Found NEW location
-            var nLoc = headers[idx].substr(10);
-            window.location = nLoc;
-            break;
+    // TODO: Check up if there's a more "stable" way to determine timeouts cross browser...
+    if( this.xhr.responseText === null ) {
+      this.options.onTimeout();
+    } else {
+      if( this.xhr.status >= 200 && this.xhr.status < 300 ) {
+        if( this.xhr.status == 278 ) {
+          // Since 302 and 301 redirects are 100% transparent according to the w3c working draft
+          // and all known implementations we need some OTHER mechanism to trap REDIRECTS!
+          // This is being done by the server with a status code of _278_
+          var headers = this.xhr.getAllResponseHeaders().split('\n');
+          for( var idx = 0; idx < headers.length; idx++ ) {
+            if( headers[idx].indexOf('Location') != -1 ) {
+              // Found NEW location
+              var nLoc = headers[idx].substr(10);
+              window.location = nLoc;
+              break;
+            }
           }
+        } else {
+          this.options.onSuccess(this.xhr.responseText);
         }
       } else {
-        this.options.onSuccess(this.xhr.responseText);
+        this.options.onError(this.xhr.status, this.xhr.responseText);
       }
-    } else {
-      this.options.onError(this.xhr.status, this.xhr.responseText);
     }
 
     // Resetting active requests back to false to allow next request to run
-    Ra.XHR.activeRequest = false;
+    if( this.options.queue )
+      Ra.XHR.activeRequest = false;
   }
 });
 
@@ -672,8 +685,5 @@ Ra.extend(Ra.Effect.prototype, {
     this.options.onRender.call(this, pos);
   }
 });
-
-
-
 
 

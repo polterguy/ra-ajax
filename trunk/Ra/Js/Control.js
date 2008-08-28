@@ -35,7 +35,8 @@ Ra.Control._controls = [];
 
 
 Ra.Control.errorHandler = function(status, fullTrace) {
-  alert(status + '\r\n' + fullTrace);
+  if( status != 0 ) // Probably "unload" process
+    alert(status + '\r\n' + fullTrace);
 }
 
 

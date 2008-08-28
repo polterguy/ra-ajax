@@ -37,6 +37,8 @@
     <Compile Include="Calendar.cs" />
     <Compile Include="Accordion.cs" />
     <Compile Include="AccordionView.cs" />
+    <Compile Include="Comet.cs" />
+    <Compile Include="Helpers\CometQueue.cs" />
     <Compile Include="RichEdit.cs" />
     <Compile Include="InPlaceEdit.cs" />
     <Compile Include="Timer.cs" />
@@ -55,6 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="RichEdit.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Comet.js" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
