@@ -13,8 +13,6 @@ namespace Ra.Widgets
 {
     public class EffectRollUp : Effect
     {
-        private Control _control;
-        private decimal _seconds;
         private int _fromHeight;
 
         public EffectRollUp(Control control, decimal seconds, int fromHeight)
@@ -24,24 +22,28 @@ namespace Ra.Widgets
             _fromHeight = fromHeight;
         }
 
-        public override void Render()
+        public override string RenderChainedOnStart()
         {
-            AjaxManager.Instance.WriterAtBack.WriteLine(@"
-Ra.E('{0}', {{
-  onStart: function() {{
+            return string.Format(@"
     this.element.style.display = '';
-    this.element.style.height = '{2}px'
-  }},
-  onFinished: function() {{
+    this.element.style.height = '{0}px'
+",
+                _fromHeight);
+        }
+
+        public override string RenderChainedOnFinished()
+        {
+            return @"
     this.element.style.display = 'none';
-  }},
-  onRender: function(pos) {{
-    this.element.style.height = ((1.0-pos)*{2}) + 'px';
-  }},
-  duration:{1}
-}});", _control.ClientID,
-     _seconds.ToString(System.Globalization.CultureInfo.InvariantCulture),
-     _fromHeight);
+";
+        }
+
+        public override string RenderChainedOnRender()
+        {
+            return string.Format(@"
+    this.element.style.height = ((1.0-pos)*{0}) + 'px';
+",
+                _fromHeight);
         }
     }
 }

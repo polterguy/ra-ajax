@@ -13,8 +13,6 @@ namespace Ra.Widgets
 {
     public class EffectSize : Effect
     {
-        private Control _control;
-        private decimal _seconds;
         private int _height;
         private int _width;
 
@@ -44,32 +42,35 @@ namespace Ra.Widgets
             _width = width;
         }
 
-        public override void Render()
+        public override string RenderChainedOnStart()
         {
-            AjaxManager.Instance.WriterAtBack.WriteLine(@"
-Ra.E('{0}', {{
-  onStart: function() {{
+            return @"
     this.startH = parseInt(this.element.style.height, 10);
     this.startW = parseInt(this.element.style.width, 10);
-  }},
-  onFinished: function() {{
-    this.element.style.height = {2}+'px';
-    this.element.style.width = {3}+'px';
-  }},
-  onRender: function(pos) {{
-    var deltaH = ({2} - this.startH) * pos;
+";
+        }
+
+        public override string RenderChainedOnFinished()
+        {
+            return string.Format(@"
+    this.element.style.height = {0}+'px';
+    this.element.style.width = {1}+'px';
+",
+                _height, _width);
+        }
+
+        public override string RenderChainedOnRender()
+        {
+            return string.Format(@"
+    var deltaH = ({0} - this.startH) * pos;
     var newH = parseInt(deltaH + this.startH, 10);
     this.element.style.height = newH + 'px';
 
-    var deltaW = ({3} - this.startW) * pos;
+    var deltaW = ({1} - this.startW) * pos;
     var newW = parseInt(deltaW + this.startW, 10);
     this.element.style.width = newW + 'px';
-  }},
-  duration:{1}
-}});", _control.ClientID,
-     _seconds.ToString(System.Globalization.CultureInfo.InvariantCulture),
-     _height,
-     _width);
+",
+                _height, _width);
         }
     }
 }

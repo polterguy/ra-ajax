@@ -46,4 +46,11 @@ public partial class Effects : System.Web.UI.Page
         Effect effect = new EffectFadeIn(pnl, 0.6M);
         effect.Render();
     }
+
+    protected void btn4_Click(object sender, EventArgs e)
+    {
+        Effect effect = new EffectFadeIn(pnl2, 0.8M);
+        effect.Chained.Add(new EffectRollDown(pnl2, 0.8M, 200));
+        effect.Render();
+    }
 }

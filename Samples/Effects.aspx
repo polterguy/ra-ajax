@@ -31,7 +31,8 @@
     <br />
     <ra:Panel 
         runat="server" 
-        ID="pnl" style="position:absolute;background-color:Yellow;border:solid 1px Black;padding:15px;height:100px;width:100px;">
+        ID="pnl" 
+        style="position:absolute;background-color:Yellow;border:solid 1px Black;padding:15px;height:100px;width:100px;">
         Watch the Ajax Effect as you click the above button...
     </ra:Panel>
     <div style="height:320px;">&nbsp;</div>
@@ -83,6 +84,28 @@
         of ALT+SHIFT+G you will click the top button, ALT+SHIFT+H the second button and so on. This
         can be set declaratively by using the <em>AccessKey</em> property of the Ra-Ajax WebControls.
     </p>
+    <br />
+    <h2>Chaining Ajax Effects</h2>
+    <p>
+        Sometimes you want to run more than one Effect on the same element, like for instance you have
+        an invisible Panel and you want to show that Panel with both the EffectRollDown and the
+        EffectFadeIn. This will if you just create them both and let them both run as normally
+        often create a jagging effect which doesn't look nice. If you instead <em>chain</em> the
+        effects it will most often appear much smoother. An example is given below. Click the
+        "Show Code" button to see how the code to accomplish something like that is.
+    </p>
+    <ra:Button 
+        runat="server" 
+        ID="btn4" 
+        Text="Click me" 
+        OnClick="btn4_Click" />
+    <ra:Panel 
+        runat="server" 
+        ID="pnl2" 
+        style="position:absolute;background-color:Yellow;border:solid 1px Black;padding:15px;display:none;">
+        Watch the Ajax Effect as you click the above button...
+    </ra:Panel>
+    <div style="height:320px;">&nbsp;</div>
     <a href="Combining.aspx">On to "Combining Controls"...</a>
 </asp:Content>
 
