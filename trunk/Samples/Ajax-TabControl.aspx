@@ -95,5 +95,4 @@
     	and maybe LGPL themselves. This helps us by creating a better product since then people will see more
     	of their problems solved by choosing Ra-Ajax.
     </p>
-    <a href="Ajax-Accordion.aspx">On to Ajax Accordion</a>
 </asp:Content>
