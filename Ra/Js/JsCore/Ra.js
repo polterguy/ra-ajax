@@ -192,7 +192,7 @@ Ra.extend(Ra.Element.prototype, {
 
   // Sets opacity, expects a value between 0.0 and 1.0 where 0 == invisible and 1 == completely visible
   setOpacity: function(value) {
-    if( Ra.Browser.IE ) {
+    if(!('opacity' in this.style)) {
       this.style.filter = 'alpha(opacity=' + (Math.round(value * 100)) + ')';
     } else {
       this.style.opacity = value == 1 ? '' : value < 0.0001 ? 0 : value;
@@ -202,7 +202,7 @@ Ra.extend(Ra.Element.prototype, {
 
   // Returns opacity value of element 1 == completely visible and 0 == completely invisible
   getOpacity: function() {
-    if( Ra.Browser.IE ) {
+    if(!('opacity' in this.style)) {
       var value = this.style.filter.match(/alpha\(opacity=(.*)\)/);
       if( value[1] ) {
         return parseFloat(value[1]) / 100;
