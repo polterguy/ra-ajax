@@ -84,4 +84,5 @@
         of timers per page. Normally I would encourage most solutions to not use more than one Ajax 
         Timer per page.
     </p>
+    <a href="Ajax-TabControl.aspx">On to Ajax TabControl</a>
 </asp:Content>
