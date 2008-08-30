@@ -323,7 +323,8 @@ Ra.Control.prototype = {
     // First we must find all the objects which are CHILD objects
     // to the current one (being destroyed)
     // Then we must destroy all those objects (including self)
-    for( var idx = 0; idx < Ra.Control._controls.length; idx++ ) {
+    var idx = Ra.Control._controls.length;
+    while( idx-- ) {
 
       // Checking to see that this is NOT the "this" control
       if( Ra.Control._controls[idx].element.id.length > this.element.id.length ) {
@@ -333,20 +334,10 @@ Ra.Control.prototype = {
       }
     }
 
-    // Sorting all elements in REVERSE order
-    // This is to make sure we destroy the objects in depth first order
-    children.reverse(function(a, b) {
-      if( a.element.id < b.element.id ) {
-        return -1;
-      } else if( a.element.id > b.element.id ) {
-        return 1;
-      }
-      return 0;
-    });
-
     // Now looping through and destroying all objects
-    for( var idxChild = 0; idxChild < children.length; idxChild++ ) {
-      children[idxChild].destroyThis();
+    var idx = children.length;
+    while( idx-- ) {
+      children[idx].destroyThis();
     }
   },
 
@@ -390,7 +381,8 @@ Ra.Control.prototype = {
   _unlistenEventHandlers: function() {
     // Unlistening all event observers to avoid leaking memory
     var evts = this.options.evts;
-    for( var idx = 0; idx < evts.length; idx++ ) {
+    var idx = evts.length;
+    while( idx-- ) {
       (this.options.ctrl || this.element).stopObserving(evts[idx][0], this.onEvent);
     }
   }
