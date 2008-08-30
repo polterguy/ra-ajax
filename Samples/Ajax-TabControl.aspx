@@ -90,5 +90,10 @@
     	to reproduce the given bug is very much worth for us. Or a patch to fix some thing you're having problems
     	with etc. Help is appreciated!
     </p>
+    <p>
+    	Another way you can help out is by creating extension controls on top of Ra-Ajax which are Open Source
+    	and maybe LGPL themselves. This helps us by creating a better product since then people will see more
+    	of their problems solved by choosing Ra-Ajax.
+    </p>
     <a href="Ajax-Accordion.aspx">On to Ajax Accordion</a>
 </asp:Content>
