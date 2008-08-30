@@ -322,7 +322,7 @@ Ra.Control.prototype = {
 
     // First we must find all the objects which are CHILD objects
     // to the current one (being destroyed)
-    // Then we must destroy all those objects (including self)
+    // Then we must destroy all those objects (excluding self, self is handled other places...)
     var idx = Ra.Control._controls.length;
     while( idx-- ) {
 
@@ -365,15 +365,16 @@ Ra.Control.prototype = {
 
     // Looping through registered controls to remove the "this instance"
     var idxToRemove;
-    for( idxToRemove = 0; idxToRemove < Ra.Control._controls.length; idxToRemove++ ) {
-      if( Ra.Control._controls[idxToRemove].element.id == this.element.id ) {
+    var idx = Ra.Control._controls.length;
+    while( idx-- ) {
+      if( Ra.Control._controls[idx].element.id == this.element.id ) {
         // We have found our instance, idxToRemove now should contain the index of the control
         break;
       }
     }
 
     // Removes control out from registered controls collection
-    Ra.Control._controls.splice(idxToRemove, 1);
+    Ra.Control._controls.splice(idx, 1);
   },
 
 

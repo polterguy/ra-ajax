@@ -144,6 +144,9 @@ pageTracker._trackPageview();
                         <li>
                             <a href="Ajax-Timer.aspx">Ra-Ajax Samples - Timer</a>
                         </li>
+                        <li>
+                            <a href="Ajax-TabControl.aspx">Ra-Ajax Samples - TabControl</a>
+                        </li>
                     </ul>
                 </div>
                 <div id="contentOfPageDiv">
