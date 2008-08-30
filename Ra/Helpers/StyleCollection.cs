@@ -65,6 +65,8 @@ namespace Ra.Widgets
             }
             set
             {
+				if (this[idx] == value)
+					return;
                 bool shouldJson = !_beforeViewStateDictionary.ContainsKey(idx) || _beforeViewStateDictionary[idx] != value;
                 _beforeViewStateDictionary[idx] = value;
                 if (_trackingViewState)
