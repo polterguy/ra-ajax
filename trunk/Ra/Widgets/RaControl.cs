@@ -189,11 +189,6 @@ namespace Ra.Widgets
                 return RenderingPhase.Invisible;
         }
 
-        private bool IsChildControl(RaControl idx)
-        {
-            return idx.ClientID != this.ClientID && idx.ClientID.IndexOf(this.ClientID) == 0;
-        }
-
         protected virtual string GetChildrenClientSideScript()
         {
             return "";

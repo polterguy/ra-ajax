@@ -25,7 +25,7 @@ public partial class AjaxComet : System.Web.UI.Page
         }
     }
 
-    protected void comet_Tick(object sender, EventArgs e)
+    protected void comet_Tick(object sender, Ra.Extensions.Comet.CometEventArgs e)
     {
         // Locking to make sure no one tampers with our Chats while iterating them...
         lock (typeof(AjaxComet))

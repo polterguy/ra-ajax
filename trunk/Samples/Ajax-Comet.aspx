@@ -4,7 +4,6 @@
     AutoEventWireup="true" 
     CodeFile="Ajax-Comet.aspx.cs" 
     Async="true" 
-    AsyncTimeout="60000"
     Inherits="AjaxComet" 
     Title="Ajax Comet Sample" %>
 
@@ -64,10 +63,9 @@
     </p>
     <p>
         When you use Comet you should set the page into <em>asynchronous mode</em>. This can be done
-        easily in ASP.NET2.0 by setting the <em>Async</em> page directive to <em>true</em> and
-        the <em>AsyncTimeout</em> to 60000 which is the number of Milliseconds before the page
-        will timeout. Unless you do this you will notice that your entire WebServer freezes when you
-        have more than 40 simultanous users at your comet pages in total.
+        easily in ASP.NET2.0 by setting the <em>Async</em> page directive to <em>true</em>.
+        Unless you do this you will notice that your entire WebServer freezes when you have many 
+        simultanous users at your comet pages in total.
     </p>
     <p>
         <em>Comet does NOT scale</em>. Or at least it doesn't scale as good as conventional Ajax
@@ -98,6 +96,27 @@
     </p>
     <p>
         <strong>BE CAREFUL WITH COMET!</strong>
+    </p>
+    <br />
+    <h2>Hos does this Comet thing work?</h2>
+    <p>
+    	You add up one <em>Comet Control</em> on your page and you supply an OnTick event handler for it
+    	in your codebehind. Then whenever something happens which raises and Event your OnTick Event Handler
+    	will be called and from it you can manipulate any Widget Property you wish.
+    </p>
+    <p>
+    	Notice though that the Ra-Ajax Comet component is a <em>two phase implementation</em>. This means
+    	that first it creates a very small Ajax request which will only return the Comet Event ID back to the
+    	client when/if a Comet Event is raised. Then the client-side Ajax Engine will create a "normal" Ajax 
+    	Request which contains the ViewState and all other Control Properties (form elements) serialized
+    	which it transfers back to the server. This means that among other things the Comet component
+    	will not interfer with the Ajax Queue in a harmful way since the Comet Ajax Request (first request)
+    	will "bypass" the Ajax Request Queue while the second "driver Ajax Request" (which raises the Tick
+    	Event) will go through the normal Ajax Queue.
+    </p>
+    <p>
+    	Only by doing it this way we're able to keep the Ajax Queue logic which doesn't create race conditions
+    	for your clients.
     </p>
     <a href="Ajax-Button.aspx">On to Ajax Button</a>
 </asp:Content>

@@ -49,9 +49,6 @@ namespace Ra.Extensions
 
         private void CreateCompositionControls()
         {
-            // Checking to see if this instance is the active AccordionView of the parent Accordion
-            bool active = IsActive();
-
             // Creating top wrapper
             Panel topWrapper = new Panel();
             topWrapper.ID = "top";

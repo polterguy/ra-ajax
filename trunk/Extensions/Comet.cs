@@ -25,7 +25,22 @@ namespace Ra.Extensions
     [ASP.ToolboxData("<{0}:Comet runat=\"server\" />")]
     public class Comet : RaControl
     {
-        public event EventHandler Tick;
+		public class CometEventArgs : EventArgs
+		{
+			private string _id;
+
+			internal CometEventArgs(string id)
+			{
+				_id = id;
+			}
+			
+			public string Id
+			{
+				get { return _id; }
+			}
+		}
+		
+        public event EventHandler<CometEventArgs> Tick;
 
         [DefaultValue(true)]
         public bool Enabled
@@ -96,8 +111,9 @@ namespace Ra.Extensions
             switch (name)
             {
                 case "tick":
+				    string evtId = Page.Request.Params["__EVENT_ARGS"];
                     if (Tick != null)
-                        Tick(this, new EventArgs());
+                        Tick(this, new CometEventArgs(evtId));
                     break;
             }
         }
