@@ -72,7 +72,7 @@ Ra.extend(Ra.Comet.prototype, {
     if( this.options.enabled ) {
       // Raising the "Tick" Event on the server...
       var x = new Ra.Ajax({
-        args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=tick',
+        args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=tick' + '&__EVENT_ARGS=' + encodeURIComponent(response),
         raCallback:true,
         onSuccess: this.onFinishedTicking,
         callingContext: this
