@@ -17,6 +17,7 @@ Ra.extend(Ra.RichEdit.prototype, Ra.Control.prototype);
 
 // Creating IMPLEMENTATION of class
 Ra.extend(Ra.RichEdit.prototype, {
+
   init: function(el, opt) {
     this.initControl(el, opt);
     this.initRichEdit();
