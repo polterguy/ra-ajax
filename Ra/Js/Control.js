@@ -52,7 +52,7 @@ Ra.Control.$ = function(id) {
 };
 
 
-Ra.extend(Ra.Control.prototype, {
+Ra.Control.prototype = {
 
   // CTOR
   init: function(element, options) {
@@ -394,7 +394,7 @@ Ra.extend(Ra.Control.prototype, {
       (this.options.ctrl || this.element).stopObserving(evts[idx][0], this.onEvent);
     }
   }
-});
+}
 
 
 

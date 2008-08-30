@@ -28,15 +28,6 @@ var Ra = {};
 // Empty function useful for different things like for instance "killing events" and similar constructs
 Ra.emptyFunction = function() {}
 
-// Browser helper, returns true for whatever browser you're within
-Ra.Browser = {
-  IE:             window.attachEvent && !window.opera,
-  Opera:          !!window.opera,
-  WebKit:         navigator.userAgent.indexOf('AppleWebKit') != -1,
-  Gecko:          navigator.userAgent.indexOf('Gecko') != -1,
-  MobileSafari:   !!navigator.userAgent.match(/Apple.*Mobile.*Safari/)
-};
-
 // $ method, used to retrieve elements on document
 Ra.$ = function(id) {
   var el = document.getElementById(id);
@@ -103,7 +94,7 @@ Ra.Element = Ra.klass();
 // The only usage for this class is actually to serve as a wrapper for the
 // Ra.$ function in which it is being used as a template for extending DOM
 // elements...
-Ra.extend(Ra.Element.prototype, {
+Ra.Element.prototype = {
 
   // Sets content of element (wrapper around innerHTML)
   setContent: function(html) {
@@ -259,7 +250,7 @@ Ra.extend(Ra.Element.prototype, {
     }
     return this;
   }
-});
+}
 
 
 
@@ -275,7 +266,7 @@ Ra.XHR = Ra.klass();
 // Ra.XHR does not allow more than one active request at the time...
 Ra.XHR.activeRequest = false;
 
-Ra.extend(Ra.XHR.prototype, {
+Ra.XHR.prototype = {
 
   init: function(url, options) {
     this.initXHR(url, options);
@@ -362,7 +353,7 @@ Ra.extend(Ra.XHR.prototype, {
     if( this.options.queue )
       Ra.XHR.activeRequest = false;
   }
-});
+}
 
 
 
@@ -379,7 +370,7 @@ Ra.Form = Ra.klass();
 
 Ra.Form.preSerializers = [];
 
-Ra.extend(Ra.Form.prototype, {
+Ra.Form.prototype = {
 
   init: function(form, options) {
     // If no form is given we automagically wrap the FIRST form on page
@@ -476,7 +467,7 @@ Ra.extend(Ra.Form.prototype, {
     }
     return retVal;
   }
-});
+}
 
 
 
@@ -514,7 +505,7 @@ Ra.Ajax._startPumping = function() {
   }
 };
 
-Ra.extend(Ra.Ajax.prototype, {
+Ra.Ajax.prototype = {
   init: function(options) {
     this.options = Ra.extend({
 
@@ -590,7 +581,7 @@ Ra.extend(Ra.Ajax.prototype, {
   sliceRequest: function() {
     Ra.Ajax._activeRequests = Ra.Ajax._activeRequests.slice(1);
   }
-});
+}
 
 
 
@@ -635,7 +626,7 @@ Ra.E = function(el, options) {
 };
 
 
-Ra.extend(Ra.Effect.prototype, {
+Ra.Effect.prototype = {
 
   // CTOR
   init: function(element, options) {
@@ -684,6 +675,6 @@ Ra.extend(Ra.Effect.prototype, {
   render: function(pos) {
     this.options.onRender.call(this, pos);
   }
-});
+}
 
 
