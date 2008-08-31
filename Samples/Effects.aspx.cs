@@ -50,7 +50,7 @@ public partial class Effects : System.Web.UI.Page
     protected void btn4_Click(object sender, EventArgs e)
     {
         Effect effect = new EffectFadeIn(pnl2, 0.8M);
-        effect.Chained.Add(new EffectRollDown(pnl2, 0.8M, 200));
+        effect.Chained.Add(new EffectRollDown(200));
         effect.Render();
     }
 }
