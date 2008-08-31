@@ -22,6 +22,11 @@ namespace Ra.Widgets
 			_control = control;
 			_seconds = seconds;
 		}
+		
+		public Control Control
+		{
+			get { return _control; }
+		}
 
         public abstract string RenderChainedOnStart();
 

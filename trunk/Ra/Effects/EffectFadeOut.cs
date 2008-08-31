@@ -22,6 +22,17 @@ namespace Ra.Widgets
 			: base(null, 0.0M)
         { }
 
+		public override void Render ()
+		{
+			base.Render ();
+			RaWebControl tmp = this.Control as RaWebControl;
+			if (tmp != null)
+			{
+				tmp.Style["opacity", false] = "0";
+				tmp.Style["display", false] = "none";
+			}
+		}
+
         public override string RenderChainedOnStart()
         {
             return @"
@@ -34,6 +45,7 @@ namespace Ra.Widgets
         {
             return @"
     this.element.style.display = 'none';
+    this.element.setOpacity(0);
 ";
         }
 

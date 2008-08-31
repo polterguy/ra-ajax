@@ -21,6 +21,17 @@ namespace Ra.Widgets
         public EffectFadeIn()
 			: base(null, 0.0M)
 		{ }
+		
+		public override void Render ()
+		{
+			base.Render ();
+			RaWebControl tmp = this.Control as RaWebControl;
+			if (tmp != null)
+			{
+				tmp.Style["opacity", false] = "1.0";
+				tmp.Style["display", false] = "";
+			}
+		}
 
         public override string RenderChainedOnStart()
         {

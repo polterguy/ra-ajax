@@ -52,6 +52,17 @@ namespace Ra.Widgets
             _top = top;
         }
 
+		public override void Render ()
+		{
+			base.Render ();
+			RaWebControl tmp = this.Control as RaWebControl;
+			if (tmp != null)
+			{
+				tmp.Style["left", false] = _left.ToString() + "px";
+				tmp.Style["top", false] = _top.ToString() + "px";
+			}
+		}
+
         public override string RenderChainedOnStart()
         {
             return @"
