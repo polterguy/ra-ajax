@@ -28,6 +28,36 @@ namespace Ra.Widgets
         public abstract string RenderChainedOnFinished();
 
         public abstract string RenderChainedOnRender();
+		
+		private string RenderOnStart(Effect effect)
+		{
+			string retVal = this.RenderChainedOnStart();
+			foreach (Effect idx in Chained)
+			{
+				retVal += idx.RenderChainedOnStart();
+			}
+			return retVal;
+		}
+
+		private string RenderOnFinished(Effect effect)
+		{
+			string retVal = this.RenderChainedOnFinished();
+			foreach (Effect idx in Chained)
+			{
+				retVal += idx.RenderChainedOnFinished();
+			}
+			return retVal;
+		}
+
+		private string RenderOnRender(Effect effect)
+		{
+			string retVal = this.RenderChainedOnRender();
+			foreach (Effect idx in Chained)
+			{
+				retVal += idx.RenderChainedOnRender();
+			}
+			return retVal;
+		}
 
         public virtual void Render()
         {
@@ -36,15 +66,9 @@ namespace Ra.Widgets
 			// Control to update...
 			if (this._control == null || this._seconds == 0.0M)
 				throw new ArgumentException("Cannot have an effect which affects no Controls or lasts for zero period");
-            string onStart = RenderChainedOnStart();
-            string onFinished = RenderChainedOnFinished();
-            string onRender = RenderChainedOnRender();
-            foreach (Effect idx in Chained)
-            {
-                onStart += idx.RenderChainedOnStart();
-                onFinished += idx.RenderChainedOnFinished();
-                onRender += idx.RenderChainedOnRender();
-            }
+            string onStart = RenderOnStart(this);
+            string onFinished = RenderOnFinished(this);
+            string onRender = RenderOnRender(this);
             AjaxManager.Instance.WriterAtBack.WriteLine(@"
 Ra.E('{0}', {{
   onStart: function() {{{2}}},
