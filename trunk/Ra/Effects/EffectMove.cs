@@ -29,15 +29,25 @@ namespace Ra.Widgets
         }
 
         public EffectMove(Control control, decimal seconds)
-        {
-            _control = control;
-            _seconds = seconds;
-        }
+			: base(control, seconds)
+        { }
 
         public EffectMove(Control control, decimal seconds, int left, int top)
+			: base(control, seconds)
         {
-            _control = control;
-            _seconds = seconds;
+            _left = left;
+            _top = top;
+        }
+
+		// For chained effects
+        public EffectMove()
+			: base(null, 0.0M)
+        { }
+
+		// For chained effects
+        public EffectMove(int left, int top)
+			: base(null, 0.0M)
+        {
             _left = left;
             _top = top;
         }

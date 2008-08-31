@@ -16,9 +16,15 @@ namespace Ra.Widgets
         private int _toHeight;
 
         public EffectRollDown(Control control, decimal seconds, int toHeight)
+			: base(control, seconds)
         {
-            _control = control;
-            _seconds = seconds;
+            _toHeight = toHeight;
+        }
+
+		// for chained effects
+        public EffectRollDown(int toHeight)
+			: base(null, 0.0M)
+        {
             _toHeight = toHeight;
         }
 

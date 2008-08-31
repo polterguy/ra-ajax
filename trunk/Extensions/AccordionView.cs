@@ -71,6 +71,7 @@ namespace Ra.Extensions
             private Accordion _parent;
 
             public EffectChange(string idRemove, string idShow, Accordion parent)
+			: base(null, 0.0M)
             {
                 _idRemove = idRemove;
                 _idShow = idShow;

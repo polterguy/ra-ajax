@@ -16,9 +16,15 @@ namespace Ra.Widgets
         private int _fromHeight;
 
         public EffectRollUp(Control control, decimal seconds, int fromHeight)
+			: base(control, seconds)
         {
-            _control = control;
-            _seconds = seconds;
+            _fromHeight = fromHeight;
+        }
+
+		// For chained effects
+        public EffectRollUp(int fromHeight)
+			: base(null, 0.0M)
+        {
             _fromHeight = fromHeight;
         }
 

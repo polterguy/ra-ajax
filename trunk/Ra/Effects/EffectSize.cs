@@ -29,15 +29,25 @@ namespace Ra.Widgets
         }
 
         public EffectSize(Control control, decimal seconds)
-        {
-            _control = control;
-            _seconds = seconds;
-        }
+			: base(control, seconds)
+        { }
 
         public EffectSize(Control control, decimal seconds, int height, int width)
+			: base(control, seconds)
         {
-            _control = control;
-            _seconds = seconds;
+            _height = height;
+            _width = width;
+        }
+
+		// For chained effects
+        public EffectSize()
+			: base(null, 0.0M)
+        { }
+
+		// For chained effects
+        public EffectSize(int height, int width)
+			: base(null, 0.0M)
+        {
             _height = height;
             _width = width;
         }

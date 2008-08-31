@@ -14,10 +14,13 @@ namespace Ra.Widgets
     public class EffectFadeIn : Effect
     {
         public EffectFadeIn(Control control, decimal seconds)
-        {
-            _control = control;
-            _seconds = seconds;
-        }
+			: base(control, seconds)
+		{ }
+
+		// For chained effects
+        public EffectFadeIn()
+			: base(null, 0.0M)
+		{ }
 
         public override string RenderChainedOnStart()
         {

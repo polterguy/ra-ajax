@@ -14,8 +14,14 @@ namespace Ra.Widgets
 {
     public abstract class Effect
     {
-        protected Control _control;
-        protected decimal _seconds;
+        private Control _control;
+        private decimal _seconds;
+		
+		protected Effect(Control control, decimal seconds)
+		{
+			_control = control;
+			_seconds = seconds;
+		}
 
         public abstract string RenderChainedOnStart();
 
@@ -25,6 +31,11 @@ namespace Ra.Widgets
 
         public virtual void Render()
         {
+			// If the if sentence below kicks in then this is NOT a chained effect rendering
+			// which is the only place where it makes sense to have zero seconds and/or no
+			// Control to update...
+			if (this._control == null || this._seconds == 0.0M)
+				throw new ArgumentException("Cannot have an effect which affects no Controls or lasts for zero period");
             string onStart = RenderChainedOnStart();
             string onFinished = RenderChainedOnFinished();
             string onRender = RenderChainedOnRender();

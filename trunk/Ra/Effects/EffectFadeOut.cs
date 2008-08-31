@@ -14,10 +14,13 @@ namespace Ra.Widgets
     public class EffectFadeOut : Effect
     {
         public EffectFadeOut(Control control, decimal seconds)
-        {
-            _control = control;
-            _seconds = seconds;
-        }
+			: base(control, seconds)
+        { }
+
+		// For chained effects
+        public EffectFadeOut()
+			: base(null, 0.0M)
+        { }
 
         public override string RenderChainedOnStart()
         {
