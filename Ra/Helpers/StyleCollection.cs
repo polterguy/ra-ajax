@@ -49,10 +49,34 @@ namespace Ra.Widgets
             }
         }
 
-        public string this[string idx]
+		// This one is mostly ment for Control Developers or Effect Developers since
+		// if the last parameter is false it will not render the changes through the JSON
+		// logic but it WILL render the changes into the ViewState.
+		// This is useful for scenarios where you have e.g. an Effect which "effectively" do change
+		// the Style collection but does it indirectly so that you don't really want
+		// the changes to be sent over the JSON mechanism.
+		// This is used in among other places at the different effects in Ra-Ajax
+        public string this[string idx, bool sendChanges]
         {
-            get
+            set
             {
+				if (this[idx] == value)
+					return;
+                bool shouldJson = !_beforeViewStateDictionary.ContainsKey(idx) || _beforeViewStateDictionary[idx] != value;
+                _beforeViewStateDictionary[idx] = value;
+                if (_trackingViewState)
+                {
+                    if (shouldJson && sendChanges)
+                        _jsonChanges[idx] = value;
+                    _afterViewStateDictionary[idx] = value;
+                }
+            }
+        }
+		
+		public string this[string idx]
+		{
+			get
+			{
                 // Easy validation
                 if (idx.ToLower() != idx)
                     throw new ApplicationException("Cannot have a style property which contains uppercase letters");
@@ -62,21 +86,9 @@ namespace Ra.Widgets
                 if (_afterViewStateDictionary.ContainsKey(idx))
                     return _afterViewStateDictionary[idx];
                 return null;
-            }
-            set
-            {
-				if (this[idx] == value)
-					return;
-                bool shouldJson = !_beforeViewStateDictionary.ContainsKey(idx) || _beforeViewStateDictionary[idx] != value;
-                _beforeViewStateDictionary[idx] = value;
-                if (_trackingViewState)
-                {
-                    if (shouldJson)
-                        _jsonChanges[idx] = value;
-                    _afterViewStateDictionary[idx] = value;
-                }
-            }
-        }
+			}
+			set { this[idx, true] = value; }
+		}
 
         public string this[Styles idx]
         {

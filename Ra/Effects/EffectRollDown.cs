@@ -28,11 +28,20 @@ namespace Ra.Widgets
             _toHeight = toHeight;
         }
 
+		public override void Render ()
+		{
+			base.Render ();
+			RaWebControl tmp = this.Control as RaWebControl;
+			if (tmp != null)
+			{
+				tmp.Style["height", false] = _toHeight.ToString() + "px";
+			}
+		}
+
         public override string RenderChainedOnStart()
         {
             return @"
     this.element.style.height = '0px';
-    this.element.style.display = '';
 ";
         }
 

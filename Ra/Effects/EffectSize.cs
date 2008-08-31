@@ -52,6 +52,17 @@ namespace Ra.Widgets
             _width = width;
         }
 
+		public override void Render ()
+		{
+			base.Render ();
+			RaWebControl tmp = this.Control as RaWebControl;
+			if (tmp != null)
+			{
+				tmp.Style["height", false] = this._height.ToString() + "px";
+				tmp.Style["width", false] = this._width.ToString() + "px";
+			}
+		}
+
         public override string RenderChainedOnStart()
         {
             return @"

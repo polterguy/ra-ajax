@@ -28,6 +28,17 @@ namespace Ra.Widgets
             _fromHeight = fromHeight;
         }
 
+		public override void Render ()
+		{
+			base.Render ();
+			RaWebControl tmp = this.Control as RaWebControl;
+			if (tmp != null)
+			{
+				tmp.Style["height", false] = "0px";
+				tmp.Style["display", false] = "none";
+			}
+		}
+
         public override string RenderChainedOnStart()
         {
             return string.Format(@"
@@ -41,6 +52,7 @@ namespace Ra.Widgets
         {
             return @"
     this.element.style.display = 'none';
+    this.element.style.height = '0px'
 ";
         }
 
