@@ -134,14 +134,15 @@ img
 .blog
 {
 	width:500px;
-	font-family: verdana, tahoma, arial, sans-serif;
+	font-family: "Lucida Grande", "Lucida Sans Unicode", verdana, tahoma, arial, sans-serif;
 	line-height:1.6em;
-	font-size:76%;
+	font-size:80%;
+	color:#333333;
 }
 
 .blog h1
 {
-	font-size:1.4em;
+	font-size:1.3em;
 }
 
 .blog h2
