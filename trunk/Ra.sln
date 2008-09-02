@@ -21,6 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceCacher", "ResourceC
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "C:\...\Samples\", "Samples\", "{3522C0C4-2191-4FC1-AE82-B46E7B31BBF6}"
 	ProjectSection(WebsiteProperties) = preProject
+		ProjectReferences = "{82727C73-0B10-4F58-93F4-841E9397302C}|Ra.dll;{DA39B87F-8E68-4461-9C24-5778921497A5}|Extensions.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/Samples"
 		Debug.AspNetCompiler.PhysicalPath = "Samples\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Samples\"
