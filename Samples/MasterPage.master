@@ -76,76 +76,76 @@ pageTracker._trackPageview();
                     </ul>
                     <ul class="links">
                         <li>
-                            <a runat="server" href="~">Ra-Ajax Samples - Start Here</a>
+                            <a runat="server" href="~">Samples Start Page</a>
                         </li>
                         <li>
-                            <a href="Flexible.aspx">Ra-Ajax Samples - Event System</a>
+                            <a href="Flexible.aspx">Ra-Ajax - Event System</a>
                         </li>
                         <li>
-                            <a href="Effects.aspx">Ra-Ajax Samples - Effects</a>
+                            <a href="Effects.aspx">Ra-Ajax - Effects</a>
                         </li>
                         <li>
-                            <a href="Combining.aspx">Ra-Ajax Samples - Combining</a>
+                            <a href="Combining.aspx">Ra-Ajax - Combining Controls</a>
                         </li>
                         <li>
-                            <a href="Dynamic.aspx">Ra-Ajax Samples - Dynamic Controls</a>
+                            <a href="Dynamic.aspx">Ra-Ajax - Dynamic Controls</a>
                         </li>
                         <li>
-                            <a href="Ajax-Comet.aspx">Ra-Ajax Samples - Comet</a>
+                            <a href="Ajax-Comet.aspx">Ra-Ajax - Comet</a>
                         </li>
                         <li>
-                            <a href="Ajax-Button.aspx">Ra-Ajax Samples - Button</a>
+                            <a href="Ajax-Button.aspx">Ra-Ajax - Button</a>
                         </li>
                         <li>
-                            <a href="Ajax-CheckBox.aspx">Ra-Ajax Samples - CheckBox</a>
+                            <a href="Ajax-CheckBox.aspx">Ra-Ajax - CheckBox</a>
                         </li>
                         <li>
-                            <a href="Ajax-DropDownList.aspx">Ra-Ajax Samples - DropDownList</a>
+                            <a href="Ajax-DropDownList.aspx">Ra-Ajax - DropDownList</a>
                         </li>
                         <li>
-                            <a href="Ajax-HiddenField.aspx">Ra-Ajax Samples - HiddenField</a>
+                            <a href="Ajax-HiddenField.aspx">Ra-Ajax - HiddenField</a>
                         </li>
                         <li>
-                            <a href="Ajax-Image.aspx">Ra-Ajax Samples - Image</a>
+                            <a href="Ajax-Image.aspx">Ra-Ajax - Image</a>
                         </li>
                         <li>
-                            <a href="Ajax-ImageButton.aspx">Ra-Ajax Samples - ImageButton</a>
+                            <a href="Ajax-ImageButton.aspx">Ra-Ajax - ImageButton</a>
                         </li>
                         <li>
-                            <a href="Ajax-Label.aspx">Ra-Ajax Samples - Labels</a>
+                            <a href="Ajax-Label.aspx">Ra-Ajax - Label</a>
                         </li>
                         <li>
-                            <a href="Ajax-LinkButton.aspx">Ra-Ajax Samples - LinkButton</a>
+                            <a href="Ajax-LinkButton.aspx">Ra-Ajax - LinkButton</a>
                         </li>
                         <li>
-                            <a href="Ajax-Panel.aspx">Ra-Ajax Samples - Panel</a>
+                            <a href="Ajax-Panel.aspx">Ra-Ajax - Panel</a>
                         </li>
                         <li>
-                            <a href="Ajax-RadioButton.aspx">Ra-Ajax Samples - RadioButton</a>
+                            <a href="Ajax-RadioButton.aspx">Ra-Ajax - RadioButton</a>
                         </li>
                         <li>
-                            <a href="Ajax-TextArea.aspx">Ra-Ajax Samples - TextArea</a>
+                            <a href="Ajax-TextArea.aspx">Ra-Ajax - TextArea</a>
                         </li>
                         <li>
-                            <a href="Ajax-TextBox.aspx">Ra-Ajax Samples - TextBox</a>
+                            <a href="Ajax-TextBox.aspx">Ra-Ajax - TextBox</a>
                         </li>
                         <li>
-                            <a href="Ajax-Accordion.aspx">Ra-Ajax Samples - Accordion</a>
+                            <a href="Ajax-Accordion.aspx">Ra-Ajax - Accordion</a>
                         </li>
                         <li>
-                            <a href="Ajax-Calendar.aspx">Ra-Ajax Samples - Calendar</a>
+                            <a href="Ajax-Calendar.aspx">Ra-Ajax - Calendar</a>
                         </li>
                         <li>
-                            <a href="Ajax-InPlaceEdit.aspx">Ra-Ajax Samples - InPlaceEdit</a>
+                            <a href="Ajax-InPlaceEdit.aspx">Ra-Ajax - InPlaceEdit</a>
                         </li>
                         <li>
-                            <a href="Ajax-RichEdit.aspx">Ra-Ajax Samples - RichEdit</a>
+                            <a href="Ajax-RichEdit.aspx">Ra-Ajax - RichEdit</a>
                         </li>
                         <li>
-                            <a href="Ajax-Timer.aspx">Ra-Ajax Samples - Timer</a>
+                            <a href="Ajax-Timer.aspx">Ra-Ajax - Timer</a>
                         </li>
                         <li>
-                            <a href="Ajax-TabControl.aspx">Ra-Ajax Samples - TabControl</a>
+                            <a href="Ajax-TabControl.aspx">Ra-Ajax - TabControl</a>
                         </li>
                     </ul>
                 </div>
@@ -176,15 +176,15 @@ pageTracker._trackPageview();
                             Ra-Ajax is Open Source (LGPL) and free of charge to use. It is written as an implementation of my 
                             <a href="http://ra-ajax.org/how-to-create-an-ajax-library-part-1-decisions.blog">How to create an Ajax Library book</a>
                             and can freely be used in commercial/proprietary projects for free. It can be downloaded 
-                            <a href="http://code.google.com/p/ra-ajax/">here</a>. Send me <a href="mailto:thomas@ra-ajax.org">email</a>
-                            if you would like to participate in the development of it :)
+                            <a href="http://code.google.com/p/ra-ajax/">here</a>. Send me an <a href="mailto:thomas@ra-ajax.org">email</a>
+                            if you would like to participate in its development :)
                         </em>
                     </p>
                     <p>
                         <em>
                             All the content (written text) at this webpage is licensed under the 
                             <a href="http://www.gnu.org/copyleft/fdl.html">GNU Free Documentation License</a>
-                            which means you are *encouraged* to copy/modify/redistribute and so on the text
+                            which means you are *encouraged* to copy, modify and redistribute the text
                             portions of this page under the terms of the GFDL.
                         </em>
                     </p>

@@ -4,6 +4,24 @@
 	padding:0;
 }
 
+body, div, table
+{
+	font-family: "Lucida Grande", "Lucida Sans Unicode", verdana, tahoma, arial, sans-serif;
+	line-height:1.6em;
+	font-size:93%;
+	color:#333333;
+}
+
+h1
+{
+	font-size:x-large;
+}
+
+h2
+{
+	font-size:large;
+}
+
 img
 {
 	border:none;
@@ -41,6 +59,9 @@ a
 
 .showCodeDiv
 {
+	line-height:1em;
+	font-size:medium;
+	color:#333333;
 	top:259px;
 	left:16px;
 	width:1024px;
@@ -73,7 +94,7 @@ a
 .links
 {
 	list-style-type:none;
-	font-size:smaller;
+	font-size:85%;
 }
 
 .links a
