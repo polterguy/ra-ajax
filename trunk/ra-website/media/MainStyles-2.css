@@ -35,6 +35,9 @@ img
 
 .showCodeDiv
 {
+	line-height:1em;
+	font-size:medium;
+	color:#333333;
 	top:259px;
 	left:16px;
 	width:1024px;
