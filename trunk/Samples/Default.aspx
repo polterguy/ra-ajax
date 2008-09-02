@@ -114,7 +114,6 @@
     <p>
         Ra.Control.$('ctl00_cnt1_pnl').handleJSON({"AddStyle":[["backgroundColor","Yellow"]]});
     </p>
-    <br />
     <h2>JavaScript - The best Assembly Language of the century!</h2>
     <p>
         JavaScript is a great language, I personally LOVE it but most application developers have enough worries with
