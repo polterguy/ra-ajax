@@ -37,7 +37,7 @@ img
 {
 	line-height:1em;
 	font-size:medium;
-	color:#333333;
+	color:#222;
 	top:259px;
 	left:16px;
 	width:1024px;
@@ -70,7 +70,7 @@ img
 .links
 {
 	list-style-type:none;
-	font-size:smaller;
+	font-size:85%;
 }
 
 .links a
@@ -140,7 +140,7 @@ img
 	font-family: "Lucida Grande", "Lucida Sans Unicode", verdana, tahoma, arial, sans-serif;
 	line-height:1.6em;
 	font-size:80%;
-	color:#333333;
+	color:#222;
 }
 
 .blog h1
