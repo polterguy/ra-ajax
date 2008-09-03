@@ -57,9 +57,9 @@
         AccessKey="J"
         Text="Click me too" />
     <p>
-        And as normal no JavaScript knowledge is required to use these constructs, take a look at 
-        the source code for this page by clicking the "Show code" button at the top/right corner.
-        Also this is just a small subset of the Ajax Effects that exists in Ra-Ajax.
+        And as usual with Ra-Ajax, no JavaScript knowledge is required to use these constructs, take a look at 
+        the source code for this page by clicking the "Show code" button at the top right corner.
+        Also this is just a small subset of the Ajax Effects which exist in Ra-Ajax.
     </p>
     <p>
         And you can see here that we've created our Effects in the Click event handler of a button.
@@ -70,10 +70,9 @@
     <h2>Moving focus around</h2>
     <p>
         Notice another little nifty thing which is that in this sample we're also moving the Focus 
-        around to exactly the button we want. This too is done in C# on the server-side. This can
-        be seen by that you can actually just click space on your keyboard instead of having to
-        use your mouse to click the buttons. You can move focus around in Ra-Ajax pages exactly
-        as you wish.
+        around to exactly the button we want. This too is done in C# on the server-side. This means
+        that you can simply press space on your keyboard instead of having to use your mouse to click 
+        the buttons. You can move focus around in Ra-Ajax pages exactly as you wish.
     </p>
     <br />
     <h2>Ajax with Keyboard Shortcuts</h2>
@@ -89,10 +88,10 @@
     <p>
         Sometimes you want to run more than one Effect on the same element, like for instance you have
         an invisible Panel and you want to show that Panel with both the EffectRollDown and the
-        EffectFadeIn. This will if you just create them both and let them both run as normally
+        EffectFadeIn. If you just create them both and let them both run normally, this will 
         often create a jagging effect which doesn't look nice. If you instead <em>chain</em> the
-        effects it will most often appear much smoother. An example is given below. Click the
-        "Show Code" button to see how the code to accomplish something like that is.
+        effects, it will most often appear much smoother. An example is given below. Click the
+        "Show Code" button to see the code written to accomplish something like this.
     </p>
     <ra:Button 
         runat="server" 

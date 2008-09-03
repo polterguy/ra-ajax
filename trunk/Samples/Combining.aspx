@@ -26,19 +26,19 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Combining Ra Ajax Controls</h1>
+    <h1>Ra Ajax Samples - Combining Ra Ajax Controls</h1>
     <p>
         Much of the point in Ra-Ajax isn't really apparent before you understand how easy it is to
-        <em>combine the Ra-Ajax Controls</em> within. By combining Ra-Ajax controls you can create 
-        far more complex controls. Either as standalone server-side controls and thereby re-using 
+        <em>combine the Ra-Ajax Controls</em>. By combining Ra-Ajax controls, you can create 
+        far more complex controls. Either as standalone server-side controls and thereby reusing 
         them in all your projects, or by combining them inline on your .ASPX page or maybe in a 
-        UserControl to get some mini re-use within your projects.
+        UserControl to get some reusability within your projects.
     </p>
     <br />
     <h2>Ra-Ajax and UserControls</h2>
     <p>
-        The below is an example of a UserControl which is created for reuse within your project.
-        Normally this is very useful if you have some Constructs which you need to reuse inside 
+        Below is an example of a UserControl which is created for reuse within your project.
+        Normally this is very useful if you have some constructs which you need to reuse inside 
         of your project only.
     </p>
     <dataRetriever:Combining 
@@ -47,7 +47,7 @@
         OnSaved="uc_Saved" />
     <ra:Label 
         runat="server" 
-        style="font-style:italic;color:#999;"
+        style="color:#33f;"
         ID="lblResults" />
     <br />
     <br />
@@ -64,24 +64,24 @@
     <br />
     <ra:Label 
         runat="server" 
-        style="font-style:italic;color:#999;"
+        style="color:#33f;"
         ID="selectedDate" />
     <p>
-        In fact the above <em>Ajax Calendar Control</em> is entirely built purely as a server-side 
+        In fact, the above <em>Ajax Calendar Control</em> is entirely built purely as a server-side 
         Ajax Control, reusing only existing Ra-Ajax Controls like <em>LinkButton, Panel, Label, DropDownList</em>
-        and so on. So you don't even have to know JavaScript for creating your own Ajax Extension controls :)
+        and so on. So you don't even have to know JavaScript to create your own Ajax Extension controls :)
         <br />
         <em>(though sometimes it helps to know JavaScript and sometimes you will need it ;)</em>
     </p>
     <p>
-        The above <em>Ajax Calendar</em> is also included as part of the Ra-Ajax Extension project.
+        The above <em>Ajax Calendar</em> is also included as part of the Ra-Ajax Extensions project.
     </p>
     <br />
-    <h2>Let us know...</h2>
+    <h2>Let Us Know</h2>
     <p>
-        ...by sending us and <a href="mailto:thomas@ra-ajax.org">email</a> if you create really cool extension 
-        widgets and want to license them as Open Source so that we can link to your website or maybe even add 
-        it into the main Ra-Ajax project :)
+        If you create a really cool extension widget and want to license it as Open Source, let us know. Send 
+        us an <a href="mailto:thomas@ra-ajax.org">email</a> so that we can link to your website or maybe even add 
+        it to the Ra-Ajax Extensions project :)
     </p>
     <a href="Dynamic.aspx">On to "Dynamic Ajax Controls"...</a>
 </asp:Content>
