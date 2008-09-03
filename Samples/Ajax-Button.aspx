@@ -16,7 +16,7 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ajax Button Sample</h1>
+    <h1>Ra Ajax Samples - Button</h1>
     <p>
         I will try to create one simple and easy to understand sample of every control there is in Ra-Ajax.
         This is the <em>Ajax Button</em> example.
@@ -30,16 +30,16 @@
         Text="Ajax Button" />
     <p>
         As you can see we have here created Event Handlers for <em>OnClick, OnMouseOut and OnMouseOver</em>.
-        In addition the button also have events for <em>Focused and Blur</em>. If you try to move the mouse
+        In addition the button also has events for <em>Focus and Blur</em>. If you try to move the mouse
         over the button you will see that it changes text to "mouseover" while if you try to move the
         mouse out it will yet again change to "mouseout" and when clicked it will show the text "clicked".
-        In addition the <em>OnClick</em> event handler will manipulate the styles changing the background-color
+        In addition the <em>OnClick</em> event handler will manipulate the styles, changing the background color
         of the button to Yellow.
     </p>
     <br />
     <h2>CSS Styles and Ra-Ajax</h2>
     <p>
-        In addition the <em>Ra-Ajax Button</em> as most other Ajax Controls in Ra-Ajax  also have a style 
+        In addition, the <em>Ra-Ajax Button</em>, as most other Ra-Ajax Controls, has a style 
         collection through its "Style" or "style" property. The <em>style</em> property just maps to the 
         CSS styles and you can set any CSS style you wish here. A small subset of different styles are 
         given here for references, but for a more exhaustive reference I would encourage you to go to e.g. 
@@ -54,7 +54,7 @@
         <li>top - (number + unit (px, % etc))</li>
     </ul>
     <p>
-        These styles will then be transformed to the JS DOM counterpart when sent across back to the client
+        These styles will then be transformed to their JS DOM counterparts when sent to the client,
         which means that e.g. <em>background-color</em> will become <em>backgroundColor</em>. This is a general
         pattern for being able to set styles through JavaScript code. After the transformation and when the Ajax 
         Request is finished they will be transfered back to the client as JSON which again maps to the Style
