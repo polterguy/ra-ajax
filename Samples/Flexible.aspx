@@ -16,7 +16,7 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ra Ajax Samples - Flexible Controls</h1>
+    <h1>Ra Ajax Samples - Event System</h1>
     <p>
         Normally in ASP.NET WebControls you would expect a Button to have OnClick and mostly no
         other Event Handler. In Ra-Ajax all the Ajax Controls have tons of other event handlers
@@ -68,7 +68,7 @@
     <div style="height:100px;">&nbsp;</div>
     <p>
         This makes it very easy to create "advanced functionality". Now by adding a little bit of <em>Ajax Effects</em>
-        in addition this of course becomes even more interesting...
+        in addition, this becomes even more interesting...
     </p>
     <a href="Effects.aspx">On to "Ajax Effects"...</a>
 </asp:Content>

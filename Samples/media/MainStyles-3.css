@@ -34,6 +34,22 @@ a
 	color:Blue;
 }
 
+a:hover
+{
+	text-decoration:underline;
+	color:#000;
+}
+
+pre
+{
+	padding:5px;
+	margin:5px;
+	/* background-color:#ee7; */
+	border:dotted 1px #000;
+	font-size:1.2em;
+	line-height:1.0em;
+}
+
 #contentPlusBorders
 {
 	width:1056px;
@@ -218,7 +234,7 @@ a
 .calendar
 {
 	background:Transparent url(calendar.png) no-repeat;
-	font-size:0.7em;
+	font-size:0.8em;
 	display:inline-block;
 	border:outset 4px #999;
 	/* IE hack */
