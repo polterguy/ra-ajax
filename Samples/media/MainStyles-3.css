@@ -9,7 +9,8 @@ body, div, table
 	font-family: "Lucida Grande", "Lucida Sans Unicode", verdana, tahoma, arial, sans-serif;
 	line-height:1.6em;
 	font-size:93%;
-	color:#333333;
+	color:#222;
+	text-align:justify;
 }
 
 h1
@@ -61,7 +62,7 @@ a
 {
 	line-height:1em;
 	font-size:medium;
-	color:#333333;
+	color:#222;
 	top:259px;
 	left:16px;
 	width:1024px;
