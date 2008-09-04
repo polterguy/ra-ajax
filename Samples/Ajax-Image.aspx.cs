@@ -19,9 +19,9 @@ public partial class AjaxImage : System.Web.UI.Page
     protected void btn_Click(object sender, EventArgs e)
     {
         img.ImageUrl = 
-            img.ImageUrl == "media/Pooh_Shepard_1926.png" ?
-                "media/180px-Winniethepooh.png" : 
-                "media/Pooh_Shepard_1926.png";
+            img.ImageUrl == "media/flower1.jpg" ?
+                "media/flower2.jpg" : 
+                "media/flower1.jpg";
     }
 
     // If you can get to call this method you will get $100 :)
