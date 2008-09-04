@@ -119,8 +119,8 @@
     </p>
     <p>
         If you are still using ASP.NET Ajax and UpdatePanels, 
-        <a href="http://code.google.com/p/ra-ajax">Download Ra-Ajax</a> and give it a quick try. We think you will like it
-        instantly.
+        <a href="http://code.google.com/p/ra-ajax">Download Ra-Ajax</a> and give it a quick try. We think you 
+        will never look back.
     </p>
     <a href="Ajax-Image.aspx">On to Ajax Image</a>
 </asp:Content>
