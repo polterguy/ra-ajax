@@ -4,7 +4,7 @@
     AutoEventWireup="true" 
     CodeFile="Ajax-LinkButton.aspx.cs" 
     Inherits="AjaxLinkButton" 
-    Title="Ajax LinkButton Sample" %>
+    Title="Ra-Ajax LinkButton Sample" %>
 
 <%@ Register 
     Assembly="Ra" 

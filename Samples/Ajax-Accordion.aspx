@@ -4,7 +4,7 @@
     AutoEventWireup="true" 
     CodeFile="Ajax-Accordion.aspx.cs" 
     Inherits="AjaxAccordion" 
-    Title="Ajax Accordion Sample" %>
+    Title="Ra-Ajax Accordion Sample" %>
 
 <%@ Register 
     Assembly="Ra" 

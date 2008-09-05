@@ -4,7 +4,7 @@
     AutoEventWireup="true" 
     CodeFile="Ajax-Image.aspx.cs" 
     Inherits="AjaxImage" 
-    Title="Ajax Image Sample" %>
+    Title="Ra-Ajax Image Sample" %>
 
 <%@ Register 
     Assembly="Ra" 

@@ -4,7 +4,7 @@
     AutoEventWireup="true" 
     CodeFile="Ajax-TabControl.aspx.cs" 
     Inherits="AjaxTabControl" 
-    Title="Ajax TabControl Sample" %>
+    Title="Ra-Ajax TabControl Sample" %>
 
 <%@ Register 
     Assembly="Ra" 

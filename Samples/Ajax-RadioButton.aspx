@@ -4,7 +4,7 @@
     AutoEventWireup="true" 
     CodeFile="Ajax-RadioButton.aspx.cs" 
     Inherits="AjaxRadioButton" 
-    Title="Ajax RadioButton Sample" %>
+    Title="Ra-Ajax RadioButton Sample" %>
 
 <%@ Register 
     Assembly="Ra" 

@@ -5,7 +5,7 @@
     CodeFile="Ajax-Comet.aspx.cs" 
     Async="true" 
     Inherits="AjaxComet" 
-    Title="Ajax Comet Sample" %>
+    Title="Ra-Ajax Comet Sample" %>
 
 <%@ Register 
     Assembly="Ra" 

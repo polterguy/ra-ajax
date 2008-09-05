@@ -4,7 +4,7 @@
     AutoEventWireup="true" 
     CodeFile="Effects.aspx.cs" 
     Inherits="Effects" 
-    Title="Ra Ajax Effects" %>
+    Title="Ra-Ajax Effects" %>
 
 <%@ Register 
     Assembly="Ra" 

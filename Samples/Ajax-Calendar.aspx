@@ -4,7 +4,7 @@
     AutoEventWireup="true" 
     CodeFile="Ajax-Calendar.aspx.cs" 
     Inherits="AjaxCalendar" 
-    Title="Ajax Calendar Sample" %>
+    Title="Ra-Ajax Calendar Sample" %>
 
 <%@ Register 
     Assembly="Ra" 

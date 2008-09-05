@@ -4,7 +4,7 @@
     AutoEventWireup="true" 
     CodeFile="Ajax-InPlaceEdit.aspx.cs" 
     Inherits="AjaxInPlaceEdit" 
-    Title="Ajax InPlaceEdit Sample" %>
+    Title="Ra-Ajax InPlaceEdit Sample" %>
 
 <%@ Register 
     Assembly="Ra" 

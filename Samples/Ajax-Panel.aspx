@@ -4,7 +4,7 @@
     AutoEventWireup="true" 
     CodeFile="Ajax-Panel.aspx.cs" 
     Inherits="AjaxPanel" 
-    Title="Ajax Panel Sample" %>
+    Title="Ra-Ajax Panel Sample" %>
 
 <%@ Register 
     Assembly="Ra" 

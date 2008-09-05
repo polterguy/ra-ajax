@@ -4,7 +4,7 @@
     AutoEventWireup="true" 
     CodeFile="Default.aspx.cs" 
     Inherits="_Default" 
-    Title="Ra Ajax Samples" %>
+    Title="Ra-Ajax Samples" %>
 
 <%@ Register 
     Assembly="Ra" 

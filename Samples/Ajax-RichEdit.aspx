@@ -5,7 +5,7 @@
     AutoEventWireup="true" 
     CodeFile="Ajax-RichEdit.aspx.cs" 
     Inherits="AjaxRichEdit" 
-    Title="Ajax RichEdit Sample" %>
+    Title="Ra-Ajax RichEdit Sample" %>
 
 <%@ Register 
     Assembly="Ra" 
