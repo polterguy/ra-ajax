@@ -4,7 +4,7 @@
     AutoEventWireup="true" 
     CodeFile="Ajax-Timer.aspx.cs" 
     Inherits="AjaxTimer" 
-    Title="Ajax Timer Sample" %>
+    Title="Ra-Ajax Timer Sample" %>
 
 <%@ Register 
     Assembly="Ra" 

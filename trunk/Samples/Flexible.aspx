@@ -4,7 +4,7 @@
     AutoEventWireup="true" 
     CodeFile="Flexible.aspx.cs" 
     Inherits="Flexible" 
-    Title="Ra Ajax Flexibility" %>
+    Title="Ra-Ajax Flexibility" %>
 
 <%@ Register 
     Assembly="Ra" 

@@ -4,7 +4,7 @@
     AutoEventWireup="true" 
     CodeFile="Ajax-ImageButton.aspx.cs" 
     Inherits="AjaxImageButton" 
-    Title="Ajax ImageButton Sample" %>
+    Title="Ra-Ajax ImageButton Sample" %>
 
 <%@ Register 
     Assembly="Ra" 

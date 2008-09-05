@@ -4,7 +4,7 @@
     AutoEventWireup="true" 
     CodeFile="Ajax-Label.aspx.cs" 
     Inherits="AjaxLabel" 
-    Title="Ajax Label Sample" %>
+    Title="Ra-Ajax Label Sample" %>
 
 <%@ Register 
     Assembly="Ra" 

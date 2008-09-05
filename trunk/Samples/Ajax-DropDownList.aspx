@@ -4,7 +4,7 @@
     AutoEventWireup="true" 
     CodeFile="Ajax-DropDownList.aspx.cs" 
     Inherits="AjaxDropDownList" 
-    Title="Ajax DropDownList Sample" %>
+    Title="Ra-Ajax DropDownList Sample" %>
 
 <%@ Register 
     Assembly="Ra" 

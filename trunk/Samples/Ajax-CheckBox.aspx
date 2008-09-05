@@ -4,7 +4,7 @@
     AutoEventWireup="true" 
     CodeFile="Ajax-CheckBox.aspx.cs" 
     Inherits="AjaxCheckBox" 
-    Title="Ajax CheckBox Sample" %>
+    Title="Ra-Ajax CheckBox Sample" %>
 
 <%@ Register 
     Assembly="Ra" 

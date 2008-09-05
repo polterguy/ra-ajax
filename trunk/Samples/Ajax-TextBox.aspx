@@ -4,7 +4,7 @@
     AutoEventWireup="true" 
     CodeFile="Ajax-TextBox.aspx.cs" 
     Inherits="AjaxTextBox" 
-    Title="Ajax TextBox Sample" %>
+    Title="Ra-Ajax TextBox Sample" %>
 
 <%@ Register 
     Assembly="Ra" 

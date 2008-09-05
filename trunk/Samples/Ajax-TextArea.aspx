@@ -4,7 +4,7 @@
     AutoEventWireup="true" 
     CodeFile="Ajax-TextArea.aspx.cs" 
     Inherits="AjaxTextArea" 
-    Title="Ajax TextArea Sample" %>
+    Title="Ra-Ajax TextArea Sample" %>
 
 <%@ Register 
     Assembly="Ra" 

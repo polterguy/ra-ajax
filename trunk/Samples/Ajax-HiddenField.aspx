@@ -4,7 +4,7 @@
     AutoEventWireup="true" 
     CodeFile="Ajax-HiddenField.aspx.cs" 
     Inherits="AjaxHiddenField" 
-    Title="Ajax HiddenField Sample" %>
+    Title="Ra-Ajax HiddenField Sample" %>
 
 <%@ Register 
     Assembly="Ra" 
