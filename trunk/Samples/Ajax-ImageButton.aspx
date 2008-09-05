@@ -35,8 +35,11 @@
         ID="lblResults" 
         Text="Watch me change" 
         style="color:#33f;" />
-    <br />
-    <br />
+    <p style="font-size:90%;color:#666;">
+        The above flower image is taken from <em>flickr.com</em> 
+        <a href="http://www.flickr.com/photos/kjunstorm/1562198683/sizes/s/">here</a>. It is
+        licenced under a <a href="http://creativecommons.org/licenses/by/2.0/deed.en">Creative Commons license</a>.
+    </p>
     <h2>Ra-Ajax and Open Standards</h2>
     <p>
         Ra-Ajax follows the Open Standards given by W3C on everything. This might sound foolish
