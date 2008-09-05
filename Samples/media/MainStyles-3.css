@@ -66,6 +66,7 @@ pre
 	position:absolute;
 	right:65px;
 	top:5px;
+	text-align:right;
 }
 
 #logoPartDiv
@@ -77,7 +78,7 @@ pre
 .showCodeDiv
 {
 	line-height:1em;
-	font-size:medium;
+	font-size:small;
 	color:#222;
 	top:259px;
 	left:16px;

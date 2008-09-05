@@ -18,7 +18,7 @@
 
     <h1>Ra Ajax Samples - Label</h1>
     <p>
-        An <em>Ajax Label</em> is basically a wrapper around a <em>&lt;span...</em> element. And although
+        An <em>Ajax Label</em> is basically a wrapper around a <em>span</em> element. And although
         you have seen Ajax Labels in many of the samples so far, I still want to give you a 
         <em>reference example of an Ajax Label</em> so that you can have one place to go to for certainty
         when wondering about how the Ajax Label works.
@@ -39,7 +39,7 @@
     </p>
     <p>
         The Ajax Label is a "passive" control which means it doesn't have the possibility of initiating
-        Ajax Requests itself. Though from any other Ajax Request, like the one from the Button above
+        Ajax Requests itself. Though from any other Ajax Request, like the one initiated by clicking the Button above,
         you can change all the properties of the Label as you wish. In the above example however, we're
         just changing the Text property of the Label and then toggling between bold and normal font-weight.
     </p>
@@ -50,7 +50,7 @@
     <p>
         Ra-Ajax has a very nice feature that is borrowed from <a href="http://anthemdotnet.com/">Anthem.NET</a>.
         If an Ajax Control, like the Ajax Label below, is rendered invisible, then that label
-        will not occupy any space at all in the DOM, except for a "generic" <em>&lt;span element</em>, which is used as 
+        will not occupy any space at all in the DOM, except for a "generic" <em>span element</em>, which is used as 
         a placeholder. This span serves the purpose of knowing exactly where in the DOM we should render the Control 
         in case it becomes Visible. The same technique is used for all Ajax Controls, including the 
         <a href="Ajax-Image.aspx">Ajax Image</a>, the <a href="Ajax-CheckBox.aspx">Ajax CheckBox</a> 
@@ -60,14 +60,13 @@
         runat="server" 
         ID="lbl2" 
         Visible="false" 
-        Text="This text is IN-Visible" />
+        Text="This text is initially invisible" />
     <br />
     <ra:Button 
         runat="server" 
         ID="btn2" 
         Text="Click me" 
         OnClick="btn2_Click" />
-    <br />
     <p>
         If you try to click the button above, you will see that the Label becomes Visible and its content
         is shown in the browser. However, if you try to view the source of the HTML page you will notice
