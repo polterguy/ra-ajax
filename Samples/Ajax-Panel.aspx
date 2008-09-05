@@ -16,12 +16,13 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ajax Panel Sample</h1>
+    <h1>Ra Ajax Samples - Panel</h1>
     <p>
-        Our <em>Ajax Panel</em> is more or less a superset of the <em>System.Web.UI.WebControls.Panel</em> though
-        it does not inherit from the WebControls Panel. One thing which is mostly unique about the Ajax Panel
-        is that contrary to all other Ajax Controls we have looked at so far the Ajax Panel is the first control
-        so far which can have Child Controls. Or at least where it makes sense to have Child Controls.
+        Our <em>Ajax Panel</em> is, more or less, a superset of the <em>System.Web.UI.WebControls.Panel</em> though
+        it does not inherit from it. One thing which is mostly unique about the Ajax Panel is that, contrary to all 
+        other Ajax Controls we have looked at so far (assuming you have been reading the samples sequentially as 
+        suggested), the Ajax Panel is the first control so far that can have Child Controls. Or at least where it 
+        makes sense to have Child Controls.
     </p>
     <ra:Panel 
         runat="server" 
@@ -44,37 +45,37 @@
             OnKeyUp="txt_KeyUp" />
     </ra:Panel>
     <br />
-    <h2>Complexity within complexity</h2>
+    <h2>Complexity Within Complexity</h2>
     <p>
-        Notice how the background-color changes when you click the LinkButton and how the color of the
-        text within the Ajax Panel changes as we type into the TextBox below it.
+        Notice how the background color changes when you click the LinkButton and how the color of the
+        text within the Ajax Panel changes as we type into the TextBox.
     </p>
     <p>
-        This is impossible in an Ajax Framework which is constructed around the concept of Partial Rendering.
-        The reason is that as we click the LinkButton or type into the TextBox contained inside of the Ajax Panel
-        then the Ajax Panel itself would be RE-rendered. This would first of all remove focus, but more importantly
-        even remove things we had typed into the TextBox after the Ajax Request was created but before the Ajax 
+        This would be impossible in an Ajax framework that is constructed around the concept of Partial Rendering.
+        This is because; as we click the LinkButton or type into the TextBox contained inside of the Ajax Panel,
+        the Ajax Panel itself would be re-rendered. This would first of all remove focus, but more importantly,
+        even remove things we had typed into the TextBox after the Ajax Request was initiated but before the Ajax 
         Request had returned. We discussed this in greater detail in the 
-        <a href="Ajax-DropDownList.aspx">Ajax DropDownList example</a>. So I won't go into more details about
+        <a href="Ajax-DropDownList.aspx">Ajax DropDownList Sample</a>. So I won't go into more details about
         Partial Rendering in particular.
     </p>
     <p>
-        But what I will say is that if you build a server-side binded Ajax Framework the right way it is
-        extremely easy to completely abstract away JavaScript from the end user of your framework while at 
-        the same time enabling very rich expressiveness and <em>richness in richness</em> or 
-        <em>complexity inside complexity</em> as the above is a pretty nice example of.
+        But what I will say is that if you build a server-side bound Ajax framework the right way, it is
+        extremely easy to completely abstract away JavaScript from users of your framework while at 
+        the same time enable very rich expressiveness and <em>richness in richness</em> or 
+        <em>complexity inside complexity</em> as the above example shows.
     </p>
     <p>
         Now the above sample is pretty simple and we could have brought it way further by creating an
-        Ajax AutoCompleter which used our Ajax Panel or anything like that without even having to
-        tamper with JavaScript ourselves at all. And the only reason why this is possible is because our
-        Ajax Panel is not created around the concept of Partial Rendering.
+        Ajax AutoCompleter which used our Ajax Panel or something like that without even having to
+        tamper with JavaScript ourselves at all. And the only reason why this is possible; is because our
+        Ajax framework is not created around the concept of Partial Rendering.
     </p>
     <br />
-    <h2>Think of a control...</h2>
+    <h2>Think of a Control</h2>
     <p>
-        The Ajax Panel above can in fact contain any controls you wish, to some extend even 3rd party
-        controls which doesn't even know what Ra-Ajax is. In fact a very common pattern for creating 
+        The Ajax Panel above can in fact contain any controls you wish, to some extent even 3rd. party
+        controls which don't even know what Ra-Ajax is. In fact a very common pattern for creating 
         <em>DataGrids</em> using Ra-Ajax is by wrapping the Ra-Ajax Panel around a GridView or a
         Repeater and then when your Repeater/GridView needs to be re-rendered you just call the 
         <em>ReRender</em> method on the Panel as described in the 

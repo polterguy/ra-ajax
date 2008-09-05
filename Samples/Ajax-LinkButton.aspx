@@ -18,7 +18,7 @@
 
     <h1>Ra Ajax Samples - LinkButton</h1>
     <p>
-        An <em>Ajax LinkButton</em> is, roughly speaking, an ajaxified hyperlink (<em>&lt;a href="..."</em>).
+        An <em>Ajax LinkButton</em> is, roughly speaking, an ajaxified hyperlink <em>(&lt;a href="...")</em>.
         While a normal hyperlink usually makes the browser go to another page, the Ra-Ajax LinkButton initiates
         an Ajax Request which calls back into the server and raises an event which you can handle.
     </p>
@@ -32,7 +32,7 @@
     </p>
     <p>
         The Ajax LinkButton is useful whenever you need a Button but you don't want to use a regular Button
-        (<em>&lt;input type="button"...</em>), and would rather like something which renders like a hyperlink.
+        <em>(&lt;input type="button"...)</em>, and would rather like something which renders like a hyperlink.
     </p>
     <br />
     <h2>The Ajax Queue or The ViewState Problem</h2>
@@ -67,7 +67,7 @@
         Ra-Ajax solves this problem by having an <em>Ajax Queue</em>. It will start queuing up Ajax requests
         if there is one currently in progress. This means that all Ajax Requests
         that are initiated will go into an <em>Ajax Queue</em> and will not be dispatched before there's a "free lane"
-        in the "Ajax highway" which they can pass on. In fact I have created an example for you to look at below.
+        on the "Ajax highway" which they can use. In fact I have created an example for you to look at below.
     </p>
     <ra:LinkButton 
         runat="server" 
@@ -92,10 +92,12 @@
         to start before the first one returns and will change the Text property of the second LinkButton to 
         <em>"Then QUICKLY click this LinkButton before the other one returnsI am CLICKED --"</em>. If this is the 
         case, then when the first Ajax Request returns, the Text property of the second LinkButton will be changed 
-        to <em>"-- watch me as, "</em>. This is semantically wrong! If you want to test this with another Ajax 
-        framework to see if it handles your Ajax Requests correctly, you can copy the logic code from the 
-        code-behind of this page to a sample built around your favorite Ajax framework and see how it handles the 
-        above situation.
+        to <em>"-- watch me as, "</em>. This is semantically wrong!
+    </p> 
+    <p>
+        If you want to test this with another Ajax framework to see if it handles your Ajax Requests correctly, 
+        you can copy the logic code from the code-behind of this page to a sample built around your favorite 
+        Ajax framework and see how it handles the above situation.
     </p>
     <p>
         In fact the Ajax Queue mechanism used in Ra-Ajax can be observed as you click the LinkButtons above. If 
@@ -108,7 +110,7 @@
     </p>
     <ul>
         <li>
-            Wong: <em>"-- watch me as, "</em> 
+            Wrong: <em>"-- watch me as, "</em> 
         </li>
         <li>
             Right: <em>"-- watch me as, I am CLICKED --"</em>
