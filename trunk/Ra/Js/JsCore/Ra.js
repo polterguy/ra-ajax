@@ -296,8 +296,6 @@ Ra.XHR.prototype = {
   start: function() {
 
     // Getting transport
-    this.xhr = null;
-    
     if( window.XMLHttpRequest ) 
       this.xhr = new XMLHttpRequest();
     
