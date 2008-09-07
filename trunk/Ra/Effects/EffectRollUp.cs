@@ -28,9 +28,8 @@ namespace Ra.Widgets
             _fromHeight = fromHeight;
         }
 
-		public override void Render ()
+		private void UpdateStyleCollection()
 		{
-			base.Render ();
 			RaWebControl tmp = this.Control as RaWebControl;
 			if (tmp != null)
 			{
@@ -41,6 +40,7 @@ namespace Ra.Widgets
 
         public override string RenderChainedOnStart()
         {
+			UpdateStyleCollection();
             return string.Format(@"
     this.element.style.display = '';
     this.element.style.height = '{0}px'

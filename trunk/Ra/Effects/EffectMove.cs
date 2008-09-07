@@ -52,9 +52,8 @@ namespace Ra.Widgets
             _top = top;
         }
 
-		public override void Render ()
+		private void UpdateStyleCollection()
 		{
-			base.Render ();
 			RaWebControl tmp = this.Control as RaWebControl;
 			if (tmp != null)
 			{
@@ -65,6 +64,7 @@ namespace Ra.Widgets
 
         public override string RenderChainedOnStart()
         {
+			UpdateStyleCollection();
             return @"
     this.startL = parseInt(this.element.style.left, 10);
     this.startT = parseInt(this.element.style.top, 10);

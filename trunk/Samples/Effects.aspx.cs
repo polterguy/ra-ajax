@@ -15,7 +15,6 @@ public partial class Effects : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            // TODO: Doesn't work...
             btn.Focus();
         }
     }
