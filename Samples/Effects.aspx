@@ -105,6 +105,6 @@
         Watch the Ajax Effect as you click the above button...
     </ra:Panel>
     <div style="height:320px;">&nbsp;</div>
-    <a href="Combining.aspx">On to "Combining Controls"...</a>
+    <a href="Behaviors.aspx">On to "Ajax Behaviors"...</a>
 </asp:Content>
 

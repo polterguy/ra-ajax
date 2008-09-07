@@ -33,6 +33,36 @@ namespace Ra.Widgets
             get { return _controlRenderingState; }
             set { _controlRenderingState = value; }
         }
+		
+		[Browsable(false)]
+		public IEnumerable<Behavior> Behaviors
+		{
+			get
+			{
+				foreach (Control idx in Controls)
+				{
+					if (idx is Behavior)
+						yield return idx as Behavior;
+				}
+			}
+		}
+		
+		public string GetBehaviorRegisterScript()
+		{
+			string retVal = "";
+			bool isFirst = true;
+			foreach (Behavior idx in Behaviors)
+			{
+				if (isFirst)
+					isFirst = false;
+				else
+					retVal += ",";
+				retVal += idx.GetRegistrationScript(); 
+			}
+			if (retVal != string.Empty)
+				retVal = "beha:[" + retVal + "]";
+			return retVal;
+		}
 
         private Dictionary<string, object> _JSONValues = new Dictionary<string, object>();
 
@@ -281,13 +311,14 @@ namespace Ra.Widgets
         private bool _scriptRetrieved;
         public virtual string GetClientSideScript()
         {
-            if (_scriptRetrieved)
-                return "";
-            _scriptRetrieved = true;
-            if (_hasSetFocus)
-                return string.Format("\r\nRa.C('{0}', {{focus:true}});", ClientID);
-            else
-                return string.Format("\r\nRa.C('{0}');", ClientID);
+			string behaviors = GetBehaviorRegisterScript();
+			if (_scriptRetrieved)
+				return "";
+			_scriptRetrieved = true;
+			if (_hasSetFocus)
+				return string.Format("\r\nRa.C('{0}', {{focus:true{1}}});", ClientID, (behaviors == string.Empty ? "" : "," + behaviors));
+			else
+				return string.Format("\r\nRa.C('{0}'{1});", ClientID, (behaviors == string.Empty ? "" : ",{" + behaviors + "}"));
         }
 
         // The HTML for the control
