@@ -52,9 +52,8 @@ namespace Ra.Widgets
             _width = width;
         }
 
-		public override void Render ()
+		private void UpdateStyleCollection()
 		{
-			base.Render ();
 			RaWebControl tmp = this.Control as RaWebControl;
 			if (tmp != null)
 			{
@@ -65,6 +64,7 @@ namespace Ra.Widgets
 
         public override string RenderChainedOnStart()
         {
+			UpdateStyleCollection();
             return @"
     this.startH = parseInt(this.element.style.height, 10);
     this.startW = parseInt(this.element.style.width, 10);

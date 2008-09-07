@@ -15,10 +15,18 @@ public partial class MasterPage : System.Web.UI.MasterPage
     protected void btnShowCode_Click(object sender, EventArgs e)
     {
         pnlShowCode.Visible = true;
-        Effect effect = new EffectRollDown(pnlShowCode, 1.0M, 600);
+        Effect effect = new EffectFadeIn(pnlShowCode, 0.4M);
+        effect.Chained.Add(new EffectRollDown(500));
         effect.Render();
         GetCSharpCode();
         ViewState["code"] = "C#";
+    }
+
+    protected void closeShowCode_Click(object sender, EventArgs e)
+    {
+        Effect effect = new EffectFadeOut(pnlShowCode, 0.4M);
+        effect.Chained.Add(new EffectRollUp(500));
+        effect.Render();
     }
 
     protected void closeIE_Click(object sender, EventArgs e)
@@ -118,11 +126,5 @@ public partial class MasterPage : System.Web.UI.MasterPage
             retVal = retVal.Replace(idx, string.Format("<span class=\"{1}\">{0}</span>", idx, cssClass));
         }
         return retVal;
-    }
-
-    protected void closeShowCode_Click(object sender, EventArgs e)
-    {
-        Effect effect = new EffectRollUp(pnlShowCode, 1.0M, 600);
-        effect.Render();
     }
 }

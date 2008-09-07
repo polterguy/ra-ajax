@@ -22,9 +22,8 @@ namespace Ra.Widgets
 			: base(null, 0.0M)
         { }
 
-		public override void Render ()
+		private void UpdateStyleCollection()
 		{
-			base.Render ();
 			RaWebControl tmp = this.Control as RaWebControl;
 			if (tmp != null)
 			{
@@ -35,6 +34,7 @@ namespace Ra.Widgets
 
         public override string RenderChainedOnStart()
         {
+			UpdateStyleCollection();
             return @"
     this.element.setOpacity(1);
     this.element.style.display = '';
