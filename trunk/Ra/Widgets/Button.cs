@@ -134,14 +134,15 @@ namespace Ra.Widgets
                     evts += ",";
                 evts += "['focus']";
             }
+			string behaviors = GetBehaviorRegisterScript();
             if (evts.Length == 0)
             {
                 if (_hasSetFocus)
                 {
-                    string options = "";
-                    if (_hasSetFocus)
-                        options += "focus:true";
-                    return string.Format("\r\nRa.C('{0}',{{{1}}});", ClientID, options);
+                    string options = "focus:true" + (behaviors == string.Empty ? "" : "," + behaviors);
+                    return string.Format("\r\nRa.C('{0}',{{{1}}});", 
+					    ClientID, 
+					    options);
                 }
                 else
                 {

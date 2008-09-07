@@ -3,6 +3,7 @@
   <Import Project="Resources\MSBuild.Community.Tasks.Targets" />
   <ItemGroup>
     <ScriptFiles Include="JsCompressed\Js\Control.js" />
+    <ScriptFiles Include="JsCompressed\Js\Behaviors.js" />
     <ScriptFiles Include="JsCompressed\Js\JsCore\Ra.js" />
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +92,8 @@
     <Compile Include="Widgets\RaControl.cs" />
     <Compile Include="Widgets\RaWebControl.cs" />
     <Compile Include="Widgets\TextBox.cs" />
+    <Compile Include="Behaviors\Behavior.cs" />
+    <Compile Include="Behaviors\BehaviorDraggable.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Js\JsCore\Ra.js" />
@@ -99,10 +102,16 @@
     <EmbeddedResource Include="Js\Control.js" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Js\Behaviors.js" />
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="JsCompressed\Js\JsCore\Ra.js" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="JsCompressed\Js\Control.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="JsCompressed\Js\Behaviors.js" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="license-GPL.txt" />

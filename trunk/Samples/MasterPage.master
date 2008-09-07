@@ -85,6 +85,9 @@ pageTracker._trackPageview();
                             <a href="Effects.aspx">Ra-Ajax - Effects</a>
                         </li>
                         <li>
+                            <a href="Behaviors.aspx">Ra-Ajax - Behaviors</a>
+                        </li>
+                        <li>
                             <a href="Combining.aspx">Ra-Ajax - Combining Controls</a>
                         </li>
                         <li>
