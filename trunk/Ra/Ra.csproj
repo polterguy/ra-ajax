@@ -3,7 +3,6 @@
   <Import Project="Resources\MSBuild.Community.Tasks.Targets" />
   <ItemGroup>
     <ScriptFiles Include="JsCompressed\Js\Control.js" />
-    <ScriptFiles Include="JsCompressed\Js\Behaviors.js" />
     <ScriptFiles Include="JsCompressed\Js\JsCore\Ra.js" />
   </ItemGroup>
   <ItemGroup>
@@ -100,9 +99,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Js\Control.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Js\Behaviors.js" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="JsCompressed\Js\JsCore\Ra.js" />
