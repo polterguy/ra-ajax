@@ -26,7 +26,7 @@
 var Ra = {};
 
 // Empty function useful for different things like for instance "killing events" and similar constructs
-Ra.emptyFunction = function() {}
+Ra.emptyFunction = function() {};
 
 // $ method, used to retrieve elements on document
 Ra.$ = function(id) {
@@ -250,7 +250,7 @@ Ra.Element.prototype = {
     }
     return this;
   }
-}
+};
 
 
 
@@ -288,8 +288,9 @@ Ra.XHR.prototype = {
     }
     // If the queue option is set to true we set the activeRequest to true so that
     // the next XHR request (with queue options set) will throw an exception
-    if( this.options.queue )
+    if( this.options.queue ){
       Ra.XHR.activeRequest = true;
+    }
     this.start();
   },
 
@@ -345,8 +346,9 @@ Ra.XHR.prototype = {
     }
 
     // Resetting active requests back to false to allow next request to run
-    if( this.options.queue )
+    if( this.options.queue ){
       Ra.XHR.activeRequest = false;
+    }
   }
 }
 
@@ -462,7 +464,7 @@ Ra.Form.prototype = {
     }
     return retVal;
   }
-}
+};
 
 
 
@@ -576,7 +578,7 @@ Ra.Ajax.prototype = {
   sliceRequest: function() {
     Ra.Ajax._activeRequests = Ra.Ajax._activeRequests.slice(1);
   }
-}
+};
 
 
 
@@ -670,6 +672,6 @@ Ra.Effect.prototype = {
   render: function(pos) {
     this.options.onRender.call(this, pos);
   }
-}
+};
 
 
