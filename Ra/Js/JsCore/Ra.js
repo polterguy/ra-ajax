@@ -288,7 +288,7 @@ Ra.XHR.prototype = {
     }
     // If the queue option is set to true we set the activeRequest to true so that
     // the next XHR request (with queue options set) will throw an exception
-    if( this.options.queue ){
+    if( this.options.queue ) {
       Ra.XHR.activeRequest = true;
     }
     this.start();
@@ -346,7 +346,7 @@ Ra.XHR.prototype = {
     }
 
     // Resetting active requests back to false to allow next request to run
-    if( this.options.queue ){
+    if( this.options.queue ) {
       Ra.XHR.activeRequest = false;
     }
   }
