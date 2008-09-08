@@ -13,8 +13,8 @@ public partial class Behaviors : System.Web.UI.Page
 {
     protected void dragger_Dropped(object sender, EventArgs e)
     {
-		lbl.Text = string.Format("Label dragged and dropped to {0}, {1}", lbl.Style["left"], lbl.Style["top"]);
-		Effect effect = new EffectFadeIn(lbl, 0.4M);
+		lbl2.Text = string.Format("Label dragged and dropped to {0}, {1}", lbl1.Style["left"], lbl1.Style["top"]);
+		Effect effect = new EffectFadeIn(lbl1, 0.4M);
 		effect.Render();
     }
 
@@ -24,4 +24,16 @@ public partial class Behaviors : System.Web.UI.Page
 		Effect effect = new EffectFadeIn(lbl2, 0.4M);
 		effect.Render();
     }
+	
+	protected void btnHide1_Click(object sender, EventArgs e)
+	{
+		lbl1.Visible = !lbl1.Visible;
+		btnHide1.Text = lbl1.Visible ? "Hide first label" : "Show first label"; 
+	}
+	
+	protected void btnHide2_Click(object sender, EventArgs e)
+	{
+		lbl2.Visible = !lbl2.Visible;
+		btnHide2.Text = lbl2.Visible ? "Hide first label" : "Show first label"; 
+	}
 }
