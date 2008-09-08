@@ -29,10 +29,24 @@
     	Try to drag and drop the Label below to see the BehaviorDraggable in action.
     </p>
 
+	<ra:Button 
+		runat="server" 
+		id="btnHide1" 
+		style="position:absolute;top:500px;left:350px;"
+		Text="Hide first label" 
+		OnClick="btnHide1_Click" />
+
+	<ra:Button 
+		runat="server" 
+		id="btnHide2" 
+		style="position:absolute;top:500px;left:550px;"
+		Text="Hide second label" 
+		OnClick="btnHide2_Click" />
+
     <ra:Label 
         runat="server" 
-        ID="lbl"
-        style="position:absolute;top:500px;left:350px;font-style:italic;color:#999;border:solid 1px #ddd;padding:5px;width:100px;text-align:left;"
+        ID="lbl1"
+        style="position:absolute;top:550px;left:350px;font-style:italic;color:#999;border:solid 1px #ddd;padding:5px;width:100px;text-align:left;"
         Text="Try to drag and drop me around in the browser">
 
     	<ra:BehaviorDraggable 
@@ -45,7 +59,7 @@
     <ra:Label 
         runat="server" 
         ID="lbl2"
-        style="position:absolute;top:500px;left:550px;font-style:italic;color:#999;border:solid 1px #ddd;padding:5px;width:100px;text-align:left;"
+        style="position:absolute;top:550px;left:550px;font-style:italic;color:#999;border:solid 1px #ddd;padding:5px;width:100px;text-align:left;"
         Text="Try to drag and drop me too around in the browser">
 
     	<ra:BehaviorDraggable 
