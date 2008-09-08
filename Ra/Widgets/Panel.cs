@@ -86,18 +86,6 @@ namespace Ra.Widgets
             return retVal;
         }
 
-        protected virtual void SetAllChildrenToRenderHtml(ASP.ControlCollection controls)
-        {
-            foreach (ASP.Control idx in controls)
-            {
-                if (idx is RaControl)
-                {
-                    (idx as RaControl).Phase = RenderingPhase.RenderHtml;
-                }
-                SetAllChildrenToRenderHtml(idx.Controls);
-            }
-        }
-
         #endregion
     }
 }

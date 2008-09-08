@@ -11,9 +11,9 @@ using Ra.Widgets;
 
 public partial class Behaviors : System.Web.UI.Page
 {
-    protected void dragger_Dropped(object sender, EventArgs e)
+    protected void dragger1_Dropped(object sender, EventArgs e)
     {
-		lbl2.Text = string.Format("Label dragged and dropped to {0}, {1}", lbl1.Style["left"], lbl1.Style["top"]);
+		lbl1.Text = string.Format("Label dragged and dropped to {0}, {1}", lbl1.Style["left"], lbl1.Style["top"]);
 		Effect effect = new EffectFadeIn(lbl1, 0.4M);
 		effect.Render();
     }

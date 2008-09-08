@@ -207,6 +207,22 @@ namespace Ra.Widgets
                 Phase = RenderingPhase.Invisible;
             if (savedState != null)
                 Phase = (RenderingPhase)savedState;
+			if (Phase != RenderingPhase.Visible)
+			{
+				SetAllChildrenToRenderHtml(this.Controls);
+			}
+        }
+
+		protected virtual void SetAllChildrenToRenderHtml(ControlCollection controls)
+        {
+            foreach (Control idx in controls)
+            {
+                if (idx is RaControl)
+                {
+                    (idx as RaControl).Phase = RenderingPhase.RenderHtml;
+                }
+                SetAllChildrenToRenderHtml(idx.Controls);
+            }
         }
 
         protected override object SaveControlState()
