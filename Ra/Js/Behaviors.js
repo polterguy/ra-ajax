@@ -19,15 +19,9 @@ Ra.Beha = Ra.klass();
 Ra.Beha.prototype = {
 
   // CTOR
-  init: function(element, options) {
-
-    // Forward call to enable inheritance
-    this.initBehavior(element, options);
-  },
-
-  initBehavior: function(element, options) {
-    this.element = Ra.$(element);
+  init: function(id, options) {
     this.options = options;
+    this.id = id;
   }
 
 }
@@ -52,31 +46,38 @@ Ra.extend(Ra.BDrag.prototype, Ra.Beha.prototype);
 // Creating IMPLEMENTATION of class
 Ra.extend(Ra.BDrag.prototype, {
 
-  // CTOR
-  init: function(element, options) {
+  initBehavior: function(parent) {
 
-    // Forward call to enable inheritance
-    this.initBDrag(element, options);
-  },
-
-  initBDrag: function(element, options) {
-    this.initBehavior(element, options);
-    this.element.observe('mousedown', this.onMouseDown, this);
+    this.parent = parent;
+    this.parent.element.observe('mousedown', this.onMouseDown, this);
     Ra.extend(document.body, Ra.Element.prototype);
     document.body.observe('mouseup', this.onMouseUp, this);
     document.body.observe('mousemove', this.onMouseMove, this);
+
   },
 
   onMouseDown: function(event) {
     this._hasCaption = true;
     this._pos = this.pointer(event);
-    this._oldX = parseInt(this.element.style.left, 10);
-    this._oldY = parseInt(this.element.style.top, 10);
+    this._oldX = parseInt(this.parent.element.style.left, 10);
+    this._oldY = parseInt(this.parent.element.style.top, 10);
   },
 
   onMouseUp: function() {
     this._hasCaption = false;
     delete this._pos;
+
+    // Calling server to update new position of element and potentially raise event
+    var newX = parseInt(this.parent.element.style.left, 10);
+    var newY = parseInt(this.parent.element.style.top, 10);
+
+    var x = new Ra.Ajax({
+      args:'__RA_CONTROL=' + this.id + '&__EVENT_NAME=dropped' + '&x=' + newX + '&y=' + newY,
+      raCallback:true,
+      onSuccess: this.onFinishedRequest,
+      onError: this.onFailedRequest,
+      callingContext: this
+    });
   },
 
   onMouseMove: function(event) {
@@ -86,8 +87,8 @@ Ra.extend(Ra.BDrag.prototype, {
       var yDelta = pos.y - this._pos.y;
       var newX = this._oldX + xDelta;
       var newY = this._oldY + yDelta;
-      this.element.style.left = newX + 'px';
-      this.element.style.top = newY + 'px';
+      this.parent.element.style.left = newX + 'px';
+      this.parent.element.style.top = newY + 'px';
     }
   },
 
@@ -100,8 +101,16 @@ Ra.extend(Ra.BDrag.prototype, {
     };
   },
 
+  onFinishedRequest: function(response) {
+    eval(response);
+  },
+
+  onFailedRequest: function(status, fullTrace) {
+    Ra.Control.errorHandler(status, fullTrace);
+  },
+
   destroy: function() {
-    this.element.stopObserving('mousedown', this.onMouseDown, this);
+    this.parent.element.stopObserving('mousedown', this.onMouseDown, this);
     document.body.stopObserving('mouseup', this.onMouseUp, this);
     document.body.stopObserving('mousemove', this.onMouseMove, this);
   }

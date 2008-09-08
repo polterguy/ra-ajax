@@ -113,6 +113,13 @@ Ra.Control.prototype = {
     // Creating event handlers for the client-side events needed to be dispatched 
     // back to server
     this.initEvents();
+
+    // Initializing behaviors
+    var idx = this.options.beha.length;
+    while( idx-- ) {
+      this.options.beha[idx].initBehavior(this);
+    }
+
   },
 
   // This is the method being called from the server-side when
@@ -367,7 +374,6 @@ Ra.Control.prototype = {
     while( idx-- ) {
       this.options.beha[idx].destroy();
     }
-
 
     // Unregistering the event handlers for this control
     this._unlistenEventHandlers();
