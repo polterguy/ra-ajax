@@ -51,8 +51,8 @@
 
     	<ra:BehaviorDraggable 
     		runat="server"
-    		ID="dragger"
-    		OnDropped="dragger_Dropped" />
+    		ID="dragger1"
+    		OnDropped="dragger1_Dropped" />
 
     </ra:Label>
 
