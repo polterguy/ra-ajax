@@ -31,7 +31,7 @@
 
     <ra:Label 
         runat="server" 
-        ID="img"
+        ID="lbl"
         style="position:absolute;top:500px;left:350px;font-style:italic;color:#999;border:solid 1px #ddd;padding:5px;width:100px;text-align:left;"
         Text="Try to drag and drop me around in the browser">
 
