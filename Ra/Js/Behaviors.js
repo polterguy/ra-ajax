@@ -98,6 +98,12 @@ Ra.extend(Ra.BDrag.prototype, {
       y: event.pageY || (event.clientY +
         (document.documentElement.scrollTop || document.body.scrollTop))
     };
+  },
+
+  destroy: function() {
+    this.element.stopObserving('mousedown', this.onMouseDown, this);
+    document.body.stopObserving('mouseup', this.onMouseUp, this);
+    document.body.stopObserving('mousemove', this.onMouseMove, this);
   }
 });
 
