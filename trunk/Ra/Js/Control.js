@@ -80,6 +80,9 @@ Ra.Control.prototype = {
       // If set defines the element of the actual control
       ctrl: null,
 
+      // Behvaiors
+      beha: {},
+
       // If set defines the element of an associated label which contains the text value and so on...
       label: null
     }, options || {});
@@ -360,12 +363,18 @@ Ra.Control.prototype = {
   // of registered controls collection
   _destroyThisControl: function() {
 
+    var idx = this.options.beha.length;
+    while( idx-- ) {
+      this.options.beha[idx].destroy();
+    }
+
+
     // Unregistering the event handlers for this control
     this._unlistenEventHandlers();
 
     // Looping through registered controls to remove the "this instance"
     var idxToRemove;
-    var idx = Ra.Control._controls.length;
+    idx = Ra.Control._controls.length;
     while( idx-- ) {
       if( Ra.Control._controls[idx].element.id == this.element.id ) {
         // We have found our instance, idxToRemove now should contain the index of the control
