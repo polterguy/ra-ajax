@@ -254,7 +254,7 @@ Ra.Control.prototype = {
         }, 500);
       }
     } else {
-      var x = new Ra.Ajax({
+      new Ra.Ajax({
         args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=' + evt,
         raCallback:true,
         onSuccess: this.onFinishedRequest,

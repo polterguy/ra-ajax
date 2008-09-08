@@ -42,6 +42,19 @@
 
     </ra:Label>
 
+    <ra:Label 
+        runat="server" 
+        ID="lbl2"
+        style="position:absolute;top:500px;left:550px;font-style:italic;color:#999;border:solid 1px #ddd;padding:5px;width:100px;text-align:left;"
+        Text="Try to drag and drop me too around in the browser">
+
+    	<ra:BehaviorDraggable 
+    		runat="server"
+    		ID="dragger2"
+    		OnDropped="dragger2_Dropped" />
+
+    </ra:Label>
+
     <div style="height:200px;">&nbsp;</div>
 	<br />
     <a href="Combining.aspx">On to "Combining Controls"...</a>

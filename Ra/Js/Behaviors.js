@@ -48,6 +48,7 @@ Ra.extend(Ra.BDrag.prototype, {
 
   initBehavior: function(parent) {
 
+    this._hasCaption = false;
     this.parent = parent;
     this.parent.element.observe('mousedown', this.onMouseDown, this);
     Ra.extend(document.body, Ra.Element.prototype);
@@ -64,6 +65,8 @@ Ra.extend(Ra.BDrag.prototype, {
   },
 
   onMouseUp: function() {
+    if( !this._hasCaption )
+      return;
     this._hasCaption = false;
     delete this._pos;
 
@@ -71,7 +74,7 @@ Ra.extend(Ra.BDrag.prototype, {
     var newX = parseInt(this.parent.element.style.left, 10);
     var newY = parseInt(this.parent.element.style.top, 10);
 
-    var x = new Ra.Ajax({
+    new Ra.Ajax({
       args:'__RA_CONTROL=' + this.id + '&__EVENT_NAME=dropped' + '&x=' + newX + '&y=' + newY,
       raCallback:true,
       onSuccess: this.onFinishedRequest,
