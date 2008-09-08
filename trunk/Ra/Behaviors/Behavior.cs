@@ -14,7 +14,7 @@ using Ra.Helpers;
 
 namespace Ra.Widgets
 {
-	public abstract class Behavior : RaControl
+	public abstract class Behavior : RaControl, IRaControl
 	{
 	    protected override void OnInit(EventArgs e)
 	    {
