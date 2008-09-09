@@ -68,9 +68,8 @@
     		OnDropped="dragger2_Dropped" />
 
     </ra:Label>
-
+    
     <div style="height:200px;">&nbsp;</div>
-	<br />
     <a href="Combining.aspx">On to Combining Controls</a>
 </asp:Content>
 
