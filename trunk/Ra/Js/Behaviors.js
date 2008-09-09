@@ -51,9 +51,8 @@ Ra.extend(Ra.BDrag.prototype, {
     this._hasCaption = false;
     this.parent = parent;
     this.parent.element.observe('mousedown', this.onMouseDown, this);
-    Ra.extend(document.body, Ra.Element.prototype);
-    document.body.observe('mouseup', this.onMouseUp, this);
-    document.body.observe('mousemove', this.onMouseMove, this);
+    this.parent.element.observe('mouseup', this.onMouseUp, this);
+    this.parent.element.observe('mousemove', this.onMouseMove, this);
 
   },
 
@@ -114,20 +113,8 @@ Ra.extend(Ra.BDrag.prototype, {
 
   destroy: function() {
     this.parent.element.stopObserving('mousedown', this.onMouseDown, this);
-    document.body.stopObserving('mouseup', this.onMouseUp, this);
-    document.body.stopObserving('mousemove', this.onMouseMove, this);
+    this.parent.element.stopObserving('mouseup', this.onMouseUp, this);
+    this.parent.element.stopObserving('mousemove', this.onMouseMove, this);
   }
 });
-
-
-
-
-
-
-
-
-
-
-
-
 
