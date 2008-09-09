@@ -26,7 +26,7 @@ namespace Ra.Widgets
 		{
 			return string.Empty;
 		}
-		
+
 		public abstract string GetRegistrationScript();
 	}
 }

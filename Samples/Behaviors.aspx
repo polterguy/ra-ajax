@@ -46,7 +46,7 @@
     <ra:Label 
         runat="server" 
         ID="lbl1"
-        style="position:absolute;top:550px;left:350px;font-style:italic;color:#999;border:solid 1px #ddd;padding:5px;width:100px;text-align:left;"
+        style="cursor:move;position:absolute;top:550px;left:350px;color:#33f;border:solid 1px #33f;padding:5px;width:100px;"
         Text="Try to drag and drop me around in the browser">
 
     	<ra:BehaviorDraggable 
@@ -59,7 +59,7 @@
     <ra:Label 
         runat="server" 
         ID="lbl2"
-        style="position:absolute;top:550px;left:550px;font-style:italic;color:#999;border:solid 1px #ddd;padding:5px;width:100px;text-align:left;"
+        style="cursor:move;position:absolute;top:550px;left:550px;color:#33f;border:solid 1px #33f;padding:5px;width:100px;"
         Text="Try to drag and drop me too around in the browser">
 
     	<ra:BehaviorDraggable 
@@ -71,6 +71,6 @@
 
     <div style="height:200px;">&nbsp;</div>
 	<br />
-    <a href="Combining.aspx">On to "Combining Controls"...</a>
+    <a href="Combining.aspx">On to Combining Controls</a>
 </asp:Content>
 
