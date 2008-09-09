@@ -245,9 +245,6 @@ namespace Ra.Widgets
             if (DesignMode)
                 throw new ApplicationException("Ra Ajax doesn't support Design time");
 
-            if (this is Behavior)
-                return;
-
             if (Visible)
             {
                 if (AjaxManager.Instance.IsCallback)

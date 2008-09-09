@@ -27,6 +27,9 @@ namespace Ra.Widgets
 			return string.Empty;
 		}
 
+        public override void RenderControl(System.Web.UI.HtmlTextWriter writer)
+        { }
+
 		public abstract string GetRegistrationScript();
 	}
 }
