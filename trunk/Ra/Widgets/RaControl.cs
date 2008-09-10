@@ -99,6 +99,12 @@ namespace Ra.Widgets
                 _JSONValues[key] = value;
         }
 
+        public void SetJSONValueObject(string key, object value)
+        {
+            if (this.IsTrackingViewState)
+                _JSONValues[key] = value;
+        }
+
         public void SetJSONValueBool(string key, bool value)
         {
             if (this.IsTrackingViewState)
@@ -162,6 +168,14 @@ namespace Ra.Widgets
                 builder.AppendFormat("\"{0}\":{1}",
                     key,
                     value);
+                return;
+            }
+            if (value.GetType() == typeof(System.Drawing.Rectangle))
+            {
+				System.Drawing.Rectangle rect = (System.Drawing.Rectangle)value;
+                builder.AppendFormat("{{{0},{1},{2},{3}}}",
+                    key,
+                    rect.Left, rect.Top, rect.Width, rect.Height);
                 return;
             }
             if (value.GetType() == typeof(Dictionary<string, string>))

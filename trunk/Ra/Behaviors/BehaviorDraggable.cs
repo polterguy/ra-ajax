@@ -8,6 +8,7 @@
 
 using System;
 using System.ComponentModel;
+using System.Drawing;
 using WEBCTRLS = System.Web.UI.WebControls;
 using ASP = System.Web.UI;
 using Ra.Helpers;
@@ -19,9 +20,26 @@ namespace Ra.Widgets
 	{
 		public event EventHandler Dropped;
 
+        public Rectangle Bounds
+        {
+            get { return ViewState["Bounds"] == null ? Rectangle.Empty : (Rectangle)ViewState["Bounds"]; }
+            set
+            {
+                if (value != Bounds)
+                    SetJSONValueObject("Bounds", value);
+                ViewState["Bounds"] = value;
+            }
+        }
+
 		public override string GetRegistrationScript ()
 		{
-			return string.Format("new Ra.BDrag('{0}')", this.ClientID);
+			string options = "";
+			if( Bounds != Rectangle.Empty)
+			{
+				options += string.Format(",{{bounds:{{left:{0},top:{1},width:{2},height:{3}}}}}",
+                    Bounds.Left, Bounds.Top, Bounds.Width, Bounds.Height);
+			}
+			return string.Format("new Ra.BDrag('{0}'{1})", this.ClientID, options);
 		}
 
         public override void DispatchEvent(string name)

@@ -54,6 +54,14 @@ Ra.extend(Ra.BDrag.prototype, {
     this.parent.element.observe('mouseup', this.onMouseUp, this);
     this.parent.element.observe('mousemove', this.onMouseMove, this);
 
+    this.options = Ra.extend({
+      bounds: {left:-1000, top:-1000, width: 2000, height: 2000}
+    }, this.options || {});
+
+  },
+
+  Bounds: function(x, y, width, height) {
+    this.options.bounds = {x:x, y:y, width:width, height:width};
   },
 
   onMouseDown: function(event) {
@@ -89,8 +97,10 @@ Ra.extend(Ra.BDrag.prototype, {
       var yDelta = pos.y - this._pos.y;
       var newX = this._oldX + xDelta;
       var newY = this._oldY + yDelta;
-      this.parent.element.style.left = newX + 'px';
-      this.parent.element.style.top = newY + 'px';
+      if( newX >= this.options.bounds.left && newX < this.options.bounds.width )
+        this.parent.element.style.left = newX + 'px';
+      if( newY >= this.options.bounds.top && newY < this.options.bounds.height )
+        this.parent.element.style.top = newY + 'px';
     }
   },
 
