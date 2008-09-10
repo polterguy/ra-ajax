@@ -173,9 +173,17 @@ namespace Ra.Widgets
             if (value.GetType() == typeof(System.Drawing.Rectangle))
             {
 				System.Drawing.Rectangle rect = (System.Drawing.Rectangle)value;
-                builder.AppendFormat("Bounds:{{left:{1},top:{2},width:{3},height:{4}}}",
+                builder.AppendFormat("{0}:{{left:{1},top:{2},width:{3},height:{4}}}",
                     key,
                     rect.Left, rect.Top, rect.Width, rect.Height);
+                return;
+            }
+            if (value.GetType() == typeof(System.Drawing.Point))
+            {
+				System.Drawing.Point pt = (System.Drawing.Point)value;
+                builder.AppendFormat("{0}:{{x:{1},y:{2}}}",
+                    key,
+                    pt.X, pt.Y);
                 return;
             }
             if (value.GetType() == typeof(Dictionary<string, string>))

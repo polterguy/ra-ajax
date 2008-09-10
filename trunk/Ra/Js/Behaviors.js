@@ -85,7 +85,8 @@ Ra.extend(Ra.BDrag.prototype, {
     this.parent.element.observe('mousemove', this.onMouseMove, this);
 
     this.options = Ra.extend({
-      bounds: {left:-2000, top:-2000, width: 4000, height: 4000}
+      bounds: {left:-2000, top:-2000, width: 4000, height: 4000},
+      snap:{x:1,y:1}
     }, this.options || {});
 
   },
@@ -94,6 +95,12 @@ Ra.extend(Ra.BDrag.prototype, {
   // position the control can be dragged around within.
   Bounds: function(rc) {
     this.options.bounds = rc;
+  },
+
+  // Setter for the Snap Point which determines how the 
+  // control is supposed to "snap" when dragged
+  Snap: function(pt) {
+    this.options.snap = pt;
   },
 
   // Called when mouse is being pushed DOWN on top of the Control
@@ -134,6 +141,8 @@ Ra.extend(Ra.BDrag.prototype, {
       var pos = this.pointer(event);
       var xDelta = pos.x - this._pos.x;
       var yDelta = pos.y - this._pos.y;
+      xDelta -= xDelta % this.options.snap.x;
+      yDelta -= yDelta % this.options.snap.y;
       var bn = this.options.bounds;
       this.parent.element.style.left = Math.min(Math.max(this._oldX + xDelta, bn.left), bn.width + bn.left) + 'px';
       this.parent.element.style.top = Math.min(Math.max(this._oldY + yDelta, bn.top), bn.height + bn.top) + 'px';
