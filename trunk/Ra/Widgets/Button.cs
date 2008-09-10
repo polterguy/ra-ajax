@@ -146,21 +146,21 @@ namespace Ra.Widgets
                 }
                 else
                 {
-                    return string.Format("\r\nRa.C('{0}');", ClientID);
+                    string options = (behaviors == string.Empty ? "" : ",{" + behaviors + "}");
+                    return string.Format("\r\nRa.C('{0}'{1});", ClientID, options);
                 }
             }
             else
             {
                 if (_hasSetFocus)
                 {
-                    string options = "";
-                    if (_hasSetFocus)
-                        options += "focus:true";
+                    string options = "focus:true" + (behaviors == string.Empty ? "" : "," + behaviors);
                     return string.Format("Ra.C('{0}',{{evts:[{2}],{1}}});", ClientID, options, evts);
                 }
                 else
                 {
-                    return string.Format("Ra.C('{0}',{{evts:[{1}]}});", ClientID, evts);
+                    string options = (behaviors == string.Empty ? "" : "," + behaviors);
+                    return string.Format("Ra.C('{0}',{{evts:[{1}{2}]}});", ClientID, evts, options);
                 }
             }
         }

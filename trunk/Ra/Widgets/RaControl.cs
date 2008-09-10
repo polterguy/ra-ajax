@@ -47,7 +47,17 @@ namespace Ra.Widgets
 			}
 		}
 		
-		public string GetBehaviorRegisterScript()
+		public T FirstBehavior<T>() where T : Behavior
+		{
+			foreach (Behavior idx in Behaviors)
+			{
+				if (idx is T)
+					return idx as T;
+			}
+			return null;
+		}
+		
+		protected string GetBehaviorRegisterScript()
 		{
 			string retVal = "";
 			bool isFirst = true;
@@ -66,7 +76,7 @@ namespace Ra.Widgets
 
         private Dictionary<string, object> _JSONValues = new Dictionary<string, object>();
 
-        public Dictionary<string, string> GetJSONValueDictionary(string key)
+        internal Dictionary<string, string> GetJSONValueDictionary(string key)
         {
             if (this.IsTrackingViewState)
             {
@@ -93,25 +103,25 @@ namespace Ra.Widgets
             return _JSONValues.ContainsKey(key);
         }
 
-        public void SetJSONValueString(string key, string value)
+        protected void SetJSONValueString(string key, string value)
         {
             if (this.IsTrackingViewState)
                 _JSONValues[key] = value;
         }
 
-        public void SetJSONValueObject(string key, object value)
+        protected void SetJSONValueObject(string key, object value)
         {
             if (this.IsTrackingViewState)
                 _JSONValues[key] = value;
         }
 
-        public void SetJSONValueBool(string key, bool value)
+        protected void SetJSONValueBool(string key, bool value)
         {
             if (this.IsTrackingViewState)
                 _JSONValues[key] = value;
         }
 
-        public void SetJSONGenericValue(string key, string value)
+        protected void SetJSONGenericValue(string key, string value)
         {
             if (this.IsTrackingViewState)
             {
@@ -130,7 +140,7 @@ namespace Ra.Widgets
             }
         }
 
-        public virtual string SerializeJSON()
+        protected string SerializeJSON()
         {
             // Short circuting
             if (_JSONValues.Count == 0)
@@ -153,7 +163,7 @@ namespace Ra.Widgets
             return builder.ToString();
         }
 
-        protected virtual void SerializeJSONValue(string key, object value, StringBuilder builder)
+        protected void SerializeJSONValue(string key, object value, StringBuilder builder)
         {
             // TODO: Create more general approach, this one only handles TWO level deep JSON objects...
             if (value.GetType() == typeof(string))
@@ -342,6 +352,10 @@ namespace Ra.Widgets
         }
 
         // Used for dispatching events for the Control
+		// This could have been an abstract method though
+		// some widgets don't really need to dispatch events
+		// so therefor we've made an implementation for it.
+		// Reconsider later...?
         public virtual void DispatchEvent(string name)
         { }
 
