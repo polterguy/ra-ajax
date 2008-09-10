@@ -97,10 +97,11 @@ Ra.extend(Ra.BDrag.prototype, {
       var yDelta = pos.y - this._pos.y;
       var newX = this._oldX + xDelta;
       var newY = this._oldY + yDelta;
-      if( newX >= this.options.bounds.left && newX < this.options.bounds.width )
-        this.parent.element.style.left = newX + 'px';
-      if( newY >= this.options.bounds.top && newY < this.options.bounds.height )
-        this.parent.element.style.top = newY + 'px';
+      var bn = this.options.bounds;
+      newX = Math.min(Math.max(newX, bn.left), bn.width + bn.left);
+      newY = Math.min(Math.max(newY, bn.top), bn.height + bn.top);
+      this.parent.element.style.left = newX + 'px';
+      this.parent.element.style.top = newY + 'px';
     }
   },
 
