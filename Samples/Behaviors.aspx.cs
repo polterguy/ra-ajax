@@ -14,8 +14,12 @@ public partial class Behaviors : System.Web.UI.Page
 {
 	protected void Page_Load(object sender, EventArgs e)
 	{
-		dragger1.Bounds = new Rectangle(200, 200, 700, 700);
-		dragger2.Bounds = new Rectangle(200, 200, 700, 700);
+		if (!IsPostBack)
+		{
+			dragger1.Bounds = new Rectangle(350, 550, 300, 300);
+			dragger2.Bounds = new Rectangle(350, 550, 300, 300);
+			sliderDragger.Bounds = new Rectangle(328, 1031, 170, 0);
+		}
 	}
 	
     protected void dragger1_Dropped(object sender, EventArgs e)
@@ -28,6 +32,13 @@ public partial class Behaviors : System.Web.UI.Page
     protected void dragger2_Dropped(object sender, EventArgs e)
     {
 		lbl2.Text = string.Format("Label dragged and dropped to {0}, {1}", lbl2.Style["left"], lbl2.Style["top"]);
+		Effect effect = new EffectFadeIn(lbl2, 0.4M);
+		effect.Render();
+    }
+	
+    protected void draggerDragger_Dropped(object sender, EventArgs e)
+    {
+		slider.Text = (Int32.Parse(slider.Style["left"].Replace("px", "")) - 328).ToString();
 		Effect effect = new EffectFadeIn(lbl2, 0.4M);
 		effect.Render();
     }

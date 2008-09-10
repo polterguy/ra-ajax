@@ -80,8 +80,29 @@
     	Ajax Behaviors is a BIG weapon and like all big weapons it should be handled with care and not misused since then it
     	has the nasty habit of doing bad things towards your feet ;)
     </p>
-    
-    <div style="height:200px;">&nbsp;</div>
+    <br />
+    <h2>Create even richer Ajax Controls by combining Behaviors</h2>
+    <p>
+    	Below you can see an example of an Ajax Slider. This slider doesn't really exist in Ra-Ajax but has been created
+    	by combining a couple of controls with some Ajax Behaviors.
+    </p>
+    <br />
+    <div style="width:200px;border:solid 1px Black;">
+    	&nbsp;
+	    <ra:Label 
+	        runat="server" 
+	        ID="slider"
+	        style="font-size:10px;cursor:move;position:absolute;top:1031px;left:328px;color:#33f;border:solid 1px #33f;width:25px;height:15px;"
+	        Text="&nbsp;">
+
+	    	<ra:BehaviorDraggable 
+	    		runat="server"
+	    		ID="sliderDragger"
+	    		OnDropped="draggerDragger_Dropped" />
+
+	    </ra:Label>
+    </div>
+    <br />
     <a href="Combining.aspx">On to Combining Controls</a>
 </asp:Content>
 
