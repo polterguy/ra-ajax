@@ -7,10 +7,17 @@
  */
 
 using System;
+using System.Drawing;
 using Ra.Widgets;
 
 public partial class Behaviors : System.Web.UI.Page
 {
+	protected void Page_Load(object sender, EventArgs e)
+	{
+		dragger1.Bounds = new Rectangle(200, 200, 700, 700);
+		dragger2.Bounds = new Rectangle(200, 200, 700, 700);
+	}
+	
     protected void dragger1_Dropped(object sender, EventArgs e)
     {
 		lbl1.Text = string.Format("Label dragged and dropped to {0}, {1}", lbl1.Style["left"], lbl1.Style["top"]);
