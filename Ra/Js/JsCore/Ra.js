@@ -25,6 +25,8 @@
 // Ra will extend the DOM object with the Ra specific methods
 var Ra = {};
 
+Ra.guid = 1;
+
 // Empty function useful for different things like for instance "killing events" and similar constructs
 Ra.emptyFunction = function() {};
 
@@ -95,7 +97,7 @@ Ra.Element = Ra.klass();
 // Ra.$ function in which it is being used as a template for extending DOM
 // elements...
 Ra.Element.prototype = {
-
+  
   // Sets content of element (wrapper around innerHTML)
   setContent: function(html) {
     this.innerHTML = html;
@@ -226,8 +228,12 @@ Ra.Element.prototype = {
         return func.apply(callingContext, [event || window.event]);
       }
     };
-
-    this._wrappers[evtName + callingContext.id] = wr;
+    
+    if( !callingContext.raAjaxEventGuid ) {
+      callingContext.raAjaxEventGuid = Ra.guid++;
+    }
+    
+    this._wrappers[evtName + callingContext.raAjaxEventGuid] = wr;
 
     // Adding up event handler
     if (this.addEventListener) {
@@ -241,7 +247,7 @@ Ra.Element.prototype = {
   stopObserving: function(evtName, func, callingContext) {
 
     // Retrieving event handler wrapper
-    var wr = this._wrappers[evtName + callingContext.id];
+    var wr = this._wrappers[evtName + callingContext.raAjaxEventGuid];
 
     // Removing event handler from list
     if (this.removeEventListener) {
