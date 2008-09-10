@@ -55,7 +55,7 @@ Ra.extend(Ra.BDrag.prototype, {
     this.parent.element.observe('mousemove', this.onMouseMove, this);
 
     this.options = Ra.extend({
-      bounds: {left:-1000, top:-1000, width: 2000, height: 2000}
+      bounds: {left:-2000, top:-2000, width: 4000, height: 4000}
     }, this.options || {});
 
   },

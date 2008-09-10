@@ -68,6 +68,18 @@
     		OnDropped="dragger2_Dropped" />
 
     </ra:Label>
+    <div style="height:200px;">&nbsp;</div>
+    <h2>Ajax Behaviors is a BIG gun!</h2>
+    <p>
+    	Note though that all though this gives you a LOT of power it is very easy to overdo Ajax Behaviors by adding them in
+    	places where they either make no sense or they break the normal expected logic of a webpage. Like for instance I would
+    	be careful with adding up BehaviorDraggable to an Ajax Button since that would probably to such a large degree change
+    	the "expected behavior" for that button that your users would be confused when trying to interact with that button etc...
+    </p>
+    <p>
+    	Ajax Behaviors is a BIG weapon and like all big weapons it should be handled with care and not misused since then it
+    	has the nasty habit of doing bad things towards your feet ;)
+    </p>
     
     <div style="height:200px;">&nbsp;</div>
     <a href="Combining.aspx">On to Combining Controls</a>
