@@ -102,6 +102,10 @@
 
 	    </ra:Label>
     </div>
+    <p>
+    	Not that the above Ajax Slider control is intentionally kept ugly to make sure the code is easy to understand and
+    	may serve as a reference for others wanting to create their own Ajax Extension Controls using Ra-Ajax.
+    </p>
     <br />
     <a href="Combining.aspx">On to Combining Controls</a>
 </asp:Content>

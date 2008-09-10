@@ -27,8 +27,31 @@ namespace Ra.Widgets
 			return string.Empty;
 		}
 
-        public override void RenderControl(System.Web.UI.HtmlTextWriter writer)
-        { }
+        public override void RenderControl(ASP.HtmlTextWriter writer)
+        {
+            if (DesignMode)
+                throw new ApplicationException("Ra Ajax doesn't support Design time");
+
+			// We roughly only needs to handle what happens for JSON changes in the Behaviors
+            if (Visible)
+            {
+                if (AjaxManager.Instance.IsCallback)
+                {
+                    if (Phase == RenderingPhase.Visible)
+                    {
+                        // JSON changes, control was visible also previous request...
+                        string JSON = SerializeJSON();
+                        if (JSON != null)
+                        {
+                            AjaxManager.Instance.Writer.WriteLine("Ra.Beha.$('{0}').handleJSON({1});",
+                                ClientID,
+                                JSON);
+                        }
+                        RenderChildren(writer);
+                    }
+                }
+            }
+        }
 
 		public abstract string GetRegistrationScript();
 	}
