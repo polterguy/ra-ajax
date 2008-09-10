@@ -15,7 +15,7 @@ using Ra.Helpers;
 
 namespace Ra.Widgets
 {
-    [ASP.ToolboxData("<{0}:BehaviorDraggable runat=server />")]
+    [ASP.ToolboxData("<{0}:BehaviorDraggable runat=\"server\" />")]
 	public class BehaviorDraggable : Behavior
 	{
 		public event EventHandler Dropped;
@@ -31,14 +31,35 @@ namespace Ra.Widgets
             }
         }
 
+        public Point Snap
+        {
+            get { return ViewState["Snap"] == null ? Point.Empty : (Point)ViewState["Snap"]; }
+            set
+            {
+                if (value != Snap)
+                    SetJSONValueObject("Snap", value);
+                ViewState["Snap"] = value;
+            }
+        }
+
 		public override string GetRegistrationScript ()
 		{
-			string options = "";
+			string options = string.Empty;
 			if( Bounds != Rectangle.Empty)
 			{
-				options += string.Format(",{{bounds:{{left:{0},top:{1},width:{2},height:{3}}}}}",
+				options += string.Format(",{{bounds:{{left:{0},top:{1},width:{2},height:{3}}}",
                     Bounds.Left, Bounds.Top, Bounds.Width, Bounds.Height);
 			}
+			if( Snap != Point.Empty)
+			{
+				if( options != string.Empty)
+					options += ",";
+				else
+					options += "{";
+				options += string.Format("snap:{{x:{0},y:{1}}}", Snap.X, Snap.Y);
+			}
+			if( options != string.Empty)
+				options += "}";
 			return string.Format("new Ra.BDrag('{0}'{1})", this.ClientID, options);
 		}
 

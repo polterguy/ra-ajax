@@ -47,7 +47,7 @@
         runat="server" 
         ID="lbl1"
         style="cursor:move;position:absolute;top:550px;left:350px;color:#33f;border:solid 1px #33f;padding:5px;width:100px;"
-        Text="Try to drag and drop me around in the browser">
+        Text="Se me snap...">
 
     	<ra:BehaviorDraggable 
     		runat="server"
