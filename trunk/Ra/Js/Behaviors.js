@@ -10,10 +10,28 @@
 // ==============================================================================
 //
 // All the default Ajax Behaviors which exists in Ra-Ajax core project
-// First the Base class for all behaviors
+// First the Base class for all behaviors.
+// Note that the Behaviors have "delayed construction" which actually 
+// is fired AFTER the Ra.Control is finished initializing which is why
+// you don't see a forward call from the Ra.Beha.init to the
+// specific overridden initBehavior which does the actual "initializsation"
+// of the Behavior.
 //
 // ==============================================================================
 Ra.Beha = Ra.klass();
+
+
+// Retrieve function
+Ra.Beha.$ = function(id) {
+  var idxCtrl = Ra.Control._controls.length;
+  while( idxCtrl-- ) {
+    var idxBeha = Ra.Control._controls[idxCtrl].options.beha.length;
+    while( idxBeha-- ) {
+      if( Ra.Control._controls[idxCtrl].options.beha[idxBeha].id == id )
+        return Ra.Control._controls[idxCtrl].options.beha[idxBeha];
+    }
+  }
+}
 
 
 Ra.Beha.prototype = {
@@ -22,8 +40,15 @@ Ra.Beha.prototype = {
   init: function(id, options) {
     this.options = options;
     this.id = id;
-  }
+  },
 
+  handleJSON: function(json) {
+
+    // Looping through all "top-level" objects and calling the functions for those keys
+    for( var idxKey in json ) {
+      this[idxKey](json[idxKey]);
+    }
+  }
 }
 
 
@@ -34,6 +59,9 @@ Ra.Beha.prototype = {
 // ==============================================================================
 //
 // This is the BehaviorDraggable
+// By using this you can get a control which can be dragged and dropped
+// on the screen which again will trigger a server-side event
+// which you can trap in your own code.
 //
 // ==============================================================================
 Ra.BDrag = Ra.klass();
@@ -46,6 +74,8 @@ Ra.extend(Ra.BDrag.prototype, Ra.Beha.prototype);
 // Creating IMPLEMENTATION of class
 Ra.extend(Ra.BDrag.prototype, {
 
+  // Delayed CTOR, actually called by the Ra.Control class
+  // for all Behaviors within the Control
   initBehavior: function(parent) {
 
     this._hasCaption = false;
@@ -60,10 +90,13 @@ Ra.extend(Ra.BDrag.prototype, {
 
   },
 
-  Bounds: function(x, y, width, height) {
-    this.options.bounds = {x:x, y:y, width:width, height:width};
+  // Setter for the Bounds Rectangle which determines the max/min
+  // position the control can be dragged around within.
+  Bounds: function(rc) {
+    this.options.bounds = rc;
   },
 
+  // Called when mouse is being pushed DOWN on top of the Control
   onMouseDown: function(event) {
     this._hasCaption = true;
     this._pos = this.pointer(event);
@@ -71,6 +104,9 @@ Ra.extend(Ra.BDrag.prototype, {
     this._oldY = parseInt(this.parent.element.style.top, 10);
   },
 
+  // Called when mouse is released. Note that this
+  // is currently being trapped for the DOM element of the control
+  // but should be trapped for the document.body element.
   onMouseUp: function() {
     if( !this._hasCaption )
       return;
@@ -81,6 +117,7 @@ Ra.extend(Ra.BDrag.prototype, {
     var newX = parseInt(this.parent.element.style.left, 10);
     var newY = parseInt(this.parent.element.style.top, 10);
 
+    // Calling server with new position and (maybe) raising the Dropped event
     new Ra.Ajax({
       args:'__RA_CONTROL=' + this.id + '&__EVENT_NAME=dropped' + '&x=' + newX + '&y=' + newY,
       raCallback:true,
@@ -90,28 +127,17 @@ Ra.extend(Ra.BDrag.prototype, {
     });
   },
 
+  // Called when mouse is moved. This too have the same "bug" as the
+  // function above.
   onMouseMove: function(event) {
     if( this._hasCaption ) {
       var pos = this.pointer(event);
       var xDelta = pos.x - this._pos.x;
       var yDelta = pos.y - this._pos.y;
-      var newX = this._oldX + xDelta;
-      var newY = this._oldY + yDelta;
       var bn = this.options.bounds;
-      newX = Math.min(Math.max(newX, bn.left), bn.width + bn.left);
-      newY = Math.min(Math.max(newY, bn.top), bn.height + bn.top);
-      this.parent.element.style.left = newX + 'px';
-      this.parent.element.style.top = newY + 'px';
+      this.parent.element.style.left = Math.min(Math.max(this._oldX + xDelta, bn.left), bn.width + bn.left) + 'px';
+      this.parent.element.style.top = Math.min(Math.max(this._oldY + yDelta, bn.top), bn.height + bn.top) + 'px';
     }
-  },
-
-  pointer: function(event) {
-    return {
-      x: event.pageX || (event.clientX +
-        (document.documentElement.scrollLeft || document.body.scrollLeft)),
-      y: event.pageY || (event.clientY +
-        (document.documentElement.scrollTop || document.body.scrollTop))
-    };
   },
 
   onFinishedRequest: function(response) {
@@ -122,6 +148,17 @@ Ra.extend(Ra.BDrag.prototype, {
     Ra.Control.errorHandler(status, fullTrace);
   },
 
+  // Returns the x,y position of the mouse from the given event
+  pointer: function(event) {
+    return {
+      x: event.pageX || (event.clientX +
+        (document.documentElement.scrollLeft || document.body.scrollLeft)),
+      y: event.pageY || (event.clientY +
+        (document.documentElement.scrollTop || document.body.scrollTop))
+    };
+  },
+
+  // Called when Control is being destroyed
   destroy: function() {
     this.parent.element.stopObserving('mousedown', this.onMouseDown, this);
     this.parent.element.stopObserving('mouseup', this.onMouseUp, this);

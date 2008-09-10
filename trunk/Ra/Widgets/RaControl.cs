@@ -173,7 +173,7 @@ namespace Ra.Widgets
             if (value.GetType() == typeof(System.Drawing.Rectangle))
             {
 				System.Drawing.Rectangle rect = (System.Drawing.Rectangle)value;
-                builder.AppendFormat("{{{0},{1},{2},{3}}}",
+                builder.AppendFormat("Bounds:{{left:{1},top:{2},width:{3},height:{4}}}",
                     key,
                     rect.Left, rect.Top, rect.Width, rect.Height);
                 return;
