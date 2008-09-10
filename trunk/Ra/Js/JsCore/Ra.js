@@ -217,6 +217,7 @@ Ra.Element.prototype = {
     if( !this._wrappers ) {
       this._wrappers = [];
     }
+    
     var wr = function(event) {
       if( extraParams ) {
         extraParams.push([event || window.event]);
@@ -226,7 +227,7 @@ Ra.Element.prototype = {
       }
     };
 
-    this._wrappers[evtName] = wr;
+    this._wrappers[evtName + callingContext.id] = wr;
 
     // Adding up event handler
     if (this.addEventListener) {
@@ -237,10 +238,10 @@ Ra.Element.prototype = {
     return this;
   },
 
-  stopObserving: function(evtName, func) {
+  stopObserving: function(evtName, func, callingContext) {
 
     // Retrieving event handler wrapper
-    var wr = this._wrappers[evtName];
+    var wr = this._wrappers[evtName + callingContext.id];
 
     // Removing event handler from list
     if (this.removeEventListener) {

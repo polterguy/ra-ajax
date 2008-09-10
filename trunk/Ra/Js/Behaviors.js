@@ -80,9 +80,12 @@ Ra.extend(Ra.BDrag.prototype, {
 
     this._hasCaption = false;
     this.parent = parent;
+    
+    Ra.extend(document.body, Ra.Element.prototype);
+    
     this.parent.element.observe('mousedown', this.onMouseDown, this);
-    this.parent.element.observe('mouseup', this.onMouseUp, this);
-    this.parent.element.observe('mousemove', this.onMouseMove, this);
+    document.body.observe('mouseup', this.onMouseUp, this);
+    document.body.observe('mousemove', this.onMouseMove, this);
 
     this.options = Ra.extend({
       bounds: {left:-2000, top:-2000, width: 4000, height: 4000},
@@ -170,8 +173,8 @@ Ra.extend(Ra.BDrag.prototype, {
   // Called when Control is being destroyed
   destroy: function() {
     this.parent.element.stopObserving('mousedown', this.onMouseDown, this);
-    this.parent.element.stopObserving('mouseup', this.onMouseUp, this);
-    this.parent.element.stopObserving('mousemove', this.onMouseMove, this);
+    document.body.stopObserving('mouseup', this.onMouseUp, this);
+    document.body.stopObserving('mousemove', this.onMouseMove, this);
   }
 });
 
