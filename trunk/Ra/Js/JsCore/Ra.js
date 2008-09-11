@@ -661,7 +661,8 @@ Ra.Effect.prototype = {
       duration: 1.0,
       onStart: function() {},
       onFinished: function() {},
-      onRender: null
+      onRender: null,
+      sinoidal: false
     }, options || {});
     if( element ) {
       this.element = Ra.$(element);
@@ -694,7 +695,10 @@ Ra.Effect.prototype = {
   // and anything between the position of the animation meaning if duration == 3 seconds
   // then after 2 seconds the position will equal 0.6666666.
   render: function(pos) {
-    this.options.onRender.call(this, pos);
+    if( this.options.sinoidal )
+      this.options.onRender.call(this, (-Math.cos(pos*Math.PI)/2) + .5);
+    else
+      this.options.onRender.call(this, pos);
   }
 };
 
