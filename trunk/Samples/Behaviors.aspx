@@ -76,7 +76,8 @@
         Text="Drop draggers onto me...">
 
     	<ra:BehaviorDroppable 
-    		runat="server" 
+    		runat="server"
+    		TouchedCssClass="droppablesTouched"
     		OnDropped="dropper_Dropped"
     		ID="dropper" />
 

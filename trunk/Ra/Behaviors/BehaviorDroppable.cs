@@ -35,9 +35,25 @@ namespace Ra.Widgets
 		
 		public event EventHandler<DroppedEventArgs> Dropped;
 
+        public string TouchedCssClass
+        {
+            get { return ViewState["TouchedCssClass"] == null ? "" : (string)ViewState["TouchedCssClass"]; }
+            set
+            {
+                if (value != TouchedCssClass)
+                    SetJSONValueString("TouchedCssClass", value);
+                ViewState["TouchedCssClass"] = value;
+            }
+        }
+
 		public override string GetRegistrationScript ()
 		{
-			return string.Format("new Ra.BDrop('{0}')", this.ClientID);
+			string options = "";
+			if (!string.IsNullOrEmpty(TouchedCssClass))
+			{
+				options = string.Format(",{{touched:\"{0}\"}}", TouchedCssClass);
+			}
+			return string.Format("new Ra.BDrop('{0}'{1})", this.ClientID, options);
 		}
 
         public override void DispatchEvent(string name)

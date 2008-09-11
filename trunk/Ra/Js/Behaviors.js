@@ -143,6 +143,7 @@ Ra.extend(Ra.BDrag.prototype, {
         if( idx > 0 )
           dropParams += ',';
         dropParams += affectedDroppers[idx].id;
+        affectedDroppers[idx].unTouch();
       }
     }
     new Ra.Ajax({
@@ -166,6 +167,19 @@ Ra.extend(Ra.BDrag.prototype, {
       var bn = this.options.bounds;
       this.parent.element.style.left = Math.min(Math.max(this._oldX + xDelta, bn.left), bn.width + bn.left) + 'px';
       this.parent.element.style.top = Math.min(Math.max(this._oldY + yDelta, bn.top), bn.height + bn.top) + 'px';
+
+      // Signaling affected droppers
+      var affectedDroppers = Ra.BDrop.getAffected(pos.x, pos.y);
+      var idx = affectedDroppers.length;
+      while( idx-- ) {
+        affectedDroppers[idx].touched();
+      }
+      // Unsignalizing UN-affected ones
+      affectedDroppers = Ra.BDrop.getUnAffected(pos.x, pos.y);
+      idx = affectedDroppers.length;
+      while( idx-- ) {
+        affectedDroppers[idx].unTouch();
+      }
     }
   },
 
@@ -227,6 +241,18 @@ Ra.BDrop.getAffected = function(x, y) {
 }
 
 
+Ra.BDrop.getUnAffected = function(x, y) {
+  var retVal = [];
+  idx = Ra.BDrop._droppers.length;
+  while( idx-- ) {
+    if( !Ra.BDrop._droppers[idx].parent.element.within(x,y) ) {
+      retVal.push(Ra.BDrop._droppers[idx]);
+    }
+  }
+  return retVal;
+}
+
+
 // Inheriting from Ra.Control
 Ra.extend(Ra.BDrop.prototype, Ra.Beha.prototype);
 
@@ -239,6 +265,29 @@ Ra.extend(Ra.BDrop.prototype, {
   initBehavior: function(parent) {
     this.parent = parent;
     Ra.BDrop._droppers.push(this);
+
+    this.options = Ra.extend({
+      touched: null
+    }, this.options || {});
+  },
+
+  TouchedCssClass: function(value) {
+    this.options.touched = value;
+  },
+
+  touched: function() {
+    if( this.isTouched )
+      return;
+    this.isTouched = true;
+    this._oldClassName = this.parent.element.className;
+    this.parent.element.className = this.options.touched;
+  },
+
+  unTouch: function() {
+    if( !this.isTouched )
+      return;
+    this.isTouched = false;
+    this.parent.element.className = this._oldClassName;
   },
 
   destroy: function() {
