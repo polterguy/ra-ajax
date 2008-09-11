@@ -25,8 +25,6 @@
 // Ra will extend the DOM object with the Ra specific methods
 var Ra = {};
 
-Ra.guid = 1;
-
 // Empty function useful for different things like for instance "killing events" and similar constructs
 Ra.emptyFunction = function() {};
 
