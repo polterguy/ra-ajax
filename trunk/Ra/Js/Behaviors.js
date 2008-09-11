@@ -88,8 +88,6 @@ Ra.extend(Ra.BDrag.prototype, {
     this._hasCaption = false;
     this.parent = parent;
     
-    Ra.extend(document.body, Ra.Element.prototype);
-    
     this.parent.element.observe('mousedown', this.onMouseDown, this);
     document.body.observe('mouseup', this.onMouseUp, this);
     document.body.observe('mousemove', this.onMouseMove, this);
