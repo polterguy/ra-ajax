@@ -84,8 +84,10 @@ Ra.extend(Ra.BDrag.prototype, {
     Ra.extend(document.body, Ra.Element.prototype);
     
     this.parent.element.observe('mousedown', this.onMouseDown, this);
-    document.body.observe('mouseup', this.onMouseUp, this);
-    document.body.observe('mousemove', this.onMouseMove, this);
+    var doc = document.body;
+    Ra.extend(doc, Ra.Element.prototype);
+    doc.observe('mouseup', this.onMouseUp, this);
+    doc.observe('mousemove', this.onMouseMove, this);
 
     this.options = Ra.extend({
       bounds: {left:-2000, top:-2000, width: 4000, height: 4000},
