@@ -89,6 +89,7 @@ Ra.extend = function(inherited, base) {
 // =======================================
 Ra.Element = Ra.klass();
 
+Ra.Element._guid = 1;
 
 // Note that this class is an "abstract class" which means you cannot create
 // new objects like this; var x = new Ra.Element; since it doesn't implement
@@ -247,11 +248,11 @@ Ra.Element.prototype = {
       }
     };
     
-    if( !callingContext.raAjaxEventGuid ) {
-      callingContext.raAjaxEventGuid = Ra.guid++;
+    if( !callingContext._raAjaxEventGuid ) {
+      callingContext._raAjaxEventGuid = Ra.Element._guid++;
     }
     
-    this._wrappers[evtName + callingContext.raAjaxEventGuid] = wr;
+    this._wrappers[evtName + callingContext._raAjaxEventGuid] = wr;
 
     // Adding up event handler
     if (this.addEventListener) {
@@ -265,7 +266,7 @@ Ra.Element.prototype = {
   stopObserving: function(evtName, func, callingContext) {
 
     // Retrieving event handler wrapper
-    var wr = this._wrappers[evtName + callingContext.raAjaxEventGuid];
+    var wr = this._wrappers[evtName + callingContext._raAjaxEventGuid];
 
     // Removing event handler from list
     if (this.removeEventListener) {
