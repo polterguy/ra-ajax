@@ -1,0 +1,135 @@
+<%@ Page 
+    Language="C#" 
+    MasterPageFile="~/MasterPage.master" 
+    AutoEventWireup="true" 
+    CodeFile="Ajax-Window.aspx.cs" 
+    Inherits="AjaxWindow" 
+    Title="Ra-Ajax Window Sample" %>
+
+<%@ Register 
+    Assembly="Ra" 
+    Namespace="Ra.Widgets" 
+    TagPrefix="ra" %>
+
+<%@ Register 
+    Assembly="Extensions" 
+    Namespace="Ra.Extensions" 
+    TagPrefix="ext" %>
+
+<asp:Content 
+    ID="Content1" 
+    ContentPlaceHolderID="cnt1" 
+    runat="server">
+
+    <h1>Ajax Window Sample</h1>
+    <p>
+    	This is our <em>Ajax Window example</em>. The Ajax Window tries to as much as possible mimick a Desktop Window in that
+    	it has properties which makes it behave at least close to the behavior of a Desktop Window. The Ajax Window is also
+    	like most of our Ajax Extension Controls created without any custom JavaScript. This means it also serves as a perfect
+    	reference for how to create your own Ajax Controls utilizing the building blocks from Ra-Ajax.
+    </p>
+    <ext:Window 
+    	runat="server"
+    	Caption="Ajax Window"
+    	CssClass="window"
+    	style="width:250px;height:280px;z-index:500;position:absolute;left:350px;top:450px;"
+    	id="window">
+    	<div style="padding:5px;">
+			Try to move me around by dragging my header field.
+			<br />
+		    <img 
+		        alt="Flower" 
+		        src="media/flower1.jpg" />
+		</div>
+    </ext:Window>
+    <div style="height:300px;">&nbsp;</div>
+    <p>
+    	Try to move the Ajax Window by dragging and dropping its header.
+    </p>
+    <br />
+    <h2>About creating Ajax Extension Controls</h2>
+    <p>
+    	The Ajax Window is a very good example of how to create an Ajax Extension Control yourself utilizing Ra-Ajax. In fact the
+    	entire code for the Ajax Window is 100% written in server-side C#. The Ajax Window itself is inherited from Ra-Ajax Panel
+    	and in the <em>CreateChildControls</em> method we just create a couple of extras for the Window which is being added to
+    	the Controls collection of the Window Control itself. Then from our override of the <em>LoadViewState</em> method we
+    	make sure we call the <em>EnsureChildControls</em> which will call our CreateChildControls method.
+    </p>
+    <p>
+    	In fact the entire code for the whole Ajax Window is so small it's easy to reproduce it here...
+    </p>
+    <pre>
+using System;
+using System.ComponentModel;
+using WEBCTRLS = System.Web.UI.WebControls;
+using Ra.Widgets;
+
+namespace Ra.Extensions
+{
+    [ASP.ToolboxData("&lt;{0}:Window runat=\"server\"&gt;&lt;/{0}:Window&gt;")]
+    public class Window : Panel
+    {
+        private WEBCTRLS.Panel _pnlHead;
+        private Label _lblHead;
+        private BehaviorDraggable _dragger;
+
+        [DefaultValue("")]
+        public string Caption
+        {
+            get { return ViewState["Text"] == null ? "" : (string)ViewState["Text"]; }
+            set { ViewState["Text"] = value; }
+        }
+
+        protected override void LoadViewState(object savedState)
+        {
+            base.LoadViewState(savedState);
+            EnsureChildControls();
+        }
+
+        protected override void CreateChildControls()
+        {
+            CreateWindowControls();
+        }
+
+        private void CreateWindowControls()
+        {
+            // Creating header control(s)
+            _pnlHead = new WEBCTRLS.Panel();
+            _pnlHead.ID = "head";
+            _lblHead = new Label();
+            _lblHead.ID = "headCaption";
+            _pnlHead.Controls.Add(_lblHead);
+            this.Controls.AddAt(0, _pnlHead);
+			
+            // Creating dragger
+            _dragger = new BehaviorDraggable();
+            this.Controls.Add(_dragger);
+        }
+
+        protected override void OnPreRender (EventArgs e)
+        {
+            _pnlHead.CssClass = CssClass + "-head";
+            _lblHead.Text = Caption;
+            _dragger.Handle = _pnlHead.ClientID;
+            base.OnPreRender (e);
+        }
+    }
+}
+    </pre>
+    <p>
+    	And that's it. With those codelines utilizing Ra-Ajax you actually have an Ajax Window :)
+    </p>
+    <p>
+    	In fact the most "difficult" thing to understand is where you call EnsureChildControls. I choose
+    	mostly to do this in the LoadViewState since that's the "earliest" time I have access to the ViewState.
+    	And often I store stuff in the ViewState which I again need when I create the Window. Also you should
+    	upon EVERY Callback (and postback) re-create the Window using the exact same procedure to make sure
+    	your (Ajax) Controls are added to the Controls collection in the correct order and so on. If you're 
+    	stuck with creating an Ajax Extension control this is our favorite topic to help you out with though
+    	at <a href="http://ra-ajax.org/Forums/Forums.aspx">our forums</a> so don't be afraid to ask for help :) 
+    </p>
+</asp:Content>
+
+
+
+
