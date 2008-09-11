@@ -16,11 +16,16 @@ public partial class Behaviors : System.Web.UI.Page
 	{
 		if (!IsPostBack)
 		{
-			dragger1.Bounds = new Rectangle(350, 550, 300, 300);
+			dragger1.Bounds = new Rectangle(350, 550, 500, 300);
 			dragger1.Snap = new Point(10, 10);
-			dragger2.Bounds = new Rectangle(350, 550, 300, 300);
+			dragger2.Bounds = new Rectangle(350, 550, 500, 300);
 			sliderDragger.Bounds = new Rectangle(328, 1031, 170, 0);
 		}
+	}
+	
+	protected void dropper_Dropped(object sender, BehaviorDroppable.DroppedEventArgs e)
+	{
+		dropperLbl.Text = e.Dragger.Parent.ID + " was dropped";
 	}
 	
     protected void dragger1_Dropped(object sender, EventArgs e)

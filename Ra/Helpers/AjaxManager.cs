@@ -63,6 +63,34 @@ namespace Ra
             get { return _supressFilters; }
             set { _supressFilters = value; }
         }
+		
+		private Control FindControl(Control current, string id)
+		{
+			if (current.ClientID == id)
+				return current;
+			foreach (Control idx in current.Controls)
+			{
+				Control retVal = FindControl(idx, id);
+				if (retVal != null)
+					return retVal;
+			}
+			return null;
+		}
+		
+		public Control FindControl(string id)
+		{
+			Control tmpRetVal = FindControl(CurrentPage, id);
+			if( tmpRetVal != null )
+				return tmpRetVal;
+			if( CurrentPage.Master != null )
+				tmpRetVal = FindControl(CurrentPage.Master, id);
+			return tmpRetVal;
+		}
+
+		public T FindControl<T>(string id) where T : Control
+		{
+			return FindControl(CurrentPage, id) as T;
+		}
 
         public void InitializeControl(RaControl ctrl)
         {

@@ -379,7 +379,6 @@ Ra.Control.prototype = {
     this._unlistenEventHandlers();
 
     // Looping through registered controls to remove the "this instance"
-    var idxToRemove;
     idx = Ra.Control._controls.length;
     while( idx-- ) {
       if( Ra.Control._controls[idx].element.id == this.element.id ) {
