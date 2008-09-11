@@ -9,23 +9,17 @@
     Namespace="Ra.Widgets" 
     TagPrefix="ra" %>
 
+<%@ Register 
+    Assembly="Extensions" 
+    Namespace="Ra.Extensions" 
+    TagPrefix="ext" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
     <head runat="server">
         <title>Untitled Page</title>
         <link href="media/MainStyles-3.css" rel="stylesheet" type="text/css" />
-
-        <script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-        </script>
-
-        <script type="text/javascript">
-var pageTracker = _gat._getTracker("UA-4923736-2");
-pageTracker._trackPageview();
-        </script>
-
     </head>
     <body>
         <form id="form1" runat="server">
@@ -64,7 +58,7 @@ pageTracker._trackPageview();
                      </pre>
                 </ra:Panel>
                 <div id="navigation">
-                    <ul class="links">
+                    <ul class="links" style="padding:35px;">
                         <li>
                             <a href="http://code.google.com/p/ra-ajax/">Download Ra-Ajax</a>
                         </li>
@@ -74,86 +68,108 @@ pageTracker._trackPageview();
                                 title="Back to main Ra-Ajax website">Main Ra-Ajax website</a>
                         </li>
                     </ul>
-                    <ul class="links">
-                        <li>
-                            <a runat="server" href="~">Samples Start Page</a>
-                        </li>
-                        <li>
-                            <a href="Flexible.aspx">Ra-Ajax - Event System</a>
-                        </li>
-                        <li>
-                            <a href="Effects.aspx">Ra-Ajax - Effects</a>
-                        </li>
-                        <li>
-                            <a href="Behaviors.aspx">Ra-Ajax - Behaviors</a>
-                        </li>
-                        <li>
-                            <a href="Combining.aspx">Ra-Ajax - Combining Controls</a>
-                        </li>
-                        <li>
-                            <a href="Dynamic.aspx">Ra-Ajax - Dynamic Controls</a>
-                        </li>
-                        <li>
-                            <a href="Ajax-Comet.aspx">Ra-Ajax - Comet</a>
-                        </li>
-                        <li>
-                            <a href="Ajax-Button.aspx">Ra-Ajax - Button</a>
-                        </li>
-                        <li>
-                            <a href="Ajax-CheckBox.aspx">Ra-Ajax - CheckBox</a>
-                        </li>
-                        <li>
-                            <a href="Ajax-DropDownList.aspx">Ra-Ajax - DropDownList</a>
-                        </li>
-                        <li>
-                            <a href="Ajax-HiddenField.aspx">Ra-Ajax - HiddenField</a>
-                        </li>
-                        <li>
-                            <a href="Ajax-Image.aspx">Ra-Ajax - Image</a>
-                        </li>
-                        <li>
-                            <a href="Ajax-ImageButton.aspx">Ra-Ajax - ImageButton</a>
-                        </li>
-                        <li>
-                            <a href="Ajax-Label.aspx">Ra-Ajax - Label</a>
-                        </li>
-                        <li>
-                            <a href="Ajax-LinkButton.aspx">Ra-Ajax - LinkButton</a>
-                        </li>
-                        <li>
-                            <a href="Ajax-Panel.aspx">Ra-Ajax - Panel</a>
-                        </li>
-                        <li>
-                            <a href="Ajax-RadioButton.aspx">Ra-Ajax - RadioButton</a>
-                        </li>
-                        <li>
-                            <a href="Ajax-TextArea.aspx">Ra-Ajax - TextArea</a>
-                        </li>
-                        <li>
-                            <a href="Ajax-TextBox.aspx">Ra-Ajax - TextBox</a>
-                        </li>
-                        <li>
-                            <a href="Ajax-Accordion.aspx">Ra-Ajax - Accordion</a>
-                        </li>
-                        <li>
-                            <a href="Ajax-Calendar.aspx">Ra-Ajax - Calendar</a>
-                        </li>
-                        <li>
-                            <a href="Ajax-InPlaceEdit.aspx">Ra-Ajax - InPlaceEdit</a>
-                        </li>
-                        <li>
-                            <a href="Ajax-RichEdit.aspx">Ra-Ajax - RichEdit</a>
-                        </li>
-                        <li>
-                            <a href="Ajax-Timer.aspx">Ra-Ajax - Timer</a>
-                        </li>
-                        <li>
-                            <a href="Ajax-TabControl.aspx">Ra-Ajax - TabControl</a>
-                        </li>
-                        <li>
-                            <a href="Ajax-Window.aspx">Ra-Ajax - Window</a>
-                        </li>
-                    </ul>
+				    <ext:Accordion 
+				        runat="server" 
+				        ID="accordion" 
+				        CssClass="accordion-control" 
+				        AnimationSpeed="0.2"
+				        style="width:75%;margin-left:auto;margin-right:auto;">
+
+				        <ext:AccordionView 
+				            Caption="Ideas samples" 
+				            runat="server" 
+				            ID="accView1" 
+				            CssClass="content">
+		                    <ul class="links">
+		                        <li>
+		                            <a runat="server" href="~">Samples Start Page</a>
+		                        </li>
+		                        <li>
+		                            <a href="Flexible.aspx">Ra-Ajax - Event System</a>
+		                        </li>
+		                        <li>
+		                            <a href="Effects.aspx">Ra-Ajax - Effects</a>
+		                        </li>
+		                        <li>
+		                            <a href="Behaviors.aspx">Ra-Ajax - Behaviors</a>
+		                        </li>
+		                        <li>
+		                            <a href="Combining.aspx">Ra-Ajax - Combining Controls</a>
+		                        </li>
+		                        <li>
+		                            <a href="Dynamic.aspx">Ra-Ajax - Dynamic Controls</a>
+		                        </li>
+		                        <li>
+		                            <a href="Ajax-Comet.aspx">Ra-Ajax - Comet</a>
+		                        </li>
+		                    </ul>
+				        </ext:AccordionView>
+				        <ext:AccordionView 
+				            Caption="Reference samples" 
+				            runat="server" 
+				            ID="accView2" 
+				            CssClass="content">
+		                    <ul class="links">
+		                        <li>
+		                            <a href="Ajax-Button.aspx">Ra-Ajax - Button</a>
+		                        </li>
+		                        <li>
+		                            <a href="Ajax-CheckBox.aspx">Ra-Ajax - CheckBox</a>
+		                        </li>
+		                        <li>
+		                            <a href="Ajax-DropDownList.aspx">Ra-Ajax - DropDownList</a>
+		                        </li>
+		                        <li>
+		                            <a href="Ajax-HiddenField.aspx">Ra-Ajax - HiddenField</a>
+		                        </li>
+		                        <li>
+		                            <a href="Ajax-Image.aspx">Ra-Ajax - Image</a>
+		                        </li>
+		                        <li>
+		                            <a href="Ajax-ImageButton.aspx">Ra-Ajax - ImageButton</a>
+		                        </li>
+		                        <li>
+		                            <a href="Ajax-Label.aspx">Ra-Ajax - Label</a>
+		                        </li>
+		                        <li>
+		                            <a href="Ajax-LinkButton.aspx">Ra-Ajax - LinkButton</a>
+		                        </li>
+		                        <li>
+		                            <a href="Ajax-Panel.aspx">Ra-Ajax - Panel</a>
+		                        </li>
+		                        <li>
+		                            <a href="Ajax-RadioButton.aspx">Ra-Ajax - RadioButton</a>
+		                        </li>
+		                        <li>
+		                            <a href="Ajax-TextArea.aspx">Ra-Ajax - TextArea</a>
+		                        </li>
+		                        <li>
+		                            <a href="Ajax-TextBox.aspx">Ra-Ajax - TextBox</a>
+		                        </li>
+		                        <li>
+		                            <a href="Ajax-Accordion.aspx">Ra-Ajax - Accordion</a>
+		                        </li>
+		                        <li>
+		                            <a href="Ajax-Calendar.aspx">Ra-Ajax - Calendar</a>
+		                        </li>
+		                        <li>
+		                            <a href="Ajax-InPlaceEdit.aspx">Ra-Ajax - InPlaceEdit</a>
+		                        </li>
+		                        <li>
+		                            <a href="Ajax-RichEdit.aspx">Ra-Ajax - RichEdit</a>
+		                        </li>
+		                        <li>
+		                            <a href="Ajax-Timer.aspx">Ra-Ajax - Timer</a>
+		                        </li>
+		                        <li>
+		                            <a href="Ajax-TabControl.aspx">Ra-Ajax - TabControl</a>
+		                        </li>
+		                        <li>
+		                            <a href="Ajax-Window.aspx">Ra-Ajax - Window</a>
+		                        </li>
+		                    </ul>
+				        </ext:AccordionView>
+				    </ext:Accordion>
                 </div>
                 <div id="contentOfPageDiv">
                     <ra:Panel 
@@ -207,5 +223,14 @@ pageTracker._trackPageview();
                 <div style="text-align:center;padding:15px;">Copyright 2008 - <a href="mailto:thomas@ra-ajax.org">Ra Software AS</a></div>
             </div>
         </form>
+        <script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+
+        <script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-4923736-2");
+pageTracker._trackPageview();
+        </script>
     </body>
 </html>
