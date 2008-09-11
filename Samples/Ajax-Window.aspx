@@ -128,6 +128,25 @@ namespace Ra.Extensions
     	stuck with creating an Ajax Extension control this is our favorite topic to help you out with though
     	at <a href="http://ra-ajax.org/Forums/Forums.aspx">our forums</a> so don't be afraid to ask for help :) 
     </p>
+    <p>
+    	Another thing which is important to understand is that mostly you want to "defer" setting some properties until
+    	the OnPreRender override of your Control. You can see I am doing this with e.g. the Text of the Caption Label
+    	and the CssClass of the _pnlHead. This is because sometimes your users of your Ajax Extension Controls will want to set some
+    	of those properties in the code-behind file in maybe OnLoad or some similar method. And since some of your properties
+    	tends to be dependant upon others. Like for instance the CssClass of the _pnlHead field in the above sample. You
+    	must wait until you can be pretty sure about that the consumer of your Ajax Extension Control is "finished" doing
+    	his parts...
+    </p>
+    <p>
+    	Also theoretically we could save some ViewState bytes in the above sample by directly using the _lblHeader.Text
+    	as the value of the Caption property. Though this I have bad experience with since it tends to become very complex
+    	since then you must make sure things are loaded and so on before accessing the property etc to such an extent that
+    	it becomes too hard to understand and maintain. But feel free to experiment with this if you like...
+    </p>
+    <p>
+    	Also we are VERY interested in getting to know about Extension Controls created utilizing Ra-Ajax. So let us know
+    	if you do something great! Especially if you want to share it with others ;)
+    </p>
 </asp:Content>
 
 
