@@ -42,6 +42,17 @@ namespace Ra.Widgets
             }
         }
 
+        public string Handle
+        {
+            get { return ViewState["Handle"] == null ? "" : (string)ViewState["Handle"]; }
+            set
+            {
+                if (value != Handle)
+                    SetJSONValueString("Handle", value);
+                ViewState["Handle"] = value;
+            }
+        }
+
 		public override string GetRegistrationScript ()
 		{
 			string options = string.Empty;
@@ -57,6 +68,14 @@ namespace Ra.Widgets
 				else
 					options += "{";
 				options += string.Format("snap:{{x:{0},y:{1}}}", Snap.X, Snap.Y);
+			}
+			if( !string.IsNullOrEmpty(Handle))
+			{
+				if( options != string.Empty)
+					options += ",";
+				else
+					options += "{";
+				options += string.Format("handle:Ra.$('{0}')", Handle);
 			}
 			if( options != string.Empty)
 				options += "}";

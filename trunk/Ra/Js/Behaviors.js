@@ -74,7 +74,9 @@ Ra.BDrag = Ra.klass();
 Ra.extend(Ra.BDrag.prototype, Ra.Beha.prototype);
 
 
-// We need to extend the document.body
+// We need to extend the document.body since were using 
+// the observe function later down the road here on the 
+// document.body element
 Ra.extend(document.body, Ra.Element.prototype);
 
 
@@ -88,14 +90,15 @@ Ra.extend(Ra.BDrag.prototype, {
     this._hasCaption = false;
     this.parent = parent;
     
-    this.parent.element.observe('mousedown', this.onMouseDown, this);
-    document.body.observe('mouseup', this.onMouseUp, this);
-    document.body.observe('mousemove', this.onMouseMove, this);
-
     this.options = Ra.extend({
       bounds: {left:-2000, top:-2000, width: 4000, height: 4000},
-      snap:{x:1,y:1}
+      snap:{x:1,y:1},
+      handle: this.parent.element
     }, this.options || {});
+
+    this.options.handle.observe('mousedown', this.onMouseDown, this);
+    document.body.observe('mouseup', this.onMouseUp, this);
+    document.body.observe('mousemove', this.onMouseMove, this);
 
   },
 
@@ -103,6 +106,12 @@ Ra.extend(Ra.BDrag.prototype, {
   // position the control can be dragged around within.
   Bounds: function(rc) {
     this.options.bounds = rc;
+  },
+
+  Handle: function(handle) {
+    this.options.handle.stopObserving('mousedown', this.onMouseDown, this);
+    this.options.handle = handle;
+    this.options.handle.observe('mousedown', this.onMouseDown, this);
   },
 
   // Setter for the Snap Point which determines how the 
@@ -203,7 +212,7 @@ Ra.extend(Ra.BDrag.prototype, {
 
   // Called when Control is being destroyed
   destroy: function() {
-    this.parent.element.stopObserving('mousedown', this.onMouseDown, this);
+    this.options.handle.stopObserving('mousedown', this.onMouseDown, this);
     document.body.stopObserving('mouseup', this.onMouseUp, this);
     document.body.stopObserving('mousemove', this.onMouseMove, this);
   }
