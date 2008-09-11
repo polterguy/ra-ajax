@@ -46,7 +46,7 @@
     <ra:Label 
         runat="server" 
         ID="lbl1"
-        style="cursor:move;position:absolute;top:550px;left:350px;color:#33f;border:solid 1px #33f;padding:5px;width:100px;-moz-user-select:none;"
+        style="cursor:move;position:absolute;top:550px;left:350px;color:#33f;border:solid 1px #33f;padding:5px;width:100px;-moz-user-select:none;z-index:2;background-color:White;"
         Text="Se me snap...">
 
     	<ra:BehaviorDraggable 
@@ -59,7 +59,7 @@
     <ra:Label 
         runat="server" 
         ID="lbl2"
-        style="cursor:move;position:absolute;top:550px;left:550px;color:#33f;border:solid 1px #33f;padding:5px;width:100px;-moz-user-select:none;"
+        style="cursor:move;position:absolute;top:550px;left:550px;color:#33f;border:solid 1px #33f;padding:5px;width:100px;-moz-user-select:none;z-index:2;background-color:White;"
         Text="Try to drag and drop me too around in the browser">
 
     	<ra:BehaviorDraggable 
@@ -72,7 +72,7 @@
     <ra:Label 
         runat="server" 
         ID="dropperLbl"
-        style="position:absolute;top:550px;left:700px;color:#33f;border:solid 1px #33f;padding:5px;width:100px;"
+        style="position:absolute;top:550px;left:700px;color:#bbb;border:solid 1px #bbb;padding:5px;width:100px;z-index:1;"
         Text="Drop draggers onto me...">
 
     	<ra:BehaviorDroppable 
