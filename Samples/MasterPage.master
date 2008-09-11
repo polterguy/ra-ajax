@@ -150,6 +150,9 @@ pageTracker._trackPageview();
                         <li>
                             <a href="Ajax-TabControl.aspx">Ra-Ajax - TabControl</a>
                         </li>
+                        <li>
+                            <a href="Ajax-Window.aspx">Ra-Ajax - Window</a>
+                        </li>
                     </ul>
                 </div>
                 <div id="contentOfPageDiv">

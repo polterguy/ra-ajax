@@ -124,13 +124,15 @@
 	    </ra:Label>
     </div>
     <p>
-    	Not that the above Ajax Slider control is intentionally kept ugly to make sure the code is easy to understand and
+    	Note that the above Ajax Slider control is intentionally kept ugly to make sure the code is easy to understand and
     	may serve as a reference for others wanting to create their own Ajax Extension Controls using Ra-Ajax.
     </p>
     <br />
     <h2>Ajax Window Sample</h2>
     <p>
-    	Here we have created an Ajax Window using Ajax Behaviors for references.
+    	Here we have created an Ajax Window using Ajax Behaviors for references. The Ajax Window is also a perfect example of how
+    	to create your own Ajax Extension Controls. It is not meant as an exhaustive Ajax Window implementation but rather a "pointing finger"
+    	towards how to create your own Ajax Window. Though of course feel free to use it as it is ;)
     </p>
     <br />
     <ext:Window 

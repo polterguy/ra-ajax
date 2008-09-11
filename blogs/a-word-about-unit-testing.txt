@@ -8,7 +8,7 @@ And all though a lot of problems can be excluded by having a conscious relations
 So when creating an Ajax Library Unit Testing is more important than ever before in your professional system development life.
 
 
-<h3>nUnit and WatiN</h3>
+<h2>nUnit and WatiN</h2>
 My personal preferences are to use <a href="http://www.nunit.org/">nUnit</a> and <a href="http://watin.sourceforge.net/">WatiN</a>.
 
 nUnit is an incredibly famous tool currently maintained by <a href="http://blogs.nunit.com/">Charlie Poole</a> which I met at the <a href="http://www.mono-project.com/">Mono</a> Summit in Madrid in 2007 and had a great time together with. nUnit is a brilliant Unit Testing framework for .Net and Charlie has done a *great* job on nUnit.
@@ -18,7 +18,7 @@ WatiN is a very versatile tool for "simulating" user interaction in Internet Exp
 In fact when I worked in Gaiaware we gave Jeroen van Menen $300 due to being so satisfied with it. This is BTW a general pattern you should follow, if you are happy with software you're using which is free as in free beer then you should donate to the project or person who maintains the project if he takes donations. $300 was for us way less than the value that WatiN gave us in Gaiaware.
 
 
-<h3>Some code samples</h3>
+<h2>Some code samples</h2>
 This is the "base class" I use for testing Ra Ajax;
 <pre>
 using System;
@@ -140,11 +140,11 @@ The way I create new Unit Tests is by having an assumption which I think of that
 Creating Unit Tests for your Ajax Library certainly adds overhead and will "slow you down" in coding in the beginning, but believe me after a few months of development the stability of your Ajax Library will be orders of magnitudes higher than your next door neighbor who does NOT create Unit Tests.
 
 
-<h3>Debugging nUnit projects</h3>
+<h2>Debugging nUnit projects</h2>
 You can even debug nUnit projects in Visual Studio easily by setting the <em>Start Action</em> in your project settings the "Start External Program" to be <em>nunit.exe</em> and the "Command line arguments" to point to the fully path of the dll output from your project.
 
 
-<h3>FireBug</h3>
+<h2>FireBug</h2>
 Another tool I rely on 100% is <a href="http://getfirebug.com/">FireBug</a> which I find invaluable when debugging Ra Ajax. If you want to do advanced JavaScript development then this tool is not a choice, it is AIR! FireBug is basically what brought JavaScript development from the stoneage and into the technology age all by itself!
 
 I normally develop for FireFox using FireBug as a debugger and then later verify that things works in other browsers like IE, Safari and Opera.
