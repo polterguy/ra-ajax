@@ -46,7 +46,7 @@
     <ra:Label 
         runat="server" 
         ID="lbl1"
-        style="cursor:move;position:absolute;top:550px;left:350px;color:#33f;border:solid 1px #33f;padding:5px;width:100px;"
+        style="cursor:move;position:absolute;top:550px;left:350px;color:#33f;border:solid 1px #33f;padding:5px;width:100px;-moz-user-select:none;"
         Text="Se me snap...">
 
     	<ra:BehaviorDraggable 
@@ -59,7 +59,7 @@
     <ra:Label 
         runat="server" 
         ID="lbl2"
-        style="cursor:move;position:absolute;top:550px;left:550px;color:#33f;border:solid 1px #33f;padding:5px;width:100px;"
+        style="cursor:move;position:absolute;top:550px;left:550px;color:#33f;border:solid 1px #33f;padding:5px;width:100px;-moz-user-select:none;"
         Text="Try to drag and drop me too around in the browser">
 
     	<ra:BehaviorDraggable 
@@ -92,7 +92,7 @@
 	    <ra:Label 
 	        runat="server" 
 	        ID="slider"
-	        style="font-size:10px;cursor:move;position:absolute;top:1031px;left:328px;color:#33f;border:solid 1px #33f;width:25px;height:15px;"
+	        style="font-size:10px;cursor:move;position:absolute;top:1031px;left:328px;color:#33f;border:solid 1px #33f;width:25px;height:15px;-moz-user-select:none;"
 	        Text="&nbsp;">
 
 	    	<ra:BehaviorDraggable 
