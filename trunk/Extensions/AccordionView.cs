@@ -85,7 +85,8 @@ Ra.E('{0}', {{
   onStart: function() {{{2}}},
   onFinished: function() {{{3}}},
   onRender: function(pos) {{{4}}},
-  duration:{1}
+  duration:{1},
+  sinoidal:true
 }});", 
                     _idRemove, 
                     _parent.AnimationSpeed.ToString(System.Globalization.CultureInfo.InvariantCulture),
