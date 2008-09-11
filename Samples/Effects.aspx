@@ -32,7 +32,7 @@
     <ra:Panel 
         runat="server" 
         ID="pnl" 
-        style="position:absolute;background-color:Yellow;border:solid 1px Black;padding:15px;height:100px;width:100px;">
+        style="position:absolute;background-color:#ddd;border:solid 1px Black;padding:15px;height:100px;width:100px;">
         Watch the Ajax Effect as you click the above button...
     </ra:Panel>
     <div style="height:320px;">&nbsp;</div>

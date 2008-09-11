@@ -16,6 +16,7 @@ namespace Ra.Widgets
     {
         private Control _control;
         private decimal _seconds;
+		private bool _sinoidal;
 		
 		protected Effect(Control control, decimal seconds)
 		{
@@ -26,6 +27,12 @@ namespace Ra.Widgets
 		public Control Control
 		{
 			get { return _control; }
+		}
+
+		public bool Sinoidal
+		{
+			get { return _sinoidal; }
+			set { _sinoidal = value; }
 		}
 
         public abstract string RenderChainedOnStart();
@@ -79,13 +86,15 @@ Ra.E('{0}', {{
   onStart: function() {{{2}}},
   onFinished: function() {{{3}}},
   onRender: function(pos) {{{4}}},
-  duration:{1}
+  duration:{1},
+  sinoidal:{5}
 }});", 
                 _control.ClientID,
                 _seconds.ToString(System.Globalization.CultureInfo.InvariantCulture),
                 onStart,
                 onFinished,
-                onRender);
+                onRender,
+                this.Sinoidal ? "true" : "false");
         }
 
         private List<Effect> _chained = new List<Effect>();
