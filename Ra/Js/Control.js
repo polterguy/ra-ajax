@@ -398,7 +398,7 @@ Ra.Control.prototype = {
     var evts = this.options.evts;
     var idx = evts.length;
     while( idx-- ) {
-      (this.options.ctrl || this.element).stopObserving(evts[idx][0], this.onEvent);
+      (this.options.ctrl || this.element).stopObserving(evts[idx][0], this.onEvent, this);
     }
   }
 }
