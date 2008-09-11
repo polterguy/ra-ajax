@@ -18,7 +18,7 @@ using HTML = System.Web.UI.HtmlControls;
 namespace Ra.Extensions
 {
     [ASP.ToolboxData("<{0}:Window runat=\"server\"></{0}:Window>")]
-    public class Window : Panel
+    public class Window : Panel, ASP.INamingContainer
     {
 		private WEBCTRLS.Panel _pnlHead;
 		private Label _lblHead;
@@ -60,6 +60,7 @@ namespace Ra.Extensions
 			
 			// Creating dragger
 			_dragger = new BehaviorDraggable();
+			_dragger.ID = "dragger";
 			this.Controls.Add(_dragger);
         }
 		
