@@ -11,6 +11,11 @@
     Namespace="Ra.Widgets" 
     TagPrefix="ra" %>
 
+<%@ Register 
+    Assembly="Extensions" 
+    Namespace="Ra.Extensions" 
+    TagPrefix="ext" %>
+
 <asp:Content 
     ID="Content1" 
     ContentPlaceHolderID="cnt1" 
@@ -123,6 +128,27 @@
     	may serve as a reference for others wanting to create their own Ajax Extension Controls using Ra-Ajax.
     </p>
     <br />
+    <h2>Ajax Window Sample</h2>
+    <p>
+    	Here we have created an Ajax Window using Ajax Behaviors for references.
+    </p>
+    <br />
+    <ext:Window 
+    	runat="server"
+    	Caption="Ajax Window"
+    	CssClass="window"
+    	style="width:250px;height:250px;z-index:500;"
+    	id="window">
+    	<div style="padding:5px;">
+			Here you can see an example of an Ajax Window created as a composition control utilizing Ajax Behaviors.
+			<br />
+			<ra:Button 
+				runat="server" 
+				id="btn" 
+				Text="Click me" 
+				OnClick="btn_Click" />
+		</div>
+    </ext:Window>
     <a href="Combining.aspx">On to Combining Controls</a>
 </asp:Content>
 

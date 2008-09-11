@@ -66,7 +66,7 @@ namespace Ra.Widgets
 				if( options != string.Empty)
 					options += ",";
 				else
-					options += "{";
+					options += ",{";
 				options += string.Format("snap:{{x:{0},y:{1}}}", Snap.X, Snap.Y);
 			}
 			if( !string.IsNullOrEmpty(Handle))
@@ -74,7 +74,7 @@ namespace Ra.Widgets
 				if( options != string.Empty)
 					options += ",";
 				else
-					options += "{";
+					options += ",{";
 				options += string.Format("handle:Ra.$('{0}')", Handle);
 			}
 			if( options != string.Empty)

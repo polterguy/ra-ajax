@@ -466,6 +466,29 @@ pre
 	background-color:Yellow;
 }
 
+.window
+{
+	border:solid 1px Black;
+	background-color:#fff;
+}
+
+.window-head
+{
+	border-bottom:solid 1px Black;
+	background-color:#eef;
+	padding:5px;
+	font-size:1.3em;
+	cursor:move;
+	-moz-user-select:none;
+}
+
+
+
+
+
+
+
+
 
 
 
