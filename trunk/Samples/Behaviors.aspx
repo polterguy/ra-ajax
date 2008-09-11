@@ -68,7 +68,22 @@
     		OnDropped="dragger2_Dropped" />
 
     </ra:Label>
+
+    <ra:Label 
+        runat="server" 
+        ID="dropperLbl"
+        style="position:absolute;top:550px;left:700px;color:#33f;border:solid 1px #33f;padding:5px;width:100px;"
+        Text="Drop draggers onto me...">
+
+    	<ra:BehaviorDroppable 
+    		runat="server" 
+    		OnDropped="dropper_Dropped"
+    		ID="dropper" />
+
+    </ra:Label>
+
     <div style="height:200px;">&nbsp;</div>
+
     <h2>Ajax Behaviors is a BIG gun!</h2>
     <p>
     	Note though that all though this gives you a LOT of power it is very easy to overdo Ajax Behaviors by adding them in

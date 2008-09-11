@@ -62,6 +62,9 @@ Ra.Beha.prototype = {
 // By using this you can get a control which can be dragged and dropped
 // on the screen which again will trigger a server-side event
 // which you can trap in your own code.
+// It has properties like "snap" which makes it draggable within a "grid"
+// and bounds which tells it a rectangular boundary which is the max/min
+// boundaries of the draggable area.
 //
 // ==============================================================================
 Ra.BDrag = Ra.klass();
@@ -119,7 +122,7 @@ Ra.extend(Ra.BDrag.prototype, {
   // Called when mouse is released. Note that this
   // is currently being trapped for the DOM element of the control
   // but should be trapped for the document.body element.
-  onMouseUp: function() {
+  onMouseUp: function(event) {
     if( !this._hasCaption )
       return;
     this._hasCaption = false;
@@ -130,8 +133,20 @@ Ra.extend(Ra.BDrag.prototype, {
     var newY = parseInt(this.parent.element.style.top, 10);
 
     // Calling server with new position and (maybe) raising the Dropped event
+    var mouse = this.pointer(event);
+    var affectedDroppers = Ra.BDrop.getAffected(mouse.x, mouse.y);
+    var dropParams = '';
+    if( affectedDroppers.length > 0 ) {
+      var idx = affectedDroppers.length;
+      dropParams = '&drops=';
+      while( idx-- ) {
+        if( idx > 0 )
+          dropParams += ',';
+        dropParams += affectedDroppers[idx].id;
+      }
+    }
     new Ra.Ajax({
-      args:'__RA_CONTROL=' + this.id + '&__EVENT_NAME=dropped' + '&x=' + newX + '&y=' + newY,
+      args:'__RA_CONTROL=' + this.id + '&__EVENT_NAME=dropped' + '&x=' + newX + '&y=' + newY + dropParams,
       raCallback:true,
       onSuccess: this.onFinishedRequest,
       onError: this.onFailedRequest,
@@ -179,4 +194,69 @@ Ra.extend(Ra.BDrag.prototype, {
     document.body.stopObserving('mousemove', this.onMouseMove, this);
   }
 });
+
+
+
+
+
+
+// ==============================================================================
+//
+// This is the BehaviorDroppable
+// A Droppable is an element which can handle draggables dropped on
+// top of it.
+// Inspired from ScriptAculous and Prototype.js
+//
+// ==============================================================================
+Ra.BDrop = Ra.klass();
+
+
+// Registered droppers on page
+Ra.BDrop._droppers = [];
+
+
+Ra.BDrop.getAffected = function(x, y) {
+  var retVal = [];
+  idx = Ra.BDrop._droppers.length;
+  while( idx-- ) {
+    if( Ra.BDrop._droppers[idx].parent.element.within(x,y) ) {
+      retVal.push(Ra.BDrop._droppers[idx]);
+    }
+  }
+  return retVal;
+}
+
+
+// Inheriting from Ra.Control
+Ra.extend(Ra.BDrop.prototype, Ra.Beha.prototype);
+
+
+// Creating IMPLEMENTATION of class
+Ra.extend(Ra.BDrop.prototype, {
+
+  // Delayed CTOR, actually called by the Ra.Control class
+  // for all Behaviors within the Control
+  initBehavior: function(parent) {
+    this.parent = parent;
+    Ra.BDrop._droppers.push(this);
+  },
+
+  destroy: function() {
+    idx = Ra.BDrop._droppers.length;
+    while( idx-- ) {
+      if( Ra.BDrop._droppers[idx].id == this.id ) {
+        // We have found our instance, idxToRemove now should contain the index of the control
+        break;
+      }
+    }
+
+    // Removes control out from registered controls collection
+    Ra.Control._controls.splice(idx, 1);
+  }
+});
+
+
+
+
+
 

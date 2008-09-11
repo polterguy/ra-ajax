@@ -73,6 +73,16 @@ namespace Ra.Widgets
 				    parent.Style["top"] = Page.Request.Params["y"] + "px";
                     if (Dropped != null)
                         Dropped(this, new EventArgs());
+				    string drops = Page.Request.Params["drops"];
+				    if( !string.IsNullOrEmpty(drops) )
+					{
+					    string[] affectedDroppersIds = drops.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+					    foreach( string idx in affectedDroppersIds)
+						{
+						    BehaviorDroppable tmp = AjaxManager.Instance.FindControl<BehaviorDroppable>(idx);
+					        tmp.RaiseDropped(this);
+						}
+					}
                     break;
                 default:
                     throw new ApplicationException("Unknown event fired for control");
