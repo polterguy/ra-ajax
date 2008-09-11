@@ -60,4 +60,9 @@ public partial class Behaviors : System.Web.UI.Page
 		lbl2.Visible = !lbl2.Visible;
 		btnHide2.Text = lbl2.Visible ? "Hide second label" : "Show second label"; 
 	}
+	
+	protected void btn_Click(object sender, EventArgs e)
+	{
+		btn.Text = "Clicked..!!";
+	}
 }
