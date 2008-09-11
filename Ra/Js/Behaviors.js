@@ -231,7 +231,7 @@ Ra.BDrop._droppers = [];
 
 Ra.BDrop.getAffected = function(x, y) {
   var retVal = [];
-  idx = Ra.BDrop._droppers.length;
+  var idx = Ra.BDrop._droppers.length;
   while( idx-- ) {
     if( Ra.BDrop._droppers[idx].parent.element.within(x,y) ) {
       retVal.push(Ra.BDrop._droppers[idx]);
@@ -243,7 +243,7 @@ Ra.BDrop.getAffected = function(x, y) {
 
 Ra.BDrop.getUnAffected = function(x, y) {
   var retVal = [];
-  idx = Ra.BDrop._droppers.length;
+  var idx = Ra.BDrop._droppers.length;
   while( idx-- ) {
     if( !Ra.BDrop._droppers[idx].parent.element.within(x,y) ) {
       retVal.push(Ra.BDrop._droppers[idx]);
