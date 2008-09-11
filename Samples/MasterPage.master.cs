@@ -7,11 +7,38 @@
 
 using System;
 using Ra.Widgets;
+using Ra.Extensions;
 using System.IO;
 using System.Web;
 
 public partial class MasterPage : System.Web.UI.MasterPage
 {
+	protected void Page_Load(object sender, EventArgs e)
+	{
+		if( !IsPostBack )
+		{
+			string url = this.Request.Url.ToString();
+			url = url.Substring(url.LastIndexOf("/") + 1);
+			int idxNo = 0;
+			foreach(AccordionView idx in accordion.Views)
+			{
+				foreach( System.Web.UI.Control idxCtrl in idx.Controls)
+				{
+					if( idxCtrl is System.Web.UI.LiteralControl)
+					{
+						System.Web.UI.LiteralControl lit = idxCtrl as System.Web.UI.LiteralControl;
+						if( lit.Text.IndexOf(url) != -1 )
+						{
+							accordion.ActiveAccordionViewIndex = idxNo;
+							break;
+						}
+					}
+				}
+				idxNo += 1;
+			}
+		}
+	}
+	
     protected void btnShowCode_Click(object sender, EventArgs e)
     {
         pnlShowCode.Visible = true;
