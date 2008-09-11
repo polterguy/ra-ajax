@@ -212,20 +212,9 @@ Ra.Element.prototype = {
   // Returns true if the given coordinates are within the element, false otherwise
   within: function(x, y) {
 
-    // Adding up scrolling of all ancestor elements
-    var scrT = 0, scrL = 0;
-    var el = this;
-    do {
-      scrT += el.scrollTop  || 0;
-      scrL += el.scrollLeft || 0;
-      el = el.parentNode;
-    } while (el);
-    x += scrL;
-    y += scrT;
-
     // Finding the true x and y position of this element
     var valueT = 0, valueL = 0;
-    el = this;
+    var el = this;
     do {
       valueT += el.offsetTop  || 0;
       valueL += el.offsetLeft || 0;
