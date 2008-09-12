@@ -188,9 +188,10 @@ namespace Ra.Widgets
         {
             if (string.IsNullOrEmpty(state))
                 return;
-
+            
+            string[] stylePairs = state.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
             // Looping through the "flattened" Dictionary to reload into real Dictionary...
-            foreach (string idx in state.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries))
+            foreach (string idx in stylePairs)
             {
                 string[] raw = idx.Split(':');
                 _styleValues[raw[0]] = new StyleValue(raw[1], true, false);
