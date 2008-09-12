@@ -71,13 +71,17 @@ Ra.extend(Ra.Comet.prototype, {
   tick: function(response){
     if( this.options.enabled ) {
       // Raising the "Tick" Event on the server...
-      var x = new Ra.Ajax({
-        args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=tick' + '&__EVENT_ARGS=' + encodeURIComponent(response),
-        raCallback:true,
-        onSuccess: this.onFinishedTicking,
-        callingContext: this
-      });
+      this.callback(response);
     }
+  },
+
+  callback: function(evt) {
+    var x = new Ra.Ajax({
+      args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=tick' + '&__EVENT_ARGS=' + encodeURIComponent(response),
+      raCallback:true,
+      onSuccess: this.onFinishedTicking,
+      callingContext: this
+    });
   },
 
   error: function(status, response){
