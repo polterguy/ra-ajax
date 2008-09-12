@@ -113,7 +113,7 @@ namespace Ra.Widgets
 
                 return null;
 			}
-			set { this[idx, true] = value; }
+			set { this[idx, true].Value = value; }
 		}
 
         public string this[Styles idx]
