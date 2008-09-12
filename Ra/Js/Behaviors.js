@@ -434,8 +434,8 @@ Ra.extend(Ra.BUpDel.prototype, {
     this.el = document.createElement('div');
     this.el.id = this.id;
     this.el.style.position = 'absolute';
-    this.el.style.width = '100%';
-    this.el.style.height = '100%';
+    this.el.style.width = parseInt(document.body.clientWidth) + 'px';
+    this.el.style.height = parseInt(document.body.clientHeight) + 'px';
     this.el.style.left = '0px';
     this.el.style.top = '0px';
     this.el.style.backgroundColor = this.options.color;
