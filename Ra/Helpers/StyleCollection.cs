@@ -15,7 +15,7 @@ using System.Web.UI;
 
 namespace Ra.Widgets
 {
-    public class StyleCollection : IStateManager
+    public class StyleCollection
     {
         private class StyleValue
         {
@@ -64,7 +64,7 @@ namespace Ra.Widgets
             if (_control.Phase == RaControl.RenderingPhase.Visible && _styleValues.Count > 0)
             {
                 Dictionary<string, string> styles = _control.GetJSONValueDictionary("AddStyle");
-                foreach (string idxKey in _styleVlaues.Keys)
+                foreach (string idxKey in _styleValues.Keys)
                 {
                     if (_styleValues[idxKey].ShouldSerializeToJSON)
                     {
@@ -113,7 +113,7 @@ namespace Ra.Widgets
 
                 return null;
 			}
-			set { this[idx, true].Value = value; }
+			set { this[idx, true] = value; }
 		}
 
         public string this[Styles idx]
@@ -177,8 +177,6 @@ namespace Ra.Widgets
             return retVal;
         }
 
-        #region IStateManager Members
-
         public bool IsTrackingViewState
         {
             get { return _trackingViewState; }
@@ -190,7 +188,7 @@ namespace Ra.Widgets
                 return;
             
             string[] stylePairs = state.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
-            // Looping through the "flattened" Dictionary to reload into real Dictionary...
+            
             foreach (string idx in stylePairs)
             {
                 string[] raw = idx.Split(':');
@@ -200,14 +198,12 @@ namespace Ra.Widgets
 
         public object SaveViewState()
         {
-            GetStyles(true);
+            return GetStyles(true);
         }
 
         public void TrackViewState()
         {
             _trackingViewState = true;
         }
-
-        #endregion
     }
 }
