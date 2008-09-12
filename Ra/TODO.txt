@@ -20,7 +20,9 @@
   the widgets which again can have overrides for the different modes and thereby "signal"
   to other widgets which logic to render widgets within?
 
-
+* Property for "killing" Carriage Return on TextBoxes. This will be very useful
+  in e.g. the InPlaceEdit since currently it does a POSTBACK if users clicks Carriage Return
+  which is VERY bad...
 
 
 
