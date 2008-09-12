@@ -76,7 +76,7 @@ namespace Ra.Widgets
                             int where = idx.IndexOf('-');
                             idx = idx.Substring(0, where) + idx.Substring(where + 1, 1).ToUpper() + idx.Substring(where + 2);
                         }
-                        styles[idx] = _styleVlaues[idxKey];
+                        styles[idx] = _styleValues[idxKey].Value;
                     }
                 }
             }
