@@ -96,7 +96,7 @@ namespace Ra.Widgets
 				if (this[idx] == value)
 					return;
                 bool shouldJson = _trackingViewState && (!_styleValues.ContainsKey(idx) || _styleValues[idx].Value != value);
-                _beforeViewStateDictionary[idx] = new StyleValue(value, _trackingViewState, shouldJson);
+                _styleValues[idx] = new StyleValue(value, _trackingViewState, shouldJson);
             }
         }
 		
