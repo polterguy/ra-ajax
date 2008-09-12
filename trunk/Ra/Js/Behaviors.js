@@ -464,14 +464,28 @@ Ra.extend(Ra.BUpDel.prototype, {
 
   onFinished: function() {
     this.effect.stopped = true;
-    delete this.effect;
-    this.el.style.display = 'none';
+    this.effect = new Ra.Effect(this.el, {
+      duration: 0.3,
+      onFinished: function() {
+        this.element.setOpacity(0);
+        this.element.style.display = 'none';
+      },
+      onRender: function(pos) {
+        this.element.setOpacity((1-pos) / 2);
+      },
+      sinoidal:true
+    });
   },
 
   destroy: function() {
+    if( this.effect ) {
+      this.effect.stopped = true;
+      delete this.effect;
+    }
     this.el.remove();
   }
 });
+
 
 
 
