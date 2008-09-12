@@ -14,6 +14,14 @@
 
 * Implement and check ViewStateById mode on Widgets.
 
+* Fix the Child Rendering Logic for Container Controls. Especially Panel but make this logic
+  "generic" so that it works from Ra.Widgets.RaControl class.
+  Maybe implement some Stream inherited class hierarchy which are responsible for rendering
+  the widgets which again can have overrides for the different modes and thereby "signal"
+  to other widgets which logic to render widgets within?
+
+
+
 
 
 
