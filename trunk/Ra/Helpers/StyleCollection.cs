@@ -166,7 +166,7 @@ namespace Ra.Widgets
             string retVal = "";
             foreach (string idxKey in _styleValues.Keys)
             {
-                if (_styleValues[idxKey].ShouldSerializeToViewState && returnOnlyViewStateValues)
+                if (returnOnlyViewStateValues && _styleValues[idxKey].ShouldSerializeToViewState)
                     retVal += idxKey + ":" + _styleValues[idxKey].Value + ";";
                 else
                     retVal += idxKey + ":" + _styleValues[idxKey].Value + ";";
