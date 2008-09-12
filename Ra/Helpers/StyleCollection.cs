@@ -160,6 +160,7 @@ namespace Ra.Widgets
             foreach (string idxKey in styleDictionary.Keys)
             {
                 _beforeViewStateDictionary[idxKey] = styleDictionary[idxKey];
+                _afterViewStateDictionary[idxKey] = styleDictionary[idxKey];
             }
         }
 
