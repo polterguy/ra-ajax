@@ -163,25 +163,15 @@ namespace Ra.Widgets
 
         private string GetStyles(bool returnOnlyViewStateValues)
         {
-            if (returnOnlyViewStateValues)
+            string retVal = "";
+            foreach (string idxKey in _styleValues.Keys)
             {
-                string retVal = "";
-                foreach (string idxKey in _styleValues.Keys)
-                {
-                    if (_styleValues[idxKey].ShouldSerializeToViewState)
-                        retVal += idxKey + ":" + _styleValues[idxKey].Value + ";";
-                }
-                return retVal;
-            }
-            else
-            {
-                string retVal = "";
-                foreach (string idxKey in _styleValues.Keys)
-                {
+                if (_styleValues[idxKey].ShouldSerializeToViewState && returnOnlyViewStateValues)
                     retVal += idxKey + ":" + _styleValues[idxKey].Value + ";";
-                }
-                return retVal;
+                else
+                    retVal += idxKey + ":" + _styleValues[idxKey].Value + ";";
             }
+            return retVal;
         }
 
         #region IStateManager Members
