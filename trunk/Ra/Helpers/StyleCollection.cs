@@ -17,11 +17,41 @@ namespace Ra.Widgets
 {
     public class StyleCollection : IStateManager
     {
+        private class StyleValue
+        {
+            private string _value;
+            private bool _shouldSerializeToViewState;
+            private bool _shouldSerializeToJSON;
+
+            public StyleValue(string value, bool shouldSerializeToViewState, bool shouldSerializeToJSON)
+            {
+                this._value = value;
+                this._shouldSerializeToJSON = shouldSerializeToJSON;
+                this._shouldSerializeToViewState = shouldSerializeToViewState;
+            }
+
+            public string Value
+            {
+                get { return _value; }
+                set { _value = value; }
+            }
+
+            public bool ShouldSerializeToViewState
+            {
+                get { return _shouldSerializeToViewState; }
+                set { _shouldSerializeToViewState = value; }
+            }
+
+            public bool ShouldSerializeToJSON
+            {
+                get { return _shouldSerializeToJSON; }
+                set { _shouldSerializeToJSON = value; }
+            }
+        }
+
         private RaWebControl _control;
         private bool _trackingViewState;
-        private Dictionary<string, string> _beforeViewStateDictionary = new Dictionary<string, string>();
-        private Dictionary<string, string> _afterViewStateDictionary = new Dictionary<string, string>();
-        private Dictionary<string, string> _jsonChanges = new Dictionary<string, string>();
+        private Dictionary<string, StyleValue> _styleValues = new Dictionary<string, StyleValue>();
 
         public StyleCollection(RaWebControl control)
         {
@@ -31,7 +61,7 @@ namespace Ra.Widgets
 
         void _control_PreRender(object sender, EventArgs e)
         {
-            if (_control.Phase == RaControl.RenderingPhase.Visible && _jsonChanges.Count > 0)
+            if (_control.Phase == RaControl.RenderingPhase.Visible)
             {
                 Dictionary<string, string> styles = _control.GetJSONValueDictionary("AddStyle");
                 foreach (string idxKey in _jsonChanges.Keys)
