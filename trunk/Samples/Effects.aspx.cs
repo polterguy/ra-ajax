@@ -27,6 +27,7 @@ public partial class Effects : System.Web.UI.Page
         Effect effect = new EffectSize(pnl, 0.6M, 300, 300);
 		effect.Sinoidal = true;
 		effect.Chained.Add(new EffectHighlight());
+		effect.Chained.Add(new EffectBorder(5));
         effect.Render();
     }
 

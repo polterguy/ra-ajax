@@ -35,7 +35,7 @@
         style="position:absolute;background-color:#ddd;border:solid 1px Black;padding:15px;height:100px;width:100px;">
         Watch the Ajax Effect as you click the above button...
     </ra:Panel>
-    <div style="height:320px;">&nbsp;</div>
+    <div style="height:325px;">&nbsp;</div>
     <p>
         Now try to click the button below here to see another Ajax Effect.
     </p>
