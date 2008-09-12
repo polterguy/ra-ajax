@@ -76,7 +76,7 @@
 				        style="width:75%;margin-left:auto;margin-right:auto;">
 
 				        <ext:AccordionView 
-				            Caption="Ideas samples" 
+				            Caption="Concept Samples" 
 				            runat="server" 
 				            ID="accView1" 
 				            CssClass="content">
@@ -108,7 +108,7 @@
 		                    </ul>
 				        </ext:AccordionView>
 				        <ext:AccordionView 
-				            Caption="Reference samples" 
+				            Caption="Reference Samples" 
 				            runat="server" 
 				            ID="accView2" 
 				            CssClass="content">

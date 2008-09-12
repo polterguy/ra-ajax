@@ -76,7 +76,7 @@
         increase the bandwidth usage significantly.
     </p>
     <p>
-        None of this really matters though before you start creating really "advanced" stuff, check the below sample.
+        None of this really matters though before you start creating really "advanced" stuff, like the sample below ;)
     </p>
     <br />
     <ra:Panel runat="server" ID="pnl" style="background-color:Yellow;border:solid 1px Black;padding:15px;">
@@ -97,11 +97,12 @@
         to do by "hand")
     </ra:Panel>
     <br />
-    <h2>Partial Rendering</h2>
+    <h2>Partial Rendering problems</h2>
     <p>
-        The above would be very easy to do also in a "Partial Rendering Framework" like ASP.NET AJAX (using UpdatePanel) or 
-        Anthem.NET but it would either force a re-rendering of the entire panel, or it would force you into using 
-        JavaScript. Partial Rendering of the above panel would eliminate the state on the client meaning you would have 
+        The above would in fact be impossible to do in a "Partial Rendering Framework" like ASP.NET AJAX (using UpdatePanel) or 
+        Anthem.NET without forcing you into using Custom JavaScript. The reason is that when the Panel is re-rendered using
+        Partial Rendering then the Button would loose focus since Partial Rendering would force a re-rendering of the 
+        entire panel. Partial Rendering of the above panel would eliminate the state on the client meaning you would have 
         to re-add Event Handlers and so on for EVERY control inside of the panel. Not to mention it would be orders of 
         magnitude larger in regards to bandwidth usage. Especially for a complex panel. Or imagine the "worst case 
         scenario" where you are changing some of the Panel's properties as the user is writing inside of a TextBox 
