@@ -173,7 +173,23 @@ namespace Ra.Widgets
                     value.ToString().Replace("\\", "\\\\").Replace("\"", "\\\"").Replace("\n", "\\n").Replace("\r", "\\r"));
                 return;
             }
+            if (value.GetType() == typeof(System.Drawing.Color))
+            {
+				System.Drawing.Color color = (System.Drawing.Color)value;
+				string tmp = System.Drawing.ColorTranslator.ToHtml(color);
+                builder.AppendFormat("\"{0}\":\"{1}\"",
+                    key,
+                    tmp);
+                return;
+            }
             if (value.GetType() == typeof(bool))
+            {
+                builder.AppendFormat("\"{0}\":{1}",
+                    key,
+                    value);
+                return;
+            }
+            if (value.GetType() == typeof(int))
             {
                 builder.AppendFormat("\"{0}\":{1}",
                     key,

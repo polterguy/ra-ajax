@@ -100,6 +100,9 @@
 		                            <a href="Dynamic.aspx">Ra-Ajax - Dynamic Controls</a>
 		                        </li>
 		                        <li>
+		                            <a href="Updater.aspx">Ra-Ajax - Updaters</a>
+		                        </li>
+		                        <li>
 		                            <a href="Ajax-Comet.aspx">Ra-Ajax - Comet</a>
 		                        </li>
 		                    </ul>

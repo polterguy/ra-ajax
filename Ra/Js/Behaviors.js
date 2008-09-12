@@ -341,3 +341,150 @@ Ra.extend(Ra.BDrop.prototype, {
 
 
 
+// ==============================================================================
+//
+// This is the BehaviorUpdater
+// The BehaviorUpdater is the base class for all Updaters in Ra-Ajax
+//
+// ==============================================================================
+Ra.BUpdate = Ra.klass();
+
+
+// Inheriting from Ra.Control
+Ra.extend(Ra.BUpdate.prototype, Ra.Beha.prototype);
+
+
+// Creating IMPLEMENTATION of class
+Ra.extend(Ra.BUpdate.prototype, {
+
+  initBehavior: function(parent) {
+    this.initUpdater(parent);
+  },
+
+  initUpdater: function(parent) {
+    this.initUpdaterBase(parent);
+  },
+
+  initUpdaterBase: function(parent) {
+    var T = this;
+    this.parent = parent;
+    this.options = Ra.extend({
+      onStart: function(){},
+      onFinished: function(){}
+    }, this.options || {});
+
+    this._originalCallback = parent.callback;
+    parent.callback = function(evt) {
+      T.options.onStart.apply(this, []);
+      T._originalCallback.apply(T.parent, [evt]);
+    };
+
+    this._originalOnFinished = parent.onFinishedRequest;
+    parent.onFinishedRequest = function(response) {
+      T.options.onFinished.apply(this, []);
+      T._originalOnFinished.apply(T.parent, [response]);
+    }
+
+    this._originalonFailed = parent.onFailedRequest;
+    parent.onFailedRequest = function(status, fullTrace) {
+      T._originalonFailed.apply(T.parent, [status, fullTrace]);
+    }
+  }
+
+});
+
+
+
+
+// ==============================================================================//// This is the BehaviorUpdaterDelayedObscure
+//// ==============================================================================
+Ra.BUpDel = Ra.klass();
+
+// Inheriting from Ra.Control
+Ra.extend(Ra.BUpDel.prototype, Ra.BUpdate.prototype);
+
+
+// Creating IMPLEMENTATION of class
+Ra.extend(Ra.BUpDel.prototype, {
+
+  initUpdater: function(parent) {
+    this.initUpdaterBase(parent);
+    this.initUpdaterDelayed();
+  },
+
+  initUpdaterDelayed: function() {
+    var T = this;
+    this.options = Ra.extend({
+      color:'#000'
+    }, this.options || {});
+    this.options.onStart = function() {
+      if( !T.options.delay ) {
+        T.onStart.apply(T, []);
+      } else {
+        setTimeout(function() {
+          T.onStart.apply(T, []);
+        }, T.options.delay);
+      }
+    };
+    this.options.onFinished = function() {
+      T.onFinished.apply(T, []);
+    };
+
+    // Creating "obscurer" element
+    this.el = document.createElement('div');
+    this.el.id = this.id;
+    this.el.style.position = 'absolute';
+    this.el.style.width = '100%';
+    this.el.style.height = '100%';
+    this.el.style.left = '0px';
+    this.el.style.top = '0px';
+    this.el.style.backgroundColor = this.options.color;
+    this.el.style.zIndex = '5000';
+    this.el.style.display = 'none';
+    Ra.extend(this.el, Ra.Element.prototype);
+    document.getElementsByTagName('body')[0].appendChild(this.el);
+  },
+
+  onStart: function() {
+    this.effect = new Ra.Effect(this.el, {
+      duration: 0.8,
+      onStart: function() {
+        this.element.setOpacity(0);
+        this.element.style.display = 'block';
+      },
+      onFinished: function() {
+        this.element.setOpacity(0.5);
+      },
+      onRender: function(pos) {
+        this.element.setOpacity(pos / 2);
+      },
+      sinoidal:true
+    });
+  },
+
+  onFinished: function() {
+    this.effect.stopped = true;
+    delete this.effect;
+    this.el.style.display = 'none';
+  },
+
+  destroy: function() {
+    this.el.remove();
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

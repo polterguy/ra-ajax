@@ -160,7 +160,7 @@ namespace Ra.Widgets
                 else
                 {
                     string options = (behaviors == string.Empty ? "" : "," + behaviors);
-                    return string.Format("Ra.C('{0}',{{evts:[{1}{2}]}});", ClientID, evts, options);
+                    return string.Format("Ra.C('{0}',{{evts:[{1}]{2}}});", ClientID, evts, options);
                 }
             }
         }
