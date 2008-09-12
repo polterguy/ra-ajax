@@ -61,20 +61,23 @@ namespace Ra.Widgets
 
         void _control_PreRender(object sender, EventArgs e)
         {
-            if (_control.Phase == RaControl.RenderingPhase.Visible)
+            if (_control.Phase == RaControl.RenderingPhase.Visible && _styleValues.Count > 0)
             {
                 Dictionary<string, string> styles = _control.GetJSONValueDictionary("AddStyle");
-                foreach (string idxKey in _jsonChanges.Keys)
+                foreach (string idxKey in _styleVlaues.Keys)
                 {
-                    // Transforming from CSS file syntax to DOM syntax, e.g. background-color ==> backgroundColor
-                    // and border-style ==> borderStyle
-                    string idx = idxKey;
-                    while (idx.IndexOf('-') != -1)
+                    if (_styleValues[idxKey].ShouldSerializeToJSON)
                     {
-                        int where = idx.IndexOf('-');
-                        idx = idx.Substring(0, where) + idx.Substring(where + 1, 1).ToUpper() + idx.Substring(where + 2);
+                        // Transforming from CSS file syntax to DOM syntax, e.g. background-color ==> backgroundColor
+                        // and border-style ==> borderStyle
+                        string idx = idxKey;
+                        while (idx.IndexOf('-') != -1)
+                        {
+                            int where = idx.IndexOf('-');
+                            idx = idx.Substring(0, where) + idx.Substring(where + 1, 1).ToUpper() + idx.Substring(where + 2);
+                        }
+                        styles[idx] = _styleVlaues[idxKey];
                     }
-                    styles[idx] = _jsonChanges[idxKey];
                 }
             }
         }
@@ -92,14 +95,8 @@ namespace Ra.Widgets
             {
 				if (this[idx] == value)
 					return;
-                bool shouldJson = !_beforeViewStateDictionary.ContainsKey(idx) || _beforeViewStateDictionary[idx] != value;
-                _beforeViewStateDictionary[idx] = value;
-                if (_trackingViewState)
-                {
-                    if (shouldJson && sendChanges)
-                        _jsonChanges[idx] = value;
-                    _afterViewStateDictionary[idx] = value;
-                }
+                bool shouldJson = _trackingViewState && (!_styleValues.ContainsKey(idx) || _styleValues[idx].Value != value);
+                _beforeViewStateDictionary[idx] = new StyleValue(value, _trackingViewState, shouldJson);
             }
         }
 		
