@@ -12,7 +12,7 @@
 * Make Minifier logic work also on Linux. Probably not that important in the .csproj file, but should work
   in nAnt build script also on Linux.
 
-* Implement and check ViewStateById mode on Widgets.
+* Implement and check ViewStateById mode on Widgets. Though not before Mono officially supports this.
 
 * Fix the Child Rendering Logic for Container Controls. Especially Panel but make this logic
   "generic" so that it works from Ra.Widgets.RaControl class.

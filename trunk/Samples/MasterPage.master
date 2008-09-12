@@ -170,6 +170,9 @@
 		                        <li>
 		                            <a href="Ajax-Window.aspx">Ra-Ajax - Window</a>
 		                        </li>
+		                        <li>
+		                            <a href="Ajax-DataGrid.aspx">Ra-Ajax - DataGrid</a>
+		                        </li>
 		                    </ul>
 				        </ext:AccordionView>
 				    </ext:Accordion>

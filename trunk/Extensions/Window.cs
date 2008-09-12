@@ -22,6 +22,7 @@ namespace Ra.Extensions
     {
 		private WEBCTRLS.Panel _pnlHead;
 		private Label _lblHead;
+		private LinkButton _close;
 		private BehaviorDraggable _dragger;
 
         [DefaultValue("")]
@@ -56,6 +57,10 @@ namespace Ra.Extensions
 			_lblHead = new Label();
 			_lblHead.ID = "headCaption";
 			_pnlHead.Controls.Add(_lblHead);
+			_close = new LinkButton();
+			_close.Text = "Close";
+			_close.Click += _close_Clicked;
+			_pnlHead.Controls.Add(_close);
 			this.Controls.AddAt(0, _pnlHead);
 			
 			// Creating dragger
@@ -64,9 +69,15 @@ namespace Ra.Extensions
 			this.Controls.Add(_dragger);
         }
 		
+		protected void _close_Clicked(object sender, EventArgs e)
+		{
+			this.Visible = false;
+		}
+		
 		protected override void OnPreRender (EventArgs e)
 		{
 			_pnlHead.CssClass = CssClass + "-head";
+			_close.CssClass = CssClass + "-close";
 			_lblHead.Text = Caption;
 			_dragger.Handle = _pnlHead.ClientID;
 			base.OnPreRender (e);

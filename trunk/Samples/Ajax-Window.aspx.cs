@@ -11,7 +11,10 @@ using Ra.Widgets;
 
 public partial class AjaxWindow : System.Web.UI.Page
 {
-    protected void calTab_SelectedValueChanged(object sender, EventArgs e)
+    protected void showWindow_Click(object sender, EventArgs e)
     {
+		window.Visible = true;
+		Effect effect = new EffectFadeIn(window, 0.4M);
+		effect.Render();
     }
 }
