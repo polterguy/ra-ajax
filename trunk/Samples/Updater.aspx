@@ -64,6 +64,21 @@
     	which adds to the flexibility of your solution.
     </p>
     <br />
+    <h2>ALL the problems, not just an Ajax Control Library</h2>
+    <p>
+    	When you develop applications for the web then the Ajax Problems is not your only problems, though they are probably
+    	your largest problems you still have other problems too. Ra-Ajax tries to be a complete solution which means that
+    	it also contains solutions for other problems like for instance recursively searching for controls with specific IDs etc.
+    	Our goal is to <em>fix the issues that Redmond doesn't fix</em>. This means that not only is Ra-Ajax an Ajax Library
+    	but you should also expect to see your other GUI problems solved in it. If you find a problem which is of general nature
+    	that you wish to solve then please let us know and we'll see if it fits with the Ra-Ajax model and is easy to 
+    	incorporate into Ra-Ajax.
+    </p>
+    <p>
+    	A good example is our <em>AjaxManager.Instance.FindControl<T>(string id)</em> method which will recursively search
+    	through your page and your master page to look for a control with the given ID and return it as a typeof(T) object.
+    </p>
+    <br />
     <a href="Ajax-Comet.aspx">On to Ajax Comet Sample</a>
 </asp:Content>
 
