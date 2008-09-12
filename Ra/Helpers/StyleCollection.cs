@@ -173,20 +173,16 @@ namespace Ra.Widgets
             get { return _trackingViewState; }
         }
 
-        public void LoadViewState(object state)
+        public void LoadViewState(string state)
         {
-            Dictionary<string, string> styleDictionary = new Dictionary<string, string>();
+            if (string.IsNullOrEmpty(state))
+                return;
 
             // Looping through the "flattened" Dictionary to reload into real Dictionary...
-            foreach (string idx in (state as string).Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries))
+            foreach (string idx in state.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries))
             {
                 string[] raw = idx.Split(':');
-                styleDictionary[raw[0]] = raw[1];
-            }
-            foreach (string idxKey in styleDictionary.Keys)
-            {
-                _beforeViewStateDictionary[idxKey] = styleDictionary[idxKey];
-                _afterViewStateDictionary[idxKey] = styleDictionary[idxKey];
+                _styleValues[raw[0]] = raw[1];
             }
         }
 
