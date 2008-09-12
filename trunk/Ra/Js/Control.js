@@ -254,13 +254,7 @@ Ra.Control.prototype = {
         }, 500);
       }
     } else {
-      new Ra.Ajax({
-        args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=' + evt,
-        raCallback:true,
-        onSuccess: this.onFinishedRequest,
-        onError: this.onFailedRequest,
-        callingContext: this
-      });
+      this.callback(evt);
     }
     if( shouldStop ) {
       // Event is supposed to be stopped
@@ -268,6 +262,16 @@ Ra.Control.prototype = {
       domEvt.cancelBubble = true;
       return false;
     }
+  },
+
+  callback: function(evt) {
+    new Ra.Ajax({
+      args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=' + evt,
+      raCallback:true,
+      onSuccess: this.onFinishedRequest,
+      onError: this.onFailedRequest,
+      callingContext: this
+    });
   },
 
   onFinishedRequest: function(response) {

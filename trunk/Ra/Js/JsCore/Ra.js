@@ -30,6 +30,8 @@ Ra.emptyFunction = function() {};
 
 // $ method, used to retrieve elements on document
 Ra.$ = function(id) {
+  if( id.setOpacity )
+    return id;
   var el = document.getElementById(id);
   if( !el ) {
     return null;
@@ -675,6 +677,8 @@ Ra.Effect.prototype = {
 
   // Called once every 10 millisecond. Heartbeat of animation
   loop: function() {
+    if( this.stopped )
+      return;
     var curTime = new Date().getTime();
     if( curTime >= this.finishOn ) {
       this.render(1.0);

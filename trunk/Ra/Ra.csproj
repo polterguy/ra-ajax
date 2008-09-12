@@ -97,6 +97,7 @@
     <Compile Include="Behaviors\BehaviorDroppable.cs" />
     <Compile Include="Effects\EffectHighlight.cs" />
     <Compile Include="Effects\EffectBorder.cs" />
+    <Compile Include="Behaviors\BehaviorUpdater.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Js\JsCore\Ra.js" />
