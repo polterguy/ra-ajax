@@ -73,7 +73,13 @@ public partial class AjaxDataGrid : System.Web.UI.Page
 				tmp.Add(new DataGridPeople("John Doe", false));
 				Session["People"] = tmp;
 			}
-			return Session["People"] as List<DataGridPeople>;
+			List<DataGridPeople> retVal = Session["People"] as List<DataGridPeople>;
+			if( retVal == null )
+			{
+				Session["People"] = null;
+				return People;
+			}
+			return retVal;
 		}
 	}
 }
