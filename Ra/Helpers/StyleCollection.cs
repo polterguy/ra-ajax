@@ -159,9 +159,9 @@ namespace Ra.Widgets
         public override string ToString()
         {
             string retVal = "";
-            foreach (string idxKey in _beforeViewStateDictionary.Keys)
+            foreach (string idxKey in _styleValues.Keys)
             {
-                retVal += idxKey + ":" + _beforeViewStateDictionary[idxKey] + ";";
+                retVal += idxKey + ":" + _styleValues[idxKey].Value + ";";
             }
             return retVal;
         }
