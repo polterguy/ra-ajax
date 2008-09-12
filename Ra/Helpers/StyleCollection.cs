@@ -175,7 +175,6 @@ namespace Ra.Widgets
             }
             else
             {
-
                 string retVal = "";
                 foreach (string idxKey in _styleValues.Keys)
                 {
