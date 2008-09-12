@@ -108,10 +108,9 @@ namespace Ra.Widgets
                 if (idx.ToLower() != idx)
                     throw new ApplicationException("Cannot have a style property which contains uppercase letters");
 
-                if (_beforeViewStateDictionary.ContainsKey(idx))
-                    return _beforeViewStateDictionary[idx];
-                if (_afterViewStateDictionary.ContainsKey(idx))
-                    return _afterViewStateDictionary[idx];
+                if (_styleValues.ContainsKey(idx))
+                    return _styleValues[idx].Value;
+
                 return null;
 			}
 			set { this[idx, true] = value; }
