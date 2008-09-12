@@ -489,7 +489,13 @@ pre
 	font-style:bold;
 }
 
-
+.window-close
+{
+	font-size:0.8em;
+	position:absolute;
+	top:5px;
+	right:5px;
+}
 
 
 

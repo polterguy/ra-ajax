@@ -28,6 +28,11 @@
     	like most of our Ajax Extension Controls created without any custom JavaScript. This means it also serves as a perfect
     	reference for how to create your own Ajax Controls utilizing the building blocks from Ra-Ajax.
     </p>
+    <ra:Button 
+    	runat="server" 
+    	id="showWindow" 
+    	Text="Show Window" 
+    	OnClick="showWindow_Click" />
     <ext:Window 
     	runat="server"
     	Caption="Ajax Window"
@@ -147,6 +152,7 @@ namespace Ra.Extensions
     	Also we are VERY interested in getting to know about Extension Controls created utilizing Ra-Ajax. So let us know
     	if you do something great! Especially if you want to share it with others ;)
     </p>
+    <a href="Ajax-DataGrid.aspx">On to Ajax DataGrid</a>
 </asp:Content>
 
 
