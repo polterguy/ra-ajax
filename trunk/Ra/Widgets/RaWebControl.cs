@@ -49,7 +49,7 @@ namespace Ra.Widgets
         {
             object[] content = savedState as object[];
 
-            Style.LoadViewState(content[0]);
+            Style.LoadViewState(content[0] as string);
 
             // When we save the ViewState we save the base class object as the second instance in the array...
             base.LoadViewState(content[1]);
