@@ -32,13 +32,17 @@ Ra.extend(Ra.Timer.prototype, {
 
   tick: function(){
     if( this.options.enabled ) {
-      var x = new Ra.Ajax({
-        args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=tick',
-        raCallback:true,
-        onSuccess: this.onFinishedTicking,
-        callingContext: this
-      });
+      this.callback();
     }
+  },
+
+  callback: function() {
+    var x = new Ra.Ajax({
+      args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=tick',
+      raCallback:true,
+      onSuccess: this.onFinishedTicking,
+      callingContext: this
+    });
   },
 
   Enabled: function(value) {
