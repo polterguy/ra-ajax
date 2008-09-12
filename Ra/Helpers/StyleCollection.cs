@@ -158,12 +158,31 @@ namespace Ra.Widgets
 
         public override string ToString()
         {
-            string retVal = "";
-            foreach (string idxKey in _styleValues.Keys)
+            return GetStyles(false);
+        }
+
+        private string GetStyles(bool returnOnlyViewStateValues)
+        {
+            if (returnOnlyViewStateValues)
             {
-                retVal += idxKey + ":" + _styleValues[idxKey].Value + ";";
+                string retVal = "";
+                foreach (string idxKey in _styleValues.Keys)
+                {
+                    if (_styleValues[idxKey].ShouldSerializeToViewState)
+                        retVal += idxKey + ":" + _styleValues[idxKey].Value + ";";
+                }
+                return retVal;
             }
-            return retVal;
+            else
+            {
+
+                string retVal = "";
+                foreach (string idxKey in _styleValues.Keys)
+                {
+                    retVal += idxKey + ":" + _styleValues[idxKey].Value + ";";
+                }
+                return retVal;
+            }
         }
 
         #region IStateManager Members
@@ -182,18 +201,13 @@ namespace Ra.Widgets
             foreach (string idx in state.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries))
             {
                 string[] raw = idx.Split(':');
-                _styleValues[raw[0]] = raw[1];
+                _styleValues[raw[0]] = new StyleValue(raw[1], true, false);
             }
         }
 
         public object SaveViewState()
         {
-            string retVal = "";
-            foreach (string idxKey in _afterViewStateDictionary.Keys)
-            {
-                retVal += idxKey + ":" + _afterViewStateDictionary[idxKey] + ";";
-            }
-            return retVal;
+            GetStyles(true);
         }
 
         public void TrackViewState()
