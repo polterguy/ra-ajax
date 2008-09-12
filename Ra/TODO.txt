@@ -1,0 +1,19 @@
+
+                 TODO list for Ra-Ajax
+
+* Fix Style serialization bug. If Control is being made invisible then the style is "discarded" while
+  other ViewState values are being kept.
+
+* Fix Milliseconds being used consistantly across all "Timer" values in antire Ra-Ajax. Now
+  some places uses Seconds as decimal value while others use Milliseconds as integer values.
+
+* Create nAnt build script which also works on Linux
+
+* Make Minifier logic work also on Linux. Probably not that important in the .csproj file, but should work
+  in nAnt build script also on Linux.
+
+* Implement and check ViewStateById mode on Widgets.
+
+
+
+
