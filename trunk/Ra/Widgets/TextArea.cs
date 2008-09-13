@@ -171,14 +171,24 @@ namespace Ra.Widgets
             }
         }
 
-        // Override this one to create specific initialization script for your widgets
-        private bool _scriptRetrieved;
-        public override string GetClientSideScript()
+		protected override string GetClientSideScriptOptions()
+		{
+			string retVal = string.Empty;
+
+			if (_hasSetFocus)
+				retVal += "focus:true";
+			if (_hasSetSelect)
+			{
+				if (retVal.Length != 0)
+					retVal += ",";
+				retVal += "select:true";
+			}
+			return retVal;
+		}
+
+        protected override string GetEventsRegisterScript()
         {
-            if (_scriptRetrieved)
-                return "";
-            _scriptRetrieved = true;
-            string evts = "";
+            string evts = string.Empty;
             if (TextChanged != null)
                 evts += "['change']";
             if (MouseOver != null)
@@ -211,46 +221,7 @@ namespace Ra.Widgets
                     evts += ",";
                 evts += "['focus']";
             }
-            if (evts.Length == 0)
-            {
-                if (_hasSetFocus || _hasSetSelect)
-                {
-                    string options = "";
-                    if (_hasSetFocus)
-                        options += "focus:true";
-                    if (_hasSetSelect)
-                    {
-                        if (options.Length > 0)
-                            options += ",";
-                        options += "select:true";
-                    }
-                    return string.Format("\r\nRa.C('{0}',{{{1}}});", ClientID, options);
-                }
-                else
-                {
-                    return string.Format("\r\nRa.C('{0}');", ClientID);
-                }
-            }
-            else
-            {
-                if (_hasSetFocus || _hasSetSelect)
-                {
-                    string options = "";
-                    if (_hasSetFocus)
-                        options += "focus:true";
-                    if (_hasSetSelect)
-                    {
-                        if (options.Length > 0)
-                            options += ",";
-                        options += "select:true";
-                    }
-                    return string.Format("Ra.C('{0}',{{evts:[{2}],{1}}});", ClientID, options, evts);
-                }
-                else
-                {
-                    return string.Format("Ra.C('{0}',{{evts:[{1}]}});", ClientID, evts);
-                }
-            }
+			return evts;
         }
 
         // Override this one to create specific HTML for your widgets

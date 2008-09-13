@@ -95,7 +95,7 @@ namespace Ra.Widgets
             {
 				if (this[idx] == value)
 					return;
-                bool shouldJson = _trackingViewState && (!_styleValues.ContainsKey(idx) || _styleValues[idx].Value != value);
+                bool shouldJson = sendChanges && _trackingViewState && (!_styleValues.ContainsKey(idx) || _styleValues[idx].Value != value);
                 _styleValues[idx] = new StyleValue(value, _trackingViewState, shouldJson);
             }
         }

@@ -117,18 +117,21 @@ namespace Ra.Extensions
                     break;
             }
         }
+		
+		protected override string GetClientSideScriptOptions ()
+		{
+			if (Enabled && Tick != null)
+				return "enabled:true";
+			else
+				return string.Empty;
+		}
 
-        private bool _scriptRetrieved;
-        public override string GetClientSideScript()
-        {
-            if (_scriptRetrieved)
-                return "";
-            _scriptRetrieved = true;
-            return string.Format("\r\nnew Ra.Comet('{0}', {{enabled:{1}}});",
-                ClientID,
-                (Enabled && Tick != null).ToString().ToLower());
-        }
 
+		protected override string GetClientSideScriptType()
+		{
+			return "new Ra.Comet";
+		}
+		
         public override string GetHTML()
         {
             // Dummy HTML DOM element to make registration and such easier...

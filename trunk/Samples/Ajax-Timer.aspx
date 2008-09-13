@@ -35,7 +35,7 @@
         style="font-style:italic;color:#999;" />
     <ext:Timer 
         runat="server" 
-        ID="timer" 
+        ID="timer"  
         OnTick="timer_Tick" />
     <br />
     <p>

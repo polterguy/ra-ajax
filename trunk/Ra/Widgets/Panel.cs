@@ -31,12 +31,8 @@ namespace Ra.Widgets
                 GetStyleHTMLFormatedAttribute());
         }
 
-        private bool _scriptRetrieved;
         public override string GetClientSideScript()
         {
-            if (_scriptRetrieved)
-                return "";
-            _scriptRetrieved = true;
             string tmp = base.GetClientSideScript();
             tmp += GetChildrenClientSideScript(Controls);
             return tmp;

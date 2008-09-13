@@ -92,32 +92,24 @@ namespace Ra.Extensions
             }
         }
 
-        private bool _scriptRetrieved;
-        public override string GetClientSideScript()
-        {
-            if (_scriptRetrieved)
-                return "";
-            _scriptRetrieved = true;
-            string evts = "";
+		protected override string GetClientSideScriptType()
+		{
+			return "new Ra.RichEdit";
+		}
+		
+		protected override string GetEventsRegisterScript()
+		{
+            string evts = string.Empty;
             if (KeyUp != null)
-                evts += "[['keyup']]";
-            if (evts.Length > 0)
-                evts = "evts:" + evts;
-            if (_hasSetFocus)
             {
-                return string.Format("\r\nnew Ra.RichEdit('{0}', {{focus:true,{1}}});",
-                    ClientID,
-                    evts);
+                if (evts.Length != 0)
+                    evts += ",";
+                evts += "['keyup']";
             }
-            else
-            {
-                return string.Format("\r\nnew Ra.RichEdit('{0}', {{{1}}});",
-                    ClientID,
-                    evts);
-            }
-        }
+			return evts;
+		}
 
-        public override string GetHTML()
+		public override string GetHTML()
         {
             // Rich Edit DIV editing element plus hidden field which is "value" part 
             // to make sure we submit the new value back to server whan changes occurs...

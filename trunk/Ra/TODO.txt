@@ -23,5 +23,5 @@
 
 * Seriously refactor the GetClientSideRegistrationScript logic...
 
-
+* Fix CheckBox so that also e.g. OnMouseOver triggers on TEXT and not only on input element
 

@@ -127,6 +127,6 @@
         Sending JSON, which again maps to Client-Side JavaScript functions, will take you to orders of magnitude 
         higher complexity before forcing you to use custom JavaScript.
     </p>
-    <a href="ajax-hiddenfield.aspx">On to Ajax HiddenField</a>
+    <a href="Ajax-HiddenField.aspx">On to Ajax HiddenField</a>
 </asp:Content>
 
