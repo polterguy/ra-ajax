@@ -26,8 +26,10 @@ namespace Ra.Widgets
 
         // Used to track if control has been rendered previously
         private RenderingPhase _controlRenderingState = RenderingPhase.Invisible;
+        private Dictionary<string, object> _JSONValues = new Dictionary<string, object>();
+        protected bool _hasSetFocus;
 
-        [Browsable(false)]
+		[Browsable(false)]
         public RenderingPhase Phase
         {
             get { return _controlRenderingState; }
@@ -57,8 +59,6 @@ namespace Ra.Widgets
 			return null;
 		}
 		
-        private Dictionary<string, object> _JSONValues = new Dictionary<string, object>();
-
         internal Dictionary<string, string> GetJSONValueDictionary(string key)
         {
             if (this.IsTrackingViewState)
@@ -113,7 +113,6 @@ namespace Ra.Widgets
             }
         }
 
-        protected bool _hasSetFocus;
         public override void Focus()
         {
             _hasSetFocus = true;
@@ -145,7 +144,9 @@ namespace Ra.Widgets
         }
 
 		// This one returns true ONLY if there was something actually ADDED to the builder...
-        protected bool SerializeJSONValue(string key, object value, StringBuilder builder)
+		// Note if you have "custom objects" you want to serialize in your own extension widgets
+		// you should OVERRIDE this method and return base for everything except your "custom types"...
+        protected virtual bool SerializeJSONValue(string key, object value, StringBuilder builder)
         {
             // TODO: Create more general approach, this one only handles TWO level deep JSON objects...
             if (value.GetType() == typeof(string))
@@ -214,8 +215,9 @@ namespace Ra.Widgets
 	                builder.Append("]");
 					return true;
 				}
+				return false;
             }
-			return false;
+			throw new ApplicationException("Type not found in SerializeJSONValue - you should override this method in your own controls if you're serializing custom types. Types was; " + value.GetType().Name);
         }
 
         protected override void OnInit(EventArgs e)
@@ -361,6 +363,43 @@ namespace Ra.Widgets
 		// Reconsider later...?
         public virtual void DispatchEvent(string name)
         { }
+		
+		private string GetScriptOptions(bool addComma)
+		{
+			string options = GetClientSideScriptOptions();
+			if (!string.IsNullOrEmpty(options))
+			{
+				if (addComma)
+					options = "," + options;
+			}
+			return options;
+		}
+		
+		private string GetScriptBehaviors(bool addComma)
+		{
+			string behaviors = GetBehaviorRegisterScript();
+			if (!string.IsNullOrEmpty(behaviors))
+			{
+				if (addComma)
+					behaviors = ",beha:" + behaviors;
+				else
+					behaviors = "beha:" + behaviors;
+			}
+			return behaviors;
+		}
+		
+		private string GetScriptEvents(bool addComma)
+		{
+			string evts = GetEventsRegisterScript();
+			if (!string.IsNullOrEmpty(evts))
+			{
+				if (addComma)
+					evts = ",evts:[" + evts + "]";
+				else
+					evts = "evts:[" + evts + "]";
+			}
+			return evts;
+		}
 
         // Used to retrieve the client-side initialization script
         private bool _scriptRetrieved;
@@ -370,40 +409,20 @@ namespace Ra.Widgets
 				return "";
 			_scriptRetrieved = true;
 
-			// Actual option string to pass into reg script
-			string optionsString = "";
-
-			// Getting Options
-			string options = GetClientSideScriptOptions();
-			if (!string.IsNullOrEmpty(options))
-			{
-				if (optionsString.Length != 0)
-					optionsString += ",";
-				optionsString += options;
-			}
+			// Retrieving all the different option types
+			string options = GetScriptOptions(false);
+			string behaviors = GetScriptBehaviors(!string.IsNullOrEmpty(options));
+			string evts = GetScriptEvents(!string.IsNullOrEmpty(options) && !string.IsNullOrEmpty(behaviors));
 			
-			// Getting Behaviors
-			string behaviors = GetBehaviorRegisterScript();
-			if (!string.IsNullOrEmpty(behaviors))
-			{
-				if (optionsString.Length != 0)
-					optionsString += ",";
-				optionsString += behaviors;
-			}
-			
-			// Getting Events
-			string evts = GetEventsRegisterScript();
-			if (!string.IsNullOrEmpty(evts))
-			{
-				if (optionsString.Length != 0)
-					optionsString += ",";
-				optionsString += "evts:[" + evts + "]";
-			}
+			string optionsString = options + evts + behaviors;
 			
 			// Appending the closing brace
 			if (!string.IsNullOrEmpty(optionsString))
 				optionsString = ",{" + optionsString + "}";
-			return string.Format("\r\n{2}('{0}'{1});", ClientID, optionsString, GetClientSideScriptType());
+			return string.Format("\r\n{2}('{0}'{1});", 
+				ClientID, 
+				optionsString,
+				GetClientSideScriptType());
         }
 		
 		protected virtual string GetClientSideScriptType()

@@ -1,7 +1,7 @@
 
                  TODO list for Ra-Ajax
 
-* Fix Milliseconds being used consistantly across all "Timer" values in antire Ra-Ajax. Now
+* Fix Milliseconds being used consistantly across all "Timer" values in entire Ra-Ajax. Now
   some places uses Seconds as decimal value while others use Milliseconds as integer values.
 
 * Create nAnt build script which also works on Linux
@@ -21,7 +21,11 @@
   in e.g. the InPlaceEdit since currently it does a POSTBACK if users clicks Carriage Return
   which is VERY bad...
 
-* Seriously refactor the GetClientSideRegistrationScript logic...
-
 * Fix CheckBox so that also e.g. OnMouseOver triggers on TEXT and not only on input element
+
+* Implement all the "common events" for Label and Panel and other "non-event widgets".
+
+
+
+
 
