@@ -21,6 +21,7 @@
   in e.g. the InPlaceEdit since currently it does a POSTBACK if users clicks Carriage Return
   which is VERY bad...
 
+* Seriously refactor the GetClientSideRegistrationScript logic...
 
 
 
