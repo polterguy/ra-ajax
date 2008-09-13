@@ -209,8 +209,11 @@ Ra.Control.prototype = {
   // Initializes all events on control
   initEvents: function() {
     var evts = this.options.evts;
-    for( var idx = 0; idx < evts.length; idx++ ) {
-      (this.options.ctrl || this.element).observe(
+    var idx = evts.length;
+    while( idx-- ) {
+      // This one will prioritize the third event parameter, then the ctrl option and finally
+      // the this.element if the two previous was undefined or not given
+      (evts[idx].length > 2 ? Ra.$(evts[idx][2]) : (this.options.ctrl || this.element)).observe(
         evts[idx][0], 
         this.onEvent, 
         this, 
