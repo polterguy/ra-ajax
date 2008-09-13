@@ -57,23 +57,6 @@ namespace Ra.Widgets
 			return null;
 		}
 		
-		protected string GetBehaviorRegisterScript()
-		{
-			string retVal = "";
-			bool isFirst = true;
-			foreach (Behavior idx in Behaviors)
-			{
-				if (isFirst)
-					isFirst = false;
-				else
-					retVal += ",";
-				retVal += idx.GetRegistrationScript(); 
-			}
-			if (retVal != string.Empty)
-				retVal = "beha:[" + retVal + "]";
-			return retVal;
-		}
-
         private Dictionary<string, object> _JSONValues = new Dictionary<string, object>();
 
         internal Dictionary<string, string> GetJSONValueDictionary(string key)
@@ -147,23 +130,22 @@ namespace Ra.Widgets
                 return null;
 
             StringBuilder builder = new StringBuilder();
-            builder.Append("{");
 
-            bool first = true;
+			bool addComma = false;
             foreach (string idxKey in _JSONValues.Keys)
             {
-                if (first)
-                    first = false;
-                else
+                if (addComma)
                     builder.Append(",");
                 object idxValue = _JSONValues[idxKey];
-                SerializeJSONValue(idxKey, idxValue, builder);
+                addComma = SerializeJSONValue(idxKey, idxValue, builder);
             }
-            builder.Append("}");
-            return builder.ToString();
+			if (builder.Length > 0)
+				return "{" + builder.ToString() + "}";
+            return string.Empty;
         }
 
-        protected void SerializeJSONValue(string key, object value, StringBuilder builder)
+		// This one returns true ONLY if there was something actually ADDED to the builder...
+        protected bool SerializeJSONValue(string key, object value, StringBuilder builder)
         {
             // TODO: Create more general approach, this one only handles TWO level deep JSON objects...
             if (value.GetType() == typeof(string))
@@ -171,7 +153,7 @@ namespace Ra.Widgets
                 builder.AppendFormat("\"{0}\":\"{1}\"",
                     key,
                     value.ToString().Replace("\\", "\\\\").Replace("\"", "\\\"").Replace("\n", "\\n").Replace("\r", "\\r"));
-                return;
+                return true;
             }
             if (value.GetType() == typeof(System.Drawing.Color))
             {
@@ -180,21 +162,21 @@ namespace Ra.Widgets
                 builder.AppendFormat("\"{0}\":\"{1}\"",
                     key,
                     tmp);
-                return;
+                return true;
             }
             if (value.GetType() == typeof(bool))
             {
                 builder.AppendFormat("\"{0}\":{1}",
                     key,
                     value);
-                return;
+                return true;
             }
             if (value.GetType() == typeof(int))
             {
                 builder.AppendFormat("\"{0}\":{1}",
                     key,
                     value);
-                return;
+                return true;
             }
             if (value.GetType() == typeof(System.Drawing.Rectangle))
             {
@@ -202,7 +184,7 @@ namespace Ra.Widgets
                 builder.AppendFormat("{0}:{{left:{1},top:{2},width:{3},height:{4}}}",
                     key,
                     rect.Left, rect.Top, rect.Width, rect.Height);
-                return;
+                return true;
             }
             if (value.GetType() == typeof(System.Drawing.Point))
             {
@@ -210,25 +192,30 @@ namespace Ra.Widgets
                 builder.AppendFormat("{0}:{{x:{1},y:{2}}}",
                     key,
                     pt.X, pt.Y);
-                return;
+                return true;
             }
             if (value.GetType() == typeof(Dictionary<string, string>))
             {
                 Dictionary<string, string> values = value as Dictionary<string, string>;
-                builder.AppendFormat("\"{0}\":[", key);
-                bool first = true;
-                foreach (string idxKey in values.Keys)
-                {
-                    if (first)
-                        first = false;
-                    else
-                        builder.Append(",");
-                    builder.AppendFormat("[\"{0}\",\"{1}\"]", 
-                        idxKey,
-                        values[idxKey].Replace("\\", "\\\\").Replace("\"", "\\\""));
-                }
-                builder.Append("]");
+				if (values.Count > 0)
+				{
+	                builder.AppendFormat("\"{0}\":[", key);
+	                bool first = true;
+	                foreach (string idxKey in values.Keys)
+	                {
+	                    if (first)
+	                        first = false;
+	                    else
+	                        builder.Append(",");
+	                    builder.AppendFormat("[\"{0}\",\"{1}\"]", 
+	                        idxKey,
+	                        values[idxKey].Replace("\\", "\\\\").Replace("\"", "\\\""));
+	                }
+	                builder.Append("]");
+					return true;
+				}
             }
+			return false;
         }
 
         protected override void OnInit(EventArgs e)
@@ -310,7 +297,7 @@ namespace Ra.Widgets
                     {
                         // JSON changes, control was visible also previous request...
                         string JSON = SerializeJSON();
-                        if (JSON != null)
+                        if (!string.IsNullOrEmpty(JSON))
                         {
                             AjaxManager.Instance.Writer.WriteLine("Ra.Control.$('{0}').handleJSON({1});",
                                 ClientID,
@@ -379,15 +366,79 @@ namespace Ra.Widgets
         private bool _scriptRetrieved;
         public virtual string GetClientSideScript()
         {
-			string behaviors = GetBehaviorRegisterScript();
 			if (_scriptRetrieved)
 				return "";
 			_scriptRetrieved = true;
-			if (_hasSetFocus)
-				return string.Format("\r\nRa.C('{0}', {{focus:true{1}}});", ClientID, (behaviors == string.Empty ? "" : "," + behaviors));
-			else
-				return string.Format("\r\nRa.C('{0}'{1});", ClientID, (behaviors == string.Empty ? "" : ",{" + behaviors + "}"));
+
+			// Actual option string to pass into reg script
+			string optionsString = "";
+
+			// Getting Options
+			string options = GetClientSideScriptOptions();
+			if (!string.IsNullOrEmpty(options))
+			{
+				if (optionsString.Length != 0)
+					optionsString += ",";
+				optionsString += options;
+			}
+			
+			// Getting Behaviors
+			string behaviors = GetBehaviorRegisterScript();
+			if (!string.IsNullOrEmpty(behaviors))
+			{
+				if (optionsString.Length != 0)
+					optionsString += ",";
+				optionsString += behaviors;
+			}
+			
+			// Getting Events
+			string evts = GetEventsRegisterScript();
+			if (!string.IsNullOrEmpty(evts))
+			{
+				if (optionsString.Length != 0)
+					optionsString += ",";
+				optionsString += "evts:[" + evts + "]";
+			}
+			
+			// Appending the closing brace
+			if (!string.IsNullOrEmpty(optionsString))
+				optionsString = ",{" + optionsString + "}";
+			return string.Format("\r\n{2}('{0}'{1});", ClientID, optionsString, GetClientSideScriptType());
         }
+		
+		protected virtual string GetClientSideScriptType()
+		{
+			return "Ra.C";
+		}
+		
+		protected virtual string GetEventsRegisterScript()
+		{
+			return string.Empty;
+		}
+		
+		protected virtual string GetClientSideScriptOptions()
+		{
+			if (_hasSetFocus)
+				return "focus:true";
+			return "";
+		}
+
+		protected string GetBehaviorRegisterScript()
+		{
+			string retVal = "";
+			bool isFirst = true;
+			foreach (Behavior idx in Behaviors)
+			{
+				if (isFirst)
+					isFirst = false;
+				else
+					retVal += ",";
+				retVal += idx.GetRegistrationScript(); 
+			}
+			if (retVal != string.Empty)
+				retVal = "beha:[" + retVal + "]";
+			return retVal;
+		}
 
         // The HTML for the control
         public abstract string GetHTML();

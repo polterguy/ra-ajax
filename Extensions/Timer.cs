@@ -63,18 +63,25 @@ namespace Ra.Extensions
             }
         }
 
-        private bool _scriptRetrieved;
-        public override string GetClientSideScript()
-        {
-            if (_scriptRetrieved)
-                return "";
-            _scriptRetrieved = true;
-            return string.Format("\r\nnew Ra.Timer('{0}', {{enabled:{1}, duration:{2}}});", 
-                ClientID,
-                (Enabled && Tick != null).ToString().ToLower(),
-                Milliseconds);
-        }
+		protected override string GetClientSideScriptOptions()
+		{
+			string retVal = base.GetClientSideScriptOptions();
+			if (Enabled && Tick != null)
+				retVal += "enabled:true";
+			if (Milliseconds != 1000)
+			{
+				if (retVal != string.Empty)
+					retVal += ",";
+				retVal += string.Format("duration:{0}", Milliseconds);
+			}
+			return retVal;
+		}
 
+		protected override string GetClientSideScriptType()
+		{
+			return "new Ra.Timer";
+		}
+		
         public override string GetHTML()
         {
             // Dummy HTML DOM element to make registration and such easier...

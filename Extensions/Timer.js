@@ -19,6 +19,9 @@ Ra.extend(Ra.Timer.prototype, Ra.Control.prototype);
 Ra.extend(Ra.Timer.prototype, {
   init: function(el, opt) {
     this.initControl(el, opt);
+    this.options = Ra.extend({
+      duration:1000
+    }, this.options || {});
     if( this.options.enabled)
       this.start();
   },

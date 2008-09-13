@@ -100,14 +100,9 @@ namespace Ra.Widgets
             }
         }
 
-        // Override this one to create specific initialization script for your widgets
-        private bool _scriptRetrieved;
-        public override string GetClientSideScript()
+        protected override string GetEventsRegisterScript()
         {
-            if (_scriptRetrieved)
-                return "";
-            _scriptRetrieved = true;
-            string evts = "";
+            string evts = string.Empty;
             if (Click != null)
                 evts += "['click']";
             if (MouseOver != null)
@@ -134,35 +129,7 @@ namespace Ra.Widgets
                     evts += ",";
                 evts += "['focus']";
             }
-			string behaviors = GetBehaviorRegisterScript();
-            if (evts.Length == 0)
-            {
-                if (_hasSetFocus)
-                {
-                    string options = "focus:true" + (behaviors == string.Empty ? "" : "," + behaviors);
-                    return string.Format("\r\nRa.C('{0}',{{{1}}});", 
-					    ClientID, 
-					    options);
-                }
-                else
-                {
-                    string options = (behaviors == string.Empty ? "" : ",{" + behaviors + "}");
-                    return string.Format("\r\nRa.C('{0}'{1});", ClientID, options);
-                }
-            }
-            else
-            {
-                if (_hasSetFocus)
-                {
-                    string options = "focus:true" + (behaviors == string.Empty ? "" : "," + behaviors);
-                    return string.Format("Ra.C('{0}',{{evts:[{2}],{1}}});", ClientID, options, evts);
-                }
-                else
-                {
-                    string options = (behaviors == string.Empty ? "" : "," + behaviors);
-                    return string.Format("Ra.C('{0}',{{evts:[{1}]{2}}});", ClientID, evts, options);
-                }
-            }
+			return evts;
         }
 
         // Override this one to create specific HTML for your widgets
