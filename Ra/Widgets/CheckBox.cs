@@ -158,25 +158,25 @@ namespace Ra.Widgets
             {
                 if (evts.Length != 0)
                     evts += ",";
-                evts += "['mouseover']";
+                evts += string.Format("['mouseover', false, '{0}_LBL']", ClientID);
             }
             if (MouseOut != null)
             {
                 if (evts.Length != 0)
                     evts += ",";
-                evts += "['mouseout']";
+                evts += string.Format("['mouseout', false, '{0}_LBL']", ClientID);
             }
             if (Blur != null)
             {
                 if (evts.Length != 0)
                     evts += ",";
-                evts += "['blur']";
+                evts += string.Format("['blur', false, '{0}_CTRL']", ClientID);
             }
             if (Focused != null)
             {
                 if (evts.Length != 0)
                     evts += ",";
-                evts += "['focus']";
+                evts += string.Format("['focus', false, '{0}_CTRL']", ClientID);
             }
 			return evts;
         }

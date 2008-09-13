@@ -21,7 +21,9 @@
   in e.g. the InPlaceEdit since currently it does a POSTBACK if users clicks Carriage Return
   which is VERY bad...
 
-* Fix CheckBox so that also e.g. OnMouseOver triggers on TEXT and not only on input element
+* Fix CheckBox and RadioButton so that also e.g. OnMouseOver triggers on CONTROL and not only
+  text as it does today. Maybe something like "mouseenter/mouseleave" from MooTools can help
+  us here?
 
 * Implement all the "common events" for Label and Panel and other "non-event widgets".
 
