@@ -412,9 +412,9 @@ namespace Ra.Widgets
 			// Retrieving all the different option types
 			string options = GetScriptOptions(false);
 			string behaviors = GetScriptBehaviors(!string.IsNullOrEmpty(options));
-			string evts = GetScriptEvents(!string.IsNullOrEmpty(options) && !string.IsNullOrEmpty(behaviors));
+			string evts = GetScriptEvents(!string.IsNullOrEmpty(options) || !string.IsNullOrEmpty(behaviors));
 			
-			string optionsString = options + evts + behaviors;
+			string optionsString = options + behaviors + evts;
 			
 			// Appending the closing brace
 			if (!string.IsNullOrEmpty(optionsString))
@@ -455,7 +455,7 @@ namespace Ra.Widgets
 				retVal += idx.GetRegistrationScript(); 
 			}
 			if (retVal != string.Empty)
-				retVal = "beha:[" + retVal + "]";
+				retVal = "[" + retVal + "]";
 			return retVal;
 		}
 
