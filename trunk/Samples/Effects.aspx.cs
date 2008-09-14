@@ -24,7 +24,7 @@ public partial class Effects : System.Web.UI.Page
         btn.Enabled = false;
         btn2.Enabled = true;
         btn2.Focus();
-        Effect effect = new EffectSize(pnl, 0.6M, 300, 300);
+        Effect effect = new EffectSize(pnl, 600, 300, 300);
 		effect.Sinoidal = true;
 		effect.Chained.Add(new EffectHighlight());
 		effect.Chained.Add(new EffectBorder(5));
@@ -36,7 +36,7 @@ public partial class Effects : System.Web.UI.Page
         btn2.Enabled = false;
         btn3.Enabled = true;
         btn3.Focus();
-        Effect effect = new EffectFadeOut(pnl, 0.6M);
+        Effect effect = new EffectFadeOut(pnl, 600);
         effect.Render();
     }
 
@@ -45,13 +45,13 @@ public partial class Effects : System.Web.UI.Page
         btn3.Enabled = false;
         btn2.Enabled = true;
         btn2.Focus();
-        Effect effect = new EffectFadeIn(pnl, 0.6M);
+        Effect effect = new EffectFadeIn(pnl, 600);
         effect.Render();
     }
 
     protected void btn4_Click(object sender, EventArgs e)
     {
-        Effect effect = new EffectFadeIn(pnl2, 0.8M);
+        Effect effect = new EffectFadeIn(pnl2, 800);
         effect.Chained.Add(new EffectRollDown(200));
         effect.Render();
     }

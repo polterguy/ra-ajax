@@ -33,14 +33,14 @@ namespace Ra.Extensions
             }
         }
 
-        [DefaultValue(0.4)]
-        public decimal AnimationSpeed
+        [DefaultValue(400)]
+        public int AnimationSpeed
         {
             get
             {
                 if (ViewState["AnimationSpeed"] == null)
-                    return 0.4M;
-                return (decimal)ViewState["AnimationSpeed"];
+                    return 400;
+                return (int)ViewState["AnimationSpeed"];
             }
             set
             {

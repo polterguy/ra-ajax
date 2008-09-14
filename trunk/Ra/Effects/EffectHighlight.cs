@@ -13,13 +13,13 @@ namespace Ra.Widgets
 {
     public class EffectHighlight : Effect
     {
-        public EffectHighlight(Control control, decimal seconds)
-			: base(control, seconds)
+        public EffectHighlight(Control control, int milliseconds)
+			: base(control, milliseconds)
 		{ }
 
 		// For chained effects
         public EffectHighlight()
-			: base(null, 0.0M)
+			: base(null, 0)
 		{ }
 		
         public override string RenderChainedOnStart()

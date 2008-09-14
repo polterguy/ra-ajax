@@ -449,7 +449,7 @@ Ra.extend(Ra.BUpDel.prototype, {
 
   onStart: function() {
     this.effect = new Ra.Effect(this.el, {
-      duration: 0.8,
+      duration: 800,
       onStart: function() {
         this.element.setOpacity(0);
         this.element.style.display = 'block';
@@ -467,7 +467,7 @@ Ra.extend(Ra.BUpDel.prototype, {
   onFinished: function() {
     this.effect.stopped = true;
     this.effect = new Ra.Effect(this.el, {
-      duration: 0.3,
+      duration: 300,
       onFinished: function() {
         this.element.setOpacity(0);
         this.element.style.display = 'none';

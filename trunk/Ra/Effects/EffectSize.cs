@@ -28,12 +28,12 @@ namespace Ra.Widgets
             set { _height = value; }
         }
 
-        public EffectSize(Control control, decimal seconds)
-			: base(control, seconds)
+        public EffectSize(Control control, int milliseconds)
+			: base(control, milliseconds)
         { }
 
-        public EffectSize(Control control, decimal seconds, int height, int width)
-			: base(control, seconds)
+        public EffectSize(Control control, int milliseconds, int height, int width)
+			: base(control, milliseconds)
         {
             _height = height;
             _width = width;
@@ -41,12 +41,12 @@ namespace Ra.Widgets
 
 		// For chained effects
         public EffectSize()
-			: base(null, 0.0M)
+			: base(null, 0)
         { }
 
 		// For chained effects
         public EffectSize(int height, int width)
-			: base(null, 0.0M)
+			: base(null, 0)
         {
             _height = height;
             _width = width;

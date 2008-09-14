@@ -1,9 +1,6 @@
 
                  TODO list for Ra-Ajax
 
-* Fix Milliseconds being used consistantly across all "Timer" values in entire Ra-Ajax. Now
-  some places uses Seconds as decimal value while others use Milliseconds as integer values.
-
 * Create nAnt build script which also works on Linux
 
 * Make Minifier logic work also on Linux. Probably not that important in the .csproj file, but should work

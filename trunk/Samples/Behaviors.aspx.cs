@@ -31,21 +31,21 @@ public partial class Behaviors : System.Web.UI.Page
     protected void dragger1_Dropped(object sender, EventArgs e)
     {
 		lbl1.Text = string.Format("Label dragged and dropped to {0}, {1}", lbl1.Style["left"], lbl1.Style["top"]);
-		Effect effect = new EffectFadeIn(lbl1, 0.4M);
+		Effect effect = new EffectFadeIn(lbl1, 400);
 		effect.Render();
     }
 
     protected void dragger2_Dropped(object sender, EventArgs e)
     {
 		lbl2.Text = string.Format("Label dragged and dropped to {0}, {1}", lbl2.Style["left"], lbl2.Style["top"]);
-		Effect effect = new EffectFadeIn(lbl2, 0.4M);
+		Effect effect = new EffectFadeIn(lbl2, 400);
 		effect.Render();
     }
 	
     protected void draggerDragger_Dropped(object sender, EventArgs e)
     {
 		slider.Text = (Int32.Parse(slider.Style["left"].Replace("px", "")) - 328).ToString();
-		Effect effect = new EffectFadeIn(slider, 0.4M);
+		Effect effect = new EffectFadeIn(slider, 400);
 		effect.Render();
     }
 	

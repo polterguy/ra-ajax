@@ -660,7 +660,7 @@ Ra.Effect.prototype = {
   // without having to repeat all of this content
   initEffect: function(element, options) {
     this.options = Ra.extend({
-      duration: 1.0,
+      duration: 1000,
       onStart: function() {},
       onFinished: function() {},
       onRender: null,
@@ -671,7 +671,7 @@ Ra.Effect.prototype = {
     }
     this.options.onStart.call(this);
     this.startTime = new Date().getTime();
-    this.finishOn = this.startTime + (this.options.duration * 1000);
+    this.finishOn = this.startTime + (this.options.duration);
     this.loop();
   },
 
@@ -685,7 +685,7 @@ Ra.Effect.prototype = {
       this.options.onFinished.call(this);
     } else {
       // One tick
-      var delta = (curTime - this.startTime) / (this.options.duration * 1000);
+      var delta = (curTime - this.startTime) / (this.options.duration);
       this.render(delta);
       var T = this;
       setTimeout(function() {
