@@ -123,6 +123,7 @@ Ra.extend(Ra.BDrag.prototype, {
   // Called when mouse is being pushed DOWN on top of the Control
   onMouseDown: function(event) {
     this._hasCaption = true;
+    this._hasDragged = false;
     this._pos = this.pointer(event);
 
     // In case element is not absolutized...
@@ -155,7 +156,7 @@ Ra.extend(Ra.BDrag.prototype, {
   // is currently being trapped for the DOM element of the control
   // but should be trapped for the document.body element.
   onMouseUp: function(event) {
-    if( !this._hasCaption )
+    if( !this._hasCaption || !this._hasDragged )
       return;
     this._hasCaption = false;
     delete this._pos;
@@ -191,6 +192,7 @@ Ra.extend(Ra.BDrag.prototype, {
   // function above.
   onMouseMove: function(event) {
     if( this._hasCaption ) {
+      this._hasDragged = true;
       var pos = this.pointer(event);
       var xDelta = pos.x - this._pos.x;
       var yDelta = pos.y - this._pos.y;

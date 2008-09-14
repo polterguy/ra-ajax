@@ -11,4 +11,8 @@ using Ra.Widgets;
 
 public partial class AjaxTabControl : System.Web.UI.Page
 {
+	protected void tabBtn_Click(object sender, EventArgs e)
+	{
+		tabBtn.Text = "Clicked";
+	}
 }
