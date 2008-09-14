@@ -198,7 +198,7 @@ namespace Ra.Widgets
         }
 
         // Override this one to create specific HTML for your widgets
-        public override string GetHTML()
+        public override string GetOpeningHTML()
         {
             string accessKey = string.IsNullOrEmpty(AccessKey) ? "" : string.Format(" accesskey=\"{0}\"", AccessKey);
             string groupName = string.IsNullOrEmpty(GroupName) ? string.Format(" name=\"{0}\"", ClientID) : string.Format(" name=\"{0}\"", GroupName);

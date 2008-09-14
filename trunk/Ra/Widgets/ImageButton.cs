@@ -145,7 +145,7 @@ namespace Ra.Widgets
         }
 
         // Override this one to create specific HTML for your widgets
-        public override string GetHTML()
+        public override string GetOpeningHTML()
         {
             if (string.IsNullOrEmpty(ImageUrl) || string.IsNullOrEmpty(AlternateText))
                 throw new ApplicationException("Cannot have empty Src or AlternateText of ImageButton");

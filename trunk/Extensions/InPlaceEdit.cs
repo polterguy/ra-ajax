@@ -100,21 +100,5 @@ namespace Ra.Extensions
                 _link.Text = "[null]";
             base.OnPreRender(e);
         }
-
-        protected override void SetAllChildrenToRenderHtml(ASP.ControlCollection controls)
-        {
-            _link.Phase = RenderingPhase.RenderHtml;
-            _link.Visible = true;
-            _text.Visible = false;
-        }
-
-        public override string GetHTML()
-        {
-            return string.Format("<span id=\"{0}\"{2}{3}>{1}</span>",
-                ClientID,
-                GetChildControlsHTML(),
-                GetCssClassHTMLFormatedAttribute(),
-                GetStyleHTMLFormatedAttribute());
-        }
     }
 }

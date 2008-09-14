@@ -66,7 +66,7 @@ namespace Ra.Widgets
         }
 
         // Override this one to create specific HTML for your widgets
-        public override string GetHTML()
+        public override string GetOpeningHTML()
         {
             return string.Format("<input type=\"hidden\" id=\"{0}\" name=\"{0}\" value=\"{1}\" />",
                 ClientID,

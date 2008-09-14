@@ -225,7 +225,7 @@ namespace Ra.Widgets
         }
 
         // Override this one to create specific HTML for your widgets
-        public override string GetHTML()
+        public override string GetOpeningHTML()
         {
             string accessKey = string.IsNullOrEmpty(AccessKey) ? "" : string.Format(" accesskey=\"{0}\"", AccessKey);
             return string.Format("<textarea id=\"{0}\" name=\"{0}\" rows=\"{5}\" cols=\"{6}\"{2}{3}{4}{7}>{1}</textarea>",

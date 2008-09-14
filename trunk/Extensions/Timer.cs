@@ -82,7 +82,7 @@ namespace Ra.Extensions
 			return "new Ra.Timer";
 		}
 		
-        public override string GetHTML()
+        public override string GetOpeningHTML()
         {
             // Dummy HTML DOM element to make registration and such easier...
             return string.Format("<span style=\"display:none;\" id=\"{0}\">&nbsp;</span>", ClientID);
