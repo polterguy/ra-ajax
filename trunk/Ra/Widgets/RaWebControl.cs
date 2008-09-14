@@ -79,11 +79,6 @@ namespace Ra.Widgets
 
         public string GetAttribute(string key)
         {
-            if (key.ToLower() == "style")
-            {
-                // TODO: Implement...!!
-                return "color:Red;";
-            }
             return null;
         }
 
@@ -102,7 +97,7 @@ namespace Ra.Widgets
 
         protected virtual string GetStyleHTMLFormatedAttribute()
         {
-            string style = Style.ToString();
+            string style = Style.ToString(true);
             if (!string.IsNullOrEmpty(style))
                 style = string.Format(" style=\"{0}\"", style);
             return style;

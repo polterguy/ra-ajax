@@ -161,12 +161,38 @@ namespace Ra.Widgets
             return GetStyles(false);
         }
 
+        public string ToString(bool dropNonCSSValues)
+        {
+            return GetStyles(false, dropNonCSSValues);
+        }
+
         private string GetStyles(bool returnOnlyViewStateValues)
+        {
+			return GetStyles(returnOnlyViewStateValues, false);
+        }
+
+        private string GetStyles(bool returnOnlyViewStateValues, bool dropNonCSSValues)
         {
             string retVal = "";
             foreach (string idxKey in _styleValues.Keys)
             {
-                if (returnOnlyViewStateValues)
+				// For cases where we're rendering style attribute (among other things)
+				if (dropNonCSSValues)
+				{
+					switch (idxKey)
+					{
+					case "opacity":
+						continue;
+					}
+				}
+				
+				// We SKIP "empty" values in the tostring part...
+				// Note that this must NOT interfer with JSON serialization since there we WANT
+				// to submit empty values. This is for style attribute serialization...!
+				if (string.IsNullOrEmpty(_styleValues[idxKey].Value))
+					continue;
+
+				if (returnOnlyViewStateValues)
 				{
 					if (_styleValues[idxKey].ShouldSerializeToViewState)
 						retVal += idxKey + ":" + _styleValues[idxKey].Value + ";";
