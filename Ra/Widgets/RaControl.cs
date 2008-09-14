@@ -79,24 +79,38 @@ namespace Ra.Widgets
 		{
 			// Here we must wrap all child widgets into a MemoryStream and then
 			// render the contents of that into the AjaxManager.Stream wrapped inside of the "this element" HTML...
-			MemoryStream memStream = new MemoryStream();
-			TextWriter txtWriter = new StreamWriter(memStream);
-			HtmlTextWriter htmlWriter = new HtmlTextWriter(txtWriter);
+			
+            // Rendering the "this widget" Opening HTML
 			AjaxManager.Instance.Writer.Write("Ra.Control.$('{0}').reRender('{1}",
 				ClientID,
 				GetOpeningHTML());
-
+			
+			// Note that we're NOT rendering the Children directly into the AjaxManager stream
+			// but rather we're creating a wrapper stream which we're pushing everything into
+			// The IsParentReRenderingLogic of the child controls will then make sure that we're
+			// rendering into the "given stream" and then afterwards
+            // we "extract" the contents and render it inside of the AjaxManager Stream
+			MemoryStream memStream = new MemoryStream();
+			TextWriter txtWriter = new StreamWriter(memStream);
+			HtmlTextWriter htmlWriter = new HtmlTextWriter(txtWriter);
+			
+            // Notic the stream we're using here...
 			RenderChildren(htmlWriter);
 
-			htmlWriter.Write(GetClosingHTML());
+            // Flushing and sending to "real" stream
 			htmlWriter.Flush();
 			txtWriter.Flush();
 			memStream.Flush();
 			memStream.Position = 0;
 			TextReader reader = new StreamReader(memStream);
 			AjaxManager.Instance.Writer.Write(reader.ReadToEnd().Replace("\\", "\\\\").Replace("'", "\\'").Replace("\r", "\\r").Replace("\n", "\\n"));
+			
+            // "Ending" process...
+			AjaxManager.Instance.Writer.Write(GetClosingHTML());
 			AjaxManager.Instance.Writer.WriteLine("');");
-
+			
+			// THEN we get the scripts. It is VERY important that the scripts are rendered after the HTML for the widgets
+            // ALL of the widgets...!!
 			AjaxManager.Instance.Writer.WriteLine(GetClientSideScript());
 			AjaxManager.Instance.Writer.WriteLine(GetChildrenClientSideScript());
 		}
