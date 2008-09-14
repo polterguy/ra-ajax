@@ -87,7 +87,9 @@
     </p>
     <p>
         To avoid the above LSP problem, we in Ra-Ajax have tried to do "the right thing", at least in those 
-		places where we actually have control.
+		places where we actually have control. And that's why you will in Ra-Ajax find a special Ajax TextArea
+		Control. It might be a little bit unintuitive for those who have spent a lot of time in the WebControls
+		namespace of ASP.NET, but after a while I think you will come to appreciate this decision.
     </p>
     <a href="Ajax-TextBox.aspx">On to Ajax TextBox</a>
 </asp:Content>

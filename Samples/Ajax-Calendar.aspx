@@ -50,7 +50,12 @@
         Did you know that even though Ra-Ajax is written in .Net it is still possible (and easy) to deploy
         your Ajax Applications an Linux by using <a href="http://www.mono-project.com/">Mono</a>? Ra-Ajax
         is very dedicated to supporting Mono. In fact without Mono we probably would have implemented
-        Ra-Ajax in RoR or J2EE or something...
+        Ra-Ajax in RoR or J2EE or something. In fact I am changing back and forth between Linux and Windows
+        when I develop and I roughly spend about 50% of my time developing Ra-Ajax functionality in Mono.
+        Currently I am writing this on Ubuntu in MonoDevelop and running it using xsp2. In fact I haven't
+        developed in anything but Mono now for more than 2 months! Ra-Ajax will always be very dedicated
+        to supporting Linux through the Mono project since this gives you the freedom of running your 
+        ASP.NET/Ra-Ajax website on Linux. This is important for us! <em>Ra-Ajax is 100% cross platform</em>.
     </p>
     <p>
         A very good example of a quite complex Ajax application which is written in .Net but runs on
@@ -93,7 +98,7 @@
     </p>
     <p>
         <strong>"Build once, deploy anywhere and run all over the place"</strong> is one of our slogans.
-        The other is<strong>"Building blocks for the next 5000 years"</strong>. I hope you believe this
+        The other is <strong>"Building blocks for the next 5000 years"</strong>. I hope you believe this
         and are willing to <a href="http://code.google.com/p/ra-ajax/">give Ra-Ajax a shot</a>.
         Ra-Ajax is free to use, we don't have any plans for starting charging you for anything else
         than consulting services (if you should need it), you can use it for free in your Closed Source
