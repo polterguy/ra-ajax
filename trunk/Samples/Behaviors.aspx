@@ -50,7 +50,7 @@
 
     <ra:Label 
         runat="server" 
-        ID="lbl1"
+        ID="lbl1" 
         style="cursor:move;position:absolute;top:550px;left:350px;color:#33f;border:solid 1px #33f;padding:5px;width:100px;-moz-user-select:none;z-index:2;background-color:White;"
         Text="See me snap...">
 

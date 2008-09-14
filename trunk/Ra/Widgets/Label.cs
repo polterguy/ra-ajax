@@ -18,6 +18,12 @@ namespace Ra.Widgets
     [ASP.ToolboxData("<{0}:Label runat=server />")]
     public class Label : RaWebControl, IRaControl
     {
+        public event EventHandler Click;
+
+        public event EventHandler MouseOver;
+
+        public event EventHandler MouseOut;
+
         #region [ -- Properties -- ]
 
         [DefaultValue("")]
@@ -47,5 +53,46 @@ namespace Ra.Widgets
         }
 
         #endregion
-    }
+
+        public override void DispatchEvent(string name)
+        {
+            switch (name)
+            {
+                case "click":
+                    if (Click != null)
+                        Click(this, new EventArgs());
+                    break;
+                case "mouseover":
+                    if (MouseOver != null)
+                        MouseOver(this, new EventArgs());
+                    break;
+                case "mouseout":
+                    if (MouseOut != null)
+                        MouseOut(this, new EventArgs());
+                    break;
+                default:
+                    throw new ApplicationException("Unknown event fired for control");
+            }
+        }
+
+        protected override string GetEventsRegisterScript()
+        {
+            string evts = string.Empty;
+            if (Click != null)
+                evts += "['click']";
+            if (MouseOver != null)
+            {
+                if (evts.Length != 0)
+                    evts += ",";
+                evts += "['mouseover']";
+            }
+            if (MouseOut != null)
+            {
+                if (evts.Length != 0)
+                    evts += ",";
+                evts += "['mouseout']";
+            }
+			return evts;
+        }
+	}
 }
