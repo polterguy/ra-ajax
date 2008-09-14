@@ -23,7 +23,7 @@ public partial class _Default : System.Web.UI.Page
     protected void submit_Click(object sender, EventArgs e)
     {
         lblResults.Text = "Hello " + name.Text + " and welcome to the world :)";
-        Effect effect = new EffectFadeIn(lblResults, 0.8M);
+        Effect effect = new EffectFadeIn(lblResults, 800);
         effect.Render();
         name.Focus();
         name.Select();

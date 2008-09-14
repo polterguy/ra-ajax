@@ -15,24 +15,24 @@ namespace Ra.Widgets
     {
 		private int _borderTo;
 
-        public EffectBorder(Control control, decimal seconds, int borderTo)
-			: base(control, seconds)
+        public EffectBorder(Control control, int milliseconds, int borderTo)
+			: base(control, milliseconds)
 		{
 			_borderTo = borderTo;
 		}
 
-        public EffectBorder(Control control, decimal seconds)
-			: base(control, seconds)
+        public EffectBorder(Control control, int milliseconds)
+			: base(control, milliseconds)
 		{ }
 
 		// For chained effects
         public EffectBorder()
-			: base(null, 0.0M)
+			: base(null, 0)
 		{ }
 		
 		// For chained effects
         public EffectBorder(int borderTo)
-			: base(null, 0.0M)
+			: base(null, 0)
 		{
 			_borderTo = borderTo;
 		}

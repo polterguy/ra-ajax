@@ -42,7 +42,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
     protected void btnShowCode_Click(object sender, EventArgs e)
     {
         pnlShowCode.Visible = true;
-        Effect effect = new EffectFadeIn(pnlShowCode, 0.4M);
+        Effect effect = new EffectFadeIn(pnlShowCode, 400);
         effect.Chained.Add(new EffectRollDown(500));
         effect.Render();
         GetCSharpCode();
@@ -51,20 +51,20 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
     protected void closeShowCode_Click(object sender, EventArgs e)
     {
-        Effect effect = new EffectFadeOut(pnlShowCode, 0.4M);
+        Effect effect = new EffectFadeOut(pnlShowCode, 400);
         effect.Chained.Add(new EffectRollUp(500));
         effect.Render();
     }
 
     protected void closeIE_Click(object sender, EventArgs e)
     {
-        Effect effect = new EffectFadeOut(pnlCrappyBrowser, 0.4M);
+        Effect effect = new EffectFadeOut(pnlCrappyBrowser, 400);
         effect.Render();
     }
 
     protected void switchCodeType_Click(object sender, EventArgs e)
     {
-        Effect effect = new EffectFadeIn(lblCode, 0.5M);
+        Effect effect = new EffectFadeIn(lblCode, 500);
         effect.Render();
         if (ViewState["code"].ToString() == "C#")
         {

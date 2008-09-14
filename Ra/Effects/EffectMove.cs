@@ -28,12 +28,12 @@ namespace Ra.Widgets
             set { _left = value; }
         }
 
-        public EffectMove(Control control, decimal seconds)
-			: base(control, seconds)
+        public EffectMove(Control control, int milliseconds)
+			: base(control, milliseconds)
         { }
 
-        public EffectMove(Control control, decimal seconds, int left, int top)
-			: base(control, seconds)
+        public EffectMove(Control control, int milliseconds, int left, int top)
+			: base(control, milliseconds)
         {
             _left = left;
             _top = top;
@@ -41,12 +41,12 @@ namespace Ra.Widgets
 
 		// For chained effects
         public EffectMove()
-			: base(null, 0.0M)
+			: base(null, 0)
         { }
 
 		// For chained effects
         public EffectMove(int left, int top)
-			: base(null, 0.0M)
+			: base(null, 0)
         {
             _left = left;
             _top = top;

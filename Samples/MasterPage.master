@@ -72,7 +72,7 @@
 				        runat="server" 
 				        ID="accordion" 
 				        CssClass="accordion-control" 
-				        AnimationSpeed="0.4"
+				        AnimationSpeed="400"
 				        style="width:75%;margin-left:auto;margin-right:auto;">
 
 				        <ext:AccordionView 

@@ -15,13 +15,13 @@ namespace Ra.Widgets
     public abstract class Effect
     {
         private Control _control;
-        private decimal _seconds;
+        private int _milliseconds;
 		private bool _sinoidal;
 		
-		protected Effect(Control control, decimal seconds)
+		protected Effect(Control control, int milliseconds)
 		{
 			_control = control;
-			_seconds = seconds;
+			_milliseconds = milliseconds;
 		}
 		
 		public Control Control
@@ -76,7 +76,7 @@ namespace Ra.Widgets
 			// If the if sentence below kicks in then this is NOT a chained effect rendering
 			// which is the only place where it makes sense to have zero seconds and/or no
 			// Control to update...
-			if (this._control == null || this._seconds == 0.0M)
+			if (this._control == null || this._milliseconds == 0)
 				throw new ArgumentException("Cannot have an effect which affects no Controls or lasts for zero period");
             string onStart = RenderOnStart(this);
             string onFinished = RenderOnFinished(this);
@@ -90,7 +90,7 @@ Ra.E('{0}', {{
   sinoidal:{5}
 }});", 
                 _control.ClientID,
-                _seconds.ToString(System.Globalization.CultureInfo.InvariantCulture),
+                _milliseconds.ToString(),
                 onStart,
                 onFinished,
                 onRender,
