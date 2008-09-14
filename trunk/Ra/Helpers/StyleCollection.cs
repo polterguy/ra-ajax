@@ -171,6 +171,8 @@ namespace Ra.Widgets
 			return GetStyles(returnOnlyViewStateValues, false);
         }
 
+		// This method is mostly used only for the ToString bugger, serialization to ViewState
+		// and creation of style HTML attribute.
         private string GetStyles(bool returnOnlyViewStateValues, bool dropNonCSSValues)
         {
             string retVal = "";
@@ -179,10 +181,12 @@ namespace Ra.Widgets
 				// For cases where we're rendering style attribute (among other things)
 				if (dropNonCSSValues)
 				{
+					// TODO: These values should have their own "hacks" to be able to render the values also
+					// for "HTML rendering" cases...
 					switch (idxKey)
 					{
-					case "opacity":
-						continue;
+						case "opacity":
+							continue;
 					}
 				}
 				
@@ -192,6 +196,8 @@ namespace Ra.Widgets
 				if (string.IsNullOrEmpty(_styleValues[idxKey].Value))
 					continue;
 
+				// If we're serializing to ViewState we don't want to have the "static" values
+				// which are defined in .ASPX file or before OnInit...
 				if (returnOnlyViewStateValues)
 				{
 					if (_styleValues[idxKey].ShouldSerializeToViewState)
