@@ -307,13 +307,10 @@ namespace Ra.Widgets
 
 			StringBuilder builder = new StringBuilder();
 
-			bool addComma = false;
 			foreach (string idxKey in _JSONValues.Keys)
 			{
-				if (addComma)
-					builder.Append(",");
 				object idxValue = _JSONValues[idxKey];
-				addComma = SerializeJSONValue(idxKey, idxValue, builder);
+				SerializeJSONValue(idxKey, idxValue, builder);
 			}
 			if (builder.Length > 0)
 				return "{" + builder.ToString() + "}";
@@ -323,60 +320,68 @@ namespace Ra.Widgets
 		// This one returns true ONLY if there was something actually ADDED to the builder...
 		// Note if you have "custom objects" you want to serialize in your own extension widgets
 		// you should OVERRIDE this method and return base for everything except your "custom types"...
-		protected virtual bool SerializeJSONValue(string key, object value, StringBuilder builder)
+		protected virtual void SerializeJSONValue(string key, object value, StringBuilder builder)
 		{
 			// TODO: Create more general approach, this one only handles TWO level deep JSON objects...
 			if (value.GetType() == typeof(string))
 			{
+                if (builder.Length > 0 )
+                    builder.Append(",");					
 				builder.AppendFormat("\"{0}\":\"{1}\"",
 					key,
 					value.ToString().Replace("\\", "\\\\").Replace("\"", "\\\"").Replace("\n", "\\n").Replace("\r", "\\r"));
-					return true;
 			}
-			if (value.GetType() == typeof(System.Drawing.Color))
+			else if (value.GetType() == typeof(System.Drawing.Color))
 			{
+                if (builder.Length > 0 )
+                    builder.Append(",");					
 				System.Drawing.Color color = (System.Drawing.Color)value;
 					string tmp = System.Drawing.ColorTranslator.ToHtml(color);
 					builder.AppendFormat("\"{0}\":\"{1}\"",
 					key,
 					tmp);
-				return true;
 			}
-			if (value.GetType() == typeof(bool))
+			else if (value.GetType() == typeof(bool))
 			{
+                if (builder.Length > 0 )
+                    builder.Append(",");					
 				builder.AppendFormat("\"{0}\":{1}",
 					key,
 					value);
-				return true;
 			}
-			if (value.GetType() == typeof(int))
+			else if (value.GetType() == typeof(int))
 			{
+                if (builder.Length > 0 )
+                    builder.Append(",");					
 				builder.AppendFormat("\"{0}\":{1}",
 					key,
 					value);
-				return true;
 			}
-			if (value.GetType() == typeof(System.Drawing.Rectangle))
+			else if (value.GetType() == typeof(System.Drawing.Rectangle))
 			{
+                if (builder.Length > 0 )
+                    builder.Append(",");					
 				System.Drawing.Rectangle rect = (System.Drawing.Rectangle)value;
 					builder.AppendFormat("{0}:{{left:{1},top:{2},width:{3},height:{4}}}",
 					key,
 					rect.Left, rect.Top, rect.Width, rect.Height);
-				return true;
 			}
-			if (value.GetType() == typeof(System.Drawing.Point))
+			else if (value.GetType() == typeof(System.Drawing.Point))
 			{
+                if (builder.Length > 0 )
+                    builder.Append(",");					
 				System.Drawing.Point pt = (System.Drawing.Point)value;
 					builder.AppendFormat("{0}:{{x:{1},y:{2}}}",
 					key,
 					pt.X, pt.Y);
-				return true;
 			}
-			if (value.GetType() == typeof(Dictionary<string, string>))
+			else if (value.GetType() == typeof(Dictionary<string, string>))
 			{
 				Dictionary<string, string> values = value as Dictionary<string, string>;
 				if (values.Count > 0)
 				{
+	                if (builder.Length > 0 )
+	                    builder.Append(",");					
 					builder.AppendFormat("\"{0}\":[", key);
 					bool first = true;
 					foreach (string idxKey in values.Keys)
@@ -390,11 +395,10 @@ namespace Ra.Widgets
 							values[idxKey].Replace("\\", "\\\\").Replace("\"", "\\\""));
 					}
 					builder.Append("]");
-					return true;
 				}
-				return false;
 			}
-			throw new ApplicationException("Type not found in SerializeJSONValue - you should override this method in your own controls if you're serializing custom types. Types was; " + value.GetType().Name);
+            else			
+			    throw new ApplicationException("Type not found in SerializeJSONValue - you should override this method in your own controls if you're serializing custom types. Types was; " + value.GetType().Name);
 		}
 
 		protected override void OnInit(EventArgs e)

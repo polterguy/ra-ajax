@@ -109,7 +109,12 @@ namespace Ra.Widgets
             {
                 string valueOfTextBox = AjaxManager.Instance.CurrentPage.Request.Params[ClientID];
                 if (valueOfTextBox != Text)
-                    Text = valueOfTextBox;
+				{
+					// Note that to avoid the string taking up bandwidth BACK to the client
+					// which it obviously does not need to do we set the ViewState value here directly instead
+					// of going through the Text property which will also modify the JSON collection
+                    ViewState["Text"] = valueOfTextBox;
+				}
             }
             base.OnInit(e);
         }
@@ -125,7 +130,12 @@ namespace Ra.Widgets
             {
                 string valueOfTextBox = AjaxManager.Instance.CurrentPage.Request.Params[ClientID];
                 if (valueOfTextBox != Text)
-                    Text = valueOfTextBox;
+				{
+					// Note that to avoid the string taking up bandwidth BACK to the client
+					// which it obviously does not need to do we set the ViewState value here directly instead
+					// of going through the Text property which will also modify the JSON collection
+                    ViewState["Text"] = valueOfTextBox;
+				}
             }
         }
 

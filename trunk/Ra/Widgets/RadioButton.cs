@@ -103,7 +103,12 @@ namespace Ra.Widgets
                     AjaxManager.Instance.CurrentPage.Request.Params[
                         string.IsNullOrEmpty(GroupName) ? ClientID : GroupName] == ClientID;
                 if (valueOfChecked != Checked)
-                    Checked = valueOfChecked;
+				{
+					// Note that to avoid the string taking up bandwidth BACK to the client
+					// which it obviously does not need to do we set the ViewState value here directly instead
+					// of going through the Checked property which will also modify the JSON collection
+                    ViewState["Checked"] = valueOfChecked;
+				}
             }
             base.OnInit(e);
         }
@@ -121,7 +126,12 @@ namespace Ra.Widgets
                     AjaxManager.Instance.CurrentPage.Request.Params[
                         string.IsNullOrEmpty(GroupName) ? ClientID : GroupName] == ClientID;
                 if (valueOfChecked != Checked)
-                    Checked = valueOfChecked;
+				{
+					// Note that to avoid the string taking up bandwidth BACK to the client
+					// which it obviously does not need to do we set the ViewState value here directly instead
+					// of going through the Checked property which will also modify the JSON collection
+                    ViewState["Checked"] = valueOfChecked;
+				}
             }
         }
 
