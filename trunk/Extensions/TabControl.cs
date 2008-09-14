@@ -7,6 +7,7 @@
  */
 
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using WEBCTRLS = System.Web.UI.WebControls;
 using ASP = System.Web.UI;
@@ -31,6 +32,33 @@ namespace Ra.Extensions
                 ViewState["SelectedViewIndex"] = value;
             }
         }
+		
+		public IEnumerable<TabView> Views
+		{
+			get
+			{
+				foreach (ASP.Control idx in Controls)
+				{
+					if (idx is TabView)
+						yield return idx as TabView;
+				}
+			}
+		}
+		
+		public TabView ActiveTabView
+		{
+			get
+			{
+				int idxNo = 0;
+				foreach (TabView idx in Views)
+				{
+					if (idxNo == ActiveTabViewIndex)
+						return idx;
+					idxNo += 1;
+				}
+				return null;
+			}
+		}
 
         protected override void LoadViewState(object savedState)
         {
@@ -46,16 +74,19 @@ namespace Ra.Extensions
 
         protected override void CreateChildControls()
         {
-            CreateChildTabViews();
-        }
+            // Creating top wrapper
+            _topPanel = new Panel();
+            _topPanel.ID = "top";
+            _topPanel.CssClass = "tab-header";
 
+            CreateChildTabViews();
+
+            Controls.AddAt(0, _topPanel);
+		}
+
+		private Panel _topPanel;
         private void CreateChildTabViews()
         {
-            // Creating top wrapper
-            Panel topWrapper = new Panel();
-            topWrapper.ID = "top";
-            topWrapper.CssClass = "tab-header";
-
             HTML.HtmlGenericControl ul = new HTML.HtmlGenericControl("ul");
 
             int litCount = 0;
@@ -101,19 +132,14 @@ namespace Ra.Extensions
                 ul.Controls.Add(li);
             }
 
-            topWrapper.Controls.Add(ul);
-
-            Controls.AddAt(0, topWrapper);
+            _topPanel.Controls.Add(ul);
         }
 
         void btn_Click(object sender, EventArgs e)
         {
             LinkButton btn = sender as LinkButton;
             int newIdx = Int32.Parse(btn.ID.Replace("tab_view_btn", ""));
-            ActiveTabViewIndex = newIdx;
-            ReRender();
-            Controls.RemoveAt(0);
-            CreateChildTabViews();
+			this.SetActiveTabViewIndex(newIdx);
             if (ActiveTabViewChanged != null)
                 ActiveTabViewChanged(this, new EventArgs());
         }
@@ -123,28 +149,9 @@ namespace Ra.Extensions
             if (idx == ActiveTabViewIndex)
                 return;
             ActiveTabViewIndex = idx;
-            ReRender();
-            Controls.RemoveAt(0);
-            CreateChildTabViews();
-        }
-
-        protected override void OnPreRender(EventArgs e)
-        {
-            int litCount = 0;
-            for (int idx = 0; idx < Controls.Count; idx++)
-            {
-                if (!(Controls[idx] is Panel) || Controls[idx].ID == "top")
-                {
-                    litCount += 1;
-                    continue;
-                }
-                Panel pnl = Controls[idx] as Panel;
-                if (idx - litCount == ActiveTabViewIndex)
-                    pnl.Visible = true;
-                else
-                    pnl.Visible = false;
-            }
-            base.OnPreRender(e);
+			_topPanel.Controls.Clear();
+			CreateChildTabViews();
+			_topPanel.ReRender();
         }
     }
 }

@@ -43,7 +43,14 @@
         	Here's another TabControlView.
         	<br />
         	In fact the TabControl is purely built with the Ra-Ajax Panel, LinkButton and so on. The TabControl
-        	is in fact a very nice starting point for your own Ajax Extension Controls.
+        	is in fact a very nice starting point for your own Ajax Extension Controls. And as you can
+        	see you can very easily create other Ajax Controls which you put inside of the TabControl.
+        	<br />
+        	<ra:Button 
+        		runat="server" 
+        		id="tabBtn" 
+        		Text="Button" 
+        		OnClick="tabBtn_Click" />
         </ext:TabView>
         <ext:TabView Caption="Third" runat="server" ID="tab3" CssClass="content">
         	And here's yet another TabControlView

@@ -29,5 +29,18 @@ namespace Ra.Extensions
                 ViewState["Caption"] = value;
             }
         }
+		
+		protected override void OnPreRender (EventArgs e)
+		{
+			if ((Parent as TabControl).ActiveTabView.ClientID == this.ClientID)
+			{
+				Style["display"] = "block";
+			}
+			else
+			{
+				Style["display"] = "none";
+			}
+			base.OnPreRender (e);
+		}
     }
 }

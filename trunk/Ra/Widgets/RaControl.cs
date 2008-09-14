@@ -57,7 +57,7 @@ namespace Ra.Widgets
 				Control idx = Parent;
 				while (idx != null)
 				{
-					if (idx is RaControl && (idx as RaControl)._reRender)
+					if (idx is RaControl && ((idx as RaControl)._reRender || !(idx as RaControl).HasRendered))
 						return true;
 					idx = idx.Parent;
 				}
@@ -74,17 +74,9 @@ namespace Ra.Widgets
 			}
 			RenderChildren(writer);
 		}
-
-		private void ReRenderControlAndAllChildren(HtmlTextWriter writer)
+		
+		private void RenderAllChildrenToAjaxManager()
 		{
-			// Here we must wrap all child widgets into a MemoryStream and then
-			// render the contents of that into the AjaxManager.Stream wrapped inside of the "this element" HTML...
-			
-            // Rendering the "this widget" Opening HTML
-			AjaxManager.Instance.Writer.Write("Ra.Control.$('{0}').reRender('{1}",
-				ClientID,
-				GetOpeningHTML());
-			
 			// Note that we're NOT rendering the Children directly into the AjaxManager stream
 			// but rather we're creating a wrapper stream which we're pushing everything into
 			// The IsParentReRenderingLogic of the child controls will then make sure that we're
@@ -104,7 +96,20 @@ namespace Ra.Widgets
 			memStream.Position = 0;
 			TextReader reader = new StreamReader(memStream);
 			AjaxManager.Instance.Writer.Write(reader.ReadToEnd().Replace("\\", "\\\\").Replace("'", "\\'").Replace("\r", "\\r").Replace("\n", "\\n"));
+		}		
+
+		private void ReRenderControlAndAllChildren(HtmlTextWriter writer)
+		{
+			// Here we must wrap all child widgets into a MemoryStream and then
+			// render the contents of that into the AjaxManager.Stream wrapped inside of the "this element" HTML...
 			
+            // Rendering the "this widget" Opening HTML
+			AjaxManager.Instance.Writer.Write("Ra.Control.$('{0}').reRender('{1}",
+				ClientID,
+				GetOpeningHTML());
+			
+			RenderAllChildrenToAjaxManager();
+
             // "Ending" process...
 			AjaxManager.Instance.Writer.Write(GetClosingHTML());
 			AjaxManager.Instance.Writer.WriteLine("');");
@@ -118,22 +123,20 @@ namespace Ra.Widgets
 		private void ReRenderDueToParentReRendering(HtmlTextWriter writer)
 		{
 			writer.Write(GetOpeningHTML());
-
 			RenderChildren(writer);
-
 			writer.Write(GetClosingHTML());
 		}
 
 		private void RenderControlVisibleForFirstTime(HtmlTextWriter writer)
 		{
 			AjaxManager.Instance.Writer.Write("Ra.$('{0}').replace('{1}",
-			ClientID,
-			GetOpeningHTML().Replace("\\", "\\\\").Replace("'", "\\'").Replace("\r", "\\r").Replace("\n", "\\n"));
+				ClientID,
+				GetOpeningHTML().Replace("\\", "\\\\").Replace("'", "\\'").Replace("\r", "\\r").Replace("\n", "\\n"));
 
-			RenderChildren(writer);
+			RenderAllChildrenToAjaxManager();
 
 			AjaxManager.Instance.Writer.Write("{0}');\r\n",
-			GetClosingHTML().Replace("\\", "\\\\").Replace("'", "\\'").Replace("\r", "\\r").Replace("\n", "\\n"));
+				GetClosingHTML().Replace("\\", "\\\\").Replace("'", "\\'").Replace("\r", "\\r").Replace("\n", "\\n"));
 
 			AjaxManager.Instance.Writer.WriteLine(GetClientSideScript());
 			AjaxManager.Instance.Writer.WriteLine(GetChildrenClientSideScript());
@@ -412,7 +415,7 @@ namespace Ra.Widgets
 			base.OnInit(e);
 		}
 
-		private string GetChildrenClientSideScript()
+		protected virtual string GetChildrenClientSideScript()
 		{
 			return GetChildrenClientSideScript(Controls);
 		}

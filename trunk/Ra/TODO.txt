@@ -35,8 +35,9 @@
 
 * In Behaviors.aspx it send over left and top coordinates to Label, it SHOULDN'T!!
 
+* EffectHighlight doesn't work if you haven't set explicitly a BackgroundColor...!
 
-
+* Opacity is being rendered into style attribute of HTML...!
 
 
 
