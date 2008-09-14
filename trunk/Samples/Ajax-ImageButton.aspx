@@ -65,8 +65,8 @@
     <br />
     <h2>The ActiveX 2.0 de-evolution</h2>
     <p>
-        Today there are lots of companies that want you to believe that they have the "new and improved HTML,
-        CSS and JavaScript framework". Though for some of us that have been around for quite a while,
+        Today there are several companies that want you to believe that they have the "new and improved HTML,
+        CSS and JavaScript replacement framework". Though for some of us that have been around for quite a while,
         those arguments give us an echo feeling. The exact same arguments were used by Microsoft
         in the late 90s about ActiveX.
     </p>
