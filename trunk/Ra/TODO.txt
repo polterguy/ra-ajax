@@ -27,7 +27,8 @@
 
 * Implement all the "common events" for Label and Panel and other "non-event widgets".
 
-
+* Create class of JSON values instead of using dictionary like today in RaControl for
+  clarity.
 
 
 
