@@ -37,9 +37,10 @@
 
 * EffectHighlight doesn't work if you haven't set explicitly a BackgroundColor...!
 
-* Opacity is being rendered into style attribute of HTML...!
+* Implement GetAttribute on RaWebControl
 
-
+* opacity is intentionally removed from style attribute serialization, this probably should be fixed
+  somehow...
 
 
 
