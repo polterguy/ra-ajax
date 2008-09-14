@@ -19,6 +19,10 @@
 // for all controls since this class will be sufficiant enough
 // for wrapping the server-side control.
 // ==============================================================================
+
+
+(function(){
+
 Ra.Control = Ra.klass();
 
 
@@ -409,7 +413,7 @@ Ra.Control.prototype = {
     }
   }
 }
-
+})();
 
 
 

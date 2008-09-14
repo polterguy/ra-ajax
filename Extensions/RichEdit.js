@@ -7,6 +7,8 @@
  */
 
 
+(function(){
+
 // Creating class
 Ra.RichEdit = Ra.klass();
 
@@ -172,4 +174,4 @@ Ra.extend(Ra.RichEdit.prototype, {
     // Calling base
     this._destroyThisControl();
   }
-});
+});})();

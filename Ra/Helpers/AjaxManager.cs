@@ -328,6 +328,9 @@ namespace Ra
                 builder.Append(scriptInclusion);
             }
             builder.Append("<script type=\"text/javascript\">");
+			builder.Append(@"
+function RAInitialize() {
+");
 
             Writer.Flush();
             _memStream.Flush();
@@ -344,6 +347,15 @@ namespace Ra
             builder.Append(allContentAtBack);
 
             // Adding script closing element
+			builder.Append(@"
+}
+if (window.addEventListener) {
+  window.addEventListener('load', RAInitialize, false);
+} else {
+  window.attachEvent('onload', RAInitialize);
+}
+
+");
             builder.Append("</script>");
             builder.Append("</body>");
 

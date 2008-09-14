@@ -18,6 +18,10 @@
 // of the Behavior.
 //
 // ==============================================================================
+
+
+(function(){
+
 Ra.Beha = Ra.klass();
 
 
@@ -487,7 +491,7 @@ Ra.extend(Ra.BUpDel.prototype, {
     this.el.remove();
   }
 });
-
+})();
 
 
 

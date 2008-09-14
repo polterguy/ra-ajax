@@ -19,11 +19,13 @@
  */
 
 
+(function(){
+
 // Creating main namespace
 // All of Ra is contained inside of this namespace
 // Ra does neither modify any system objects, except when using the Ra.$ method
 // Ra will extend the DOM object with the Ra specific methods
-var Ra = {};
+Ra = {};
 
 // Empty function useful for different things like for instance "killing events" and similar constructs
 Ra.emptyFunction = function() {};
@@ -706,4 +708,4 @@ Ra.Effect.prototype = {
   }
 };
 
-
+})();

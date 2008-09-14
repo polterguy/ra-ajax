@@ -7,6 +7,8 @@
  */
 
 
+(function(){
+
 // Creating class
 Ra.Comet = Ra.klass();
 
@@ -108,4 +110,4 @@ Ra.extend(Ra.Comet.prototype, {
     // Forward call to allow overriding in inherited classes...
     this._destroyThisControl();
   }
-});
+});})();

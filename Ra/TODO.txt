@@ -6,13 +6,7 @@
 * Make Minifier logic work also on Linux. Probably not that important in the .csproj file, but should work
   in nAnt build script also on Linux.
 
-* Implement and check ViewStateById mode on Widgets. Though not before Mono officially supports this.
-
-* Fix the Child Rendering Logic for Container Controls. Especially Panel but make this logic
-  "generic" so that it works from Ra.Widgets.RaControl class.
-  Maybe implement some Stream inherited class hierarchy which are responsible for rendering
-  the widgets which again can have overrides for the different modes and thereby "signal"
-  to other widgets which logic to render widgets within?
+* Implement and check ViewStateById mode on Widgets. Though not before Mono officially supports this. (which is NOT now)
 
 * Property for "killing" Carriage Return on TextBoxes. This will be very useful
   in e.g. the InPlaceEdit since currently it does a POSTBACK if users clicks Carriage Return
@@ -23,12 +17,7 @@
   us here and then trap the TOP element (span) ...?
 
 * Create class of JSON values instead of using dictionary like today in RaControl for
-  clarity.
-
-* In Default.aspx it sends JSON for the Value of the TextBox over too!!
-  Hint; it SHOULDN'T!
-
-* In Behaviors.aspx it send over left and top coordinates to Label, it SHOULDN'T!!
+  clarity. Still needs to be "overridable" for on RaControl
 
 * EffectHighlight doesn't work if you haven't set explicitly a BackgroundColor...!
 
@@ -37,6 +26,11 @@
 * opacity is intentionally removed from style attribute serialization, this probably should be fixed
   somehow...
 
+* Create TreeView Control...
+
+* Create Menu Control
+
+* Fix a set of beautiful skins for all extension-controls.
 
 
 

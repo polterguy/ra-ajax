@@ -24,11 +24,11 @@
     <h1>Ajax TabControl Sample</h1>
     <p>
         This is our <em>Ajax TabControl Widget</em>. The Ra-Ajax TabControl is as most of the extension controls
-        also entirely built on the server with no Custom JavaScript. It as quite similar to our 
-        <a href="Ajax-Accordion.aspx">Ajax Accordion</a> though while the Accordion works mostly through DHTML
-        and all Accordions are actually rendered in the HTML if you include one in your page the TabControl
-        only renders the <em>ActiveTabControlView</em> and when the user switches ActiveView the server
-        re-renders the TabControl making the HTML of the non-active TabViews in-visible.
+        also entirely built on the server with no Custom JavaScript. It as quite similar in regards to UI as our 
+        <a href="Ajax-Accordion.aspx">Ajax Accordion</a>. Just like the Accordion our TabControl also renders 
+        all the TabViews on the initial rendering and then later just shows and hides the TabViews you want it 
+        to display. You can however trap the <em>ActiveTabViewChanged</em> event and then populate your TabViews
+        dynamically if you want a smaller bandwidth footprint on your Ajax TabControl solution.
     </p>
     <ext:TabControl runat="server" ID="tab" CssClass="tab-control">
         <ext:TabView Caption="Ajax TabControl view 1" runat="server" ID="tab1" CssClass="content">
