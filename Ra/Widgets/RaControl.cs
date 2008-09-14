@@ -24,10 +24,7 @@ namespace Ra.Widgets
             RenderHtml
         };
 
-        // Used to track if control has been rendered previously
         private RenderingPhase _controlRenderingState = RenderingPhase.Invisible;
-        private Dictionary<string, object> _JSONValues = new Dictionary<string, object>();
-        protected bool _hasSetFocus;
 
 		[Browsable(false)]
         public RenderingPhase Phase
@@ -36,6 +33,133 @@ namespace Ra.Widgets
             set { _controlRenderingState = value; }
         }
 		
+		public override void RenderControl(HtmlTextWriter writer)
+        {
+            if (DesignMode)
+                throw new ApplicationException("Ra Ajax doesn't support Design time");
+
+            if (Visible)
+            {
+                if (AjaxManager.Instance.IsCallback)
+                {
+                    if (Phase == RenderingPhase.Invisible)
+                    {
+                        // Control was made Visible THIS request...!
+                        AjaxManager.Instance.Writer.WriteLine("Ra.$('{0}').replace('{1}');",
+                            ClientID,
+                            GetHTML().Replace("\\", "\\\\").Replace("'", "\\'").Replace("\r", "\\r").Replace("\n", "\\n"));
+                        AjaxManager.Instance.Writer.WriteLine(GetClientSideScript());
+                        RenderChildren(writer);
+                    }
+                    else if (Phase == RenderingPhase.Visible)
+                    {
+                        // JSON changes, control was visible also previous request...
+                        string JSON = SerializeJSON();
+                        if (!string.IsNullOrEmpty(JSON))
+                        {
+                            AjaxManager.Instance.Writer.WriteLine("Ra.Control.$('{0}').handleJSON({1});",
+                                ClientID,
+                                JSON);
+                        }
+                        RenderChildren(writer);
+                    }
+                    else if (Phase == RenderingPhase.ReRender)
+                    {
+                        AjaxManager.Instance.Writer.WriteLine("Ra.Control.$('{0}').reRender('{1}');",
+                            ClientID,
+                            GetHTML().Replace("\\", "\\\\").Replace("'", "\\'").Replace("\r", "\\r").Replace("\n", "\\n"));
+                        RenderChildren(writer);
+                        AjaxManager.Instance.Writer.WriteLine(GetChildrenClientSideScript());
+                    }
+                    else if (Phase == RenderingPhase.RenderHtml)
+                    {
+                        writer.Write(GetHTML());
+                    }
+                }
+                else
+                {
+                    if (Phase == RenderingPhase.RenderHtml)
+                    {
+                        writer.Write(GetHTML());
+                    }
+                    else
+                    {
+                        writer.Write(GetHTML());
+                        AjaxManager.Instance.Writer.WriteLine(GetClientSideScript());
+                    }
+                }
+            }
+            else // if (!Visible)
+            {
+                if (AjaxManager.Instance.IsCallback)
+                {
+                    if (Phase == RenderingPhase.ReRender || Phase == RenderingPhase.Visible)
+                    {
+                        if (AjaxManager.Instance.IsCallback)
+                        {
+                            AjaxManager.Instance.Writer.WriteLine("Ra.Control.$('{0}').destroy();", ClientID);
+                        }
+                    }
+                    else if (Phase == RenderingPhase.RenderHtml)
+                    {
+                        writer.Write(GetInvisibleHTML());
+                    }
+                }
+                else
+                {
+                    writer.Write(GetInvisibleHTML());
+                }
+            }
+        }
+
+        protected override void LoadControlState(object savedState)
+        {
+            if (!AjaxManager.Instance.IsCallback)
+                Phase = RenderingPhase.Invisible;
+            if (savedState != null)
+                Phase = (RenderingPhase)savedState;
+			if (Phase != RenderingPhase.Visible)
+			{
+				SetAllChildrenToRenderHtml(this.Controls);
+			}
+        }
+
+        protected override object SaveControlState()
+        {
+            if (Phase == RenderingPhase.ReRender || Phase == RenderingPhase.RenderHtml)
+                return RenderingPhase.Visible;
+            if (Visible)
+                return RenderingPhase.Visible;
+            else
+                return RenderingPhase.Invisible;
+        }
+
+        public void ReRender()
+        {
+            if (!AjaxManager.Instance.IsCallback || Phase == RenderingPhase.Invisible)
+                return;
+            if (this.IsTrackingViewState)
+            {
+                Phase = RenderingPhase.ReRender;
+            }
+        }
+
+		protected virtual void SetAllChildrenToRenderHtml(ControlCollection controls)
+        {
+            foreach (Control idx in controls)
+            {
+                if (idx is RaControl)
+                {
+                    (idx as RaControl).Phase = RenderingPhase.RenderHtml;
+                }
+                SetAllChildrenToRenderHtml(idx.Controls);
+            }
+        }
+
+        // Used to track if control has been rendered previously
+        private Dictionary<string, object> _JSONValues = new Dictionary<string, object>();
+        protected bool _hasSetFocus;
+
 		[Browsable(false)]
 		public IEnumerable<Behavior> Behaviors
 		{
@@ -238,122 +362,9 @@ namespace Ra.Widgets
             base.OnInit(e);
         }
 
-        protected override void LoadControlState(object savedState)
-        {
-            if (!AjaxManager.Instance.IsCallback)
-                Phase = RenderingPhase.Invisible;
-            if (savedState != null)
-                Phase = (RenderingPhase)savedState;
-			if (Phase != RenderingPhase.Visible)
-			{
-				SetAllChildrenToRenderHtml(this.Controls);
-			}
-        }
-
-		protected virtual void SetAllChildrenToRenderHtml(ControlCollection controls)
-        {
-            foreach (Control idx in controls)
-            {
-                if (idx is RaControl)
-                {
-                    (idx as RaControl).Phase = RenderingPhase.RenderHtml;
-                }
-                SetAllChildrenToRenderHtml(idx.Controls);
-            }
-        }
-
-        protected override object SaveControlState()
-        {
-            if (Phase == RenderingPhase.ReRender || Phase == RenderingPhase.RenderHtml)
-                return RenderingPhase.Visible;
-            if (Visible)
-                return RenderingPhase.Visible;
-            else
-                return RenderingPhase.Invisible;
-        }
-
         protected virtual string GetChildrenClientSideScript()
         {
             return "";
-        }
-
-        public override void RenderControl(HtmlTextWriter writer)
-        {
-            if (DesignMode)
-                throw new ApplicationException("Ra Ajax doesn't support Design time");
-
-            if (Visible)
-            {
-                if (AjaxManager.Instance.IsCallback)
-                {
-                    if (Phase == RenderingPhase.Invisible)
-                    {
-                        // Control was made Visible THIS request...!
-                        AjaxManager.Instance.Writer.WriteLine("Ra.$('{0}').replace('{1}');",
-                            ClientID,
-                            GetHTML().Replace("\\", "\\\\").Replace("'", "\\'").Replace("\r", "\\r").Replace("\n", "\\n"));
-                        AjaxManager.Instance.Writer.WriteLine(GetClientSideScript());
-                        RenderChildren(writer);
-                    }
-                    else if (Phase == RenderingPhase.Visible)
-                    {
-                        // JSON changes, control was visible also previous request...
-                        string JSON = SerializeJSON();
-                        if (!string.IsNullOrEmpty(JSON))
-                        {
-                            AjaxManager.Instance.Writer.WriteLine("Ra.Control.$('{0}').handleJSON({1});",
-                                ClientID,
-                                JSON);
-                        }
-                        RenderChildren(writer);
-                    }
-                    else if (Phase == RenderingPhase.ReRender)
-                    {
-                        AjaxManager.Instance.Writer.WriteLine("Ra.Control.$('{0}').reRender('{1}');",
-                            ClientID,
-                            GetHTML().Replace("\\", "\\\\").Replace("'", "\\'").Replace("\r", "\\r").Replace("\n", "\\n"));
-                        RenderChildren(writer);
-                        AjaxManager.Instance.Writer.WriteLine(GetChildrenClientSideScript());
-                    }
-                    else if (Phase == RenderingPhase.RenderHtml)
-                    {
-                        writer.Write(GetHTML());
-                    }
-                }
-                else
-                {
-                    if (Phase == RenderingPhase.RenderHtml)
-                    {
-                        writer.Write(GetHTML());
-                    }
-                    else
-                    {
-                        writer.Write(GetHTML());
-                        AjaxManager.Instance.Writer.WriteLine(GetClientSideScript());
-                    }
-                }
-            }
-            else // if (!Visible)
-            {
-                if (AjaxManager.Instance.IsCallback)
-                {
-                    if (Phase == RenderingPhase.ReRender || Phase == RenderingPhase.Visible)
-                    {
-                        if (AjaxManager.Instance.IsCallback)
-                        {
-                            AjaxManager.Instance.Writer.WriteLine("Ra.Control.$('{0}').destroy();", ClientID);
-                        }
-                    }
-                    else if (Phase == RenderingPhase.RenderHtml)
-                    {
-                        writer.Write(GetInvisibleHTML());
-                    }
-                }
-                else
-                {
-                    writer.Write(GetInvisibleHTML());
-                }
-            }
         }
 
         // Used for dispatching events for the Control
@@ -466,16 +477,6 @@ namespace Ra.Widgets
         public virtual string GetInvisibleHTML()
         {
             return string.Format("<span id=\"{0}\" style=\"display:none;\">&nbsp;</span>", ClientID);
-        }
-
-        public void ReRender()
-        {
-            if (!AjaxManager.Instance.IsCallback || Phase == RenderingPhase.Invisible)
-                return;
-            if (this.IsTrackingViewState)
-            {
-                Phase = RenderingPhase.ReRender;
-            }
         }
     }
 }
