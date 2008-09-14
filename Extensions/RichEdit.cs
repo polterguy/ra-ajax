@@ -109,7 +109,7 @@ namespace Ra.Extensions
 			return evts;
 		}
 
-		public override string GetHTML()
+		public override string GetOpeningHTML()
         {
             // Rich Edit DIV editing element plus hidden field which is "value" part 
             // to make sure we submit the new value back to server whan changes occurs...

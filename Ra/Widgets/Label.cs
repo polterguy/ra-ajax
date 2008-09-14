@@ -37,7 +37,7 @@ namespace Ra.Widgets
         #region [ -- Overridden (abstract/virtual) methods from RaControl -- ]
 
         // Override this one to create specific HTML for your widgets
-        public override string GetHTML()
+        public override string GetOpeningHTML()
         {
             return string.Format("<span id=\"{0}\"{2}{3}>{1}</span>",
                 ClientID,

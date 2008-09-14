@@ -132,9 +132,10 @@ namespace Ra.Extensions
 			return "new Ra.Comet";
 		}
 		
-        public override string GetHTML()
+        public override string GetOpeningHTML()
         {
             // Dummy HTML DOM element to make registration and such easier...
+			// TODO: Make it possible to have IN-visible controls (maybe...?)
             return string.Format("<span style=\"display:none;\" id=\"{0}\">&nbsp;</span>", ClientID);
         }
     }

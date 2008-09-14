@@ -22,7 +22,7 @@ namespace Ra.Widgets
 			AjaxManager.Instance.IncludeScriptFromResource("Behaviors.js");
 	    }
 		
-		public override string GetHTML()
+		public override string GetOpeningHTML()
 		{
 			return string.Empty;
 		}
@@ -37,17 +37,9 @@ namespace Ra.Widgets
             {
                 if (AjaxManager.Instance.IsCallback)
                 {
-                    if (Phase == RenderingPhase.Visible)
+                    if (this.HasRendered)
                     {
-                        // JSON changes, control was visible also previous request...
-                        string JSON = SerializeJSON();
-                        if (JSON != null)
-                        {
-                            AjaxManager.Instance.Writer.WriteLine("Ra.Beha.$('{0}').handleJSON({1});",
-                                ClientID,
-                                JSON);
-                        }
-                        RenderChildren(writer);
+						RenderOnlyJSON(writer);
                     }
                 }
             }

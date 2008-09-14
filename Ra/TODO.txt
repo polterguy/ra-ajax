@@ -30,5 +30,20 @@
 * Create class of JSON values instead of using dictionary like today in RaControl for
   clarity.
 
+* In Default.aspx it sends JSON for the Value of the TextBox over too!!
+  Hint; it SHOULDN'T!
+
+* In Behaviors.aspx it send over left and top coordinates to Label, it SHOULDN'T!!
+
+
+
+
+
+
+
+
+
+
+
 
 

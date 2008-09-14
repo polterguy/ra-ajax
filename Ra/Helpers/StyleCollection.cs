@@ -61,7 +61,7 @@ namespace Ra.Widgets
 
         void _control_PreRender(object sender, EventArgs e)
         {
-            if (_control.Phase == RaControl.RenderingPhase.Visible && _styleValues.Count > 0)
+            if (_control.HasRendered && _styleValues.Count > 0)
             {
                 Dictionary<string, string> styles = _control.GetJSONValueDictionary("AddStyle");
                 foreach (string idxKey in _styleValues.Keys)

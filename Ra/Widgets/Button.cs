@@ -133,7 +133,7 @@ namespace Ra.Widgets
         }
 
         // Override this one to create specific HTML for your widgets
-        public override string GetHTML()
+        public override string GetOpeningHTML()
         {
             string accessKey = string.IsNullOrEmpty(AccessKey) ? "" : string.Format(" accesskey=\"{0}\"", AccessKey);
             return string.Format("<input type=\"button\" id=\"{0}\" value=\"{1}\"{2}{3}{4}{5} />", 
