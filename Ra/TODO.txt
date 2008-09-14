@@ -20,7 +20,7 @@
 
 * Fix CheckBox and RadioButton so that also e.g. OnMouseOver triggers on CONTROL and not only
   text as it does today. Maybe something like "mouseenter/mouseleave" from MooTools can help
-  us here?
+  us here and then trap the TOP element (span) ...?
 
 * Create class of JSON values instead of using dictionary like today in RaControl for
   clarity.
