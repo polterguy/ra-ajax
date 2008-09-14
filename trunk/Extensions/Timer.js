@@ -7,6 +7,8 @@
  */
 
 
+(function(){
+
 // Creating class
 Ra.Timer = Ra.klass();
 
@@ -66,4 +68,4 @@ Ra.extend(Ra.Timer.prototype, {
     // Forward call to allow overriding in inherited classes...
     this._destroyThisControl();
   }
-});
+});})();
