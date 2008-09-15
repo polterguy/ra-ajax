@@ -131,16 +131,18 @@ Ra.extend(Ra.BDrag.prototype, {
     this._pos = this.pointer(event);
 
     // In case element is not absolutized...
-    if( this.parent.element.style.position != 'absolute' ) {
+    if( this.parent.element.style.position != 'absolute' || 
+      !this.parent.element.style.left || 
+      !this.parent.element.style.top ) {
       var valueT = 0, valueL = 0;
       var el = this.parent.element;
       do {
         if( el.tagName == 'BODY' )
           break;
-        if( el.style.position == 'relative' || el.style.position == 'absolute' )
+        if((el.style.position == 'relative' || el.style.position == 'absolute') && el.id != this.parent.element.id )
           break;
         var cpStyle = document.defaultView.getComputedStyle(el, null);
-        if( cpStyle.position == 'relative' || cpStyle.position == 'absolute' )
+        if( (cpStyle.position == 'relative' || cpStyle.position == 'absolute')  && el.id != this.parent.element.id )
           break;
         valueT += el.offsetTop  || 0;
         valueL += el.offsetLeft || 0;

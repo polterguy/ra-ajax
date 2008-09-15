@@ -139,7 +139,7 @@
     	runat="server"
     	Caption="Ajax Window"
     	CssClass="window"
-    	style="width:250px;height:250px;z-index:500;"
+    	style="width:250px;height:250px;z-index:500;position:absolute;"
     	id="window">
     	<div style="padding:5px;">
 			Here you can see an example of an Ajax Window created as a composition control utilizing Ajax Behaviors.
