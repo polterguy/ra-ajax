@@ -63,8 +63,8 @@ namespace Ra.Widgets
 	                {
                         if (temp._reRender || !temp.HasRendered)
                             return true;
-                        idx = temp.Parent;
                     }
+                    idx = idx.Parent;
                 }
 				return false;
 			}
