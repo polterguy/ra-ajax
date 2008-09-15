@@ -43,7 +43,8 @@ namespace Ra.Widgets
 			private set { _hasRendered = value; }
 		}
 
-		private bool _reRender;		public void ReRender()
+		private bool _reRender;
+		public void ReRender()
 		{
 			if (!AjaxManager.Instance.IsCallback || !HasRendered)
 				return;
