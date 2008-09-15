@@ -172,6 +172,38 @@ Ra.Element.prototype = {
       height: orHeight
     };
   },
+  
+  absolutize: function() {
+    if( this.parent.element.style.position != 'absolute' || 
+      !this.parent.element.style.left || 
+      !this.parent.element.style.top ) {
+
+      var valueT = this.parent.element.offsetTop  || 0;
+      var valueL = this.parent.element.offsetLeft  || 0;
+      var el = this.parent.element.offsetParent;
+      
+      while (el) {
+        if( el.tagName == 'BODY' )
+          break;
+        if(el.style.position == 'relative' || el.style.position == 'absolute')
+          break;
+        var cpStyle = document.defaultView.getComputedStyle(el, null);
+        if(cpStyle.position == 'relative' || cpStyle.position == 'absolute')
+          break;
+        valueT += el.offsetTop  || 0;
+        valueL += el.offsetLeft || 0;
+        el = el.offsetParent;
+      }
+      
+      this.parent.element.style.left = valueL + 'px';
+      this.parent.element.style.top = valueT + 'px';
+      this.parent.element.style.position = 'absolute';
+    }
+
+    // Storing old position
+    this._oldX = parseInt(this.parent.element.style.left, 10);
+    this._oldY = parseInt(this.parent.element.style.top, 10);
+  },
 
   // Appends a class name to the class of the element
   addClassName: function(className) {
