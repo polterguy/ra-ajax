@@ -207,7 +207,7 @@ namespace Ra.Widgets
                     string invisibleHtml = GetInvisibleHTML();
                     if (string.IsNullOrEmpty(invisibleHtml))
                         invisibleHtml = GetDefaultInvisibleHTML();
-                    writer.Write(GetInvisibleHTML());
+                    writer.Write(invisibleHtml);
 				}
 			}
 		}
