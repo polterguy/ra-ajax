@@ -560,7 +560,13 @@ namespace Ra.Widgets
 		// The INVISIBLE HTML for the control
 		public virtual string GetInvisibleHTML()
 		{
-			return string.Format("<span id=\"{0}\" style=\"display:none;\">&nbsp;</span>", ClientID);
+			return string.Empty;
 		}
+
+        // The Default INVISIBLE HTML for the control
+        private string GetDefaultInvisibleHTML()
+        {
+            return string.Format("<span id=\"{0}\" style=\"display:none;\">&nbsp;</span>", ClientID);
+        }
 	}
 }
