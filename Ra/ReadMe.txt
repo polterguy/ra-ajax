@@ -12,7 +12,7 @@ needs fulfilled in Ra Ajax itself. :)
 
 Ra Ajax is hosted at; http://code.google.com/p/ra-ajax/
 
-Ra Ajax is the copyright of Ra Software AS - thomas@ra-ajax.org
+Ra Ajax is the copyright of Thomas Hansen - thomas@ra-ajax.org
 
 The license for Ra Ajax can be found on disc in the same folder as this 
 file and is a pure LGPL version 3 license. Basically it says that you 
