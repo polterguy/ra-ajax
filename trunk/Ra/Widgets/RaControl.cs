@@ -56,11 +56,11 @@ namespace Ra.Widgets
 			get
 			{
 				Control idx = Parent;
-                RaControl temp = idx as RaControl;
-                if (temp != null)
+                while (idx != null)
                 {
-                    while (idx != null)
-                    {
+	                RaControl temp = idx as RaControl;
+	                if (temp != null)
+	                {
                         if (temp._reRender || !temp.HasRendered)
                             return true;
                         temp = temp.Parent;
