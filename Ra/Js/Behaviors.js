@@ -135,7 +135,7 @@ Ra.extend(Ra.BDrag.prototype, {
       !this.parent.element.style.left || 
       !this.parent.element.style.top ) {
 
-      var valueT = el.offsetTop  || 0, valueL = el.offsetLeft  || 0;
+      var valueT = this.parent.element.offsetTop  || 0, valueL = this.parent.element.offsetLeft  || 0;
       var el = this.parent.element.offsetParent;
       do {
         if( el.tagName == 'BODY' )
