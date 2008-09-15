@@ -174,28 +174,28 @@ Ra.Element.prototype = {
   },
   
   absolutize: function() {
-    if( this.style.position != 'absolute' || !this.style.left || !this.style.top ) {
-      var valueT = this.offsetTop  || 0;
-      var valueL = this.offsetLeft  || 0;
-      var el = this.offsetParent;
+    if( this.style.position == 'absolute' && this.style.left && this.style.top )
+      return;
+    var valueT = this.offsetTop  || 0;
+    var valueL = this.offsetLeft  || 0;
+    var el = this.offsetParent;
       
-      while (el) {
-        if( el.tagName == 'BODY' )
-          break;
-        if(el.style.position == 'relative' || el.style.position == 'absolute')
-          break;
-        var cpStyle = document.defaultView.getComputedStyle(el, null);
-        if(cpStyle.position == 'relative' || cpStyle.position == 'absolute')
-          break;
-        valueT += el.offsetTop  || 0;
-        valueL += el.offsetLeft || 0;
-        el = el.offsetParent;
-      }
-      
-      this.style.left = valueL + 'px';
-      this.style.top = valueT + 'px';
-      this.style.position = 'absolute';
+    while (el) {
+      if( el.tagName == 'BODY' )
+        break;
+      if(el.style.position == 'relative' || el.style.position == 'absolute')
+        break;
+      var cpStyle = document.defaultView.getComputedStyle(el, null);
+      if(cpStyle.position == 'relative' || cpStyle.position == 'absolute')
+        break;
+      valueT += el.offsetTop  || 0;
+      valueL += el.offsetLeft || 0;
+      el = el.offsetParent;
     }
+      
+    this.style.left = valueL + 'px';
+    this.style.top = valueT + 'px';
+    this.style.position = 'absolute';
   },
 
   // Appends a class name to the class of the element
