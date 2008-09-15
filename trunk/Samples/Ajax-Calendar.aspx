@@ -21,13 +21,13 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ajax Calendar Sample</h1>
+    <h1>Ra Ajax Samples - Calendar</h1>
     <p>
-        This is our <em>Ajax Calendar</em> reference sample. The Ajax Calendar is an Extension control which
-        first of all means that it can be found in the <em>Extensions project</em>. One of the important
-        features of the Ra-Ajax Calendar is that first of all it does <em>not add to the JavaScript size
-        of your page at all</em>. This is because it is in its entirety composed of other existing Ajax Controls
-        like LinkButtons, Labels, DropDownLists and so on.
+        This is our <em>Ajax Calendar</em> reference sample. The Ajax Calendar is an Extension control, which
+        means that it can be found in the <em>Extensions project</em>. One of the important
+        features of the Ra-Ajax Calendar is that it does <em>not add to the JavaScript size</em>. This is 
+        because it is entirely composed of other existing Ajax Controls like LinkButtons, Labels, 
+        DropDownLists and so on.
     </p>
     <ext:Calendar 
         runat="server" 
@@ -38,17 +38,17 @@
     <br />
     <ra:Label 
         runat="server" 
-        style="color:#999;font-style:italic;"
+        style="color:#33f;"
         ID="lbl" Text="Watch me as you change the date" />
     <br />
     <p>
-        Try to change the Date in the Ajax Calendar above...
+        Try to change the Date in the Ajax Calendar above
     </p>
     <br />
     <h2>Ra-Ajax and Mono/Linux/Apache</h2>
     <p>
-        Did you know that even though Ra-Ajax is written in .Net it is still possible (and easy) to deploy
-        your Ajax Applications an Linux by using <a href="http://www.mono-project.com/">Mono</a>? Ra-Ajax
+        Did you know that even though Ra-Ajax is written on top of .Net, it is still possible (and easy) to deploy
+        your Ra-Ajax Applications on Linux by using <a href="http://www.mono-project.com/">Mono</a>? Ra-Ajax
         is very dedicated to supporting Mono. In fact without Mono we probably would have implemented
         Ra-Ajax in RoR or J2EE or something. In fact I am changing back and forth between Linux and Windows
         when I develop and I roughly spend about 50% of my time developing Ra-Ajax functionality in Mono.
@@ -60,31 +60,31 @@
     <p>
         A very good example of a quite complex Ajax application which is written in .Net but runs on
         Mono, Apache and Linux is <a href="http://grurrah.com">Grurrah your environmental friend</a> 
-        which all though is not developed in Ra-Ajax but still developed in ASP.NET. Grurrah is written 
+        which although is not developed in Ra-Ajax but still developed in ASP.NET. Grurrah is written 
         in .Net, compiled using Mono's C# compiler, deployed on Apache and Linux running Mono and 100% 
         Open Source from the bottom and all the way to the top :)
         <br />
         It even uses an Open Source database - <a href="http://mysql.com/">MySQL</a>!
     </p>
     <p>
-        A lot of people are claiming (unjust) that Mono is a "child's toy version" of .Net and that they
-        will always play catchup with Microsoft. This is not true! Mono is a fully working 
-        implementation of .Net. It even have full support for LINQ, generics, ASP.NET and mostly everything
+        A lot of people are falsly claiming that Mono is a "child's toy version" of .Net and that they
+        will always need to play catch-up with Microsoft. This is not true! Mono is a fully working 
+        implementation of .Net. It even has full support for LINQ, Generics, ASP.NET and mostly everything
         you would expect to be in a full version of .Net.
     </p>
     <p>
         I happen to know large portions of the Mono team, including Miguel DeIcaza and I know that they
         have a lot of resources on making sure that they are constantly compatible with every aspect
         of Microsoft.NET. Sometimes they probably have more resources on Mono than what Microsoft 
-        have on .Net due to Microsoft's "big gun development plan" where they target everything into
+        has on .Net, due to Microsoft's "big gun development plan", where they target everything into
         one aspect of their development.
     </p>
     <p>
-        Ra-Ajax (including our Ajax Calendar ;) will always be focusing a lot of resources on being
+        Ra-Ajax, including our Ajax Calendar, will always be focusing a lot of resources on being
         Mono Compatible so that you can have the choice of deploying your applications on both Linux
         and Windows Servers. Just like we believe in that in the client layer you should always be able
         to run your applications on everything from "Mom's toaster" to your "Cousin's mainframe" we also
-        believe that you should be able to deploy your applications on Linux, Windows, Apple and 
+        believe that you should be able to deploy your applications on Linux, Windows and 
         everything which can run either Mono or Windows Servers.
     </p>
     <p>

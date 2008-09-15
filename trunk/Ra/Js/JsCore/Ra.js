@@ -733,4 +733,5 @@ Ra.Effect.prototype = {
   }
 };
 
-})();
+
+})();
