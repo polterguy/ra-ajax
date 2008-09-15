@@ -131,6 +131,10 @@ Ra.extend(Ra.BDrag.prototype, {
     this._pos = this.pointer(event);
     
     this.parent.element.absolutize();
+    
+    // Storing old position
+    this._oldX = parseInt(this.parent.element.style.left, 10);
+    this._oldY = parseInt(this.parent.element.style.top, 10);
   },
 
   // Called when mouse is released. Note that this

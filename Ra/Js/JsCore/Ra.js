@@ -174,13 +174,11 @@ Ra.Element.prototype = {
   },
   
   absolutize: function() {
-    if( this.parent.element.style.position != 'absolute' || 
-      !this.parent.element.style.left || 
-      !this.parent.element.style.top ) {
+    if( this.style.position != 'absolute' || !this.style.left || !this.style.top ) {
 
-      var valueT = this.parent.element.offsetTop  || 0;
-      var valueL = this.parent.element.offsetLeft  || 0;
-      var el = this.parent.element.offsetParent;
+      var valueT = this.offsetTop  || 0;
+      var valueL = this.offsetLeft  || 0;
+      var el = this.offsetParent;
       
       while (el) {
         if( el.tagName == 'BODY' )
@@ -195,14 +193,10 @@ Ra.Element.prototype = {
         el = el.offsetParent;
       }
       
-      this.parent.element.style.left = valueL + 'px';
-      this.parent.element.style.top = valueT + 'px';
-      this.parent.element.style.position = 'absolute';
+      this.style.left = valueL + 'px';
+      this.style.top = valueT + 'px';
+      this.style.position = 'absolute';
     }
-
-    // Storing old position
-    this._oldX = parseInt(this.parent.element.style.left, 10);
-    this._oldY = parseInt(this.parent.element.style.top, 10);
   },
 
   // Appends a class name to the class of the element
