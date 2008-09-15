@@ -51,7 +51,7 @@ namespace Ra.Widgets
 			_reRender = true;
 		}
 
-		private bool IsParentReRendering
+		private bool IsAnyAncestorRenderingHtml
 		{
 			get
 			{
@@ -63,7 +63,7 @@ namespace Ra.Widgets
 	                {
                         if (temp._reRender || !temp.HasRendered)
                             return true;
-                        temp = temp.Parent;
+                        idx = temp.Parent;
                     }
                 }
 				return false;
@@ -157,7 +157,7 @@ namespace Ra.Widgets
 				if (AjaxManager.Instance.IsCallback)
 				{
 					// PRIORITY COUNTS...!!
-					if (IsParentReRendering)
+					if (IsAnyAncestorRenderingHtml)
 					{
 						// Control is visible, this is a callback and some parent widget has signalized
 						// that it wants the entire thing re-rendered
