@@ -149,7 +149,7 @@ Ra.extend(Ra.BDrag.prototype, {
           break;
         valueT += el.offsetTop  || 0;
         valueL += el.offsetLeft || 0;
-        var el = el.offsetParent;
+        el = el.offsetParent;
       }
       
       this.parent.element.style.left = valueL + 'px';
