@@ -135,9 +135,10 @@ Ra.extend(Ra.BDrag.prototype, {
       !this.parent.element.style.left || 
       !this.parent.element.style.top ) {
 
-      var valueT = this.parent.element.offsetTop  || 0, valueL = this.parent.element.offsetLeft  || 0;
-      var el = this.parent.element.offsetParent;
+      var valueT = this.parent.element.offsetTop  || 0;
+      var valueL = this.parent.element.offsetLeft  || 0;
       do {
+        var el = this.parent.element.offsetParent;
         if( el.tagName == 'BODY' )
           break;
         if(el.style.position == 'relative' || el.style.position == 'absolute')
@@ -147,6 +148,7 @@ Ra.extend(Ra.BDrag.prototype, {
           break;
         valueT += el.offsetTop  || 0;
         valueL += el.offsetLeft || 0;
+        var el = el.offsetParent;
       } while (el);
       this.parent.element.style.left = valueL + 'px';
       this.parent.element.style.top = valueT + 'px';
