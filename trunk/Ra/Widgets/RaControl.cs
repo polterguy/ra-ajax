@@ -204,6 +204,9 @@ namespace Ra.Widgets
 				else
 				{
 					// Not callback and NOT visible
+                    string invisibleHtml = GetInvisibleHTML();
+                    if (string.IsNullOrEmpty(invisibleHtml))
+                        invisibleHtml = GetDefaultInvisibleHTML();
                     writer.Write(GetInvisibleHTML());
 				}
 			}
