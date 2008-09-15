@@ -202,7 +202,7 @@ namespace Ra.Widgets
                         if (string.IsNullOrEmpty(invisibleHtml))
 							AjaxManager.Instance.Writer.WriteLine("Ra.Control.$('{0}').destroy();", ClientID);
 						else
-							AjaxManager.Instance.Writer.WriteLine("Ra.Control.$('{0}').destroy('{1}');", ClientID, GetInvisibleHTML());
+                            AjaxManager.Instance.Writer.WriteLine("Ra.Control.$('{0}').destroy('{1}');", ClientID, invisibleHtml);
 					}
 				}
 				else
