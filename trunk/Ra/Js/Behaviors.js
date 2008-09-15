@@ -135,18 +135,18 @@ Ra.extend(Ra.BDrag.prototype, {
       !this.parent.element.style.left || 
       !this.parent.element.style.top ) {
       var valueT = 0, valueL = 0;
-      var el = this.parent.element;
+
       do {
+        el = el.offsetParent;
         if( el.tagName == 'BODY' )
           break;
-        if((el.style.position == 'relative' || el.style.position == 'absolute') && el.id != this.parent.element.id )
+        if(el.style.position == 'relative' || el.style.position == 'absolute')
           break;
         var cpStyle = document.defaultView.getComputedStyle(el, null);
-        if( (cpStyle.position == 'relative' || cpStyle.position == 'absolute')  && el.id != this.parent.element.id )
+        if(cpStyle.position == 'relative' || cpStyle.position == 'absolute')
           break;
         valueT += el.offsetTop  || 0;
         valueL += el.offsetLeft || 0;
-        el = el.offsetParent;
       } while (el);
       this.parent.element.style.left = valueL + 'px';
       this.parent.element.style.top = valueT + 'px';
@@ -404,8 +404,11 @@ Ra.extend(Ra.BUpdate.prototype, {
 
 
 
-// ==============================================================================//// This is the BehaviorUpdaterDelayedObscure
-//// ==============================================================================
+// ==============================================================================
+//
+// This is the BehaviorUpdaterDelayedObscure
+//
+// ==============================================================================
 Ra.BUpDel = Ra.klass();
 
 // Inheriting from Ra.Control
