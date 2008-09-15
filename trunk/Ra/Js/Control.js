@@ -318,7 +318,7 @@ Ra.Control.prototype = {
   // This one will also destroy all CHILD controls of the control...
   // If you override this method you probably will want to call the base
   // implementation called "destroyControl"!
-  destroy: function() {
+  destroy: function(invisibleHtml) {
 
     // Forward calling to enable inheritance...
     this._destroyChildControls();
@@ -331,7 +331,10 @@ Ra.Control.prototype = {
     // Note that since all other "child controls" are children DOM elements of the "this DOM element"
     // there is no need to do this for the child controls since their HTML will disappear
     // anyway.
-    this.element.replace('<span id="' + this.element.id + '" style="display:none;" />');
+    if (!invisibleHtml)
+        this.element.replace('<span id="' + this.element.id + '" style="display:none;" />');
+    else
+        this.element.replace(invisibleHtml);
   },
 
   // This function will search for child controls and make sure those too are detroyed...
