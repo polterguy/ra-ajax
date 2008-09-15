@@ -446,6 +446,7 @@ pre
 {
 	overflow:hidden;
 	background-color:#f0f0ea;
+	font-size:small;
 }
 
 .accordion-control .body-content
@@ -493,8 +494,8 @@ pre
 {
 	font-size:0.8em;
 	position:absolute;
-	top:5px;
 	right:5px;
+	top:5px;
 }
 
 
