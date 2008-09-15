@@ -175,7 +175,6 @@ Ra.Element.prototype = {
   
   absolutize: function() {
     if( this.style.position != 'absolute' || !this.style.left || !this.style.top ) {
-
       var valueT = this.offsetTop  || 0;
       var valueL = this.offsetLeft  || 0;
       var el = this.offsetParent;
