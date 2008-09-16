@@ -44,12 +44,12 @@
     <p>
         If you click the Show Code button at the top right corner you will see that there is no 
         JavaScript at all created to run the Ajax functionality you just observed. Ra Ajax is heavily inspired by 
-        <a href="http://anthemdotnet.com/">Anthem.Net</a> in that you can run pretty advanced Ajax 
+        <a rel="nofollow" href="http://anthemdotnet.com/">Anthem.Net</a> in that you can run pretty advanced Ajax 
         functionality without being forced to write JavaScript at all. Though with one crucial 
         difference. Ra-Ajax uses 
-        <a href="http://weblogs.asp.net/despos/archive/2007/09/19/partial-rendering-misses-ajax-architectural-points.aspx">Partial Rendering</a>
+        <a rel="nofollow" href="http://weblogs.asp.net/despos/archive/2007/09/19/partial-rendering-misses-ajax-architectural-points.aspx">Partial Rendering</a>
         as seldom as possible but relies instead on sending changes back to the client from the server
-        as <a href="http://www.json.org/">JSON</a> which then again is mapped towards functions on the 
+        as <a rel="nofollow" href="http://www.json.org/">JSON</a> which then again is mapped towards functions on the 
         Client Side JavaScript. Only when absolutely neccessary Ra-Ajax will actually resort to Partial 
         Rendering and render HTML back from the Server.
     </p>
