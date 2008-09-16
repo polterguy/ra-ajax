@@ -67,7 +67,7 @@
         It even uses an Open Source database - <a href="http://mysql.com/">MySQL</a>!
     </p>
     <p>
-        A lot of people are falsly claiming that Mono is a "child's toy version" of .Net and that they
+        A lot of people are falsely claiming that Mono is a "child's toy version" of .Net and that they
         will always need to play catch-up with Microsoft. This is not true! Mono is a fully working 
         implementation of .Net. It even has full support for LINQ, Generics, ASP.NET and mostly everything
         you would expect to be in a full version of .Net.
