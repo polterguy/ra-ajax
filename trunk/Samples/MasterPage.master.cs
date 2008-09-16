@@ -98,7 +98,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
         using (TextReader reader = new StreamReader(File.OpenRead(path)))
         {
             string allCode = reader.ReadToEnd();
-            allCode = allCode.Replace("<", "&lt;").Replace(">", "&gt;");
+            allCode = allCode.Replace("<", "&lt;").Replace(">", "&gt;").Replace("\t", "    ");
             lblCode.Text = allCode;
         }
     }
@@ -141,7 +141,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 "object"});
             allCode = allCode.Replace("/*", "<span class=\"comment\">/*");
             allCode = allCode.Replace("*/", "*/</span>");
-            lblCode.Text = allCode;
+            lblCode.Text = allCode.Replace("\t", "    ");
         }
     }
 
