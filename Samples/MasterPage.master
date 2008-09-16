@@ -201,19 +201,13 @@
                     <h3>Copyright notice</h3>
                     <p>
                         <em>
-                            Ra-Ajax is Open Source (LGPL) and free of charge to use. It is written as an implementation of my 
-                            <a href="http://ra-ajax.org/how-to-create-an-ajax-library-part-1-decisions.blog">How to create an Ajax Library book</a>
-                            and can freely be used in commercial/proprietary projects for free. It can be downloaded 
-                            <a href="http://code.google.com/p/ra-ajax/">here</a>. Send me an <a href="mailto:thomas@ra-ajax.org">email</a>
-                            if you would like to participate in its development :)
+                            Ra-Ajax is Open Source (LGPL) and free of charge to use. 
                         </em>
                     </p>
                     <p>
                         <em>
                             All the content (written text) at this webpage is licensed under the 
-                            <a href="http://www.gnu.org/copyleft/fdl.html">GNU Free Documentation License</a>
-                            which means you are *encouraged* to copy, modify and redistribute the text
-                            portions of this page under the terms of the GFDL.
+                            <a href="http://www.gnu.org/copyleft/fdl.html">GNU Free Documentation License</a>.
                         </em>
                     </p>
                 </div>
