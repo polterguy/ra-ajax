@@ -21,12 +21,12 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ajax InPlaceEdit Sample</h1>
+    <h1>Ra Ajax Samples - InPlaceEdit</h1>
     <p>
-        The <em>Ajax InPlaceEdit Control</em> was originally being made famous by 
+        The <em>Ajax InPlaceEdit Control</em> was originally made famous by 
         <a href="http://mir.aculo.us/">Thomas Fuchs</a> the original author behind
         <a href="http://script.aculo.us/">ScriptAculous</a>. The Ra-Ajax InPlaceEdit is created without using
-        any <em>custom JavaScript</em> and actually a very good starting point for your own <em>Custom Ajax Controls</em>.
+        any <em>custom JavaScript</em> and is actually a very good starting point for your own <em>Custom Ajax Controls</em>.
     </p>
     <ext:InPlaceEdit 
         runat="server" 
@@ -38,32 +38,32 @@
         runat="server" 
         ID="lbl" 
         Text="Watch me as focus gets moved away from the InPlaceEdit"
-        style="color:#999;font-style:italic;" />
+        style="color:#33f" />
     <br />
     <p>
         Try to click the above InPlaceEdit and then when you're finished writing the new text just click
-        TAB or with the mouse move the focus away from the InPlaceEdit above...
+        TAB or with the mouse move the focus away from the InPlaceEdit above.
     </p>
     <br />
     <h2>Why give away innovation for free?</h2>
     <p>
         I don't expect everyone to understand this, but I think of IT the same way many others think
         of <em>education, books and knowledge</em>. I think that in order to continue what Gutenberg
-        started some 500 years ago we must acknowledge that the access to IT and information
-        is a <em>basic human right</em>! I believe that the only way we can achieve that is by
-        <em>commoditizing IT</em> which to some extend is similar to what happened with electricity
+        started some 500 years ago, we must acknowledge that the access to IT and information
+        is a <em>basic human right</em>! I believe that the only way we can achieve this, is by
+        <em>commoditizing IT</em> which to some extent is similar to what happened with electricity
         more than 100 years ago. IT today is roughly where electricity was 100 years ago. Only the
         richest people on the planet could afford it and it was very expensive.
     </p>
     <p>
         Everyone in the western hemisphere have more or less access to IT today, but that is first of
-        all only 30% of the population in the world. Secondly (and more important) very few have access
-        to (or know how to search and find) the information they really need.
+        all only 30% of the world population. Secondly, and more importantly, very few have access
+        to, or know how to search and find, the information they really need.
     </p>
     <p>
         YouTube, Google, Wikipedia, OLPC and others are doing a great job in regards to "helping out"
-        but in order to make this happen we must all pull. And the only thing I am really good at is
-        to create great Ajax Libraries!
+        but in order to make this happen we must all participate. And the only thing I am really good at is
+        creating great Ajax Libraries!
     </p>
     <p>
         So I make great Ajax Libraries and I give them away to the entire world hoping that I will
@@ -73,21 +73,21 @@
     <p>
         If you want to hire me (or my friend Kariem) then take a look at 
         <a href="http://ra-ajax.org/Author.aspx">this page</a>. If you have a problem when using Ra-Ajax
-        then maybe the solution is to hire one or both of us?
+        then maybe the solution is to hire one or both of us.
     </p>
     <br />
     <h2>Open Innovation, Open Web and Open Source</h2>
     <p>
-        These are our prime tools to make sure IT becomes a <em>commodity</em>. And by giving away to 
-        the world Ra-Ajax for free I am hopefully making my contribution in regards to all three of the 
+        These are our prime tools to make sure that IT becomes a <em>commodity</em>. And by giving away Ra-Ajax to 
+        the world for free, I am hopefully making my contribution in regards to all three of the 
         points above. I love Open Source, Open Web and Open Innovation. And I think that currently
         Ajax from a conceptual point of view is that <em>one soldier at the very first line of soldiers</em>
         in the battle for <em>commoditization of information and information technology</em>.
     </p>
     <p>
         Now I might have scared some of you off to such an extent that you may never be able to hire
-        me or Kariem. I just must say that all though I have strong ideas about the Open Web, Open Source
-        and Open Innovation I am still able to work on an hourly basis for your cause unless it directly
+        me or Kariem. I just must say that although I have strong ideas about the Open Web, Open Source
+        and Open Innovation, I am still able to work on an hourly basis for your cause unless it directly
         goes in the exact opposite direction of mine. I too realize that me and Kariem must have bread
         and butter to survive. I hope this clarified things for you so that you don't look
         at us as "fanatics". :)
