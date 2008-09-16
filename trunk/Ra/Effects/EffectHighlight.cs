@@ -58,7 +58,11 @@ namespace Ra.Widgets
     color.r = parseInt(Math.min(255, ((1.0-pos)*dR) + color.r), 10);
     color.g = parseInt(Math.min(255, ((1.0-pos)*dG) + color.g), 10);
     color.b = parseInt(Math.min(255, pos*color.b), 10);
-    this.element.style.backgroundColor = '#' + color.r.toString(16) + color.g.toString(16) + color.b.toString(16);
+    var sr, sg, sb;
+    sr = (color.r < 16 ? '0' : '') + (color.r ? color.r.toString(16) : '0');
+    sg = (color.g < 16 ? '0' : '') + (color.g ? color.g.toString(16) : '0');
+    sb = (color.b < 16 ? '0' : '') + (color.b ? color.b.toString(16) : '0');
+    this.element.style.backgroundColor = '#' + sr + sg + sb;
 ";
         }
     }
