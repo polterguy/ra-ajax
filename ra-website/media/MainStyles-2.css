@@ -85,6 +85,29 @@ img
 	color:#000;
 }
 
+.sitemap
+{
+	text-align: left;
+	font-size:90%;
+}
+
+.sitemap a
+{
+	text-decoration:none;
+	color:#00f;
+}
+
+.sitemap li
+{
+	margin-top:5px;
+}
+
+.sitemap a:hover
+{
+	text-decoration:underline;
+	color:#000;
+}
+
 #contentOfPageDiv div
 {
 	text-align:justify;

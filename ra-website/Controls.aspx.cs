@@ -33,7 +33,7 @@ public partial class Controls : System.Web.UI.Page
 
     protected void drop_SelectedIndexChanged(object sender, EventArgs e)
     {
-        Effect effect = new EffectFadeIn(drop, 1.0M);
+        Effect effect = new EffectFadeIn(drop, 1000);
         effect.Render();
         hid.Value = drop.SelectedItem.Value;
     }
@@ -56,7 +56,7 @@ public partial class Controls : System.Web.UI.Page
 
     protected void btn4_Click(object sender, EventArgs e)
     {
-        Effect effect = new EffectFadeIn(pnl, 1.0M);
+        Effect effect = new EffectFadeIn(pnl, 1000);
         effect.Render();
     }
 

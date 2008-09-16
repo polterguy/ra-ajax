@@ -37,12 +37,12 @@ public partial class MasterPage : System.Web.UI.MasterPage
             if (Request.Browser.Browser == "IE")
             {
                 pnlCrappyBrowser.Visible = true;
-                Effect effect2 = new EffectFadeIn(pnlCrappyBrowser, 0.4M);
+                Effect effect2 = new EffectFadeIn(pnlCrappyBrowser, 400);
                 effect2.Render();
             }
 
             // Adding effect to Show-Code button
-            Effect effect = new EffectFadeIn(btnShowCode, 0.6M);
+            Effect effect = new EffectFadeIn(btnShowCode, 600);
             effect.Render();
 
             // Iterating through all bloggers showing links to them...
@@ -73,7 +73,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
     protected void btnShowCode_Click(object sender, EventArgs e)
     {
         pnlShowCode.Visible = true;
-        Effect effect = new EffectRollDown(pnlShowCode, 1.0M, 600);
+        Effect effect = new EffectRollDown(pnlShowCode, 1000, 600);
         effect.Render();
         GetCSharpCode();
         ViewState["code"] = "C#";
@@ -81,13 +81,13 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
     protected void closeIE_Click(object sender, EventArgs e)
     {
-        Effect effect = new EffectFadeOut(pnlCrappyBrowser, 0.4M);
+        Effect effect = new EffectFadeOut(pnlCrappyBrowser, 400);
         effect.Render();
     }
 
     protected void switchCodeType_Click(object sender, EventArgs e)
     {
-        Effect effect = new EffectFadeIn(lblCode, 0.5M);
+        Effect effect = new EffectFadeIn(lblCode, 500);
         effect.Render();
         if (ViewState["code"].ToString() == "C#")
         {
@@ -180,7 +180,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
     protected void closeShowCode_Click(object sender, EventArgs e)
     {
-        Effect effect = new EffectRollUp(pnlShowCode, 1.0M, 600);
+        Effect effect = new EffectRollUp(pnlShowCode, 1000, 600);
         effect.Render();
     }
 }

@@ -85,9 +85,9 @@ public partial class Todo : System.Web.UI.Page
         if (panel == null)
             panel = ctrl.Parent.Controls[8] as Panel;
         panel.Visible = true;
-        Effect effect = new EffectFadeIn(panel, 0.4M);
+        Effect effect = new EffectFadeIn(panel, 400);
         effect.Render();
-        effect = new EffectSize(panel, 0.4M, 150, 350);
+        effect = new EffectSize(panel, 400, 150, 350);
         effect.Render();
     }
 

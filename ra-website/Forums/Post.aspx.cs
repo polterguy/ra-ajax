@@ -86,10 +86,10 @@ public partial class Forums_Post : System.Web.UI.Page
         post.Save();
 
         // Flashing panel
-        Effect effect = new EffectFadeIn(pnlReply, 0.4M);
+        Effect effect = new EffectFadeIn(pnlReply, 400);
         effect.Render();
 
-        effect = new EffectFadeIn(postsWrapper, 0.4M);
+        effect = new EffectFadeIn(postsWrapper, 400);
         effect.Render();
         body.Focus();
         body.Select();

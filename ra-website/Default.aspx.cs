@@ -30,7 +30,7 @@ public partial class _Default : System.Web.UI.Page
                 txtFirstName.Text,
                 txtSurname.Text);
         }
-        Effect effect = new EffectFadeIn(pnlResults, 2.0M);
+        Effect effect = new EffectFadeIn(pnlResults, 2000);
         effect.Render();
     }
 }

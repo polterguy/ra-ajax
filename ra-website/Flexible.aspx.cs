@@ -22,7 +22,7 @@ public partial class Flexible : System.Web.UI.Page
     protected void txt_KeyUp(object sender, EventArgs e)
     {
         lbl.Text = txt.Text;
-        Effect effect = new EffectFadeIn(lbl, 0.4M);
+        Effect effect = new EffectFadeIn(lbl, 400);
         effect.Render();
     }
 
