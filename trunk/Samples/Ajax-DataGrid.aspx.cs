@@ -12,74 +12,74 @@ using Ra.Widgets;
 
 public partial class AjaxDataGrid : System.Web.UI.Page
 {
-	public class DataGridPeople
-	{
-		public string _name;
-		public bool _isAdmin;
-		
-		public DataGridPeople(string name, bool isAdmin)
-		{
-			Name = name;
-			IsAdmin = isAdmin;
-		}
-		
-		public string Name
-		{
-			get { return _name; }
-			set { _name = value; }
-		}
-		
-		public bool IsAdmin
-		{
-			get { return _isAdmin; }
-			set { _isAdmin = value; }
-		}
-	}
-	
+    public class DataGridPeople
+    {
+        public string _name;
+        public bool _isAdmin;
+
+        public DataGridPeople(string name, bool isAdmin)
+        {
+            Name = name;
+            IsAdmin = isAdmin;
+        }
+
+        public string Name
+        {
+            get { return _name; }
+            set { _name = value; }
+        }
+
+        public bool IsAdmin
+        {
+            get { return _isAdmin; }
+            set { _isAdmin = value; }
+        }
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
-		if (!IsPostBack)
-		{
-			datagrid.DataSource = People;
-			datagrid.DataBind();
-		}
+        if (!IsPostBack)
+        {
+            datagrid.DataSource = People;
+            datagrid.DataBind();
+        }
     }
-	
-	protected void NameChanged(object sender, EventArgs e)
-	{
-		Ra.Extensions.InPlaceEdit edit = sender as Ra.Extensions.InPlaceEdit;
-		lbl.Text = string.Format("Name changed to {0}", edit.Text);
-		Effect effect = new EffectFadeIn(lbl, 400);
-		effect.Render();
-	}
-	
-	protected void AdminChanged(object sender, EventArgs e)
-	{
-		Ra.Widgets.CheckBox edit = sender as Ra.Widgets.CheckBox;
-		lbl.Text = string.Format("IsAdmin changed to {0}", edit.Checked);
-		Effect effect = new EffectFadeIn(lbl, 400);
-		effect.Render();
-	}
-	
-	private List<DataGridPeople> People
-	{
-		get
-		{
-			if (Session["People"] == null)
-			{
-				List<DataGridPeople> tmp = new List<DataGridPeople>();
-				tmp.Add(new DataGridPeople("Thomas", true));
-				tmp.Add(new DataGridPeople("Kariem", true));
-				tmp.Add(new DataGridPeople("John Doe", false));
-				Session["People"] = tmp;
-			}
-			List<DataGridPeople> retVal = Session["People"] as List<DataGridPeople>;
-			if( retVal == null )
-			{
-				Session["People"] = null;
-				return People;
-			}
-			return retVal;
-		}
-	}
+
+    protected void NameChanged(object sender, EventArgs e)
+    {
+        Ra.Extensions.InPlaceEdit edit = sender as Ra.Extensions.InPlaceEdit;
+        lbl.Text = string.Format("Name changed to {0}", edit.Text);
+        Effect effect = new EffectFadeIn(lbl, 400);
+        effect.Render();
+    }
+
+    protected void AdminChanged(object sender, EventArgs e)
+    {
+        Ra.Widgets.CheckBox edit = sender as Ra.Widgets.CheckBox;
+        lbl.Text = string.Format("IsAdmin changed to {0}", edit.Checked);
+        Effect effect = new EffectFadeIn(lbl, 400);
+        effect.Render();
+    }
+
+    private List<DataGridPeople> People
+    {
+        get
+        {
+            if (Session["People"] == null)
+            {
+                List<DataGridPeople> tmp = new List<DataGridPeople>();
+                tmp.Add(new DataGridPeople("Thomas", true));
+                tmp.Add(new DataGridPeople("Kariem", true));
+                tmp.Add(new DataGridPeople("John Doe", false));
+                Session["People"] = tmp;
+            }
+            List<DataGridPeople> retVal = Session["People"] as List<DataGridPeople>;
+            if (retVal == null)
+            {
+                Session["People"] = null;
+                return People;
+            }
+            return retVal;
+        }
+    }
 }

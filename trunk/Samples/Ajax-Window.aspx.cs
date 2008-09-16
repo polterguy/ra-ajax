@@ -13,8 +13,8 @@ public partial class AjaxWindow : System.Web.UI.Page
 {
     protected void showWindow_Click(object sender, EventArgs e)
     {
-		window.Visible = true;
-		Effect effect = new EffectFadeIn(window, 400);
-		effect.Render();
+        window.Visible = true;
+        Effect effect = new EffectFadeIn(window, 400);
+        effect.Render();
     }
 }

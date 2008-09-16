@@ -39,13 +39,13 @@
     	CssClass="window"
     	style="width:250px;height:280px;z-index:500;position:absolute;left:350px;top:450px;"
     	id="window">
-    	<div style="padding:5px;">
-			Try to move me around by dragging my header field.
-			<br />
-		    <img 
-		        alt="Flower" 
-		        src="media/flower1.jpg" />
-		</div>
+        <div style="padding:5px;">
+	        Try to move me around by dragging my header field.
+	        <br />
+            <img 
+                alt="Flower" 
+                src="media/flower1.jpg" />
+        </div>
     </ext:Window>
     <div style="height:300px;">&nbsp;</div>
     <p>

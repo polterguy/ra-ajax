@@ -18,9 +18,9 @@ public partial class AjaxImage : System.Web.UI.Page
 
     protected void btn_Click(object sender, EventArgs e)
     {
-        img.ImageUrl = 
+        img.ImageUrl =
             img.ImageUrl == "media/flower1.jpg" ?
-                "media/flower2.jpg" : 
+                "media/flower2.jpg" :
                 "media/flower1.jpg";
     }
 

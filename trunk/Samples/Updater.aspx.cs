@@ -12,11 +12,11 @@ using Ra.Widgets;
 
 public partial class AjaxUpdater : System.Web.UI.Page
 {
-	protected void btn_Click(object sender, EventArgs e)
-	{
-		System.Threading.Thread.Sleep(2000);
-		lbl.Text = "Note though that there was an intentional delay of 2 seconds on "+
-			"the server when the request was being sent to make sure you would notice "+
-			"the Ajax Updater"; 
-	}
+    protected void btn_Click(object sender, EventArgs e)
+    {
+        System.Threading.Thread.Sleep(2000);
+        lbl.Text = "Note though that there was an intentional delay of 2 seconds on " +
+            "the server when the request was being sent to make sure you would notice " +
+            "the Ajax Updater";
+    }
 }
