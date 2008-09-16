@@ -34,7 +34,7 @@ public partial class Advantages : System.Web.UI.Page
             lblEndResults.Text = "FBI is on its way";
             panelResults.Style["background-color"] = "Red";
         }
-        Effect effect = new EffectRollDown(panelResults, 1.0M, 200);
+        Effect effect = new EffectRollDown(panelResults, 1000, 200);
         effect.Render();
     }
 }

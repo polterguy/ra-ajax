@@ -16,12 +16,12 @@ namespace Samples
         protected void timer_Tick(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            Effect effect = new EffectSize(pnlTimer, 0.4M, rnd.Next(100, 250), rnd.Next(200, 700));
+            Effect effect = new EffectSize(pnlTimer, 400, rnd.Next(100, 250), rnd.Next(200, 700));
             effect.Render();
-            effect = new EffectMove(pnlTimer2, 0.4M, rnd.Next(0, 100), rnd.Next(0, 200));
+            effect = new EffectMove(pnlTimer2, 400, rnd.Next(0, 100), rnd.Next(0, 200));
             effect.Render();
             date.Text = DateTime.Now.ToString("dddd, MMM dd, yyyy - HH:mm:ss");
-            effect = new EffectFadeIn(date, 0.4M);
+            effect = new EffectFadeIn(date, 400);
             effect.Render();
         }
     }

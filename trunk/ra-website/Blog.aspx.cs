@@ -180,7 +180,7 @@ public partial class Blog : System.Web.UI.Page
         pnlNewBlog.Style["display"] = "";
         txtHeader.Focus();
         txtHeader.Select();
-        Effect effect = new EffectFadeIn(pnlNewBlog, 0.4M);
+        Effect effect = new EffectFadeIn(pnlNewBlog, 400);
         effect.Render();
         hidBlogId.Value = "";
     }
@@ -188,7 +188,7 @@ public partial class Blog : System.Web.UI.Page
     protected void btnImages_Click(object sender, EventArgs e)
     {
         pnlImages.Visible = true;
-        Effect effect = new EffectFadeIn(pnlImages, 0.4M);
+        Effect effect = new EffectFadeIn(pnlImages, 400);
         effect.Render();
 
         DataBindImages();
@@ -216,7 +216,7 @@ public partial class Blog : System.Web.UI.Page
 
     protected void btnImagesClose_Click(object sender, EventArgs e)
     {
-        Effect effect = new EffectFadeOut(pnlImages, 0.4M);
+        Effect effect = new EffectFadeOut(pnlImages, 400);
         effect.Render();
         txtHeader.Focus();
         txtHeader.Select();
@@ -228,7 +228,7 @@ public partial class Blog : System.Web.UI.Page
         pnlNewBlog.Style["display"] = "";
         txtHeader.Focus();
         txtHeader.Select();
-        Effect effect = new EffectFadeIn(pnlNewBlog, 0.4M);
+        Effect effect = new EffectFadeIn(pnlNewBlog, 400);
         effect.Render();
 
         Ra.Widgets.HiddenField hid = (sender as System.Web.UI.Control).Parent.Controls[1] as Ra.Widgets.HiddenField;
@@ -259,13 +259,13 @@ public partial class Blog : System.Web.UI.Page
             Response.Redirect("~", true);
         DataBindBlogs(oper);
         blogWrapper.ReRender();
-        Effect effect = new EffectFadeIn(blogWrapper, 0.4M);
+        Effect effect = new EffectFadeIn(blogWrapper, 400);
         effect.Render();
     }
 
     protected void btnCancelSave_Click(object sender, EventArgs e)
     {
-        Effect effect = new EffectFadeOut(pnlNewBlog, 0.4M);
+        Effect effect = new EffectFadeOut(pnlNewBlog, 400);
         effect.Render();
     }
 
@@ -295,10 +295,10 @@ public partial class Blog : System.Web.UI.Page
 
         DataBindBlogs(oper);
         blogWrapper.ReRender();
-        Effect effect = new EffectFadeIn(blogWrapper, 0.4M);
+        Effect effect = new EffectFadeIn(blogWrapper, 400);
         effect.Render();
 
-        effect = new EffectFadeOut(pnlNewBlog, 0.4M);
+        effect = new EffectFadeOut(pnlNewBlog, 400);
         effect.Render();
     }
 }

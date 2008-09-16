@@ -145,7 +145,7 @@
         runat="server" 
         ID="acc" 
         CssClass="accordion-control" 
-        AnimationSpeed="0.2"
+        AnimationSpeed="200"
         style="width:75%;height:170px;">
 
         <ext:AccordionView 

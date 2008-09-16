@@ -145,7 +145,7 @@ public partial class Forums_Forums : System.Web.UI.Page
         else
         {
             lblError.Text = "Couldn't log you in";
-            Effect effect = new EffectFadeIn(lblError, 0.4M);
+            Effect effect = new EffectFadeIn(lblError, 400);
             username.Focus();
             username.Select();
             effect.Render();
@@ -168,9 +168,9 @@ public partial class Forums_Forums : System.Web.UI.Page
             newUsername.Select();
 
             // Fading in/out panels...
-            Effect effect = new EffectFadeOut(pnlLogin, 0.6M);
+            Effect effect = new EffectFadeOut(pnlLogin, 600);
             effect.Render();
-            effect = new EffectFadeIn(pnlRegister, 0.6M);
+            effect = new EffectFadeIn(pnlRegister, 600);
             effect.Render();
 
             newUsername.Text = username.Text;
@@ -186,9 +186,9 @@ public partial class Forums_Forums : System.Web.UI.Page
         pnlLogin.Visible = true;
 
         // Fading in/out panels...
-        Effect effect = new EffectFadeIn(pnlLogin, 0.6M);
+        Effect effect = new EffectFadeIn(pnlLogin, 600);
         effect.Render();
-        effect = new EffectFadeOut(pnlRegister, 0.6M);
+        effect = new EffectFadeOut(pnlRegister, 600);
         effect.Render();
         pnlLogin.Style["display"] = "";
         username.Focus();
@@ -234,7 +234,7 @@ Have a nice day :)",
     {
         lblErrorPost.Text = "";
         pnlNewPost.Visible = true;
-        Effect effect = new EffectFadeIn(pnlNewPost, 0.4M);
+        Effect effect = new EffectFadeIn(pnlNewPost, 400);
         effect.Render();
         pnlNewPost.Style["display"] = "";
         header.Focus();
@@ -246,11 +246,11 @@ Have a nice day :)",
         if (changePassword.Text != changePasswordConfirm.Text)
         {
             lblErrorProfile.Text = "Passwords didn't match";
-            Effect effect2 = new EffectFadeIn(lblErrorProfile, 0.4M);
+            Effect effect2 = new EffectFadeIn(lblErrorProfile, 400);
             effect2.Render();
             return;
         }
-        Effect effect = new EffectFadeOut(pnlProfile, 0.4M);
+        Effect effect = new EffectFadeOut(pnlProfile, 400);
         effect.Render();
 
         Operator.Current.Pwd = changePassword.Text;
@@ -262,7 +262,7 @@ Have a nice day :)",
     protected void btnCancelSavingProfile_Click(object sender, EventArgs e)
     {
         lblErrorProfile.Text = "";
-        Effect effect = new EffectFadeOut(pnlProfile, 0.4M);
+        Effect effect = new EffectFadeOut(pnlProfile, 400);
         effect.Render();
     }
 
@@ -270,7 +270,7 @@ Have a nice day :)",
     {
         pnlProfile.Visible = true;
         pnlProfile.Style["display"] = "";
-        Effect effect = new EffectFadeIn(pnlProfile, 0.4M);
+        Effect effect = new EffectFadeIn(pnlProfile, 400);
         effect.Render();
         changePassword.Text = Operator.Current.Pwd;
         changePassword.Focus();
@@ -283,7 +283,7 @@ Have a nice day :)",
     protected void newPostCancel_Click(object sender, EventArgs e)
     {
         // Removing panel
-        Effect effect = new EffectFadeOut(pnlNewPost, 0.4M);
+        Effect effect = new EffectFadeOut(pnlNewPost, 400);
         effect.Render();
     }
 
@@ -300,7 +300,7 @@ Have a nice day :)",
         if (header.Text.Length < 5)
         {
             lblErrorPost.Text = "Header of post is too short";
-            Effect effect2 = new EffectFadeIn(lblErrorPost, 0.4M);
+            Effect effect2 = new EffectFadeIn(lblErrorPost, 400);
             effect2.Render();
             return;
         }
@@ -317,7 +317,7 @@ Have a nice day :)",
         post.Save();
 
         // Removing panel
-        Effect effect = new EffectFadeOut(pnlNewPost, 0.4M);
+        Effect effect = new EffectFadeOut(pnlNewPost, 400);
         effect.Render();
 
         // Re-rendering posts to get the newly added item
