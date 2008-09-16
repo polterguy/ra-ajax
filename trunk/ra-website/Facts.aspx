@@ -78,7 +78,7 @@
     <p>
         NO! Ra-Ajax is not a commercial product and everything in the library is done 
         on a completely voluntary basis. We wanted to create a business model around 
-        Ra-Ajax but since <a href="http://gaiaware.net">Gaiaware AS</a> (a company Thomas 
+        Ra-Ajax but since <em>Gaiaware AS</em> (a company Thomas 
         Hansen founded a couple of years ago) threatened us
         with lawsuits if we were to create a <em>competing product</em> we felt it was 
         better to remove all financial incentives behind the library itself and just have
@@ -104,7 +104,7 @@
         We in Ra Software have an intense believe in the Open Web and Ajax and while there exists
         great portable Open Source tools for almost every possible thing here in this world, Ajax
         for ASP.NET is virtually a "dark spot". Currently there exists only - 
-        <a href="http://ajaxwidgets.com">Gaia Ajax Widgets</a> which has some greatness within, 
+        <em>Gaia Ajax Widgets</em> which has some greatness within, 
         though we in Ra Software do not believe that Gaia will stay 
         <a href="http://www.mono-project.com/Main_Page">Mono</a> compatible. For us Mono compatibility
         is crucial. Also owning our own foundation is crucial for us and since 

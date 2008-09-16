@@ -105,9 +105,8 @@
     <h2>This website...</h2>
     <p>
         ...is entirely created using Ra Ajax and actually the samples website for Ra Ajax. It uses 
-        <a href="http://www.castleproject.org/ActiveRecord/">ActiveRecord</a> for database
-        abstraction and <a href="http://www.urlrewriting.net/149/en/home.html">Url Rewriting</a>
-        based on <a href="http://weblogs.asp.net/fmarguerie/">Fabrice</a>'s work. Everything you 
+        <em>ActiveRecord</em> for database abstraction and <em>Url Rewriting</em>
+        based on <em>Fabrice</em>'s work. Everything you 
         see here, including the forums and blogs is Open Source and part of the Ra Ajax download
         and can be consumed in your own projects as you wish. But please rewrite the TEXT of the 
         static pages if you do so since otherwise Google will penaltize websites if it finds what 

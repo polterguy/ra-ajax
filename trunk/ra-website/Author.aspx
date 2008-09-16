@@ -23,8 +23,7 @@
     </p>
     <h2>Thomas Hansen</h2>
     <p>
-        I am the founding father of <a href="http://smartwinlib.org">SmartWin++</a> and 
-        <a href="http://ajaxwidgets.com">Gaia Ajax Widgets</a> and <a href="http://gaiaware.net">Gaiaware AS</a>. 
+        I am the founding father of <em>SmartWin++, Gaia Ajax Widgets and Gaiaware AS</em>. 
         I have mostly developed libraries my entire carreer and especially focused on Ajax, Open Source and 
         Open Standards. I am born in 1974 in Norway and I speak Norwegian and English fluently.
     </p>
