@@ -332,7 +332,7 @@ Ra.Control.prototype = {
     // there is no need to do this for the child controls since their HTML will disappear
     // anyway.
     if (!invisibleHtml)
-        this.element.replace('<span id="' + this.element.id + '" style="display:none;" />');
+        this.element.replace("<span id=\"" + this.element.id + "\" style=\"display:none;\" />");
     else
         this.element.replace(invisibleHtml);
   },

@@ -32,7 +32,7 @@
 
 * Fix a set of beautiful skins for all extension-controls.
 
-
+* Rename AnimationSpeed on Accordion to AnimationDuration
 
 
 

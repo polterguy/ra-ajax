@@ -120,10 +120,9 @@ namespace Ra.Extensions
 		
 		protected override string GetClientSideScriptOptions ()
 		{
-			if (Enabled && Tick != null)
-				return "enabled:true";
-			else
-				return string.Empty;
+			if (!Enabled || Tick == null)
+				return "enabled:false";
+			return string.Empty;
 		}
 
 

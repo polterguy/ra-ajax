@@ -16,9 +16,9 @@ public partial class Behaviors : System.Web.UI.Page
 	{
 		if (!IsPostBack)
 		{
-			dragger1.Bounds = new Rectangle(350, 550, 500, 300);
+			dragger1.Bounds = new Rectangle(0, 0, 450, 150);
 			dragger1.Snap = new Point(10, 10);
-			dragger2.Bounds = new Rectangle(350, 550, 500, 300);
+			dragger2.Bounds = new Rectangle(0, 0, 450, 150);
 			sliderDragger.Bounds = new Rectangle(328, 1031, 170, 0);
 		}
 	}
