@@ -90,6 +90,21 @@
 
     <div style="height:200px;">&nbsp;</div>
 
+    <h2>Ra-Ajax have 100% IE support, REALLY!</h2>
+    <p>
+    	Though <em>our samples does not have 100% IE support</em>. This means that some of the samples will not work 100% correct
+    	in neither IE6 nor IE7. This is a conscious choice we have done since history have shown us that to try to support all
+    	the different quirks in IE for a waste amount of samples like we have here will first of all consume a lot of our energy
+    	but also more importantly degrade the quality of our HTML and CSS. We have done most of the "easy hacks" but as you can 
+    	see above the Draggable Label above does not work in IE at all. This is easy to fix by making sure that label is absolute
+    	positioned, but this would degrade the quality of the HTML for all other browsers. And therefor we have choosen NOT to
+    	support IE for some of our samples.
+    </p>
+    <p>
+    	Note that all JavaScript and the core functionality of Ra-Ajax works 100% correct in all the big browsers, including 
+    	IE6 and onwards. But as explained above, not all of our samples does. 
+    </p>
+    <br />
     <h2>Ajax Behaviors is a BIG gun!</h2>
     <p>
     	Note though that all though this gives you a LOT of power it is very easy to overdo Ajax Behaviors by adding them in
@@ -108,12 +123,12 @@
     	by combining a couple of controls with some Ajax Behaviors.
     </p>
     <br />
-    <div style="width:200px;border:solid 1px Black;">
+    <div style="width:200px;border:solid 1px Black;padding-top:2px;position:absolute;">
     	&nbsp;
 	    <ra:Label 
 	        runat="server" 
 	        ID="slider"
-	        style="font-size:10px;cursor:move;position:absolute;top:1031px;left:328px;color:#33f;border:solid 1px #33f;width:25px;height:15px;-moz-user-select:none;"
+	        style="font-size:10px;cursor:move;position:absolute;color:#33f;border:solid 1px #33f;width:25px;height:15px;-moz-user-select:none;"
 	        Text="&nbsp;">
 
 	    	<ra:BehaviorDraggable 
@@ -123,7 +138,7 @@
 
 	    </ra:Label>
     </div>
-    <p>
+    <p style="margin-top:55px;">
     	Note that the above Ajax Slider control is intentionally kept ugly to make sure the code is easy to understand and
     	may serve as a reference for others wanting to create their own Ajax Extension Controls using Ra-Ajax.
     </p>
