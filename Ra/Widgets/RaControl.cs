@@ -488,6 +488,13 @@ namespace Ra.Widgets
 			}
 			return evts;
 		}
+		
+		private List<string> _extraInitFunctions = new List<string>();
+		
+		internal void AddInitCall(string functionReference)
+		{
+			_extraInitFunctions.Add(functionReference);
+		}
 
 		// Used to retrieve the client-side initialization script
 		private bool _scriptRetrieved;
@@ -503,14 +510,21 @@ namespace Ra.Widgets
 			string evts = GetScriptEvents(!string.IsNullOrEmpty(options) || !string.IsNullOrEmpty(behaviors));
 
 			string optionsString = options + behaviors + evts;
+			
+			string extraFunctionCalls = "";
+			foreach (string idx in this._extraInitFunctions)
+			{
+				extraFunctionCalls += "." + idx;
+			}
 
 			// Appending the closing brace
 			if (!string.IsNullOrEmpty(optionsString))
 				optionsString = ",{" + optionsString + "}";
-			return string.Format("\r\n{2}('{0}'{1});", 
+			return string.Format("\r\n{2}('{0}'{1}){3};", 
 				ClientID, 
 				optionsString,
-				GetClientSideScriptType());
+				GetClientSideScriptType(),
+		        extraFunctionCalls);
 		}
 
 		protected virtual string GetClientSideScriptType()

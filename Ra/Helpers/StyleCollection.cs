@@ -186,6 +186,7 @@ namespace Ra.Widgets
 					switch (idxKey)
 					{
 						case "opacity":
+						    this._control.AddInitCall(string.Format("element.setOpacity({0})", _styleValues[idxKey].Value));
 							continue;
 					}
 				}
