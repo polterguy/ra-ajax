@@ -80,7 +80,7 @@
 				            runat="server" 
 				            ID="accView1" 
 				            CssClass="content">
-		                    <ul class="links">
+		                    <ul class="samplesMenu">
 		                        <li>
 		                            <a runat="server" href="~">Samples Start Page</a>
 		                        </li>
@@ -112,7 +112,7 @@
 				            runat="server" 
 				            ID="accView2" 
 				            CssClass="content">
-		                    <ul class="links">
+		                    <ul class="samplesMenu">
 		                        <li>
 		                            <a href="Ajax-Button.aspx">Ra-Ajax - Button</a>
 		                        </li>
