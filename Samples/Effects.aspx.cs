@@ -25,9 +25,9 @@ public partial class Effects : System.Web.UI.Page
         btn2.Enabled = true;
         btn2.Focus();
         Effect effect = new EffectSize(pnl, 600, 300, 300);
-		effect.Sinoidal = true;
-		effect.Chained.Add(new EffectHighlight());
-		effect.Chained.Add(new EffectBorder(5));
+        effect.Sinoidal = true;
+        effect.Chained.Add(new EffectHighlight());
+        effect.Chained.Add(new EffectBorder(5));
         effect.Render();
     }
 
