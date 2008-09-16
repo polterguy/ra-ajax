@@ -19,7 +19,7 @@ public partial class Behaviors : System.Web.UI.Page
 			dragger1.Bounds = new Rectangle(0, 0, 450, 150);
 			dragger1.Snap = new Point(10, 10);
 			dragger2.Bounds = new Rectangle(0, 0, 450, 150);
-			sliderDragger.Bounds = new Rectangle(328, 1031, 170, 0);
+			sliderDragger.Bounds = new Rectangle(2, 2, 170, 0);
 		}
 	}
 	
@@ -44,7 +44,7 @@ public partial class Behaviors : System.Web.UI.Page
 	
     protected void draggerDragger_Dropped(object sender, EventArgs e)
     {
-		slider.Text = (Int32.Parse(slider.Style["left"].Replace("px", "")) - 328).ToString();
+		slider.Text = (Int32.Parse(slider.Style["left"].Replace("px", "")) - 2).ToString();
 		Effect effect = new EffectFadeIn(slider, 400);
 		effect.Render();
     }
