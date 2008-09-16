@@ -46,7 +46,7 @@
         Obviously the above sample is a very useless example of an Ajax Timer, a more appropriate example
         of using the Ajax Timer class would maybe be a Chat Client. Or maybe an email system which polls the
         server every n'th minute to check for new emails and so on. We are using the Ajax Timer in our
-        own <a href="http://ra-wiki.org">Wiki System</a> to make sure the user does not get a Session
+        own Wiki System to make sure the user does not get a Session
         timeout when he is editing a wiki entry. This works since every time you call into the server
         in ASP.NET it will reset the "minutes to session timeout" countdown...
     </p>

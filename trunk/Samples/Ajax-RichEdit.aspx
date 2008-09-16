@@ -54,7 +54,7 @@
         give you the basic tools needed to create a WYSIWYG RichEditor just the way you want it to be.
     </p>
     <p>
-        In our <a href="http://ra-wiki.org">Wiki system</a> we are actually using this RichEditor and we 
+        In our Wiki system we are actually using this RichEditor and we 
         have support for adding Images and all the rich formatting you can dream of. So instead of giving
         you a "fully fledged and way too fat" JavaScript file which tries to solve everything for you
         (hint; check the JS size of most WYSIWYG Editors available today) we have given you the
