@@ -32,8 +32,6 @@
 
 * Fix a set of beautiful skins for all extension-controls.
 
-* The .reRender in Control.js must take the InVisible HTML for the control
-
 
 
 

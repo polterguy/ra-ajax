@@ -46,10 +46,11 @@ namespace Ra.Widgets
       color = {r:parseInt(cols[0], 10), g:parseInt(cols[1], 10), b:parseInt(cols[2], 10)};
     } else {
       if(clr.slice(0,1) == '#') {
-        if(this.length==4)
+        if(clr.length==4)
           color = {r:parseInt(clr.charAt(1)+clr.charAt(1), 16),g:parseInt(clr.charAt(2)+clr.charAt(2), 16),b:parseInt(clr.charAt(3)+clr.charAt(3), 16)};
-        if(this.length==7)
+        if(clr.length==7) {
           color = {r:parseInt(clr.charAt(1)+clr.charAt(2), 16),g:parseInt(clr.charAt(3)+clr.charAt(4), 16),b:parseInt(clr.charAt(5)+clr.charAt(6), 16)};
+        }
       }
     }
     var dR = 255 - color.r;
