@@ -34,6 +34,18 @@
 
 * Rename AnimationSpeed on Accordion to AnimationDuration
 
+* Fade effects doesn't work in Konqueror, probably setOpacity and getOpacity does something wrong...
+
+* Dynamic.aspx doesn't work when switching controls in Konqueror. Looks like dynamically loading controls doesn't really work...
+
+* InPlaceEdit doesn't work in Opera
+
+* TextBox doesn't work in Konqueror
+
+* RichEdit doesn't work in Konqueror 
+
+
+
 
 
 
