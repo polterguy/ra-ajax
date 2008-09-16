@@ -39,6 +39,26 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "C:\...\Samples\", "Samples\
 		VWDPort = "2592"
 	EndProjectSection
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "C:\...\ra-website\", "ra-website\", "{2C277471-9E07-41F2-90C8-D94AA97F0DED}"
+	ProjectSection(WebsiteProperties) = preProject
+		ProjectReferences = "{DA39B87F-8E68-4461-9C24-5778921497A5}|Extensions.dll;{D71BF1F1-FA92-4CA7-B76F-7E239CC2D69C}|ResourceCacher.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/ra-website"
+		Debug.AspNetCompiler.PhysicalPath = "ra-website\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\ra-website\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/ra-website"
+		Release.AspNetCompiler.PhysicalPath = "ra-website\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\ra-website\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "2934"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -89,6 +109,16 @@ Global
 		{3522C0C4-2191-4FC1-AE82-B46E7B31BBF6}.Release|Any CPU.ActiveCfg = Debug|.NET
 		{3522C0C4-2191-4FC1-AE82-B46E7B31BBF6}.Release|Mixed Platforms.ActiveCfg = Debug|.NET
 		{3522C0C4-2191-4FC1-AE82-B46E7B31BBF6}.Release|Mixed Platforms.Build.0 = Debug|.NET
+		{2C277471-9E07-41F2-90C8-D94AA97F0DED}.Debug|.NET.ActiveCfg = Debug|.NET
+		{2C277471-9E07-41F2-90C8-D94AA97F0DED}.Debug|.NET.Build.0 = Debug|.NET
+		{2C277471-9E07-41F2-90C8-D94AA97F0DED}.Debug|Any CPU.ActiveCfg = Debug|.NET
+		{2C277471-9E07-41F2-90C8-D94AA97F0DED}.Debug|Mixed Platforms.ActiveCfg = Debug|.NET
+		{2C277471-9E07-41F2-90C8-D94AA97F0DED}.Debug|Mixed Platforms.Build.0 = Debug|.NET
+		{2C277471-9E07-41F2-90C8-D94AA97F0DED}.Release|.NET.ActiveCfg = Debug|.NET
+		{2C277471-9E07-41F2-90C8-D94AA97F0DED}.Release|.NET.Build.0 = Debug|.NET
+		{2C277471-9E07-41F2-90C8-D94AA97F0DED}.Release|Any CPU.ActiveCfg = Debug|.NET
+		{2C277471-9E07-41F2-90C8-D94AA97F0DED}.Release|Mixed Platforms.ActiveCfg = Debug|.NET
+		{2C277471-9E07-41F2-90C8-D94AA97F0DED}.Release|Mixed Platforms.Build.0 = Debug|.NET
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
