@@ -23,9 +23,9 @@ Ra.extend(Ra.Comet.prototype, {
     this.initControl(el, opt);
     this.options = Ra.extend({
       url:document.getElementsByTagName('form')[0].action,
-      previousMsg:''
+      previousMsg:'',
+      enabled:true
     }, opt || {});
-
     if( this.options.enabled)
       this.start();
   },

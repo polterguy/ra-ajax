@@ -37,42 +37,42 @@
 	<ra:Button 
 		runat="server" 
 		id="btnHide1" 
-		style="position:absolute;top:500px;left:350px;"
 		Text="Hide first label" 
 		OnClick="btnHide1_Click" />
 
 	<ra:Button 
 		runat="server" 
 		id="btnHide2" 
-		style="position:absolute;top:500px;left:550px;"
+		style="margin-left:100px;"
 		Text="Hide second label" 
 		OnClick="btnHide2_Click" />
+	<div style="position:absolute;margin-top:15px;">
+	    <ra:Label 
+	        runat="server" 
+	        ID="lbl1" 
+	        style="cursor:move;position:absolute;color:#33f;border:solid 1px #33f;padding:5px;width:100px;-moz-user-select:none;z-index:2;background-color:White;"
+	        Text="See me snap...">
 
-    <ra:Label 
-        runat="server" 
-        ID="lbl1" 
-        style="cursor:move;position:absolute;top:550px;left:350px;color:#33f;border:solid 1px #33f;padding:5px;width:100px;-moz-user-select:none;z-index:2;background-color:White;"
-        Text="See me snap...">
+	    	<ra:BehaviorDraggable 
+	    		runat="server"
+	    		ID="dragger1"
+	    		OnDropped="dragger1_Dropped" />
 
-    	<ra:BehaviorDraggable 
-    		runat="server"
-    		ID="dragger1"
-    		OnDropped="dragger1_Dropped" />
+	    </ra:Label>
 
-    </ra:Label>
+	    <ra:Label 
+	        runat="server" 
+	        ID="lbl2"
+	        style="cursor:move;position:absolute;left:200px;color:#33f;border:solid 1px #33f;padding:5px;width:100px;-moz-user-select:none;z-index:2;background-color:White;"
+	        Text="Try to drag and drop me too around in the browser">
 
-    <ra:Label 
-        runat="server" 
-        ID="lbl2"
-        style="cursor:move;position:absolute;top:550px;left:550px;color:#33f;border:solid 1px #33f;padding:5px;width:100px;-moz-user-select:none;z-index:2;background-color:White;"
-        Text="Try to drag and drop me too around in the browser">
+	    	<ra:BehaviorDraggable 
+	    		runat="server"
+	    		ID="dragger2"
+	    		OnDropped="dragger2_Dropped" />
 
-    	<ra:BehaviorDraggable 
-    		runat="server"
-    		ID="dragger2"
-    		OnDropped="dragger2_Dropped" />
-
-    </ra:Label>
+	    </ra:Label>
+    </div>
 
     <ra:Label 
         runat="server" 

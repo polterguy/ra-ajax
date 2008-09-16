@@ -64,7 +64,7 @@ namespace Ra.Extensions
             _text.ID = "txt";
             _text.Text = _link.Text;
             _text.Visible = false;
-            _text.Blur += new EventHandler(_text_Blur);
+			_text.Blur += new EventHandler(_text_Blur);
             Controls.Add(_text);
         }
 

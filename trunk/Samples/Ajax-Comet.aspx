@@ -33,6 +33,10 @@
         when <em>all other options are inadequate</em>. Comet is only to be used if you are 
         <em>100% sure about that you need it</em>!
     </p>
+    <p>
+    	Since the Comet is currently in pre-release preview mode we have <strong>disabled the comet in this example</strong>
+    	but you can test it locally by setting its Enabled property to true when you download Ra-Ajax.
+    </p>
     <ra:Panel 
         runat="server" 
         ID="chat" 
@@ -41,17 +45,19 @@
     <ra:TextBox 
         runat="server" 
         ID="newChat" 
-        Text="Write chat" 
+        Text="INTENTIONALLY DISABLED" 
         style="width:75%;margin-top:5px;"
         OnFocused="newChat_Focused" />
     <ra:Button 
         runat="server" 
         ID="submit" 
+        Enabled="false"
         Text="Submit" 
         OnClick="submit_Click" />
     <ext:Comet 
         runat="server" 
-        ID="comet" 
+        ID="comet"
+        Enabled="false"
         OnTick="comet_Tick" />
     <br />
     <br />

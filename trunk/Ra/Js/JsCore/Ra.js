@@ -113,7 +113,6 @@ Ra.Element.prototype = {
 
   // Replaces element with given HTML
   replace: function(html) {
-
     // Storing id for later to be able to "re-extend" and return "this" back to caller
     var elId = this.id;
 
