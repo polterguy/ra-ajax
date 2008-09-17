@@ -39,7 +39,7 @@
     <br />
     <ra:Label 
         runat="server" 
-        style="color:#33f;"
+        CssClass="updateLbl"
         ID="lblResults" />
     <h2>What happened?</h2>
     <p>
@@ -73,11 +73,11 @@
         to that every property (attribute) of the Label would have to be sent back from the server while Ra-Ajax
         only sends back the properties and attributes that actually changed. This increases the quality of the
         user experience and creates a far more responsive application for your end users. It also stresses your
-        server resources far less. The end result is that if you use Ra-Ajax instead you get to deliver better 
-        applications and you also end up being a far more <em>happy developer</em>. ;)
+        server resources far less. The end result is that if you use Ra-Ajax instead of Partial Rendering you 
+        get to deliver better applications and you also get to be <em>more happy and less frustrated</em>. ;)
     </p>
     <p>
-        None of this really matters though before you start creating really "advanced" stuff, like the sample below;
+        None of this really matters though before you start creating "really advanced" stuff, like the sample below;
     </p>
     <ra:Panel runat="server" ID="pnl" CssClass="panel">
         <ra:Button 
@@ -109,7 +109,8 @@
         </p>
         <p>
         	Try to create something similar in e.g. ASP.NET AJAX and just keep on clicking space and
-        	you will understand that the <em>partial rendering problem</em> goes pretty deep.
+        	you will understand that the <em>partial rendering problem</em> goes pretty deep. Even for
+        	a <em>really simple problem</em> like this one.
         </p>
     </ra:Panel>
     <h2>Why doesn't this work with Partial Rendering?</h2>
@@ -119,13 +120,23 @@
         entire panel. Partial Rendering of the above panel would eliminate the state on the client meaning you would have 
         to re-add Event Handlers and so on for EVERY control inside of the panel. Not to mention it would be orders of 
         magnitude larger in regards to bandwidth usage. Especially for a complex panel. Or imagine the "worst case 
-        scenario" where you are changing some of the Panel's properties as the user is writing inside an Ajax TextBox 
-        within the panel. That would destroy focus from the TextBox as you are writing in addition to that if you 
-        write something while the Ajax Request was fetching data from the server you would also loose those changes in 
-        the TextBox. In Ra-Ajax the above Ajax Response for the Panel looks like this:
+        scenario" where you are <a href="Ajax-Panel.aspx">changing some of the Panel's properties as the user is 
+        writing inside an Ajax TextBox</a> within the panel. That would destroy focus from the TextBox as you are writing 
+        in addition to that if you write something while the Ajax Request was fetching data from the server you would
+        also loose those changes in the TextBox since the new "value" from the server would overwrite those changes
+        done while the server was fetchind the "new panel" from the server.
+    </p>
+    <p>
+    	But for most immediate problems the Bandwidth
+        Usage is the most serious problem. In Ra-Ajax the above Ajax Response for the Panel is very small compared
+        to a Partial Rendering Framework. Compare the Ra-Ajax response below against your favorite Partial Rendering
+        Framework.
     </p>
     <p>
         <em>Ra.Control.$('ctl00_cnt1_pnl').handleJSON({"AddStyle":[["backgroundColor","Yellow"]]});</em>
+    </p>
+    <p>
+        You will probably find it a <em>fraction</em> of the alternative.
     </p>
     <p>
     	To be 100% accurate with you though the above logic <em>is possible</em> in a Partial Rendering Framework though
@@ -163,7 +174,8 @@
         <li><strong>Easier to optimize</strong> (it's easier to optimize a library than "User Code")</li>
         <li><strong>More browser compatible</strong> (*WE* get the browser problems)</li>
         <li><strong>Faster and more responsive</strong> (~20KB of JS in Ra-Ajax)</li>
-        <li>etc...</li>
+        <li><strong>Maintained by happy developers ... ;)</strong> (*YOU!*)</li>
+        <li>+++++++++++++</li>
     </ul>
     <p>
         By using Ra-Ajax you no longer have to worry about JavaScript and you can just develop
@@ -172,19 +184,25 @@
         application.
     </p>
     <p>
-        Note that you CAN still combine JavaScript <em>if you wish</em> with Ra-Ajax. You might come
+        Note that you *can* still combine JavaScript <em>if you wish</em> with Ra-Ajax. You might come
         to a place where you would like to combine JavaScript with Ra-Ajax or create your own Ajax
-        Extension Controls. Also Ra-Ajax could always use an extra pair of hands on development,
-        if you're a JavaScript guru ;)
+        Extension Controls. Or maybe you're just one of those MooTools or jQuery lovers which cannot
+        possibly even consider completely getting rid of those toolboxes. But this is YOUR CHOICE and
+        JavaScript is an OPTION when using Ra-Ajax.
+    </p>
+    <p>
+        BTW, Ra-Ajax could always use an extra pair of hands on development, if you're a JavaScript guru ;)
     </p>
     <p>
         It took us 30 years before we could completely eliminate the need to do Assembly Programming, I have
-        no believe in that Ra-Ajax will overnight completely eliminate the need to do JavaScript.
+        no believe in that Ra-Ajax will overnight completely eliminate the need to do JavaScript. But my dream
+        is to make the JS insertion point so completely abstracted away that 95% of all applications can be 
+        developed completely blindfolded by people who doesn't even know what closures are ;)
     </p>
     <p>
         But if Ra-Ajax succeeds, maybe you would very rarely have to resort to JavaScript and deal with headaches
         like browser compatibility etc... and instead you would focus 90% of your energy on your <em>domain problems</em>
-        instead of having to fiddle with <em>Assembly Programming</em> :)
+        instead of having to fiddle with <em>Assembly Programming</em>...
     </p>
     <a href="Flexible.aspx">On to "Flexible Ajax Event System"...</a>
 </asp:Content>

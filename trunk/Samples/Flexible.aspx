@@ -19,7 +19,7 @@
     <h1>Ra Ajax Samples - Event System</h1>
     <p>
         Normally in ASP.NET WebControls you would expect a Button to have OnClick and mostly no
-        other Event Handler. In Ra-Ajax all the Ajax Controls have tons of additional event handlers
+        other Event Handlers. In Ra-Ajax all the Ajax Controls have tons of additional event handlers
         in addition to the "native ones". Try to hover over the Button below for instance.
     </p>
     <ra:Button 
@@ -41,7 +41,7 @@
     </ul>
     <p>
         And all those events will automagically map to server side events and you wouldn't have to
-        write any JavaScript at all to handle them :)
+        write any JavaScript at all to handle them!
     </p>
     <h2>Do anything from anywhere!</h2>
     <p>

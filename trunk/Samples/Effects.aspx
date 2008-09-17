@@ -28,11 +28,10 @@
         Text="Click me" 
         AccessKey="G"
         OnClick="btn_Click" />
-    <br />
     <ra:Panel 
         runat="server" 
         ID="pnl" 
-        style="position:absolute;background-color:#ddd;border:solid 1px Black;padding:15px;height:100px;width:100px;">
+        CssClass="pnlAnimation">
         Watch the Ajax Effect as you click the above button...
     </ra:Panel>
     <div class="spacer">&nbsp;</div>
@@ -66,15 +65,14 @@
         You can of course create Ajax Effects on the server side from any Ra-Ajax Event Handler if 
         you wish.
     </p>
-    <br />
     <h2>Moving focus around</h2>
     <p>
-        Notice another little nifty thing which is that in this sample we're also moving the Focus 
-        around to exactly the button we want. This too is done in C# on the server-side. This means
+        In this sample we're also manipulating the Focus entirely from the same server-side C# code. 
+        Yet again JavaScript is a bonus and not needed for doing this. This means
         that you can simply press space on your keyboard instead of having to use your mouse to click 
-        the buttons. You can move focus around in Ra-Ajax pages exactly as you wish.
+        the buttons. You can move focus around in Ra-Ajax pages from control to control exactly as 
+        you wish completely transparently without no "quirks".
     </p>
-    <br />
     <h2>Ajax with Keyboard Shortcuts</h2>
     <p>
         The buttons on this page have in order of appearance the keyboard shortcuts of "G", "H" and 
@@ -82,16 +80,17 @@
         Shortcuts by combining them with ALT + SHIFT. This means that if you use the keyboard combination
         of ALT+SHIFT+G you will click the top button, ALT+SHIFT+H the second button and so on. This
         can be set declaratively by using the <em>AccessKey</em> property of the Ra-Ajax WebControls.
+        This also makes your Ra-Ajax solutions far more accessible for people with disabilities. Ra-Ajax
+        is built from the ground up with accessibility in mind.
     </p>
-    <br />
     <h2>Chaining Ajax Effects</h2>
     <p>
         Sometimes you want to run more than one Effect on the same element, like for instance you have
         an invisible Panel and you want to show that Panel with both the EffectRollDown and the
         EffectFadeIn. If you just create them both and let them both run normally, this will 
         often create a jagging effect which doesn't look nice. If you instead <em>chain</em> the
-        effects, it will most often appear much smoother. An example is given below. Click the
-        "Show Code" button to see the code written to accomplish something like this.
+        effects, they will often appear much smoother and demand far less client resources. An example 
+        is given below. Click the "Show Code" button to see the code written to accomplish this.
     </p>
     <ra:Button 
         runat="server" 
@@ -100,9 +99,8 @@
         OnClick="btn4_Click" />
     <ra:Panel 
         runat="server" 
-        ID="pnl2" 
-        style="display:none;position:absolute;"
-        CssClass="panel">
+        ID="pnl2"
+        CssClass="panel pnlInv pnlAbs">
         Watch the Ajax Effect as you click the above button...
     </ra:Panel>
     <div class="spacer">&nbsp;</div>

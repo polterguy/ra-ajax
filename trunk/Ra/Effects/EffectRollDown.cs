@@ -34,7 +34,7 @@ namespace Ra.Widgets
 			if (tmp != null)
 			{
 				tmp.Style["height", false] = _toHeight.ToString() + "px";
-				tmp.Style["display", false] = "";
+				tmp.Style["display", false] = "block";
 			}
 		}
 
@@ -43,7 +43,7 @@ namespace Ra.Widgets
 			UpdateStyleCollection();
             return @"
     this.element.style.height = '0px';
-    this.element.style.display = '';
+    this.element.style.display = 'block';
 ";
         }
 

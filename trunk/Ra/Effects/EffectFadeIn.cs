@@ -28,7 +28,7 @@ namespace Ra.Widgets
 			if (tmp != null)
 			{
 				tmp.Style["opacity", false] = "1.0";
-				tmp.Style["display", false] = "";
+				tmp.Style["display", false] = "block";
 			}
 		}
 
@@ -37,7 +37,7 @@ namespace Ra.Widgets
 			UpdateStyleCollection();
             return @"
     this.element.setOpacity(0);
-    this.element.style.display = '';
+    this.element.style.display = 'block';
 ";
         }
 

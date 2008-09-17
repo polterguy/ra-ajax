@@ -127,6 +127,8 @@ h2 { margin-top:2.7em; }
 .cnt { text-align:justify; }
 .codeBtn { margin-top:2.0em; }
 
+.updateLbl { color:#33f; }
+
 /* Accordion */
 .accordion-control {}
 .accordion-control {}
@@ -138,6 +140,9 @@ h2 { margin-top:2.7em; }
 .accordion-control .accordion-header a:hover { background:inherit; }
 
 .panel { background-color:Yellow; border:solid 1px Black; padding:15px; }
+.pnlAnimation { position:absolute;background-color:#ddd;border:solid 1px Black;padding:15px;height:100px;width:100px; }
+.pnlInv { display:none; }
+.pnlAbs { position:absolute; }
 .bulList { margin:1em; }
 .bulList li { list-style:disc outside; margin-left:2em; }
 

@@ -44,6 +44,8 @@
 
 * RichEdit doesn't work in Konqueror 
 
+* Find great solution for the getDimension and similar functions which needs getComputedStyle logic coupled.
+  Probably some "getStyle" inspired from prototype...? 
 
 
 

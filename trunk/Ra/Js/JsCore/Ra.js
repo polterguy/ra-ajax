@@ -147,11 +147,16 @@ Ra.Element.prototype = {
   // Returns an object of { width, height } containing the width and height of the element
   getDimensions: function() {
     var display = this.style.display;
+    var cpStyle = document.defaultView.getComputedStyle(this, null);
     if (display != 'none' && display !== null) {
       // Safari bug
       return {
-        width: this.offsetWidth, 
-        height: this.offsetHeight
+        width: this.offsetWidth - 
+          (parseInt(cpStyle.paddingLeft, 10) || 0) - 
+          (parseInt(cpStyle.paddingRight, 10) || 0), 
+        height: this.offsetHeight - 
+          (parseInt(cpStyle.paddingTop, 10) || 0) - 
+          (parseInt(cpStyle.paddingBottom, 10) || 0)
       };
     }
 
@@ -167,8 +172,8 @@ Ra.Element.prototype = {
     els.display = orDis;
     els.visibility = orVis;
     return {
-      width: orWidth, 
-      height: orHeight
+      width: orWidth + (parseInt(cpStyle.padding, 10) || 0), 
+      height: orHeight + (parseInt(cpStyle.padding, 10) || 0)
     };
   },
   
