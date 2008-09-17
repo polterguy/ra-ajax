@@ -27,6 +27,7 @@ namespace Ra.Widgets
 		public Control Control
 		{
 			get { return _control; }
+			private set { _control = value; }
 		}
 
 		public bool Sinoidal
@@ -76,6 +77,10 @@ namespace Ra.Widgets
 			// If the if sentence below kicks in then this is NOT a chained effect rendering
 			// which is the only place where it makes sense to have zero seconds and/or no
 			// Control to update...
+			foreach (Effect idx in Chained)
+			{
+				idx.Control = this.Control;
+			}
 			if (this._control == null || this._milliseconds == 0)
 				throw new ArgumentException("Cannot have an effect which affects no Controls or lasts for zero period");
             string onStart = RenderOnStart(this);

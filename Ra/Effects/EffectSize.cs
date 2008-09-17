@@ -66,8 +66,7 @@ namespace Ra.Widgets
         {
 			UpdateStyleCollection();
             return @"
-    this.startH = parseInt(this.element.style.height, 10);
-    this.startW = parseInt(this.element.style.width, 10);
+    this.startSize = this.element.getDimensions();
 ";
         }
 
@@ -83,12 +82,14 @@ namespace Ra.Widgets
         public override string RenderChainedOnRender()
         {
             return string.Format(@"
-    var deltaH = ({0} - this.startH) * pos;
-    var newH = parseInt(deltaH + this.startH, 10);
+    var deltaH = ({0} - this.startSize.height) * pos;
+    var newH = parseInt(deltaH + this.startSize.height, 10);
+console.log(newH);
     this.element.style.height = newH + 'px';
 
-    var deltaW = ({1} - this.startW) * pos;
-    var newW = parseInt(deltaW + this.startW, 10);
+    var deltaW = ({1} - this.startSize.width) * pos;
+    var newW = parseInt(deltaW + this.startSize.width, 10);
+console.log(newW);
     this.element.style.width = newW + 'px';
 ",
                 _height, _width);
