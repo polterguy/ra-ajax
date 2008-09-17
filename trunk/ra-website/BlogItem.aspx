@@ -29,7 +29,7 @@
             title="Next blog">Next &gt;&gt;</a>
         <h3>Copyright</h3>
         <p>
-            All content at my this blog is the Copyright of <a href="http://ra-ajax.org">Ra Software AS</a> 
+            All content at this blog is the Copyright of <a href="http://ra-ajax.org">Ra Software AS</a> 
             but can freely be distributed under the terms of 
             <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation License</a>.
         </p>
