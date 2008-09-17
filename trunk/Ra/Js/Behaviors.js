@@ -295,18 +295,18 @@ Ra.extend(Ra.BDrop.prototype, {
   },
 
   touched: function() {
-    if( this.isTouched )
+    if( this.isTouched || this.parent.element.className.indexOf(this.options.touched) != -1 )
       return;
     this.isTouched = true;
     this._oldClassName = this.parent.element.className;
-    this.parent.element.className = this.options.touched;
+    this.parent.element.addClassName(this.options.touched);
   },
 
   unTouch: function() {
     if( !this.isTouched )
       return;
     this.isTouched = false;
-    this.parent.element.className = this._oldClassName;
+    this.parent.element.removeClassName(this.options.touched);
   },
 
   destroy: function() {

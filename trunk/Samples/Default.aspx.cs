@@ -22,8 +22,10 @@ public partial class _Default : System.Web.UI.Page
 
     protected void submit_Click(object sender, EventArgs e)
     {
-        lblResults.Text = "Hello " + name.Text + " and welcome to the world :)";
+		string gn = string.IsNullOrEmpty(name.Text.Trim()) ? "stranger" : name.Text; 
+        lblResults.Text = "Hello " + gn + " and welcome to the world :)";
         Effect effect = new EffectFadeIn(lblResults, 800);
+		effect.Chained.Add(new EffectHighlight());
         effect.Render();
         name.Focus();
         name.Select();

@@ -19,7 +19,7 @@
     <h1>Ra Ajax Samples - Event System</h1>
     <p>
         Normally in ASP.NET WebControls you would expect a Button to have OnClick and mostly no
-        other Event Handler. In Ra-Ajax all the Ajax Controls have tons of other event handlers
+        other Event Handler. In Ra-Ajax all the Ajax Controls have tons of additional event handlers
         in addition to the "native ones". Try to hover over the Button below for instance.
     </p>
     <ra:Button 
@@ -31,7 +31,7 @@
     <p>
         In addition you would find events like;
     </p>
-    <ul>
+    <ul class="bulList">
         <li>Focused</li>
         <li>Blur</li>
         <li>MouseOut</li>
@@ -43,7 +43,6 @@
         And all those events will automagically map to server side events and you wouldn't have to
         write any JavaScript at all to handle them :)
     </p>
-    <br />
     <h2>Do anything from anywhere!</h2>
     <p>
         In Ra-Ajax you can do <em>anything from anywhere</em>. This means that for instance in the 
@@ -57,18 +56,22 @@
         ID="txt" 
         OnMouseOut="txt_MouseOut"
         OnMouseOver="txt_MouseOver" />
-    <br />
     <ra:Panel 
         runat="server" 
         ID="pnl" 
         Visible="false"
-        style="position:absolute;background-color:Yellow;border:solid 1px Black;padding:15px;height:100px;">
+        style="position:absolute;"
+        CssClass="panel">
         Only visible when hovering over the TextBox :)
     </ra:Panel>
-    <div style="height:100px;">&nbsp;</div>
+    <div class="spacerSmall">&nbsp;</div>
     <p>
         This makes it very easy to create "advanced functionality". Now by adding a little bit of <em>Ajax Effects</em>
         in addition, this becomes even more interesting...
+    </p>
+    <p>
+    	Just to be clear; <em>the Ajax Button and the Ajax TextBox OF COURSE also have the OnClick Event Handlers and
+    	the OnTextChanged Event Handlers ;)</em>
     </p>
     <a href="Effects.aspx">On to "Ajax Effects"...</a>
 </asp:Content>
