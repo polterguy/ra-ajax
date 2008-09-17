@@ -76,8 +76,8 @@ namespace Ra.Extensions
 		
 		protected override void OnPreRender (EventArgs e)
 		{
-			_pnlHead.CssClass = CssClass + "-head";
-			_close.CssClass = CssClass + "-close";
+			_pnlHead.CssClass = CssClass.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[0] + "-head";
+			_close.CssClass = CssClass.Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries)[0] + "-close";
 			_lblHead.Text = Caption;
 			_dragger.Handle = _pnlHead.ClientID;
 			base.OnPreRender (e);

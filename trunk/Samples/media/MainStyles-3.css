@@ -139,6 +139,25 @@ h2 { margin-top:2.7em; }
 .accordion-control .accordion-header a { text-decoration:none; padding:5px; display:block; font-weight:bold; }
 .accordion-control .accordion-header a:hover { background:inherit; }
 
+/* Window */
+.window { border:solid 1px Black; background-color:#fff; }
+.window-head { border-bottom:solid 1px Black; background-color:#eef; padding:5px; font-size:1.3em; cursor:move; -moz-user-select:none; font-style:bold; }
+.window-close { font-size:0.8em; position:absolute; right:5px; top:5px; }
+
+/* Calendar specific CSS */
+.calendar { background:Transparent url(calendar.png) no-repeat; font-size:0.8em; display:inline-block; border:outset 4px #999; /* IE hack */ *float:left; *display:inline; }
+.calendar select { border:none; margin:0 5px 0 5px; font-size:0.8em; background-color:Transparent; color:#bb5; }
+.calendar table { border-collapse:collapse; }
+.calendar table tr td { border:none; padding:2px; }
+.calendar table tr.weekdays td { color:#ddd; }
+.calendar table tr td.weekno { color:#bbb; }
+.calendar a { text-decoration:none; color:#dd7; padding:1px; border:solid 1px Transparent; background-color:Transparent; }
+.calendar a:hover { border:solid 1px #999; }
+.calendar a.offMonth { color:#bbb; }
+.calendar a.selected { border:solid 1px Yellow; }
+.calendar .holidayOnVenus a { color:#0f0; }
+
+
 .panel { background-color:Yellow; border:solid 1px Black; padding:15px; }
 .pnlAnimation { position:absolute;background-color:#ddd;border:solid 1px Black;padding:15px;height:100px;width:100px; }
 .pnlInv { display:none; }
@@ -155,9 +174,16 @@ h2 { margin-top:2.7em; }
 .spacer { height:200px; }
 .spacerSmall { height:50px; }
 
+.slider { width:198px; border:solid 1px Black; padding-top:1px; padding-left:1px; position:absolute; height:21px; }
+.slidThumb { display:block; cursor:move; position:absolute; color:#33f; border:solid 1px #33f; width:25px; height:18px; -moz-user-select:none; }
+
+.smallWnd { width:250px; height:250px; z-index:500; position:absolute; }
 
 
+.nameTbl { border-collapse:collapse; }
+.nameTbl tr td { border:none; padding-left:5px; padding-right:5px; padding-top:1px; padding-bottom:1px; }
 
+.errLbl { color:Red; font-style:italic; }
 
 
 
