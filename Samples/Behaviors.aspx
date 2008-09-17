@@ -46,11 +46,11 @@
 		style="margin-left:100px;"
 		Text="Hide second label" 
 		OnClick="btnHide2_Click" />
-	<div style="position:absolute;margin-top:15px;">
+	<div class="dragContainer">
 	    <ra:Label 
 	        runat="server" 
 	        ID="lbl1" 
-	        style="cursor:move;position:absolute;color:#33f;border:solid 1px #33f;padding:5px;width:100px;-moz-user-select:none;z-index:2;background-color:White;"
+	        CssClass="dragger1"
 	        Text="See me snap...">
 
 	    	<ra:BehaviorDraggable 
@@ -63,7 +63,7 @@
 	    <ra:Label 
 	        runat="server" 
 	        ID="lbl2"
-	        style="cursor:move;position:absolute;left:200px;color:#33f;border:solid 1px #33f;padding:5px;width:100px;-moz-user-select:none;z-index:2;background-color:White;"
+	        CssClass="dragger2"
 	        Text="Try to drag and drop me too around in the browser">
 
 	    	<ra:BehaviorDraggable 
@@ -72,23 +72,21 @@
 	    		OnDropped="dragger2_Dropped" />
 
 	    </ra:Label>
+	    <ra:Label 
+	        runat="server" 
+	        ID="dropperLbl"
+	        CssClass="dropper"
+	        Text="Drop draggers onto me...">
+
+	    	<ra:BehaviorDroppable 
+	    		runat="server"
+	    		TouchedCssClass="droppablesTouched"
+	    		OnDropped="dropper_Dropped"
+	    		ID="dropper" />
+
+	    </ra:Label>
     </div>
-
-    <ra:Label 
-        runat="server" 
-        ID="dropperLbl"
-        style="position:absolute;top:550px;left:700px;color:#bbb;border:solid 1px #bbb;padding:5px;width:100px;z-index:1;"
-        Text="Drop draggers onto me...">
-
-    	<ra:BehaviorDroppable 
-    		runat="server"
-    		TouchedCssClass="droppablesTouched"
-    		OnDropped="dropper_Dropped"
-    		ID="dropper" />
-
-    </ra:Label>
-
-    <div style="height:200px;">&nbsp;</div>
+    <div class="spacer">&nbsp;</div>
 
     <h2>Ra-Ajax have 100% IE support, REALLY!</h2>
     <p>

@@ -24,7 +24,7 @@ public partial class Effects : System.Web.UI.Page
         btn.Enabled = false;
         btn2.Enabled = true;
         btn2.Focus();
-        Effect effect = new EffectSize(pnl, 600, 300, 300);
+        Effect effect = new EffectSize(pnl, 600, 160, 300);
         effect.Sinoidal = true;
         effect.Chained.Add(new EffectHighlight());
         effect.Chained.Add(new EffectBorder(5));
@@ -52,7 +52,7 @@ public partial class Effects : System.Web.UI.Page
     protected void btn4_Click(object sender, EventArgs e)
     {
         Effect effect = new EffectFadeIn(pnl2, 800);
-        effect.Chained.Add(new EffectRollDown(200));
+        effect.Chained.Add(new EffectRollDown(160));
         effect.Render();
     }
 }

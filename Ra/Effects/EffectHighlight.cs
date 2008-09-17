@@ -25,14 +25,15 @@ namespace Ra.Widgets
         public override string RenderChainedOnStart()
         {
             return @"
-    this._startColor = this.element.style.backgroundColor;
+    this._startColor = this.element.style.backgroundColor || '#fff';
+    this._orColor = this.element.style.backgroundColor;
 ";
         }
 
         public override string RenderChainedOnFinished()
         {
             return @"
-    this.element.style.backgroundColor = this._startColor;
+    this.element.style.backgroundColor = this._orColor;
 ";
         }
 

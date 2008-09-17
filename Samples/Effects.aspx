@@ -35,7 +35,7 @@
         style="position:absolute;background-color:#ddd;border:solid 1px Black;padding:15px;height:100px;width:100px;">
         Watch the Ajax Effect as you click the above button...
     </ra:Panel>
-    <div style="height:325px;">&nbsp;</div>
+    <div class="spacer">&nbsp;</div>
     <p>
         Now try to click the button below here to see another Ajax Effect.
     </p>
@@ -101,10 +101,11 @@
     <ra:Panel 
         runat="server" 
         ID="pnl2" 
-        style="position:absolute;background-color:Yellow;border:solid 1px Black;padding:15px;display:none;">
+        style="display:none;position:absolute;"
+        CssClass="panel">
         Watch the Ajax Effect as you click the above button...
     </ra:Panel>
-    <div style="height:320px;">&nbsp;</div>
+    <div class="spacer">&nbsp;</div>
     <a href="Behaviors.aspx">On to "Ajax Behaviors"...</a>
 </asp:Content>
 

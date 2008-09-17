@@ -116,6 +116,7 @@ http://ra-ajax.org
 
 a { text-decoration:none; }
 a:hover { text-decoration:underline;background-color:#eee;color:Black; }
+h2 { margin-top:2.7em; }
 
 #doc2 { width:1056px; background:Transparent url(bg.png) repeat-y; }
 #hd { background:Transparent url(sun_background.jpg) no-repeat; height:259px; margin:0 16px 0 16px; }
@@ -135,6 +136,19 @@ a:hover { text-decoration:underline;background-color:#eee;color:Black; }
 .accordion-control .accordion-header:hover { background:Transparent url(tabcontrol.png) repeat-x scroll 2px -53px; }
 .accordion-control .accordion-header a { text-decoration:none; padding:5px; display:block; font-weight:bold; }
 .accordion-control .accordion-header a:hover { background:inherit; }
+
+.panel { background-color:Yellow; border:solid 1px Black; padding:15px; }
+.bulList { margin:1em; }
+.bulList li { list-style:disc outside; margin-left:2em; }
+
+/* Droppables and Draggable sample*/
+.dragContainer { position:absolute; margin-top:15px; }
+.dragger1 { cursor:move; position:absolute; color:#33f; border:solid 1px #33f; padding:5px; width:100px; -moz-user-select:none; z-index:2; background-color:White; }
+.dragger2 { cursor:move; position:absolute; color:#33f; border:solid 1px #33f; padding:5px; width:100px; -moz-user-select:none; z-index:2; background-color:White; left:200px; *top:1px; }
+.dropper { position:absolute; left:350px; color:#bbb; border:solid 1px #bbb; padding:5px; width:100px; z-index:1; }
+.droppablesTouched { background-color:Yellow; }
+.spacer { height:200px; }
+.spacerSmall { height:50px; }
 
 
 
