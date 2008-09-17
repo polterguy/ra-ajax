@@ -9,7 +9,7 @@
     Namespace="Ra.Widgets" 
     TagPrefix="ra" %>
 
-<table>
+<table class="nameTbl">
     <tr>
         <td>Name</td>
         <td>
@@ -31,7 +31,7 @@
             <ra:Label 
                 runat="server" 
                 ID="err" 
-                style="color:Red;font-style:italic;" />
+                CssClass="errLbl" />
         </td>
     <tr>
         <td colspan="2">

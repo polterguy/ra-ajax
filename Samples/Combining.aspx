@@ -34,7 +34,6 @@
         them in all your projects, or by combining them inline on your .ASPX page or maybe in a 
         UserControl to get some reusability within your projects.
     </p>
-    <br />
     <h2>Ra-Ajax and UserControls</h2>
     <p>
         Below is an example of a UserControl which is created for reuse within your project.
@@ -47,14 +46,12 @@
         OnSaved="uc_Saved" />
     <ra:Label 
         runat="server" 
-        style="color:#33f;"
+        CssClass="updateLbl"
         ID="lblResults" />
-    <br />
-    <br />
     <h2>Ra-Ajax Extension Controls (WebControls)</h2>
     <p>
-        The example below is a <em>Ra-Ajax Extension Controls</em> built as a server-side control
-        which means you can easily reuse it for all your projecs.
+        The example below is a <em>Ra-Ajax Extension Control</em> built as a server-side control
+        which means you can easily reuse it across all your projecs.
     </p>
     <ext:Calendar 
         runat="server" 
@@ -64,24 +61,23 @@
     <br />
     <ra:Label 
         runat="server" 
-        style="color:#33f;"
+        CssClass="updateLbl"
+        style="position:absolute;"
         ID="selectedDate" />
+    <div class="spacerSmall">&nbsp;</div>
     <p>
         In fact, the above <em>Ajax Calendar Control</em> is entirely built purely as a server-side 
         Ajax Control, reusing only existing Ra-Ajax Controls like <em>LinkButton, Panel, Label, DropDownList</em>
-        and so on. So you don't even have to know JavaScript to create your own Ajax Extension controls :)
-        <br />
-        <em>(though sometimes it helps to know JavaScript and sometimes you will need it ;)</em>
+        and so on. So you don't even have to know JavaScript to create your own Ajax Extension controls.
     </p>
     <p>
         The above <em>Ajax Calendar</em> is also included as part of the Ra-Ajax Extensions project.
     </p>
-    <br />
-    <h2>Let Us Know</h2>
+    <h2>Let Us Know!...</h2>
     <p>
-        If you create a really cool extension widget and want to license it as Open Source, let us know. Send 
+        ...if you create a really cool extension widget and want to license it as Open Source. Send 
         us an <a href="mailto:thomas@ra-ajax.org">email</a> so that we can link to your website or maybe even add 
-        it to the Ra-Ajax Extensions project :)
+        it to the main Ra-Ajax Extensions project. Or as a community extension.
     </p>
     <a href="Dynamic.aspx">On to "Dynamic Ajax Controls"...</a>
 </asp:Content>
