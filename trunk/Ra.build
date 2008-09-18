@@ -6,7 +6,7 @@
 	
 	<property name="output.dir" value="build_output" />
 	<property name="library.dir" value="library" />
-	<property name="compressed.js.dir" value="Ra\JsCompressed\Js" />
+	<property name="compressed.js.dir" value="Ra/JsCompressed/Js" />
 	
 	<property name="ra.name" value="Ra" />
 	<property name="ext.name" value="Extensions" />
@@ -22,39 +22,39 @@
 	
 	<target name="init" description="Necessary Initializations">
         <mkdir dir="${output.dir}" />
-		<mkdir dir="${output.dir}\${library.dir}" />
+		<mkdir dir="${output.dir}/${library.dir}" />
 		<mkdir unless="${debug}" dir="${compressed.js.dir}" />
     </target>
 	
 	<target name="jsmin" unless="${debug}" description="Minify The Library JS Files">
 		<jsmin verbose="true" todir="${compressed.js.dir}">
-			<fileset basedir="Ra\Js">
-				<include name="\**\*.js" />
+			<fileset basedir="Ra/Js">
+				<include name="/**/*.js" />
 			</fileset>
 		</jsmin>
 	</target>
 	
 	<target name="compile.lib" depends="clean,init,jsmin" description="Compile The Library DLLs">
-        <csc target="library" output="${output.dir}\${library.dir}\${ra.name}.dll" debug="${debug}">
+        <csc target="library" output="${output.dir}/${library.dir}/${ra.name}.dll" debug="${debug}">
 			<sources>
-				<include name="Ra\**\*.cs" />
-				<exclude name="Ra\Helpers\ReRenderStreamWriter.cs" />                               
+				<include name="Ra/**/*.cs" />
+				<exclude name="Ra/Helpers/ReRenderStreamWriter.cs" />                               
 			</sources>
 			<resources failonempty="true" dynamicprefix="true">
-				<include name="Ra\Js\**\*.js" if="${debug}" />
-				<include name="Ra\JsCompressed\**\*.js" unless="${debug}" />
+				<include name="Ra/Js/**/*.js" if="${debug}" />
+				<include name="Ra/JsCompressed/**/*.js" unless="${debug}" />
 			</resources>
 		</csc>
-		<csc target="library" output="${output.dir}\${library.dir}\${ext.name}.dll" debug="${debug}">
+		<csc target="library" output="${output.dir}/${library.dir}/${ext.name}.dll" debug="${debug}">
 			<sources>
-				<include name="Extensions\**\*.cs" />
+				<include name="Extensions/**/*.cs" />
 			</sources>
 			<resources failonempty="true" dynamicprefix="true">
-				<include name="Extensions\**\*.js" />
-				<exclude name="Extensions\obj\**\*.js" />
+				<include name="Extensions/**/*.js" />
+				<exclude name="Extensions/obj/**/*.js" />
 			</resources>
 			<references>
-				<include name="${output.dir}\${library.dir}\${ra.name}.dll" />
+				<include name="${output.dir}/${library.dir}/${ra.name}.dll" />
 			</references>
 		</csc>
     </target>
