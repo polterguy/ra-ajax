@@ -26,7 +26,7 @@
 		<mkdir unless="${debug}" dir="${compressed.js.dir}" />
     </target>
 	
-	<target name="jsmin" unless="${debug}" description="Compress The Library JS Files">
+	<target name="jsmin" unless="${debug}" description="Minify The Library JS Files">
 		<jsmin verbose="true" todir="${compressed.js.dir}">
 			<fileset basedir="Ra\Js">
 				<include name="\**\*.js" />
