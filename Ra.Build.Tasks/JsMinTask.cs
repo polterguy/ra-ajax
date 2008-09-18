@@ -104,7 +104,6 @@ namespace Ra.Build.Tasks
                         Location);
                 }
             }
-
         }
 
         private string GetDestPath(DirectoryInfo srcBase, FileInfo srcFile)
