@@ -1,31 +1,31 @@
 <?xml version="1.0"?>
 <project name="Ra-Ajax" default="all">
-    
+
 	<!-- Properties -->
 	<property name="debug" value="false" />
-	
+
 	<property name="output.dir" value="build_output" />
 	<property name="library.dir" value="library" />
 	<property name="compressed.js.dir" value="Ra/JsCompressed/Js" />
-	
+
 	<property name="ra.name" value="Ra" />
 	<property name="ext.name" value="Extensions" />
 	<!--  End Properties -->
-	
+
 	<!-- Targets -->
-    <target name="all" depends="clean,init,jsmin,compile.lib" />
-	
+	<target name="all" depends="clean,init,jsmin,compile.lib" />
+
 	<target name="clean" description="Remove Old Build Output Files">
-        <delete dir="${output.dir}" />
+		<delete dir="${output.dir}" />
 		<delete unless="${debug}" dir="${compressed.js.dir}" />
-    </target>
-	
+	</target>
+
 	<target name="init" description="Necessary Initializations">
-        <mkdir dir="${output.dir}" />
+		<mkdir dir="${output.dir}" />
 		<mkdir dir="${output.dir}/${library.dir}" />
 		<mkdir unless="${debug}" dir="${compressed.js.dir}" />
-    </target>
-	
+	</target>
+
 	<target name="jsmin" unless="${debug}" description="Minify The Library JS Files">
 		<jsmin verbose="true" todir="${compressed.js.dir}">
 			<fileset basedir="Ra/Js">
@@ -33,12 +33,12 @@
 			</fileset>
 		</jsmin>
 	</target>
-	
+
 	<target name="compile.lib" depends="clean,init,jsmin" description="Compile The Library DLLs">
-        <csc target="library" output="${output.dir}/${library.dir}/${ra.name}.dll" debug="${debug}">
+		<csc target="library" output="${output.dir}/${library.dir}/${ra.name}.dll" debug="${debug}">
 			<sources>
 				<include name="Ra/**/*.cs" />
-				<exclude name="Ra/Helpers/ReRenderStreamWriter.cs" />                               
+				<exclude name="Ra/Helpers/ReRenderStreamWriter.cs" />
 			</sources>
 			<resources failonempty="true" dynamicprefix="true">
 				<include name="Ra/Js/**/*.js" if="${debug}" />
@@ -57,7 +57,7 @@
 				<include name="${output.dir}/${library.dir}/${ra.name}.dll" />
 			</references>
 		</csc>
-    </target>
-	
+	</target>
+
 	<!-- End Tragets -->
 </project>
