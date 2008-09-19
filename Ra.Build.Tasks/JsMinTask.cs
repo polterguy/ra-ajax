@@ -9,6 +9,30 @@ using System.Xml;
 using System.Globalization;
 using NAnt.Core.Tasks;
 
+/* 
+Copyright 2008 - Thomas Hansen thomas@ra-ajax.org
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+The Software shall be used for Good, not Evil.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
 namespace Ra.Build.Tasks
 {
     [TaskName("jsmin")]
@@ -73,8 +97,6 @@ namespace Ra.Build.Tasks
             if (_jsFiles.BaseDirectory == null)
                 _jsFiles.BaseDirectory = new DirectoryInfo(Project.BaseDirectory);
 
-            DirectoryInfo srcBase = _jsFiles.BaseDirectory;
-
             Log(Level.Info, "Minifying {0} JavaScript file(s) to '{1}'.", _jsFiles.FileNames.Count, _toDirectory.FullName);
 
             foreach (string srcPath in _jsFiles.FileNames)
@@ -83,7 +105,7 @@ namespace Ra.Build.Tasks
 
                 if (srcFile.Exists)
                 {
-                    string destPath = GetDestPath(srcBase, srcFile);
+                    string destPath = GetDestPath(_jsFiles.BaseDirectory, srcFile);
 
                     DirectoryInfo destDir = new DirectoryInfo(Path.GetDirectoryName(destPath));
 
