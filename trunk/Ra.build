@@ -5,6 +5,7 @@
 	<property name="debug" value="false" />
 
 	<property name="library.dir" value="library" />
+	<property name="helpers.dir" value="helpers" />
 	<property name="output.dir" value="build_output" />
 	<property name="extra.references.dir" value="References" />
 	<property name="compressed.js.dir" value="Ra/JsCompressed/Js" />
@@ -25,11 +26,12 @@
 	<target name="init" description="Necessary Initializations">
 		<mkdir dir="${output.dir}" />
 		<mkdir dir="${output.dir}/${library.dir}" />
+		<mkdir dir="${output.dir}/${helpers.dir}" />
 		<mkdir unless="${debug}" dir="${compressed.js.dir}" />
 	</target>
 
 	<target name="load.tasks" description="Compile and Load Custom NAnt Tasks">
-		<csc target="library" output="${output.dir}/${library.dir}/${build.tasks.name}.dll" debug="${debug}">
+		<csc target="library" output="${output.dir}/${helpers.dir}/${build.tasks.name}.dll" debug="${debug}">
 			<sources>
 				<include name="${build.tasks.name}/**/*.cs" />
 			</sources>
@@ -37,7 +39,7 @@
 				<include name="${extra.references.dir}/NAnt.Core.dll" />
 			</references>
 		</csc>
-		<loadtasks assembly="${output.dir}/${library.dir}/${build.tasks.name}.dll" />
+		<loadtasks assembly="${output.dir}/${helpers.dir}/${build.tasks.name}.dll" />
 	</target>
 
 	<target name="jsmin" unless="${debug}" depends="load.tasks" description="Minify The Library JS Files">
