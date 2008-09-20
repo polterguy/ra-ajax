@@ -7,35 +7,35 @@
 	<property name="library.dir" value="library" />
 	<property name="helpers.dir" value="helpers" />
 	<property name="output.dir" value="build_output" />
-	
+
 	<property name="ra.name" value="Ra" />
 	<property name="ext.name" value="Extensions" />
-	
+
 	<property name="samples.dir" value="Samples" />
 	<property name="resource.cacher.name" value="ResourceCacher" />
 	<property name="framework.dir" value="${framework::get-framework-directory('net-2.0')}" />
 	<!-- End Properties -->
-	
+
 	<nant buildfile="Ra.build" />
-	
+
 	<csc target="library" output="${output.dir}/${helpers.dir}/${resource.cacher.name}.dll" debug="${debug}">
 		<sources>
 			<include name="${resource.cacher.name}/**/*.cs" />
 		</sources>
 	</csc>
-	
+
 	<copy overwrite="true" file="${output.dir}/${library.dir}/${ra.name}.dll" todir="${samples.dir}/Bin" />
 	<copy overwrite="true" file="${output.dir}/${library.dir}/${ext.name}.dll" todir="${samples.dir}/Bin" />
 	<copy overwrite="true" file="${output.dir}/${helpers.dir}/${resource.cacher.name}.dll" todir="${samples.dir}/Bin" />
-	
+
 	<exec
-		program="${framework.dir}/aspnet_compiler.exe" 
+		program="${framework.dir}/aspnet_compiler.exe"
 		commandline="-v ${samples.dir} -p ${samples.dir} -u -f ${output.dir}/${samples.dir} -c"
 		if="${file::exists(framework.dir + '/aspnet_compiler.exe')}" />
-		
+
 	<delete file="${output.dir}/${samples.dir}/Web.Config" />
 	<delete file="${output.dir}/${samples.dir}/Web.Config.template" />
-	
+
 	<copy overwrite="true" todir="${output.dir}/${samples.dir}">
 		<fileset basedir="${samples.dir}">
 			<include name="/**/*.cs" />
