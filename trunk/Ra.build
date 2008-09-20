@@ -45,7 +45,7 @@
 	<target name="jsmin" unless="${debug}" depends="load.tasks" description="Minify The Library JS Files">
 		<jsmin verbose="true" todir="${compressed.js.dir}">
 			<fileset basedir="${ra.name}/Js">
-				<include name="/**/*.js" />
+				<include name="**/*.js" />
 			</fileset>
 		</jsmin>
 	</target>
