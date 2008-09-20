@@ -92,7 +92,7 @@
 
     <h2>Ajax Behaviors is a BIG gun!</h2>
     <p>
-    	Note though that all though this gives you a LOT of power it is very easy to overdo Ajax Behaviors by adding them in
+    	All though this gives you a lot of power it is very easy to overdo Ajax Behaviors by adding them in
     	places where they either make no sense or they break the normal expected logic of a webpage. Like for instance I would
     	be careful with adding up BehaviorDraggable to an Ajax Button since that would probably to such a large degree change
     	the "expected behavior" for that button that your users would be confused when trying to interact with that button etc...
@@ -147,7 +147,7 @@
 		</div>
     </ext:Window>
     <p>
-    	This Window is purely built on the server with 84 lines of code in total (as of 18th of Sept) and has
+    	This Window is purely built on the server with 84 lines of code in total (as of the 18th of September 2008) and has
     	no Custom JavaScript in it at all. In fact the Window is created using these Ajax Controls. 
     </p>
     <ul class="bulList">
@@ -158,8 +158,9 @@
     </ul>
     <p>
     	And by combining those "building block controls" we're able to create a relatively advanced Ajax Window
-    	without having to resort to JavaScript at all. This is a general pattern in Ra-Ajax in fact - that you
-    	can build very complex Ajax Controls yourself by only combining the existing Controls in Ra-Ajax.
+    	without having to resort to JavaScript at all. This is a general pattern in Ra-Ajax in fact - You
+    	can always build fairly complex Ajax Controls yourself by combining the existing "less complex" Controls 
+    	in Ra-Ajax together to form your complex Ajax Control.
     </p>
     <a href="Combining.aspx">On to Combining Controls</a>
 </asp:Content>

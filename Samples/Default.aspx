@@ -18,9 +18,9 @@
 
     <h1>Ra Ajax Samples</h1>
     <p>
-        Welcome to the main samples page for Ra-Ajax. These samples are written in such a way that it makes
+        Welcome to the main samples for Ra-Ajax. These samples are written in such a way that it makes
         a lot more sense to read them <em>sequentially</em>. This means that you should start at the top with the 
-        <em>Samples Start Page</em> (the page you're reading) and work your way down as you read on. 
+        "Samples Start Page" (the page you're reading) and work your way down as you read on. 
         Later on, you can go directly to a specific sample page for reference purposes. 
     </p>
     <p>
@@ -43,11 +43,11 @@
         ID="lblResults" />
     <h2>What happened?</h2>
     <p>
-        If you click the Show Code button at the top right corner you will see that there is no 
-        JavaScript at all created to run the Ajax functionality you just observed. Ra-Ajax is heavily inspired by 
+        If you click the Show Code button you will see that there is no 
+        JavaScript at all written to run the Ajax functionality you just observed. Ra-Ajax is heavily inspired by 
         <a rel="nofollow" href="http://anthemdotnet.com/">Anthem.Net</a> in that you can run pretty advanced Ajax 
-        functionality without being forced to write JavaScript at all. Though with one crucial 
-        difference. Ra-Ajax uses 
+        functionality without being forced into writing JavaScript at all. Though there is one crucial 
+        difference between Ra-Ajax and most other Ajax Frameworks - Ra-Ajax uses 
         <a rel="nofollow" href="http://weblogs.asp.net/despos/archive/2007/09/19/partial-rendering-misses-ajax-architectural-points.aspx">Partial Rendering</a>
         as seldom as possible but relies instead on sending changes back to the client from the server
         as <a rel="nofollow" href="http://www.json.org/">JSON</a> which then again is mapped towards functions on the 
@@ -108,9 +108,9 @@
         	a Partial Rendering framework! (since the button above would loose the focus)
         </p>
         <p>
-        	Try to create something similar in e.g. ASP.NET AJAX and just keep on clicking space and
-        	you will understand that the <em>partial rendering problem</em> goes pretty deep. Even for
-        	a <em>really simple problem</em> like this one.
+        	Try to create something similar in e.g. ASP.NET AJAX and try to just keep on clicking space while 
+        	the Button has focus and you will understand that the <em>partial rendering problem</em> goes pretty 
+        	deep. Even for a really simple solution like this one.
         </p>
     </ra:Panel>
     <h2>Why doesn't this work with Partial Rendering?</h2>
@@ -139,7 +139,7 @@
         You will probably find it a <em>fraction</em> of the alternative.
     </p>
     <p>
-    	To be 100% accurate with you though the above logic <em>is possible</em> in a Partial Rendering Framework though
+    	To be 100% accurate with you though the above logic is <em>possible</em> in a Partial Rendering Framework though
     	it would either require some JavaScript hacking, some custom widget (or extender) for that specific purpose or
     	that you don't mind if the Button above looses focus between callbacks. Though it would be orders of magnitudes
     	larger in bandwidth usage if you used Partial Rendering.
@@ -162,7 +162,7 @@
     </p>
     <p>
     	We believe that we have abstracted away JavaScript for you completely within Ra-Ajax and that there is no
-    	need for you to think of the differences between FireFox 3.1.2.8 and Safari 3.0.5.7 and so on. We have already
+    	need for you to think of the differences between FireFox 3.x and Safari 3.x and so on. We have already
     	done that job for you!
     </p>
     <p>
@@ -184,7 +184,7 @@
         application.
     </p>
     <p>
-        Note that you *can* still combine JavaScript <em>if you wish</em> with Ra-Ajax. You might come
+        Note that you *can* still combine JavaScript if you <em>wish</em> with Ra-Ajax. You might come
         to a place where you would like to combine JavaScript with Ra-Ajax or create your own Ajax
         Extension Controls. Or maybe you're just one of those MooTools or jQuery lovers which cannot
         possibly even consider completely getting rid of those toolboxes. But this is YOUR CHOICE and
@@ -197,12 +197,13 @@
         It took us 30 years before we could completely eliminate the need to do Assembly Programming, I have
         no believe in that Ra-Ajax will overnight completely eliminate the need to do JavaScript. But my dream
         is to make the JS insertion point so completely abstracted away that 95% of all applications can be 
-        developed completely blindfolded by people who doesn't even know what closures are ;)
+        developed completely blindfolded by people who doesn't even know what closures are...
     </p>
     <p>
         But if Ra-Ajax succeeds, maybe you would very rarely have to resort to JavaScript and deal with headaches
-        like browser compatibility etc... and instead you would focus 90% of your energy on your <em>domain problems</em>
-        instead of having to fiddle with <em>Assembly Programming</em>...
+        like browser compatibility, JavaScript bugs, security issues and so on. Instead you could focus all of your 
+        energy on your <em>domain problems</em> instead of having to fiddle with the "Assembly Programming Language
+        of the 21st Century"...
     </p>
     <a href="Flexible.aspx">On to "Flexible Ajax Event System"...</a>
 </asp:Content>

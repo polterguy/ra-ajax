@@ -18,9 +18,9 @@
 
     <h1>Ra Ajax Samples - Ajax Effects</h1>
     <p>
-        There's no fun in Ajax if you don't have a powerful <em>Ajax Effect Collection</em> coupled with
-        your Ajax Library. Ra-Ajax contains several different predefined Ajax Effects. In addition it is
-        very easy to create your own Ajax Effects by looking at some of the existing ones.
+        There is no fun in Ajax unless you have a powerful Ajax Effect Collection coupled with
+        your Ajax Library. Ra-Ajax contains several different predefined Ajax Effects. It is also
+        very easy to create your own Ajax Effects by looking at the source for any of the existing ones.
     </p>
     <ra:Button 
         runat="server" 
@@ -56,14 +56,9 @@
         AccessKey="J"
         Text="Click me too" />
     <p>
-        And as usual with Ra-Ajax, no JavaScript knowledge is required to use these constructs, take a look at 
-        the source code for this page by clicking the "Show code" button at the top right corner.
-        Also this is just a small subset of the Ajax Effects which exist in Ra-Ajax.
-    </p>
-    <p>
-        And you can see here that we've created our Effects in the Click event handler of a button.
-        You can of course create Ajax Effects on the server side from any Ra-Ajax Event Handler if 
-        you wish.
+        And as usual with Ra-Ajax, no JavaScript knowledge is required to use any of these constructs. Take a look at 
+        the source code for this page by clicking the "Show code" button and you will notice that everything is 100% C#
+        and is entirely written in server-side code.
     </p>
     <h2>Moving focus around</h2>
     <p>
@@ -71,7 +66,7 @@
         Yet again JavaScript is a bonus and not needed for doing this. This means
         that you can simply press space on your keyboard instead of having to use your mouse to click 
         the buttons. You can move focus around in Ra-Ajax pages from control to control exactly as 
-        you wish completely transparently without no "quirks".
+        you wish completely transparently without having to rely on "quirks" at all.
     </p>
     <h2>Ajax with Keyboard Shortcuts</h2>
     <p>
