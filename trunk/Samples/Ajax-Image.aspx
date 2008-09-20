@@ -33,7 +33,6 @@
         ID="img"
         AlternateText="Flower" 
         ImageUrl="media/flower1.jpg" />
-    <br />
     <p>
         When you click the above Button, the ImageUrl property of the Ajax Image changes.
     </p>
@@ -95,7 +94,6 @@
         this is because I <em>want you to be able to see that fact, not because you conspired to
         hack my systems</em> or due to me leaking JavaScript and Business Logic into the client.
     </p>
-    <br />
     <h2>I will give you $100</h2>
     <p>
         I will give $100 to the first person who manages to hack Ra-Ajax so that the above Ajax Image is visible on

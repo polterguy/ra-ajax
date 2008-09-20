@@ -63,11 +63,14 @@
             runat="server" 
             ID="acc3" 
             CssClass="content">
-            Did you see the lack of jumping?
-            <br />
-            This is being done with some nifty JS/DOM techniques that together makes the rendering
-            and reading of the contents of a Ra-Ajax Accordion hopefully a very pleasant experience 
-            to the eye.
+            <p>
+                Did you see the lack of jumping?
+            </p>
+            <p>
+                This is being done with some nifty JS/DOM techniques that together makes the rendering
+                and reading of the contents of a Ra-Ajax Accordion hopefully a very pleasant experience 
+                to the eye.
+            </p>
         </ext:AccordionView>
 
         <ext:AccordionView 
@@ -75,25 +78,26 @@
             runat="server" 
             ID="AccordionView1" 
             CssClass="content">
-            Now the Ra-Ajax Accordion is also an <a href="Ajax-Panel.aspx">Ajax Panel</a> which
-            means that you can embed other complex Ajax Controls like for instance an Ajax Calendar
-            within it with no problems.
-            <br />
+            <p>
+                Now the Ra-Ajax Accordion is also an <a href="Ajax-Panel.aspx">Ajax Panel</a> which
+                means that you can embed other complex Ajax Controls like for instance an Ajax Calendar
+                within it with no problems.
+            </p>
             <ext:Calendar 
                 runat="server" 
                 ID="calTab" 
                 CssClass="calendar" 
                 OnSelectedValueChanged="calTab_SelectedValueChanged"
                 Value="2008.07.20 23:54" />
-            <br />
-            <ra:Label 
-                runat="server" 
-                style="color:#33f;"
-                ID="lbl" Text="Watch me as you change the date" />
+            <p>
+                <ra:Label 
+                    runat="server" 
+                    style="color:#33f;"
+                    ID="lbl" Text="Watch me as you change the date" />
+            </p>
         </ext:AccordionView>
 
     </ext:Accordion>
-    <br />
     <h2>Ajax and Performance</h2>
     <p>
         A good server-side bound Ajax Library should not create a large bowl of JavaScript for you
@@ -115,7 +119,6 @@
         files. In fact this page only has *two* JavaScript files, which combined are <strong>less than 12KB in
         total of JavaScript</strong>.
     </p>
-    <br />
     <h2>Generalize, generalize and generalize</h2>
     <p>
         If you want to create an Ajax Library with <em>more than 18 Ajax Controls, like Ra-Ajax has,</em> then
@@ -136,7 +139,6 @@
         own custom JavaScript. This is true if you are creating your own Ajax Library on top of these JavaScript
         frameworks and also true if you consume them directly as standalone Frameworks.
     </p>
-    <br />
     <h2>Sizes of well known JavaScript/Ajax Frameworks</h2>
     <br />
     <table style="width:300px;">
@@ -182,29 +184,33 @@
         of JavaScript from developers and makes it possible for them to exclusively focus on developing
         in a safe, compiled and well known language of their choice on the server.
     </p>
-    <br />
     <h2>Is Ra-Ajax a RIA Framework?</h2>
     <p>
         Since Ra-Ajax has such extremely small amounts of JavaScript it is probably not even fair to call
         it a RIA Framework. While most other Ajax Libraries and Frameworks claim to be RIA Frameworks,
-        Ra-Ajax has such small amount of JavaScript that you could probably just as easily create also 
+        Ra-Ajax has such small amounts of JavaScript that you could probably just as easily create also 
         normal websites with it where load speed, responsiveness and all that matters to such an extent that
-        you normally wouldn't even consider using an Ajax Framework at all.
+        you normally wouldn't even consider using an Ajax Framework at all. Ra-Ajax could easily be used in
+        the front ends of your websites too. In fact every single page on this domain is including the entire
+        JavaScript parts of the Ra-Ajax core within themselves.
     </p>
     <p>
         Suggestions here might include front ends of CMS systems, forum sites, your personal blogging system
         and so on. And due to the LGPL nature of Ra-Ajax you can do this just as you wish yourself without
         wondering about license costs and such. The LGPL license gives you the right to use Ra-Ajax in
-        closed source/proprietary projects just as you wish :)
+        closed source/proprietary projects just as you wish.
     </p>
-    <br />
+    <p>
+        Ra-Ajax is of course also a RIA Framework. Though it is also something <strong>more</strong> than
+        just another RIA Framework.
+    </p>
     <h2>Ajax Controls in Ra-Ajax</h2>
     <p>
         To put the size in context I have created a list of all the Ajax Controls in Ra-Ajax below. Note 
         that this is the list of Ajax Controls in Ra-Ajax as of the 26th of August 2008 and will probably
         grow substantially over time ;)
     </p>
-    <ul>
+    <ul class="bulList">
         <li>Accordion</li>
         <li>Calendar</li>
         <li>InPlaceEdit</li>
@@ -225,7 +231,6 @@
         <li>TextBox</li>
         <li>Several DHTML Ajax Effects</li>
     </ul>
-    <br />
     <h2>Here Comes the Magic</h2>
     <p>
         The trained web developer will soon realize that the above list gives him all the "base controls" he
@@ -242,7 +247,6 @@
         the Ajax RichEdit. Even our Ajax InPlaceEdit is created utilizing the LinkButton and the Label and 
         nothing else.
     </p>
-    <br />
     <h2>We need you!</h2>
     <p>
         We are very interested in getting help to extend and make Ra-Ajax more useful. If you have created an

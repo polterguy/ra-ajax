@@ -23,7 +23,7 @@
 
     <h1>Ajax Window Sample</h1>
     <p>
-    	This is our <em>Ajax Window example</em>. The Ajax Window tries to as much as possible mimick a Desktop Window in that
+    	This is our <em>Ajax Window</em> example. The Ajax Window tries to as much as possible mimick a Desktop Window in that
     	it has properties which makes it behave at least close to the behavior of a Desktop Window. The Ajax Window is also
     	like most of our Ajax Extension Controls created without any custom JavaScript. This means it also serves as a perfect
     	reference for how to create your own Ajax Controls utilizing the building blocks from Ra-Ajax.
@@ -36,8 +36,7 @@
     <ext:Window 
     	runat="server"
     	Caption="Ajax Window"
-    	CssClass="window"
-    	style="width:250px;height:280px;z-index:500;position:absolute;left:350px;top:450px;"
+    	CssClass="window smallWnd"
     	id="window">
         <div style="padding:5px;">
 	        Try to move me around by dragging my header field.
@@ -47,11 +46,10 @@
                 src="media/flower1.jpg" />
         </div>
     </ext:Window>
-    <div style="height:300px;">&nbsp;</div>
+    <div class="spacerLarge">&nbsp;</div>
     <p>
     	Try to move the Ajax Window by dragging and dropping its header.
     </p>
-    <br />
     <h2>About creating Ajax Extension Controls</h2>
     <p>
     	The Ajax Window is a very good example of how to create an Ajax Extension Control yourself utilizing Ra-Ajax. In fact the
@@ -122,7 +120,7 @@ namespace Ra.Extensions
 }
     </pre>
     <p>
-    	And that's it. With those codelines utilizing Ra-Ajax you actually have an Ajax Window :)
+    	And that's it. With those codelines utilizing Ra-Ajax you actually have an Ajax Window.
     </p>
     <p>
     	In fact the most "difficult" thing to understand is where you call EnsureChildControls. I choose
@@ -131,7 +129,7 @@ namespace Ra.Extensions
     	upon EVERY Callback (and postback) re-create the Window using the exact same procedure to make sure
     	your (Ajax) Controls are added to the Controls collection in the correct order and so on. If you're 
     	stuck with creating an Ajax Extension control this is our favorite topic to help you out with though
-    	at <a href="http://ra-ajax.org/Forums/Forums.aspx">our forums</a> so don't be afraid to ask for help :) 
+    	at <a href="http://ra-ajax.org/Forums/Forums.aspx">our forums</a> so don't be afraid to ask for help!
     </p>
     <p>
     	Another thing which is important to understand is that mostly you want to "defer" setting some properties until

@@ -62,7 +62,6 @@
             Visible="false" />
 
     </ra:Panel>
-    <br />
     <h2>Run Your Ajax Apps Everywhere</h2>
     <p>
         Ra-Ajax is still quite immature, but its goal is to be able to run Ajax on every single platform

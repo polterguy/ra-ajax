@@ -24,8 +24,8 @@
     <h1>Ra Ajax Samples - Calendar</h1>
     <p>
         This is our <em>Ajax Calendar</em> reference sample. The Ajax Calendar is an Extension control, which
-        means that it can be found in the <em>Extensions project</em>. One of the important
-        features of the Ra-Ajax Calendar is that it does <em>not add to the JavaScript size</em>. This is 
+        means that it can be found in the Extensions project. One of the important
+        features of the Ra-Ajax Calendar is that it does <em>not</em> add to the JavaScript size. This is 
         because it is entirely composed of other existing Ajax Controls like LinkButtons, Labels, 
         DropDownLists and so on.
     </p>
@@ -44,7 +44,13 @@
     <p>
         Try to change the Date in the Ajax Calendar above
     </p>
-    <br />
+    <p>
+        The Ajax Calendar is 100% localizable since everything is rendered on the server. You can localize it to 
+        any language which is supported by .Net Framework or Mono. It also have properties for trapping both
+        change of date and clicking a specific date or the Today button. Another nifty feature of our Calendar
+        control is that it also have support for special rendering of days. This means that you can add up
+        your own controls inside any specific cell in it.
+    </p>
     <h2>Ra-Ajax and Mono/Linux/Apache</h2>
     <p>
         Did you know that even though Ra-Ajax is written on top of .Net, it is still possible (and easy) to deploy
@@ -103,12 +109,7 @@
         Ra-Ajax is free to use, we don't have any plans for starting charging you for anything else
         than consulting services (if you should need it), you can use it for free in your Closed Source
         applications (due to LGPL) and we will even help you for free in our 
-        <a href="http://ra-ajax.org/Forums/Forums.aspx">forums</a> as much as we can.
-    </p>
-    <p>
-        Quote from me;
-        <br />
-        <em>"Give me some freedom"</em>  ;)
+        <a href="http://ra-ajax.org/Forums/Forums.aspx">forums</a> as much as we can for free.
     </p>
     <a href="Ajax-InPlaceEdit.aspx">On to Ajax InplaceEdit</a>
 </asp:Content>

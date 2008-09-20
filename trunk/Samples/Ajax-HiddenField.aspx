@@ -40,8 +40,6 @@
         ID="retrieveValue" 
         Text="Retrieve value" 
         OnClick="retrieveValue_Click" />
-    <br />
-    <br />
     <h2>So how does it work then?</h2>
     <p>
         If you look at the source code for this page by clicking the "Show Code" button at the top
@@ -52,7 +50,6 @@
         <em>Response Filter</em> which again returns values from Ra-Ajax Controls in a special way
         by using JSON.
     </p>
-    <br />
     <h2>Why not use UpdatePanels?</h2>
     <p>
         UpdatePanels have their advantages, among other things they are easier to implement, in 
@@ -81,7 +78,6 @@
         complex applications you will notice that using them will make your application more difficult to maintain, more 
         difficult to debug and more difficult to understand for outsiders.
     </p>
-    <br />
     <h2>Proof</h2>
     <p>
         Imagine the above <em>HiddenField Ajax sample</em>. Now if we were to create this logic with 
@@ -95,7 +91,6 @@
         In ASP.NET AJAX that last UpdatePanel would be re-rendered and the second Button would
         lose focus.
     </p>
-    <br />
     <h2>And this was a no-brainer!</h2>
     <p>
         Imagine how complex it can become when you create something complex which is of *actual use*...!

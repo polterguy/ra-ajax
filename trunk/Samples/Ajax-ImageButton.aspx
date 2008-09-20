@@ -62,7 +62,6 @@
         None of the ActiveX "websites" I created after that works today. ActiveX is today on the "scrap yard
         of IT" and nobody takes it seriously today and it has transformed into a "hall of shame technology word".
     </p>
-    <br />
     <h2>The ActiveX 2.0 de-evolution</h2>
     <p>
         Today there are several companies that want you to believe that they have the "new and improved HTML,

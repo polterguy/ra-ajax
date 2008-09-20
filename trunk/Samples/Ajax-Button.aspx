@@ -18,8 +18,9 @@
 
     <h1>Ra Ajax Samples - Button</h1>
     <p>
-        I will try to create one simple and easy to understand sample of every control there is in Ra-Ajax.
-        This is the <em>Ajax Button</em> example.
+        We will try to create one simple and easy to understand sample of every control there is in Ra-Ajax. While
+        creating these reference samples we will also try to write something intelligent about some of the general
+        concepts of Ra-Ajax. This is the <em>Ajax Button</em> example.
     </p>
     <ra:Button 
         runat="server" 
@@ -36,7 +37,6 @@
         In addition the <em>OnClick</em> event handler will manipulate the styles, changing the background color
         of the button to Yellow.
     </p>
-    <br />
     <h2>CSS Styles and Ra-Ajax</h2>
     <p>
         In addition, the <em>Ra-Ajax Button</em>, as most other Ra-Ajax Controls, has a style 
@@ -45,7 +45,7 @@
         given here for references, but for a more exhaustive reference I would encourage you to go to e.g. 
         <a href="http://www.w3.org/TR/REC-CSS2/">the W3C website</a>.
     </p>
-    <ul>
+    <ul class="bulList">
         <li>background-color - (color)</li>
         <li>color - (color)</li>
         <li>font-style - (italic, normal, oblique and inherit)</li>

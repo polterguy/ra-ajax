@@ -14,5 +14,7 @@ public partial class AjaxInPlaceEdit : System.Web.UI.Page
     protected void inpl_TextChanged(object sender, EventArgs e)
     {
         lbl.Text = "New value: " + inpl.Text;
+        Effect effect = new EffectHighlight(lbl, 500);
+        effect.Render();
     }
 }

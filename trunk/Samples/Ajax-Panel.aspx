@@ -44,7 +44,6 @@
             Text="Edit me"
             OnKeyUp="txt_KeyUp" />
     </ra:Panel>
-    <br />
     <h2>Complexity Within Complexity</h2>
     <p>
         Notice how the background color changes when you click the LinkButton and how the color of the
@@ -71,7 +70,6 @@
         tamper with JavaScript ourselves at all. And the only reason why this is possible; is because our
         Ajax framework is not created around the concept of Partial Rendering.
     </p>
-    <br />
     <h2>Think of a Control</h2>
     <p>
         The Ajax Panel above can in fact contain any controls you wish, to some extent even 3rd. party

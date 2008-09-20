@@ -37,7 +37,6 @@
         runat="server" 
         ID="timer"  
         OnTick="timer_Tick" />
-    <br />
     <p>
         Watch closely the Label above as it changes every second. The code for changing the Label Text value
         is created 100% on the server and runs in the protected (blue pill) environment of server-side code :)
@@ -50,7 +49,6 @@
         timeout when he is editing a wiki entry. This works since every time you call into the server
         in ASP.NET it will reset the "minutes to session timeout" countdown...
     </p>
-    <br />
     <h2>Features of the Ra-Ajax Timer</h2>
     <p>
         The Ra-Ajax Timer have a property called <em>Milliseconds</em> which is the number of Milliseconds

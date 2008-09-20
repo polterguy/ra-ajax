@@ -31,16 +31,13 @@
         OnMouseOut="mouseout" 
         OnMouseOver="mouseover" 
         Text="Ajax CheckBox" />
-    <br />
-    <br />
     <h2>About the Ra-Ajax Inheritance Hierarchy</h2>
     <p>
         Ra-Ajax does not inherit from the native ASP.NET WebControls. This means that a Ra-Ajax CheckBox is not
         also a <em>System.Web.UI.WebControls.CheckBox</em> control. There are several reasons behind that choice. Some
         of those reasons I will try to give you here...
     </p>
-    <br />
-    <h3>The CssStyleCollection problem</h3>
+    <h2>The CssStyleCollection problem</h2>
     <p>
         First of all there's the problem with the <em>CssStyleCollection</em> property. This is a class in ASP.NET
         and actually the type of the <em>Style property</em> when you are using ASP.NET WebControls. This class is first
@@ -54,8 +51,7 @@
         possible for Ra-Ajax to intervene changes sent to the Style property and then send only those back to
         the client when changes are done on the server.
     </p>
-    <br />
-    <h3>The Font, Border, Color, properties problems...</h3>
+    <h2>The Font, Border, Color, properties problems...</h2>
     <p>
         Microsoft, when creating the WebControl, Button, CheckBox classes and so on, decided they should have "short hand"
         versions or "shortcuts" for the most commonly used properties in the style collection. That was not their greatest 
@@ -67,8 +63,7 @@
         written on top of ASP.NET. Someone should have told Microsoft about 
         <a href="http://en.wikipedia.org/wiki/You_Ain%27t_Gonna_Need_It">YAGNI</a> ;)
     </p>
-    <br />
-    <h3>Ra-Ajax does not inherit from WebControl!</h3>
+    <h2>Ra-Ajax does not inherit from WebControl!</h2>
     <p>
         Now if you combine those two reasons above, you effectively get Ra-Ajax in a nutshell. None of the Ra-Ajax
         Controls are inheriting, directly, indirectly or in any other shape or form, from the <em>System.Web.UI.WebControls.WebControl</em> 
