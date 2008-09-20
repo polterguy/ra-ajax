@@ -9,7 +9,7 @@ We wanted to specify, in the NAnt script, a fileset of the JavaScript files that
 The next step was to try and find a Custom JSMin NAnt Task, built by someone who probably faced this problem before. Having a JSMin NAnt Task would make the script much simpler and easier to understand and modify by anyone. Although we expected otherwise, we were not able to find one. So we decided to build it and make it available for anyone facing the same situation.
 
 <h2>How You Can Use it</h2>
-The project, Ra.Build.Tasks which is basically this custom JSMin Task, is available <a href=" http://code.google.com/p/ra-ajax/">here</a> as part of the Ra-Ajax source code. If you compile this project you will get a Ra.Build.Tasks.dll, drop that dll in NAnt's bin folder and you can use it immediately in your NAnt build script like this:
+The project, Ra.Build.Tasks which is basically this custom JSMin Task, is available <a href=" http://code.google.com/p/ra-ajax/">here</a> as part of the Ra-Ajax source code. You can also download this <a href="http://ra-ajax.org/Downloads/Blogs/Ra.Build.Tasks.zip">zip file</a>, it includes the code for this task, a pre-built dll and our NAnt build script for reference purpose on how to use the task. If you compile this project you will get a Ra.Build.Tasks.dll, drop that dll in NAnt's bin folder and you can use it immediately in your NAnt build script like this:
 
 <pre>
 &lt;jsmin verbose="true" todir="Ra/JsCompressed"&gt;
