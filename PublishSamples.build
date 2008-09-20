@@ -12,6 +12,7 @@
 	<property name="ext.name" value="Extensions" />
 
 	<property name="samples.dir" value="Samples" />
+	<property name="samples.precompiled.dir" value="Samples_precompiled" />
 	<property name="resource.cacher.name" value="ResourceCacher" />
 	<property name="framework.dir" value="${framework::get-framework-directory('net-2.0')}" />
 	<!-- End Properties -->
@@ -28,16 +29,24 @@
 	<copy overwrite="true" file="${output.dir}/${library.dir}/${ext.name}.dll" todir="${samples.dir}/Bin" />
 	<copy overwrite="true" file="${output.dir}/${helpers.dir}/${resource.cacher.name}.dll" todir="${samples.dir}/Bin" />
 
-	<exec
-		program="${framework.dir}/aspnet_compiler.exe"
-		commandline="-v ${samples.dir} -p ${samples.dir} -u -f ${output.dir}/${samples.dir} -c"
-		if="${file::exists(framework.dir + '/aspnet_compiler.exe')}" />
-
-	<delete file="${output.dir}/${samples.dir}/Web.Config" />
-	<delete file="${output.dir}/${samples.dir}/Web.Config.template" />
-
 	<copy overwrite="true" todir="${output.dir}/${samples.dir}">
 		<fileset basedir="${samples.dir}">
+			<include name="/**/*.cs" />
+			<include name="/**/*.aspx" />
+			<include name="/**/*.ascx" />
+			<include name="/**/*.master" />
+			<include name="media/*.*" />
+			<include name="Bin/*.*" />
+		</fileset>
+	</copy>
+
+	<exec
+		program="${framework.dir}/aspnet_compiler.exe"
+		commandline="-v ${samples.dir} -p ${output.dir}/${samples.dir} -u -f ${output.dir}/${samples.precompiled.dir} -c"
+		if="${file::exists(framework.dir + '/aspnet_compiler.exe')}" />
+
+	<copy overwrite="true" todir="${output.dir}/${samples.precompiled.dir}">
+		<fileset basedir="${output.dir}/${samples.dir}">
 			<include name="/**/*.cs" />
 		</fileset>
 	</copy>
