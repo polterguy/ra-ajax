@@ -29,7 +29,7 @@
     <h1>Ra Ajax Samples - Combining Ra Ajax Controls</h1>
     <p>
         Much of the point in Ra-Ajax isn't really apparent before you understand how easy it is to
-        <em>combine the Ra-Ajax Controls</em>. By combining Ra-Ajax controls, you can create 
+        <em>combine</em> the Ra-Ajax Controls together. By combining Ra-Ajax controls, you can create 
         far more complex controls. Either as standalone server-side controls and thereby reusing 
         them in all your projects, or by combining them inline on your .ASPX page or maybe in a 
         UserControl to get some reusability within your projects.
@@ -50,8 +50,8 @@
         ID="lblResults" />
     <h2>Ra-Ajax Extension Controls (WebControls)</h2>
     <p>
-        The example below is a <em>Ra-Ajax Extension Control</em> built as a server-side control
-        which means you can easily reuse it across all your projecs.
+        The example below is a Ra-Ajax Extension Control built as a server-side control
+        which means you can easily reuse it across all of your projecs.
     </p>
     <ext:Calendar 
         runat="server" 
@@ -66,18 +66,18 @@
         ID="selectedDate" />
     <div class="spacerSmall">&nbsp;</div>
     <p>
-        In fact, the above <em>Ajax Calendar Control</em> is entirely built purely as a server-side 
-        Ajax Control, reusing only existing Ra-Ajax Controls like <em>LinkButton, Panel, Label, DropDownList</em>
+        In fact, the above Ajax Calendar Control is built entirely as a server-side 
+        Ajax Control, reusing only existing Ra-Ajax Controls like LinkButton, Panel, Label, DropDownList
         and so on. So you don't even have to know JavaScript to create your own Ajax Extension controls.
     </p>
     <p>
-        The above <em>Ajax Calendar</em> is also included as part of the Ra-Ajax Extensions project.
+        The above Ajax Calendar is also included as part of the Ra-Ajax Extensions project.
     </p>
     <h2>Let Us Know!...</h2>
     <p>
         ...if you create a really cool extension widget and want to license it as Open Source. Send 
         us an <a href="mailto:thomas@ra-ajax.org">email</a> so that we can link to your website or maybe even add 
-        it to the main Ra-Ajax Extensions project. Or as a community extension.
+        it to the main Ra-Ajax Extensions project. Or have it as a community extension.
     </p>
     <a href="Dynamic.aspx">On to "Dynamic Ajax Controls"...</a>
 </asp:Content>

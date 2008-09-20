@@ -70,8 +70,8 @@
         in addition, this becomes even more interesting...
     </p>
     <p>
-    	Just to be clear; <em>the Ajax Button and the Ajax TextBox OF COURSE also have the OnClick Event Handlers and
-    	the OnTextChanged Event Handlers ;)</em>
+    	Just to be clear; <em>the Ajax Button and the Ajax TextBox also have the OnClick Event Handlers and
+    	the OnTextChanged Event Handlers. (of course)</em>
     </p>
     <a href="Effects.aspx">On to "Ajax Effects"...</a>
 </asp:Content>
