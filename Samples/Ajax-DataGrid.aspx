@@ -59,17 +59,16 @@
             </asp:TemplateField>
         </Columns>
     </asp:GridView>
-	<br />
-	<ra:Label 
-		runat="server" 
-		id="lbl" 
-		Text="Watch me as you edit stuff" style="font-style:italic;color:#999;" />
-	<br />
+    <p>
+	    <ra:Label 
+		    runat="server" 
+		    id="lbl" 
+		    Text="Watch me as you edit stuff" style="font-style:italic;color:#999;" />
+    </p>
 	<p>
 	    Try to edit the names above by clicking them and moving focus out of the TextBox afterwards or
 	    change the value of the CheckBoxes etc. This way you will see that this is truly an "Ajax DataGrid" ;)
 	</p>
-	<br />
 	<h2>Ra-Ajax and ASP.NET Controls</h2>
 	<p>
 	    As you can see above it is very easy to combine Ra-Ajax controls together with the conventional controls

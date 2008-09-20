@@ -50,6 +50,7 @@ public partial class AjaxDataGrid : System.Web.UI.Page
         Ra.Extensions.InPlaceEdit edit = sender as Ra.Extensions.InPlaceEdit;
         lbl.Text = string.Format("Name changed to {0}", edit.Text);
         Effect effect = new EffectFadeIn(lbl, 400);
+        effect.Chained.Add(new EffectHighlight());
         effect.Render();
     }
 
@@ -58,6 +59,7 @@ public partial class AjaxDataGrid : System.Web.UI.Page
         Ra.Widgets.CheckBox edit = sender as Ra.Widgets.CheckBox;
         lbl.Text = string.Format("IsAdmin changed to {0}", edit.Checked);
         Effect effect = new EffectFadeIn(lbl, 400);
+        effect.Chained.Add(new EffectHighlight());
         effect.Render();
     }
 

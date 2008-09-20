@@ -118,8 +118,10 @@ a { text-decoration:none; }
 a:hover { text-decoration:underline;background-color:#eee;color:Black; }
 h2 { margin-top:2.7em; }
 
-#doc2 { width:1056px; background:Transparent url(bg.png) repeat-y; }
-#hd { background:Transparent url(sun_background.jpg) no-repeat; height:259px; margin:0 16px 0 16px; }
+#doc2 { width:1056px; background:url('bg.png') repeat-y;
+}
+#hd { background:url('sun_background.jpg') no-repeat; 
+height:259px; margin:0 16px 0 16px; }
 #bd { margin:25px 41px 0 41px; font-family:"Lucida Grande","Lucida Sans Unicode",verdana,tahoma,arial,sans-serif;}
 #ft { margin-left:auto; margin-right:auto; text-align:center; width:50%; padding:25px; }
 .navigation { padding-top:0.7em; width:}
@@ -134,10 +136,27 @@ h2 { margin-top:2.7em; }
 .accordion-control {}
 .accordion-control .body { overflow:hidden; background-color:#f0f0ea; font-size:small; }
 .accordion-control .body-content { border-top:solid 1px #e0e0da; padding:15px; }
-.accordion-control .accordion-header { background:Transparent url(tabcontrol.png) repeat-x scroll 0px -159px; }
-.accordion-control .accordion-header:hover { background:Transparent url(tabcontrol.png) repeat-x scroll 2px -53px; }
+.accordion-control .accordion-header { background:url('tabcontrol.png') repeat-x 0px -159px;}
+.accordion-control .accordion-header:hover { background:url('tabcontrol.png') repeat-x 2px -53px;}
 .accordion-control .accordion-header a { text-decoration:none; padding:5px; display:block; font-weight:bold; }
 .accordion-control .accordion-header a:hover { background:inherit; }
+
+/* TabControl styles */
+.tab-control { width:95%; }
+.tab-control .tab-header { }
+.tab-control .tab-header ul li { display:inline; padding-right:2px; }
+.tab-control .tab-header ul li.first { margin-left:6px; }
+.tab-control .tab-header ul li a { text-decoration:none; color:#333; padding:5px; }
+.tab-control .tab-header ul li.active a { color:#993; }
+.tab-control .tab-header ul li.active a:hover { color:#993; }
+.tab-control .tab-header ul li a:hover { color:#66d; background-color:Transparent; }
+.tab-control .tab-header ul li span.left { background:Transparent url(tabcontrol.png) no-repeat; width:3px; padding-top:5px; }
+.tab-control .tab-header ul li span.center { background:Transparent url(tabcontrol.png) repeat-x scroll 0 -50px; padding-top:5px; }
+.tab-control .tab-header ul li span.right { background:Transparent url(tabcontrol.png) no-repeat -2px 0px; width:3px; padding-top:5px; }
+.tab-control .tab-header ul li.active span.left { background:Transparent url(tabcontrol.png) no-repeat scroll 0 -100px; border-bottom:solid 1px #F0F0EA; }
+.tab-control .tab-header ul li.active span.center { background:Transparent url(tabcontrol.png) repeat-x scroll 0 -150px; font-weight:bold; border-bottom:solid 1px #F0F0EA;}
+.tab-control .tab-header ul li.active span.right { background:Transparent url(tabcontrol.png) no-repeat scroll -2px -100px; border-bottom:solid 1px #F0F0EA; }
+.tab-control .content { padding:15px; background-color:#F0F0EA; border:solid 1px #91A7B4; }
 
 /* Window */
 .window { border:solid 1px Black; background-color:#fff; }
@@ -145,7 +164,8 @@ h2 { margin-top:2.7em; }
 .window-close { font-size:0.8em; position:absolute; right:5px; top:5px; }
 
 /* Calendar specific CSS */
-.calendar { background:Transparent url(calendar.png) no-repeat; font-size:0.8em; display:inline-block; border:outset 4px #999; /* IE hack */ *float:left; *display:inline; }
+.calendar { background:url('calendar.png') no-repeat; 
+font-size:0.8em; display:inline-block; border:outset 4px #999; /* IE hack */ *float:left; *display:inline; }
 .calendar select { border:none; margin:0 5px 0 5px; font-size:0.8em; background-color:Transparent; color:#bb5; }
 .calendar table { border-collapse:collapse; }
 .calendar table tr td { border:none; padding:2px; }
@@ -172,12 +192,13 @@ h2 { margin-top:2.7em; }
 .dropper { position:absolute; left:350px; color:#bbb; border:solid 1px #bbb; padding:5px; width:100px; z-index:1; }
 .droppablesTouched { background-color:Yellow; }
 .spacer { height:200px; }
+.spacerLarge { height:300px; }
 .spacerSmall { height:50px; }
 
 .slider { width:198px; border:solid 1px Black; padding-top:1px; padding-left:1px; position:absolute; height:21px; }
 .slidThumb { display:block; cursor:move; position:absolute; color:#33f; border:solid 1px #33f; width:25px; height:18px; -moz-user-select:none; }
 
-.smallWnd { width:250px; height:250px; z-index:500; position:absolute; }
+.smallWnd { width:250px; height:280px; z-index:500; position:absolute; }
 
 
 .nameTbl { border-collapse:collapse; }

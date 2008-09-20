@@ -32,14 +32,11 @@
         ID="richeditor" 
         style="border:solid 1px #999;background-color:Yellow;width:75%;height:250px;padding:15px;"
         Text="<p>Try to edit this text. This is an <em>Ajax RichEditor</em> try editing the text within here...</p>" />
-    <br />
     <ra:Button 
         runat="server" 
         ID="boldBtn" 
         Text="Make selection bold" 
         OnClick="boldBtn_Click" />
-    <br />
-    <br />
     <h2>This is a really crappy Ajax RichEditor...</h2>
     <p>
         ...and I agree *100%* ;)
@@ -67,7 +64,6 @@
         others to be able to create just the WYSIWYG RichEditor they themselves need instead of we
         creating something we guess you might need.
     </p>
-    <br />
     <h2>How does this work?</h2>
     <p>
         If you click the "Show Code" for this page you will see that the only logic we're actually doing
@@ -97,7 +93,6 @@
         with brilliant ideas about how to do just that. Among other things this means that you cannot just "insert"
         things, you must replace selected text only!
     </p>
-    <br />
     <h2>Security issues</h2>
     <p>
         Though to use this Ajax RichEditor you must turn off the RequestValidation. This can be done on
@@ -113,7 +108,6 @@
         Normally you would create a "white list" of tags which are legal in your business code layer.
         Though this is up to you (or some community member) to figure out for now :)
     </p>
-    <br />
     <h2>Other things to think about</h2>
     <p>
         Also the <em>contentEditable</em> attribute on a div element seems to make FireFox (3.x) go

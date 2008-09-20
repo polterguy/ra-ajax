@@ -34,7 +34,6 @@
         The Ajax LinkButton is useful whenever you need a Button but you don't want to use a regular Button
         <em>(&lt;input type="button"...)</em>, and would rather like something which renders like a hyperlink.
     </p>
-    <br />
     <h2>The Ajax Queue or The ViewState Problem</h2>
     <p>
         If you google for <em>__VIEWSTATE and Ajax</em> you will get a feeling for the <em>sequential Ajax queue

@@ -56,7 +56,6 @@
         	And here's yet another TabControlView
         </ext:TabView>
     </ext:TabControl>
-    <br />
     <h2>Ra-Ajax is Open Source (and free of charge)</h2>
     <p>
     	Due to the LGPL license of Ra-Ajax you can use Ra-Ajax without having to pay us money or in any other
@@ -74,7 +73,6 @@
     	make it better while at the same time we also ensures that Ra-Ajax <em>stays</em> Open Source and
     	isn't "stolen" and made into a proprietary Ajax Library by some huge corporation.
     </p>
-    <br />
     <h2>How to help...</h2>
     <p>
     	First of all <em>spread the news</em>. If you have a blog then help us write tutorials, reviews and in

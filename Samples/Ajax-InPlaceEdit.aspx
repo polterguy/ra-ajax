@@ -23,28 +23,36 @@
 
     <h1>Ra Ajax Samples - InPlaceEdit</h1>
     <p>
-        The <em>Ajax InPlaceEdit Control</em> was originally made famous by 
+        The <em>Ajax InPlaceEdit</em> Control was originally conceived and made famous by 
         <a href="http://mir.aculo.us/">Thomas Fuchs</a> the original author behind
         <a href="http://script.aculo.us/">ScriptAculous</a>. The Ra-Ajax InPlaceEdit is created without using
-        any <em>custom JavaScript</em> and is actually a very good starting point for your own <em>Custom Ajax Controls</em>.
+        any custom JavaScript and is actually a very good starting point for your own Custom Ajax Controls.
     </p>
-    <ext:InPlaceEdit 
-        runat="server" 
-        ID="inpl" 
-        OnTextChanged="inpl_TextChanged" 
-        Text="Click to edit" />
-    <br />
-    <ra:Label 
-        runat="server" 
-        ID="lbl" 
-        Text="Watch me as focus gets moved away from the InPlaceEdit"
-        style="color:#33f" />
-    <br />
+    <p>
+        <ext:InPlaceEdit 
+            runat="server" 
+            ID="inpl" 
+            OnTextChanged="inpl_TextChanged" 
+            Text="Click to edit" />
+    </p>
+    <p>
+        <ra:Label 
+            runat="server" 
+            ID="lbl" 
+            Text="Watch me as focus gets moved away from the InPlaceEdit"
+            style="color:#33f" />
+    </p>
     <p>
         Try to click the above InPlaceEdit and then when you're finished writing the new text just click
         TAB or with the mouse move the focus away from the InPlaceEdit above.
     </p>
-    <br />
+    <p>
+        The InPlaceEdit Control can be thought about as an editable label. Many times you have data which
+        you first of all need to display as read-only. But you also wish that the user should easily be able
+        to quickly edit that text data. Imagine for instance a text field inside a GridView or Data Repeater
+        or something similar which also is supposed to be inline editable. For such circumstances the InPlaceEdit
+        is perfect.
+    </p>
     <h2>Why give away innovation for free?</h2>
     <p>
         I don't expect everyone to understand this, but I think of IT the same way many others think
@@ -75,7 +83,6 @@
         <a href="http://ra-ajax.org/Author.aspx">this page</a>. If you have a problem when using Ra-Ajax
         then maybe the solution is to hire one or both of us.
     </p>
-    <br />
     <h2>Open Innovation, Open Web and Open Source</h2>
     <p>
         These are our prime tools to make sure that IT becomes a <em>commodity</em>. And by giving away Ra-Ajax to 

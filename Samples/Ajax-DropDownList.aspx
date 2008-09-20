@@ -52,11 +52,9 @@
         ID="lblResults2" 
         Text="Changes as you SELECT items"
         style="color:#33f;" />
-    <br />
     <p>
         Try to hover over the above DropDownList and then select one of its items...
     </p>
-    <br />
     <h2>Ra-Ajax and Partial Rendering</h2>
     <p>
         Ra-Ajax does not use <em>Partial Rendering</em> almost at all. Only when strictly necessary Ra-Ajax
@@ -89,7 +87,6 @@
         Then the Control.js (or the Ra.Control object) has a function called <em>Text</em> which then again
         will set the innerHTML (through the <em>Ra.Element.setContent</em> function) of the DOM element.
     </p>
-    <br />
     <h2>Advantages of Not Relying on Partial Rendering</h2>
     <p>
         Partial Rendering is very easy to implement, however it has significant disadvantages compared to other
