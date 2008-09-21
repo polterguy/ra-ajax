@@ -4,6 +4,9 @@ Code licensed under the BSD License:
 http://developer.yahoo.net/yui/license.txt
 version: 2.5.2
 */
+
+
+/* Reset CSS */
 html{color:#000;background:#FFF;}
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
 table{border-collapse:collapse;border-spacing:0;}
@@ -23,6 +26,9 @@ body {font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small;*font:x-
 table {font-size:inherit;font:100%;}
 pre,code,kbd,samp,tt{font-family:monospace;*font-size:108%;line-height:100%;}
 body{text-align:center;}
+
+
+/* Grid CSS */
 
 #ft{clear:both;}
 #doc,#doc2,#doc3,#doc4,.yui-t1,.yui-t2,.yui-t3,.yui-t4,.yui-t5,.yui-t6,.yui-t7{margin:auto;text-align:left;width:57.69em;*width:56.25em;min-width:750px;}
@@ -88,6 +94,9 @@ body{text-align:center;}
 #bd:after,.yui-g:after,.yui-gb:after,.yui-gc:after,.yui-gd:after,.yui-ge:after,.yui-gf:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
 #bd,.yui-g,.yui-gb,.yui-gc,.yui-gd,.yui-ge,.yui-gf{zoom:1;}
 
+
+/* Base CSS */
+
 h1{font-size:138.5%;}
 h2{font-size:123.1%;}
 h3{font-size:108%;}
@@ -95,10 +104,6 @@ h1,h2,h3{margin:1em 0;}
 h1,h2,h3,h4,h5,h6,strong{font-weight:bold;}
 abbr,acronym{border-bottom:1px dotted #000;cursor:help;}
 em{font-style:italic;}
-/*blockquote,ul,ol,dl{margin:1em;}
-ol,ul,dl{margin-left:2em;}
-ol li{list-style:decimal outside;}
-ul li{list-style:disc outside;}*/
 dl dd{margin-left:1em;}
 th,td{border:1px solid #000;padding:.5em;}
 th{font-weight:bold;text-align:center;}
@@ -114,6 +119,9 @@ Code licensed under LGPL3
 http://ra-ajax.org
 */
 
+
+/* Customized "base" and Grid */
+
 a { text-decoration:none; }
 a:hover { text-decoration:underline;background-color:#eee;color:Black; }
 h2 { margin-top:2.7em; }
@@ -122,13 +130,10 @@ h2 { margin-top:2.7em; }
 #hd { background:url('sun_background.jpg') no-repeat; height:259px; margin:0 16px 0 16px; }
 #bd { margin:25px 41px 0 41px; font-family:"Lucida Grande","Lucida Sans Unicode",verdana,tahoma,arial,sans-serif;}
 #ft { margin-left:auto; margin-right:auto; text-align:center; width:50%; padding:25px; }
-.navigation { padding-top:0.7em; }
-.major-links { padding-top:3.0em; }
-.cnt { text-align:justify; }
-.codeBtn { margin-top:2.0em; }
-.updateLbl { color:#33f; }
+
 
 /* Accordion */
+
 .accordion-control {}
 .accordion-control {}
 .accordion-control .body { overflow:hidden; background-color:#f0f0ea; font-size:small; }
@@ -138,7 +143,9 @@ h2 { margin-top:2.7em; }
 .accordion-control .accordion-header a { text-decoration:none; padding:5px; display:block; font-weight:bold; }
 .accordion-control .accordion-header a:hover { background:inherit; }
 
+
 /* TabControl styles */
+
 .tab-control { width:95%; }
 .tab-control .tab-header { }
 .tab-control .tab-header ul li { display:inline; padding-right:2px; }
@@ -155,12 +162,16 @@ h2 { margin-top:2.7em; }
 .tab-control .tab-header ul li.active span.right { background:url('tabcontrol.png') no-repeat -2px -100px; border-bottom:solid 1px #F0F0EA; }
 .tab-control .content { padding:15px; background-color:#F0F0EA; border:solid 1px #91A7B4; }
 
+
 /* Window */
+
 .window { border:solid 1px Black; background-color:#fff; }
 .window-head { border-bottom:solid 1px Black; background-color:#eef; padding:5px; font-size:1.3em; cursor:move; -moz-user-select:none; font-style:bold; }
 .window-close { font-size:0.8em; position:absolute; right:5px; top:5px; }
 
+
 /* Calendar specific CSS */
+
 .calendar { background:url('calendar.png') no-repeat; font-size:0.8em; display:inline-block; border:outset 4px #999; /* IE hack */ *float:left; *display:inline; }
 .calendar select { border:none; margin:0 5px 0 5px; font-size:0.8em; background-color:Transparent; color:#bb5; }
 .calendar table { border-collapse:collapse; }
@@ -174,6 +185,13 @@ h2 { margin-top:2.7em; }
 .calendar .holidayOnVenus a { color:#0f0; }
 
 
+/* Special classes for website only */
+
+.navigation { padding-top:0.7em; }
+.major-links { padding-top:3.0em; }
+.cnt { text-align:justify; }
+.codeBtn { margin-top:2.0em; }
+.updateLbl { color:#33f; }
 .panel { background-color:Yellow; border:solid 1px Black; padding:15px; }
 .chat { width:100%; height:220px;padding:5px; }
 .pnlAnimation { position:absolute;background-color:#ddd;border:solid 1px Black;padding:15px;height:100px;width:100px; }
@@ -182,559 +200,23 @@ h2 { margin-top:2.7em; }
 .bulList { margin:1em; }
 .bulList li { list-style:disc outside; margin-left:2em; }
 .datagrid { width:100%;background-color:#eee; }
+.spacer { height:200px; }
+.spacerLarge { height:300px; }
+.spacerSmall { height:50px; }
+.smallWnd { width:250px; height:280px; z-index:500; position:absolute; *left:1px; *top:1px; }
+.wndWrapper { position:absolute; }
+.nameTbl { border-collapse:collapse; }
+.nameTbl tr td { border:none; padding-left:5px; padding-right:5px; padding-top:1px; padding-bottom:1px; }
+.errLbl { color:Red; font-style:italic; }
+.infoLbl { font-size:90%;color:#666; }
 
-/* Droppables and Draggable sample*/
+
+/* Droppables and Draggable sample */
+
 .dragContainer { position:relative; margin-top:15px; }
 .dragger1 { cursor:move; position:absolute; color:#33f; border:solid 1px #33f; padding:5px; width:100px; -moz-user-select:none; z-index:2; background-color:White; *left:0px; *top:0px; }
 .dragger2 { cursor:move; position:absolute; color:#33f; border:solid 1px #33f; padding:5px; width:100px; -moz-user-select:none; z-index:2; background-color:White; left:200px; *top:1px; }
 .dropper { position:absolute; left:350px; color:#bbb; border:solid 1px #bbb; padding:5px; width:100px; z-index:1; }
 .droppablesTouched { background-color:Yellow; }
-.spacer { height:200px; }
-.spacerLarge { height:300px; }
-.spacerSmall { height:50px; }
-
 .slider { width:198px; border:solid 1px Black; padding-top:1px; padding-left:1px; position:absolute; height:21px; }
 .slidThumb { display:block; cursor:move; position:absolute; color:#33f; border:solid 1px #33f; width:25px; height:18px; -moz-user-select:none;*left:1px;*top:1px; }
-
-.smallWnd { width:250px; height:280px; z-index:500; position:absolute; *left:1px; *top:1px; }
-.wndWrapper { position:absolute; }
-
-
-.nameTbl { border-collapse:collapse; }
-.nameTbl tr td { border:none; padding-left:5px; padding-right:5px; padding-top:1px; padding-bottom:1px; }
-
-.errLbl { color:Red; font-style:italic; }
-.infoLbl { font-size:90%;color:#666; }
-
-
-
-
-
-
-
-
-/*
-body, div, table
-{
-	font-family: "Lucida Grande", "Lucida Sans Unicode", verdana, tahoma, arial, sans-serif;
-	line-height:1.6em;
-	font-size:93%;
-	color:#222;
-	text-align:justify;
-}
-
-h1
-{
-	font-size:x-large;
-}
-
-h2
-{
-	font-size:large;
-}
-
-img
-{
-	border:none;
-}
-
-a
-{
-	text-decoration:none;
-	color:Blue;
-}
-
-a:hover
-{
-	text-decoration:underline;
-	color:#000;
-}
-
-pre
-{
-	padding:5px;
-	margin:5px;
-	font-size:1.2em;
-	line-height:1.0em;
-}
-
-#contentPlusBorders
-{
-	width:1056px;
-	background:Transparent url(bg.png) repeat-y;
-	margin-left:auto;
-	margin-right:auto;
-	overflow:auto;
-	padding:0 16px 15px 16px;
-	position:relative;
-}
-
-.showCodeButtons
-{
-	position:absolute;
-	right:65px;
-	top:5px;
-	text-align:right;
-}
-
-#logoPartDiv
-{
-	height:259px;
-	background:Transparent url(sun_background.jpg) no-repeat;
-}
-
-.showCodeDiv
-{
-	line-height:1em;
-	font-size:small;
-	color:#222;
-	top:259px;
-	left:16px;
-	width:1024px;
-	position:absolute;
-	background-color:#fefedd;
-	z-index:1000;
-	overflow:auto;
-	border-bottom:solid 1px #ddd;
-}
-
-#navigation
-{
-	width:274px;
-	float:left;
-	padding-top:35px;
-}
-
-#wholeContentDiv
-{
-	float:left;
-}
-
-#contentOfPageDiv
-{
-	float:left;
-	width:680px;
-	padding:35px;
-}
-
-.links
-{
-	list-style-type:none;
-	padding:0;
-	margin:0;
-}
-
-.links a
-{
-	text-decoration:none;
-	color:#00f;
-}
-
-.links li
-{
-	margin-top:5px;
-}
-
-.links a:hover
-{
-	text-decoration:underline;
-	color:#000;
-}
-
-#contentOfPageDiv div
-{
-	text-align:justify;
-}
-
-.samplesMenu
-{
-	list-style-type:none;
-	padding:0;
-	margin:0;
-	text-align: left;
-	font-size:90%;
-}
-
-.samplesMenu a
-{
-	text-decoration:none;
-	color:#00f;
-}
-
-.samplesMenu li
-{
-	margin-top:5px;
-}
-
-.samplesMenu a:hover
-{
-	text-decoration:underline;
-	color:#000;
-}
-
-
-/* Classes for code-formatting...
- * /
-.keyword
-{
-	color:Blue;
-}
-
-.comment
-{
-	color:Green;
-}
-
-
-
-
-
-
-
-/* Special stuff
- * /
-.ajaxImageButton
-{
-	border:solid 1px White;
-}
-
-.ajaxImageButton:hover
-{
-	border:solid 1px #eee;
-}
-
-.forumReply
-{
-	margin-top:25px;
-	width:100%;
-	background-color:#f9f9f9;
-}
-
-
-
-/* Blog specific styles
- * /
-.blog
-{
-	width:500px;
-	font-family: verdana, tahoma, arial, sans-serif;
-	line-height:1.6em;
-	font-size:76%;
-}
-
-.blog h1
-{
-	font-size:1.4em;
-}
-
-.blog h2
-{
-	font-size:1.2em;
-}
-
-.blog h3
-{
-	font-size:1.0em;
-}
-
-.blog i.date
-{
-	font-style:normal;
-	color:#999;
-}
-
-.blog a
-{
-	color:#00f;
-	text-decoration:none;
-}
-
-.blog a:hover
-{
-	color:#000;
-	text-decoration:underline;
-}
-
-.blog pre
-{
-	font-size:1.2em;
-	line-height:1.0em;
-}
-
-.blog code
-{
-	font-size:1.2em;
-}
-
-
-
-/* Calendar specific CSS
- * /
-.calendar
-{
-	background:Transparent url(calendar.png) no-repeat;
-	font-size:0.8em;
-	display:inline-block;
-	border:outset 4px #999;
-	/* IE hack * /
-	*float:left;
-	*display:inline;
-}
-
-.calendar select
-{
-	border:none;
-	margin:0 5px 0 5px;
-	font-size:0.8em;
-	background-color:Transparent;
-	color:#bb5;
-}
-
-.calendar table tr.weekdays td
-{
-	color:#ddd;
-}
-
-.calendar table tr td.weekno
-{
-	color:#bbb;
-}
-
-.calendar a
-{
-	text-decoration:none;
-	color:#dd7;
-	padding:1px;
-	border:solid 1px Transparent;
-}
-
-.calendar a:hover
-{
-	border:solid 1px #999;
-}
-
-.calendar a.offMonth
-{
-	color:#bbb;
-}
-
-.calendar a.selected
-{
-	border:solid 1px Yellow;
-}
-
-.calendar .holidayOnVenus a
-{
-	color:#0f0;
-}
-
-
-/* AutoCompleter specific styles
- * /
-.auto
-{
-	border:solid 1px Black;
-	background-color:Yellow;
-	width:600px;
-	padding:5px;
-	position:absolute;
-	z-index:100;
-}
-
-.auto ul
-{
-	list-style-type:none;
-	font-size:0.7em;
-}
-
-.auto a
-{
-	text-decoration:none;
-}
-
-.auto a:hover
-{
-	text-decoration:underline;
-	color:Black;
-}
-
-
-/* TabControl styles
- * /
-.tab-control
-{
-	width:95%;
-}
-
-.tab-control .tab-header
-{
-}
-
-.tab-control .tab-header ul
-{
-	padding:0;
-	margin:0;
-}
-
-.tab-control .tab-header ul li
-{
-	list-style-type:none;
-	display:inline;
-	padding-right:2px;
-}
-
-.tab-control .tab-header ul li.first
-{
-	margin-left:6px;
-}
-
-.tab-control .tab-header ul li a
-{
-	text-decoration:none;
-	color:#333;
-	padding:5px;
-}
-
-.tab-control .tab-header ul li.active a
-{
-	color:#993;
-}
-
-.tab-control .tab-header ul li.active a:hover
-{
-	color:#993;
-}
-
-.tab-control .tab-header ul li a:hover
-{
-	color:#66d;
-}
-
-
-
-.tab-control .tab-header ul li span.left
-{
-	background:Transparent url(tabcontrol.png) no-repeat;
-	width:3px;
-	padding-top:5px;
-}
-
-.tab-control .tab-header ul li span.center
-{
-	background:Transparent url(tabcontrol.png) repeat-x scroll 0 -50px;
-	padding-top:5px;
-}
-
-.tab-control .tab-header ul li span.right
-{
-	background:Transparent url(tabcontrol.png) no-repeat -2px 0px;
-	width:3px;
-	padding-top:5px;
-}
-
-
-
-.tab-control .tab-header ul li.active span.left
-{
-	background:Transparent url(tabcontrol.png) no-repeat scroll 0 -100px;
-	border-bottom:solid 1px #F0F0EA;
-}
-
-.tab-control .tab-header ul li.active span.center
-{
-	background:Transparent url(tabcontrol.png) repeat-x scroll 0 -150px;
-	font-weight:bold;
-	border-bottom:solid 1px #F0F0EA;
-}
-
-.tab-control .tab-header ul li.active span.right
-{
-	background:Transparent url(tabcontrol.png) no-repeat scroll -2px -100px;
-	border-bottom:solid 1px #F0F0EA;
-}
-
-
-.tab-control .content
-{
-	padding:15px;
-	background-color:#F0F0EA;
-	border:solid 1px #91A7B4;
-}
-
-
-
-
-/* Accordion
- * /
-.accordion-control
-{
-}
-
-.accordion-control .content
-{
-}
-
-.accordion-control .body
-{
-	overflow:hidden;
-	background-color:#f0f0ea;
-	font-size:small;
-}
-
-.accordion-control .body-content
-{
-	border-top:solid 1px #e0e0da;
-	padding:15px;
-}
-
-.accordion-control .content .accordion-header
-{
-	background:Transparent url(tabcontrol.png) repeat-x scroll 0px -53px;
-}
-
-.accordion-control .content .accordion-header a
-{
-	text-decoration:none;
-	padding:5px;
-	display:block;
-	font-weight:bold;
-}
-
-.droppablesTouched
-{
-	background-color:Yellow;
-}
-
-.window
-{
-	border:solid 1px Black;
-	background-color:#fff;
-}
-
-.window-head
-{
-	border-bottom:solid 1px Black;
-	background-color:#eef;
-	padding:5px;
-	font-size:1.3em;
-	cursor:move;
-	-moz-user-select:none;
-	font-style:bold;
-}
-
-.window-close
-{
-	font-size:0.8em;
-	position:absolute;
-	right:5px;
-	top:5px;
-}
-
-*/
-
-
-
-
-
-
-

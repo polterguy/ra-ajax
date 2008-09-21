@@ -192,12 +192,14 @@ Ra.Element.prototype = {
   },
 
   absolutize: function() {
-    if( this.getStyle('position') == 'absolute' && this.getStyle('left') && this.getStyle('top') )
+    if( this.getStyle('position') == 'absolute' && 
+      (this.getStyle('left') && this.getStyle('top')) && 
+      (this.getStyle('left') != 'auto' && this.getStyle('top') != 'auto') )
       return;
     var valueT = this.offsetTop  || 0;
     var valueL = this.offsetLeft  || 0;
     var el = this.offsetParent;
-      
+
     while (el) {
       Ra.extend(el, Ra.Element.prototype);
       if( el.tagName == 'BODY' )
@@ -209,7 +211,6 @@ Ra.Element.prototype = {
       valueL += el.offsetLeft || 0;
       el = el.offsetParent;
     }
-      
     this.setStyle('left',valueL + 'px');
     this.setStyle('top',valueT + 'px');
     this.setStyle('position','absolute');

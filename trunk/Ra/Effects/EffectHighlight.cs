@@ -26,7 +26,8 @@ namespace Ra.Widgets
         {
             return @"
     this._startColor = this.element.getStyle('backgroundColor') || '#ffffff';
-    if( this._startColor.toLowerCase() == 'transparent')
+    if( this._startColor.toLowerCase() == 'transparent' || 
+      (this._startColor.indexOf('rgba(') != -1 && parseInt(this._startColor.split(',')[3], 10) == 0))
       this._startColor = '#fff';
     this._orColor = this.element.getStyle('backgroundColor');
 ";
@@ -46,6 +47,10 @@ namespace Ra.Widgets
     var clr = this._startColor;
     if (clr.slice(0,4) == 'rgb(') {
       var cols = clr.slice(4,clr.length-1).split(',');
+      color = {r:parseInt(cols[0], 10), g:parseInt(cols[1], 10), b:parseInt(cols[2], 10)};
+    }
+    else if (clr.slice(0,5) == 'rgba(') {
+      var cols = clr.slice(5,clr.length-1).split(',');
       color = {r:parseInt(cols[0], 10), g:parseInt(cols[1], 10), b:parseInt(cols[2], 10)};
     } else {
       if(clr.slice(0,1) == '#') {
