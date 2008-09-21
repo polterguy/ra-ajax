@@ -27,39 +27,39 @@
 	<copy overwrite="true" todir="${output.dir}/${ra.name}">
 		<fileset basedir="${ra.name}">
 			<exclude name="obj/**/*.*" />
-			<include name="**/*.cs" />
+      <exclude name="**/*VS2008.csproj" />
+      <include name="**/*.cs" />
 			<include name="**/*.js" />
 			<include name="**/*.txt" />
 			<include name="**/*.csproj" />
-			<exclude name="**/*VS2008.csproj" />
 		</fileset>
 	</copy>
 
 	<copy overwrite="true" todir="${output.dir}/${ext.name}">
 		<fileset basedir="${ext.name}">
 			<exclude name="obj/**/*.*" />
-			<include name="**/*.cs" />
+      <exclude name="**/*VS2008.csproj" />
+      <include name="**/*.cs" />
 			<include name="**/*.js" />
 			<include name="**/*.csproj" />
-			<exclude name="**/*VS2008.csproj" />
 		</fileset>
 	</copy>
 
 	<copy overwrite="true" todir="${output.dir}/${resource.cacher.name}">
 		<fileset basedir="${resource.cacher.name}">
 			<exclude name="obj/**/*.*" />
-			<include name="**/*.cs" />
+      <exclude name="**/*VS2008.csproj" />
+      <include name="**/*.cs" />
 			<include name="**/*.csproj" />
-			<exclude name="**/*VS2008.csproj" />
 		</fileset>
 	</copy>
 
 	<copy overwrite="true" todir="${output.dir}/${ra.build.tasks.name}">
 		<fileset basedir="${ra.build.tasks.name}">
 			<exclude name="obj/**/*.*" />
-			<include name="**/*.cs" />
+      <exclude name="**/*VS2008.csproj" />
+      <include name="**/*.cs" />
 			<include name="**/*.csproj" />
-			<exclude name="**/*VS2008.csproj" />
 		</fileset>
 	</copy>
 
