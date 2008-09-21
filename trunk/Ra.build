@@ -8,7 +8,6 @@
 	<property name="helpers.dir" value="helpers" />
 	<property name="output.dir" value="build_output" />
 	<property name="extra.references.dir" value="References" />
-	<property name="compressed.js.dir" value="Ra/JsCompressed/Js" />
 
 	<property name="ra.name" value="Ra" />
 	<property name="ext.name" value="Extensions" />
@@ -20,14 +19,12 @@
 
 	<target name="clean" description="Remove Old Build Output Files">
 		<delete dir="${output.dir}" />
-		<delete unless="${debug}" dir="${compressed.js.dir}" />
 	</target>
 
 	<target name="init" description="Necessary Initializations">
 		<mkdir dir="${output.dir}" />
 		<mkdir dir="${output.dir}/${library.dir}" />
 		<mkdir dir="${output.dir}/${helpers.dir}" />
-		<mkdir unless="${debug}" dir="${compressed.js.dir}" />
 	</target>
 
 	<target name="load.tasks" description="Compile and Load Custom NAnt Tasks">
@@ -43,8 +40,13 @@
 	</target>
 
 	<target name="jsmin" unless="${debug}" depends="load.tasks" description="Minify The Library JS Files">
-		<jsmin verbose="true" todir="${compressed.js.dir}">
+		<jsmin verbose="true" todir="${output.dir}/${ra.name}/Js">
 			<fileset basedir="${ra.name}/Js">
+				<include name="**/*.js" />
+			</fileset>
+		</jsmin>
+		<jsmin verbose="true" todir="${output.dir}/${ext.name}/Js">
+			<fileset basedir="${ext.name}/Js">
 				<include name="**/*.js" />
 			</fileset>
 		</jsmin>
@@ -55,23 +57,25 @@
 			<sources>
 				<include name="${ra.name}/**/*.cs" />
 			</sources>
-			<resources failonempty="true" dynamicprefix="true">
+			<resources failonempty="true" prefix="${ra.name}.Js">
 				<include name="${ra.name}/Js/**/*.js" if="${debug}" />
-				<include name="${ra.name}/JsCompressed/**/*.js" unless="${debug}" />
+				<include name="${output.dir}/${ra.name}/Js/**/*.js" unless="${debug}" />
 			</resources>
 		</csc>
 		<csc target="library" output="${output.dir}/${library.dir}/${ext.name}.dll" debug="${debug}">
 			<sources>
 				<include name="${ext.name}/**/*.cs" />
 			</sources>
-			<resources failonempty="true" dynamicprefix="true">
-				<include name="${ext.name}/**/*.js" />
-				<exclude name="${ext.name}/obj/**/*.js" />
+			<resources failonempty="true" prefix="${ext.name}.Js">
+				<include name="${ext.name}/Js/**/*.js" if="${debug}" />
+				<include name="${output.dir}/${ext.name}/Js/**/*.js" unless="${debug}" />
 			</resources>
 			<references>
 				<include name="${output.dir}/${library.dir}/${ra.name}.dll" />
 			</references>
 		</csc>
+		<delete dir="${output.dir}/${ra.name}" unless="${debug}" />
+		<delete dir="${output.dir}/${ext.name}" unless="${debug}" />
 	</target>
 
 	<!-- End Tragets -->
