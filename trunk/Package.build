@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<project name="Package">
+
+	<!-- Properties -->
+	<property name="ra.version" value="0.5" />
+
+	<property name="library.dir" value="library" />
+	<property name="resources.dir" value="resources" />
+	<property name="output.dir" value="build_output" />
+
+	<property name="ra.name" value="Ra" />
+	<property name="ext.name" value="Extensions" />
+
+	<property name="samples.dir" value="Samples" />
+	<property name="references.dir" value="References" />
+	<property name="resource.cacher.name" value="ResourceCacher" />
+	<property name="ra.build.tasks.name" value="Ra.Build.Tasks" />
+	<property name="framework.dir" value="${framework::get-framework-directory('net-2.0')}" />
+	<!-- End Properties -->
+
+	<nant buildfile="PublishSamples.build" />
+	
+	<copy overwrite="true" file="Ra.sln" todir="${output.dir}" />
+	
+	<copy overwrite="true" todir="${output.dir}/${ra.name}">
+		<fileset basedir="${ra.name}">
+			<exclude name="obj/**/*.*" />
+			<include name="**/*.cs" />
+			<include name="**/*.js" />
+			<include name="**/*.txt" />
+			<include name="**/*.csproj" />
+		</fileset>
+	</copy>
+	
+	<copy overwrite="true" todir="${output.dir}/${ext.name}">
+		<fileset basedir="${ext.name}">
+			<exclude name="obj/**/*.*" />
+			<include name="**/*.cs" />
+			<include name="**/*.js" />
+			<include name="**/*.csproj" />
+		</fileset>
+	</copy>
+	
+	<copy overwrite="true" todir="${output.dir}/${resource.cacher.name}">
+		<fileset basedir="${resource.cacher.name}">
+			<exclude name="obj/**/*.*" />
+			<include name="**/*.cs" />
+			<include name="**/*.csproj" />
+		</fileset>
+	</copy>
+
+	<copy overwrite="true" todir="${output.dir}/${ra.build.tasks.name}">
+		<fileset basedir="${ra.build.tasks.name}">
+			<exclude name="obj/**/*.*" />
+			<include name="**/*.cs" />
+			<include name="**/*.csproj" />
+		</fileset>
+	</copy>
+
+	<copy 
+		overwrite="true" 
+		file="${references.dir}/NAnt.Core.dll" 
+		todir="${output.dir}/${references.dir}" />
+	
+	<zip zipfile="${output.dir}/Ra-${ra.version}.zip">
+		<fileset basedir="${output.dir}">
+	        <include name="Ra.sln" />
+	    </fileset>
+		<fileset basedir="${output.dir}/${ra.name}" prefix="${ra.name}">
+	        <include name="**/*" />
+	    </fileset>
+		<fileset basedir="${output.dir}/${resources.dir}" prefix="${resources.dir}">
+	        <include name="**/*" />
+	    </fileset>
+	    <fileset basedir="${output.dir}/${library.dir}" prefix="${library.dir}">
+	        <include name="**/*" />
+	    </fileset>
+	    <fileset basedir="${output.dir}/${ext.name}" prefix="${ext.name}">
+	        <include name="**/*" />
+	    </fileset>
+		<fileset basedir="${output.dir}/${resource.cacher.name}" prefix="${resource.cacher.name}">
+	        <include name="**/*" />
+	    </fileset>
+		<fileset basedir="${output.dir}/${ra.build.tasks.name}" prefix="${ra.build.tasks.name}">
+	        <include name="**/*" />
+	    </fileset>
+		<fileset basedir="${output.dir}/${references.dir}" prefix="${references.dir}">
+	        <include name="**/*" />
+	    </fileset>
+		<fileset basedir="${output.dir}/${samples.dir}" prefix="${samples.dir}">
+	        <include name="**/*" />
+	    </fileset>
+	</zip>
+
+	<delete dir="${output.dir}/${ra.name}" />
+	<delete dir="${output.dir}/${ext.name}" />
+	<delete dir="${output.dir}/${resource.cacher.name}" />
+	<delete dir="${output.dir}/${ra.build.tasks.name}" />
+	<delete dir="${output.dir}/${references.dir}" />
+	<delete file="${output.dir}/Ra.sln" />
+
+</project>
