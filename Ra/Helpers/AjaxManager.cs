@@ -15,15 +15,10 @@ using Ra.Widgets;
 using System.Text;
 using System.Text.RegularExpressions;
 
-#if DEBUG
-[assembly: WebResource("Ra.Js.JsCore.Ra.js", "text/javascript")]
+
+[assembly: WebResource("Ra.Js.Ra.js", "text/javascript")]
 [assembly: WebResource("Ra.Js.Control.js", "text/javascript")]
 [assembly: WebResource("Ra.Js.Behaviors.js", "text/javascript")]
-#else
-[assembly: WebResource("Ra.JsCompressed.Js.JsCore.Ra.js", "text/javascript")]
-[assembly: WebResource("Ra.JsCompressed.Js.Control.js", "text/javascript")]
-[assembly: WebResource("Ra.JsCompressed.Js.Behaviors.js", "text/javascript")]
-#endif
 
 namespace Ra
 {
@@ -156,7 +151,7 @@ namespace Ra
         private List<string> _scriptIncludes = new List<string>();
         public void IncludeMainRaScript()
         {
-			IncludeScriptFromResource("JsCore.Ra.js");
+			IncludeScriptFromResource("Ra.js");
 		}
 
         public void IncludeMainControlScripts()
@@ -166,21 +161,13 @@ namespace Ra
 
 		public void IncludeScriptFromResource(string script)
 		{
-#if DEBUG
             if (this.SupressAjaxFilters)
             {
                 // Need to explicitly include JS files if filters are surpressed...
                 CurrentPage.ClientScript.RegisterClientScriptResource(typeof(AjaxManager), "Ra.Js." + script);
             }
             string resource = CurrentPage.ClientScript.GetWebResourceUrl(typeof(AjaxManager), "Ra.Js." + script);
-#else
-            if (this.SupressAjaxFilters)
-            {
-                // Need to explicitly include JS files if filters are surpressed...
-                CurrentPage.ClientScript.RegisterClientScriptResource(typeof(AjaxManager), "Ra.JsCompressed.Js." + script);
-            }
-            string resource = CurrentPage.ClientScript.GetWebResourceUrl(typeof(AjaxManager), "Ra.JsCompressed.Js." + script);
-#endif
+
 			if( _scriptIncludes.Exists(
                 delegate(string idx)
 			    {

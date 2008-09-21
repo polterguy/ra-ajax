@@ -1,12 +1,4 @@
 ﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <ItemGroup>
-    <ScriptFiles Include="JsCompressed\Js\Control.js" />
-    <ScriptFiles Include="JsCompressed\Js\Behaviors.js" />
-    <ScriptFiles Include="JsCompressed\Js\JsCore\Ra.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <ZipFiles Include="Js\**\*.js" />
-  </ItemGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -92,22 +84,13 @@
     <Compile Include="Behaviors\BehaviorUpdater.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Js\JsCore\Ra.js" />
+    <EmbeddedResource Include="Js\Ra.js" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Js\Control.js" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Js\Behaviors.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="JsCompressed\Js\JsCore\Ra.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="JsCompressed\Js\Control.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="JsCompressed\Js\Behaviors.js" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="license-GPL.txt" />
