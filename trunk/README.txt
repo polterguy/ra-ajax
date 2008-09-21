@@ -7,6 +7,9 @@
 
 ***********************************************************************************************
 
+* Ra-Ajax is licensed under the LGPL version 3 and can be used 
+  free of charge in proprietary projects. (Closed Source projects)
+
 * The pre-built library DLLs exists within the "library" folder and
   are the ones that should be used in your projects since they are
   minified and optimized.
