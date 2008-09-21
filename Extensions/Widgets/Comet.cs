@@ -18,7 +18,7 @@ using System.Threading;
 using System.Collections.Generic;
 using Extensions.Helpers;
 
-[assembly: ASP.WebResource("Extensions.Comet.js", "text/javascript")]
+[assembly: ASP.WebResource("Extensions.Js.Comet.js", "text/javascript")]
 
 namespace Ra.Extensions
 {
