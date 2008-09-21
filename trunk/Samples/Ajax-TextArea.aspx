@@ -45,8 +45,7 @@
         <ra:Label 
             runat="server" 
             ID="lbl" 
-            CssClass="updateLbl"
-            style="color:#33f;" />
+            CssClass="updateLbl" />
     </p>
     <p>
         Try to type into the Ajax TextArea above and hit Submit.

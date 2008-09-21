@@ -36,7 +36,7 @@
     <asp:GridView 
         runat="server" 
         ID="datagrid"
-        style="width:100%;background-color:#eee;"
+        CssClass="datagrid"
         GridLines="Horizontal"
         AutoGenerateColumns="False">
         <Columns>
@@ -63,7 +63,8 @@
 	    <ra:Label 
 		    runat="server" 
 		    id="lbl" 
-		    Text="Watch me as you edit stuff" style="font-style:italic;color:#999;" />
+		    Text="Watch me as you edit stuff" 
+		    CssClass="updateLbl" />
     </p>
 	<p>
 	    Try to edit the names above by clicking them and moving focus out of the TextBox afterwards or

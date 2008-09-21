@@ -41,27 +41,27 @@
     <ra:Panel 
         runat="server" 
         ID="chat" 
-        style="border:solid 1px Black; background-color:Yellow; width:100%; height:220px;padding:5px;">
+        CssClass="panel chat">
     </ra:Panel>
-    <ra:TextBox 
-        runat="server" 
-        ID="newChat" 
-        Text="INTENTIONALLY DISABLED" 
-        style="width:75%;margin-top:5px;"
-        OnFocused="newChat_Focused" />
-    <ra:Button 
-        runat="server" 
-        ID="submit" 
-        Enabled="false"
-        Text="Submit" 
-        OnClick="submit_Click" />
-    <ext:Comet 
-        runat="server" 
-        ID="comet"
-        Enabled="false"
-        OnTick="comet_Tick" />
-    <br />
-    <br />
+    <div>
+        <ra:TextBox 
+            runat="server" 
+            ID="newChat" 
+            Text="INTENTIONALLY DISABLED" 
+            style="width:75%;"
+            OnFocused="newChat_Focused" />
+        <ra:Button 
+            runat="server" 
+            ID="submit" 
+            Enabled="false"
+            Text="Submit" 
+            OnClick="submit_Click" />
+        <ext:Comet 
+            runat="server" 
+            ID="comet"
+            Enabled="false"
+            OnTick="comet_Tick" />
+    </div>
     <h2>Comet concerns</h2>
     <p>
         Mostly IE (except for some rumours about IE8) doesn't support Comet very well due to the 

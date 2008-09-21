@@ -27,20 +27,24 @@
         Here we start with the
         <em>Hello World</em> application. Type your name into the textbox and click the Submit button.
     </p>
-    <ra:TextBox 
-        runat="server" 
-        ID="name" />
-    <br />
-    <ra:Button 
-        runat="server" 
-        ID="submit" 
-        Text="Submit" 
-        OnClick="submit_Click" />
-    <br />
-    <ra:Label 
-        runat="server" 
-        CssClass="updateLbl"
-        ID="lblResults" />
+    <p>
+        <ra:TextBox 
+            runat="server" 
+            ID="name" />
+    </p>
+    <p>
+        <ra:Button 
+            runat="server" 
+            ID="submit" 
+            Text="Submit" 
+            OnClick="submit_Click" />
+    </p>
+    <p>
+        <ra:Label 
+            runat="server" 
+            CssClass="updateLbl"
+            ID="lblResults" />
+    </p>
     <h2>What happened?</h2>
     <p>
         If you click the Show Code button you will see that there is no 

@@ -45,7 +45,7 @@
 
     <ra:Panel 
         runat="server" 
-        style="background-color:Yellow;border:solid 1px Black;padding:15px;height:100px;margin:15px;"
+        CssClass="panel"
         ID="pnlDynamicControls" />
     <h2>Dynamic Ajax Controls in use</h2>
     <p>

@@ -22,21 +22,24 @@
         it doesn't have any events. This means that you can set its properties in
         an Ajax Callback, but you can not have an Ajax Image initiate an Ajax Callback.
     </p>
-    <ra:Button 
-        runat="server" 
-        ID="btn" 
-        Text="Change image" 
-        OnClick="btn_Click" />
-    <br />
-    <ra:Image 
-        runat="server" 
-        ID="img"
-        AlternateText="Flower" 
-        ImageUrl="media/flower1.jpg" />
+    <p>
+        <ra:Button 
+            runat="server" 
+            ID="btn" 
+            Text="Change image" 
+            OnClick="btn_Click" />
+    </p>
+    <p>
+        <ra:Image 
+            runat="server" 
+            ID="img"
+            AlternateText="Flower" 
+            ImageUrl="media/flower1.jpg" />
+    </p>
     <p>
         When you click the above Button, the ImageUrl property of the Ajax Image changes.
     </p>
-    <p style="font-size:90%;color:#666;">
+    <p class="infoLbl">
         The above flower images are taken from <em>flickr.com</em> 
         <a href="http://www.flickr.com/photos/kjunstorm/1562198683/sizes/s/">here</a> and 
         <a href="http://www.flickr.com/photos/aussiegall/1256623509/sizes/s/">here</a>. Thy are 

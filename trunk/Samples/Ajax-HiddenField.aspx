@@ -94,7 +94,8 @@
     <h2>And this was a no-brainer!</h2>
     <p>
         Imagine how complex it can become when you create something complex which is of *actual use*...!
-        <br />
+    </p>
+    <p>
         All we did here was to have a HiddenField which at the click of a Button got a new Value
         from a TextBox before that TextBox Text property was set to "". Then at the click of another
         Button we retrieve that HiddenField Value and put it as the Text property of the clicked button.

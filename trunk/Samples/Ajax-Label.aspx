@@ -28,7 +28,7 @@
             runat="server" 
             ID="lbl" 
             Text="This is an Ajax Label" 
-            style="color:#33f;" />
+            CssClass="updateLbl" />
     </p>
     <p>
         <ra:Button 
@@ -59,17 +59,20 @@
         <a href="Ajax-Image.aspx">Ajax Image</a>, the <a href="Ajax-CheckBox.aspx">Ajax CheckBox</a> 
         and so on.
     </p>
-    <ra:Label 
-        runat="server" 
-        ID="lbl2" 
-        Visible="false" 
-        Text="This text is initially invisible" />
-    <br />
-    <ra:Button 
-        runat="server" 
-        ID="btn2" 
-        Text="Click me" 
-        OnClick="btn2_Click" />
+    <p>
+        <ra:Label 
+            runat="server" 
+            ID="lbl2" 
+            Visible="false" 
+            Text="This text is initially invisible" />
+    </p>
+    <p>
+        <ra:Button 
+            runat="server" 
+            ID="btn2" 
+            Text="Click me" 
+            OnClick="btn2_Click" />
+    </p>
     <p>
         If you try to click the button above, you will see that the Label becomes Visible and its content
         is shown in the browser. However, if you try to view the source of the HTML page you will notice

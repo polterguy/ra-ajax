@@ -24,22 +24,23 @@
     	has an Ajax Updater which while there is a request going on will obscur the main area of the WebPage so that the 
     	user cannot interact with the UI while the Ajax Control below is going towards the server.
     </p>
-    <ra:Button 
-    	runat="server" 
-    	id="btn" 
-    	Text="Click me" 
-    	OnClick="btn_Click">
-    	<ra:BehaviorUpdater 
-    		runat="server"
-    		Color="#aaaaaa"
-    		Delay="500" />
-    </ra:Button>
-    <br />
+    <p>
+        <ra:Button 
+    	    runat="server" 
+    	    id="btn" 
+    	    Text="Click me" 
+    	    OnClick="btn_Click">
+    	    <ra:BehaviorUpdater 
+    		    runat="server"
+    		    Color="#aaaaaa"
+    		    Delay="500" />
+        </ra:Button>
+    </p>
     <p>
         <ra:Label 
     	    runat="server" 
     	    id="lbl"
-    	    style="font-style:italic;color:#999"
+    	    CssClass="infoLbl"
     	    Text="Updates..." />
     </p>
     <h2>Ajax Updater usage</h2>
