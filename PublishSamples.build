@@ -25,9 +25,10 @@
 		</sources>
 	</csc>
 
-	<copy overwrite="true" file="${output.dir}/${library.dir}/${ra.name}.dll" todir="${samples.dir}/Bin" />
-	<copy overwrite="true" file="${output.dir}/${library.dir}/${ext.name}.dll" todir="${samples.dir}/Bin" />
-	<copy overwrite="true" file="${output.dir}/${helpers.dir}/${resource.cacher.name}.dll" todir="${samples.dir}/Bin" />
+	<delete dir="${samples.dir}/bin" />
+	<copy file="${output.dir}/${library.dir}/${ra.name}.dll" todir="${samples.dir}/bin" />
+	<copy file="${output.dir}/${library.dir}/${ext.name}.dll" todir="${samples.dir}/bin" />
+	<copy file="${output.dir}/${helpers.dir}/${resource.cacher.name}.dll" todir="${samples.dir}/bin" />
 
 	<copy overwrite="true" todir="${output.dir}/${samples.dir}">
 		<fileset basedir="${samples.dir}">
@@ -36,7 +37,7 @@
 			<include name="**/*.ascx" />
 			<include name="**/*.master" />
 			<include name="media/*.*" />
-			<include name="Bin/*.*" />
+			<include name="bin/*.*" />
 		</fileset>
 	</copy>
 
