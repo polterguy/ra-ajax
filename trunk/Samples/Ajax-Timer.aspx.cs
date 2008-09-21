@@ -14,5 +14,7 @@ public partial class AjaxTimer : System.Web.UI.Page
     protected void timer_Tick(object sender, EventArgs e)
     {
         lbl.Text = DateTime.Now.ToString("dddd, dd MM - yy : HH:mm:ss");
+        Effect effect = new EffectHighlight(lbl, 300);
+        effect.Render();
     }
 }

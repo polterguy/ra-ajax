@@ -34,19 +34,24 @@
         handle using your favorite .NET language. The Ajax RadioButton (and all other Ra-Ajax Controls) are created 
         like that in fact.
     </p>
-    <ra:RadioButton 
-        runat="server" 
-        GroupName="controls"
-        ID="rdo2" 
-        Text="Hello World" 
-        OnCheckedChanged="rdo1_CheckedChanged" />
-    <br />
-    <ra:RadioButton 
-        runat="server" 
-        GroupName="controls"
-        ID="rdo1" 
-        Text="Combining Ajax Controls" 
-        OnCheckedChanged="rdo1_CheckedChanged" />
+    <ul>
+        <li>
+            <ra:RadioButton 
+                runat="server" 
+                GroupName="controls"
+                ID="rdo2" 
+                Text="Hello World" 
+                OnCheckedChanged="rdo1_CheckedChanged" />
+        </li>
+        <li>
+            <ra:RadioButton 
+                runat="server" 
+                GroupName="controls"
+                ID="rdo1" 
+                Text="Combining Ajax Controls" 
+                OnCheckedChanged="rdo1_CheckedChanged" />
+        </li>
+    </ul>
     <ra:Panel 
         runat="server" 
         ID="pnl"

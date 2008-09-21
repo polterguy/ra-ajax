@@ -73,7 +73,7 @@
     	make it better while at the same time we also ensures that Ra-Ajax <em>stays</em> Open Source and
     	isn't "stolen" and made into a proprietary Ajax Library by some huge corporation.
     </p>
-    <h2>How to help...</h2>
+    <h2>How to help the Ra-Ajax project...</h2>
     <p>
     	First of all <em>spread the news</em>. If you have a blog then help us write tutorials, reviews and in
     	any other ways spread the word about Ra-Ajax. We are all dependant upon that as many as possible use 

@@ -28,11 +28,13 @@
     	like most of our Ajax Extension Controls created without any custom JavaScript. This means it also serves as a perfect
     	reference for how to create your own Ajax Controls utilizing the building blocks from Ra-Ajax.
     </p>
-    <ra:Button 
-    	runat="server" 
-    	id="showWindow" 
-    	Text="Show Window" 
-    	OnClick="showWindow_Click" />
+    <p>
+        <ra:Button 
+    	    runat="server" 
+    	    id="showWindow" 
+    	    Text="Show Window" 
+    	    OnClick="showWindow_Click" />
+    </p>
     <div style="position:relative;">
         <ext:Window 
     	    runat="server"

@@ -22,11 +22,13 @@
         While a normal hyperlink usually makes the browser go to another page, the Ra-Ajax LinkButton initiates
         an Ajax Request which calls back into the server and raises an event which you can handle.
     </p>
-    <ra:LinkButton 
-        runat="server" 
-        ID="btn" 
-        Text="Click this Ajax LinkButton" 
-        OnClick="btn_Click" />
+    <p>
+        <ra:LinkButton 
+            runat="server" 
+            ID="btn" 
+            Text="Click this Ajax LinkButton" 
+            OnClick="btn_Click" />
+    </p>
     <p>
         Try to click the above Ajax LinkButton and see the changes.
     </p>
@@ -68,18 +70,20 @@
         that are initiated will go into an <em>Ajax Queue</em> and will not be dispatched before there's a "free lane"
         on the "Ajax highway" which they can use. In fact I have created an example for you to look at below.
     </p>
-    <ra:LinkButton 
-        runat="server" 
-        ID="lnk1" 
-        Text="Click this LinkButton" 
-        OnClick="lnk1_Click" />
-    <br />
-    <ra:LinkButton 
-        runat="server" 
-        ID="lnk2" 
-        Text="Then QUICKLY click this LinkButton before the other one returns" 
-        OnClick="lnk2_Click" />
-    <br />
+    <p>
+        <ra:LinkButton 
+            runat="server" 
+            ID="lnk1" 
+            Text="Click this LinkButton" 
+            OnClick="lnk1_Click" />
+    </p>
+    <p>
+        <ra:LinkButton 
+            runat="server" 
+            ID="lnk2" 
+            Text="Then QUICKLY click this LinkButton before the other one returns" 
+            OnClick="lnk2_Click" />
+    </p>
     <p>
         When you click the first Ajax LinkButton, there is an intentional Thread.Sleep for 5 seconds to simulate
         a lengthy request taking place. Then when you click the second LinkButton (hopefully you manage to do this 
@@ -107,7 +111,7 @@
         Let me sum up the rights and wrongs here. The second Ajax LinkButton should end up displaying something 
         like the below according to whether or not your Ajax framework implements an Ajax Request Queue.
     </p>
-    <ul>
+    <ul class="bulList">
         <li>
             Wrong: <em>"-- watch me as, "</em> 
         </li>

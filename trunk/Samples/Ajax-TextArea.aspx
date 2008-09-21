@@ -25,24 +25,29 @@
         for both rendering <em>&lt;textarea</em> and <em>&lt;input type="text"</em> ASP.NET is effectively 
         breaking <em>LSP or the Liskow Substitution Principle</em>.
     </p>
-    <ra:TextArea 
-        runat="server" 
-        ID="txt" 
-        Columns="20" 
-        Rows="5" 
-        OnFocused="txt_Focused"
-        Text="Type something" />
-    <br />
-    <ra:Button 
-        runat="server" 
-        ID="btn" 
-        Text="Submit" 
-        OnClick="btn_Click" />
-    <br />
-    <ra:Label 
-        runat="server" 
-        ID="lbl" 
-        style="color:#33f;" />
+    <p>
+        <ra:TextArea 
+            runat="server" 
+            ID="txt" 
+            Columns="20" 
+            Rows="5" 
+            OnFocused="txt_Focused"
+            Text="Type something" />
+    </p>
+    <p>
+        <ra:Button 
+            runat="server" 
+            ID="btn" 
+            Text="Submit" 
+            OnClick="btn_Click" />
+    </p>
+    <p>
+        <ra:Label 
+            runat="server" 
+            ID="lbl" 
+            CssClass="updateLbl"
+            style="color:#33f;" />
+    </p>
     <p>
         Try to type into the Ajax TextArea above and hit Submit.
     </p>

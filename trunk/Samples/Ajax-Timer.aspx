@@ -28,11 +28,13 @@
         <em>Tick Event</em> on the server for you meaning you can completely abstract away the notion of JavaScript
         and setTimeout and all that.
     </p>
-    <ra:Label 
-        runat="server" 
-        ID="lbl" 
-        Text="Watch me change" 
-        style="font-style:italic;color:#999;" />
+    <p>
+        <ra:Label 
+            runat="server" 
+            ID="lbl" 
+            Text="Watch me change" 
+            style="font-style:italic;color:#999;" />
+    </p>
     <ext:Timer 
         runat="server" 
         ID="timer"  

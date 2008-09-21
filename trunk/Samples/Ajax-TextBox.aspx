@@ -21,22 +21,26 @@
         This is our <em>Ajax TextBox</em> sample and for those wondering where the "TextMode" property enum
         value of "MultiLine" has gone, you should read our <a href="Ajax-TextArea.aspx">Ajax TextArea</a> sample page.
     </p>
-    <ra:TextBox 
-        runat="server" 
-        ID="txt" 
-        OnFocused="txt_Focused"
-        Text="Type something" />
-    <br />
-    <ra:Button 
-        runat="server" 
-        ID="btn" 
-        Text="Submit" 
-        OnClick="btn_Click" />
-    <br />
+    <p>
+        <ra:TextBox 
+            runat="server" 
+            ID="txt" 
+            OnFocused="txt_Focused"
+            Text="Type something" />
+    </p>
+    <p>
+        <ra:Button 
+            runat="server" 
+            ID="btn" 
+            Text="Submit" 
+            OnClick="btn_Click" />
+    </p>
+    <p>
     <ra:Label 
         runat="server" 
         ID="lbl" 
-        style="color:#33f;" />
+        CssClass="updateLbl" />
+    </p>
     <p>
         Try to type into the above Ajax TextBox and hit Submit.
     </p>

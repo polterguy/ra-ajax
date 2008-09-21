@@ -83,13 +83,15 @@
                 means that you can embed other complex Ajax Controls like for instance an Ajax Calendar
                 within it with no problems.
             </p>
-            <ext:Calendar 
-                runat="server" 
-                ID="calTab" 
-                CssClass="calendar" 
-                OnSelectedValueChanged="calTab_SelectedValueChanged"
-                Value="2008.07.20 23:54" />
             <p>
+                <ext:Calendar 
+                    runat="server" 
+                    ID="calTab" 
+                    CssClass="calendar" 
+                    OnSelectedValueChanged="calTab_SelectedValueChanged"
+                    Value="2008.07.20 23:54" />
+            </p>
+            <p style="clear:both;">
                 <ra:Label 
                     runat="server" 
                     style="color:#33f;"
@@ -140,8 +142,7 @@
         frameworks and also true if you consume them directly as standalone Frameworks.
     </p>
     <h2>Sizes of well known JavaScript/Ajax Frameworks</h2>
-    <br />
-    <table style="width:300px;">
+    <table style="width:500px;">
         <tr>
             <th>JS library</th>
             <th>Size</th>
@@ -163,7 +164,6 @@
             <td>24 KB (minified and gzipped)</td>
         </tr>
     </table>
-    <br />
     <p>
         When you minify a JavaScript library it normally becomes half its original size, when you gzip it again,
         it usually becomes half the size of that. Ra-Ajax "core" JavaScript files are 32 KB
