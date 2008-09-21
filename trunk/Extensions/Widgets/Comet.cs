@@ -103,7 +103,7 @@ namespace Ra.Extensions
                 }
             }
             base.OnInit(e);
-            AjaxManager.Instance.IncludeScriptFromResource(typeof(Timer), "Extensions.Comet.js");
+            AjaxManager.Instance.IncludeScriptFromResource(typeof(Comet), "Extensions.Js.Comet.js");
         }
 
         public override void DispatchEvent(string name)
