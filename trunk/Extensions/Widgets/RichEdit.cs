@@ -15,7 +15,7 @@ using Ra.Widgets;
 using System.IO;
 using HTML = System.Web.UI.HtmlControls;
 
-[assembly: ASP.WebResource("Extensions.RichEdit.js", "text/javascript")]
+[assembly: ASP.WebResource("Extensions.Js.RichEdit.js", "text/javascript")]
 
 namespace Ra.Extensions
 {
@@ -62,7 +62,7 @@ namespace Ra.Extensions
                 _selection = Page.Request.Params[ClientID + "__SELECTED"];
             }
             base.OnInit(e);
-            AjaxManager.Instance.IncludeScriptFromResource(typeof(Timer), "Extensions.RichEdit.js");
+            AjaxManager.Instance.IncludeScriptFromResource(typeof(Timer), "Extensions.Js.RichEdit.js");
         }
 
         protected override void LoadViewState(object savedState)

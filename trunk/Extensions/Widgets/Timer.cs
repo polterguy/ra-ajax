@@ -15,7 +15,7 @@ using Ra.Widgets;
 using System.IO;
 using HTML = System.Web.UI.HtmlControls;
 
-[assembly: ASP.WebResource("Extensions.Timer.js", "text/javascript")]
+[assembly: ASP.WebResource("Extensions.Js.Timer.js", "text/javascript")]
 
 namespace Ra.Extensions
 {
@@ -49,7 +49,7 @@ namespace Ra.Extensions
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
-            AjaxManager.Instance.IncludeScriptFromResource(typeof(Timer), "Extensions.Timer.js");
+            AjaxManager.Instance.IncludeScriptFromResource(typeof(Timer), "Extensions.Js.Timer.js");
         }
 
         public override void DispatchEvent(string name)
