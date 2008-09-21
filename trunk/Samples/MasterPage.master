@@ -25,41 +25,6 @@
         <div id="doc2" class="yui-t5">
 	        <form id="form1" runat="server">
 	            <div id="hd">
-                    <ra:Panel 
-                        runat="server" 
-                        ID="pnlCrappyBrowser" 
-                        Visible="false">
-                        <p>
-	                        You seem to be using a broken browser. (Internet Explorer)
-	                        Please visit <a href="http://getfirefox.com">GetFireFox.com</a> for a real one!
-                        </p>
-                        <ra:Button 
-                            runat="server" 
-                            ID="closeIE" 
-                            Text="Close panel" 
-                            OnClick="closeIE_Click" />
-                    </ra:Panel>
-	                <ra:Panel 
-	                    runat="server" 
-	                    ID="pnlShowCode" 
-	                    Visible="false">
-	                    <ra:Button 
-	                        runat="server" 
-	                        ID="closeShowCode" 
-	                        Text="Close" 
-	                        OnClick="closeShowCode_Click" />
-	                    <ra:Button 
-	                        runat="server" 
-	                        ID="switchCodeType" 
-	                        Text="Switch to .ASPX" 
-	                        OnClick="switchCodeType_Click" />
-	                     <pre>
-	                         <ra:Label 
-	                            runat="server" 
-	                            ID="lblCode" 
-	                            Text="Howdy" />
-	                     </pre>
-	                </ra:Panel>
 	            </div>
                 <div id="bd">
                 	<div class="yui-b navigation">
@@ -192,6 +157,42 @@
 					                </div>
 				                </div>
 			                	<div class="yui-u cnt">
+                                    <ra:Panel 
+                                        runat="server" 
+                                        ID="pnlCrappyBrowser" 
+                                        Visible="false">
+                                        <p>
+	                                        You seem to be using a broken browser. (Internet Explorer)
+	                                        Please visit <a href="http://getfirefox.com">GetFireFox.com</a> for a real one!
+                                        </p>
+                                        <ra:Button 
+                                            runat="server" 
+                                            ID="closeIE" 
+                                            Text="Close panel" 
+                                            OnClick="closeIE_Click" />
+                                    </ra:Panel>
+	                                <ra:Panel 
+	                                    runat="server" 
+	                                    ID="pnlShowCode" 
+	                                    CssClass="showCode"
+	                                    Visible="false">
+	                                    <ra:Button 
+	                                        runat="server" 
+	                                        ID="closeShowCode" 
+	                                        Text="Close" 
+	                                        OnClick="closeShowCode_Click" />
+	                                    <ra:Button 
+	                                        runat="server" 
+	                                        ID="switchCodeType" 
+	                                        Text="Switch to .ASPX" 
+	                                        OnClick="switchCodeType_Click" />
+	                                     <pre>
+	                                         <ra:Label 
+	                                            runat="server" 
+	                                            ID="lblCode" 
+	                                            Text="Howdy" />
+	                                     </pre>
+	                                </ra:Panel>
 				                    <asp:contentplaceholder 
 				                        id="cnt1" 
 				                        runat="server">

@@ -43,7 +43,7 @@ namespace Ra.Widgets
 			UpdateStyleCollection();
             return string.Format(@"
     this.element.setStyle('display','');
-    this.element.setStyle('height','{0}px)'
+    this.element.setStyle('height','{0}px');
 ",
                 _fromHeight);
         }
@@ -52,7 +52,7 @@ namespace Ra.Widgets
         {
             return @"
     this.element.setStyle('display','none');
-    this.element.setStyle('height','0px)'
+    this.element.setStyle('height','0px');
 ";
         }
 
