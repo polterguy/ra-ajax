@@ -4,8 +4,8 @@
 	<!-- Properties -->
 	<property name="debug" value="false" />
 
-	<property name="library.dir" value="library" />
-	<property name="resources.dir" value="resources" />
+	<property name="library.dir" value="Library" />
+	<property name="resources.dir" value="Resources" />
 	<property name="output.dir" value="build_output" />
 	<property name="extra.references.dir" value="References" />
 

@@ -4,8 +4,8 @@
 	<!-- Properties -->
 	<property name="ra.version" value="0.5" />
 
-	<property name="library.dir" value="library" />
-	<property name="resources.dir" value="resources" />
+	<property name="library.dir" value="Library" />
+	<property name="resources.dir" value="Resources" />
 	<property name="output.dir" value="build_output" />
 
 	<property name="ra.name" value="Ra" />
