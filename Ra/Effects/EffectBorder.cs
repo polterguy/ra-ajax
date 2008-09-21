@@ -57,15 +57,15 @@ namespace Ra.Widgets
         {
 			UpdateStyleCollection();
             return @"
-    this.element.style.borderStyle = 'dashed';
-    this.element.style.borderWidth = '1px';
+    this.element.setStyle('borderStyle','dashed');
+    this.element.setStyle('borderWidth','1px');
 ";
         }
 
         public override string RenderChainedOnFinished()
         {
             return string.Format(@"
-    this.element.style.borderWidth = '{0}px';
+    this.element.setStyle('borderWidth','{0}px');
 ", BorderTo);
         }
 
@@ -73,7 +73,7 @@ namespace Ra.Widgets
         {
             return string.Format(@"
     var x = parseInt(pos*{0});
-    this.element.style.borderWidth = x + 'px';
+    this.element.setStyle('borderWidth',x + 'px');
 ", BorderTo);
         }
     }

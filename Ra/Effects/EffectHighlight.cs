@@ -25,15 +25,17 @@ namespace Ra.Widgets
         public override string RenderChainedOnStart()
         {
             return @"
-    this._startColor = this.element.style.backgroundColor || '#fff';
-    this._orColor = this.element.style.backgroundColor;
+    this._startColor = this.element.getStyle('backgroundColor') || '#ffffff';
+    if( this._startColor.toLowerCase() == 'transparent')
+      this._startColor = '#fff';
+    this._orColor = this.element.getStyle('backgroundColor');
 ";
         }
 
         public override string RenderChainedOnFinished()
         {
             return @"
-    this.element.style.backgroundColor = this._orColor;
+    this.element.setStyle('backgroundColor',this._orColor);
 ";
         }
 
@@ -63,7 +65,7 @@ namespace Ra.Widgets
     sr = (color.r < 16 ? '0' : '') + (color.r ? color.r.toString(16) : '0');
     sg = (color.g < 16 ? '0' : '') + (color.g ? color.g.toString(16) : '0');
     sb = (color.b < 16 ? '0' : '') + (color.b ? color.b.toString(16) : '0');
-    this.element.style.backgroundColor = '#' + sr + sg + sb;
+    this.element.setStyle('backgroundColor','#' + sr + sg + sb);
 ";
         }
     }

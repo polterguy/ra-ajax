@@ -131,21 +131,23 @@
     	to create your own Ajax Extension Controls. It is not meant as an exhaustive Ajax Window implementation but rather a "pointing finger"
     	towards how to create your own Ajax Window. Though of course feel free to use it as it is...
     </p>
-    <ext:Window 
-    	runat="server"
-    	Caption="Ajax Window"
-    	CssClass="window smallWnd"
-    	id="window">
-    	<div style="padding:5px;">
-			Here you can see an example of an Ajax Window created as a composition control utilizing Ajax Behaviors.
-			<br />
-			<ra:Button 
-				runat="server" 
-				id="btn" 
-				Text="Click me" 
-				OnClick="btn_Click" />
-		</div>
-    </ext:Window>
+    <div class="wndWrapper">
+        <ext:Window 
+    	    runat="server"
+    	    Caption="Ajax Window"
+    	    CssClass="window smallWnd"
+    	    id="window">
+    	    <div style="padding:5px;">
+			    Here you can see an example of an Ajax Window created as a composition control utilizing Ajax Behaviors.
+			    <br />
+			    <ra:Button 
+				    runat="server" 
+				    id="btn" 
+				    Text="Click me" 
+				    OnClick="btn_Click" />
+		    </div>
+        </ext:Window>
+    </div>
     <p>
     	This Window is purely built on the server with 84 lines of code in total (as of the 18th of September 2008) and has
     	no Custom JavaScript in it at all. In fact the Window is created using these Ajax Controls. 

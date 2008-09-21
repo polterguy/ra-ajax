@@ -73,8 +73,8 @@ namespace Ra.Widgets
         public override string RenderChainedOnFinished()
         {
             return string.Format(@"
-    this.element.style.height = {0}+'px';
-    this.element.style.width = {1}+'px';
+    this.element.setStyle('height',{0}+'px');
+    this.element.setStyle('width',{1}+'px');
 ",
                 _height, _width);
         }
@@ -84,13 +84,11 @@ namespace Ra.Widgets
             return string.Format(@"
     var deltaH = ({0} - this.startSize.height) * pos;
     var newH = parseInt(deltaH + this.startSize.height, 10);
-console.log(newH);
-    this.element.style.height = newH + 'px';
+    this.element.setStyle('height',newH + 'px');
 
     var deltaW = ({1} - this.startSize.width) * pos;
     var newW = parseInt(deltaW + this.startSize.width, 10);
-console.log(newW);
-    this.element.style.width = newW + 'px';
+    this.element.setStyle('width',newW + 'px');
 ",
                 _height, _width);
         }

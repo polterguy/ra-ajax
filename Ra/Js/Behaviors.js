@@ -133,8 +133,8 @@ Ra.extend(Ra.BDrag.prototype, {
     this.parent.element.absolutize();
     
     // Storing old position
-    this._oldX = parseInt(this.parent.element.style.left, 10);
-    this._oldY = parseInt(this.parent.element.style.top, 10);
+    this._oldX = parseInt(this.parent.element.getStyle('left'), 10);
+    this._oldY = parseInt(this.parent.element.getStyle('top'), 10);
   },
 
   // Called when mouse is released. Note that this
@@ -147,8 +147,8 @@ Ra.extend(Ra.BDrag.prototype, {
     delete this._pos;
 
     // Calling server to update new position of element and potentially raise event
-    var newX = parseInt(this.parent.element.style.left, 10);
-    var newY = parseInt(this.parent.element.style.top, 10);
+    var newX = parseInt(this.parent.element.getStyle('left'), 10);
+    var newY = parseInt(this.parent.element.getStyle('top'), 10);
 
     // Calling server with new position and (maybe) raising the Dropped event
     var mouse = this.pointer(event);
@@ -184,8 +184,8 @@ Ra.extend(Ra.BDrag.prototype, {
       xDelta -= xDelta % this.options.snap.x;
       yDelta -= yDelta % this.options.snap.y;
       var bn = this.options.bounds;
-      this.parent.element.style.left = Math.min(Math.max(this._oldX + xDelta, bn.left), bn.width + bn.left) + 'px';
-      this.parent.element.style.top = Math.min(Math.max(this._oldY + yDelta, bn.top), bn.height + bn.top) + 'px';
+      this.parent.element.setStyle('left',Math.min(Math.max(this._oldX + xDelta, bn.left), bn.width + bn.left) + 'px');
+      this.parent.element.setStyle('top',Math.min(Math.max(this._oldY + yDelta, bn.top), bn.height + bn.top) + 'px');
 
       // Signaling affected droppers
       var affectedDroppers = Ra.BDrop.getAffected(pos.x, pos.y);
@@ -422,16 +422,16 @@ Ra.extend(Ra.BUpDel.prototype, {
 
     // Creating "obscurer" element
     this.el = document.createElement('div');
-    this.el.id = this.id;
-    this.el.style.position = 'absolute';
-    this.el.style.width = parseInt(document.body.clientWidth) + 'px';
-    this.el.style.height = parseInt(document.body.clientHeight) + 'px';
-    this.el.style.left = '0px';
-    this.el.style.top = '0px';
-    this.el.style.backgroundColor = this.options.color;
-    this.el.style.zIndex = '5000';
-    this.el.style.display = 'none';
     Ra.extend(this.el, Ra.Element.prototype);
+    this.el.id = this.id;
+    this.el.setStyle('position','absolute');
+    this.el.setStyle('width',parseInt(document.body.clientWidth) + 'px');
+    this.el.setStyle('height',parseInt(document.body.clientHeight) + 'px');
+    this.el.setStyle('left','0px');
+    this.el.setStyle('top','0px');
+    this.el.setStyle('backgroundColor',this.options.color);
+    this.el.setStyle('zIndex','5000');
+    this.el.setStyle('display','none');
     document.getElementsByTagName('body')[0].appendChild(this.el);
   },
 
@@ -440,7 +440,7 @@ Ra.extend(Ra.BUpDel.prototype, {
       duration: 800,
       onStart: function() {
         this.element.setOpacity(0);
-        this.element.style.display = 'block';
+        this.element.setStyle('display','block');
       },
       onFinished: function() {
         this.element.setOpacity(0.5);
@@ -458,7 +458,7 @@ Ra.extend(Ra.BUpDel.prototype, {
       duration: 300,
       onFinished: function() {
         this.element.setOpacity(0);
-        this.element.style.display = 'none';
+        this.element.setStyle('display','none');
       },
       onRender: function(pos) {
         this.element.setOpacity((1-pos) / 2);

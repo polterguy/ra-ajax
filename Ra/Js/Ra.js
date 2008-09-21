@@ -146,17 +146,16 @@ Ra.Element.prototype = {
   // Inspired from prototype.js
   // Returns an object of { width, height } containing the width and height of the element
   getDimensions: function() {
-    var display = this.style.display;
-    var cpStyle = document.defaultView.getComputedStyle(this, null);
+    var display = this.getStyle('display');
     if (display != 'none' && display !== null) {
       // Safari bug
       return {
         width: this.offsetWidth - 
-          (parseInt(cpStyle.paddingLeft, 10) || 0) - 
-          (parseInt(cpStyle.paddingRight, 10) || 0), 
+          (parseInt(this.getStyle('paddingLeft'), 10) || 0) - 
+          (parseInt(this.getStyle('paddingRight'), 10) || 0), 
         height: this.offsetHeight - 
-          (parseInt(cpStyle.paddingTop, 10) || 0) - 
-          (parseInt(cpStyle.paddingBottom, 10) || 0)
+          (parseInt(this.getStyle('paddingTop'), 10) || 0) - 
+          (parseInt(this.getStyle('paddingBottom'), 10) || 0)
       };
     }
 
@@ -172,34 +171,48 @@ Ra.Element.prototype = {
     els.display = orDis;
     els.visibility = orVis;
     return {
-      width: orWidth + (parseInt(cpStyle.padding, 10) || 0), 
-      height: orHeight + (parseInt(cpStyle.padding, 10) || 0)
+      width: orWidth + (parseInt(this.getStyle('padding'), 10) || 0), 
+      height: orHeight + (parseInt(this.getStyle('padding'), 10) || 0)
     };
   },
-  
+
+  getStyle: function(key) {
+    var val = this.style[key];
+    if( !val ) {
+      if( this.currentStyle )
+        val = this.currentStyle[key];
+      else if( window.getComputedStyle )
+        val = document.defaultView.getComputedStyle(this, null)[key];
+    }
+    return val;
+  },
+
+  setStyle: function(key, value) {
+    this.style[key] = value;
+  },
+
   absolutize: function() {
-    if( this.style.position == 'absolute' && this.style.left && this.style.top )
+    if( this.getStyle('position') == 'absolute' && this.getStyle('left') && this.getStyle('top') )
       return;
     var valueT = this.offsetTop  || 0;
     var valueL = this.offsetLeft  || 0;
     var el = this.offsetParent;
       
     while (el) {
+      Ra.extend(el, Ra.Element.prototype);
       if( el.tagName == 'BODY' )
         break;
-      if(el.style.position == 'relative' || el.style.position == 'absolute')
-        break;
-      var cpStyle = document.defaultView.getComputedStyle(el, null);
-      if(cpStyle.position == 'relative' || cpStyle.position == 'absolute')
+      var pos = el.getStyle('position');
+      if( pos == 'relative' || pos == 'absolute')
         break;
       valueT += el.offsetTop  || 0;
       valueL += el.offsetLeft || 0;
       el = el.offsetParent;
     }
       
-    this.style.left = valueL + 'px';
-    this.style.top = valueT + 'px';
-    this.style.position = 'absolute';
+    this.setStyle('left',valueL + 'px');
+    this.setStyle('top',valueT + 'px');
+    this.setStyle('position','absolute');
   },
 
   // Appends a class name to the class of the element
@@ -218,9 +231,9 @@ Ra.Element.prototype = {
   // Sets opacity, expects a value between 0.0 and 1.0 where 0 == invisible and 1 == completely visible
   setOpacity: function(value) {
     if(!('opacity' in this.style)) {
-      this.style.filter = 'alpha(opacity=' + Math.round(value * 100) + ')';
+      this.setStyle('filter','alpha(opacity=' + Math.round(value * 100) + ')');
     } else {
-      this.style.opacity = value == 1 ? '' : value < 0.0001 ? 0 : value;
+      this.setStyle('opacity',value == 1 ? '' : value < 0.0001 ? 0 : value);
     }
     return this;
   },
@@ -228,16 +241,16 @@ Ra.Element.prototype = {
   // Returns opacity value of element 1 == completely visible and 0 == completely invisible
   getOpacity: function() {
     if(!('opacity' in this.style)) {
-      var value = this.style.filter.match(/alpha\(opacity=(.*)\)/);
+      var value = this.getStyle('filter').match(/alpha\(opacity=(.*)\)/);
       if( value[1] ) {
         return parseFloat(value[1]) / 100;
       }
       return 1.0;
     } else {
-      if( this.style.opacity === '' ) {
+      if( this.getStyle('opacity') === '' ) {
         return 1.0;
       }
-      return this.style.opacity;
+      return this.getStyle('opacity');
     }
   },
 
@@ -477,7 +490,7 @@ Ra.Form.prototype = {
     var els = this.form.getElementsByTagName('*');
 
     // Looping through all elements inside of form and checking to see if they're "form elements"
-    for( var idx = 0; idx < els.length; idx++ ) {
+    for( idx = 0; idx < els.length; idx++ ) {
       var el = els[idx];
 
       // According to the HTTP/HTML specs we shouldn't serialize disabled controls
