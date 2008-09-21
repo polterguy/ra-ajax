@@ -30,7 +30,7 @@ namespace ResourceCacher
             context.Response.Cache.SetExpires(DateTime.Now.AddYears(3));
             context.Response.Cache.SetCacheability(HttpCacheability.Public);
             context.Response.Cache.SetValidUntilExpires(false);
-            switch (resource.Substring(resource.IndexOf(".") + 1))
+            switch (resource.Substring(resource.LastIndexOf(".") + 1))
             {
                 case "jpg":
                 case "jpeg":
