@@ -66,16 +66,16 @@ namespace Ra.Widgets
         {
 			UpdateStyleCollection();
             return @"
-    this.startL = parseInt(this.element.style.left, 10);
-    this.startT = parseInt(this.element.style.top, 10);
+    this.startL = parseInt(this.element.getStyle('left'), 10);
+    this.startT = parseInt(this.element.getStyle('top'), 10);
 ";
         }
 
         public override string RenderChainedOnFinished()
         {
             return string.Format(@"
-    this.element.style.left = {0}+'px';
-    this.element.style.top = {1}+'px';
+    this.element.setStyle('left',{0}+'px');
+    this.element.setStyle('top',{1}+'px');
 ",
                 _left, _top);
         }
@@ -85,11 +85,11 @@ namespace Ra.Widgets
             return string.Format(@"
     var deltaL = ({0} - this.startL) * pos;
     var newL = parseInt(deltaL + this.startL, 10);
-    this.element.style.left = newL + 'px';
+    this.element.setStyle('left',newL + 'px');
 
     var deltaT = ({1} - this.startT) * pos;
     var newT = parseInt(deltaT + this.startT, 10);
-    this.element.style.top = newT + 'px';
+    this.element.setStyle('top',newT + 'px');
 ",
                 _left, _top);
         }

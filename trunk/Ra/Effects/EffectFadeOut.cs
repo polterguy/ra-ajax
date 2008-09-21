@@ -37,14 +37,14 @@ namespace Ra.Widgets
 			UpdateStyleCollection();
             return @"
     this.element.setOpacity(1);
-    this.element.style.display = '';
+    this.element.setStyle('display','');
 ";
         }
 
         public override string RenderChainedOnFinished()
         {
             return @"
-    this.element.style.display = 'none';
+    this.element.setStyle('display','none');
     this.element.setOpacity(0);
 ";
         }

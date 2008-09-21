@@ -42,15 +42,15 @@ namespace Ra.Widgets
         {
 			UpdateStyleCollection();
             return @"
-    this.element.style.height = '0px';
-    this.element.style.display = 'block';
+    this.element.setStyle('height','0px');
+    this.element.setStyle('display','block');
 ";
         }
 
         public override string RenderChainedOnFinished()
         {
             return string.Format(@"
-    this.element.style.height = '{0}px';
+    this.element.setStyle('height','{0}px');
 ",
                 _toHeight);
         }
@@ -58,7 +58,7 @@ namespace Ra.Widgets
         public override string RenderChainedOnRender()
         {
             return string.Format(@"
-    this.element.style.height = parseInt({0}*pos) + 'px';
+    this.element.setStyle('height',parseInt({0}*pos) + 'px');
 ",
                 _toHeight);
         }

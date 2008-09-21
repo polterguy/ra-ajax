@@ -101,8 +101,8 @@ Ra.E('{0}', {{
     this.other = Ra.$('{1}');
     this.otherToHeight = this.other.getDimensions().height;
     this.elementFromHeight = this.element.getDimensions().height;
-    this.other.style.height = '0px';
-    this.other.style.display = '';
+    this.other.setStyle('height','0px');
+    this.other.setStyle('display','');
 ",
                     _idRemove, _idShow);
             }
@@ -110,17 +110,17 @@ Ra.E('{0}', {{
             public override string RenderChainedOnFinished()
             {
                 return @"
-    this.element.style.display = 'none';
-    this.element.style.height = '';
-    this.other.style.height = this.otherToHeight + 'px';
+    this.element.setStyle('display','none');
+    this.element.setStyle('height','');
+    this.other.setStyle('height',this.otherToHeight + 'px');
 ";
             }
 
             public override string RenderChainedOnRender()
             {
                 return @"
-    this.other.style.height = (this.otherToHeight * pos) + 'px';
-    this.element.style.height = (this.elementFromHeight * (1.0 - pos)) + 'px';
+    this.other.setStyle('height',(this.otherToHeight * pos) + 'px');
+    this.element.setStyle('height',(this.elementFromHeight * (1.0 - pos)) + 'px');
 ";
             }
         }
