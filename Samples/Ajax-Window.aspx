@@ -33,19 +33,21 @@
     	id="showWindow" 
     	Text="Show Window" 
     	OnClick="showWindow_Click" />
-    <ext:Window 
-    	runat="server"
-    	Caption="Ajax Window"
-    	CssClass="window smallWnd"
-    	id="window">
-        <div style="padding:5px;">
-	        Try to move me around by dragging my header field.
-	        <br />
-            <img 
-                alt="Flower" 
-                src="media/flower1.jpg" />
-        </div>
-    </ext:Window>
+    <div style="position:relative;">
+        <ext:Window 
+    	    runat="server"
+    	    Caption="Ajax Window"
+    	    CssClass="window smallWnd"
+    	    id="window">
+            <div style="padding:5px;">
+	            Try to move me around by dragging my header field.
+	            <br />
+                <img 
+                    alt="Flower" 
+                    src="media/flower1.jpg" />
+            </div>
+        </ext:Window>
+    </div>
     <div class="spacerLarge">&nbsp;</div>
     <p>
     	Try to move the Ajax Window by dragging and dropping its header.
