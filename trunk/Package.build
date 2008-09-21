@@ -28,8 +28,9 @@
 			<include name="**/*.cs" />
 			<include name="**/*.js" />
 			<include name="**/*.txt" />
-			<include name="**/*.csproj" />
-		</fileset>
+      <include name="**/*.csproj" />
+      <exclude name="**/*VS2008.csproj" />
+    </fileset>
 	</copy>
 	
 	<copy overwrite="true" todir="${output.dir}/${ext.name}">
@@ -38,7 +39,8 @@
 			<include name="**/*.cs" />
 			<include name="**/*.js" />
 			<include name="**/*.csproj" />
-		</fileset>
+      <exclude name="**/*VS2008.csproj" />
+    </fileset>
 	</copy>
 	
 	<copy overwrite="true" todir="${output.dir}/${resource.cacher.name}">
@@ -46,7 +48,8 @@
 			<exclude name="obj/**/*.*" />
 			<include name="**/*.cs" />
 			<include name="**/*.csproj" />
-		</fileset>
+      <exclude name="**/*VS2008.csproj" />
+    </fileset>
 	</copy>
 
 	<copy overwrite="true" todir="${output.dir}/${ra.build.tasks.name}">
@@ -54,7 +57,8 @@
 			<exclude name="obj/**/*.*" />
 			<include name="**/*.cs" />
 			<include name="**/*.csproj" />
-		</fileset>
+      <exclude name="**/*VS2008.csproj" />
+    </fileset>
 	</copy>
 
 	<copy 
