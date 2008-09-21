@@ -23,19 +23,22 @@
         and, as all other Ajax Controls in Ra-Ajax, follows the Open Standards as given by
         the <a href="http://w3.org">W3C</a>. Try to click the ImageButton below.
     </p>
-    <ra:ImageButton 
-        runat="server" 
-        ID="imgBtn" 
-        AlternateText="Winnie the Pooh on AJAX" 
-        OnClick="imgBtn_Click"
-        ImageUrl="media/flower2.jpg" />
-    <br />
-    <ra:Label 
-        runat="server" 
-        ID="lblResults" 
-        Text="Watch me change" 
-        style="color:#33f;" />
-    <p style="font-size:90%;color:#666;">
+    <p>
+        <ra:ImageButton 
+            runat="server" 
+            ID="imgBtn" 
+            AlternateText="Winnie the Pooh on AJAX" 
+            OnClick="imgBtn_Click"
+            ImageUrl="media/flower2.jpg" />
+    </p>
+    <p>
+        <ra:Label 
+            runat="server" 
+            ID="lblResults" 
+            Text="Watch me change" 
+            style="color:#33f;" />
+    </p>
+    <p class="infoLbl">
         The above flower image is taken from <em>flickr.com</em> 
         <a href="http://www.flickr.com/photos/kjunstorm/1562198683/sizes/s/">here</a>. It is
         licenced under a <a href="http://creativecommons.org/licenses/by/2.0/deed.en">Creative Commons license</a>.

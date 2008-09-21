@@ -97,16 +97,17 @@
     </p>
     <p>
         In fact you could probably get your Ra-Ajax applications to run on J2EE by using 
-        <a href="http://mainsoft.com/">Grasshopper</a> from MainSoft if you wanted. This means you
+        <a href="http://mainsoft.com/" rel="nofollow">Grasshopper</a> from MainSoft if you wanted. This means you
         could develop in Boo on Linux using MonoDevelop, then compile through GrassHopper on Windows
         and finally deploy on FreeBSD using Tomcat or JBoss. Though you'd have to be pretty insane for
         having such a weird development cycle ;)
-        <br />
+    </p>
+    <p>
         But you CAN! And this is what Ra-Ajax is all about! Freedom of choice!
     </p>
     <p>
-        <strong>"Build once, deploy anywhere and run all over the place"</strong> is one of our slogans.
-        The other is <strong>"Building blocks for the next 5000 years"</strong>. I hope you believe this
+        <em>"Build once, deploy anywhere and run all over the place"</em> is one of our slogans.
+        The other is <em>"Building blocks for the next 5000 years"</em>. I hope you believe this
         and are willing to <a href="http://code.google.com/p/ra-ajax/">give Ra-Ajax a shot</a>.
         Ra-Ajax is free to use, we don't have any plans for starting charging you for anything else
         than consulting services (if you should need it), you can use it for free in your Closed Source

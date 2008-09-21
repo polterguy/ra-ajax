@@ -31,27 +31,31 @@
         you to write complex Ajax Applications <em>without even knowing what JavaScript is</em> and keeping the
         same <em>Code Model</em> as you would do in conventional non-Ajax ASP.NET Applications.
     </p>
-    <ra:DropDownList 
-        runat="server" 
-        ID="list" 
-        OnSelectedIndexChanged="selectedchanged" 
-        OnMouseOut="mouseout" 
-        OnMouseOver="mouseover">
-        <ra:ListItem Text="Item 1" Value="Item1" />
-        <ra:ListItem Text="Item 2" Value="Item2" />
-    </ra:DropDownList>
-    <br />
-    <ra:Label 
-        runat="server" 
-        ID="lblResults" 
-        Text="Changes as you hover DropDownList"
-        style="color:#33f;" />
-    <br />
-    <ra:Label 
-        runat="server" 
-        ID="lblResults2" 
-        Text="Changes as you SELECT items"
-        style="color:#33f;" />
+    <p>
+        <ra:DropDownList 
+            runat="server" 
+            ID="list" 
+            OnSelectedIndexChanged="selectedchanged" 
+            OnMouseOut="mouseout" 
+            OnMouseOver="mouseover">
+            <ra:ListItem Text="Item 1" Value="Item1" />
+            <ra:ListItem Text="Item 2" Value="Item2" />
+        </ra:DropDownList>
+    </p>
+    <p>
+        <ra:Label 
+            runat="server" 
+            ID="lblResults" 
+            Text="Changes as you hover DropDownList"
+            style="color:#33f;" />
+    </p>
+    <p>
+        <ra:Label 
+            runat="server" 
+            ID="lblResults2" 
+            Text="Changes as you SELECT items"
+            style="color:#33f;" />
+    </p>
     <p>
         Try to hover over the above DropDownList and then select one of its items...
     </p>

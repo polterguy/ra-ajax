@@ -23,17 +23,20 @@
         <em>reference example of an Ajax Label</em> so that you can have one place to go to for certainty
         when wondering about how the Ajax Label works.
     </p>
-    <ra:Label 
-        runat="server" 
-        ID="lbl" 
-        Text="This is an Ajax Label" 
-        style="color:#33f;" />
-    <br />
-    <ra:Button 
-        runat="server" 
-        ID="btn" 
-        Text="Click me" 
-        OnClick="btn_Click" />
+    <p>
+        <ra:Label 
+            runat="server" 
+            ID="lbl" 
+            Text="This is an Ajax Label" 
+            style="color:#33f;" />
+    </p>
+    <p>
+        <ra:Button 
+            runat="server" 
+            ID="btn" 
+            Text="Click me" 
+            OnClick="btn_Click" />
+    </p>
     <p>
         Try to click the above Button and see the Label update.
     </p>

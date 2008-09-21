@@ -28,21 +28,26 @@
         runat="server" 
         ID="pnl" 
         style="padding:15px;background-color:Yellow;border:solid 1px #999;width:50%;">
-        This is an <em>Ajax Panel</em> and notice how you can easily have
-        <ra:LinkButton 
-            runat="server" 
-            ID="lnk" 
-            Text="Ajax Controls" 
-            OnClick="lnk_Click" />
-        inside of the Panel itself.
-        <br />
-        Try to edit content inside of this TextBox; 
-        <br />
-        <ra:TextBox 
-            runat="server" 
-            ID="txt" 
-            Text="Edit me"
-            OnKeyUp="txt_KeyUp" />
+
+        <p>
+            This is an <em>Ajax Panel</em> and notice how you can easily have
+            <ra:LinkButton 
+                runat="server" 
+                ID="lnk" 
+                Text="Ajax Controls" 
+                OnClick="lnk_Click" />
+            inside of the Panel itself.
+        </p>
+        <p>
+            Try to edit content inside of this TextBox; 
+        </p>
+        <p>
+            <ra:TextBox 
+                runat="server" 
+                ID="txt" 
+                Text="Edit me"
+                OnKeyUp="txt_KeyUp" />
+        </p>
     </ra:Panel>
     <h2>Complexity Within Complexity</h2>
     <p>
