@@ -19,10 +19,11 @@
 	<!-- End Properties -->
 
 	<nant buildfile="PublishSamples.build" />
-	
-	<copy overwrite="true" file="Ra.sln" todir="${output.dir}" />
-	
-	<copy overwrite="true" todir="${output.dir}/${ra.name}">
+
+  <copy overwrite="true" file="Ra.sln" todir="${output.dir}" />
+  <copy overwrite="true" file="Ra.build" todir="${output.dir}" />
+
+  <copy overwrite="true" todir="${output.dir}/${ra.name}">
 		<fileset basedir="${ra.name}">
 			<exclude name="obj/**/*.*" />
 			<include name="**/*.cs" />
@@ -68,8 +69,9 @@
 	
 	<zip zipfile="${output.dir}/Ra-${ra.version}.zip">
 		<fileset basedir="${output.dir}">
-	        <include name="Ra.sln" />
-	    </fileset>
+      <include name="Ra.sln" />
+      <include name="Ra.build" />
+    </fileset>
 		<fileset basedir="${output.dir}/${ra.name}" prefix="${ra.name}">
 	        <include name="**/*" />
 	    </fileset>
@@ -101,6 +103,7 @@
 	<delete dir="${output.dir}/${resource.cacher.name}" />
 	<delete dir="${output.dir}/${ra.build.tasks.name}" />
 	<delete dir="${output.dir}/${references.dir}" />
-	<delete file="${output.dir}/Ra.sln" />
+  <delete file="${output.dir}/Ra.sln" />
+  <delete file="${output.dir}/Ra.build" />
 
 </project>
