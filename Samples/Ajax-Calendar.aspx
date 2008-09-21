@@ -40,7 +40,7 @@
     <p style="clear:both;">
         <ra:Label 
             runat="server" 
-            style="color:#33f;"
+            CssClass="updateLbl"
             ID="lbl" Text="Watch me as you change the date" />
     </p>
     <p>
@@ -71,7 +71,8 @@
         which although is not developed in Ra-Ajax but still developed in ASP.NET. Grurrah is written 
         in .Net, compiled using Mono's C# compiler, deployed on Apache and Linux running Mono and 100% 
         Open Source from the bottom and all the way to the top :)
-        <br />
+    </p>
+    <p>
         It even uses an Open Source database - <a href="http://mysql.com/">MySQL</a>!
     </p>
     <p>

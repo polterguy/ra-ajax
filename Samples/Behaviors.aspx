@@ -138,13 +138,16 @@
     	    CssClass="window smallWnd"
     	    id="window">
     	    <div style="padding:5px;">
-			    Here you can see an example of an Ajax Window created as a composition control utilizing Ajax Behaviors.
-			    <br />
-			    <ra:Button 
-				    runat="server" 
-				    id="btn" 
-				    Text="Click me" 
-				    OnClick="btn_Click" />
+    	        <p>
+			        Here you can see an example of an Ajax Window created as a composition control utilizing Ajax Behaviors.
+			    </p>
+			    <p>
+			        <ra:Button 
+				        runat="server" 
+				        id="btn" 
+				        Text="Click me" 
+				        OnClick="btn_Click" />
+				</p>
 		    </div>
         </ext:Window>
     </div>

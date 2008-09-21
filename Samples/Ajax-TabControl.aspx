@@ -32,25 +32,32 @@
     </p>
     <ext:TabControl runat="server" ID="tab" CssClass="tab-control">
         <ext:TabView Caption="Ajax TabControl view 1" runat="server" ID="tab1" CssClass="content">
-        	Here you can see the content of the first TabControlView...
-        	<br />
-        	Our Ajax TabControl like all other Ajax Controls in Ra-Ajax can also contain any arbitrage HTML
-        	and even other Ajax Controls as much as you like. This doesn't in any ways break the Ajax Event
-        	logic of Ra-Ajax either but is 100% transparently implemented so that you as an application 
-        	developer won't even notice the difference.
+        	<p>
+        	    Here you can see the content of the first TabControlView...
+        	</p>
+        	<p>
+        	    Our Ajax TabControl like all other Ajax Controls in Ra-Ajax can also contain any arbitrage HTML
+        	    and even other Ajax Controls as much as you like. This doesn't in any ways break the Ajax Event
+        	    logic of Ra-Ajax either but is 100% transparently implemented so that you as an application 
+        	    developer won't even notice the difference.
+        	</p>
         </ext:TabView>
         <ext:TabView Caption="Tab view 2" runat="server" ID="tab2" CssClass="content">
-        	Here's another TabControlView.
-        	<br />
-        	In fact the TabControl is purely built with the Ra-Ajax Panel, LinkButton and so on. The TabControl
-        	is in fact a very nice starting point for your own Ajax Extension Controls. And as you can
-        	see you can very easily create other Ajax Controls which you put inside of the TabControl.
-        	<br />
-        	<ra:Button 
-        		runat="server" 
-        		id="tabBtn" 
-        		Text="Button" 
-        		OnClick="tabBtn_Click" />
+        	<p>
+        	    Here's another TabControlView.
+        	</p>
+        	<p>
+        	    In fact the TabControl is purely built with the Ra-Ajax Panel, LinkButton and so on. The TabControl
+        	    is in fact a very nice starting point for your own Ajax Extension Controls. And as you can
+        	    see you can very easily create other Ajax Controls which you put inside of the TabControl.
+        	</p>
+        	<p>
+        	    <ra:Button 
+        		    runat="server" 
+        		    id="tabBtn" 
+        		    Text="Button" 
+        		    OnClick="tabBtn_Click" />
+            </p>
         </ext:TabView>
         <ext:TabView Caption="Third" runat="server" ID="tab3" CssClass="content">
         	And here's yet another TabControlView

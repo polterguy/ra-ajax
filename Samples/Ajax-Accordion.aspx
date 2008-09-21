@@ -32,8 +32,7 @@
         runat="server" 
         ID="acc" 
         CssClass="accordion-control" 
-        AnimationSpeed="200"
-        style="width:75%;">
+        AnimationSpeed="200">
 
         <ext:AccordionView 
             Caption="First Accordion" 
@@ -94,8 +93,9 @@
             <p style="clear:both;">
                 <ra:Label 
                     runat="server" 
-                    style="color:#33f;"
-                    ID="lbl" Text="Watch me as you change the date" />
+                    CssClass="updateLbl"
+                    ID="lbl" 
+                    Text="Watch me as you change the date" />
             </p>
         </ext:AccordionView>
 

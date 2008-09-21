@@ -33,7 +33,7 @@
             runat="server" 
             ID="lbl" 
             Text="Watch me change" 
-            style="font-style:italic;color:#999;" />
+            CssClass="updateLbl" />
     </p>
     <ext:Timer 
         runat="server" 

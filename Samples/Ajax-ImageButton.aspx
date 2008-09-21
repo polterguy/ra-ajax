@@ -36,7 +36,7 @@
             runat="server" 
             ID="lblResults" 
             Text="Watch me change" 
-            style="color:#33f;" />
+            CssClass="updateLbl" />
     </p>
     <p class="infoLbl">
         The above flower image is taken from <em>flickr.com</em> 

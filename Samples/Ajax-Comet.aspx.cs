@@ -19,7 +19,7 @@ public partial class AjaxComet : System.Web.UI.Page
             foreach (string idx in Chats)
             {
                 System.Web.UI.WebControls.Literal lit = new System.Web.UI.WebControls.Literal();
-                lit.Text = idx + "<br />";
+                lit.Text = "<p>" + idx + "</p>";
                 chat.Controls.Add(lit);
             }
         }
@@ -36,7 +36,7 @@ public partial class AjaxComet : System.Web.UI.Page
             foreach (string idx in Chats)
             {
                 System.Web.UI.WebControls.Literal lit = new System.Web.UI.WebControls.Literal();
-                lit.Text = idx + "<br />";
+                lit.Text = "<p>" + idx + "</p>";
                 chat.Controls.Add(lit);
             }
 

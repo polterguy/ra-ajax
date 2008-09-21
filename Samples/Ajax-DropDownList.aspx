@@ -47,14 +47,14 @@
             runat="server" 
             ID="lblResults" 
             Text="Changes as you hover DropDownList"
-            style="color:#33f;" />
+            CssClass="updateLbl" />
     </p>
     <p>
         <ra:Label 
             runat="server" 
             ID="lblResults2" 
             Text="Changes as you SELECT items"
-            style="color:#33f;" />
+            CssClass="updateLbl" />
     </p>
     <p>
         Try to hover over the above DropDownList and then select one of its items...

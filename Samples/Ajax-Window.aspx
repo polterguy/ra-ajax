@@ -42,11 +42,14 @@
     	    CssClass="window smallWnd"
     	    id="window">
             <div style="padding:5px;">
-	            Try to move me around by dragging my header field.
-	            <br />
-                <img 
-                    alt="Flower" 
-                    src="media/flower1.jpg" />
+                <p>
+	                Try to move me around by dragging my header field.
+	            </p>
+	            <p>
+                    <img 
+                        alt="Flower" 
+                        src="media/flower1.jpg" />
+                </p>
             </div>
         </ext:Window>
     </div>

@@ -30,7 +30,7 @@
     <ext:RichEdit 
         runat="server" 
         ID="richeditor" 
-        style="border:solid 1px #999;background-color:Yellow;width:75%;height:250px;padding:15px;"
+        CssClass="panel"
         Text="<p>Try to edit this text. This is an <em>Ajax RichEditor</em> try editing the text within here...</p>" />
     <ra:Button 
         runat="server" 
@@ -40,7 +40,8 @@
     <h2>This is a really crappy Ajax RichEditor...</h2>
     <p>
         ...and I agree *100%* ;)
-        <br />
+    </p>
+    <p>
         The thing about the <em>Ra-Ajax RichEdit control</em> is that it is 100% generic. This means that
         you can create <em>any WYSIWYG RichEditor</em> you want yourself out of it! In fact by utilizing
         this Ajax RichEditor you can create support for anything you wish yourself. And if you want to reuse it

@@ -40,7 +40,7 @@
             runat="server" 
             ID="lbl" 
             Text="Watch me as focus gets moved away from the InPlaceEdit"
-            style="color:#33f" />
+            CssClass="updateLbl" />
     </p>
     <p>
         Try to click the above InPlaceEdit and then when you're finished writing the new text just click

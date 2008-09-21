@@ -55,7 +55,7 @@
     <ra:Panel 
         runat="server" 
         ID="pnl"
-        style="padding:15px;background-color:Yellow;border:solid 1px #999;width:50%;">
+        CssClass="panel">
 
         <uc2:HelloWorld 
             ID="HelloWorld1" 

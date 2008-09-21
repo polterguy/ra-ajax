@@ -27,7 +27,7 @@
     <ra:Panel 
         runat="server" 
         ID="pnl" 
-        style="padding:15px;background-color:Yellow;border:solid 1px #999;width:50%;">
+        CssClass="panel">
 
         <p>
             This is an <em>Ajax Panel</em> and notice how you can easily have
