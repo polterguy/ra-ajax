@@ -11,6 +11,15 @@ using Ra.Widgets;
 
 public partial class AjaxHiddenField : System.Web.UI.Page
 {
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!IsPostBack)
+        {
+            txt.Focus();
+            txt.Select();
+        }
+    }
+
     protected void submit_Click(object sender, EventArgs e)
     {
         hid.Value = txt.Text;
