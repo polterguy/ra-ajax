@@ -1,6 +1,10 @@
 
                  TODO list for Ra-Ajax
 
+* Add up the nAnt files as part of the release.
+
+* Remove all *.VS2008.* files form nAnt script.
+
 * Create nAnt build script which also works on Linux
 
 * Make Minifier logic work also on Linux. Probably not that important in the .csproj file, but should work
@@ -16,15 +20,12 @@
   text as it does today. Maybe something like "mouseenter/mouseleave" from MooTools can help
   us here and then trap the TOP element (span) ...?
 
+* CheckBox and RadioButton doesn't work on IE (onchanged event doesn't fire before control looses focus)
+
 * Create class of JSON values instead of using dictionary like today in RaControl for
   clarity. Still needs to be "overridable" for on RaControl
 
-* EffectHighlight doesn't work if you haven't set explicitly a BackgroundColor...!
-
 * Implement GetAttribute on RaWebControl
-
-* opacity is intentionally removed from style attribute serialization, this probably should be fixed
-  somehow...
 
 * Create TreeView Control...
 
@@ -44,8 +45,6 @@
 
 * RichEdit doesn't work in Konqueror 
 
-* Find great solution for the getDimension and similar functions which needs getComputedStyle logic coupled.
-  Probably some "getStyle" inspired from prototype...? 
 
 
 
