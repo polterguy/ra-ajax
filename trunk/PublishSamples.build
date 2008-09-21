@@ -50,6 +50,7 @@
 	<copy overwrite="true" todir="${output.dir}/${samples.precompiled.dir}">
 		<fileset basedir="${output.dir}/${samples.dir}">
 			<include name="**/*.cs" />
+			<exclude name="**/*.master.cs" />
 		</fileset>
 	</copy>
 
