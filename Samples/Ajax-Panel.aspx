@@ -27,6 +27,7 @@
     <ra:Panel 
         runat="server" 
         ID="pnl" 
+        style="background-color:Yellow;"
         CssClass="panel">
 
         <p>
