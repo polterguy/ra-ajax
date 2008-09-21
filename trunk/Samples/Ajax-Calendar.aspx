@@ -29,18 +29,20 @@
         because it is entirely composed of other existing Ajax Controls like LinkButtons, Labels, 
         DropDownLists and so on.
     </p>
-    <ext:Calendar 
-        runat="server" 
-        ID="calTab" 
-        CssClass="calendar" 
-        OnSelectedValueChanged="calTab_SelectedValueChanged"
-        Value="2008.07.20 23:54" />
-    <br />
-    <ra:Label 
-        runat="server" 
-        style="color:#33f;"
-        ID="lbl" Text="Watch me as you change the date" />
-    <br />
+    <p>
+        <ext:Calendar 
+            runat="server" 
+            ID="calTab" 
+            CssClass="calendar" 
+            OnSelectedValueChanged="calTab_SelectedValueChanged"
+            Value="2008.07.20 23:54" />
+    </p>
+    <p style="clear:both;">
+        <ra:Label 
+            runat="server" 
+            style="color:#33f;"
+            ID="lbl" Text="Watch me as you change the date" />
+    </p>
     <p>
         Try to change the Date in the Ajax Calendar above
     </p>

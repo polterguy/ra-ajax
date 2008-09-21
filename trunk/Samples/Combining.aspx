@@ -53,18 +53,19 @@
         The example below is a Ra-Ajax Extension Control built as a server-side control
         which means you can easily reuse it across all of your projecs.
     </p>
-    <ext:Calendar 
-        runat="server" 
-        ID="calendar" 
-        OnSelectedValueChanged="calendar_SelectedValueChanged"
-        CssClass="calendar" />
-    <br />
-    <ra:Label 
-        runat="server" 
-        CssClass="updateLbl"
-        style="position:absolute;"
-        ID="selectedDate" />
-    <div class="spacerSmall">&nbsp;</div>
+    <p>
+        <ext:Calendar 
+            runat="server" 
+            ID="calendar" 
+            OnSelectedValueChanged="calendar_SelectedValueChanged"
+            CssClass="calendar" />
+    </p>
+    <p style="clear:both;">
+        <ra:Label 
+            runat="server" 
+            CssClass="updateLbl"
+            ID="selectedDate" />
+    </p>
     <p>
         In fact, the above Ajax Calendar Control is built entirely as a server-side 
         Ajax Control, reusing only existing Ra-Ajax Controls like LinkButton, Panel, Label, DropDownList
