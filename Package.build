@@ -20,38 +20,38 @@
 
 	<nant buildfile="PublishSamples.build" />
 
-  <copy overwrite="true" file="Ra.sln" todir="${output.dir}" />
-  <copy overwrite="true" file="Ra.build" todir="${output.dir}" />
-  <copy overwrite="true" file="README.txt" todir="${output.dir}" />
+	<copy overwrite="true" file="Ra.sln" todir="${output.dir}" />
+	<copy overwrite="true" file="Ra.build" todir="${output.dir}" />
+	<copy overwrite="true" file="README.txt" todir="${output.dir}" />
 
-  <copy overwrite="true" todir="${output.dir}/${ra.name}">
+	<copy overwrite="true" todir="${output.dir}/${ra.name}">
 		<fileset basedir="${ra.name}">
 			<exclude name="obj/**/*.*" />
 			<include name="**/*.cs" />
 			<include name="**/*.js" />
 			<include name="**/*.txt" />
-      <include name="**/*.csproj" />
-      <exclude name="**/*VS2008.csproj" />
-    </fileset>
+			<include name="**/*.csproj" />
+			<exclude name="**/*VS2008.csproj" />
+		</fileset>
 	</copy>
-	
+
 	<copy overwrite="true" todir="${output.dir}/${ext.name}">
 		<fileset basedir="${ext.name}">
 			<exclude name="obj/**/*.*" />
 			<include name="**/*.cs" />
 			<include name="**/*.js" />
 			<include name="**/*.csproj" />
-      <exclude name="**/*VS2008.csproj" />
-    </fileset>
+			<exclude name="**/*VS2008.csproj" />
+		</fileset>
 	</copy>
-	
+
 	<copy overwrite="true" todir="${output.dir}/${resource.cacher.name}">
 		<fileset basedir="${resource.cacher.name}">
 			<exclude name="obj/**/*.*" />
 			<include name="**/*.cs" />
 			<include name="**/*.csproj" />
-      <exclude name="**/*VS2008.csproj" />
-    </fileset>
+			<exclude name="**/*VS2008.csproj" />
+		</fileset>
 	</copy>
 
 	<copy overwrite="true" todir="${output.dir}/${ra.build.tasks.name}">
@@ -59,45 +59,45 @@
 			<exclude name="obj/**/*.*" />
 			<include name="**/*.cs" />
 			<include name="**/*.csproj" />
-      <exclude name="**/*VS2008.csproj" />
-    </fileset>
+			<exclude name="**/*VS2008.csproj" />
+		</fileset>
 	</copy>
 
-	<copy 
-		overwrite="true" 
-		file="${references.dir}/NAnt.Core.dll" 
+	<copy
+		overwrite="true"
+		file="${references.dir}/NAnt.Core.dll"
 		todir="${output.dir}/${references.dir}" />
-	
+
 	<zip zipfile="${output.dir}/Ra-${ra.version}.zip">
 		<fileset basedir="${output.dir}">
-      <include name="Ra.sln" />
-      <include name="Ra.build" />
-      <include name="README.txt" />
-    </fileset>
+			<include name="Ra.sln" />
+			<include name="Ra.build" />
+			<include name="README.txt" />
+		</fileset>
 		<fileset basedir="${output.dir}/${ra.name}" prefix="${ra.name}">
-	        <include name="**/*" />
-	    </fileset>
+			<include name="**/*" />
+		</fileset>
 		<fileset basedir="${output.dir}/${resources.dir}" prefix="${resources.dir}">
-	        <include name="**/*" />
-	    </fileset>
-	    <fileset basedir="${output.dir}/${library.dir}" prefix="${library.dir}">
-	        <include name="**/*" />
-	    </fileset>
-	    <fileset basedir="${output.dir}/${ext.name}" prefix="${ext.name}">
-	        <include name="**/*" />
-	    </fileset>
+			<include name="**/*" />
+		</fileset>
+		<fileset basedir="${output.dir}/${library.dir}" prefix="${library.dir}">
+			<include name="**/*" />
+		</fileset>
+		<fileset basedir="${output.dir}/${ext.name}" prefix="${ext.name}">
+			<include name="**/*" />
+		</fileset>
 		<fileset basedir="${output.dir}/${resource.cacher.name}" prefix="${resource.cacher.name}">
-	        <include name="**/*" />
-	    </fileset>
+			<include name="**/*" />
+		</fileset>
 		<fileset basedir="${output.dir}/${ra.build.tasks.name}" prefix="${ra.build.tasks.name}">
-	        <include name="**/*" />
-	    </fileset>
+			<include name="**/*" />
+		</fileset>
 		<fileset basedir="${output.dir}/${references.dir}" prefix="${references.dir}">
-	        <include name="**/*" />
-	    </fileset>
+			<include name="**/*" />
+		</fileset>
 		<fileset basedir="${output.dir}/${samples.dir}" prefix="${samples.dir}">
-	        <include name="**/*" />
-	    </fileset>
+			<include name="**/*" />
+		</fileset>
 	</zip>
 
 	<delete dir="${output.dir}/${ra.name}" />
@@ -105,8 +105,8 @@
 	<delete dir="${output.dir}/${resource.cacher.name}" />
 	<delete dir="${output.dir}/${ra.build.tasks.name}" />
 	<delete dir="${output.dir}/${references.dir}" />
-  <delete file="${output.dir}/Ra.sln" />
-  <delete file="${output.dir}/Ra.build" />
-  <delete file="${output.dir}/README.txt" />
+	<delete file="${output.dir}/Ra.sln" />
+	<delete file="${output.dir}/Ra.build" />
+	<delete file="${output.dir}/README.txt" />
 
 </project>
