@@ -13,6 +13,10 @@
   in e.g. the InPlaceEdit since currently it does a POSTBACK if users clicks Carriage Return
   which is VERY bad...
 
+* TabControl looks ugly in IE7
+
+* SelectStart in BehaviorDraggable isn't trapped in Chrome...
+
 * Fix CheckBox and RadioButton so that also e.g. OnMouseOver triggers on CONTROL and not only
   text as it does today. Maybe something like "mouseenter/mouseleave" from MooTools can help
   us here and then trap the TOP element (span) ...?
