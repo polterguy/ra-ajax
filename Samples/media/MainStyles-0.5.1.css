@@ -257,18 +257,18 @@ h2 { margin-top:2.7em; }
 }
 
 .alphacube_nw {
-	background: transparent url(skins/window/alphacube/left-top.gif) no-repeat 0 0;
+	background: transparent url(skins/window/alphacube/sprite.png) no-repeat 0px 0px;
 	padding-left:10px;
 	position:relative;
 }
 
 .alphacube_ne {
-	background: transparent url(skins/window/alphacube/right-top.gif) no-repeat right 0;
+	background: transparent url(skins/window/alphacube/sprite.png) no-repeat right 0;
 	padding-right:6px;
 }
 
 .alphacube_n {
-	background: transparent url(skins/window/alphacube/top-middle.gif) repeat-x 0 0;
+	background: transparent url(skins/window/alphacube/h-sprite.png) repeat-x 0 0;
 	overflow:hidden;
 	height:25px;
 }
@@ -285,26 +285,17 @@ h2 { margin-top:2.7em; }
 
 .alphacube_close {
 	width:23px;
-	height:18px;
-	background:transparent url(skins/window/alphacube/button-close-focus.gif) no-repeat 0 0;			
+	height:16px;
+	background:transparent url(skins/window/alphacube/sprite.png) no-repeat -10px 0;
 	position:absolute;
 	top:0px;
 	right:11px;
 	z-index:1000;
 }
 
-.alphacube_minimize {
-	width:23px;
-	height:18px;
-	background:transparent url(skins/window/alphacube/button-min-focus.gif) no-repeat 0 0;			
-	position:absolute;
-	top:0px;
-	right:55px;
-	z-index:1000;
-}
-
 .alphacube_close:hover {
 	background-color:transparent;
+	background-position:-10px -16px;
 }
 
 .alphacube_body {
@@ -313,12 +304,12 @@ h2 { margin-top:2.7em; }
 }
 
 .alphacube_w {
-	background: transparent url(skins/window/alphacube/frame-left.gif) repeat-y 0 0;
+	background: transparent url(skins/window/alphacube/v-sprite.png) repeat-y 0 0;
 	padding-left:7px;
 }
 
 .alphacube_e {
-	background: transparent url(skins/window/alphacube/frame-right.gif) repeat-y right 0;
+	background: transparent url(skins/window/alphacube/v-sprite.png) repeat-y right 0;
 	padding-right:7px;
 }
 
@@ -328,32 +319,16 @@ h2 { margin-top:2.7em; }
 }
 
 .alphacube_sw {
-	background: transparent url(skins/window/alphacube/bottom-left-c.gif) no-repeat 0 0;
+	background: transparent url(skins/window/alphacube/sprite.png) no-repeat 0 -25px;
 	padding-left:7px;
 }
 
-.alphacube_se, .alphacube_sizer  {
-	background: transparent url(skins/window/alphacube/bottom-right-c.gif) no-repeat right 0;
+.alphacube_se {
+	background: transparent url(skins/window/alphacube/sprite.png) no-repeat right -25px;
 	padding-right:7px;
 }
 
 .alphacube_s {
-	background: transparent url(skins/window/alphacube/bottom-middle.gif) repeat-x 0 0;
+	background: transparent url(skins/window/alphacube/h-sprite.png) repeat-x 0 -25px;
 	height:7px;
 }
-
-.alphacube_sizer {
-	cursor:se-resize;	
-}
-
-.alphacube_maximize {
-	width: 23px;
-	height: 23px;
-	background: transparent url(skins/window/alphacube/button-max-focus.gif) no-repeat 0 0;			
-	position:absolute;
-	top:0px;
-	right:33px;
-	cursor:pointer;
-	z-index:1000;
-}
-

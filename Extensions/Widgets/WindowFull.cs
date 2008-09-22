@@ -33,8 +33,6 @@ namespace Ra.Extensions
         Label _se;
         Label _caption;
         LinkButton _close;
-        LinkButton _minimize;
-        //LinkButton _maximize;
         BehaviorDraggable _dragger;
 
         [DefaultValue("")]
@@ -81,11 +79,6 @@ namespace Ra.Extensions
             _close.ID = "XXclose";
             _close.Click += new EventHandler(_close_Click);
             _n.Controls.Add(_close);
-
-            _minimize = new LinkButton();
-            _minimize.ID = "XXminimize";
-            _minimize.Click += new EventHandler(_minimize_Click);
-            _n.Controls.Add(_minimize);
 
             // Middle parts
             _body = new Label();
@@ -134,21 +127,6 @@ namespace Ra.Extensions
             ReArrangeControls();
         }
 
-        void _minimize_Click(object sender, EventArgs e)
-        {
-            // Note even though we would WANT to we can't really set the _control
-            // Control to IN-Visible since this will change the number of Controls in the
-            // ControlCollection and thereby as long as Mono doesn't support ViewStateModeById
-            // in fact re-load the wrong ViewState values for the *wrong* Controls....!!
-            Effect effect;
-            if (_content.Style["display"] == "none")
-                effect = new EffectFadeIn(_content, 200);
-            else
-                effect = new EffectFadeOut(_content, 200);
-            effect.Chained.Add(new EffectHighlight());
-            effect.Render();
-        }
-
         void _close_Click(object sender, EventArgs e)
         {
             this.Visible = false;
@@ -174,7 +152,6 @@ namespace Ra.Extensions
 
             // Action buttons
             _close.CssClass = this.CssClass + "_close";
-            _minimize.CssClass = this.CssClass + "_minimize";
 
             // Moving controls to where they SHOULD be...
             ReArrangeControls();
