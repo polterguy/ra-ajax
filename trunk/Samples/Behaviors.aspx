@@ -131,11 +131,18 @@
     	to create your own Ajax Extension Controls. It is not meant as an exhaustive Ajax Window implementation but rather a "pointing finger"
     	towards how to create your own Ajax Window. Though of course feel free to use it as it is...
     </p>
+    <p>
+        <ra:LinkButton 
+            runat="server" 
+            ID="lnkWnd" 
+            OnClick="lnkWnd_Click" />
+    </p>
     <div class="wndWrapper">
         <ext:Window 
     	    runat="server"
     	    Caption="Ajax Window"
-    	    CssClass="window smallWnd"
+    	    CssClass="window smallWnd" 
+    	    OnClosed="window_Closed"
     	    id="window">
     	    <div style="padding:5px;">
     	        <p>

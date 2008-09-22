@@ -100,7 +100,9 @@ Ra.extend(Ra.BDrag.prototype, {
       handle: this.parent.element
     }, this.options || {});
 
+    // To prevent selection for non-mozilla browsers
     this.options.handle.observe('mousedown', this.onMouseDown, this);
+    this.options.handle.observe('selectstart', this.onSelectStart, this);
     document.body.observe('mouseup', this.onMouseUp, this);
     document.body.observe('mousemove', this.onMouseMove, this);
 
@@ -122,6 +124,12 @@ Ra.extend(Ra.BDrag.prototype, {
   // control is supposed to "snap" when dragged
   Snap: function(pt) {
     this.options.snap = pt;
+  },
+
+  onSelectStart: function(evt) {
+    evt.stopped = true;
+    evt.cancelBubble = true;
+    return false;
   },
 
   // Called when mouse is being pushed DOWN on top of the Control
@@ -222,6 +230,7 @@ Ra.extend(Ra.BDrag.prototype, {
 
   // Called when Control is being destroyed
   destroy: function() {
+    this.options.handle.stopObserving('mousedown', this.onMouseDown, this);
     this.options.handle.stopObserving('mousedown', this.onMouseDown, this);
     document.body.stopObserving('mouseup', this.onMouseUp, this);
     document.body.stopObserving('mousemove', this.onMouseMove, this);
