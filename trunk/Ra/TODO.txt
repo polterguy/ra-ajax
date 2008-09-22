@@ -9,6 +9,11 @@
 
 * DateTimePicker Control
 
+* Create RollUp/Down Effect which doesn't take absolute height of control. Useful in Window
+  for minimizing/restoring Window...
+
+* Create "delayed destroy" which uses an effect and then in the onFinished actually does the destruction...
+
 * Property for "killing" Carriage Return on TextBoxes. This will be very useful
   in e.g. the InPlaceEdit since currently it does a POSTBACK if users clicks Carriage Return
   which is VERY bad...
