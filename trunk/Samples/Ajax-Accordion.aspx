@@ -82,14 +82,14 @@
                 means that you can embed other complex Ajax Controls like for instance an Ajax Calendar
                 within it with no problems.
             </p>
-            <p>
-                <ext:Calendar 
-                    runat="server" 
-                    ID="calTab" 
-                    CssClass="calendar" 
-                    OnSelectedValueChanged="calTab_SelectedValueChanged"
-                    Value="2008.07.20 23:54" />
-            </p>
+
+            <ext:Calendar 
+                runat="server" 
+                ID="calTab" 
+                CssClass="calendar" 
+                OnSelectedValueChanged="calTab_SelectedValueChanged"
+                Value="2008.07.20 23:54" />
+
             <p style="clear:both;">
                 <ra:Label 
                     runat="server" 
