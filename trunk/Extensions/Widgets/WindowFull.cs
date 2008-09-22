@@ -31,7 +31,15 @@ namespace Ra.Extensions
         Label _sw;
         Label _s;
         Label _se;
+        Label _caption;
         BehaviorDraggable _dragger;
+
+        [DefaultValue("")]
+        public string Caption
+        {
+            get { return ViewState["Caption"] == null ? "" : (string)ViewState["Caption"]; }
+            set { ViewState["Caption"] = value; }
+        }
 
         protected override void LoadViewState(object savedState)
         {
@@ -48,11 +56,6 @@ namespace Ra.Extensions
         protected override void CreateChildControls()
         {
             CreateWindowControls();
-        }
-
-        public override ASP.ControlCollection Controls
-        {
-            get { return _content.Controls; }
         }
 
         private void CreateWindowControls()
@@ -73,6 +76,10 @@ namespace Ra.Extensions
             _n.ID = "n";
             _n.Text = "&nbsp;";
             _ne.Controls.Add(_n);
+
+            _caption = new Label();
+            _caption.ID = "caption";
+            _n.Controls.Add(_caption);
 
             // Middle parts
             _body = new Label();
@@ -117,11 +124,30 @@ namespace Ra.Extensions
             base.Controls.Add(_dragger);
         }
 
+        // Since we've overridden the Controls ControlCollection we must also make sure that
+        // the RegisterScript logic uses the *BASE*.Controls instead of the "Controls" which is
+        // overridden and actually returns the Controls of the "container panel"...
+        protected override string GetChildrenClientSideScript()
+        {
+            return GetChildrenClientSideScript(base.Controls);
+        }
+
+        // Overriding the Controls collection to make sure all controls which aren't explicitly added to the
+        // base.Controls collection are being added into the "container panel" within the window
+        // decoration parts...
+        public override ASP.ControlCollection Controls
+        {
+            get { return _content.Controls; }
+        }
+
+        // Helper to retrieve the base.Controls collection (which is the "true" ControlCollection)
         private ASP.ControlCollection GetBaseControls()
         {
             return base.Controls;
         }
 
+        // We MUST override this one since otherwise the _content.Controls collection will
+        // be traversed to find the Behaviors (which obviously is wrong)
         [Browsable(false)]
         public override IEnumerable<Behavior> Behaviors
         {
@@ -138,6 +164,7 @@ namespace Ra.Extensions
 
         protected override void OnPreRender(EventArgs e)
         {
+            // Setting the CSS classes for all "decoration controls"
             _nw.CssClass = this.CssClass + "_nw";
             _n.CssClass = this.CssClass + "_n";
             _ne.CssClass = this.CssClass + "_ne";
@@ -148,6 +175,12 @@ namespace Ra.Extensions
             _w.CssClass = this.CssClass + "_w";
             _content.CssClass = this.CssClass + "_content";
             _body.CssClass = this.CssClass + "_body";
+            _caption.CssClass = this.CssClass + "_title";
+
+            // Making sure our Caption is displayed correctly
+            _caption.Text = Caption;
+
+            // Calling base...
             base.OnPreRender(e);
         }
     }

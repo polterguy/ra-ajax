@@ -41,7 +41,7 @@ namespace Ra.Widgets
         [DefaultValue("span")]
         public string Tag
         {
-            get { return ViewState["Tag"] == null ? "" : (string)ViewState["Tag"]; }
+            get { return ViewState["Tag"] == null ? "span" : (string)ViewState["Tag"]; }
             set { ViewState["Tag"] = value; }
         }
 
