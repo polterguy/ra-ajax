@@ -271,8 +271,6 @@ h2 { margin-top:2.7em; }
 	background: transparent url(skins/window/alphacube/top-middle.gif) repeat-x 0 0;
 	overflow:hidden;
 	height:25px;
-	cursor:move;
-	-moz-user-select:none;
 }
 
 .alphacube_title {
@@ -280,6 +278,33 @@ h2 { margin-top:2.7em; }
 	position:absolute;
 	top:5px;
 	color:#999;
+	-moz-user-select:none;
+	cursor:move;
+	width:100%;
+}
+
+.alphacube_close {
+	width:23px;
+	height:18px;
+	background:transparent url(skins/window/alphacube/button-close-focus.gif) no-repeat 0 0;			
+	position:absolute;
+	top:0px;
+	right:11px;
+	z-index:1000;
+}
+
+.alphacube_minimize {
+	width:23px;
+	height:18px;
+	background:transparent url(skins/window/alphacube/button-min-focus.gif) no-repeat 0 0;			
+	position:absolute;
+	top:0px;
+	right:55px;
+	z-index:1000;
+}
+
+.alphacube_close:hover {
+	background-color:transparent;
 }
 
 .alphacube_body {
@@ -319,28 +344,6 @@ h2 { margin-top:2.7em; }
 
 .alphacube_sizer {
 	cursor:se-resize;	
-}
-
-.alphacube_close {
-	width: 23px;
-	height: 23px;
-	background: transparent url(skins/window/alphacube/button-close-focus.gif) no-repeat 0 0;			
-	position:absolute;
-	top:0px;
-	right:11px;
-	cursor:pointer;
-	z-index:1000;
-}
-
-.alphacube_minimize {
-	width: 23px;
-	height: 23px;
-	background: transparent url(skins/window/alphacube/button-min-focus.gif) no-repeat 0 0;			
-	position:absolute;
-	top:0px;
-	right:55px;
-	cursor:pointer;
-	z-index:1000;
 }
 
 .alphacube_maximize {
