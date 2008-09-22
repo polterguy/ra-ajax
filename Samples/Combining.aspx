@@ -53,13 +53,13 @@
         The example below is a Ra-Ajax Extension Control built as a server-side control
         which means you can easily reuse it across all of your projecs.
     </p>
-    <p>
-        <ext:Calendar 
-            runat="server" 
-            ID="calendar" 
-            OnSelectedValueChanged="calendar_SelectedValueChanged"
-            CssClass="calendar" />
-    </p>
+
+    <ext:Calendar 
+        runat="server" 
+        ID="calendar" 
+        OnSelectedValueChanged="calendar_SelectedValueChanged"
+        CssClass="calendar" />
+
     <p style="clear:both;">
         <ra:Label 
             runat="server" 

@@ -29,14 +29,14 @@
         because it is entirely composed of other existing Ajax Controls like LinkButtons, Labels, 
         DropDownLists and so on.
     </p>
-    <p>
-        <ext:Calendar 
-            runat="server" 
-            ID="calTab" 
-            CssClass="calendar" 
-            OnSelectedValueChanged="calTab_SelectedValueChanged"
-            Value="2008.07.20 23:54" />
-    </p>
+
+    <ext:Calendar 
+        runat="server" 
+        ID="calTab" 
+        CssClass="calendar" 
+        OnSelectedValueChanged="calTab_SelectedValueChanged"
+        Value="2008.07.20 23:54" />
+
     <p style="clear:both;">
         <ra:Label 
             runat="server" 

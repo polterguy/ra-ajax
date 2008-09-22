@@ -142,7 +142,7 @@ namespace Ra.Widgets
                 GetCssClassHTMLFormatedAttribute(),
                 GetStyleHTMLFormatedAttribute(),
                 accessKey,
-                (Enabled ? "" : "disabled=\"disabled\""));
+                (Enabled ? "" : " disabled=\"disabled\""));
         }
 
         #endregion
