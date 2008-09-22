@@ -28,13 +28,13 @@
         <a href="http://script.aculo.us/">ScriptAculous</a>. The Ra-Ajax InPlaceEdit is created without using
         any custom JavaScript and is actually a very good starting point for your own Custom Ajax Controls.
     </p>
-    <p>
-        <ext:InPlaceEdit 
-            runat="server" 
-            ID="inpl" 
-            OnTextChanged="inpl_TextChanged" 
-            Text="Click to edit" />
-    </p>
+
+    <ext:InPlaceEdit 
+        runat="server" 
+        ID="inpl" 
+        OnTextChanged="inpl_TextChanged" 
+        Text="Click to edit" />
+
     <p>
         <ra:Label 
             runat="server" 
