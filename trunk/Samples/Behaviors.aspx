@@ -138,7 +138,7 @@
             OnClick="lnkWnd_Click" />
     </p>
     <div class="wndWrapper">
-        <ext:Window 
+        <ext:WindowLight 
     	    runat="server"
     	    Caption="Ajax Window"
     	    CssClass="window smallWnd" 
@@ -156,7 +156,7 @@
 				        OnClick="btn_Click" />
 				</p>
 		    </div>
-        </ext:Window>
+        </ext:WindowLight>
     </div>
     <p>
     	This Window is purely built on the server with 84 lines of code in total (as of the 18th of September 2008) and has

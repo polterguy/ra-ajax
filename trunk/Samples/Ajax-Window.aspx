@@ -36,7 +36,7 @@
     	    OnClick="showWindow_Click" />
     </p>
     <div style="position:relative;">
-        <ext:Window 
+        <ext:WindowLight 
     	    runat="server"
     	    Caption="Ajax Window"
     	    CssClass="window smallWnd"
@@ -51,7 +51,7 @@
                         src="media/flower1.jpg" />
                 </p>
             </div>
-        </ext:Window>
+        </ext:WindowLight>
     </div>
     <div class="spacerLarge">&nbsp;</div>
     <p>
