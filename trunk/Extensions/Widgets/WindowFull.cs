@@ -32,6 +32,9 @@ namespace Ra.Extensions
         Label _s;
         Label _se;
         Label _caption;
+        LinkButton _close;
+        LinkButton _minimize;
+        //LinkButton _maximize;
         BehaviorDraggable _dragger;
 
         [DefaultValue("")]
@@ -41,16 +44,10 @@ namespace Ra.Extensions
             set { ViewState["Caption"] = value; }
         }
 
-        protected override void LoadViewState(object savedState)
+        protected override void OnInit(EventArgs e)
         {
-            base.LoadViewState(savedState);
-
-            // Since we're dependant upon that the ViewState has finished loading before
-            // we initialize the ChildControls since how the child controls (and which)
-            // child controls are being re-created is dependant upon a ViewState saved value
-            // this is the earliest possible time we can reload the ChildControls for the
-            // Control
             EnsureChildControls();
+            base.OnInit(e);
         }
 
         protected override void CreateChildControls()
@@ -63,103 +60,98 @@ namespace Ra.Extensions
             // Top parts
             _nw = new Label();
             _nw.Tag = "div";
-            _nw.ID = "nw";
+            _nw.ID = "XXnw";
             base.Controls.Add(_nw);
 
             _ne = new Label();
             _ne.Tag = "div";
-            _ne.ID = "ne";
+            _ne.ID = "XXne";
             _nw.Controls.Add(_ne);
 
             _n = new Label();
             _n.Tag = "div";
-            _n.ID = "n";
-            _n.Text = "&nbsp;";
+            _n.ID = "XXn";
             _ne.Controls.Add(_n);
 
             _caption = new Label();
-            _caption.ID = "caption";
+            _caption.ID = "XXcaption";
             _n.Controls.Add(_caption);
+
+            _close = new LinkButton();
+            _close.ID = "XXclose";
+            _close.Click += new EventHandler(_close_Click);
+            _n.Controls.Add(_close);
+
+            _minimize = new LinkButton();
+            _minimize.ID = "XXminimize";
+            _minimize.Click += new EventHandler(_minimize_Click);
+            _n.Controls.Add(_minimize);
 
             // Middle parts
             _body = new Label();
             _body.Tag = "div";
-            _body.ID = "body";
+            _body.ID = "XXbody";
             base.Controls.Add(_body);
 
             _w = new Label();
             _w.Tag = "div";
-            _w.ID = "w";
+            _w.ID = "XXw";
             _body.Controls.Add(_w);
 
             _e = new Label();
             _e.Tag = "div";
-            _e.ID = "e";
+            _e.ID = "XXe";
             _w.Controls.Add(_e);
 
             _content.Tag = "div";
-            _content.ID = "content";
+            _content.ID = "XXcontent";
             _e.Controls.Add(_content);
 
             // Bottom parts
             _sw = new Label();
             _sw.Tag = "div";
-            _sw.ID = "sw";
+            _sw.ID = "XXsw";
             _body.Controls.Add(_sw);
 
             _se = new Label();
             _se.Tag = "div";
-            _se.ID = "se";
+            _se.ID = "XXse";
             _sw.Controls.Add(_se);
 
             _s = new Label();
             _s.Tag = "div";
-            _s.ID = "s";
+            _s.ID = "XXs";
             _s.Text = "&nbsp;";
             _se.Controls.Add(_s);
 
             _dragger = new BehaviorDraggable();
-            _dragger.ID = "dragger";
-            _dragger.Handle = _n.ClientID;
+            _dragger.ID = "XXdragger";
+            _dragger.Handle = _caption.ClientID;
             base.Controls.Add(_dragger);
+
+            // Moving controls to where they SHOULD be...
+            // This time to get the ViewState right...
+            ReArrangeControls();
         }
 
-        // Since we've overridden the Controls ControlCollection we must also make sure that
-        // the RegisterScript logic uses the *BASE*.Controls instead of the "Controls" which is
-        // overridden and actually returns the Controls of the "container panel"...
-        protected override string GetChildrenClientSideScript()
+        void _minimize_Click(object sender, EventArgs e)
         {
-            return GetChildrenClientSideScript(base.Controls);
+            // Note even though we would WANT to we can't really set the _control
+            // Control to IN-Visible since this will change the number of Controls in the
+            // ControlCollection and thereby as long as Mono doesn't support ViewStateModeById
+            // in fact re-load the wrong ViewState values for the *wrong* Controls....!!
+            Effect effect;
+            if (_content.Style["display"] == "none")
+                effect = new EffectFadeIn(_content, 200);
+            else
+                effect = new EffectFadeOut(_content, 200);
+            effect.Chained.Add(new EffectHighlight());
+            effect.Render();
         }
 
-        // Overriding the Controls collection to make sure all controls which aren't explicitly added to the
-        // base.Controls collection are being added into the "container panel" within the window
-        // decoration parts...
-        public override ASP.ControlCollection Controls
+        void _close_Click(object sender, EventArgs e)
         {
-            get { return _content.Controls; }
-        }
-
-        // Helper to retrieve the base.Controls collection (which is the "true" ControlCollection)
-        private ASP.ControlCollection GetBaseControls()
-        {
-            return base.Controls;
-        }
-
-        // We MUST override this one since otherwise the _content.Controls collection will
-        // be traversed to find the Behaviors (which obviously is wrong)
-        [Browsable(false)]
-        public override IEnumerable<Behavior> Behaviors
-        {
-            get
-            {
-                ASP.ControlCollection controls = GetBaseControls();
-                foreach (ASP.Control idx in controls)
-                {
-                    if (idx is Behavior)
-                        yield return idx as Behavior;
-                }
-            }
+            this.Visible = false;
         }
 
         protected override void OnPreRender(EventArgs e)
@@ -180,8 +172,31 @@ namespace Ra.Extensions
             // Making sure our Caption is displayed correctly
             _caption.Text = Caption;
 
+            // Action buttons
+            _close.CssClass = this.CssClass + "_close";
+            _minimize.CssClass = this.CssClass + "_minimize";
+
+            // Moving controls to where they SHOULD be...
+            ReArrangeControls();
+
             // Calling base...
             base.OnPreRender(e);
+        }
+
+        private void ReArrangeControls()
+        {
+            // Moving all controls where they SHOULD be
+            List<ASP.Control> controls = new List<System.Web.UI.Control>();
+            foreach (ASP.Control idx in Controls)
+            {
+                if (string.IsNullOrEmpty(idx.ID) || idx.ID.Substring(0, 2) != "XX")
+                    controls.Add(idx);
+            }
+            foreach (ASP.Control idx in controls)
+            {
+                this.Controls.Remove(idx);
+                this._content.Controls.Add(idx);
+            }
         }
     }
 }
