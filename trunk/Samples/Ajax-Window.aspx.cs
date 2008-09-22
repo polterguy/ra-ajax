@@ -17,4 +17,9 @@ public partial class AjaxWindow : System.Web.UI.Page
         Effect effect = new EffectFadeIn(window, 400);
         effect.Render();
     }
+
+    protected void btnWnd_Click(object sender, EventArgs e)
+    {
+        window.Visible = false;
+    }
 }

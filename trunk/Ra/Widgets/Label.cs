@@ -32,10 +32,17 @@ namespace Ra.Widgets
             get { return ViewState["Text"] == null ? "" : (string)ViewState["Text"]; }
             set
             {
-                if( value != Text )
+                if (value != Text)
                     SetJSONValueString("Text", value);
                 ViewState["Text"] = value;
             }
+        }
+
+        [DefaultValue("span")]
+        public string Tag
+        {
+            get { return ViewState["Tag"] == null ? "" : (string)ViewState["Tag"]; }
+            set { ViewState["Tag"] = value; }
         }
 
         #endregion
@@ -45,11 +52,18 @@ namespace Ra.Widgets
         // Override this one to create specific HTML for your widgets
         public override string GetOpeningHTML()
         {
-            return string.Format("<span id=\"{0}\"{2}{3}>{1}</span>",
+            return string.Format("<{4} id=\"{0}\"{2}{3}>{1}",
                 ClientID,
                 Text,
                 GetCssClassHTMLFormatedAttribute(),
-                GetStyleHTMLFormatedAttribute());
+                GetStyleHTMLFormatedAttribute(),
+                Tag);
+        }
+
+        public override string GetClosingHTML()
+        {
+            return string.Format("</{0}>",
+                Tag);
         }
 
         #endregion

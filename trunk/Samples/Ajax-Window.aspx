@@ -35,24 +35,38 @@
     	    Text="Show Window" 
     	    OnClick="showWindow_Click" />
     </p>
-    <div style="position:relative;">
-        <ext:WindowLight 
-    	    runat="server"
-    	    Caption="Ajax Window"
-    	    CssClass="window smallWnd"
-    	    id="window">
-            <div style="padding:5px;">
-                <p>
-	                Try to move me around by dragging my header field.
-	            </p>
-	            <p>
-                    <img 
-                        alt="Flower" 
-                        src="media/flower1.jpg" />
-                </p>
-            </div>
-        </ext:WindowLight>
-    </div>
+
+    <ext:WindowFull 
+	    runat="server"
+	    Caption="Ajax Window"
+	    CssClass="alphacube"
+	    style="width:450px;height:280px;"
+	    id="window">
+
+	    <div style="padding:15px;">
+	        <h3>Ajax Window</h3>
+	        <p>
+	            This is a "full" window, as you can see below it works 100% exactly as a Panel
+	            in that you can add up advanced controls and expect them to trigger Ajax Callback Events.
+	        </p>
+	        <p>
+	            <ra:Button 
+	                runat="server" 
+	                ID="btnWnd" 
+	                OnClick="btnWnd_Click"
+	                Text="Close window" />
+	        </p>
+	        <p>
+	            Note however that this is a "CSS intensive Window" and for a lighter window
+	            you might want to consider the WindowLight which is showcased below. CSS intensive
+	            Controls tend to use a lot of resources on older browsers (IE *sigh*!) and might
+	            degrade the user experience for your end users if your page is stuffed with them.
+	            Especially for users with both "older browser" in addition to also old computers...
+	        </p>
+	    </div>
+
+	</ext:WindowFull>
+
     <div class="spacerLarge">&nbsp;</div>
     <p>
     	Try to move the Ajax Window by dragging and dropping its header.
