@@ -18,7 +18,7 @@ using HTML = System.Web.UI.HtmlControls;
 namespace Ra.Extensions
 {
     [ASP.ToolboxData("<{0}:WindowLight runat=\"server\"></{0}:WindowLight>")]
-    public class Window : Panel, ASP.INamingContainer
+    public class WindowLight : Panel, ASP.INamingContainer
     {
 		private WEBCTRLS.Panel _pnlHead;
 		private Label _lblHead;
