@@ -216,7 +216,7 @@ namespace Ra.Widgets
                 GetStyleHTMLFormatedAttribute(),
                 accessKey,
                 GetHTMLForOptions(),
-                (Enabled ? "" : "disabled=\"disabled\""));
+                (Enabled ? "" : " disabled=\"disabled\""));
         }
 
         private string GetHTMLForOptions()
@@ -232,8 +232,8 @@ namespace Ra.Widgets
                 retVal += string.Format("<option value=\"{0}\"{2}{3}>{1}</option>",
                     idx.Value,
                     (string.IsNullOrEmpty(idx.Text) ? idx.Value : idx.Text),
-                    (idx.Enabled ? "" : "disabled=\"disabled\""),
-                    (isSelected ? "selected=\"selected\"" : ""));
+                    (idx.Enabled ? "" : " disabled=\"disabled\""),
+                    (isSelected ? " selected=\"selected\"" : ""));
             }
             return retVal;
         }

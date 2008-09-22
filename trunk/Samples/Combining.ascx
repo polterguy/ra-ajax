@@ -33,6 +33,7 @@
                 ID="err" 
                 CssClass="errLbl" />
         </td>
+    </tr>
     <tr>
         <td colspan="2">
             <ra:Button 
