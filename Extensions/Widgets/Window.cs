@@ -25,6 +25,8 @@ namespace Ra.Extensions
 		private LinkButton _close;
 		private BehaviorDraggable _dragger;
 
+        public event EventHandler Closed;
+
         [DefaultValue("")]
         public string Caption
         {
@@ -72,6 +74,8 @@ namespace Ra.Extensions
 		protected void _close_Clicked(object sender, EventArgs e)
 		{
 			this.Visible = false;
+            if (Closed != null)
+                Closed(this, new EventArgs());
 		}
 		
 		protected override void OnPreRender (EventArgs e)

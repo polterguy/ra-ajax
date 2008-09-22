@@ -126,6 +126,9 @@ namespace Ra.Widgets
         {
             switch (name)
             {
+                // Due to a bug in IE we need to trap click event in DOM instead of change if
+                // browser is IE
+                case "click":
                 case "change":
                     if (CheckedChanged != null)
                         CheckedChanged(this, new EventArgs());
@@ -162,8 +165,12 @@ namespace Ra.Widgets
         protected override string GetEventsRegisterScript()
         {
             string evts = string.Empty;
+
+            // Due to a bug in IE we need to trap click event in DOM instead of change if
+            // browser is IE
+            string evtChangeName = Page.Request.Browser.Browser == "IE" ? "click" : "change";
             if (CheckedChanged != null)
-                evts += "['change']";
+                evts += string.Format("['{0}']", evtChangeName);
             if (MouseOver != null)
             {
                 if (evts.Length != 0)

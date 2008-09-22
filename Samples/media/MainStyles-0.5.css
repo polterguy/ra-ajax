@@ -185,6 +185,12 @@ h2 { margin-top:2.7em; }
 .calendar .holidayOnVenus a { color:#0f0; }
 
 
+/* Slider */
+
+.slider { width:198px; border:solid 1px Black; padding-top:1px; padding-left:1px; position:absolute; height:21px; }
+.slidThumb { display:block; cursor:move; position:absolute; color:#33f; border:solid 1px #33f; width:25px; height:18px; -moz-user-select:none;*left:1px;*top:1px; }
+
+
 /* Special classes for website only */
 
 .navigation { padding-top:0.7em; }
@@ -220,5 +226,3 @@ h2 { margin-top:2.7em; }
 .dragger2 { cursor:move; position:absolute; color:#33f; border:solid 1px #33f; padding:5px; width:100px; -moz-user-select:none; z-index:2; background-color:White; left:200px; *top:1px; }
 .dropper { position:absolute; left:350px; color:#bbb; border:solid 1px #bbb; padding:5px; width:100px; z-index:1; }
 .droppablesTouched { background-color:Yellow; }
-.slider { width:198px; border:solid 1px Black; padding-top:1px; padding-left:1px; position:absolute; height:21px; }
-.slidThumb { display:block; cursor:move; position:absolute; color:#33f; border:solid 1px #33f; width:25px; height:18px; -moz-user-select:none;*left:1px;*top:1px; }

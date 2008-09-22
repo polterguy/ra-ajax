@@ -30,6 +30,13 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Samples", "Samples\", "{352
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ra.Build.Tasks.VS2008", "Ra.Build.Tasks\Ra.Build.Tasks.VS2008.csproj", "{704AE5D2-665F-472F-9BC2-C48B8E33DD0C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2015A574-CB12-490B-88FA-79F5F1489389}"
+	ProjectSection(SolutionItems) = preProject
+		Package.build = Package.build
+		PublishSamples.build = PublishSamples.build
+		Ra.build = Ra.build
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET

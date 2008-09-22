@@ -23,6 +23,21 @@ public partial class Behaviors : System.Web.UI.Page
         }
     }
 
+    protected void window_Closed(object sender, EventArgs e)
+    {
+        lnkWnd.Text = "Windows was closed";
+        Effect effect = new EffectHighlight(lnkWnd, 400);
+        effect.Render();
+    }
+
+    protected void lnkWnd_Click(object sender, EventArgs e)
+    {
+        window.Visible = true;
+        Effect effect = new EffectHighlight(window, 400);
+        effect.Chained.Add(new EffectFadeIn());
+        effect.Render();
+    }
+
     protected void dropper_Dropped(object sender, BehaviorDroppable.DroppedEventArgs e)
     {
         dropperLbl.Text = e.Dragger.Parent.ID + " was dropped";

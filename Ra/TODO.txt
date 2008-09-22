@@ -1,16 +1,13 @@
 
                  TODO list for Ra-Ajax
 
-* Add up the nAnt files as part of the release.
-
-* Remove all *.VS2008.* files form nAnt script.
-
-* Create nAnt build script which also works on Linux
-
-* Make Minifier logic work also on Linux. Probably not that important in the .csproj file, but should work
-  in nAnt build script also on Linux.
+* More effects, EffectZoom (zooms fonts)
 
 * Implement and check ViewStateById mode on Widgets. Though not before Mono officially supports this. (which is NOT now)
+
+* Calendar doesn't have nice CSS - too much IE hacks...
+
+* DateTimePicker Control
 
 * Property for "killing" Carriage Return on TextBoxes. This will be very useful
   in e.g. the InPlaceEdit since currently it does a POSTBACK if users clicks Carriage Return
@@ -21,6 +18,7 @@
   us here and then trap the TOP element (span) ...?
 
 * CheckBox and RadioButton doesn't work on IE (onchanged event doesn't fire before control looses focus)
+  TODO: Finish up implementation here.....
 
 * Create class of JSON values instead of using dictionary like today in RaControl for
   clarity. Still needs to be "overridable" for on RaControl
