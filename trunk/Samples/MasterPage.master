@@ -149,10 +149,11 @@
 				                        </li>
 				                    </ul>
 					                <div class="codeBtn">
-					                    <ra:Button 
+					                    <ra:ImageButton 
 					                        runat="server" 
 					                        ID="btnShowCode" 
-					                        Text="Show code" 
+					                        ImageUrl="media/show_code.png" 
+					                        AlternateText="Show Code" 
 					                        OnClick="btnShowCode_Click" />
 					                </div>
 				                </div>
