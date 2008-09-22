@@ -94,7 +94,8 @@ namespace Ra.Widgets
                 case "dropped":
                     RaWebControl parent = Parent as RaWebControl;
 				    parent.Style["left", false] = Page.Request.Params["x"] + "px";
-				    parent.Style["top", false] = Page.Request.Params["y"] + "px";
+                    parent.Style["top", false] = Page.Request.Params["y"] + "px";
+                    parent.Style["position", false] = "absolute";
                     if (Dropped != null)
                         Dropped(this, new EventArgs());
 				    string drops = Page.Request.Params["drops"];

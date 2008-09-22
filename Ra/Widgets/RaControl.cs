@@ -217,7 +217,7 @@ namespace Ra.Widgets
 		protected bool _hasSetFocus;
 
 		[Browsable(false)]
-		public IEnumerable<Behavior> Behaviors
+		public virtual IEnumerable<Behavior> Behaviors
 		{
 			get
 			{
