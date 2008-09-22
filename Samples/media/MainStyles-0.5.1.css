@@ -272,6 +272,14 @@ h2 { margin-top:2.7em; }
 	overflow:hidden;
 	height:25px;
 	cursor:move;
+	-moz-user-select:none;
+}
+
+.alphacube_title {
+	font-size:1.0em;
+	position:absolute;
+	top:5px;
+	color:#999;
 }
 
 .alphacube_body {
@@ -344,15 +352,5 @@ h2 { margin-top:2.7em; }
 	right:33px;
 	cursor:pointer;
 	z-index:1000;
-}
-
-.alphacube_title {
-	float:left;
-	height:14px;
-	font-size:14px;
-	text-align:center;
-	margin-top:2px;
-	width:100%;
-	color:#123456;
 }
 

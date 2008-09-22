@@ -427,7 +427,12 @@ namespace Ra.Widgets
 			return GetChildrenClientSideScript(Controls);
 		}
 
-		private string GetChildrenClientSideScript(ControlCollection controls)
+        protected virtual ControlCollection GetTrueChildren()
+        {
+            return Controls;
+        }
+
+		protected string GetChildrenClientSideScript(ControlCollection controls)
 		{
 			string retVal = "";
 			foreach (Control idx in controls)
