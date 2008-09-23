@@ -112,6 +112,25 @@ p,fieldset,table,pre{margin-bottom:1em;}
 input[type=text],input[type=password],textarea{width:12.25em;*width:11.9em;}
  
 
+/*
+ * Copyright (c) 2006 Sébastien Gruhier (http://xilinus.com, http://itseb.com) 
+ * MIT license - Skin for PWC Window. Used as basis for WindowFull in Ra-Ajax
+ */
+.alphacube { display:block; }
+.alphacube_nw {background: transparent url(skins/window/alphacube/sprite.png) no-repeat 0px 0px; padding-left:10px; position:relative; }
+.alphacube_ne { background: transparent url(skins/window/alphacube/sprite.png) no-repeat right 0; padding-right:6px; }
+.alphacube_n { background: transparent url(skins/window/alphacube/h-sprite.png) repeat-x 0 0; overflow:hidden; height:25px; }
+.alphacube_title { font-size:1.0em; position:absolute; top:5px; color:#999; -moz-user-select:none; cursor:move; width:100%; }
+.alphacube_close { width:23px; height:16px; background:transparent url(skins/window/alphacube/sprite.png) no-repeat -10px 0; position:absolute; top:0px; right:11px; z-index:1000; }
+.alphacube_close:hover { background-color:transparent; background-position:-10px -16px; }
+.alphacube_body { overflow:hidden; position:relative; }
+.alphacube_w { background: transparent url(skins/window/alphacube/v-sprite.png) repeat-y 0 0; padding-left:7px; }
+.alphacube_e { background: transparent url(skins/window/alphacube/v-sprite.png) repeat-y right 0; padding-right:7px; }
+.alphacube_content { background-color:#fdfdfd; border:solid 1px #eee; }
+.alphacube_sw { background: transparent url(skins/window/alphacube/sprite.png) no-repeat 0 -25px; padding-left:7px; }
+.alphacube_se { background: transparent url(skins/window/alphacube/sprite.png) no-repeat right -25px; padding-right:7px; }
+.alphacube_s { background: transparent url(skins/window/alphacube/h-sprite.png) repeat-x 0 -25px; height:7px; }
+
 
 /*
 Copyright (c) 2008, Thomas Hansen
@@ -125,7 +144,6 @@ http://ra-ajax.org
 a { text-decoration:none; }
 a:hover { text-decoration:underline;background-color:#eee;color:Black; }
 h2 { margin-top:2.7em; }
-
 #doc2 { width:1056px; background:url('bg.png') repeat-y;}
 #hd { background:url('sun_background.jpg') no-repeat; height:259px; margin:0 16px 0 16px; }
 #bd { margin:25px 41px 0 41px; font-family:"Lucida Grande","Lucida Sans Unicode",verdana,tahoma,arial,sans-serif;}
@@ -211,7 +229,7 @@ h2 { margin-top:2.7em; }
 .infoLbl { font-size:90%;color:#666; }
 .showCode { background-color:#eee; overflow:auto; z-index:2000; font-size:0.8em; padding:4px; }
 .keyword { color:Blue; }
-
+.w3c { margin-top:15px; margin-left:25px; }
 
 /* Droppables and Draggable sample */
 
@@ -224,111 +242,3 @@ h2 { margin-top:2.7em; }
 .slidThumb { display:block; cursor:move; position:absolute; color:#33f; border:solid 1px #33f; width:25px; height:18px; -moz-user-select:none;*left:1px;*top:1px; }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
- * Copyright (c) 2006 Sébastien Gruhier (http://xilinus.com, http://itseb.com) 
- * MIT license - Skin for PWC Window. Used as basis for WindowFull in Ra-Ajax
- */
-.alphacube {
-	display:block;
-}
-
-.alphacube_nw {
-	background: transparent url(skins/window/alphacube/sprite.png) no-repeat 0px 0px;
-	padding-left:10px;
-	position:relative;
-}
-
-.alphacube_ne {
-	background: transparent url(skins/window/alphacube/sprite.png) no-repeat right 0;
-	padding-right:6px;
-}
-
-.alphacube_n {
-	background: transparent url(skins/window/alphacube/h-sprite.png) repeat-x 0 0;
-	overflow:hidden;
-	height:25px;
-}
-
-.alphacube_title {
-	font-size:1.0em;
-	position:absolute;
-	top:5px;
-	color:#999;
-	-moz-user-select:none;
-	cursor:move;
-	width:100%;
-}
-
-.alphacube_close {
-	width:23px;
-	height:16px;
-	background:transparent url(skins/window/alphacube/sprite.png) no-repeat -10px 0;
-	position:absolute;
-	top:0px;
-	right:11px;
-	z-index:1000;
-}
-
-.alphacube_close:hover {
-	background-color:transparent;
-	background-position:-10px -16px;
-}
-
-.alphacube_body {
-	overflow:hidden;
-	position:relative;
-}
-
-.alphacube_w {
-	background: transparent url(skins/window/alphacube/v-sprite.png) repeat-y 0 0;
-	padding-left:7px;
-}
-
-.alphacube_e {
-	background: transparent url(skins/window/alphacube/v-sprite.png) repeat-y right 0;
-	padding-right:7px;
-}
-
-.alphacube_content {
-	background-color:#fdfdfd;
-	border:solid 1px #eee;
-}
-
-.alphacube_sw {
-	background: transparent url(skins/window/alphacube/sprite.png) no-repeat 0 -25px;
-	padding-left:7px;
-}
-
-.alphacube_se {
-	background: transparent url(skins/window/alphacube/sprite.png) no-repeat right -25px;
-	padding-right:7px;
-}
-
-.alphacube_s {
-	background: transparent url(skins/window/alphacube/h-sprite.png) repeat-x 0 -25px;
-	height:7px;
-}
