@@ -41,19 +41,21 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
     protected void btnShowCode_Click(object sender, EventArgs e)
     {
-        pnlShowCode.Visible = true;
-        Effect effect = new EffectFadeIn(pnlShowCode, 400);
-        effect.Chained.Add(new EffectRollDown(500));
-        effect.Render();
-        GetCSharpCode();
-        ViewState["code"] = "C#";
-    }
-
-    protected void closeShowCode_Click(object sender, EventArgs e)
-    {
-        Effect effect = new EffectFadeOut(pnlShowCode, 400);
-        effect.Chained.Add(new EffectRollUp(500));
-        effect.Render();
+        if (!pnlShowCode.Visible || pnlShowCode.Style["display"] == "none")
+        {
+            pnlShowCode.Visible = true;
+            Effect effect = new EffectFadeIn(pnlShowCode, 400);
+            effect.Chained.Add(new EffectRollDown(500));
+            effect.Render();
+            GetCSharpCode();
+            ViewState["code"] = "C#";
+        }
+        else
+        {
+            Effect effect = new EffectFadeOut(pnlShowCode, 400);
+            effect.Chained.Add(new EffectRollUp(500));
+            effect.Render();
+        }
     }
 
     protected void closeIE_Click(object sender, EventArgs e)
