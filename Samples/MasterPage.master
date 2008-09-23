@@ -156,6 +156,13 @@
 					                        AlternateText="Show Code" 
 					                        OnClick="btnShowCode_Click" />
 					                </div>
+					                <div  class="w3c">
+                                        <a href="http://validator.w3.org/check?uri=referer">
+                                            <img 
+                                                src="http://www.w3.org/Icons/valid-xhtml10" 
+                                                alt="Valid XHTML 1.0 Transitional" />
+                                        </a>
+                                    </div>
 				                </div>
 			                	<div class="yui-u cnt">
                                     <ra:Panel 
@@ -204,11 +211,6 @@
                     </div>
                 </div>
                 <div id="ft">
-                    <a href="http://validator.w3.org/check?uri=referer">
-                        <img 
-                            src="http://www.w3.org/Icons/valid-xhtml10" 
-                            alt="Valid XHTML 1.0 Transitional" />
-                    </a>
 	                <p>
 	                	Copyright 2008 - <a href="mailto:thomas@ra-ajax.org">Ra Software AS</a>.
                         Ra-Ajax is Open Source (LGPL) and free of charge to use. 
