@@ -34,6 +34,13 @@ public partial class AjaxWindow : System.Web.UI.Page
         effect.Render();
     }
 
+    protected void btnOpen_Click(object sender, EventArgs e)
+    {
+        window2.Visible = true;
+        Effect effect = new EffectFadeIn(window2, 300);
+        effect.Render();
+    }
+
     protected void animate_Click(object sender, EventArgs e)
     {
         Effect effect = new EffectHighlight(window.SurfaceControl, 400);
