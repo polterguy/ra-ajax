@@ -186,11 +186,6 @@
 	                                    Visible="false">
 	                                    <ra:Button 
 	                                        runat="server" 
-	                                        ID="closeShowCode" 
-	                                        Text="Close" 
-	                                        OnClick="closeShowCode_Click" />
-	                                    <ra:Button 
-	                                        runat="server" 
 	                                        ID="switchCodeType" 
 	                                        Text="Switch to .ASPX" 
 	                                        OnClick="switchCodeType_Click" />
