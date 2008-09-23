@@ -23,10 +23,10 @@
 
     <h1>Ajax Window Sample</h1>
     <p>
-    	This is our <em>Ajax Window</em> example. The Ajax Window tries to as much as possible mimick a Desktop Window in that
-    	it has properties which makes it behave at least close to the behavior of a Desktop Window. The Ajax Window is also
-    	like most of our Ajax Extension Controls created without any custom JavaScript. This means it also serves as a perfect
-    	reference for how to create your own Ajax Controls utilizing the building blocks from Ra-Ajax.
+    	Ra-Ajax have two different Window Controls. One which is called <em>WindowFull</em> and another one which is
+    	called <em>WindowLight</em>. The first one is very rich in its UI and probably due to the amount of "bling" the
+    	one most would choose to use. The latter one is far easier on the DOM, CSS and browsers and might therefor
+    	be more suitable when you need something ultra-fast with no images and a small amount of DOM nodes.
     </p>
     <p>
         <ra:Button 
@@ -38,16 +38,17 @@
 
     <ext:WindowFull 
 	    runat="server"
-	    Caption="Ajax Window"
+	    Caption="Ajax Window - drag me"
 	    CssClass="alphacube"
 	    OnClosed="window_Closed"
 	    style="position:absolute;"
 	    id="window">
 
 	    <div style="padding:0 15px 5px 15px;">
-	        <h3>Ajax Window</h3>
+	        <h3>Window "Full"</h3>
 	        <p>
-	            This is our "full" window. It can basically be thought of as an advanced panel.
+	            This is our "full" window. It can basically be thought of as an advanced panel. 
+	            Or a "richer panel".
 	        </p>
 	        <p>
 	            <ra:Button 
@@ -57,117 +58,85 @@
 	                Text="Animate window" />
 	        </p>
 	        <p>
-	            Note however that this is a "CSS intensive Window" and for a lighter window
+	            Note however that this is a "CSS &amp; DOM intensive Window" and for a lighter window
 	            you might want to consider the WindowLight which is showcased below and also
 	            quite more "easy" on crappy browsers. (say no names ;)
+	        </p>
+	        <p>
+	            <ra:Button 
+	                runat="server" 
+	                ID="btnOpen" 
+	                OnClick="btnOpen_Click"
+	                Text="Open another Window" />
 	        </p>
 	    </div>
 
 	</ext:WindowFull>
 
+    <div style="position:absolute;">
+        <ext:WindowFull 
+	        runat="server"
+	        Caption="Ajax Window - drag me"
+	        CssClass="alphacube"
+	        Visible="false"
+	        style="position:absolute;top:-50px;left:100px;width:250px;height:200px;"
+	        id="window2">
+
+	        <div style="padding:0 15px 5px 15px;">
+	            <h3>Another Window</h3>
+	            <p>
+	                This window is initially in-visible. Notice that as all in-visible controls almost no markup, and
+	                no content is being added to the DOM or HTML before the Window is being made Visible.
+	            </p>
+	        </div>
+
+	    </ext:WindowFull>
+	</div>
+
     <div class="spacerLarge">&nbsp;</div>
     <p>
     	Try to move the Ajax Window by dragging and dropping its header.
     </p>
-    <h2>About creating Ajax Extension Controls</h2>
+    <h2>Differences between WindowFull and WindowLight</h2>
     <p>
-    	The Ajax Window is a very good example of how to create an Ajax Extension Control yourself utilizing Ra-Ajax. In fact the
-    	entire code for the Ajax Window is 100% written in server-side C#. The Ajax Window itself is inherited from Ra-Ajax Panel
-    	and in the <em>CreateChildControls</em> method we just create a couple of extras for the Window which is being added to
-    	the Controls collection of the Window Control itself. Then from our override of the <em>LoadViewState</em> method we
-    	make sure we call the <em>EnsureChildControls</em> which will call our CreateChildControls method.
+        Both of our Window controls are highly skinnable and flexible, and you can do mostly anything you can think of out
+        of both. Though our WindowFull is a "fully fledged Ajax Window" and can utilize far more advanced skins. One example
+        is that while the WindowFull can easily have advanced borders with images and such. The WindowLight is mostly restricted
+        into using CSS borders if you use it.
     </p>
     <p>
-    	In fact the entire code for the whole Ajax Window is so small it's easy to reproduce it here...
+        Below is an example of our <em>WindowLight</em>.
     </p>
-    <pre>
-using System;
-using System.ComponentModel;
-using WEBCTRLS = System.Web.UI.WebControls;
-using Ra.Widgets;
-
-namespace Ra.Extensions
-{
-    [ASP.ToolboxData("&lt;{0}:Window runat=\"server\"&gt;&lt;/{0}:Window&gt;")]
-    public class Window : Panel
-    {
-        private WEBCTRLS.Panel _pnlHead;
-        private Label _lblHead;
-        private BehaviorDraggable _dragger;
-
-        [DefaultValue("")]
-        public string Caption
-        {
-            get { return ViewState["Text"] == null ? "" : (string)ViewState["Text"]; }
-            set { ViewState["Text"] = value; }
-        }
-
-        protected override void LoadViewState(object savedState)
-        {
-            base.LoadViewState(savedState);
-            EnsureChildControls();
-        }
-
-        protected override void CreateChildControls()
-        {
-            CreateWindowControls();
-        }
-
-        private void CreateWindowControls()
-        {
-            // Creating header control(s)
-            _pnlHead = new WEBCTRLS.Panel();
-            _pnlHead.ID = "head";
-            _lblHead = new Label();
-            _lblHead.ID = "headCaption";
-            _pnlHead.Controls.Add(_lblHead);
-            this.Controls.AddAt(0, _pnlHead);
-			
-            // Creating dragger
-            _dragger = new BehaviorDraggable();
-            this.Controls.Add(_dragger);
-        }
-
-        protected override void OnPreRender (EventArgs e)
-        {
-            _pnlHead.CssClass = CssClass + "-head";
-            _lblHead.Text = Caption;
-            _dragger.Handle = _pnlHead.ClientID;
-            base.OnPreRender (e);
-        }
-    }
-}
-    </pre>
+    <div style="position:relative;">
+        <ext:WindowLight 
+            runat="server"
+            Caption="Ajax Window"
+            CssClass="window smallWnd"
+            id="windowLight">
+            <div style="padding:5px;">
+                <p>
+                    Try to move me around by dragging my header field.
+                </p>
+                <p>
+                    <img 
+                        alt="Flower" 
+                        src="media/flower1.jpg" />
+                </p>
+            </div>
+        </ext:WindowLight>
+    </div>
+    <div class="spacerLarge">&nbsp;</div>
     <p>
-    	And that's it. With those codelines utilizing Ra-Ajax you actually have an Ajax Window.
+        As you can see above both of our Window Controls are draggable, closable and such. But while the DOM for our
+        WindowLight is *4* HTML elements. The WindowFull has a lot more of DOM nodes and thereby is far more flexible,
+        skinnable and flexible. Though at the cost of also being more intensive in use for older browsers/computers and/or
+        less capable clients like Mobile Browsers and such.
     </p>
     <p>
-    	In fact the most "difficult" thing to understand is where you call EnsureChildControls. I choose
-    	mostly to do this in the LoadViewState since that's the "earliest" time I have access to the ViewState.
-    	And often I store stuff in the ViewState which I again need when I create the Window. Also you should
-    	upon EVERY Callback (and postback) re-create the Window using the exact same procedure to make sure
-    	your (Ajax) Controls are added to the Controls collection in the correct order and so on. If you're 
-    	stuck with creating an Ajax Extension control this is our favorite topic to help you out with though
-    	at <a href="http://ra-ajax.org/Forums/Forums.aspx">our forums</a> so don't be afraid to ask for help!
-    </p>
-    <p>
-    	Another thing which is important to understand is that mostly you want to "defer" setting some properties until
-    	the OnPreRender override of your Control. You can see I am doing this with e.g. the Text of the Caption Label
-    	and the CssClass of the _pnlHead. This is because sometimes your users of your Ajax Extension Controls will want to set some
-    	of those properties in the code-behind file in maybe OnLoad or some similar method. And since some of your properties
-    	tends to be dependant upon others. Like for instance the CssClass of the _pnlHead field in the above sample. You
-    	must wait until you can be pretty sure about that the consumer of your Ajax Extension Control is "finished" doing
-    	his parts...
-    </p>
-    <p>
-    	Also theoretically we could save some ViewState bytes in the above sample by directly using the _lblHeader.Text
-    	as the value of the Caption property. Though this I have bad experience with since it tends to become very complex
-    	since then you must make sure things are loaded and so on before accessing the property etc to such an extent that
-    	it becomes too hard to understand and maintain. But feel free to experiment with this if you like...
-    </p>
-    <p>
-    	Also we are VERY interested in getting to know about Extension Controls created utilizing Ra-Ajax. So let us know
-    	if you do something great! Especially if you want to share it with others ;)
+        If you are building websites mostly for PCs/Macs where you expect most of your users to have modern browsers then
+        you would probably want to use WindowFull to get more flexibility and beautiful design.
+        But if you are building websites for mobile browsers or where you expect a lot of your users to use old browsers
+        then you should probably use WindowLight.
     </p>
     <a href="Ajax-DataGrid.aspx">On to Ajax DataGrid</a>
 </asp:Content>
