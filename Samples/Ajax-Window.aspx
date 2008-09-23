@@ -40,21 +40,21 @@
 	    runat="server"
 	    Caption="Ajax Window"
 	    CssClass="alphacube"
-	    style="width:450px;height:280px;position:absolute;"
+	    OnClosed="window_Closed"
+	    style="position:absolute;"
 	    id="window">
 
 	    <div style="padding:0 15px 5px 15px;">
 	        <h3>Ajax Window</h3>
 	        <p>
-	            This is a "full" window. As you can see below it works 100% exactly as a Panel
-	            in that you can add up advanced controls and expect them to trigger Ajax Callback Events.
+	            This is our "full" window. It can basically be thought of as an advanced panel.
 	        </p>
 	        <p>
 	            <ra:Button 
 	                runat="server" 
-	                ID="btnWnd" 
-	                OnClick="btnWnd_Click"
-	                Text="Close window" />
+	                ID="animate" 
+	                OnClick="animate_Click"
+	                Text="Animate window" />
 	        </p>
 	        <p>
 	            Note however that this is a "CSS intensive Window" and for a lighter window

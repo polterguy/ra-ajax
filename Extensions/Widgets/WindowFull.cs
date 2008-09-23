@@ -35,11 +35,18 @@ namespace Ra.Extensions
         LinkButton _close;
         BehaviorDraggable _dragger;
 
+        public event EventHandler Closed;
+
         [DefaultValue("")]
         public string Caption
         {
             get { return ViewState["Caption"] == null ? "" : (string)ViewState["Caption"]; }
             set { ViewState["Caption"] = value; }
+        }
+
+        public Label SurfaceControl
+        {
+            get { return _content; }
         }
 
         protected override void OnInit(EventArgs e)
@@ -130,6 +137,8 @@ namespace Ra.Extensions
         void _close_Click(object sender, EventArgs e)
         {
             this.Visible = false;
+            if (Closed != null)
+                Closed(this, new EventArgs());
         }
 
         protected override void OnPreRender(EventArgs e)
