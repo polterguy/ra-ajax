@@ -15,8 +15,6 @@ public partial class AjaxWindow : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            window.SurfaceControl.Style["width"] = "400px";
-            window.SurfaceControl.Style["height"] = "250px";
             showWindow.Enabled = false;
         }
     }
@@ -43,11 +41,26 @@ public partial class AjaxWindow : System.Web.UI.Page
 
     protected void animate_Click(object sender, EventArgs e)
     {
-        Effect effect = new EffectHighlight(window.SurfaceControl, 400);
-        if (window.SurfaceControl.Style["height"] == "400px")
-            effect.Chained.Add(new EffectSize(250, 400));
+        // Notes to users!
+        // Because of IE's broken box model we need to animate the height 
+        // on the "SurfaceControl" (content of Window) and the width on
+        // the Window itself.
+        // IE won't display the Window correct (*sigh*) if it doesn't
+        // have an explicit width...
+
+        // First we're resizing the Window
+        Effect effect;
+        if (window.Style["width"] == "550px")
+            effect = new EffectSize(window, 300, -1, 400);
         else
-            effect.Chained.Add(new EffectSize(400, 550));
+            effect = new EffectSize(window, 300, -1, 550);
+        effect.Render();
+
+        // Then we're resizing the SurfaceControl
+        effect = new EffectHighlight(window.SurfaceControl, 300);
+
+        // Then we're "flashing" the Surface Control (content parts of Window)
+        effect.Chained.Add(new EffectSize((window.SurfaceControl.Style["height"] == "400px" ? 250 : 400), -1));
         effect.Render();
     }
 }

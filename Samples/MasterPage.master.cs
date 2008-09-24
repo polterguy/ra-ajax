@@ -41,18 +41,22 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
     protected void btnShowCode_Click(object sender, EventArgs e)
     {
-        if (!pnlShowCode.Visible || pnlShowCode.Style["display"] == "none")
+        if (!tabShowCode.Visible)
         {
-            pnlShowCode.Visible = true;
-            Effect effect = new EffectFadeIn(pnlShowCode, 400);
+            // We only fetch code ONCE since second time and so on is just DHTML "candy"
+            GetCSharpCode();
+            GetASPXCode();
+        }
+        if (!tabShowCode.Visible || tabShowCode.Style["display"] == "none")
+        {
+            tabShowCode.Visible = true;
+            Effect effect = new EffectFadeIn(tabShowCode, 400);
             effect.Chained.Add(new EffectRollDown(500));
             effect.Render();
-            GetCSharpCode();
-            ViewState["code"] = "C#";
         }
         else
         {
-            Effect effect = new EffectFadeOut(pnlShowCode, 400);
+            Effect effect = new EffectFadeOut(tabShowCode, 400);
             effect.Chained.Add(new EffectRollUp(500));
             effect.Render();
         }
@@ -62,24 +66,6 @@ public partial class MasterPage : System.Web.UI.MasterPage
     {
         Effect effect = new EffectFadeOut(pnlCrappyBrowser, 400);
         effect.Render();
-    }
-
-    protected void switchCodeType_Click(object sender, EventArgs e)
-    {
-        Effect effect = new EffectFadeIn(lblCode, 500);
-        effect.Render();
-        if (ViewState["code"].ToString() == "C#")
-        {
-            ViewState["code"] = ".ASPX";
-            GetASPXCode();
-            switchCodeType.Text = "Switch to C# code";
-        }
-        else
-        {
-            ViewState["code"] = "C#";
-            GetCSharpCode();
-            switchCodeType.Text = "Switch to .ASPX";
-        }
     }
 
     private void GetASPXCode()
@@ -99,9 +85,13 @@ public partial class MasterPage : System.Web.UI.MasterPage
         }
         using (TextReader reader = new StreamReader(File.OpenRead(path)))
         {
-            string allCode = reader.ReadToEnd();
+            string allCode = "\r\n" + reader.ReadToEnd();
             allCode = allCode.Replace("<", "&lt;").Replace(">", "&gt;").Replace("\t", "    ");
-            lblCode.Text = allCode;
+            allCode = ReplaceCodeEntities(allCode, "keyword", new string[] { 
+                "Page", 
+                "Register", 
+                "asp:Content"});
+            lblCodeASPX.Text = allCode;
         }
     }
 
@@ -122,7 +112,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
         }
         using (TextReader reader = new StreamReader(File.OpenRead(path)))
         {
-            string allCode = reader.ReadToEnd();
+            string allCode = "\r\n" + reader.ReadToEnd();
             allCode = allCode.Replace("<", "&lt;").Replace(">", "&gt;");
             allCode = ReplaceCodeEntities(allCode, "keyword", new string[] { 
                 "class", 
@@ -143,7 +133,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 "object"});
             allCode = allCode.Replace("/*", "<span class=\"comment\">/*");
             allCode = allCode.Replace("*/", "*/</span>");
-            lblCode.Text = allCode.Replace("\t", "    ");
+            lblCodeCS.Text = allCode.Replace("\t", "    ");
         }
     }
 

@@ -41,7 +41,7 @@
 	    Caption="Ajax Window - drag me"
 	    CssClass="alphacube"
 	    OnClosed="window_Closed"
-	    style="position:absolute;"
+	    style="position:absolute;width:400px;height:300px;"
 	    id="window">
 
 	    <div style="padding:0 15px 5px 15px;">

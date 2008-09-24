@@ -179,23 +179,38 @@
                                             Text="Close panel" 
                                             OnClick="closeIE_Click" />
                                     </ra:Panel>
-	                                <ra:Panel 
-	                                    runat="server" 
-	                                    ID="pnlShowCode" 
-	                                    CssClass="showCode"
-	                                    Visible="false">
-	                                    <ra:Button 
-	                                        runat="server" 
-	                                        ID="switchCodeType" 
-	                                        Text="Switch to .ASPX" 
-	                                        OnClick="switchCodeType_Click" />
-	                                     <pre>
-	                                         <ra:Label 
-	                                            runat="server" 
-	                                            ID="lblCode" 
-	                                            Text="Howdy" />
-	                                     </pre>
-	                                </ra:Panel>
+                                    <ext:TabControl 
+                                        runat="server" 
+                                        Visible="false"
+                                        ID="tabShowCode" 
+                                        CssClass="tab-control">
+
+                                        <ext:TabView 
+                                            Caption="C# Code" 
+                                            runat="server" 
+                                            ID="tabCSCode" 
+                                            CssClass="content">
+	                                         <pre class="code">
+                                                <ra:Label 
+                                                    runat="server" 
+                                                    ID="lblCodeCS" />
+                                            </pre>
+                                        </ext:TabView>
+
+                                        <ext:TabView 
+                                            Caption=".ASPX Markup" 
+                                            runat="server" 
+                                            ID="tabASPXCode" 
+                                            CssClass="content">
+	                                         <pre class="code">
+                                                <ra:Label 
+                                                    runat="server" 
+                                                    ID="lblCodeASPX" />
+                                            </pre>
+                                        </ext:TabView>
+
+                                    </ext:TabControl>
+
 				                    <asp:contentplaceholder 
 				                        id="cnt1" 
 				                        runat="server">
