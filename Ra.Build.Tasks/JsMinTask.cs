@@ -81,15 +81,15 @@ namespace Ra.Build.Tasks
                         "The 'todir' attribute must be set to specify the output directory of the minified JS files."),
                     Location);
 
-            if (!_toDirectory.Exists)
-                _toDirectory.Create();
-
             if (_jsFiles == null)
                 throw new BuildException(
                     string.Format(
                         CultureInfo.InvariantCulture,
                         "The <fileset> element must be used to specify the JS files to minify."), 
                     Location);
+
+            if (!_toDirectory.Exists)
+                _toDirectory.Create();
         }
         
         protected override void ExecuteTask()
@@ -128,7 +128,7 @@ namespace Ra.Build.Tasks
             }
         }
 
-        private string GetDestPath(DirectoryInfo srcBase, FileInfo srcFile)
+        protected string GetDestPath(DirectoryInfo srcBase, FileInfo srcFile)
         {
             string destPath = string.Empty;
 
