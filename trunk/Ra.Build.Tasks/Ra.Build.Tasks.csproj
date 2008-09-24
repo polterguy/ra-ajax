@@ -40,6 +40,7 @@
     <Compile Include="CssMinTask.cs" />
     <Compile Include="jsmin.cs" />
     <Compile Include="JsMinTask.cs" />
+    <Compile Include="MinificationTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
