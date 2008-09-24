@@ -23,7 +23,7 @@
 
     <h1>Ajax Window Sample</h1>
     <p>
-    	Ra-Ajax have two different Window Controls. One which is called <em>WindowFull</em> and another one which is
+    	Ra-Ajax have two different Window Controls. One which is called <em>Window</em> and another one which is
     	called <em>WindowLight</em>. The first one is very rich in its UI and probably due to the amount of "bling" the
     	one most would choose to use. The latter one is far easier on the DOM, CSS and browsers and might therefor
     	be more suitable when you need something ultra-fast with no images and a small amount of DOM nodes.
@@ -36,7 +36,7 @@
     	    OnClick="showWindow_Click" />
     </p>
 
-    <ext:WindowFull 
+    <ext:Window 
 	    runat="server"
 	    Caption="Ajax Window - drag me"
 	    CssClass="alphacube"
@@ -71,10 +71,10 @@
 	        </p>
 	    </div>
 
-	</ext:WindowFull>
+	</ext:Window>
 
     <div style="position:absolute;">
-        <ext:WindowFull 
+        <ext:Window
 	        runat="server"
 	        Caption="Ajax Window - drag me"
 	        CssClass="alphacube"
@@ -90,18 +90,18 @@
 	            </p>
 	        </div>
 
-	    </ext:WindowFull>
+	    </ext:Window>
 	</div>
 
     <div class="spacerLarge">&nbsp;</div>
     <p>
     	Try to move the Ajax Window by dragging and dropping its header.
     </p>
-    <h2>Differences between WindowFull and WindowLight</h2>
+    <h2>Differences between Window and WindowLight</h2>
     <p>
         Both of our Window controls are highly skinnable and flexible, and you can do mostly anything you can think of out
-        of both. Though our WindowFull is a "fully fledged Ajax Window" and can utilize far more advanced skins. One example
-        is that while the WindowFull can easily have advanced borders with images and such. The WindowLight is mostly restricted
+        of both. Though our Window is a "fully fledged Ajax Window" and can utilize far more advanced skins. One example
+        is that while the Window can easily have advanced borders with images and such. The WindowLight is mostly restricted
         into using CSS borders if you use it.
     </p>
     <p>
@@ -128,13 +128,13 @@
     <div class="spacerLarge">&nbsp;</div>
     <p>
         As you can see above both of our Window Controls are draggable, closable and such. But while the DOM for our
-        WindowLight is *4* HTML elements. The WindowFull has a lot more of DOM nodes and thereby is far more flexible,
+        WindowLight is *4* HTML elements. The Window has a lot more of DOM nodes and thereby is far more flexible,
         skinnable and flexible. Though at the cost of also being more intensive in use for older browsers/computers and/or
         less capable clients like Mobile Browsers and such.
     </p>
     <p>
         If you are building websites mostly for PCs/Macs where you expect most of your users to have modern browsers then
-        you would probably want to use WindowFull to get more flexibility and beautiful design.
+        you would probably want to use Window to get more flexibility and beautiful design.
         But if you are building websites for mobile browsers or where you expect a lot of your users to use old browsers
         then you should probably use WindowLight.
     </p>
