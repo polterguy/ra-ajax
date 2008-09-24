@@ -57,8 +57,10 @@ namespace Ra.Widgets
 			RaWebControl tmp = this.Control as RaWebControl;
 			if (tmp != null)
 			{
-				tmp.Style["height", false] = this._height.ToString() + "px";
-				tmp.Style["width", false] = this._width.ToString() + "px";
+                if (_height != -1)
+                    tmp.Style["height", false] = this._height.ToString() + "px";
+                if (_width != -1)
+                    tmp.Style["width", false] = this._width.ToString() + "px";
 			}
 		}
 
@@ -72,25 +74,38 @@ namespace Ra.Widgets
 
         public override string RenderChainedOnFinished()
         {
-            return string.Format(@"
+            string retVal = "";
+            if (_height != -1)
+                retVal += string.Format(@"
     this.element.setStyle('height',{0}+'px');
-    this.element.setStyle('width',{1}+'px');
 ",
-                _height, _width);
+                    _height);
+            if (_width != -1)
+                retVal += string.Format(@"
+    this.element.setStyle('width',{0}+'px');
+",
+                    _width);
+            return retVal;
         }
 
         public override string RenderChainedOnRender()
         {
-            return string.Format(@"
+            string retVal = "";
+            if (_height != -1)
+                retVal += string.Format(@"
     var deltaH = ({0} - this.startSize.height) * pos;
     var newH = parseInt(deltaH + this.startSize.height, 10);
     this.element.setStyle('height',newH + 'px');
-
-    var deltaW = ({1} - this.startSize.width) * pos;
+",
+                    _height);
+            if (_width != -1)
+                retVal += string.Format(@"
+    var deltaW = ({0} - this.startSize.width) * pos;
     var newW = parseInt(deltaW + this.startSize.width, 10);
     this.element.setStyle('width',newW + 'px');
 ",
-                _height, _width);
+                    _width);
+            return retVal;
         }
     }
 }
