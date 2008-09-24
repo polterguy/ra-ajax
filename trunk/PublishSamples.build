@@ -37,7 +37,7 @@
 			<include name="**/*.aspx" />
 			<include name="**/*.ascx" />
 			<include name="**/*.master" />
-			<include name="media/*.*" />
+			<include name="media/**/*.*" />
 			<include name="bin/*.*" />
 		</fileset>
 	</copy>
@@ -46,6 +46,12 @@
 		program="${framework.dir}/aspnet_compiler.exe"
 		commandline="-v ${samples.dir} -p ${output.dir}/${samples.dir} -u -f ${output.dir}/${samples.precompiled.dir} -c"
 		if="${file::exists(framework.dir + '/aspnet_compiler.exe')}" />
+
+	<cssmin verbose="true" inplace="true">
+		<fileset basedir="${output.dir}/${samples.precompiled.dir}">
+			<include name="media/**/*.css" />
+		</fileset>
+	</cssmin>
 
 	<copy overwrite="true" todir="${output.dir}/${samples.precompiled.dir}">
 		<fileset basedir="${output.dir}/${samples.dir}">
