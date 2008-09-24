@@ -18,8 +18,8 @@ using System.Collections.Generic;
 
 namespace Ra.Extensions
 {
-    [ASP.ToolboxData("<{0}:WindowFull runat=\"server\"></{0}:WindowFull>")]
-    public class WindowFull : Panel, ASP.INamingContainer
+    [ASP.ToolboxData("<{0}:Window runat=\"server\"></{0}:Window>")]
+    public class Window : Panel, ASP.INamingContainer
     {
         Label _nw;
         Label _n;
