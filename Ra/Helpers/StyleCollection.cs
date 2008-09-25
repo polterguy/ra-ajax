@@ -226,10 +226,11 @@ namespace Ra.Widgets
 				{
                     if (_styleValues[idxKey].ShouldSerializeToViewState)
                     {
-                        if (_styleValues[idxKey].InnerStyleValue != null)
-                            retVal += idxKey + ":" + _styleValues[idxKey].InnerStyleValue.Value + ";";
-                        else
-                            retVal += idxKey + ":" + _styleValues[idxKey].Value + ";";
+                        retVal += idxKey + ":" + _styleValues[idxKey].Value + ";";
+                    }
+                    else if (_styleValues[idxKey].InnerStyleValue != null && _styleValues[idxKey].InnerStyleValue.ShouldSerializeToViewState)
+                    {
+                        retVal += idxKey + ":" + _styleValues[idxKey].InnerStyleValue.Value + ";";
                     }
 				}
                 else
