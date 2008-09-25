@@ -36,6 +36,11 @@
     </ra:Panel>
     <div class="spacer">&nbsp;</div>
     <p>
+        The effect you just observed is actually three <em>paralleled</em> effects which means that all the effects
+        will run on the same Control with the same duration and conserving resources on the client and give the impression
+        of being "one" effect even though technically they're unrelated and only distinct "paralleled" effects.
+    </p>
+    <p>
         Now try to click the button below here to see another Ajax Effect.
     </p>
     <ra:Button 
@@ -80,12 +85,12 @@
     </p>
     <h2>Chaining Ajax Effects</h2>
     <p>
-        Sometimes you want to run more than one Effect on the same element, like for instance you have
-        an invisible Panel and you want to show that Panel with both the EffectRollDown and the
-        EffectFadeIn. If you just create them both and let them both run normally, this will 
-        often create a jagging effect which doesn't look nice. If you instead <em>chain</em> the
-        effects, they will often appear much smoother and demand far less client resources. An example 
-        is given below. Click the "Show Code" button to see the code written to accomplish this.
+        Sometimes you want to <em>chain</em> effects. This can easily be accomplished by adding to the Chained
+        list of effects on your parent effect. The chained effects will be rendered immediately after the parent
+        effect is finished rendering and thereby creating a sequence of effects which can be Paralleled, Chained
+        and basically be as long and deep as you wish. Below we have probably gone a little bit "over the edge"
+        with chaining effects to demonstrate this in real life for you. Have a look at the code to see how we're
+        doing this.
     </p>
     <ra:Button 
         runat="server" 
