@@ -7,6 +7,8 @@
 
 * Calendar doesn't have nice CSS - too much IE hacks...
 
+* EffectHighlight doesn't work on background-color:White in FF...
+
 * DateTimePicker Control
 
 * Create RollUp/Down Effect which doesn't take absolute height of control. Useful in Window
