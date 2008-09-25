@@ -68,8 +68,18 @@ namespace Ra.Widgets
             string retVal = string.Empty;
             foreach (Effect idx in Chained)
             {
-                retVal += idx.Render();
+                retVal += idx.RenderImpl();
             }
+
+            foreach (Effect paralleledEffect in Paralleled)
+            {
+                foreach (Effect chainedEffect in paralleledEffect.Chained)
+                {
+                    retVal += chainedEffect.RenderImpl();
+                }
+            }
+
+            return retVal;
         }
 
 		private string RenderOnRender(Effect effect)
