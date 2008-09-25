@@ -51,11 +51,15 @@ public partial class Effects : System.Web.UI.Page
 
     protected void btn4_Click(object sender, EventArgs e)
     {
+        pnl2.Style["border"] = "solid 1px black";
+        pnl2.Style["width"] = "100px";
+        pnl2.Style["height"] = "100px";
         Effect effect = new EffectFadeIn(pnl2, 1000);
         effect.Chained.Add(new EffectHighlight(pnl2, 1000));
         effect.Chained[0].Chained.Add(new EffectSize(pnl2, 500, -1, 500));
         effect.Chained[0].Chained[0].Chained.Add(new EffectSize(pnl2, 500, 150, -1));
         effect.Chained[0].Chained[0].Chained[0].Chained.Add(new EffectBorder(pnl2, 500, 5));
+        effect.Chained[0].Chained[0].Chained[0].Chained[0].Chained.Add(new EffectHighlight(pnl2, 500));
         effect.Render();
     }
 }
