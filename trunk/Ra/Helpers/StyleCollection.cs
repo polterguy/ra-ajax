@@ -125,7 +125,7 @@ namespace Ra.Widgets
                         StyleValue tempStyleValue = _styleValues[idx];
                         StyleValue toAdd = new StyleValue(value, _trackingViewState, shouldJson);
 
-                        if (tempStyleValue.ShouldSerializeToJSON && tempStyleValue.ShouldSerializeToViewState)
+                        if (tempStyleValue.ShouldSerializeToJSON)
                         {
                             tempStyleValue.InnerStyleValue = toAdd;
                             _styleValues[idx] = tempStyleValue;
@@ -133,6 +133,7 @@ namespace Ra.Widgets
                         else
                         {
                             toAdd.InnerStyleValue = tempStyleValue;
+                            toAdd.ShouldSerializeToViewState = false;
                             _styleValues[idx] = toAdd;
                         }
                     }
