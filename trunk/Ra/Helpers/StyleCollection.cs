@@ -110,10 +110,13 @@ namespace Ra.Widgets
                 bool shouldJson = sendChanges && _trackingViewState && (!_styleValues.ContainsKey(idx) || _styleValues[idx].Value != value);
                 if (!sendChanges)
                 {
-                    if( _styleValues.ContainsKey(idx))
-                      _styleValues[idx].InnerStyleValue = new StyleValue(value, _trackingViewState, shouldJson);
+                    if (_styleValues.ContainsKey(idx))
+                    {
+                        _styleValues[idx].ShouldSerializeToViewState = false;
+                        _styleValues[idx].InnerStyleValue = new StyleValue(value, _trackingViewState, shouldJson);
+                    }
                     else
-                      _styleValues[idx] = new StyleValue(value, _trackingViewState, shouldJson);
+                        _styleValues[idx] = new StyleValue(value, _trackingViewState, shouldJson);
                 }
                 else
                 {

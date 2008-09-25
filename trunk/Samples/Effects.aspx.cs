@@ -52,7 +52,8 @@ public partial class Effects : System.Web.UI.Page
     protected void btn4_Click(object sender, EventArgs e)
     {
         // Resetting element back to base
-        pnl2.Style["border"] = "solid 1px black";
+        pnl2.Style["border-style"] = "solid";
+        pnl2.Style["border-width"] = "1px";
         pnl2.Style["width"] = "100px";
         pnl2.Style["height"] = "100px";
 
