@@ -357,7 +357,7 @@ Ra.Control.prototype = {
       if( ctrls[idx].element.id.length > this.element.id.length &&
         ctrls[idx].element.id.indexOf(this.element.id) === 0 &&
         ctrls[idx].element.id.substring(this.element.id.length, 1) == '_' ) {
-            children.push(ctrls[idx]);
+          children.push(ctrls[idx]);
       }
     }
 
