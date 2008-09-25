@@ -60,7 +60,7 @@ public partial class AjaxWindow : System.Web.UI.Page
         effect = new EffectHighlight(window.SurfaceControl, 300);
 
         // Then we're "flashing" the Surface Control (content parts of Window)
-        effect.Chained.Add(new EffectSize((window.SurfaceControl.Style["height"] == "400px" ? 250 : 400), -1));
+        effect.Paralleled.Add(new EffectSize((window.SurfaceControl.Style["height"] == "400px" ? 250 : 400), -1));
         effect.Render();
     }
 }

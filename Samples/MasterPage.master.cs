@@ -51,13 +51,13 @@ public partial class MasterPage : System.Web.UI.MasterPage
         {
             tabShowCode.Visible = true;
             Effect effect = new EffectFadeIn(tabShowCode, 400);
-            effect.Chained.Add(new EffectRollDown(500));
+            effect.Paralleled.Add(new EffectRollDown(500));
             effect.Render();
         }
         else
         {
             Effect effect = new EffectFadeOut(tabShowCode, 400);
-            effect.Chained.Add(new EffectRollUp(500));
+            effect.Paralleled.Add(new EffectRollUp(500));
             effect.Render();
         }
     }
