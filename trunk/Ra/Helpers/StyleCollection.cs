@@ -120,7 +120,26 @@ namespace Ra.Widgets
                 }
                 else
                 {
-                    _styleValues[idx] = new StyleValue(value, _trackingViewState, shouldJson);
+                    if (_styleValues.ContainsKey(idx))
+                    {
+                        StyleValue tempStyleValue = _styleValues[idx];
+                        StyleValue toAdd = new StyleValue(value, _trackingViewState, shouldJson);
+
+                        if (tempStyleValue.ShouldSerializeToJSON && tempStyleValue.ShouldSerializeToViewState)
+                        {
+                            tempStyleValue.InnerStyleValue = toAdd;
+                            _styleValues[idx] = tempStyleValue;
+                        }
+                        else
+                        {
+                            toAdd.InnerStyleValue = tempStyleValue;
+                            _styleValues[idx] = toAdd;
+                        }
+                    }
+                    else
+                    {
+                        _styleValues[idx] = new StyleValue(value, _trackingViewState, shouldJson);
+                    }
                 }
             
             }
