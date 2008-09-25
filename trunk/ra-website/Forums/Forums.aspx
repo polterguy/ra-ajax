@@ -29,22 +29,22 @@
         runat="server" 
         ID="pnlLoggedIn" 
         style="position:absolute;top:290px;right:5px;background-color:Yellow;border:solid 1px #333;padding:15px;">
-        Welcome: 
+        Welcome 
         <ra:Label 
             runat="server" 
             ID="usernameLoggedIn" />
         <br />
-        <ra:Button 
+        <ra:LinkButton 
             runat="server" 
             ID="createNewPost" 
             OnClick="createNewPost_Click"
-            Text="New post" />
+            Text="Add New Post" />
         <br />
-        <ra:Button 
+        <ra:LinkButton 
             runat="server" 
             ID="profile" 
             OnClick="profile_Click"
-            Text="Profile" />
+            Text="Edit Profile" />
     </ra:Panel>
     <ra:Panel 
         runat="server" 
@@ -242,7 +242,7 @@
         style="position:absolute;top:290px;left:250px;background-color:Yellow;border:solid 1px #333;padding:15px;">
         <table>
             <tr>
-                <td>Header</td>
+                <td>Subject</td>
                 <td>
                     <ra:TextBox 
                         runat="server" 
@@ -290,13 +290,13 @@
         runat="server" 
         OnKeyUp="search_KeyUp"
         ID="search" />
-    <ra:Panel runat="server" ID="postsWrapper" style="margin-bottom:25px;">
+    <ra:Panel runat="server" ID="postsWrapper" style="margin-bottom:25px;margin-top:12px;">
         <asp:Repeater runat="server" ID="forumPostsRepeater">
             <HeaderTemplate>
-                <table>
-                    <tr>
-                        <th>Header</th>
-                        <th>Username</th>
+                <table style="border:solid 1px black;width:80%;" cellpadding="2" cellspacing="3">
+                    <tr style="background-color:#FF9B00;color:#222;font-weight:normal;">
+                        <th>Subject</th>
+                        <th>User</th>
                         <th>Date</th>
                         <th>Replies</th>
                     </tr>
@@ -322,6 +322,24 @@
                     </td>
                 </tr>
             </ItemTemplate>
+            <AlternatingItemTemplate>
+                <tr style="background-color:#ccc;">
+                    <td>
+                        <a id="A1" runat="server" href='<%# "~/Forums/" + Eval("Url") %>'>
+                            <%# Eval("Header") %>
+                        </a>
+                    </td>
+                    <td>
+                        <%# Eval("Operator.Username") %>
+                    </td>
+                    <td>
+                        <%# ((DateTime)Eval("Created")).ToString("dd.MMM yy - HH:mm")%>
+                    </td>
+                    <td>
+                        <%# Eval("NoReplies") %>
+                    </td>
+                </tr>
+            </AlternatingItemTemplate>
         </asp:Repeater>
     </ra:Panel>
     <ra:LinkButton 

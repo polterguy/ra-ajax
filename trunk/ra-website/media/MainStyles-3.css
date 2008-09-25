@@ -2,6 +2,13 @@
 {
 	margin:0;
 	padding:0;
+	font-family:"Lucida Grande","Lucida Sans Unicode",verdana,tahoma,arial,sans-serif;
+	text-align:justify;
+}
+
+body
+{
+	font-size:84%;
 }
 
 img
@@ -12,7 +19,7 @@ img
 #contentPlusBorders
 {
 	width:1056px;
-	background:Transparent url(bg.png) repeat-y;
+	background:url('bg.png') repeat-y;
 	margin-left:auto;
 	margin-right:auto;
 	overflow:auto;
@@ -30,7 +37,7 @@ img
 #logoPartDiv
 {
 	height:259px;
-	background:Transparent url(sun_background.jpg) no-repeat;
+	background:url('sun_background.jpg') no-repeat;
 }
 
 .showCodeDiv
@@ -149,8 +156,11 @@ img
 .forumReply
 {
 	margin-top:25px;
+	margin-left: 10px;
 	width:100%;
 	background-color:#f9f9f9;
+	border: dashed 1px #555;
+	padding: 10px;
 }
 
 
@@ -216,7 +226,7 @@ img
  */
 .calendar
 {
-	background:Transparent url(calendar.png) no-repeat;
+	background:url('calendar.png') no-repeat;
 	font-size:0.7em;
 	display:inline-block;
 	border:outset 4px #999;
@@ -358,20 +368,20 @@ img
 
 .tab-control .tab-header ul li span.left
 {
-	background:Transparent url(tabcontrol.png) no-repeat;
+	background:url('tabcontrol.png') no-repeat;
 	width:3px;
 	padding-top:5px;
 }
 
 .tab-control .tab-header ul li span.center
 {
-	background:Transparent url(tabcontrol.png) repeat-x scroll 0 -50px;
+	background:url('tabcontrol.png') repeat-x 0 -50px;
 	padding-top:5px;
 }
 
 .tab-control .tab-header ul li span.right
 {
-	background:Transparent url(tabcontrol.png) no-repeat -2px 0px;
+	background:url('tabcontrol.png') no-repeat -2px 0px;
 	width:3px;
 	padding-top:5px;
 }
@@ -380,20 +390,20 @@ img
 
 .tab-control .tab-header ul li.active span.left
 {
-	background:Transparent url(tabcontrol.png) no-repeat scroll 0 -100px;
+	background:url('tabcontrol.png') no-repeat 0 -100px;
 	border-bottom:solid 1px #F0F0EA;
 }
 
 .tab-control .tab-header ul li.active span.center
 {
-	background:Transparent url(tabcontrol.png) repeat-x scroll 0 -150px;
+	background:url('tabcontrol.png') repeat-x 0 -150px;
 	font-weight:bold;
 	border-bottom:solid 1px #F0F0EA;
 }
 
 .tab-control .tab-header ul li.active span.right
 {
-	background:Transparent url(tabcontrol.png) no-repeat scroll -2px -100px;
+	background:url('tabcontrol.png') no-repeat -2px -100px;
 	border-bottom:solid 1px #F0F0EA;
 }
 
@@ -432,7 +442,7 @@ img
 
 .accordion-control .content .accordion-header
 {
-	background:Transparent url(tabcontrol.png) repeat-x scroll 0px -53px;
+	background:url('tabcontrol.png') repeat-x 0px -53px;
 }
 
 .accordion-control .content .accordion-header a
