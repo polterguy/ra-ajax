@@ -62,8 +62,7 @@ namespace Ra.Widgets
 
         public override string GetClosingHTML()
         {
-            return string.Format("</{0}>",
-                Tag);
+            return string.Format("</{0}>", Tag);
         }
 
         #endregion
