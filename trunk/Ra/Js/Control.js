@@ -344,17 +344,20 @@ Ra.Control.prototype = {
     // collect all those widgets too and call destroy on those too
     var children = [];
 
+    // Temporary var for collection of all controls
+    var ctrls = Ra.Control._controls;
+
     // First we must find all the objects which are CHILD objects
     // to the current one (being destroyed)
     // Then we must destroy all those objects (excluding self, self is handled other places...)
-    var idx = Ra.Control._controls.length;
+    var idx = ctrls.length;
     while( idx-- ) {
 
       // Checking to see that this is NOT the "this" control
-      if( Ra.Control._controls[idx].element.id.length > this.element.id.length ) {
-        if( Ra.Control._controls[idx].element.id.indexOf(this.element.id) === 0 ) {
-          children.push(Ra.Control._controls[idx]);
-        }
+      if( ctrls[idx].element.id.length > this.element.id.length &&
+        ctrls[idx].element.id.indexOf(this.element.id) === 0 &&
+        ctrls[idx].element.id.substring(this.element.id.length, 1) == '_' ) {
+            children.push(ctrls[idx]);
       }
     }
 
