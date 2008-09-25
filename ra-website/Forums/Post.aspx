@@ -26,11 +26,14 @@
     </div>
 
     <a href="~/Forums/Forums.aspx" runat="server" style="position:absolute;left:5px;top:265px;text-decoration:none;">Back to forum posts view</a>
-    <h1 runat="server" id="headerParent"></h1>
-    <i runat="server" id="dateParent"></i>
-    <p runat="server" id="contentParent"></p>
-    <em runat="server" id="operatorInfo"></em>
-
+    <div class="forumReply">
+        <h2 style="float:left;" runat="server" id="headerParent"></h2>
+        <i style="float:right;" runat="server" id="dateParent"></i>
+        <br style="clear:left;" />
+        <p runat="server" id="contentParent"></p>
+        <em runat="server" id="operatorInfo"></em>
+    </div>
+    
     <ra:Panel runat="server" ID="postsWrapper">
         <asp:Repeater runat="server" ID="repReplies">
             <HeaderTemplate>
@@ -39,10 +42,11 @@
             </FooterTemplate>
             <ItemTemplate>
                 <div class="forumReply">
-                    <h2><%# Eval("Header") %></h2>
-                    <em><%# ((DateTime)Eval("Created")).ToString("d.MMM yy - HH:mm") %></em>
+                    <h2 style="float:left;"><%# Eval("Header") %></h2>
+                    <i style="float:right;"><%# string.Format("{0} - {1}", Eval("Operator.Signature"), ((DateTime)Eval("Created")).ToString("d.MMM yy HH:mm")) %></i>
+                    <br style="clear:left;" />
                     <p><%# Eval("Body") %></p>
-                    <i>Posted by <%# Eval("Operator.Username") %> who have <%# Eval("Operator.NumberOfPosts")%> posts</i>
+                    <i>Posted by <%# Eval("Operator.Username") %> who has <%# Eval("Operator.NumberOfPosts")%> posts</i>
                 </div>
             </ItemTemplate>
         </asp:Repeater>

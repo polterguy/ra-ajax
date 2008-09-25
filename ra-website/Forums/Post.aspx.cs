@@ -33,10 +33,10 @@ public partial class Forums_Post : System.Web.UI.Page
             if (post == null)
                 Response.Redirect("Forums.aspx", true);
             headerParent.InnerHtml = post.Header;
-            dateParent.InnerHtml = post.Created.ToString("dd.MMM yy - HH:mm");
+            dateParent.InnerHtml = string.Format("{0} - {1}", post.Operator.Signature, post.Created.ToString("d.MMM yy HH:mm"));
             contentParent.InnerHtml = post.Body;
             operatorInfo.InnerHtml =
-                string.Format("Posted by; {0} who have {1} posts",
+                string.Format("Posted by; {0} who has {1} posts",
                     post.Operator.Username,
                     post.Operator.NumberOfPosts);
             this.Title = post.Header;
@@ -72,9 +72,6 @@ public partial class Forums_Post : System.Web.UI.Page
         // Creating new post
         ForumPost post = new ForumPost();
         post.Body = body.Text;
-        post.Body += string.Format(@"
--- 
-<em> {0} </em>", Operator.Current.Signature);
         post.Created = DateTime.Now;
         post.Header = header.Text;
         post.Operator = Operator.Current;

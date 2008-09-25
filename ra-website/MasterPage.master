@@ -30,7 +30,7 @@
                     <asp:LinkButton 
                         runat="server" 
                         ID="logout" 
-                        style="text-decoration:none;color:Yellow;"
+                        style="text-decoration:none;"
                         Text="Logout" 
                         OnClick="logout_Click" />
                 </div>
