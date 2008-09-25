@@ -59,8 +59,18 @@ namespace Ra.Widgets
 			{
 				retVal += idx.RenderParalledOnFinished();
 			}
+            retVal += RenderChained();
 			return retVal;
 		}
+
+        private string RenderChained()
+        {
+            string retVal = string.Empty;
+            foreach (Effect idx in Chained)
+            {
+                retVal += idx.Render();
+            }
+        }
 
 		private string RenderOnRender(Effect effect)
 		{
@@ -74,26 +84,31 @@ namespace Ra.Widgets
 
         public virtual void Render()
         {
-			// If the if sentence below kicks in then this is NOT a chained effect rendering
-			// which is the only place where it makes sense to have zero seconds and/or no
-			// Control to update...
-			foreach (Effect idx in Paralleled)
-			{
-				idx.Control = this.Control;
-			}
-			if (this._control == null || this._milliseconds == 0)
-				throw new ArgumentException("Cannot have an effect which affects no Controls or lasts for zero period");
+            AjaxManager.Instance.WriterAtBack.WriteLine(RenderImpl());
+        }
+
+        private string RenderImpl()
+        {
+            // If the if sentence below kicks in then this is NOT a chained effect rendering
+            // which is the only place where it makes sense to have zero seconds and/or no
+            // Control to update...
+            foreach (Effect idx in Paralleled)
+            {
+                idx.Control = this.Control;
+            }
+            if (this._control == null || this._milliseconds == 0)
+                throw new ArgumentException("Cannot have an effect which affects no Controls or lasts for zero period");
             string onStart = RenderOnStart(this);
             string onFinished = RenderOnFinished(this);
             string onRender = RenderOnRender(this);
-            AjaxManager.Instance.WriterAtBack.WriteLine(@"
+            return string.Format(@"
 Ra.E('{0}', {{
   onStart: function() {{{2}}},
   onFinished: function() {{{3}}},
   onRender: function(pos) {{{4}}},
   duration:{1},
   sinoidal:{5}
-}});", 
+}});",
                 _control.ClientID,
                 _milliseconds.ToString(),
                 onStart,
