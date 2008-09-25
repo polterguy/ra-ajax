@@ -71,14 +71,13 @@ namespace Ra.Widgets
                 retVal += idx.RenderImpl();
             }
 
-            foreach (Effect paralleledEffect in Paralleled)
+            foreach (Effect idxParalleled in Paralleled)
             {
-                foreach (Effect chainedEffect in paralleledEffect.Chained)
+                foreach (Effect idxChained in idxParalleled.Chained)
                 {
-                    retVal += chainedEffect.RenderImpl();
+                    retVal += idxChained.RenderImpl();
                 }
             }
-
             return retVal;
         }
 
