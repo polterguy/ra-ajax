@@ -45,7 +45,7 @@ namespace Ra.Widgets
 		private string RenderOnStart(Effect effect)
 		{
 			string retVal = this.RenderChainedOnStart();
-			foreach (Effect idx in Chained)
+			foreach (Effect idx in Paralleled)
 			{
 				retVal += idx.RenderChainedOnStart();
 			}
@@ -55,7 +55,7 @@ namespace Ra.Widgets
 		private string RenderOnFinished(Effect effect)
 		{
 			string retVal = this.RenderChainedOnFinished();
-			foreach (Effect idx in Chained)
+			foreach (Effect idx in Paralleled)
 			{
 				retVal += idx.RenderChainedOnFinished();
 			}
@@ -65,7 +65,7 @@ namespace Ra.Widgets
 		private string RenderOnRender(Effect effect)
 		{
 			string retVal = this.RenderChainedOnRender();
-			foreach (Effect idx in Chained)
+			foreach (Effect idx in Paralleled)
 			{
 				retVal += idx.RenderChainedOnRender();
 			}
@@ -77,7 +77,7 @@ namespace Ra.Widgets
 			// If the if sentence below kicks in then this is NOT a chained effect rendering
 			// which is the only place where it makes sense to have zero seconds and/or no
 			// Control to update...
-			foreach (Effect idx in Chained)
+			foreach (Effect idx in Paralleled)
 			{
 				idx.Control = this.Control;
 			}
@@ -102,10 +102,10 @@ Ra.E('{0}', {{
                 this.Sinoidal ? "true" : "false");
         }
 
-        private List<Effect> _chained = new List<Effect>();
-        public List<Effect> Chained
+        private List<Effect> _paralleled = new List<Effect>();
+        public List<Effect> Paralleled
         {
-            get { return _chained; }
+            get { return _paralleled; }
         }
     }
 }

@@ -34,7 +34,7 @@ public partial class Behaviors : System.Web.UI.Page
     {
         window.Visible = true;
         Effect effect = new EffectHighlight(window, 400);
-        effect.Chained.Add(new EffectFadeIn());
+        effect.Paralleled.Add(new EffectFadeIn());
         effect.Render();
     }
 
