@@ -36,38 +36,38 @@ namespace Ra.Widgets
 			set { _sinoidal = value; }
 		}
 
-        public abstract string RenderChainedOnStart();
+        public abstract string RenderParalledOnStart();
 
-        public abstract string RenderChainedOnFinished();
+        public abstract string RenderParalledOnFinished();
 
-        public abstract string RenderChainedOnRender();
+        public abstract string RenderParalledOnRender();
 		
 		private string RenderOnStart(Effect effect)
 		{
-			string retVal = this.RenderChainedOnStart();
+			string retVal = this.RenderParalledOnStart();
 			foreach (Effect idx in Paralleled)
 			{
-				retVal += idx.RenderChainedOnStart();
+				retVal += idx.RenderParalledOnStart();
 			}
 			return retVal;
 		}
 
 		private string RenderOnFinished(Effect effect)
 		{
-			string retVal = this.RenderChainedOnFinished();
+			string retVal = this.RenderParalledOnFinished();
 			foreach (Effect idx in Paralleled)
 			{
-				retVal += idx.RenderChainedOnFinished();
+				retVal += idx.RenderParalledOnFinished();
 			}
 			return retVal;
 		}
 
 		private string RenderOnRender(Effect effect)
 		{
-			string retVal = this.RenderChainedOnRender();
+			string retVal = this.RenderParalledOnRender();
 			foreach (Effect idx in Paralleled)
 			{
-				retVal += idx.RenderChainedOnRender();
+				retVal += idx.RenderParalledOnRender();
 			}
 			return retVal;
 		}
@@ -106,6 +106,12 @@ Ra.E('{0}', {{
         public List<Effect> Paralleled
         {
             get { return _paralleled; }
+        }
+
+        private List<Effect> _chained = new List<Effect>();
+        public List<Effect> Chained
+        {
+            get { return _chained; }
         }
     }
 }

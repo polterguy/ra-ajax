@@ -64,7 +64,7 @@ namespace Ra.Widgets
 			}
 		}
 
-        public override string RenderChainedOnStart()
+        public override string RenderParalledOnStart()
         {
 			UpdateStyleCollection();
             return @"
@@ -72,7 +72,7 @@ namespace Ra.Widgets
 ";
         }
 
-        public override string RenderChainedOnFinished()
+        public override string RenderParalledOnFinished()
         {
             string retVal = "";
             if (_height != -1)
@@ -88,7 +88,7 @@ namespace Ra.Widgets
             return retVal;
         }
 
-        public override string RenderChainedOnRender()
+        public override string RenderParalledOnRender()
         {
             string retVal = "";
             if (_height != -1)
