@@ -95,6 +95,7 @@
     <ra:Panel 
         runat="server" 
         ID="pnl2"
+        style="width:100px;height:100px;overflow:hidden;background-color:#eee;"
         CssClass="panel pnlInv pnlAbs">
         Watch the Ajax Effect as you click the above button...
     </ra:Panel>
