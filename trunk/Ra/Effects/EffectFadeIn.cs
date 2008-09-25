@@ -32,7 +32,7 @@ namespace Ra.Widgets
 			}
 		}
 
-        public override string RenderChainedOnStart()
+        public override string RenderParalledOnStart()
         {
 			UpdateStyleCollection();
             return @"
@@ -41,14 +41,14 @@ namespace Ra.Widgets
 ";
         }
 
-        public override string RenderChainedOnFinished()
+        public override string RenderParalledOnFinished()
         {
             return @"
     this.element.setOpacity(1);
 ";
         }
 
-        public override string RenderChainedOnRender()
+        public override string RenderParalledOnRender()
         {
             return @"
     this.element.setOpacity(pos);

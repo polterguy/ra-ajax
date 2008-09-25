@@ -53,7 +53,7 @@ namespace Ra.Widgets
 			}
 		}
 
-        public override string RenderChainedOnStart()
+        public override string RenderParalledOnStart()
         {
 			UpdateStyleCollection();
             return @"
@@ -62,14 +62,14 @@ namespace Ra.Widgets
 ";
         }
 
-        public override string RenderChainedOnFinished()
+        public override string RenderParalledOnFinished()
         {
             return string.Format(@"
     this.element.setStyle('borderWidth','{0}px');
 ", BorderTo);
         }
 
-        public override string RenderChainedOnRender()
+        public override string RenderParalledOnRender()
         {
             return string.Format(@"
     var x = parseInt(pos*{0});

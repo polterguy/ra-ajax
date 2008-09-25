@@ -62,7 +62,7 @@ namespace Ra.Widgets
 			}
 		}
 
-        public override string RenderChainedOnStart()
+        public override string RenderParalledOnStart()
         {
 			UpdateStyleCollection();
             return @"
@@ -71,7 +71,7 @@ namespace Ra.Widgets
 ";
         }
 
-        public override string RenderChainedOnFinished()
+        public override string RenderParalledOnFinished()
         {
             return string.Format(@"
     this.element.setStyle('left',{0}+'px');
@@ -80,7 +80,7 @@ namespace Ra.Widgets
                 _left, _top);
         }
 
-        public override string RenderChainedOnRender()
+        public override string RenderParalledOnRender()
         {
             return string.Format(@"
     var deltaL = ({0} - this.startL) * pos;

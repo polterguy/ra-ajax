@@ -38,7 +38,7 @@ namespace Ra.Widgets
 			}
 		}
 
-        public override string RenderChainedOnStart()
+        public override string RenderParalledOnStart()
         {
 			UpdateStyleCollection();
             return string.Format(@"
@@ -48,7 +48,7 @@ namespace Ra.Widgets
                 _fromHeight);
         }
 
-        public override string RenderChainedOnFinished()
+        public override string RenderParalledOnFinished()
         {
             return @"
     this.element.setStyle('display','none');
@@ -56,7 +56,7 @@ namespace Ra.Widgets
 ";
         }
 
-        public override string RenderChainedOnRender()
+        public override string RenderParalledOnRender()
         {
             return string.Format(@"
     this.element.setStyle('height',((1.0-pos)*{0}) + 'px');

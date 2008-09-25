@@ -90,12 +90,12 @@ Ra.E('{0}', {{
 }});", 
                     _idRemove, 
                     _parent.AnimationSpeed.ToString(System.Globalization.CultureInfo.InvariantCulture),
-                    RenderChainedOnStart(),
-                    RenderChainedOnFinished(),
-                    RenderChainedOnRender());
+                    RenderParalledOnStart(),
+                    RenderParalledOnFinished(),
+                    RenderParalledOnRender());
             }
 
-            public override string RenderChainedOnStart()
+            public override string RenderParalledOnStart()
             {
                 return string.Format(@"
     this.other = Ra.$('{1}');
@@ -107,7 +107,7 @@ Ra.E('{0}', {{
                     _idRemove, _idShow);
             }
 
-            public override string RenderChainedOnFinished()
+            public override string RenderParalledOnFinished()
             {
                 return @"
     this.element.setStyle('display','none');
@@ -116,7 +116,7 @@ Ra.E('{0}', {{
 ";
             }
 
-            public override string RenderChainedOnRender()
+            public override string RenderParalledOnRender()
             {
                 return @"
     this.other.setStyle('height',(this.otherToHeight * pos) + 'px');

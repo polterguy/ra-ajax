@@ -22,7 +22,7 @@ namespace Ra.Widgets
 			: base(null, 0)
 		{ }
 		
-        public override string RenderChainedOnStart()
+        public override string RenderParalledOnStart()
         {
             return @"
     this._startColor = this.element.getStyle('backgroundColor') || '#ffffff';
@@ -33,14 +33,14 @@ namespace Ra.Widgets
 ";
         }
 
-        public override string RenderChainedOnFinished()
+        public override string RenderParalledOnFinished()
         {
             return @"
     this.element.setStyle('backgroundColor',this._orColor);
 ";
         }
 
-        public override string RenderChainedOnRender()
+        public override string RenderParalledOnRender()
         {
             return @"
     var color;
