@@ -89,15 +89,16 @@ namespace Ra.Widgets
 
         private string RenderImpl()
         {
-            // If the if sentence below kicks in then this is NOT a chained effect rendering
-            // which is the only place where it makes sense to have zero seconds and/or no
-            // Control to update...
             foreach (Effect idx in Paralleled)
             {
                 idx.Control = this.Control;
             }
+
+            // If the if sentence below kicks in then this is NOT a chained effect rendering
+            // which is the only place where it makes sense to have zero seconds and/or no
+            // Control to update...
             if (this._control == null || this._milliseconds == 0)
-                throw new ArgumentException("Cannot have an effect which affects no Controls or lasts for zero period");
+                throw new ArgumentException("Cannot have an effect which affects no Control or has zero value for Duration property");
             string onStart = RenderOnStart(this);
             string onFinished = RenderOnFinished(this);
             string onRender = RenderOnRender(this);
