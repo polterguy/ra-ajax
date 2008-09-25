@@ -22,12 +22,18 @@ namespace Ra.Widgets
             private string _value;
             private bool _shouldSerializeToViewState;
             private bool _shouldSerializeToJSON;
+            private StyleValue _innerStyleValue;
 
             public StyleValue(string value, bool shouldSerializeToViewState, bool shouldSerializeToJSON)
+                : this(value, shouldSerializeToViewState, shouldSerializeToJSON, null)
+            { }
+
+            public StyleValue(string value, bool shouldSerializeToViewState, bool shouldSerializeToJSON, StyleValue inner)
             {
                 this._value = value;
                 this._shouldSerializeToJSON = shouldSerializeToJSON;
                 this._shouldSerializeToViewState = shouldSerializeToViewState;
+                this._innerStyleValue = inner;
             }
 
             public string Value
@@ -46,6 +52,12 @@ namespace Ra.Widgets
             {
                 get { return _shouldSerializeToJSON; }
                 set { _shouldSerializeToJSON = value; }
+            }
+            
+            public StyleValue InnerStyleValue
+            {
+                get { return _innerStyleValue; }
+                set { _innerStyleValue = value; }
             }
         }
 
@@ -96,7 +108,18 @@ namespace Ra.Widgets
 				if (this[idx] == value)
 					return;
                 bool shouldJson = sendChanges && _trackingViewState && (!_styleValues.ContainsKey(idx) || _styleValues[idx].Value != value);
-                _styleValues[idx] = new StyleValue(value, _trackingViewState, shouldJson);
+                if (!sendChanges)
+                {
+                    if( _styleValues.ContainsKey(idx))
+                      _styleValues[idx].InnerStyleValue = new StyleValue(value, _trackingViewState, shouldJson);
+                    else
+                      _styleValues[idx] = new StyleValue(value, _trackingViewState, shouldJson);
+                }
+                else
+                {
+                    _styleValues[idx] = new StyleValue(value, _trackingViewState, shouldJson);
+                }
+            
             }
         }
 		
@@ -201,8 +224,13 @@ namespace Ra.Widgets
 				// which are defined in .ASPX file or before OnInit...
 				if (returnOnlyViewStateValues)
 				{
-					if (_styleValues[idxKey].ShouldSerializeToViewState)
-						retVal += idxKey + ":" + _styleValues[idxKey].Value + ";";
+                    if (_styleValues[idxKey].ShouldSerializeToViewState)
+                    {
+                        if (_styleValues[idxKey].InnerStyleValue != null)
+                            retVal += idxKey + ":" + _styleValues[idxKey].InnerStyleValue.Value + ";";
+                        else
+                            retVal += idxKey + ":" + _styleValues[idxKey].Value + ";";
+                    }
 				}
                 else
                     retVal += idxKey + ":" + _styleValues[idxKey].Value + ";";
