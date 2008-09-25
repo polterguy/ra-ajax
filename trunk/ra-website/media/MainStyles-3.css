@@ -77,7 +77,7 @@ img
 .links
 {
 	list-style-type:none;
-	font-size:85%;
+	font-size:small;
 }
 
 .links a
@@ -156,7 +156,6 @@ img
 .forumReply
 {
 	margin-top:25px;
-	margin-left: 10px;
 	width:100%;
 	background-color:#f9f9f9;
 	border: dashed 1px #555;

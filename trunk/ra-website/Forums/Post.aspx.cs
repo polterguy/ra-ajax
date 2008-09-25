@@ -41,8 +41,6 @@ public partial class Forums_Post : System.Web.UI.Page
                     post.Operator.NumberOfPosts);
             this.Title = post.Header;
             header.Text = "Re: " + post.Header;
-            header.Focus();
-            header.Select();
 
             // Binding replies...
             DataBindReplies(post);
