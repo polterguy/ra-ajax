@@ -24,8 +24,12 @@
         <br />
         <a href="Forums.aspx">Main forum page</a> to post or reply.
     </div>
-
-    <a href="~/Forums/Forums.aspx" runat="server" style="position:absolute;left:5px;top:265px;text-decoration:none;">Back to forum posts view</a>
+    <span class="links" style="position:absolute;left:55px;top:275px;">
+        <a 
+            href="~/Forums/Forums.aspx" 
+            runat="server">Back to Ra-Ajax Forums
+        </a>
+    </span>
     <div class="forumReply">
         <h2 style="float:left;" runat="server" id="headerParent"></h2>
         <i style="float:right;" runat="server" id="dateParent"></i>

@@ -16,7 +16,7 @@
     ContentPlaceHolderID="cnt1" 
     Runat="Server">
 
-    <h1>Forums for Ra Ajax</h1>
+    <h1>Ra-Ajax Forums</h1>
     <p style="width:450px;">
         Feel free to post your questions here and hopefully someone will try to answer as best they can, though 
         remember that Ra Ajax is a NON-commercial project which means that none of the people answering you 
