@@ -304,10 +304,10 @@
     <ra:Panel runat="server" ID="postsWrapper" style="margin-bottom:25px;margin-top:12px;">
         <asp:Repeater runat="server" ID="forumPostsRepeater">
             <HeaderTemplate>
-                <table style="border:solid 1px black;width:80%;" cellpadding="2" cellspacing="3">
+                <table style="border:solid 1px black;width:90%;" cellpadding="2" cellspacing="3">
                     <tr style="background-color:#FF9B00;color:#222;font-weight:normal;">
-                        <th>Subject</th>
-                        <th>User</th>
+                        <th>Topic</th>
+                        <th>Posted By</th>
                         <th>Date</th>
                         <th>Replies</th>
                     </tr>

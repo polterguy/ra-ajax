@@ -214,14 +214,6 @@ public partial class Blog : System.Web.UI.Page
         pnlImages.ReRender();
     }
 
-    protected void btnImagesClose_Click(object sender, EventArgs e)
-    {
-        Effect effect = new EffectFadeOut(pnlImages, 400);
-        effect.Render();
-        txtHeader.Focus();
-        txtHeader.Select();
-    }
-
     protected void EditBlog(object sender, EventArgs e)
     {
         pnlNewBlog.Visible = true;
