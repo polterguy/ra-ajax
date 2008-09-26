@@ -58,9 +58,7 @@ public partial class Effects : System.Web.UI.Page
         pnl2.Style["height"] = "100px";
 
         // Running a whole bunch of effects which are chained...
-        Effect effect = new EffectFadeIn(pnl2, 1000);
-
-        effect.ChainThese(
+        new EffectFadeIn(pnl2, 1000).ChainThese(
             new EffectHighlight(pnl2, 1000),
             new EffectSize(pnl2, 500, -1, 500), 
             new EffectSize(pnl2, 500, 150, -1),
@@ -73,8 +71,6 @@ public partial class Effects : System.Web.UI.Page
             new EffectTimeout(pnl2, 500),
             new EffectHighlight(pnl2, 500),
             new EffectTimeout(pnl2, 500)
-        );
-
-        effect.Render();
+        ).Render();
     }
 }
