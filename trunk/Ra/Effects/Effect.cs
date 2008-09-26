@@ -19,7 +19,7 @@ namespace Ra.Widgets
         private Control _control;
         private int _milliseconds;
 		private bool _sinoidal;
-        private List<Effect> _paralleled = new List<Effect>();
+        private List<Effect> _joined = new List<Effect>();
         private List<Effect> _chained = new List<Effect>();
 
         #endregion
@@ -38,9 +38,9 @@ namespace Ra.Widgets
             set { _sinoidal = value; }
         }
 
-        public List<Effect> Paralleled
+        public List<Effect> Joined
         {
-            get { return _paralleled; }
+            get { return _joined; }
         }
 
         public List<Effect> Chained
@@ -61,8 +61,14 @@ namespace Ra.Widgets
             for (int i = 1; i < chainedEffects.Length; i++)
                 chainedEffects[i - 1].Chained.Add(chainedEffects[i]);
             
-            this.Chained.Add(chainedEffects[0]);
+            _chained.Add(chainedEffects[0]);
 
+            return this;
+        }
+
+        public Effect JoinThese(params Effect[] joinedEffects)
+        {
+            _joined.AddRange(joinedEffects);
             return this;
         }
 
@@ -81,7 +87,7 @@ namespace Ra.Widgets
         private string RenderOnStart(Effect effect)
 		{
 			string retVal = this.RenderParalledOnStart();
-			foreach (Effect idx in Paralleled)
+			foreach (Effect idx in Joined)
 			{
 				retVal += idx.RenderParalledOnStart();
 			}
@@ -91,7 +97,7 @@ namespace Ra.Widgets
 		private string RenderOnFinished(Effect effect)
 		{
 			string retVal = this.RenderParalledOnFinished();
-			foreach (Effect idx in Paralleled)
+			foreach (Effect idx in Joined)
 			{
 				retVal += idx.RenderParalledOnFinished();
 			}
@@ -107,7 +113,7 @@ namespace Ra.Widgets
                 retVal += idx.RenderImplementation();
             }
 
-            foreach (Effect idxParalleled in Paralleled)
+            foreach (Effect idxParalleled in Joined)
             {
                 foreach (Effect idxChained in idxParalleled.Chained)
                 {
@@ -120,7 +126,7 @@ namespace Ra.Widgets
 		private string RenderOnRender(Effect effect)
 		{
 			string retVal = this.RenderParalledOnRender();
-			foreach (Effect idx in Paralleled)
+			foreach (Effect idx in Joined)
 			{
 				retVal += idx.RenderParalledOnRender();
 			}
@@ -134,16 +140,12 @@ namespace Ra.Widgets
 
         private string RenderImplementation()
         {
-            foreach (Effect idx in Paralleled)
+            foreach (Effect idx in Joined)
             {
                 idx.Control = this.Control;
             }
 
-            // If the if sentence below kicks in then this is NOT a chained effect rendering
-            // which is the only place where it makes sense to have zero seconds and/or no
-            // Control to update...
-            if (this._control == null || this._milliseconds == 0)
-                throw new ArgumentException("Cannot have an effect which affects no Control or has zero value for Duration property");
+            ValidateEffect();
             string onStart = RenderOnStart(this);
             string onFinished = RenderOnFinished(this);
             string onRender = RenderOnRender(this);
@@ -155,12 +157,21 @@ Ra.E('{0}', {{
   duration:{1},
   sinoidal:{5}
 }});",
-                _control.ClientID,
+                (_control == null ? null : _control.ClientID),
                 _milliseconds.ToString(),
                 onStart,
                 onFinished,
                 onRender,
                 this.Sinoidal ? "true" : "false");
+        }
+
+        protected virtual void ValidateEffect()
+        {
+            // If the if sentence below kicks in then this is NOT a chained effect rendering
+            // which is the only place where it makes sense to have zero seconds and/or no
+            // Control to update...
+            if (this._control == null || this._milliseconds == 0)
+                throw new ArgumentException("Cannot have an effect which affects no Control or has zero value for Duration property");
         }
 
         #endregion
