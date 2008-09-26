@@ -56,18 +56,14 @@ namespace Ra.Widgets
 			_milliseconds = milliseconds;
         }
 
-        public Effect Chain(Effect chainedEffect)
-        {
-            this.Chained.Add(chainedEffect);
-            return chainedEffect;
-        }
-
-        public void ChainThese(params Effect[] chainedEffects)
+        public Effect ChainThese(params Effect[] chainedEffects)
         {
             for (int i = 1; i < chainedEffects.Length; i++)
                 chainedEffects[i - 1].Chained.Add(chainedEffects[i]);
             
             this.Chained.Add(chainedEffects[0]);
+
+            return this;
         }
 
         #region [-- Abstract Render Methods for Parallel Effects --]
