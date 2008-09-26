@@ -14,35 +14,75 @@ namespace Ra.Widgets
 {
     public abstract class Effect
     {
+        #region [-- Private Fields --]
+
         private Control _control;
         private int _milliseconds;
 		private bool _sinoidal;
-		
-		protected Effect(Control control, int milliseconds)
+        private List<Effect> _paralleled = new List<Effect>();
+        private List<Effect> _chained = new List<Effect>();
+
+        #endregion
+
+        #region [-- Public Properties --]
+
+        public Control Control
+        {
+            get { return _control; }
+            private set { _control = value; }
+        }
+
+        public bool Sinoidal
+        {
+            get { return _sinoidal; }
+            set { _sinoidal = value; }
+        }
+
+        public List<Effect> Paralleled
+        {
+            get { return _paralleled; }
+        }
+
+        public List<Effect> Chained
+        {
+            get { return _chained; }
+        }
+
+        #endregion
+
+        protected Effect(Control control, int milliseconds)
 		{
 			_control = control;
 			_milliseconds = milliseconds;
-		}
-		
-		public Control Control
-		{
-			get { return _control; }
-			private set { _control = value; }
-		}
+        }
 
-		public bool Sinoidal
-		{
-			get { return _sinoidal; }
-			set { _sinoidal = value; }
-		}
+        public Effect Chain(Effect chainedEffect)
+        {
+            this.Chained.Add(chainedEffect);
+            return chainedEffect;
+        }
+
+        public void ChainThese(params Effect[] chainedEffects)
+        {
+            for (int i = 1; i < chainedEffects.Length; i++)
+                chainedEffects[i - 1].Chained.Add(chainedEffects[i]);
+            
+            this.Chained.Add(chainedEffects[0]);
+        }
+
+        #region [-- Abstract Render Methods for Parallel Effects --]
 
         public abstract string RenderParalledOnStart();
 
         public abstract string RenderParalledOnFinished();
 
         public abstract string RenderParalledOnRender();
-		
-		private string RenderOnStart(Effect effect)
+
+        #endregion
+
+        #region [-- Rendering Methods --]
+
+        private string RenderOnStart(Effect effect)
 		{
 			string retVal = this.RenderParalledOnStart();
 			foreach (Effect idx in Paralleled)
@@ -68,14 +108,14 @@ namespace Ra.Widgets
             string retVal = string.Empty;
             foreach (Effect idx in Chained)
             {
-                retVal += idx.RenderImpl();
+                retVal += idx.RenderImplementation();
             }
 
             foreach (Effect idxParalleled in Paralleled)
             {
                 foreach (Effect idxChained in idxParalleled.Chained)
                 {
-                    retVal += idxChained.RenderImpl();
+                    retVal += idxChained.RenderImplementation();
                 }
             }
             return retVal;
@@ -93,10 +133,10 @@ namespace Ra.Widgets
 
         public virtual void Render()
         {
-            AjaxManager.Instance.WriterAtBack.WriteLine(RenderImpl());
+            AjaxManager.Instance.WriterAtBack.WriteLine(RenderImplementation());
         }
 
-        private string RenderImpl()
+        private string RenderImplementation()
         {
             foreach (Effect idx in Paralleled)
             {
@@ -127,16 +167,6 @@ Ra.E('{0}', {{
                 this.Sinoidal ? "true" : "false");
         }
 
-        private List<Effect> _paralleled = new List<Effect>();
-        public List<Effect> Paralleled
-        {
-            get { return _paralleled; }
-        }
-
-        private List<Effect> _chained = new List<Effect>();
-        public List<Effect> Chained
-        {
-            get { return _chained; }
-        }
+        #endregion
     }
 }
