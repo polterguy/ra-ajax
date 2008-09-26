@@ -60,17 +60,19 @@ public partial class Effects : System.Web.UI.Page
         // Running a whole bunch of effects which are chained...
         Effect effect = new EffectFadeIn(pnl2, 1000);
 
-        //effect.Chain(new EffectHighlight(pnl2, 1000))
-        //    .Chain(new EffectSize(pnl2, 500, -1, 500))
-        //    .Chain(new EffectSize(pnl2, 500, 150, -1))
-        //    .Chain(new EffectBorder(pnl2, 500, 5))
-        //    .Chain(new EffectTimeout(pnl2, 1500))
-        //    .Chain(new EffectHighlight(pnl2, 500));
-
         effect.ChainThese(
-            new EffectHighlight(pnl2, 1000), new EffectSize(pnl2, 500, -1, 500), 
-            new EffectSize(pnl2, 500, 150, -1), new EffectBorder(pnl2, 500, 5),
-            new EffectTimeout(pnl2, 1500),  new EffectHighlight(pnl2, 500)
+            new EffectHighlight(pnl2, 1000),
+            new EffectSize(pnl2, 500, -1, 500), 
+            new EffectSize(pnl2, 500, 150, -1),
+            new EffectBorder(pnl2, 500, 5),
+            new EffectHighlight(pnl2, 500),
+            new EffectTimeout(pnl2, 500),
+            new EffectHighlight(pnl2, 500),
+            new EffectTimeout(pnl2, 500),
+            new EffectHighlight(pnl2, 500),
+            new EffectTimeout(pnl2, 500),
+            new EffectHighlight(pnl2, 500),
+            new EffectTimeout(pnl2, 500)
         );
 
         effect.Render();
