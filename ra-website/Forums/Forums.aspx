@@ -10,6 +10,11 @@
     Assembly="Ra" 
     Namespace="Ra.Widgets" 
     TagPrefix="ra" %>
+    
+<%@ Register 
+    Assembly="Extensions" 
+    Namespace="Ra.Extensions" 
+    TagPrefix="ext" %>
 
 <asp:Content 
     ID="Content1" 
@@ -108,11 +113,13 @@
         style="position:absolute;top:190px;right:5px;background-color:Yellow;border:solid 1px #333;padding:15px;">
         <span runat="server" id="newUserWelcome"></span>
     </ra:Panel>
-    <ra:Panel 
-        runat="server" 
-        ID="pnlRegister" 
-        Visible="false"
-        style="position:absolute;top:290px;right:5px;background-color:Yellow;border:solid 1px #333;padding:15px;">
+    <ext:Window 
+	    runat="server"
+	    ID="pnlRegister"
+	    Caption="Register"
+	    CssClass="alphacube"
+	    Visible="false"
+	    style="position:absolute;top:290px;left:250px;padding:15px;"> 
         <table>
             <tr>
                 <td>Username</td>
@@ -163,13 +170,15 @@
                 </td>
             </tr>
         </table>
-    </ra:Panel>
+    </ext:Window>
 
-    <ra:Panel 
-        runat="server" 
+    <ext:Window 
+	    runat="server"
         ID="pnlProfile" 
-        Visible="false"
-        style="position:absolute;top:290px;left:250px;background-color:Yellow;border:solid 1px #333;padding:15px;">
+	    Caption="Edit Your Profile"
+	    CssClass="alphacube"
+	    Visible="false"
+	    style="position:absolute;top:290px;left:250px;padding:15px;">
         <table>
             <tr>
                 <td>Password</td>
@@ -233,13 +242,15 @@
                 </td>
             </tr>
         </table>
-    </ra:Panel>
+    </ext:Window>
 
-    <ra:Panel 
-        runat="server" 
-        ID="pnlNewPost" 
-        Visible="false"
-        style="position:absolute;top:290px;left:250px;background-color:Yellow;border:solid 1px #333;padding:15px;">
+    <ext:Window 
+	    runat="server"
+	    ID="pnlNewPost"
+	    Caption="Add New Post"
+	    CssClass="alphacube"
+	    Visible="false"
+	    style="position:absolute;top:290px;left:250px;padding:15px;">
         <table>
             <tr>
                 <td>Subject</td>
@@ -266,7 +277,7 @@
                         runat="server" 
                         ID="newSubmit" 
                         OnClick="newSubmit_Click"
-                        Text="Save" />
+                        Text="Add" />
                     <ra:Button 
                         runat="server" 
                         ID="newPostCancel" 
@@ -283,7 +294,7 @@
                 </td>
             </tr>
         </table>
-    </ra:Panel>
+    </ext:Window>
 
     Search: 
     <ra:TextBox 

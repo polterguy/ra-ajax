@@ -311,9 +311,6 @@ Have a nice day :)",
         post.Created = DateTime.Now;
         post.Header = header.Text;
         post.Operator = Operator.Current;
-        post.Body += string.Format(@"
--- 
-<em> {0} </em>", Operator.Current.Signature);
         post.Save();
 
         // Removing panel
