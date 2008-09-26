@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.50727</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{82727C73-0B10-4F58-93F4-841E9397302C}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Effects\EffectTimeout.cs" />
     <Compile Include="Effects\EffectMove.cs" />
     <Compile Include="Effects\EffectSize.cs" />
     <Compile Include="Effects\EffectRollUp.cs" />
