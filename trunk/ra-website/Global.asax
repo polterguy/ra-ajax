@@ -38,6 +38,7 @@
             oper.Confirmed = true;
             oper.Signature = "Here's your signature";
             oper.IsBlogger = true;
+            oper.Created = DateTime.Now;
             oper.Create();
 
             // Creating default forum post

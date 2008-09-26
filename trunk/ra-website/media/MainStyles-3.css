@@ -169,13 +169,14 @@ img
 	border:solid 1px #eee;
 }
 
-.forumReply
+.forumPost
 {
 	margin-top:25px;
-	width:100%;
+	width:95%;
 	background-color:#f9f9f9;
 	border: dashed 1px #555;
 	padding: 10px;
+	overflow:visible;
 }
 
 

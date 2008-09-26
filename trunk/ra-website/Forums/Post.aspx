@@ -25,12 +25,9 @@
         <a href="Forums.aspx">Main forum page</a> to post or reply.
     </div>
     <span class="links" style="position:absolute;left:55px;top:275px;">
-        <a 
-            href="~/Forums/Forums.aspx" 
-            runat="server">Back to Ra-Ajax Forums
-        </a>
+        <a href="~/Forums/Forums.aspx" runat="server">Back to Ra-Ajax Forums</a>
     </span>
-    <div class="forumReply">
+    <div class="forumPost">
         <h2 style="float:left;" runat="server" id="headerParent"></h2>
         <i style="float:right;" runat="server" id="dateParent"></i>
         <br style="clear:left;" />
@@ -45,7 +42,7 @@
             <FooterTemplate>
             </FooterTemplate>
             <ItemTemplate>
-                <div class="forumReply">
+                <div class="forumPost">
                     <h2 style="float:left;"><%# Eval("Header") %></h2>
                     <i style="float:right;"><%# string.Format("{0} - {1}", Eval("Operator.Signature"), ((DateTime)Eval("Created")).ToString("d.MMM yy HH:mm")) %></i>
                     <br style="clear:left;" />
@@ -55,14 +52,16 @@
             </ItemTemplate>
         </asp:Repeater>
     </ra:Panel>
-    
+
+    <h2 style="margin-top:50px;">Reply</h2>
+    <hr style="height:1px;" />
     <ra:Panel 
         runat="server" 
-        style="background-color:#f9f9f9;border:solid 1px #333;padding:15px;width:70%;margin-top:50px;"
+        style="background-color:#f9f9f9;padding:15px;width:70%;"
         ID="pnlReply">
         <table>
             <tr>
-                <td>Header</td>
+                <td>Subject:</td>
                 <td>
                     <ra:TextBox 
                         runat="server" 
@@ -71,13 +70,13 @@
                 </td>
             </tr>
             <tr>
-                <td>Body</td>
+                <td>Body:</td>
                 <td>
                     <ra:TextArea 
                         runat="server" 
                         ID="body" 
                         Columns="50" 
-                        Rows="10" />
+                        Rows="5" />
                 </td>
             </tr>
             <tr>
@@ -86,7 +85,7 @@
                         runat="server" 
                         ID="newSubmit" 
                         OnClick="newSubmit_Click"
-                        Text="Save" />
+                        Text="Post Reply" />
                 </td>
             </tr>
         </table>
