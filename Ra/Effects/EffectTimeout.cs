@@ -13,8 +13,11 @@ namespace Ra.Widgets
 {
     public class EffectTimeout : Effect
     {
-        public EffectTimeout(Control control, int milliseconds)
-            : base(control, milliseconds)
+        public EffectTimeout(int milliseconds)
+            : base(null, milliseconds)
+        { }
+
+        protected override void ValidateEffect()
         { }
 
         public override string RenderParalledOnStart()

@@ -26,9 +26,10 @@ public partial class Effects : System.Web.UI.Page
         btn2.Focus();
         Effect effect = new EffectSize(pnl, 600, 160, 300);
         effect.Sinoidal = true;
-        effect.Paralleled.Add(new EffectHighlight());
-        effect.Paralleled.Add(new EffectBorder(5));
-        effect.Render();
+        effect.JoinThese(
+            new EffectHighlight(), 
+            new EffectBorder(5)
+        ).Render();
     }
 
     protected void btn2_Click(object sender, EventArgs e)
@@ -64,13 +65,13 @@ public partial class Effects : System.Web.UI.Page
             new EffectSize(pnl2, 500, 150, -1),
             new EffectBorder(pnl2, 500, 5),
             new EffectHighlight(pnl2, 500),
-            new EffectTimeout(pnl2, 500),
+            new EffectTimeout(500),
             new EffectHighlight(pnl2, 500),
-            new EffectTimeout(pnl2, 500),
+            new EffectTimeout(500),
             new EffectHighlight(pnl2, 500),
-            new EffectTimeout(pnl2, 500),
+            new EffectTimeout(500),
             new EffectHighlight(pnl2, 500),
-            new EffectTimeout(pnl2, 500)
+            new EffectTimeout(500)
         ).Render();
     }
 }
