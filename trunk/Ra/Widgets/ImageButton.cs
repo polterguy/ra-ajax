@@ -83,7 +83,7 @@ namespace Ra.Widgets
         #region [ -- Overridden (abstract/virtual) methods from RaControl -- ]
 
         // Override this one to handle events fired on the client-side
-        public override void DispatchEvent(string name)
+        void IRaControl.DispatchEvent(string name)
         {
             switch (name)
             {
@@ -145,7 +145,7 @@ namespace Ra.Widgets
         }
 
         // Override this one to create specific HTML for your widgets
-        public override string GetOpeningHTML()
+        protected override string GetOpeningHTML()
         {
             if (string.IsNullOrEmpty(ImageUrl) || string.IsNullOrEmpty(AlternateText))
                 throw new ApplicationException("Cannot have empty Src or AlternateText of ImageButton");

@@ -50,7 +50,7 @@ namespace Ra.Widgets
         #region [ -- Overridden (abstract/virtual) methods from RaControl -- ]
 
         // Override this one to create specific HTML for your widgets
-        public override string GetOpeningHTML()
+        protected override string GetOpeningHTML()
         {
             return string.Format("<{4} id=\"{0}\"{2}{3}>{1}",
                 ClientID,
@@ -60,14 +60,14 @@ namespace Ra.Widgets
                 Tag);
         }
 
-        public override string GetClosingHTML()
+        protected override string GetClosingHTML()
         {
             return string.Format("</{0}>", Tag);
         }
 
         #endregion
 
-        public override void DispatchEvent(string name)
+        void IRaControl.DispatchEvent(string name)
         {
             switch (name)
             {

@@ -146,7 +146,7 @@ namespace Ra.Widgets
         }
 
         // Override this one to handle events fired on the client-side
-        public override void DispatchEvent(string name)
+        void IRaControl.DispatchEvent(string name)
         {
             //System.Web.UI.WebControls.TextBox box;
             //box.TextMode = System.Web.UI.WebControls.TextBoxMode.
@@ -235,7 +235,7 @@ namespace Ra.Widgets
         }
 
         // Override this one to create specific HTML for your widgets
-        public override string GetOpeningHTML()
+        protected override string GetOpeningHTML()
         {
             string accessKey = string.IsNullOrEmpty(AccessKey) ? "" : string.Format(" accesskey=\"{0}\"", AccessKey);
             return string.Format("<textarea id=\"{0}\" name=\"{0}\" rows=\"{5}\" cols=\"{6}\"{2}{3}{4}{7}>{1}</textarea>",

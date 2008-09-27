@@ -48,8 +48,8 @@ namespace Ra.Widgets
 			RaWebControl tmp = this.Control as RaWebControl;
 			if (tmp != null)
 			{
-				tmp.Style["border-style", false] = "dashed";
-				tmp.Style["border-width", false] = BorderTo + "px";
+                tmp.Style.SetStyleValueViewStateOnly("border-style", "dashed");
+                tmp.Style.SetStyleValueViewStateOnly("border-width", BorderTo + "px");
 			}
 		}
 

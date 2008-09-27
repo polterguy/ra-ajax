@@ -16,7 +16,7 @@ using Ra.Helpers;
 namespace Ra.Widgets
 {
     [ASP.ToolboxData("<{0}:BehaviorDraggable runat=\"server\" />")]
-	public class BehaviorDraggable : Behavior
+    public class BehaviorDraggable : Behavior, IRaControl
 	{
 		public event EventHandler Dropped;
 
@@ -86,16 +86,16 @@ namespace Ra.Widgets
 		{
 			return "";
 		}
-		
-        public override void DispatchEvent(string name)
+
+        void IRaControl.DispatchEvent(string name)
         {
             switch (name)
             {
                 case "dropped":
                     RaWebControl parent = Parent as RaWebControl;
-				    parent.Style["left", false] = Page.Request.Params["x"] + "px";
-                    parent.Style["top", false] = Page.Request.Params["y"] + "px";
-                    parent.Style["position", false] = "absolute";
+                    parent.Style.SetStyleValueViewStateOnly("left", Page.Request.Params["x"] + "px");
+                    parent.Style.SetStyleValueViewStateOnly("top", Page.Request.Params["y"] + "px");
+                    parent.Style.SetStyleValueViewStateOnly("position", "absolute");
                     if (Dropped != null)
                         Dropped(this, new EventArgs());
 				    string drops = Page.Request.Params["drops"];

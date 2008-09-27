@@ -57,8 +57,8 @@ namespace Ra.Widgets
 			RaWebControl tmp = this.Control as RaWebControl;
 			if (tmp != null)
 			{
-				tmp.Style["left", false] = _left.ToString() + "px";
-				tmp.Style["top", false] = _top.ToString() + "px";
+                tmp.Style.SetStyleValueViewStateOnly("left", _left.ToString() + "px");
+                tmp.Style.SetStyleValueViewStateOnly("top", _top.ToString() + "px");
 			}
 		}
 

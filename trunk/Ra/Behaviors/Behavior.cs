@@ -21,8 +21,8 @@ namespace Ra.Widgets
 	        base.OnInit(e);
 			AjaxManager.Instance.IncludeScriptFromResource("Behaviors.js");
 	    }
-		
-		public override string GetOpeningHTML()
+
+        protected override string GetOpeningHTML()
 		{
 			return string.Empty;
 		}
@@ -46,5 +46,10 @@ namespace Ra.Widgets
         }
 
 		public abstract string GetRegistrationScript();
-	}
+
+        void IRaControl.DispatchEvent(string name)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

@@ -36,9 +36,9 @@
     </ra:Panel>
     <div class="spacer">&nbsp;</div>
     <p>
-        The effect you just observed is actually three <em>paralleled</em> effects which means that all the effects
+        The effect you just observed is actually three <em>joined</em> effects which means that all the effects
         will run on the same Control with the same duration and conserving resources on the client and give the impression
-        of being "one" effect even though technically they're unrelated and only distinct "paralleled" effects.
+        of being "one" effect even though technically they're unrelated and only distinct effects that are "joined".
     </p>
     <p>
         Now try to click the button below here to see another Ajax Effect.
@@ -100,9 +100,28 @@
     <ra:Panel 
         runat="server" 
         ID="pnl2"
-        style="width:100px;height:100px;overflow:hidden;background-color:#eee;"
+        style="overflow:hidden;background-color:#eee;"
         CssClass="panel pnlInv pnlAbs">
-        Watch the Ajax Effect as you click the above button...
+        <ra:Label 
+            runat="server" 
+            ID="lblE1" 
+            Tag="p">
+            Watch the Ajax Effect as you click the above button...
+        </ra:Label>
+        <ra:Label 
+            runat="server" 
+            ID="lblE2" 
+            Tag="p">
+            The pause between the flashing at the end is <em>EffectTimeout</em> which
+            serves no other purpose than to wait for n milliseconds before running the next effects
+            in the Chained effect queue.
+        </ra:Label>
+        <ra:Label 
+            runat="server" 
+            ID="lblE3" 
+            Tag="p">
+            As you can see you can also chain effects on different Controls
+        </ra:Label>
     </ra:Panel>
     <div class="spacer">&nbsp;</div>
     <a href="Behaviors.aspx">On to "Ajax Behaviors"...</a>

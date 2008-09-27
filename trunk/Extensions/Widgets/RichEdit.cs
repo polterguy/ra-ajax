@@ -20,7 +20,7 @@ using HTML = System.Web.UI.HtmlControls;
 namespace Ra.Extensions
 {
     [ASP.ToolboxData("<{0}:RichEdit runat=server></{0}:RichEdit>")]
-    public class RichEdit : RaWebControl
+    public class RichEdit : RaWebControl, IRaControl
     {
         public event EventHandler KeyUp;
 
@@ -79,7 +79,7 @@ namespace Ra.Extensions
             }
         }
 
-        public override void DispatchEvent(string name)
+        void IRaControl.DispatchEvent(string name)
         {
             switch (name)
             {
@@ -109,7 +109,7 @@ namespace Ra.Extensions
 			return evts;
 		}
 
-		public override string GetOpeningHTML()
+        protected override string GetOpeningHTML()
         {
             // Rich Edit DIV editing element plus hidden field which is "value" part 
             // to make sure we submit the new value back to server whan changes occurs...

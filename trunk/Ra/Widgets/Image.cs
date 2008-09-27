@@ -49,7 +49,7 @@ namespace Ra.Widgets
         #region [ -- Overridden (abstract/virtual) methods from RaControl -- ]
 
         // Override this one to create specific HTML for your widgets
-        public override string GetOpeningHTML()
+        protected override string GetOpeningHTML()
         {
             if (string.IsNullOrEmpty(AlternateText) || string.IsNullOrEmpty(ImageUrl))
                 throw new ApplicationException("Cannot have an image without src and alt text");
@@ -63,5 +63,10 @@ namespace Ra.Widgets
         }
 
         #endregion
+
+        void IRaControl.DispatchEvent(string name)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

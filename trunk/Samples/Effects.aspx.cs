@@ -55,7 +55,7 @@ public partial class Effects : System.Web.UI.Page
         // Resetting element back to base
         pnl2.Style["border-style"] = "solid";
         pnl2.Style["border-width"] = "1px";
-        pnl2.Style["width"] = "100px";
+        pnl2.Style["width"] = "200px";
         pnl2.Style["height"] = "100px";
 
         // Running a whole bunch of effects which are chained...
@@ -64,11 +64,11 @@ public partial class Effects : System.Web.UI.Page
             new EffectSize(pnl2, 500, -1, 500), 
             new EffectSize(pnl2, 500, 150, -1),
             new EffectBorder(pnl2, 500, 5),
-            new EffectHighlight(pnl2, 500),
+            new EffectHighlight(lblE1, 500),
             new EffectTimeout(500),
-            new EffectHighlight(pnl2, 500),
+            new EffectHighlight(lblE2, 500),
             new EffectTimeout(500),
-            new EffectHighlight(pnl2, 500),
+            new EffectHighlight(lblE3, 500),
             new EffectTimeout(500),
             new EffectHighlight(pnl2, 500),
             new EffectTimeout(500)
