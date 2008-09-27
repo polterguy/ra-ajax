@@ -52,6 +52,7 @@
     <Compile Include="Effects\EffectFadeOut.cs" />
     <Compile Include="Effects\Effect.cs" />
     <Compile Include="Effects\EffectFadeIn.cs" />
+    <Compile Include="Effects\EffectTimeout.cs" />
     <Compile Include="Filters\CallbackFilter.cs" />
     <Compile Include="Helpers\ListItem.cs" />
     <Compile Include="Helpers\ListItemCollection.cs" />

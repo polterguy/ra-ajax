@@ -58,6 +58,9 @@ namespace Ra.Widgets
 
         public Effect ChainThese(params Effect[] chainedEffects)
         {
+            if (chainedEffects.Length == 0)
+                return this;
+
             for (int i = 1; i < chainedEffects.Length; i++)
                 chainedEffects[i - 1].Chained.Add(chainedEffects[i]);
             
