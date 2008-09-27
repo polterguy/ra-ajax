@@ -2,7 +2,7 @@
 <project name="Package">
 
 	<!-- Properties -->
-	<property name="ra.version" value="0.5.2" />
+	<property name="ra.version" value="0.5.3" />
 
 	<property name="library.dir" value="Library" />
 	<property name="resources.dir" value="Resources" />
