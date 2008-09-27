@@ -1,7 +1,7 @@
 
 Ra-Ajax 0.5.3 Released
 
-As promised, we will try as hard as we can to have more frequent releases of Ra-Ajax. We are very happy to introduce Ra-Ajax version 0.5.3. We have fixed several bugs and did major refactoring on the Style logic but the two major feature are the addition of two Window widgets and enhancements to the Effects.
+As promised, we will try as hard as we can to have more frequent releases of Ra-Ajax. We are very happy to introduce <a href="http://code.google.com/p/ra-ajax/downloads/list">Ra-Ajax version 0.5.3</a>. We have fixed several bugs and did major refactoring on the Style logic but the two major feature are the addition of two Window widgets and enhancements to the Effects.
 
 <h2>Window and WindowLight</h2>
 The Window widget is richer, looks nicer out-of-the-box and is more suitable for skinning, while WindowLight has far less DOM elements and is meant to be for situations where you might need a window that is super fast and uses minimal DOM elements and CSS. Check out our <a href="http://ra-ajax.org/samples/Ajax-Window.aspx">Window Sample</a> that features both of these widgets.
@@ -41,5 +41,5 @@ What this does is it will make these Effects run successively one after the othe
 <h3>EffectTimout</h3>
 We thought that with Chaining Effects as described above, it would be useful and handy to have an Effect that helps in pausing the sequence of Effects for a specified number of millie-seconds and that's what EffectTimout is for. If you check the snippet of code above, you will notice that after EffectBorder runs, there will be a pausing period of half a second due to using 'new EffectTimeout(500)' and after that period EffectHighlight will run.
 
-We hope you will find these features useful and that you will like them. Your thoughts and recommendations are welcome, please use <a href="http://ra-ajax.org/Forums/Forums.aspx">our forum</a> to let us know what you think.s
+We hope you will find these features useful and that you will like them. Your thoughts and recommendations are welcome, please use <a href="http://ra-ajax.org/Forums/Forums.aspx">our forum</a> to let us know what you think.
 
