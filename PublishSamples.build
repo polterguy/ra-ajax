@@ -57,6 +57,7 @@
 		<fileset basedir="${output.dir}/${samples.dir}">
 			<include name="**/*.cs" />
 			<exclude name="**/*.master.cs" />
+			<exclude name="App_Code/*.cs" />
 		</fileset>
 	</copy>
 

@@ -45,6 +45,9 @@
                 <li>
                     <a id="A3" runat="server" href="~/thomas.blogger" title="Thomas Hansen's Blog">Thomas Hansen's Blog</a>
                 </li>
+                <li>
+                    <a id="A10" runat="server" href="~/Kariem.blogger" title="Kariem Ali's Blog">Kariem Ali's Blog</a>
+                </li>
             </ul>
         </li>
         <li>
