@@ -14,22 +14,44 @@ using Ra.Helpers;
 
 namespace Ra.Widgets
 {
+    /**
+     * CheckBox control, renders &lt;input type="checkbox"...
+     */
     [DefaultProperty("Text")]
     [ASP.ToolboxData("<{0}:CheckBox runat=server />")]
     public class CheckBox : RaWebControl, IRaControl
     {
+        /**
+         * Raised when checked state of checkbox is changed
+         */
         public event EventHandler CheckedChanged;
 
+        /**
+         * Raised when checkbox looses focus, opposite of Focused
+         */
         public event EventHandler Blur;
 
+        /**
+         * Raised when checkbox receives Focus, opposite of Blur
+         */
         public event EventHandler Focused;
 
+        /**
+         * Raised when mouse is over the checkbox, opposite of MouseOut
+         */
         public event EventHandler MouseOver;
 
+        /**
+         * Raised when mouse is leaving the checkbox, opposite of MouseOver
+         */
         public event EventHandler MouseOut;
 
         #region [ -- Properties -- ]
 
+        /**
+         * The text that is associated with the checkbox, normally rendered to the right.
+         * Default value is string.Empty
+         */
         [DefaultValue("")]
         public string Text
         {
@@ -42,6 +64,9 @@ namespace Ra.Widgets
             }
         }
 
+        /**
+         * If true then the checkbox is checked, otherwise it is unchecked
+         */
         [DefaultValue(false)]
         public bool Checked
         {
@@ -54,6 +79,15 @@ namespace Ra.Widgets
             }
         }
 
+        /**
+         * The keyboard shortcut for changing the checked state. Most browsers implements
+         * some type of keyboard shortcut logic like for instance FireFox allows
+         * form elements to be triggered by combining the AccessKey value (single character)
+         * together with ALT and SHIFT. Meaning if you have e.g. "H" as keyboard shortcut
+         * you can change the checked state of this checkbox by clicking ALT+SHIFT+H on your 
+         * keyboard. The combinations to effectuate the keyboard shortcuts however vary from 
+         * browsers to browsers.
+         */
         [DefaultValue("")]
         public string AccessKey
         {
@@ -66,6 +100,9 @@ namespace Ra.Widgets
             }
         }
 
+        /**
+         * If false then the checkbox is disabled, otherwise it is enabled
+         */
         [DefaultValue(true)]
         public bool Enabled
         {
@@ -121,7 +158,6 @@ namespace Ra.Widgets
 
         #region [ -- Overridden (abstract/virtual) methods from RaControl -- ]
 
-        // Override this one to handle events fired on the client-side
         void IRaControl.DispatchEvent(string name)
         {
             switch (name)
@@ -198,7 +234,6 @@ namespace Ra.Widgets
 			return evts;
         }
 
-        // Override this one to create specific HTML for your widgets
         protected override string GetOpeningHTML()
         {
             string accessKey = string.IsNullOrEmpty(AccessKey) ? "" : string.Format(" accesskey=\"{0}\"", AccessKey);

@@ -14,12 +14,18 @@ using Ra.Helpers;
 
 namespace Ra.Widgets
 {
+    /**
+     * Image control, renders &lt;img src="...
+     */
     [DefaultProperty("Text")]
     [ASP.ToolboxData("<{0}:Image runat=server />")]
     public class Image : RaWebControl, IRaControl
     {
         #region [ -- Properties -- ]
 
+        /**
+         * URL of image, renders as the src attribute of the control. Mandatory!
+         */
         [DefaultValue("")]
         public string ImageUrl
         {
@@ -32,6 +38,9 @@ namespace Ra.Widgets
             }
         }
 
+        /**
+         * Alternative text, renders as the alt attribute of the control. Mandatory!
+         */
         [DefaultValue("")]
         public string AlternateText
         {

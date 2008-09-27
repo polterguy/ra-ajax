@@ -14,22 +14,46 @@ using Ra.Helpers;
 
 namespace Ra.Widgets
 {
+    /**
+     * LinkButton control, renders as &lt;a href="... HTML element
+     * Note though that this will NOT be a link but overridden through JavaScript to handle click events.
+     * DO NOT use this element instead of hyperlinks if you want search engine visibility! Think
+     * of it as an alternative to the Button and ImageButton controls.
+     */
     [DefaultProperty("Text")]
     [ASP.ToolboxData("<{0}:LinkButton runat=server />")]
     public class LinkButton : RaWebControl, IRaControl
     {
+        /**
+         * Raised when button is clicked
+         */
         public event EventHandler Click;
 
+        /**
+         * Raised when button looses focus, opposite of Focused
+         */
         public event EventHandler Blur;
 
+        /**
+         * Raised when button receives Focus, opposite of Blur
+         */
         public event EventHandler Focused;
 
+        /**
+         * Raised when mouse is over the button, opposite of MouseOut
+         */
         public event EventHandler MouseOver;
 
+        /**
+         * Raised when mouse is leaving the button, opposite of MouseOver
+         */
         public event EventHandler MouseOut;
 
         #region [ -- Properties -- ]
 
+        /**
+         * The text that is displayed within the linkbutton, default value is string.Empty
+         */
         [DefaultValue("")]
         public string Text
         {
@@ -42,6 +66,14 @@ namespace Ra.Widgets
             }
         }
 
+        /**
+         * The keyboard shortcut for clicking the button. Most browsers implements
+         * some type of keyboard shortcut logic like for instance FireFox allows
+         * form elements to be triggered by combining the AccessKey value (single character)
+         * together with ALT and SHIFT. Meaning if you have e.g. "H" as keyboard shortcut
+         * you can click this button by doing ALT+SHIFT+H on your keyboard. The combinations
+         * to effectuate the keyboard shortcuts however vary from browsers to browsers.
+         */
         [DefaultValue("")]
         public string AccessKey
         {
@@ -58,7 +90,6 @@ namespace Ra.Widgets
 
         #region [ -- Overridden (abstract/virtual) methods from RaControl -- ]
 
-        // Override this one to handle events fired on the client-side
         void IRaControl.DispatchEvent(string name)
         {
             switch (name)
@@ -125,7 +156,6 @@ namespace Ra.Widgets
 			return evts;
         }
 
-        // Override this one to create specific HTML for your widgets
         protected override string GetOpeningHTML()
         {
             string accessKey = string.IsNullOrEmpty(AccessKey) ? "" : string.Format(" accesskey=\"{0}\"", AccessKey);

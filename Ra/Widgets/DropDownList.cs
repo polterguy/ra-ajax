@@ -15,21 +15,40 @@ using System.Collections.Generic;
 
 namespace Ra.Widgets
 {
+    /**
+     * DropDownList control, renders &lt;select...
+     */
     [ASP.ParseChildren(true, "Items")]
     [ASP.ToolboxData("<{0}:DropDownList runat=server />")]
     public class DropDownList : RaWebControl, IRaControl
     {
+        /**
+         * Raised when selected index is changed
+         */
         public event EventHandler SelectedIndexChanged;
 
+        /**
+         * Raised when button looses focus, opposite of Focused
+         */
         public event EventHandler Blur;
 
+        /**
+         * Raised when button receives Focus, opposite of Blur
+         */
         public event EventHandler Focused;
 
+        /**
+         * Raised when mouse is over the button, opposite of MouseOut
+         */
         public event EventHandler MouseOver;
 
+        /**
+         * Raised when mouse is leaving the button, opposite of MouseOver
+         */
         public event EventHandler MouseOut;
 
         private ListItemCollection _listItems;
+        private string _selectedItemValue;
 
         public DropDownList()
         {
@@ -38,6 +57,15 @@ namespace Ra.Widgets
 
         #region [ -- Properties -- ]
 
+        /**
+         * The keyboard shortcut for giving the DropDownList focus. Most browsers implements
+         * some type of keyboard shortcut logic like for instance FireFox allows
+         * form elements to be triggered by combining the AccessKey value (single character)
+         * together with ALT and SHIFT. Meaning if you have e.g. "H" as keyboard shortcut
+         * you can give the dropdownlist focus by clicking ALT+SHIFT+H on your 
+         * keyboard. The combinations to effectuate the keyboard shortcuts however vary from 
+         * browsers to browsers.
+         */
         [DefaultValue("")]
         public string AccessKey
         {
@@ -50,6 +78,9 @@ namespace Ra.Widgets
             }
         }
 
+        /**
+         * If false then the checkbox is disabled, otherwise it is enabled
+         */
         [DefaultValue(true)]
         public bool Enabled
         {
@@ -62,6 +93,9 @@ namespace Ra.Widgets
             }
         }
 
+        /**
+         * List of ListItems currently in the dropdownlist
+         */
         [ASP.PersistenceMode(ASP.PersistenceMode.InnerDefaultProperty)]
         public ListItemCollection Items
         {
@@ -71,7 +105,9 @@ namespace Ra.Widgets
             }
         }
 
-        private string _selectedItemValue;
+        /**
+         * Currently selected item, active item from Items collection
+         */
         public ListItem SelectedItem
         {
             get
