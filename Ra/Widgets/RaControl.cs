@@ -15,7 +15,7 @@ using System.Collections.Generic;
 
 namespace Ra.Widgets
 {
-	public abstract class RaControl : Control, IRaControl
+	public abstract class RaControl : Control
 	{
 		protected override void LoadControlState(object savedState)
 		{
@@ -449,14 +449,6 @@ namespace Ra.Widgets
 			return retVal;
 		}
 
-		// Used for dispatching events for the Control
-		// This could have been an abstract method though
-		// some widgets don't really need to dispatch events
-		// so therefor we've made an implementation for it.
-		// Reconsider later...?
-		public virtual void DispatchEvent(string name)
-		{ }
-
 		private string GetScriptOptions(bool addComma)
 		{
 			string options = GetClientSideScriptOptions();
@@ -567,11 +559,11 @@ namespace Ra.Widgets
 		}
 
 		// The HTML for the control
-		public abstract string GetOpeningHTML();
+		protected abstract string GetOpeningHTML();
 
 		// This one have an implementation since so many controls don't really have
 		// any closing HTML since they're closed inline with / at the end of their element
-		public virtual string GetClosingHTML()
+		protected virtual string GetClosingHTML()
 		{
 			return string.Empty;
 		}

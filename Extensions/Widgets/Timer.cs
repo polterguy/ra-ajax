@@ -20,7 +20,7 @@ using HTML = System.Web.UI.HtmlControls;
 namespace Ra.Extensions
 {
     [ASP.ToolboxData("<{0}:Timer runat=\"server\" />")]
-    public class Timer : RaControl
+    public class Timer : RaControl, IRaControl
     {
         public event EventHandler Tick;
 
@@ -52,7 +52,7 @@ namespace Ra.Extensions
             AjaxManager.Instance.IncludeScriptFromResource(typeof(Timer), "Extensions.Js.Timer.js");
         }
 
-        public override void DispatchEvent(string name)
+        void IRaControl.DispatchEvent(string name)
         {
             switch (name)
             {
@@ -81,8 +81,8 @@ namespace Ra.Extensions
 		{
 			return "new Ra.Timer";
 		}
-		
-        public override string GetOpeningHTML()
+
+        protected override string GetOpeningHTML()
         {
             // Dummy HTML DOM element to make registration and such easier...
             return string.Format("<span style=\"display:none;\" id=\"{0}\">&nbsp;</span>", ClientID);

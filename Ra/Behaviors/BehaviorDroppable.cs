@@ -56,15 +56,6 @@ namespace Ra.Widgets
 			return string.Format("new Ra.BDrop('{0}'{1})", this.ClientID, options);
 		}
 
-        public override void DispatchEvent(string name)
-        {
-            switch (name)
-            {
-                default:
-                    throw new ApplicationException("Unknown event fired for control");
-            }
-        }
-		
 		internal void RaiseDropped(BehaviorDraggable dragger)
 		{
 			if (Dropped != null)

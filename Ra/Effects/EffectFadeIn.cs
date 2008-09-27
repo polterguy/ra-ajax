@@ -27,8 +27,8 @@ namespace Ra.Widgets
 			RaWebControl tmp = this.Control as RaWebControl;
 			if (tmp != null)
 			{
-				tmp.Style["opacity", false] = "1.0";
-				tmp.Style["display", false] = "block";
+                tmp.Style.SetStyleValueViewStateOnly("opacity", "1.0");
+                tmp.Style.SetStyleValueViewStateOnly("display", "block");
 			}
 		}
 

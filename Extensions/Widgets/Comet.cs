@@ -23,7 +23,7 @@ using Extensions.Helpers;
 namespace Ra.Extensions
 {
     [ASP.ToolboxData("<{0}:Comet runat=\"server\" />")]
-    public class Comet : RaControl
+    public class Comet : RaControl, IRaControl
     {
 		public class CometEventArgs : EventArgs
 		{
@@ -106,7 +106,7 @@ namespace Ra.Extensions
             AjaxManager.Instance.IncludeScriptFromResource(typeof(Comet), "Extensions.Js.Comet.js");
         }
 
-        public override void DispatchEvent(string name)
+        void IRaControl.DispatchEvent(string name)
         {
             switch (name)
             {
@@ -130,8 +130,8 @@ namespace Ra.Extensions
 		{
 			return "new Ra.Comet";
 		}
-		
-        public override string GetOpeningHTML()
+
+        protected override string GetOpeningHTML()
         {
             // Dummy HTML DOM element to make registration and such easier...
 			// TODO: Make it possible to have IN-visible controls (maybe...?)

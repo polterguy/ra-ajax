@@ -33,8 +33,8 @@ namespace Ra.Widgets
 			RaWebControl tmp = this.Control as RaWebControl;
 			if (tmp != null)
 			{
-				tmp.Style["height", false] = "0px";
-				tmp.Style["display", false] = "none";
+                tmp.Style.SetStyleValueViewStateOnly("height", "0px");
+                tmp.Style.SetStyleValueViewStateOnly("display", "none");
 			}
 		}
 

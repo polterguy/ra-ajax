@@ -62,14 +62,5 @@ namespace Ra.Widgets
 		{
 			return "";
 		}
-		
-        public override void DispatchEvent(string name)
-        {
-            switch (name)
-            {
-                default:
-                    throw new ApplicationException("Unknown event fired for control");
-            }
-        }
 	}
 }

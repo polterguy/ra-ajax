@@ -58,9 +58,9 @@ namespace Ra.Widgets
 			if (tmp != null)
 			{
                 if (_height != -1)
-                    tmp.Style["height", false] = this._height.ToString() + "px";
+                    tmp.Style.SetStyleValueViewStateOnly("height", this._height.ToString() + "px");
                 if (_width != -1)
-                    tmp.Style["width", false] = this._width.ToString() + "px";
+                    tmp.Style.SetStyleValueViewStateOnly("width", this._width.ToString() + "px");
 			}
 		}
 
