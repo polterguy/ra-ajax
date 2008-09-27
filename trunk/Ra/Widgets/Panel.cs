@@ -15,19 +15,30 @@ using System.IO;
 
 namespace Ra.Widgets
 {
+    /**
+     * Panel control, renders as &lt;div...
+     */
     [DefaultProperty("CssClass")]
     [ASP.ToolboxData("<{0}:Panel runat=server></{0}:Panel>")]
     public class Panel : RaWebControl, IRaControl, ASP.INamingContainer
     {
+        /**
+         * Raised when panel is clicked
+         */
         public event EventHandler Click;
 
+        /**
+         * Raised when mouse is over the panel, opposite of MouseOut
+         */
         public event EventHandler MouseOver;
 
+        /**
+         * Raised when mouse is leaving the panel, opposite of MouseOver
+         */
         public event EventHandler MouseOut;
 
         #region [ -- Overridden (abstract/virtual) methods from RaControl -- ]
 
-        // Override this one to create specific HTML for your widgets
         protected override string GetOpeningHTML()
         {
             return string.Format("<div id=\"{0}\"{1}{2}>",

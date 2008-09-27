@@ -14,24 +14,52 @@ using Ra.Helpers;
 
 namespace Ra.Widgets
 {
+    /**
+     * Control which renders as &lt;textarea. Alternative to TextBox for long strings that requires a textarea
+     * HTML element instead of the &lt;input type="text" that the textbox renders. Otherwise mostly the
+     * same implementation as textbox.
+     */
     [DefaultProperty("Text")]
     [ASP.ToolboxData("<{0}:TextBox runat=server />")]
     public class TextArea : RaWebControl, IRaControl
     {
+        private bool _hasSetSelect;
+
+        /**
+         * Raised when text value of control is changed
+         */
         public event EventHandler TextChanged;
 
+        /**
+         * Raised when control looses focus, opposite of Focused
+         */
         public event EventHandler Blur;
 
+        /**
+         * Raised when control receives Focus, opposite of Blur
+         */
         public event EventHandler Focused;
 
+        /**
+         * Raised when mouse is over the control, opposite of MouseOut
+         */
         public event EventHandler MouseOver;
 
+        /**
+         * Raised when mouse is leaving the control, opposite of MouseOver
+         */
         public event EventHandler MouseOut;
 
+        /**
+         * Raised when JS DOM event keyup is raised on client. Basically when a key is pressed and released.
+         */
         public event EventHandler KeyUp;
 
         #region [ -- Properties -- ]
 
+        /**
+         * The text that is displayed within the control, default value is string.Empty
+         */
         [DefaultValue("")]
         public string Text
         {
@@ -44,6 +72,14 @@ namespace Ra.Widgets
             }
         }
 
+        /**
+         * The keyboard shortcut for clicking the button. Most browsers implements
+         * some type of keyboard shortcut logic like for instance FireFox allows
+         * form elements to be triggered by combining the AccessKey value (single character)
+         * together with ALT and SHIFT. Meaning if you have e.g. "H" as keyboard shortcut
+         * you can click this button by doing ALT+SHIFT+H on your keyboard. The combinations
+         * to effectuate the keyboard shortcuts however vary from browsers to browsers.
+         */
         [DefaultValue("")]
         public string AccessKey
         {
@@ -56,6 +92,9 @@ namespace Ra.Widgets
             }
         }
 
+        /**
+         * If false then the button is disabled, otherwise it is enabled
+         */
         [DefaultValue(true)]
         public bool Enabled
         {
@@ -68,6 +107,10 @@ namespace Ra.Widgets
             }
         }
 
+        /**
+         * (X)HTML have the columns attribute on the textarea element. This is its Ra-Ajax version.
+         * Basically how many characters there should be room for horizontally.
+         */
         [DefaultValue(20)]
         public int Columns
         {
@@ -80,6 +123,10 @@ namespace Ra.Widgets
             }
         }
 
+        /**
+         * (X)HTML have the rows attribute on the textarea element. This is its Ra-Ajax version.
+         * Basically how many characters there should be room for vertically before scrolling occurs.
+         */
         [DefaultValue(2)]
         public int Rows
         {
@@ -94,7 +141,9 @@ namespace Ra.Widgets
 
         #endregion
 
-        private bool _hasSetSelect;
+        /**
+         * Will if called select all text within control
+         */
         public void Select()
         {
             _hasSetSelect = true;

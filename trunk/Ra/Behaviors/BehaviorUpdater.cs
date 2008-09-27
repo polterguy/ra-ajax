@@ -58,7 +58,7 @@ namespace Ra.Widgets
 			return string.Format("new Ra.BUpDel('{0}'{1})", this.ClientID, options);
 		}
 
-        public override string GetClientSideScript()
+        protected override string GetClientSideScript()
 		{
 			return "";
 		}

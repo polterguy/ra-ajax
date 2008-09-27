@@ -14,12 +14,15 @@ using Ra.Helpers;
 
 namespace Ra.Widgets
 {
+    /**
+     * class for "visual" Ajax Controls. Mostly all Ajax Controls in Ra-Ajax inherits from this class
+     * instead of the RaControl class since this class implements logic for the Style property collection.
+     */
     public abstract class RaWebControl : RaControl, IAttributeAccessor
     {
-        StyleCollection _styles;
+        private StyleCollection _styles;
 
-        // Need default CTOR impl. to make sure we get to create the style collection with 
-        // the pointer to the this widget...
+        // Only purpose is to instantiate the _styles field with the this as the parameter
         public RaWebControl()
         {
             _styles = new StyleCollection(this);
@@ -27,6 +30,7 @@ namespace Ra.Widgets
 
         #region [ -- Overridden Base Class methods -- ]
 
+        // Overridden to start tracking on the Style collection
         protected override void TrackViewState()
         {
             base.TrackViewState();
@@ -59,6 +63,10 @@ namespace Ra.Widgets
 
         #region [ -- Properties -- ]
 
+        /**
+         * CSS class name for the root HTML element. Default value is "" and will not render the class 
+         * attribute on the HTML element.
+         */
         [DefaultValue("")]
         public string CssClass
         {
@@ -66,8 +74,9 @@ namespace Ra.Widgets
             set { ViewState["CssClass"] = value; }
         }
 
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        [Browsable(true)]
+        /**
+         * Collection of style-values, maps to the style attribute on the root HTML element
+         */
         public StyleCollection Style
         {
             get { return _styles; }
@@ -79,6 +88,7 @@ namespace Ra.Widgets
 
         public string GetAttribute(string key)
         {
+            // TODO: Implement...
             return null;
         }
 

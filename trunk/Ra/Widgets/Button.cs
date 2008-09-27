@@ -12,15 +12,10 @@ using WEBCTRLS = System.Web.UI.WebControls;
 using ASP = System.Web.UI;
 using Ra.Helpers;
 
-/**
- * 
- * Namespace where all the Widgets from the Ra core can be found together with some of their
- * helper classes.
- */
 namespace Ra.Widgets
 {
     /**
-     * Button control, renders as &lt;input type="button"
+     * Button control, renders as &lt;input type="button"...
      */
     [DefaultProperty("Text")]
     [ASP.ToolboxData("<{0}:Button runat=server />")]
@@ -74,7 +69,7 @@ namespace Ra.Widgets
          * form elements to be triggered by combining the AccessKey value (single character)
          * together with ALT and SHIFT. Meaning if you have e.g. "H" as keyboard shortcut
          * you can click this button by doing ALT+SHIFT+H on your keyboard. The combinations
-         * to effectuate the keyboard shortcuts howvere vary from browsers to browsers.
+         * to effectuate the keyboard shortcuts however vary from browsers to browsers.
          */
         [DefaultValue("")]
         public string AccessKey

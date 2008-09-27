@@ -14,18 +14,34 @@ using Ra.Helpers;
 
 namespace Ra.Widgets
 {
+    /**
+     * Label control, renders normally as a span, but the tag used to render the element can be overridden
+     * by setting the Tag property.
+     */
     [DefaultProperty("Text")]
     [ASP.ToolboxData("<{0}:Label runat=server />")]
     public class Label : RaWebControl, IRaControl
     {
+        /**
+         * Raised when label is clicked
+         */
         public event EventHandler Click;
 
+        /**
+         * Raised when mouse is over the label, opposite of MouseOut
+         */
         public event EventHandler MouseOver;
 
+        /**
+         * Raised when mouse is leaving the label, opposite of MouseOver
+         */
         public event EventHandler MouseOut;
 
         #region [ -- Properties -- ]
 
+        /**
+         * The text that is displayed within the label, default value is string.Empty
+         */
         [DefaultValue("")]
         public string Text
         {
@@ -38,6 +54,9 @@ namespace Ra.Widgets
             }
         }
 
+        /**
+         * The HTML tag used to render the label, defaults to span
+         */
         [DefaultValue("span")]
         public string Tag
         {

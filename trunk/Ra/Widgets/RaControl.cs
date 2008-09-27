@@ -13,11 +13,25 @@ using System.Web.UI;
 using System.ComponentModel;
 using System.Collections.Generic;
 
+/**
+ * Namespace where all the Widgets from the Ra core can be found together with some of their
+ * helper classes.
+ */
 namespace Ra.Widgets
 {
+    /**
+     * Base control for all other Ajax Controls in Ra-Ajax. Inherit from this if you want a 
+     * minimalistic extension Ajax control without the overhead from RaWebControl.
+     */
 	public abstract class RaControl : Control
 	{
-		protected override void LoadControlState(object savedState)
+        private bool _hasRendered;
+        private bool _reRender;
+        private Dictionary<string, object> _JSONValues = new Dictionary<string, object>();
+        protected bool _hasSetFocus;
+        private List<string> _extraInitFunctions = new List<string>();
+
+        protected override void LoadControlState(object savedState)
 		{
 			if (!AjaxManager.Instance.IsCallback)
 			{
@@ -35,7 +49,7 @@ namespace Ra.Widgets
 			return Visible;
 		}
 
-		private bool _hasRendered;
+        // TODO: Try to make entire thing private....
 		[Browsable(false)]
 		internal bool HasRendered
 		{
@@ -43,7 +57,11 @@ namespace Ra.Widgets
 			private set { _hasRendered = value; }
 		}
 
-		private bool _reRender;
+        /**
+         * Call this method to re-render the control. A call to this method will ensure that all
+         * child controls in the Controls collection will be re-rendered. Meaning the innerHTML of
+         * the control will be sent in its entirety back to the client.
+         */
 		public void ReRender()
 		{
 			if (!AjaxManager.Instance.IsCallback || !HasRendered)
@@ -70,7 +88,8 @@ namespace Ra.Widgets
 			}
 		}
 
-		protected void RenderOnlyJSON(HtmlTextWriter writer)
+        // TODO: Refactor, change Behavior to make it possible to make this private, or investigate options...
+		internal void RenderOnlyJSON(HtmlTextWriter writer)
 		{
 			string JSON = SerializeJSON();
 			if (!string.IsNullOrEmpty(JSON))
@@ -212,10 +231,9 @@ namespace Ra.Widgets
 			}
 		}
 
-		// Used to track if control has been rendered previously
-		private Dictionary<string, object> _JSONValues = new Dictionary<string, object>();
-		protected bool _hasSetFocus;
-
+        /**
+         * Collection of behaviors for the control
+         */
 		[Browsable(false)]
 		public virtual IEnumerable<Behavior> Behaviors
 		{
@@ -229,6 +247,10 @@ namespace Ra.Widgets
 			}
 		}
 
+        /**
+         * Helper to get the first Behavior of type T. Will query the Behaviors collection and return
+         * the first instance which is of type T in the collection.
+         */
 		public T FirstBehavior<T>() where T : Behavior
 		{
 			foreach (Behavior idx in Behaviors)
@@ -266,6 +288,9 @@ namespace Ra.Widgets
 			return _JSONValues.ContainsKey(key);
 		}
 
+        // TODO: Refactor all the SetJSONValue methods...!!
+        // Make them into ONE which takes an object and then do GetType or something within that
+        // method...
 		protected void SetJSONValueString(string key, string value)
 		{
 			if (this.IsTrackingViewState)
@@ -293,6 +318,9 @@ namespace Ra.Widgets
 			}
 		}
 
+        /**
+         * Gives the control focus
+         */
 		public override void Focus()
 		{
 			_hasSetFocus = true;
@@ -302,7 +330,7 @@ namespace Ra.Widgets
 			}
 		}
 
-		protected string SerializeJSON()
+		private string SerializeJSON()
 		{
 			// Short circuting
 			if (_JSONValues.Count == 0)
@@ -320,9 +348,11 @@ namespace Ra.Widgets
 			return string.Empty;
 		}
 
-		// This one returns true ONLY if there was something actually ADDED to the builder...
-		// Note if you have "custom objects" you want to serialize in your own extension widgets
-		// you should OVERRIDE this method and return base for everything except your "custom types"...
+        /**
+         * If you have an Extension Ajax Control which has a property of a type which the default
+         * method is not able to serialize then override this method in your Extension control
+         * and check for your custom types and if not custom type then return base implementation.
+         */
 		protected virtual void SerializeJSONValue(string key, object value, StringBuilder builder)
 		{
 			// TODO: Create more general approach, this one only handles TWO level deep JSON objects...
@@ -424,15 +454,12 @@ namespace Ra.Widgets
 
 		protected virtual string GetChildrenClientSideScript()
 		{
-			return GetChildrenClientSideScript(Controls);
+            // Recursively iterating the child controls collection and returning the registration
+            // scripts for all controls inside of the "this" control
+            return GetChildrenClientSideScript(Controls);
 		}
 
-        protected virtual ControlCollection GetTrueChildren()
-        {
-            return Controls;
-        }
-
-		protected string GetChildrenClientSideScript(ControlCollection controls)
+		private string GetChildrenClientSideScript(ControlCollection controls)
 		{
 			string retVal = "";
 			foreach (Control idx in controls)
@@ -485,22 +512,24 @@ namespace Ra.Widgets
 			}
 			return evts;
 		}
-		
-		private List<string> _extraInitFunctions = new List<string>();
-		
+
 		internal void AddInitCall(string functionReference)
 		{
 			_extraInitFunctions.Add(functionReference);
 		}
 
-		// Used to retrieve the client-side initialization script
-		private bool _scriptRetrieved;
-		public virtual string GetClientSideScript()
+        /**
+         * Override this one in your own Ajax Extension controls to get the registration script
+         * for your widgets unless you are good with Ra.C as the registration script.
+         * Normally you'd do this if you have your own JavaScript file for your widget.
+         * Note though that often it is better to override on of the;
+         * * GetClientSideScriptType
+         * * GetEventsRegisterScript
+         * * GetClientSideScriptOptions
+         * methods...
+         */
+        protected virtual string GetClientSideScript()
 		{
-			if (_scriptRetrieved)
-				return "";
-			_scriptRetrieved = true;
-
 			// Retrieving all the different option types
 			string options = GetScriptOptions(false);
 			string behaviors = GetScriptBehaviors(!string.IsNullOrEmpty(options));
@@ -524,16 +553,28 @@ namespace Ra.Widgets
 		        extraFunctionCalls);
 		}
 
+        /**
+         * Override to return another type only for the client-side registration script, default
+         * implementation returns; "Ra.C" which is shorthand for "new Ra.Control"
+         */
 		protected virtual string GetClientSideScriptType()
 		{
 			return "Ra.C";
 		}
 
+        /**
+         * Override to return the explicitly handled events for your widgets. Default 
+         * implementation is string.Empty
+         */
 		protected virtual string GetEventsRegisterScript()
 		{
 			return string.Empty;
 		}
 
+        /**
+         * Override to return the options for your client-side registration script. Default
+         * will return only the "focus" option.
+         */
 		protected virtual string GetClientSideScriptOptions()
 		{
 			if (_hasSetFocus)
@@ -541,6 +582,10 @@ namespace Ra.Widgets
 			return "";
 		}
 
+        /**
+         * Override to return the Behavior registration scripts for your widgets. Default will just loop through
+         * the behaviors in your Behaviors list. Very seldom you would want to override this one btw...
+         */
 		protected string GetBehaviorRegisterScript()
 		{
 			string retVal = "";
@@ -558,23 +603,35 @@ namespace Ra.Widgets
 			return retVal;
 		}
 
-		// The HTML for the control
+        /**
+         * Opening HTML for your control. If you control can have child controls in the Controls collection
+         * you would probably want to override also the GetClosingHTML method if you override this one.
+         * If your widget cannot have child controls then only override this one and drop overriding 
+         * the GetClosingHTML method.
+         */
 		protected abstract string GetOpeningHTML();
 
-		// This one have an implementation since so many controls don't really have
-		// any closing HTML since they're closed inline with / at the end of their element
+        /**
+         * If your widget can have child controls in the Controls collection then override this one to
+         * return the closing HTML element tag of your widget.
+         */
 		protected virtual string GetClosingHTML()
 		{
 			return string.Empty;
 		}
 
 		// The INVISIBLE HTML for the control
+        /**
+         * Unless your widget can get away with &lt;span style="display:none;"... as the in-visible
+         * HTML of the control, then override this one to return the in-visible HTML of your control.
+         * Scenarios where this might be reasonable is where your control is e.g. a &lt;li... type
+         * of control and rendering an invisible span will break XHTML compliance.
+         */
 		public virtual string GetInvisibleHTML()
 		{
 			return string.Empty;
 		}
 
-        // The Default INVISIBLE HTML for the control
         private string GetDefaultInvisibleHTML()
         {
             return string.Format("<span id=\"{0}\" style=\"display:none;\">&nbsp;</span>", ClientID);

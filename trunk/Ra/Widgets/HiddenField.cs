@@ -14,12 +14,18 @@ using Ra.Helpers;
 
 namespace Ra.Widgets
 {
+    /**
+     * HiddenField control, renders &lt;input type="hidden"...
+     */
     [DefaultProperty("Text")]
     [ASP.ToolboxData("<{0}:HiddenField runat=server />")]
     public class HiddenField : RaControl, IRaControl
     {
         #region [ -- Properties -- ]
 
+        /**
+         * Value property of the hiddenfield
+         */
         [DefaultValue("")]
         public string Value
         {
