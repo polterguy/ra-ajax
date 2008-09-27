@@ -116,14 +116,14 @@ protected override void InitializeTask(XmlNode taskNode)
       Location
     );
 
-  if (!_toDirectory.Exists)
-    _toDirectory.Create();
-
   if (_jsFiles == null)
     throw new BuildException(
       string.Format(CultureInfo.InvariantCulture, "The &lt;fileset&gt; element must be used ..."), 
       Location
     );
+	
+  if (!_toDirectory.Exists)
+    _toDirectory.Create();
 }
 </pre>
 And in ExecuteTask we have our main logic:
@@ -156,7 +156,10 @@ protected override void ExecuteTask()
     else 
     {
       throw new BuildException(
-        string.Format(CultureInfo.InvariantCulture, "Could not find file '{0}' to minify.", srcFile.FullName),
+        string.Format(
+          CultureInfo.InvariantCulture, 
+          "Could not find file '{0}' to minify.", 
+          srcFile.FullName),
         Location
       );
     }
