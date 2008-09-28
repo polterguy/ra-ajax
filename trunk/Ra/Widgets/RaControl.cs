@@ -212,12 +212,20 @@ namespace Ra.Widgets
 			{
 				if (AjaxManager.Instance.IsCallback)
 				{
-					if (HasRendered)
-					{
-						// Control is NOT visible, this is a callback and Control has been rendered before
-						// We Need to DESTROY Control here. If Control has not been rendered before we do NOTHING!
+                    if (HasRendered)
+                    {
+                        // Control is NOT visible, this is a callback and Control has been rendered before
+                        // We Need to DESTROY Control here. If Control has not been rendered before we do NOTHING!
                         AjaxManager.Instance.Writer.WriteLine("Ra.Control.$('{0}').destroy('{1}');", ClientID, GetInvisibleHTML());
-					}
+                    }
+                    else
+                    {
+                        // Callback, in-visible
+                        string invisibleHtml = GetInvisibleHTML();
+                        if (string.IsNullOrEmpty(invisibleHtml))
+                            invisibleHtml = GetDefaultInvisibleHTML();
+                        writer.Write(invisibleHtml);
+                    }
 				}
 				else
 				{
