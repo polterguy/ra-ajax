@@ -34,17 +34,17 @@ namespace Ra.Extensions
         }
 
         [DefaultValue(400)]
-        public int AnimationSpeed
+        public int AnimationDuration
         {
             get
             {
-                if (ViewState["AnimationSpeed"] == null)
+                if (ViewState["AnimationDuration"] == null)
                     return 400;
-                return (int)ViewState["AnimationSpeed"];
+                return (int)ViewState["AnimationDuration"];
             }
             set
             {
-                ViewState["AnimationSpeed"] = value;
+                ViewState["AnimationDuration"] = value;
             }
         }
 

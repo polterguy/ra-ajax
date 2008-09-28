@@ -717,7 +717,7 @@ Ra.Effect.prototype = {
       onStart: function() {},
       onFinished: function() {},
       onRender: null,
-      sinoidal: false
+      transition: 'Linear'
     }, options || {});
     if( element ) {
       this.element = Ra.$(element);
@@ -732,19 +732,21 @@ Ra.Effect.prototype = {
   loop: function() {
     if( this.stopped )
       return;
-    var curTime = new Date().getTime();
-    if( curTime >= this.finishOn ) {
-      this.render(1.0);
-      this.options.onFinished.call(this);
-    } else {
+    var T = this;
+
+    setTimeout(function() {
+
       // One tick
-      var delta = (curTime - this.startTime) / (this.options.duration);
-      this.render(delta);
-      var T = this;
-      setTimeout(function() {
+      var curTime = new Date().getTime();
+      var delta = (curTime - T.startTime) / (T.options.duration);
+      if( curTime >= T.finishOn ) {
+        T.options.onFinished.call(T);
+      } else {
+        T.render(delta);
         T.loop();
-      }, 10);
-    }
+      }
+
+    }, 10);
   },
 
   // Called by loop every 10 milliesond with "position" of animation
@@ -752,10 +754,17 @@ Ra.Effect.prototype = {
   // and anything between the position of the animation meaning if duration == 3 seconds
   // then after 2 seconds the position will equal 0.6666666.
   render: function(pos) {
-    if( this.options.sinoidal )
-      this.options.onRender.call(this, (-Math.cos(pos*Math.PI)/2) + .5);
-    else
-      this.options.onRender.call(this, pos);
+    switch(this.options.transition) {
+      case 'Linear':
+        break;
+      case 'Accelerating':
+        pos = Math.cos((pos * (Math.PI / 2)) + Math.PI) + 1;
+        break;
+      case 'Explosive':
+        pos = Math.sin(pos * (Math.PI / 2));
+        break;
+    }
+    this.options.onRender.call(this, pos);
   }
 };
 
