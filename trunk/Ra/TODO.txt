@@ -22,6 +22,8 @@
 
 * TabControl looks ugly in IE7
 
+* Finish up Comet
+
 * SelectStart in BehaviorDraggable isn't trapped in Chrome...
 
 * Fix CheckBox and RadioButton so that also e.g. OnMouseOver triggers on CONTROL and not only
