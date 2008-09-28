@@ -98,7 +98,7 @@ namespace NUnitTests
         }
 
         [NUnit.Framework.Test]
-        public void DeleteFromDropDownList()
+        public void NON_IE7_WORKING_TEST_DeleteFromDropDownList()
         {
             Browser.Button("deleteFromDDL").Click();
             Browser.Eval("verifyAfterDelete1();");

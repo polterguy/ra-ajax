@@ -140,7 +140,6 @@ namespace Ra.Widgets
 			
 			// THEN we get the scripts. It is VERY important that the scripts are rendered after the HTML for the widgets
             // ALL of the widgets...!!
-			AjaxManager.Instance.Writer.WriteLine(GetClientSideScript());
 			AjaxManager.Instance.Writer.WriteLine(GetChildrenClientSideScript());
 		}
 

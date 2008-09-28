@@ -455,43 +455,43 @@ function testMultipleRequests() {
   Ra.$('results').innerHTML = '';
   new Ra.Ajax({
     args: 'id=0',
-    onAfter: function(r) {
+    onSuccess: function(r) {
       Ra.$('results').innerHTML += r;
     }
   });
   new Ra.Ajax({
     args: 'id=1',
-    onAfter: function(r) {
+    onSuccess: function(r) {
       Ra.$('results').innerHTML += r;
     }
   });
   new Ra.Ajax({
     args: 'id=2',
-    onAfter: function(r) {
+    onSuccess: function(r) {
       Ra.$('results').innerHTML += r;
     }
   });
   new Ra.Ajax({
     args: 'id=3',
-    onAfter: function(r) {
+    onSuccess: function(r) {
       Ra.$('results').innerHTML += r;
     }
   });
   new Ra.Ajax({
     args: 'id=4',
-    onAfter: function(r) {
+    onSuccess: function(r) {
       Ra.$('results').innerHTML += r;
     }
   });
   new Ra.Ajax({
     args: 'id=5',
-    onAfter: function(r) {
+    onSuccess: function(r) {
       Ra.$('results').innerHTML += r;
     }
   });
   new Ra.Ajax({
     args: 'id=6',
-    onAfter: function(r) {
+    onSuccess: function(r) {
       Ra.$('results').innerHTML += r;
     }
   });
