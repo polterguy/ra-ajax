@@ -14,11 +14,18 @@ namespace Ra.Widgets
 {
     public abstract class Effect
     {
+        public enum Transition
+        {
+            Linear,
+            Accelerating,
+            Explosive,
+        };
+
         #region [-- Private Fields --]
 
         private Control _control;
         private int _milliseconds;
-		private bool _sinoidal;
+		private Transition _type;
         private List<Effect> _joined = new List<Effect>();
         private List<Effect> _chained = new List<Effect>();
 
@@ -32,10 +39,10 @@ namespace Ra.Widgets
             private set { _control = value; }
         }
 
-        public bool Sinoidal
+        public Transition TransitionType
         {
-            get { return _sinoidal; }
-            set { _sinoidal = value; }
+            get { return _type; }
+            set { _type = value; }
         }
 
         public List<Effect> Joined
@@ -158,14 +165,14 @@ Ra.E('{0}', {{
   onFinished: function() {{{3}}},
   onRender: function(pos) {{{4}}},
   duration:{1},
-  sinoidal:{5}
+  transition:'{5}'
 }});",
                 (_control == null ? null : _control.ClientID),
                 _milliseconds.ToString(),
                 onStart,
                 onFinished,
                 onRender,
-                this.Sinoidal ? "true" : "false");
+                this.TransitionType);
         }
 
         protected virtual void ValidateEffect()

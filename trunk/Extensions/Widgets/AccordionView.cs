@@ -86,13 +86,14 @@ Ra.E('{0}', {{
   onFinished: function() {{{3}}},
   onRender: function(pos) {{{4}}},
   duration:{1},
-  sinoidal:true
+  transition:'{5}'
 }});", 
                     _idRemove, 
-                    _parent.AnimationSpeed.ToString(System.Globalization.CultureInfo.InvariantCulture),
+                    _parent.AnimationDuration.ToString(System.Globalization.CultureInfo.InvariantCulture),
                     RenderParalledOnStart(),
                     RenderParalledOnFinished(),
-                    RenderParalledOnRender());
+                    RenderParalledOnRender(),
+                    Effect.Transition.Explosive);
             }
 
             public override string RenderParalledOnStart()
