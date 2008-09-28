@@ -25,7 +25,6 @@ public partial class Effects : System.Web.UI.Page
         btn2.Enabled = true;
         btn2.Focus();
         Effect effect = new EffectSize(pnl, 600, 160, 300);
-        effect.TransitionType = Effect.Transition.Accelerating;
         effect.JoinThese(
             new EffectHighlight(), 
             new EffectBorder(5)

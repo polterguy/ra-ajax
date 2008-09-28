@@ -25,7 +25,7 @@ namespace Ra.Widgets
 
         private Control _control;
         private int _milliseconds;
-		private Transition _type;
+		private Transition _type = Transition.Explosive;
         private List<Effect> _joined = new List<Effect>();
         private List<Effect> _chained = new List<Effect>();
 
