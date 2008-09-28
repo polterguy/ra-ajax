@@ -292,7 +292,11 @@ Ra.Element.prototype = {
         return func.apply(callingContext, [event || window.event]);
       }
     };
-    
+
+    // Here we're "defaulting" the callingContext to the function unless it is explicitly given
+    if( !callingContext )
+      callingContext = func;
+
     if( !callingContext._raAjaxEventGuid ) {
       callingContext._raAjaxEventGuid = Ra.Element._guid++;
     }
@@ -309,6 +313,10 @@ Ra.Element.prototype = {
   },
 
   stopObserving: function(evtName, func, callingContext) {
+
+    // Here we're "defaulting" the callingContext to the function unless it is explicitly given
+    if( !callingContext )
+      callingContext = func;
 
     // Retrieving event handler wrapper
     var wr = this._wrappers[evtName + callingContext._raAjaxEventGuid];
@@ -370,22 +378,22 @@ Ra.XHR.prototype = {
     // Getting transport
     this.xhr = (XMLHttpRequest && new XMLHttpRequest()) || new ActiveXObject('Msxml2.XMLHTTP') || 
       new ActiveXObject('Microsoft.XMLHTTP');
-    
+
     // Opening transport and setting headers
     this.xhr.open('POST', this.url, true);
     this.xhr.setRequestHeader('Accept', 'text/javascript, text/html, application/xml, text/xml, */*');
     this.xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
 
-    // Setting body of request
-    this.xhr.send(this.options.body);
-
-    // Now we can start checking for readyState (waiting for request to be finished)
+    // Setting our callback function for the ready state changed event
     var T = this;
     this.xhr.onreadystatechange = function() {
       if( T.xhr.readyState == 4 ) {
         T._finished();
       }
     };
+
+    // Then we can send our request
+    this.xhr.send(this.options.body);
   },
 
   // Called when request is finished
