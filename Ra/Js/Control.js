@@ -356,9 +356,8 @@ Ra.Control.prototype = {
       // Checking to see that this is NOT the "this" control
       // And if it's a child control (defined as starting with the same id followed by an '_')
       // NOT bulletproof, but close enough...
-      if( ctrls[idx].element.id.length > this.element.id.length &&
-        ctrls[idx].element.id.indexOf(this.element.id) === 0 &&
-        ctrls[idx].element.id.substring(this.element.id.length)[0] == '_' ) {
+      if( ctrls[idx].element.id.indexOf(this.element.id) == 0 &&
+        ctrls[idx].element.id.substring(this.element.id.length, this.element.id.length + 1) == '_' ) {
           children.push(ctrls[idx]);
       }
     }
