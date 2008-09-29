@@ -42,6 +42,10 @@
 
 * Create Menu Control
 
+* Finish up Doxygen comments
+
+* Implement so that one can remotely signalize (optional) the Comet object from other services...
+
 * Fix a set of beautiful skins for all extension-controls.
 
 * Fade effects doesn't work in Konqueror, probably setOpacity and getOpacity does something wrong...

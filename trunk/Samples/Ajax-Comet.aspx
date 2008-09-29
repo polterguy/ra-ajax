@@ -4,6 +4,7 @@
     AutoEventWireup="true" 
     CodeFile="Ajax-Comet.aspx.cs" 
     Async="true" 
+    AsyncTimeout="20"
     Inherits="AjaxComet" 
     Title="Ra-Ajax Comet Sample" %>
 
@@ -24,44 +25,45 @@
 
     <h1>Ra Ajax Samples - Ajax Comet</h1>
     <p>
-        Ra-Ajax has an <em>Ajax Comet</em> component which you can use if you need realtime updates to your webpage or
-        you don't want to have the overhead of constantly polling the server by using the 
+        Ra-Ajax has an <em>Ajax Comet</em> component which you can use if you need realtime updates to your 
+        webpage or you don't want to have the overhead of constantly polling the server by using the 
         <a href="Ajax-Timer.aspx">Ajax Timer</a>.
     </p>
     <p>
         Be careful with Comet though. It has a nasty habit of seriously stressing the resources on both the
         client-side and the server side. Comet is a <em>last resort solution</em> which you only should use
-        when <em>all other options are inadequate</em>. Comet is only to be used if you are 
-        100% sure about that you need it!
-    </p>
-    <p>
-    	Since the Comet is currently in pre-release preview mode we have <strong>disabled the comet in this example</strong>
-    	but you can test it locally by setting its Enabled property to true when you download Ra-Ajax.
+        when all other options are inadequate. Comet is only to be used if you are 100% sure about that you 
+        need it!
     </p>
     <ra:Panel 
         runat="server" 
         ID="chat" 
+        style="background-color:#eee;"
         CssClass="panel chat">
     </ra:Panel>
     <div>
         <ra:TextBox 
             runat="server" 
             ID="newChat" 
-            Text="INTENTIONALLY DISABLED" 
-            style="width:75%;"
-            OnFocused="newChat_Focused" />
+            Text="Type text here" 
+            style="width:75%;" />
         <ra:Button 
             runat="server" 
             ID="submit" 
-            Enabled="false"
+            Enabled="true"
             Text="Submit" 
             OnClick="submit_Click" />
         <ext:Comet 
             runat="server" 
             ID="comet"
-            Enabled="false"
+            Enabled="true"
             OnTick="comet_Tick" />
     </div>
+    <p>
+        If you try to open two different browser windows while you add up chat items you will see that the Comet
+        solution is a "real time" solution and that changes are immediately propagated to all open clients against
+        the same Comet component.
+    </p>
     <h2>Comet concerns</h2>
     <p>
         Mostly IE (except for some rumours about IE8) doesn't support Comet very well due to the 
