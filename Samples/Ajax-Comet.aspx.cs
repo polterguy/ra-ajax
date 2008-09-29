@@ -27,6 +27,9 @@ public partial class AjaxComet : System.Web.UI.Page
 
     protected void comet_Tick(object sender, Ra.Extensions.Comet.CometEventArgs e)
     {
+        // Effect on area...
+        new EffectHighlight(chat, 600).Render();
+
         // Locking to make sure no one tampers with our Chats while iterating them...
         lock (typeof(AjaxComet))
         {
@@ -72,9 +75,9 @@ public partial class AjaxComet : System.Web.UI.Page
     {
         lock (typeof(AjaxComet))
         {
-            if (Chats.Count > 10)
+            if (Chats.Count >= 5)
             {
-                Chats = new List<string>(Chats.GetRange(1, 10));
+                Chats = new List<string>(Chats.GetRange(1, 4));
             }
             Chats.Add(newChat.Text);
         }

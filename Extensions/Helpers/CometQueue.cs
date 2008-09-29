@@ -20,7 +20,7 @@ namespace Extensions.Helpers
             _resetEvent = new ManualResetEvent(false);
         }
 
-        public string WaitForNextMessage(string lastEvent)
+        public string WaitForNextMessage(string lastEvent, int timeout)
         {
             if (lastEvent != null && _events.Count > 0 && lastEvent != _events[_events.Count - 1])
             {
@@ -53,22 +53,22 @@ namespace Extensions.Helpers
                 }
 
                 // No new event, just waiting for the "next one"...
-                return WaitOne();
+                return WaitOne(timeout);
             }
             else if (lastEvent == null || _events.Count == 0 || lastEvent == _events[_events.Count - 1])
             {
                 // Waiting for our next event...
-                return WaitOne();
+                return WaitOne(timeout);
             }
             return null;
         }
 
-        private string WaitOne()
+        private string WaitOne(int timeout)
         {
             // TODO: Should we lock here...?
             // Go through entire logic later to verify correctness... :|
             _resetEvent.Reset();
-            if (_resetEvent.WaitOne(new TimeSpan(0, 0, 60), true))
+            if (_resetEvent.WaitOne(new TimeSpan(0, 0, timeout), true))
             {
                 lock (this)
                 {

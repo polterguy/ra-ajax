@@ -17,6 +17,8 @@ using HTML = System.Web.UI.HtmlControls;
 using System.Threading;
 using System.Collections.Generic;
 using Extensions.Helpers;
+using System.Web;
+using System.Reflection;
 
 [assembly: ASP.WebResource("Extensions.Js.Comet.js", "text/javascript")]
 
@@ -39,7 +41,10 @@ namespace Ra.Extensions
 				get { return _id; }
 			}
 		}
-		
+
+        private delegate string EnterQueue(string lastEvent, int timeout);
+        private EnterQueue _enter;
+
         public event EventHandler<CometEventArgs> Tick;
 
         [DefaultValue(true)]
@@ -81,29 +86,79 @@ namespace Ra.Extensions
 
         protected override void OnInit(EventArgs e)
         {
-            // Checking to see if this is a Comet request...
-            string comet = Page.Request.Params[this.ClientID];
-            if (comet == "comet")
+            // Safeguarding against insane values for Timeout....
+            if (Page.AsyncTimeout.TotalSeconds < 5 || Page.AsyncTimeout.TotalSeconds > 120)
+                throw new ArgumentException("Cannot have AsyncTimeout on page being outside of range [5,120] milliseconds");
+
+            if (Page.Request.Params[this.ClientID] == "comet")
             {
-                string previousMessage = Page.Request.Params["prevMsg"];
-                Page.Response.Clear();
-                string nextMessage = Queue.WaitForNextMessage(previousMessage);
-                if (nextMessage != null)
-                    Page.Response.Write(nextMessage);
-                try
-                {
-                    // Will throw an exception...
-                    Page.Response.End();
-                }
-                catch (Exception)
-                {
-                    // Silently catching due to "by design decision" from Microsoft...
-                    // Maybe we should use a Response-Filter here...?
-                    return;
-                }
+                // REMOVING filters if there are eny on the page...
+                AjaxManager.Instance.SupressAjaxFilters = true;
+                Page.Response.Filter = null;
+
+                // Adding up the Async event handlers...
+                Page.RegisterAsyncTask(
+                    new System.Web.UI.PageAsyncTask(
+                        BeginEnterCometQueue,
+                        EndEnterCometQueue,
+                        TimeoutCometQueue,
+                        Page.Request.Params["prevMsg"]));
+
+                // TODO: Not sure if we need to call base here, if we can avoid caling base we will
+                // avoid the removal of the Response Filters since they're added in RaControl...
+                // Maybe add up an "else" to call base implementation...?
             }
             base.OnInit(e);
             AjaxManager.Instance.IncludeScriptFromResource(typeof(Comet), "Extensions.Js.Comet.js");
+        }
+
+        private IAsyncResult BeginEnterCometQueue(object src, EventArgs args, AsyncCallback cb, object state)
+        {
+            _enter = new EnterQueue(Queue.WaitForNextMessage);
+            return _enter.BeginInvoke(state as string, (int)Page.AsyncTimeout.TotalSeconds, cb, null);
+        }
+
+        private void TimeoutCometQueue(IAsyncResult ar)
+        {
+            Page.Response.Clear();
+            try
+            {
+                // Will throw an exception...
+                Page.Response.End();
+            }
+            catch (Exception)
+            {
+                // Silently catching due to "by design decision" from Microsoft...
+                // Maybe we should use a Response-Filter here...?
+                // The logic we currently have interferes quite heavily with existing Ajax Filters on Response
+                // object...
+                return;
+            }
+        }
+
+        private void EndEnterCometQueue(IAsyncResult ar)
+        {
+            // Retrieving message
+            string nextMessage = _enter.EndInvoke(ar);
+
+            // Flushing response and writing our Comet Event ID back to the client.
+            // The "nextMessage" (if any) will be the event id passed back into the Tick event handler
+            Page.Response.Clear();
+            if (nextMessage != null)
+                Page.Response.Write(nextMessage);
+            try
+            {
+                // Will throw an exception...
+                Page.Response.End();
+            }
+            catch (Exception)
+            {
+                // Silently catching due to "by design decision" from Microsoft...
+                // Maybe we should use a Response-Filter here...?
+                // The logic we currently have interferes quite heavily with existing Ajax Filters on Response
+                // object...
+                return;
+            }
         }
 
         void IRaControl.DispatchEvent(string name)

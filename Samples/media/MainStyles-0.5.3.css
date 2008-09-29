@@ -212,7 +212,7 @@ h2 { margin-top:2.7em; }
 .codeBtn { margin-top:2.0em; margin-left:12px; }
 .updateLbl { color:#33f; }
 .panel { background-color:Yellow; border:solid 1px Black; padding:15px; }
-.chat { width:100%; height:220px;padding:5px; }
+.chat { width:100%; height:220px; padding:5px; overflow:auto; }
 .pnlAnimation { position:absolute;background-color:#ddd;border:solid 1px Black;padding:15px;height:100px;width:100px; }
 .pnlInv { display:none; }
 .pnlAbs { position:absolute; }

@@ -31,7 +31,6 @@ Ra.extend(Ra.Comet.prototype, {
   },
 
   start: function() {
-
     // Only running Comet if Comet is ENABLED...
     if( !this.options.enabled )
       return;
@@ -51,10 +50,6 @@ Ra.extend(Ra.Comet.prototype, {
     this._xhr = new Ra.XHR(this.options.url, {
       body: this.element.id + '=comet' + '&prevMsg=' + encodeURIComponent(this.options.previousMsg),
       queue:false,
-      onTimeout: function() {
-        // Silently restarting XHR...
-        T.start();
-      },
       onSuccess: function(response) {
         if( response !== null && response != '' ) {
           T.options.previousMsg = response;
@@ -79,7 +74,7 @@ Ra.extend(Ra.Comet.prototype, {
 
   callback: function(evt) {
     var x = new Ra.Ajax({
-      args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=tick' + '&__EVENT_ARGS=' + encodeURIComponent(response),
+      args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=tick' + '&__EVENT_ARGS=' + encodeURIComponent(evt),
       raCallback:true,
       onSuccess: this.onFinishedTicking,
       callingContext: this
