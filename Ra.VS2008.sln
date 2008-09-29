@@ -33,7 +33,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2015A574-CB12-490B-88FA-79F5F1489389}"
 	ProjectSection(SolutionItems) = preProject
 		Package.build = Package.build
-		PublishSamples.build = PublishSamples.build
+		PublishWebsites.build = PublishWebsites.build
 		Ra.build = Ra.build
 	EndProjectSection
 EndProject

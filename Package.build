@@ -18,7 +18,7 @@
 	<property name="framework.dir" value="${framework::get-framework-directory('net-2.0')}" />
 	<!-- End Properties -->
 
-	<nant buildfile="PublishSamples.build" />
+	<nant buildfile="PublishWebsites.build" />
 
 	<copy overwrite="true" file="Ra.sln" todir="${output.dir}" />
 	<copy overwrite="true" file="Ra.build" todir="${output.dir}" />
@@ -27,8 +27,8 @@
 	<copy overwrite="true" todir="${output.dir}/${ra.name}">
 		<fileset basedir="${ra.name}">
 			<exclude name="obj/**/*.*" />
-      <exclude name="**/*VS2008.csproj" />
-      <include name="**/*.cs" />
+			<exclude name="**/*VS2008.csproj" />
+			<include name="**/*.cs" />
 			<include name="**/*.js" />
 			<include name="**/*.txt" />
 			<include name="**/*.csproj" />
@@ -38,8 +38,8 @@
 	<copy overwrite="true" todir="${output.dir}/${ext.name}">
 		<fileset basedir="${ext.name}">
 			<exclude name="obj/**/*.*" />
-      <exclude name="**/*VS2008.csproj" />
-      <include name="**/*.cs" />
+			<exclude name="**/*VS2008.csproj" />
+			<include name="**/*.cs" />
 			<include name="**/*.js" />
 			<include name="**/*.csproj" />
 		</fileset>
@@ -48,8 +48,8 @@
 	<copy overwrite="true" todir="${output.dir}/${resource.cacher.name}">
 		<fileset basedir="${resource.cacher.name}">
 			<exclude name="obj/**/*.*" />
-      <exclude name="**/*VS2008.csproj" />
-      <include name="**/*.cs" />
+			<exclude name="**/*VS2008.csproj" />
+			<include name="**/*.cs" />
 			<include name="**/*.csproj" />
 		</fileset>
 	</copy>
@@ -57,8 +57,8 @@
 	<copy overwrite="true" todir="${output.dir}/${ra.build.tasks.name}">
 		<fileset basedir="${ra.build.tasks.name}">
 			<exclude name="obj/**/*.*" />
-      <exclude name="**/*VS2008.csproj" />
-      <include name="**/*.cs" />
+			<exclude name="**/*VS2008.csproj" />
+			<include name="**/*.cs" />
 			<include name="**/*.csproj" />
 		</fileset>
 	</copy>
