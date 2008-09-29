@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project name="PublishSamples" default="all">
+<project name="PublishWebsites" default="all" xmlns="http://nant.sf.net/release/0.85/nant.xsd">
 
 	<!-- Properties -->
 	<property name="debug" value="false" />
