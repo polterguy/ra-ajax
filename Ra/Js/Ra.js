@@ -376,7 +376,8 @@ Ra.XHR.prototype = {
   start: function() {
 
     // Getting transport
-    this.xhr = (XMLHttpRequest && new XMLHttpRequest()) || new ActiveXObject('Msxml2.XMLHTTP') || 
+    this.xhr = (XMLHttpRequest && new XMLHttpRequest()) || 
+      new ActiveXObject('Msxml2.XMLHTTP') || 
       new ActiveXObject('Microsoft.XMLHTTP');
 
     // Opening transport and setting headers

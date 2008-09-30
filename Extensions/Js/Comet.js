@@ -50,10 +50,12 @@ Ra.extend(Ra.Comet.prototype, {
     this._xhr = new Ra.XHR(this.options.url, {
       body: this.element.id + '=comet' + '&prevMsg=' + encodeURIComponent(this.options.previousMsg),
       queue:false,
-      onSuccess: function(response) {
-        if( response !== null && response != '' ) {
-          T.options.previousMsg = response;
-          T.tick(response);
+      onTimeout: function() {
+        T.start();
+      },
+      onSuccess: function(r) {
+        if( r ) {
+          T.tick(r);
         } else {
           // No new messages, timeout from server...
           T.start();
@@ -65,25 +67,21 @@ Ra.extend(Ra.Comet.prototype, {
     });
   },
 
-  tick: function(response){
+  tick: function(id){
+    this.options.previousMsg = id;
     if( this.options.enabled ) {
-      // Raising the "Tick" Event on the server...
-      this.callback(response);
+      var x = new Ra.Ajax({
+        args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=tick' + '&__EVENT_ARGS=' + encodeURIComponent(id),
+        raCallback: true,
+        onSuccess: this.onFinishedTicking,
+        onError: this.error,
+        callingContext: this
+      });
     }
-  },
-
-  callback: function(evt) {
-    var x = new Ra.Ajax({
-      args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=tick' + '&__EVENT_ARGS=' + encodeURIComponent(evt),
-      raCallback:true,
-      onSuccess: this.onFinishedTicking,
-      callingContext: this
-    });
   },
 
   error: function(status, response){
     Ra.Control.errorHandler(status, response);
-
     // Intentionally STOPPING Comet Queue...!!!!
   },
 

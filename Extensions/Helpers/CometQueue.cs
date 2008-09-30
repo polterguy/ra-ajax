@@ -24,7 +24,7 @@ namespace Extensions.Helpers
         {
             if (lastEvent != null && _events.Count > 0 && lastEvent != _events[_events.Count - 1])
             {
-                // This bugger must be locked to ensure noone inserts a new event while we're looking
+                // This bugger must be locked to ensure none inserts a new event while we're looking
                 // for the previous one...
                 lock (this)
                 {
@@ -32,14 +32,14 @@ namespace Extensions.Helpers
                     // (if any)
                     bool found = false;
                     string retVal = _events.Find(
-                    delegate(string idx)
-                    {
-                        if (found)
-                            return true;
-                        if (idx == lastEvent)
-                            found = true;
-                        return false;
-                    });
+                        delegate(string idx)
+                        {
+                            if (found)
+                                return true;
+                            if (idx == lastEvent)
+                                found = true;
+                            return false;
+                        });
 
                     // There was another event after the last one, therefor we can
                     // return that event immediately

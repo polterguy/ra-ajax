@@ -15,6 +15,9 @@ using System.Web.UI;
 
 namespace Ra.Widgets
 {
+    /**
+     * Style collection class
+     */
     public class StyleCollection
     {
         private class StyleValue
@@ -112,6 +115,11 @@ namespace Ra.Widgets
         // If you create an effect which actually updates the styles of the control, but on the client as
         // a part of the rendering of the effect then you should use this method to update the ViewState
         // value of that style property but you should NOT set the Style property directly in your own code...
+        /**
+         * Use this if you create an extension effect or something else which actually manipulates
+         * the style attribute on the element on the client but you don't want to send the
+         * style value back as JSON. Advanced, mostly for extension control developers.
+         */
         public void SetStyleValueViewStateOnly(string idx, string value)
         {
             SetStyleValue(idx, value, false);
@@ -184,6 +192,9 @@ namespace Ra.Widgets
             }
         }
 
+        /**
+         * Returns the value of the key, might return null
+         */
 		public string this[string idx]
 		{
 			get
@@ -206,6 +217,9 @@ namespace Ra.Widgets
 			set { this.SetStyleValue(idx, value, true); }
 		}
 
+        /**
+         * Strongly typed version, prefer this one if you want to get/set style values
+         */
         public string this[Styles idx]
         {
             get

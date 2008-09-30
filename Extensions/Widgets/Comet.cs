@@ -35,7 +35,7 @@ namespace Ra.Extensions
 			{
 				_id = id;
 			}
-			
+
 			public string Id
 			{
 				get { return _id; }
