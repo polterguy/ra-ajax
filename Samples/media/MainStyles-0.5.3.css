@@ -147,7 +147,7 @@ a:hover { text-decoration:underline;background-color:#eee;color:Black; }
 h2 { margin-top:2.7em; }
 #doc2 { width:1056px; background:url('bg.png') repeat-y;}
 #hd { background:url('sun_background.jpg') no-repeat; height:259px; margin:0 16px 0 16px; }
-#bd { margin:25px 41px 0 41px; font-family:"Lucida Grande","Lucida Sans Unicode",verdana,tahoma,arial,sans-serif;}
+#bd { margin:25px 41px 0 41px; line-height:18px; font-family:"Lucida Grande","Lucida Sans Unicode",verdana,tahoma,arial,sans-serif;}
 #ft { margin-left:auto; margin-right:auto; text-align:center; width:50%; padding:25px; }
 
 
