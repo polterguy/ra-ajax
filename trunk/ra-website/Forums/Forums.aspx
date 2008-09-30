@@ -305,10 +305,10 @@
         <asp:Repeater runat="server" ID="forumPostsRepeater">
             <HeaderTemplate>
                 <table style="border:solid 1px black;width:90%;" cellpadding="2" cellspacing="3">
-                    <tr style="background-color:#FF9B00;color:#222;font-weight:normal;">
+                    <tr style="background-color:#FF9B00;color:#222;font-weight:normal;text-align:center;">
                         <th>Topic</th>
-                        <th>Posted By</th>
-                        <th>Date</th>
+                        <th style="width:80px;">Posted By</th>
+                        <th style="width:140px;">Date</th>
                         <th>Replies</th>
                     </tr>
             </HeaderTemplate>
@@ -322,13 +322,13 @@
                             <%# Eval("Header") %>
                         </a>
                     </td>
-                    <td>
+                    <td style="text-align:center;">
                         <%# Eval("Operator.Username") %>
                     </td>
-                    <td>
+                    <td style="text-align:center;">
                         <%# ((DateTime)Eval("Created")).ToString("dd.MMM yy - HH:mm")%>
                     </td>
-                    <td>
+                    <td style="text-align:center;">
                         <%# Eval("NoReplies") %>
                     </td>
                 </tr>
@@ -340,13 +340,13 @@
                             <%# Eval("Header") %>
                         </a>
                     </td>
-                    <td>
+                    <td style="text-align:center;">
                         <%# Eval("Operator.Username") %>
                     </td>
-                    <td>
+                    <td style="text-align:center;">
                         <%# ((DateTime)Eval("Created")).ToString("dd.MMM yy - HH:mm")%>
                     </td>
-                    <td>
+                    <td style="text-align:center;">
                         <%# Eval("NoReplies") %>
                     </td>
                 </tr>
