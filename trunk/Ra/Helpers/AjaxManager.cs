@@ -22,8 +22,25 @@ using System.Text.RegularExpressions;
 
 namespace Ra
 {
+    /**
+     * Singleton class (acces through Instance property) 
+     * The "glue" that ties everything together, contains lots of helper metods, though most of them are for
+     * extension control developers.
+     */
     public sealed class AjaxManager
     {
+        private List<RaControl> _raControls = new List<RaControl>();
+        private bool _supressFilters;
+        private List<string> _scriptIncludes = new List<string>();
+        private string _redirectUrl;
+        private MemoryStream _memStream;
+        private HtmlTextWriter _writer;
+        private MemoryStream _memStreamBack;
+        private HtmlTextWriter _writerBack;
+
+        /**
+         * Public accessor, only way to access instance of class
+         */
         public static AjaxManager Instance
         {
             get
@@ -34,25 +51,36 @@ namespace Ra
             }
         }
 
-        private List<RaControl> _raControls = new List<RaControl>();
-        private bool _supressFilters;
-
-        public List<RaControl> RaControls
+        private List<RaControl> RaControls
         {
             get { return _raControls; }
         }
 
+        // TODO: Check to see if we can delete CurrentPage...!
+        /** 
+         * Returns the active page object, of the request
+         */
         public Page CurrentPage
         {
             get { return ((Page)HttpContext.Current.CurrentHandler); }
         }
 
+        /**
+         * Returns true if this is a Ra-Ajax callback. A Ra-Ajax callback is also a "subset" of
+         * a normal Postback, which means if this is true, also the IsPostBack from ASP.NET will
+         * be true
+         */
         public bool IsCallback
         {
             get { return CurrentPage.Request.Params["__RA_CALLBACK"] == "true"; }
         }
 
         // Set this one to true to bypass the Response.Filter logic and toss in your own version of it...
+        /**
+         * Surpress the rendering filter on the response. WARNING; Unless you completely understand what this
+         * property does, then do NOT USE IT! It will shut off all the default Ajax engine since it will
+         * make the rendering return to "default" postback rendering.
+         */
         public bool SupressAjaxFilters
         {
             get { return _supressFilters; }
@@ -71,7 +99,11 @@ namespace Ra
 			}
 			return null;
 		}
-		
+
+		/**
+         * Recursively traverses all controls on Page and MasterPage and returns the first control with the 
+         * given ID
+         */
 		public Control FindControl(string id)
 		{
 			Control tmpRetVal = FindControl(CurrentPage, id);
@@ -82,12 +114,16 @@ namespace Ra
 			return tmpRetVal;
 		}
 
-		public T FindControl<T>(string id) where T : Control
+        /**
+         * Recursively traverses all controls on Page and MasterPage and returns the first control with the 
+         * given ID casting it to typeof(T)
+         */
+        public T FindControl<T>(string id) where T : Control
 		{
-			return FindControl(CurrentPage, id) as T;
+			return (T)FindControl(CurrentPage, id);
 		}
 
-        public void InitializeControl(RaControl ctrl)
+        internal void InitializeControl(RaControl ctrl)
         {
             // We store all Ra Controls in a list for easily access later down the road...
             RaControls.Add(ctrl);
@@ -117,15 +153,13 @@ namespace Ra
             }
         }
 
-        // This is the place where we're dispatching RA events.
-        // We should only be here is a Ra Control has created an Ajax Callback
-        void CurrentPage_LoadComplete(object sender, EventArgs e)
+        private void CurrentPage_LoadComplete(object sender, EventArgs e)
         {
             // Finding the Control which initiated the request
             string idOfControl = CurrentPage.Request.Params["__RA_CONTROL"];
             
             // Checking to see if this is a "non-Control" callback...
-            if (idOfControl == null)
+            if (string.IsNullOrEmpty(idOfControl))
                 return;
 
             RaControl ctrl = RaControls.Find(
@@ -148,18 +182,17 @@ namespace Ra
             raCtrl.DispatchEvent(eventName);
         }
 
-        private List<string> _scriptIncludes = new List<string>();
-        public void IncludeMainRaScript()
+        internal void IncludeMainRaScript()
         {
 			IncludeScriptFromResource("Ra.js");
 		}
 
-        public void IncludeMainControlScripts()
+        internal void IncludeMainControlScripts()
         {
 			IncludeScriptFromResource("Control.js");
         }
 
-		public void IncludeScriptFromResource(string script)
+		internal void IncludeScriptFromResource(string script)
 		{
             if (this.SupressAjaxFilters)
             {
@@ -177,18 +210,24 @@ namespace Ra
             _scriptIncludes.Add(resource);
         }
 
-        public void IncludeScriptFromResource(Type type, string name)
+        /**
+         * Includes a JavaScript file from a resource with the given resource if
+         */
+        public void IncludeScriptFromResource(Type type, string id)
         {
             if (this.SupressAjaxFilters)
             {
                 // Need to explicitly include JS files if filters are surpressed...
-                CurrentPage.ClientScript.RegisterClientScriptResource(type, name);
+                CurrentPage.ClientScript.RegisterClientScriptResource(type, id);
             }
-            string resource = CurrentPage.ClientScript.GetWebResourceUrl(type, name);
+            string resource = CurrentPage.ClientScript.GetWebResourceUrl(type, id);
             _scriptIncludes.Add(resource);
         }
 
-        private string _redirectUrl;
+        /**
+         * Use to redirect to another page from a Ra-Ajax Callback. Note the default ASP.NET implementation
+         * that redirects on Response.Redirect does NOT work in Ra-Ajax callbacks.
+         */
         public void Redirect(string url)
         {
             if (!IsCallback)
@@ -204,9 +243,7 @@ namespace Ra
             }
         }
 
-        private MemoryStream _memStream;
-        private HtmlTextWriter _writer;
-        public HtmlTextWriter Writer
+        internal HtmlTextWriter Writer
         {
             get
             {
@@ -220,8 +257,10 @@ namespace Ra
             }
         }
 
-        private MemoryStream _memStreamBack;
-        private HtmlTextWriter _writerBack;
+        // TODO: Why is this an HTMLTextWriter?
+        /**
+         * Use this method to append you own script which will be executed on the client when the request returns
+         */
         public HtmlTextWriter WriterAtBack
         {
             get

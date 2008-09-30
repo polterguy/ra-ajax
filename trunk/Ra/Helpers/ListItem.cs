@@ -13,6 +13,9 @@ using System.Web.UI.WebControls;
 
 namespace Ra.Widgets
 {
+    /**
+     * Items for "listible controls" like for instance DropDownList.
+     */
     public class ListItem
     {
         private string _value;
@@ -20,24 +23,36 @@ namespace Ra.Widgets
         private bool _enabled = true;
         private bool _selected;
 
+        /**
+         * True if item is selected
+         */
         public bool Selected
         {
             get { return _selected; }
             set { _selected = value; }
         }
 
+        /**
+         * If false item is disabled
+         */
         public bool Enabled
         {
             get { return _enabled; }
             set { _enabled = value; }
         }
 
+        /**
+         * Friendly text of item
+         */
         public string Text
         {
             get { return string.IsNullOrEmpty(_text) ? "" : _text; }
             set { _text = value; }
         }
 
+        /**
+         * Value of item, should be unique within the control
+         */
         public string Value
         {
             get { return string.IsNullOrEmpty(_value) ? "" : _value; }
