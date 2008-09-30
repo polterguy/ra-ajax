@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Facts.aspx.cs" 
-    Inherits="Facts" 
+    Inherits="Samples.Facts" 
     Title="Facts about Ra Ajax" %>
 
 <asp:Content 

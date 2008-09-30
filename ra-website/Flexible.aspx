@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Flexible.aspx.cs" 
-    Inherits="Flexible" 
+    Inherits="Samples.Flexible" 
     Title="Flexible Ajax" %>
 
 <%@ Register 

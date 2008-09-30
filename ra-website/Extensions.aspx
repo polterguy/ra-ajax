@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Extensions.aspx.cs" 
-    Inherits="Extensions" 
+    Inherits="Samples.Extensions" 
     Title="Extending Ra Ajax" %>
 
 <%@ Register 

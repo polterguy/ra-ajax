@@ -11,46 +11,49 @@ using NHibernate.Expression;
 using System.Web.UI.WebControls;
 using Ra.Widgets;
 
-public partial class Flexible : System.Web.UI.Page
+namespace Samples
 {
-    protected void Page_Load(object sender, EventArgs e)
+    public partial class Flexible : System.Web.UI.Page
     {
-        if (!IsPostBack)
-            txt.Focus();
-    }
-
-    protected void txt_KeyUp(object sender, EventArgs e)
-    {
-        lbl.Text = txt.Text;
-        Effect effect = new EffectFadeIn(lbl, 400);
-        effect.Render();
-    }
-
-    protected void autoTxt_KeyUp(object sender, EventArgs e)
-    {
-        if (autoTxt.Text.Trim().Length == 0)
+        protected void Page_Load(object sender, EventArgs e)
         {
-            autoPnl.Visible = false;
+            if (!IsPostBack)
+                txt.Focus();
         }
-        else
+
+        protected void txt_KeyUp(object sender, EventArgs e)
         {
-            autoPnl.Visible = true;
-            autoPnl.Controls.Clear();
-            autoPnl.ReRender();
-            int idxNo = 0;
-            Entity.Blog[] blogs = Entity.Blog.FindAll(Expression.Like("Header", autoTxt.Text, MatchMode.Anywhere));
-            foreach (Entity.Blog idx in blogs)
+            lbl.Text = txt.Text;
+            Effect effect = new EffectFadeIn(lbl, 400);
+            effect.Render();
+        }
+
+        protected void autoTxt_KeyUp(object sender, EventArgs e)
+        {
+            if (autoTxt.Text.Trim().Length == 0)
             {
-                Literal lit = new Literal();
-                if (idxNo == 0)
+                autoPnl.Visible = false;
+            }
+            else
+            {
+                autoPnl.Visible = true;
+                autoPnl.Controls.Clear();
+                autoPnl.ReRender();
+                int idxNo = 0;
+                Entity.Blog[] blogs = Entity.Blog.FindAll(Expression.Like("Header", autoTxt.Text, MatchMode.Anywhere));
+                foreach (Entity.Blog idx in blogs)
                 {
-                    lit.Text += "<ul>";
+                    Literal lit = new Literal();
+                    if (idxNo == 0)
+                    {
+                        lit.Text += "<ul>";
+                    }
+                    lit.Text += string.Format("<li><a href=\"{0}\">{1}</a></li>", idx.Url, idx.Header);
+                    if (idxNo == blogs.Length)
+                        lit.Text += "</ul>";
+                    autoPnl.Controls.Add(lit);
+                    idxNo += 1;
                 }
-                lit.Text += string.Format("<li><a href=\"{0}\">{1}</a></li>", idx.Url, idx.Header);
-                if (idxNo == blogs.Length)
-                    lit.Text += "</ul>";
-                autoPnl.Controls.Add(lit);
-                idxNo += 1;
             }
         }
     }

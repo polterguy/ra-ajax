@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Advantages.aspx.cs" 
-    Inherits="Advantages" 
+    Inherits="Samples.Advantages" 
     Title="Ra Ajax Advantages" %>
 
 <%@ Register 

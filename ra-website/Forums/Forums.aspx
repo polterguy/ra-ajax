@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Forums.aspx.cs" 
-    Inherits="Forums_Forums" 
+    Inherits="Samples.Forums_Forums" 
     Title="Ra Ajax Forum posts" %>
 
 <%@ Register 

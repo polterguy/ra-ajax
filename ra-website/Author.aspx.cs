@@ -9,6 +9,9 @@
 using System;
 using Ra.Widgets;
 
-public partial class Author : System.Web.UI.Page
+namespace Samples
 {
+    public partial class Author : System.Web.UI.Page
+    {
+    }
 }
