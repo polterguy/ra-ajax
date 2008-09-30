@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Timer.aspx.cs" 
-    Inherits="Samples.Timer" 
+    Inherits="RaWebsite.Timer" 
     Title="Ra-Ajax - Timers" %>
 
 <%@ Register 

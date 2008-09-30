@@ -10,7 +10,7 @@ using System;
 using Ra.Widgets;
 using Ra.Extensions;
 
-namespace Samples
+namespace RaWebsite
 {
     public partial class Extensions : System.Web.UI.Page
     {

@@ -10,7 +10,7 @@ using System;
 using Entity;
 using NHibernate.Expression;
 
-namespace Samples
+namespace RaWebsite
 {
     public partial class BlogItem : System.Web.UI.Page
     {

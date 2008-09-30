@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Todo.aspx.cs" 
-    Inherits="Samples.Todo" 
+    Inherits="RaWebsite.Todo" 
     Title="TODO list for Ra Ajax" %>
 
 <%@ Register 

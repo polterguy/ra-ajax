@@ -11,7 +11,7 @@ using NHibernate.Expression;
 using System.Web.UI.WebControls;
 using Ra.Widgets;
 
-namespace Samples
+namespace RaWebsite
 {
     public partial class Flexible : System.Web.UI.Page
     {

@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Sitemap.aspx.cs" 
-    Inherits="Samples.Sitemap" 
+    Inherits="RaWebsite.Sitemap" 
     Title="Ra Ajax - Sitemap" %>
 
 <%@ Register 

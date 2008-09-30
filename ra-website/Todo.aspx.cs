@@ -10,7 +10,7 @@ using System;
 using NHibernate.Expression;
 using Ra.Widgets;
 
-namespace Samples
+namespace RaWebsite
 {
     public partial class Todo : System.Web.UI.Page
     {

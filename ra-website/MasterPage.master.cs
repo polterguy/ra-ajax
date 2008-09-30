@@ -12,7 +12,7 @@ using Entity;
 using NHibernate.Expression;
 using System.Web;
 
-namespace Samples
+namespace RaWebsite
 {
     public partial class MasterPage : System.Web.UI.MasterPage
     {
