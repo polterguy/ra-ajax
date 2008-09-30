@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Author.aspx.cs" 
-    Inherits="Author" 
+    Inherits="Samples.Author" 
     Title="About the authors of Ra Ajax" %>
 
 <%@ Register 

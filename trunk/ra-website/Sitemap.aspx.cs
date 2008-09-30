@@ -9,10 +9,13 @@
 using System;
 using Ra.Widgets;
 
-public partial class Sitemap : System.Web.UI.Page
+namespace Samples
 {
-    protected void Page_Load(object sender, EventArgs e)
+    public partial class Sitemap : System.Web.UI.Page
     {
+        protected void Page_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }

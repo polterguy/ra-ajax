@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Controls.aspx.cs" 
-    Inherits="Controls" 
+    Inherits="Samples.Controls" 
     Title="Ajax Controls in Ra" %>
 
 <%@ Register 

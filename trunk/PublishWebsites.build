@@ -43,6 +43,7 @@
 			<fileset basedir="${samples.dir}">
 				<include name="**/*.cs" />
 				<include name="**/*.aspx" />
+				<include name="**/*.asax" />
 				<include name="**/*.ascx" />
 				<include name="**/*.master" />
 				<include name="media/**/*.*" />
@@ -86,6 +87,7 @@
 			<fileset basedir="${ra.website.dir}">
 				<include name="**/*.cs" />
 				<include name="**/*.aspx" />
+				<include name="**/*.asax" />
 				<include name="**/*.ascx" />
 				<include name="**/*.master" />
 				<include name="media/**/*.*" />

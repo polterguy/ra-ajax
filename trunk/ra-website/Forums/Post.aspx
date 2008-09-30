@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Post.aspx.cs" 
-    Inherits="Forums_Post" 
+    Inherits="Samples.Forums_Post" 
     Title="Untitled Page" %>
 
 <%@ Register 
