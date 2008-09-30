@@ -11,110 +11,112 @@ using Ra.Extensions;
 using System.IO;
 using System.Web;
 
-public partial class MasterPage : System.Web.UI.MasterPage
+namespace Samples
 {
-    protected void Page_Load(object sender, EventArgs e)
+    public partial class MasterPage : System.Web.UI.MasterPage
     {
-        if (!IsPostBack)
+        protected void Page_Load(object sender, EventArgs e)
         {
-            string url = this.Request.Url.ToString();
-            url = url.Substring(url.LastIndexOf("/") + 1);
-            int idxNo = 0;
-            foreach (AccordionView idx in accordion.Views)
+            if (!IsPostBack)
             {
-                foreach (System.Web.UI.Control idxCtrl in idx.Controls)
+                string url = this.Request.Url.ToString();
+                url = url.Substring(url.LastIndexOf("/") + 1);
+                int idxNo = 0;
+                foreach (AccordionView idx in accordion.Views)
                 {
-                    if (idxCtrl is System.Web.UI.LiteralControl)
+                    foreach (System.Web.UI.Control idxCtrl in idx.Controls)
                     {
-                        System.Web.UI.LiteralControl lit = idxCtrl as System.Web.UI.LiteralControl;
-                        if (lit.Text.IndexOf(url) != -1)
+                        if (idxCtrl is System.Web.UI.LiteralControl)
                         {
-                            accordion.ActiveAccordionViewIndex = idxNo;
-                            break;
+                            System.Web.UI.LiteralControl lit = idxCtrl as System.Web.UI.LiteralControl;
+                            if (lit.Text.IndexOf(url) != -1)
+                            {
+                                accordion.ActiveAccordionViewIndex = idxNo;
+                                break;
+                            }
                         }
                     }
+                    idxNo += 1;
                 }
-                idxNo += 1;
             }
         }
-    }
 
-    protected void btnShowCode_Click(object sender, EventArgs e)
-    {
-        if (!tabShowCode.Visible)
+        protected void btnShowCode_Click(object sender, EventArgs e)
         {
-            // We only fetch code ONCE since second time and so on is just DHTML "candy"
-            GetCSharpCode();
-            GetASPXCode();
+            if (!tabShowCode.Visible)
+            {
+                // We only fetch code ONCE since second time and so on is just DHTML "candy"
+                GetCSharpCode();
+                GetASPXCode();
+            }
+            if (!tabShowCode.Visible || tabShowCode.Style["display"] == "none")
+            {
+                tabShowCode.Visible = true;
+                Effect effect = new EffectFadeIn(tabShowCode, 400);
+                effect.Joined.Add(new EffectRollDown(500));
+                effect.Render();
+            }
+            else
+            {
+                Effect effect = new EffectFadeOut(tabShowCode, 400);
+                effect.Joined.Add(new EffectRollUp(500));
+                effect.Render();
+            }
         }
-        if (!tabShowCode.Visible || tabShowCode.Style["display"] == "none")
+
+        protected void closeIE_Click(object sender, EventArgs e)
         {
-            tabShowCode.Visible = true;
-            Effect effect = new EffectFadeIn(tabShowCode, 400);
-            effect.Joined.Add(new EffectRollDown(500));
+            Effect effect = new EffectFadeOut(pnlCrappyBrowser, 400);
             effect.Render();
         }
-        else
-        {
-            Effect effect = new EffectFadeOut(tabShowCode, 400);
-            effect.Joined.Add(new EffectRollUp(500));
-            effect.Render();
-        }
-    }
 
-    protected void closeIE_Click(object sender, EventArgs e)
-    {
-        Effect effect = new EffectFadeOut(pnlCrappyBrowser, 400);
-        effect.Render();
-    }
-
-    private void GetASPXCode()
-    {
-        string path = this.Request.PhysicalPath;
-        if (path.IndexOf(".forum") != -1)
+        private void GetASPXCode()
         {
-            path = this.Request.PhysicalApplicationPath + "Forums\\Post.aspx";
-        }
-        else if (path.IndexOf(".blogger") != -1)
-        {
-            path = this.Request.PhysicalApplicationPath + "Blog.aspx";
-        }
-        else if (path.IndexOf(".blog") != -1)
-        {
-            path = this.Request.PhysicalApplicationPath + "BlogItem.aspx";
-        }
-        using (TextReader reader = new StreamReader(File.OpenRead(path)))
-        {
-            string allCode = "\r\n" + reader.ReadToEnd();
-            allCode = allCode.Replace("<", "&lt;").Replace(">", "&gt;").Replace("\t", "    ");
-            allCode = ReplaceCodeEntities(allCode, "keyword", new string[] { 
+            string path = this.Request.PhysicalPath;
+            if (path.IndexOf(".forum") != -1)
+            {
+                path = this.Request.PhysicalApplicationPath + "Forums\\Post.aspx";
+            }
+            else if (path.IndexOf(".blogger") != -1)
+            {
+                path = this.Request.PhysicalApplicationPath + "Blog.aspx";
+            }
+            else if (path.IndexOf(".blog") != -1)
+            {
+                path = this.Request.PhysicalApplicationPath + "BlogItem.aspx";
+            }
+            using (TextReader reader = new StreamReader(File.OpenRead(path)))
+            {
+                string allCode = "\r\n" + reader.ReadToEnd();
+                allCode = allCode.Replace("<", "&lt;").Replace(">", "&gt;").Replace("\t", "    ");
+                allCode = ReplaceCodeEntities(allCode, "keyword", new string[] { 
                 "Page", 
                 "Register", 
                 "asp:Content"});
-            lblCodeASPX.Text = allCode;
+                lblCodeASPX.Text = allCode;
+            }
         }
-    }
 
-    private void GetCSharpCode()
-    {
-        string path = this.Request.PhysicalPath + ".cs";
-        if (path.IndexOf(".forum") != -1)
+        private void GetCSharpCode()
         {
-            path = this.Request.PhysicalApplicationPath + "Forums\\Post.aspx.cs";
-        }
-        else if (path.IndexOf(".blogger") != -1)
-        {
-            path = this.Request.PhysicalApplicationPath + "Blog.aspx.cs";
-        }
-        else if (path.IndexOf(".blog") != -1)
-        {
-            path = this.Request.PhysicalApplicationPath + "BlogItem.aspx.cs";
-        }
-        using (TextReader reader = new StreamReader(File.OpenRead(path)))
-        {
-            string allCode = "\r\n" + reader.ReadToEnd();
-            allCode = allCode.Replace("<", "&lt;").Replace(">", "&gt;");
-            allCode = ReplaceCodeEntities(allCode, "keyword", new string[] { 
+            string path = this.Request.PhysicalPath + ".cs";
+            if (path.IndexOf(".forum") != -1)
+            {
+                path = this.Request.PhysicalApplicationPath + "Forums\\Post.aspx.cs";
+            }
+            else if (path.IndexOf(".blogger") != -1)
+            {
+                path = this.Request.PhysicalApplicationPath + "Blog.aspx.cs";
+            }
+            else if (path.IndexOf(".blog") != -1)
+            {
+                path = this.Request.PhysicalApplicationPath + "BlogItem.aspx.cs";
+            }
+            using (TextReader reader = new StreamReader(File.OpenRead(path)))
+            {
+                string allCode = "\r\n" + reader.ReadToEnd();
+                allCode = allCode.Replace("<", "&lt;").Replace(">", "&gt;");
+                allCode = ReplaceCodeEntities(allCode, "keyword", new string[] { 
                 "class", 
                 "using", 
                 "string", 
@@ -131,19 +133,20 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 "null",
                 "void", 
                 "object"});
-            allCode = allCode.Replace("/*", "<span class=\"comment\">/*");
-            allCode = allCode.Replace("*/", "*/</span>");
-            lblCodeCS.Text = allCode.Replace("\t", "    ");
+                allCode = allCode.Replace("/*", "<span class=\"comment\">/*");
+                allCode = allCode.Replace("*/", "*/</span>");
+                lblCodeCS.Text = allCode.Replace("\t", "    ");
+            }
         }
-    }
 
-    private string ReplaceCodeEntities(string allCode, string cssClass, string[] words)
-    {
-        string retVal = allCode;
-        foreach (string idx in words)
+        private string ReplaceCodeEntities(string allCode, string cssClass, string[] words)
         {
-            retVal = retVal.Replace(idx, string.Format("<span class=\"{1}\">{0}</span>", idx, cssClass));
+            string retVal = allCode;
+            foreach (string idx in words)
+            {
+                retVal = retVal.Replace(idx, string.Format("<span class=\"{1}\">{0}</span>", idx, cssClass));
+            }
+            return retVal;
         }
-        return retVal;
     }
 }

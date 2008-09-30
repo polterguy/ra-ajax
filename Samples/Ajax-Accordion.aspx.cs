@@ -9,10 +9,13 @@
 using System;
 using Ra.Widgets;
 
-public partial class AjaxAccordion : System.Web.UI.Page
+namespace Samples
 {
-    protected void calTab_SelectedValueChanged(object sender, EventArgs e)
+    public partial class AjaxAccordion : System.Web.UI.Page
     {
-        lbl.Text = calTab.Value.ToString("dddd, dd.MMM yy");
+        protected void calTab_SelectedValueChanged(object sender, EventArgs e)
+        {
+            lbl.Text = calTab.Value.ToString("dddd, dd.MMM yy");
+        }
     }
 }

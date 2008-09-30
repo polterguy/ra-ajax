@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Ajax-Label.aspx.cs" 
-    Inherits="AjaxLabel" 
+    Inherits="Samples.AjaxLabel" 
     Title="Ra-Ajax Label Sample" %>
 
 <%@ Register 

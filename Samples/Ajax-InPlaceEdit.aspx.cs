@@ -9,12 +9,15 @@
 using System;
 using Ra.Widgets;
 
-public partial class AjaxInPlaceEdit : System.Web.UI.Page
+namespace Samples
 {
-    protected void inpl_TextChanged(object sender, EventArgs e)
+    public partial class AjaxInPlaceEdit : System.Web.UI.Page
     {
-        lbl.Text = "New value: " + inpl.Text;
-        Effect effect = new EffectHighlight(lbl, 500);
-        effect.Render();
+        protected void inpl_TextChanged(object sender, EventArgs e)
+        {
+            lbl.Text = "New value: " + inpl.Text;
+            Effect effect = new EffectHighlight(lbl, 500);
+            effect.Render();
+        }
     }
 }

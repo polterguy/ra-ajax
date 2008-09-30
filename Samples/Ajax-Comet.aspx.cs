@@ -10,82 +10,85 @@ using System;
 using Ra.Widgets;
 using System.Collections.Generic;
 
-public partial class AjaxComet : System.Web.UI.Page
+namespace Samples
 {
-    protected void Page_Load(object sender, EventArgs e)
+    public partial class AjaxComet : System.Web.UI.Page
     {
-        if (!IsPostBack)
+        protected void Page_Load(object sender, EventArgs e)
         {
-            foreach (string idx in Chats)
+            if (!IsPostBack)
             {
-                System.Web.UI.WebControls.Literal lit = new System.Web.UI.WebControls.Literal();
-                lit.Text = "<p>" + idx + "</p>";
-                chat.Controls.Add(lit);
+                foreach (string idx in Chats)
+                {
+                    System.Web.UI.WebControls.Literal lit = new System.Web.UI.WebControls.Literal();
+                    lit.Text = "<p>" + idx + "</p>";
+                    chat.Controls.Add(lit);
+                }
             }
         }
-    }
 
-    protected void comet_Tick(object sender, Ra.Extensions.Comet.CometEventArgs e)
-    {
-        // Effect on area...
-        new EffectHighlight(chat, 600).Render();
-
-        // Locking to make sure no one tampers with our Chats while iterating them...
-        lock (typeof(AjaxComet))
+        protected void comet_Tick(object sender, Ra.Extensions.Comet.CometEventArgs e)
         {
-            // Removing all "old" controls
-            chat.Controls.Clear();
+            // Effect on area...
+            new EffectHighlight(chat, 600).Render();
 
-            foreach (string idx in Chats)
+            // Locking to make sure no one tampers with our Chats while iterating them...
+            lock (typeof(AjaxComet))
             {
-                System.Web.UI.WebControls.Literal lit = new System.Web.UI.WebControls.Literal();
-                lit.Text = "<p>" + idx + "</p>";
-                chat.Controls.Add(lit);
+                // Removing all "old" controls
+                chat.Controls.Clear();
+
+                foreach (string idx in Chats)
+                {
+                    System.Web.UI.WebControls.Literal lit = new System.Web.UI.WebControls.Literal();
+                    lit.Text = "<p>" + idx + "</p>";
+                    chat.Controls.Add(lit);
+                }
+
+                // Signalizing that chat output should re-render...
+                chat.ReRender();
+            }
+        }
+
+        protected void newChat_Focused(object sender, EventArgs e)
+        {
+            newChat.Select();
+        }
+
+        private List<string> Chats
+        {
+            get
+            {
+                List<string> retVal = Application["CometChats"] as List<string>;
+                if (retVal == null)
+                {
+                    retVal = new List<string>();
+                    Application["CometChats"] = retVal;
+                }
+                return retVal;
+            }
+            set
+            {
+                Application["CometChats"] = value;
+            }
+        }
+
+        protected void submit_Click(object sender, EventArgs e)
+        {
+            lock (typeof(AjaxComet))
+            {
+                if (Chats.Count >= 5)
+                {
+                    Chats = new List<string>(Chats.GetRange(1, 4));
+                }
+                Chats.Add(newChat.Text);
             }
 
-            // Signalizing that chat output should re-render...
-            chat.ReRender();
+            // Signaling to all Comet Listeners that a new Message has arrived...
+            comet.SendMessage(Guid.NewGuid().ToString());
+
+            newChat.Select();
+            newChat.Focus();
         }
-    }
-
-    protected void newChat_Focused(object sender, EventArgs e)
-    {
-        newChat.Select();
-    }
-
-    private List<string> Chats
-    {
-        get
-        {
-            List<string> retVal = Application["CometChats"] as List<string>;
-            if (retVal == null)
-            {
-                retVal = new List<string>();
-                Application["CometChats"] = retVal;
-            }
-            return retVal;
-        }
-        set
-        {
-            Application["CometChats"] = value;
-        }
-    }
-
-    protected void submit_Click(object sender, EventArgs e)
-    {
-        lock (typeof(AjaxComet))
-        {
-            if (Chats.Count >= 5)
-            {
-                Chats = new List<string>(Chats.GetRange(1, 4));
-            }
-            Chats.Add(newChat.Text);
-        }
-
-        // Signaling to all Comet Listeners that a new Message has arrived...
-        comet.SendMessage(Guid.NewGuid().ToString());
-
-        newChat.Select();
-        newChat.Focus();
     }
 }

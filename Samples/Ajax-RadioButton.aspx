@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Ajax-RadioButton.aspx.cs" 
-    Inherits="AjaxRadioButton" 
+    Inherits="Samples.AjaxRadioButton" 
     Title="Ra-Ajax RadioButton Sample" %>
 
 <%@ Register 

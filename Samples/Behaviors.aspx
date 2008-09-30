@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Behaviors.aspx.cs" 
-    Inherits="Behaviors" 
+    Inherits="Samples.Behaviors" 
     Title="Ra-Ajax Behaviors Sample" %>
 
 <%@ Register 

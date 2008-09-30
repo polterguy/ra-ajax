@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Ajax-ImageButton.aspx.cs" 
-    Inherits="AjaxImageButton" 
+    Inherits="Samples.AjaxImageButton" 
     Title="Ra-Ajax ImageButton Sample" %>
 
 <%@ Register 

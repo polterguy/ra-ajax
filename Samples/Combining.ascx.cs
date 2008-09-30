@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 
-namespace UC
+namespace Samples.UserControls
 {
     public partial class Combining : System.Web.UI.UserControl
     {

@@ -9,17 +9,20 @@
 using System;
 using Ra.Widgets;
 
-public partial class AjaxTextArea : System.Web.UI.Page
+namespace Samples
 {
-    protected void btn_Click(object sender, EventArgs e)
+    public partial class AjaxTextArea : System.Web.UI.Page
     {
-        lbl.Text = txt.Text;
-        txt.Select();
-        txt.Focus();
-    }
+        protected void btn_Click(object sender, EventArgs e)
+        {
+            lbl.Text = txt.Text;
+            txt.Select();
+            txt.Focus();
+        }
 
-    protected void txt_Focused(object sender, EventArgs e)
-    {
-        txt.Select();
+        protected void txt_Focused(object sender, EventArgs e)
+        {
+            txt.Select();
+        }
     }
 }

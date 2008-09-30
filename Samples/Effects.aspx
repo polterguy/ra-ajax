@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Effects.aspx.cs" 
-    Inherits="Effects" 
+    Inherits="Samples.Effects" 
     Title="Ra-Ajax Effects" %>
 
 <%@ Register 

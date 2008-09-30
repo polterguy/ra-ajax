@@ -9,14 +9,17 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 
-public partial class Combining : System.Web.UI.UserControl
+namespace Samples.UserControls
 {
-    protected void Page_Load(object sender, EventArgs e)
+    public partial class HelloWorld : System.Web.UI.UserControl
     {
-    }
+        protected void Page_Load(object sender, EventArgs e)
+        {
+        }
 
-    protected void submit_Click(object sender, EventArgs e)
-    {
-        lblResult.Text = "Hello world";
+        protected void submit_Click(object sender, EventArgs e)
+        {
+            lblResult.Text = "Hello world";
+        }
     }
 }

@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Ajax-Calendar.aspx.cs" 
-    Inherits="AjaxCalendar" 
+    Inherits="Samples.AjaxCalendar" 
     Title="Ra-Ajax Calendar Sample" %>
 
 <%@ Register 

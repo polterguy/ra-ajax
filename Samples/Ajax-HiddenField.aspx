@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Ajax-HiddenField.aspx.cs" 
-    Inherits="AjaxHiddenField" 
+    Inherits="Samples.AjaxHiddenField" 
     Title="Ra-Ajax HiddenField Sample" %>
 
 <%@ Register 

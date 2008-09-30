@@ -10,44 +10,47 @@ using System;
 using Ra.Widgets;
 using System.Threading;
 
-public partial class AjaxPanel : System.Web.UI.Page
+namespace Samples
 {
-    protected void Page_Load(object sender, EventArgs e)
+    public partial class AjaxPanel : System.Web.UI.Page
     {
-        if (!IsPostBack)
+        protected void Page_Load(object sender, EventArgs e)
         {
-            txt.Focus();
-            txt.Select();
+            if (!IsPostBack)
+            {
+                txt.Focus();
+                txt.Select();
+            }
         }
-    }
 
-    protected void lnk_Click(object sender, EventArgs e)
-    {
-        pnl.Style["background-color"] = pnl.Style["background-color"] == "Yellow" ? "Orange" : "Yellow";
-    }
-
-    protected void txt_KeyUp(object sender, EventArgs e)
-    {
-        string color = "";
-        switch (txt.Text.Length % 5)
+        protected void lnk_Click(object sender, EventArgs e)
         {
-            case 0:
-                color = "#000";
-                break;
-            case 1:
-                color = "#0e0";
-                break;
-            case 2:
-                color = "#e00";
-                break;
-            case 3:
-                color = "#00e";
-                break;
-            case 4:
-                color = "#e0e";
-                break;
+            pnl.Style["background-color"] = pnl.Style["background-color"] == "Yellow" ? "Orange" : "Yellow";
         }
-        pnl.Style["color"] = color;
-        pnl.Style["background-color"] = "White";
+
+        protected void txt_KeyUp(object sender, EventArgs e)
+        {
+            string color = "";
+            switch (txt.Text.Length % 5)
+            {
+                case 0:
+                    color = "#000";
+                    break;
+                case 1:
+                    color = "#0e0";
+                    break;
+                case 2:
+                    color = "#e00";
+                    break;
+                case 3:
+                    color = "#00e";
+                    break;
+                case 4:
+                    color = "#e0e";
+                    break;
+            }
+            pnl.Style["color"] = color;
+            pnl.Style["background-color"] = "White";
+        }
     }
 }

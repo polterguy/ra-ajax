@@ -9,25 +9,28 @@
 using System;
 using Ra.Widgets;
 
-public partial class AjaxHiddenField : System.Web.UI.Page
+namespace Samples
 {
-    protected void Page_Load(object sender, EventArgs e)
+    public partial class AjaxHiddenField : System.Web.UI.Page
     {
-        if (!IsPostBack)
+        protected void Page_Load(object sender, EventArgs e)
         {
-            txt.Focus();
-            txt.Select();
+            if (!IsPostBack)
+            {
+                txt.Focus();
+                txt.Select();
+            }
         }
-    }
 
-    protected void submit_Click(object sender, EventArgs e)
-    {
-        hid.Value = txt.Text;
-        txt.Text = "";
-    }
+        protected void submit_Click(object sender, EventArgs e)
+        {
+            hid.Value = txt.Text;
+            txt.Text = "";
+        }
 
-    protected void retrieveValue_Click(object sender, EventArgs e)
-    {
-        retrieveValue.Text = hid.Value;
+        protected void retrieveValue_Click(object sender, EventArgs e)
+        {
+            retrieveValue.Text = hid.Value;
+        }
     }
 }

@@ -2,7 +2,7 @@
     Language="C#" 
     AutoEventWireup="true" 
     CodeFile="HelloWorld.ascx.cs" 
-    Inherits="Combining" %>
+    Inherits="Samples.UserControls.HelloWorld" %>
 
 <%@ Register 
     Assembly="Ra" 

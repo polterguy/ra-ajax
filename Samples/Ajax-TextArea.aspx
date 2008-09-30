@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Ajax-TextArea.aspx.cs" 
-    Inherits="AjaxTextArea" 
+    Inherits="Samples.AjaxTextArea" 
     Title="Ra-Ajax TextArea Sample" %>
 
 <%@ Register 

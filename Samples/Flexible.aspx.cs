@@ -9,29 +9,32 @@
 using System;
 using Ra.Widgets;
 
-public partial class Flexible : System.Web.UI.Page
+namespace Samples
 {
-    protected void Page_Load(object sender, EventArgs e)
+    public partial class Flexible : System.Web.UI.Page
     {
-    }
+        protected void Page_Load(object sender, EventArgs e)
+        {
+        }
 
-    protected void btn_MouseOver(object sender, EventArgs e)
-    {
-        btn.Text = "Mouse Over";
-    }
+        protected void btn_MouseOver(object sender, EventArgs e)
+        {
+            btn.Text = "Mouse Over";
+        }
 
-    protected void btn_MouseOut(object sender, EventArgs e)
-    {
-        btn.Text = "Mouse Out";
-    }
+        protected void btn_MouseOut(object sender, EventArgs e)
+        {
+            btn.Text = "Mouse Out";
+        }
 
-    protected void txt_MouseOut(object sender, EventArgs e)
-    {
-        pnl.Visible = false;
-    }
+        protected void txt_MouseOut(object sender, EventArgs e)
+        {
+            pnl.Visible = false;
+        }
 
-    protected void txt_MouseOver(object sender, EventArgs e)
-    {
-        pnl.Visible = true;
+        protected void txt_MouseOver(object sender, EventArgs e)
+        {
+            pnl.Visible = true;
+        }
     }
 }

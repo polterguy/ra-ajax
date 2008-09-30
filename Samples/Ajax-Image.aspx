@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Ajax-Image.aspx.cs" 
-    Inherits="AjaxImage" 
+    Inherits="Samples.AjaxImage" 
     Title="Ra-Ajax Image Sample" %>
 
 <%@ Register 

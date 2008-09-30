@@ -9,26 +9,29 @@
 using System;
 using Ra.Widgets;
 
-public partial class AjaxTextBox : System.Web.UI.Page
+namespace Samples
 {
-    protected void Page_Load(object sender, EventArgs e)
+    public partial class AjaxTextBox : System.Web.UI.Page
     {
-        if (!IsPostBack)
+        protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                txt.Select();
+                txt.Focus();
+            }
+        }
+
+        protected void btn_Click(object sender, EventArgs e)
+        {
+            lbl.Text = txt.Text;
             txt.Select();
             txt.Focus();
         }
-    }
 
-    protected void btn_Click(object sender, EventArgs e)
-    {
-        lbl.Text = txt.Text;
-        txt.Select();
-        txt.Focus();
-    }
-
-    protected void txt_Focused(object sender, EventArgs e)
-    {
-        txt.Select();
+        protected void txt_Focused(object sender, EventArgs e)
+        {
+            txt.Select();
+        }
     }
 }

@@ -9,50 +9,53 @@
 using System;
 using Ra.Widgets;
 
-public partial class Dynamic : System.Web.UI.Page
+namespace Samples
 {
-    protected void Page_Load(object sender, EventArgs e)
+    public partial class Dynamic : System.Web.UI.Page
     {
-        if (!IsPostBack)
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+                ViewState["control"] = dropper.SelectedItem.Value;
+
+            if (ViewState["control"].Equals("custom"))
+            {
+                LoadCustomControls();
+            }
+            else
+            {
+                System.Web.UI.Control ctrl = LoadControl(ViewState["control"].ToString() + ".ascx");
+                pnlDynamicControls.Controls.Add(ctrl);
+            }
+        }
+
+        private void LoadCustomControls()
+        {
+            Button tmp = new Button();
+            tmp.Text = "Click me";
+            tmp.Click += new EventHandler(tmp_Click);
+            pnlDynamicControls.Controls.Add(tmp);
+        }
+
+        void tmp_Click(object sender, EventArgs e)
+        {
+            (sender as Button).Text = "Clicked...!!";
+        }
+
+        protected void dropper_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            pnlDynamicControls.Controls.Clear();
+            if (dropper.SelectedItem.Value == "custom")
+            {
+                LoadCustomControls();
+            }
+            else
+            {
+                System.Web.UI.Control ctrl = LoadControl(dropper.SelectedItem.Value + ".ascx");
+                pnlDynamicControls.Controls.Add(ctrl);
+            }
+            pnlDynamicControls.ReRender();
             ViewState["control"] = dropper.SelectedItem.Value;
-
-        if (ViewState["control"].Equals("custom"))
-        {
-            LoadCustomControls();
         }
-        else
-        {
-            System.Web.UI.Control ctrl = LoadControl(ViewState["control"].ToString() + ".ascx");
-            pnlDynamicControls.Controls.Add(ctrl);
-        }
-    }
-
-    private void LoadCustomControls()
-    {
-        Button tmp = new Button();
-        tmp.Text = "Click me";
-        tmp.Click += new EventHandler(tmp_Click);
-        pnlDynamicControls.Controls.Add(tmp);
-    }
-
-    void tmp_Click(object sender, EventArgs e)
-    {
-        (sender as Button).Text = "Clicked...!!";
-    }
-
-    protected void dropper_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        pnlDynamicControls.Controls.Clear();
-        if (dropper.SelectedItem.Value == "custom")
-        {
-            LoadCustomControls();
-        }
-        else
-        {
-            System.Web.UI.Control ctrl = LoadControl(dropper.SelectedItem.Value + ".ascx");
-            pnlDynamicControls.Controls.Add(ctrl);
-        }
-        pnlDynamicControls.ReRender();
-        ViewState["control"] = dropper.SelectedItem.Value;
     }
 }

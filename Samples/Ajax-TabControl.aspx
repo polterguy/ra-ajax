@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Ajax-TabControl.aspx.cs" 
-    Inherits="AjaxTabControl" 
+    Inherits="Samples.AjaxTabControl" 
     Title="Ra-Ajax TabControl Sample" %>
 
 <%@ Register 

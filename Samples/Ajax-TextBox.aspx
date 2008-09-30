@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Ajax-TextBox.aspx.cs" 
-    Inherits="AjaxTextBox" 
+    Inherits="Samples.AjaxTextBox" 
     Title="Ra-Ajax TextBox Sample" %>
 
 <%@ Register 
