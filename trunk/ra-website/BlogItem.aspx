@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="BlogItem.aspx.cs" 
-    Inherits="Samples.BlogItem" 
+    Inherits="RaWebsite.BlogItem" 
     Title="Untitled Page" %>
 
 <asp:Content 

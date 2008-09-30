@@ -11,7 +11,7 @@ using Entity;
 using NHibernate.Expression;
 using Ra.Widgets;
 
-namespace Samples
+namespace RaWebsite
 {
     public partial class Forums_Post : System.Web.UI.Page
     {

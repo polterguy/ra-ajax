@@ -9,7 +9,7 @@
 using System;
 using Ra.Widgets;
 
-namespace Samples
+namespace RaWebsite
 {
     public partial class Sitemap : System.Web.UI.Page
     {

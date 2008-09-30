@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using Ra.Widgets;
 using System.Web;
 
-namespace Samples
+namespace RaWebsite
 {
     public partial class Forums_Forums : System.Web.UI.Page
     {

@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Blog.aspx.cs" 
-    Inherits="Samples.Blog" 
+    Inherits="RaWebsite.Blog" 
     ValidateRequest="false"
     Title="Untitled Page" %>
 

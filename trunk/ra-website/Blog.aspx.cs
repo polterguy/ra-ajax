@@ -14,7 +14,7 @@ using Ra.Widgets;
 using System.IO;
 using System.Xml;
 
-namespace Samples
+namespace RaWebsite
 {
     public partial class Blog : System.Web.UI.Page
     {

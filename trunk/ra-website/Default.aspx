@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Default.aspx.cs" 
-    Inherits="Samples._Default" 
+    Inherits="RaWebsite._Default" 
     Title="Ra Ajax - Home" %>
 
 <%@ Register 
