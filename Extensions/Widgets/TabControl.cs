@@ -18,11 +18,22 @@ using HTML = System.Web.UI.HtmlControls;
 
 namespace Ra.Extensions
 {
+    /**
+     * tabcontrol widget. An alternative to Accordiong, though renders as a tabcontrol
+     */
     [ASP.ToolboxData("<{0}:TabControl runat=server></{0}:TabControl>")]
     public class TabControl : Panel, ASP.INamingContainer
     {
+        private Panel _topPanel;
+
+        /**
+         * Raised when ActiveTabViewIndex property is changed
+         */
         public event EventHandler ActiveTabViewChanged;
 
+        /**
+         * Gets or sets the actively viewed TabView
+         */
         [DefaultValue(0)]
         public int ActiveTabViewIndex
         {
@@ -33,6 +44,9 @@ namespace Ra.Extensions
             }
         }
 		
+        /**
+         * Returns the collection of TabViews in the control
+         */
 		public IEnumerable<TabView> Views
 		{
 			get
@@ -45,6 +59,9 @@ namespace Ra.Extensions
 			}
 		}
 		
+        /**
+         * Returns the active tabview
+         */
 		public TabView ActiveTabView
 		{
 			get
@@ -84,7 +101,6 @@ namespace Ra.Extensions
             Controls.AddAt(0, _topPanel);
 		}
 
-		private Panel _topPanel;
         private void CreateChildTabViews()
         {
             HTML.HtmlGenericControl ul = new HTML.HtmlGenericControl("ul");
@@ -135,7 +151,7 @@ namespace Ra.Extensions
             _topPanel.Controls.Add(ul);
         }
 
-        void btn_Click(object sender, EventArgs e)
+        private void btn_Click(object sender, EventArgs e)
         {
             LinkButton btn = sender as LinkButton;
             int newIdx = Int32.Parse(btn.ID.Replace("tab_view_btn", ""));
@@ -144,6 +160,9 @@ namespace Ra.Extensions
                 ActiveTabViewChanged(this, new EventArgs());
         }
 
+        /**
+         * Programatically changes the ActiveTabView
+         */
         public void SetActiveTabViewIndex(int idx)
         {
             if (idx == ActiveTabViewIndex)

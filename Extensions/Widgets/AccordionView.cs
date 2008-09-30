@@ -17,9 +17,15 @@ using HTML = System.Web.UI.HtmlControls;
 
 namespace Ra.Extensions
 {
+    /**
+     * Panels for the Accordion control
+     */
     [ASP.ToolboxData("<{0}:AccordionView runat=server></{0}:AccordionView>")]
     public class AccordionView : Panel
     {
+        /**
+         * header string for accordionview
+         */
         [DefaultValue("")]
         public string Caption
         {
@@ -126,7 +132,7 @@ Ra.E('{0}', {{
             }
         }
 
-        void btn_Click(object sender, EventArgs e)
+        private void btn_Click(object sender, EventArgs e)
         {
             if (IsActive())
                 return;
@@ -166,6 +172,9 @@ Ra.E('{0}', {{
             writer.Write("</div>");
         }
 
+        /**
+         * Returns true if this is the activce accordionview in the parent Accordion
+         */
         public bool IsActive()
         {
             bool isActive = false;

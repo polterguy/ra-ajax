@@ -17,14 +17,23 @@ using HTML = System.Web.UI.HtmlControls;
 
 namespace Ra.Extensions
 {
+    /**
+     * Label control which enables editing when clicked
+     */
     [ASP.ToolboxData("<{0}:InPlaceEdit runat=server />")]
     public class InPlaceEdit : Panel, ASP.INamingContainer
     {
         private LinkButton _link = new LinkButton();
         private TextBox _text = new TextBox();
 
+        /**
+         * Raised when Text property is changed
+         */
         public event EventHandler TextChanged;
 
+        /**
+         * text of label
+         */
         [DefaultValue("")]
         public string Text
         {
@@ -68,7 +77,7 @@ namespace Ra.Extensions
             Controls.Add(_text);
         }
 
-        void _text_Blur(object sender, EventArgs e)
+        private void _text_Blur(object sender, EventArgs e)
         {
             _link.Text = _text.Text;
             _text.Visible = false;
@@ -79,7 +88,7 @@ namespace Ra.Extensions
                 TextChanged(this, new EventArgs());
         }
 
-        void _link_Click(object sender, EventArgs e)
+        private void _link_Click(object sender, EventArgs e)
         {
             if (_link.Text == "[null]")
                 _text.Text = "";

@@ -18,6 +18,9 @@ using System.Collections.Generic;
 
 namespace Ra.Extensions
 {
+    /**
+     * window control, Panel with extra capabilities
+     */
     [ASP.ToolboxData("<{0}:Window runat=\"server\"></{0}:Window>")]
     public class Window : Panel, ASP.INamingContainer
     {
@@ -35,8 +38,14 @@ namespace Ra.Extensions
         LinkButton _close;
         BehaviorDraggable _dragger;
 
+        /**
+         * Raised when window is closed by clicking the close icon
+         */
         public event EventHandler Closed;
 
+        /**
+         * Header text of window
+         */
         [DefaultValue("")]
         public string Caption
         {
@@ -44,6 +53,9 @@ namespace Ra.Extensions
             set { ViewState["Caption"] = value; }
         }
 
+        /**
+         * This is the actual inner control where the child controls are being rendered (re-arranged in PreRender)
+         */
         public Label SurfaceControl
         {
             get { return _content; }
@@ -134,7 +146,7 @@ namespace Ra.Extensions
             ReArrangeControls();
         }
 
-        void _close_Click(object sender, EventArgs e)
+        private void _close_Click(object sender, EventArgs e)
         {
             this.Visible = false;
             if (Closed != null)

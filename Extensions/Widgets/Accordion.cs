@@ -16,13 +16,27 @@ using System.IO;
 using HTML = System.Web.UI.HtmlControls;
 using System.Collections.Generic;
 
+/**
+ * Extension widgets for Ra-Ajax
+ */
 namespace Ra.Extensions
 {
+    /**
+     * An accordion is a list of panels where only one can be visible at any time. When header of any
+     * one is clicked that panel will be visibe and the previously visible one will be in-vsibe except
+     * for its header
+     */
     [ASP.ToolboxData("<{0}:Accordion runat=server></{0}:Accordion>")]
     public class Accordion : Panel, ASP.INamingContainer
     {
+        /**
+         * Raised when active accordion is changed
+         */
         public event EventHandler ActiveAccordionViewChanged;
 
+        /**
+         * Index of currently viewing panel
+         */
         [DefaultValue(0)]
         public int ActiveAccordionViewIndex
         {
@@ -33,6 +47,10 @@ namespace Ra.Extensions
             }
         }
 
+        /**
+         * When changing active panel there will be a drop-down/up effect. This property defines the
+         * number of milliseconds the animation will spend.
+         */
         [DefaultValue(400)]
         public int AnimationDuration
         {
@@ -48,6 +66,9 @@ namespace Ra.Extensions
             }
         }
 
+        /**
+         * All AccordionViews within the accordion
+         */
         [Browsable(false)]
         public IEnumerable<AccordionView> Views
         {

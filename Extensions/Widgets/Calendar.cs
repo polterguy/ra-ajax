@@ -17,19 +17,31 @@ using HTML = System.Web.UI.HtmlControls;
 
 namespace Ra.Extensions
 {
+    /**
+     * calendar widget for choosing dates
+     */
     [ASP.ToolboxData("<{0}:Calendar runat=server />")]
     public class Calendar : Panel, ASP.INamingContainer
     {
+        /**
+         * EventArgs class for the RenderDay Event
+         */
         public class RenderDayEventArgs : EventArgs
         {
             private DateTime _date;
             private HTML.HtmlTableCell _cell;
 
+            /**
+             * Cell which renders the given Date
+             */
             public HTML.HtmlTableCell Cell
             {
                 get { return _cell; }
             }
 
+            /**
+             * Date which are currently rendered
+             */
             public DateTime Date
             {
                 get { return _date; }
@@ -42,12 +54,27 @@ namespace Ra.Extensions
             }
         }
 
+        /**
+         * Raised when Value is changed by user. Can be raised by chaning month and year contrary
+         * to the DateClicked event
+         */
         public event EventHandler SelectedValueChanged;
 
+        /**
+         * Raised when a specific date is clicked, this evnt will not be raised when
+         * year or month is changed, only when a specific date is clicked or the "Today" date
+         * is clicked
+         */
         public event EventHandler DateClicked;
 
+        /**
+         * Called once for every date which is rendered within the current month if defined
+         */
         public event EventHandler<RenderDayEventArgs> RenderDay;
 
+        /**
+         * Selected value of calendar
+         */
         public DateTime Value
         {
             get { return ViewState["Value"] == null ? DateTime.MinValue : (DateTime)ViewState["Value"]; }
@@ -57,6 +84,9 @@ namespace Ra.Extensions
             }
         }
 
+        /**
+         * Defines the leftmost weekday of the calendar
+         */
         [DefaultValue(DayOfWeek.Monday)]
         public DayOfWeek StartsOn
         {
@@ -314,7 +344,7 @@ namespace Ra.Extensions
             headerCell.Controls.Add(year);
         }
 
-        void today_Click(object sender, EventArgs e)
+        private void today_Click(object sender, EventArgs e)
         {
             Value = DateTime.Now.Date;
             ReRender();
@@ -326,7 +356,7 @@ namespace Ra.Extensions
                 DateClicked(this, new EventArgs());
         }
 
-        void month_SelectedIndexChanged(object sender, EventArgs e)
+        private void month_SelectedIndexChanged(object sender, EventArgs e)
         {
             DropDownList drop = sender as DropDownList;
             int newMonth = Int32.Parse(drop.SelectedItem.Value);
@@ -342,7 +372,7 @@ namespace Ra.Extensions
             }
         }
 
-        void year_SelectedIndexChanged(object sender, EventArgs e)
+        private void year_SelectedIndexChanged(object sender, EventArgs e)
         {
             DropDownList drop = sender as DropDownList;
             int newYear = Int32.Parse(drop.SelectedItem.Value);
@@ -358,7 +388,7 @@ namespace Ra.Extensions
             }
         }
 
-        void btn_Click(object sender, EventArgs e)
+        private void btn_Click(object sender, EventArgs e)
         {
             LinkButton button = sender as LinkButton;
             DateTime newValue = DateTime.ParseExact(button.ID, "yyyy_MM_dd", System.Globalization.CultureInfo.InvariantCulture);

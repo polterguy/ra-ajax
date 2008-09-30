@@ -24,9 +24,16 @@ using System.Reflection;
 
 namespace Ra.Extensions
 {
+    /**
+     * Comet component, also known as LazyHttp, StreamingHttp and several other pseudonyms.
+     * Basically real-time event capability for the client.
+     */
     [ASP.ToolboxData("<{0}:Comet runat=\"server\" />")]
     public class Comet : RaControl, IRaControl
     {
+        /**
+         * Passed into the Tick event handler
+         */
 		public class CometEventArgs : EventArgs
 		{
 			private string _id;
@@ -36,7 +43,10 @@ namespace Ra.Extensions
 				_id = id;
 			}
 
-			public string Id
+            /**
+             * id of event raised
+             */
+            public string Id
 			{
 				get { return _id; }
 			}
@@ -45,8 +55,14 @@ namespace Ra.Extensions
         private delegate string EnterQueue(string lastEvent, int timeout);
         private EnterQueue _enter;
 
+        /**
+         * Raised when an event have been raised
+         */
         public event EventHandler<CometEventArgs> Tick;
 
+        /**
+         * if true comet component is enabled, otherwise disabled
+         */
         [DefaultValue(true)]
         public bool Enabled
         {
@@ -79,9 +95,12 @@ namespace Ra.Extensions
         // This one will create a message that will make sure
         // all Comet listeners are returning and being signalized back
         // to the client which again will raise the Tick Event...
-        public void SendMessage(string messageName)
+        /**
+         * Will raise a Tick event with the given Id
+         */
+        public void SendMessage(string id)
         {
-            Queue.SignalizeNewEvent(messageName);
+            Queue.SignalizeNewEvent(id);
         }
 
         protected override void OnInit(EventArgs e)
