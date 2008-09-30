@@ -24,6 +24,8 @@
 
 * Finish up Comet
 
+* Comet external raising event and setting for allowing it. GET argument raises event on page...
+
 * SelectStart in BehaviorDraggable isn't trapped in Chrome...
 
 * Fix CheckBox and RadioButton so that also e.g. OnMouseOver triggers on CONTROL and not only

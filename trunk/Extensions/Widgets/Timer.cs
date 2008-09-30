@@ -19,11 +19,22 @@ using HTML = System.Web.UI.HtmlControls;
 
 namespace Ra.Extensions
 {
+    /**
+     * Ajax timer, raises Tick evnt handler back to server periodically. Alternative to Comet component and
+     * far "safer" to use than Comet
+     */
     [ASP.ToolboxData("<{0}:Timer runat=\"server\" />")]
     public class Timer : RaControl, IRaControl
     {
+        /**
+         * Raised periodically every Duration milliseconds
+         */
         public event EventHandler Tick;
 
+        /**
+         * if true control is enabled and will raise the Tick events every Duration milliseconds, otherwise
+         * will not raise tick events before enabled again
+         */
         [DefaultValue(true)]
         public bool Enabled
         {
@@ -36,8 +47,11 @@ namespace Ra.Extensions
             }
         }
 
+        /**
+         * Milliseconds bewteen Tick events are raised
+         */
         [DefaultValue(1000)]
-        public int Milliseconds
+        public int Duration
         {
             get { return ViewState["Milliseconds"] == null ? 1000 : (int)ViewState["Milliseconds"]; }
             set
@@ -68,11 +82,11 @@ namespace Ra.Extensions
 			string retVal = base.GetClientSideScriptOptions();
 			if (Enabled && Tick != null)
 				retVal += "enabled:true";
-			if (Milliseconds != 1000)
+			if (Duration != 1000)
 			{
 				if (retVal != string.Empty)
 					retVal += ",";
-				retVal += string.Format("duration:{0}", Milliseconds);
+				retVal += string.Format("duration:{0}", Duration);
 			}
 			return retVal;
 		}

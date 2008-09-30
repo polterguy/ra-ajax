@@ -17,9 +17,15 @@ using HTML = System.Web.UI.HtmlControls;
 
 namespace Ra.Extensions
 {
-    [ASP.ToolboxData("<{0}:TabView runat=server></{0}:TabView>")]
+    /**
+     * Instance tabviews of the TabControl
+     */
+    [ASP.ToolboxData("<{0}:TabView runat=\"server\"></{0}:TabView>")]
     public class TabView : Panel
     {
+        /**
+         * text header of tabview
+         */
         [DefaultValue("")]
         public string Caption
         {

@@ -17,6 +17,9 @@ using HTML = System.Web.UI.HtmlControls;
 
 namespace Ra.Extensions
 {
+    /**
+     * Light version of Window, contains far less markup and are less CSS and browser demanding/intensive
+     */
     [ASP.ToolboxData("<{0}:WindowLight runat=\"server\"></{0}:WindowLight>")]
     public class WindowLight : Panel, ASP.INamingContainer
     {
@@ -25,8 +28,14 @@ namespace Ra.Extensions
 		private LinkButton _close;
 		private BehaviorDraggable _dragger;
 
+        /**
+         * Raised when window is closed by clicking the close icon
+         */
         public event EventHandler Closed;
 
+        /**
+         * Header text of window
+         */
         [DefaultValue("")]
         public string Caption
         {

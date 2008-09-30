@@ -19,11 +19,22 @@ using HTML = System.Web.UI.HtmlControls;
 
 namespace Ra.Extensions
 {
+    /**
+     * TextBox control with rich formatting capabilities (HTML)
+     */
     [ASP.ToolboxData("<{0}:RichEdit runat=server></{0}:RichEdit>")]
     public class RichEdit : RaWebControl, IRaControl
     {
+        private string _selection;
+
+        /**
+         * Ke pressed and released
+         */
         public event EventHandler KeyUp;
 
+        /**
+         * text (HTML) of control
+         */
         [DefaultValue("")]
         public string Text
         {
@@ -36,7 +47,9 @@ namespace Ra.Extensions
             }
         }
 
-        private string _selection;
+        /**
+         * Selected text/HTML of control. Contains formatting
+         */
         [Browsable(false)]
         public string Selection
         {
