@@ -9,20 +9,23 @@
 using System;
 using Ra.Widgets;
 
-public partial class AjaxDropDownList : System.Web.UI.Page
+namespace Samples
 {
-    protected void selectedchanged(object sender, EventArgs e)
+    public partial class AjaxDropDownList : System.Web.UI.Page
     {
-        lblResults2.Text = list.SelectedItem.Text;
-    }
+        protected void selectedchanged(object sender, EventArgs e)
+        {
+            lblResults2.Text = list.SelectedItem.Text;
+        }
 
-    protected void mouseout(object sender, EventArgs e)
-    {
-        lblResults.Text = "mouse out";
-    }
+        protected void mouseout(object sender, EventArgs e)
+        {
+            lblResults.Text = "mouse out";
+        }
 
-    protected void mouseover(object sender, EventArgs e)
-    {
-        lblResults.Text = "mouse over";
+        protected void mouseover(object sender, EventArgs e)
+        {
+            lblResults.Text = "mouse over";
+        }
     }
 }

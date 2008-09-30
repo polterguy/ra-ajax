@@ -9,16 +9,19 @@
 using System;
 using Ra.Widgets;
 
-public partial class AjaxLabel : System.Web.UI.Page
+namespace Samples
 {
-    protected void btn_Click(object sender, EventArgs e)
+    public partial class AjaxLabel : System.Web.UI.Page
     {
-        lbl.Text = "The button was clicked :)";
-        lbl.Style["font-weight"] = lbl.Style["font-weight"] == "bold" ? "normal" : "bold";
-    }
+        protected void btn_Click(object sender, EventArgs e)
+        {
+            lbl.Text = "The button was clicked :)";
+            lbl.Style["font-weight"] = lbl.Style["font-weight"] == "bold" ? "normal" : "bold";
+        }
 
-    protected void btn2_Click(object sender, EventArgs e)
-    {
-        lbl2.Visible = true;
+        protected void btn2_Click(object sender, EventArgs e)
+        {
+            lbl2.Visible = true;
+        }
     }
 }

@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Updater.aspx.cs" 
-    Inherits="AjaxUpdater" 
+    Inherits="Samples.AjaxUpdater" 
     Title="Ra-Ajax Updater Sample" %>
 
 <%@ Register 

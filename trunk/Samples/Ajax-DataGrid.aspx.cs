@@ -10,78 +10,81 @@ using System;
 using System.Collections.Generic;
 using Ra.Widgets;
 
-public partial class AjaxDataGrid : System.Web.UI.Page
+namespace Samples
 {
-    public class DataGridPeople
+    public partial class AjaxDataGrid : System.Web.UI.Page
     {
-        public string _name;
-        public bool _isAdmin;
-
-        public DataGridPeople(string name, bool isAdmin)
+        public class DataGridPeople
         {
-            Name = name;
-            IsAdmin = isAdmin;
-        }
+            public string _name;
+            public bool _isAdmin;
 
-        public string Name
-        {
-            get { return _name; }
-            set { _name = value; }
-        }
-
-        public bool IsAdmin
-        {
-            get { return _isAdmin; }
-            set { _isAdmin = value; }
-        }
-    }
-
-    protected void Page_Load(object sender, EventArgs e)
-    {
-        if (!IsPostBack)
-        {
-            datagrid.DataSource = People;
-            datagrid.DataBind();
-        }
-    }
-
-    protected void NameChanged(object sender, EventArgs e)
-    {
-        Ra.Extensions.InPlaceEdit edit = sender as Ra.Extensions.InPlaceEdit;
-        lbl.Text = string.Format("Name changed to {0}", edit.Text);
-        Effect effect = new EffectFadeIn(lbl, 400);
-        effect.Joined.Add(new EffectHighlight());
-        effect.Render();
-    }
-
-    protected void AdminChanged(object sender, EventArgs e)
-    {
-        Ra.Widgets.CheckBox edit = sender as Ra.Widgets.CheckBox;
-        lbl.Text = string.Format("IsAdmin changed to {0}", edit.Checked);
-        Effect effect = new EffectFadeIn(lbl, 400);
-        effect.Joined.Add(new EffectHighlight());
-        effect.Render();
-    }
-
-    private List<DataGridPeople> People
-    {
-        get
-        {
-            if (Session["People"] == null)
+            public DataGridPeople(string name, bool isAdmin)
             {
-                List<DataGridPeople> tmp = new List<DataGridPeople>();
-                tmp.Add(new DataGridPeople("Thomas", true));
-                tmp.Add(new DataGridPeople("Kariem", true));
-                tmp.Add(new DataGridPeople("John Doe", false));
-                Session["People"] = tmp;
+                Name = name;
+                IsAdmin = isAdmin;
             }
-            List<DataGridPeople> retVal = Session["People"] as List<DataGridPeople>;
-            if (retVal == null)
+
+            public string Name
             {
-                Session["People"] = null;
-                return People;
+                get { return _name; }
+                set { _name = value; }
             }
-            return retVal;
+
+            public bool IsAdmin
+            {
+                get { return _isAdmin; }
+                set { _isAdmin = value; }
+            }
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                datagrid.DataSource = People;
+                datagrid.DataBind();
+            }
+        }
+
+        protected void NameChanged(object sender, EventArgs e)
+        {
+            Ra.Extensions.InPlaceEdit edit = sender as Ra.Extensions.InPlaceEdit;
+            lbl.Text = string.Format("Name changed to {0}", edit.Text);
+            Effect effect = new EffectFadeIn(lbl, 400);
+            effect.Joined.Add(new EffectHighlight());
+            effect.Render();
+        }
+
+        protected void AdminChanged(object sender, EventArgs e)
+        {
+            Ra.Widgets.CheckBox edit = sender as Ra.Widgets.CheckBox;
+            lbl.Text = string.Format("IsAdmin changed to {0}", edit.Checked);
+            Effect effect = new EffectFadeIn(lbl, 400);
+            effect.Joined.Add(new EffectHighlight());
+            effect.Render();
+        }
+
+        private List<DataGridPeople> People
+        {
+            get
+            {
+                if (Session["People"] == null)
+                {
+                    List<DataGridPeople> tmp = new List<DataGridPeople>();
+                    tmp.Add(new DataGridPeople("Thomas", true));
+                    tmp.Add(new DataGridPeople("Kariem", true));
+                    tmp.Add(new DataGridPeople("John Doe", false));
+                    Session["People"] = tmp;
+                }
+                List<DataGridPeople> retVal = Session["People"] as List<DataGridPeople>;
+                if (retVal == null)
+                {
+                    Session["People"] = null;
+                    return People;
+                }
+                return retVal;
+            }
         }
     }
 }

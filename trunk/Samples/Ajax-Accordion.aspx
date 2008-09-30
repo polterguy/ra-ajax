@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Ajax-Accordion.aspx.cs" 
-    Inherits="AjaxAccordion" 
+    Inherits="Samples.AjaxAccordion" 
     Title="Ra-Ajax Accordion Sample" %>
 
 <%@ Register 

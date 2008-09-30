@@ -9,24 +9,27 @@
 using System;
 using Ra.Widgets;
 
-public partial class AjaxImage : System.Web.UI.Page
+namespace Samples
 {
-    protected void Page_Load(object sender, EventArgs e)
+    public partial class AjaxImage : System.Web.UI.Page
     {
-        Image1.Visible = false;
-    }
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            Image1.Visible = false;
+        }
 
-    protected void btn_Click(object sender, EventArgs e)
-    {
-        img.ImageUrl =
-            img.ImageUrl == "media/flower1.jpg" ?
-                "media/flower2.jpg" :
-                "media/flower1.jpg";
-    }
+        protected void btn_Click(object sender, EventArgs e)
+        {
+            img.ImageUrl =
+                img.ImageUrl == "media/flower1.jpg" ?
+                    "media/flower2.jpg" :
+                    "media/flower1.jpg";
+        }
 
-    // If you can get to call this method you will get $100 :)
-    public void HackApplication()
-    {
-        Image1.Visible = true;
+        // If you can get to call this method you will get $100 :)
+        public void HackApplication()
+        {
+            Image1.Visible = true;
+        }
     }
 }

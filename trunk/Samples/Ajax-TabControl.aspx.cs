@@ -9,10 +9,13 @@
 using System;
 using Ra.Widgets;
 
-public partial class AjaxTabControl : System.Web.UI.Page
+namespace Samples
 {
-    protected void tabBtn_Click(object sender, EventArgs e)
+    public partial class AjaxTabControl : System.Web.UI.Page
     {
-        tabBtn.Text = "Clicked";
+        protected void tabBtn_Click(object sender, EventArgs e)
+        {
+            tabBtn.Text = "Clicked";
+        }
     }
 }

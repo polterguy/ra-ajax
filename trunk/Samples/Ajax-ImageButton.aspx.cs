@@ -9,11 +9,14 @@
 using System;
 using Ra.Widgets;
 
-public partial class AjaxImageButton : System.Web.UI.Page
+namespace Samples
 {
-    protected void imgBtn_Click(object sender, EventArgs e)
+    public partial class AjaxImageButton : System.Web.UI.Page
     {
-        lblResults.Text = "You clicked the Image Button, notice how we changed the AlternateText (alt) on the ImageButton";
-        imgBtn.AlternateText = "This buttons has been clicked";
+        protected void imgBtn_Click(object sender, EventArgs e)
+        {
+            lblResults.Text = "You clicked the Image Button, notice how we changed the AlternateText (alt) on the ImageButton";
+            imgBtn.AlternateText = "This buttons has been clicked";
+        }
     }
 }

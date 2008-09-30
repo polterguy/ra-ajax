@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Dynamic.aspx.cs" 
-    Inherits="Dynamic" 
+    Inherits="Samples.Dynamic" 
     Title="Dynamic Ajax Controls" %>
 
 <%@ Register 

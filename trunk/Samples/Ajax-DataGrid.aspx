@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Ajax-DataGrid.aspx.cs" 
-    Inherits="AjaxDataGrid" 
+    Inherits="Samples.AjaxDataGrid" 
     Title="Ra-Ajax DataGrid Sample" %>
 
 <%@ Register 

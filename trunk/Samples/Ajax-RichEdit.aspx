@@ -4,7 +4,7 @@
     ValidateRequest="false"
     AutoEventWireup="true" 
     CodeFile="Ajax-RichEdit.aspx.cs" 
-    Inherits="AjaxRichEdit" 
+    Inherits="Samples.AjaxRichEdit" 
     Title="Ra-Ajax RichEdit Sample" %>
 
 <%@ Register 

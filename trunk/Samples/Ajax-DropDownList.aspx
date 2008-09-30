@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Ajax-DropDownList.aspx.cs" 
-    Inherits="AjaxDropDownList" 
+    Inherits="Samples.AjaxDropDownList" 
     Title="Ra-Ajax DropDownList Sample" %>
 
 <%@ Register 

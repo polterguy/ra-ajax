@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Ajax-InPlaceEdit.aspx.cs" 
-    Inherits="AjaxInPlaceEdit" 
+    Inherits="Samples.AjaxInPlaceEdit" 
     Title="Ra-Ajax InPlaceEdit Sample" %>
 
 <%@ Register 

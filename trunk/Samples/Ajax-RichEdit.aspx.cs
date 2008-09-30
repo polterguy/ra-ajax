@@ -9,10 +9,13 @@
 using System;
 using Ra.Widgets;
 
-public partial class AjaxRichEdit : System.Web.UI.Page
+namespace Samples
 {
-    protected void boldBtn_Click(object sender, EventArgs e)
+    public partial class AjaxRichEdit : System.Web.UI.Page
     {
-        richeditor.Selection = string.Format("<strong>{0}</strong>", richeditor.Selection);
+        protected void boldBtn_Click(object sender, EventArgs e)
+        {
+            richeditor.Selection = string.Format("<strong>{0}</strong>", richeditor.Selection);
+        }
     }
 }

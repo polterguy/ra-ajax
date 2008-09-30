@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Ajax-CheckBox.aspx.cs" 
-    Inherits="AjaxCheckBox" 
+    Inherits="Samples.AjaxCheckBox" 
     Title="Ra-Ajax CheckBox Sample" %>
 
 <%@ Register 

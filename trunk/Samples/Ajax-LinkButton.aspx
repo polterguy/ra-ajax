@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Ajax-LinkButton.aspx.cs" 
-    Inherits="AjaxLinkButton" 
+    Inherits="Samples.AjaxLinkButton" 
     Title="Ra-Ajax LinkButton Sample" %>
 
 <%@ Register 

@@ -3,7 +3,7 @@
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
     CodeFile="Ajax-Panel.aspx.cs" 
-    Inherits="AjaxPanel" 
+    Inherits="Samples.AjaxPanel" 
     Title="Ra-Ajax Panel Sample" %>
 
 <%@ Register 

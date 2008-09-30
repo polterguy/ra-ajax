@@ -9,21 +9,24 @@
 using System;
 using Ra.Widgets;
 
-public partial class AjaxButton : System.Web.UI.Page
+namespace Samples
 {
-    protected void click(object sender, EventArgs e)
+    public partial class AjaxButton : System.Web.UI.Page
     {
-        (sender as Button).Text = "clicked";
-        (sender as Button).Style["background-color"] = "Yellow";
-    }
+        protected void click(object sender, EventArgs e)
+        {
+            (sender as Button).Text = "clicked";
+            (sender as Button).Style["background-color"] = "Yellow";
+        }
 
-    protected void mouseout(object sender, EventArgs e)
-    {
-        (sender as Button).Text = "mouseout";
-    }
+        protected void mouseout(object sender, EventArgs e)
+        {
+            (sender as Button).Text = "mouseout";
+        }
 
-    protected void mouseover(object sender, EventArgs e)
-    {
-        (sender as Button).Text = "mouseover";
+        protected void mouseover(object sender, EventArgs e)
+        {
+            (sender as Button).Text = "mouseover";
+        }
     }
 }

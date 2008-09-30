@@ -2,7 +2,7 @@
     Language="C#" 
     AutoEventWireup="true" 
     CodeFile="MasterPage.master.cs" 
-    Inherits="MasterPage" %>
+    Inherits="Samples.MasterPage" %>
 
 <%@ Register 
     Assembly="Ra" 
