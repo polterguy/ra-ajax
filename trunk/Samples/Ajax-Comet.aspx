@@ -23,17 +23,17 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ra Ajax Samples - Ajax Comet</h1>
+    <h1>Ra Ajax Comet</h1>
     <p>
-        Ra-Ajax has an <em>Ajax Comet</em> component which you can use if you need realtime updates to your 
+        Ra-Ajax has a  Comet component which you can use if you need realtime updates to your 
         webpage or you don't want to have the overhead of constantly polling the server by using the 
         <a href="Ajax-Timer.aspx">Ajax Timer</a>.
     </p>
     <p>
-        Be careful with Comet though. It has a nasty habit of seriously stressing the resources on both the
-        client-side and the server side. Comet is a <em>last resort solution</em> which you only should use
-        when all other options are inadequate. Comet is only to be used if you are 100% sure about that you 
-        need it!
+        Here we have implemented a chat-client using the Ra-Ajax Comet component. To see the benefits of using
+        it try to open multiple browsers towards this same webpage and try to submit a new chat item from
+        one of the browsers and see how the other browser will actually update the chat items in "real time" 
+        instantly.
     </p>
     <ra:Panel 
         runat="server" 
@@ -55,21 +55,28 @@
             OnClick="submit_Click" />
         <ext:Comet 
             runat="server" 
-            ID="comet"
+            ID="comet" 
+            MaxClients="200"
             Enabled="true"
             OnTick="comet_Tick" />
     </div>
     <p>
-        If you try to open two different browser windows while you add up chat items you will see that the Comet
-        solution is a "real time" solution and that changes are immediately propagated to all open clients against
-        the same Comet component.
+        <ra:Label 
+            runat="server" 
+            ID="lbl" 
+            CssClass="updateLbl"
+            Text="Number of connections" />
     </p>
     <h2>Comet concerns</h2>
     <p>
-        Mostly IE (except for some rumours about IE8) doesn't support Comet very well due to the 
-        "2 HTTP connection per IP problem". This is impossible to fix without forcing users
-        into using another browser. Or creating the Comet solution so that it uses multiple servers,
-        one for GUI retrieval and a dedicated for only doing Comet HTTP Requests.
+        There are a lot of concerns when working with Comet, mostly due to the fact that HTTP and the web
+        wasn't really created for doing Comet. Some older browsers (IE) will have problems with multiple 
+        connections towards the same server, in addition the server-side will also use significantly more
+        resources in a Comet solution than in a conventional web application. Though the Comet component
+        in Ra-Ajax is built to try to minimize the impact of all these issues by using tricks like
+        two phase comet implementations, Asynchronous pages in ASP.NET and several other techniques. Though
+        you should still be careful with Comet and only use it when you are absolutely sure of that you need
+        it. Comet is a "really big gun"!
     </p>
     <p>
         When you use Comet you should set the page into <em>asynchronous mode</em>. This can be done
@@ -78,10 +85,13 @@
         simultanous users at your comet pages in total.
     </p>
     <p>
-        <strong>Comet does NOT scale</strong>! Or to be accurate it doesn't scale as good as conventional Ajax,
-        which means that you probably should use it as little as possible and only when strictly necessary.
-        If you go berserk with Comet or use it in places where you really don't need it you will experience
-        very weird behavior on your webservers like freezes due to resource draining.
+        <strong>Comet does NOT scale</strong> very well! Or to be accurate it doesn't scale as good as 
+        conventional Ajax, which means that you probably should use it as little as possible and only 
+        when strictly necessary. If you go berserk with Comet or use it in places where you really don't 
+        need it you will experience weird behavior on your webservers like freezes due to resource 
+        draining and bad scaling and server-errors. This is at the heart of Comet since it freezes up a
+        thread for every request on the server, even though you're using the Asynchronous features
+        of ASP.NET 2.0.
     </p>
     <p>
         We have tried to implement Comet in Ra-Ajax in such a way that it will have a minimum impact on
@@ -95,41 +105,17 @@
         <a href="Ajax-Timer.aspx">Ajax Timer</a> instead.
     </p>
     <p>
-        I have yet to see an application which truly needed Comet! Except for Stock Ticker Applications and
-        Chatting Applications there probably are few good reasons to use Comet in the first place.
-        Even the above Chat Example could easily have been implemented with far less
-        problems by using our <a href="Ajax-Timer.aspx">Ajax Timer Control</a>. By using an
-        Ajax Timer instead of the Comet solution you would have used more bandwidth. Still
-        the server-side would have scaled far better, probably by orders of magnitudes. And you would have
-        had a far more portable solution in regards to supported browsers. In general you would
-        have had *less* problems. But here's an Ajax Comet Control for those cases when you
-        <em>absolutely need it</em>.
-    </p>
-    <p>
         <strong>BE CAREFUL WITH COMET!</strong>
     </p>
-    <h2>Ra-Ajax Comet is ALPHA</h2>
     <p>
-        The Ra-Ajax Comet component is currently in Alpha mode which means it should serve as no more than
-        just a teaser of what's to come. We will release a more stable Comet component in the future, but for now
-        the Comet component in Ra-Ajax is mostly meant to be a "teaser preview look" of what's to come. Or for
-        those who are curious and wants to build their own Comet component.
-    </p>
-    <h2>How does this Comet thing work?</h2>
-    <p>
-    	You add up one Comet Control on your page and you supply an OnTick event handler for it
-    	in your codebehind. Then whenever something happens which raises an Event, your OnTick Event Handler
-    	will be called and from it you can manipulate any Widget Property you wish.
-    </p>
-    <p>
-    	Please note that the Ra-Ajax Comet component is a <em>two phase implementation</em>. This means
+    	Note that the Ra-Ajax Comet component is a <em>two phase implementation</em>. This means
     	that first it creates a very small Ajax request which will only return the Comet Event ID back to the
     	client when/if a Comet Event is raised. Then the client-side Ajax Engine will create a "normal" Ajax 
-    	Request which contains the ViewState and all other Control Properties (form elements) serialized
+    	Request which contains all the other Control Properties (form elements) serialized
     	which it transfers back to the server. This means that among other things the Comet component
     	will not interfere with the Ajax Queue in a harmful way since the Comet Ajax Request (first request)
     	will "bypass" the Ajax Request Queue while the second "driver Ajax Request" (which raises the Tick
-    	Event) will go through the normal Ajax Queue.
+    	Event) will go through the normal Ajax Queue and not mess with form elements on your page.
     </p>
     <p>
     	Only by doing it this way we're able to keep the Ajax Queue logic which doesn't create race conditions

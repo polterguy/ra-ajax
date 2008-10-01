@@ -16,6 +16,14 @@ namespace Samples
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (comet.IsQueueFull)
+            {
+                lbl.Text = "Cannot connect to Comet Queue since max limit is reached";
+            }
+            else
+            {
+                lbl.Text = "Number of currently connected users; " + comet.NumberOfConnections;
+            }
             if (!IsPostBack)
             {
                 foreach (string idx in Chats)
