@@ -32,7 +32,7 @@
     <ext:Timer 
         runat="server" 
         OnTick="timer_Tick" 
-        Milliseconds="1000"
+        Duration="1000"
         ID="timer" />
     <ra:Panel 
         runat="server" 
