@@ -22,8 +22,6 @@
 
 * TabControl looks ugly in IE7
 
-* Finish up Comet
-
 * Comet external raising event and setting for allowing it. GET argument raises event on page...
 
 * SelectStart in BehaviorDraggable isn't trapped in Chrome...
@@ -31,9 +29,6 @@
 * Fix CheckBox and RadioButton so that also e.g. OnMouseOver triggers on CONTROL and not only
   text as it does today. Maybe something like "mouseenter/mouseleave" from MooTools can help
   us here and then trap the TOP element (span) ...?
-
-* CheckBox and RadioButton doesn't work on IE (onchanged event doesn't fire before control looses focus)
-  TODO: Finish up implementation here.....
 
 * Create class of JSON values instead of using dictionary like today in RaControl for
   clarity. Still needs to be "overridable" for on RaControl
@@ -43,10 +38,6 @@
 * Create TreeView Control...
 
 * Create Menu Control
-
-* Finish up Doxygen comments
-
-* Implement so that one can remotely signalize (optional) the Comet object from other services...
 
 * Fix a set of beautiful skins for all extension-controls.
 
