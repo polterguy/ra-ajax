@@ -25,7 +25,7 @@ using System.Reflection;
 namespace Ra.Extensions
 {
     /**
-     * Comet component, also known as LazyHttp, StreamingHttp and several other pseudonyms.
+     * comet component, also known as LazyHttp, StreamingHttp and several other pseudonyms.
      * Basically real-time event capability for the client.
      */
     [ASP.ToolboxData("<{0}:Comet runat=\"server\" />")]
@@ -75,6 +75,30 @@ namespace Ra.Extensions
             }
         }
 
+        /**
+         * if true this request can actually connect to comet queue. If MaxClients are reached
+         * then the return value will be false and no actual comet request will be enabled 
+         * for this user since queue is filled up. Note you can actually override this value in e.g.
+         * Page_Load by explicitingly setting the Enabled property of the comet object to true, but
+         * then you will have no effect of the MaxClients and might as well set it to -1.
+         */
+        public bool IsQueueFull
+        {
+            get { return MaxClients != -1 && NumberOfConnections >= MaxClients; }
+        }
+
+        /**
+         * Maximum number of simultaneous connected Comet connections before users are denied to connect
+         * to Comet queue. Default is -1 which means "no limits". Note that this is a "shared" value and not
+         * really on a "per component instance" level...
+         */
+        [DefaultValue(-1)]
+        public int MaxClients
+        {
+            get { return ViewState["MaxClients"] == null ? -1 : (int)ViewState["MaxClients"]; }
+            set { ViewState["MaxClients"] = value; }
+        }
+
         private CometQueue Queue
         {
             get
@@ -92,11 +116,32 @@ namespace Ra.Extensions
             }
         }
 
-        // This one will create a message that will make sure
-        // all Comet listeners are returning and being signalized back
-        // to the client which again will raise the Tick Event...
         /**
-         * Will raise a Tick event with the given Id
+         * Number of currently active connections. Note when the request is released due to a comet event
+         * being raised this value will be significantly reduced, often to 0 due to all the comet requests being 
+         * released and will not report the accurate value. In other Ajax requests it will mostly report 
+         * accurate numbers and can be trusted.
+         */
+        public int NumberOfConnections
+        {
+            get
+            {
+                object numberOfConnections = Page.Application[this.ClientID + "_connections"];
+                if (numberOfConnections == null)
+                {
+                    numberOfConnections = 0;
+                    Page.Application[this.ClientID + "_connections"] = numberOfConnections;
+                }
+                return (int)numberOfConnections;
+            }
+            private set
+            {
+                Page.Application[this.ClientID + "_connections"] = value;
+            }
+        }
+
+        /**
+         * Will raise a Tick event with the given Id releasing all locked requests
          */
         public void SendMessage(string id)
         {
@@ -109,6 +154,7 @@ namespace Ra.Extensions
             if (Page.AsyncTimeout.TotalSeconds < 5 || Page.AsyncTimeout.TotalSeconds > 120)
                 throw new ArgumentException("Cannot have AsyncTimeout on page being outside of range [5,120] milliseconds");
 
+            // Comet request
             if (Page.Request.Params[this.ClientID] == "comet")
             {
                 // REMOVING filters if there are eny on the page...
@@ -123,9 +169,14 @@ namespace Ra.Extensions
                         TimeoutCometQueue,
                         Page.Request.Params["prevMsg"]));
 
-                // TODO: Not sure if we need to call base here, if we can avoid caling base we will
+                // TODO: Not sure if we need to call base here, if we can avoid calling base we will
                 // avoid the removal of the Response Filters since they're added in RaControl...
                 // Maybe add up an "else" to call base implementation...?
+            }
+            else if (this.IsQueueFull)
+            {
+                // Full queue
+                this.Enabled = false;
             }
             base.OnInit(e);
             AjaxManager.Instance.IncludeScriptFromResource(typeof(Comet), "Extensions.Js.Comet.js");
@@ -133,13 +184,25 @@ namespace Ra.Extensions
 
         private IAsyncResult BeginEnterCometQueue(object src, EventArgs args, AsyncCallback cb, object state)
         {
+            NumberOfConnections += 1;
             _enter = new EnterQueue(Queue.WaitForNextMessage);
             return _enter.BeginInvoke(state as string, (int)Page.AsyncTimeout.TotalSeconds, cb, null);
         }
 
-        private void TimeoutCometQueue(IAsyncResult ar)
+        private void EndEnterCometQueue(IAsyncResult ar)
         {
+            // Decrementing number of connections
+            // TODO: Lock...!
+            NumberOfConnections -= 1;
+
+            // Retrieving message
+            string nextMessage = _enter.EndInvoke(ar);
+
+            // Flushing response and writing our Comet Event ID back to the client.
+            // The "nextMessage" (if any) will be the event id passed back into the Tick event handler
             Page.Response.Clear();
+            if (nextMessage != null)
+                Page.Response.Write(nextMessage);
             try
             {
                 // Will throw an exception...
@@ -155,16 +218,13 @@ namespace Ra.Extensions
             }
         }
 
-        private void EndEnterCometQueue(IAsyncResult ar)
+        private void TimeoutCometQueue(IAsyncResult ar)
         {
-            // Retrieving message
-            string nextMessage = _enter.EndInvoke(ar);
-
-            // Flushing response and writing our Comet Event ID back to the client.
-            // The "nextMessage" (if any) will be the event id passed back into the Tick event handler
             Page.Response.Clear();
-            if (nextMessage != null)
-                Page.Response.Write(nextMessage);
+
+            // Decrementing the number of connections
+            // TODO: Lock...!
+            NumberOfConnections -= 1;
             try
             {
                 // Will throw an exception...
