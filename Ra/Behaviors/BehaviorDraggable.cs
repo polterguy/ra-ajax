@@ -14,11 +14,20 @@ using ASP = System.Web.UI;
 
 namespace Ra.Widgets
 {
+    /**
+     * Adds dragging capabilities to your Ajax controls
+     */
     [ASP.ToolboxData("<{0}:BehaviorDraggable runat=\"server\" />")]
     public class BehaviorDraggable : Behavior, IRaControl
 	{
+        /**
+         * Event raised when control has been dropped into a new location on form
+         */
 		public event EventHandler Dropped;
 
+        /**
+         * min/max dragging bounds of control
+         */
         public Rectangle Bounds
         {
             get { return ViewState["Bounds"] == null ? Rectangle.Empty : (Rectangle)ViewState["Bounds"]; }
@@ -30,6 +39,9 @@ namespace Ra.Widgets
             }
         }
 
+        /**
+         * "resolution" which the control should snap into. Think of it like a grid.
+         */
         public Point Snap
         {
             get { return ViewState["Snap"] == null ? Point.Empty : (Point)ViewState["Snap"]; }
@@ -41,6 +53,11 @@ namespace Ra.Widgets
             }
         }
 
+        /**
+         * If given it is expected to be the id of a DOM element from which the control will be draggable
+         * from. Then control can only be dragged by clicking this specific DOM element. Doesn't
+         * have to be the DOM element of a Control.
+         */
         public string Handle
         {
             get { return ViewState["Handle"] == null ? "" : (string)ViewState["Handle"]; }
@@ -52,7 +69,7 @@ namespace Ra.Widgets
             }
         }
 
-		public override string GetRegistrationScript ()
+		public override string GetRegistrationScript()
 		{
 			string options = string.Empty;
 			if( Bounds != Rectangle.Empty)
