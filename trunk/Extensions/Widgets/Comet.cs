@@ -60,7 +60,7 @@ namespace Ra.Extensions
         public event EventHandler<CometEventArgs> Tick;
 
         /**
-         * if true comet component is enabled, otherwise disabled
+         * If true comet component is enabled, otherwise disabled
          */
         [DefaultValue(true)]
         public bool Enabled
@@ -72,6 +72,18 @@ namespace Ra.Extensions
                     SetJSONValueBool("Enabled", value);
                 ViewState["Enabled"] = value;
             }
+        }
+
+        /**
+         * If true you can create events on the comet queue by appending "cometEvent=xxx" as GET 
+         * parameter to the URL and sending a GET request. Which will return true on as the response
+         * and not actually HTML
+         */
+        [DefaultValue(true)]
+        public bool AllowExternalEvents
+        {
+            get { return ViewState["AllowExternalEvents"] == null ? true : (bool)ViewState["AllowExternalEvents"]; }
+            set { ViewState["AllowExternalEvents"] = value; }
         }
 
         /**
@@ -147,6 +159,30 @@ namespace Ra.Extensions
             Queue.SignalizeNewEvent(id);
         }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(Page.Request.Params["cometEvent"]))
+            {
+                SendMessage(Page.Request.Params["cometEvent"]);
+                Page.Response.Clear();
+                Page.Response.Write("true");
+                try
+                {
+                    // Will throw an exception...
+                    Page.Response.End();
+                }
+                catch (Exception)
+                {
+                    // Silently catching due to "by design decision" from Microsoft...
+                    // Maybe we should use a Response-Filter here...?
+                    // The logic we currently have interferes quite heavily with existing Ajax Filters on Response
+                    // object...
+                    return;
+                }
+            }
+            base.OnLoad(e);
+        }
+
         protected override void OnInit(EventArgs e)
         {
             // Safeguarding against insane values for Timeout....
@@ -172,7 +208,7 @@ namespace Ra.Extensions
                 // avoid the removal of the Response Filters since they're added in RaControl...
                 // Maybe add up an "else" to call base implementation...?
             }
-            else if (this.IsQueueFull)
+            else if (string.IsNullOrEmpty(Page.Request.Params["cometEvent"]) && this.IsQueueFull)
             {
                 // Full queue
                 this.Enabled = false;
