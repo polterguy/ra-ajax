@@ -16,28 +16,20 @@ namespace Ra.Widgets
      */
     public class EffectRollUp : Effect
     {
-        private int _fromHeight;
-
         /**
          * Use this CTOR only if your effects are being Joined. 
          * Expects the main effect to set the Control and Duration properties.
-         * fromHeight is the starting height of the Control.
          */
-        public EffectRollUp(int fromHeight)
+        public EffectRollUp()
             : base(null, 0)
-        {
-            _fromHeight = fromHeight;
-        }
+        { }
 
         /**
-         * CTOR - control to animate and milliseconds to spend executing in addition to the starting height
-         * of the Control.
+         * CTOR - control to animate and milliseconds to spend executing
          */
-        public EffectRollUp(Control control, int milliseconds, int fromHeight)
+        public EffectRollUp(Control control, int milliseconds)
 			: base(control, milliseconds)
-        {
-            _fromHeight = fromHeight;
-        }
+        { }
 
 		private void UpdateStyleCollection()
 		{
@@ -52,11 +44,9 @@ namespace Ra.Widgets
         public override string RenderParalledOnStart()
         {
 			UpdateStyleCollection();
-            return string.Format(@"
+            return @"
     this.element.setStyle('display','');
-    this.element.setStyle('height','{0}px');
-",
-                _fromHeight);
+    this._fromHeight = this.element.getDimensions().height;";
         }
 
         public override string RenderParalledOnFinished()
@@ -69,10 +59,7 @@ namespace Ra.Widgets
 
         public override string RenderParalledOnRender()
         {
-            return string.Format(@"
-    this.element.setStyle('height',((1.0-pos)*{0}) + 'px');
-",
-                _fromHeight);
+            return "this.element.setStyle('height',((1.0-pos)*this._fromHeight) + 'px');";
         }
     }
 }
