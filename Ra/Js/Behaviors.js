@@ -414,7 +414,9 @@ Ra.extend(Ra.BUpDel.prototype, {
   initUpdaterDelayed: function() {
     var T = this;
     this.options = Ra.extend({
-      color:'#000'
+      color:'#000',
+      delay: 500,
+      opacity: 0.5
     }, this.options || {});
     this.options.onStart = function() {
       if( !T.options.delay ) {
@@ -444,7 +446,12 @@ Ra.extend(Ra.BUpDel.prototype, {
     document.getElementsByTagName('body')[0].appendChild(this.el);
   },
 
+  Opacity: function(value) {
+    this.options.opacity = value;
+  },
+
   onStart: function() {
+    var T = this;
     this.effect = new Ra.Effect(this.el, {
       duration: 800,
       onStart: function() {
@@ -452,25 +459,26 @@ Ra.extend(Ra.BUpDel.prototype, {
         this.element.setStyle('display','block');
       },
       onFinished: function() {
-        this.element.setOpacity(0.5);
+        this.element.setOpacity(T.options.opacity);
       },
       onRender: function(pos) {
-        this.element.setOpacity(pos / 2);
+        this.element.setOpacity(pos * T.options.opacity);
       },
       sinoidal:true
     });
   },
 
   onFinished: function() {
+    var T = this;
     this.effect.stopped = true;
     this.effect = new Ra.Effect(this.el, {
       duration: 300,
       onFinished: function() {
-        this.element.setOpacity(0);
+        this.element.setOpacity(T.options.opacity);
         this.element.setStyle('display','none');
       },
       onRender: function(pos) {
-        this.element.setOpacity((1-pos) / 2);
+        this.element.setOpacity((1 - pos) * T.options.opacity);
       },
       sinoidal:true
     });
