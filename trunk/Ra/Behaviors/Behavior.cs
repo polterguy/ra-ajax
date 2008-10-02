@@ -13,7 +13,11 @@ using ASP = System.Web.UI;
 
 namespace Ra.Widgets
 {
-	public abstract class Behavior : RaControl, IRaControl
+    /**
+     * Abstract base class for all behaviors. A behavior is an extra capability you can assign to an
+     * Ajax control. Use by adding to the Controls collection of your controls.
+     */
+	public abstract class Behavior : RaControl
 	{
 	    protected override void OnInit(EventArgs e)
 	    {
@@ -44,11 +48,10 @@ namespace Ra.Widgets
             }
         }
 
+        /**
+         * Override this one to return the client-side registration script which will be injected
+         * into the control registration script
+         */
 		public abstract string GetRegistrationScript();
-
-        void IRaControl.DispatchEvent(string name)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

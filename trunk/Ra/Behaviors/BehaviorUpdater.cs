@@ -14,9 +14,19 @@ using ASP = System.Web.UI;
 
 namespace Ra.Widgets
 {
+    /**
+     * Will render an "obscure entire webpage" DIV with a very high z-index when control attached
+     * to raises an Ajax Request
+     */
     [ASP.ToolboxData("<{0}:BehaviorUpdater runat=\"server\" />")]
 	public class BehaviorUpdater : Behavior
 	{
+        /**
+         * Number of milliseconds which will pass before the obscurer will animate into view
+         * and show up. If the request is going fast then by having a sane value for this property
+         * you can make sure that only the "long" requests are actually running the updater logic
+         * and obscuring the page.
+         */
         public int Delay
         {
             get { return ViewState["Delay"] == null ? 0 : (int)ViewState["Delay"]; }
@@ -28,6 +38,9 @@ namespace Ra.Widgets
             }
         }
 
+        /**
+         * The color of the obscurer DOM element
+         */
         public Color Color
         {
             get { return ViewState["Color"] == null ? System.Drawing.Color.Black : (Color)ViewState["Color"]; }

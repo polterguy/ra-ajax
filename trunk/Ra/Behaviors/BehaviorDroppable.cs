@@ -14,9 +14,17 @@ using ASP = System.Web.UI;
 
 namespace Ra.Widgets
 {
+    /**
+     * Adds "dropping" capabilities to a Control. Tighly coupled with BehaviorDraggable. Basically
+     * a draggable can be dropped onto a droppable which then will fire a "dropped onto" event in
+     * addition to the draggable's dropped event
+     */
     [ASP.ToolboxData("<{0}:BehaviorDroppable runat=\"server\" />")]
 	public class BehaviorDroppable : Behavior
 	{
+        /**
+         * EventArgs being passed into the Dropped event
+         */
 		public class DroppedEventArgs : EventArgs
 		{
 			private BehaviorDraggable _dragger;
@@ -25,15 +33,26 @@ namespace Ra.Widgets
 			{
 				_dragger = dragger;
 			}
-			
+		
+	        /**
+             * The BehaviorDraggable which was dragged. You can retrieve the control by getting the "Parent"
+             * control from the draggable. This will be the control actually dragged.
+             */
 			public BehaviorDraggable Dragger
 			{
 				get { return _dragger; }
 			}
 		}
 		
+        /**
+         * Fired when a BehaviorDraggable is dropped onto the BehaviorDroppable
+         */
 		public event EventHandler<DroppedEventArgs> Dropped;
 
+        /**
+         * A name of a CSS class which will be added to the droppable control when
+         * a control with BehaviorDraggable is "on top" of it or hovering it.
+         */
         public string TouchedCssClass
         {
             get { return ViewState["TouchedCssClass"] == null ? "" : (string)ViewState["TouchedCssClass"]; }
@@ -45,7 +64,7 @@ namespace Ra.Widgets
             }
         }
 
-		public override string GetRegistrationScript ()
+		public override string GetRegistrationScript()
 		{
 			string options = "";
 			if (!string.IsNullOrEmpty(TouchedCssClass))

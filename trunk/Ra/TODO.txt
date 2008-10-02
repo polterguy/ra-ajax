@@ -9,6 +9,8 @@
 
 * EffectHighlight doesn't work on background-color:White in FF...
 
+* Add up Opacity property to BehaviorUpdater
+
 * Remove fromHeight on EfectRollUp
 
 * DateTimePicker Control
