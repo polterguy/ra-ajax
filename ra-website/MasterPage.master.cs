@@ -176,7 +176,7 @@ namespace RaWebsite
 
         protected void closeShowCode_Click(object sender, EventArgs e)
         {
-            Effect effect = new EffectRollUp(pnlShowCode, 1000, 600);
+            Effect effect = new EffectRollUp(pnlShowCode, 1000);
             effect.Render();
         }
     }

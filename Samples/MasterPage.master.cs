@@ -59,7 +59,7 @@ namespace Samples
             else
             {
                 Effect effect = new EffectFadeOut(tabShowCode, 400);
-                effect.Joined.Add(new EffectRollUp(500));
+                effect.Joined.Add(new EffectRollUp());
                 effect.Render();
             }
         }
