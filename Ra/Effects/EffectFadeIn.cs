@@ -11,13 +11,22 @@ using System.Web.UI;
 
 namespace Ra.Widgets
 {
+    /**
+     * Will fade control's root DOM element in to visibility
+     */
     public class EffectFadeIn : Effect
     {
+        /**
+         * CTOR - control to animate and milliseconds to spend executing
+         */
         public EffectFadeIn(Control control, int milliseconds)
 			: base(control, milliseconds)
 		{ }
 
-		// For chained effects
+        /**
+         * Use this CTOR only if your effects are being Joined. 
+         * Expects the main effect to set the Control and Duration properties.
+         */
         public EffectFadeIn()
 			: base(null, 0)
 		{ }

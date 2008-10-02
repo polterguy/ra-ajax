@@ -11,32 +11,53 @@ using System.Web.UI;
 
 namespace Ra.Widgets
 {
+    /**
+     * Animates borders of Control element. Will make the borders of the element dashed and
+     * change the width of the borders.
+     */
     public class EffectBorder : Effect
     {
 		private int _borderTo;
 
+        /**
+         * Use this CTOR only if your effects are being Joined. 
+         * Expects the main effect to set the Control and Duration properties.
+         */
+        public EffectBorder()
+            : base(null, 0)
+        { }
+
+        /**
+         * CTOR - control to animate and milliseconds to spend executing
+         */
+        public EffectBorder(Control control, int milliseconds)
+            : base(control, milliseconds)
+        { }
+
+        /**
+         * CTOR - control to animate, milliseconds to spend animating and width of
+         * border when effect is finished.
+         */
         public EffectBorder(Control control, int milliseconds, int borderTo)
 			: base(control, milliseconds)
 		{
 			_borderTo = borderTo;
 		}
 
-        public EffectBorder(Control control, int milliseconds)
-			: base(control, milliseconds)
-		{ }
-
-		// For chained effects
-        public EffectBorder()
-			: base(null, 0)
-		{ }
-		
-		// For chained effects
+        /**
+         * Use this CTOR only if your effects are being Joined. 
+         * Expects the main effect to set the Control and Duration properties. borderTo
+         * is the end width of the border
+         */
         public EffectBorder(int borderTo)
 			: base(null, 0)
 		{
 			_borderTo = borderTo;
 		}
 		
+        /**
+         * End resulting width of border style
+         */
 		public int BorderTo
 		{
 			get { return _borderTo; }

@@ -9,6 +9,8 @@
 
 * EffectHighlight doesn't work on background-color:White in FF...
 
+* Remove fromHeight on EfectRollUp
+
 * DateTimePicker Control
 
 * Create RollUp/Down Effect which doesn't take absolute height of control. Useful in Window

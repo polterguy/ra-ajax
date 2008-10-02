@@ -11,17 +11,26 @@ using System.Web.UI;
 
 namespace Ra.Widgets
 {
+    /**
+     * Will flash (highlight with color yellow) control's root DOM element
+     */
     public class EffectHighlight : Effect
     {
+        /**
+         * Use this CTOR only if your effects are being Joined. 
+         * Expects the main effect to set the Control and Duration properties.
+         */
+        public EffectHighlight()
+            : base(null, 0)
+        { }
+
+        /**
+         * CTOR - control to animate and milliseconds to spend executing
+         */
         public EffectHighlight(Control control, int milliseconds)
 			: base(control, milliseconds)
 		{ }
 
-		// For chained effects
-        public EffectHighlight()
-			: base(null, 0)
-		{ }
-		
         public override string RenderParalledOnStart()
         {
             return @"

@@ -11,19 +11,30 @@ using System.Web.UI;
 
 namespace Ra.Widgets
 {
+    /**
+     * Will roll up control from visibility to in-visibility.
+     */
     public class EffectRollUp : Effect
     {
         private int _fromHeight;
 
-        public EffectRollUp(Control control, int milliseconds, int fromHeight)
-			: base(control, milliseconds)
+        /**
+         * Use this CTOR only if your effects are being Joined. 
+         * Expects the main effect to set the Control and Duration properties.
+         * fromHeight is the starting height of the Control.
+         */
+        public EffectRollUp(int fromHeight)
+            : base(null, 0)
         {
             _fromHeight = fromHeight;
         }
 
-		// For chained effects
-        public EffectRollUp(int fromHeight)
-			: base(null, 0)
+        /**
+         * CTOR - control to animate and milliseconds to spend executing in addition to the starting height
+         * of the Control.
+         */
+        public EffectRollUp(Control control, int milliseconds, int fromHeight)
+			: base(control, milliseconds)
         {
             _fromHeight = fromHeight;
         }

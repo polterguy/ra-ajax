@@ -11,45 +11,66 @@ using System.Web.UI;
 
 namespace Ra.Widgets
 {
+    /**
+     * Will move control to specified location in absolute pixel position
+     */
     public class EffectMove : Effect
     {
         private int _left;
         private int _top;
 
+        /**
+         * Use this CTOR only if your effects are being Joined. 
+         * Expects the main effect to set the Control and Duration properties.
+         */
+        public EffectMove()
+            : base(null, 0)
+        { }
+
+        /**
+         * CTOR - control to animate and milliseconds to spend executing
+         */
+        public EffectMove(Control control, int milliseconds)
+            : base(control, milliseconds)
+        { }
+
+        /**
+         * CTOR - control to animate and milliseconds to spend executing in addition to the
+         * end top and left properties.
+         */
+        public EffectMove(Control control, int milliseconds, int left, int top)
+            : base(control, milliseconds)
+        {
+            _left = left;
+            _top = top;
+        }
+
+        /**
+         * CTOR - the end top and left properties. Use only on Joined effects.
+         */
+        public EffectMove(int left, int top)
+            : base(null, 0)
+        {
+            _left = left;
+            _top = top;
+        }
+
+        /**
+         * End top position of Control
+         */
         public int Top
         {
             get { return _top; }
             set { _top = value; }
         }
 
+        /**
+         * End left position of Control
+         */
         public int Left
         {
             get { return _left; }
             set { _left = value; }
-        }
-
-        public EffectMove(Control control, int milliseconds)
-			: base(control, milliseconds)
-        { }
-
-        public EffectMove(Control control, int milliseconds, int left, int top)
-			: base(control, milliseconds)
-        {
-            _left = left;
-            _top = top;
-        }
-
-		// For chained effects
-        public EffectMove()
-			: base(null, 0)
-        { }
-
-		// For chained effects
-        public EffectMove(int left, int top)
-			: base(null, 0)
-        {
-            _left = left;
-            _top = top;
         }
 
 		private void UpdateStyleCollection()

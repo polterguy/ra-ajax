@@ -11,15 +11,24 @@ using System.Web.UI;
 
 namespace Ra.Widgets
 {
+    /**
+     * Will fade control's root DOM element out of visibility
+     */
     public class EffectFadeOut : Effect
     {
-        public EffectFadeOut(Control control, int milliseconds)
-			: base(control, milliseconds)
+        /**
+         * Use this CTOR only if your effects are being Joined. 
+         * Expects the main effect to set the Control and Duration properties.
+         */
+        public EffectFadeOut()
+            : base(null, 0)
         { }
 
-		// For chained effects
-        public EffectFadeOut()
-			: base(null, 0)
+        /**
+         * CTOR - control to animate and milliseconds to spend executing
+         */
+        public EffectFadeOut(Control control, int milliseconds)
+			: base(control, milliseconds)
         { }
 
 		private void UpdateStyleCollection()

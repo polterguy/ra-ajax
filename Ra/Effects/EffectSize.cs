@@ -11,45 +11,68 @@ using System.Web.UI;
 
 namespace Ra.Widgets
 {
+    /**
+     * Animates a Control from its current size to a new specified size.
+     */
     public class EffectSize : Effect
     {
         private int _height;
         private int _width;
 
+        /**
+         * Use this CTOR only if your effects are being Joined. 
+         * Expects the main effect to set the Control and Duration properties.
+         */
+        public EffectSize()
+            : base(null, 0)
+        { }
+
+        /**
+         * CTOR - control to animate and milliseconds to spend executing
+         */
+        public EffectSize(Control control, int milliseconds)
+            : base(control, milliseconds)
+        { }
+
+        /**
+         * CTOR - control to animate and milliseconds to spend executing in addition to end size
+         * of Control
+         */
+        public EffectSize(Control control, int milliseconds, int height, int width)
+            : base(control, milliseconds)
+        {
+            _height = height;
+            _width = width;
+        }
+
+        /**
+         * Use this CTOR only if your effects are being Joined. 
+         * Expects the main effect to set the Control and Duration properties.
+         * height and width is new size of Control.
+         */
+        public EffectSize(int height, int width)
+            : base(null, 0)
+        {
+            _height = height;
+            _width = width;
+        }
+
+        /**
+         * New width of Control
+         */
         public int Width
         {
             get { return _width; }
             set { _width = value; }
         }
 
+        /**
+         * New height of Control
+         */
         public int Height
         {
             get { return _height; }
             set { _height = value; }
-        }
-
-        public EffectSize(Control control, int milliseconds)
-			: base(control, milliseconds)
-        { }
-
-        public EffectSize(Control control, int milliseconds, int height, int width)
-			: base(control, milliseconds)
-        {
-            _height = height;
-            _width = width;
-        }
-
-		// For chained effects
-        public EffectSize()
-			: base(null, 0)
-        { }
-
-		// For chained effects
-        public EffectSize(int height, int width)
-			: base(null, 0)
-        {
-            _height = height;
-            _width = width;
         }
 
 		private void UpdateStyleCollection()

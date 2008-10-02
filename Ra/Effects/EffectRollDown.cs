@@ -11,19 +11,30 @@ using System.Web.UI;
 
 namespace Ra.Widgets
 {
+    /**
+     * Will roll down control from in-visibility to a specified height.
+     */
     public class EffectRollDown : Effect
     {
         private int _toHeight;
 
-        public EffectRollDown(Control control, int milliseconds, int toHeight)
-			: base(control, milliseconds)
+        /**
+         * Use this CTOR only if your effects are being Joined. 
+         * Expects the main effect to set the Control and Duration properties.
+         * toHeight is the end height of the Control.
+         */
+        public EffectRollDown(int toHeight)
+            : base(null, 0)
         {
             _toHeight = toHeight;
         }
 
-		// for chained effects
-        public EffectRollDown(int toHeight)
-			: base(null, 0)
+        /**
+         * CTOR - control to animate and milliseconds to spend executing in addition to the end height
+         * of the Control.
+         */
+        public EffectRollDown(Control control, int milliseconds, int toHeight)
+			: base(control, milliseconds)
         {
             _toHeight = toHeight;
         }
