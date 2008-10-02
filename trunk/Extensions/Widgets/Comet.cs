@@ -25,7 +25,9 @@ namespace Ra.Extensions
 {
     /**
      * comet component, also known as LazyHttp, StreamingHttp and several other pseudonyms.
-     * Basically real-time event capability for the client.
+     * Basically real-time event capability for the client. You can also send new comet events
+     * to the comet queue by using the URL of your page and append a GET parameter called "cometEvent"
+     * with the value of your event ID, but only if the AllowExternalEvents property is set to true
      */
     [ASP.ToolboxData("<{0}:Comet runat=\"server\" />")]
     public class Comet : RaControl, IRaControl
@@ -161,7 +163,7 @@ namespace Ra.Extensions
 
         protected override void OnLoad(EventArgs e)
         {
-            if (!string.IsNullOrEmpty(Page.Request.Params["cometEvent"]))
+            if (AllowExternalEvents && !string.IsNullOrEmpty(Page.Request.Params["cometEvent"]))
             {
                 SendMessage(Page.Request.Params["cometEvent"]);
                 Page.Response.Clear();
