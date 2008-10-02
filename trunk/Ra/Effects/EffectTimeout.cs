@@ -11,12 +11,20 @@ using System.Web.UI;
 
 namespace Ra.Widgets
 {
+    /**
+     * Empty effect or a "place holder of time" effect. Only purpose is to make a specified duration
+     * of time ellapse. Don't need a specified Control to animate upon.
+     */
     public class EffectTimeout : Effect
     {
+        /**
+         * CTOR - taking number of milliseconds for the timeout
+         */
         public EffectTimeout(int milliseconds)
             : base(null, milliseconds)
         { }
 
+        // Overridden to remove "must have Control" validation in base implementation
         protected override void ValidateEffect()
         { }
 
