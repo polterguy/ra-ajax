@@ -27,6 +27,7 @@ namespace Ra.Widgets
          * you can make sure that only the "long" requests are actually running the updater logic
          * and obscuring the page.
          */
+        [DefaultValue(0)]
         public int Delay
         {
             get { return ViewState["Delay"] == null ? 0 : (int)ViewState["Delay"]; }
@@ -35,6 +36,24 @@ namespace Ra.Widgets
                 if (value != Delay)
                     SetJSONValueObject("Delay", value);
                 ViewState["Delay"] = value;
+            }
+        }
+
+        /**
+         * Amount of transparency for updater. 0.0 == 100% transparent, 1.0 = 100% non-transparent.
+         * Value must be in range [0.0, 1.0].
+         */
+        [DefaultValue(0.5)]
+        public decimal Opacity
+        {
+            get { return ViewState["Opacity"] == null ? 0.5M : (decimal)ViewState["Opacity"]; }
+            set
+            {
+                if (value < 0.0M || value > 1.0M)
+                    throw new ArgumentException("Opacity value must be between 0.0 and 1.0");
+                if (value != Opacity)
+                    SetJSONValueObject("Opacity", value);
+                ViewState["Opacity"] = value;
             }
         }
 
@@ -52,20 +71,26 @@ namespace Ra.Widgets
             }
         }
 
-		public override string GetRegistrationScript ()
+		public override string GetRegistrationScript()
 		{
 			string options = string.Empty;
 			if( Delay != 0 )
 			{
 				options += string.Format("delay:{0}", Delay);
 			}
-			if( Color != System.Drawing.Color.Black )
-			{
-				if (options != string.Empty)
-					options += ",";
-				options += string.Format("color:'{0}'", System.Drawing.ColorTranslator.ToHtml(Color));
-			}
-			if( options != string.Empty)
+            if (Color != System.Drawing.Color.Black)
+            {
+                if (options != string.Empty)
+                    options += ",";
+                options += string.Format("color:'{0}'", System.Drawing.ColorTranslator.ToHtml(Color));
+            }
+            if (Opacity != 0.5M)
+            {
+                if (options != string.Empty)
+                    options += ",";
+                options += string.Format("opacity:'{0}'", Opacity.ToString(System.Globalization.CultureInfo.InvariantCulture));
+            }
+            if (options != string.Empty)
 				options = ",{" + options + "}";
 			return string.Format("new Ra.BUpDel('{0}'{1})", this.ClientID, options);
 		}

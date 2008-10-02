@@ -389,15 +389,23 @@ namespace Ra.Widgets
 					key,
 					value);
 			}
-			else if (value.GetType() == typeof(int))
-			{
-                if (builder.Length > 0 )
-                    builder.Append(",");					
-				builder.AppendFormat("\"{0}\":{1}",
-					key,
-					value);
-			}
-			else if (value.GetType() == typeof(System.Drawing.Rectangle))
+            else if (value.GetType() == typeof(int))
+            {
+                if (builder.Length > 0)
+                    builder.Append(",");
+                builder.AppendFormat("\"{0}\":{1}",
+                    key,
+                    value);
+            }
+            else if (value.GetType() == typeof(decimal))
+            {
+                if (builder.Length > 0)
+                    builder.Append(",");
+                builder.AppendFormat("\"{0}\":{1}",
+                    key,
+                    value);
+            }
+            else if (value.GetType() == typeof(System.Drawing.Rectangle))
 			{
                 if (builder.Length > 0 )
                     builder.Append(",");					

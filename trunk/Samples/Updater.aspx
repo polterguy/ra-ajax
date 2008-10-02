@@ -32,7 +32,7 @@
     	    OnClick="btn_Click">
     	    <ra:BehaviorUpdater 
     		    runat="server"
-    		    Color="#aaaaaa"
+    		    Color="#aaaaaa" 
     		    Delay="500" />
         </ra:Button>
     </p>
