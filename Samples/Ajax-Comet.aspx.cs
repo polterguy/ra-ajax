@@ -56,11 +56,7 @@ namespace Samples
                 // Signalizing that chat output should re-render...
                 chat.ReRender();
             }
-        }
-
-        protected void newChat_Focused(object sender, EventArgs e)
-        {
-            newChat.Select();
+            lbl.Text += ", Event sent; " + e.Id;
         }
 
         private List<string> Chats
