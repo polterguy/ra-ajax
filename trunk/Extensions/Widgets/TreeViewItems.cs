@@ -29,28 +29,12 @@ namespace Ra.Extensions
         public bool Expanded
         {
             get { return ViewState["Expanded"] == null ? false : (bool)ViewState["Expanded"]; }
-            set
-            {
-                ViewState["Expanded"] = value;
-            }
+            set { ViewState["Expanded"] = value; }
         }
 
         public Label ChildContainer
         {
             get { return _childrenContainer; }
-        }
-
-        [Browsable(false)]
-        public IEnumerable<TreeViewItem> Items
-        {
-            get
-            {
-                foreach (ASP.Control idx in Controls)
-                {
-                    if (idx is TreeViewItem)
-                        yield return idx as TreeViewItem;
-                }
-            }
         }
 
         protected override void LoadViewState(object savedState)
@@ -68,6 +52,9 @@ namespace Ra.Extensions
         {
             CreateCompositionControls();
             GetDynamicItems();
+
+            // Moving controls to where they SHOULD be...
+            ReArrangeControls();
         }
 
         private void CreateCompositionControls()
@@ -76,7 +63,7 @@ namespace Ra.Extensions
             _expander = new LinkButton();
             _expander.Text = "+";
             _expander.ID = "expanderBtn";
-            _expander.Click += new EventHandler(_expander_Click);
+            _expander.Click += _expander_Click;
             Controls.AddAt(0, _expander);
 
             // Creating children container
@@ -84,16 +71,16 @@ namespace Ra.Extensions
             _childrenContainer.Tag = "ul";
             _childrenContainer.Style["display"] = Expanded ? "" : "none";
             _childrenContainer.ID = "childCollection";
-            Controls.AddAt(1, _childrenContainer);
-
-            // Moving controls to where they SHOULD be...
-            ReArrangeControls();
+            Controls.Add(_childrenContainer);
         }
 
         private void GetDynamicItems()
         {
-            if (GetChildItems != null)
+            if (Expanded && GetChildItems != null)
+            {
                 GetChildItems(this, new EventArgs());
+                _childrenContainer.Visible = true;
+            }
         }
 
         private Effect _effect = null;
@@ -101,15 +88,15 @@ namespace Ra.Extensions
         {
             if (!Expanded)
             {
-                if (GetChildItems != null)
-                    GetChildItems(this, new EventArgs());
+                Expanded = !Expanded;
+                GetDynamicItems();
                 _effect = new EffectFadeIn(_childrenContainer, 200);
             }
             else
             {
+                Expanded = !Expanded;
                 _effect = new EffectFadeOut(_childrenContainer, 200);
             }
-            Expanded = !Expanded;
         }
 
         protected override void OnPreRender(EventArgs e)
@@ -168,8 +155,6 @@ namespace Ra.Extensions
                 Controls.Remove(idx);
                 _childrenContainer.Controls.Add(idx);
             }
-            Controls.Remove(_childrenContainer);
-            Controls.Add(_childrenContainer);
         }
 
         protected override string GetOpeningHTML()
@@ -189,6 +174,11 @@ namespace Ra.Extensions
         public override string GetInvisibleHTML()
         {
             return string.Format("<li id=\"{0}\" style=\"display:none;\" />");
+        }
+
+        public void AddTreeViewItem(TreeViewItem item)
+        {
+            _childrenContainer.Controls.Add(item);
         }
     }
 }
