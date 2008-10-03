@@ -137,7 +137,16 @@ namespace Ra.Extensions
                 break;
             }
             if (!hasChildren)
+            {
                 _childrenContainer.Visible = false;
+                if (GetChildItems == null)
+                {
+                    // Control does NOT have children and does NOT have an event handler
+                    // for getting "dynamic" items. Therefor we can safely make the Expand
+                    // LinkButton IN-visible...
+                    _expander.Visible = false;
+                }
+            }
 
             // Calling base...
             base.OnPreRender(e);
@@ -159,6 +168,8 @@ namespace Ra.Extensions
                 Controls.Remove(idx);
                 _childrenContainer.Controls.Add(idx);
             }
+            Controls.Remove(_childrenContainer);
+            Controls.Add(_childrenContainer);
         }
 
         protected override string GetOpeningHTML()
