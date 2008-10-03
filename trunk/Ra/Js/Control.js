@@ -263,11 +263,7 @@ Ra.Control.prototype = {
     } else {
       this.callback(evt);
     }
-    if( shouldStop ) {
-      // Event is supposed to be stopped
-      return false;
-    }
-    return true;
+    return !shouldStop;
   },
 
   callback: function(evt) {
