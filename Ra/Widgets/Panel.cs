@@ -78,7 +78,7 @@ namespace Ra.Widgets
         {
             string evts = string.Empty;
             if (Click != null)
-                evts += "['click']";
+                evts += "['click', true]";
             if (MouseOver != null)
             {
                 if (evts.Length != 0)

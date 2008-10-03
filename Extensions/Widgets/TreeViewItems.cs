@@ -22,14 +22,13 @@ namespace Ra.Extensions
      * statically (.ASPX markup) created TreeViewItems.
      */
     [ASP.ToolboxData("<{0}:TreeViewItem runat=\"server\"></{0}:TreeViewItem>")]
-    public class TreeViewItem : RaWebControl, ASP.INamingContainer
+    public class TreeViewItem : Panel, ASP.INamingContainer
     {
         // Since we're instantiating an effect which we cannot render before the controls
         // have been "re-arranged" we have it as a field on the class.
         private Effect _effect = null;
 
         // Composition controls
-        private LinkButton _expander;
         private Label _childrenContainer;
 
         /**
@@ -82,12 +81,7 @@ namespace Ra.Extensions
 
         private void CreateCompositionControls()
         {
-            // Creating link button that expands and closes the child item collection
-            _expander = new LinkButton();
-            _expander.Text = "+";
-            _expander.ID = "expanderBtn";
-            _expander.Click += _expander_Click;
-            Controls.AddAt(0, _expander);
+            this.Click += new EventHandler(TreeViewItem_Click);
 
             // Creating children container
             _childrenContainer = new Label();
@@ -106,7 +100,7 @@ namespace Ra.Extensions
             }
         }
 
-        private void _expander_Click(object sender, EventArgs e)
+        private void TreeViewItem_Click(object sender, EventArgs e)
         {
             if (!Expanded)
             {
@@ -130,10 +124,10 @@ namespace Ra.Extensions
 
             // Checking to see what to render in expander LinkButton
             // TODO: Implement CSS class instead of stupid +/- sign...
-            if (Expanded)
-                _expander.Text = "-";
-            else
-                _expander.Text = "+";
+            //if (Expanded)
+            //    _expander.Text = "-";
+            //else
+            //    _expander.Text = "+";
 
             // Deferring rendering of effects till the control IDs are correct...
             if (_effect != null)
@@ -157,7 +151,7 @@ namespace Ra.Extensions
                     // Control does NOT have children and does NOT have an event handler
                     // for getting "dynamic" items. Therefor we can safely make the Expand
                     // LinkButton IN-visible...
-                    _expander.Visible = false;
+                    //_expander.Visible = false;
                 }
             }
 
