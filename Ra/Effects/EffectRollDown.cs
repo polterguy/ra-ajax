@@ -16,62 +16,57 @@ namespace Ra.Widgets
      */
     public class EffectRollDown : Effect
     {
-        private int _toHeight;
-
         /**
          * Use this CTOR only if your effects are being Joined. 
          * Expects the main effect to set the Control and Duration properties.
-         * toHeight is the end height of the Control.
          */
-        public EffectRollDown(int toHeight)
+        public EffectRollDown()
             : base(null, 0)
-        {
-            _toHeight = toHeight;
-        }
+        { }
 
         /**
          * CTOR - control to animate and milliseconds to spend executing in addition to the end height
          * of the Control.
          */
-        public EffectRollDown(Control control, int milliseconds, int toHeight)
+        public EffectRollDown(Control control, int milliseconds)
 			: base(control, milliseconds)
-        {
-            _toHeight = toHeight;
-        }
+        { }
 
 		private void UpdateStyleCollection()
 		{
 			RaWebControl tmp = this.Control as RaWebControl;
 			if (tmp != null)
 			{
-                tmp.Style.SetStyleValueViewStateOnly("height", _toHeight.ToString() + "px");
                 tmp.Style.SetStyleValueViewStateOnly("display", "block");
-			}
+                tmp.Style.SetStyleValueViewStateOnly("height", "");
+            }
 		}
 
         public override string RenderParalledOnStart()
         {
 			UpdateStyleCollection();
             return @"
+    this._toHeight = this.element.getDimensions().height;
     this.element.setStyle('height','0px');
     this.element.setStyle('display','block');
+    this._overflow = this.element.getStyle('overflow');
+    this.element.setStyle('overflow','hidden');
 ";
         }
 
         public override string RenderParalledOnFinished()
         {
-            return string.Format(@"
-    this.element.setStyle('height','{0}px');
-",
-                _toHeight);
+            return @"
+    this.element.setStyle('height', '');
+    this.element.setStyle('overflow',this._overflow);
+";
         }
 
         public override string RenderParalledOnRender()
         {
-            return string.Format(@"
-    this.element.setStyle('height',parseInt({0}*pos) + 'px');
-",
-                _toHeight);
+            return @"
+    this.element.setStyle('height', parseInt(this._toHeight*pos) + 'px');
+";
         }
     }
 }

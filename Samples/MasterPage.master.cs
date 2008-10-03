@@ -53,7 +53,7 @@ namespace Samples
             {
                 tabShowCode.Visible = true;
                 Effect effect = new EffectFadeIn(tabShowCode, 400);
-                effect.Joined.Add(new EffectRollDown(500));
+                effect.Joined.Add(new EffectRollDown());
                 effect.Render();
             }
             else
