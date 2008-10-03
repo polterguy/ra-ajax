@@ -265,10 +265,9 @@ Ra.Control.prototype = {
     }
     if( shouldStop ) {
       // Event is supposed to be stopped
-      domEvt.stopped = true;
-      domEvt.cancelBubble = true;
       return false;
     }
+    return true;
   },
 
   callback: function(evt) {

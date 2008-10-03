@@ -283,13 +283,15 @@ Ra.Element.prototype = {
     if( !this._wrappers ) {
       this._wrappers = [];
     }
-    
+
     var wr = function(event) {
-      if( extraParams ) {
-        extraParams.push([event || window.event]);
-        return func.apply(callingContext, extraParams);
-      } else {
-        return func.apply(callingContext, [event || window.event]);
+      var evt = event || window.event;
+      extraParams = (extraParams || []);
+      extraParams.push(evt);
+      if( !func.apply(callingContext, extraParams) ) {
+        evt.cancelBubble = true;
+        if( evt.stopPropagation )
+          evt.stopPropagation();
       }
     };
 
