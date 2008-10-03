@@ -17,14 +17,33 @@ using System.Collections.Generic;
 
 namespace Ra.Extensions
 {
+    /**
+     * TreeView control's child items. Supports both dynamically and 
+     * statically (.ASPX markup) created TreeViewItems.
+     */
     [ASP.ToolboxData("<{0}:TreeViewItem runat=\"server\"></{0}:TreeViewItem>")]
     public class TreeViewItem : RaWebControl, ASP.INamingContainer
     {
+        // Since we're instantiating an effect which we cannot render before the controls
+        // have been "re-arranged" we have it as a field on the class.
+        private Effect _effect = null;
+
+        // Composition controls
         private LinkButton _expander;
         private Label _childrenContainer;
 
+        /**
+         * Raised when item needs to fetch child TreeViewItems. Note that to save bandwidth space while
+         * at the same time have support for events on dynamically created child controls like CheckBox
+         * and RadioButton controls the runtime will raise this event every callback after the TreeView 
+         * is expanded for the first time. This means that the event handler for this event should NOT 
+         * spend a long time fetching items. If it does the entire Ajax runtime will become slow!
+         */
         public event EventHandler GetChildItems;
 
+        /**
+         * If true then item is expanded and child items will show up.
+         */
         [DefaultValue(false)]
         public bool Expanded
         {
@@ -32,20 +51,24 @@ namespace Ra.Extensions
             set { ViewState["Expanded"] = value; }
         }
 
+        /**
+         * This is the container control which actually contains the child TreeViewItems of
+         * the current treeviewitem
+         */
         public Label ChildContainer
         {
             get { return _childrenContainer; }
+        }
+
+        public void AddTreeViewItem(TreeViewItem item)
+        {
+            _childrenContainer.Controls.Add(item);
         }
 
         protected override void LoadViewState(object savedState)
         {
             base.LoadViewState(savedState);
             EnsureChildControls();
-        }
-
-        protected override void OnInit(EventArgs e)
-        {
-            base.OnInit(e);
         }
 
         protected override void CreateChildControls()
@@ -83,7 +106,6 @@ namespace Ra.Extensions
             }
         }
 
-        private Effect _effect = null;
         private void _expander_Click(object sender, EventArgs e)
         {
             if (!Expanded)
@@ -125,6 +147,8 @@ namespace Ra.Extensions
             }
             if (!hasChildren)
             {
+                // Control does not have children, therefor we render the child container control 
+                // initially in-visible and later make it visible if it gets children...
                 _childrenContainer.Visible = false;
                 if (GetChildItems == null)
                 {
@@ -174,11 +198,6 @@ namespace Ra.Extensions
         public override string GetInvisibleHTML()
         {
             return string.Format("<li id=\"{0}\" style=\"display:none;\" />");
-        }
-
-        public void AddTreeViewItem(TreeViewItem item)
-        {
-            _childrenContainer.Controls.Add(item);
         }
     }
 }
