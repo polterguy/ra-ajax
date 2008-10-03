@@ -77,7 +77,7 @@ namespace Ra.Extensions
             _nw = new Label();
             _nw.Tag = "div";
             _nw.ID = "XXnw";
-            base.Controls.Add(_nw);
+            Controls.Add(_nw);
 
             _ne = new Label();
             _ne.Tag = "div";
@@ -102,7 +102,7 @@ namespace Ra.Extensions
             _body = new Label();
             _body.Tag = "div";
             _body.ID = "XXbody";
-            base.Controls.Add(_body);
+            Controls.Add(_body);
 
             _w = new Label();
             _w.Tag = "div";
@@ -138,7 +138,7 @@ namespace Ra.Extensions
             _dragger = new BehaviorDraggable();
             _dragger.ID = "XXdragger";
             _dragger.Handle = _caption.ClientID;
-            base.Controls.Add(_dragger);
+            Controls.Add(_dragger);
 
             // Moving controls to where they SHOULD be...
             // This time to get the ViewState right...
@@ -191,8 +191,8 @@ namespace Ra.Extensions
             }
             foreach (ASP.Control idx in controls)
             {
-                this.Controls.Remove(idx);
-                this._content.Controls.Add(idx);
+                Controls.Remove(idx);
+                _content.Controls.Add(idx);
             }
         }
     }
