@@ -41,6 +41,23 @@ namespace Ra.Extensions
                 GetStyleHTMLFormatedAttribute());
         }
 
+        public TreeViewItem SelectedItem
+        {
+            get
+            {
+                TreeViewItem item = null;
+                if (ViewState["SelectedItem"] != null)
+                {
+                    item = AjaxManager.Instance.FindControl<TreeViewItem>(ViewState["SelectedItem"].ToString());
+                }
+                return item;
+            }
+            set
+            {
+                ViewState["SelectedItem"] = value.ID;
+            }
+        }
+
         protected override string GetClosingHTML()
         {
             return "</ul>";

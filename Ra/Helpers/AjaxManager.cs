@@ -89,7 +89,7 @@ namespace Ra
 		
 		private Control FindControl(Control current, string id)
 		{
-			if (current.ClientID == id)
+			if (current.ID == id)
 				return current;
 			foreach (Control idx in current.Controls)
 			{
@@ -120,7 +120,7 @@ namespace Ra
          */
         public T FindControl<T>(string id) where T : Control
 		{
-			return (T)FindControl(CurrentPage, id);
+			return (T)FindControl(id);
 		}
 
         internal void InitializeControl(RaControl ctrl)

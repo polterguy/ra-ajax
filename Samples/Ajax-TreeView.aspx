@@ -27,86 +27,71 @@
         with your browser. You can choose to render items "statically" in markup or "dynamically" through event handlers.
         And you can mix these two methods in the same TreeView control just as you wish.
     </p>
-    <ext:TreeView runat="server" ID="tree" CssClass="tree" style="width:250px;">
-        <ext:TreeViewItem runat="server" ID="item1">
-            Open Web great things
-            <ext:TreeViewItem runat="server" ID="good_1">
-                Ajax
-            <ext:TreeViewItem runat="server" ID="TreeViewItem1">
-                Ajax
-            </ext:TreeViewItem>
-            <ext:TreeViewItem runat="server" ID="TreeViewItem2">
-                Ajax
-            <ext:TreeViewItem runat="server" ID="TreeViewItem4">
-                Ajax
-            </ext:TreeViewItem>
-            <ext:TreeViewItem runat="server" ID="TreeViewItem5">
-                Ajax
-            <ext:TreeViewItem runat="server" ID="TreeViewItem7">
-                Ajax
-            </ext:TreeViewItem>
-            <ext:TreeViewItem runat="server" ID="TreeViewItem8">
-                Ajax
-            </ext:TreeViewItem>
-            </ext:TreeViewItem>
-            <ext:TreeViewItem runat="server" ID="TreeViewItem6">
-                Ajax
-            <ext:TreeViewItem runat="server" ID="TreeViewItem9">
-                Ajax
-            <ext:TreeViewItem runat="server" ID="TreeViewItem11">
-                Ajax
-            <ext:TreeViewItem runat="server" ID="TreeViewItem13">
-                Ajax
-            </ext:TreeViewItem>
-            <ext:TreeViewItem runat="server" ID="TreeViewItem14">
-                Ajax
-            </ext:TreeViewItem>
-            </ext:TreeViewItem>
-            <ext:TreeViewItem runat="server" ID="TreeViewItem12">
-                Ajax
-            </ext:TreeViewItem>
-            </ext:TreeViewItem>
-            <ext:TreeViewItem runat="server" ID="TreeViewItem10">
-                Ajax
-            <ext:TreeViewItem runat="server" ID="TreeViewItem15">
-                Ajax
-            </ext:TreeViewItem>
-            <ext:TreeViewItem runat="server" ID="TreeViewItem16">
-                Ajax
-            </ext:TreeViewItem>
-            </ext:TreeViewItem>
-            </ext:TreeViewItem>
-            </ext:TreeViewItem>
-            <ext:TreeViewItem runat="server" ID="TreeViewItem3">
-                Ajax
-            </ext:TreeViewItem>
-            </ext:TreeViewItem>
-            <ext:TreeViewItem runat="server" ID="good_2" OnGetChildItems="good_2_GetChildItems">
-                HTML
-            </ext:TreeViewItem>
-            <ext:TreeViewItem runat="server" ID="good_3">
-                CSS
-            </ext:TreeViewItem>
-        </ext:TreeViewItem>
-        <ext:TreeViewItem runat="server" ID="item2">
-            Proprietary lock-in crap
-            <ext:TreeViewItem runat="server" ID="bad_1">
-                Adobe Flex
-            </ext:TreeViewItem>
-            <ext:TreeViewItem runat="server" ID="bad_2">
-                Silverlight
-            </ext:TreeViewItem>
-            <ext:TreeViewItem runat="server" ID="bad_3">
-                ActiveX
-                <ext:TreeViewItem runat="server" ID="activex_1">
-                    ActiveX 1.0
+    <div style="overflow:auto;">
+        <ext:TreeView runat="server" ID="tree" CssClass="tree" style="width:250px;float:left;">
+            <ext:TreeViewItem runat="server" ID="good" OnSelected="selected">
+                Open Web great things
+                <ext:TreeViewItem runat="server" ID="ajax" OnSelected="selected">
+                    Ajax
+                    <ext:TreeViewItem runat="server" ID="jQuery" OnSelected="selected">
+                        <a href="http://jquery.com">jQuery</a>
+                    </ext:TreeViewItem>
+                    <ext:TreeViewItem runat="server" ID="prototype" OnSelected="selected">
+                        <a href="http://prototypejs.org/">Prototype.js</a>
+                    </ext:TreeViewItem>
+                    <ext:TreeViewItem runat="server" ID="mooTools" OnSelected="selected">
+                        <a href="http://mootools.net/">mootools</a>
+                    </ext:TreeViewItem>
                 </ext:TreeViewItem>
-                <ext:TreeViewItem runat="server" ID="activex_2">
-                    ActiveX 2.0
+                <ext:TreeViewItem runat="server" ID="html" OnGetChildItems="good_2_GetChildItems" OnSelected="selected">
+                    HTML
+                </ext:TreeViewItem>
+                <ext:TreeViewItem runat="server" ID="css" OnSelected="selected">
+                    CSS
+                    <ext:TreeViewItem runat="server" ID="why_cool" OnSelected="selected">
+                        <ra:LinkButton runat="server" ID="lnkCool1" Text="Is cool!" />
+                    </ext:TreeViewItem>
+                    <ext:TreeViewItem runat="server" ID="why_cool2" OnSelected="selected">
+                        <ra:LinkButton runat="server" ID="lnkCool2" Text="Is WAY cool!" />
+                    </ext:TreeViewItem>
                 </ext:TreeViewItem>
             </ext:TreeViewItem>
-        </ext:TreeViewItem>
-    </ext:TreeView>
+            <ext:TreeViewItem runat="server" ID="bad" OnSelected="selected">
+                Proprietary lock-in crap
+                <ext:TreeViewItem runat="server" ID="flex" OnSelected="selected">
+                    Adobe Flex
+                </ext:TreeViewItem>
+                <ext:TreeViewItem runat="server" ID="silverlight" OnSelected="selected">
+                    Silverlight
+                </ext:TreeViewItem>
+                <ext:TreeViewItem runat="server" ID="activex" OnSelected="selected">
+                    ActiveX
+                    <ext:TreeViewItem runat="server" ID="activex1" OnSelected="selected">
+                        ActiveX 1.0
+                    </ext:TreeViewItem>
+                    <ext:TreeViewItem runat="server" ID="activex2" OnSelected="selected">
+                        ActiveX 2.0
+                    </ext:TreeViewItem>
+                </ext:TreeViewItem>
+            </ext:TreeViewItem>
+        </ext:TreeView>
+        <ra:Panel 
+            runat="server" 
+            ID="pnl" 
+            style="margin:15px;padding:10px;border:solid 1px #999;background-color:#fafafa;float:left;width:150px;text-align:left;">
+            <p>
+                <ra:Label 
+                    runat="server" 
+                    ID="pnlOutput1" 
+                    Text="Try to select and expand TreeViewItems" />
+            </p>
+            <p>
+                <ra:Label 
+                    runat="server" 
+                    ID="pnlOutput2" />
+            </p>
+        </ra:Panel>
+    </div>
     <p>
         The above TreeView has two root TreeViewItems. Both of these root items are not expanded. By clicking on the
         plus sign left of the root items you can expand those root items. In both of the root items there are three

@@ -92,7 +92,7 @@ namespace Ra.Extensions
             this.Click += new EventHandler(TreeViewItem_Click);
 
             // Spacers to give room form left border
-            int no = 0;
+            int no = 1;
             ASP.Control idx = this.Parent;
             while (!(idx is TreeView))
             {
@@ -112,12 +112,42 @@ namespace Ra.Extensions
                 {
                     item = item.Parent.Parent as TreeViewItem;
                 }
-                if (item == this && item.IsLeafNode)
-                    css += " lines linesEnd";
-                else if (item == this)
-                    css += " lines linesBreak";
-                else if (!item.IsLeafNode)
-                    css += " lines linesOnly";
+                if (item == this)
+                {
+                    if (item.IsLeafNode)
+                    {
+                        if (item.HasChildren)
+                        {
+                            if (item.Expanded)
+                            {
+                                css += " lines linesMinus";
+                            }
+                            else
+                                css += " lines linesPlus";
+                        }
+                        else
+                            css += " lines linesEnd";
+                    }
+                    else
+                    {
+                        if (item.HasChildren)
+                        {
+                            if (item.Expanded)
+                            {
+                                css += " lines linesMinusCont";
+                            }
+                            else
+                                css += " lines linesPlusCont";
+                        }
+                        else
+                            css += " lines linesBreak";
+                    }
+                }
+                else
+                {
+                    if (!item.IsLeafNode)
+                        css += " lines linesOnly";
+                }
                 _spacers[idxNo].CssClass = css;
                 Controls.AddAt(idxNo, _spacers[idxNo]);
             }
@@ -133,6 +163,21 @@ namespace Ra.Extensions
             _childrenContainer.Style["display"] = Expanded ? "" : "none";
             _childrenContainer.ID = "childCollection";
             Controls.Add(_childrenContainer);
+        }
+
+        private bool HasChildren
+        {
+            get
+            {
+                if (GetChildItems != null)
+                    return true;
+                foreach (ASP.Control idx in Controls)
+                {
+                    if (idx is TreeViewItem)
+                        return true;
+                }
+                return false;
+            }
         }
 
         private bool IsLeafNode
@@ -160,10 +205,13 @@ namespace Ra.Extensions
 
         private void TreeViewItem_Click(object sender, EventArgs e)
         {
+            ParentTree.SelectedItem = this;
             if (Selected != null)
                 Selected(this, new EventArgs());
             if (!Expanded)
             {
+                _spacers[_spacers.Length - 1].CssClass = _spacers[_spacers.Length - 1].CssClass.Replace("Plus", "Minus");
+
                 // Just got expanded
                 Expanded = !Expanded;
                 GetDynamicItems();
@@ -187,6 +235,8 @@ namespace Ra.Extensions
             }
             else
             {
+                _spacers[_spacers.Length - 1].CssClass = _spacers[_spacers.Length - 1].CssClass.Replace("Minus", "Plus");
+
                 // Collapsed just now
                 _effect = new EffectRollUp(_childrenContainer, 200);
                 _effect.Joined.Add(new EffectFadeOut());
@@ -244,6 +294,8 @@ namespace Ra.Extensions
                 tmpCssClass += " " + treeCssClass + "-item-expanded";
             else
                 tmpCssClass += " " + treeCssClass + "-item-collapsed";
+            if (ParentTree.SelectedItem == this)
+                tmpCssClass += " selected";
             CssClass = tmpCssClass;
 
             _icon.CssClass = "icon" + " icon" + (Expanded ? "-expanded" : "-collapsed");
