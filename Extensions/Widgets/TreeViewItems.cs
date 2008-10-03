@@ -102,34 +102,22 @@ namespace Ra.Extensions
             }
             _spacers = new Label[no];
             int idxNo;
-            bool isLastInChildrenOfParent = false;
-            foreach (ASP.Control idxCtrl in Parent.Controls)
-            {
-                if (this == idxCtrl)
-                    isLastInChildrenOfParent = true;
-                else
-                    isLastInChildrenOfParent = false;
-            }
             for (idxNo = 0; idxNo < no; idxNo++)
             {
                 _spacers[idxNo] = new Label();
                 _spacers[idxNo].ID = "spacer" + idxNo;
                 string css = "spacer";
-                if (idxNo == no - 1)
+                TreeViewItem item = this;
+                for (int idxItemNo = no - (idxNo + 1); idxItemNo > 0; idxItemNo--)
                 {
-                    // LAST spacer...
-                    // Must have the "in to folder" lines (minimum) maybe also the "elbow" line 
-                    // (if it is the last in the collection of TreeViewItems of the parent control)
-                    if (isLastInChildrenOfParent)
-                        css += " lines linesEnd";
-                    else
-                        css += " lines linesBreak";
+                    item = item.Parent.Parent as TreeViewItem;
                 }
-                else
-                {
-                    //if( !isLastInChildrenOfParent )
-                        css += " lines linesOnly";
-                }
+                if (item == this && item.IsLeafNode)
+                    css += " lines linesEnd";
+                else if (item == this)
+                    css += " lines linesBreak";
+                else if (!item.IsLeafNode)
+                    css += " lines linesOnly";
                 _spacers[idxNo].CssClass = css;
                 Controls.AddAt(idxNo, _spacers[idxNo]);
             }
@@ -145,6 +133,20 @@ namespace Ra.Extensions
             _childrenContainer.Style["display"] = Expanded ? "" : "none";
             _childrenContainer.ID = "childCollection";
             Controls.Add(_childrenContainer);
+        }
+
+        private bool IsLeafNode
+        {
+            get
+            {
+                bool retVal = false;
+                foreach (ASP.Control idx in Parent.Controls)
+                {
+                    if (idx is TreeViewItem)
+                        retVal = idx == this;
+                }
+                return retVal;
+            }
         }
 
         private void GetDynamicItems()
