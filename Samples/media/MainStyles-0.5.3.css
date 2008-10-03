@@ -157,12 +157,15 @@ h2 { margin-top:2.7em; }
 
 .tree { background-color:#fafafa; border:solid 1px #999; margin:15px; padding:10px; font-size:0.9em; }
 .tree-item { cursor:pointer; line-height:16px; }
+
 .tree li.selected { background-color:#dadafa; }
 .tree li.selected ul { background-color:#fafafa; }
-.tree li:hover { background-color:#eaeaea; }
-.tree li:hover ul { background-color:#fafafa; }
 .tree li.selected:hover { background-color:#dadafa; }
 .tree li.selected:hover ul { background-color:#fafafa; }
+
+.tree li:hover { background-color:#eaeaea; }
+.tree li:hover ul { background-color:#fafafa; }
+
 .icon { padding-left:16px; background:Transparent url(skins/tree/sprites.png) no-repeat; }
 .tree .spacer { padding-left:16px; }
 .tree .lines { background:Transparent url(skins/tree/sprites.png) no-repeat; }
