@@ -28,18 +28,33 @@
     <ext:TreeView runat="server" ID="tree">
         <ext:TreeViewItem runat="server" ID="item1">
             Open Web great things
-            <ext:TreeViewItem runat="server" ID="child_1">
+            <ext:TreeViewItem runat="server" ID="good_1">
                 Ajax
             </ext:TreeViewItem>
-            <ext:TreeViewItem runat="server" ID="child_2">
+            <ext:TreeViewItem runat="server" ID="good_2">
                 (X)HTML
             </ext:TreeViewItem>
-            <ext:TreeViewItem runat="server" ID="child_3">
+            <ext:TreeViewItem runat="server" ID="good_3">
                 CSS
             </ext:TreeViewItem>
         </ext:TreeViewItem>
         <ext:TreeViewItem runat="server" ID="item2">
             Proprietary lock-in crap
+            <ext:TreeViewItem runat="server" ID="bad_1">
+                Adobe Flex
+            </ext:TreeViewItem>
+            <ext:TreeViewItem runat="server" ID="bad_2">
+                Silverlight
+            </ext:TreeViewItem>
+            <ext:TreeViewItem runat="server" ID="bad_3">
+                ActiveX
+                <ext:TreeViewItem runat="server" ID="activex_1">
+                    ActiveX 1.0
+                </ext:TreeViewItem>
+                <ext:TreeViewItem runat="server" ID="activex_2">
+                    ActiveX 2.0
+                </ext:TreeViewItem>
+            </ext:TreeViewItem>
         </ext:TreeViewItem>
     </ext:TreeView>
 </asp:Content>
