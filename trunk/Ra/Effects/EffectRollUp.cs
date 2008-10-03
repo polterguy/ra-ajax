@@ -36,7 +36,7 @@ namespace Ra.Widgets
 			RaWebControl tmp = this.Control as RaWebControl;
 			if (tmp != null)
 			{
-                tmp.Style.SetStyleValueViewStateOnly("height", "0px");
+                tmp.Style.SetStyleValueViewStateOnly("height", "");
                 tmp.Style.SetStyleValueViewStateOnly("display", "none");
 			}
 		}
@@ -46,14 +46,18 @@ namespace Ra.Widgets
 			UpdateStyleCollection();
             return @"
     this.element.setStyle('display','');
-    this._fromHeight = this.element.getDimensions().height;";
+    this._fromHeight = this.element.getDimensions().height;
+    this._overflow = this.element.getStyle('overflow');
+    this.element.setStyle('overflow','hidden');
+";
         }
 
         public override string RenderParalledOnFinished()
         {
             return @"
     this.element.setStyle('display','none');
-    this.element.setStyle('height','0px');
+    this.element.setStyle('height','');
+    this.element.setStyle('overflow',this._overflow);
 ";
         }
 

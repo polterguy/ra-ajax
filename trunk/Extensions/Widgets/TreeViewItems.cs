@@ -112,12 +112,14 @@ namespace Ra.Extensions
             {
                 Expanded = !Expanded;
                 GetDynamicItems();
-                _effect = new EffectFadeIn(_childrenContainer, 200);
+                _effect = new EffectRollDown(_childrenContainer, 200);
+                _effect.Joined.Add(new EffectFadeIn());
             }
             else
             {
                 Expanded = !Expanded;
-                _effect = new EffectFadeOut(_childrenContainer, 200);
+                _effect = new EffectRollUp(_childrenContainer, 200);
+                _effect.Joined.Add(new EffectFadeOut());
             }
         }
 

@@ -36,7 +36,7 @@ namespace RaWebsite
                 lblEndResults.Text = "FBI is on its way";
                 panelResults.Style["background-color"] = "Red";
             }
-            Effect effect = new EffectRollDown(panelResults, 1000, 200);
+            Effect effect = new EffectRollDown(panelResults, 1000);
             effect.Render();
         }
     }
