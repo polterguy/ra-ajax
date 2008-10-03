@@ -7,11 +7,36 @@
  */
 
 using System;
+using ASPCTRLS = System.Web.UI;
 using Ra.Widgets;
+using Ra.Extensions;
 
 namespace Samples
 {
     public partial class TreeView : System.Web.UI.Page
     {
+        protected void good_2_GetChildItems(object sender, EventArgs e)
+        {
+            // Item that was expanded
+            TreeViewItem parent = sender as TreeViewItem;
+
+            // First child TreeViewItem
+            TreeViewItem item = new TreeViewItem();
+            item.ID = "HTML";
+            ASPCTRLS.LiteralControl lit = new ASPCTRLS.LiteralControl();
+            lit.Text = "HTML";
+            lit.ID = "HTML_normal";
+            item.Controls.Add(lit);
+            parent.AddTreeViewItem(item);
+
+            // Second child TreeViewItem
+            item = new TreeViewItem();
+            item.ID = "XHTML";
+            lit = new ASPCTRLS.LiteralControl();
+            lit.Text = "XHTML";
+            lit.ID = "XHTML";
+            item.Controls.Add(lit);
+            parent.AddTreeViewItem(item);
+        }
     }
 }

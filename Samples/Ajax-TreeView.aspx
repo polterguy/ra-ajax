@@ -31,8 +31,8 @@
             <ext:TreeViewItem runat="server" ID="good_1">
                 Ajax
             </ext:TreeViewItem>
-            <ext:TreeViewItem runat="server" ID="good_2">
-                (X)HTML
+            <ext:TreeViewItem runat="server" ID="good_2" OnGetChildItems="good_2_GetChildItems">
+                HTML
             </ext:TreeViewItem>
             <ext:TreeViewItem runat="server" ID="good_3">
                 CSS
