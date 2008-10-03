@@ -183,7 +183,7 @@ namespace Ra.Extensions
         private void ReArrangeControls()
         {
             // Moving all controls where they SHOULD be
-            List<ASP.Control> controls = new List<System.Web.UI.Control>();
+            List<ASP.Control> controls = new List<ASP.Control>();
             foreach (ASP.Control idx in Controls)
             {
                 if (string.IsNullOrEmpty(idx.ID) || idx.ID.Substring(0, 2) != "XX")
