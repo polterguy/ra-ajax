@@ -30,6 +30,8 @@ namespace Ra.Extensions
 
         // Composition controls
         private Label _childrenContainer;
+        private Label _icon;
+        private Label[] _spacers;
 
         /**
          * Raised when item needs to fetch child TreeViewItems. Note that to save bandwidth space while
@@ -39,6 +41,11 @@ namespace Ra.Extensions
          * spend a long time fetching items. If it does the entire Ajax runtime will become slow!
          */
         public event EventHandler GetChildItems;
+
+        /**
+         * Raised when item is selected
+         */
+        public event EventHandler Selected;
 
         /**
          * If true then item is expanded and child items will show up.
@@ -81,7 +88,34 @@ namespace Ra.Extensions
 
         private void CreateCompositionControls()
         {
+            // For expanding child treeviewitem collection
             this.Click += new EventHandler(TreeViewItem_Click);
+
+            // Spacers to give room form left border
+            int no = 0;
+            ASP.Control idx = this.Parent;
+            while (!(idx is TreeView))
+            {
+                if (idx is TreeViewItem)
+                    no += 1;
+                idx = idx.Parent;
+            }
+            _spacers = new Label[no];
+            int idxNo;
+            for (idxNo = 0; idxNo < no; idxNo++)
+            {
+                _spacers[idxNo] = new Label();
+                _spacers[idxNo].ID = "spacer" + idxNo;
+                _spacers[idxNo].Text = "&nbsp;";
+                _spacers[idxNo].CssClass = "spacer";
+                Controls.AddAt(idxNo, _spacers[idxNo]);
+            }
+
+            // Icon wrapper
+            _icon = new Label();
+            _icon.ID = "iconControl";
+            _icon.Text = "&nbsp;";
+            Controls.AddAt(idxNo, _icon);
 
             // Creating children container
             _childrenContainer = new Label();
@@ -102,18 +136,48 @@ namespace Ra.Extensions
 
         private void TreeViewItem_Click(object sender, EventArgs e)
         {
+            if (Selected != null)
+                Selected(this, new EventArgs());
             if (!Expanded)
             {
+                // Just got expanded
                 Expanded = !Expanded;
                 GetDynamicItems();
-                _effect = new EffectRollDown(_childrenContainer, 200);
-                _effect.Joined.Add(new EffectFadeIn());
+                bool hasChildren = false;
+                foreach (ASP.Control idx in _childrenContainer.Controls)
+                {
+                    if (idx is TreeViewItem)
+                        hasChildren = true;
+                    break;
+                }
+                if (hasChildren)
+                {
+                    _effect = new EffectRollDown(_childrenContainer, 200);
+                    _effect.Joined.Add(new EffectFadeIn());
+                }
+                else
+                {
+                    // "un"-expanding...
+                    Expanded = !Expanded;
+                }
             }
             else
             {
-                Expanded = !Expanded;
+                // Collapsed just now
                 _effect = new EffectRollUp(_childrenContainer, 200);
                 _effect.Joined.Add(new EffectFadeOut());
+                Expanded = !Expanded;
+            }
+        }
+
+        private TreeView ParentTree
+        {
+            get
+            {
+                ASP.Control ctrl = this.Parent;
+                while (ctrl != null && !(ctrl is TreeView))
+                    ctrl = ctrl.Parent;
+                return ctrl as TreeView;
             }
         }
 
@@ -122,16 +186,12 @@ namespace Ra.Extensions
             // Moving controls to where they SHOULD be...
             ReArrangeControls();
 
-            // Checking to see what to render in expander LinkButton
-            // TODO: Implement CSS class instead of stupid +/- sign...
-            //if (Expanded)
-            //    _expander.Text = "-";
-            //else
-            //    _expander.Text = "+";
-
             // Deferring rendering of effects till the control IDs are correct...
+            // If _effect != null then we're rendering either the Collapse or the Expand effect...
             if (_effect != null)
                 _effect.Render();
+
+            BuildCss();
 
             // Checking to see if we've got child items, if not we set _childContainer to IN-visible...
             bool hasChildren = false;
@@ -146,17 +206,23 @@ namespace Ra.Extensions
                 // Control does not have children, therefor we render the child container control 
                 // initially in-visible and later make it visible if it gets children...
                 _childrenContainer.Visible = false;
-                if (GetChildItems == null)
-                {
-                    // Control does NOT have children and does NOT have an event handler
-                    // for getting "dynamic" items. Therefor we can safely make the Expand
-                    // LinkButton IN-visible...
-                    //_expander.Visible = false;
-                }
             }
 
             // Calling base...
             base.OnPreRender(e);
+        }
+
+        private void BuildCss()
+        {
+            string treeCssClass = ParentTree.CssClass;
+            string tmpCssClass = treeCssClass + "-item";
+            if (Expanded)
+                tmpCssClass += " " + treeCssClass + "-item-expanded";
+            else
+                tmpCssClass += " " + treeCssClass + "-item-collapsed";
+            CssClass = tmpCssClass;
+
+            _icon.CssClass = "icon" + " icon" + (Expanded ? "-expanded" : "-collapsed");
         }
 
         private void ReArrangeControls()

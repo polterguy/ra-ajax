@@ -70,7 +70,12 @@ namespace Ra.Widgets
         public string CssClass
         {
             get { return ViewState["CssClass"] == null ? "" : (string)ViewState["CssClass"]; }
-            set { ViewState["CssClass"] = value; }
+            set
+            {
+                if (value != CssClass)
+                    SetJSONValueString("CssClass", value);
+                ViewState["CssClass"] = value;
+            }
         }
 
         /**
