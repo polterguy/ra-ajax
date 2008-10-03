@@ -53,9 +53,14 @@ namespace Ra.Extensions
             }
         }
 
+        protected override void LoadViewState(object savedState)
+        {
+            base.LoadViewState(savedState);
+            EnsureChildControls();
+        }
+
         protected override void OnInit(EventArgs e)
         {
-            EnsureChildControls();
             base.OnInit(e);
         }
 
@@ -71,13 +76,18 @@ namespace Ra.Extensions
             _expander = new LinkButton();
             _expander.Text = "+";
             _expander.ID = "expanderBtn";
+            _expander.Click += new EventHandler(_expander_Click);
             Controls.AddAt(0, _expander);
 
             // Creating children container
             _childrenContainer = new Label();
             _childrenContainer.Tag = "ul";
+            _childrenContainer.Style["display"] = Expanded ? "" : "none";
             _childrenContainer.ID = "childCollection";
-            Controls.AddAt(2, _childrenContainer);
+            Controls.AddAt(1, _childrenContainer);
+
+            // Moving controls to where they SHOULD be...
+            ReArrangeControls();
         }
 
         private void GetDynamicItems()
@@ -86,17 +96,26 @@ namespace Ra.Extensions
                 GetChildItems(this, new EventArgs());
         }
 
+        private Effect _effect = null;
+        private void _expander_Click(object sender, EventArgs e)
+        {
+            if (!Expanded)
+            {
+                if (GetChildItems != null)
+                    GetChildItems(this, new EventArgs());
+                _effect = new EffectFadeIn(_childrenContainer, 200);
+            }
+            else
+            {
+                _effect = new EffectFadeOut(_childrenContainer, 200);
+            }
+            Expanded = !Expanded;
+        }
+
         protected override void OnPreRender(EventArgs e)
         {
             // Moving controls to where they SHOULD be...
             ReArrangeControls();
-
-            // Checking to see if we should create Child Items as "in-visible" 
-            // du to control is not expanded yet
-            if (!Expanded)
-            {
-                _childrenContainer.Style["display"] = "none";
-            }
 
             // Checking to see what to render in expander LinkButton
             // TODO: Implement CSS class instead of stupid +/- sign...
@@ -104,6 +123,21 @@ namespace Ra.Extensions
                 _expander.Text = "-";
             else
                 _expander.Text = "+";
+
+            // Deferring rendering of effects till the control IDs are correct...
+            if (_effect != null)
+                _effect.Render();
+
+            // Checking to see if we've got child items, if not we set _childContainer to IN-visible...
+            bool hasChildren = false;
+            foreach (ASP.Control idx in _childrenContainer.Controls)
+            {
+                if (idx is TreeViewItem)
+                    hasChildren = true;
+                break;
+            }
+            if (!hasChildren)
+                _childrenContainer.Visible = false;
 
             // Calling base...
             base.OnPreRender(e);
@@ -122,8 +156,8 @@ namespace Ra.Extensions
             }
             foreach (ASP.Control idx in controls)
             {
-                this.Controls.Remove(idx);
-                this._childrenContainer.Controls.Add(idx);
+                Controls.Remove(idx);
+                _childrenContainer.Controls.Add(idx);
             }
         }
 
@@ -138,6 +172,12 @@ namespace Ra.Extensions
         protected override string GetClosingHTML()
         {
             return "</li>";
+        }
+
+        // Must override this bugger to not break XHTML compliance on in-visible items...
+        public override string GetInvisibleHTML()
+        {
+            return string.Format("<li id=\"{0}\" style=\"display:none;\" />");
         }
     }
 }

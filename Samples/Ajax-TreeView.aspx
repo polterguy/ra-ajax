@@ -39,7 +39,7 @@
             </ext:TreeViewItem>
         </ext:TreeViewItem>
         <ext:TreeViewItem runat="server" ID="item2">
-            Proprietary &amp; lock-in crap
+            Proprietary lock-in crap
         </ext:TreeViewItem>
     </ext:TreeView>
 </asp:Content>
