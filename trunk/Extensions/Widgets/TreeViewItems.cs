@@ -102,19 +102,41 @@ namespace Ra.Extensions
             }
             _spacers = new Label[no];
             int idxNo;
+            bool isLastInChildrenOfParent = false;
+            foreach (ASP.Control idxCtrl in Parent.Controls)
+            {
+                if (this == idxCtrl)
+                    isLastInChildrenOfParent = true;
+                else
+                    isLastInChildrenOfParent = false;
+            }
             for (idxNo = 0; idxNo < no; idxNo++)
             {
                 _spacers[idxNo] = new Label();
                 _spacers[idxNo].ID = "spacer" + idxNo;
-                _spacers[idxNo].Text = "&nbsp;";
-                _spacers[idxNo].CssClass = "spacer";
+                string css = "spacer";
+                if (idxNo == no - 1)
+                {
+                    // LAST spacer...
+                    // Must have the "in to folder" lines (minimum) maybe also the "elbow" line 
+                    // (if it is the last in the collection of TreeViewItems of the parent control)
+                    if (isLastInChildrenOfParent)
+                        css += " lines linesEnd";
+                    else
+                        css += " lines linesBreak";
+                }
+                else
+                {
+                    //if( !isLastInChildrenOfParent )
+                        css += " lines linesOnly";
+                }
+                _spacers[idxNo].CssClass = css;
                 Controls.AddAt(idxNo, _spacers[idxNo]);
             }
 
             // Icon wrapper
             _icon = new Label();
             _icon.ID = "iconControl";
-            _icon.Text = "&nbsp;";
             Controls.AddAt(idxNo, _icon);
 
             // Creating children container
