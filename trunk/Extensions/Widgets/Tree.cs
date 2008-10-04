@@ -25,21 +25,27 @@ namespace Ra.Extensions
          */
         public event EventHandler SelectedNodeChanged;
 
-        public TreeNode SelectedItem
+        public TreeNode SelectedNode
         {
             get
             {
                 TreeNode item = null;
-                if (ViewState["SelectedItem"] != null)
+                if (ViewState["SelectedNode"] != null)
                 {
-                    item = AjaxManager.Instance.FindControl<TreeNode>(ViewState["SelectedItem"].ToString());
+                    item = AjaxManager.Instance.FindControl<TreeNode>(ViewState["SelectedNode"].ToString());
                 }
                 return item;
             }
             set
             {
-                ViewState["SelectedItem"] = value.ID;
+                ViewState["SelectedNode"] = value.ID;
             }
+        }
+
+        internal void RaiseSelectedNodeChanged()
+        {
+            if (SelectedNodeChanged != null)
+                SelectedNodeChanged(this, new EventArgs());
         }
 
         protected override string GetOpeningHTML()
