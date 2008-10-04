@@ -15,7 +15,7 @@ namespace Samples
 {
     public partial class TreeView : System.Web.UI.Page
     {
-        protected void good_2_GetChildItems(object sender, EventArgs e)
+        protected void good_2_GetChildItems(object sender, TreeViewItem.GetChildItemsEventArgs e)
         {
             // Item that was expanded
             TreeViewItem parent = sender as TreeViewItem;
@@ -28,7 +28,7 @@ namespace Samples
             lit.Text = "HTML";
             lit.ID = "HTML_normal_lit";
             item.Controls.Add(lit);
-            parent.AddTreeViewItem(item);
+            e.Children.Add(item);
 
             // Second child TreeViewItem
             item = new TreeViewItem();
@@ -38,7 +38,7 @@ namespace Samples
             lit.Text = "XHTML";
             lit.ID = "XHTML_lit";
             item.Controls.Add(lit);
-            parent.AddTreeViewItem(item);
+            e.Children.Add(item);
         }
 
         protected void selected(object sender, EventArgs e)

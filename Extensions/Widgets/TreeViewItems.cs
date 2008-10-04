@@ -24,12 +24,26 @@ namespace Ra.Extensions
     [ASP.ToolboxData("<{0}:TreeViewItem runat=\"server\"></{0}:TreeViewItem>")]
     public class TreeViewItem : Panel, ASP.INamingContainer
     {
+        public class GetChildItemsEventArgs : EventArgs
+        {
+            private TreeView _tree;
+
+            internal GetChildItemsEventArgs(ASP.Control ctrl)
+            {
+                _tree = ctrl as TreeView;
+            }
+
+            public ASP.ControlCollection Children
+            {
+                get { return _tree.Controls; }
+            }
+        }
+
         // Since we're instantiating an effect which we cannot render before the controls
         // have been "re-arranged" we have it as a field on the class.
         private Effect _effect = null;
 
         // Composition controls
-        private Label _childrenContainer;
         private Label _icon;
         private Label[] _spacers;
 
@@ -40,7 +54,7 @@ namespace Ra.Extensions
          * is expanded for the first time. This means that the event handler for this event should NOT 
          * spend a long time fetching items. If it does the entire Ajax runtime will become slow!
          */
-        public event EventHandler GetChildItems;
+        public event EventHandler<GetChildItemsEventArgs> GetChildItems;
 
         /**
          * Raised when item is selected
@@ -57,20 +71,6 @@ namespace Ra.Extensions
             set { ViewState["Expanded"] = value; }
         }
 
-        /**
-         * This is the container control which actually contains the child TreeViewItems of
-         * the current treeviewitem
-         */
-        public Label ChildContainer
-        {
-            get { return _childrenContainer; }
-        }
-
-        public void AddTreeViewItem(TreeViewItem item)
-        {
-            _childrenContainer.Controls.Add(item);
-        }
-
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
@@ -85,9 +85,6 @@ namespace Ra.Extensions
         {
             CreateCompositionControls();
             //GetDynamicItems();
-
-            // Moving controls to where they SHOULD be...
-            //ReArrangeControls();
         }
 
         private void CreateCompositionControls()
@@ -95,12 +92,11 @@ namespace Ra.Extensions
             
             // Spacers to give room form left border
             int numSpacers = 1;
-            ASP.Control idx = this.Parent;
+            ASP.Control idx = this.Parent.Parent;
             while (!(idx is TreeView))
             {
-                if (idx is TreeViewItem)
-                    numSpacers += 1;
-                idx = idx.Parent;
+                numSpacers += 1;
+                idx = idx.Parent.Parent;
             }
             _spacers = new Label[numSpacers];
             int idxNo;
@@ -158,12 +154,6 @@ namespace Ra.Extensions
             _icon = new Label();
             _icon.ID = "iconControl";
             Controls.AddAt(idxNo, _icon);
-
-            // Creating children container
-            _childrenContainer = new Label();
-            _childrenContainer.Tag = "ul";
-            _childrenContainer.ID = "childCollection";
-            Controls.Add(_childrenContainer);
         }
 
         private bool HasChildren
@@ -174,7 +164,7 @@ namespace Ra.Extensions
                     return true;
                 foreach (ASP.Control idx in Controls)
                 {
-                    if (idx is TreeViewItem)
+                    if (idx is TreeView)
                         return true;
                 }
                 return false;
@@ -199,8 +189,16 @@ namespace Ra.Extensions
         {
             if (Expanded && GetChildItems != null)
             {
-                GetChildItems(this, new EventArgs());
-                _childrenContainer.Visible = true;
+                TreeView tree = null;
+                foreach (ASP.Control idx in this.Controls)
+                {
+                    if (idx is TreeView)
+                    {
+                        tree = idx as TreeView;
+                        break;
+                    }
+                }
+                GetChildItems(this, new TreeViewItem.GetChildItemsEventArgs(tree));
             }
         }
 
@@ -216,16 +214,18 @@ namespace Ra.Extensions
                 // Just got expanded
                 Expanded = !Expanded;
                 GetDynamicItems();
-                bool hasChildren = false;
-                foreach (ASP.Control idx in _childrenContainer.Controls)
+                TreeView tree = null;
+                foreach (ASP.Control idx in Controls)
                 {
-                    if (idx is TreeViewItem)
-                        hasChildren = true;
-                    break;
+                    if (idx is TreeView)
+                    {
+                        tree = idx as TreeView;
+                        break;
+                    }
                 }
-                if (hasChildren)
+                if (tree != null)
                 {
-                    _effect = new EffectRollDown(_childrenContainer, 200);
+                    _effect = new EffectRollDown(tree, 200);
                     _effect.Joined.Add(new EffectFadeIn());
                 }
                 else
@@ -239,7 +239,16 @@ namespace Ra.Extensions
                 _spacers[_spacers.Length - 1].CssClass = _spacers[_spacers.Length - 1].CssClass.Replace("Minus", "Plus");
 
                 // Collapsed just now
-                _effect = new EffectRollUp(_childrenContainer, 200);
+                TreeView tree = null;
+                foreach (ASP.Control idx in Controls)
+                {
+                    if (idx is TreeView)
+                    {
+                        tree = idx as TreeView;
+                        break;
+                    }
+                }
+                _effect = new EffectRollUp(tree, 200);
                 _effect.Joined.Add(new EffectFadeOut());
                 Expanded = !Expanded;
             }
@@ -258,9 +267,6 @@ namespace Ra.Extensions
 
         protected override void OnPreRender(EventArgs e)
         {
-            // Moving controls to where they SHOULD be...
-            ReArrangeControls();
-
             // Deferring rendering of effects till the control IDs are correct...
             // If _effect != null then we're rendering either the Collapse or the Expand effect...
             if (_effect != null)
@@ -270,21 +276,25 @@ namespace Ra.Extensions
 
             // Checking to see if we've got child items, if not we set _childContainer to IN-visible...
             bool hasChildren = false;
-            foreach (ASP.Control idx in _childrenContainer.Controls)
+            TreeView tree = null;
+            foreach (ASP.Control idx in Controls)
             {
-                if (idx is TreeViewItem)
+                if (idx is TreeView)
+                {
+                    tree = idx as TreeView;
                     hasChildren = true;
-                break;
+                    break;
+                }
             }
             if (!hasChildren)
             {
                 // Control does not have children, therefor we render the child container control 
                 // initially in-visible and later make it visible if it gets children...
-                _childrenContainer.Visible = false;
+                tree.Visible = false;
             }
             else
             {
-                _childrenContainer.Style["display"] = Expanded ? "" : "none";
+                tree.Style["display"] = Expanded ? "" : "none";
             }
 
             // Calling base...
@@ -304,24 +314,6 @@ namespace Ra.Extensions
             CssClass = tmpCssClass;
 
             _icon.CssClass = "icon" + " icon" + (Expanded ? "-expanded" : "-collapsed");
-        }
-
-        private void ReArrangeControls()
-        {
-            // Moving all controls where they SHOULD be
-            // This means keeping all controls where they are except for TreeViewItems
-            // which are stuffed into the _childrenContainer control...
-            List<ASP.Control> controls = new List<ASP.Control>();
-            foreach (ASP.Control idx in Controls)
-            {
-                if (idx is TreeViewItem)
-                    controls.Add(idx);
-            }
-            foreach (ASP.Control idx in controls)
-            {
-                Controls.Remove(idx);
-                _childrenContainer.Controls.Add(idx);
-            }
         }
 
         protected override string GetOpeningHTML()
