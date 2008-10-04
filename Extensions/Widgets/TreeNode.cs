@@ -148,21 +148,19 @@ namespace Ra.Extensions
         {
             ParentTree.SelectedNode = this;
             ParentTree.RaiseSelectedNodeChanged();
-            List<TreeNodes> childNodeCollections = new List<TreeNodes>();
+            TreeNodes childNodeCollections = null;
             foreach (ASP.Control idx in Controls)
             {
                 if (idx is TreeNodes)
-                    childNodeCollections.Add(idx as TreeNodes);
+                    childNodeCollections = idx as TreeNodes;
             }
-            if (childNodeCollections.Count > 0)
+            if (childNodeCollections != null)
             {
-                if (!childNodeCollections[0].Expanded)
+                if (!childNodeCollections.Expanded)
                 {
-                    foreach (TreeNodes idx in childNodeCollections)
-                    {
-                        idx.Expanded = true;
-                        idx.RollDown();
-                    }
+                    childNodeCollections.Expanded = true;
+                    childNodeCollections.RollDown();
+                    childNodeCollections.ra
 
                     _spacers[_spacers.Length - 1].CssClass =
                         _spacers[_spacers.Length - 1].CssClass.Replace("Plus", "Minus");
@@ -172,11 +170,8 @@ namespace Ra.Extensions
                     _spacers[_spacers.Length - 1].CssClass = 
                         _spacers[_spacers.Length - 1].CssClass.Replace("Minus", "Plus");
 
-                    foreach (TreeNodes idx in childNodeCollections)
-                    {
-                        idx.Expanded = false;
-                        idx.RollUp();
-                    }
+                    childNodeCollections.Expanded = false;
+                    childNodeCollections.RollUp();
                 }
             }
         }
