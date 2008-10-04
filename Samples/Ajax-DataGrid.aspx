@@ -94,6 +94,7 @@
 	    Also try to "sniff" the bandwidth usage using e.g. FireBug or something similar to see how little data
 	    is actually transfered across the wire when you edit something. I think you'll be surprised...
 	</p>
+	<a href="Ajax-TreeView.aspx">On to Ajax TreeView sample...</a>
 </asp:Content>
 
 

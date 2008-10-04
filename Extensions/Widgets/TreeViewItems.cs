@@ -335,7 +335,7 @@ namespace Ra.Extensions
         // Must override this bugger to not break XHTML compliance on in-visible items...
         public override string GetInvisibleHTML()
         {
-            return string.Format("<li id=\"{0}\" style=\"display:none;\" />");
+            return string.Format("<li id=\"{0}\" style=\"display:none;\" />", ClientID);
         }
     }
 }
