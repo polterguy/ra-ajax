@@ -182,7 +182,7 @@ namespace Ra.Extensions
                         break;
                     }
                 }
-                GetChildItems(this, new TreeViewItem.GetChildItemsEventArgs(tree));
+                GetChildItems(this, new EventArgs());
                 tree.Visible = tree.Controls.Count > 0;
             }
         }
