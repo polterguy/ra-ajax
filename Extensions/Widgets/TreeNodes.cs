@@ -17,9 +17,14 @@ using System.Collections.Generic;
 
 namespace Ra.Extensions
 {
+    /**
+     * Collection of TreeNode items within wither a TreeView or a TreeNode control
+     */
     [ASP.ToolboxData("<{0}:TreeNodes runat=\"server\"></{0}:TreeNodes>")]
     public class TreeNodes : RaWebControl, ASP.INamingContainer
     {
+        private bool _hasLoadedDynamicControls;
+
         /**
          * Raised when item needs to fetch child TreeViewItems. Note that to save bandwidth space while
          * at the same time have support for events on dynamically created child controls like CheckBox
@@ -29,6 +34,9 @@ namespace Ra.Extensions
          */
         public event EventHandler GetChildNodes;
 
+        /**
+         * The Controls in the ControlCollection which are of type TreeNode
+         */
         [Browsable(false)]
         public IEnumerable<TreeNode> Nodes
         {
@@ -52,33 +60,13 @@ namespace Ra.Extensions
             set { ViewState["Expanded"] = value; }
         }
 
-        internal bool HasChildren
+        protected override void OnLoad(EventArgs e)
         {
-            get
-            {
-                bool retVal = false;
-                if (GetChildNodes != null && !_hasLoadedDynamicControls)
-                    retVal = true;
-                else
-                {
-                    foreach (ASP.Control idx in Controls)
-                    {
-                        if (idx is TreeNode)
-                        {
-                            retVal = true;
-                            break;
-                        }
-                    }
-                }
-                return retVal;
-            }
-        }
+            base.OnLoad(e);
 
-        protected override void OnInit(EventArgs e)
-        {
-            base.OnInit(e);
-            //Todo: Check if OnInit() occurs before LoadControlState(), if it does not
-            // move EnsureChildControls() to LoadControlState()
+            // We MUST call the EnsureChildControls AFTER the ControlState has been loaded
+            // since we're depending on some value frmo ControlState in order to correctly
+            // instantiate the composition controls
             EnsureChildControls();
         }
 
@@ -89,7 +77,6 @@ namespace Ra.Extensions
                 GetDynamicNodes();
         }
 
-        private bool _hasLoadedDynamicControls;
         protected override void LoadControlState(object savedState)
         {
             object[] tmp = savedState as object[];
@@ -99,10 +86,9 @@ namespace Ra.Extensions
 
         protected override object SaveControlState()
         {
-            object tmp = base.SaveControlState();
             object[] retVal = new object[2];
             retVal[0] = _hasLoadedDynamicControls;
-            retVal[1] = tmp;
+            retVal[1] = base.SaveControlState();
             return retVal;
         }
 
@@ -111,13 +97,21 @@ namespace Ra.Extensions
             if (GetChildNodes != null)
             {
                 GetChildNodes(this, new EventArgs());
+                _hasLoadedDynamicControls = true;
             }
         }
 
         internal void RaiseGetChildNodes()
         {
-            GetDynamicNodes();
-            _hasLoadedDynamicControls = true;
+            if (!_hasLoadedDynamicControls)
+                GetDynamicNodes();
+        }
+
+        protected override void OnPreRender(EventArgs e)
+        {
+            if (!Expanded)
+                this.Style["display"] = "none";
+            base.OnPreRender(e);
         }
 
         protected override string GetOpeningHTML()

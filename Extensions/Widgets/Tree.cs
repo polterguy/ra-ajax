@@ -17,6 +17,9 @@ using System.Collections.Generic;
 
 namespace Ra.Extensions
 {
+    /**
+     * Wrapper arouns TreeNodes and TreeNode, this is the "root" element of a TreeView
+     */
     [ASP.ToolboxData("<{0}:Tree runat=\"server\"></{0}:Tree>")]
     public class Tree : RaWebControl, ASP.INamingContainer
     {
@@ -25,6 +28,9 @@ namespace Ra.Extensions
          */
         public event EventHandler SelectedNodeChanged;
 
+        /**
+         * The node which have been currently selected by either the user or through code
+         */
         public TreeNode SelectedNode
         {
             get

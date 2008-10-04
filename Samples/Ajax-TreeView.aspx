@@ -29,7 +29,7 @@
     </p>
     <div style="overflow:auto;">
         <ext:Tree runat="server" ID="tree" CssClass="tree" style="width:250px;float:left;" OnSelectedNodeChanged="selected">
-            <ext:TreeNodes runat="server">
+            <ext:TreeNodes runat="server" Expanded="true">
                 <ext:TreeNode runat="server" ID="good">
                     Open Web great things
                     <ext:TreeNodes runat="server">
