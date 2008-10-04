@@ -30,55 +30,55 @@
     <div style="overflow:auto;">
         <ext:Tree runat="server" ID="tree" CssClass="tree" style="width:250px;float:left;">
             <ext:TreeNodes runat="server">
-                <ext:TreeNode runat="server" ID="good" OnSelected="selected">
+                <ext:TreeNode runat="server" ID="good">
                     Open Web great things
                     <ext:TreeNodes runat="server">
-                        <ext:TreeNode runat="server" ID="ajax" OnSelected="selected">
+                        <ext:TreeNode runat="server" ID="ajax">
                             Ajax
                             <ext:TreeNodes runat="server">
-                                <ext:TreeNode runat="server" ID="jQuery" OnSelected="selected">
+                                <ext:TreeNode runat="server" ID="jQuery">
                                     <a href="http://jquery.com">jQuery</a>
                                 </ext:TreeNode>
-                                <ext:TreeNode runat="server" ID="prototype" OnSelected="selected">
+                                <ext:TreeNode runat="server" ID="prototype">
                                     <a href="http://prototypejs.org/">Prototype.js</a>
                                 </ext:TreeNode>
-                                <ext:TreeNode runat="server" ID="mooTools" OnSelected="selected">
+                                <ext:TreeNode runat="server" ID="mooTools">
                                     <a href="http://mootools.net/">mootools</a>
                                 </ext:TreeNode>
                             </ext:TreeNodes>
                         </ext:TreeNode>
-                        <ext:TreeNode runat="server" ID="html" OnGetChildItems="good_2_GetChildItems" OnSelected="selected">
+                        <ext:TreeNode runat="server" ID="html">
                             HTML
                         </ext:TreeNode>
-                        <ext:TreeNode runat="server" ID="css" OnSelected="selected">
+                        <ext:TreeNode runat="server" ID="css">
                             CSS
                             <ext:TreeNodes runat="server">
-                                <ext:TreeNode runat="server" ID="why_cool" OnSelected="selected">
+                                <ext:TreeNode runat="server" ID="why_cool">
                                     <ra:LinkButton runat="server" ID="lnkCool1" Text="Is cool!" />
                                 </ext:TreeNode>
-                                <ext:TreeNode runat="server" ID="why_cool2" OnSelected="selected">
+                                <ext:TreeNode runat="server" ID="why_cool2">
                                     <ra:LinkButton runat="server" ID="lnkCool2" Text="Is WAY cool!" />
                                 </ext:TreeNode>
                             </ext:TreeNodes>
                         </ext:TreeNode>
                     </ext:TreeNodes>
                 </ext:TreeNode>
-                <ext:TreeNode runat="server" ID="bad" OnSelected="selected">
+                <ext:TreeNode runat="server" ID="bad">
                     Proprietary lock-in crap
                     <ext:TreeNodes runat="server">
-                        <ext:TreeNode runat="server" ID="flex" OnSelected="selected">
+                        <ext:TreeNode runat="server" ID="flex">
                             Adobe Flex
                         </ext:TreeNode>
-                        <ext:TreeNode runat="server" ID="silverlight" OnSelected="selected">
+                        <ext:TreeNode runat="server" ID="silverlight">
                             Silverlight
                         </ext:TreeNode>
-                        <ext:TreeNode runat="server" ID="activex" OnSelected="selected">
+                        <ext:TreeNode runat="server" ID="activex">
                             ActiveX
                             <ext:TreeNodes runat="server">
-                                <ext:TreeNode runat="server" ID="activex1" OnSelected="selected">
+                                <ext:TreeNode runat="server" ID="activex1">
                                     ActiveX 1.0
                                 </ext:TreeNode>
-                                <ext:TreeNode runat="server" ID="activex2" OnSelected="selected">
+                                <ext:TreeNode runat="server" ID="activex2">
                                     ActiveX 2.0
                                 </ext:TreeNode>
                             </ext:TreeNodes>
