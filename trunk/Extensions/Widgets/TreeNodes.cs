@@ -55,6 +55,8 @@ namespace Ra.Extensions
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
+            //Todo: Check if OnInit() occurs before LoadControlState(), if it does
+            //remove EnsureChildControls() to LoadControlState()
             EnsureChildControls();
         }
 
