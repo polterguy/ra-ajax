@@ -15,37 +15,34 @@ namespace Samples
 {
     public partial class TreeView : System.Web.UI.Page
     {
-       /* 
         protected void good_2_GetChildItems(object sender, EventArgs e)
         {
             
             // Item that was expanded
-            TreeNode parent = sender as TreeNode;
+            TreeNodes parent = sender as TreeNodes;
 
             // First child TreeNode
             TreeNode item = new TreeNode();
             item.ID = "HTML_normal_tree";
-            item.Selected += selected;
             ASPCTRLS.LiteralControl lit = new ASPCTRLS.LiteralControl();
             lit.Text = "HTML";
             lit.ID = "HTML_normal_lit";
             item.Controls.Add(lit);
-            e.Children.Add(item);
+            parent.Controls.Add(item);
 
             // Second child TreeNode
             item = new TreeNode();
             item.ID = "XHTML_tree";
-            item.Selected += selected;
             lit = new ASPCTRLS.LiteralControl();
             lit.Text = "XHTML";
             lit.ID = "XHTML_lit";
             item.Controls.Add(lit);
-            e.Children.Add(item);
+            parent.Controls.Add(item);
         }
 
         protected void selected(object sender, EventArgs e)
         {
-            TreeNode item = sender as TreeNode;
+            TreeNode item = tree.SelectedNode;
             pnlOutput1.Text = item.ID + " was selected";
             pnlOutput2.Text = GetTextForSelection(item.ID);
             
@@ -97,6 +94,5 @@ namespace Samples
                     return "I don't really have any intelligent to say about that theme...";
             }
         }
-         */
     }
 }
