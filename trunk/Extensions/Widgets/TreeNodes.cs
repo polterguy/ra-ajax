@@ -61,6 +61,25 @@ namespace Ra.Extensions
         protected override void CreateChildControls()
         {
             base.CreateChildControls();
+            if (_hasLoadedDynamicControls)
+                GetDynamicItems();
+        }
+
+        private bool _hasLoadedDynamicControls;
+        protected override void LoadControlState(object savedState)
+        {
+            object[] tmp = savedState as object[];
+            _hasLoadedDynamicControls = (bool)tmp[0];
+            base.LoadControlState(tmp[1]);
+        }
+
+        protected override object SaveControlState()
+        {
+            object tmp = base.SaveControlState();
+            object[] retVal = new object[2];
+            retVal[0] = _hasLoadedDynamicControls;
+            retVal[1] = tmp;
+            return retVal;
         }
 
         private void GetDynamicItems()
