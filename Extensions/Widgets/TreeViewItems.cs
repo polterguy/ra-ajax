@@ -71,9 +71,9 @@ namespace Ra.Extensions
             _childrenContainer.Controls.Add(item);
         }
 
-        protected override void LoadViewState(object savedState)
+        protected override void OnInit(EventArgs e)
         {
-            base.LoadViewState(savedState);
+            base.OnInit(e);
             EnsureChildControls();
         }
 
