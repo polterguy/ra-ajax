@@ -74,12 +74,14 @@
                         </ext:TreeNode>
                         <ext:TreeNode runat="server" ID="activex" OnSelected="selected">
                             ActiveX
-                            <ext:TreeNode runat="server" ID="activex1" OnSelected="selected">
-                                ActiveX 1.0
-                            </ext:TreeNode>
-                            <ext:TreeNode runat="server" ID="activex2" OnSelected="selected">
-                                ActiveX 2.0
-                            </ext:TreeNode>
+                            <ext:TreeNodes runat="server">
+                                <ext:TreeNode runat="server" ID="activex1" OnSelected="selected">
+                                    ActiveX 1.0
+                                </ext:TreeNode>
+                                <ext:TreeNode runat="server" ID="activex2" OnSelected="selected">
+                                    ActiveX 2.0
+                                </ext:TreeNode>
+                            </ext:TreeNodes>
                         </ext:TreeNode>
                     </ext:TreeNodes>
                 </ext:TreeNode>
