@@ -18,11 +18,11 @@ using System.Collections.Generic;
 namespace Ra.Extensions
 {
     /**
-     * TreeView control's child items. Supports both dynamically and 
+     * Tree control's child items. Supports both dynamically and 
      * statically (.ASPX markup) created TreeViewItems.
      */
-    [ASP.ToolboxData("<{0}:TreeViewItem runat=\"server\"></{0}:TreeViewItem>")]
-    public class TreeViewItem : Panel, ASP.INamingContainer
+    [ASP.ToolboxData("<{0}:TreeNode runat=\"server\"></{0}:TreeNode>")]
+    public class TreeNode : Panel, ASP.INamingContainer
     {
         // Since we're instantiating an effect which we cannot render before the controls
         // have been "re-arranged" we have it as a field on the class.
@@ -35,7 +35,7 @@ namespace Ra.Extensions
         /**
          * Raised when item needs to fetch child TreeViewItems. Note that to save bandwidth space while
          * at the same time have support for events on dynamically created child controls like CheckBox
-         * and RadioButton controls the runtime will raise this event every callback after the TreeView 
+         * and RadioButton controls the runtime will raise this event every callback after the Tree 
          * is expanded for the first time. This means that the event handler for this event should NOT 
          * spend a long time fetching items. If it does the entire Ajax runtime will become slow!
          */
@@ -77,7 +77,7 @@ namespace Ra.Extensions
             // Spacers to give room form left border
             int numSpacers = 1;
             ASP.Control idx = this.Parent.Parent;
-            while (idx is TreeView || idx is TreeViewItem)
+            while (idx is Tree || idx is TreeNode)
             {
                 numSpacers += 1;
                 idx = idx.Parent.Parent;
@@ -89,10 +89,10 @@ namespace Ra.Extensions
                 _spacers[idxNo] = new Label();
                 _spacers[idxNo].ID = "spacer" + idxNo;
                 string css = "spacer";
-                TreeViewItem item = this;
+                TreeNode item = this;
                 for (int idxItemNo = numSpacers - (idxNo + 1); idxItemNo > 0; idxItemNo--)
                 {
-                    item = item.Parent.Parent as TreeViewItem;
+                    item = item.Parent.Parent as TreeNode;
                 }
                 if (item == this)
                 {
@@ -148,7 +148,7 @@ namespace Ra.Extensions
                     return true;
                 foreach (ASP.Control idx in Controls)
                 {
-                    if (idx is TreeView)
+                    if (idx is Tree)
                         return true;
                 }
                 return false;
@@ -162,7 +162,7 @@ namespace Ra.Extensions
                 bool retVal = false;
                 foreach (ASP.Control idx in Parent.Controls)
                 {
-                    if (idx is TreeViewItem)
+                    if (idx is TreeNode)
                         retVal = idx == this;
                 }
                 return retVal;
@@ -173,12 +173,12 @@ namespace Ra.Extensions
         {
             if (Expanded && GetChildItems != null)
             {
-                TreeView tree = null;
+                Tree tree = null;
                 foreach (ASP.Control idx in this.Controls)
                 {
-                    if (idx is TreeView)
+                    if (idx is Tree)
                     {
-                        tree = idx as TreeView;
+                        tree = idx as Tree;
                         break;
                     }
                 }
@@ -199,12 +199,12 @@ namespace Ra.Extensions
                 // Just got expanded
                 Expanded = !Expanded;
                 GetDynamicItems();
-                TreeView tree = null;
+                Tree tree = null;
                 foreach (ASP.Control idx in Controls)
                 {
-                    if (idx is TreeView)
+                    if (idx is Tree)
                     {
-                        tree = idx as TreeView;
+                        tree = idx as Tree;
                         break;
                     }
                 }
@@ -224,12 +224,12 @@ namespace Ra.Extensions
                 _spacers[_spacers.Length - 1].CssClass = _spacers[_spacers.Length - 1].CssClass.Replace("Minus", "Plus");
 
                 // Collapsed just now
-                TreeView tree = null;
+                Tree tree = null;
                 foreach (ASP.Control idx in Controls)
                 {
-                    if (idx is TreeView)
+                    if (idx is Tree)
                     {
-                        tree = idx as TreeView;
+                        tree = idx as Tree;
                         break;
                     }
                 }
@@ -239,14 +239,14 @@ namespace Ra.Extensions
             }
         }
 
-        private TreeView ParentTree
+        private Tree ParentTree
         {
             get
             {
                 ASP.Control ctrl = this.Parent;
-                while (ctrl != null && !(ctrl is TreeView))
+                while (ctrl != null && !(ctrl is Tree))
                     ctrl = ctrl.Parent;
-                return ctrl as TreeView;
+                return ctrl as Tree;
             }
         }
 
@@ -261,12 +261,12 @@ namespace Ra.Extensions
 
             // Checking to see if we've got child items, if not we set _childContainer to IN-visible...
             bool hasChildren = false;
-            TreeView tree = null;
+            Tree tree = null;
             foreach (ASP.Control idx in Controls)
             {
-                if (idx is TreeView)
+                if (idx is Tree)
                 {
-                    tree = idx as TreeView;
+                    tree = idx as Tree;
                     hasChildren = tree.Controls.Count > 0;
                     break;
                 }

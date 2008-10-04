@@ -17,19 +17,36 @@ using System.Collections.Generic;
 
 namespace Ra.Extensions
 {
-    [ASP.ToolboxData("<{0}:TreeView runat=\"server\"></{0}:TreeView>")]
-    public class TreeView : RaWebControl, ASP.INamingContainer
+    [ASP.ToolboxData("<{0}:Tree runat=\"server\"></{0}:Tree>")]
+    public class Tree : RaWebControl, ASP.INamingContainer
     {
         [Browsable(false)]
-        public IEnumerable<TreeViewItem> Items
+        public IEnumerable<TreeNode> Items
         {
             get
             {
                 foreach (ASP.Control idx in Controls)
                 {
-                    if (idx is TreeViewItem)
-                        yield return idx as TreeViewItem;
+                    if (idx is TreeNode)
+                        yield return idx as TreeNode;
                 }
+            }
+        }
+
+        public TreeNode SelectedItem
+        {
+            get
+            {
+                TreeNode item = null;
+                if (ViewState["SelectedItem"] != null)
+                {
+                    item = AjaxManager.Instance.FindControl<TreeNode>(ViewState["SelectedItem"].ToString());
+                }
+                return item;
+            }
+            set
+            {
+                ViewState["SelectedItem"] = value.ID;
             }
         }
 
@@ -39,23 +56,6 @@ namespace Ra.Extensions
                 ClientID,
                 GetCssClassHTMLFormatedAttribute(),
                 GetStyleHTMLFormatedAttribute());
-        }
-
-        public TreeViewItem SelectedItem
-        {
-            get
-            {
-                TreeViewItem item = null;
-                if (ViewState["SelectedItem"] != null)
-                {
-                    item = AjaxManager.Instance.FindControl<TreeViewItem>(ViewState["SelectedItem"].ToString());
-                }
-                return item;
-            }
-            set
-            {
-                ViewState["SelectedItem"] = value.ID;
-            }
         }
 
         protected override string GetClosingHTML()
