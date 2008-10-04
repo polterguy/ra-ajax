@@ -168,6 +168,28 @@ namespace Ra.Extensions
             BuildCssForIcon();
             BuildCssForExpander();
             BuildCssForSpacers();
+            SetPropertiesForChildren();
+        }
+
+        private void SetPropertiesForChildren()
+        {
+            if (ChildTreeNodes != null)
+            {
+                bool hasChildren = false;
+                foreach (ASP.Control idx in ChildTreeNodes.Controls)
+                {
+                    if (idx is TreeNode)
+                    {
+                        hasChildren = true;
+                        break;
+                    }
+                }
+                if (!ChildTreeNodes.Expanded)
+                {
+                    ChildTreeNodes.Style["display"] = "none";
+                }
+                ChildTreeNodes.Visible = hasChildren;
+            }
         }
 
         private void BuildCssForSpacers()

@@ -104,14 +104,9 @@ namespace Ra.Extensions
         internal void RaiseGetChildNodes()
         {
             if (!_hasLoadedDynamicControls)
+            {
                 GetDynamicNodes();
-        }
-
-        protected override void OnPreRender(EventArgs e)
-        {
-            if (!Expanded)
-                this.Style["display"] = "none";
-            base.OnPreRender(e);
+            }
         }
 
         protected override string GetOpeningHTML()
