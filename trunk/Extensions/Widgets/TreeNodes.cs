@@ -21,7 +21,7 @@ namespace Ra.Extensions
     public class TreeNodes : RaWebControl, ASP.INamingContainer
     {
         [Browsable(false)]
-        public IEnumerable<TreeNode> Items
+        public IEnumerable<TreeNode> Nodes
         {
             get
             {
