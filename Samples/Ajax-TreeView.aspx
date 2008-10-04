@@ -28,6 +28,7 @@
         And you can mix these two methods in the same TreeView control just as you wish.
     </p>
     <div style="overflow:auto;">
+        <ext:TreeView runat="server" ID="tree" CssClass="tree" style="width:250px;float:left;">
         <ext:TreeViewItem runat="server" ID="good" OnSelected="selected">
             Open Web great things
             <ext:TreeViewItem runat="server" ID="ajax" OnSelected="selected">
@@ -73,6 +74,7 @@
                 </ext:TreeViewItem>
             </ext:TreeViewItem>
         </ext:TreeViewItem>
+        </ext:TreeView>
         <ra:Panel 
             runat="server" 
             ID="pnl" 
