@@ -55,26 +55,21 @@ namespace Ra.Extensions
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
+            EnsureChildControls();
+        }
+
+        protected override void CreateChildControls()
+        {
+            base.CreateChildControls();
         }
 
         private void GetDynamicItems()
         {
-            if (Expanded && GetChildItems != null)
+            if (GetChildNodes != null)
             {
-                Tree tree = null;
-                foreach (ASP.Control idx in this.Controls)
-                {
-                    if (idx is Tree)
-                    {
-                        tree = idx as Tree;
-                        break;
-                    }
-                }
-                GetChildItems(this, new EventArgs());
-                tree.Visible = tree.Controls.Count > 0;
+                GetChildNodes(this, new EventArgs());
             }
         }
-
 
         protected override string GetOpeningHTML()
         {
