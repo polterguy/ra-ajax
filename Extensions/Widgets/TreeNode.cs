@@ -41,7 +41,6 @@ namespace Ra.Extensions
         protected override void CreateChildControls()
         {
             CreateCompositionControls();
-            GetDynamicItems();
         }
 
         private void CreateCompositionControls()
