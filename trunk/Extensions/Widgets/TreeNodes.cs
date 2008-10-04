@@ -117,6 +117,8 @@ namespace Ra.Extensions
         internal void RaiseGetChildNodes()
         {
             GetDynamicNodes();
+            if (!_hasLoadedDynamicControls)
+                this.ReRender();
             _hasLoadedDynamicControls = true;
         }
 
