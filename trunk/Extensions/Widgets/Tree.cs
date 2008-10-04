@@ -20,19 +20,6 @@ namespace Ra.Extensions
     [ASP.ToolboxData("<{0}:Tree runat=\"server\"></{0}:Tree>")]
     public class Tree : RaWebControl, ASP.INamingContainer
     {
-        [Browsable(false)]
-        public IEnumerable<TreeNode> Items
-        {
-            get
-            {
-                foreach (ASP.Control idx in Controls)
-                {
-                    if (idx is TreeNode)
-                        yield return idx as TreeNode;
-                }
-            }
-        }
-
         public TreeNode SelectedItem
         {
             get
@@ -52,7 +39,7 @@ namespace Ra.Extensions
 
         protected override string GetOpeningHTML()
         {
-            return string.Format("<ul id=\"{0}\"{1}{2}>",
+            return string.Format("<div id=\"{0}\"{1}{2}>",
                 ClientID,
                 GetCssClassHTMLFormatedAttribute(),
                 GetStyleHTMLFormatedAttribute());
@@ -60,7 +47,7 @@ namespace Ra.Extensions
 
         protected override string GetClosingHTML()
         {
-            return "</ul>";
+            return "</div>";
         }
     }
 }

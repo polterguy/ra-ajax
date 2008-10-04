@@ -33,23 +33,6 @@ namespace Ra.Extensions
             }
         }
 
-        public TreeNode SelectedItem
-        {
-            get
-            {
-                TreeNode item = null;
-                if (ViewState["SelectedItem"] != null)
-                {
-                    item = AjaxManager.Instance.FindControl<TreeNode>(ViewState["SelectedItem"].ToString());
-                }
-                return item;
-            }
-            set
-            {
-                ViewState["SelectedItem"] = value.ID;
-            }
-        }
-
         protected override string GetOpeningHTML()
         {
             return string.Format("<ul id=\"{0}\"{1}{2}>",
