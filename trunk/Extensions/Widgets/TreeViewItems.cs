@@ -162,7 +162,6 @@ namespace Ra.Extensions
             // Creating children container
             _childrenContainer = new Label();
             _childrenContainer.Tag = "ul";
-            _childrenContainer.Style["display"] = Expanded ? "" : "none";
             _childrenContainer.ID = "childCollection";
             Controls.Add(_childrenContainer);
         }
@@ -282,6 +281,10 @@ namespace Ra.Extensions
                 // Control does not have children, therefor we render the child container control 
                 // initially in-visible and later make it visible if it gets children...
                 _childrenContainer.Visible = false;
+            }
+            else
+            {
+                _childrenContainer.Style["display"] = Expanded ? "" : "none";
             }
 
             // Calling base...
