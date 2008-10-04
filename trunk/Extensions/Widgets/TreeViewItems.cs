@@ -24,21 +24,6 @@ namespace Ra.Extensions
     [ASP.ToolboxData("<{0}:TreeViewItem runat=\"server\"></{0}:TreeViewItem>")]
     public class TreeViewItem : Panel, ASP.INamingContainer
     {
-        public class GetChildItemsEventArgs : EventArgs
-        {
-            private TreeView _tree;
-
-            internal GetChildItemsEventArgs(ASP.Control ctrl)
-            {
-                _tree = ctrl as TreeView;
-            }
-
-            public ASP.ControlCollection Children
-            {
-                get { return _tree.Controls; }
-            }
-        }
-
         // Since we're instantiating an effect which we cannot render before the controls
         // have been "re-arranged" we have it as a field on the class.
         private Effect _effect = null;
@@ -54,7 +39,7 @@ namespace Ra.Extensions
          * is expanded for the first time. This means that the event handler for this event should NOT 
          * spend a long time fetching items. If it does the entire Ajax runtime will become slow!
          */
-        public event EventHandler<GetChildItemsEventArgs> GetChildItems;
+        public event EventHandler GetChildItems;
 
         /**
          * Raised when item is selected
