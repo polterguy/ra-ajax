@@ -15,9 +15,10 @@ namespace Samples
 {
     public partial class TreeView : System.Web.UI.Page
     {
-        /*
+        
         protected void good_2_GetChildItems(object sender, TreeViewItem.GetChildItemsEventArgs e)
         {
+            /*
             // Item that was expanded
             TreeViewItem parent = sender as TreeViewItem;
 
@@ -40,10 +41,12 @@ namespace Samples
             lit.ID = "XHTML_lit";
             item.Controls.Add(lit);
             e.Children.Add(item);
+            */
         }
 
         protected void selected(object sender, EventArgs e)
         {
+            /*
             TreeViewItem item = sender as TreeViewItem;
             pnlOutput1.Text = item.ID + " was selected";
             pnlOutput2.Text = GetTextForSelection(item.ID);
@@ -52,8 +55,10 @@ namespace Samples
                 new EffectHighlight(pnlOutput1, 500),
                 new EffectHighlight(pnlOutput2, 500)
             ).Render();
+             */
         }
 
+        /*
         private string GetTextForSelection(string id)
         {
             switch (id)
