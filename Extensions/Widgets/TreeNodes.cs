@@ -116,8 +116,10 @@ namespace Ra.Extensions
 
         internal void RaiseGetChildNodes()
         {
+            int beforeCount = this.Controls.Count;
+
             GetDynamicNodes();
-            if (!_hasLoadedDynamicControls)
+            if (!_hasLoadedDynamicControls && beforeCount != this.Controls.Count)
                 this.ReRender();
             _hasLoadedDynamicControls = true;
         }
