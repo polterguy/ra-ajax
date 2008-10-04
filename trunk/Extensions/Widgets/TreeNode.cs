@@ -25,7 +25,7 @@ namespace Ra.Extensions
     public class TreeNode : Panel, ASP.INamingContainer
     {
         // Composition controls
-        private Label[] _spacers;
+        private WEBCTRLS.Label[] _spacers;
         private Label _expander;
         private Label _icon;
 
@@ -68,12 +68,12 @@ namespace Ra.Extensions
             }
 
             // Creating our spacer elements...
-            _spacers = new Label[numSpacers];
+            _spacers = new WEBCTRLS.Label[numSpacers];
 
             // Looping through and instantiating our spacers...
             for (int idxNo = 0; idxNo < numSpacers; idxNo++)
             {
-                _spacers[idxNo] = new Label();
+                _spacers[idxNo] = new WEBCTRLS.Label();
                 _spacers[idxNo].ID = "spacer" + idxNo;
                 Controls.AddAt(0, _spacers[idxNo]);
             }
@@ -195,7 +195,7 @@ namespace Ra.Extensions
         private void BuildCssForSpacers()
         {
             TreeNode idxNode = this.Parent.Parent as TreeNode;
-            foreach (Label idx in _spacers)
+            foreach (WEBCTRLS.Label idx in _spacers)
             {
                 idx.CssClass = "spacer" + (idxNode.IsLeafNode ? "" : " lines linesOnly");
                 idxNode = idxNode.Parent.Parent as TreeNode;
