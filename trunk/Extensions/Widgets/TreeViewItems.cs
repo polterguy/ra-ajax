@@ -89,11 +89,10 @@ namespace Ra.Extensions
 
         private void CreateCompositionControls()
         {
-            
             // Spacers to give room form left border
             int numSpacers = 1;
             ASP.Control idx = this.Parent.Parent;
-            while (!(idx is TreeView))
+            while (idx is TreeView || idx is TreeViewItem)
             {
                 numSpacers += 1;
                 idx = idx.Parent.Parent;
@@ -286,13 +285,7 @@ namespace Ra.Extensions
                     break;
                 }
             }
-            if (!hasChildren)
-            {
-                // Control does not have children, therefor we render the child container control 
-                // initially in-visible and later make it visible if it gets children...
-                tree.Visible = false;
-            }
-            else
+            if (hasChildren)
             {
                 tree.Style["display"] = Expanded ? "" : "none";
             }
