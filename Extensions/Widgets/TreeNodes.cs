@@ -52,11 +52,32 @@ namespace Ra.Extensions
             set { ViewState["Expanded"] = value; }
         }
 
+        internal bool HasChildren
+        {
+            get
+            {
+                bool retVal = false;
+                if (GetChildNodes != null && !_hasLoadedDynamicControls)
+                    retVal = true;
+                else
+                {
+                    foreach (ASP.Control idx in Controls)
+                    {
+                        if (idx is TreeNode)
+                        {
+                            retVal = true;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
-            //Todo: Check if OnInit() occurs before LoadControlState(), if it does
-            //remove EnsureChildControls() to LoadControlState()
+            //Todo: Check if OnInit() occurs before LoadControlState(), if it does not
+            // move EnsureChildControls() to LoadControlState()
             EnsureChildControls();
         }
 
