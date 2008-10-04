@@ -74,41 +74,43 @@ namespace Ra.Extensions
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
+            
+            // For expanding child treeviewitem collection
+            this.Click += new EventHandler(TreeViewItem_Click);
+
             EnsureChildControls();
         }
 
         protected override void CreateChildControls()
         {
             CreateCompositionControls();
-            GetDynamicItems();
+            //GetDynamicItems();
 
             // Moving controls to where they SHOULD be...
-            ReArrangeControls();
+            //ReArrangeControls();
         }
 
         private void CreateCompositionControls()
         {
-            // For expanding child treeviewitem collection
-            this.Click += new EventHandler(TreeViewItem_Click);
-
+            
             // Spacers to give room form left border
-            int no = 1;
+            int numSpacers = 1;
             ASP.Control idx = this.Parent;
             while (!(idx is TreeView))
             {
                 if (idx is TreeViewItem)
-                    no += 1;
+                    numSpacers += 1;
                 idx = idx.Parent;
             }
-            _spacers = new Label[no];
+            _spacers = new Label[numSpacers];
             int idxNo;
-            for (idxNo = 0; idxNo < no; idxNo++)
+            for (idxNo = 0; idxNo < numSpacers; idxNo++)
             {
                 _spacers[idxNo] = new Label();
                 _spacers[idxNo].ID = "spacer" + idxNo;
                 string css = "spacer";
                 TreeViewItem item = this;
-                for (int idxItemNo = no - (idxNo + 1); idxItemNo > 0; idxItemNo--)
+                for (int idxItemNo = numSpacers - (idxNo + 1); idxItemNo > 0; idxItemNo--)
                 {
                     item = item.Parent.Parent as TreeViewItem;
                 }
