@@ -160,7 +160,7 @@ namespace Ra.Extensions
                 {
                     childNodeCollections.Expanded = true;
                     childNodeCollections.RollDown();
-                    childNodeCollections.ra
+                    childNodeCollections.RaiseGetChildNodes();
 
                     _spacers[_spacers.Length - 1].CssClass =
                         _spacers[_spacers.Length - 1].CssClass.Replace("Plus", "Minus");
