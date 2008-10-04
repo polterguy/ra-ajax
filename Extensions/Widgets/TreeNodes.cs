@@ -17,8 +17,8 @@ using System.Collections.Generic;
 
 namespace Ra.Extensions
 {
-    [ASP.ToolboxData("<{0}:Tree runat=\"server\"></{0}:Tree>")]
-    public class Tree : RaWebControl, ASP.INamingContainer
+    [ASP.ToolboxData("<{0}:TreeNodes runat=\"server\"></{0}:TreeNodes>")]
+    public class TreeNodes : RaWebControl, ASP.INamingContainer
     {
         [Browsable(false)]
         public IEnumerable<TreeNode> Items
