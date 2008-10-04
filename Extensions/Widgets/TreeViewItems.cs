@@ -84,7 +84,7 @@ namespace Ra.Extensions
         protected override void CreateChildControls()
         {
             CreateCompositionControls();
-            //GetDynamicItems();
+            GetDynamicItems();
         }
 
         private void CreateCompositionControls()
@@ -198,6 +198,7 @@ namespace Ra.Extensions
                     }
                 }
                 GetChildItems(this, new TreeViewItem.GetChildItemsEventArgs(tree));
+                tree.Visible = tree.Controls.Count > 0;
             }
         }
 
@@ -281,13 +282,18 @@ namespace Ra.Extensions
                 if (idx is TreeView)
                 {
                     tree = idx as TreeView;
-                    hasChildren = true;
+                    hasChildren = tree.Controls.Count > 0;
                     break;
                 }
             }
             if (hasChildren)
             {
                 tree.Style["display"] = Expanded ? "" : "none";
+            }
+            else
+            {
+                if (tree != null)
+                    tree.Visible = false;
             }
 
             // Calling base...
