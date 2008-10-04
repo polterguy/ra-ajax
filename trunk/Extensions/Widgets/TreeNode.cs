@@ -115,12 +115,10 @@ namespace Ra.Extensions
         {
             get
             {
-                if (GetChildItems != null)
-                    return true;
                 foreach (ASP.Control idx in Controls)
                 {
-                    if (idx is Tree)
-                        return true;
+                    if (idx is TreeNodes)
+                        return (idx as TreeNodes).HasChildren;
                 }
                 return false;
             }
