@@ -20,10 +20,10 @@ namespace Samples
         {
             /*
             // Item that was expanded
-            TreeViewItem parent = sender as TreeViewItem;
+            TreeNode parent = sender as TreeNode;
 
-            // First child TreeViewItem
-            TreeViewItem item = new TreeViewItem();
+            // First child TreeNode
+            TreeNode item = new TreeNode();
             item.ID = "HTML_normal_tree";
             item.Selected += selected;
             ASPCTRLS.LiteralControl lit = new ASPCTRLS.LiteralControl();
@@ -32,8 +32,8 @@ namespace Samples
             item.Controls.Add(lit);
             e.Children.Add(item);
 
-            // Second child TreeViewItem
-            item = new TreeViewItem();
+            // Second child TreeNode
+            item = new TreeNode();
             item.ID = "XHTML_tree";
             item.Selected += selected;
             lit = new ASPCTRLS.LiteralControl();
@@ -47,7 +47,7 @@ namespace Samples
         protected void selected(object sender, EventArgs e)
         {
             /*
-            TreeViewItem item = sender as TreeViewItem;
+            TreeNode item = sender as TreeNode;
             pnlOutput1.Text = item.ID + " was selected";
             pnlOutput2.Text = GetTextForSelection(item.ID);
             

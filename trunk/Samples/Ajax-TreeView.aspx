@@ -28,53 +28,61 @@
         And you can mix these two methods in the same TreeView control just as you wish.
     </p>
     <div style="overflow:auto;">
-        <ext:TreeView runat="server" ID="tree" CssClass="tree" style="width:250px;float:left;">
-            <ext:TreeViewItem runat="server" ID="good" OnSelected="selected">
-                Open Web great things
-                <ext:TreeViewItem runat="server" ID="ajax" OnSelected="selected">
-                    Ajax
-                    <ext:TreeViewItem runat="server" ID="jQuery" OnSelected="selected">
-                        <a href="http://jquery.com">jQuery</a>
-                    </ext:TreeViewItem>
-                    <ext:TreeViewItem runat="server" ID="prototype" OnSelected="selected">
-                        <a href="http://prototypejs.org/">Prototype.js</a>
-                    </ext:TreeViewItem>
-                    <ext:TreeViewItem runat="server" ID="mooTools" OnSelected="selected">
-                        <a href="http://mootools.net/">mootools</a>
-                    </ext:TreeViewItem>
-                </ext:TreeViewItem>
-                <ext:TreeViewItem runat="server" ID="html" OnGetChildItems="good_2_GetChildItems" OnSelected="selected">
-                    HTML
-                </ext:TreeViewItem>
-                <ext:TreeViewItem runat="server" ID="css" OnSelected="selected">
-                    CSS
-                    <ext:TreeViewItem runat="server" ID="why_cool" OnSelected="selected">
-                        <ra:LinkButton runat="server" ID="lnkCool1" Text="Is cool!" />
-                    </ext:TreeViewItem>
-                    <ext:TreeViewItem runat="server" ID="why_cool2" OnSelected="selected">
-                        <ra:LinkButton runat="server" ID="lnkCool2" Text="Is WAY cool!" />
-                    </ext:TreeViewItem>
-                </ext:TreeViewItem>
-            </ext:TreeViewItem>
-            <ext:TreeViewItem runat="server" ID="bad" OnSelected="selected">
-                Proprietary lock-in crap
-                <ext:TreeViewItem runat="server" ID="flex" OnSelected="selected">
-                    Adobe Flex
-                </ext:TreeViewItem>
-                <ext:TreeViewItem runat="server" ID="silverlight" OnSelected="selected">
-                    Silverlight
-                </ext:TreeViewItem>
-                <ext:TreeViewItem runat="server" ID="activex" OnSelected="selected">
-                    ActiveX
-                    <ext:TreeViewItem runat="server" ID="activex1" OnSelected="selected">
-                        ActiveX 1.0
-                    </ext:TreeViewItem>
-                    <ext:TreeViewItem runat="server" ID="activex2" OnSelected="selected">
-                        ActiveX 2.0
-                    </ext:TreeViewItem>
-                </ext:TreeViewItem>
-            </ext:TreeViewItem>
-        </ext:TreeView>
+        <ext:Tree runat="server" ID="tree" CssClass="tree" style="width:250px;float:left;">
+            <ext:TreeNodes runat="server">
+                <ext:TreeNode runat="server" ID="good" OnSelected="selected">
+                    Open Web great things
+                    <ext:TreeNode runat="server" ID="ajax" OnSelected="selected">
+                        Ajax
+                        <ext:TreeNodes runat="server">
+                            <ext:TreeNode runat="server" ID="jQuery" OnSelected="selected">
+                                <a href="http://jquery.com">jQuery</a>
+                            </ext:TreeNode>
+                            <ext:TreeNode runat="server" ID="prototype" OnSelected="selected">
+                                <a href="http://prototypejs.org/">Prototype.js</a>
+                            </ext:TreeNode>
+                            <ext:TreeNode runat="server" ID="mooTools" OnSelected="selected">
+                                <a href="http://mootools.net/">mootools</a>
+                            </ext:TreeNode>
+                        </ext:TreeNodes>
+                    </ext:TreeNode>
+                    <ext:TreeNode runat="server" ID="html" OnGetChildItems="good_2_GetChildItems" OnSelected="selected">
+                        HTML
+                    </ext:TreeNode>
+                    <ext:TreeNode runat="server" ID="css" OnSelected="selected">
+                        CSS
+                        <ext:TreeNodes runat="server">
+                            <ext:TreeNode runat="server" ID="why_cool" OnSelected="selected">
+                                <ra:LinkButton runat="server" ID="lnkCool1" Text="Is cool!" />
+                            </ext:TreeNode>
+                            <ext:TreeNode runat="server" ID="why_cool2" OnSelected="selected">
+                                <ra:LinkButton runat="server" ID="lnkCool2" Text="Is WAY cool!" />
+                            </ext:TreeNode>
+                        </ext:TreeNodes>
+                    </ext:TreeNode>
+                </ext:TreeNode>
+                <ext:TreeNode runat="server" ID="bad" OnSelected="selected">
+                    Proprietary lock-in crap
+                    <ext:TreeNodes runat="server">
+                        <ext:TreeNode runat="server" ID="flex" OnSelected="selected">
+                            Adobe Flex
+                        </ext:TreeNode>
+                        <ext:TreeNode runat="server" ID="silverlight" OnSelected="selected">
+                            Silverlight
+                        </ext:TreeNode>
+                        <ext:TreeNode runat="server" ID="activex" OnSelected="selected">
+                            ActiveX
+                            <ext:TreeNode runat="server" ID="activex1" OnSelected="selected">
+                                ActiveX 1.0
+                            </ext:TreeNode>
+                            <ext:TreeNode runat="server" ID="activex2" OnSelected="selected">
+                                ActiveX 2.0
+                            </ext:TreeNode>
+                        </ext:TreeNode>
+                    </ext:TreeNodes>
+                </ext:TreeNode>
+            </ext:TreeNodes>
+        </ext:Tree>
         <ra:Panel 
             runat="server" 
             ID="pnl" 
@@ -83,7 +91,7 @@
                 <ra:Label 
                     runat="server" 
                     ID="pnlOutput1" 
-                    Text="Try to select and expand TreeViewItems" />
+                    Text="Try to select and expand TreeNodes" />
             </p>
             <p>
                 <ra:Label 
@@ -93,11 +101,11 @@
         </ra:Panel>
     </div>
     <p>
-        The above TreeView has two root TreeViewItems. Both of these root items are not expanded. By clicking on the
+        The above TreeView has two root TreeNodes. Both of these root items are not expanded. By clicking on the
         plus sign left of the root items you can expand those root items. In both of the root items there are three
-        child TreeViewItems where one of those have dynamically rendered child items. If you look at the code you
+        child TreeNodes where one of those have dynamically rendered child items. If you look at the code you
         will see that the HTML child items of the first root item have an event handler for retrieving child items
-        but no directly "statically" rendered items within it. The child TreeViewItems of the "HTML" element will
+        but no directly "statically" rendered items within it. The child TreeNodes of the "HTML" element will
         not be populated to the client (browser) before you actually expand it. While all the other items will
         be rendered directly into the markup as HTML but hidden through CSS if they are not expanded.
     </p>
@@ -106,10 +114,10 @@
         This means that all the statically rendered items will in fact be "pure HTML" which means they will be very
         search engine friendly and also easy to interact with through screen-readers and such. While the dynamically 
         created items (child items of HTML node) will not use any bandwidth before you physically expand the HTML 
-        TreeViewItem. This means that it is possible to have extremely large TreeView nodes while at the same time
+        TreeNode. This means that it is possible to have extremely large TreeView nodes while at the same time
         have some of the nodes be visible as pure markup. This means that you can render x nodes (where x is a small number)
         which are initially being rendered into the page HTML which will be 100% "pure" HTML and visible for search
-        engines while at the same time have extremely large TreeViewItem children of those which are rendered on a
+        engines while at the same time have extremely large TreeNode children of those which are rendered on a
         demand basis and will not use any bandwidth at all before rendered.        
     </p>
     <p>
@@ -120,7 +128,7 @@
     </p>
     <h2>Flexibility</h2>
     <p>
-        In addition you can add up any control you wish inside of your TreeViewItems, including CheckBoxes, RadioButtons,
+        In addition you can add up any control you wish inside of your TreeNodes, including CheckBoxes, RadioButtons,
         Labels, LinkButtons and "pure" HTML like links and such. And you can trap event handlers for those controls - 
         both "normal" ASP.NET Controls and Ra-Ajax controls and everything will interact 100% perfect with the rest
         of your page.
