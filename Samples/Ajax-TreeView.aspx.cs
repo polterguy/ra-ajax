@@ -15,7 +15,7 @@ namespace Samples
 {
     public partial class TreeView : System.Web.UI.Page
     {
-        protected void good_2_GetChildItems(object sender, EventArgs e)
+        protected void good_2_GetChildNodes(object sender, EventArgs e)
         {
             
             // Item that was expanded
