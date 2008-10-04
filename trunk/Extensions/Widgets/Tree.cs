@@ -20,6 +20,11 @@ namespace Ra.Extensions
     [ASP.ToolboxData("<{0}:Tree runat=\"server\"></{0}:Tree>")]
     public class Tree : RaWebControl, ASP.INamingContainer
     {
+        /**
+         * Raised when item is selected
+         */
+        public event EventHandler SelectedNodeChanged;
+
         public TreeNode SelectedItem
         {
             get

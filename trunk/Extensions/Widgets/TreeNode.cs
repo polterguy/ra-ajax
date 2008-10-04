@@ -24,37 +24,9 @@ namespace Ra.Extensions
     [ASP.ToolboxData("<{0}:TreeNode runat=\"server\"></{0}:TreeNode>")]
     public class TreeNode : Panel, ASP.INamingContainer
     {
-        // Since we're instantiating an effect which we cannot render before the controls
-        // have been "re-arranged" we have it as a field on the class.
-        private Effect _effect = null;
-
         // Composition controls
         private Label _icon;
         private Label[] _spacers;
-
-        /**
-         * Raised when item needs to fetch child TreeViewItems. Note that to save bandwidth space while
-         * at the same time have support for events on dynamically created child controls like CheckBox
-         * and RadioButton controls the runtime will raise this event every callback after the Tree 
-         * is expanded for the first time. This means that the event handler for this event should NOT 
-         * spend a long time fetching items. If it does the entire Ajax runtime will become slow!
-         */
-        public event EventHandler GetChildItems;
-
-        /**
-         * Raised when item is selected
-         */
-        public event EventHandler Selected;
-
-        /**
-         * If true then item is expanded and child items will show up.
-         */
-        [DefaultValue(false)]
-        public bool Expanded
-        {
-            get { return ViewState["Expanded"] == null ? false : (bool)ViewState["Expanded"]; }
-            set { ViewState["Expanded"] = value; }
-        }
 
         protected override void OnInit(EventArgs e)
         {
@@ -169,24 +141,7 @@ namespace Ra.Extensions
             }
         }
 
-        private void GetDynamicItems()
-        {
-            if (Expanded && GetChildItems != null)
-            {
-                Tree tree = null;
-                foreach (ASP.Control idx in this.Controls)
-                {
-                    if (idx is Tree)
-                    {
-                        tree = idx as Tree;
-                        break;
-                    }
-                }
-                GetChildItems(this, new EventArgs());
-                tree.Visible = tree.Controls.Count > 0;
-            }
-        }
-
+       
         private void TreeViewItem_Click(object sender, EventArgs e)
         {
             ParentTree.SelectedItem = this;
