@@ -19,23 +19,21 @@ namespace Ra.Extensions
 {
     /**
      * Tree control's child items. Supports both dynamically and 
-     * statically (.ASPX markup) created TreeViewItems.
+     * statically (.ASPX markup) created treenodes through the TreeNodes class.
      */
     [ASP.ToolboxData("<{0}:TreeNode runat=\"server\"></{0}:TreeNode>")]
     public class TreeNode : Panel, ASP.INamingContainer
     {
         // Composition controls
-        private Label _icon;
         private Label[] _spacers;
+        private Label _expander;
+        private Label _icon;
 
         protected override void OnInit(EventArgs e)
         {
-            base.OnInit(e);
-            
-            // For expanding child treeviewitem collection
             this.Click += new EventHandler(TreeNode_Click);
-
             EnsureChildControls();
+            base.OnInit(e);
         }
 
         protected override void CreateChildControls()
@@ -45,75 +43,40 @@ namespace Ra.Extensions
 
         private void CreateCompositionControls()
         {
-            // Spacers to give room form left border
-            int numSpacers = 0;
-            ASP.Control idx = this;
-            while (idx is TreeNode)
-            {
-                numSpacers += 1;
-                idx = idx.Parent.Parent;
-            }
-            _spacers = new Label[numSpacers];
-            bool expanded = false;
-            foreach (ASP.Control idxCtrl in Controls)
-            {
-                if (idxCtrl is TreeNodes)
-                {
-                    expanded = (idxCtrl as TreeNodes).Expanded;
-                    break;
-                }
-            }
-            int idxNo;
-            for (idxNo = 0; idxNo < numSpacers; idxNo++)
-            {
-                _spacers[idxNo] = new Label();
-                _spacers[idxNo].ID = "spacer" + idxNo;
-                string css = "spacer";
-                TreeNode item = this;
-                
-                for (int idxItemNo = numSpacers - (idxNo + 1); idxItemNo > 0; idxItemNo--)
-                    item = item.Parent.Parent as TreeNode;
-
-                if (item == this)
-                {
-                    if (item.IsLeafNode)
-                    {
-                        if (item.HasChildren)
-                        {
-                            if (expanded)
-                                css += " lines linesMinus";
-                            else
-                                css += " lines linesPlus";
-                        }
-                        else
-                            css += " lines linesEnd";
-                    }
-                    else
-                    {
-                        if (item.HasChildren)
-                        {
-                            if (expanded)
-                                css += " lines linesMinusCont";
-                            else
-                                css += " lines linesPlusCont";
-                        }
-                        else
-                            css += " lines linesBreak";
-                    }
-                }
-                else
-                {
-                    if (!item.IsLeafNode)
-                        css += " lines linesOnly";
-                }
-                _spacers[idxNo].CssClass = css;
-                Controls.AddAt(idxNo, _spacers[idxNo]);
-            }
+            // Note that since (for simplicity) we're adding ALL "composition" controls
+            // at the zeroth index, we're creating them in "opposite" order of appearance
+            // Since every "new" control added to the Controls collection will "push" the previous
+            // ones onwards out...
 
             // Icon wrapper
             _icon = new Label();
             _icon.ID = "iconControl";
-            Controls.AddAt(idxNo, _icon);
+            Controls.AddAt(0, _icon);
+
+            // Expander wrapper
+            _expander = new Label();
+            _expander.ID = "expanderControl";
+            Controls.AddAt(0, _expander);
+
+            // Finding out how many spacers we need...
+            int numSpacers = 0;
+            ASP.Control idxParent = this.Parent.Parent;
+            while (idxParent is TreeNode)
+            {
+                numSpacers += 1;
+                idxParent = idxParent.Parent.Parent;
+            }
+
+            // Creating our spacer elements...
+            _spacers = new Label[numSpacers];
+
+            // Looping through and instantiating our spacers...
+            for (int idxNo = 0; idxNo < numSpacers; idxNo++)
+            {
+                _spacers[idxNo] = new Label();
+                _spacers[idxNo].ID = "spacer" + idxNo;
+                Controls.AddAt(0, _spacers[idxNo]);
+            }
         }
 
         private bool HasChildren
@@ -123,7 +86,7 @@ namespace Ra.Extensions
                 foreach (ASP.Control idx in Controls)
                 {
                     if (idx is TreeNodes)
-                        return (idx as TreeNodes).HasChildren;
+                        return true;
                 }
                 return false;
             }
@@ -143,39 +106,6 @@ namespace Ra.Extensions
             }
         }
 
-       
-        private void TreeNode_Click(object sender, EventArgs e)
-        {
-            ParentTree.SelectedNode = this;
-            ParentTree.RaiseSelectedNodeChanged();
-            TreeNodes childNodeCollections = null;
-            foreach (ASP.Control idx in Controls)
-            {
-                if (idx is TreeNodes)
-                    childNodeCollections = idx as TreeNodes;
-            }
-            if (childNodeCollections != null)
-            {
-                if (!childNodeCollections.Expanded)
-                {
-                    childNodeCollections.Expanded = true;
-                    childNodeCollections.RollDown();
-                    childNodeCollections.RaiseGetChildNodes();
-
-                    _spacers[_spacers.Length - 1].CssClass =
-                        _spacers[_spacers.Length - 1].CssClass.Replace("Plus", "Minus");
-                }
-                else
-                {
-                    _spacers[_spacers.Length - 1].CssClass = 
-                        _spacers[_spacers.Length - 1].CssClass.Replace("Minus", "Plus");
-
-                    childNodeCollections.Expanded = false;
-                    childNodeCollections.RollUp();
-                }
-            }
-        }
-
         private Tree ParentTree
         {
             get
@@ -187,62 +117,107 @@ namespace Ra.Extensions
             }
         }
 
+        private TreeNodes ChildTreeNodes
+        {
+            get
+            {
+                foreach (ASP.Control idx in Controls)
+                {
+                    if (idx is TreeNodes)
+                        return idx as TreeNodes;
+                }
+                return null;
+            }
+        }
+
+        private void TreeNode_Click(object sender, EventArgs e)
+        {
+            // Setting SelectedNode and raising the SelectedNodeChanged on the
+            // parent Tree control
+            ParentTree.SelectedNode = this;
+            ParentTree.RaiseSelectedNodeChanged();
+
+            // Expanding/Collapsing the ChildTreeNodes control
+            if (ChildTreeNodes != null)
+            {
+                if (!ChildTreeNodes.Expanded)
+                {
+                    ChildTreeNodes.Expanded = true;
+                    ChildTreeNodes.RollDown();
+                    ChildTreeNodes.RaiseGetChildNodes();
+                    _expander.CssClass = _expander.CssClass.Replace("Plus", "Minus");
+                }
+                else
+                {
+                    ChildTreeNodes.Expanded = false;
+                    ChildTreeNodes.RollUp();
+                    _expander.CssClass = _expander.CssClass.Replace("Minus", "Plus");
+                }
+            }
+        }
+
         protected override void OnPreRender(EventArgs e)
         {
             BuildCss();
-
-            bool hasChildren = false;
-            bool expanded = false;
-            TreeNodes tree = null;
-            foreach (ASP.Control idx in Controls)
-            {
-                if (idx is TreeNodes)
-                {
-                    tree = idx as TreeNodes;
-                    hasChildren = tree.Controls.Count > 0;
-                    expanded = tree.Expanded;
-                    break;
-                }
-            }
-            if (hasChildren)
-            {
-                tree.Style["display"] = expanded ? "" : "none";
-            }
-            else
-            {
-                if (tree != null)
-                    tree.Visible = false;
-            }
-
-            // Calling base...
             base.OnPreRender(e);
         }
 
         private void BuildCss()
         {
+            BuildCssForRootElement();
+            BuildCssForIcon();
+            BuildCssForExpander();
+            BuildCssForSpacers();
+        }
+
+        private void BuildCssForSpacers()
+        {
+            TreeNode idxNode = this.Parent.Parent as TreeNode;
+            foreach (Label idx in _spacers)
+            {
+                idx.CssClass = "spacer" + (idxNode.IsLeafNode ? "" : " lines linesOnly");
+                idxNode = idxNode.Parent.Parent as TreeNode;
+            }
+        }
+
+        private void BuildCssForExpander()
+        {
+            if (ChildTreeNodes == null)
+            {
+                _expander.CssClass = IsLeafNode ? "spacer lines linesEnd" : "spacer lines linesBreak";
+            }
+            else
+            {
+                if (ChildTreeNodes.Expanded)
+                {
+                    _expander.CssClass = IsLeafNode ? "spacer lines linesMinusCont" : "spacer lines linesMinus";
+                }
+                else
+                {
+                    _expander.CssClass = IsLeafNode ? "spacer lines linesPlusCont" : "spacer lines linesPlus";
+                }
+            }
+        }
+
+        private void BuildCssForIcon()
+        {
+            _icon.CssClass = "icon" + " icon" + (ChildTreeNodes != null && ChildTreeNodes.Expanded ? "-expanded" : "-collapsed");
+        }
+
+        private void BuildCssForRootElement()
+        {
             string treeCssClass = ParentTree.CssClass;
             string tmpCssClass = treeCssClass + "-item";
 
-            bool expanded = false;
-            TreeNodes tree = null;
-            foreach (ASP.Control idx in Controls)
-            {
-                if (idx is TreeNodes)
-                {
-                    expanded = (idx as TreeNodes).Expanded;
-                    break;
-                }
-            }
-
-            if (expanded)
+            if (ChildTreeNodes != null && ChildTreeNodes.Expanded)
                 tmpCssClass += " " + treeCssClass + "-item-expanded";
             else
                 tmpCssClass += " " + treeCssClass + "-item-collapsed";
+
             if (ParentTree.SelectedNode == this)
                 tmpCssClass += " selected";
-            CssClass = tmpCssClass;
 
-            _icon.CssClass = "icon" + " icon" + (expanded ? "-expanded" : "-collapsed");
+            CssClass = tmpCssClass;
         }
 
         protected override string GetOpeningHTML()
