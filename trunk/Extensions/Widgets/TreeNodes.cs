@@ -86,7 +86,7 @@ namespace Ra.Extensions
         {
             base.CreateChildControls();
             if (_hasLoadedDynamicControls)
-                GetDynamicItems();
+                GetDynamicNodes();
         }
 
         private bool _hasLoadedDynamicControls;
@@ -106,7 +106,7 @@ namespace Ra.Extensions
             return retVal;
         }
 
-        private void GetDynamicItems()
+        private void GetDynamicNodes()
         {
             if (GetChildNodes != null)
             {

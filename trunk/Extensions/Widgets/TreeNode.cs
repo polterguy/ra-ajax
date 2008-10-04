@@ -33,7 +33,7 @@ namespace Ra.Extensions
             base.OnInit(e);
             
             // For expanding child treeviewitem collection
-            this.Click += new EventHandler(TreeViewItem_Click);
+            this.Click += new EventHandler(TreeNode_Click);
 
             EnsureChildControls();
         }
@@ -70,10 +70,10 @@ namespace Ra.Extensions
                 _spacers[idxNo].ID = "spacer" + idxNo;
                 string css = "spacer";
                 TreeNode item = this;
+                
                 for (int idxItemNo = numSpacers - (idxNo + 1); idxItemNo > 0; idxItemNo--)
-                {
                     item = item.Parent.Parent as TreeNode;
-                }
+
                 if (item == this)
                 {
                     if (item.IsLeafNode)
@@ -81,9 +81,7 @@ namespace Ra.Extensions
                         if (item.HasChildren)
                         {
                             if (expanded)
-                            {
                                 css += " lines linesMinus";
-                            }
                             else
                                 css += " lines linesPlus";
                         }
@@ -95,9 +93,7 @@ namespace Ra.Extensions
                         if (item.HasChildren)
                         {
                             if (expanded)
-                            {
                                 css += " lines linesMinusCont";
-                            }
                             else
                                 css += " lines linesPlusCont";
                         }
@@ -148,7 +144,7 @@ namespace Ra.Extensions
         }
 
        
-        private void TreeViewItem_Click(object sender, EventArgs e)
+        private void TreeNode_Click(object sender, EventArgs e)
         {
             ParentTree.SelectedNode = this;
             ParentTree.RaiseSelectedNodeChanged();
