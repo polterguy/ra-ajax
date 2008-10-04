@@ -114,6 +114,12 @@ namespace Ra.Extensions
             }
         }
 
+        internal void RaiseGetChildNodes()
+        {
+            GetDynamicNodes();
+            _hasLoadedDynamicControls = true;
+        }
+
         protected override string GetOpeningHTML()
         {
             return string.Format("<ul id=\"{0}\"{1}{2}>",
