@@ -15,6 +15,7 @@ namespace Samples
 {
     public partial class TreeView : System.Web.UI.Page
     {
+        /*
         protected void good_2_GetChildItems(object sender, TreeViewItem.GetChildItemsEventArgs e)
         {
             // Item that was expanded
@@ -46,12 +47,11 @@ namespace Samples
             TreeViewItem item = sender as TreeViewItem;
             pnlOutput1.Text = item.ID + " was selected";
             pnlOutput2.Text = GetTextForSelection(item.ID);
-            Effect effect = new EffectFadeIn(pnl, 500);
-            effect.ChainThese(
+            
+            new EffectFadeIn(pnl, 500).ChainThese(
                 new EffectHighlight(pnlOutput1, 500),
                 new EffectHighlight(pnlOutput2, 500)
-                );
-            effect.Render();
+            ).Render();
         }
 
         private string GetTextForSelection(string id)
@@ -96,5 +96,6 @@ namespace Samples
                     return "I don't really have any intelligent to say about that theme...";
             }
         }
+         */
     }
 }
