@@ -31,10 +31,10 @@
         <ext:TreeView runat="server" ID="tree" CssClass="tree" style="width:250px;float:left;">
             <ext:TreeViewItem runat="server" ID="good" OnSelected="selected">
                 Open Web great things
-                <ext:TreeView runat="server" ID="tree2" CssClass="tree">
+                <ext:TreeView runat="server" ID="tree2">
                     <ext:TreeViewItem runat="server" ID="ajax" OnSelected="selected">
                         Ajax
-                        <ext:TreeView runat="server" ID="TreeView1" CssClass="tree">
+                        <ext:TreeView runat="server" ID="TreeView1">
                             <ext:TreeViewItem runat="server" ID="jQuery" OnSelected="selected">
                                 <a href="http://jquery.com">jQuery</a>
                             </ext:TreeViewItem>
@@ -51,7 +51,7 @@
                     </ext:TreeViewItem>
                     <ext:TreeViewItem runat="server" ID="css" OnSelected="selected">
                         CSS
-                        <ext:TreeView runat="server" ID="TreeView2" CssClass="tree">
+                        <ext:TreeView runat="server" ID="TreeView2">
                             <ext:TreeViewItem runat="server" ID="why_cool" OnSelected="selected">
                                 <ra:LinkButton runat="server" ID="lnkCool1" Text="Is cool!" />
                             </ext:TreeViewItem>
@@ -64,7 +64,7 @@
             </ext:TreeViewItem>
             <ext:TreeViewItem runat="server" ID="bad" OnSelected="selected">
                 Proprietary lock-in crap
-                <ext:TreeView runat="server" ID="TreeView3" CssClass="tree">
+                <ext:TreeView runat="server" ID="TreeView3">
                     <ext:TreeViewItem runat="server" ID="flex" OnSelected="selected">
                         Adobe Flex
                     </ext:TreeViewItem>
@@ -73,7 +73,7 @@
                     </ext:TreeViewItem>
                     <ext:TreeViewItem runat="server" ID="activex" OnSelected="selected">
                         ActiveX
-                        <ext:TreeView runat="server" ID="TreeView4" CssClass="tree">
+                        <ext:TreeView runat="server" ID="TreeView4">
                             <ext:TreeViewItem runat="server" ID="activex1" OnSelected="selected">
                                 ActiveX 1.0
                             </ext:TreeViewItem>
