@@ -46,14 +46,23 @@ namespace Ra.Extensions
         private void CreateCompositionControls()
         {
             // Spacers to give room form left border
-            int numSpacers = 1;
-            ASP.Control idx = this.Parent.Parent;
-            while (idx is Tree || idx is TreeNode)
+            int numSpacers = 0;
+            ASP.Control idx = this;
+            while (idx is TreeNode)
             {
                 numSpacers += 1;
                 idx = idx.Parent.Parent;
             }
             _spacers = new Label[numSpacers];
+            bool expanded = false;
+            foreach (ASP.Control idxCtrl in Controls)
+            {
+                if (idxCtrl is TreeNodes)
+                {
+                    expanded = (idxCtrl as TreeNodes).Expanded;
+                    break;
+                }
+            }
             int idxNo;
             for (idxNo = 0; idxNo < numSpacers; idxNo++)
             {
@@ -71,7 +80,7 @@ namespace Ra.Extensions
                     {
                         if (item.HasChildren)
                         {
-                            if (item.Expanded)
+                            if (expanded)
                             {
                                 css += " lines linesMinus";
                             }
@@ -85,7 +94,7 @@ namespace Ra.Extensions
                     {
                         if (item.HasChildren)
                         {
-                            if (item.Expanded)
+                            if (expanded)
                             {
                                 css += " lines linesMinusCont";
                             }
@@ -141,53 +150,38 @@ namespace Ra.Extensions
        
         private void TreeViewItem_Click(object sender, EventArgs e)
         {
-            ParentTree.SelectedItem = this;
-            if (Selected != null)
-                Selected(this, new EventArgs());
-            if (!Expanded)
+            ParentTree.SelectedNode = this;
+            ParentTree.RaiseSelectedNodeChanged();
+            List<TreeNodes> childNodeCollections = new List<TreeNodes>();
+            foreach (ASP.Control idx in Controls)
             {
-                _spacers[_spacers.Length - 1].CssClass = _spacers[_spacers.Length - 1].CssClass.Replace("Plus", "Minus");
-
-                // Just got expanded
-                Expanded = !Expanded;
-                GetDynamicItems();
-                Tree tree = null;
-                foreach (ASP.Control idx in Controls)
+                if (idx is TreeNodes)
+                    childNodeCollections.Add(idx as TreeNodes);
+            }
+            if (childNodeCollections.Count > 0)
+            {
+                if (!childNodeCollections[0].Expanded)
                 {
-                    if (idx is Tree)
+                    foreach (TreeNodes idx in childNodeCollections)
                     {
-                        tree = idx as Tree;
-                        break;
+                        idx.Expanded = true;
+                        idx.RollDown();
                     }
-                }
-                if (tree != null)
-                {
-                    _effect = new EffectRollDown(tree, 200);
-                    _effect.Joined.Add(new EffectFadeIn());
+
+                    _spacers[_spacers.Length - 1].CssClass =
+                        _spacers[_spacers.Length - 1].CssClass.Replace("Plus", "Minus");
                 }
                 else
                 {
-                    // "un"-expanding...
-                    Expanded = !Expanded;
-                }
-            }
-            else
-            {
-                _spacers[_spacers.Length - 1].CssClass = _spacers[_spacers.Length - 1].CssClass.Replace("Minus", "Plus");
+                    _spacers[_spacers.Length - 1].CssClass = 
+                        _spacers[_spacers.Length - 1].CssClass.Replace("Minus", "Plus");
 
-                // Collapsed just now
-                Tree tree = null;
-                foreach (ASP.Control idx in Controls)
-                {
-                    if (idx is Tree)
+                    foreach (TreeNodes idx in childNodeCollections)
                     {
-                        tree = idx as Tree;
-                        break;
+                        idx.Expanded = false;
+                        idx.RollUp();
                     }
                 }
-                _effect = new EffectRollUp(tree, 200);
-                _effect.Joined.Add(new EffectFadeOut());
-                Expanded = !Expanded;
             }
         }
 
@@ -204,28 +198,24 @@ namespace Ra.Extensions
 
         protected override void OnPreRender(EventArgs e)
         {
-            // Deferring rendering of effects till the control IDs are correct...
-            // If _effect != null then we're rendering either the Collapse or the Expand effect...
-            if (_effect != null)
-                _effect.Render();
-
             BuildCss();
 
-            // Checking to see if we've got child items, if not we set _childContainer to IN-visible...
             bool hasChildren = false;
-            Tree tree = null;
+            bool expanded = false;
+            TreeNodes tree = null;
             foreach (ASP.Control idx in Controls)
             {
-                if (idx is Tree)
+                if (idx is TreeNodes)
                 {
-                    tree = idx as Tree;
+                    tree = idx as TreeNodes;
                     hasChildren = tree.Controls.Count > 0;
+                    expanded = tree.Expanded;
                     break;
                 }
             }
             if (hasChildren)
             {
-                tree.Style["display"] = Expanded ? "" : "none";
+                tree.Style["display"] = expanded ? "" : "none";
             }
             else
             {
@@ -241,15 +231,27 @@ namespace Ra.Extensions
         {
             string treeCssClass = ParentTree.CssClass;
             string tmpCssClass = treeCssClass + "-item";
-            if (Expanded)
+
+            bool expanded = false;
+            TreeNodes tree = null;
+            foreach (ASP.Control idx in Controls)
+            {
+                if (idx is TreeNodes)
+                {
+                    expanded = (idx as TreeNodes).Expanded;
+                    break;
+                }
+            }
+
+            if (expanded)
                 tmpCssClass += " " + treeCssClass + "-item-expanded";
             else
                 tmpCssClass += " " + treeCssClass + "-item-collapsed";
-            if (ParentTree.SelectedItem == this)
+            if (ParentTree.SelectedNode == this)
                 tmpCssClass += " selected";
             CssClass = tmpCssClass;
 
-            _icon.CssClass = "icon" + " icon" + (Expanded ? "-expanded" : "-collapsed");
+            _icon.CssClass = "icon" + " icon" + (expanded ? "-expanded" : "-collapsed");
         }
 
         protected override string GetOpeningHTML()

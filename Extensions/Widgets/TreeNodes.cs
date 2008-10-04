@@ -70,6 +70,7 @@ namespace Ra.Extensions
                         }
                     }
                 }
+                return retVal;
             }
         }
 
@@ -124,6 +125,20 @@ namespace Ra.Extensions
         protected override string GetClosingHTML()
         {
             return "</ul>";
+        }
+
+        internal void RollDown()
+        {
+            new EffectRollDown(this, 200)
+                .JoinThese(new EffectFadeIn())
+                .Render();
+        }
+
+        internal void RollUp()
+        {
+            new EffectRollUp(this, 200)
+                .JoinThese(new EffectFadeIn())
+                .Render();
         }
     }
 }
