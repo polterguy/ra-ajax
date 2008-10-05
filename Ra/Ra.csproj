@@ -58,7 +58,6 @@
     <Compile Include="Helpers\ListItemCollection.cs" />
     <Compile Include="Helpers\StyleCollection.cs" />
     <Compile Include="Helpers\StyleCollectionStyles.cs" />
-    <Compile Include="Helpers\Tuple.cs" />
     <Compile Include="Interfaces\IRaControl.cs" />
     <Compile Include="Filters\PostbackFilter.cs" />
     <Compile Include="Widgets\Button.cs" />
