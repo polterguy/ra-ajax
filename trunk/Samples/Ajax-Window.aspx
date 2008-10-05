@@ -79,10 +79,10 @@
 	        Caption="Ajax Window - drag me"
 	        CssClass="alphacube"
 	        Visible="false"
-	        style="position:absolute;top:-50px;left:100px;width:250px;height:200px;"
+	        style="position:absolute;top:-50px;left:100px;width:250px;"
 	        id="window2">
 
-	        <div style="padding:0 15px 5px 15px;">
+	        <div style="padding:15px 15px 15px 15px;">
 	            <h3>Another Window</h3>
 	            <p>
 	                This window is initially in-visible. Notice that as all in-visible controls almost no markup, and
