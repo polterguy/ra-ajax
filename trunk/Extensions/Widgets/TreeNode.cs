@@ -18,8 +18,7 @@ using System.Collections.Generic;
 namespace Ra.Extensions
 {
     /**
-     * Tree control's child items. Supports both dynamically and 
-     * statically (.ASPX markup) created treenodes through the TreeNodes class.
+     * TreeNodes actual child items. This is the actual treenode for the TreeNodes control
      */
     [ASP.ToolboxData("<{0}:TreeNode runat=\"server\"></{0}:TreeNode>")]
     public class TreeNode : Panel, ASP.INamingContainer
@@ -31,7 +30,7 @@ namespace Ra.Extensions
 
         protected override void OnInit(EventArgs e)
         {
-            this.Click += new EventHandler(TreeNode_Click);
+            this.Click += TreeNode_Click;
             EnsureChildControls();
             base.OnInit(e);
         }
@@ -47,6 +46,8 @@ namespace Ra.Extensions
             // at the zeroth index, we're creating them in "opposite" order of appearance
             // Since every "new" control added to the Controls collection will "push" the previous
             // ones onwards out...
+            // NOTE!
+            // This means that ORDER COUNTS here...!!
 
             // Icon wrapper
             _icon = new Label();
@@ -60,6 +61,12 @@ namespace Ra.Extensions
             _expander.Text = "&nbsp;";
             Controls.AddAt(0, _expander);
 
+            // Then creating our "spacer" controls
+            CreateSpacers();
+        }
+
+        private void CreateSpacers()
+        {
             // Finding out how many spacers we need...
             int numSpacers = 0;
             ASP.Control idxParent = this.Parent.Parent;
@@ -82,23 +89,13 @@ namespace Ra.Extensions
             }
         }
 
-        private bool HasChildren
-        {
-            get
-            {
-                foreach (ASP.Control idx in Controls)
-                {
-                    if (idx is TreeNodes)
-                        return true;
-                }
-                return false;
-            }
-        }
-
         private bool IsLeafNode
         {
             get
             {
+                // This logic will loop through all TreeNode items in the controls collections
+                // and change the value of the "retVal" back and forth but the LAST time
+                // it is changed it will be true ONLY if the last node is the "this" node...
                 bool retVal = false;
                 foreach (ASP.Control idx in Parent.Controls)
                 {
@@ -113,6 +110,8 @@ namespace Ra.Extensions
         {
             get
             {
+                // Looping upwards in the Control hierarchy until we 
+                // find a Control of type "Tree"
                 ASP.Control ctrl = this.Parent;
                 while (ctrl != null && !(ctrl is Tree))
                     ctrl = ctrl.Parent;
@@ -178,23 +177,28 @@ namespace Ra.Extensions
         {
             if (ChildTreeNodes != null)
             {
-                bool hasChildren = false;
-                foreach (ASP.Control idx in ChildTreeNodes.Controls)
-                {
-                    if (idx is TreeNode)
-                    {
-                        hasChildren = true;
-                        break;
-                    }
-                }
+                // Note that we're checking to see if the TreeNodes child
+                // of this one actually HAVE children in the Controls Collection.
+                // This is CRUCIAL since if it does NOT have children the TreeNodes should
+                // NOT be rendered visible since then it will first of all pollute markup
+                // and second of all NOT render correctly when children are being retrieved
+                // and control should be made visible (since we're not doing ReRender on it
+                // when it is expanded after retrieving items)
+                // Note also that technically this should have been implemented in the TreeNodes
+                // class, but unfortunately the OnPreRender will NOT be called if the 
+                // control is not visible...
+                // Therefor we have this logic here...
+                ChildTreeNodes.Visible = ChildTreeNodes.HasChildren;
+
+                // If the control is not Expanded we render it as display:none;
                 if (!ChildTreeNodes.Expanded)
                 {
                     ChildTreeNodes.Style["display"] = "none";
                 }
-                ChildTreeNodes.Visible = hasChildren;
             }
         }
 
+        // Builds CSS classes for the spacer labels.
         private void BuildCssForSpacers()
         {
             TreeNode idxNode = this.Parent.Parent as TreeNode;
@@ -205,6 +209,7 @@ namespace Ra.Extensions
             }
         }
 
+        // Builds the CSS classes for the expander plus/minus sign
         private void BuildCssForExpander()
         {
             if (ChildTreeNodes == null)
@@ -224,14 +229,19 @@ namespace Ra.Extensions
             }
         }
 
+        // Builds the CSS classes for the icon to the left of the "content" of the control
         private void BuildCssForIcon()
         {
             _icon.CssClass = "icon" + " icon" + (ChildTreeNodes != null && ChildTreeNodes.Expanded ? "-expanded" : "-collapsed");
         }
 
+        // Build CSS classes for the "root" DOM element ("this control")
         private void BuildCssForRootElement()
         {
+            // Note that the Parent Tree Control holds the "root" CSS names for 
+            // every other CSS class within itself...
             string treeCssClass = ParentTree.CssClass;
+
             string tmpCssClass = treeCssClass + "-item";
 
             if (ChildTreeNodes != null && ChildTreeNodes.Expanded)

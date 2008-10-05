@@ -45,8 +45,8 @@ namespace Samples
             TreeNode item = tree.SelectedNode;
             pnlOutput1.Text = item.ID + " was selected";
             pnlOutput2.Text = GetTextForSelection(item.ID);
-            
-            new EffectFadeIn(pnl, 500).ChainThese(
+
+            new EffectHighlight(pnl, 500).ChainThese(
                 new EffectHighlight(pnlOutput1, 500),
                 new EffectHighlight(pnlOutput2, 500)
             ).Render();
