@@ -31,7 +31,9 @@
         <ext:Tree runat="server" ID="tree" CssClass="tree" style="width:250px;float:left;" OnSelectedNodeChanged="selected">
             <ext:TreeNodes runat="server" Expanded="true">
                 <ext:TreeNode runat="server" ID="good">
-                    Open Web great things
+                    <span title="This is the stuff we all LOVE! :)">
+                        Open Web (expand me first)
+                    </span>
                     <ext:TreeNodes runat="server">
                         <ext:TreeNode runat="server" ID="ajax">
                             Ajax
@@ -65,7 +67,9 @@
                     </ext:TreeNodes>
                 </ext:TreeNode>
                 <ext:TreeNode runat="server" ID="bad">
-                    Proprietary lock-in crap
+                    <span title="This is the stuff we really dislike... :(">
+                        Proprietary lock-in crap
+                    </span>
                     <ext:TreeNodes runat="server">
                         <ext:TreeNode runat="server" ID="flex">
                             Adobe Flex
@@ -87,6 +91,18 @@
                     </ext:TreeNodes>
                 </ext:TreeNode>
             </ext:TreeNodes>
+            <ext:TreeNodes ID="TreeNodes1" runat="server" Expanded="true">
+                <ext:TreeNode runat="server" ID="huge_collection">
+                    <span title="This node will take some time to expand, be patient... Also be CAREFUL e.g. Internet Explorer might actually CRASH when expanding this TreeViewNode">
+                        HUGE collection of TreeNodes
+                    </span>
+	                <ra:BehaviorUpdater 
+		                runat="server"
+		                Color="#333" 
+		                Delay="200" />
+                    <ext:TreeNodes ID="huge_collection_node" runat="server" OnGetChildNodes="get_huge" />
+                </ext:TreeNode>
+            </ext:TreeNodes>
         </ext:Tree>
         <ra:Panel 
             runat="server" 
@@ -106,13 +122,26 @@
         </ra:Panel>
     </div>
     <p>
-        The above TreeView has two root TreeNodes. Both of these root items are not expanded. By clicking on the
-        plus sign left of the root items you can expand those root items. In both of the root items there are three
-        child TreeNodes where one of those have dynamically rendered child items. If you look at the code you
-        will see that the HTML child items of the first root item have an event handler for retrieving child items
-        but no directly "statically" rendered items within it. The child TreeNodes of the "HTML" element will
-        not be populated to the client (browser) before you actually expand it. While all the other items will
-        be rendered directly into the markup as HTML but hidden through CSS if they are not expanded.
+        The above TreeView has three root TreeNodes. None of these root items are expanded. Click to expand any
+        TreeViewNode. In the two first ones there are three child TreeNodes where one of those have dynamically 
+        rendered child items. If you look at the code you will see that the HTML child items of the first root 
+        item have an event handler for retrieving child items but no directly "statically" rendered items within it. 
+        The child TreeNodes of the "HTML" element will not be populated to the client (browser) before you actually 
+        expand it. While all the other items will be rendered directly into the markup as HTML but hidden through 
+        CSS if they are not expanded.
+    </p>
+    <p>
+        You can set the rendering of "Child TreeView Items" on a per TreeViewItem basis. This means that some nodes can 
+        be statically created and thereby be visible for search-engine spiders and so on, while other TreeViewItems
+        in the same TreeView can have "dynamically created" items which only will use bandwidth if actually expanded.
+    </p>
+    <p>
+        This can be seen in the "HUGE collection" TreeViewNode. None of its children are rendered in the markup, but
+        when expanded you will actually get <strong>*1000* new items</strong>. Still the initial rendering of the page
+        is very small and those 1000 items will not pollute the initial rendering of the page at all. Though when that
+        node has been rendered the DOM will be so stuffed with HTML elements that the entire page will feel like going
+        into "syrup". And for older browsers (IE) the browser might even CRASH when expanding this node. Though we still
+        felt like having the "1000 nodes" node there to show of the capabilities of the TreeView Control in Ra-Ajax.
     </p>
     <h2>Advantages of the Ra-Ajax TreeView</h2>
     <p>
