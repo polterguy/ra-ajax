@@ -649,7 +649,7 @@ namespace Ra.Widgets
 
         private string GetDefaultInvisibleHTML()
         {
-            return string.Format("<span id=\"{0}\" style=\"display:none;\">&nbsp;</span>", ClientID);
+            return string.Format("<span id=\"{0}\" style=\"display:none;\"></span>", ClientID);
         }
 	}
 }
