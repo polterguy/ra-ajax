@@ -57,10 +57,10 @@
                             CSS
                             <ext:TreeNodes runat="server">
                                 <ext:TreeNode runat="server" ID="why_cool">
-                                    <ra:LinkButton runat="server" ID="lnkCool1" Text="Is cool!" />
+                                    <ra:LinkButton runat="server" ID="lnkCool1" Text="Is cool!" OnClick="lnk_Click" />
                                 </ext:TreeNode>
                                 <ext:TreeNode runat="server" ID="why_cool2">
-                                    <ra:LinkButton runat="server" ID="lnkCool2" Text="Is WAY cool!" />
+                                    <ra:LinkButton runat="server" ID="lnkCool2" Text="Is WAY cool!" OnClick="lnk_Click" />
                                 </ext:TreeNode>
                             </ext:TreeNodes>
                         </ext:TreeNode>

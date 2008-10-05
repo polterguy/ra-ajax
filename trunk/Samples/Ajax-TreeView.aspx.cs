@@ -122,6 +122,11 @@ namespace Samples
             }
         }
 
+        protected void lnk_Click(object sender, EventArgs e)
+        {
+            (sender as LinkButton).Text = "I was CLICKED! :)";
+        }
+
         protected void selected(object sender, EventArgs e)
         {
             TreeNode item = tree.SelectedNode;
