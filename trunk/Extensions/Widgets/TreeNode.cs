@@ -52,13 +52,11 @@ namespace Ra.Extensions
             // Icon wrapper
             _icon = new Label();
             _icon.ID = "iconControl";
-            _icon.Text = "&nbsp;";
             Controls.AddAt(0, _icon);
 
             // Expander wrapper
             _expander = new Label();
             _expander.ID = "expanderControl";
-            _expander.Text = "&nbsp;";
             Controls.AddAt(0, _expander);
 
             // Then creating our "spacer" controls
@@ -84,7 +82,6 @@ namespace Ra.Extensions
             {
                 _spacers[idxNo] = new WEBCTRLS.Label();
                 _spacers[idxNo].ID = "spacer" + idxNo;
-                _spacers[idxNo].Text = "&nbsp;";
                 Controls.AddAt(0, _spacers[idxNo]);
             }
         }
