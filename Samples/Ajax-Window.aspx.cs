@@ -62,7 +62,7 @@ namespace Samples
             effect = new EffectHighlight(window.SurfaceControl, 300);
 
             // Then we're "flashing" the Surface Control (content parts of Window)
-            effect.Joined.Add(new EffectSize((window.SurfaceControl.Style["height"] == "400px" ? 250 : 400), -1));
+            effect.Joined.Add(new EffectSize((window.SurfaceControl.Style["height"] == "400px" ? 300 : 400), -1));
             effect.Render();
         }
     }
