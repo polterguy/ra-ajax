@@ -288,13 +288,13 @@ function testFadeAndAppear() {
       this.element.setContent('testing');
     },
     onFinished: function(){
-      if( this.element.getOpacity() == 0 ) {
+      if( this.element.getOpacity() < 0.1 ) {
         new Ra.Effect('testAnimationDiv', {
           onRender: function(pos) {
             this.element.setOpacity(pos);
           },
           onFinished: function(){
-            if( this.element.getOpacity() == 1 && this.element.innerHTML == 'testing')
+            if( this.element.getOpacity() > 0.9 && this.element.innerHTML == 'testing')
               Ra.$('results').setContent('success');
           }
         });
