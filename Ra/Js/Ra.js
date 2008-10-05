@@ -285,10 +285,11 @@ Ra.Element.prototype = {
     }
 
     var wr = function(event) {
-      var evt = event || window.event;
-      extraParams = (extraParams || []);
-      extraParams.push(evt);
-      if( !func.apply(callingContext, extraParams) ) {
+      var evt = (event || window.event);
+      var prs = (extraParams || []);
+      prs.push(evt);
+      var retVal = func.apply(callingContext, prs);
+      if( retVal === false ) {
         evt.cancelBubble = true;
         if( evt.stopPropagation )
           evt.stopPropagation();

@@ -86,42 +86,78 @@ namespace Ra
             get { return _supressFilters; }
             set { _supressFilters = value; }
         }
-		
-		private Control FindControl(Control current, string id)
-		{
-			if (current.ID == id)
-				return current;
-			foreach (Control idx in current.Controls)
-			{
-				Control retVal = FindControl(idx, id);
-				if (retVal != null)
-					return retVal;
-			}
-			return null;
-		}
 
-		/**
+        private Control FindControl(Control current, string id)
+        {
+            if (current.ID == id)
+                return current;
+            foreach (Control idx in current.Controls)
+            {
+                Control retVal = FindControl(idx, id);
+                if (retVal != null)
+                    return retVal;
+            }
+            return null;
+        }
+
+        private Control FindControlClientID(Control current, string id)
+        {
+            if (current.ClientID == id)
+                return current;
+            foreach (Control idx in current.Controls)
+            {
+                Control retVal = FindControlClientID(idx, id);
+                if (retVal != null)
+                    return retVal;
+            }
+            return null;
+        }
+
+        /**
          * Recursively traverses all controls on Page and MasterPage and returns the first control with the 
          * given ID
          */
-		public Control FindControl(string id)
-		{
-			Control tmpRetVal = FindControl(CurrentPage, id);
-			if( tmpRetVal != null )
-				return tmpRetVal;
-			if( CurrentPage.Master != null )
-				tmpRetVal = FindControl(CurrentPage.Master, id);
-			return tmpRetVal;
-		}
+        public Control FindControl(string id)
+        {
+            Control tmpRetVal = FindControl(CurrentPage, id);
+            if (tmpRetVal != null)
+                return tmpRetVal;
+            if (CurrentPage.Master != null)
+                tmpRetVal = FindControl(CurrentPage.Master, id);
+            return tmpRetVal;
+        }
+
+        /**
+         * Recursively traverses all controls on Page and MasterPage and returns the first control with the 
+         * given ClientID
+         */
+        public Control FindControlClientID(string id)
+        {
+            Control tmpRetVal = FindControlClientID(CurrentPage, id);
+            if (tmpRetVal != null)
+                return tmpRetVal;
+            if (CurrentPage.Master != null)
+                tmpRetVal = FindControlClientID(CurrentPage.Master, id);
+            return tmpRetVal;
+        }
 
         /**
          * Recursively traverses all controls on Page and MasterPage and returns the first control with the 
          * given ID casting it to typeof(T)
          */
         public T FindControl<T>(string id) where T : Control
-		{
-			return (T)FindControl(id);
-		}
+        {
+            return (T)FindControl(id);
+        }
+
+        /**
+         * Recursively traverses all controls on Page and MasterPage and returns the first control with the 
+         * given ClientID casting it to typeof(T)
+         */
+        public T FindControlClientID<T>(string id) where T : Control
+        {
+            return (T)FindControlClientID(id);
+        }
 
         internal void InitializeControl(RaControl ctrl)
         {

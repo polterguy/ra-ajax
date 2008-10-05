@@ -127,8 +127,6 @@ Ra.extend(Ra.BDrag.prototype, {
   },
 
   onSelectStart: function(evt) {
-    evt.stopped = true;
-    evt.cancelBubble = true;
     return false;
   },
 
