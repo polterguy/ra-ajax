@@ -2,7 +2,7 @@
 <project name="Package" xmlns="http://nant.sf.net/release/0.85/nant.xsd">
 
 	<!-- Properties -->
-	<property name="ra.version" value="0.5.4" />
+	<property name="ra.version" value="0.6" />
 
 	<property name="library.dir" value="Library" />
 	<property name="resources.dir" value="Resources" />
