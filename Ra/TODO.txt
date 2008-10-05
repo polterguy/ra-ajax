@@ -9,6 +9,8 @@
 
 * EffectHighlight doesn't work on background-color:White in FF...
 
+* Comet does not work correctly in Safari
+
 * DateTimePicker Control
 
 * Check to see if we can support postbascks when JS is turned OFF...
