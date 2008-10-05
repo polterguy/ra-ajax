@@ -120,7 +120,7 @@ namespace Ra.Widgets
 					    string[] affectedDroppersIds = drops.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 					    foreach( string idx in affectedDroppersIds)
 						{
-						    BehaviorDroppable tmp = AjaxManager.Instance.FindControl<BehaviorDroppable>(idx);
+                            BehaviorDroppable tmp = AjaxManager.Instance.FindControlClientID<BehaviorDroppable>(idx);
 					        tmp.RaiseDropped(this);
 						}
 					}
