@@ -58,6 +58,8 @@
                 </ItemTemplate>
             </asp:Repeater>
         </ra:Panel>
+        <ra:LinkButton ID="newerPosts" runat="server" Text="&laquo; newer posts" OnClick="newerPosts_Click" Visible="false" />
+        <ra:LinkButton ID="olderPosts" runat="server" Text="older posts &raquo;" OnClick="olderPosts_Click" />
         <ra:Button 
             runat="server" 
             ID="btnCreate" 
@@ -110,8 +112,8 @@
 	        Caption="Add New Image"
 	        CssClass="alphacube"
 	        Visible="false"
-	        style="position:absolute;top:290px;left:250px;"> 
-	        <div style="padding:15px;">
+	        style="position:absolute;top:290px;left:250px;width:600px;padding:5px;"> 
+	        <div style="padding:15px;overflow:auto;height:500px;">
             <asp:FileUpload 
                 runat="server" 
                 ID="uploadImage" />
@@ -123,13 +125,16 @@
             <br />
             <asp:Repeater runat="server" ID="repImages">
                 <ItemTemplate>
-                    <img src='<%# Container.DataItem %>' alt='Blog image' />
-                    <br />
-                    <asp:TextBox 
-                        runat="server" 
-                        style="width:440px;font-size:small;"
-                        Text='<%# "&lt;img src=\"" + Container.DataItem + "\" alt=\"Blog image\" />"%>' />
-                    <br />
+                    <div style="margin:5px;padding:5px;border:solid 1px #333;overflow:hidden;">
+                        <img src='<%# Container.DataItem %>' alt='Blog image' />
+                        <br /><br />
+                        <asp:TextBox 
+                            runat="server" 
+                            ID="imgTextBox"
+                            style="width:100%;font-size:small;"
+                            Text='<%# "&lt;img src=\"" + Container.DataItem + "\" alt=\"Blog image\" />"%>' />
+                        <br />
+                    </div>
                 </ItemTemplate>
             </asp:Repeater>
             </div>
