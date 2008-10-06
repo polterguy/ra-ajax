@@ -144,13 +144,11 @@ namespace Ra.Extensions
                     ChildTreeNodes.Expanded = true;
                     ChildTreeNodes.RollDown();
                     ChildTreeNodes.RaiseGetChildNodes();
-                    _expander.CssClass = _expander.CssClass.Replace("Plus", "Minus");
                 }
                 else
                 {
                     ChildTreeNodes.Expanded = false;
                     ChildTreeNodes.RollUp();
-                    _expander.CssClass = _expander.CssClass.Replace("Minus", "Plus");
                 }
             }
         }
@@ -168,6 +166,54 @@ namespace Ra.Extensions
             BuildCssForExpander();
             BuildCssForSpacers();
             SetPropertiesForChildren();
+        }
+
+        // Build CSS classes for the "root" DOM element ("this control")
+        private void BuildCssForRootElement()
+        {
+            string tmpCssClass = " item ";
+
+            if (ChildTreeNodes == null)
+                tmpCssClass += "no-childs";
+            else if (ChildTreeNodes.Expanded)
+                tmpCssClass += "expanded";
+            else
+                tmpCssClass += "collapsed";
+
+            if (ParentTree.SelectedNode == this)
+                tmpCssClass += " selected";
+
+            CssClass = tmpCssClass;
+        }
+
+        // Builds the CSS classes for the icon to the left of the "content" of the control
+        private void BuildCssForIcon()
+        {
+            _icon.CssClass = "icon spacer";
+        }
+
+        // Builds the CSS classes for the expander plus/minus sign
+        private void BuildCssForExpander()
+        {
+            if (ChildTreeNodes == null || !ChildTreeNodes.HasChildrenMaybe)
+            {
+                _expander.CssClass = IsLeafNode ? "icon leaf spacer" : "icon no-leaf spacer";
+            }
+            else
+            {
+                _expander.CssClass = IsLeafNode ? "icon leaf expander spacer" : "icon no-leaf expander spacer";
+            }
+        }
+
+        // Builds CSS classes for the spacer labels.
+        private void BuildCssForSpacers()
+        {
+            TreeNode idxNode = this.Parent.Parent as TreeNode;
+            foreach (WEBCTRLS.Label idx in _spacers)
+            {
+                idx.CssClass = "spacer" + (idxNode.IsLeafNode ? "" : " lines");
+                idxNode = idxNode.Parent.Parent as TreeNode;
+            }
         }
 
         private void SetPropertiesForChildren()
@@ -193,63 +239,6 @@ namespace Ra.Extensions
                     ChildTreeNodes.Style["display"] = "none";
                 }
             }
-        }
-
-        // Builds CSS classes for the spacer labels.
-        private void BuildCssForSpacers()
-        {
-            TreeNode idxNode = this.Parent.Parent as TreeNode;
-            foreach (WEBCTRLS.Label idx in _spacers)
-            {
-                idx.CssClass = "spacer" + (idxNode.IsLeafNode ? "" : " lines linesOnly");
-                idxNode = idxNode.Parent.Parent as TreeNode;
-            }
-        }
-
-        // Builds the CSS classes for the expander plus/minus sign
-        private void BuildCssForExpander()
-        {
-            if (ChildTreeNodes == null)
-            {
-                _expander.CssClass = IsLeafNode ? "spacer lines linesEnd" : "spacer lines linesBreak";
-            }
-            else
-            {
-                if (ChildTreeNodes.Expanded)
-                {
-                    _expander.CssClass = IsLeafNode ? "spacer lines linesMinusCont" : "spacer lines linesMinus";
-                }
-                else
-                {
-                    _expander.CssClass = IsLeafNode ? "spacer lines linesPlusCont" : "spacer lines linesPlus";
-                }
-            }
-        }
-
-        // Builds the CSS classes for the icon to the left of the "content" of the control
-        private void BuildCssForIcon()
-        {
-            _icon.CssClass = "icon" + " icon" + (ChildTreeNodes != null && ChildTreeNodes.Expanded ? "-expanded" : "-collapsed");
-        }
-
-        // Build CSS classes for the "root" DOM element ("this control")
-        private void BuildCssForRootElement()
-        {
-            // Note that the Parent Tree Control holds the "root" CSS names for 
-            // every other CSS class within itself...
-            string treeCssClass = ParentTree.CssClass;
-
-            string tmpCssClass = treeCssClass + "-item";
-
-            if (ChildTreeNodes != null && ChildTreeNodes.Expanded)
-                tmpCssClass += " " + treeCssClass + "-item-expanded";
-            else
-                tmpCssClass += " " + treeCssClass + "-item-collapsed";
-
-            if (ParentTree.SelectedNode == this)
-                tmpCssClass += " selected";
-
-            CssClass = tmpCssClass;
         }
 
         protected override string GetOpeningHTML()

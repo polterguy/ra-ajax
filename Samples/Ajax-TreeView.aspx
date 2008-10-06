@@ -90,13 +90,11 @@
                         </ext:TreeNode>
                     </ext:TreeNodes>
                 </ext:TreeNode>
-            </ext:TreeNodes>
-            <ext:TreeNodes ID="TreeNodes1" runat="server" Expanded="true">
                 <ext:TreeNode runat="server" ID="huge_collection">
                     <span title="This node will take some time to expand, be patient... Also be CAREFUL e.g. Internet Explorer might actually CRASH when expanding this TreeViewNode">
                         HUGE collection of TreeNodes
                     </span>
-	                <ra:BehaviorUpdater 
+	                <ra:BehaviorUpdater ID="BehaviorUpdater1" 
 		                runat="server"
 		                Color="#333" 
 		                Delay="200" />

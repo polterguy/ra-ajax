@@ -99,6 +99,16 @@ namespace Ra.Extensions
             }
         }
 
+        internal bool HasChildrenMaybe
+        {
+            get
+            {
+                if (GetChildNodes != null)
+                    return true;
+                return HasChildren;
+            }
+        }
+
         private void GetDynamicNodes()
         {
             if (GetChildNodes != null)
@@ -116,6 +126,22 @@ namespace Ra.Extensions
             }
         }
 
+        // Used for animating down when expanded
+        internal void RollDown()
+        {
+            new EffectRollDown(this, 200)
+                .JoinThese(new EffectFadeIn())
+                .Render();
+        }
+
+        // Used for animating up when collapsed
+        internal void RollUp()
+        {
+            new EffectRollUp(this, 200)
+                .JoinThese(new EffectFadeIn())
+                .Render();
+        }
+
         protected override string GetOpeningHTML()
         {
             return string.Format("<ul id=\"{0}\"{1}{2}>",
@@ -127,20 +153,6 @@ namespace Ra.Extensions
         protected override string GetClosingHTML()
         {
             return "</ul>";
-        }
-
-        internal void RollDown()
-        {
-            new EffectRollDown(this, 200)
-                .JoinThese(new EffectFadeIn())
-                .Render();
-        }
-
-        internal void RollUp()
-        {
-            new EffectRollUp(this, 200)
-                .JoinThese(new EffectFadeIn())
-                .Render();
         }
     }
 }
