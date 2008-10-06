@@ -247,7 +247,7 @@ namespace RaWebsite
                 files[idx] = files[idx]
                     .Replace(
                         Server.MapPath("~"), 
-                        Request.Url.ToString().Substring(0, Request.Url.ToString().LastIndexOf("/")))
+                        Request.Url.ToString().Substring(0, Request.Url.ToString().LastIndexOf("/") + 1))
                     .Replace("\\", "/");
             }
             repImages.DataSource = files;
