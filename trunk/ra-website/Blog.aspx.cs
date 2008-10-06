@@ -31,111 +31,7 @@ namespace RaWebsite
                     Response.Redirect("~", true);
 
                 if (Request.Params["rss"] == "true")
-                {
-                    // Retrieving last 50 blogs for blogger
-                    List<Entity.Blog> blogs = new List<Entity.Blog>();
-                    int idxNo = 0;
-                    foreach (Entity.Blog idx in Entity.Blog.FindAll(Order.Desc("Created"), Expression.Eq("Operator", oper)))
-                    {
-                        if (idxNo++ > 50)
-                            break;
-                        blogs.Add(idx);
-                    }
-
-                    // Spitting out RSS back to client...
-                    //Response.Clear();
-                    Response.ContentType = "text/xml";
-
-                    // Creating RSS
-                    XmlDocument doc = new XmlDocument();
-
-                    // RSS node
-                    XmlNode rss = doc.CreateNode(XmlNodeType.Element, "rss", "");
-                    XmlAttribute version = doc.CreateAttribute("version");
-                    version.Value = "2.0";
-                    rss.Attributes.Append(version);
-                    doc.AppendChild(rss);
-
-                    // channel node
-                    XmlNode channel = doc.CreateNode(XmlNodeType.Element, "channel", "");
-                    rss.AppendChild(channel);
-
-                    // Title node
-                    XmlNode title = doc.CreateNode(XmlNodeType.Element, "title", "");
-                    XmlNode titleContent = doc.CreateNode(XmlNodeType.Text, null, null);
-                    titleContent.Value = "Ravings from " + oper.Username;
-                    title.AppendChild(titleContent);
-                    channel.AppendChild(title);
-
-                    // link node
-                    XmlNode link = doc.CreateNode(XmlNodeType.Element, "link", "");
-                    XmlNode linkContent = doc.CreateNode(XmlNodeType.Text, "", "");
-                    linkContent.Value = Request.Url.AbsoluteUri.Substring(0, Request.Url.AbsoluteUri.IndexOf("?"));
-                    link.AppendChild(linkContent);
-                    channel.AppendChild(link);
-
-                    // description
-                    XmlNode description = doc.CreateNode(XmlNodeType.Element, "description", "");
-                    XmlNode descriptionContent = doc.CreateNode(XmlNodeType.Text, "", "");
-                    descriptionContent.Value = "Far side software ravings from " + oper.Username;
-                    description.AppendChild(descriptionContent);
-                    channel.AppendChild(description);
-
-                    // generator
-                    XmlNode generator = doc.CreateNode(XmlNodeType.Element, "generator", "");
-                    XmlNode generatorContent = doc.CreateNode(XmlNodeType.Text, "", "");
-                    generatorContent.Value = "Custom made RSS creator";
-                    generator.AppendChild(generatorContent);
-                    channel.AppendChild(generator);
-
-                    // Items
-                    foreach (Entity.Blog idx in blogs)
-                    {
-                        // Item
-                        XmlNode item = doc.CreateNode(XmlNodeType.Element, "item", "");
-
-                        // Title
-                        XmlNode titleR = doc.CreateNode(XmlNodeType.Element, "title", "");
-                        XmlNode titleRContent = doc.CreateNode(XmlNodeType.Text, "", "");
-                        titleRContent.Value = idx.Header;
-                        titleR.AppendChild(titleRContent);
-                        item.AppendChild(titleR);
-
-                        // link
-                        XmlNode linkR = doc.CreateNode(XmlNodeType.Element, "link", "");
-                        XmlNode linkRContent = doc.CreateNode(XmlNodeType.Text, "", "");
-                        linkRContent.Value = Request.Url.AbsoluteUri.Substring(0, Request.Url.AbsoluteUri.LastIndexOf("/") + 1) + idx.Url;
-                        linkR.AppendChild(linkRContent);
-                        item.AppendChild(linkR);
-
-                        // description
-                        XmlNode descriptionR = doc.CreateNode(XmlNodeType.Element, "description", "");
-                        XmlNode descriptionRContent = doc.CreateNode(XmlNodeType.Text, "", "");
-                        descriptionRContent.Value = idx.Body;
-                        descriptionR.AppendChild(descriptionRContent);
-                        item.AppendChild(descriptionR);
-
-                        // pubDate
-                        XmlNode pub = doc.CreateNode(XmlNodeType.Element, "pubDate", "");
-                        XmlNode pubContent = doc.CreateNode(XmlNodeType.Text, "", "");
-                        pubContent.Value = idx.Created.ToString("ddd, dd MMM yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
-                        pub.AppendChild(pubContent);
-                        item.AppendChild(pub);
-
-                        channel.AppendChild(item);
-                    }
-
-                    // Saving to response
-                    doc.Save(Response.OutputStream);
-                    try
-                    {
-                        Response.End();
-                    }
-                    catch
-                    {
-                        return;
-                    }
-                }
+                    CreateRSS(oper);
 
                 // To support File Uploading...
                 Form.Enctype = "multipart/form-data";
@@ -158,22 +54,164 @@ namespace RaWebsite
 
                 Title = "Blog of " + oper.Username;
 
-                DataBindBlogs(oper);
+                CurrentBlogPage = 0;
+                DataBindBlogs(CurrentBlogPage);
             }
         }
 
-        private void DataBindBlogs(Operator oper)
+        private void CreateRSS(Operator oper)
         {
-            List<Entity.Blog> blogs = new List<Entity.Blog>();
-            int idxNo = 0;
-            foreach (Entity.Blog idx in Entity.Blog.FindAll(Order.Desc("Created"), Expression.Eq("Operator", oper)))
+            // Spitting out RSS back to client...
+            //Response.Clear();
+            Response.ContentType = "text/xml";
+
+            // Creating RSS
+            XmlDocument doc = new XmlDocument();
+
+            // RSS node
+            XmlNode rss = doc.CreateNode(XmlNodeType.Element, "rss", "");
+            XmlAttribute version = doc.CreateAttribute("version");
+            version.Value = "2.0";
+            rss.Attributes.Append(version);
+            doc.AppendChild(rss);
+
+            // channel node
+            XmlNode channel = doc.CreateNode(XmlNodeType.Element, "channel", "");
+            rss.AppendChild(channel);
+
+            // Title node
+            XmlNode title = doc.CreateNode(XmlNodeType.Element, "title", "");
+            XmlNode titleContent = doc.CreateNode(XmlNodeType.Text, null, null);
+            titleContent.Value = "Ravings from " + oper.Username;
+            title.AppendChild(titleContent);
+            channel.AppendChild(title);
+
+            // link node
+            XmlNode link = doc.CreateNode(XmlNodeType.Element, "link", "");
+            XmlNode linkContent = doc.CreateNode(XmlNodeType.Text, "", "");
+            linkContent.Value = Request.Url.AbsoluteUri.Substring(0, Request.Url.AbsoluteUri.IndexOf("?"));
+            link.AppendChild(linkContent);
+            channel.AppendChild(link);
+
+            // description
+            XmlNode description = doc.CreateNode(XmlNodeType.Element, "description", "");
+            XmlNode descriptionContent = doc.CreateNode(XmlNodeType.Text, "", "");
+            descriptionContent.Value = "Far side software ravings from " + oper.Username;
+            description.AppendChild(descriptionContent);
+            channel.AppendChild(description);
+
+            // generator
+            XmlNode generator = doc.CreateNode(XmlNodeType.Element, "generator", "");
+            XmlNode generatorContent = doc.CreateNode(XmlNodeType.Text, "", "");
+            generatorContent.Value = "Custom made RSS creator";
+            generator.AppendChild(generatorContent);
+            channel.AppendChild(generator);
+
+            // Items
+            foreach (Entity.Blog idx in Blogs)
             {
-                if (idxNo++ > 50)
-                    break;
-                blogs.Add(idx);
+                // Item
+                XmlNode item = doc.CreateNode(XmlNodeType.Element, "item", "");
+
+                // Title
+                XmlNode titleR = doc.CreateNode(XmlNodeType.Element, "title", "");
+                XmlNode titleRContent = doc.CreateNode(XmlNodeType.Text, "", "");
+                titleRContent.Value = idx.Header;
+                titleR.AppendChild(titleRContent);
+                item.AppendChild(titleR);
+
+                // link
+                XmlNode linkR = doc.CreateNode(XmlNodeType.Element, "link", "");
+                XmlNode linkRContent = doc.CreateNode(XmlNodeType.Text, "", "");
+                linkRContent.Value = Request.Url.AbsoluteUri.Substring(0, Request.Url.AbsoluteUri.LastIndexOf("/") + 1) + idx.Url;
+                linkR.AppendChild(linkRContent);
+                item.AppendChild(linkR);
+
+                // description
+                XmlNode descriptionR = doc.CreateNode(XmlNodeType.Element, "description", "");
+                XmlNode descriptionRContent = doc.CreateNode(XmlNodeType.Text, "", "");
+                descriptionRContent.Value = idx.Body;
+                descriptionR.AppendChild(descriptionRContent);
+                item.AppendChild(descriptionR);
+
+                // pubDate
+                XmlNode pub = doc.CreateNode(XmlNodeType.Element, "pubDate", "");
+                XmlNode pubContent = doc.CreateNode(XmlNodeType.Text, "", "");
+                pubContent.Value = idx.Created.ToString("ddd, dd MMM yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                pub.AppendChild(pubContent);
+                item.AppendChild(pub);
+
+                channel.AppendChild(item);
             }
-            repBlogs.DataSource = blogs;
+
+            // Saving to response
+            doc.Save(Response.OutputStream);
+            try
+            {
+                Response.End();
+            }
+            catch
+            {
+                return;
+            }
+        }
+
+        private List<Entity.Blog> Blogs
+        {
+            get 
+            {
+                List<Entity.Blog> blogs = new List<Entity.Blog>();
+                int idxNo = 0;
+                Operator oper = Operator.FindOne(Expression.Eq("Username", Request.Params["blogger"]));
+                foreach (Entity.Blog idx in Entity.Blog.FindAll(Order.Desc("Created"), Expression.Eq("Operator", oper)))
+                {
+                    if (idxNo++ > 50)
+                        break;
+                    blogs.Add(idx);
+                }
+                return blogs;
+            }
+        }
+
+        private int CurrentBlogPage
+        {
+            get 
+            {
+                if (Session["CurrentBlogPage"] != null)
+                    return (int)Session["CurrentBlogPage"];
+                return 0;
+            }
+            set 
+            {
+                Session["CurrentBlogPage"] = value;
+            }
+        }
+
+        private void DataBindBlogs(int page)
+        {
+            System.Web.UI.WebControls.PagedDataSource pagedBlogs = new System.Web.UI.WebControls.PagedDataSource();
+            pagedBlogs.AllowPaging = true;
+            pagedBlogs.DataSource = Blogs;
+            pagedBlogs.PageSize = 5;
+            pagedBlogs.CurrentPageIndex = page;
+            
+            repBlogs.DataSource = pagedBlogs;
             repBlogs.DataBind();
+            
+            newerPosts.Visible = !pagedBlogs.IsFirstPage;
+            olderPosts.Visible = !pagedBlogs.IsLastPage;
+        }
+
+        protected void newerPosts_Click(object sender, EventArgs e)
+        {
+            DataBindBlogs(--CurrentBlogPage);
+            blogWrapper.ReRender();
+        }
+
+        protected void olderPosts_Click(object sender, EventArgs e)
+        {
+            DataBindBlogs(++CurrentBlogPage);
+            blogWrapper.ReRender();
         }
 
         protected void btnCreate_Click(object sender, EventArgs e)
@@ -182,16 +220,14 @@ namespace RaWebsite
             pnlNewBlog.Style["display"] = "";
             txtHeader.Focus();
             txtHeader.Select();
-            Effect effect = new EffectFadeIn(pnlNewBlog, 400);
-            effect.Render();
+            new EffectFadeIn(pnlNewBlog, 400).Render();
             hidBlogId.Value = "";
         }
 
         protected void btnImages_Click(object sender, EventArgs e)
         {
             pnlImages.Visible = true;
-            Effect effect = new EffectFadeIn(pnlImages, 400);
-            effect.Render();
+            new EffectFadeIn(pnlImages, 400).Render();
 
             DataBindImages();
             pnlImages.ReRender();
@@ -201,9 +237,18 @@ namespace RaWebsite
         {
             // Databinding images
             string[] files = Directory.GetFiles(Server.MapPath("~/media/UserImages"));
+
+            Array.Sort(files, delegate(string left, string right) {
+                return File.GetCreationTime(right).CompareTo(File.GetCreationTime(left));
+            });
+
             for (int idx = 0; idx < files.Length; idx++)
             {
-                files[idx] = files[idx].Replace(Server.MapPath("~"), Request.Url.ToString().Substring(0, Request.Url.ToString().LastIndexOf("/") + 1)).Replace("\\", "/");
+                files[idx] = files[idx]
+                    .Replace(
+                        Server.MapPath("~"), 
+                        Request.Url.ToString().Substring(0, Request.Url.ToString().LastIndexOf("/")))
+                    .Replace("\\", "/");
             }
             repImages.DataSource = files;
             repImages.DataBind();
@@ -222,8 +267,7 @@ namespace RaWebsite
             pnlNewBlog.Style["display"] = "";
             txtHeader.Focus();
             txtHeader.Select();
-            Effect effect = new EffectFadeIn(pnlNewBlog, 400);
-            effect.Render();
+            new EffectFadeIn(pnlNewBlog, 400).Render();
 
             Ra.Widgets.HiddenField hid = (sender as System.Web.UI.Control).Parent.Controls[1] as Ra.Widgets.HiddenField;
             if (hid == null) // Mono doesn't add a Literal Control if you create space between controls...
@@ -251,16 +295,14 @@ namespace RaWebsite
             Operator oper = Operator.FindOne(Expression.Eq("Username", bloggerUserName));
             if (oper == null)
                 Response.Redirect("~", true);
-            DataBindBlogs(oper);
+            DataBindBlogs(CurrentBlogPage);
             blogWrapper.ReRender();
-            Effect effect = new EffectFadeIn(blogWrapper, 400);
-            effect.Render();
+            new EffectFadeIn(blogWrapper, 400).Render();
         }
 
         protected void btnCancelSave_Click(object sender, EventArgs e)
         {
-            Effect effect = new EffectFadeOut(pnlNewBlog, 400);
-            effect.Render();
+            new EffectFadeOut(pnlNewBlog, 400).Render();
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
@@ -287,13 +329,13 @@ namespace RaWebsite
             blog.Operator = Operator.Current;
             blog.Save();
 
-            DataBindBlogs(oper);
+            CurrentBlogPage = 0;
+            DataBindBlogs(CurrentBlogPage);
             blogWrapper.ReRender();
-            Effect effect = new EffectFadeIn(blogWrapper, 400);
-            effect.Render();
-
-            effect = new EffectFadeOut(pnlNewBlog, 400);
-            effect.Render();
+            
+            new EffectFadeOut(pnlNewBlog, 400).ChainThese(
+                new EffectFadeIn(blogWrapper, 400)
+            ).Render();
         }
     }
 }
