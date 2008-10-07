@@ -165,6 +165,7 @@
     	of that the Mono Team has already abstracted away that difference for me.
     </p>
     <p>
+    	Ra-Ajax is a <a href="managed-ajax-a-new-approach-to-ajax.blog" title="Managed Ajax">Managed Ajax library</a>. 
     	We believe that we have abstracted away JavaScript for you completely within Ra-Ajax and that there is no
     	need for you to think of the differences between FireFox 3.x and Safari 3.x and so on. We have already
     	done that job for you!
@@ -173,13 +174,12 @@
         By completely abstracting JavaScript away, your apps will be:
     </p>
     <ul class="bulList">
-        <li><strong>More secure</strong> (no business logic code on the client side)</li>
-        <li><strong>Easier to maintain</strong> (no more "browser quirks" for you)</li>
-        <li><strong>Easier to optimize</strong> (it's easier to optimize a library than "User Code")</li>
-        <li><strong>More browser compatible</strong> (*WE* get the browser problems)</li>
-        <li><strong>Faster and more responsive</strong> (~20KB of JS in Ra-Ajax)</li>
-        <li><strong>Maintained by happy developers ... ;)</strong> (*YOU!*)</li>
-        <li>+++++++++++++</li>
+        <li><strong>More secure</strong>, no business logic code on the client side.</li>
+        <li><strong>Easier to maintain</strong>, no more "browser quirks" for you.</li>
+        <li><strong>Easier to optimize</strong>, it's easier to optimize a library than "User Code".</li>
+        <li><strong>More browser compatible</strong>, *WE* get the browser problems.</li>
+        <li><strong>Faster and more responsive</strong>, ~20KB of JS in Ra-Ajax.</li>
+        <li><strong>Maintained by happy developers (you) ;)</strong></li>
     </ul>
     <p>
         By using Ra-Ajax you no longer have to worry about JavaScript and you can just develop

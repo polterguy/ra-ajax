@@ -13,8 +13,8 @@
 
     <h1>Facts about Ra-Ajax</h1>
     <p>
-        Ra-Ajax is an Ajax library for ASP.NET - both the 
-        <a href="http://www.mono-project.com/Main_Page">Mono</a> version and the Microsoft 
+        Ra-Ajax is a <a href="managed-ajax-a-new-approach-to-ajax.blog" title="Managed Ajax">Managed Ajax library</a>
+        for ASP.NET - both the <a href="http://www.mono-project.com/Main_Page">Mono</a> version and the Microsoft 
         version. This means you can use Ra-Ajax out of the box together with Visual Studio, 
         IIS, Windows Server and Linux/Apache/Mono etc.
     </p>

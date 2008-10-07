@@ -18,7 +18,8 @@
 
     <h1>Ra-Ajax Home</h1>
     <p>
-        Ra-Ajax is an <strong>Ajax library for ASP.NET and Mono</strong> but its general nature on the client-side
+        Ra-Ajax is a <strong><a href="managed-ajax-a-new-approach-to-ajax.blog" title="Managed Ajax">Managed Ajax library</a> for 
+        ASP.NET and Mono</strong> but its general nature on the client-side
         will make it very useful also for other server-side bindings like PHP, J2EE RubyOnRails etc all though other 
         bindings than towards ASP.NET is not included. Ra-Ajax is licensed under the <a href="http://www.gnu.org/licenses/lgpl.html">LGPL3 license</a>. 
         Ra-Ajax is built around the assumption that JavaScript is hard and not something Application Developers should 
