@@ -157,9 +157,9 @@ h2 { margin-top:2.7em; }
  */
 .tree { background-color:#fafafa; border:solid 1px #999; margin:15px; padding:10px; font-size:0.9em; }
 .tree .item { cursor:pointer; line-height:16px; }
-.tree .selected { background-color:#d0d0f0; }
 .tree .item:hover { background-color:#f0f0f0; }
 .tree .item:hover ul { background-color:#fafafa; }
+.tree .selected { background-color:#d0d0f0; }
 .tree .selected ul { background-color:#fafafa; }
 .tree .selected:hover { background-color:#d0d0f0; }
 .tree .spacer { padding-left:16px; *display:inline-block; *height:16px; }
