@@ -135,7 +135,10 @@ namespace Samples
                 selected += node.ID + ", ";
 
             pnlOutput1.Text = selected + " were selected";
-            pnlOutput2.Text = GetTextForSelection(tree.SelectedNodes[tree.SelectedNodes.Length].ID);
+            if (tree.SelectedNodes.Length > 0)
+                pnlOutput2.Text = GetTextForSelection(tree.SelectedNodes[tree.SelectedNodes.Length - 1].ID);
+            else
+                pnlOutput2.Text = "Please Select a Node, it is too lonely in here :(";
 
             new EffectHighlight(pnl, 500).ChainThese(
                 new EffectHighlight(pnlOutput1, 500),
