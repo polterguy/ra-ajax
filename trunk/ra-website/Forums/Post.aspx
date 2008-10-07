@@ -30,7 +30,7 @@
     <div class="forumPost">
         <h2 style="float:left;" runat="server" id="headerParent"></h2>
         <i style="float:right;" runat="server" id="dateParent"></i>
-        <br style="clear:left;" />
+        <br style="clear:right;" />
         <p runat="server" id="contentParent"></p>
         <em runat="server" id="operatorInfo"></em>
     </div>
@@ -44,8 +44,8 @@
             <ItemTemplate>
                 <div class="forumPost">
                     <h2 style="float:left;"><%# Eval("Header") %></h2>
-                    <i style="float:right;"><%# string.Format("{0} - {1}", Eval("Operator.Signature"), ((DateTime)Eval("Created")).ToString("d.MMM yy HH:mm")) %></i>
-                    <br style="clear:left;" />
+                    <i style="float:right;"><%# string.Format("{0} {1}", Eval("Operator.Signature") == string.Empty? string.Empty : Eval("Operator.Signature") + " -", ((DateTime)Eval("Created")).ToString("d.MMM yy HH:mm", System.Globalization.CultureInfo.InvariantCulture)) %></i>
+                    <br style="clear:right;" />
                     <p><%# Eval("Body") %></p>
                     <i>Posted by <%# Eval("Operator.Username") %> who has <%# Eval("Operator.NumberOfPosts")%> posts</i>
                 </div>
