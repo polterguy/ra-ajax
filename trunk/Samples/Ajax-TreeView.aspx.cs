@@ -129,9 +129,13 @@ namespace Samples
 
         protected void selected(object sender, EventArgs e)
         {
-            TreeNode item = tree.SelectedNode;
-            pnlOutput1.Text = item.ID + " was selected";
-            pnlOutput2.Text = GetTextForSelection(item.ID);
+            string selected = string.Empty;
+
+            for (TreeNode node in tree.SelectedNodes)
+                selected += node.ID + ", ";
+
+            pnlOutput1.Text = selected + " were selected";
+            pnlOutput2.Text = GetTextForSelection(tree.SelectedNodes[tree.SelectedNodes.Length].ID);
 
             new EffectHighlight(pnl, 500).ChainThese(
                 new EffectHighlight(pnlOutput1, 500),
