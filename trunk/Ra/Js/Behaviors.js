@@ -417,6 +417,7 @@ Ra.extend(Ra.BUpDel.prototype, {
       opacity: 0.5
     }, this.options || {});
     this.options.onStart = function() {
+      delete this._stopped;
       if( !T.options.delay ) {
         T.onStart.apply(T, []);
       } else {
@@ -449,6 +450,8 @@ Ra.extend(Ra.BUpDel.prototype, {
   },
 
   onStart: function() {
+    if( this._stopped )
+      return;
     var T = this;
     this.effect = new Ra.Effect(this.el, {
       duration: 800,
@@ -467,19 +470,23 @@ Ra.extend(Ra.BUpDel.prototype, {
   },
 
   onFinished: function() {
-    var T = this;
-    this.effect.stopped = true;
-    this.effect = new Ra.Effect(this.el, {
-      duration: 300,
-      onFinished: function() {
-        this.element.setOpacity(T.options.opacity);
-        this.element.setStyle('display','none');
-      },
-      onRender: function(pos) {
-        this.element.setOpacity((1 - pos) * T.options.opacity);
-      },
-      sinoidal:true
-    });
+    this._stopped = true;
+    if( this.effect ) {
+      var T = this;
+      this.effect.stopped = true;
+      this.effect = new Ra.Effect(this.el, {
+        duration: 300,
+        onFinished: function() {
+          this.element.setOpacity(T.options.opacity);
+          this.element.setStyle('display','none');
+          delete T.effect;
+        },
+        onRender: function(pos) {
+          this.element.setOpacity((1 - pos) * T.options.opacity);
+        },
+        sinoidal:true
+      });
+    }
   },
 
   destroy: function() {
