@@ -69,8 +69,9 @@ namespace RaWebsite
         protected void btnShowCode_Click(object sender, EventArgs e)
         {
             pnlShowCode.Visible = true;
-            Effect effect = new EffectRollDown(pnlShowCode, 1000);
-            effect.Render();
+            new EffectFadeIn(pnlShowCode, 1000)
+                .JoinThese(new EffectSize(pnlShowCode, 1000, 500, 1024))
+                .Render();
             GetCSharpCode();
             ViewState["code"] = "C#";
         }
