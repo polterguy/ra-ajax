@@ -16,7 +16,7 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ra Ajax Samples - TextArea</h1>
+    <h1>Ra-Ajax Samples - TextArea</h1>
     <p>
         The <em>Ajax TextArea</em> is actually one of the places in Ra-Ajax where you will immediately feel 
         the difference between Ra-Ajax, ASP.NET AJAX and the ASP.NET WebControls. In fact, the 

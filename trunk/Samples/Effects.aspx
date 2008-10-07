@@ -16,7 +16,7 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ra Ajax Samples - Ajax Effects</h1>
+    <h1>Ra-Ajax Samples - Ajax Effects</h1>
     <p>
         There is no fun in Ajax unless you have a powerful Ajax Effect Collection coupled with
         your Ajax Library. Ra-Ajax contains several different predefined Ajax Effects. It is also

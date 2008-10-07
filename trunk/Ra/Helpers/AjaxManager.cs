@@ -1,5 +1,5 @@
 /*
- * Ra Ajax - An Ajax Library for Mono ++
+ * Ra-Ajax - An Ajax Library for Mono ++
  * Copyright 2008 - Thomas Hansen thomas@ra-ajax.org
  * This code is licensed under the LGPL version 3 which 
  * can be found in the license.txt file on disc.
@@ -169,7 +169,7 @@ namespace Ra
             {
                 if (IsCallback)
                 {
-                    // This is a Ra Ajax callback, we need to wait until the Page Load 
+                    // This is a Ra-Ajax callback, we need to wait until the Page Load 
                     // events are finished loading and then find the control which
                     // wants to fire an event and do so...
                     CurrentPage.LoadComplete += CurrentPage_LoadComplete;
@@ -311,7 +311,7 @@ namespace Ra
             }
         }
 
-        // We only come here if this is a Ra Ajax Callback (IsCallback == true)
+        // We only come here if this is a Ra-Ajax Callback (IsCallback == true)
         // We don't really care about the HTML rendered by the page here.
         // We just short-circut the whole HTML rendering phase here and only render
         // back changes to the client

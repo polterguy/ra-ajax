@@ -16,7 +16,7 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ra Ajax Samples - Image</h1>
+    <h1>Ra-Ajax Samples - Image</h1>
     <p>
         This is our <em>Ajax Image</em> reference sample. The Ajax Image is a "passive" control which means
         it doesn't have any events. This means that you can set its properties in

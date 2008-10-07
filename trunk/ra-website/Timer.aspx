@@ -24,7 +24,7 @@
     <h1>Ajax Timers</h1>
     <p>
         Often you need to periodically poll the server to check for some condition or something. 
-        For such circumstances the <em>Ra Ajax Timer</em> might come in handy. Like all other Ra
+        For such circumstances the <em>Ra-Ajax Timer</em> might come in handy. Like all other Ra
         Ajax Controls it too follows the complete Page Life cycle meaning you can do whatever you 
         wish in the Tick Event Handler. Here we are just creating some random <em>Ajax Effects</em>
         on the page to illustrate visually that we're going to the server between polls.
@@ -51,7 +51,7 @@
     <div style="height:300px;">&nbsp;</div>
     <p>
         Of course this is completely erratic and not something you would do in a *real* application but
-        I hope it illustrates the flexibility of Ra Ajax Timers. The Timer has properties for Milliseconds 
+        I hope it illustrates the flexibility of Ra-Ajax Timers. The Timer has properties for Milliseconds 
         between "Ticks" and it can be disabled and enabled. The reference application for an Ajax Timer would
         obviously be a Chat Client or maybe an Email Application that polls to check for new messages.
     </p>

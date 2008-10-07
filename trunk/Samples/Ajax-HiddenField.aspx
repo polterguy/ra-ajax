@@ -16,7 +16,7 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ra Ajax Samples - HiddenField</h1>
+    <h1>Ra-Ajax Samples - HiddenField</h1>
     <p>
         This is our reference sample for our <em>Ajax HiddenField Control</em>. The way you are used
         to creating Ajax applications in <a href="http://www.asp.net/ajax/">ASP.NET AJAX</a> is probably

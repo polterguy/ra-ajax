@@ -21,10 +21,10 @@
     ContentPlaceHolderID="cnt1" 
     Runat="Server">
 
-    <h1>Flexible Ajax with Ra Ajax</h1>
+    <h1>Flexible Ajax with Ra-Ajax</h1>
     <p>
-        Ra Ajax is also far more flexible than the builtin ASP.NET Controls. While the ASP.NET controls only
-        have events for things like TextChanged for TextBox and so on, Ra Ajax have MouseOver, MouseOut and
+        Ra-Ajax is also far more flexible than the builtin ASP.NET Controls. While the ASP.NET controls only
+        have events for things like TextChanged for TextBox and so on, Ra-Ajax have MouseOver, MouseOut and
         even KeyUp events for its Ajax TextBox control. Here we have an example of an <em>Ajax TextBox</em>
         which have support for KeyUp events.
     </p>
@@ -62,7 +62,7 @@
         constructs like this you can yourself create very powerful constructs without even touching JavaScript
         yourself. And if you wanted you could easily wrap the whole thing into a server control written in C#
         or VB.NET yourself to make it more reusable like we've done with the <a runat="server" href="~/Extensions.aspx" 
-        title="Ra Ajax Extension Controls">Ajax Calendar Example</a>.
+        title="Ra-Ajax Extension Controls">Ajax Calendar Example</a>.
     </p>
     <p>
         If you create a nice Ajax Extension Control by combining other controls together then please let me know

@@ -16,7 +16,7 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ra Ajax Samples - Event System</h1>
+    <h1>Ra-Ajax Samples - Event System</h1>
     <p>
         Normally in ASP.NET WebControls you would expect a Button to have OnClick and mostly no
         other Event Handlers. In Ra-Ajax all the Ajax Controls have tons of additional event handlers

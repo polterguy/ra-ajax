@@ -1,5 +1,5 @@
 /*
- * Ra Ajax - An Ajax Library for Mono ++
+ * Ra-Ajax - An Ajax Library for Mono ++
  * Copyright 2008 - Thomas Hansen thomas@ra-ajax.org
  * This code is licensed under the LGPL version 3 which 
  * can be found in the license.txt file on disc.
@@ -592,7 +592,7 @@ Ra.Ajax.prototype = {
       // Extra arguments passed to the server
       args:'',
 
-      // Used to track on the server whether or not this is a Ra Ajax Callback
+      // Used to track on the server whether or not this is a Ra-Ajax Callback
       raCallback: false,
 
       // Form to submit

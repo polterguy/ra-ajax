@@ -4,7 +4,7 @@
     AutoEventWireup="true" 
     CodeFile="Todo.aspx.cs" 
     Inherits="RaWebsite.Todo" 
-    Title="TODO list for Ra Ajax" %>
+    Title="TODO list for Ra-Ajax" %>
 
 <%@ Register 
     Assembly="Ra" 
@@ -21,9 +21,9 @@
     ContentPlaceHolderID="cnt1" 
     Runat="Server">
 
-    <h1>TODO list for Ra Ajax</h1>
+    <h1>TODO list for Ra-Ajax</h1>
     <p>
-        This is the TODO list for Ra Ajax. If you have a bug you wish to report or a request for
+        This is the TODO list for Ra-Ajax. If you have a bug you wish to report or a request for
         a feature then please login or create a user account at the <a href="Forums/Forums.aspx">Forums</a>
         and create your TODO item.
     </p>

@@ -21,7 +21,7 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ra Ajax Samples - Dynamic Ajax Controls</h1>
+    <h1>Ra-Ajax Samples - Dynamic Ajax Controls</h1>
     <p>
         Often you will want to build up the Ajax Controls on your page <em>dynamically</em>. Normally this
         will be done by manually adding the Controls you need into some Container Control like for instance

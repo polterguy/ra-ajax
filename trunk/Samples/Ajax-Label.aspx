@@ -16,7 +16,7 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ra Ajax Samples - Label</h1>
+    <h1>Ra-Ajax Samples - Label</h1>
     <p>
         An <em>Ajax Label</em> is basically a wrapper around a <em>span</em> element. And although
         you have seen Ajax Labels in many of the samples so far, I still want to give you a 

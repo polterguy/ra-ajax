@@ -21,7 +21,7 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ra Ajax Samples - InPlaceEdit</h1>
+    <h1>Ra-Ajax Samples - InPlaceEdit</h1>
     <p>
         The <em>Ajax InPlaceEdit</em> Control was originally conceived and made famous by 
         <a href="http://mir.aculo.us/">Thomas Fuchs</a> the original author behind

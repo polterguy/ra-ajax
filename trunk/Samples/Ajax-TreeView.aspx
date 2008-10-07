@@ -21,7 +21,7 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ra Ajax Samples - TreeView</h1>
+    <h1>Ra-Ajax Samples - TreeView</h1>
     <p>
         This is our TreeView sample. The Ra-Ajax TreeView control is very flexible in addition to being a good friend
         with your browser. You can choose to render items "statically" in markup or "dynamically" through event handlers.

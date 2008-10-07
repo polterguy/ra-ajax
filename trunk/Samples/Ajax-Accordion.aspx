@@ -21,7 +21,7 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ra Ajax Samples - Accordion</h1>
+    <h1>Ra-Ajax Samples - Accordion</h1>
     <p>
         This is our <em>Ajax Accordion</em> sample. An Ajax Accordion is basically like a stack
         of Panels where only the contents of one of these Panels is visible at any given time. When 

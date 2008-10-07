@@ -16,12 +16,12 @@
     ContentPlaceHolderID="cnt1" 
     Runat="Server">
 
-    <h1>Ajax Controls in Ra Ajax</h1>
+    <h1>Ajax Controls in Ra-Ajax</h1>
     <p>
         Ra has all the <em>basic Ajax Controls</em> you need for your Ajax needs in the core.
         Other more advanced Ajax controls can be composed out of combining the basic ones together.
-        In addition due to Ra Ajax Open Source model you are likely to find community extension Ajax
-        Controls created on top of the Ra Ajax core.
+        In addition due to Ra-Ajax Open Source model you are likely to find community extension Ajax
+        Controls created on top of the Ra-Ajax core.
     </p>
     <br />
     <h2>Kitchen sink</h2>
@@ -156,7 +156,7 @@
         Text="Hover over me" />
     <p>
         In the above LinkButton we're handling the MouseOut and MouseOver events which are server side events
-        for most controls in Ra Ajax. Not only does Ra Ajax have support for all the known events like OnClick
+        for most controls in Ra-Ajax. Not only does Ra-Ajax have support for all the known events like OnClick
         and OnSelectionChanged events, but it also have support for many more meaning you gain more expressiveness
         for your applications.
     </p>

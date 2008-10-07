@@ -4,7 +4,7 @@
     AutoEventWireup="true" 
     CodeFile="Author.aspx.cs" 
     Inherits="RaWebsite.Author" 
-    Title="About the authors of Ra Ajax" %>
+    Title="About the authors of Ra-Ajax" %>
 
 <%@ Register 
     Assembly="Ra" 
@@ -18,7 +18,7 @@
 
     <h1>About us</h1>
     <p>
-        Ra Ajax is maintained by Thomas Hansen (Norway) and Kariem Ali (Egypt). We are two developers who enjoy
+        Ra-Ajax is maintained by Thomas Hansen (Norway) and Kariem Ali (Egypt). We are two developers who enjoy
         building great tools for developers and with a special love for Ajax and RIA Frameworks.
     </p>
     <h2>Thomas Hansen</h2>

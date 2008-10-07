@@ -16,7 +16,7 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ra Ajax Samples - ImageButton</h1>
+    <h1>Ra-Ajax Samples - ImageButton</h1>
     <p>
         An <em>Ajax ImageButton</em> is a Button which instead of showing Text as the main content,
         displays an Image. The Ajax ImageButton is a wrapper around <em>&lt;input type="image"</em>

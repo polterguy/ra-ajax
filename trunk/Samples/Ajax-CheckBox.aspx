@@ -16,7 +16,7 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ra Ajax Samples - CheckBox</h1>
+    <h1>Ra-Ajax Samples - CheckBox</h1>
     <p>
         Here is the reference example for the <em>Ra-Ajax CheckBox Control</em>. Here we have Event Handlers for 
         <em>OnCheckedChanged, OnMouseOut and OnMouseOver</em>. As you can see the Ra-Ajax CheckBox is quite
