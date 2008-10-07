@@ -32,8 +32,15 @@
             runat="server" 
             ID="tree" 
             CssClass="tree" 
-            Expansion="SingleClickPlusSign"
-            style="width:250px;float:left;" OnSelectedNodeChanged="selected">
+            Expansion="SingleClickPlusSign" 
+            AllowMultipleSelectedItems="true"
+            OnSelectedNodeChanged="selected"
+            style="width:250px;float:left;">
+            <ra:CheckBox 
+                runat="server" 
+                ID="allowMultiSelectionCheckBox" 
+                Text="Allow Multiple Selection" 
+                OnCheckedChanged="allowMultiSelectionCheckBox_CheckedChanged" />
             <ext:TreeNodes runat="server" Expanded="true">
                 <ext:TreeNode runat="server" ID="good">
                     <span title="This is the stuff we all LOVE! :)">

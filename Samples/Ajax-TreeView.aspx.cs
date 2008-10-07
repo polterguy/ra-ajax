@@ -127,6 +127,14 @@ namespace Samples
             (sender as LinkButton).Text = "I was CLICKED! :)";
         }
 
+        protected void allowMultiSelectionCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (tree.SelectedNodes.Length > 0)
+                tree.SelectedNodes = new TreeNode[1] { tree.SelectedNodes[tree.SelectedNodes.Length - 1] };
+            
+            tree.AllowMultipleSelectedItems = allowMultiSelectionCheckBox.Checked;
+        }
+
         protected void selected(object sender, EventArgs e)
         {
             string selected = string.Empty;
@@ -136,9 +144,14 @@ namespace Samples
 
             pnlOutput1.Text = selected + " were selected";
             if (tree.SelectedNodes.Length > 0)
+            {
                 pnlOutput2.Text = GetTextForSelection(tree.SelectedNodes[tree.SelectedNodes.Length - 1].ID);
+            }
             else
+            {
+                pnlOutput1.Text = string.Empty;
                 pnlOutput2.Text = "Please Select a Node, it is too lonely in here :(";
+            }
 
             new EffectHighlight(pnl, 500).ChainThese(
                 new EffectHighlight(pnlOutput1, 500),
