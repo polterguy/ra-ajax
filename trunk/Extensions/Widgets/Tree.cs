@@ -49,7 +49,7 @@ namespace Ra.Extensions
         public event EventHandler SelectedNodeChanged;
 
         /**
-         * The node which have been currently selected by either the user or through code
+         * The nodes that have been currently selected by either the user or through code
          */
         public TreeNode[] SelectedNodes
         {
