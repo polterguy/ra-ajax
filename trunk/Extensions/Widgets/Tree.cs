@@ -51,20 +51,33 @@ namespace Ra.Extensions
         /**
          * The node which have been currently selected by either the user or through code
          */
-        public TreeNode SelectedNode
+        public TreeNode[] SelectedNodes
         {
             get
             {
-                TreeNode item = null;
-                if (ViewState["SelectedNode"] != null)
+                if (ViewState["SelectedNodes"] == null)
+                    return new TreeNode[0];
+
+                string ids = (string)ViewState["SelectedNodes"];
+                List<TreeNode> nodes = new List<TreeNode>();
+
+                foreach (string id in ids.Split(new char[]{','}, StringSplitOptions.RemoveEmptyEntries))
                 {
-                    item = AjaxManager.Instance.FindControl<TreeNode>(ViewState["SelectedNode"].ToString());
+                    TreeNode node = AjaxManager.Instance.FindControl<TreeNode>(id);
+
+                    nodes.Add(node);
                 }
-                return item;
+                
+                return nodes.ToArray();
             }
             set
             {
-                ViewState["SelectedNode"] = value.ID;
+                string nodes = string.Empty;
+
+                foreach (TreeNode node in value)
+                    nodes += node.ID + ",";
+
+                ViewState["SelectedNodes"] = nodes;
             }
         }
 
