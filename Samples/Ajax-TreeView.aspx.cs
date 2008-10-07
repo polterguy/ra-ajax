@@ -131,7 +131,7 @@ namespace Samples
         {
             string selected = string.Empty;
 
-            for (TreeNode node in tree.SelectedNodes)
+            foreach (TreeNode node in tree.SelectedNodes)
                 selected += node.ID + ", ";
 
             pnlOutput1.Text = selected + " were selected";
