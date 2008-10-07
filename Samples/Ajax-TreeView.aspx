@@ -40,8 +40,9 @@
                 runat="server" 
                 ID="allowMultiSelectionCheckBox" 
                 Text="Allow Multiple Selection" 
+                style="margin-bottom:5px;"
                 OnCheckedChanged="allowMultiSelectionCheckBox_CheckedChanged" />
-             <br />
+                
             <ext:TreeNodes runat="server" Expanded="true">
                 <ext:TreeNode runat="server" ID="good">
                     <span title="This is the stuff we all LOVE! :)">
