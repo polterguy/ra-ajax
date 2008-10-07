@@ -326,7 +326,7 @@
                         <%# Eval("Operator.Username") %>
                     </td>
                     <td style="text-align:center;">
-                        <%# ((DateTime)Eval("Created")).ToString("dd.MMM yy - HH:mm")%>
+                        <%# ((DateTime)Eval("Created")).ToString("dd.MMM yy - HH:mm", System.Globalization.CultureInfo.InvariantCulture)%>
                     </td>
                     <td style="text-align:center;">
                         <%# Eval("NoReplies") %>

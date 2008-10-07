@@ -35,7 +35,7 @@ namespace RaWebsite
                 if (post == null)
                     Response.Redirect("Forums.aspx", true);
                 headerParent.InnerHtml = post.Header;
-                dateParent.InnerHtml = string.Format("{0} - {1}", post.Operator.Signature, post.Created.ToString("d.MMM yy HH:mm"));
+                dateParent.InnerHtml = string.Format("{0} {1}", post.Operator.Signature == string.Empty ? string.Empty : post.Operator.Signature + " -", post.Created.ToString("d.MMM yy HH:mm"));
                 contentParent.InnerHtml = post.Body;
                 operatorInfo.InnerHtml =
                     string.Format("Posted by; {0} who has {1} posts",
@@ -88,8 +88,7 @@ namespace RaWebsite
 
             effect = new EffectFadeIn(postsWrapper, 400);
             effect.Render();
-            body.Focus();
-            body.Select();
+            body.Text = "";
 
             // Re-rendering posts to get the newly added item
             DataBindReplies(parent);
