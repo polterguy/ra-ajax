@@ -206,7 +206,7 @@ namespace Ra.Extensions
             else
                 tmpCssClass += "collapsed";
 
-            if (ParentTree.SelectedNode == this)
+            if (Array.Exists(ParentTree.SelectedNodes, delegate(TreeNode node) { return node == this; }))
                 tmpCssClass += " selected";
 
             CssClass = tmpCssClass;
