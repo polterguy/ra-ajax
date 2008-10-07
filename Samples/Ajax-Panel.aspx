@@ -16,7 +16,7 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ra Ajax Samples - Panel</h1>
+    <h1>Ra-Ajax Samples - Panel</h1>
     <p>
         Our <em>Ajax Panel</em> is, more or less, a superset of the <em>System.Web.UI.WebControls.Panel</em> though
         it does not inherit from it. One thing which is mostly unique about the Ajax Panel is that, contrary to all 

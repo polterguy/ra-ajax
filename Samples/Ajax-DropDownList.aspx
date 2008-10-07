@@ -16,7 +16,7 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ra Ajax Samples - DropDownList</h1>
+    <h1>Ra-Ajax Samples - DropDownList</h1>
     <p>
         This is our <em>Ajax DropDownList</em> reference sample. Although we try to create most samples 
         like a "story" giving away clues to important things about Ra-Ajax as we progress, which means that

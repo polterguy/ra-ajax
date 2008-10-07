@@ -1,5 +1,5 @@
 /*
- * Ra Ajax - An Ajax Library for Mono ++
+ * Ra-Ajax - An Ajax Library for Mono ++
  * Copyright 2008 - Thomas Hansen thomas@ra-ajax.org
  * This code is licensed under the LGPL version 3 which 
  * can be found in the license.txt file on disc.
@@ -33,7 +33,7 @@ namespace Ra.Widgets
         public override void RenderControl(ASP.HtmlTextWriter writer)
         {
             if (DesignMode)
-                throw new ApplicationException("Ra Ajax doesn't support Design time");
+                throw new ApplicationException("Ra-Ajax doesn't support Design time");
 
 			// We roughly only needs to handle what happens for JSON changes in the Behaviors
             if (Visible)

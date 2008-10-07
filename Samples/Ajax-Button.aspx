@@ -16,7 +16,7 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ra Ajax Samples - Button</h1>
+    <h1>Ra-Ajax Samples - Button</h1>
     <p>
         We will try to create one simple and easy to understand sample of every control there is in Ra-Ajax. While
         creating these reference samples we will also try to write something intelligent about some of the general

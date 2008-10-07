@@ -16,7 +16,7 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ra Ajax Samples - LinkButton</h1>
+    <h1>Ra-Ajax Samples - LinkButton</h1>
     <p>
         An <em>Ajax LinkButton</em> is, roughly speaking, an ajaxified hyperlink <em>(&lt;a href="...")</em>.
         While a normal hyperlink usually makes the browser go to another page, the Ra-Ajax LinkButton initiates

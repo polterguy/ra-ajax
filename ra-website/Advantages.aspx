@@ -4,7 +4,7 @@
     AutoEventWireup="true" 
     CodeFile="Advantages.aspx.cs" 
     Inherits="RaWebsite.Advantages" 
-    Title="Ra Ajax Advantages" %>
+    Title="Ra-Ajax Advantages" %>
 
 <%@ Register 
     Assembly="Ra" 
@@ -16,17 +16,17 @@
     ContentPlaceHolderID="cnt1" 
     Runat="Server">
 
-    <h1>Ra Ajax Advantages</h1>
+    <h1>Ra-Ajax Advantages</h1>
     <p>
-        When using Ra Ajax your apps will be;
+        When using Ra-Ajax your apps will be;
     </p>
     <ul>
-        <li><strong>Faster</strong> - Ra Ajax has less than 15KB of JavaScript and 
+        <li><strong>Faster</strong> - Ra-Ajax has less than 15KB of JavaScript and 
             virtually no overhead on the server.</li>
-        <li><strong>Maintainable</strong> - Due to that Ra Ajax abstracts away 
+        <li><strong>Maintainable</strong> - Due to that Ra-Ajax abstracts away 
             JavaScript your code (which will be in pure C# or VB.NET) will be 
             cleaner and easier to maintain.</li>
-        <li><strong>Responsive</strong> - Ra Ajax creates very small and efficient 
+        <li><strong>Responsive</strong> - Ra-Ajax creates very small and efficient 
             requests to your server.</li>
     </ul>
     <p>

@@ -4,7 +4,7 @@
     AutoEventWireup="true" 
     CodeFile="Forums.aspx.cs" 
     Inherits="RaWebsite.Forums_Forums" 
-    Title="Ra Ajax Forum posts" %>
+    Title="Ra-Ajax Forum posts" %>
 
 <%@ Register 
     Assembly="Ra" 
@@ -24,8 +24,8 @@
     <h1>Ra-Ajax Forums</h1>
     <p style="width:450px;">
         Feel free to post your questions here and hopefully someone will try to answer as best they can, though 
-        remember that Ra Ajax is a NON-commercial project which means that none of the people answering you 
-        won't get paid for helping you. If you are a senior ASP.NET/Ra Ajax developer yourself and like to 
+        remember that Ra-Ajax is a NON-commercial project which means that none of the people answering you 
+        won't get paid for helping you. If you are a senior ASP.NET/Ra-Ajax developer yourself and like to 
         help out the project then answering forum questions is the place to start :)
         <br />
         Politeness helps :)

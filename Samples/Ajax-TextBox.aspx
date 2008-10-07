@@ -16,7 +16,7 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ra Ajax Samples - TextBox</h1>
+    <h1>Ra-Ajax Samples - TextBox</h1>
     <p>
         This is our <em>Ajax TextBox</em> sample and for those wondering where the "TextMode" property enum
         value of "MultiLine" has gone, you should read our <a href="Ajax-TextArea.aspx">Ajax TextArea</a> sample page.

@@ -1,5 +1,5 @@
 /*
- * Ra Ajax - An Ajax Library for Mono ++
+ * Ra-Ajax - An Ajax Library for Mono ++
  * Copyright 2008 - Thomas Hansen thomas@ra-ajax.org
  * This code is licensed under the LGPL version 3 which 
  * can be found in the license.txt file on disc.
@@ -9,7 +9,7 @@
 
 // ==============================================================================
 // Ra.Control class
-// Wraps a server-side Ra Ajax Control
+// Wraps a server-side Ra-Ajax Control
 // Every Control in Ra have its client-side object
 // attached to it to help facilitate with event listening,
 // server dispatching and so on.

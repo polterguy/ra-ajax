@@ -4,24 +4,24 @@
     AutoEventWireup="true" 
     CodeFile="Facts.aspx.cs" 
     Inherits="RaWebsite.Facts" 
-    Title="Facts about Ra Ajax" %>
+    Title="Facts about Ra-Ajax" %>
 
 <asp:Content 
     ID="Content1" 
     ContentPlaceHolderID="cnt1" 
     Runat="Server">
 
-    <h1>Facts about Ra Ajax</h1>
+    <h1>Facts about Ra-Ajax</h1>
     <p>
-        Ra Ajax is an Ajax library for ASP.NET - both the 
+        Ra-Ajax is an Ajax library for ASP.NET - both the 
         <a href="http://www.mono-project.com/Main_Page">Mono</a> version and the Microsoft 
-        version. This means you can use Ra Ajax out of the box together with Visual Studio, 
+        version. This means you can use Ra-Ajax out of the box together with Visual Studio, 
         IIS, Windows Server and Linux/Apache/Mono etc.
     </p>
     <br />
     <h2>License</h2>
     <p>
-        Ra Ajax is licensed under the <a href="http://www.gnu.org/licenses/lgpl.html">LGPL version 3</a> 
+        Ra-Ajax is licensed under the <a href="http://www.gnu.org/licenses/lgpl.html">LGPL version 3</a> 
         Open Source license. This basically means that you can use it for free as you wish, you can 
         fork the library and you don't even have to tell me (or anyone else) that you're using it. You
         can use it in Closed Source projects or in Open Source projects. You can also create Closed Source
@@ -35,12 +35,12 @@
         Ra is made with the assumption that JavaScript is <em>hard</em> and not something
         Application Developers should do themselves. Ra tries to abstract away JavaScript
         as much as possible and you can probably create very complex Ajax Applications 
-        with Ra Ajax without having to use JavaScript at all.
+        with Ra-Ajax without having to use JavaScript at all.
     </p>
     <br />
     <h2>Lightweight</h2>
     <p>
-        Ra Ajax is very lightweight which means if you use it your applications will be 
+        Ra-Ajax is very lightweight which means if you use it your applications will be 
         more responsive, demand less resources and run faster. Ra has less than 15KB of
         JavaScript in total which means that Ra can easily be used in front end websites
         without stalling the user experience. This web page scores more than 80 in 
@@ -49,7 +49,7 @@
     <br />
     <h2>Runs on everything</h2>
     <p>
-        Ra Ajax should work on all browsers that are at least close to following 
+        Ra-Ajax should work on all browsers that are at least close to following 
         Open Standards. This includes devices such as iPhones/WindowsMobile, Opera,
         Safari, FireFox, Internet Explorer, Linux, Mac OS X, Konqueror, etc. As long
         as you have a browser with at least rudimentary JavaScript capabilities Ra 
@@ -60,21 +60,21 @@
     <br />
     <h2>No learning curve</h2>
     <p>
-        Ra Ajax comes with virtually no learning curve due to its closely coupling to
+        Ra-Ajax comes with virtually no learning curve due to its closely coupling to
         the ASP.NET WebControl nature. If you have done conventional ASP.NET 
-        development with WebControls then learning Ra Ajax will feel like a breeze.
+        development with WebControls then learning Ra-Ajax will feel like a breeze.
     </p>
     <br />
-    <h2>Is Ra Ajax related to ASP.NET AJAX</h2>
+    <h2>Is Ra-Ajax related to ASP.NET AJAX</h2>
     <p>
-        No. ASP.NET AJAX is a library created by and maintained by Microsoft. Ra Ajax
+        No. ASP.NET AJAX is a library created by and maintained by Microsoft. Ra-Ajax
         shares no common code with ASP.NET AJAX and is created around a completely
         different model. While ASP.NET AJAX has a very rich client-side JavaScript
-        API, Ra Ajax is created around the assumption that you should never have to 
+        API, Ra-Ajax is created around the assumption that you should never have to 
         do JavaScript development yourself.
     </p>
     <br />
-    <h2>Is Ra Ajax a commercial project?</h2>
+    <h2>Is Ra-Ajax a commercial project?</h2>
     <p>
         NO! Ra-Ajax is not a commercial product and everything in the library is done 
         on a completely voluntary basis. We wanted to create a business model around 
@@ -83,7 +83,7 @@
         with lawsuits if we were to create a <em>competing product</em> we felt it was 
         better to remove all financial incentives behind the library itself and just have
         it as a <em>hobby project</em> to remove all doubt. Read the whole 
-        <a href="goodbye-gaia-ajax-widgets-hello-ra-ajax.blog">Gaia versus Ra Ajax story here</a>. 
+        <a href="goodbye-gaia-ajax-widgets-hello-ra-ajax.blog">Gaia versus Ra-Ajax story here</a>. 
         Though there are <a href="Forums/Forums.aspx">forums</a> where you can ask for support if you're 
         stuck and hopefully lots of people in our hopefully growing community in addition 
         to that the developers at Ra Software will always be able to answer your requests. We

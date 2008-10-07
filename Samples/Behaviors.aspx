@@ -21,7 +21,7 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ra Ajax Samples - Behaviors</h1>
+    <h1>Ra-Ajax Samples - Behaviors</h1>
     <p>
     	An <em>Ajax Behavior</em> is a type of object you can attach to an existing Widget or Ajax Control which will
     	modify the <em>behavior</em> of that Ajax Control. Many different Ajax Behaviors exists in Ra-Ajax like for 

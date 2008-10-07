@@ -23,7 +23,7 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ra Ajax Comet</h1>
+    <h1>Ra-Ajax Comet</h1>
     <p>
         Ra-Ajax has a  Comet component which you can use if you need realtime updates to your 
         webpage or you don't want to have the overhead of constantly polling the server by using the 

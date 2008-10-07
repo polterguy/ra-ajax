@@ -21,7 +21,7 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ra Ajax Samples - Calendar</h1>
+    <h1>Ra-Ajax Samples - Calendar</h1>
     <p>
         This is our <em>Ajax Calendar</em> reference sample. The Ajax Calendar is an Extension control, which
         means that it can be found in the Extensions project. One of the important

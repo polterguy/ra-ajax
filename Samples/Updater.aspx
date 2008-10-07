@@ -16,7 +16,7 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ra Ajax Samples - Updater</h1>
+    <h1>Ra-Ajax Samples - Updater</h1>
     <p>
     	An <em>Ajax Updater</em> is a special kind of <a href="Behaviors.aspx">Ajax Behavior</a> which when the Control
     	is creating an Ajax Request for any reasons the Updater will be called and do its "start" logic. Then when the 

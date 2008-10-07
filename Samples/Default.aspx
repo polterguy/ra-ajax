@@ -16,7 +16,7 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ra Ajax Samples</h1>
+    <h1>Ra-Ajax Samples</h1>
     <p>
         Welcome to the main samples for Ra-Ajax. These samples are written in such a way that it makes
         a lot more sense to read them <em>sequentially</em>. This means that you should start at the top with the 

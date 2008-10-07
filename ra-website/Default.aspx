@@ -18,10 +18,10 @@
 
     <h1>Ra-Ajax Home</h1>
     <p>
-        Ra Ajax is an <strong>Ajax library for ASP.NET and Mono</strong> but its general nature on the client-side
+        Ra-Ajax is an <strong>Ajax library for ASP.NET and Mono</strong> but its general nature on the client-side
         will make it very useful also for other server-side bindings like PHP, J2EE RubyOnRails etc all though other 
-        bindings than towards ASP.NET is not included. Ra Ajax is licensed under the <a href="http://www.gnu.org/licenses/lgpl.html">LGPL3 license</a>. 
-        Ra Ajax is built around the assumption that JavaScript is hard and not something Application Developers should 
+        bindings than towards ASP.NET is not included. Ra-Ajax is licensed under the <a href="http://www.gnu.org/licenses/lgpl.html">LGPL3 license</a>. 
+        Ra-Ajax is built around the assumption that JavaScript is hard and not something Application Developers should 
         spend time on doing. Every single sample here in the samples section is written entirely without <em>one line 
         of Custom JavaScript</em>. This makes you;
     </p>
@@ -31,7 +31,7 @@
         <li>More happy</li>
     </ul>
     <p>
-        Try out the Ra Ajax "Hello World" application below.
+        Try out the Ra-Ajax "Hello World" application below.
     </p>
     <br />
     <div style="float:left;height:200px;">
@@ -86,10 +86,10 @@
     </ra:Panel>
     <h2 style="clear:both;">Up running in minutes</h2>
     <p>
-        Thanx to Ra Ajax' close resemblance to the ASP.NET WebControls method of development
-        you will be up running minutes after downloading Ra Ajax. Meaning if you know how to 
+        Thanx to Ra-Ajax' close resemblance to the ASP.NET WebControls method of development
+        you will be up running minutes after downloading Ra-Ajax. Meaning if you know how to 
         use the ASP.NET Buttons, Labels and CheckBoxes - you already also know how to use 
-        the Ra Ajax Buttons, CheckBoxes and Labels.
+        the Ra-Ajax Buttons, CheckBoxes and Labels.
     </p>
     <h2>Lighter than air - faster than lightning</h2>
     <p>
@@ -99,15 +99,15 @@
         C# on the server without custom JavaScript is <strong>less than 50KB in total</strong>. 
         This includes the images, CSS, content and JavaScript. The entire JavaScript in Ra 
         Ajax is minified less than 15KB in size. Not to mention its YSlow score of more than 
-        80. Ra Ajax can easily be incorporated into your front end websites without your 
+        80. Ra-Ajax can easily be incorporated into your front end websites without your 
         users even noticing any overhead at all for the initial download or the Ajax Callbacks.
     </p>
     <h2>This website...</h2>
     <p>
-        ...is entirely created using Ra Ajax and actually the samples website for Ra Ajax. It uses 
+        ...is entirely created using Ra-Ajax and actually the samples website for Ra-Ajax. It uses 
         <em>ActiveRecord</em> for database abstraction and <em>Url Rewriting</em>
         based on <em>Fabrice</em>'s work. Everything you 
-        see here, including the forums and blogs is Open Source and part of the Ra Ajax download
+        see here, including the forums and blogs is Open Source and part of the Ra-Ajax download
         and can be consumed in your own projects as you wish. But please rewrite the TEXT of the 
         static pages if you do so since otherwise Google will penaltize websites if it finds what 
         it considers "duplicate content".

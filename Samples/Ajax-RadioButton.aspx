@@ -26,7 +26,7 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ra Ajax Samples - RadioButton</h1>
+    <h1>Ra-Ajax Samples - RadioButton</h1>
     <p>
         An <em>Ajax RadioButton</em> is a wrapper around the <em>&lt;input type="radio"</em> HTML
         form element. Imagine having Ajax Controls which instead of generating JavaScript events when you interact

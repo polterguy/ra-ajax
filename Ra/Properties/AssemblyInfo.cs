@@ -1,5 +1,5 @@
 ﻿/*
- * Ra Ajax - An Ajax Library for Mono ++
+ * Ra-Ajax - An Ajax Library for Mono ++
  * Copyright 2008 - Thomas Hansen thomas@ra-ajax.org
  * This code is licensed under the LGPL version 3 which 
  * can be found in the license.txt file on disc.
@@ -14,13 +14,13 @@ using System.Web.UI;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Ra Ajax")]
+[assembly: AssemblyTitle("Ra-Ajax")]
 [assembly: AssemblyDescription("An Ajax library for ASP.NET and Mono")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Ra Ajax")]
+[assembly: AssemblyProduct("Ra-Ajax")]
 [assembly: AssemblyCopyright("Copyright ©  2008 - Thomas Hansen")]
-[assembly: AssemblyTrademark("Ra Ajax")]
+[assembly: AssemblyTrademark("Ra-Ajax")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

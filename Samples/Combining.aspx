@@ -4,7 +4,7 @@
     AutoEventWireup="true" 
     CodeFile="Combining.aspx.cs" 
     Inherits="Samples.Combining" 
-    Title="Combining Ra Ajax Controls" %>
+    Title="Combining Ra-Ajax Controls" %>
 
 <%@ Register 
     Assembly="Ra" 
@@ -26,7 +26,7 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ra Ajax Samples - Combining Ra Ajax Controls</h1>
+    <h1>Ra-Ajax Samples - Combining Ra-Ajax Controls</h1>
     <p>
         Much of the point in Ra-Ajax isn't really apparent before you understand how easy it is to
         <em>combine</em> the Ra-Ajax Controls together. By combining Ra-Ajax controls, you can create 
