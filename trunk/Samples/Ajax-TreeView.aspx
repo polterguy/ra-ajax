@@ -28,7 +28,12 @@
         And you can mix these two methods in the same TreeView control just as you wish.
     </p>
     <div style="overflow:auto;">
-        <ext:Tree runat="server" ID="tree" CssClass="tree" style="width:250px;float:left;" OnSelectedNodeChanged="selected">
+        <ext:Tree 
+            runat="server" 
+            ID="tree" 
+            CssClass="tree" 
+            Expansion="SingleClickPlusSign"
+            style="width:250px;float:left;" OnSelectedNodeChanged="selected">
             <ext:TreeNodes runat="server" Expanded="true">
                 <ext:TreeNode runat="server" ID="good">
                     <span title="This is the stuff we all LOVE! :)">

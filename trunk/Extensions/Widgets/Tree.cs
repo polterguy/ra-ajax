@@ -28,6 +28,22 @@ namespace Ra.Extensions
     public class Tree : RaWebControl, ASP.INamingContainer
     {
         /**
+         * Enum describing how TreeNode items in the Tree should be expanded
+         */
+        public enum ExpansionType
+        {
+            /**
+             * Single clicking any place in row
+             */
+            SingleClickEntireRow,
+
+            /**
+             * Only plus sign can be clicked to expand TreeNode
+             */
+            SingleClickPlusSign
+        }
+
+        /**
          * Raised when a TreeNode is selected by the user
          */
         public event EventHandler SelectedNodeChanged;
@@ -49,6 +65,42 @@ namespace Ra.Extensions
             set
             {
                 ViewState["SelectedNode"] = value.ID;
+            }
+        }
+
+        /**
+         * How TreeNode items in the Tree should be expanded
+         */
+        [DefaultValue(ExpansionType.SingleClickEntireRow)]
+        public ExpansionType Expansion
+        {
+            get
+            {
+                if (ViewState["Expansion"] == null)
+                    return ExpansionType.SingleClickEntireRow;
+                return (ExpansionType)ViewState["Expansion"];
+            }
+            set
+            {
+                ViewState["Expansion"] = value;
+            }
+        }
+
+        /**
+         * If true you can select multiple nodes by clicking CTRL while selecting
+         */
+        [DefaultValue(false)]
+        public bool AllowMultipleSelectedItems
+        {
+            get
+            {
+                if (ViewState["AllowMultipleSelectedItems"] == null)
+                    return false;
+                return (bool)ViewState["AllowMultipleSelectedItems"];
+            }
+            set
+            {
+                ViewState["AllowMultipleSelectedItems"] = value;
             }
         }
 

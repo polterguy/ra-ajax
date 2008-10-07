@@ -104,7 +104,7 @@
                     ID="btnImages" 
                     Text="Images" 
                     OnClick="btnImages_Click" />
-                </div>
+            </div>
         </ext:Window>
         <ext:Window 
 	        runat="server"
