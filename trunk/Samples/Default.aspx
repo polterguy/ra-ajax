@@ -165,7 +165,7 @@
     	of that the Mono Team has already abstracted away that difference for me.
     </p>
     <p>
-    	Ra-Ajax is a <a href="managed-ajax-a-new-approach-to-ajax.blog" title="Managed Ajax">Managed Ajax library</a>. 
+    	Ra-Ajax is a <a href="http://ra-ajax.org/managed-ajax-a-new-approach-to-ajax.blog" title="Managed Ajax">Managed Ajax library</a>. 
     	We believe that we have abstracted away JavaScript for you completely within Ra-Ajax and that there is no
     	need for you to think of the differences between FireFox 3.x and Safari 3.x and so on. We have already
     	done that job for you!

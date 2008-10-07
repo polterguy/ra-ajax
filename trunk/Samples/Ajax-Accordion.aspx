@@ -102,7 +102,7 @@
     </ext:Accordion>
     <h2>Ajax and Performance</h2>
     <p>
-        A good <a href="managed-ajax-a-new-approach-to-ajax.blog" title="Managed Ajax">Managed Ajax library</a> 
+        A good <a href="http://ra-ajax.org/managed-ajax-a-new-approach-to-ajax.blog" title="Managed Ajax">Managed Ajax library</a> 
         should not create a large bowl of JavaScript for you which will stall the user experience, since the user 
         will have to wait until the JavaScript has been downloaded before he can start reading the content and 
         interacting with your page.
