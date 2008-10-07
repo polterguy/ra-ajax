@@ -161,7 +161,21 @@ namespace Ra.Extensions
         {
             // Setting SelectedNode and raising the SelectedNodeChanged on the
             // parent Tree control
-            ParentTree.SelectedNode = this;
+            if( ParentTree.AllowMultipleSelectedItems)
+            {
+                List<TreeNode> nodes = new List<TreeNode>(ParentTree.SelectedNodes);
+                
+                if (!nodes.Remove(this))
+                    nodes.Add(this);
+
+                ParentTree.SelectedNodes = nodes.ToArray();
+            }
+            else
+            {
+                TreeNode[] node = new TreeNode[1];
+                node[0] = this;
+                ParentTree.SelectedNodes = node;
+            }
             ParentTree.RaiseSelectedNodeChanged();
         }
 
