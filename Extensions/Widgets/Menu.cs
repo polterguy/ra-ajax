@@ -36,6 +36,7 @@ namespace Ra.Extensions
                 if (control is MenuItems)
                 {
                     (control as MenuItems).Expanded = true;
+                    (control as MenuItems).CssClass += "top";
                     break;
                 }
             }
