@@ -95,7 +95,11 @@ namespace Ra.Extensions
                     foreach (ASP.Control item in parent.Controls)
                     {
                         if (item is MenuItem)
-                            (item as MenuItem).CssClass += " drop-item";
+                        {
+                            MenuItem menuItem = item as MenuItem;
+                            if (menuItem.CssClass.IndexOf(" drop-item") == -1)
+                                menuItem.CssClass += " drop-item";
+                        }
                     }
                     break;
                 }
