@@ -20,11 +20,6 @@ namespace Ra.Extensions
     [ASP.ToolboxData("<{0}:MenuItem runat=\"server\"></{0}:MenuItem>")]
     public class MenuItem : Panel, ASP.INamingContainer
     {
-        // Composition controls
-        private WEBCTRLS.Label[] _spacers;
-        private Label _expander;
-        private Label _icon;
-
         protected override void OnInit(EventArgs e)
         {
             EnsureChildControls();
@@ -41,116 +36,16 @@ namespace Ra.Extensions
             base.OnInit(e);
         }
 
-        protected override void CreateChildControls()
-        {
-            CreateCompositionControls();
-        }
-
-        private void CreateCompositionControls()
-        {
-            // Note that since (for simplicity) we're adding ALL "composition" controls
-            // at the zeroth index, we're creating them in "opposite" order of appearance
-            // Since every "new" control added to the Controls collection will "push" the previous
-            // ones onwards out...
-            // NOTE!
-            // This means that ORDER COUNTS here...!!
-
-            // Icon wrapper
-            _icon = new Label();
-            _icon.ID = "iconControl";
-            Controls.AddAt(0, _icon);
-
-            // Expander wrapper
-            _expander = new Label();
-            _expander.ID = "expanderControl";
-            Controls.AddAt(0, _expander);
-
-            // Then creating our "spacer" controls
-            CreateSpacers();
-        }
-
-        private void CreateSpacers()
-        {
-            // Finding out how many spacers we need...
-            int numSpacers = 0;
-            ASP.Control idxParent = this.Parent.Parent;
-            while (idxParent is TreeNode)
-            {
-                numSpacers += 1;
-                idxParent = idxParent.Parent.Parent;
-            }
-
-            // Creating our spacer elements...
-            _spacers = new WEBCTRLS.Label[numSpacers];
-
-            // Looping through and instantiating our spacers...
-            for (int idxNo = 0; idxNo < numSpacers; idxNo++)
-            {
-                _spacers[idxNo] = new WEBCTRLS.Label();
-                _spacers[idxNo].ID = "spacer" + idxNo;
-                Controls.AddAt(0, _spacers[idxNo]);
-            }
-        }
-
-        private bool IsLeafNode
-        {
-            get
-            {
-                // This logic will loop through all TreeNode items in the controls collections
-                // and change the value of the "retVal" back and forth but the LAST time
-                // it is changed it will be true ONLY if the last node is the "this" node...
-                bool retVal = false;
-                foreach (ASP.Control idx in Parent.Controls)
-                {
-                    if (idx is TreeNode)
-                        retVal = idx == this;
-                }
-                return retVal;
-            }
-        }
-
-        private Tree ParentTree
-        {
-            get
-            {
-                // Looping upwards in the Control hierarchy until we 
-                // find a Control of type "Tree"
-                ASP.Control ctrl = this.Parent;
-                while (ctrl != null && !(ctrl is Tree))
-                    ctrl = ctrl.Parent;
-                return ctrl as Tree;
-            }
-        }
-
-        private TreeNodes ChildTreeNodes
+        private MenuItems ChildMenuItems
         {
             get
             {
                 foreach (ASP.Control idx in Controls)
                 {
-                    if (idx is TreeNodes)
-                        return idx as TreeNodes;
+                    if (idx is MenuItems)
+                        return idx as MenuItems;
                 }
                 return null;
-            }
-        }
-
-        private void ExpansionWidget_Click(object sender, EventArgs e)
-        {
-            // Expanding/Collapsing the ChildTreeNodes control
-            if (ChildTreeNodes != null)
-            {
-                if (!ChildTreeNodes.Expanded)
-                {
-                    ChildTreeNodes.Expanded = true;
-                    ChildTreeNodes.RollDown();
-                    ChildTreeNodes.RaiseGetChildNodes();
-                }
-                else
-                {
-                    ChildTreeNodes.Expanded = false;
-                    ChildTreeNodes.RollUp();
-                }
             }
         }
 
