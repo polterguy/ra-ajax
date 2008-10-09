@@ -26,6 +26,15 @@ namespace Ra.Extensions
             get { return ViewState["Expanded"] == null ? false : (bool)ViewState["Expanded"]; }
             set { ViewState["Expanded"] = value; }
         }
+
+        protected override void OnPreRender(EventArgs e)
+        {
+            if (Expanded)
+                Style["display"] = "";
+            else
+                Style["display"] = "nodes";
+            base.OnPreRender(e);
+        }
         
         // Used for animating down when expanded
         internal void RollDown()
@@ -39,7 +48,7 @@ namespace Ra.Extensions
         internal void RollUp()
         {
             new EffectRollUp(this, 200)
-                .JoinThese(new EffectFadeIn())
+                .JoinThese(new EffectFadeOut())
                 .Render();
         }
 
