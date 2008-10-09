@@ -54,6 +54,9 @@
     <Compile Include="Widgets\AccordionView.cs" />
     <Compile Include="Widgets\Comet.cs" />
     <Compile Include="Helpers\CometQueue.cs" />
+    <Compile Include="Widgets\Menu.cs" />
+    <Compile Include="Widgets\MenuItem.cs" />
+    <Compile Include="Widgets\MenuItems.cs" />
     <Compile Include="Widgets\TreeNodes.cs" />
     <Compile Include="Widgets\RichEdit.cs" />
     <Compile Include="Widgets\InPlaceEdit.cs" />
