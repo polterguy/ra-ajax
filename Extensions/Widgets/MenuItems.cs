@@ -32,7 +32,7 @@ namespace Ra.Extensions
             if (Expanded)
                 Style["display"] = "";
             else
-                Style["display"] = "nodes";
+                Style["display"] = "none";
             base.OnPreRender(e);
         }
         
