@@ -66,83 +66,19 @@ namespace Ra.Extensions
         private void BuildCss()
         {
             BuildCssForRootElement();
-            BuildCssForIcon();
-            BuildCssForExpander();
-            BuildCssForSpacers();
             SetPropertiesForChildren();
         }
 
         // Build CSS classes for the "root" DOM element ("this control")
         private void BuildCssForRootElement()
         {
-            string tmpCssClass = " item ";
-
-            if (ChildTreeNodes == null)
-                tmpCssClass += "no-childs";
-            else if (ChildTreeNodes.Expanded)
-                tmpCssClass += "expanded";
-            else
-                tmpCssClass += "collapsed";
-
-            if (Array.Exists(ParentTree.SelectedNodes, delegate(TreeNode node) { return node == this; }))
-                tmpCssClass += " selected";
-
-            CssClass = tmpCssClass;
+            
         }
-
-        // Builds the CSS classes for the icon to the left of the "content" of the control
-        private void BuildCssForIcon()
-        {
-            _icon.CssClass = "icon spacer";
-        }
-
-        // Builds the CSS classes for the expander plus/minus sign
-        private void BuildCssForExpander()
-        {
-            if (ChildTreeNodes == null || !ChildTreeNodes.HasChildrenMaybe)
-            {
-                _expander.CssClass = IsLeafNode ? "icon leaf spacer" : "icon no-leaf spacer";
-            }
-            else
-            {
-                _expander.CssClass = IsLeafNode ? "icon leaf expander spacer" : "icon no-leaf expander spacer";
-            }
-        }
-
-        // Builds CSS classes for the spacer labels.
-        private void BuildCssForSpacers()
-        {
-            TreeNode idxNode = this.Parent.Parent as TreeNode;
-            foreach (WEBCTRLS.Label idx in _spacers)
-            {
-                idx.CssClass = "spacer" + (idxNode.IsLeafNode ? "" : " lines");
-                idxNode = idxNode.Parent.Parent as TreeNode;
-            }
-        }
-
+                
         private void SetPropertiesForChildren()
         {
-            if (ChildTreeNodes != null)
-            {
-                // Note that we're checking to see if the TreeNodes child
-                // of this one actually HAVE children in the Controls Collection.
-                // This is CRUCIAL since if it does NOT have children the TreeNodes should
-                // NOT be rendered visible since then it will first of all pollute markup
-                // and second of all NOT render correctly when children are being retrieved
-                // and control should be made visible (since we're not doing ReRender on it
-                // when it is expanded after retrieving items)
-                // Note also that technically this should have been implemented in the TreeNodes
-                // class, but unfortunately the OnPreRender will NOT be called if the 
-                // control is not visible...
-                // Therefor we have this logic here...
-                ChildTreeNodes.Visible = ChildTreeNodes.HasChildren;
-
-                // If the control is not Expanded we render it as display:none;
-                if (!ChildTreeNodes.Expanded)
-                {
-                    ChildTreeNodes.Style["display"] = "none";
-                }
-            }
+            if (ChildMenuItems != null)
+                Style["display"] = "none";
         }
 
         protected override string GetOpeningHTML()
