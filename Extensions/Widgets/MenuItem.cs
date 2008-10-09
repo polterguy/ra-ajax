@@ -85,6 +85,19 @@ namespace Ra.Extensions
                 
         private void SetPropertiesForChildren()
         {
+            foreach (ASP.Control control in Controls)
+            {
+                if (control is MenuItems)
+                {
+                    MenuItems parent = control as MenuItems;
+                    foreach (ASP.Control item in parent.Controls)
+                    {
+                        if (item is MenuItem)
+                            (item as MenuItem).CssClass += " drop";
+                    }
+                    break;
+                }
+            }
         }
 
         protected override string GetOpeningHTML()
