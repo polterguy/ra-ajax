@@ -25,7 +25,7 @@
     <p>
         Ajax Menu sample
     </p>
-    <ext:Menu runat="server" ID="menu">
+    <ext:Menu runat="server" ID="menu" CssClass="menu">
         <ext:MenuItems runat="server">
             <ext:MenuItem runat="server" ID="menuFile">
                 File
