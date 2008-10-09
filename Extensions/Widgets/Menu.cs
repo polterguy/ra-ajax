@@ -39,7 +39,11 @@ namespace Ra.Extensions
                     foreach (ASP.Control item in parent.Controls)
                     {
                         if (item is MenuItem)
-                            (item as MenuItem).CssClass += " top";
+                        {
+                            MenuItem menuItem = item as MenuItem;
+                            if (menuItem.CssClass.IndexOf(" top") == -1)
+                                menuItem.CssClass += " top";
+                        }
                     }
                     break;
                 }
