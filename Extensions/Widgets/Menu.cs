@@ -20,6 +20,14 @@ namespace Ra.Extensions
     [ASP.ToolboxData("<{0}:Menu runat=\"server\"></{0}:Menu>")]
     public class Menu : RaWebControl, ASP.INamingContainer
     {
+        public event EventHandler MenuItemSelected;
+
+        internal void RaiseMenuItemSelected(MenuItem item)
+        {
+            if (MenuItemSelected != null)
+                MenuItemSelected(item, new EventArgs());
+        }
+
         protected override string GetOpeningHTML()
         {
             return string.Format("<div id=\"{0}\"{1}{2}>",
