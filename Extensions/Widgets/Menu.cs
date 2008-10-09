@@ -14,6 +14,7 @@ using Ra.Widgets;
 using System.IO;
 using HTML = System.Web.UI.HtmlControls;
 using System.Collections.Generic;
+using System.Web.UI;
 
 namespace Ra.Extensions
 {
@@ -26,6 +27,19 @@ namespace Ra.Extensions
         {
             if (MenuItemSelected != null)
                 MenuItemSelected(item, new EventArgs());
+        }
+
+        protected override void OnPreRender(EventArgs e)
+        {
+            foreach (Control control in Controls)
+            {
+                if (control is MenuItems)
+                {
+                    (control as MenuItems).Expanded = true;
+                    break;
+                }
+            }
+            base.OnPreRender(e);
         }
 
         protected override string GetOpeningHTML()

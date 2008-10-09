@@ -20,6 +20,13 @@ namespace Ra.Extensions
     [ASP.ToolboxData("<{0}:MenuItems runat=\"server\"></{0}:MenuItems>")]
     public class MenuItems : RaWebControl, ASP.INamingContainer
     {
+        [DefaultValue(false)]
+        internal bool Expanded
+        {
+            get { return ViewState["Expanded"] == null ? false : (bool)ViewState["Expanded"]; }
+            set { ViewState["Expanded"] = value; }
+        }
+        
         // Used for animating down when expanded
         internal void RollDown()
         {
