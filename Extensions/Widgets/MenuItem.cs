@@ -57,8 +57,11 @@ namespace Ra.Extensions
             ParentMenu.RaiseMenuItemSelected(this);
             if (ChildMenuItems != null)
             {
-                this.ChildMenuItems.Style["display"] =
-                    this.ChildMenuItems.Style["display"] == "none" ? "" : "none";
+                if (ChildMenuItems.Expanded)
+                    ChildMenuItems.RollUp();
+                else
+                    ChildMenuItems.RollDown();
+                ChildMenuItems.Expanded = !ChildMenuItems.Expanded;
             }
         }
 

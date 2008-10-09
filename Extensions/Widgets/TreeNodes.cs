@@ -138,7 +138,7 @@ namespace Ra.Extensions
         internal void RollUp()
         {
             new EffectRollUp(this, 200)
-                .JoinThese(new EffectFadeIn())
+                .JoinThese(new EffectFadeOut())
                 .Render();
         }
 
