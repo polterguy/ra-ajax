@@ -27,30 +27,30 @@
     </p>
     <ext:Menu runat="server" ID="menu">
         <ext:MenuItems runat="server">
-            <ext:Menu runat="server" ID="menuFile">
+            <ext:MenuItem runat="server" ID="menuFile">
                 File
                 <ext:MenuItems runat="server">
-                    <ext:Menu runat="server" id="load">
+                    <ext:MenuItem runat="server" id="load">
                         Load
-                    </ext:Menu>
+                    </ext:MenuItem>
                 </ext:MenuItems>
-            </ext:Menu>
-            <ext:Menu runat="server" ID="edit">
+            </ext:MenuItem>
+            <ext:MenuItem runat="server" ID="edit">
                 Edit
                 <ext:MenuItems runat="server">
-                    <ext:Menu runat="server" id="copy">
+                    <ext:MenuItem runat="server" id="copy">
                         Copy
-                    </ext:Menu>
+                    </ext:MenuItem>
                 </ext:MenuItems>
-            </ext:Menu>
-            <ext:Menu runat="server" ID="options">
+            </ext:MenuItem>
+            <ext:MenuItem runat="server" ID="options">
                 Options
                 <ext:MenuItems runat="server">
-                    <ext:Menu runat="server" id="configuration">
+                    <ext:MenuItem runat="server" id="configuration">
                         Configuration
-                    </ext:Menu>
+                    </ext:MenuItem>
                 </ext:MenuItems>
-            </ext:Menu>
+            </ext:MenuItem>
         </ext:MenuItems>
     </ext:Menu>
 </asp:Content>
