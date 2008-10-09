@@ -90,10 +90,12 @@ namespace Ra.Extensions
                 if (control is MenuItems)
                 {
                     MenuItems parent = control as MenuItems;
+                    parent.CssClass += " dropper";
+
                     foreach (ASP.Control item in parent.Controls)
                     {
                         if (item is MenuItem)
-                            (item as MenuItem).CssClass += " drop";
+                            (item as MenuItem).CssClass += " drop-item";
                     }
                     break;
                 }
