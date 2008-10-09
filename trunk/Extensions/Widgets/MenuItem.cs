@@ -55,6 +55,11 @@ namespace Ra.Extensions
         private void MenuItem_Click(object sender, EventArgs e)
         {
             ParentMenu.RaiseMenuItemSelected(this);
+            if (ChildMenuItems != null)
+            {
+                this.ChildMenuItems.Style["display"] =
+                    this.ChildMenuItems.Style["display"] == "none" ? "" : "none";
+            }
         }
 
         protected override void OnPreRender(EventArgs e)
@@ -77,11 +82,6 @@ namespace Ra.Extensions
                 
         private void SetPropertiesForChildren()
         {
-            if (ChildMenuItems != null)
-            {
-                this.ChildMenuItems.Style["display"] = 
-                    this.ChildMenuItems.Style["display"] == "none" ? "" : "none";
-            }
         }
 
         protected override string GetOpeningHTML()
