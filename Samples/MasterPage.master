@@ -133,6 +133,9 @@
 			                        <li>
 			                            <a href="Ajax-TreeView.aspx">Ra-Ajax - TreeView</a>
 			                        </li>
+			                        <li>
+			                            <a href="Ajax-Menu.aspx">Ra-Ajax - Menu</a>
+			                        </li>
 			                    </ul>
 					        </ext:AccordionView>
 					    </ext:Accordion>
