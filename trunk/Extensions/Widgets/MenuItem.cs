@@ -22,18 +22,21 @@ namespace Ra.Extensions
     {
         protected override void OnInit(EventArgs e)
         {
-            EnsureChildControls();
-            if (ParentTree.Expansion == Tree.ExpansionType.SingleClickEntireRow)
-            {
-                this.Click += TreeNode_Click;
-                this.Click += ExpansionWidget_Click;
-            }
-            else if (ParentTree.Expansion == Tree.ExpansionType.SingleClickPlusSign)
-            {
-                this.Click += TreeNode_Click;
-                _expander.Click += ExpansionWidget_Click;
-            }
+            this.Click += MenuItem_Click;
             base.OnInit(e);
+        }
+
+        private Menu ParentMenu
+        {
+            get
+            {
+                // Looping upwards in the Control hierarchy until we 
+                // find a Control of type "Menu"
+                ASP.Control ctrl = this.Parent;
+                while (ctrl != null && !(ctrl is Menu))
+                    ctrl = ctrl.Parent;
+                return ctrl as Menu;
+            }
         }
 
         private MenuItems ChildMenuItems
@@ -49,26 +52,9 @@ namespace Ra.Extensions
             }
         }
 
-        private void TreeNode_Click(object sender, EventArgs e)
+        private void MenuItem_Click(object sender, EventArgs e)
         {
-            // Setting SelectedNode and raising the SelectedNodeChanged on the
-            // parent Tree control
-            if( ParentTree.AllowMultipleSelectedItems)
-            {
-                List<TreeNode> nodes = new List<TreeNode>(ParentTree.SelectedNodes);
-                
-                if (!nodes.Remove(this))
-                    nodes.Add(this);
-
-                ParentTree.SelectedNodes = nodes.ToArray();
-            }
-            else
-            {
-                TreeNode[] node = new TreeNode[1];
-                node[0] = this;
-                ParentTree.SelectedNodes = node;
-            }
-            ParentTree.RaiseSelectedNodeChanged();
+            ParentMenu.RaiseMenuItemSelected(this);
         }
 
         protected override void OnPreRender(EventArgs e)
