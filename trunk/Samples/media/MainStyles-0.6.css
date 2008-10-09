@@ -181,6 +181,8 @@ h2 { margin-top:2.7em; }
 .menu { width: 100%; background-color:Yellow; }
 .menu .top { display:inline; padding:2px; }
 .menu .top:hover { background-color:Red; }
+.menu .dropper { display:inline; position:absolute; }
+.menu .dropper .drop-item { display:block; }
 
 /* Accordion */
 
