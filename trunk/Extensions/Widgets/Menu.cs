@@ -35,8 +35,13 @@ namespace Ra.Extensions
             {
                 if (control is MenuItems)
                 {
-                    (control as MenuItems).Expanded = true;
-                    (control as MenuItems).CssClass += " top";
+                    MenuItems parent = control as MenuItems;
+                    parent.Expanded = true;
+                    foreach (Control item in parent.Controls)
+                    {
+                        if (item is MenuItem)
+                            (item as MenuItem).CssClass += " top";
+                    }
                     break;
                 }
             }
