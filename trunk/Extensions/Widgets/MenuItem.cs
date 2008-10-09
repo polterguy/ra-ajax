@@ -17,9 +17,6 @@ using System.Collections.Generic;
 
 namespace Ra.Extensions
 {
-    /**
-     * TreeNodes actual child items. This is the actual treenode for the TreeNodes control
-     */
     [ASP.ToolboxData("<{0}:MenuItem runat=\"server\"></{0}:MenuItem>")]
     public class MenuItem : Panel, ASP.INamingContainer
     {
