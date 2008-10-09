@@ -78,7 +78,10 @@ namespace Ra.Extensions
         private void SetPropertiesForChildren()
         {
             if (ChildMenuItems != null)
-                Style["display"] = "none";
+            {
+                this.ChildMenuItems.Style["display"] = 
+                    this.ChildMenuItems.Style["display"] == "none" ? "" : "none";
+            }
         }
 
         protected override string GetOpeningHTML()
