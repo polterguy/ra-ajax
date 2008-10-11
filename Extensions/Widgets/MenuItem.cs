@@ -80,7 +80,8 @@ namespace Ra.Extensions
         // Build CSS classes for the "root" DOM element ("this control")
         private void BuildCssForRootElement()
         {
-            
+            if (CssClass.IndexOf("item") == -1)
+                CssClass += " item";
         }
                 
         private void SetPropertiesForChildren()
@@ -90,8 +91,8 @@ namespace Ra.Extensions
                 if (control is MenuItems)
                 {
                     MenuItems parent = control as MenuItems;
-                    if (parent.CssClass.IndexOf(" dropper") == -1)
-                        parent.CssClass += " dropper";
+                    if (parent.CssClass.IndexOf(" menu-dropper") == -1)
+                        parent.CssClass += " menu-dropper";
 
                     foreach (ASP.Control item in parent.Controls)
                     {

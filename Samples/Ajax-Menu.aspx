@@ -31,7 +31,13 @@
                 File
                 <ext:MenuItems runat="server">
                     <ext:MenuItem runat="server" id="load">
-                        Load
+                        Open...
+                    </ext:MenuItem>
+                    <ext:MenuItem runat="server" id="save">
+                        Save
+                    </ext:MenuItem>
+                    <ext:MenuItem runat="server" id="saveAs">
+                        Save As...
                     </ext:MenuItem>
                 </ext:MenuItems>
             </ext:MenuItem>
@@ -41,6 +47,12 @@
                     <ext:MenuItem runat="server" id="copy">
                         Copy
                     </ext:MenuItem>
+                    <ext:MenuItem runat="server" id="paste">
+                        Paste
+                    </ext:MenuItem>
+                    <ext:MenuItem runat="server" id="cut">
+                        Cut
+                    </ext:MenuItem>
                 </ext:MenuItems>
             </ext:MenuItem>
             <ext:MenuItem runat="server" ID="options">
@@ -48,6 +60,9 @@
                 <ext:MenuItems runat="server">
                     <ext:MenuItem runat="server" id="configuration">
                         Configuration
+                    </ext:MenuItem>
+                    <ext:MenuItem runat="server" id="settings">
+                        Settings...
                     </ext:MenuItem>
                 </ext:MenuItems>
             </ext:MenuItem>
