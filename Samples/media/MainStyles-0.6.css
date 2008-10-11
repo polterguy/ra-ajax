@@ -156,6 +156,7 @@ h2 { margin-top:2.7em; }
  * them just like Yahoo under the BSD license terms... :)
  */
 .tree { background-color:#fafafa; border:solid 1px #999; margin:15px; padding:10px; font-size:0.9em; }
+.tree input { margin-right:8px; }
 .tree .item { cursor:pointer; line-height:16px; }
 .tree .item:hover { background-color:#f0f0f0; }
 .tree .item:hover ul { background-color:#fafafa; }
@@ -176,6 +177,7 @@ h2 { margin-top:2.7em; }
 .tree .no-childs .leaf { background-position: -64px 0px; }
 .tree .no-childs .no-leaf { background-position: -80px 0px; }
 
+
 /* Menu */
 
 .menu { width: 100%; background-color:#f5f5f5; padding:5px; }
@@ -185,6 +187,7 @@ h2 { margin-top:2.7em; }
 .menu .menu-dropper { background-color:#f5f5f5; display:inline; position:absolute; padding:5px; left:0px; border:solid 1px #999; width:150px; *top:20px; }
 .menu .menu-dropper .drop-item { display:block; color:#333; }
 .menu .menu-dropper .drop-item:hover { color:#999; }
+
 
 /* Accordion */
 

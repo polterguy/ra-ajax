@@ -63,6 +63,14 @@ namespace Ra.Extensions
                     ChildMenuItems.RollDown();
                 ChildMenuItems.Expanded = !ChildMenuItems.Expanded;
             }
+            else
+            {
+                if (Parent is MenuItems)
+                {
+                    (Parent as MenuItems).RollUp();
+                    (Parent as MenuItems).Expanded = false;
+                }
+            }
         }
 
         protected override void OnPreRender(EventArgs e)
