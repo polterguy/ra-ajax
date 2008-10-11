@@ -179,5 +179,5 @@
         both "normal" ASP.NET Controls and Ra-Ajax controls and everything will interact 100% perfect with the rest
         of your page.
     </p>
-    <a href="Ajax-Menu.aspx">On top Ajax Menu</a>
+    <a href="Ajax-Menu.aspx">On to Ajax Menu</a>
 </asp:Content>

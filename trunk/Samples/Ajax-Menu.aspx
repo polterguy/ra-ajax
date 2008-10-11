@@ -25,7 +25,12 @@
     <p>
         Ajax Menu sample
     </p>
-    <ext:Menu runat="server" ID="menu" CssClass="menu">
+    <ra:Label 
+        runat="server" 
+        CssClass="infoLbl" 
+        Text="Watch me change..."
+        ID="lbl" />
+    <ext:Menu runat="server" ID="menu" CssClass="menu" OnMenuItemSelected="menu_MenuItemSelected">
         <ext:MenuItems runat="server">
             <ext:MenuItem runat="server" ID="menuFile">
                 File

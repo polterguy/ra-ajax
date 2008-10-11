@@ -16,5 +16,10 @@ namespace Samples
 {
     public partial class Menu : System.Web.UI.Page
     {
+        protected void menu_MenuItemSelected(object sender, EventArgs e)
+        {
+            lbl.Text = (sender as MenuItem).ID + " was selected";
+            new EffectHighlight(lbl, 200).Render();
+        }
     }
 }
