@@ -12,6 +12,7 @@
 	<connectionStrings/>
 	<system.web>
 
+<!--
     <httpHandlers>
       <add verb="*" path="*.gif" type="ResourceCacher.FarFutureExpires, ResourceCacher"/>
       <add verb="*" path="*.png" type="ResourceCacher.FarFutureExpires, ResourceCacher"/>
@@ -19,6 +20,7 @@
       <add verb="*" path="*.jpeg" type="ResourceCacher.FarFutureExpires, ResourceCacher"/>
       <add verb="*" path="*.css" type="ResourceCacher.FarFutureExpires, ResourceCacher"/>
     </httpHandlers>
+-->
 
     <!-- 
             Set compilation debug="true" to insert debugging 

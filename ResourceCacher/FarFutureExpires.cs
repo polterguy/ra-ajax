@@ -10,6 +10,7 @@ using System;
 using System.Web;
 using System.Drawing;
 using System.IO;
+using System.IO.Compression;
 
 namespace ResourceCacher
 {
@@ -40,6 +41,7 @@ namespace ResourceCacher
                     context.Response.ContentType = "image/gif";
                     break;
                 case "css":
+                    HttpContext.Current.Response.AppendHeader("Content-encoding", "gzip");
                     context.Response.ContentType = "text/css";
                     break;
                 case "png":

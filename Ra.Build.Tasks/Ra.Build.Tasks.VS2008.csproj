@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InsertTextTask.cs" />
+    <Compile Include="CreateFileTask.cs" />
     <Compile Include="MinificationTask.cs" />
     <Compile Include="CssMinTask.cs" />
     <Compile Include="jsmin.cs" />

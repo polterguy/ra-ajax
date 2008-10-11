@@ -27,6 +27,7 @@ using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using NAnt.Core.Attributes;
+using System.IO.Compression;
 
 namespace Ra.Build.Tasks
 {
@@ -58,8 +59,21 @@ namespace Ra.Build.Tasks
             newCss = Regex.Replace(newCss, "\\s*,\\s*", ",", RegexOptions.Compiled | RegexOptions.ECMAScript);
             newCss = Regex.Replace(newCss, "\\s*;\\s*", ";", RegexOptions.Compiled | RegexOptions.ECMAScript);
 
-            using (StreamWriter sw = new StreamWriter(destPath))
-                sw.Write(newCss);
+            if (_gZip)
+            {
+                byte[] buffer;
+                using (MemoryStream cssStream = new MemoryStream(ASCIIEncoding.UTF8.GetBytes(newCss)))
+                {
+                    buffer = new byte[cssStream.Length];
+                    cssStream.Read(buffer, 0, Convert.ToInt32(cssStream.Length));
+                }
+
+                using (FileStream fs = File.Create(destPath))
+                {
+                    using (GZipStream gzs = new GZipStream(fs, CompressionMode.Compress))
+                        gzs.Write(buffer, 0, buffer.Length);
+                }
+            }
         }
     }
 }

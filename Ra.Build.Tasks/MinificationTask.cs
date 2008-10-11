@@ -50,6 +50,7 @@ namespace Ra.Build.Tasks
 
         protected bool _overwrite;
         protected bool _flatten;
+        protected bool _gZip;
         protected DirectoryInfo _toDirectory;
         protected FileSet _files = new FileSet();
 
@@ -62,6 +63,14 @@ namespace Ra.Build.Tasks
         {
             get { return _toDirectory; }
             set { _toDirectory = value; }
+        }
+
+        [TaskAttribute("gzip")]
+        [BooleanValidator()]
+        public virtual bool GZip
+        {
+            get { return _gZip; }
+            set { _gZip = value; }
         }
 
         [TaskAttribute("flatten")]
