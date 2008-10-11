@@ -40,12 +40,12 @@
 	</target>
 
 	<target name="jsmin" unless="${debug}" depends="load.tasks" description="Minify The Library JS Files">
-		<jsmin verbose="true" todir="${output.dir}/${ra.name}/Js">
+		<jsmin verbose="true" gzip="true" todir="${output.dir}/${ra.name}/Js">
 			<fileset basedir="${ra.name}/Js">
 				<include name="**/*.js" />
 			</fileset>
 		</jsmin>
-		<jsmin verbose="true" todir="${output.dir}/${ext.name}/Js">
+		<jsmin verbose="true" gzip="true" todir="${output.dir}/${ext.name}/Js">
 			<fileset basedir="${ext.name}/Js">
 				<include name="**/*.js" />
 			</fileset>

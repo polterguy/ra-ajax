@@ -51,11 +51,38 @@
 			</fileset>
 		</copy>
 
+		<!-- 
+			Since the JS included in the Library dlls is GZipped, we need to add a Global.asax with
+			the following content to the samples website to indicate to the browser the content-encoding 
+			of the JS files.
+		-->
+		<file-create overwrite="true" filename="${output.dir}/${samples.dir}/Global.asax">
+			<content>
+				<![CDATA[
+<%@ Application Language="C#" %>
+<script runat="server">
+	void Application_BeginRequest(object sender, EventArgs e)
+	{
+		if (Request.Path.Contains("WebResource.axd"))
+		{
+			HttpContext.Current.Response.Cache.VaryByHeaders["Accept-Encoding"] = true;
+			HttpContext.Current.Response.Cache.SetExpires(DateTime.Now.AddYears(3));
+			HttpContext.Current.Response.Cache.SetCacheability(HttpCacheability.Public);
+			HttpContext.Current.Response.Cache.SetValidUntilExpires(false);
+            
+			HttpContext.Current.Response.AppendHeader("Content-encoding", "gzip");
+		}
+	}
+</script>
+				]]>
+			</content>
+		</file-create>
+
 		<exec program="${framework.dir}/aspnet_compiler.exe"
 			commandline="-v ${samples.dir} -p ${output.dir}/${samples.dir} -u -f ${output.dir}/${samples.precompiled.dir} -c"
 			if="${file::exists(framework.dir + '/aspnet_compiler.exe')}" />
 
-		<cssmin verbose="true" overwrite="true">
+		<cssmin verbose="true" gzip="true" overwrite="true">
 			<fileset basedir="${output.dir}/${samples.precompiled.dir}">
 				<include name="media/**/*.css" />
 			</fileset>
@@ -95,11 +122,39 @@
 			</fileset>
 		</copy>
 
+		<!-- 
+			Since ra-website already includes a Global.asax we just need to add the following code to the
+			Application_BeginRequest method inside that file, to indicate to the browser the content-encoding 
+			of the JS files.
+		-->
+		<file-insert-text 
+			if="${file::exists(output.dir + '/' + ra.website.dir + '/Global.asax')}" 
+			filename="${output.dir}/${ra.website.dir}/Global.asax">
+			<insert-after>
+				<![CDATA[
+    void Application_BeginRequest(object sender, EventArgs e)
+    { ]]>
+			</insert-after>
+			<text-to-insert>
+				<![CDATA[
+if (Request.Path.Contains("WebResource.axd"))
+{
+	HttpContext.Current.Response.Cache.VaryByHeaders["Accept-Encoding"] = true;
+	HttpContext.Current.Response.Cache.SetExpires(DateTime.Now.AddYears(3));
+	HttpContext.Current.Response.Cache.SetCacheability(HttpCacheability.Public);
+	HttpContext.Current.Response.Cache.SetValidUntilExpires(false);
+    
+	HttpContext.Current.Response.AppendHeader("Content-encoding", "gzip");
+}
+				]]>
+			</text-to-insert>
+		</file-insert-text>
+
 		<exec program="${framework.dir}/aspnet_compiler.exe"
 			commandline="-v ${ra.website.dir} -p ${output.dir}/${ra.website.dir} -u -f ${output.dir}/${ra.website.precompiled.dir} -c"
 			if="${file::exists(framework.dir + '/aspnet_compiler.exe')}" />
 
-		<cssmin verbose="true" overwrite="true">
+		<cssmin verbose="true" gzip="true" overwrite="true">
 			<fileset basedir="${output.dir}/${ra.website.precompiled.dir}">
 				<include name="media/**/*.css" />
 			</fileset>

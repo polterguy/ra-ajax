@@ -57,13 +57,15 @@
   </urlrewritingnet>
   
   <system.web>
-		<httpHandlers>
+<!--
+	<httpHandlers>
 			<add verb="*" path="*.gif" type="ResourceCacher.FarFutureExpires, ResourceCacher"/>
 			<add verb="*" path="*.png" type="ResourceCacher.FarFutureExpires, ResourceCacher"/>
 			<add verb="*" path="*.jpg" type="ResourceCacher.FarFutureExpires, ResourceCacher"/>
 			<add verb="*" path="*.jpeg" type="ResourceCacher.FarFutureExpires, ResourceCacher"/>
 			<add verb="*" path="*.css" type="ResourceCacher.FarFutureExpires, ResourceCacher"/>
     </httpHandlers>
+-->
     <httpModules>
       <add name="UrlRewriteModule" type="UrlRewritingNet.Web.UrlRewriteModule, UrlRewritingNet.UrlRewriter" />
     </httpModules>

@@ -69,6 +69,10 @@
     { 
     }
 
+    void Application_BeginRequest(object sender, EventArgs e)
+    { 
+    }
+
     void Session_Start(object sender, EventArgs e) 
     {
         Entity.Operator.ViewersCount += 1;

@@ -24,6 +24,9 @@ SOFTWARE.
 
 using System.IO;
 using NAnt.Core.Attributes;
+using System;
+using System.IO.Compression;
+using System.Text;
 
 namespace Ra.Build.Tasks
 {
@@ -43,6 +46,22 @@ namespace Ra.Build.Tasks
             else
             {
                 new JavaScriptMinifier().Minify(srcPath, destPath);
+            }
+
+            if (_gZip)
+            {
+                byte[] buffer;
+                using (FileStream jsStream = new FileStream(destPath, FileMode.Open, FileAccess.Read, FileShare.Read))
+                {
+                    buffer = new byte[jsStream.Length];
+                    jsStream.Read(buffer, 0, Convert.ToInt32(jsStream.Length));
+                }
+
+                using (FileStream fs = File.Create(destPath))
+                {
+                    using (GZipStream gzs = new GZipStream(fs, CompressionMode.Compress))
+                        gzs.Write(buffer, 0, buffer.Length);
+                }
             }
         }
     }
