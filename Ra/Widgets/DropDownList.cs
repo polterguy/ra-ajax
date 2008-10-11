@@ -19,7 +19,7 @@ namespace Ra.Widgets
      */
     [ASP.ParseChildren(true, "Items")]
     [ASP.ToolboxData("<{0}:DropDownList runat=server />")]
-    public class DropDownList : RaWebControl, IRaControl
+    public class DropDownList : RaWebControl
     {
         /**
          * Raised when selected index is changed
@@ -35,16 +35,6 @@ namespace Ra.Widgets
          * Raised when button receives Focus, opposite of Blur
          */
         public event EventHandler Focused;
-
-        /**
-         * Raised when mouse is over the button, opposite of MouseOut
-         */
-        public event EventHandler MouseOver;
-
-        /**
-         * Raised when mouse is leaving the button, opposite of MouseOver
-         */
-        public event EventHandler MouseOut;
 
         private ListItemCollection _listItems;
         private string _selectedItemValue;
@@ -180,21 +170,13 @@ namespace Ra.Widgets
         #region [ -- Overridden (abstract/virtual) methods from RaControl -- ]
 
         // Override this one to handle events fired on the client-side
-        void IRaControl.DispatchEvent(string name)
+        public override void DispatchEvent(string name)
         {
             switch (name)
             {
                 case "change":
                     if (SelectedIndexChanged != null)
                         SelectedIndexChanged(this, new EventArgs());
-                    break;
-                case "mouseover":
-                    if (MouseOver != null)
-                        MouseOver(this, new EventArgs());
-                    break;
-                case "mouseout":
-                    if (MouseOut != null)
-                        MouseOut(this, new EventArgs());
                     break;
                 case "blur":
                     if (Blur != null)
@@ -205,26 +187,20 @@ namespace Ra.Widgets
                         Focused(this, new EventArgs());
                     break;
                 default:
-                    throw new ApplicationException("Unknown event fired for control");
+                    base.DispatchEvent(name);
+                    break;
             }
         }
 
         protected override string GetEventsRegisterScript()
         {
-            string evts = string.Empty;
+            string evts = base.GetEventsRegisterScript();
+
             if (SelectedIndexChanged != null)
+            {
+                if (evts.Length != 0)
+                    evts += ",";
                 evts += "['change']";
-            if (MouseOver != null)
-            {
-                if (evts.Length != 0)
-                    evts += ",";
-                evts += "['mouseover']";
-            }
-            if (MouseOut != null)
-            {
-                if (evts.Length != 0)
-                    evts += ",";
-                evts += "['mouseout']";
             }
             if (Blur != null)
             {

@@ -17,14 +17,70 @@ namespace Ra.Widgets
      * class for "visual" Ajax Controls. Mostly all Ajax Controls in Ra-Ajax inherits from this class
      * instead of the RaControl class since this class implements logic for the Style property collection.
      */
-    public abstract class RaWebControl : RaControl, IAttributeAccessor
+    public abstract class RaWebControl : RaControl, IAttributeAccessor, IRaControl
     {
         private StyleCollection _styles;
+
+        /**
+         * Raised when control is clicked
+         */
+        public event EventHandler Click;
+
+        /**
+         * Raised when mouse is over the control, opposite of MouseOut
+         */
+        public event EventHandler MouseOver;
+
+        /**
+         * Raised when mouse is leaving the control, opposite of MouseOver
+         */
+        public event EventHandler MouseOut;
 
         // Only purpose is to instantiate the _styles field with the this as the parameter
         public RaWebControl()
         {
             _styles = new StyleCollection(this);
+        }
+
+        public virtual void DispatchEvent(string name)
+        {
+            switch (name)
+            {
+                case "click":
+                    if (Click != null)
+                        Click(this, new EventArgs());
+                    break;
+                case "mouseover":
+                    if (MouseOver != null)
+                        MouseOver(this, new EventArgs());
+                    break;
+                case "mouseout":
+                    if (MouseOut != null)
+                        MouseOut(this, new EventArgs());
+                    break;
+                default:
+                    throw new ApplicationException("Unknown event fired for control");
+            }
+        }
+
+        protected override string GetEventsRegisterScript()
+        {
+            string evts = string.Empty;
+            if (Click != null)
+                evts += "['click', true]";
+            if (MouseOver != null)
+            {
+                if (evts.Length != 0)
+                    evts += ",";
+                evts += "['mouseover']";
+            }
+            if (MouseOut != null)
+            {
+                if (evts.Length != 0)
+                    evts += ",";
+                evts += "['mouseout']";
+            }
+            return evts;
         }
 
         #region [ -- Overridden Base Class methods -- ]

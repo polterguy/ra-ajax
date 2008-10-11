@@ -23,7 +23,8 @@
 
     <h1>Ra-Ajax Samples - Menu</h1>
     <p>
-        Ajax Menu sample
+        This is our Ajax Menu sample. As most "advanced samples" its purpose is more to serve as an example of how
+        you can build your own Ajax Menu than an extensive Ajax Menu by itself.
     </p>
     <ra:Label 
         runat="server" 
@@ -73,4 +74,25 @@
             </ext:MenuItem>
         </ext:MenuItems>
     </ext:Menu>
+    <p>
+        Try to select a menu item from the menu above.
+    </p>
+    <p>
+        As you can see a menu can have child menus and so on into "infinity". And when selecting a root menu its parent
+        menu is collapsed.
+    </p>
+    <p>
+        Our menu is built entirely from UL and LI elements instead of spans and div HTML elements. This makes it more
+        accessible and easier to skin. Though since our Ajax Menu is our newest Ajax Citizen it's still kind of rough
+        and you should expect changes to the DOM structure. Though as most other "complex controls" it adds ZERO to the
+        JavaScript load since it's entirely composed of other existing Ajax controls like Panel, Labels and so on.
+    </p>
+    <h2>Reusing existing Ajax Controls</h2>
+    <p>
+        In fact this is a pattern being used through the entire library - that we reuse existing Ajax Controls to
+        build more complex Ajax Controls. This makes the JavaScript load for your Ra-Ajax pages 
+        <strong>orders of magnitudes smaller</strong> than if you did the same thing in virtually ANY other Ajax
+        Framework. Including Prototype, jQuery, MooTools, Dojo Toolkit, ASP.NET AJAX and so on. <strong>The amount 
+        of JavaScript will always be significantly lower with Ra-Ajax than ANY other known Ajax Framework</strong>.
+    </p>
 </asp:Content>

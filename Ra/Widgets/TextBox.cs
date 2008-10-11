@@ -19,7 +19,7 @@ namespace Ra.Widgets
      */
     [DefaultProperty("Text")]
     [ASP.ToolboxData("<{0}:TextBox runat=server />")]
-    public class TextBox : RaWebControl, IRaControl
+    public class TextBox : RaWebControl
     {
         /**
          * Type of TextBox
@@ -53,16 +53,6 @@ namespace Ra.Widgets
          * Raised when control receives Focus, opposite of Blur
          */
         public event EventHandler Focused;
-
-        /**
-         * Raised when mouse is over the control, opposite of MouseOut
-         */
-        public event EventHandler MouseOver;
-
-        /**
-         * Raised when mouse is leaving the control, opposite of MouseOver
-         */
-        public event EventHandler MouseOut;
 
         /**
          * Raised when JS DOM event keyup is raised on client. Basically when a key is pressed and released.
@@ -191,23 +181,13 @@ namespace Ra.Widgets
             }
         }
 
-        void IRaControl.DispatchEvent(string name)
+        public override void DispatchEvent(string name)
         {
-            //System.Web.UI.WebControls.TextBox box;
-            //box.TextMode = System.Web.UI.WebControls.TextBoxMode.
             switch (name)
             {
                 case "change":
                     if (TextChanged != null)
                         TextChanged(this, new EventArgs());
-                    break;
-                case "mouseover":
-                    if (MouseOver != null)
-                        MouseOver(this, new EventArgs());
-                    break;
-                case "mouseout":
-                    if (MouseOut != null)
-                        MouseOut(this, new EventArgs());
                     break;
                 case "keyup":
                     if (KeyUp != null)
@@ -222,7 +202,8 @@ namespace Ra.Widgets
                         Focused(this, new EventArgs());
                     break;
                 default:
-                    throw new ApplicationException("Unknown event fired for control");
+                    base.DispatchEvent(name);
+                    break;
             }
         }
 
@@ -243,20 +224,12 @@ namespace Ra.Widgets
 
         protected override string GetEventsRegisterScript()
         {
-            string evts = string.Empty;
+            string evts = base.GetEventsRegisterScript();
             if (TextChanged != null)
+            {
+                if (evts.Length != 0)
+                    evts += ",";
                 evts += "['change']";
-            if (MouseOver != null)
-            {
-                if (evts.Length != 0)
-                    evts += ",";
-                evts += "['mouseover']";
-            }
-            if (MouseOut != null)
-            {
-                if (evts.Length != 0)
-                    evts += ",";
-                evts += "['mouseout']";
             }
             if (KeyUp != null)
             {
