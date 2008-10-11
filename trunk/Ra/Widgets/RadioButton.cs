@@ -18,7 +18,7 @@ namespace Ra.Widgets
      */
     [DefaultProperty("Text")]
     [ASP.ToolboxData("<{0}:RadioButton runat=server />")]
-    public class RadioButton : RaWebControl, IRaControl
+    public class RadioButton : RaWebControl
     {
         /**
          * Raised when checked state of radiobutton is changed
@@ -34,16 +34,6 @@ namespace Ra.Widgets
          * Raised when radiobutton receives Focus, opposite of Blur
          */
         public event EventHandler Focused;
-
-        /**
-         * Raised when mouse is over the radiobutton, opposite of MouseOut
-         */
-        public event EventHandler MouseOver;
-
-        /**
-         * Raised when mouse is leaving the radiobutton, opposite of MouseOver
-         */
-        public event EventHandler MouseOut;
 
         #region [ -- Properties -- ]
 
@@ -176,7 +166,7 @@ namespace Ra.Widgets
         #region [ -- Overridden (abstract/virtual) methods from RaControl -- ]
 
         // Override this one to handle events fired on the client-side
-        void IRaControl.DispatchEvent(string name)
+        public override void DispatchEvent(string name)
         {
             switch (name)
             {
@@ -187,14 +177,6 @@ namespace Ra.Widgets
                     if (CheckedChanged != null)
                         CheckedChanged(this, new EventArgs());
                     break;
-                case "mouseover":
-                    if (MouseOver != null)
-                        MouseOver(this, new EventArgs());
-                    break;
-                case "mouseout":
-                    if (MouseOut != null)
-                        MouseOut(this, new EventArgs());
-                    break;
                 case "blur":
                     if (Blur != null)
                         Blur(this, new EventArgs());
@@ -204,7 +186,8 @@ namespace Ra.Widgets
                         Focused(this, new EventArgs());
                     break;
                 default:
-                    throw new ApplicationException("Unknown event fired for control");
+                    base.DispatchEvent(name);
+                    break;
             }
         }
 
@@ -218,24 +201,16 @@ namespace Ra.Widgets
 
         protected override string GetEventsRegisterScript()
         {
-            string evts = string.Empty;
+            string evts = base.GetEventsRegisterScript();
 
             // Due to a bug in IE we need to trap click event in DOM instead of change if
             // browser is IE
             string evtChangeName = Page.Request.Browser.Browser == "IE" ? "click" : "change";
             if (CheckedChanged != null)
+            {
+                if (evts.Length != 0)
+                    evts += ",";
                 evts += string.Format("['{0}']", evtChangeName);
-            if (MouseOver != null)
-            {
-                if (evts.Length != 0)
-                    evts += ",";
-                evts += string.Format("['mouseover', false, '{0}_LBL']", ClientID);
-            }
-            if (MouseOut != null)
-            {
-                if (evts.Length != 0)
-                    evts += ",";
-                evts += string.Format("['mouseout', false, '{0}_LBL']", ClientID);
             }
             if (Blur != null)
             {

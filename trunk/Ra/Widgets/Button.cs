@@ -18,13 +18,8 @@ namespace Ra.Widgets
      */
     [DefaultProperty("Text")]
     [ASP.ToolboxData("<{0}:Button runat=server />")]
-    public sealed class Button : RaWebControl, IRaControl
+    public sealed class Button : RaWebControl
     {
-        /**
-         * Raised when button is clicked
-         */
-        public event EventHandler Click;
-
         /**
          * Raised when button looses focus, opposite of Focused
          */
@@ -34,16 +29,6 @@ namespace Ra.Widgets
          * Raised when button receives Focus, opposite of Blur
          */
         public event EventHandler Focused;
-
-        /**
-         * Raised when mouse is over the button, opposite of MouseOut
-         */
-        public event EventHandler MouseOver;
-
-        /**
-         * Raised when mouse is leaving the button, opposite of MouseOver
-         */
-        public event EventHandler MouseOut;
 
         #region [ -- Properties -- ]
 
@@ -101,22 +86,10 @@ namespace Ra.Widgets
 
         #region [ -- Overridden (abstract/virtual) methods from RaControl -- ]
 
-        void IRaControl.DispatchEvent(string name)
+        public override void DispatchEvent(string name)
         {
             switch (name)
             {
-                case "click":
-                    if (Click != null)
-                        Click(this, new EventArgs());
-                    break;
-                case "mouseover":
-                    if (MouseOver != null)
-                        MouseOver(this, new EventArgs());
-                    break;
-                case "mouseout":
-                    if (MouseOut != null)
-                        MouseOut(this, new EventArgs());
-                    break;
                 case "blur":
                     if (Blur != null)
                         Blur(this, new EventArgs());
@@ -126,27 +99,14 @@ namespace Ra.Widgets
                         Focused(this, new EventArgs());
                     break;
                 default:
-                    throw new ApplicationException("Unknown event fired for control");
+                    base.DispatchEvent(name);
+                    break;
             }
         }
 
         protected override string GetEventsRegisterScript()
         {
-            string evts = string.Empty;
-            if (Click != null)
-                evts += "['click']";
-            if (MouseOver != null)
-            {
-                if (evts.Length != 0)
-                    evts += ",";
-                evts += "['mouseover']";
-            }
-            if (MouseOut != null)
-            {
-                if (evts.Length != 0)
-                    evts += ",";
-                evts += "['mouseout']";
-            }
+            string evts = base.GetEventsRegisterScript();
             if (Blur != null)
             {
                 if (evts.Length != 0)

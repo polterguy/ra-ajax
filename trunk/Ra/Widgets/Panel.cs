@@ -19,23 +19,8 @@ namespace Ra.Widgets
      */
     [DefaultProperty("CssClass")]
     [ASP.ToolboxData("<{0}:Panel runat=server></{0}:Panel>")]
-    public class Panel : RaWebControl, IRaControl, ASP.INamingContainer
+    public class Panel : RaWebControl, ASP.INamingContainer
     {
-        /**
-         * Raised when panel is clicked
-         */
-        public event EventHandler Click;
-
-        /**
-         * Raised when mouse is over the panel, opposite of MouseOut
-         */
-        public event EventHandler MouseOver;
-
-        /**
-         * Raised when mouse is leaving the panel, opposite of MouseOver
-         */
-        public event EventHandler MouseOut;
-
         #region [ -- Overridden (abstract/virtual) methods from RaControl -- ]
 
         protected override string GetOpeningHTML()
@@ -52,46 +37,5 @@ namespace Ra.Widgets
 		}
 
         #endregion
-
-        void IRaControl.DispatchEvent(string name)
-        {
-            switch (name)
-            {
-                case "click":
-                    if (Click != null)
-                        Click(this, new EventArgs());
-                    break;
-                case "mouseover":
-                    if (MouseOver != null)
-                        MouseOver(this, new EventArgs());
-                    break;
-                case "mouseout":
-                    if (MouseOut != null)
-                        MouseOut(this, new EventArgs());
-                    break;
-                default:
-                    throw new ApplicationException("Unknown event fired for control");
-            }
-        }
-
-        protected override string GetEventsRegisterScript()
-        {
-            string evts = string.Empty;
-            if (Click != null)
-                evts += "['click', true]";
-            if (MouseOver != null)
-            {
-                if (evts.Length != 0)
-                    evts += ",";
-                evts += "['mouseover']";
-            }
-            if (MouseOut != null)
-            {
-                if (evts.Length != 0)
-                    evts += ",";
-                evts += "['mouseout']";
-            }
-			return evts;
-        }
 	}
 }
