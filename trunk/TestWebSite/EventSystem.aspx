@@ -28,6 +28,8 @@ function init() {
         </div>
         <form id="form1" runat="server">
             <ra:Label runat="server" ID="click" Text="click" OnClick="click_click" />
+            <br />
+            <ra:Label runat="server" ID="dblClick" Text="dblclick" OnDblClick="dblClick_dblClick" />
         </form>
     </body>
 </html>
