@@ -18,7 +18,7 @@ namespace Ra.Widgets
      */
     [DefaultProperty("Text")]
     [ASP.ToolboxData("<{0}:Image runat=server />")]
-    public class Image : RaWebControl, IRaControl
+    public class Image : RaWebControl
     {
         #region [ -- Properties -- ]
 
@@ -71,10 +71,5 @@ namespace Ra.Widgets
         }
 
         #endregion
-
-        void IRaControl.DispatchEvent(string name)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

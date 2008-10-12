@@ -18,7 +18,7 @@ namespace Ra.Widgets
      */
     [DefaultProperty("Text")]
     [ASP.ToolboxData("<{0}:HiddenField runat=server />")]
-    public class HiddenField : RaControl, IRaControl
+    public class HiddenField : RaControl
     {
         #region [ -- Properties -- ]
 
@@ -79,10 +79,5 @@ namespace Ra.Widgets
         }
 
         #endregion
-
-        void IRaControl.DispatchEvent(string name)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

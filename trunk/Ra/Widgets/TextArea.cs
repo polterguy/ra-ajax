@@ -39,11 +39,6 @@ namespace Ra.Widgets
          */
         public event EventHandler Focused;
 
-        /**
-         * Raised when JS DOM event keyup is raised on client. Basically when a key is pressed and released.
-         */
-        public event EventHandler KeyUp;
-
         #region [ -- Properties -- ]
 
         /**
@@ -194,10 +189,6 @@ namespace Ra.Widgets
                     if (TextChanged != null)
                         TextChanged(this, new EventArgs());
                     break;
-                case "keyup":
-                    if (KeyUp != null)
-                        KeyUp(this, new EventArgs());
-                    break;
                 case "blur":
                     if (Blur != null)
                         Blur(this, new EventArgs());
@@ -235,12 +226,6 @@ namespace Ra.Widgets
                 if (evts.Length != 0)
                     evts += ",";
                 evts += "['change']";
-            }
-            if (KeyUp != null)
-            {
-                if (evts.Length != 0)
-                    evts += ",";
-                evts += "['keyup']";
             }
             if (Blur != null)
             {
