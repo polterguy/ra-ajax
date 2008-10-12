@@ -30,6 +30,8 @@ function init() {
             <ra:Label runat="server" ID="click" Text="click" OnClick="click_click" />
             <br />
             <ra:Label runat="server" ID="dblClick" Text="dblclick" OnDblClick="dblClick_dblClick" />
+            <br />
+            <ra:Label runat="server" ID="keyDown" Text="keyDown" OnKeyDown="keyDown_keyDown" />
         </form>
     </body>
 </html>
