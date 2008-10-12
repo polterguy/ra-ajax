@@ -20,6 +20,11 @@ public partial class EventSystem : System.Web.UI.Page
     {
         (sender as Ra.Widgets.Label).Text = "success";
     }
+
+    protected void keyDown_keyDown(object sender, EventArgs e)
+    {
+        (sender as Ra.Widgets.Label).Text = "success";
+    }
 }
 
 

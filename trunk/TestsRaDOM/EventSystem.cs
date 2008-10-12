@@ -25,6 +25,13 @@ namespace NUnitTests
             Browser.Span("dblClick").FireEvent("ondblclick");
             Assert.AreEqual("success", Browser.Span("dblClick").Text);
         }
+
+        [NUnit.Framework.Test]
+        public void TestKeyDown()
+        {
+            Browser.Span("keyDown").FireEvent("onkeydown");
+            Assert.AreEqual("success", Browser.Span("keyDown").Text);
+        }
     }
 }
 
