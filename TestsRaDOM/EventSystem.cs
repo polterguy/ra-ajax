@@ -18,6 +18,13 @@ namespace NUnitTests
             Browser.Span("click").Click();
             Assert.AreEqual("success", Browser.Span("click").Text);
         }
+
+        [NUnit.Framework.Test]
+        public void TestDblClick()
+        {
+            Browser.Span("dblClick").FireEvent("ondblclick");
+            Assert.AreEqual("success", Browser.Span("dblClick").Text);
+        }
     }
 }
 

@@ -13,7 +13,12 @@ public partial class EventSystem : System.Web.UI.Page
 {
     protected void click_click(object sender, EventArgs e)
     {
-        click.Text = "success";
+        (sender as Ra.Widgets.Label).Text = "success";
+    }
+
+    protected void dblClick_dblClick(object sender, EventArgs e)
+    {
+        (sender as Ra.Widgets.Label).Text = "success";
     }
 }
 
