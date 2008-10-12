@@ -27,14 +27,49 @@ namespace Ra.Widgets
         public event EventHandler Click;
 
         /**
+         * Raised when control is double clicked
+         */
+        public event EventHandler DblClick;
+
+        /**
+         * Raised when mouse is pressed down on top of control
+         */
+        public event EventHandler MouseDown;
+
+        /**
+         * Raised when mouse is pressed down and released on top of control
+         */
+        public event EventHandler MouseUp;
+
+        /**
          * Raised when mouse is over the control, opposite of MouseOut
          */
         public event EventHandler MouseOver;
 
         /**
+         * Raised when mouse is moved over the control
+         */
+        public event EventHandler MouseMove;
+
+        /**
          * Raised when mouse is leaving the control, opposite of MouseOver
          */
         public event EventHandler MouseOut;
+
+        /**
+         * Raised when key is pressed down over an element and then released
+         */
+        public event EventHandler KeyPress;
+
+        /**
+         * Raised when key is pressed down over an element
+         */
+        public event EventHandler KeyDown;
+
+        /**
+         * Raised when key is released over an element
+         */
+        public event EventHandler KeyUp;
 
         // Only purpose is to instantiate the _styles field with the this as the parameter
         public RaWebControl()
@@ -50,13 +85,41 @@ namespace Ra.Widgets
                     if (Click != null)
                         Click(this, new EventArgs());
                     break;
+                case "dblclick":
+                    if (DblClick != null)
+                        DblClick(this, new EventArgs());
+                    break;
+                case "mousedown":
+                    if (MouseDown != null)
+                        MouseDown(this, new EventArgs());
+                    break;
+                case "mouseup":
+                    if (MouseUp != null)
+                        MouseUp(this, new EventArgs());
+                    break;
                 case "mouseover":
                     if (MouseOver != null)
                         MouseOver(this, new EventArgs());
                     break;
+                case "mousemove":
+                    if (MouseMove != null)
+                        MouseMove(this, new EventArgs());
+                    break;
                 case "mouseout":
                     if (MouseOut != null)
                         MouseOut(this, new EventArgs());
+                    break;
+                case "keypress":
+                    if (KeyPress != null)
+                        KeyPress(this, new EventArgs());
+                    break;
+                case "keydown":
+                    if (KeyDown != null)
+                        KeyDown(this, new EventArgs());
+                    break;
+                case "keyup":
+                    if (KeyUp!= null)
+                        KeyUp(this, new EventArgs());
                     break;
                 default:
                     throw new ApplicationException("Unknown event fired for control");
@@ -68,17 +131,59 @@ namespace Ra.Widgets
             string evts = string.Empty;
             if (Click != null)
                 evts += "['click', true]";
+            if (DblClick != null)
+            {
+                if (evts.Length != 0)
+                    evts += ",";
+                evts += "['dblclick']";
+            }
+            if (MouseDown != null)
+            {
+                if (evts.Length != 0)
+                    evts += ",";
+                evts += "['mousedown']";
+            }
+            if (MouseUp != null)
+            {
+                if (evts.Length != 0)
+                    evts += ",";
+                evts += "['mouseup']";
+            }
             if (MouseOver != null)
             {
                 if (evts.Length != 0)
                     evts += ",";
                 evts += "['mouseover']";
             }
+            if (MouseMove != null)
+            {
+                if (evts.Length != 0)
+                    evts += ",";
+                evts += "['mousemove']";
+            }
             if (MouseOut != null)
             {
                 if (evts.Length != 0)
                     evts += ",";
                 evts += "['mouseout']";
+            }
+            if (KeyPress != null)
+            {
+                if (evts.Length != 0)
+                    evts += ",";
+                evts += "['keypress']";
+            }
+            if (KeyDown != null)
+            {
+                if (evts.Length != 0)
+                    evts += ",";
+                evts += "['keydown']";
+            }
+            if (KeyUp != null)
+            {
+                if (evts.Length != 0)
+                    evts += ",";
+                evts += "['keyup']";
             }
             return evts;
         }

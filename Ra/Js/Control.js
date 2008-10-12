@@ -260,6 +260,17 @@ Ra.Control.prototype = {
           T.checkValueForKeyUp();
         }, 500);
       }
+    } else if( evt == 'mousemove' ) {
+      // This one too needs special handling
+      // We don't want to poll server EVERY time user is moving 
+      // mouse so we make sure we do it maximum 5 times per second
+      var T = this;
+      if( !this._hasStartedMoveTimer ) {
+        this._hasStartedMoveTimer = true;
+        setTimeout(function() {
+          T.callback(evt);
+        }, 200);
+      }
     } else {
       this.callback(evt);
     }
@@ -279,6 +290,8 @@ Ra.Control.prototype = {
   onFinishedRequest: function(response) {
     if( this._oldValue )
       delete this._oldValue;
+    if( this._hasStartedMoveTimer )
+      delete this._hasStartedMoveTimer;
     eval(response);
   },
 
