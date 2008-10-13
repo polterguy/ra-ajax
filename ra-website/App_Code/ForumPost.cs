@@ -166,7 +166,7 @@ namespace Entity
                         Header));
                 }
             }
-            catch (Exception err)
+            catch (Exception)
             {
                 ; // Do nothing to not shut down server...!
                 // TODO: Log and send me an alert email or something?
