@@ -1,27 +1,9 @@
 <?xml version="1.0"?>
 <project name="PublishWebsites" default="all" xmlns="http://nant.sf.net/release/0.85/nant.xsd">
 
-	<!-- Properties -->
-	<property name="debug" value="false" />
-
-	<property name="library.dir" value="Library" />
-	<property name="resources.dir" value="Resources" />
-	<property name="references.dir" value="References" />
-	<property name="output.dir" value="build_output" />
-
-	<property name="ra.name" value="Ra" />
-	<property name="ext.name" value="Extensions" />
-
-	<property name="samples.dir" value="Samples" />
-	<property name="samples.precompiled.dir" value="Samples_precompiled" />
-	<property name="ra.website.dir" value="ra-website" />
-	<property name="ra.website.precompiled.dir" value="ra-website_precompiled" />
-	<property name="resource.cacher.name" value="ResourceCacher" />
-	<property name="framework.dir" value="${framework::get-framework-directory('net-2.0')}" />
-	<!-- End Properties -->
-
 	<nant buildfile="Ra.build" />
-
+	<load-properties properties-file="build.properties" />
+	
 	<target name="all" depends="publish.samples,publish.ra.website" />
 
 	<target name="compile.resource.cacher" description="Compile the Resource Cacher used By the Websites">

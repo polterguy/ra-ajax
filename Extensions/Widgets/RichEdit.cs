@@ -29,7 +29,7 @@ namespace Ra.Extensions
         /**
          * Ke pressed and released
          */
-        public event EventHandler KeyUp;
+        public new event EventHandler KeyUp;
 
         /**
          * text (HTML) of control

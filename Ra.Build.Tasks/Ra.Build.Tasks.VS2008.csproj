@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GlobalPropertiesTask.cs" />
     <Compile Include="InsertTextTask.cs" />
     <Compile Include="CreateFileTask.cs" />
     <Compile Include="MinificationTask.cs" />

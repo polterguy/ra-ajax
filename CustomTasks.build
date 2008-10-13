@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<project name="CustomTasks" default="load.custom.tasks" xmlns="http://nant.sf.net/release/0.85/nant.xsd">
+
+	<target name="load.custom.tasks" description="Load the custom NAnt tasks">
+		<csc target="library" output="Ra.Build.Tasks/bin/release/Ra.Build.Tasks.dll" debug="false">
+			<sources>
+				<include name="Ra.Build.Tasks/**/*.cs" />
+			</sources>
+			<references>
+				<include name="References/NAnt.Core.dll" />
+			</references>
+		</csc>
+		<loadtasks assembly="Ra.Build.Tasks/bin/release/Ra.Build.Tasks.dll" />
+	</target>
+	
+</project>
