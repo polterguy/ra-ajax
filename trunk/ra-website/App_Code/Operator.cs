@@ -117,15 +117,15 @@ namespace Entity
             msg.Subject = subject;
             msg.Body = body;
             msg.To.Add(new MailAddress(this.Email));
-            msg.From = new MailAddress(ConfigurationSettings.AppSettings["fromEmailAddress"]);
-            SmtpClient smtp = new SmtpClient(ConfigurationSettings.AppSettings["smtpServer"]);
-            smtp.Port = Int32.Parse(ConfigurationSettings.AppSettings["smtpServerPort"]);
+            msg.From = new MailAddress(ConfigurationManager.AppSettings["fromEmailAddress"]);
+            SmtpClient smtp = new SmtpClient(ConfigurationManager.AppSettings["smtpServer"]);
+            smtp.Port = Int32.Parse(ConfigurationManager.AppSettings["smtpServerPort"]);
             
-            string userName = ConfigurationSettings.AppSettings["smtpServerUserName"];
+            string userName = ConfigurationManager.AppSettings["smtpServerUserName"];
             if (!string.IsNullOrEmpty(userName))
             {
                 smtp.Credentials = new NetworkCredential(userName,
-                    ConfigurationSettings.AppSettings["smtpServerPassword"]);
+                    ConfigurationManager.AppSettings["smtpServerPassword"]);
             }
             smtp.Send(msg);
         }
