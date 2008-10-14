@@ -3,10 +3,17 @@
 
 	<nant buildfile="PublishWebsites.build" />
 	<load-properties properties-file="build.properties" />
-	
-	<copy overwrite="true" file="Ra.sln" todir="${output.dir}" />
-	<copy overwrite="true" file="Ra.build" todir="${output.dir}" />
-	<copy overwrite="true" file="README.txt" todir="${output.dir}" />
+
+	<copy overwrite="true" todir="${output.dir}">
+		<fileset>
+			<include name="Ra.sln" />
+			<include name="Ra.build" />
+			<include name="README.txt" />
+			<include name="build.properties" />
+			<include name="CustomTasks.build" />
+			<include name="${references.dir}/NAnt.Core.dll" />
+		</fileset>
+	</copy>
 
 	<copy overwrite="true" todir="${output.dir}/${ra.name}">
 		<fileset basedir="${ra.name}">
@@ -47,20 +54,16 @@
 		</fileset>
 	</copy>
 
-	<copy
-		overwrite="true"
-		file="${references.dir}/NAnt.Core.dll"
-		todir="${output.dir}/${references.dir}" />
-
-	<copy
-		overwrite="true"
-		file="${ra.build.tasks.name}/bin/release/${ra.build.tasks.name}.dll"
-		todir="${output.dir}/${resources.dir}" />
+	<copy overwrite="true" 
+		  file="${ra.build.tasks.name}/bin/release/${ra.build.tasks.name}.dll" 
+		  todir="${output.dir}/${resources.dir}" />
 
 	<zip zipfile="${output.dir}/Ra-${ra.version}.zip">
 		<fileset basedir="${output.dir}">
 			<include name="Ra.sln" />
 			<include name="Ra.build" />
+			<include name="CustomTasks.build" />
+			<include name="build.properties" />
 			<include name="README.txt" />
 		</fileset>
 		<fileset basedir="${output.dir}/${ra.name}" prefix="${ra.name}">
@@ -89,13 +92,19 @@
 		</fileset>
 	</zip>
 
-	<delete dir="${output.dir}/${ra.name}" />
-	<delete dir="${output.dir}/${ext.name}" />
-	<delete dir="${output.dir}/${resource.cacher.name}" />
-	<delete dir="${output.dir}/${ra.build.tasks.name}" />
-	<delete dir="${output.dir}/${references.dir}" />
-	<delete file="${output.dir}/Ra.sln" />
-	<delete file="${output.dir}/Ra.build" />
-	<delete file="${output.dir}/README.txt" />
+	<delete>
+		<fileset basedir="${output.dir}">
+			<include name="${ra.name}/**" />
+			<include name="${ext.name}/**" />
+			<include name="${resource.cacher.name}/**" />
+			<include name="${ra.build.tasks.name}/**" />
+			<include name="${references.dir}/**" />
+			<include name="Ra.sln" />
+			<include name="Ra.build" />
+			<include name="README.txt" />
+			<include name="build.properties" />
+			<include name="CustomTasks.build" />
+		</fileset>
+	</delete>
 
 </project>

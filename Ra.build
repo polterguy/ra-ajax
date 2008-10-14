@@ -5,33 +5,30 @@
 	<load-properties properties-file="build.properties" />
 
 	<!-- Targets -->
-	<target name="all" depends="clean,init,jsmin,compile.lib" />
+	<target name="all" depends="clean,init,compile.lib.uncompressed,compile.lib.gzipped" />
 
 	<target name="clean" description="Remove Old Build Output Files">
 		<delete dir="${output.dir}" />
 	</target>
 
 	<target name="init" description="Necessary Initializations">
-		<mkdir dir="${output.dir}" />
-		<mkdir dir="${output.dir}/${library.dir}" />
 		<mkdir dir="${output.dir}/${resources.dir}" />
+		<mkdir dir="${output.dir}/${library.dir}/${gzipped.dir}" />
+		<mkdir dir="${output.dir}/${library.dir}/${uncompressed.dir}" />
 	</target>
 
-	<target name="jsmin" unless="${debug}" description="Minify The Library JS Files">
-		<jsmin verbose="true" gzip="true" todir="${output.dir}/${ra.name}/Js">
+	<target name="compile.lib.uncompressed" depends="clean,init" description="Compile the DLLs with uncompressed JS files">
+		<jsmin gzip="false" todir="${output.dir}/${ra.name}/Js">
 			<fileset basedir="${ra.name}/Js">
 				<include name="**/*.js" />
 			</fileset>
 		</jsmin>
-		<jsmin verbose="true" gzip="true" todir="${output.dir}/${ext.name}/Js">
+		<jsmin gzip="false" todir="${output.dir}/${ext.name}/Js">
 			<fileset basedir="${ext.name}/Js">
 				<include name="**/*.js" />
 			</fileset>
 		</jsmin>
-	</target>
-
-	<target name="compile.lib" depends="clean,init,jsmin" description="Compile The Library DLLs">
-		<csc verbose="false" target="library" output="${output.dir}/${library.dir}/${ra.name}.dll" debug="${debug}">
+		<csc verbose="false" target="library" output="${output.dir}/${library.dir}/${uncompressed.dir}/${ra.name}.dll" debug="${debug}">
 			<sources>
 				<include name="${ra.name}/**/*.cs" />
 				<exclude name="${ra.name}/obj/**/*.*" />
@@ -41,7 +38,7 @@
 				<include name="${output.dir}/${ra.name}/Js/**/*.js" unless="${debug}" />
 			</resources>
 		</csc>
-		<csc verbose="false" target="library" output="${output.dir}/${library.dir}/${ext.name}.dll" debug="${debug}">
+		<csc verbose="false" target="library" output="${output.dir}/${library.dir}/${uncompressed.dir}/${ext.name}.dll" debug="${debug}">
 			<sources>
 				<include name="${ext.name}/**/*.cs" />
 				<exclude name="${ext.name}/obj/**/*.*" />
@@ -51,12 +48,65 @@
 				<include name="${output.dir}/${ext.name}/Js/**/*.js" unless="${debug}" />
 			</resources>
 			<references>
-				<include name="${output.dir}/${library.dir}/${ra.name}.dll" />
+				<include name="${output.dir}/${library.dir}/${uncompressed.dir}/${ra.name}.dll" />
 			</references>
 		</csc>
+	</target>
+
+	<target name="compile.lib.gzipped" depends="clean,init" description="Compile the DLLs with GZipped JS files">
+		<jsmin gzip="true" todir="${output.dir}/${ra.name}/Js">
+			<fileset basedir="${ra.name}/Js">
+				<include name="**/*.js" />
+			</fileset>
+		</jsmin>
+		<jsmin gzip="true" todir="${output.dir}/${ext.name}/Js">
+			<fileset basedir="${ext.name}/Js">
+				<include name="**/*.js" />
+			</fileset>
+		</jsmin>
+		<csc verbose="false" target="library" output="${output.dir}/${library.dir}/${gzipped.dir}/${ra.name}.dll" debug="${debug}">
+			<sources>
+				<include name="${ra.name}/**/*.cs" />
+				<exclude name="${ra.name}/obj/**/*.*" />
+			</sources>
+			<resources failonempty="true" prefix="${ra.name}.Js">
+				<include name="${ra.name}/Js/**/*.js" if="${debug}" />
+				<include name="${output.dir}/${ra.name}/Js/**/*.js" unless="${debug}" />
+			</resources>
+		</csc>
+		<csc verbose="false" target="library" output="${output.dir}/${library.dir}/${gzipped.dir}/${ext.name}.dll" debug="${debug}">
+			<sources>
+				<include name="${ext.name}/**/*.cs" />
+				<exclude name="${ext.name}/obj/**/*.*" />
+			</sources>
+			<resources failonempty="true" prefix="${ext.name}.Js">
+				<include name="${ext.name}/Js/**/*.js" if="${debug}" />
+				<include name="${output.dir}/${ext.name}/Js/**/*.js" unless="${debug}" />
+			</resources>
+			<references>
+				<include name="${output.dir}/${library.dir}/${gzipped.dir}/${ra.name}.dll" />
+			</references>
+		</csc>
+		<file-create filename="${output.dir}/${library.dir}/${gzipped.dir}/ReadMe.txt">
+			<content>
+<![CDATA[The DLLs in this folder contain GZipped JavaScript files. If you want to use them in your website, 
+you must have the following method in your Global.asax:
+
+void Application_BeginRequest(object sender, EventArgs e)
+{
+	if (Request.Path.EndsWith("WebResource.axd"))
+	{
+		HttpContext.Current.Response.Cache.VaryByHeaders["Accept-Encoding"] = true;
+		HttpContext.Current.Response.Cache.SetExpires(DateTime.Now.AddYears(3));
+		HttpContext.Current.Response.Cache.SetCacheability(HttpCacheability.Public);
+		HttpContext.Current.Response.Cache.SetValidUntilExpires(false);
+            
+		HttpContext.Current.Response.AppendHeader("Content-Encoding", "gzip");
+	}
+}]]>
+			</content>
+		</file-create>
 		<delete dir="${output.dir}/${ra.name}" unless="${debug}" />
 		<delete dir="${output.dir}/${ext.name}" unless="${debug}" />
 	</target>
-	<!-- End Tragets -->
-	
 </project>
