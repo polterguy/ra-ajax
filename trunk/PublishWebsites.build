@@ -3,7 +3,7 @@
 
 	<nant buildfile="Ra.build" />
 	<load-properties properties-file="build.properties" />
-	
+
 	<target name="all" depends="publish.samples,publish.ra.website" />
 
 	<target name="compile.resource.cacher" description="Compile the Resource Cacher used By the Websites">
@@ -16,11 +16,6 @@
 	</target>
 
 	<target name="publish.samples" depends="compile.resource.cacher" description="Publish and Precompile the Samples Website">
-		<delete dir="${samples.dir}/bin" />
-		<copy file="${output.dir}/${library.dir}/${ra.name}.dll" todir="${samples.dir}/bin" />
-		<copy file="${output.dir}/${library.dir}/${ext.name}.dll" todir="${samples.dir}/bin" />
-		<copy file="${output.dir}/${resources.dir}/${resource.cacher.name}.dll" todir="${samples.dir}/bin" />
-
 		<copy overwrite="true" todir="${output.dir}/${samples.dir}">
 			<fileset basedir="${samples.dir}">
 				<include name="**/*.cs" />
@@ -29,7 +24,15 @@
 				<include name="**/*.ascx" />
 				<include name="**/*.master" />
 				<include name="media/**/*.*" />
-				<include name="bin/*.*" />
+			</fileset>
+		</copy>
+		
+		<mkdir dir="${output.dir}/${samples.dir}/bin" />
+		<copy flatten="true" todir="${output.dir}/${samples.dir}/bin">
+			<fileset basedir="${output.dir}">
+				<include name="${library.dir}/${gzipped.dir}/${ra.name}.dll" />
+				<include name="${library.dir}/${gzipped.dir}/${ext.name}.dll" />
+				<include name="${resources.dir}/${resource.cacher.name}.dll" />
 			</fileset>
 		</copy>
 
@@ -40,31 +43,38 @@
 		-->
 		<file-create overwrite="true" filename="${output.dir}/${samples.dir}/Global.asax">
 			<content>
-				<![CDATA[
-<%@ Application Language="C#" %>
+<![CDATA[<%@ Application Language="C#" %>
 <script runat="server">
 	void Application_BeginRequest(object sender, EventArgs e)
 	{
-		if (Request.Path.Contains("WebResource.axd"))
+		if (Request.Path.EndsWith("WebResource.axd"))
 		{
 			HttpContext.Current.Response.Cache.VaryByHeaders["Accept-Encoding"] = true;
 			HttpContext.Current.Response.Cache.SetExpires(DateTime.Now.AddYears(3));
 			HttpContext.Current.Response.Cache.SetCacheability(HttpCacheability.Public);
 			HttpContext.Current.Response.Cache.SetValidUntilExpires(false);
             
-			HttpContext.Current.Response.AppendHeader("Content-encoding", "gzip");
+			HttpContext.Current.Response.AppendHeader("Content-Encoding", "gzip");
 		}
 	}
-</script>
-				]]>
+</script>]]>
 			</content>
 		</file-create>
 
+		<echo message="Precompiling Website '${output.dir}/${samples.dir}' to '${output.dir}/${samples.precompiled.dir}'." />
 		<exec program="${framework.dir}/aspnet_compiler.exe"
-			commandline="-v ${samples.dir} -p ${output.dir}/${samples.dir} -u -f ${output.dir}/${samples.precompiled.dir} -c"
+			commandline="-v ${samples.dir} -p ${output.dir}/${samples.dir} -u -f ${output.dir}/${samples.precompiled.dir} -c -nologo"
 			if="${file::exists(framework.dir + '/aspnet_compiler.exe')}" />
 
-		<cssmin verbose="true" gzip="true" overwrite="true">
+		<copy flatten="true" overwrite="true" todir="${output.dir}/${samples.dir}/bin">
+			<fileset basedir="${output.dir}/${library.dir}/${uncompressed.dir}">
+				<include name="${ra.name}.dll" />
+				<include name="${ext.name}.dll" />
+			</fileset>
+		</copy>
+		<delete file="${output.dir}/${samples.dir}/Global.asax" />
+		
+		<cssmin gzip="${css.gzip}" overwrite="true">
 			<fileset basedir="${output.dir}/${samples.precompiled.dir}">
 				<include name="media/**/*.css" />
 			</fileset>
@@ -80,18 +90,6 @@
 	</target>
 
 	<target name="publish.ra.website" depends="compile.resource.cacher" description="Publish and Precompile the Ra-Ajax Website">
-		<delete dir="${ra.website.dir}/bin" />
-		<copy file="${output.dir}/${library.dir}/${ra.name}.dll" todir="${ra.website.dir}/bin" />
-		<copy file="${output.dir}/${library.dir}/${ext.name}.dll" todir="${ra.website.dir}/bin" />
-		<copy file="${output.dir}/${resources.dir}/${resource.cacher.name}.dll" todir="${ra.website.dir}/bin" />
-
-		<copy todir="${ra.website.dir}/bin">
-			<fileset basedir="${references.dir}">
-				<include name="*.dll" />
-				<exclude name="NAnt.Core.dll" />
-			</fileset>
-		</copy>
-
 		<copy overwrite="true" todir="${output.dir}/${ra.website.dir}">
 			<fileset basedir="${ra.website.dir}">
 				<include name="**/*.cs" />
@@ -100,7 +98,17 @@
 				<include name="**/*.ascx" />
 				<include name="**/*.master" />
 				<include name="media/**/*.*" />
-				<include name="bin/*.*" />
+			</fileset>
+		</copy>
+
+		<mkdir dir="${output.dir}/${ra.website.dir}/bin" />
+		<copy flatten="true" todir="${output.dir}/${ra.website.dir}/bin">
+			<fileset>
+				<include name="${output.dir}/${library.dir}/${gzipped.dir}/${ra.name}.dll" />
+				<include name="${output.dir}/${library.dir}/${gzipped.dir}/${ext.name}.dll" />
+				<include name="${output.dir}/${resources.dir}/${resource.cacher.name}.dll" />
+				<include name="${references.dir}/**/*.dll" />
+				<exclude name="${references.dir}/NAnt.Core.dll" />
 			</fileset>
 		</copy>
 
@@ -119,24 +127,25 @@
 			</insert-after>
 			<text-to-insert>
 				<![CDATA[
-if (Request.Path.Contains("WebResource.axd"))
+if (Request.Path.EndsWith("WebResource.axd"))
 {
 	HttpContext.Current.Response.Cache.VaryByHeaders["Accept-Encoding"] = true;
 	HttpContext.Current.Response.Cache.SetExpires(DateTime.Now.AddYears(3));
 	HttpContext.Current.Response.Cache.SetCacheability(HttpCacheability.Public);
 	HttpContext.Current.Response.Cache.SetValidUntilExpires(false);
     
-	HttpContext.Current.Response.AppendHeader("Content-encoding", "gzip");
+	HttpContext.Current.Response.AppendHeader("Content-Encoding", "gzip");
 }
 				]]>
 			</text-to-insert>
 		</file-insert-text>
 
+		<echo message="Precompiling Website '${output.dir}/${ra.website.dir}' to '${output.dir}/${ra.website.precompiled.dir}'." />
 		<exec program="${framework.dir}/aspnet_compiler.exe"
-			commandline="-v ${ra.website.dir} -p ${output.dir}/${ra.website.dir} -u -f ${output.dir}/${ra.website.precompiled.dir} -c"
+			commandline="-v ${ra.website.dir} -p ${output.dir}/${ra.website.dir} -u -f ${output.dir}/${ra.website.precompiled.dir} -c -nologo"
 			if="${file::exists(framework.dir + '/aspnet_compiler.exe')}" />
 
-		<cssmin verbose="true" gzip="true" overwrite="true">
+		<cssmin gzip="${css.gzip}" overwrite="true">
 			<fileset basedir="${output.dir}/${ra.website.precompiled.dir}">
 				<include name="media/**/*.css" />
 			</fileset>

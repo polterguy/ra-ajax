@@ -41,7 +41,7 @@ namespace ResourceCacher
                     context.Response.ContentType = "image/gif";
                     break;
                 case "css":
-                    HttpContext.Current.Response.AppendHeader("Content-encoding", "gzip");
+                    HttpContext.Current.Response.AppendHeader("Content-Encoding", "gzip");
                     context.Response.ContentType = "text/css";
                     break;
                 case "png":

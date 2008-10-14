@@ -90,7 +90,7 @@ namespace Ra.Build.Tasks
                 return;
 
             using (StreamWriter sw = new StreamWriter(_fileName, false, System.Text.Encoding.UTF8))
-                sw.Write(Content.Xml.InnerText);
+                sw.Write(_content.Xml.InnerText);
                 
             if (!File.Exists(_fileName))
                 Log(Level.Info, string.Format(ERROR_CREATING_FILE, _fileName));

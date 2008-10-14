@@ -112,14 +112,19 @@ namespace Ra.Build.Tasks
                 
                 using (StreamWriter sw = new StreamWriter(_fileName, false, System.Text.Encoding.UTF8))
                 {
-                    if (_insertAfter != null)
-                        sw.Write(fileContent.Replace(
-                            _insertAfter.Xml.InnerText, _insertAfter.Xml.InnerText + Content.Xml.InnerText));
-                    else if (_insertBefore != null)
-                        sw.Write(fileContent.Replace(
-                            _insertBefore.Xml.InnerText, Content.Xml.InnerText + _insertBefore.Xml.InnerText));
-                }
+                    string content = _content.Xml.InnerText;
 
+                    if (_insertAfter != null)
+                    {
+                        string insertAfter = _insertAfter.Xml.InnerText;
+                        sw.Write(fileContent.Replace(insertAfter, insertAfter + content));
+                    }
+                    else if (_insertBefore != null)
+                    {
+                        string insertBefore = _insertBefore.Xml.InnerText;
+                        sw.Write(fileContent.Replace(insertBefore, content + insertBefore));
+                    }
+                }
                 Log(Level.Info, string.Format(INFO_MSG, _fileName));
             }
         }
