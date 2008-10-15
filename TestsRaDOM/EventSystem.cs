@@ -32,6 +32,21 @@ namespace NUnitTests
             Browser.Span("keyDown").FireEvent("onkeydown");
             Assert.AreEqual("success", Browser.Span("keyDown").Text);
         }
+
+        [NUnit.Framework.Test]
+        public void TestKeyPress()
+        {
+            Browser.Span("KeyPress").FireEvent("onkeypress");
+            Assert.AreEqual("success", Browser.Span("KeyPress").Text);
+        }
+
+        [NUnit.Framework.Test]
+        public void DOESNT_WORK_IN_IE7_TestKeyUp()
+        {
+            Browser.Span("KeyUp").FireEvent("onkeydown");
+            Browser.Span("KeyUp").FireEvent("onkeyup");
+            Assert.AreEqual("success", Browser.Span("KeyUp").Text);
+        }
     }
 }
 
