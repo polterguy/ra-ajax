@@ -1,0 +1,89 @@
+Comparing the performance of the different Ajax TreeView controls in this world
+
+<img src="http://ra-ajax.org/media/UserImages/tree.jpg" alt="Redwood TreeView and Ajax..." />
+
+Sometimes some guy who for some reasons doesn't like .Net, Ra-Ajax, WebControls or Managed Ajax Frameworks says something bad about "x, y or z" in regards to Ra-Ajax. And while mostly the stuff being said is subjective and not really possible to argue against without going into really long debates which often will conclude in that "we still disagree". Still sometimes people just blatantly LIE about Ra-Ajax and some aspect about it. 
+
+Just now a couple of hours ago some guy at DZone said that <em>"he couldn't believe how slow"</em> our <a href="http://ra-ajax.org/samples/Ajax-TreeView.aspx">Ajax TreeView control</a> was - no names mentioned. And while I probably shouldn't do this, especially since the guy is obviously according to his own blog a Java guy and obviously really far into the "Language War" thing (which I am NOT into) and probably just afraid of that his "own platform will loose" or something stupid like that, I really cannot help myself. Therefor I've created a comparison chart against all the most commonly known Ajax TreeView implementations in any language here to give <strong>cold hard facts</strong> about how the Ra-Ajax TreeView actually compares to other TreeView controls on this planet. Both ASP.NET TreeView controls and "non-ASP.NET" TreeView Controls. This is something I think others in the process of choosing an Ajax Framework will be interested in anyway. So here it is...
+
+All tests here are run with an empty cache in FireFox 3.0.3 with FireBug installed. I empty the cache by going to Google and choose "Clear Private Data" before pasting the link directly into the address bar of the FireFox Window which leads me directly to the Ajax TreeView samples I have found before and copied the link to. I am located in Norway which probably means that the Ra-Ajax.org server which also is located in Norway probably will do less HTTP "hops" to get from my computer to the server and vice versa - which might slightly bend the "seconds" in Ra-Ajax' advantage. This might also make different numbers if you reproduce this test from outside of Norway. But apart from that I think the test should be relatively neutral.
+
+Note though that this is NOT a "feature" or "looks" comparison. Since I obviously am WAY to biased in regards to Ra-Ajax it wouldn't be fair of me to write about anything else than the "neutral" information I can obtain - which means that I will be giving hard facts about the results of how the different TreeView samples are doing according to FireBug in regards to; <em>initial page-load times, number of CSS images, times to fetch new nodes from the server, JavaScript size and YSlow score</em>. I am way too biased to give anything but neutral information, so I will only give "hard facts" in such a way that others might also reproduce the results in regards to performance only. And performance is not the only thing you should consider when choosing an Ajax TreeView control...
+
+<h2>The ExtJS TreeView sample</h2>
+<a href="http://extjs.com/deploy/dev/examples/tree/reorder.html">Link</a>
+<ul><li>Initial pageload time is 5.590 seconds</li><li>YSlow score is D (66)</li><li>Amount of JavaScript is 164.0KB</li><li>There are 6 CSS images on the page</li><li>And to expand the first node takes 342MS - uses XHR</li></ul>
+The ExtJS TreeView control is very "beautiful" though and has a lot of features like Drag and Drop etc...
+
+
+<h2>jQuery TreeView plugin</h2>
+<a href="http://jquery.bassistance.de/treeview/demo/">Link</a>
+<ul><li>Initial pageload time is 1.294 seconds</li><li>YSlow score is F (54)</li><li>Amount of JavaScript is 107.2KB</li><li>There are 12 CSS images (on the page in total)</li><li>And to expand the first node is *INSTANT* - No animations, but also it doesn't fetch items from the server so items are rendered statically (probably)</li></ul>
+I tried to click mostly everything on that page but it doesn't seem to trigger an Ajax Callback, so I am not really sure if this control *can* load items dynamically from the server...
+
+
+<h2>Dojo TreeView control</h2>
+<a href="http://archive.dojotoolkit.org/nightly/dojotoolkit/dijit/tests/tree/test_Tree_v1.html">Link</a>
+<ul><li>Initial pageload time is 11.682 seconds</li><li>YSlow score is D (66)</li><li>Amount of JavaScript is 28.1 KB(***)</li><li>There are 13 CSS images</li><li>It doesn't do XHR when featching nodes, so I am not sure if this one either can download items dynamically from the server</li><li>Though the Dojo TreeView had actually **16** XMLHTTPRequests just to initially load the page. Which might explain the very long initial page-load...</li></ul>
+(***) Though Dojo did in addition download JS through XHR which made the actual figures orders of magnitudes higher than the "reported" figures...
+
+Also the Dojo TreeView is very beautiful and has some really cool features like key navigation and expanding etc...
+
+
+<h2>Telerik TreeView</h2>
+<a href="http://demos.telerik.com/ASPNET/Prometheus/Treeview/Examples/Programming/ClientLoadOnDemandSql/DefaultCS.aspx">Link</a>
+<ul><li>Initial pageload time is 4.709 seconds</li><li>YSlow score is D (63)</li><li>Amount of JavaScript is 107.8K</li><li>There are 17 CSS images (and another 31 Images)</li><li>To expand the first node takes 225MS (9 items)</li></ul>
+
+<h2>Infragistics TreeView</h2>
+<a href="http://samples.infragistics.com/2008.2/webfeaturebrowser/default.htm">Link</a>
+<ul><li>Initial page load time is 7.959 seconds (see comments)</li><li>YSlow score is F (36) - see comments</li><li>Amount of JavaScript is 1141.3KB - see comments</li><li>There are 14 CSS Images</li><li>Infragistics TreeView doesn't either seem to have "Dynamic Loading" of items</li></ul>
+The Infragistics TreeView was actually *impossible* to go to "directly" since it apparently loaded its samples through IFrames or something, so there might be some "extra stuff" in those figures which are not needed to create a "bare minimum" TreeView control. However the total amount of download with images, HTML, CSS, JS and so on for that sample was a staggering 2MB. And it almost made FireFox un-responsive.
+
+The Infragistics obviously in regards to performance is in its "own category"...
+
+
+<h2>Zapatec TreeView</h2>
+<strong>update:</strong> We were contacted by Andrew Kulinich the developer of the Zapatec Tree widget and he provided us with another page that he thinks is more appropriate for this comparison and the results below were modified accordingly.
+<a href="http://www.zapatec.com/website/ajax/zptree/demo/basic.html">Link</a>
+<ul><li>Initial page load time is 14.367 seconds</li><li>YSlow score is D (60)</li><li>There are 133.5KB of JavaScript on that page</li><li>There are 4 CSS images</li><li><strike>And to expand the first node takes 430MS</strike> nodes in this page do not dynamically load their child nodes</li></ul>
+
+<h2>Ra-Ajax TreeView</h2>
+<a href="http://ra-ajax.org/samples/Ajax-TreeView.aspx">Ra-Ajax</a>
+<ul><li>Initial page load is 1.051 seconds</li><li>YSlow score is B (81)</li><li>There are 31.4KB of JavaScript (**)</li><li>There are 4 CSS images</li><li>To expand the first node takes 47MS</li></ul>
+(**) - Includes almost entire JS for entire Control-set in Ra - ~20 Ajax Controls. It also includes Google Analytics use to track page hits which is Google's JavaScript.
+
+If you compare Ra-Ajax with the worst performing TreeView sample (Infragistics) it has less than 3 PERCENT of the amount of JavaScript. And if you compare it with the best performing TreeView (jQuery - Dojo downloads JS through XHR requests afterwards) it has actually <strong>less than 35 percent of the JavaScript</strong>.
+
+Here are the results inside of a table so that you can more easily compare the different TreeView implementations.
+
+<table><tr style="background-color:#eee;"><th></th><th>Initial page-load</th><th>YSlow score</th><th>JavaScript</th><th>CSS images</th><th>Expanding first node</th></tr><tr style="background-color:#fafafa;"><td style="vertical-align:top;"><a href="http://extjs.com/deploy/dev/examples/tree/reorder.html">ExtJS</a></td><td style="vertical-align:top;">5.590</td><td style="vertical-align:top;">66 - D</td><td style="vertical-align:top;">164.0 KB</td><td style="vertical-align:top;">6</td><td style="vertical-align:top;">0.342</td></tr><tr style="background-color:#eee;"><td style="vertical-align:top;"><a href="http://jquery.bassistance.de/treeview/demo/">jQuery</a></td><td style="vertical-align:top;">1.294</td><td style="vertical-align:top;">54 - F</td><td style="vertical-align:top;">108.2 KB</td><td style="vertical-align:top;">12</td><td style="vertical-align:top;">- (no data)</td></tr><tr style="background-color:#fafafa;"><td style="vertical-align:top;"><a href="http://archive.dojotoolkit.org/nightly/dojotoolkit/dijit/tests/tree/test_Tree_v1.html">Dojo</a></td><td style="vertical-align:top;">11.682</td><td style="vertical-align:top;">66 - D</td><td style="vertical-align:top;">28.1 KB (*)</td><td style="vertical-align:top;">13</td><td style="vertical-align:top;">- (no data)</td></tr><tr style="background-color:#eee;"><td style="vertical-align:top;"><a href="http://demos.telerik.com/ASPNET/Prometheus/Treeview/Examples/Programming/ClientLoadOnDemandSql/DefaultCS.aspx">Telerik</a></td><td style="vertical-align:top;">4.709</td><td style="vertical-align:top;">63 - D</td><td style="vertical-align:top;">107.8 KB</td><td style="vertical-align:top;"><span style="color:Red;">17</span></td><td style="vertical-align:top;">0.225</td></tr><tr style="background-color:#fafafa;"><td style="vertical-align:top;"><a href="http://samples.infragistics.com/2008.2/webfeaturebrowser/default.htm">Infragistics</a></td><td style="vertical-align:top;">7.959</td><td style="vertical-align:top;"><span style="color:Red;">36 - F</span></td><td style="vertical-align:top;"><span style="color:Red;">1141.3 KB</span></td><td style="vertical-align:top;">14</td><td style="vertical-align:top;">- (no data)</td></tr><tr style="background-color:#eee;"><td style="vertical-align:top;"><a href="http://www.zapatec.com/website/main/products/prod3/demo.jsp#load_data.html">Zapatec</a></td><td style="vertical-align:top;"><span style="color:Red;">13.416</span></td><td style="vertical-align:top;">45 - F</td><td style="vertical-align:top;">253.1 KB</td><td style="vertical-align:top;">9</td><td style="vertical-align:top;"><span style="color:Red;">0.430</span></td></tr><tr style="background-color:#fafafa;"><td style="vertical-align:top;"><a href="http://ra-ajax.org/samples/Ajax-TreeView.aspx">Ra-Ajax</a></td><td style="vertical-align:top;"><span style="color:#00dd00;">1.051</span></td><td style="vertical-align:top;"><span style="color:#00dd00;">81 - B</span></td><td style="vertical-align:top;"><span style="color:#00dd00;">31.4 KB<span> (*)</td><td style="vertical-align:top;"><span style="color:#00dd00;">4</span></td><td style="vertical-align:top;"><span style="color:#00dd00;">0.047</span></td></tr></table>
+"Winners" in each category are in green, while "loosers" are in red. Though Ra-Ajax wins on every single parameter here, so this is quite easy.
+
+(*) Dojo had 16 initial XHR requests downloading JS - so numbers are probably orders of magnitudes higher than "reported"...
+
+Ra-Ajax is the ONLY TreeView sample with a higher YSlow score than D. Ra-Ajax scores B here and have a YSlow score of 15 more points than the "second best" here (ExtJS and Dojo)
+
+Ra-Ajax is the definitely fastest TreeView control to initially load and challenged ONLY by the jQuery TreeView control. Still the jQuery TreeView is more than 20 percent "behind"...
+
+Ra-Ajax has apart from the ones which doesn't show "dynamically loading TreeNodes" more than 4 times as fast fetching of dynamic nodes as the "second best". Also the *SECOND* best TreeView control in regards to JavaScript size (jQuery - Dojo excluded because it downloads JS in XHR requests) actually have <strong>*341 percent* more JavaScript</strong> than Ra-Ajax.
+
+And apart from the jQuery, Telerik and Ra-Ajax all the TreeView samples have *zero* search-engine visibility, mostly due to rendering TreeView nodes in JavaScript instead of HTML markup. The Telerik, Dojo, Infragistics and Zapatec TreeView controls rendered their TreeViews either using SPAN or *TABLE* HTML elements. (ul/li is considered "best practice" here)
+
+In regards to the tests in general. I was doing these tests in Norway and my servers are also in Norway so I guess when going over the Atlantic to the US (where I suspect most of the other samples are) you might expect a couple of "extra hops" which slows things down. And this might have "favored" some of the results in regards to Ra-Ajax slightly. 
+
+I really shouldn't "conclude" but one funny observation is that the Closed Source TreeView controls (Infragistics, Telerik, Zapatec) seemed to be apart from Telerik's TreeView which was "almost good" WAY worse than the "free" and Open Source TreeView controls. And in regards to "cold hard fact" Ra-Ajax (which is an LGPL/NON-commercial TreeView) <strong>kicked but BIG-TIME! On ALL parameters</strong>. And if you think I did the test with some "wrong parameters" or something like that then I would like you to suggest other parameters that I should add to the matrix, I'd be more than happy to add other parameters to the list...
+
+Also the samples in the links will probably be updated, their performance might increase/decrease due to new features and bugfixes and so over time. But these where the exact figures as of the 9th of October 2008.
+
+Now in regards to which TreeView control you should choose. There are a *gazillion* things you should consider when choosing an Ajax TreeView control. Like for instance; <em>How big community does this framework have, how many developers does this framework have, can I get professional support, who is backing this framework, how portable is this framework, does this framework work with MY programming language of choice and so on, how flexible is this TreeView control</em>. In addition to the subjective parameters like <em>"how beautiful etc is this TreeView control"</em>...
+
+The above test doesn't really say anything in regards to "which framework" you should choose, but performance is definitely something you would want to also consider when choosing a TreeView and an Ajax Framework in general. And if you think I forgot "your favorite TreeView control" then please let me know and I will update the table...
+
+These are cold hard facts and the next time some jackass with an agenda claims that "our TreeView is slow" at least I have something to slam in his face...
+
+
+Good night...
+
+Thomas
+
+
