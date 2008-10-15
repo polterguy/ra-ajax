@@ -25,6 +25,16 @@ public partial class EventSystem : System.Web.UI.Page
     {
         (sender as Ra.Widgets.Label).Text = "success";
     }
+
+    protected void KeyPress_KeyPress(object sender, EventArgs e)
+    {
+        (sender as Ra.Widgets.Label).Text = "success";
+    }
+
+    protected void KeyUp_KeyUp(object sender, EventArgs e)
+    {
+        (sender as Ra.Widgets.Label).Text = "success";
+    }
 }
 
 
