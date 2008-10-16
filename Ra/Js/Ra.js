@@ -379,7 +379,7 @@ Ra.XHR.prototype = {
   start: function() {
 
     // Getting transport
-    this.xhr = (XMLHttpRequest && new XMLHttpRequest()) || 
+    this.xhr = (window.XMLHttpRequest && new XMLHttpRequest()) || 
       new ActiveXObject('Msxml2.XMLHTTP') || 
       new ActiveXObject('Microsoft.XMLHTTP');
 
