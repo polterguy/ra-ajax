@@ -284,7 +284,14 @@ namespace RaWebsite
             Ra.Widgets.HiddenField hid = (sender as System.Web.UI.Control).Parent.Controls[1] as Ra.Widgets.HiddenField;
             if (hid == null) // Mono doesn't add a Literal Control if you create space between controls...
                 hid = (sender as System.Web.UI.Control).Parent.Controls[0] as Ra.Widgets.HiddenField;
-            int blogId = Int32.Parse(hid.Value);
+            Session["blogIdToDelete"] = Int32.Parse(hid.Value);
+            confirmDeleteWindow.Visible = true;
+        }
+
+        private void DeleteBlogPost(int blogId)
+        {
+            if (blogId <= -1)
+                return;
             Entity.Blog blog = Entity.Blog.FindOne(Expression.Eq("Id", blogId));
             blog.Delete();
 
@@ -298,6 +305,18 @@ namespace RaWebsite
             DataBindBlogs(CurrentBlogPage);
             blogWrapper.ReRender();
             new EffectFadeIn(blogWrapper, 400).Render();
+        }
+
+        protected void cancelDeleteButton_Click(object sender, EventArgs e)
+        {
+            confirmDeleteWindow.Visible = false;
+        }
+
+        protected void confirmDeleteButton_Click(object sender, EventArgs e)
+        {
+            DeleteBlogPost((int)Session["blogIdToDelete"]);
+            Session["blogIdToDelete"] = -1;
+            confirmDeleteWindow.Visible = false;
         }
 
         protected void btnCancelSave_Click(object sender, EventArgs e)
