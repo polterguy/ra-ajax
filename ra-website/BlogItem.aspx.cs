@@ -45,7 +45,7 @@ namespace RaWebsite
                 Header.Controls.Add(litRss);
 
                 // Finding previous blog
-                Entity.Blog previousBlog = Entity.Blog.FindFirst(Order.Desc("Id"), Expression.Lt("Id", blog.Id));
+                Entity.Blog previousBlog = Entity.Blog.FindFirst(Order.Desc("Id"), Expression.Lt("Id", blog.Id), Expression.Eq("Operator", blog.Operator));
                 if (previousBlog != null)
                 {
                     previous.HRef = previousBlog.Url;
@@ -55,7 +55,7 @@ namespace RaWebsite
                     previous.Visible = false;
 
                 // Finding next blog
-                Entity.Blog nextBlog = Entity.Blog.FindFirst(Order.Asc("Id"), Expression.Gt("Id", blog.Id));
+                Entity.Blog nextBlog = Entity.Blog.FindFirst(Order.Asc("Id"), Expression.Gt("Id", blog.Id), Expression.Eq("Operator", blog.Operator));
                 if (nextBlog != null)
                 {
                     next.HRef = nextBlog.Url;
