@@ -45,9 +45,10 @@
 			<content>
 <![CDATA[<%@ Application Language="C#" %>
 <script runat="server">
-	void Application_BeginRequest(object sender, EventArgs e)
+	void Application_EndRequest(object sender, EventArgs e)
 	{
-		if (Request.Path.EndsWith("WebResource.axd"))
+		if (Request.Path.ToLowerInvariant().EndsWith("webresource.axd") && 
+            HttpContext.Current.Response.ContentType.ToLowerInvariant() == "text/javascript")
 		{
 			HttpContext.Current.Response.Cache.VaryByHeaders["Accept-Encoding"] = true;
 			HttpContext.Current.Response.Cache.SetExpires(DateTime.Now.AddYears(3));
@@ -122,12 +123,13 @@
 			filename="${output.dir}/${ra.website.dir}/Global.asax">
 			<insert-after>
 				<![CDATA[
-    void Application_BeginRequest(object sender, EventArgs e)
+    void Application_EndRequest(object sender, EventArgs e)
     { ]]>
 			</insert-after>
 			<text-to-insert>
 				<![CDATA[
-if (Request.Path.EndsWith("WebResource.axd"))
+if (Request.Path.ToLowerInvariant().EndsWith("webresource.axd") && 
+	HttpContext.Current.Response.ContentType.ToLowerInvariant() == "text/javascript")
 {
 	HttpContext.Current.Response.Cache.VaryByHeaders["Accept-Encoding"] = true;
 	HttpContext.Current.Response.Cache.SetExpires(DateTime.Now.AddYears(3));
