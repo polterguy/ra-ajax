@@ -30,3 +30,4 @@ void Application_EndRequest(object sender, EventArgs e)
 </pre>
 We simply upon the end of a Request check if it is a WebResource.axd request and if the type of the embedded resource is "text/javascript", if both are true, we enable some caching and most importantly at the last line of code we set the Content-Encoding header to gzip to indicate to the client that this resource is gzipped, and that's it.
 
+Regarding the gzipping itself, I blogged about our <a href="http://ra-ajax.org/custom-nant-jsmin-task-for-minifying-javascript-files.blog">custom JavaScript Minification NAnt Task</a> before, it now supports optional gzipping of the JavaScript files after minification. We also createed a CSS minification custom NAnt task that supports optional gzipping as well. Our <a href="http://code.google.com/p/ra-ajax/downloads/list">download</a> includes the source code of these NAnt custom tasks, you can use, modify and republish them as you like.
