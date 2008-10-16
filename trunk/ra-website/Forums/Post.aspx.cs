@@ -35,7 +35,7 @@ namespace RaWebsite
                 if (post == null)
                     Response.Redirect("Forums.aspx", true);
                 headerParent.InnerHtml = post.Header;
-                dateParent.InnerHtml = string.Format("{0} {1}", post.Operator.Signature == string.Empty ? string.Empty : post.Operator.Signature + " -", post.Created.ToString("d.MMM yy HH:mm"));
+                dateParent.InnerHtml = string.Format("{0} {1}", post.Operator.Signature == string.Empty ? string.Empty : post.Operator.Signature + " -", post.Created.ToString("d.MMM yy HH:mm", System.Globalization.CultureInfo.InvariantCulture));
                 contentParent.InnerHtml = post.Body;
                 operatorInfo.InnerHtml =
                     string.Format("Posted by; {0} who has {1} posts",
