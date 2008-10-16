@@ -92,9 +92,10 @@
 <![CDATA[The DLLs in this folder contain GZipped JavaScript files. If you want to use them in your website, 
 you must have the following method in your Global.asax:
 
-void Application_BeginRequest(object sender, EventArgs e)
+void Application_EndRequest(object sender, EventArgs e)
 {
-	if (Request.Path.EndsWith("WebResource.axd"))
+	if (Request.Path.ToLowerInvariant().EndsWith("webresource.axd") && 
+		HttpContext.Current.Response.ContentType.ToLowerInvariant() == "text/javascript")
 	{
 		HttpContext.Current.Response.Cache.VaryByHeaders["Accept-Encoding"] = true;
 		HttpContext.Current.Response.Cache.SetExpires(DateTime.Now.AddYears(3));

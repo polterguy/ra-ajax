@@ -69,7 +69,7 @@
     { 
     }
 
-    void Application_BeginRequest(object sender, EventArgs e)
+    void Application_EndRequest(object sender, EventArgs e)
     { 
     }
 
