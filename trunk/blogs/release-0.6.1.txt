@@ -1,0 +1,25 @@
+Ra-Ajax 0.6.1 Released
+
+A new version of <a href="http://code.google.com/p/ra-ajax/downloads/list">Ra-Ajax</a> was just released. This release contains (besides several bug fixes) a new <a href="http://ra-ajax.org/samples/Ajax-Menu.aspx">Menu widget</a> and huge performance improvements with GZip compression for our JavaScript and CSS.
+
+<h2>Peformance Boost with GZip Compression</h2>
+We now GZip our embedded JavaScript files and the CSS for our website, more detailed info about this feature and how you can use it in your own web application can be found <a href="http://ra-ajax.org/webresource-axd-and-javascript-gzip-compression-a-simple-solution.blog">in this post</a>. As part of the <a href="http://code.google.com/p/ra-ajax/downloads/list">download</a> we ship two sets of precompiled library dlls one set with minified and GZipped embedded JavaScript files and another with minification only. 
+
+With this new feature we now have even higher YSlow performance grades:
+
+* <a href="http://ra-ajax.org/samples/">Samples Homepage</a>: A (90)
+* <a href="http://ra-ajax.org/samples/Effects.aspx">Ajax Effects</a>: A (90)
+* <a href="http://ra-ajax.org/samples/Ajax-Comet.aspx">Ajax Comet</a>: B (88)
+* <a href="http://ra-ajax.org/samples/Ajax-TreeView.aspx">Ajax Tree</a>: B (87)
+* <a href="http://ra-ajax.org/samples/Ajax-Menu.aspx">Ajax Menu (New Widget)</a>: A (90)
+
+The size of our core JavaScript (without the Extension widgets) is now only 7.07 KB (GZipped) and including our Extension widgets, the size of the entire JavaScript is 9.28 KB (Gzipped). Yes, less than 10 KB of JavaScript :) For a <a href="http://ra-ajax.org/managed-ajax-a-new-approach-to-ajax.blog">Managed Ajax</a> library we believe these numbers are really cool and hard to beat. Also the size of the CSS for our samples website is now 3.6 KB (GZipped). I encourage you to use <a href="http://developer.yahoo.com/yslow">YSlow</a> to inspect our <a href="http://ra-ajax.org/samples/">samples</a> and website yourself.
+
+<h2>Ra-Ajax Menu</h2>
+Our new Menu widget has a very simillar API to the <a href="http://ra-ajax.org/samples/Ajax-TreeView.aspx">Tree widget</a> we shipped previously. Like the Tree widget as well, it renders UL and LI HTML elements which makes it really easy to skin. Check out our new <a href="http://ra-ajax.org/samples/Ajax-Menu.aspx">Ajax Menu Sample</a> and let us know what you think.
+
+<h2>WatiN</h2>
+We rely on <a href="http://watin.sourceforge.net/">WatiN</a> every release to ensure that we don't introduce new bugs or re-introduce previously fixed bugs to our library. WatiN facilitates automated web application testing for .NET and we think it is really amazing. A big thank you to Jeroen van Menen, the lead developer behind WatiN, first and foremost for WatiN and also for helping us with an IE6 bug that was fixed in this release. Thanks a lot Jeroen :)
+
+
+We hope you like these new features and give Ra-Ajax a try if you didn't already.
