@@ -147,6 +147,8 @@ namespace Samples
             new EffectSize(pnl, 500, 150, 120)
                 .JoinThese(new EffectHighlight())
                 .Render();
+
+            lblCSS.Text = "Easter egg ;)";
         }
 
         protected void lnkCool2_Click(object sender, EventArgs e)
@@ -155,6 +157,8 @@ namespace Samples
             new EffectSize(pnl, 500, 250, 150)
                 .JoinThese(new EffectHighlight())
                 .Render();
+
+            lblCSS.Text = "Easter egg ;)";
         }
 
         protected void allowMultiSelectionCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -208,9 +212,9 @@ namespace Samples
                 case "css":
                     return "Brilliant way to separate looks and content by our friends from Opera";
                 case "why_cool":
-                    return "Just proof of that you can combine controls with TreeViewItems";
+                    return "Just proof of that you can combine controls with TreeViewItems! Try to CLICK those LinkButtons...";
                 case "why_cool2":
-                    return "Another proof";
+                    return "Another proof! Try to CLICK those LinkButtons...";
                 case "bad":
                     return "Evil attempts to try to shut down the Open Web";
                 case "flex":
