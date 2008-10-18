@@ -44,6 +44,11 @@ namespace Ra.Extensions
             base.OnInit(e);
         }
 
+        public RaWebControl ExpanderControl
+        {
+            get { return _expander; }
+        }
+
         protected override void CreateChildControls()
         {
             CreateCompositionControls();

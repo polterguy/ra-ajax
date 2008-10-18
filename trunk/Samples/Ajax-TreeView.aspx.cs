@@ -16,6 +16,25 @@ namespace Samples
 {
     public partial class TreeView : System.Web.UI.Page
     {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            // Here you can see that you can in addition to adding up Behaviors in
+            // .ASPX markup also add up Behaviors in codebehind, though it you add them
+            // up in codebehind they will be considered "dynamically added controls"
+            // which means all "normal rules" of dynamically added controls exists
+            // and you must re-add them on every callback/postback just as you would
+            // do with other dynamic controls...
+            // Since the "Huge" TreeNode spends quite some time doing its stuff we
+            // add up a BehaviorUpdater to its ExpanderControl (since we're expanding
+            // nodes in the tree by clicking the plus sign and not the whole node)
+            // to make sure it will animate nicely when being asked for new nodes...
+            BehaviorUpdater updater = new BehaviorUpdater();
+            updater.ID = "updaterForHuge";
+            updater.Color = Color.FromArgb(80, 80, 80);
+            updater.Delay = 200;
+            huge_collection.ExpanderControl.Controls.Add(updater);
+        }
+
         protected void good_2_GetChildNodes(object sender, EventArgs e)
         {
             // Item that was expanded
@@ -122,9 +141,20 @@ namespace Samples
             }
         }
 
-        protected void lnk_Click(object sender, EventArgs e)
+        protected void lnkCool1_Click(object sender, EventArgs e)
         {
             (sender as LinkButton).Text = "I was CLICKED! :)";
+            new EffectSize(pnl, 500, 150, 120)
+                .JoinThese(new EffectHighlight())
+                .Render();
+        }
+
+        protected void lnkCool2_Click(object sender, EventArgs e)
+        {
+            (sender as LinkButton).Text = "I was CLICKED! :)";
+            new EffectSize(pnl, 500, 250, 150)
+                .JoinThese(new EffectHighlight())
+                .Render();
         }
 
         protected void allowMultiSelectionCheckBox_CheckedChanged(object sender, EventArgs e)
