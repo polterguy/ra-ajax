@@ -71,10 +71,10 @@
                             CSS
                             <ext:TreeNodes runat="server">
                                 <ext:TreeNode runat="server" ID="why_cool">
-                                    <ra:LinkButton runat="server" ID="lnkCool1" Text="Is cool!" OnClick="lnk_Click" />
+                                    <ra:LinkButton runat="server" ID="lnkCool1" Text="Click me!" OnClick="lnkCool1_Click" />
                                 </ext:TreeNode>
                                 <ext:TreeNode runat="server" ID="why_cool2">
-                                    <ra:LinkButton runat="server" ID="lnkCool2" Text="Is WAY cool!" OnClick="lnk_Click" />
+                                    <ra:LinkButton runat="server" ID="lnkCool2" Text="Me TOO!" OnClick="lnkCool2_Click" />
                                 </ext:TreeNode>
                             </ext:TreeNodes>
                         </ext:TreeNode>
@@ -108,10 +108,6 @@
                     <span title="This node will take some time to expand, be patient... Also be CAREFUL e.g. Internet Explorer might actually CRASH when expanding this TreeViewNode">
                         HUGE collection of TreeNodes
                     </span>
-	                <ra:BehaviorUpdater ID="BehaviorUpdater1" 
-		                runat="server"
-		                Color="#333" 
-		                Delay="200" />
                     <ext:TreeNodes ID="huge_collection_node" runat="server" OnGetChildNodes="get_huge" />
                 </ext:TreeNode>
             </ext:TreeNodes>
