@@ -44,7 +44,7 @@
                 OnCheckedChanged="allowMultiSelectionCheckBox_CheckedChanged" />
                 
             <ext:TreeNodes runat="server" Expanded="true">
-                <ext:TreeNode runat="server" ID="good">
+                <ext:TreeNode runat="server" ID="good" CssClass="thomas">
                     <span title="This is the stuff we all LOVE! :)">
                         Open Web (expand me first)
                     </span>

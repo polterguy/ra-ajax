@@ -224,6 +224,10 @@ namespace Ra.Extensions
                     string oldCssClass = CssClass.Substring(CssClass.IndexOf(" item ") + 6);
                     tmpCssClass += " " + oldCssClass;
                 }
+                else
+                {
+                    tmpCssClass += " " + CssClass;
+                }
             }
 
             CssClass = tmpCssClass;
