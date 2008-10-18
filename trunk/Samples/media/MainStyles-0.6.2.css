@@ -164,18 +164,18 @@ h2 { margin-top:2.7em; }
 .tree .selected ul { background-color:#fafafa; }
 .tree .selected:hover { background-color:#d0d0f0; }
 .tree .spacer { padding-left:16px; *display:inline-block; *height:16px; }
-.tree .icon { background:url(skins/tree/sprites.png) no-repeat; }
+.tree .icon { background:url(skins/tree/sprites-0.6.2.png) no-repeat; }
 .tree .expanded .icon { background-position: 0px 0px; }
 .tree .collapsed .icon { background-position: -16px 0px; }
 .tree .no-childs .icon { background-position: -16px 0px; }
-.tree .lines { background:url(skins/tree/sprites.png) no-repeat -96px 0px; }
-.tree .linesElbow { background:url(skins/tree/sprites.png) no-repeat -80px 0px; }
-.tree .expanded .leaf { background:url(skins/tree/sprites.png) no-repeat -48px 0px; }
-.tree .expanded .no-leaf { background:url(skins/tree/sprites.png) no-repeat -128px 0px; }
-.tree .collapsed .leaf { background:url(skins/tree/sprites.png) no-repeat -32px 0px; }
-.tree .collapsed .no-leaf { background:url(skins/tree/sprites.png) no-repeat -112px 0px; }
-.tree .no-childs .leaf { background:url(skins/tree/sprites.png) no-repeat -64px 0px; }
-.tree .no-childs .no-leaf { background:url(skins/tree/sprites.png) no-repeat -80px 0px; }
+.tree .lines { background:url(skins/tree/sprites-0.6.2.png) no-repeat -96px 0px; }
+.tree .linesElbow { background:url(skins/tree/sprites-0.6.2.png) no-repeat -80px 0px; }
+.tree .expanded .leaf { background:url(skins/tree/sprites-0.6.2.png) no-repeat -48px 0px; }
+.tree .expanded .no-leaf { background:url(skins/tree/sprites-0.6.2.png) no-repeat -128px 0px; }
+.tree .collapsed .leaf { background:url(skins/tree/sprites-0.6.2.png) no-repeat -32px 0px; }
+.tree .collapsed .no-leaf { background:url(skins/tree/sprites-0.6.2.png) no-repeat -112px 0px; }
+.tree .no-childs .leaf { background:url(skins/tree/sprites-0.6.2.png) no-repeat -64px 0px; }
+.tree .no-childs .no-leaf { background:url(skins/tree/sprites-0.6.2.png) no-repeat -80px 0px; }
 
 .tree .jquery .icon { background-position:-176px 0px; }
 .tree .mootools .icon { background-position:-144px 0px; }
