@@ -44,7 +44,7 @@
                 OnCheckedChanged="allowMultiSelectionCheckBox_CheckedChanged" />
                 
             <ext:TreeNodes runat="server" Expanded="true">
-                <ext:TreeNode runat="server" ID="good" CssClass="thomas">
+                <ext:TreeNode runat="server" ID="good">
                     <span title="This is the stuff we all LOVE! :)">
                         Open Web (expand me first)
                     </span>
@@ -52,13 +52,13 @@
                         <ext:TreeNode runat="server" ID="ajax">
                             Ajax
                             <ext:TreeNodes runat="server">
-                                <ext:TreeNode runat="server" ID="jQuery">
+                                <ext:TreeNode runat="server" ID="jQuery" CssClass="jquery">
                                     <a href="http://jquery.com">jQuery</a>
                                 </ext:TreeNode>
-                                <ext:TreeNode runat="server" ID="prototype">
+                                <ext:TreeNode runat="server" ID="prototype" CssClass="prototype">
                                     <a href="http://prototypejs.org/">Prototype.js</a>
                                 </ext:TreeNode>
-                                <ext:TreeNode runat="server" ID="mooTools">
+                                <ext:TreeNode runat="server" ID="mooTools" CssClass="mootools">
                                     <a href="http://mootools.net/">mootools</a>
                                 </ext:TreeNode>
                             </ext:TreeNodes>
