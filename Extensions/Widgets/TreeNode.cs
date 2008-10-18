@@ -202,7 +202,7 @@ namespace Ra.Extensions
         // Build CSS classes for the "root" DOM element ("this control")
         private void BuildCssForRootElement()
         {
-            string tmpCssClass = " item ";
+            string tmpCssClass = "";
 
             if (ChildTreeNodes == null)
                 tmpCssClass += "no-childs";
@@ -213,6 +213,18 @@ namespace Ra.Extensions
 
             if (Array.Exists(ParentTree.SelectedNodes, delegate(TreeNode node) { return node == this; }))
                 tmpCssClass += " selected";
+
+            tmpCssClass += " item ";
+
+            if (!string.IsNullOrEmpty(CssClass))
+            {
+                bool hasPreviouslySetTreeStuff = CssClass.IndexOf(" item ") != -1;
+                if (hasPreviouslySetTreeStuff)
+                {
+                    string oldCssClass = CssClass.Substring(CssClass.IndexOf(" item ") + 6);
+                    tmpCssClass += " " + oldCssClass;
+                }
+            }
 
             CssClass = tmpCssClass;
         }

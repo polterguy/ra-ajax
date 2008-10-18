@@ -68,7 +68,7 @@
                             <ext:TreeNodes runat="server" OnGetChildNodes="good_2_GetChildNodes" />
                         </ext:TreeNode>
                         <ext:TreeNode runat="server" ID="css">
-                            CSS
+                            <ra:Label runat="server" ID="lblCSS" Text="CSS" />
                             <ext:TreeNodes runat="server">
                                 <ext:TreeNode runat="server" ID="why_cool">
                                     <ra:LinkButton runat="server" ID="lnkCool1" Text="Click me!" OnClick="lnkCool1_Click" />
