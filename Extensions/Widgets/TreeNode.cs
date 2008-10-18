@@ -244,11 +244,11 @@ namespace Ra.Extensions
         {
             if (ChildTreeNodes == null || !ChildTreeNodes.HasChildrenMaybe)
             {
-                _expander.CssClass = IsLeafNode ? "icon leaf spacer" : "icon no-leaf spacer";
+                _expander.CssClass = IsLeafNode ? "leaf spacer" : "no-leaf spacer";
             }
             else
             {
-                _expander.CssClass = IsLeafNode ? "icon leaf expander spacer" : "icon no-leaf expander spacer";
+                _expander.CssClass = IsLeafNode ? "leaf expander spacer" : "no-leaf expander spacer";
             }
         }
 
