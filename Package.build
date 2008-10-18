@@ -54,10 +54,6 @@
 		</fileset>
 	</copy>
 
-	<copy overwrite="true" 
-		  file="${ra.build.tasks.name}/bin/release/${ra.build.tasks.name}.dll" 
-		  todir="${output.dir}/${resources.dir}" />
-
 	<zip zipfile="${output.dir}/Ra-${ra.version}.zip">
 		<fileset basedir="${output.dir}">
 			<include name="Ra.sln" />
@@ -67,9 +63,6 @@
 			<include name="README.txt" />
 		</fileset>
 		<fileset basedir="${output.dir}/${ra.name}" prefix="${ra.name}">
-			<include name="**/*" />
-		</fileset>
-		<fileset basedir="${output.dir}/${resources.dir}" prefix="${resources.dir}">
 			<include name="**/*" />
 		</fileset>
 		<fileset basedir="${output.dir}/${library.dir}" prefix="${library.dir}">
@@ -94,16 +87,20 @@
 
 	<delete>
 		<fileset basedir="${output.dir}">
-			<include name="${ra.name}/**" />
-			<include name="${ext.name}/**" />
-			<include name="${resource.cacher.name}/**" />
-			<include name="${ra.build.tasks.name}/**" />
-			<include name="${references.dir}/**" />
 			<include name="Ra.sln" />
 			<include name="Ra.build" />
 			<include name="README.txt" />
 			<include name="build.properties" />
 			<include name="CustomTasks.build" />
+			<include name="${ra.name}/**" />
+			<include name="${ext.name}/**" />
+			<include name="${samples.dir}/**" />
+			<include name="${library.dir}/**" />
+			<include name="${resources.dir}/**" />
+			<include name="${ra.website.dir}/**" />
+			<include name="${references.dir}/**" />
+			<include name="${ra.build.tasks.name}/**" />
+			<include name="${resource.cacher.name}/**" />
 		</fileset>
 	</delete>
 
