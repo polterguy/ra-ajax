@@ -222,11 +222,11 @@ namespace Ra.Extensions
                 if (hasPreviouslySetTreeStuff)
                 {
                     string oldCssClass = CssClass.Substring(CssClass.IndexOf(" item ") + 6);
-                    tmpCssClass += " " + oldCssClass;
+                    tmpCssClass += oldCssClass;
                 }
                 else
                 {
-                    tmpCssClass += " " + CssClass;
+                    tmpCssClass += CssClass;
                 }
             }
 
