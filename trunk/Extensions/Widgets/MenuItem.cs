@@ -65,10 +65,15 @@ namespace Ra.Extensions
             }
             else
             {
-                if (Parent is MenuItems)
+                ASP.Control parent = Parent;
+                while (parent != null && !(parent is Menu))
                 {
-                    (Parent as MenuItems).RollUp();
-                    (Parent as MenuItems).Expanded = false;
+                    if (parent is MenuItems)
+                    {
+                        (parent as MenuItems).RollUp();
+                        (parent as MenuItems).Expanded = false;
+                    }
+                    parent = parent.Parent;
                 }
             }
         }
