@@ -33,11 +33,7 @@ namespace Ra.Extensions
                 Style["display"] = "";
             else
                 Style["display"] = "none";
-
-            ASP.Control ctrl = this.Parent;
-            while (ctrl != null && !(ctrl is Menu))
-                ctrl = ctrl.Parent;
-
+                      
             base.OnPreRender(e);
         }
 
