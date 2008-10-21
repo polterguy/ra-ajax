@@ -68,7 +68,7 @@ namespace Ra.Extensions
                 ASP.Control parent = Parent;
                 while (parent != null && !(parent is Menu))
                 {
-                    if (parent is MenuItems)
+                    if (parent is MenuItems && !(parent.Parent is Menu))
                     {
                         (parent as MenuItems).RollUp();
                         (parent as MenuItems).Expanded = false;
