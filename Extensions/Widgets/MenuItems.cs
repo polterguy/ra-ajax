@@ -33,6 +33,12 @@ namespace Ra.Extensions
                 Style["display"] = "";
             else
                 Style["display"] = "none";
+
+            if (Level >= 2)
+            {
+                if (CssClass.IndexOf("sub-dropper") == -1)
+                    CssClass += " sub-dropper";
+            }
                       
             base.OnPreRender(e);
         }
