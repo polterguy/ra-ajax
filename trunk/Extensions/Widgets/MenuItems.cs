@@ -33,7 +33,27 @@ namespace Ra.Extensions
                 Style["display"] = "";
             else
                 Style["display"] = "none";
+
+            ASP.Control ctrl = this.Parent;
+            while (ctrl != null && !(ctrl is Menu))
+                ctrl = ctrl.Parent;
+
             base.OnPreRender(e);
+        }
+
+        private int Level
+        {
+            get 
+            {
+                int level = 0;
+                ASP.Control ctrl = this.Parent;
+                while (ctrl != null && !(ctrl is Menu))
+                {
+                    if (ctrl is MenuItems) level++;
+                    ctrl = ctrl.Parent;
+                }
+                return level;
+            }
         }
 
         private Menu ParentMenu
