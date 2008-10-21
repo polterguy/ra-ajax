@@ -35,14 +35,30 @@ namespace Ra.Extensions
                 Style["display"] = "none";
             base.OnPreRender(e);
         }
-        
+
+        private Menu ParentMenu
+        {
+            get
+            {
+                // Looping upwards in the Control hierarchy until we 
+                // find a Control of type "Menu"
+                ASP.Control ctrl = this.Parent;
+                while (ctrl != null && !(ctrl is Menu))
+                    ctrl = ctrl.Parent;
+                return ctrl as Menu;
+            }
+        }
+
         // Used for animating down when expanded
         internal void RollDown()
         {
             if (Style["display"] == "none")
+            {
+                ParentMenu.RollUpAllExceptThis(this, ParentMenu.Controls);
                 new EffectRollDown(this, 200)
                     .JoinThese(new EffectFadeIn())
                     .Render();
+            }
         }
 
         // Used for animating up when collapsed

@@ -37,6 +37,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Package.build = Package.build
 		PublishWebsites.build = PublishWebsites.build
 		Ra.build = Ra.build
+		README.txt = README.txt
 	EndProjectSection
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ra-website", "ra-website\", "{25FB56A2-7502-459D-963B-C025E34435CA}"

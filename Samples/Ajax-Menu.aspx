@@ -32,10 +32,10 @@
         Text="Watch me change..."
         ID="lbl" />
     <ext:Menu runat="server" ID="menu" CssClass="menu" OnMenuItemSelected="menu_MenuItemSelected">
-        <ext:MenuItems runat="server">
+        <ext:MenuItems runat="server" ID="mainItems">
             <ext:MenuItem runat="server" ID="menuFile">
                 File
-                <ext:MenuItems runat="server">
+                <ext:MenuItems runat="server" ID="fileMenus">
                     <ext:MenuItem runat="server" id="load">
                         Open...
                     </ext:MenuItem>
@@ -49,7 +49,7 @@
             </ext:MenuItem>
             <ext:MenuItem runat="server" ID="edit">
                 Edit
-                <ext:MenuItems runat="server">
+                <ext:MenuItems runat="server" ID="editMenus">
                     <ext:MenuItem runat="server" id="copy">
                         Copy
                     </ext:MenuItem>
@@ -63,9 +63,17 @@
             </ext:MenuItem>
             <ext:MenuItem runat="server" ID="options">
                 Options
-                <ext:MenuItems runat="server">
+                <ext:MenuItems runat="server" ID="optionsMenu">
                     <ext:MenuItem runat="server" id="configuration">
                         Configuration
+                        <ext:MenuItems runat="server" ID="configItems">
+                            <ext:MenuItem runat="server" id="config1">
+                                Configuration 1
+                            </ext:MenuItem>
+                            <ext:MenuItem runat="server" id="config2">
+                                Configuration 2
+                            </ext:MenuItem>
+                        </ext:MenuItems>
                     </ext:MenuItem>
                     <ext:MenuItem runat="server" id="settings">
                         Settings...
