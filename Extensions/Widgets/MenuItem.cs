@@ -23,32 +23,30 @@ namespace Ra.Extensions
         protected override void OnInit(EventArgs e)
         {
             this.Click += MenuItem_Click;
-            base.OnInit(e);
-        }
-
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
 
             Label left = new Label();
             left.ID = "leftSpan";
-            left.CssClass = "item-left";
+            left.Text = "&nbsp;";
+            left.CssClass = "leftside";
 
             Label right = new Label();
             right.ID = "rightSpan";
-            right.CssClass = "item-right";
+            right.Text = "&nbsp;";
+            right.CssClass = "rightside";
 
             Controls.AddAt(0, left);
 
             int idx = 0;
-            foreach(ASP.Control control in Controls)
+            foreach (ASP.Control control in Controls)
             {
-                if(control is MenuItems)
-                  break;
+                if (control is MenuItems)
+                    break;
                 idx += 1;
             }
 
             Controls.AddAt(idx, right);
+
+            base.OnInit(e);
         }
 
         private Menu ParentMenu
