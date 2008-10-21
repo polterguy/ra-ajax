@@ -45,7 +45,8 @@ namespace Ra.Extensions
                 ASP.Control ctrl = this.Parent;
                 while (ctrl != null && !(ctrl is Menu))
                 {
-                    if (ctrl is MenuItems) level++;
+                    if (ctrl is MenuItems) 
+                        level++;
                     ctrl = ctrl.Parent;
                 }
                 return level;
