@@ -27,12 +27,12 @@ namespace Ra.Extensions
             Label left = new Label();
             left.ID = "leftSpan";
             left.Text = "&nbsp;";
-            left.CssClass = "leftside";
+            left.CssClass = "item-left";
 
             Label right = new Label();
             right.ID = "rightSpan";
             right.Text = "&nbsp;";
-            right.CssClass = "rightside";
+            right.CssClass = "item-right";
 
             Controls.AddAt(0, left);
 
