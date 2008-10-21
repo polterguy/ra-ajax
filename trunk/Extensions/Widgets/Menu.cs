@@ -63,5 +63,41 @@ namespace Ra.Extensions
         {
             return "</div>";
         }
+
+        internal void RollUpAllExceptThis(MenuItems menuItems, ASP.ControlCollection cols)
+        {
+            foreach (ASP.Control idx in cols)
+            {
+                if (idx is MenuItems)
+                {
+                    MenuItems items = idx as MenuItems;
+                    if (!items.Expanded)
+                        continue;
+                    bool isParent = false;
+                    ASP.Control idxCtrl = menuItems;
+                    while (idxCtrl != null && !(idxCtrl is Menu))
+                    {
+                        if (idxCtrl == items)
+                        {
+                            isParent = true;
+                            break;
+                        }
+                        idxCtrl = idxCtrl.Parent;
+                    }
+                    if (!isParent)
+                    {
+                        items.Expanded = false;
+                        items.RollUp();
+                    }
+                    else
+                    {
+                        foreach (ASP.Control idxInner in idx.Controls)
+                        {
+                            RollUpAllExceptThis(menuItems, idxInner.Controls);
+                        }
+                    }
+                }
+            }
+        }
     }
 }
