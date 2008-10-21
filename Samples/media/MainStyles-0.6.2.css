@@ -191,7 +191,7 @@ h2 { margin-top:2.7em; }
 .menu .menu-dropper .drop-item { display:block; color:#333; }
 .menu .menu-dropper .drop-item:hover { color:#999; }
 
-.menu .menu-dropper .sub-dropper { left: 150px; }
+.menu .menu-dropper .sub-dropper { left: 150px; top:0px; }
 
 
 /* Accordion */

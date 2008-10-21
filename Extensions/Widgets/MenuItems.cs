@@ -29,9 +29,7 @@ namespace Ra.Extensions
 
         protected override void OnPreRender(EventArgs e)
         {
-            if (Expanded)
-                Style["display"] = "";
-            else
+            if (!Expanded)
                 Style["display"] = "none";
 
             if (Level >= 2)
