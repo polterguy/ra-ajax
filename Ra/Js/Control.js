@@ -429,12 +429,13 @@ Ra.Control.prototype = {
   }
 }
 
-Ra.Control.callServerMethod = function(methodName) {
+Ra.Control.callServerMethod = function(methodName, options, args) {
+  options = Ra.extend({onSuccess:function(){}, onError:function(){}}, options || {});
   new Ra.Ajax({
     args:,
     raCallback:true,
-    onSuccess: this.onFinishedRequest,
-    onError: this.onFailedRequest,
+    onSuccess: function(response) { eval(response); options.onSuccess(); },
+    onError: function(status, fullTrace) { options.onError(); },
     callingContext: this
   });
 }
