@@ -16,7 +16,11 @@ namespace Samples
         [Ra.WebMethod]
         private string foo(string name, int age)
         {
-            new EffectHighlight(pnl, 500).Render();
+            // As you can see you can combine any server-side logic, including 
+            // effects with Ra-Ajax WebMethods ;)
+            new EffectHighlight(pnl, 500).
+                JoinThese(new EffectBorder(5), new EffectSize(150, 250)).
+                Render();
             return string.Format("Hello {0}, in 10 years you will be {1}! :D", name, age + 10);
         }
     }
