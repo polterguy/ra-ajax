@@ -15,14 +15,21 @@
     ID="Content1" 
     ContentPlaceHolderID="cnt1" 
     runat="server">
+    
     <script type="text/javascript">
-function callWebMethod() {
-  Ra.Control.callServerMethod('foo', {
-    onSuccess:function(val){
-      alert(val);
-    }
-  }, [1,'ra-ajax rules']);
-}
+        function callWebMethod() {
+        
+          Ra.Control.callServerMethod('foo', {
+            onSuccess:function(retVal) {
+              Ra.$('resultSpan').innerHTML = retVal;
+            },
+            
+            onError: function(status, fullTrace) {
+              Ra.$('resultSpan').innerHTML = status + '<br />' +  fullTrace;
+            }
+          }, [Ra.$('nameTextBox').value, parseInt(Ra.$('ageTextBox').value, 10)]);
+          
+        }
     </script>
 
     <h1>Ra-Ajax Samples - Calling WebMethod</h1>
@@ -32,9 +39,11 @@ function callWebMethod() {
         still have the possibility of changing controls and such in those methods. In such circumstances the
         Ra-Ajax WebMethod is handy.
     </p>
-    <button id="btn" onclick="callWebMethod();return false;">Invokes server-side method</button>
+    <p>Your Name: <input type="text" id="nameTextBox" /></p>
+    <p>Your Age: <input type="text" id="ageTextBox" /></p>
+    <button id="btn" onclick="callWebMethod();return false;">Invoke server-side method</button>
     <p>
-        Try to click the above button to invoke a WebMethod...
+        <span id="resultSpan"></span>
     </p>
     
 </asp:Content>

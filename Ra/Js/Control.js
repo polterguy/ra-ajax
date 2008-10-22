@@ -452,7 +452,7 @@ Ra.Control.callServerMethod = function(methodName, options, args) {
       options.onSuccess(Ra.Control._methodReturnValue);
     },
     onError: function(status, fullTrace) { 
-      options.onError();
+      options.onError(status, fullTrace);
     }
   });
 }
