@@ -205,7 +205,7 @@ namespace Ra
 
                 List<string> functionArgs = new List<string>();
 
-                for (int idx = 0 ; CurrentPage.Request.Params["__ARG" + idx] != null ; idx++)
+                for (int idx = 0; CurrentPage.Request.Params["__ARG" + idx] != null; idx++)
                 {
                     functionArgs.Add(CurrentPage.Request.Params["__ARG" + idx]);
                 }
