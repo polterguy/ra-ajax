@@ -13,6 +13,9 @@ namespace Samples
 {
     public partial class AjaxWebMethod : System.Web.UI.Page
     {
-        
+        private string foo(int intValue, string stringValue)
+        {
+            return "Hello from server with " + intValue + " and " + stringValue;
+        }
     }
 }
