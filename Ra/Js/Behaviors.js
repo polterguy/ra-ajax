@@ -77,6 +77,15 @@ Ra.extend(Ra.BObscur.prototype, Ra.Beha.prototype);
 
 // Creating IMPLEMENTATION of class
 Ra.extend(Ra.BObscur.prototype, {
+  init: function(id, options) {
+    this.options = options;
+    this.id = id;
+    this.options = Ra.extend({
+      color:'#000',
+      opacity: 0.5
+    }, this.options || {});
+  },
+
   initBehavior: function(parent) {
     this.el = document.createElement('div');
     Ra.extend(this.el, Ra.Element.prototype);
@@ -86,7 +95,7 @@ Ra.extend(Ra.BObscur.prototype, {
     this.el.setStyle('height',parseInt(document.body.clientHeight) + 'px');
     this.el.setStyle('left','0px');
     this.el.setStyle('top','0px');
-    this.el.setStyle('backgroundColor','#333');
+    this.el.setStyle('backgroundColor',this.options.color);
     this.el.setStyle('zIndex',parseInt(parent.element.style.zIndex,10) - 1);
     this.el.setStyle('display','none');
     document.getElementsByTagName('body')[0].appendChild(this.el);
@@ -99,10 +108,10 @@ Ra.extend(Ra.BObscur.prototype, {
         this.element.setStyle('display','block');
       },
       onFinished: function() {
-        this.element.setOpacity(0.3);
+        this.element.setOpacity(T.options.opacity);
       },
       onRender: function(pos) {
-        this.element.setOpacity(pos * 0.3);
+        this.element.setOpacity(pos * T.options.opacity);
       },
       sinoidal:true
     });
@@ -116,7 +125,7 @@ Ra.extend(Ra.BObscur.prototype, {
         T.el.remove();
       },
       onRender: function(pos) {
-        this.element.setOpacity((1.0-pos) * 0.3);
+        this.element.setOpacity((1.0-pos) * T.options.opacity);
       },
       sinoidal:true
     });
