@@ -17,6 +17,7 @@ namespace Samples
         private string foo(string name, int age)
         {
             return string.Format("Hello {0}, in 10 years you will be {1}! :D", name, age + 10);
+            new EffectHighlight(pnl, 200).Render();
         }
     }
 }
