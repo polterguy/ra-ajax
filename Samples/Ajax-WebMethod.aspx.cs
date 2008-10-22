@@ -15,7 +15,7 @@ namespace Samples
     {
         private string foo(int intValue, string stringValue)
         {
-            return "Hello from server with " + intValue + " and " + stringValue;
+            return "Hello from server with " + (intValue * 5) + " and " + stringValue;
         }
     }
 }
