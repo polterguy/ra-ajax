@@ -42,7 +42,7 @@
     <p>Your Name: <input type="text" id="nameTextBox" /></p>
     <p>Your Age: <input type="text" id="ageTextBox" /></p>
     <button id="btn" onclick="callWebMethod();return false;">Invoke server-side method</button>
-    <ra:Panel runat="server" ID="pnl" style="width:200px;height:70px;border:solid 1px black;background-color:LightGray;">
+    <ra:Panel runat="server" ID="pnl" style="width:200px;height:70px;border:solid 1px black;background-color:#eee;">
         <span id="resultSpan"></span>
     </ra:Panel>
     
