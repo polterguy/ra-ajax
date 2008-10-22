@@ -208,7 +208,7 @@ namespace Ra
                     CurrentPage.GetType().BaseType.GetMethod(functionName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 
                 if (webMethod == null || webMethod.GetCustomAttributes(typeof(Ra.WebMethod), false).Length == 0)
-                    return;
+                    throw new Exception("Cannot call a method without a WebMethod attribute");
 
                 ParameterInfo[] parameters = webMethod.GetParameters();
 
