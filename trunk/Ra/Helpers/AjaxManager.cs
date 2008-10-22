@@ -220,7 +220,9 @@ namespace Ra
                     args[idx] = Convert.ChangeType(functionArgs[idx], parameters[idx].ParameterType);
                 }
 
-                webMethod.Invoke(CurrentPage, args);
+                object retVal = webMethod.Invoke(CurrentPage, args);
+
+                WriterAtBack.Write("Ra.Control._methodReturnValue='{0}';", retVal.ToString());
 
                 return;
             }
