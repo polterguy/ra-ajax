@@ -136,6 +136,9 @@
 			                        <li>
 			                            <a href="Ajax-Menu.aspx">Ra-Ajax - Menu</a>
 			                        </li>
+			                        <li>
+			                            <a href="Ajax-WebMethod.aspx">Ra-Ajax - WebMethods</a>
+			                        </li>
 			                    </ul>
 					        </ext:AccordionView>
 					    </ext:Accordion>
