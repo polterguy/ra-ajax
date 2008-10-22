@@ -217,7 +217,7 @@ namespace Ra
 
                 for (int idx = 0; idx < parameters.Length; idx++)
                 {
-                    args[idx] = Convert.ChangeType(functionArgs[idx], parameters[idx].GetType());
+                    args[idx] = Convert.ChangeType(functionArgs[idx], parameters[idx].ParameterType);
                 }
 
                 webMethod.Invoke(CurrentPage, args);
