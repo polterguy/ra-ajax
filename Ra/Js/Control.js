@@ -428,6 +428,16 @@ Ra.Control.prototype = {
     }
   }
 }
+
+Ra.Control.callServerMethod = function(methodName) {
+  new Ra.Ajax({
+    args:,
+    raCallback:true,
+    onSuccess: this.onFinishedRequest,
+    onError: this.onFailedRequest,
+    callingContext: this
+  });
+}
 })();
 
 
