@@ -46,6 +46,9 @@ Ra.Beha.prototype = {
     this.id = id;
   },
 
+  initBehavior: function() {
+  },
+
   handleJSON: function(json) {
 
     // Looping through all "top-level" objects and calling the functions for those keys
@@ -54,6 +57,73 @@ Ra.Beha.prototype = {
     }
   }
 }
+
+
+
+
+
+
+// ==============================================================================
+//
+// This is the BehaviorObscurable
+//
+// ==============================================================================
+Ra.BObscur = Ra.klass();
+
+
+// Inheriting from Behavior base class
+Ra.extend(Ra.BObscur.prototype, Ra.Beha.prototype);
+
+
+// Creating IMPLEMENTATION of class
+Ra.extend(Ra.BObscur.prototype, {
+  initBehavior: function(parent) {
+    this.el = document.createElement('div');
+    Ra.extend(this.el, Ra.Element.prototype);
+    this.el.id = this.id;
+    this.el.setStyle('position','absolute');
+    this.el.setStyle('width',parseInt(document.body.clientWidth) + 'px');
+    this.el.setStyle('height',parseInt(document.body.clientHeight) + 'px');
+    this.el.setStyle('left','0px');
+    this.el.setStyle('top','0px');
+    this.el.setStyle('backgroundColor','#333');
+    this.el.setStyle('zIndex',parseInt(parent.element.style.zIndex,10) - 1);
+    this.el.setStyle('display','none');
+    document.getElementsByTagName('body')[0].appendChild(this.el);
+
+    var T = this;
+    new Ra.Effect(this.el, {
+      duration: 300,
+      onStart: function() {
+        this.element.setOpacity(0);
+        this.element.setStyle('display','block');
+      },
+      onFinished: function() {
+        this.element.setOpacity(0.3);
+      },
+      onRender: function(pos) {
+        this.element.setOpacity(pos * 0.3);
+      },
+      sinoidal:true
+    });
+  },
+
+  destroy: function() {
+    var T = this;
+    new Ra.Effect(this.el, {
+      duration: 300,
+      onFinished: function() {
+        T.el.remove();
+      },
+      onRender: function(pos) {
+        this.element.setOpacity((1.0-pos) * 0.3);
+      },
+      sinoidal:true
+    });
+  }
+});
+
+
 
 
 
@@ -74,7 +144,7 @@ Ra.Beha.prototype = {
 Ra.BDrag = Ra.klass();
 
 
-// Inheriting from Ra.Control
+// Inheriting from Behavior base class
 Ra.extend(Ra.BDrag.prototype, Ra.Beha.prototype);
 
 
