@@ -15,6 +15,7 @@ using Ra.Widgets;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Reflection;
+using System.Globalization;
 
 
 [assembly: WebResource("Ra.Js.Ra.js", "text/javascript")]
@@ -203,27 +204,25 @@ namespace Ra
                 if (string.IsNullOrEmpty(functionName))
                     return;
 
-                List<string> functionArgs = new List<string>();
+                MethodInfo webMethod = 
+                    CurrentPage.GetType().BaseType.GetMethod(functionName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 
-                for (int idx = 0; CurrentPage.Request.Params["__ARG" + idx] != null; idx++)
-                {
-                    functionArgs.Add(CurrentPage.Request.Params["__ARG" + idx]);
-                }
-
-                MethodInfo webMethod = CurrentPage.GetType().BaseType.GetMethod(functionName, BindingFlags.Instance | BindingFlags.NonPublic);
+                if (webMethod == null || webMethod.GetCustomAttributes(typeof(Ra.WebMethod), false).Length == 0)
+                    return;
 
                 ParameterInfo[] parameters = webMethod.GetParameters();
-                object[] args = new object[parameters.Length];
 
-                for (int idx = 0; idx < parameters.Length; idx++)
+                object[] args = new object[parameters.Length];
+                for (int idx = 0; idx < parameters.Length && CurrentPage.Request.Params["__ARG" + idx] != null; idx++)
                 {
-                    args[idx] = Convert.ChangeType(functionArgs[idx], parameters[idx].ParameterType);
+                    args[idx] = Convert.ChangeType(CurrentPage.Request.Params["__ARG" + idx], parameters[idx].ParameterType);
                 }
 
                 object retVal = webMethod.Invoke(CurrentPage, args);
-
-                WriterAtBack.Write("Ra.Control._methodReturnValue='{0}';", retVal.ToString());
-
+                
+                if (retVal != null)
+                    WriterAtBack.Write("Ra.Control._methodReturnValue='{0}';", string.Format(CultureInfo.InvariantCulture, "{0}", retVal));
+                
                 return;
             }
 

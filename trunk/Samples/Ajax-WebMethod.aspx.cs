@@ -13,9 +13,10 @@ namespace Samples
 {
     public partial class AjaxWebMethod : System.Web.UI.Page
     {
-        private string foo(int intValue, string stringValue)
+        [Ra.WebMethod]
+        private string foo(string name, int age)
         {
-            return "Hello from server with " + (intValue * 5) + " and " + stringValue;
+            return string.Format("Hello {0}, in 10 years you will be {1}! :D", name, age + 10);
         }
     }
 }
