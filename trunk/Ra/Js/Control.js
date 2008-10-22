@@ -430,22 +430,30 @@ Ra.Control.prototype = {
 }
 
 Ra.Control.callServerMethod = function(methodName, options, args) {
+  var methodArgs = '__FUNCTION_NAME=' + methodName;
+  
   options = Ra.extend({
     onSuccess:function(){}, 
     onError:function(){}
   }, options || {});
 
+  if (args) {
+    for (var idx = 0; idx < args.length; idx++) {
+      methodArgs += '&__ARG' + idx + '=' + args[idx];
+    }
+  }
+  
+  Ra.Control._methodReturnValue = null;
   new Ra.Ajax({
-    args:,
+    args: methodArgs,
     raCallback:true,
     onSuccess: function(response) {
       eval(response);
-      options.onSuccess();
+      options.onSuccess(Ra.Control._methodReturnValue);
     },
     onError: function(status, fullTrace) { 
       options.onError();
-    },
-    callingContext: this
+    }
   });
 }
 })();
