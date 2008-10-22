@@ -210,7 +210,7 @@ namespace Ra
                     functionArgs.Add(CurrentPage.Request.Params["__ARG" + idx]);
                 }
 
-                MethodInfo webMethod = CurrentPage.GetType().BaseType.GetMethod(functionName);
+                MethodInfo webMethod = CurrentPage.GetType().BaseType.GetMethod(functionName, BindingFlags.Instance | BindingFlags.NonPublic);
 
                 ParameterInfo[] parameters = webMethod.GetParameters();
                 object[] args = new object[parameters.Length];
