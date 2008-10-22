@@ -103,4 +103,5 @@
         Framework. Including Prototype, jQuery, MooTools, Dojo Toolkit, ASP.NET AJAX and so on. <strong>The amount 
         of JavaScript will always be significantly lower with Ra-Ajax than ANY other known Ajax Framework</strong>.
     </p>
+    <a href="Ajax-WebMethod.aspx">On to Ajax WebMethods</a>
 </asp:Content>
