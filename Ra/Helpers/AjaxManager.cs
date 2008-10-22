@@ -196,7 +196,21 @@ namespace Ra
             
             // Checking to see if this is a "non-Control" callback...
             if (string.IsNullOrEmpty(idOfControl))
-                return;
+            {
+                string functionName = CurrentPage.Request.Params["__FUNCTION_NAME"];
+                
+                if (string.IsNullOrEmpty(functionName))
+                    return;
+
+                List<string> functionArgs = new List<string>();
+
+                for (int idx = 0 ; CurrentPage.Request.Params["__ARG"+idx] != null ; idx++)
+                {
+                    functionArgs.Add(CurrentPage.Request.Params["__ARG" + idx]);
+                }
+
+                CurrentPage.GetType().GetMethod(functionName).Invoke();
+            }
 
             RaControl ctrl = RaControls.Find(
                 delegate(RaControl idx)
@@ -270,7 +284,18 @@ namespace Ra
                 CurrentPage.Response.Redirect(url);
             else
             {
-                CurrentPage.Response.AddHeader("Location", url);
+                if (url == "~" || url == "~/")
+                {
+                    CurrentPage.Response.AddHeader("Location", CurrentPage.Request.ApplicationPath);
+                }
+                else if (url.StartsWith("~"))
+                {
+                    CurrentPage.Response.AddHeader("Location", url.Replace("~", CurrentPage.Request.ApplicationPath));
+                }
+                else
+                {
+                    CurrentPage.Response.AddHeader("Location", url);
+                }
                 // Note that ue to w3c standardizing the XHR should TRANSPARENTLY
                 // do 301 and 302 redirects we need another mechanism to inform client side that
                 // the user code is RE-directing to another page!
