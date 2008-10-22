@@ -82,11 +82,14 @@ Ra.extend(Ra.BObscur.prototype, {
     this.id = id;
     this.options = Ra.extend({
       color:'#000',
-      opacity: 0.5
+      opacity: 0.5,
+      zIndex:-1
     }, this.options || {});
   },
 
   initBehavior: function(parent) {
+    if( this.options.zIndex == -1)
+      this.options.zIndex = parseInt(parent.element.style.zIndex,10) - 1;
     this.el = document.createElement('div');
     Ra.extend(this.el, Ra.Element.prototype);
     this.el.id = this.id;
@@ -96,7 +99,7 @@ Ra.extend(Ra.BObscur.prototype, {
     this.el.setStyle('left','0px');
     this.el.setStyle('top','0px');
     this.el.setStyle('backgroundColor',this.options.color);
-    this.el.setStyle('zIndex',parseInt(parent.element.style.zIndex,10) - 1);
+    this.el.setStyle('zIndex',this.options.zIndex);
     this.el.setStyle('display','none');
     document.getElementsByTagName('body')[0].appendChild(this.el);
 

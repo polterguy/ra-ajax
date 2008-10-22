@@ -79,7 +79,7 @@
 	        Caption="Ajax Window - drag me"
 	        CssClass="alphacube"
 	        Visible="false"
-	        style="position:absolute;top:-50px;left:100px;width:250px;z-index:100;"
+	        style="position:absolute;top:-50px;left:100px;width:250px;z-index:5000;"
 	        id="window2">
 
 	        <div style="padding:15px 15px 15px 15px;">
@@ -89,7 +89,7 @@
 	                no content is being added to the DOM or HTML before the Window is being made Visible.
 	            </p>
 	        </div>
-	        <ra:BehaviorObscurable runat="server" id="obscurer" />
+	        <ra:BehaviorObscurable runat="server" id="obscurer" ZIndex="500" />
 
 	    </ext:Window>
 	</div>

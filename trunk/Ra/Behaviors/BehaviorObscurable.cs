@@ -40,6 +40,22 @@ namespace Ra.Widgets
         }
 
         /**
+         * Explicitly overridden z-index style value of obscurer, otherwise Parent Control z-index
+         * -1 will be used
+         */
+        [DefaultValue(-1)]
+        public int ZIndex
+        {
+            get { return ViewState["ZIndex"] == null ? -1 : (int)ViewState["ZIndex"]; }
+            set
+            {
+                if (value != ZIndex)
+                    SetJSONValueObject("ZIndex", value);
+                ViewState["ZIndex"] = value;
+            }
+        }
+
+        /**
          * The color of the obscurer DOM element
          */
         public Color Color
@@ -61,6 +77,12 @@ namespace Ra.Widgets
                 if (options != string.Empty)
                     options += ",";
                 options += string.Format("color:'{0}'", System.Drawing.ColorTranslator.ToHtml(Color));
+            }
+            if (ZIndex != -1)
+            {
+                if (options != string.Empty)
+                    options += ",";
+                options += string.Format("zIndex:'{0}'", ZIndex);
             }
             if (Opacity != 0.5M)
             {
