@@ -14,6 +14,7 @@ using System.IO;
 using Ra.Widgets;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Reflection;
 
 
 [assembly: WebResource("Ra.Js.Ra.js", "text/javascript")]
@@ -204,12 +205,24 @@ namespace Ra
 
                 List<string> functionArgs = new List<string>();
 
-                for (int idx = 0 ; CurrentPage.Request.Params["__ARG"+idx] != null ; idx++)
+                for (int idx = 0 ; CurrentPage.Request.Params["__ARG" + idx] != null ; idx++)
                 {
                     functionArgs.Add(CurrentPage.Request.Params["__ARG" + idx]);
                 }
 
-                CurrentPage.GetType().GetMethod(functionName).Invoke();
+                MethodInfo webMethod = CurrentPage.GetType().GetMethod(functionName);
+
+                ParameterInfo[] parameters = webMethod.GetParameters();
+                object[] args = new object[parameters.Length];
+
+                for (int idx = 0; idx < parameters.Length; idx++)
+                {
+                    args[idx] = Convert.ChangeType(functionArgs[idx], parameters[idx].GetType());
+                }
+
+                webMethod.Invoke(CurrentPage, args);
+
+                return;
             }
 
             RaControl ctrl = RaControls.Find(
