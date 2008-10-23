@@ -210,7 +210,7 @@ namespace Ra.Widgets
             AjaxManager.Instance.WriterAtBack.WriteLine(RenderImplementation());
         }
 
-        private string RenderImplementation()
+        internal virtual string RenderImplementation()
         {
             foreach (Effect idx in Joined)
             {
