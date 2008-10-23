@@ -21,7 +21,10 @@ namespace Samples
             new EffectHighlight(pnl, 500).
                 JoinThese(new EffectBorder(5), new EffectSize(150, 250)).
                 Render();
-            return string.Format("Hello {0}, in 10 years you will be {1}! :D", name, age + 10);
+            return string.Format("Hello {0}, in 10 years you will be {1}! :D<br />What time do you make of it, on the server it's {2}", 
+                name, 
+                age + 10,
+                DateTime.Now.ToString("HH:mm"));
         }
     }
 }

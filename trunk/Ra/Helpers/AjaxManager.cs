@@ -153,6 +153,15 @@ namespace Ra
         }
 
         /**
+         * Recursively traverses all controls starting from given Control and returns the first control with the 
+         * given ID casting it to typeof(T)
+         */
+        public T FindControl<T>(Control childOf, string id) where T : Control
+        {
+            return (T)FindControl(childOf, id);
+        }
+
+        /**
          * Recursively traverses all controls on Page and MasterPage and returns the first control with the 
          * given ClientID casting it to typeof(T)
          */
@@ -204,8 +213,7 @@ namespace Ra
                 if (string.IsNullOrEmpty(functionName))
                     return;
 
-                MethodInfo webMethod = 
-                    CurrentPage.GetType().BaseType.GetMethod(functionName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+                MethodInfo webMethod = ExtractMethod(functionName);
 
                 if (webMethod == null || webMethod.GetCustomAttributes(typeof(Ra.WebMethod), false).Length == 0)
                     throw new Exception("Cannot call a method without a WebMethod attribute");
@@ -221,7 +229,8 @@ namespace Ra
                 object retVal = webMethod.Invoke(CurrentPage, args);
                 
                 if (retVal != null)
-                    WriterAtBack.Write("Ra.Control._methodReturnValue='{0}';", string.Format(CultureInfo.InvariantCulture, "{0}", retVal));
+                    WriterAtBack.Write("Ra.Control._methodReturnValue='{0}';", 
+                        string.Format(CultureInfo.InvariantCulture, "{0}", retVal).Replace("\\", "\\\\").Replace("'", "\\'"));
                 
                 return;
             }
@@ -244,6 +253,43 @@ namespace Ra
 
             // Dispatching the event to our Ra Control...
             raCtrl.DispatchEvent(eventName);
+        }
+
+        private MethodInfo ExtractMethod(string functionName)
+        {
+            MethodInfo webMethod = null;
+            if (functionName.IndexOf(".") == -1)
+            {
+                // No UserControls in the picture here...
+                webMethod = CurrentPage.GetType().BaseType.GetMethod(functionName,
+                    BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+                if (webMethod == null)
+                {
+                    // Couldn't find method in Page, looking in MasterPage
+                    webMethod = CurrentPage.Master.GetType().BaseType.GetMethod(functionName,
+                        BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+                }
+            }
+            else
+            {
+                // A "." means there's a UserControl hosting this method
+                string[] entities = functionName.Split('.');
+                Control ctrl = null;
+                for (int idx = 0; idx < entities.Length - 1; idx++)
+                {
+                    if (ctrl == null)
+                    {
+                        ctrl = AjaxManager.Instance.FindControl<UserControl>(entities[idx]);
+                    }
+                    else
+                    {
+                        ctrl = AjaxManager.Instance.FindControl<UserControl>(ctrl, entities[idx]);
+                    }
+                }
+                webMethod = ctrl.GetType().BaseType.GetMethod(entities[entities.Length - 1],
+                    BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            }
+            return webMethod;
         }
 
         internal void IncludeMainRaScript()

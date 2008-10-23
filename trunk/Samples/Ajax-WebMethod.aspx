@@ -21,13 +21,22 @@
 // This is "user code" where we're calling into the server a method called "foo"
 function callWebMethod() {
 
+  // "Validating"...
+  if( !parseInt(Ra.$('ageTextBox').value, 10) ) {
+    Ra.$('resultSpan').innerHTML = 'NUMBERS please...!';
+    return;
+  }
+
+  // Here we're calling a method on the server, the first parameter
+  // is the method name. The two next options are the success and failure
+  // callback functions. And the third array is the "list of arguments"
+  // being passed to that method...
   Ra.Control.callServerMethod('foo', {
     onSuccess:function(retVal) {
       Ra.$('resultSpan').innerHTML = retVal;
     },
-    
     onError: function(status, fullTrace) {
-      Ra.$('resultSpan').innerHTML = status + '<br />' +  fullTrace;
+      alert(fullTrace);
     }
   }, [Ra.$('nameTextBox').value, parseInt(Ra.$('ageTextBox').value, 10)]);
   
@@ -41,10 +50,13 @@ function callWebMethod() {
         still have the possibility of changing controls and such in those methods. In such circumstances the
         Ra-Ajax WebMethod is handy.
     </p>
-    <p>Your Name: <input type="text" id="nameTextBox" /></p>
-    <p>Your Age: <input type="text" id="ageTextBox" /></p>
+    <p><span style="width:100px;display:block;float:left;">Your Name:</span><input type="text" id="nameTextBox" /></p>
+    <p><span style="width:100px;display:block;float:left;">Your Age:</span><input type="text" id="ageTextBox" /></p>
     <button id="btn" onclick="callWebMethod();return false;">Invoke server-side method</button>
-    <ra:Panel runat="server" ID="pnl" style="width:200px;height:70px;border:solid 1px black;background-color:#eee;padding:5px;">
+    <ra:Panel   
+        runat="server" 
+        ID="pnl" 
+        style="width:200px;height:70px;border:solid 1px black;background-color:#eee;padding:5px;">
         <span id="resultSpan"></span>
     </ra:Panel>
     <p>
