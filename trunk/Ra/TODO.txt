@@ -5,6 +5,8 @@
 
 * Add Calling server-side method from JS (http://ra-ajax.org/Forums/calling-web-method-from-javascript.forum)
 
+* Named colors do not work with effect highlight
+
 * Implement and check ViewStateById mode on Widgets. Though not before Mono officially supports this. (which is NOT now)
 
 * Calendar doesn't have nice CSS - too much IE hacks...
