@@ -29,7 +29,18 @@ namespace Ra.Widgets
 
         protected override void ValidateEffect()
         {
-            
+            if (Milliseconds < 1)
+                throw new Exception("You must specify a duration for the effect.");
+            if (_controls == null || _controls.Length == 0)
+                throw new Exception("You must specify at least one control to apply the effect to.");
+
+            foreach (Control control in _controls)
+            {
+                if (control == null)
+                    throw new Exception("You can not have a null control as part of the controls.");
+            }
+
+
         }
 
         public override string RenderParalledOnStart()
