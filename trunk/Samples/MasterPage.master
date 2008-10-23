@@ -219,7 +219,6 @@
                                         </ext:TabView>
 
                                     </ext:TabControl>
-
 				                    <asp:contentplaceholder 
 				                        id="cnt1" 
 				                        runat="server">
