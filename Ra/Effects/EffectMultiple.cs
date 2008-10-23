@@ -38,6 +38,7 @@ namespace Ra.Widgets
             string onStart = RenderOnStart(this);
             string onFinished = RenderOnFinished(this);
             string onRender = RenderOnRender(this);
+            string extraOptions = RenderExtraOptions();
             return string.Format(@"
 Ra.E('{0}', {{
   onStart: function() {{{2}}},
@@ -52,6 +53,27 @@ Ra.E('{0}', {{
                 onFinished,
                 onRender,
                 this.TransitionType);
+        }
+
+        private string RenderExtraOptions()
+        {
+            string retVal = string.Empty;
+
+            bool first = true;
+            foreach (Control control in _controls)
+            {
+                if (first)
+                {
+                    retVal += string.Format("'{0}'", control.ClientID);
+                    first = false;
+                }
+                else
+                {
+                    retVal += string.Format(",'{0}'", control.ClientID);
+                }
+            }
+
+            return retVal;
         }
 
         protected override void ValidateEffect()
