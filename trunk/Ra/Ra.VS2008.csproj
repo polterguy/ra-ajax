@@ -52,7 +52,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Behaviors\BehaviorObscurable.cs" />
-    <Compile Include="Effects\EffectMultiple.cs" />
     <Compile Include="Effects\EffectTimeout.cs" />
     <Compile Include="Effects\EffectMove.cs" />
     <Compile Include="Effects\EffectSize.cs" />
