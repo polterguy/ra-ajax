@@ -47,8 +47,8 @@ function callWebMethod() {
     <p>
         Sometimes you need to mix in "conventional JavaScript" but still keep as much as possible of the simplicity
         from the Ra-Ajax core. For such circumstances you will often want to call methods on the server yet
-        still have the possibility of changing controls and such in those methods. In such circumstances the
-        Ra-Ajax WebMethod is handy.
+        still have the possibility of changing values of controls and such in those methods. In such circumstances 
+        the Ra-Ajax WebMethod is handy.
     </p>
     <p><span style="width:100px;display:block;float:left;">Your Name:</span><input type="text" id="nameTextBox" /></p>
     <p><span style="width:100px;display:block;float:left;">Your Age:</span><input type="text" id="ageTextBox" /></p>
@@ -68,6 +68,10 @@ function callWebMethod() {
     </p>
     <p>
         Make sure you view the HTML source for this page to understand how this is accomplished...
+    </p>
+    <p>
+        And Ra-Ajax WebMethods have support for having WebMethods in MasterPages and UserControls and even *nested*
+        UserControls. But unfortunately not (yet!) nested MasterPages ;)
     </p>
     
 </asp:Content>
