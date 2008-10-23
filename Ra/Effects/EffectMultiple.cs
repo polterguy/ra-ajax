@@ -22,12 +22,7 @@ namespace Ra.Widgets
             _controls = controls;
         }
 
-        public virtual void Render()
-        {
-            AjaxManager.Instance.WriterAtBack.WriteLine(RenderImplementation());
-        }
-
-        private string RenderImplementation()
+        protected override string RenderImplementation()
         {
             foreach (Effect idx in Joined)
             {
@@ -41,18 +36,70 @@ namespace Ra.Widgets
             string extraOptions = RenderExtraOptions();
             return string.Format(@"
 Ra.E('{0}', {{
+  xtra: {{{6}}}
   onStart: function() {{{2}}},
   onFinished: function() {{{3}}},
   onRender: function(pos) {{{4}}},
   duration:{1},
   transition:'{5}'
 }});",
-                (_control == null ? null : _control.ClientID),
-                _milliseconds.ToString(),
+                _controls[0].ClientID,
+                Milliseconds.ToString(),
                 onStart,
                 onFinished,
                 onRender,
-                this.TransitionType);
+                this.TransitionType,
+                extraOptions);
+        }
+
+        private string RenderOnStart(Effect effect)
+        {
+            string retVal = this.RenderParalledOnStart();
+            foreach (Effect idx in Joined)
+            {
+                retVal += idx.RenderParalledOnStart();
+            }
+            return retVal;
+        }
+
+        private string RenderOnFinished(Effect effect)
+        {
+            string retVal = this.RenderParalledOnFinished();
+            foreach (Effect idx in Joined)
+            {
+                retVal += idx.RenderParalledOnFinished();
+            }
+            retVal += RenderChained();
+            return retVal;
+        }
+
+
+        private string RenderChained()
+        {
+            string retVal = string.Empty;
+            foreach (Effect idx in Chained)
+            {
+                retVal += idx.RenderImplementation();
+            }
+
+            foreach (Effect idxParalleled in Joined)
+            {
+                foreach (Effect idxChained in idxParalleled.Chained)
+                {
+                    retVal += idxChained.RenderImplementation();
+                }
+            }
+            return retVal;
+        }
+
+        private string RenderOnRender(Effect effect)
+        {
+            string retVal = this.RenderParalledOnRender();
+            foreach (Effect idx in Joined)
+            {
+                retVal += idx.RenderParalledOnRender();
+            }
+            return retVal;
         }
 
         private string RenderExtraOptions()
