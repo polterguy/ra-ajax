@@ -22,9 +22,36 @@ namespace Ra.Widgets
             _controls = controls;
         }
 
-        public override void Render()
+        public virtual void Render()
         {
-            
+            AjaxManager.Instance.WriterAtBack.WriteLine(RenderImplementation());
+        }
+
+        private string RenderImplementation()
+        {
+            foreach (Effect idx in Joined)
+            {
+                idx.Control = this.Control;
+            }
+
+            ValidateEffect();
+            string onStart = RenderOnStart(this);
+            string onFinished = RenderOnFinished(this);
+            string onRender = RenderOnRender(this);
+            return string.Format(@"
+Ra.E('{0}', {{
+  onStart: function() {{{2}}},
+  onFinished: function() {{{3}}},
+  onRender: function(pos) {{{4}}},
+  duration:{1},
+  transition:'{5}'
+}});",
+                (_control == null ? null : _control.ClientID),
+                _milliseconds.ToString(),
+                onStart,
+                onFinished,
+                onRender,
+                this.TransitionType);
         }
 
         protected override void ValidateEffect()
@@ -39,8 +66,6 @@ namespace Ra.Widgets
                 if (control == null)
                     throw new Exception("You can not have a null control as part of the controls.");
             }
-
-
         }
 
         public override string RenderParalledOnStart()
