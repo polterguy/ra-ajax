@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Behaviors\BehaviorObscurable.cs" />
     <Compile Include="Effects\EffectMove.cs" />
     <Compile Include="Effects\EffectSize.cs" />
     <Compile Include="Effects\EffectRollUp.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="Helpers\ListItemCollection.cs" />
     <Compile Include="Helpers\StyleCollection.cs" />
     <Compile Include="Helpers\StyleCollectionStyles.cs" />
+    <Compile Include="Helpers\WebMethod.cs" />
     <Compile Include="Interfaces\IRaControl.cs" />
     <Compile Include="Filters\PostbackFilter.cs" />
     <Compile Include="Widgets\Button.cs" />
