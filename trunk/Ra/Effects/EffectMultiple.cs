@@ -36,7 +36,7 @@ namespace Ra.Widgets
             string extraOptions = RenderExtraOptions();
             return string.Format(@"
 Ra.E('{0}', {{
-  xtra: {{{6}}}
+  xtra: [{6}],
   onStart: function() {{{2}}},
   onFinished: function() {{{3}}},
   onRender: function(pos) {{{4}}},
