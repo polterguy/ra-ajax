@@ -14,9 +14,22 @@ namespace Ra.Widgets
 {
     public class EffectMultiple : Effect
     {
-        public EffectMultiple(int milliseconds, params Control[] controls) : base(null, milliseconds)
-        {
+        Control[] _controls;
 
+        public EffectMultiple(int milliseconds, params Control[] controls) 
+            : base(null, milliseconds)
+        {
+            _controls = controls;
+        }
+
+        public override void Render()
+        {
+            
+        }
+
+        protected override void ValidateEffect()
+        {
+            
         }
 
         public override string RenderParalledOnStart()
