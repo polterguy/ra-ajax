@@ -58,6 +58,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TestWebMethodsMaster.cs" />
+    <Compile Include="TestWebMethods.cs" />
     <Compile Include="EventSystem.cs" />
     <Compile Include="TestRaPanel.cs" />
     <Compile Include="TestASPNETControls.cs" />

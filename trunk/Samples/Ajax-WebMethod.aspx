@@ -32,7 +32,7 @@ function callWebMethod() {
   // callback functions. And the third array is the "list of arguments"
   // being passed to that method...
   Ra.Control.callServerMethod('foo', {
-    onSuccess:function(retVal) {
+    onSuccess: function(retVal) {
       Ra.$('resultSpan').innerHTML = retVal;
     },
     onError: function(status, fullTrace) {

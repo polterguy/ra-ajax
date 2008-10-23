@@ -213,7 +213,8 @@ namespace Ra
                 if (string.IsNullOrEmpty(functionName))
                     return;
 
-                MethodInfo webMethod = ExtractMethod(functionName);
+                Control ctrlToCallFor = CurrentPage;
+                MethodInfo webMethod = ExtractMethod(functionName, ref ctrlToCallFor);
 
                 if (webMethod == null || webMethod.GetCustomAttributes(typeof(Ra.WebMethod), false).Length == 0)
                     throw new Exception("Cannot call a method without a WebMethod attribute");
@@ -226,7 +227,7 @@ namespace Ra
                     args[idx] = Convert.ChangeType(CurrentPage.Request.Params["__ARG" + idx], parameters[idx].ParameterType);
                 }
 
-                object retVal = webMethod.Invoke(CurrentPage, args);
+                object retVal = webMethod.Invoke(ctrlToCallFor, args);
                 
                 if (retVal != null)
                     WriterAtBack.Write("Ra.Control._methodReturnValue='{0}';", 
@@ -255,7 +256,7 @@ namespace Ra
             raCtrl.DispatchEvent(eventName);
         }
 
-        private MethodInfo ExtractMethod(string functionName)
+        private MethodInfo ExtractMethod(string functionName, ref Control ctrlToCallFor)
         {
             MethodInfo webMethod = null;
             if (functionName.IndexOf(".") == -1)
@@ -263,11 +264,16 @@ namespace Ra
                 // No UserControls in the picture here...
                 webMethod = CurrentPage.GetType().BaseType.GetMethod(functionName,
                     BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-                if (webMethod == null)
+                if (webMethod != null)
+                {
+                    ctrlToCallFor = CurrentPage;
+                }
+                else
                 {
                     // Couldn't find method in Page, looking in MasterPage
                     webMethod = CurrentPage.Master.GetType().BaseType.GetMethod(functionName,
                         BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+                    ctrlToCallFor = CurrentPage.Master;
                 }
             }
             else
@@ -288,6 +294,7 @@ namespace Ra
                 }
                 webMethod = ctrl.GetType().BaseType.GetMethod(entities[entities.Length - 1],
                     BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+                ctrlToCallFor = ctrl;
             }
             return webMethod;
         }
