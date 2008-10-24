@@ -61,10 +61,37 @@ namespace Ra.Extensions
          */
         public event EventHandler<RetrieveAutoCompleterItemsEventArgs> RetrieveAutoCompleterItems;
 
+        /**
+         * Fired when the user selects an AutoCompleterItem. Use SelectedItem property to figure
+         * out which item was selected. SelectedItem will contain the ID of the Item which was selected
+         */
+        public event EventHandler AutoCompleterItemSelected;
+
+        /**
+         * This is the item which currently is selected (if any)
+         */
+        [DefaultValue(null)]
+        public string SelectedItem
+        {
+            get { return ViewState["SelectedItem"] == null ? null : (string)ViewState["SelectedItem"]; }
+            set { ViewState["SelectedItem"] = value; }
+        }
+
         protected override void OnInit(EventArgs e)
         {
-            EnsureChildControls();
             base.OnInit(e);
+            EnsureChildControls();
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            // Retrieving DynamicItems (for cases where we have controls with attached events inside of it)
+            RetrieveDynamicallyCreatedItems();
+
+            // Wireing up ItemSelected event handlers...
+            WireItemSelectedEvents();
         }
 
         protected override void CreateChildControls()
@@ -88,9 +115,6 @@ namespace Ra.Extensions
             _items.CssClass = this.CssClass + "-items";
             _items.Tag = "ul";
             Controls.Add(_items);
-
-            // Retrieving DynamicItems (for cases where we have controls with attached events inside of it)
-            RetrieveDynamicallyCreatedItems();
         }
 
         protected override void OnPreRender(EventArgs e)
@@ -104,8 +128,25 @@ namespace Ra.Extensions
                 else
                     new EffectHighlight(_items, 200).Render();
                 _items.Visible = true;
+                WireItemSelectedEvents();
             }
             base.OnPreRender(e);
+        }
+
+        private void WireItemSelectedEvents()
+        {
+            foreach (AutoCompleterItem idx in _items.Controls)
+            {
+                idx.Click += new EventHandler(idx_Click);
+            }
+        }
+
+        private void idx_Click(object sender, EventArgs e)
+        {
+            SelectedItem = (sender as System.Web.UI.Control).ID;
+            if (AutoCompleterItemSelected != null)
+                AutoCompleterItemSelected(this, new EventArgs());
+            _items.Controls.Clear();
         }
 
         private void _txt_KeyUp(object sender, EventArgs e)
