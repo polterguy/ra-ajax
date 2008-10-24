@@ -59,6 +59,20 @@
     <p>
         Try to hover over the above DropDownList and then select one of its items...
     </p>
+    <p>
+        Also our DropDownList can by setting the <em>Size</em> property to some integer value be made
+        to display as a ListBox. To have two different controls for this like the default ASP.NET WebControls
+        is plain wrong! It should be the same control since it's just an extra attribute and it's not breaking
+        LSP in any ways by doing it that way. In fact you can even modify this in Ajax Callbacks for the control
+        if you wish, try to click the Button below...
+    </p>
+    <p>
+        <ra:Button 
+            runat="server" 
+            ID="btnChange" 
+            Text="Change to ListBox" 
+            OnClick="btnChange_Click" />
+    </p>
     <h2>Ra-Ajax and Partial Rendering</h2>
     <p>
         Ra-Ajax does not use <em>Partial Rendering</em> almost at all. Only when strictly necessary Ra-Ajax
