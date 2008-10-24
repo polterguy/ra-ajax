@@ -82,6 +82,18 @@ namespace Ra.Widgets
             }
         }
 
+        [DefaultValue(-1)]
+        public int Size
+        {
+            get { return ViewState["Size"] == null ? -1 : (int)ViewState["Size"]; }
+            set
+            {
+                if (value != Size)
+                    SetJSONGenericValue("size", value.ToString());
+                ViewState["Size"] = value;
+            }
+        }
+
         /**
          * List of ListItems currently in the dropdownlist
          */
@@ -221,13 +233,15 @@ namespace Ra.Widgets
         protected override string GetOpeningHTML()
         {
             string accessKey = string.IsNullOrEmpty(AccessKey) ? "" : string.Format(" accesskey=\"{0}\"", AccessKey);
-            return string.Format("<select name=\"{0}\" id=\"{0}\"{1}{2}{3}{5}>{4}</select>",
+            string sizeString = Size == -1 ? "" : (" size=\"" + Size + "\"");
+            return string.Format("<select{6} name=\"{0}\" id=\"{0}\"{1}{2}{3}{5}>{4}</select>",
                 ClientID,
                 GetCssClassHTMLFormatedAttribute(),
                 GetStyleHTMLFormatedAttribute(),
                 accessKey,
                 GetHTMLForOptions(),
-                (Enabled ? "" : " disabled=\"disabled\""));
+                (Enabled ? "" : " disabled=\"disabled\""),
+                sizeString);
         }
 
         private string GetHTMLForOptions()
