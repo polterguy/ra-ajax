@@ -27,5 +27,11 @@ namespace Samples
         {
             lblResults.Text = "mouse over";
         }
+
+        protected void btnChange_Click(object sender, EventArgs e)
+        {
+            list.Size = list.Size == -1 ? 4 : -1;
+            btnChange.Text = list.Size > 0 ? "Change to DropDownList" : "Change to ListBox";
+        }
     }
 }
