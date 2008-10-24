@@ -15,11 +15,11 @@ using System.Collections.Generic;
 namespace Ra.Widgets
 {
     /**
-     * DropDownList control, renders &lt;select...
+     * SelectList control, renders &lt;select...
      */
     [ASP.ParseChildren(true, "Items")]
-    [ASP.ToolboxData("<{0}:DropDownList runat=server />")]
-    public class DropDownList : RaWebControl
+    [ASP.ToolboxData("<{0}:SelectList runat=server />")]
+    public class SelectList : RaWebControl
     {
         /**
          * Raised when selected index is changed
@@ -39,7 +39,7 @@ namespace Ra.Widgets
         private ListItemCollection _listItems;
         private string _selectedItemValue;
 
-        public DropDownList()
+        public SelectList()
         {
             _listItems = new ListItemCollection(this);
         }
@@ -47,7 +47,7 @@ namespace Ra.Widgets
         #region [ -- Properties -- ]
 
         /**
-         * The keyboard shortcut for giving the DropDownList focus. Most browsers implements
+         * The keyboard shortcut for giving the SelectList focus. Most browsers implements
          * some type of keyboard shortcut logic like for instance FireFox allows
          * form elements to be triggered by combining the AccessKey value (single character)
          * together with ALT and SHIFT. Meaning if you have e.g. "H" as keyboard shortcut

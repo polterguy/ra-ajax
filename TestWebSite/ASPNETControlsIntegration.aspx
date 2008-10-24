@@ -37,10 +37,10 @@
 
                 <ra:TextBox runat="server" ID="txtRa" Text="text" />
                 <ra:TextArea runat="server" ID="txtAreaRa" Text="text" />
-                <ra:DropDownList runat="server" ID="ddlRa">
+                <ra:SelectList runat="server" ID="ddlRa">
                     <ra:ListItem Value="first" />
                     <ra:ListItem Value="second" Selected="true" />
-                </ra:DropDownList>
+                </ra:SelectList>
                 <ra:CheckBox runat="server" ID="chk1Ra" />
                 <ra:CheckBox runat="server" ID="chk2Ra" Checked="true" />
                 <ra:RadioButton runat="server" ID="rdo1Ra" />

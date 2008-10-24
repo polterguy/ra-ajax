@@ -19,7 +19,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
     <head runat="server">
         <title>Untitled Page</title>
-        <link href="media/MainStyles-0.6.2.css" rel="stylesheet" type="text/css" />
+        <link href="media/MainStyles-0.7.0.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <div id="doc2" class="yui-t5">
@@ -77,7 +77,7 @@
 			                            <a href="Ajax-CheckBox.aspx">Ra-Ajax - CheckBox</a>
 			                        </li>
 			                        <li>
-			                            <a href="Ajax-DropDownList.aspx">Ra-Ajax - DropDownList</a>
+			                            <a href="Ajax-DropDownList.aspx">Ra-Ajax - SelectList</a>
 			                        </li>
 			                        <li>
 			                            <a href="Ajax-HiddenField.aspx">Ra-Ajax - HiddenField</a>

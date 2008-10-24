@@ -61,7 +61,7 @@
         the Ajax Panel itself would be re-rendered. This would first of all remove focus, but more importantly,
         even remove things we had typed into the TextBox after the Ajax Request was initiated but before the Ajax 
         Request had returned. We discussed this in greater detail in the 
-        <a href="Ajax-DropDownList.aspx">Ajax DropDownList Sample</a>. So I won't go into more details about
+        <a href="Ajax-DropDownList.aspx">Ajax SelectList Sample</a>. So I won't go into more details about
         Partial Rendering in particular.
     </p>
     <p>

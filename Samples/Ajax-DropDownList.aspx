@@ -16,15 +16,15 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ra-Ajax Samples - DropDownList</h1>
+    <h1>Ra-Ajax Samples - SelectList</h1>
     <p>
-        This is our <em>Ajax DropDownList</em> reference sample. Although we try to create most samples 
+        This is our <em>Ajax SelectList</em> reference sample. Although we try to create most samples 
         like a "story" giving away clues to important things about Ra-Ajax as we progress, which means that
         you definitely should read them all sequentially and rather return to specific samples for reference 
         purposes later. The specific Control Samples obviously have to be more of a bread and butter construction. 
     </p>
     <p>
-        Here you can see how you can use our <em>Ajax DropDownList</em> in your own projects. We're just 
+        Here you can see how you can use our <em>Ajax SelectList</em> in your own projects. We're just 
         handling the <em>MouseOut, MouseOver and the SelectedIndexChanged events</em>, but there are also others for 
         Focus events and Blur events. In case you haven't noticed yet you should click the "Show code" button 
         in the top right corner, since a large reason for using Ra-Ajax is the fact that it enables 
@@ -32,7 +32,7 @@
         same <em>Code Model</em> as you would do in conventional non-Ajax ASP.NET Applications.
     </p>
     <p>
-        <ra:DropDownList 
+        <ra:SelectList 
             runat="server" 
             ID="list" 
             OnSelectedIndexChanged="selectedchanged" 
@@ -40,13 +40,13 @@
             OnMouseOver="mouseover">
             <ra:ListItem Text="Item 1" Value="Item1" />
             <ra:ListItem Text="Item 2" Value="Item2" />
-        </ra:DropDownList>
+        </ra:SelectList>
     </p>
     <p>
         <ra:Label 
             runat="server" 
             ID="lblResults" 
-            Text="Changes as you hover DropDownList"
+            Text="Changes as you hover SelectList"
             CssClass="updateLbl" />
     </p>
     <p>
@@ -57,10 +57,10 @@
             CssClass="updateLbl" />
     </p>
     <p>
-        Try to hover over the above DropDownList and then select one of its items...
+        Try to hover over the above SelectList and then select one of its items...
     </p>
     <p>
-        Also our DropDownList can by setting the <em>Size</em> property to some integer value be made
+        Also our SelectList can by setting the <em>Size</em> property to some integer value be made
         to display as a ListBox. To have two different controls for this like the default ASP.NET WebControls
         is plain wrong! It should be the same control since it's just an extra attribute and it's not breaking
         LSP in any ways by doing it that way. In fact you can even modify this in Ajax Callbacks for the control
@@ -82,7 +82,7 @@
         on the server. This means that only the things you actually change on your controls will be sent
         from the server and back to the client. Then the changed properties will be sent from the JavaScript
         JSON handler and to the specific method which handles just "that" JSON value. For instance if you
-        check out the Ajax Request sent back from the server when you hover over the Ajax DropDownList above
+        check out the Ajax Request sent back from the server when you hover over the Ajax SelectList above
         you will see that it send something like this;
     </p>
     <p>
@@ -90,7 +90,7 @@
     </p>
     <p>
         The <em>Ra.Control.$</em> function is to retrieve a specific instance of a Ra-Ajax control on the client
-        side. The client (browser) stores all the controls, including also the DropDownList above. The string
+        side. The client (browser) stores all the controls, including also the SelectList above. The string
         inside of it <em>"ctl00_cnt1_lblResults"</em> is the ClientID of the first Label and also the HTML ID
         of the DOM Element for the Label on the client side.
     </p>
@@ -112,9 +112,9 @@
         First of all, it is almost impossible to do complex things without resorting to Custom JavaScript.
     </p>
     <p> 
-        Imagine if you had a Panel and inside that Panel you had a DropDownList or a TextBox. Then when the user 
+        Imagine if you had a Panel and inside that Panel you had a SelectList or a TextBox. Then when the user 
         selects the "wrong value" you want the background-color of that Panel to become Red to signalize this to the user.
-        Now if you had a DropDownList the DropDownList would lose focus, if you were to do this with Partial 
+        Now if you had a SelectList the SelectList would lose focus, if you were to do this with Partial 
         Rendering. It is even worse if you had a TextBox, since then you could even run the risk of that the user
         had written something into the TextBox after the Ajax Request was initiated but before the Ajax 
         Request had returned. This would then, when the TextBox is re-rendered in the Partial Rendering phase, 

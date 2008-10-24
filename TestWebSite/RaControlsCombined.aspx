@@ -88,7 +88,7 @@ function verifyImageButtonUpdated() {
 
 
 
-// Doing a couple of "random" checks against our DropDownList...
+// Doing a couple of "random" checks against our SelectList...
 function verifyDropDownListInitiallySerializedCorrect() {
   var el = Ra.$('dropDownListTest');
   if( el.options.length == 4) {
@@ -211,43 +211,43 @@ function verifyAfterDelete2() {
                 <br />
                 <br />
                 
-                <ra:DropDownList runat="server" ID="dropDownListTest">
+                <ra:SelectList runat="server" ID="dropDownListTest">
                     <ra:ListItem Text="Text of first" Value="valueOfFirst" />
                     <ra:ListItem Text="Text of second" Value="valueOfSecond" Selected="true" />
                     <ra:ListItem Text="Text of third" Value="valueOfThird" Enabled="false" />
                     <ra:ListItem Text="Text of fourth" Value="valueOfFourth" />
-                </ra:DropDownList>
-                <input type="button" value="Dummy test DropDownList" onclick="verifyDropDownListInitiallySerializedCorrect();" />
+                </ra:SelectList>
+                <input type="button" value="Dummy test SelectList" onclick="verifyDropDownListInitiallySerializedCorrect();" />
                 
                 <br />
                 <br />
-                <ra:DropDownList runat="server" ID="dropDownListTestDelete">
+                <ra:SelectList runat="server" ID="dropDownListTestDelete">
                     <ra:ListItem Text="Text of first" Value="valueOfFirst" />
                     <ra:ListItem Text="Text of second" Value="valueOfSecond" Selected="true" />
                     <ra:ListItem Text="Text of third" Value="valueOfThird" Enabled="false" />
                     <ra:ListItem Text="Text of fourth" Value="valueOfFourth" />
-                </ra:DropDownList>
-                <ra:Button runat="server" ID="deleteFromDDL" Text="Delete from DropDownList" OnClick="deleteFromDDL_Click" />
+                </ra:SelectList>
+                <ra:Button runat="server" ID="deleteFromDDL" Text="Delete from SelectList" OnClick="deleteFromDDL_Click" />
                 <ra:Button runat="server" ID="submitFromDeletedDDL" Text="Submit after delete" OnClick="submitFromDeletedDDL_Click" />
                 
                 <br />
                 <br />
                 
-                <ra:DropDownList runat="server" ID="dropDownListCallback" OnSelectedIndexChanged="dropDownListCallback_SelectedIndexChanged">
+                <ra:SelectList runat="server" ID="dropDownListCallback" OnSelectedIndexChanged="dropDownListCallback_SelectedIndexChanged">
                     <ra:ListItem Text="Text of first" Value="valueOfFirst" />
                     <ra:ListItem Text="Text of second" Value="valueOfSecond" Selected="true" />
                     <ra:ListItem Text="Text of third" Value="valueOfThird" Enabled="false" />
                     <ra:ListItem Text="Text of fourth" Value="valueOfFourth" />
-                </ra:DropDownList>
+                </ra:SelectList>
                 <ra:Button runat="server" ID="selectNewDDLValue" Text="Selects new DDL value" OnClick="selectNewDDLValue_Click" />
                 
                 <br />
                 <br />
                 
-                <ra:DropDownList runat="server" ID="testDisabledDDL">
+                <ra:SelectList runat="server" ID="testDisabledDDL">
                     <ra:ListItem Text="Text of first" Value="valueOfFirst" />
                     <ra:ListItem Text="Text of second" Value="valueOfSecond" Selected="true" />
-                </ra:DropDownList>
+                </ra:SelectList>
                 <ra:Button runat="server" ID="disabledDDL" Text="Disable DDL" OnClick="disabledDDL_Click" />
                 <ra:Button runat="server" ID="enabledDDL" Text="Enabled DDL" OnClick="enabledDDL_Click" />
                 
@@ -266,9 +266,9 @@ function verifyAfterDelete2() {
                 <ra:Button Enabled="false" runat="server" ID="btnDisabled" Text="Disabled" />
                 <ra:TextBox Enabled="false" runat="server" ID="txtDisabled" Text="Disabled" />
                 <ra:TextArea Enabled="false" runat="server" ID="txtAreaDisabled" Text="Disabled" />
-                <ra:DropDownList Enabled="false" runat="server" ID="ddlDisabled">
+                <ra:SelectList Enabled="false" runat="server" ID="ddlDisabled">
                     <ra:ListItem Text="Text of second" Value="valueOfSecond" Selected="true" />
-                </ra:DropDownList>
+                </ra:SelectList>
                 <ra:ImageButton Enabled="false" runat="server" ID="imgDisabled" AlternateText="xxx" ImageUrl="testImage1.png" />
 
                 

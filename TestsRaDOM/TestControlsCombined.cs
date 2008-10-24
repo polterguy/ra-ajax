@@ -94,7 +94,7 @@ namespace NUnitTests
         public void CheckDefaultSerializationOfDropDownList()
         {
             Browser.Eval("verifyDropDownListInitiallySerializedCorrect();");
-            AssertSuccess("DropDownList didn't render initial HTML correct");
+            AssertSuccess("SelectList didn't render initial HTML correct");
         }
 
         [NUnit.Framework.Test]
@@ -102,11 +102,11 @@ namespace NUnitTests
         {
             Browser.Button("deleteFromDDL").Click();
             Browser.Eval("verifyAfterDelete1();");
-            AssertSuccess("Deleting items from DropDownList didn't work");
+            AssertSuccess("Deleting items from SelectList didn't work");
 
             Browser.Button("deleteFromDDL").Click();
             Browser.Eval("verifyAfterDelete2();");
-            AssertSuccess("Deleting items from DropDownList didn't work");
+            AssertSuccess("Deleting items from SelectList didn't work");
 
             Browser.Button("submitFromDeletedDDL").Click();
             Assert.AreEqual("success", Browser.Button("submitFromDeletedDDL").Value);

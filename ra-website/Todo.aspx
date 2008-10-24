@@ -102,12 +102,12 @@
             <tr>
                 <td>Type</td>
                 <td>
-                    <ra:DropDownList 
+                    <ra:SelectList 
                         runat="server" 
                         ID="type">
                         <ra:ListItem Text="Bug" />
                         <ra:ListItem Text="Feature request" />
-                    </ra:DropDownList>
+                    </ra:SelectList>
                 </td>
             </tr>
             <tr>

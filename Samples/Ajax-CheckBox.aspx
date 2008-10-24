@@ -70,6 +70,6 @@
         class. This is intentional and virtually saved us for months of work and debugging when creating Ra-Ajax. It also
         created a far better Ajax Library and did put us in a far sweeter spot.
     </p>
-    <a href="Ajax-DropDownList.aspx">On top Ajax DropDownList</a>
+    <a href="Ajax-DropDownList.aspx">On top Ajax SelectList</a>
 </asp:Content>
 

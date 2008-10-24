@@ -68,7 +68,7 @@
     </p>
     <p>
         In fact, the above Ajax Calendar Control is built entirely as a server-side 
-        Ajax Control, reusing only existing Ra-Ajax Controls like LinkButton, Panel, Label, DropDownList
+        Ajax Control, reusing only existing Ra-Ajax Controls like LinkButton, Panel, Label, SelectList
         and so on. So you don't even have to know JavaScript to create your own Ajax Extension controls.
     </p>
     <p>
