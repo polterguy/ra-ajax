@@ -71,7 +71,7 @@
     <Compile Include="Widgets\HiddenField.cs" />
     <Compile Include="Widgets\Image.cs" />
     <Compile Include="Widgets\RadioButton.cs" />
-    <Compile Include="Widgets\DropDownList.cs" />
+    <Compile Include="Widgets\SelectList.cs" />
     <Compile Include="Widgets\ImageButton.cs" />
     <Compile Include="Widgets\TextArea.cs" />
     <Compile Include="Widgets\Label.cs" />

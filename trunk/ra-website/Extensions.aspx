@@ -44,7 +44,7 @@
     <p>
         This calendar control is only a few hundred lines of C#, no Custom JavaScript used at all to create it. In fact the way
         it is created is by combining existing Ajax Controls in Ra-Ajax together like for instance the LinkButton and the 
-        DropDownList controls. Then by simply overriding the <em>OnLoad</em> and the <em>CreateChildControls</em> we are
+        SelectList controls. Then by simply overriding the <em>OnLoad</em> and the <em>CreateChildControls</em> we are
         able to create a completely ajaxified Calendar Control which we can consume in other projects.
     </p>
     <p>

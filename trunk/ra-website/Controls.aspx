@@ -43,15 +43,15 @@
         OnCheckedChanged="chk_CheckedChanged" />
     <br />
     <br />
-    <ra:DropDownList 
+    <ra:SelectList 
         runat="server" 
         ID="drop" 
         OnSelectedIndexChanged="drop_SelectedIndexChanged">
         <ra:ListItem Value="Value1" />
         <ra:ListItem Value="Value2" />
         <ra:ListItem Value="Value3" />
-    </ra:DropDownList>
-    Ajax DropDownList or select list
+    </ra:SelectList>
+    Ajax SelectList or select list
     <br />
     <br />
     <ra:HiddenField 

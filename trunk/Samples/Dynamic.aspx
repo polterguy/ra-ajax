@@ -31,17 +31,17 @@
         use the <em>ReRender</em> method from the RaControl class.
     </p>
     <p>
-        The DropDownList below decides which controls that should be dynamically loaded into the Ra
+        The SelectList below decides which controls that should be dynamically loaded into the Ra
         Panel below. Try to change its value to see the effect.
     </p>
-    <ra:DropDownList 
+    <ra:SelectList 
         runat="server" 
         ID="dropper" 
         OnSelectedIndexChanged="dropper_SelectedIndexChanged">
         <ra:ListItem Text="Name and Age retriever" Value="Combining" />
         <ra:ListItem Text="Hello World" Value="HelloWorld" />
         <ra:ListItem Text="Custom" Value="custom" />
-    </ra:DropDownList>
+    </ra:SelectList>
 
     <ra:Panel 
         runat="server" 
@@ -96,10 +96,10 @@
     <p> 
         Intuitively for a sample which tries to
         do something similar as this webpage, most people would think that they can just use the 
-        value of the DropDownList. This will <em>not</em> work correctly since when the user changes
-        the control by selecting a new item in the DropDownList the <em>new</em> control will be loaded in
+        value of the SelectList. This will <em>not</em> work correctly since when the user changes
+        the control by selecting a new item in the SelectList the <em>new</em> control will be loaded in
         the Page_Load though it shouldn't be created before the SelectedIndexChanged Event Handler
-        of the DropDownList. Therefor we use the ViewState.
+        of the SelectList. Therefor we use the ViewState.
     </p>
     <p>
         <strong>Never</strong> call the ReRender method unless you are changing the controls in your Panel

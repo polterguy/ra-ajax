@@ -220,7 +220,7 @@
         <li>Timer</li>
         <li>Button</li>
         <li>CheckBox</li>
-        <li>DropDownList</li>
+        <li>SelectList</li>
         <li>HiddenField</li>
         <li>Image</li>
         <li>ImageButton</li>

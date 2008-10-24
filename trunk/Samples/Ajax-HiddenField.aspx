@@ -55,7 +55,7 @@
         UpdatePanels have their advantages, among other things they are easier to implement, in 
         addition to that, they will mostly enable existing normal postback controls to create Ajax 
         Requests and to some extent, maybe even re-render themselves on the server.
-        Though as we discussed in our <a href="Ajax-DropDownList.aspx">Ajax DropDownList</a> sample 
+        Though as we discussed in our <a href="Ajax-DropDownList.aspx">Ajax SelectList</a> sample 
         (note: you should read these samples sequentially the first time) Partial Rendering, which is 
         effectively what UpdatePanels do, has several disadvantages.
     </p>

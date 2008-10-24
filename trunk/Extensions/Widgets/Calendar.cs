@@ -297,10 +297,10 @@ namespace Ra.Extensions
             headerCell.ID = "headC_" + Value.ToString("dd_MM_yyyy", System.Globalization.CultureInfo.InvariantCulture);
             headerCell.ColSpan = 8;
 
-            // Year DropDownList
+            // Year SelectList
             CreateYearPicker(headerCell);
 
-            // Month DropDownList
+            // Month SelectList
             CreateMonthPicker(headerCell);
 
             headerRow.Cells.Add(headerCell);
@@ -309,7 +309,7 @@ namespace Ra.Extensions
 
         private void CreateMonthPicker(HTML.HtmlTableCell headerCell)
         {
-            DropDownList month = new DropDownList();
+            SelectList month = new SelectList();
             month.EnableViewState = false;
             month.ID = "month_" + Value.ToString("dd_MM_yyyy", System.Globalization.CultureInfo.InvariantCulture);
             for (int idxMonth = 1; idxMonth < 13; idxMonth++)
@@ -327,7 +327,7 @@ namespace Ra.Extensions
 
         private void CreateYearPicker(HTML.HtmlTableCell headerCell)
         {
-            DropDownList year = new DropDownList();
+            SelectList year = new SelectList();
             year.EnableViewState = false;
             year.ID = "year_" + Value.ToString("dd_MM_yyyy", System.Globalization.CultureInfo.InvariantCulture);
             for (int idxYear = Value.Year - 25; idxYear < Value.Year + 25; idxYear++)
@@ -357,7 +357,7 @@ namespace Ra.Extensions
 
         private void month_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DropDownList drop = sender as DropDownList;
+            SelectList drop = sender as SelectList;
             int newMonth = Int32.Parse(drop.SelectedItem.Value);
             DateTime newValue = new DateTime(Value.Year, newMonth, Math.Min(28, Value.Day));
             if (Value.Date != newValue.Date)
@@ -373,7 +373,7 @@ namespace Ra.Extensions
 
         private void year_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DropDownList drop = sender as DropDownList;
+            SelectList drop = sender as SelectList;
             int newYear = Int32.Parse(drop.SelectedItem.Value);
             DateTime newValue = new DateTime(newYear, Value.Month, Math.Min(28, Value.Day));
             if (Value.Date != newValue.Date)

@@ -14,7 +14,7 @@ using System.Web.UI.WebControls;
 namespace Ra.Widgets
 {
     /**
-     * Items for "listible controls" like for instance DropDownList.
+     * Items for "listible controls" like for instance SelectList.
      */
     public class ListItem
     {
