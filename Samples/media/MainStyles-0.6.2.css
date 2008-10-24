@@ -195,11 +195,11 @@ h2 { margin-top:2.7em; }
 
 
 /* AutoCompleter CSS class */
-.auto { background-color:Yellow; padding:15px; height:20px; width:200px; overflow:visible; }
+.auto { background-color:#fefefe; border:solid 1px #a0a0a0; padding:15px; height:20px; width:200px; overflow:visible; }
 .auto-text { }
-.auto-items { position:absolute; border:solid 1px #aaf; background-color:#fafaff; width:170px; }
+.auto-items { position:absolute; border:solid 1px #aaf; background-color:#fafaff; width:170px; padding:5px; }
 .auto-item { border:solid 1px Transparent; cursor:pointer; }
-.auto-item:hover { border-top:solid 1px #aaf; border-bottom:solid 1px #aaf; background-color:#fff; }
+.auto-item:hover { border-top:solid 1px #aaf; border-bottom:solid 1px #ddf; background-color:#fff; }
 
 
 /* Accordion */
