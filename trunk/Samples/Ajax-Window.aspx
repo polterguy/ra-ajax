@@ -73,26 +73,24 @@
 
 	</ext:Window>
 
-    <div style="position:absolute;">
-        <ext:Window
-	        runat="server"
-	        Caption="Ajax Window - drag me"
-	        CssClass="alphacube"
-	        Visible="false"
-	        style="position:absolute;top:-50px;left:100px;width:250px;z-index:5000;"
-	        id="window2">
+    <ext:Window
+        runat="server"
+        Caption="Ajax Window - drag me"
+        CssClass="alphacube"
+        Visible="false"
+        style="position:absolute;top:500px;left:300px;width:250px;z-index:1001;"
+        id="window2">
 
-	        <div style="padding:15px 15px 15px 15px;">
-	            <h3>Another Window</h3>
-	            <p>
-	                This window is initially in-visible. Notice that as all in-visible controls almost no markup, and
-	                no content is being added to the DOM or HTML before the Window is being made Visible.
-	            </p>
-	        </div>
-	        <ra:BehaviorObscurable runat="server" id="obscurer" ZIndex="500" />
+        <div style="padding:15px 15px 15px 15px;">
+            <h3>Another Window</h3>
+            <p>
+                This window is initially in-visible. Notice that as all in-visible controls almost no markup, and
+                no content is being added to the DOM or HTML before the Window is being made Visible.
+            </p>
+        </div>
+        <ra:BehaviorObscurable runat="server" id="obscurer" ZIndex="1000" />
 
-	    </ext:Window>
-	</div>
+    </ext:Window>
 
     <div class="spacerLarge">&nbsp;</div>
     <p>
