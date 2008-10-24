@@ -73,6 +73,6 @@ function callWebMethod() {
         And Ra-Ajax WebMethods have support for having WebMethods in MasterPages and UserControls and even *nested*
         UserControls. But unfortunately not (yet!) nested MasterPages ;)
     </p>
-    
+    <a href="Ajax-AutoCompleter.aspx">On to Ajax AutoCompleter</a>    
 </asp:Content>
 
