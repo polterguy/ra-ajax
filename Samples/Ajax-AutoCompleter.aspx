@@ -26,10 +26,12 @@
         Ajax AutoCompleters was probably the first "real" Ajax Controls created. The first implementation (I am aware of)
         was Thomas Aculous' AutoCompleter in ScriptAculous. This is our Ajax AutoCompleter sample.
     </p>
+    <ra:Label runat="server" ID="lbl" Text="Watch me change..." />
     <ext:AutoCompleter 
         runat="server" 
         ID="auto" 
         CssClass="auto"
+        OnAutoCompleterItemSelected="auto_AutoCompleterItemSelected"
         OnRetrieveAutoCompleterItems="auto_RetrieveAutoCompleterItems" />
 </asp:Content>
 

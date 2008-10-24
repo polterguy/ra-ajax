@@ -34,8 +34,15 @@ namespace Samples
                 AutoCompleterItem item = new AutoCompleterItem();
                 item.Text = string.Format(e.Query + "-Item-" + idx);
                 item.CssClass = auto.CssClass + "-item";
+                item.ID = "_item" + idx;
                 e.Controls.Add(item);
             }
+        }
+
+        protected void auto_AutoCompleterItemSelected(object sender, EventArgs e)
+        {
+            lbl.Text = auto.SelectedItem + " was selected...";
+            new EffectHighlight(lbl, 500).Render();
         }
     }
 }
