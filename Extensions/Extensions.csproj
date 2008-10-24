@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Widgets\AutoCompleter.cs" />
+    <Compile Include="Widgets\AutoCompleterItem.cs" />
     <Compile Include="Widgets\Calendar.cs" />
     <Compile Include="Widgets\Accordion.cs" />
     <Compile Include="Widgets\AccordionView.cs" />
