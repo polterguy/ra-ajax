@@ -93,6 +93,21 @@ namespace Ra.Extensions
             RetrieveDynamicallyCreatedItems();
         }
 
+        protected override void OnPreRender(EventArgs e)
+        {
+            if (_items.Controls.Count == 0)
+                _items.Visible = false;
+            else
+            {
+                if (!_items.Visible)
+                    new EffectFadeIn(_items, 200).Render();
+                else
+                    new EffectHighlight(_items, 200).Render();
+                _items.Visible = true;
+            }
+            base.OnPreRender(e);
+        }
+
         private void _txt_KeyUp(object sender, EventArgs e)
         {
             _items.Controls.Clear();
