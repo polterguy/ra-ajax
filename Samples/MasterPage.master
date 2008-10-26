@@ -168,6 +168,41 @@
 					                        AlternateText="Show Code" 
 					                        OnClick="btnShowCode_Click" />
 					                </div>
+					                <ext:Timer 
+					                    runat="server" 
+					                    ID="timerMove" 
+					                    Duration="2000" 
+					                    OnTick="timerMove_Tick" />
+                                    <ext:Window 
+                                        ID="wowWnd" 
+                                        runat="server" 
+                                        Caption="Wow samples" 
+                                        OnMouseOver="wowWnd_MouseOver"
+                                        style="width:150px;left:0px;top:0px;position:relative;"
+                                        CssClass="alphacube">
+                                        <div style="padding:5px;font-size:0.8em;">
+                                            <ul>
+			                                    <li>
+			                                        <a href="Ajax-TreeView.aspx">Ajax TreeView</a>
+			                                    </li>
+		                                        <li>
+		                                            <a href="Ajax-AutoCompleter.aspx">Ajax AutoCompleter</a>
+		                                        </li>
+			                                    <li>
+			                                        <a href="Effects.aspx">Ajax Effects</a>
+			                                    </li>
+			                                    <li>
+			                                        <a href="Ajax-Comet.aspx">Ajax Comet</a>
+			                                    </li>
+			                                    <li>
+			                                        <a href="Ajax-TabControl.aspx">Ajax TabControl</a>
+			                                    </li>
+			                                    <li>
+			                                        <a href="Ajax-Window.aspx">Ajax Window</a>
+			                                    </li>
+                                            </ul>
+                                        </div>
+                                    </ext:Window>
 					                <div class="w3c">
                                         <a href="http://validator.w3.org/check?uri=referer">
                                             <img 

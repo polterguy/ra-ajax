@@ -387,7 +387,7 @@ namespace Ra.Widgets
                     builder.Append(",");					
 				builder.AppendFormat("\"{0}\":{1}",
 					key,
-					value);
+					value.ToString().ToLower());
 			}
             else if (value.GetType() == typeof(int))
             {
