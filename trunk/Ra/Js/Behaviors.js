@@ -184,7 +184,6 @@ Ra.extend(Ra.BDrag.prototype, {
 
     // To prevent selection for non-mozilla browsers
     this.options.handle.observe('mousedown', this.onMouseDown, this);
-    this.options.handle.observe('selectstart', this.onSelectStart, this);
     document.body.observe('mouseup', this.onMouseUp, this);
     document.body.observe('mousemove', this.onMouseMove, this);
 
@@ -208,7 +207,7 @@ Ra.extend(Ra.BDrag.prototype, {
     this.options.snap = pt;
   },
 
-  onSelectStart: function(evt) {
+  onStopEvent: function(evt) {
     return false;
   },
 
@@ -223,6 +222,10 @@ Ra.extend(Ra.BDrag.prototype, {
     // Storing old position
     this._oldX = parseInt(this.parent.element.getStyle('left'), 10);
     this._oldY = parseInt(this.parent.element.getStyle('top'), 10);
+
+    // Stopping "selection mode"
+    document.body.observe('selectstart', this.onStopEvent);
+    document.body.observe('dragstart', this.onStopEvent);
   },
 
   // Called when mouse is released. Note that this
@@ -259,6 +262,9 @@ Ra.extend(Ra.BDrag.prototype, {
       onError: this.onFailedRequest,
       callingContext: this
     });
+    // Stopping "selection mode"
+    document.body.stopObserving('selectstart', this.onStopEvent);
+    document.body.stopObserving('dragstart', this.onStopEvent);
   },
 
   // Called when mouse is moved. This too have the same "bug" as the
