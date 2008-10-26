@@ -47,6 +47,13 @@ namespace Samples
             lit.Text = "HTML";
             lit.ID = "HTML_normal_lit";
             item.Controls.Add(lit);
+
+            // Creating more children for the HTML node
+            TreeNodes htmlNodes = new TreeNodes();
+            htmlNodes.ID = "html_children";
+            htmlNodes.GetChildNodes += new EventHandler(htmlNodes_GetChildNodes);
+            item.Controls.Add(htmlNodes);
+
             parent.Controls.Add(item);
 
             // Second child TreeNode
@@ -55,6 +62,52 @@ namespace Samples
             lit = new ASPCTRLS.LiteralControl();
             lit.Text = "XHTML";
             lit.ID = "XHTML_lit";
+            item.Controls.Add(lit);
+            parent.Controls.Add(item);
+        }
+
+        void htmlNodes_GetChildNodes(object sender, EventArgs e)
+        {
+            // Item that was expanded
+            TreeNodes parent = sender as TreeNodes;
+
+            TreeNode item = new TreeNode();
+            item.ID = "HTML1";
+            ASPCTRLS.LiteralControl lit = new ASPCTRLS.LiteralControl();
+            lit.Text = "HTML 1";
+            lit.ID = "HTML_lit_1";
+            item.Controls.Add(lit);
+            parent.Controls.Add(item);
+
+            item = new TreeNode();
+            item.ID = "HTML2";
+            lit = new ASPCTRLS.LiteralControl();
+            lit.Text = "HTML 2";
+            lit.ID = "HTML_lit_2";
+            item.Controls.Add(lit);
+            parent.Controls.Add(item);
+
+            item = new TreeNode();
+            item.ID = "HTML3";
+            lit = new ASPCTRLS.LiteralControl();
+            lit.Text = "HTML 3";
+            lit.ID = "HTML_lit_3";
+            item.Controls.Add(lit);
+            parent.Controls.Add(item);
+
+            item = new TreeNode();
+            item.ID = "HTML4";
+            lit = new ASPCTRLS.LiteralControl();
+            lit.Text = "HTML 4";
+            lit.ID = "HTML_lit_4";
+            item.Controls.Add(lit);
+            parent.Controls.Add(item);
+
+            item = new TreeNode();
+            item.ID = "HTML5";
+            lit = new ASPCTRLS.LiteralControl();
+            lit.Text = "HTML 5";
+            lit.ID = "HTML_lit_5";
             item.Controls.Add(lit);
             parent.Controls.Add(item);
         }
@@ -144,7 +197,7 @@ namespace Samples
         protected void lnkCool1_Click(object sender, EventArgs e)
         {
             (sender as LinkButton).Text = "I was CLICKED! :)";
-            new EffectSize(pnl, 500, 150, 120)
+            new EffectSize(pnl, 500, 250, 160)
                 .JoinThese(new EffectHighlight())
                 .Render();
 
@@ -154,7 +207,7 @@ namespace Samples
         protected void lnkCool2_Click(object sender, EventArgs e)
         {
             (sender as LinkButton).Text = "I was CLICKED! :)";
-            new EffectSize(pnl, 500, 250, 150)
+            new EffectSize(pnl, 500, 300, 170)
                 .JoinThese(new EffectHighlight())
                 .Render();
 
@@ -165,14 +218,12 @@ namespace Samples
         {
             if (tree.SelectedNodes.Length > 0)
                 tree.SelectedNodes = new TreeNode[1] { tree.SelectedNodes[tree.SelectedNodes.Length - 1] };
-            
             tree.AllowMultipleSelectedItems = allowMultiSelectionCheckBox.Checked;
         }
 
         protected void selected(object sender, EventArgs e)
         {
             string selected = string.Empty;
-
             foreach (TreeNode node in tree.SelectedNodes)
                 selected += node.ID + ", ";
 
@@ -231,6 +282,8 @@ namespace Samples
                     return "First attempt, lacks fundamental qualities needed in a document format";
                 case "XHTML_tree":
                     return "Second attempt, contains guarantees and stricter validation that makes it a 'better fit' than HTML";
+                case "HTML5":
+                    return "This is especially exciting since it comes with video, audio, canvas and a lot of other goodies that hopefully will help us kill ActiveX2.0 ;)";
                 default:
                     return "I don't really have any intelligent to say about that theme...";
             }
