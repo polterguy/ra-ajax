@@ -293,6 +293,7 @@ Ra.Element.prototype = {
         evt.cancelBubble = true;
         if( evt.stopPropagation )
           evt.stopPropagation();
+        return false;
       }
     };
 
