@@ -30,6 +30,7 @@ namespace Ra.Extensions
     public class TreeNodes : RaWebControl, ASP.INamingContainer
     {
         private bool _hasLoadedDynamicControls;
+        private bool _expanded;
 
         /**
          * Raised when control needs to fetch TreeNode children. Note that to save bandwidth space while
@@ -48,8 +49,8 @@ namespace Ra.Extensions
         [DefaultValue(false)]
         public bool Expanded
         {
-            get { return ViewState["Expanded"] == null ? false : (bool)ViewState["Expanded"]; }
-            set { ViewState["Expanded"] = value; }
+            get { return _expanded; }
+            set { _expanded = value; }
         }
 
         protected override void OnLoad(EventArgs e)
@@ -75,14 +76,16 @@ namespace Ra.Extensions
         {
             object[] tmp = savedState as object[];
             _hasLoadedDynamicControls = (bool)tmp[0];
-            base.LoadControlState(tmp[1]);
+            _expanded = (bool)tmp[1];
+            base.LoadControlState(tmp[2]);
         }
 
         protected override object SaveControlState()
         {
-            object[] retVal = new object[2];
+            object[] retVal = new object[3];
             retVal[0] = _hasLoadedDynamicControls;
-            retVal[1] = base.SaveControlState();
+            retVal[1] = _expanded;
+            retVal[2] = base.SaveControlState();
             return retVal;
         }
 

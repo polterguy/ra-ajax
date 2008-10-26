@@ -117,9 +117,11 @@ namespace Samples
             for (int idx = 0; idx < 500; idx++)
             {
                 TreeNode t = new TreeNode();
+                t.EnableViewState = false;
                 t.ID = "huge_" + idx;
                 System.Web.UI.LiteralControl l = new System.Web.UI.LiteralControl();
                 l.Text = "Huge # " + idx;
+                l.EnableViewState = false;
                 switch (idx)
                 {
                     case 0:
