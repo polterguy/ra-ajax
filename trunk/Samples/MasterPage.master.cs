@@ -41,6 +41,19 @@ namespace Samples
             }
         }
 
+        protected void timerMove_Tick(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            new EffectMove(wowWnd, 400, rnd.Next(0, 50), rnd.Next(-100, 400))
+                .Render();
+        }
+
+        protected void wowWnd_MouseOver(object sender, EventArgs e)
+        {
+            // Turning off "animation timer"...
+            timerMove.Enabled = false;
+        }
+
         protected void btnShowCode_Click(object sender, EventArgs e)
         {
             if (!tabShowCode.Visible)
