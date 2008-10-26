@@ -196,7 +196,7 @@ h2 { margin-top:2.7em; }
 
 /* AutoCompleter CSS class */
 .auto { background-color:#fefefe; border:solid 1px #a0a0a0; padding:15px; height:20px; width:200px; overflow:visible; }
-.auto-text { }
+.auto-text { display:block; }
 .auto-items { position:absolute; border:solid 1px #aaf; background-color:#fafaff; width:170px; padding:5px; }
 .auto-item { border:solid 1px Transparent; cursor:pointer; }
 .auto-item:hover { border-top:solid 1px #aaf; border-bottom:solid 1px #ddf; background-color:#fff; }
@@ -217,18 +217,20 @@ h2 { margin-top:2.7em; }
 
 .tab-control { width:95%; }
 .tab-control .tab-header { }
+.tab-control .tab-header ul { }
 .tab-control .tab-header ul li { display:inline; padding-right:2px; }
 .tab-control .tab-header ul li.first { margin-left:6px; }
-.tab-control .tab-header ul li a { text-decoration:none; color:#333; padding:5px; }
-.tab-control .tab-header ul li.active a { color:#993; }
-.tab-control .tab-header ul li.active a:hover { color:#993; }
+.tab-control .tab-header ul li a { text-decoration:none; color:#666; padding:5px; }
+.tab-control .tab-header ul li.active a { color:#333; }
+.tab-control .tab-header ul li.active a:hover { color:#333; }
 .tab-control .tab-header ul li a:hover { color:#66d; background-color:Transparent; }
-.tab-control .tab-header ul li span.left { background:url('tabcontrol.png') no-repeat; width:3px; padding-top:5px; }
-.tab-control .tab-header ul li span.center { background:url('tabcontrol.png') repeat-x 0 -50px; padding-top:5px; }
-.tab-control .tab-header ul li span.right { background:url('tabcontrol.png') no-repeat -2px 0px; width:3px; padding-top:5px; }
-.tab-control .tab-header ul li.active span.left { background:url('tabcontrol.png') no-repeat 0 -100px; border-bottom:solid 1px #F0F0EA; }
-.tab-control .tab-header ul li.active span.center { background:url('tabcontrol.png') repeat-x 0 -150px; font-weight:bold; border-bottom:solid 1px #F0F0EA; }
-.tab-control .tab-header ul li.active span.right { background:url('tabcontrol.png') no-repeat -2px -100px; border-bottom:solid 1px #F0F0EA; }
+.tab-control .tab-header ul li span { display:inline-block; *height:18px; padding-top:5px; }
+.tab-control .tab-header ul li span.left { background:Transparent url('tabcontrol.png') no-repeat; width:3px; }
+.tab-control .tab-header ul li span.center { background:Transparent url('tabcontrol.png') repeat-x 0 -50px; }
+.tab-control .tab-header ul li span.right { background:Transparent url('tabcontrol.png') no-repeat -2px 0px; width:6px; }
+.tab-control .tab-header ul li.active span.left { background:Transparent url('tabcontrol.png') no-repeat 0 -100px; }
+.tab-control .tab-header ul li.active span.center { background:Transparent url('tabcontrol.png') repeat-x 0 -150px; }
+.tab-control .tab-header ul li.active span.right { background:Transparent url('tabcontrol.png') no-repeat -2px -100px; }
 .tab-control .content { padding:15px; background-color:#F0F0EA; border:solid 1px #91A7B4; }
 
 
