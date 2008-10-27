@@ -160,8 +160,8 @@ namespace Entity
                 string baseUrl = arrs[1] as string;
                 foreach (Operator idx in opers)
                 {
-                    idx.SendEmail("New Forum post at ra-ajax.org",
-                        string.Format(@"A new post has been posted at; {0} named {1}",
+                    idx.SendEmail("Ra-Ajax Forums - " + Header,
+                        string.Format(@"A new forum post titled '{1}' has been posted {0}",
                         baseUrl,
                         Header));
                 }

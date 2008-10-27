@@ -28,17 +28,27 @@
         <em>Tick Event</em> on the server for you meaning you can completely abstract away the notion of JavaScript
         and setTimeout and all that.
     </p>
-    <p>
-        <ra:Label 
-            runat="server" 
-            ID="lbl" 
-            Text="Watch me change" 
-            CssClass="updateLbl" />
-    </p>
     <ext:Timer 
         runat="server" 
-        ID="timer"  
-        OnTick="timer_Tick" />
+        OnTick="timer1_Tick" 
+        Duration="1000"
+        ID="timer1" />
+
+    <ra:Panel 
+        runat="server" 
+        ID="pnlTimer" 
+        style="position:absolute;border:solid 1px Black;background-color:Yellow;width:400px;height:200px;padding:25px;float:left;">
+        <p style="z-index:100;">
+            Follow this one as it grows randomly around due to the timer which creates an Ajax Effect on the server
+            and updates the label below.
+            <br />
+            <ra:Label runat="server" ID="date" style="font-style:italic;color:#999;" Text="Date" />
+        </p>
+        <ra:Panel runat="server" ID="pnlTimer2" style="z-index:99;background-color:Red;position:absolute;width:25px;height:25px;top:0px;left:0px;">
+            &nbsp;
+        </ra:Panel>
+    </ra:Panel>
+    <div style="height:300px;">&nbsp;</div>
     <p>
         Watch closely the Label above as it changes every second. The code for changing the Label Text value
         is created 100% on the server and runs in the protected (blue pill) environment of server-side code :)

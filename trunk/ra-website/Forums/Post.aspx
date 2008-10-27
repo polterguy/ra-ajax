@@ -24,13 +24,10 @@
         <br />
         <a href="Forums.aspx">Main forum page</a> to post or reply.
     </div>
-    <span class="links" style="position:absolute;left:55px;top:275px;">
-        <a href="~/Forums/Forums.aspx" runat="server">Back to Ra-Ajax Forums</a>
-    </span>
     <div class="forumPost">
-        <h2 style="float:left;" runat="server" id="headerParent"></h2>
+        <h2 style="float:left;margin-top:0;" runat="server" id="headerParent"></h2>
         <i style="float:right;" runat="server" id="dateParent"></i>
-        <br style="clear:right;" />
+        <br style="clear: both;" />
         <p runat="server" id="contentParent"></p>
         <em runat="server" id="operatorInfo"></em>
     </div>
@@ -43,9 +40,9 @@
             </FooterTemplate>
             <ItemTemplate>
                 <div class="forumPost">
-                    <h2 style="float:left;"><%# Eval("Header") %></h2>
+                    <h2 style="float:left;margin-top:0;"><%# Eval("Header") %></h2>
                     <i style="float:right;"><%# string.Format("{0} {1}", Eval("Operator.Signature") == string.Empty? string.Empty : Eval("Operator.Signature") + " -", ((DateTime)Eval("Created")).ToString("d.MMM yy HH:mm", System.Globalization.CultureInfo.InvariantCulture)) %></i>
-                    <br style="clear:right;" />
+                    <br style="clear: both;" />
                     <p><%# Eval("Body") %></p>
                     <i>Posted by <%# Eval("Operator.Username") %> who has <%# Eval("Operator.NumberOfPosts")%> posts</i>
                 </div>
@@ -53,12 +50,11 @@
         </asp:Repeater>
     </ra:Panel>
 
-    <h2 style="margin-top:50px;">Reply</h2>
-    <hr style="height:1px;" />
     <ra:Panel 
         runat="server" 
-        style="background-color:#f9f9f9;padding:15px;width:70%;"
+        style="background-color:#f9f9f9;padding:15px;"
         ID="pnlReply">
+        <h2 style="margin-top:50px;border-bottom:solid 1px black;">Reply</h2>
         <table>
             <tr>
                 <td>Subject:</td>
@@ -75,8 +71,8 @@
                     <ra:TextArea 
                         runat="server" 
                         ID="body" 
-                        Columns="50" 
-                        Rows="5" />
+                        Rows="5"
+                        style="width:419px" />
                 </td>
             </tr>
             <tr>

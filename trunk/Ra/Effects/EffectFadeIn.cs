@@ -30,6 +30,13 @@ namespace Ra.Widgets
         public EffectFadeIn()
 			: base(null, 0)
 		{ }
+
+        public override void Render()
+        {
+            if (!Control.Visible)
+                Control.Visible = true;
+            base.Render();
+        }
 		
 		private void UpdateStyleCollection()
 		{

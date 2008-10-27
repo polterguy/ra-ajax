@@ -13,11 +13,13 @@ namespace Samples
 {
     public partial class AjaxTimer : System.Web.UI.Page
     {
-        protected void timer_Tick(object sender, EventArgs e)
+        protected void timer1_Tick(object sender, EventArgs e)
         {
-            lbl.Text = DateTime.Now.ToString("dddd, dd MM - yy : HH:mm:ss");
-            Effect effect = new EffectHighlight(lbl, 300);
-            effect.Render();
+            Random rnd = new Random();
+            new EffectSize(pnlTimer, 400, rnd.Next(100, 250), rnd.Next(200, 700)).Render();
+            new EffectMove(pnlTimer2, 400, rnd.Next(0, 100), rnd.Next(0, 200)).Render();
+            date.Text = DateTime.Now.ToString("dddd, MMM dd, yyyy - HH:mm:ss");
+            new EffectFadeIn(date, 400).Render();
         }
     }
 }

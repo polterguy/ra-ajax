@@ -22,238 +22,22 @@
     Runat="Server">
 
     <h1>Ra-Ajax Forums</h1>
-    <p style="width:450px;">
+    <p>
         Feel free to post your questions here and hopefully someone will try to answer as best they can, though 
         remember that Ra-Ajax is a NON-commercial project which means that none of the people answering you 
         won't get paid for helping you. If you are a senior ASP.NET/Ra-Ajax developer yourself and like to 
-        help out the project then answering forum questions is the place to start :)
-        <br />
-        Politeness helps :)
+        help out the project then answering forum questions is the place to start. Politeness helps :)
     </p>
-    <ra:Panel 
-        runat="server" 
-        ID="pnlLoggedIn" 
-        style="position:absolute;top:290px;right:5px;background-color:Yellow;border:solid 1px #333;padding:15px;">
-        Welcome 
-        <ra:Label 
-            runat="server" 
-            ID="usernameLoggedIn" />
-        <br />
-        <ra:LinkButton 
-            runat="server" 
-            ID="createNewPost" 
-            OnClick="createNewPost_Click"
-            Text="Add New Post" />
-        <br />
-        <ra:LinkButton 
-            runat="server" 
-            ID="profile" 
-            OnClick="profile_Click"
-            Text="Edit Profile" />
-    </ra:Panel>
-    <ra:Panel 
-        runat="server" 
-        ID="pnlLogin" 
-        style="position:absolute;top:290px;right:5px;background-color:Yellow;border:solid 1px #333;padding:15px;">
-        <table>
-            <tr>
-                <td>Username</td>
-                <td>
-                    <ra:TextBox 
-                        runat="server" 
-                        ID="username" />
-                </td>
-            </tr>
-            <tr>
-                <td>Password</td>
-                <td>
-                    <ra:TextBox 
-                        runat="server" 
-                        ID="pwd" 
-                        TextMode="password" />
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <ra:CheckBox 
-                        runat="server" 
-                        ID="remember" 
-                        Text="Remember me" />
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <ra:Button 
-                        runat="server" 
-                        ID="login" 
-                        Text="Login" 
-                        OnClick="login_Click" />
-                    or 
-                    <ra:Button 
-                        runat="server" 
-                        ID="register" 
-                        Text="Register" 
-                        OnClick="register_Click" />
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <ra:Label 
-                        runat="server" 
-                        style="color:Red;"
-                        ID="lblError" />
-                </td>
-            </tr>
-        </table>
-    </ra:Panel>
-    <ra:Panel 
-        runat="server" 
-        Visible="false"
-        ID="pnlConfirmRegistration" 
-        style="position:absolute;top:190px;right:5px;background-color:Yellow;border:solid 1px #333;padding:15px;">
-        <span runat="server" id="newUserWelcome"></span>
-    </ra:Panel>
-    <ext:Window 
-	    runat="server"
-	    ID="pnlRegister"
-	    Caption="Register"
-	    CssClass="alphacube"
-	    Visible="false"
-	    style="position:absolute;top:290px;left:250px;padding:15px;"> 
-        <table>
-            <tr>
-                <td>Username</td>
-                <td>
-                    <ra:TextBox 
-                        runat="server" 
-                        ID="newUsername" />
-                </td>
-            </tr>
-            <tr>
-                <td>Password</td>
-                <td>
-                    <ra:TextBox 
-                        runat="server" 
-                        ID="newPassword" 
-                        TextMode="password" />
-                </td>
-            </tr>
-            <tr>
-                <td>Repeat password</td>
-                <td>
-                    <ra:TextBox 
-                        runat="server" 
-                        ID="newPasswordRepeat" 
-                        TextMode="password" />
-                </td>
-            </tr>
-            <tr>
-                <td>Email</td>
-                <td>
-                    <ra:TextBox 
-                        runat="server" 
-                        ID="newEmail" />
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" style="text-align:right;">
-                    <ra:Button 
-                        runat="server" 
-                        ID="finishRegister" 
-                        Text="Finish" 
-                        OnClick="finishRegister_Click" />
-                    <ra:Button 
-                        runat="server" 
-                        ID="btnCancelRegistration" 
-                        Text="Cancel" 
-                        OnClick="btnCancelRegistration_Click" />
-                </td>
-            </tr>
-        </table>
-    </ext:Window>
-
-    <ext:Window 
-	    runat="server"
-        ID="pnlProfile" 
-	    Caption="Edit Your Profile"
-	    CssClass="alphacube"
-	    Visible="false"
-	    style="position:absolute;top:290px;left:250px;padding:15px;">
-        <table>
-            <tr>
-                <td>Password</td>
-                <td>
-                    <ra:TextBox 
-                        runat="server" 
-                        ID="changePassword" 
-                        style="width:250px;"
-                        TextMode="password" />
-                </td>
-            </tr>
-            <tr>
-                <td>Repeat password</td>
-                <td>
-                    <ra:TextBox 
-                        runat="server" 
-                        ID="changePasswordConfirm" 
-                        style="width:250px;"
-                        TextMode="password" />
-                </td>
-            </tr>
-            <tr>
-                <td>Email</td>
-                <td>
-                    <ra:TextBox 
-                        runat="server" 
-                        style="width:250px;"
-                        ID="changeEmail" />
-                </td>
-            </tr>
-            <tr>
-                <td style="vertical-align:top;">Signature</td>
-                <td>
-                    <ra:TextArea 
-                        Columns="40" 
-                        Rows="5" 
-                        runat="server" 
-                        ID="changeSignature" />
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" style="text-align:right;">
-                    <ra:Button 
-                        runat="server" 
-                        ID="btnChangeProfile" 
-                        Text="Save" 
-                        OnClick="btnChangeProfile_Click" />
-                    <ra:Button 
-                        runat="server" 
-                        ID="btnCancelSavingProfile" 
-                        Text="Cancel" 
-                        OnClick="btnCancelSavingProfile_Click" />
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <ra:Label 
-                        runat="server" 
-                        ID="lblErrorProfile" 
-                        style="color:Red;" />
-                </td>
-            </tr>
-        </table>
-    </ext:Window>
-
     <ext:Window 
 	    runat="server"
 	    ID="pnlNewPost"
 	    Caption="Add New Post"
 	    CssClass="alphacube"
 	    Visible="false"
-	    style="position:absolute;top:290px;left:250px;padding:15px;">
+	    style="position:absolute;top:450px;left:324px;padding:15px;">
         <table>
             <tr>
-                <td>Subject</td>
+                <td>Subject:</td>
                 <td>
                     <ra:TextBox 
                         runat="server" 
@@ -262,13 +46,13 @@
                 </td>
             </tr>
             <tr>
-                <td>Body</td>
+                <td>Body:</td>
                 <td>
                     <ra:TextArea 
                         runat="server" 
                         ID="body" 
-                        Columns="50" 
-                        Rows="10" />
+                        Rows="10"
+                        style="width:419px" />
                 </td>
             </tr>
             <tr>
@@ -296,79 +80,95 @@
         </table>
     </ext:Window>
 
-    Search: 
-    <ra:TextBox 
-        runat="server" 
-        OnKeyUp="search_KeyUp"
-        ID="search" />
-    <ra:Panel runat="server" ID="postsWrapper" style="margin-bottom:25px;margin-top:12px;">
-        <asp:Repeater runat="server" ID="forumPostsRepeater">
-            <HeaderTemplate>
-                <table style="border:solid 1px black;width:90%;" cellpadding="2" cellspacing="3">
-                    <tr style="background-color:#FF9B00;color:#222;font-weight:normal;text-align:center;">
-                        <th>Topic</th>
-                        <th style="width:80px;">Posted By</th>
-                        <th style="width:140px;">Date</th>
-                        <th>Replies</th>
+    <p>
+        <ra:Panel
+            runat="server" 
+            ID="newPostPanel"
+            Visible="false"
+            style="display:inline;">
+            <ra:LinkButton 
+                runat="server" 
+                ID="addNewPostButton"
+                Text="Add New Post"
+                OnClick="addNewPostButton_Click" />
+            |
+        </ra:Panel>
+        Filter: 
+        <ra:TextBox 
+            runat="server" 
+            OnKeyUp="search_KeyUp"
+            ID="search" />
+        <ra:Panel runat="server" ID="postsWrapper" style="margin-bottom:25px;margin-top:12px;">
+            <asp:Repeater runat="server" ID="forumPostsRepeater">
+                <HeaderTemplate>
+                    <table style="border: solid 1px #aaa;" cellpadding="2" cellspacing="3">
+                        <tr style="background-color:#FF9B00;color:#222;font-weight:normal;text-align:center;">
+                            <th>Topic</th>
+                            <th style="width:80px;">Posted By</th>
+                            <th style="width:140px;">Date</th>
+                            <th>Replies</th>
+                        </tr>
+                </HeaderTemplate>
+                <FooterTemplate>
+                    </table>
+                </FooterTemplate>
+                <ItemTemplate>
+                    <tr>
+                        <td>
+                            <a runat="server" href='<%# "~/Forums/" + Eval("Url") %>'>
+                                <%# Eval("Header") %>
+                            </a>
+                        </td>
+                        <td style="text-align:center;">
+                            <%# Eval("Operator.Username") %>
+                        </td>
+                        <td style="text-align:center;">
+                            <%# ((DateTime)Eval("Created")).ToString("dd.MMM yy - HH:mm", System.Globalization.CultureInfo.InvariantCulture)%>
+                        </td>
+                        <td style="text-align:center;">
+                            <%# Eval("NoReplies") %>
+                        </td>
                     </tr>
-            </HeaderTemplate>
-            <FooterTemplate>
-                </table>
-            </FooterTemplate>
-            <ItemTemplate>
-                <tr>
-                    <td>
-                        <a runat="server" href='<%# "~/Forums/" + Eval("Url") %>'>
-                            <%# Eval("Header") %>
-                        </a>
-                    </td>
-                    <td style="text-align:center;">
-                        <%# Eval("Operator.Username") %>
-                    </td>
-                    <td style="text-align:center;">
-                        <%# ((DateTime)Eval("Created")).ToString("dd.MMM yy - HH:mm", System.Globalization.CultureInfo.InvariantCulture)%>
-                    </td>
-                    <td style="text-align:center;">
-                        <%# Eval("NoReplies") %>
-                    </td>
-                </tr>
-            </ItemTemplate>
-            <AlternatingItemTemplate>
-                <tr style="background-color:#ccc;">
-                    <td>
-                        <a id="A1" runat="server" href='<%# "~/Forums/" + Eval("Url") %>'>
-                            <%# Eval("Header") %>
-                        </a>
-                    </td>
-                    <td style="text-align:center;">
-                        <%# Eval("Operator.Username") %>
-                    </td>
-                    <td style="text-align:center;">
-                        <%# ((DateTime)Eval("Created")).ToString("dd.MMM yy - HH:mm")%>
-                    </td>
-                    <td style="text-align:center;">
-                        <%# Eval("NoReplies") %>
-                    </td>
-                </tr>
-            </AlternatingItemTemplate>
-        </asp:Repeater>
-    </ra:Panel>
-    <ra:LinkButton 
-        runat="server" 
-        ID="previous" 
-        OnClick="previous_Click"
-        Text="&lt;&lt; Previous" />
-    |
-    <ra:LinkButton 
-        runat="server" 
-        ID="next" 
-        OnClick="next_Click"
-        Text="Next &gt;&gt;" />
-    <br />
+                </ItemTemplate>
+                <AlternatingItemTemplate>
+                    <tr style="background-color:#ccc;">
+                        <td>
+                            <a id="A1" runat="server" href='<%# "~/Forums/" + Eval("Url") %>'>
+                                <%# Eval("Header") %>
+                            </a>
+                        </td>
+                        <td style="text-align:center;">
+                            <%# Eval("Operator.Username") %>
+                        </td>
+                        <td style="text-align:center;">
+                            <%# ((DateTime)Eval("Created")).ToString("dd.MMM yy - HH:mm")%>
+                        </td>
+                        <td style="text-align:center;">
+                            <%# Eval("NoReplies") %>
+                        </td>
+                    </tr>
+                </AlternatingItemTemplate>
+            </asp:Repeater>
+        </ra:Panel>
+    </p>
+    <p style="text-align:right;">
+        <ra:LinkButton 
+            runat="server" 
+            ID="previous" 
+            OnClick="previous_Click"
+            Text="&lt;&lt; Previous" />
+        <ra:LinkButton 
+            runat="server" 
+            ID="next" 
+            OnClick="next_Click"
+            Text="Next &gt;&gt;" />
+    </p>
+    
     <ra:Label 
         runat="server"
-        style="font-style:italic;"
-        ID="informationLabel" />
+        ID="informationLabel"
+        Text="{0} registered users have posted {1} posts. There are currently {2} user(s) browsing these forums." />
+        
     <div style="height:500px;">
         &nbsp;
     </div>
