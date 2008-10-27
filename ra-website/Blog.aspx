@@ -99,7 +99,7 @@
                 <ra:TextArea 
                     runat="server" 
                     ID="txtBody" 
-                    Columns="60" 
+                    style="width:450px;" 
                     Rows="25" />
                  <br />
                  <ra:Button 
