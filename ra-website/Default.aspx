@@ -34,8 +34,7 @@
     <p>
         Try out the Ra-Ajax "Hello World" application below.
     </p>
-    <br />
-    <div style="float:left;height:200px;">
+    <div style="float:left;">
         <table>
             <tr>
                 <td>
@@ -70,12 +69,11 @@
             </tr>
         </table>
     </div>
-
     <ra:Panel 
         runat="server" 
         ID="pnlResults" 
         Visible="false" 
-        style="border:solid 1px Black;background-color:Yellow;width:400px;padding:25px;float:left;display:none;">
+        style="border:solid 1px Black;background-color:Yellow;width:400px;padding:25px;float:left;display:none;margin-bottom:10px;">
         <ra:Label 
             runat="server" 
             ID="lblResults" 

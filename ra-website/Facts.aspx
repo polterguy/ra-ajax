@@ -18,7 +18,6 @@
         version. This means you can use Ra-Ajax out of the box together with Visual Studio, 
         IIS, Windows Server and Linux/Apache/Mono etc.
     </p>
-    <br />
     <h2>License</h2>
     <p>
         Ra-Ajax is licensed under the <a href="http://www.gnu.org/licenses/lgpl.html">LGPL version 3</a> 
@@ -29,7 +28,6 @@
         also release those changes in code form under the LGPL licence terms to those you distribute 
         that modified library to. Basically Ra-Ajax is <em>free as in free beer and as in freedom</em>.
     </p>
-    <br />
     <h2>JavaScript</h2>
     <p>
         Ra is made with the assumption that JavaScript is <em>hard</em> and not something
@@ -37,7 +35,6 @@
         as much as possible and you can probably create very complex Ajax Applications 
         with Ra-Ajax without having to use JavaScript at all.
     </p>
-    <br />
     <h2>Lightweight</h2>
     <p>
         Ra-Ajax is very lightweight which means if you use it your applications will be 
@@ -46,7 +43,6 @@
         without stalling the user experience. This web page scores more than 80 in 
         <a href="http://developer.yahoo.com/yslow/">YSlow</a>.
     </p>
-    <br />
     <h2>Runs on everything</h2>
     <p>
         Ra-Ajax should work on all browsers that are at least close to following 
@@ -57,14 +53,12 @@
         as the back-end for your applications. The slogan could probably be; 
         <em>"Compile once, deploy anywhere, run all over the place"</em>. 
     </p>
-    <br />
     <h2>No learning curve</h2>
     <p>
         Ra-Ajax comes with virtually no learning curve due to its closely coupling to
         the ASP.NET WebControl nature. If you have done conventional ASP.NET 
         development with WebControls then learning Ra-Ajax will feel like a breeze.
     </p>
-    <br />
     <h2>Is Ra-Ajax related to ASP.NET AJAX</h2>
     <p>
         No. ASP.NET AJAX is a library created by and maintained by Microsoft. Ra-Ajax
@@ -73,7 +67,6 @@
         API, Ra-Ajax is created around the assumption that you should never have to 
         do JavaScript development yourself.
     </p>
-    <br />
     <h2>Is Ra-Ajax a commercial project?</h2>
     <p>
         NO! Ra-Ajax is not a commercial product and everything in the library is done 
@@ -93,7 +86,6 @@
         will drive the development of Ra-Ajax forward for you. So Ra-Ajax is very unlikely going
         to be abandoned anytime soon even though it is not a commercial product.
     </p>
-    <br />
     <h2>Why create yet another Ajax Library?</h2>
     <p>
         First of all because we need Open Source/Open Web tools for our own needs in our other 
