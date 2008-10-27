@@ -19,16 +19,6 @@ namespace RaWebsite
         {
             if (!IsPostBack)
             {
-                // Hiding LoginPanel (if we should)
-                if (Operator.Current == null)
-                {
-                    pnlLinkToLogin.Visible = true;
-                }
-                else
-                {
-                    pnlLinkToLogin.Visible = false;
-                }
-
                 // Retrieving post...
                 string idOfPost = Request.Params["id"] + ".forum";
                 ForumPost post = ForumPost.FindOne(Expression.Eq("Url", idOfPost), Expression.Eq("ParentPost", 0));

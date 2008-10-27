@@ -16,14 +16,6 @@
     ContentPlaceHolderID="cnt1" 
     Runat="Server">
 
-    <div 
-        runat="server" 
-        id="pnlLinkToLogin" 
-        style="position:absolute;top:290px;right:5px;background-color:Yellow;border:solid 1px #333;padding:15px;">
-        Login or create user at 
-        <br />
-        <a href="Forums.aspx">Main forum page</a> to post or reply.
-    </div>
     <div class="forumPost">
         <h2 style="float:left;margin-top:0;" runat="server" id="headerParent"></h2>
         <i style="float:right;" runat="server" id="dateParent"></i>
