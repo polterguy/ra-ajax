@@ -142,8 +142,7 @@ http://ra-ajax.org
 /* Customized "base" and Grid */
 
 a { text-decoration:none; }
-a:hover { text-decoration:underline;background-color:#eee;color:Black; }
-h2 { margin-top:2.7em; }
+a:hover { text-decoration:underline;color:Black; }
 #doc2 { width:1056px; background:url('bg.png') repeat-y;}
 #hd { background:url('sun_background.jpg') no-repeat; height:259px; margin:0 16px 0 16px; }
 #bd { margin:25px 41px 0 41px; line-height:18px; font-family:"Lucida Grande","Lucida Sans Unicode",verdana,tahoma,arial,sans-serif;}
@@ -186,6 +185,7 @@ span > input + label { padding-right:3px;padding-left:3px; vertical-align:middle
 .blog h2
 {
 	font-size:1.2em;
+	margin-bottom:0;
 }
 
 .blog h3

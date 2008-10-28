@@ -40,11 +40,9 @@
                                             Text="Logout" 
                                             OnClick="logout_Click" />
                                         |
-                                        <asp:HyperLink
-                                            runat="server" 
-                                            ID="lnkProfile"
-                                            Text="My Profile" 
-                                            NavigateUrl="~/Login.aspx?editProfile=true" />
+                                        <a href="<%= ResolveUrl("~/Login.aspx?editProfile=true") %>">
+                                            My Profile
+                                        </a>
                                     </ra:Panel>
                                     <ra:Panel
             	                        runat="server"
@@ -57,11 +55,9 @@
             	                            Text="Login"
             	                            OnClick="loginButton_Click" />
                                         |
-                                        <asp:HyperLink
-                                            runat="server" 
-                                            ID="lnkRegister"
-                                            Text="Register" 
-                                            NavigateUrl="~/Login.aspx?register=true" />
+                                        <a href="<%= ResolveUrl("~/Login.aspx?register=true") %>">
+                                            Register
+                                        </a>
                                     </ra:Panel>
                                     <ul>
                                         <li>
@@ -102,7 +98,7 @@
                                     <div class="w3c">
                                         <a href="http://validator.w3.org/check?uri=referer">
                                             <img 
-                                                src="http://www.w3.org/Icons/valid-xhtml10" 
+                                                src="<%= ResolveUrl("~/media/valid-xhtml10.png") %>"
                                                 alt="Valid XHTML 1.0 Transitional" 
                                                 height="31" 
                                                 width="88" />
