@@ -76,9 +76,11 @@ namespace Ra.Extensions
             if (Style["display"] == "none")
             {
                 ParentMenu.RollUpAllExceptThis(this, ParentMenu.Controls);
-                new EffectRollDown(this, 200)
-                    .JoinThese(new EffectFadeIn())
-                    .Render();
+                if (Page.Request.Browser.Browser == "IE")
+                    Style["display"] = "";
+                else
+                    new EffectFadeIn(this, 300)
+                        .Render();
             }
         }
 
@@ -86,9 +88,13 @@ namespace Ra.Extensions
         internal void RollUp()
         {
             if (Style["display"] != "none")
-                new EffectRollUp(this, 200)
-                    .JoinThese(new EffectFadeOut())
-                    .Render();
+            {
+                if (Page.Request.Browser.Browser == "IE")
+                    Style["display"] = "none";
+                else
+                    new EffectFadeOut(this, 300)
+                        .Render();
+            }
         }
 
         protected override string GetOpeningHTML()

@@ -192,7 +192,7 @@ span > input + label { padding-right:3px;padding-left:3px; }
 .menu .item { cursor:pointer; color:#333; }
 .menu .item:hover { color:#999; }
 .menu .top { display:inline; padding:2px; position:relative; }
-.menu .menu-dropper { background-color:#f5f5f5; display:inline; position:absolute; padding:5px; left:0px; border:solid 1px #999; width:150px; *top:20px; }
+.menu .menu-dropper { background-color:#f5f5f5; position:absolute; padding:5px; left:0px; border:solid 1px #999; width:150px; *top:20px; }
 .menu .menu-dropper .drop-item { display:block; color:#333; }
 .menu .menu-dropper .drop-item:hover { color:#999; }
 .menu .menu-dropper .sub-dropper { left: 150px; top:0px; }

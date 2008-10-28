@@ -188,7 +188,11 @@ Ra.Element.prototype = {
   },
 
   setStyle: function(key, value) {
-    this.style[key] = value;
+    if( key == 'opacity' )
+      this.setOpacity(value);
+    else {
+      this.style[key] = value;
+    }
   },
 
   absolutize: function() {
@@ -234,7 +238,7 @@ Ra.Element.prototype = {
     if(!('opacity' in this.style)) {
       this.setStyle('filter','alpha(opacity=' + Math.round(value * 100) + ')');
     } else {
-      this.setStyle('opacity',value == 1 ? '' : value < 0.0001 ? 0 : value);
+      this.style.opacity = (value == 1 ? '' : (value < 0.0001 ? 0 : value));
     }
     return this;
   },

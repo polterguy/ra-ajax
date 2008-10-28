@@ -45,7 +45,6 @@ namespace Ra.Widgets
         {
 			UpdateStyleCollection();
             return @"
-    this.element.setStyle('display','');
     this._fromHeight = this.element.getDimensions().height;
     this._overflow = this.element.getStyle('overflow');
     this.element.setStyle('overflow','hidden');
