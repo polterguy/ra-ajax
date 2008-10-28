@@ -43,6 +43,11 @@ namespace Ra.Extensions
         public event EventHandler Closed;
 
         /**
+         * Raised when window is moved and dropped at new position
+         */
+        public event EventHandler Moved;
+
+        /**
          * Header text of window
          */
         [DefaultValue("")]
@@ -138,11 +143,18 @@ namespace Ra.Extensions
             _dragger = new BehaviorDraggable();
             _dragger.ID = "XXdragger";
             _dragger.Handle = _caption.ClientID;
+            _dragger.Dropped += new EventHandler(_dragger_Dropped);
             Controls.Add(_dragger);
 
             // Moving controls to where they SHOULD be...
             // This time to get the ViewState right...
             ReArrangeControls();
+        }
+
+        private void _dragger_Dropped(object sender, EventArgs e)
+        {
+            if (Moved != null)
+                Moved(this, new EventArgs());
         }
 
         private void _close_Click(object sender, EventArgs e)

@@ -176,6 +176,7 @@
                                     <ext:Window 
                                         ID="wowWnd" 
                                         runat="server" 
+                                        OnMoved="wowWnd_Moved"
                                         Caption="Wow samples" 
                                         OnMouseOver="wowWnd_MouseOver"
                                         style="width:150px;left:0px;top:0px;position:relative;"
