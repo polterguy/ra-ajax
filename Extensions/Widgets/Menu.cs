@@ -28,6 +28,25 @@ namespace Ra.Extensions
                 MenuItemSelected(item, new EventArgs());
         }
 
+        protected override void OnInit(EventArgs e)
+        {
+            Label left = new Label();
+            left.ID = "leftSpan";
+            left.Text = "&nbsp;";
+            left.CssClass = "top-left";
+
+            Label right = new Label();
+            right.ID = "rightSpan";
+            right.Text = "&nbsp;";
+            right.CssClass = "top-right";
+
+            Controls.AddAt(0, left);
+
+            Controls.Add(right);
+
+            base.OnInit(e);
+        }
+
         protected override void OnPreRender(EventArgs e)
         {
             foreach (ASP.Control control in Controls)
