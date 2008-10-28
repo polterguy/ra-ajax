@@ -201,6 +201,9 @@
 			                                    <li>
 			                                        <a href="Ajax-Window.aspx">Ajax Window</a>
 			                                    </li>
+			                                    <li>
+			                                        <a href="Ajax-Menu.aspx">Ajax Menu</a>
+			                                    </li>
                                             </ul>
                                         </div>
                                     </ext:Window>
