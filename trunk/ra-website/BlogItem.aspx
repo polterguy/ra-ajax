@@ -14,7 +14,6 @@
         <h1 runat="server" id="header"></h1>
         <i class="date" runat="server" id="date"></i>
         <br />
-        <br />
         <div runat="server" id="body"></div>
         <a 
             style="font-size:10px;" 

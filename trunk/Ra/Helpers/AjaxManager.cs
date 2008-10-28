@@ -351,19 +351,9 @@ namespace Ra
                 CurrentPage.Response.Redirect(url);
             else
             {
-                if (url == "~" || url == "~/")
-                {
-                    CurrentPage.Response.AddHeader("Location", CurrentPage.Request.ApplicationPath);
-                }
-                else if (url.StartsWith("~"))
-                {
-                    CurrentPage.Response.AddHeader("Location", url.Replace("~", CurrentPage.Request.ApplicationPath));
-                }
-                else
-                {
-                    CurrentPage.Response.AddHeader("Location", url);
-                }
-                // Note that ue to w3c standardizing the XHR should TRANSPARENTLY
+                CurrentPage.Response.AddHeader("Location", CurrentPage.Response.ApplyAppPathModifier(url));
+
+                // Note that due to w3c standardizing the XHR should TRANSPARENTLY
                 // do 301 and 302 redirects we need another mechanism to inform client side that
                 // the user code is RE-directing to another page!
                 CurrentPage.Response.StatusCode = 278;
