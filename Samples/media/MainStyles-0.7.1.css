@@ -150,8 +150,8 @@ h2 { margin-top:2.7em; }
 #ft { margin-left:auto; margin-right:auto; text-align:center; width:50%; padding:25px; }
 th, td { border:0; padding:0.3em; }
 table { border-collapse:separate; border-spacing:2px; }
-input[type="radio"], input[type="checkbox"] { vertical-align:sub; }
-span > input + label { padding-right:3px;padding-left:3px; }
+input[type="radio"], input[type="checkbox"] { vertical-align:middle; }
+span > input + label { padding-right:3px;padding-left:3px; vertical-align:middle; }
 
 
 /* TreeView */
