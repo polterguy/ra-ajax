@@ -242,7 +242,7 @@ namespace RaWebsite
                 return File.GetCreationTime(right).CompareTo(File.GetCreationTime(left));
             });
 
-            for (int idx = 0; idx < files.Length; idx++)
+            for (int idx = 0; idx < 20; idx++)
             {
                 files[idx] = files[idx]
                     .Replace(
