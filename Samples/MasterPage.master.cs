@@ -10,6 +10,7 @@ using Ra.Widgets;
 using Ra.Extensions;
 using System.IO;
 using System.Web;
+using System.Drawing;
 
 namespace Samples
 {
@@ -19,6 +20,14 @@ namespace Samples
         {
             if (!IsPostBack)
             {
+                if (Session["wndWowPosition"] != null)
+                {
+                    timerMove.Enabled = false;
+                    Point pt = (Point)Session["wndWowPosition"];
+                    wowWnd.Style["left"] = pt.X.ToString() + "px";
+                    wowWnd.Style["top"] = pt.Y.ToString() + "px";
+                    wowWnd.Style["position"] = "absolute";
+                }
                 string url = this.Request.Url.ToString();
                 url = url.Substring(url.LastIndexOf("/") + 1);
                 int idxNo = 0;
@@ -39,6 +48,11 @@ namespace Samples
                     idxNo += 1;
                 }
             }
+        }
+
+        protected void wowWnd_Moved(object sender, EventArgs e)
+        {
+            Session["wndWowPosition"] = new Point(Int32.Parse(wowWnd.Style["left"].Replace("px", "")), Int32.Parse(wowWnd.Style["top"].Replace("px", "")));
         }
 
         protected void timerMove_Tick(object sender, EventArgs e)
