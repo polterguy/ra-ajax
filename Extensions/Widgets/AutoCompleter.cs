@@ -22,9 +22,6 @@ namespace Ra.Extensions
     [ASP.ToolboxData("<{0}:AutoCompleter runat=server />")]
     public class AutoCompleter : Panel, ASP.INamingContainer
     {
-        TextBox _txt;
-        Label _items;
-
         /**
          * AutoCompleter retrieve items EventArgs
          */
@@ -55,6 +52,9 @@ namespace Ra.Extensions
                 get { return _query; }
             }
         }
+
+        TextBox _txt;
+        Label _items;
 
         /**
          * EventHandler fired when AutoCompleter needs new items
@@ -121,7 +121,7 @@ namespace Ra.Extensions
         {
             if (_items.Controls.Count == 0)
                 _items.Visible = false;
-            else
+            else if( string.IsNullOrEmpty(SelectedItem) )
             {
                 if (!_items.Visible)
                     new EffectFadeIn(_items, 200).Render();
@@ -152,6 +152,7 @@ namespace Ra.Extensions
         private void _txt_KeyUp(object sender, EventArgs e)
         {
             _items.Controls.Clear();
+            SelectedItem = null;
             RetrieveDynamicallyCreatedItems();
         }
 

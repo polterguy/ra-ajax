@@ -3,9 +3,9 @@
 
 * More effects, EffectZoom (zooms fonts)
 
-* Add Calling server-side method from JS (http://ra-ajax.org/Forums/calling-web-method-from-javascript.forum)
-
 * Named colors do not work with effect highlight
+
+* Menu Lock-In/ActiveX/Silverlight and then opening Lock-In AGAIN makes menu appear "funny" in IE...
 
 * Implement and check ViewStateById mode on Widgets. Though not before Mono officially supports this. (which is NOT now)
 
@@ -21,16 +21,10 @@
 
 * Make sure TreeNodes has if GetChildNodes is defined ZERO "static" items defined...
 
-* Implement setting for Tree control to NOT have clicking "anywhere" trigger expanding/collapsing but 
-  rather the "plus sign" only (which if true should NOT trigger selected item changed)
-
 * Implement "validation" on Tree control(s) meaning TreeNode MUST be child of TreeNodes, TreeNodes MUST
   be child of Tree or TreeNode and Tree and TreeNode must have [0,1] TreeNodes control etc...
 
-* Check out to see if we can get away with less CSS manipulations in the client for expanding
-  and collapsing since now three different controls have new CSS class names sent over the wire...
-
-* Modify EffectRollDown to take absolute height of control as an OPTION. (use getDimensions or something)
+* Validation (see above) for Menu hierarchy too...
 
 * Create "delayed destroy" which uses an effect and then in the onFinished actually does the destruction...
 
@@ -38,11 +32,7 @@
   in e.g. the InPlaceEdit since currently it does a POSTBACK if users clicks Carriage Return
   which is VERY bad...
 
-* TabControl looks ugly in IE7
-
 * Comet external raising event and setting for allowing it. GET argument raises event on page...
-
-* SelectStart in BehaviorDraggable isn't trapped in Chrome...
 
 * Fix CheckBox and RadioButton so that also e.g. OnMouseOver triggers on CONTROL and not only
   text as it does today. Maybe something like "mouseenter/mouseleave" from MooTools can help
@@ -52,10 +42,6 @@
   clarity. Still needs to be "overridable" for on RaControl
 
 * Implement GetAttribute on RaWebControl
-
-* Create TreeView Control...
-
-* Create Menu Control
 
 * Fix a set of beautiful skins for all extension-controls.
 

@@ -76,7 +76,7 @@ namespace RaWebsite
             Effect effect = new EffectFadeIn(pnlReply, 400);
             effect.Render();
 
-            effect = new EffectFadeIn(postsWrapper, 400);
+            effect = new EffectHighlight(postsWrapper, 400);
             effect.Render();
             body.Text = "";
 

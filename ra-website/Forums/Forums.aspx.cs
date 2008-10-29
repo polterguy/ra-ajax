@@ -111,8 +111,7 @@ namespace RaWebsite
         protected void newPostCancel_Click(object sender, EventArgs e)
         {
             // Removing panel
-            Effect effect = new EffectFadeOut(pnlNewPost, 400);
-            effect.Render();
+            pnlNewPost.Visible = false;
         }
 
         protected void search_KeyUp(object sender, EventArgs e)
@@ -142,8 +141,7 @@ namespace RaWebsite
             post.Save();
 
             // Removing panel
-            Effect effect = new EffectFadeOut(pnlNewPost, 400);
-            effect.Render();
+            pnlNewPost.Visible = false;
 
             // Re-rendering posts to get the newly added item
             DataBindForumPosts();
