@@ -34,50 +34,53 @@
 	    Caption="Add New Post"
 	    CssClass="alphacube"
 	    Visible="false"
-	    style="position:absolute;top:450px;left:324px;padding:15px;">
-        <table>
-            <tr>
-                <td>Subject:</td>
-                <td>
-                    <ra:TextBox 
-                        runat="server" 
-                        ID="header" 
-                        style="width:419px" />
-                </td>
-            </tr>
-            <tr>
-                <td>Body:</td>
-                <td>
-                    <ra:TextArea 
-                        runat="server" 
-                        ID="body" 
-                        Rows="10"
-                        style="width:419px" />
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" style="text-align:right;">
-                    <ra:Button 
-                        runat="server" 
-                        ID="newSubmit" 
-                        OnClick="newSubmit_Click"
-                        Text="Add" />
-                    <ra:Button 
-                        runat="server" 
-                        ID="newPostCancel" 
-                        OnClick="newPostCancel_Click"
-                        Text="Discard" />
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <ra:Label 
-                        runat="server" 
-                        style="color:Red;"
-                        ID="lblErrorPost" />
-                </td>
-            </tr>
-        </table>
+	    style="position:absolute;top:450px;left:324px;padding:15px;width:550px;z-index:1001;">
+        <ra:BehaviorObscurable runat="server" id="obscurer" ZIndex="1000" />
+	    <div style="padding:10px;text-align:center;">
+            <table>
+                <tr>
+                    <td>Subject:</td>
+                    <td>
+                        <ra:TextBox 
+                            runat="server" 
+                            ID="header" 
+                            style="width:419px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Body:</td>
+                    <td>
+                        <ra:TextArea 
+                            runat="server" 
+                            ID="body" 
+                            Rows="10"
+                            style="width:419px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align:right;">
+                        <ra:Button 
+                            runat="server" 
+                            ID="newSubmit" 
+                            OnClick="newSubmit_Click"
+                            Text="Add" />
+                        <ra:Button 
+                            runat="server" 
+                            ID="newPostCancel" 
+                            OnClick="newPostCancel_Click"
+                            Text="Discard" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <ra:Label 
+                            runat="server" 
+                            style="color:Red;"
+                            ID="lblErrorPost" />
+                    </td>
+                </tr>
+            </table>
+        </div>
     </ext:Window>
 
     <p>
