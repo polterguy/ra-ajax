@@ -55,12 +55,11 @@ namespace Ra.Widgets
         // Override this one to create specific HTML for your widgets
         protected override string GetOpeningHTML()
         {
-            return string.Format("<{4} id=\"{0}\"{2}{3}>{1}",
+            return string.Format("<{2} id=\"{0}\"{3}>{1}",
                 ClientID,
                 Text,
-                GetCssClassHTMLFormatedAttribute(),
-                GetStyleHTMLFormatedAttribute(),
-                Tag);
+                Tag,
+                GetWebControlAttributes());
         }
 
         protected override string GetClosingHTML()

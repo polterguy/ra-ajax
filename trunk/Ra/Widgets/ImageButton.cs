@@ -146,14 +146,13 @@ namespace Ra.Widgets
 
             // Note that since the input type="image" creates a SUBMIT button we need to handle the onclick and return false 
             // to prevent the form from submitting for ImageButtons...
-            return string.Format("<input onclick=\"return false;\" type=\"image\" id=\"{0}\" src=\"{1}\" alt=\"{5}\"{2}{3}{4}{6} />",
+            return string.Format("<input onclick=\"return false;\" type=\"image\" id=\"{0}\" src=\"{1}\" alt=\"{2}\"{3}{4}{5} />",
                 ClientID,
                 ImageUrl,
-                GetCssClassHTMLFormatedAttribute(),
-                GetStyleHTMLFormatedAttribute(),
-                accessKey,
                 AlternateText,
-                (Enabled ? "" : " disabled=\"disabled\""));
+                accessKey,
+                (Enabled ? "" : " disabled=\"disabled\""),
+                GetWebControlAttributes());
         }
 
         #endregion

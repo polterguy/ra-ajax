@@ -211,14 +211,13 @@ namespace Ra.Widgets
         protected override string GetOpeningHTML()
         {
             string accessKey = string.IsNullOrEmpty(AccessKey) ? "" : string.Format(" accesskey=\"{0}\"", AccessKey);
-            return string.Format("<span id=\"{0}\"><input type=\"checkbox\" name=\"{0}\" id=\"{0}_CTRL\"{2}{3}{4}{5}{6} /><label id=\"{0}_LBL\" for=\"{0}_CTRL\">{1}</label></span>",
+            return string.Format("<span id=\"{0}\"><input type=\"checkbox\" name=\"{0}\" id=\"{0}_CTRL\"{2}{3}{4}{5} /><label id=\"{0}_LBL\" for=\"{0}_CTRL\">{1}</label></span>",
                 ClientID,
                 Text,
-                GetCssClassHTMLFormatedAttribute(),
-                GetStyleHTMLFormatedAttribute(),
                 accessKey,
                 (Enabled ? "" : " disabled=\"disabled\""),
-                (Checked ? " checked=\"checked\"" : ""));
+                (Checked ? " checked=\"checked\"" : ""),
+                GetWebControlAttributes());
         }
 
         #endregion
