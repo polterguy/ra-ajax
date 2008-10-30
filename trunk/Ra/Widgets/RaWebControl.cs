@@ -295,7 +295,7 @@ namespace Ra.Widgets
             }
         }
 
-        protected virtual string GetStyleHTMLFormatedAttribute()
+        private string GetStyleHTMLFormatedAttribute()
         {
             string style = Style.ToString(true);
             if (!string.IsNullOrEmpty(style))
@@ -303,7 +303,7 @@ namespace Ra.Widgets
             return style;
         }
 
-        protected virtual string GetCssClassHTMLFormatedAttribute()
+        private string GetCssClassHTMLFormatedAttribute()
         {
             string cssClass = string.IsNullOrEmpty(CssClass) ? "" : " class=\"" + CssClass + "\"";
             return cssClass;

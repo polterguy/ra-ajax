@@ -127,11 +127,10 @@ namespace Ra.Extensions
             // to make sure we submit the new value back to server whan changes occurs...
             // In additiont we've also got a hidden input field which serves as the "selected text"
             // field and contains the value which is currently selected in the RichEdit...
-            return string.Format("<div id=\"{0}\"{2}{3}><div id=\"{0}_LBL\">{1}</div><input type=\"hidden\" id=\"{0}__VALUE\" name=\"{0}__VALUE\" /><input type=\"hidden\" id=\"{0}__SELECTED\" name=\"{0}__SELECTED\" /></div>",
+            return string.Format("<div id=\"{0}\"{2}><div id=\"{0}_LBL\">{1}</div><input type=\"hidden\" id=\"{0}__VALUE\" name=\"{0}__VALUE\" /><input type=\"hidden\" id=\"{0}__SELECTED\" name=\"{0}__SELECTED\" /></div>",
                 ClientID,
                 Text,
-                GetCssClassHTMLFormatedAttribute(),
-                GetStyleHTMLFormatedAttribute());
+                GetWebControlAttributes());
         }
     }
 }

@@ -99,10 +99,9 @@ namespace Ra.Extensions
 
         protected override string GetOpeningHTML()
         {
-            return string.Format("<ul id=\"{0}\"{1}{2}>",
+            return string.Format("<ul id=\"{0}\"{1}>",
                 ClientID,
-                GetCssClassHTMLFormatedAttribute(),
-                GetStyleHTMLFormatedAttribute());
+                GetWebControlAttributes());
         }
 
         protected override string GetClosingHTML()
