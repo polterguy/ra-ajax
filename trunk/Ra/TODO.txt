@@ -3,6 +3,13 @@
 
 * More effects, EffectZoom (zooms fonts)
 
+* Tooltip attribute for RaWebControl...
+
+* Child controls in BehaviorUpdate...!!!!
+
+* GetPreviousInParentCollection and GetNextInParentCollection methods on Manager...
+  Or maybe on RaControl...?
+
 * Named colors do not work with effect highlight
 
 * Menu Lock-In/ActiveX/Silverlight and then opening Lock-In AGAIN makes menu appear "funny" in IE...
