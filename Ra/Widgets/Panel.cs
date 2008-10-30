@@ -25,10 +25,9 @@ namespace Ra.Widgets
 
         protected override string GetOpeningHTML()
         {
-            return string.Format("<div id=\"{0}\"{1}{2}>",
+            return string.Format("<div id=\"{0}\"{1}>",
                 ClientID,
-                GetCssClassHTMLFormatedAttribute(),
-                GetStyleHTMLFormatedAttribute());
+                GetWebControlAttributes());
         }
 		
 		protected override string GetClosingHTML ()

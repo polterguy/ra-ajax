@@ -246,15 +246,14 @@ namespace Ra.Widgets
         protected override string GetOpeningHTML()
         {
             string accessKey = string.IsNullOrEmpty(AccessKey) ? "" : string.Format(" accesskey=\"{0}\"", AccessKey);
-            return string.Format("<textarea id=\"{0}\" name=\"{0}\" rows=\"{5}\" cols=\"{6}\"{2}{3}{4}{7}>{1}</textarea>",
+            return string.Format("<textarea id=\"{0}\" name=\"{0}\" rows=\"{3}\" cols=\"{4}\"{2}{5}{6}>{1}</textarea>",
                 ClientID,
                 Text,
-                GetCssClassHTMLFormatedAttribute(),
-                GetStyleHTMLFormatedAttribute(),
                 accessKey,
                 Rows,
                 Columns,
-                (Enabled ? "" : " disabled=\"disabled\""));
+                (Enabled ? "" : " disabled=\"disabled\""),
+                GetWebControlAttributes());
         }
 
         #endregion

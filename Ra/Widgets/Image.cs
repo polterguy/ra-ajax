@@ -62,12 +62,11 @@ namespace Ra.Widgets
             if (string.IsNullOrEmpty(AlternateText) || string.IsNullOrEmpty(ImageUrl))
                 throw new ApplicationException("Cannot have an image without src and alt text");
 
-            return string.Format("<img id=\"{0}\" src=\"{1}\" alt=\"{4}\"{2}{3} />",
+            return string.Format("<img id=\"{0}\" src=\"{1}\" alt=\"{2}\"{3} />",
                 ClientID,
                 ImageUrl,
-                GetCssClassHTMLFormatedAttribute(),
-                GetStyleHTMLFormatedAttribute(),
-                AlternateText);
+                AlternateText,
+                GetWebControlAttributes());
         }
 
         #endregion

@@ -77,6 +77,55 @@ namespace Ra.Widgets
             _styles = new StyleCollection(this);
         }
 
+        /**
+         * CSS class name for the root HTML element. Default value is "" and will not render the class 
+         * attribute on the HTML element.
+         */
+        [DefaultValue("")]
+        public string CssClass
+        {
+            get { return ViewState["CssClass"] == null ? "" : (string)ViewState["CssClass"]; }
+            set
+            {
+                if (value != CssClass)
+                    SetJSONValueString("CssClass", value);
+                ViewState["CssClass"] = value;
+            }
+        }
+
+        /**
+         * Tooltip text of control, will show when mouse is hovered over control...
+         */
+        [DefaultValue("")]
+        public string Tooltip
+        {
+            get { return ViewState["Tooltip"] == null ? "" : (string)ViewState["Tooltip"]; }
+            set
+            {
+                if (value != Tooltip)
+                    SetJSONGenericValue("title", value);
+                ViewState["Tooltip"] = value;
+            }
+        }
+
+        /**
+         * Collection of style-values, maps to the style attribute on the root HTML element
+         */
+        public StyleCollection Style
+        {
+            get { return _styles; }
+        }
+
+        protected string GetWebControlAttributes()
+        {
+            return GetCssClassHTMLFormatedAttribute() + GetStyleHTMLFormatedAttribute() + GetTooltipAttribute();
+        }
+
+        private string GetTooltipAttribute()
+        {
+            return Tooltip == "" ? "" : (" title=\"" + Tooltip + "\"");
+        }
+
         public virtual void DispatchEvent(string name)
         {
             switch (name)
@@ -222,30 +271,6 @@ namespace Ra.Widgets
         #endregion
 
         #region [ -- Properties -- ]
-
-        /**
-         * CSS class name for the root HTML element. Default value is "" and will not render the class 
-         * attribute on the HTML element.
-         */
-        [DefaultValue("")]
-        public string CssClass
-        {
-            get { return ViewState["CssClass"] == null ? "" : (string)ViewState["CssClass"]; }
-            set
-            {
-                if (value != CssClass)
-                    SetJSONValueString("CssClass", value);
-                ViewState["CssClass"] = value;
-            }
-        }
-
-        /**
-         * Collection of style-values, maps to the style attribute on the root HTML element
-         */
-        public StyleCollection Style
-        {
-            get { return _styles; }
-        }
 
         #endregion
 

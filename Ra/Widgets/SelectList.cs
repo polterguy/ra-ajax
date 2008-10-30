@@ -234,14 +234,13 @@ namespace Ra.Widgets
         {
             string accessKey = string.IsNullOrEmpty(AccessKey) ? "" : string.Format(" accesskey=\"{0}\"", AccessKey);
             string sizeString = Size == -1 ? "" : (" size=\"" + Size + "\"");
-            return string.Format("<select{6} name=\"{0}\" id=\"{0}\"{1}{2}{3}{5}>{4}</select>",
+            return string.Format("<select{4} name=\"{0}\" id=\"{0}\"{1}{3}{5}>{2}</select>",
                 ClientID,
-                GetCssClassHTMLFormatedAttribute(),
-                GetStyleHTMLFormatedAttribute(),
                 accessKey,
                 GetHTMLForOptions(),
                 (Enabled ? "" : " disabled=\"disabled\""),
-                sizeString);
+                sizeString,
+                GetWebControlAttributes());
         }
 
         private string GetHTMLForOptions()
