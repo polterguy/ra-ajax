@@ -290,10 +290,9 @@ namespace Ra.Extensions
 
         protected override string GetOpeningHTML()
         {
-            return string.Format("<li id=\"{0}\"{1}{2}>",
+            return string.Format("<li id=\"{0}\"{1}>",
                 ClientID,
-                GetCssClassHTMLFormatedAttribute(),
-                GetStyleHTMLFormatedAttribute());
+                GetWebControlAttributes());
         }
 
         protected override string GetClosingHTML()
