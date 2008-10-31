@@ -493,11 +493,13 @@ function RAInitialize() {
             // Adding script closing element
 			builder.Append(@"
 }
+(function() {
 if (window.addEventListener) {
   window.addEventListener('load', RAInitialize, false);
 } else {
   window.attachEvent('onload', RAInitialize);
 }
+})();
 
 ");
             builder.Append("</script>");

@@ -3,8 +3,6 @@
 
 * More effects, EffectZoom (zooms fonts)
 
-* Tooltip attribute for RaWebControl...
-
 * Child controls in BehaviorUpdate...!!!!
 
 * Comet doesn't work in FF...!
