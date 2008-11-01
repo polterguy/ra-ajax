@@ -66,29 +66,34 @@
                                     </ul>
                                     <ul>
                                         <li>
-                                            <a id="A2" runat="server"
+                                            <a runat="server"
                                                 href="~/" 
                                                 title="Ra-Ajax Samples Home">Ra-Ajax Home</a>
                                         </li>
                                         <li>
-                                            <a id="A5" runat="server"
+                                            <a runat="server"
                                                 href="~/Facts.aspx" 
                                                 title="Ra-Ajax Facts">Ra-Ajax FAQ</a>
                                         </li>
                                         <li>
-                                            <a id="A10" runat="server"
+                                            <a runat="server"
                                                 href="~/Forums/Forums.aspx" 
                                                 title="Forums">Ra-Ajax Forums</a>
                                         </li>
                                         <li>
-                                            <a id="A11" runat="server"
+                                            <a runat="server"
                                                 href="~/Todo.aspx" 
                                                 title="TODO list">Ra-Ajax TODO list</a>
                                         </li>
                                         <li>
-                                            <a id="A9" runat="server"
+                                            <a runat="server"
                                                 href="~/Author.aspx" 
                                                 title="About me">About us/Hire us</a>
+                                        </li>
+                                        <li>
+                                            <a runat="server"
+                                                href="~/Donate.aspx" 
+                                                title="Donate to Ra-Ajax">Donate to Ra-Ajax</a>
                                         </li>
                                     </ul>
                                     <asp:Literal runat="server" ID="blogLinksWrapper" />
