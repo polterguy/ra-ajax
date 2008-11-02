@@ -188,13 +188,13 @@ span > input + label { padding-right:3px;padding-left:3px; vertical-align:middle
 
 .blog ul
 {
-	margin:-2em 0 -2em 2em;
+	margin:10px 0 10px 25px;
 }
 
 .blog li
 {
-	list-style-type:circle;
-	line-height:1.3em;
+	list-style-type:disc;
+	list-style-position:outside;
 }
 
 .blog br
