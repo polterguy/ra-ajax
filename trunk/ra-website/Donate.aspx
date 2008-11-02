@@ -23,7 +23,8 @@
 
     <h1>Donate to the Gaiaware, Gaia Ajax and Bård Stranheim law suite fund</h1>
     <p>
-        Thomas Hansen (me) the creator of Ra-Ajax is <a href="xxx">being sued by Gaiaware and Bård Stranheim</a>
+        Thomas Hansen (me) the creator of Ra-Ajax is 
+        <a href="http://ra-ajax.org/gaiaware-and-b-rd-stranheim-declaring-war-on-ra-ajax.blog">being sued by Gaiaware and Bård Stranheim</a>
         due to that Gaiaware and Bård Stranheim does not want me to develop LGPL licensed and free of charge Ajax
         Libraries for ASP.NET. Read the entire story in this sequence:
     </p>
