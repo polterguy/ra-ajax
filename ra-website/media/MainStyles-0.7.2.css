@@ -173,13 +173,33 @@ span > input + label { padding-right:3px;padding-left:3px; vertical-align:middle
 {
 	width:500px;
 	font-family: "Lucida Grande", "Lucida Sans Unicode", verdana, tahoma, arial, sans-serif;
-	line-height:1.6em;
 	color:#222;
+}
+
+.blog p 
+{
+	margin:0;
 }
 
 .blog h1
 {
 	font-size:1.3em;
+}
+
+.blog ul
+{
+	margin:-2em 0 -2em 2em;
+}
+
+.blog li
+{
+	list-style-type:circle;
+	line-height:1.3em;
+}
+
+.blog br
+{
+	height: 2px;
 }
 
 .blog h2
