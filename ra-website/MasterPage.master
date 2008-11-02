@@ -28,6 +28,18 @@
                 <div id="bd">
                     <div id="yui-main">
 			    	        <div class="yui-gf">
+			    	            <ext:Window 
+			    	                runat="server" 
+			    	                style="position:absolute;top:15px;right:15px;width:250px;"
+			    	                Caption="Help us!"
+			    	                CssClass="alphacube">
+			    	                <div style="padding:5px;">
+			    	                    Help support the 
+			    	                    <a href="Donate.aspx">law suite brought upon us by Gaiaware and Bård Stranheim</a>
+			    	                    to shut down Ra-Ajax and stop us from creating LGPL licensed and free of charge 
+			    	                    Ajax Libraries for ASP.NET.
+			    	                </div>
+			    	            </ext:Window>
             	                <div class="yui-u first major-links" style="line-height:20px;margin-left:10px;width:18%;">
             	                    <ra:Panel
             	                        runat="server"
@@ -89,11 +101,6 @@
                                             <a runat="server"
                                                 href="~/Author.aspx" 
                                                 title="About me">About us/Hire us</a>
-                                        </li>
-                                        <li>
-                                            <a runat="server"
-                                                href="~/Donate.aspx" 
-                                                title="Donate to Ra-Ajax">Donate to Ra-Ajax</a>
                                         </li>
                                     </ul>
                                     <asp:Literal runat="server" ID="blogLinksWrapper" />
