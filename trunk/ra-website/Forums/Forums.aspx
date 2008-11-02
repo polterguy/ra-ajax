@@ -96,65 +96,64 @@
             OnClick="addNewPostButton_Click" />
         |
     </ra:Panel>    
-    <p>
-        &nbsp;Filter: 
-        <ra:TextBox 
-            runat="server" 
-            OnKeyUp="search_KeyUp"
-            ID="search" />
-        <ra:Panel runat="server" ID="postsWrapper" style="margin-bottom: 10px; margin-top: 10px;">
-            <asp:Repeater runat="server" ID="forumPostsRepeater">
-                <HeaderTemplate>
-                    <table style="border: solid 1px #aaa;width:628px;" cellpadding="2" cellspacing="3">
-                        <tr style="background-color:#FF9B00;color:#222;font-weight:normal;text-align:center;">
-                            <th>Topic</th>
-                            <th style="width:80px;">Posted By</th>
-                            <th style="width:140px;">Date</th>
-                            <th>Replies</th>
-                        </tr>
-                </HeaderTemplate>
-                <FooterTemplate>
-                    </table>
-                </FooterTemplate>
-                <ItemTemplate>
-                    <tr>
-                        <td>
-                            <a runat="server" href='<%# "~/Forums/" + Eval("Url") %>'>
-                                <%# Eval("Header") %>
-                            </a>
-                        </td>
-                        <td style="text-align:center;">
-                            <%# Eval("Operator.Username") %>
-                        </td>
-                        <td style="text-align:center;">
-                            <%# ((DateTime)Eval("Created")).ToString("dd.MMM yy - HH:mm", System.Globalization.CultureInfo.InvariantCulture)%>
-                        </td>
-                        <td style="text-align:center;">
-                            <%# Eval("NoReplies") %>
-                        </td>
+    &nbsp;Filter: 
+    <ra:TextBox 
+        runat="server" 
+        OnKeyUp="search_KeyUp"
+        ID="search" />  
+    <ra:Panel runat="server" ID="postsWrapper" style="margin-bottom: 10px; margin-top: 10px;">
+        <asp:Repeater runat="server" ID="forumPostsRepeater">
+            <HeaderTemplate>
+                <table style="border: solid 1px #aaa;width:628px;" cellpadding="2" cellspacing="3">
+                    <tr style="background-color:#FF9B00;color:#222;font-weight:normal;text-align:center;">
+                        <th>Topic</th>
+                        <th style="width:80px;">Posted By</th>
+                        <th style="width:140px;">Date</th>
+                        <th>Replies</th>
                     </tr>
-                </ItemTemplate>
-                <AlternatingItemTemplate>
-                    <tr style="background-color:#ccc;">
-                        <td>
-                            <a id="A1" runat="server" href='<%# "~/Forums/" + Eval("Url") %>'>
-                                <%# Eval("Header") %>
-                            </a>
-                        </td>
-                        <td style="text-align:center;">
-                            <%# Eval("Operator.Username") %>
-                        </td>
-                        <td style="text-align:center;">
-                            <%# ((DateTime)Eval("Created")).ToString("dd.MMM yy - HH:mm")%>
-                        </td>
-                        <td style="text-align:center;">
-                            <%# Eval("NoReplies") %>
-                        </td>
-                    </tr>
-                </AlternatingItemTemplate>
-            </asp:Repeater>
-        </ra:Panel>
-    </p>
+            </HeaderTemplate>
+            <FooterTemplate>
+                </table>
+            </FooterTemplate>
+            <ItemTemplate>
+                <tr>
+                    <td>
+                        <a runat="server" href='<%# "~/Forums/" + Eval("Url") %>'>
+                            <%# Eval("Header") %>
+                        </a>
+                    </td>
+                    <td style="text-align:center;">
+                        <%# Eval("Operator.Username") %>
+                    </td>
+                    <td style="text-align:center;">
+                        <%# ((DateTime)Eval("Created")).ToString("dd.MMM yy - HH:mm", System.Globalization.CultureInfo.InvariantCulture)%>
+                    </td>
+                    <td style="text-align:center;">
+                        <%# Eval("NoReplies") %>
+                    </td>
+                </tr>
+            </ItemTemplate>
+            <AlternatingItemTemplate>
+                <tr style="background-color:#ccc;">
+                    <td>
+                        <a id="A1" runat="server" href='<%# "~/Forums/" + Eval("Url") %>'>
+                            <%# Eval("Header") %>
+                        </a>
+                    </td>
+                    <td style="text-align:center;">
+                        <%# Eval("Operator.Username") %>
+                    </td>
+                    <td style="text-align:center;">
+                        <%# ((DateTime)Eval("Created")).ToString("dd.MMM yy - HH:mm")%>
+                    </td>
+                    <td style="text-align:center;">
+                        <%# Eval("NoReplies") %>
+                    </td>
+                </tr>
+            </AlternatingItemTemplate>
+        </asp:Repeater>
+    </ra:Panel>
+    
     <p style="text-align:right;">
         <ra:LinkButton 
             runat="server" 
