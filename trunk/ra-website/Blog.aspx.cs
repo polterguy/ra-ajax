@@ -108,8 +108,13 @@ namespace RaWebsite
             channel.AppendChild(generator);
 
             // Items
+            int idxNoBlog = 0;
             foreach (Entity.Blog idx in Blogs)
             {
+                if (idxNoBlog >= 10)
+                    break;
+                idxNoBlog += 1;
+
                 // Item
                 XmlNode item = doc.CreateNode(XmlNodeType.Element, "item", "");
 
