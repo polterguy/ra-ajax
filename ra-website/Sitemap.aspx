@@ -20,28 +20,22 @@
     <p>
         These are the most important pages in Ra-Ajax.org
     </p>
-    <ul class="sitemap">
+    <ul class="blog">
         <li>
             <a id="A1" runat="server" href="~/" title="Ra-Ajax Home">Ra-Ajax Home</a>
-        </li>
-        <li>
-            <a id="A2" runat="server" href="~/Advantages.aspx" title="Ra-Ajax Advantages">Ra-Ajax Advantages</a>
-        </li>
-        <li>
-            <a id="A4" runat="server" href="~/Controls.aspx" title="Ra-Ajax Controls">Ra-Ajax Controls</a>
         </li>
         <li>
             <a id="A9" runat="server" href="~/samples/" title="Ra-Ajax Samples">Ra-Ajax Samples</a>
         </li>
         <li>
-            <a id="A5" runat="server" href="~/Facts.aspx" title="Ra-Ajax Facts">Ra-Ajax Facts</a>
+            <a id="A5" runat="server" href="~/Facts.aspx" title="Ra-Ajax Facts">Ra-Ajax FAQ</a>
         </li>
         <li>
             <a id="A6" runat="server" href="http://code.google.com/p/ra-ajax/" title="Download Ra-Ajax">Download Ra-Ajax</a>
         </li>
         <li>
             Blogs:
-            <ul class="sitemap">
+            <ul class="blog">
                 <li>
                     <a id="A3" runat="server" href="~/thomas.blogger" title="Thomas Hansen's Blog">Thomas Hansen's Blog</a>
                 </li>

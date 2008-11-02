@@ -19,7 +19,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
     <head runat="server">
         <title>Untitled Page</title>
-        <link href="media/MainStyles-0.7.2.css" rel="stylesheet" type="text/css" />
+        <link href="media/MainStyles-0.7.2-2.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <div id="doc2" class="yui-t5">
@@ -71,12 +71,12 @@
                                             Register
                                         </a>
                                     </ra:Panel>
-                                    <ul>
+                                    <ul class="menuLinks">
                                         <li>
                                             <a href="http://ra-ajax.org/samples/">Ra-Ajax Samples</a>
                                         </li>
                                     </ul>
-                                    <ul>
+                                    <ul class="menuLinks">
                                         <li>
                                             <a runat="server"
                                                 href="~/" 
@@ -104,7 +104,7 @@
                                         </li>
                                     </ul>
                                     <asp:Literal runat="server" ID="blogLinksWrapper" />
-                                    <ul>
+                                    <ul class="menuLinks">
                                         <li><a href="http://code.google.com/p/ra-ajax/">Download Ra-Ajax</a></li>
                                     </ul>
                                     <div class="w3c">
