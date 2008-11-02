@@ -151,12 +151,16 @@ th, td { border:0; padding:0.3em; }
 table { border-collapse:separate; border-spacing:2px; }
 input[type="radio"], input[type="checkbox"] { vertical-align:middle; }
 span > input + label { padding-right:3px;padding-left:3px; vertical-align:middle; }
+ul { margin:10px 0 10px 25px; } 
+li { list-style-type:disc; list-style-position:outside; }
 
 #yui-main { width: 85%; }
 
+ul.menuLinks { margin:0; }
+ul.menuLinks li { list-style:none; }
+
 /* Forum specific styles
  */
-
 .forumPost
 {
 	margin-top:25px;
@@ -184,17 +188,6 @@ span > input + label { padding-right:3px;padding-left:3px; vertical-align:middle
 .blog h1
 {
 	font-size:1.3em;
-}
-
-.blog ul
-{
-	margin:10px 0 10px 25px;
-}
-
-.blog li
-{
-	list-style-type:disc;
-	list-style-position:outside;
 }
 
 .blog br

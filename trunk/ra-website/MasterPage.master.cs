@@ -42,7 +42,7 @@ namespace RaWebsite
                 }
 
                 // Iterating through all bloggers showing links to them...
-                blogLinksWrapper.Text += "<ul style=\"margin-top:10px;margin-bottom:10px;\">";
+                blogLinksWrapper.Text += "<ul  class=\"menuLinks\" style=\"margin-top:10px;margin-bottom:10px;\">";
                 foreach (Operator idx in Operator.FindAll(Order.Asc("Created"), Expression.Eq("IsBlogger", true)))
                 {
                     blogLinksWrapper.Text += string.Format("\r\n<li><a href=\"{0}\">Blog of {1}</a></li>",

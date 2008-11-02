@@ -83,28 +83,29 @@
         </div>
     </ext:Window>
 
-    <p>
-        <ra:Panel
+        
+    <ra:Panel
+        runat="server" 
+        ID="newPostPanel"
+        Visible="false"
+        style="float:left;">
+        <ra:LinkButton 
             runat="server" 
-            ID="newPostPanel"
-            Visible="false"
-            style="display:inline;">
-            <ra:LinkButton 
-                runat="server" 
-                ID="addNewPostButton"
-                Text="Add New Post"
-                OnClick="addNewPostButton_Click" />
-            |
-        </ra:Panel>
-        Filter: 
+            ID="addNewPostButton"
+            Text="Add New Post"
+            OnClick="addNewPostButton_Click" />
+        |
+    </ra:Panel>    
+    <p>
+        &nbsp;Filter: 
         <ra:TextBox 
             runat="server" 
             OnKeyUp="search_KeyUp"
             ID="search" />
-        <ra:Panel runat="server" ID="postsWrapper" style="margin-bottom:25px;margin-top:12px;">
+        <ra:Panel runat="server" ID="postsWrapper" style="margin-bottom: 10px; margin-top: 10px;">
             <asp:Repeater runat="server" ID="forumPostsRepeater">
                 <HeaderTemplate>
-                    <table style="border: solid 1px #aaa;" cellpadding="2" cellspacing="3">
+                    <table style="border: solid 1px #aaa;width:628px;" cellpadding="2" cellspacing="3">
                         <tr style="background-color:#FF9B00;color:#222;font-weight:normal;text-align:center;">
                             <th>Topic</th>
                             <th style="width:80px;">Posted By</th>
@@ -159,12 +160,12 @@
             runat="server" 
             ID="previous" 
             OnClick="previous_Click"
-            Text="&lt;&lt; Previous" />
+            Text="&laquo; Previous" />
         <ra:LinkButton 
             runat="server" 
             ID="next" 
             OnClick="next_Click"
-            Text="Next &gt;&gt;" />
+            Text="Next &raquo;" />
     </p>
     
     <ra:Label 

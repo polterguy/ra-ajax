@@ -72,7 +72,7 @@ namespace RaWebsite
                 postsToBind.Add(idx);
                 idxNo += 1;
             }
-            if (postsToBind.Count <= 5 || postsToBind.Count == 0)
+            if (postsToBind.Count < 5 || posts.Length < CurrentPage + 6)
                 next.Visible = false;
             else
                 next.Visible = true;
