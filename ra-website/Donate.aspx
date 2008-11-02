@@ -30,8 +30,8 @@
     <ul class="bulList">
         <li><a href="http://ra-ajax.org/goodbye-gaia-ajax-widgets-hello-ra-ajax.blog">Goodbye Gaia Ajax Widgets, hello Ra-Ajax</a></li>
         <li><a href="http://ra-ajax.org/being-sued-by-gaiaware-and-b-rd-stranheim.blog">Being sued by Gaiaware and Bård Stranheim</a></li>
-        <li><a href="xxx">Gaiaware and Bård Stranheim Declaring War on Ra-Ajax</a></li>
-        <li><a href="yyy">Why we will win the law suite against Gaiaware and Bård Stranheim</a></li>
+        <li><a href="http://ra-ajax.org/gaiaware-and-b-rd-stranheim-declaring-war-on-ra-ajax.blog">Gaiaware and Bård Stranheim Declaring War on Ra-Ajax</a></li>
+        <li><a href="http://ra-ajax.org/why-we-will-win-the-law-suite-against-gaiaware-and-b-rd-stranheim.blog">Why we will win the law suite against Gaiaware and Bård Stranheim</a></li>
     </ul>
     <p>
         In this battle for the freedom to pursue our dreams and doing what we feel is the right thing to do, we need your
