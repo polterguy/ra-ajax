@@ -35,7 +35,7 @@
 			    	                CssClass="alphacube">
 			    	                <div style="padding:5px;">
 			    	                    Help support the 
-			    	                    <a href="Donate.aspx">law suite brought upon us by Gaiaware and Bård Stranheim</a>
+			    	                    <a runat="server" href="~/Donate.aspx">law suite brought upon us by Gaiaware and Bård Stranheim</a>
 			    	                    to shut down Ra-Ajax and stop us from creating LGPL licensed and free of charge 
 			    	                    Ajax Libraries for ASP.NET.
 			    	                </div>
