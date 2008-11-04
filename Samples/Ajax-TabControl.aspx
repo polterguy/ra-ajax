@@ -30,7 +30,7 @@
         to display. You can however trap the <em>ActiveTabViewChanged</em> event and then populate your TabViews
         dynamically if you want a smaller bandwidth footprint on your Ajax TabControl solution.
     </p>
-    <ext:TabControl runat="server" ID="tab" CssClass="tab-control">
+    <ext:TabControl runat="server" ID="tab" CssClass="alphacube-tab">
         <ext:TabView Caption="Ajax TabControl view 1" runat="server" ID="tab1" CssClass="content">
         	<p>
         	    Here you can see the content of the first TabControlView...
