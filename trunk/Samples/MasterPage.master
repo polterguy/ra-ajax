@@ -32,7 +32,7 @@
 					    <ext:Accordion 
 					        runat="server" 
 					        ID="accordion"
-					        CssClass="accordion-control"
+					        CssClass="alphacube-acc"
 					        AnimationSpeed="400">
 
 					        <ext:AccordionView 
@@ -229,7 +229,7 @@
                                         runat="server" 
                                         Visible="false"
                                         ID="tabShowCode" 
-                                        CssClass="tab-control">
+                                        CssClass="alphacube-tab">
 
                                         <ext:TabView 
                                             Caption="C# Code" 

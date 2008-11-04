@@ -31,7 +31,7 @@
     <ext:Accordion 
         runat="server" 
         ID="acc" 
-        CssClass="accordion-control" 
+        CssClass="alphacube-acc" 
         AnimationSpeed="200">
 
         <ext:AccordionView 

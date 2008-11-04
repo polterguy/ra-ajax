@@ -111,6 +111,8 @@ p,fieldset,table,pre{margin-bottom:1em;}
 input[type=text],input[type=password],textarea{width:12.25em;*width:11.9em;}
 
 
+
+
 /*
  * Copyright (c) 2006 Sébastien Gruhier (http://xilinus.com, http://itseb.com) 
  * MIT license - Skin for PWC Window. Used as basis for Window in Ra-Ajax
@@ -150,11 +152,43 @@ http://ra-ajax.org
 .alphacube .calendar a { display:block; text-decoration:none; color:#339; margin:1px; border:solid 1px Transparent; background-color:Transparent; }
 .alphacube .calendar a:hover { border:solid 1px #999; }
 .alphacube .calendar a.offMonth { color:#99d; }
-.alphacube .calendar a.selected { background-color:#eef; }
+.alphacube .calendar a.selected { background-color:#eef; border:solid 1px #999; }
 .alphacube .calendar .holidayOnVenus a { color:#0f0; }
 .alphacube .alphacube_content table { text-align:center; margin-left:auto; margin-right:auto; }
 .cal { width:200px; }
 .cal .alphacube_title { cursor:default; }
+
+
+/* TabControl styles */
+
+.alphacube-tab { width:95%; }
+.alphacube-tab .tab-header { margin-bottom:-1px; }
+.alphacube-tab .tab-header ul { }
+.alphacube-tab .tab-header ul li { display:inline; padding-right:2px; }
+.alphacube-tab .tab-header ul li.first { margin-left:6px; }
+.alphacube-tab .tab-header ul li a { text-decoration:none; color:#999; padding:5px; }
+.alphacube-tab .tab-header ul li.active a { color:#666; }
+.alphacube-tab .tab-header ul li.active a:hover { color:#666; }
+.alphacube-tab .tab-header ul li a:hover { color:#66d; background-color:Transparent; }
+.alphacube-tab .tab-header ul li span { display:inline-block; *height:18px; padding-top:5px; }
+.alphacube-tab .tab-header ul li span.left { background:url('window-sprite.png') no-repeat; width:6px; border-bottom:solid 1px #91A7B4; }
+.alphacube-tab .tab-header ul li span.center { background:url('window-h-sprite.png') repeat-x; border-bottom:solid 1px #91A7B4; }
+.alphacube-tab .tab-header ul li span.right { background:url('window-sprite.png') no-repeat -37px 0; width:6px; border-bottom:solid 1px #91A7B4; }
+.alphacube-tab .tab-header ul li.active span.left { background:url('window-sprite.png') no-repeat; border-bottom:solid 1px #fdfdfd; }
+.alphacube-tab .tab-header ul li.active span.center { background:url('window-h-sprite.png') repeat-x; border-bottom:solid 1px #fdfdfd; }
+.alphacube-tab .tab-header ul li.active span.right { background:url('window-sprite.png') no-repeat -37px 0; border-bottom:solid 1px #F0F0EA; }
+.alphacube-tab .content { padding:15px; background-color:#fdfdfd; border:solid 1px #91A7B4; }
+
+
+/* Accordion */
+
+.alphacube-acc {}
+.alphacube-acc .body { overflow:hidden; background-color:#fdfdfd; font-size:small; }
+.alphacube-acc .body-content { padding:15px; border-left:solid 1px #eee; border-right:solid 1px #eee; border-bottom:solid 1px #eee; }
+.alphacube-acc .accordion-header { background:url('window-h-sprite.png') repeat-x 0 -1px; border:solid 1px #eee; }
+.alphacube-acc .accordion-header:hover { background:url('window-h-sprite.png') repeat-x 0 -1px; }
+.alphacube-acc .accordion-header a { text-decoration:none; padding:5px; display:block; color:#999; }
+.alphacube-acc .accordion-header a:hover { background:inherit; color:#99f; }
 
 
 /* TreeView */
@@ -162,6 +196,7 @@ http://ra-ajax.org
 /* The TreeView control uses images from YUI which are BSD licensed and we distribute
  * them just like Yahoo under the BSD license terms... :)
  */
+
 .tree { background-color:#fafafa; border:solid 1px #999; margin:15px; padding:10px; font-size:0.9em; }
 .tree input { margin-right:8px; }
 .tree .item { cursor:pointer; line-height:16px; }
@@ -183,7 +218,12 @@ http://ra-ajax.org
 .tree .collapsed .no-leaf { background:url(tree-sprites.png) no-repeat -112px 0px; }
 .tree .no-childs .leaf { background:url(tree-sprites.png) no-repeat -64px 0px; }
 .tree .no-childs .no-leaf { background:url(tree-sprites.png) no-repeat -80px 0px; }
+
 /* Custom "icon" classes used in sample */
+
+/*
+ * Remove these for efficiency, both in CSS file and in tree-sprites.png for your own application...
+ */
 .tree .jquery .icon { background-position:-176px 0px; }
 .tree .mootools .icon { background-position:-144px 0px; }
 .tree .prototype .icon { background-position:-160px 0px; }
@@ -213,6 +253,7 @@ http://ra-ajax.org
 
 
 /* AutoCompleter CSS class */
+
 .auto { background-color:#fefefe; border:solid 1px #a0a0a0; padding:15px; height:20px; width:200px; overflow:visible; }
 .auto-text { display:block; }
 .auto-items { position:absolute; border:solid 1px #aaf; background-color:#fafaff; width:170px; padding:5px; }
@@ -220,39 +261,7 @@ http://ra-ajax.org
 .auto-item:hover { border-top:solid 1px #aaf; border-bottom:solid 1px #ddf; background-color:#fff; }
 
 
-/* Accordion */
-
-.accordion-control {}
-.accordion-control .body { overflow:hidden; background-color:#f0f0ea; font-size:small; }
-.accordion-control .body-content { border-top:solid 1px #e0e0da; padding:15px; }
-.accordion-control .accordion-header { background:url('tabcontrol.png') repeat-x 0px -159px;}
-.accordion-control .accordion-header:hover { background:url('tabcontrol.png') repeat-x 2px -53px;}
-.accordion-control .accordion-header a { text-decoration:none; padding:5px; display:block; font-weight:bold; }
-.accordion-control .accordion-header a:hover { background:inherit; }
-
-
-/* TabControl styles */
-
-.tab-control { width:95%; }
-.tab-control .tab-header { margin-bottom:-1px; }
-.tab-control .tab-header ul { }
-.tab-control .tab-header ul li { display:inline; padding-right:2px; }
-.tab-control .tab-header ul li.first { margin-left:6px; }
-.tab-control .tab-header ul li a { text-decoration:none; color:#666; padding:5px; }
-.tab-control .tab-header ul li.active a { color:#333; }
-.tab-control .tab-header ul li.active a:hover { color:#333; }
-.tab-control .tab-header ul li a:hover { color:#66d; background-color:Transparent; }
-.tab-control .tab-header ul li span { display:inline-block; *height:18px; padding-top:5px; }
-.tab-control .tab-header ul li span.left { background:url('tabcontrol.png') no-repeat; width:3px; border-bottom:solid 1px #91A7B4; }
-.tab-control .tab-header ul li span.center { background:url('tabcontrol.png') repeat-x 0 -50px; border-bottom:solid 1px #91A7B4; }
-.tab-control .tab-header ul li span.right { background:url('tabcontrol.png') no-repeat -2px 0px; width:4px; border-bottom:solid 1px #91A7B4; }
-.tab-control .tab-header ul li.active span.left { background:url('tabcontrol.png') no-repeat 0 -100px; border-bottom:solid 1px #F0F0EA; }
-.tab-control .tab-header ul li.active span.center { background:url('tabcontrol.png') repeat-x 0 -150px; border-bottom:solid 1px #F0F0EA; }
-.tab-control .tab-header ul li.active span.right { background:url('tabcontrol.png') no-repeat -2px -100px; border-bottom:solid 1px #F0F0EA; }
-.tab-control .content { padding:15px; background-color:#F0F0EA; border:solid 1px #91A7B4; }
-
-
-/* Window */
+/* Window-LIGHT...! */
 
 .window { border:solid 1px Black; background-color:#fff; }
 .window-head { border-bottom:solid 1px Black; background-color:#eef; padding:5px; font-size:1.3em; cursor:move; -moz-user-select:none; font-style:bold; }
