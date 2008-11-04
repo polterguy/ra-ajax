@@ -282,6 +282,7 @@ namespace Ra.Extensions
             bottomCell.ID = "bottC_" + Value.ToString("dd_MM_yyyy", System.Globalization.CultureInfo.InvariantCulture);
             bottomCell.ColSpan = 8;
             LinkButton today = new LinkButton();
+            today.ID = "todayBtn";
             today.Text = DateTime.Now.ToString("MMMM d, yyyy", System.Threading.Thread.CurrentThread.CurrentUICulture);
             today.Click += new EventHandler(today_Click);
             today.EnableViewState = false;

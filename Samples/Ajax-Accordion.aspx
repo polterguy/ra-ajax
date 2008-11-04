@@ -86,7 +86,7 @@
             <ext:Calendar 
                 runat="server" 
                 ID="calTab" 
-                CssClass="calendar" 
+                CssClass="alphacube cal" 
                 OnSelectedValueChanged="calTab_SelectedValueChanged"
                 Value="2008.07.20 23:54" />
 

@@ -58,7 +58,7 @@
         runat="server" 
         ID="calendar" 
         OnSelectedValueChanged="calendar_SelectedValueChanged"
-        CssClass="calendar" />
+        CssClass="alphacube cal" />
 
     <p style="clear:both;">
         <ra:Label 
