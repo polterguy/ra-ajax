@@ -64,6 +64,7 @@ namespace Ra.Extensions
         Label _sw;
         Label _s;
         Label _se;
+        Label _caption;
 
         /**
          * Raised when Value is changed by user. Can be raised by chaning month and year contrary
@@ -142,52 +143,56 @@ namespace Ra.Extensions
             // Top parts
             _nw = new Label();
             _nw.Tag = "div";
-            _nw.ID = "XXnw";
+            _nw.ID = "nw";
 
             _ne = new Label();
             _ne.Tag = "div";
-            _ne.ID = "XXne";
+            _ne.ID = "ne";
             _nw.Controls.Add(_ne);
 
             _n = new Label();
             _n.Tag = "div";
-            _n.ID = "XXn";
+            _n.ID = "n";
             _ne.Controls.Add(_n);
+
+            _caption = new Label();
+            _caption.ID = "capt";
+            _n.Controls.Add(_caption);
 
             // Middle parts
             _body = new Label();
             _body.Tag = "div";
-            _body.ID = "XXbody";
+            _body.ID = "body";
 
             _w = new Label();
             _w.Tag = "div";
-            _w.ID = "XXw";
+            _w.ID = "w";
             _body.Controls.Add(_w);
 
             _e = new Label();
             _e.Tag = "div";
-            _e.ID = "XXe";
+            _e.ID = "e";
             _w.Controls.Add(_e);
 
             _content = new Label();
             _content.Tag = "div";
-            _content.ID = "XXcontent";
+            _content.ID = "content";
             _e.Controls.Add(_content);
 
             // Bottom parts
             _sw = new Label();
             _sw.Tag = "div";
-            _sw.ID = "XXsw";
+            _sw.ID = "sw";
             _body.Controls.Add(_sw);
 
             _se = new Label();
             _se.Tag = "div";
-            _se.ID = "XXse";
+            _se.ID = "se";
             _sw.Controls.Add(_se);
 
             _s = new Label();
             _s.Tag = "div";
-            _s.ID = "XXs";
+            _s.ID = "s";
             _s.Text = "&nbsp;";
             _se.Controls.Add(_s);
         }
@@ -236,16 +241,21 @@ namespace Ra.Extensions
         protected override void OnPreRender(EventArgs e)
         {
             // Setting the CSS classes for all "decoration controls"
-            _nw.CssClass = this.CssClass + "_nw";
-            _n.CssClass = this.CssClass + "_n";
-            _ne.CssClass = this.CssClass + "_ne";
-            _e.CssClass = this.CssClass + "_e";
-            _se.CssClass = this.CssClass + "_se";
-            _s.CssClass = this.CssClass + "_s";
-            _sw.CssClass = this.CssClass + "_sw";
-            _w.CssClass = this.CssClass + "_w";
-            _content.CssClass = this.CssClass + "_content";
-            _body.CssClass = this.CssClass + "_body";
+            string cssClass = CssClass;
+            if (cssClass.IndexOf(" ") != -1)
+                cssClass = cssClass.Split(' ')[0];
+            _nw.CssClass = cssClass + "_nw";
+            _n.CssClass = cssClass + "_n";
+            _ne.CssClass = cssClass + "_ne";
+            _e.CssClass = cssClass + "_e";
+            _se.CssClass = cssClass + "_se";
+            _s.CssClass = cssClass + "_s";
+            _sw.CssClass = cssClass + "_sw";
+            _w.CssClass = cssClass + "_w";
+            _content.CssClass = cssClass + "_content calendar";
+            _body.CssClass = cssClass + "_body";
+            _caption.CssClass = cssClass + "_title";
+            _caption.Text = Value.ToString("dddd - dd. MMM yy", System.Globalization.CultureInfo.InvariantCulture);
 
             // Calling base...
             base.OnPreRender(e);

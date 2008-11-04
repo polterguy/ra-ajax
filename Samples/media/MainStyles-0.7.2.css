@@ -139,6 +139,23 @@ http://ra-ajax.org
 */
 
 
+/* Calendar specific CSS */
+
+.alphacube .calendar { font-size:0.8em; }
+.alphacube .calendar select { border:none; margin:0 5px 0 5px; font-size:0.8em; background-color:Transparent; color:#33b; }
+.alphacube .calendar table { border-collapse:collapse; margin:0; }
+.alphacube .calendar table tr td { border:none; padding:0; }
+.alphacube .calendar table tr.weekdays td { color:#888; padding:2px; }
+.alphacube .calendar table tr td.weekno { color:#888; }
+.alphacube .calendar a { display:block; text-decoration:none; color:#339; margin:1px; border:solid 1px Transparent; background-color:Transparent; }
+.alphacube .calendar a:hover { border:solid 1px #999; }
+.alphacube .calendar a.offMonth { color:#99d; }
+.alphacube .calendar a.selected { background-color:#eef; }
+.alphacube .calendar .holidayOnVenus a { color:#0f0; }
+.alphacube .alphacube_content table { text-align:center; margin-left:auto; margin-right:auto; }
+.cal { width:200px; }
+
+
 /* Customized "base" and Grid */
 
 a { text-decoration:none; }
@@ -273,21 +290,6 @@ border-bottom:solid 1px #F0F0EA; }
 .window { border:solid 1px Black; background-color:#fff; }
 .window-head { border-bottom:solid 1px Black; background-color:#eef; padding:5px; font-size:1.3em; cursor:move; -moz-user-select:none; font-style:bold; }
 .window-close { font-size:0.8em; position:absolute; right:5px; top:5px; }
-
-
-/* Calendar specific CSS */
-
-.calendar { background:url('calendar.png') no-repeat; font-size:0.8em; display:inline-block; border:outset 4px #999; /* IE hack */ *float:left; *display:inline; }
-.calendar select { border:none; margin:0 5px 0 5px; font-size:0.8em; background-color:Transparent; color:#bb5; }
-.calendar table { border-collapse:collapse; }
-.calendar table tr td { border:none; padding:2px; }
-.calendar table tr.weekdays td { color:#ddd; }
-.calendar table tr td.weekno { color:#bbb; }
-.calendar a { text-decoration:none; color:#dd7; margin:1px; border:solid 1px Transparent; background-color:Transparent; }
-.calendar a:hover { border:solid 1px #999; }
-.calendar a.offMonth { color:#bbb; }
-.calendar a.selected { border:solid 1px Yellow; }
-.calendar .holidayOnVenus a { color:#0f0; }
 
 
 /* Special classes for website only */
