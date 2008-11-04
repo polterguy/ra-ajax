@@ -154,6 +154,7 @@ http://ra-ajax.org
 .alphacube .calendar .holidayOnVenus a { color:#0f0; }
 .alphacube .alphacube_content table { text-align:center; margin-left:auto; margin-right:auto; }
 .cal { width:200px; }
+.cal .alphacube_title { cursor:default; }
 
 
 /* Customized "base" and Grid */
