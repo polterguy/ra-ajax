@@ -188,25 +188,38 @@ span > input + label { padding-right:3px;padding-left:3px; vertical-align:middle
 
 /* Menu */
 
-.menu { background:Transparent url('skins/menu/h-sprite.png') repeat-x 0 0; width:100%; height:32px; line-height:32px; position:relative; }
-.menu .top-left { background:Transparent url('skins/menu/sprite.png') repeat-x 0 0; position:absolute; left:0px; width:10px; height:32px; *margin-top:-6px; }
-.menu .top-right { background:Transparent url('skins/menu/sprite.png') repeat-x -10px 0; position:absolute; right:0px; width:10px; height:32px; *margin-top:-6px; }
+.menu { background:url('skins/menu/h-sprite.png') repeat-x 0 0; 
+width:100%; height:32px; line-height:32px; position:relative; }
+.menu .top-left { background:url('skins/menu/sprite.png') repeat-x 0 0; 
+position:absolute; left:0px; width:10px; height:32px; *margin-top:-6px; }
+.menu .top-right { background:url('skins/menu/sprite.png') repeat-x -10px 0; 
+position:absolute; right:0px; width:10px; height:32px; *margin-top:-6px; }
 .menu ul { display:inline; }
 .menu .item { cursor:pointer; color:#333; }
 .menu .item:hover { color:#999; }
 .menu .top { display:inline; padding:2px; position:relative; }
 .menu .menu-dropper { position:absolute; left:0px; width:150px; *top:26px; *margin-left:-15px; }
-.menu .menu-dropper .drop-item { background:Transparent url('skins/menu/h-sprite.png') repeat-x 0 0; display:block; color:#333; padding-left:10px; height:32px; line-height:32px; position:relative; }
-.menu .menu-dropper .drop-item:hover { background:Transparent url('skins/menu/h-sprite.png') repeat-x 0 -32px; color:#a55; }
+.menu .menu-dropper .drop-item { background:url('skins/menu/h-sprite.png') repeat-x 0 0; 
+display:block; color:#333; padding-left:10px; height:32px; line-height:32px; position:relative; }
+.menu .menu-dropper .drop-item:hover { background:url('skins/menu/h-sprite.png') repeat-x 0 -32px; 
+color:#a55; }
 .menu .menu-dropper .sub-dropper { left: 150px; top:0px; *left:132px; }
-.menu .menu-dropper .item-left { background:Transparent url('skins/menu/sprite.png') repeat-x 0 0; position:absolute; left:0px; width:10px; height:32px; *margin-top:-8px; }
-.menu .menu-dropper .item-right { background:Transparent url('skins/menu/sprite.png') repeat-x -10px 0; position:absolute; right:0px; width:10px; height:32px; *margin-top:-8px; }
-.menu .menu-dropper .drop-item:hover .item-left { background:Transparent url('skins/menu/sprite.png') repeat-x 0 -32px; position:absolute; left:0px; width:10px; height:32px; *margin-top:-8px; }
-.menu .menu-dropper .drop-item:hover .item-right { background:Transparent url('skins/menu/sprite.png') repeat-x -10px -32px; position:absolute; right:0px; width:10px; height:32px; *margin-top:-8px; }
-.menu .menu-dropper .drop-item:hover .sub-dropper .item-left { background:Transparent url('skins/menu/sprite.png') repeat-x 0 0; position:absolute; left:0px; width:10px; height:32px; *margin-top:-8px; }
-.menu .menu-dropper .drop-item:hover .sub-dropper .item-right { background:Transparent url('skins/menu/sprite.png') repeat-x -10px 0; position:absolute; right:0px; width:10px; height:32px; *margin-top:-8px; }
-.menu .menu-dropper .drop-item .sub-dropper .drop-item:hover .item-left { background:Transparent url('skins/menu/sprite.png') repeat-x 0 -32px; position:absolute; left:0px; width:10px; height:32px; *margin-top:-8px; }
-.menu .menu-dropper .drop-item .sub-dropper .drop-item:hover .item-right { background:Transparent url('skins/menu/sprite.png') repeat-x -10px -32px; position:absolute; right:0px; width:10px; height:32px; *margin-top:-8px; }
+.menu .menu-dropper .item-left { background:url('skins/menu/sprite.png') repeat-x 0 0; 
+position:absolute; left:0px; width:10px; height:32px; *margin-top:-8px; }
+.menu .menu-dropper .item-right { background:url('skins/menu/sprite.png') repeat-x -10px 0; 
+position:absolute; right:0px; width:10px; height:32px; *margin-top:-8px; }
+.menu .menu-dropper .drop-item:hover .item-left { background:url('skins/menu/sprite.png') repeat-x 0 -32px; 
+position:absolute; left:0px; width:10px; height:32px; *margin-top:-8px; }
+.menu .menu-dropper .drop-item:hover .item-right { background:url('skins/menu/sprite.png') repeat-x -10px -32px; 
+position:absolute; right:0px; width:10px; height:32px; *margin-top:-8px; }
+.menu .menu-dropper .drop-item:hover .sub-dropper .item-left { background:url('skins/menu/sprite.png') repeat-x 0 0; 
+position:absolute; left:0px; width:10px; height:32px; *margin-top:-8px; }
+.menu .menu-dropper .drop-item:hover .sub-dropper .item-right { background:url('skins/menu/sprite.png') repeat-x -10px 0; 
+position:absolute; right:0px; width:10px; height:32px; *margin-top:-8px; }
+.menu .menu-dropper .drop-item .sub-dropper .drop-item:hover .item-left { background:url('skins/menu/sprite.png') repeat-x 0 -32px; 
+position:absolute; left:0px; width:10px; height:32px; *margin-top:-8px; }
+.menu .menu-dropper .drop-item .sub-dropper .drop-item:hover .item-right { background:url('skins/menu/sprite.png') repeat-x -10px -32px; 
+position:absolute; right:0px; width:10px; height:32px; *margin-top:-8px; }
 
 
 /* AutoCompleter CSS class */
@@ -240,12 +253,18 @@ span > input + label { padding-right:3px;padding-left:3px; vertical-align:middle
 .tab-control .tab-header ul li.active a:hover { color:#333; }
 .tab-control .tab-header ul li a:hover { color:#66d; background-color:Transparent; }
 .tab-control .tab-header ul li span { display:inline-block; *height:18px; padding-top:5px; }
-.tab-control .tab-header ul li span.left { background:Transparent url('tabcontrol.png') no-repeat; width:3px; border-bottom:solid 1px #91A7B4; }
-.tab-control .tab-header ul li span.center { background:Transparent url('tabcontrol.png') repeat-x 0 -50px; border-bottom:solid 1px #91A7B4; }
-.tab-control .tab-header ul li span.right { background:Transparent url('tabcontrol.png') no-repeat -2px 0px; width:4px; border-bottom:solid 1px #91A7B4; }
-.tab-control .tab-header ul li.active span.left { background:Transparent url('tabcontrol.png') no-repeat 0 -100px; border-bottom:solid 1px #F0F0EA; }
-.tab-control .tab-header ul li.active span.center { background:Transparent url('tabcontrol.png') repeat-x 0 -150px; border-bottom:solid 1px #F0F0EA; }
-.tab-control .tab-header ul li.active span.right { background:Transparent url('tabcontrol.png') no-repeat -2px -100px; border-bottom:solid 1px #F0F0EA; }
+.tab-control .tab-header ul li span.left { background:url('tabcontrol.png') no-repeat; 
+width:3px; border-bottom:solid 1px #91A7B4; }
+.tab-control .tab-header ul li span.center { background:url('tabcontrol.png') repeat-x 0 -50px; 
+border-bottom:solid 1px #91A7B4; }
+.tab-control .tab-header ul li span.right { background:url('tabcontrol.png') no-repeat -2px 0px; 
+width:4px; border-bottom:solid 1px #91A7B4; }
+.tab-control .tab-header ul li.active span.left { background:url('tabcontrol.png') no-repeat 0 -100px; 
+border-bottom:solid 1px #F0F0EA; }
+.tab-control .tab-header ul li.active span.center { background:url('tabcontrol.png') repeat-x 0 -150px; 
+border-bottom:solid 1px #F0F0EA; }
+.tab-control .tab-header ul li.active span.right { background:url('tabcontrol.png') no-repeat -2px -100px; 
+border-bottom:solid 1px #F0F0EA; }
 .tab-control .content { padding:15px; background-color:#F0F0EA; border:solid 1px #91A7B4; }
 
 

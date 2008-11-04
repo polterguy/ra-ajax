@@ -13,6 +13,7 @@ using ASP = System.Web.UI;
 using Ra.Widgets;
 using System.IO;
 using HTML = System.Web.UI.HtmlControls;
+using System.Collections.Generic;
 
 namespace Ra.Extensions
 {
@@ -52,6 +53,17 @@ namespace Ra.Extensions
                 _cell = cell;
             }
         }
+
+        Label _nw;
+        Label _n;
+        Label _ne;
+        Label _w;
+        Label _body;
+        Label _content;
+        Label _e;
+        Label _sw;
+        Label _s;
+        Label _se;
 
         /**
          * Raised when Value is changed by user. Can be raised by chaning month and year contrary
@@ -105,9 +117,9 @@ namespace Ra.Extensions
             }
         }
 
-        protected override void LoadViewState(object savedState)
+        protected override void OnLoad(EventArgs e)
         {
-            base.LoadViewState(savedState);
+            base.OnLoad(e);
 
             // Since we're dependant upon that the ViewState has finished loading before
             // we initialize the ChildControls since how the child controls (and which)
@@ -119,7 +131,65 @@ namespace Ra.Extensions
 
         protected override void CreateChildControls()
         {
+            CreateWindowControls();
             CreateCalendarControls();
+            Controls.Add(_nw);
+            Controls.Add(_body);
+        }
+
+        private void CreateWindowControls()
+        {
+            // Top parts
+            _nw = new Label();
+            _nw.Tag = "div";
+            _nw.ID = "XXnw";
+
+            _ne = new Label();
+            _ne.Tag = "div";
+            _ne.ID = "XXne";
+            _nw.Controls.Add(_ne);
+
+            _n = new Label();
+            _n.Tag = "div";
+            _n.ID = "XXn";
+            _ne.Controls.Add(_n);
+
+            // Middle parts
+            _body = new Label();
+            _body.Tag = "div";
+            _body.ID = "XXbody";
+
+            _w = new Label();
+            _w.Tag = "div";
+            _w.ID = "XXw";
+            _body.Controls.Add(_w);
+
+            _e = new Label();
+            _e.Tag = "div";
+            _e.ID = "XXe";
+            _w.Controls.Add(_e);
+
+            _content = new Label();
+            _content.Tag = "div";
+            _content.ID = "XXcontent";
+            _e.Controls.Add(_content);
+
+            // Bottom parts
+            _sw = new Label();
+            _sw.Tag = "div";
+            _sw.ID = "XXsw";
+            _body.Controls.Add(_sw);
+
+            _se = new Label();
+            _se.Tag = "div";
+            _se.ID = "XXse";
+            _sw.Controls.Add(_se);
+
+            _s = new Label();
+            _s.Tag = "div";
+            _s.ID = "XXs";
+            _s.Text = "&nbsp;";
+            _se.Controls.Add(_s);
         }
 
         private void CreateCalendarControls()
@@ -160,7 +230,25 @@ namespace Ra.Extensions
             CreateTodayButton(tbl);
 
             // Rooting the Table as the LAST thing we do...!
-            Controls.Add(tbl);
+            _content.Controls.Add(tbl);
+        }
+
+        protected override void OnPreRender(EventArgs e)
+        {
+            // Setting the CSS classes for all "decoration controls"
+            _nw.CssClass = this.CssClass + "_nw";
+            _n.CssClass = this.CssClass + "_n";
+            _ne.CssClass = this.CssClass + "_ne";
+            _e.CssClass = this.CssClass + "_e";
+            _se.CssClass = this.CssClass + "_se";
+            _s.CssClass = this.CssClass + "_s";
+            _sw.CssClass = this.CssClass + "_sw";
+            _w.CssClass = this.CssClass + "_w";
+            _content.CssClass = this.CssClass + "_content";
+            _body.CssClass = this.CssClass + "_body";
+
+            // Calling base...
+            base.OnPreRender(e);
         }
 
         private DateTime FindStartDate()
@@ -346,8 +434,8 @@ namespace Ra.Extensions
         private void today_Click(object sender, EventArgs e)
         {
             Value = DateTime.Now.Date;
-            ReRender();
-            Controls.Clear();
+            _content.ReRender();
+            _content.Controls.Clear();
             CreateCalendarControls();
             if (SelectedValueChanged != null)
                 SelectedValueChanged(this, new EventArgs());
@@ -363,8 +451,8 @@ namespace Ra.Extensions
             if (Value.Date != newValue.Date)
             {
                 Value = newValue;
-                ReRender();
-                Controls.Clear();
+                _content.ReRender();
+                _content.Controls.Clear();
                 CreateCalendarControls();
                 if (SelectedValueChanged != null)
                     SelectedValueChanged(this, new EventArgs());
@@ -379,8 +467,8 @@ namespace Ra.Extensions
             if (Value.Date != newValue.Date)
             {
                 Value = newValue;
-                ReRender();
-                Controls.Clear();
+                _content.ReRender();
+                _content.Controls.Clear();
                 CreateCalendarControls();
                 if (SelectedValueChanged != null)
                     SelectedValueChanged(this, new EventArgs());
@@ -394,8 +482,8 @@ namespace Ra.Extensions
             if (Value.Date != newValue.Date)
             {
                 Value = newValue;
-                ReRender();
-                Controls.Clear();
+                _content.ReRender();
+                _content.Controls.Clear();
                 CreateCalendarControls();
                 if (SelectedValueChanged != null)
                     SelectedValueChanged(this, new EventArgs());

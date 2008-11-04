@@ -168,17 +168,11 @@
 					                        AlternateText="Show Code" 
 					                        OnClick="btnShowCode_Click" />
 					                </div>
-					                <ext:Timer 
-					                    runat="server" 
-					                    ID="timerMove" 
-					                    Duration="2000" 
-					                    OnTick="timerMove_Tick" />
                                     <ext:Window 
                                         ID="wowWnd" 
                                         runat="server" 
                                         OnMoved="wowWnd_Moved"
                                         Caption="Wow samples" 
-                                        OnMouseOver="wowWnd_MouseOver"
                                         style="width:150px;left:0px;top:0px;position:relative;"
                                         CssClass="alphacube">
                                         <div style="padding:5px;font-size:0.8em;">
