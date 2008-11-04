@@ -110,6 +110,33 @@
                     </span>
                     <ext:TreeNodes ID="huge_collection_node" runat="server" OnGetChildNodes="get_huge" />
                 </ext:TreeNode>
+
+                <ext:TreeNode runat="server" ID="recipes">
+                    <span title="Cakes...">
+                        Cakes recipes
+                    </span>
+                    <ext:TreeNodes ID="cakeRecipes" runat="server">
+                        <ext:TreeNode runat="server" ID="brownie">
+                            Brownies
+                        </ext:TreeNode>
+                        <ext:TreeNode runat="server" ID="applecake">
+                            Apple Cake
+                        </ext:TreeNode>
+                        <ext:TreeNode runat="server" ID="crackers">
+                            Crackers
+                            <ext:TreeNodes ID="cracks" runat="server">
+                                <ext:TreeNode runat="server" ID="ritz">
+                                    Ritz
+                                </ext:TreeNode>
+                                <ext:TreeNode runat="server" ID="chochips">
+                                    Chocolate chips
+                                </ext:TreeNode>
+                            </ext:TreeNodes>
+                        </ext:TreeNode>
+                    </ext:TreeNodes>
+                </ext:TreeNode>
+
+
             </ext:TreeNodes>
         </ext:Tree>
         <ra:Panel 

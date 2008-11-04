@@ -22,7 +22,6 @@ namespace Samples
             {
                 if (Session["wndWowPosition"] != null)
                 {
-                    timerMove.Enabled = false;
                     Point pt = (Point)Session["wndWowPosition"];
                     wowWnd.Style["left"] = pt.X.ToString() + "px";
                     wowWnd.Style["top"] = pt.Y.ToString() + "px";
@@ -53,19 +52,6 @@ namespace Samples
         protected void wowWnd_Moved(object sender, EventArgs e)
         {
             Session["wndWowPosition"] = new Point(Int32.Parse(wowWnd.Style["left"].Replace("px", "")), Int32.Parse(wowWnd.Style["top"].Replace("px", "")));
-        }
-
-        protected void timerMove_Tick(object sender, EventArgs e)
-        {
-            Random rnd = new Random();
-            new EffectMove(wowWnd, 400, rnd.Next(0, 50), rnd.Next(-100, 400))
-                .Render();
-        }
-
-        protected void wowWnd_MouseOver(object sender, EventArgs e)
-        {
-            // Turning off "animation timer"...
-            timerMove.Enabled = false;
         }
 
         protected void btnShowCode_Click(object sender, EventArgs e)
