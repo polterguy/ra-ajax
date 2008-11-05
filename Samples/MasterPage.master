@@ -19,8 +19,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
     <head runat="server">
         <title>Untitled Page</title>
-        <link runat="server" id="includeWhite" href="media/skins/white/white-0.7.3.css" rel="stylesheet" type="text/css" />
-        <link runat="server" id="includeAlphacube" href="media/skins/alphacube/alphacube-0.7.3.css" rel="stylesheet" type="text/css" />
+        <link runat="server" id="includeWhite" href="media/skins/white/white-0.7.4.css" rel="stylesheet" type="text/css" />
+        <link runat="server" id="includeAlphacube" href="media/skins/alphacube/alphacube-0.7.4.css" rel="stylesheet" type="text/css" />
         <link href="media/MainStyles-0.7.3.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
@@ -170,6 +170,19 @@
 					                        AlternateText="Show Code" 
 					                        OnClick="btnShowCode_Click" />
 					                </div>
+                                    <div>
+                                        <p>
+                                            Skin:
+                                            <asp:DropDownList 
+                                                runat="server" 
+                                                ID="chooseSkin" 
+                                                AutoPostBack="true" 
+                                                OnSelectedIndexChanged="chooseSkin_SelectedIndexChanged">
+                                                <asp:ListItem Text="Alphacube" />
+                                                <asp:ListItem Text="White" />
+                                            </asp:DropDownList>
+                                        </p>
+                                    </div>
                                     <ext:Window 
                                         ID="wowWnd" 
                                         runat="server" 
@@ -209,19 +222,6 @@
                                                 src="media/valid-xhtml10.png" 
                                                 alt="Valid XHTML 1.0 Transitional" />
                                         </a>
-                                    </div>
-                                    <div>
-                                        <p>
-                                            Choose skin:
-                                        </p>
-                                        <asp:DropDownList 
-                                            runat="server" 
-                                            ID="chooseSkin" 
-                                            AutoPostBack="true" 
-                                            OnSelectedIndexChanged="chooseSkin_SelectedIndexChanged">
-                                            <asp:ListItem Text="Alphacube" />
-                                            <asp:ListItem Text="White" />
-                                        </asp:DropDownList>
                                     </div>
 				                </div>
 			                	<div class="yui-u cnt">
