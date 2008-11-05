@@ -18,6 +18,8 @@ namespace Samples
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Defaulting "alphacube" skin to be visible...
+            includeWhite.Visible = false;
             if (!IsPostBack)
             {
                 if (Session["wndWowPosition"] != null)
@@ -46,6 +48,21 @@ namespace Samples
                     }
                     idxNo += 1;
                 }
+            }
+        }
+
+        protected void chooseSkin_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (chooseSkin.SelectedItem.Text)
+            {
+                case "Alphacube":
+                    includeWhite.Visible = false;
+                    includeAlphacube.Visible = true;
+                    break;
+                case "White":
+                    includeWhite.Visible = true;
+                    includeAlphacube.Visible = false;
+                    break;
             }
         }
 
