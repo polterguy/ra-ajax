@@ -181,6 +181,7 @@
                                                 OnSelectedIndexChanged="chooseSkin_SelectedIndexChanged">
                                                 <asp:ListItem Text="Alphacube" />
                                                 <asp:ListItem Text="White" />
+                                                <asp:ListItem Text="Mac OS X" />
                                             </asp:DropDownList>
                                         </p>
                                     </div>
