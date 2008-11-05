@@ -187,8 +187,8 @@ http://ra-ajax.org
 .alphacube-acc .body-content { padding:15px; border-left:solid 1px #eee; border-right:solid 1px #eee; border-bottom:solid 1px #eee; }
 .alphacube-acc .accordion-header { background:url('window-h-sprite.png') repeat-x 0 -1px; border:solid 1px #eee; }
 .alphacube-acc .accordion-header:hover { background:url('window-h-sprite.png') repeat-x 0 -1px; }
-.alphacube-acc .accordion-header a { text-decoration:none; padding:5px; display:block; color:#999; }
-.alphacube-acc .accordion-header a:hover { background:inherit; color:#99f; }
+.alphacube-acc .accordion-header a { text-decoration:none; padding:5px; display:block; color:#999; background:url('window-h-sprite.png') repeat-x 0 -1px; }
+.alphacube-acc .accordion-header a:hover { background:inherit; color:#99f; background:url('window-h-sprite.png') repeat-x 0 -1px; }
 
 
 /* TreeView */
