@@ -57,7 +57,7 @@
             runat="server" 
             ID="comet" 
             MaxClients="200"
-            Enabled="true"
+            Enabled="false"
             OnTick="comet_Tick" />
     </div>
     <p>
@@ -68,6 +68,10 @@
             Text="Number of connections" />
     </p>
     <h2>Comet concerns</h2>
+    <p>
+        The Comet component on this page is intentionally disabled to avoid server overload due to too
+        many requests
+    </p>
     <p>
         There are a lot of concerns when working with Comet, mostly due to the fact that HTTP and the web
         wasn't really created for doing Comet. Some older browsers (IE) will have problems with multiple 
