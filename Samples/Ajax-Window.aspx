@@ -110,7 +110,7 @@
         <ext:WindowLight 
             runat="server"
             Caption="Ajax Window"
-            CssClass="window smallWnd"
+            CssClass="wnd-light smallWnd"
             id="windowLight">
             <div style="padding:5px;">
                 <p>
