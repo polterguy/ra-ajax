@@ -20,6 +20,7 @@ namespace Samples
         {
             // Defaulting "alphacube" skin to be visible...
             includeWhite.Visible = false;
+            includeAlphacube.Visible = false;
             if (!IsPostBack)
             {
                 if (Session["wndWowPosition"] != null)
