@@ -20,7 +20,7 @@ namespace Samples
         {
             // Defaulting "alphacube" skin to be visible...
             includeWhite.Visible = false;
-            includeAlphacube.Visible = false;
+            includeMac.Visible = false;
             if (!IsPostBack)
             {
                 if (Session["wndWowPosition"] != null)
@@ -59,10 +59,17 @@ namespace Samples
                 case "Alphacube":
                     includeWhite.Visible = false;
                     includeAlphacube.Visible = true;
+                    includeMac.Visible = false;
                     break;
                 case "White":
                     includeWhite.Visible = true;
                     includeAlphacube.Visible = false;
+                    includeMac.Visible = false;
+                    break;
+                case "Mac OS X":
+                    includeWhite.Visible = false;
+                    includeAlphacube.Visible = false;
+                    includeMac.Visible = true;
                     break;
             }
         }
