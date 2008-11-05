@@ -39,7 +39,7 @@
     <ext:Window 
 	    runat="server"
 	    Caption="Ajax Window - drag me"
-	    CssClass="alphacube"
+	    CssClass="window"
 	    OnClosed="window_Closed"
 	    style="position:absolute;width:400px;height:300px;"
 	    id="window">
@@ -76,7 +76,7 @@
     <ext:Window
         runat="server"
         Caption="Ajax Window - drag me"
-        CssClass="alphacube"
+        CssClass="window"
         Visible="false"
         style="position:absolute;top:500px;left:300px;width:250px;z-index:1001;"
         id="window2">

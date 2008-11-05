@@ -31,7 +31,7 @@
     <ext:Accordion 
         runat="server" 
         ID="acc" 
-        CssClass="alphacube-acc" 
+        CssClass="accordion" 
         AnimationSpeed="200">
 
         <ext:AccordionView 
@@ -86,7 +86,7 @@
             <ext:Calendar 
                 runat="server" 
                 ID="calTab" 
-                CssClass="alphacube cal" 
+                CssClass="calendar" 
                 OnSelectedValueChanged="calTab_SelectedValueChanged"
                 Value="2008.07.20 23:54" />
 

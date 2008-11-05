@@ -32,7 +32,7 @@
 					    <ext:Accordion 
 					        runat="server" 
 					        ID="accordion"
-					        CssClass="alphacube-acc"
+					        CssClass="accordion"
 					        AnimationSpeed="400">
 
 					        <ext:AccordionView 
@@ -175,7 +175,7 @@
                                         OnMoved="wowWnd_Moved"
                                         Caption="Wow samples" 
                                         style="width:150px;left:0px;top:0px;position:relative;z-index:1000;"
-                                        CssClass="alphacube">
+                                        CssClass="window">
                                         <div style="padding:5px;font-size:0.8em;">
                                             <ul>
 			                                    <li>
@@ -229,7 +229,7 @@
                                         runat="server" 
                                         Visible="false"
                                         ID="tabShowCode" 
-                                        CssClass="alphacube-tab">
+                                        CssClass="tab">
 
                                         <ext:TabView 
                                             Caption="C# Code" 

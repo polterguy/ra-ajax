@@ -118,20 +118,20 @@ input[type=text],input[type=password],textarea{width:12.25em;*width:11.9em;}
  * MIT license - Skin for PWC Window. Used as basis for Window in Ra-Ajax
  * Modified by Thomas Hansen (thomas@ra-ajax.org) to meet the needs of Ra-Ajax
  */
-.alphacube				{ display:block; }
-.alphacube_nw			{ background: transparent url(window-sprite.png) no-repeat 0px 0px; padding-left:10px; position:relative; }
-.alphacube_ne			{ background: transparent url(window-sprite.png) no-repeat right 0; padding-right:6px; }
-.alphacube_n			{ background: transparent url(window-h-sprite.png) repeat-x 0 0; overflow:hidden; height:25px; }
-.alphacube_title		{ font-size:1.0em; position:absolute; top:5px; color:#999; -moz-user-select:none; -khtml-user-select: none; user-select: none; cursor:move; width:100%; }
-.alphacube_close		{ width:23px; height:16px; background:transparent url(window-sprite.png) no-repeat -10px 0; position:absolute; top:0px; right:11px; }
-.alphacube_close:hover	{ background-color:transparent; background-position:-10px -16px; }
-.alphacube_body			{ overflow:hidden; position:relative; }
-.alphacube_w			{ background: transparent url(window-v-sprite.png) repeat-y 0 0; padding-left:7px; }
-.alphacube_e			{ background: transparent url(window-v-sprite.png) repeat-y right 0; padding-right:7px; }
-.alphacube_content		{ background-color:#fdfdfd; border-style:solid; border-width:1px; border-left-color:#aaa; border-top-color:#aaa; border-right-color:#ddd; border-bottom-color:#ddd; }
-.alphacube_sw			{ background: transparent url(window-sprite.png) no-repeat 0 -25px; padding-left:7px; }
-.alphacube_se			{ background: transparent url(window-sprite.png) no-repeat right -25px; padding-right:7px; }
-.alphacube_s			{ background: transparent url(window-h-sprite.png) repeat-x 0 -25px; height:7px; }
+.window				{ display:block; }
+.window_nw			{ background: transparent url(window-sprite.png) no-repeat 0px 0px; padding-left:10px; position:relative; }
+.window_ne			{ background: transparent url(window-sprite.png) no-repeat right 0; padding-right:6px; }
+.window_n			{ background: transparent url(window-h-sprite.png) repeat-x 0 0; overflow:hidden; height:25px; }
+.window_title		{ font-size:1.0em; position:absolute; top:5px; color:#999; -moz-user-select:none; -khtml-user-select: none; user-select: none; cursor:move; width:100%; }
+.window_close		{ width:23px; height:16px; background:transparent url(window-sprite.png) no-repeat -10px 0; position:absolute; top:0px; right:11px; }
+.window_close:hover	{ background-color:transparent; background-position:-10px -16px; }
+.window_body		{ overflow:hidden; position:relative; }
+.window_w			{ background: transparent url(window-v-sprite.png) repeat-y 0 0; padding-left:7px; }
+.window_e			{ background: transparent url(window-v-sprite.png) repeat-y right 0; padding-right:7px; }
+.window_content		{ background-color:#fdfdfd; border-style:solid; border-width:1px; border-left-color:#aaa; border-top-color:#aaa; border-right-color:#ddd; border-bottom-color:#ddd; }
+.window_sw			{ background: transparent url(window-sprite.png) no-repeat 0 -25px; padding-left:7px; }
+.window_se			{ background: transparent url(window-sprite.png) no-repeat right -25px; padding-right:7px; }
+.window_s			{ background: transparent url(window-h-sprite.png) repeat-x 0 -25px; height:7px; }
 
 
 /*
@@ -143,52 +143,50 @@ http://ra-ajax.org
 
 /* Calendar specific CSS */
 
-.alphacube .calendar { font-size:0.8em; }
-.alphacube .calendar select { border:none; margin:0 5px 0 5px; font-size:0.8em; background-color:Transparent; color:#33b; }
-.alphacube .calendar table { border-collapse:collapse; margin:0; }
-.alphacube .calendar table tr td { border:none; padding:0; }
-.alphacube .calendar table tr.weekdays td { color:#888; padding:2px; }
-.alphacube .calendar table tr td.weekno { color:#888; }
-.alphacube .calendar a { display:block; text-decoration:none; color:#339; margin:1px; border:solid 1px Transparent; background-color:Transparent; }
-.alphacube .calendar a:hover { border:solid 1px #999; }
-.alphacube .calendar a.offMonth { color:#99d; }
-.alphacube .calendar a.selected { background-color:#eef; border:solid 1px #999; }
-.alphacube .calendar .holidayOnVenus a { color:#0f0; }
-.alphacube .alphacube_content table { text-align:center; margin-left:auto; margin-right:auto; }
-.cal { width:200px; }
-.cal .alphacube_title { cursor:default; }
+.calendar { font-size:0.8em; }
+.calendar select { border:none; margin:0 5px 0 5px; font-size:0.8em; background-color:Transparent; color:#33b; }
+.calendar table { border-collapse:collapse; margin:0; }
+.calendar table tr td { border:none; padding:0; }
+.calendar table tr.weekdays td { color:#888; padding:2px; }
+.calendar table tr td.weekno { color:#888; }
+.calendar a { display:block; text-decoration:none; color:#339; margin:1px; border:solid 1px Transparent; background-color:Transparent; }
+.calendar a:hover { border:solid 1px #999; }
+.calendar a.offMonth { color:#99d; }
+.calendar a.selected { background-color:#eef; border:solid 1px #999; }
+.calendar .holidayOnVenus a { color:#0f0; }
+.alphacube_content table { text-align:center; margin-left:auto; margin-right:auto; }
 
 
 /* TabControl styles */
 
-.alphacube-tab { width:95%; }
-.alphacube-tab .tab-header { margin-bottom:-1px; }
-.alphacube-tab .tab-header ul { }
-.alphacube-tab .tab-header ul li { display:inline; padding-right:2px; }
-.alphacube-tab .tab-header ul li.first { margin-left:6px; }
-.alphacube-tab .tab-header ul li a { text-decoration:none; color:#999; padding:5px; }
-.alphacube-tab .tab-header ul li.active a { color:#666; }
-.alphacube-tab .tab-header ul li.active a:hover { color:#666; }
-.alphacube-tab .tab-header ul li a:hover { color:#66d; background-color:Transparent; }
-.alphacube-tab .tab-header ul li span { display:inline-block; *height:18px; padding-top:5px; }
-.alphacube-tab .tab-header ul li span.left { background:url('window-sprite.png') no-repeat; width:6px; border-bottom:solid 1px #91A7B4; }
-.alphacube-tab .tab-header ul li span.center { background:url('window-h-sprite.png') repeat-x; border-bottom:solid 1px #91A7B4; }
-.alphacube-tab .tab-header ul li span.right { background:url('window-sprite.png') no-repeat -37px 0; width:6px; border-bottom:solid 1px #91A7B4; }
-.alphacube-tab .tab-header ul li.active span.left { background:url('window-sprite.png') no-repeat; border-bottom:solid 1px #fdfdfd; }
-.alphacube-tab .tab-header ul li.active span.center { background:url('window-h-sprite.png') repeat-x; border-bottom:solid 1px #fdfdfd; }
-.alphacube-tab .tab-header ul li.active span.right { background:url('window-sprite.png') no-repeat -37px 0; border-bottom:solid 1px #F0F0EA; }
-.alphacube-tab .content { padding:15px; background-color:#fdfdfd; border:solid 1px #91A7B4; }
+.tab { width:95%; }
+.tab .tab-header { margin-bottom:-1px; }
+.tab .tab-header ul { }
+.tab .tab-header ul li { display:inline; padding-right:2px; }
+.tab .tab-header ul li.first { margin-left:6px; }
+.tab .tab-header ul li a { text-decoration:none; color:#999; padding:5px; }
+.tab .tab-header ul li.active a { color:#666; }
+.tab .tab-header ul li.active a:hover { color:#666; }
+.tab .tab-header ul li a:hover { color:#66d; background-color:Transparent; }
+.tab .tab-header ul li span { display:inline-block; *height:18px; padding-top:5px; }
+.tab .tab-header ul li span.left { background:url('window-sprite.png') no-repeat; width:6px; border-bottom:solid 1px #91A7B4; }
+.tab .tab-header ul li span.center { background:url('window-h-sprite.png') repeat-x; border-bottom:solid 1px #91A7B4; }
+.tab .tab-header ul li span.right { background:url('window-sprite.png') no-repeat -37px 0; width:6px; border-bottom:solid 1px #91A7B4; }
+.tab .tab-header ul li.active span.left { background:url('window-sprite.png') no-repeat; border-bottom:solid 1px #fdfdfd; }
+.tab .tab-header ul li.active span.center { background:url('window-h-sprite.png') repeat-x; border-bottom:solid 1px #fdfdfd; }
+.tab .tab-header ul li.active span.right { background:url('window-sprite.png') no-repeat -37px 0; border-bottom:solid 1px #F0F0EA; }
+.tab .content { padding:15px; background-color:#fdfdfd; border:solid 1px #91A7B4; }
 
 
 /* Accordion */
 
-.alphacube-acc {}
-.alphacube-acc .body { overflow:hidden; background-color:#fdfdfd; font-size:small; }
-.alphacube-acc .body-content { padding:15px; border-left:solid 1px #eee; border-right:solid 1px #eee; border-bottom:solid 1px #eee; }
-.alphacube-acc .accordion-header { background:url('window-h-sprite.png') repeat-x 0 -1px; border:solid 1px #eee; }
-.alphacube-acc .accordion-header:hover { background:url('window-h-sprite.png') repeat-x 0 -1px; }
-.alphacube-acc .accordion-header a { text-decoration:none; padding:5px; display:block; color:#999; background:url('window-h-sprite.png') repeat-x 0 -1px; }
-.alphacube-acc .accordion-header a:hover { background:inherit; color:#99f; background:url('window-h-sprite.png') repeat-x 0 -1px; }
+.accordion {}
+.accordion .body { overflow:hidden; background-color:#fdfdfd; font-size:small; }
+.accordion .body-content { padding:15px; border-left:solid 1px #eee; border-right:solid 1px #eee; border-bottom:solid 1px #eee; }
+.accordion .accordion-header { background:url('window-h-sprite.png') repeat-x 0 -1px; border:solid 1px #eee; }
+.accordion .accordion-header:hover { background:url('window-h-sprite.png') repeat-x 0 -1px; }
+.accordion .accordion-header a { text-decoration:none; padding:5px; display:block; color:#999; background:url('window-h-sprite.png') repeat-x 0 -1px; }
+.accordion .accordion-header a:hover { background:inherit; color:#99f; background:url('window-h-sprite.png') repeat-x 0 -1px; }
 
 
 /* TreeView */
@@ -231,15 +229,15 @@ http://ra-ajax.org
 
 /* Menu */
 
-.alphacube-menu { background:url('window-h-sprite.png') repeat-x 0 -1px; border:solid 1px #eee; width:100%; padding:5px; position:relative; }
-.alphacube-menu ul { display:inline; }
-.alphacube-menu .item { cursor:pointer; color:#999; }
-.alphacube-menu .item:hover { color:#66f; }
-.alphacube-menu .top { display:inline; padding:2px; position:relative; }
-.alphacube-menu .menu-dropper { border:solid 1px #eee; background-color:White; position:absolute; left:0px; width:150px; *top:24px; }
-.alphacube-menu .menu-dropper .drop-item { display:block; color:#333; padding-left:15px; padding:5px; }
-.alphacube-menu .menu-dropper .drop-item:hover { color:#66f; background-color:#fafafa; }
-.alphacube-menu .menu-dropper .sub-dropper { left: 150px; top:-1px; }
+.menu { background:url('window-h-sprite.png') repeat-x 0 -1px; border:solid 1px #eee; width:100%; padding:5px; position:relative; }
+.menu ul { display:inline; }
+.menu .item { cursor:pointer; color:#999; }
+.menu .item:hover { color:#66f; }
+.menu .top { display:inline; padding:2px; position:relative; }
+.menu .menu-dropper { border:solid 1px #eee; background-color:White; position:absolute; left:0px; width:150px; *top:24px; }
+.menu .menu-dropper .drop-item { display:block; color:#333; padding-left:15px; padding:5px; }
+.menu .menu-dropper .drop-item:hover { color:#66f; background-color:#fafafa; }
+.menu .menu-dropper .sub-dropper { left: 150px; top:-1px; }
 
 
 /* AutoCompleter CSS class */
@@ -253,8 +251,8 @@ http://ra-ajax.org
 
 /* Window-LIGHT...! */
 
-.window { border:solid 1px Black; background-color:#fff; }
-.window-head { border-bottom:solid 1px Black; background-color:#eef; padding:5px; font-size:1.3em; cursor:move; -moz-user-select:none; font-style:bold; }
-.window-close { font-size:0.8em; position:absolute; right:5px; top:5px; }
+.wnd-light { border:solid 1px Black; background-color:#fff; }
+.wnd-light-head { border-bottom:solid 1px Black; background-color:#eef; padding:5px; font-size:1.3em; cursor:move; -moz-user-select:none; font-style:bold; }
+.wnd-light-close { font-size:0.8em; position:absolute; right:5px; top:5px; }
 
 

@@ -70,7 +70,7 @@
 	        runat="server"
 	        ID="confirmDeleteWindow"
 	        Caption="Confirm Delete"
-	        CssClass="alphacube"
+	        CssClass="window"
 	        Visible="false"
 	        style="position:absolute;top:390px;">
 	        Are you sure you want to delete this blog post?
@@ -83,7 +83,7 @@
 	        runat="server"
 	        ID="pnlNewBlog"
 	        Caption="Add New Blog Post"
-	        CssClass="alphacube"
+	        CssClass="window"
 	        Visible="false"
 	        style="position:absolute;top:290px;left:250px;"> 
 	        <div style="padding:15px;">
@@ -123,7 +123,7 @@
 	        runat="server"
 	        ID="pnlImages"
 	        Caption="Add New Image"
-	        CssClass="alphacube"
+	        CssClass="window"
 	        Visible="false"
 	        style="position:absolute;top:290px;left:250px;width:600px;padding:5px;"> 
 	        <div style="padding:15px;overflow:auto;height:500px;">
