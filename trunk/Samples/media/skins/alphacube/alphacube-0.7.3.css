@@ -143,18 +143,32 @@ http://ra-ajax.org
 
 /* Calendar specific CSS */
 
-.calendar { font-size:0.8em; }
-.calendar select { border:none; margin:0 5px 0 5px; font-size:0.8em; background-color:Transparent; color:#33b; }
-.calendar table { border-collapse:collapse; margin:0; }
-.calendar table tr td { border:none; padding:0; }
-.calendar table tr.weekdays td { color:#888; padding:2px; }
-.calendar table tr td.weekno { color:#888; }
-.calendar a { display:block; text-decoration:none; color:#339; margin:1px; border:solid 1px Transparent; background-color:Transparent; }
-.calendar a:hover { border:solid 1px #999; }
-.calendar a.offMonth { color:#99d; }
-.calendar a.selected { background-color:#eef; border:solid 1px #999; }
-.calendar .holidayOnVenus a { color:#0f0; }
-.alphacube_content table { text-align:center; margin-left:auto; margin-right:auto; }
+.calendar				{ display:block; font-size:0.8em; }
+.calendar_nw			{ background: transparent url(window-sprite.png) no-repeat 0px 0px; padding-left:10px; position:relative; }
+.calendar_ne			{ background: transparent url(window-sprite.png) no-repeat right 0; padding-right:6px; }
+.calendar_n				{ background: transparent url(window-h-sprite.png) repeat-x 0 0; overflow:hidden; height:25px; }
+.calendar_title			{ font-size:1.0em; position:absolute; top:5px; color:#999; width:100%; }
+.calendar_close			{ width:23px; height:16px; background:transparent url(window-sprite.png) no-repeat -10px 0; position:absolute; top:0px; right:11px; }
+.calendar_close:hover	{ background-color:transparent; background-position:-10px -16px; }
+.calendar_body			{ overflow:hidden; position:relative; }
+.calendar_w				{ background: transparent url(window-v-sprite.png) repeat-y 0 0; padding-left:7px; }
+.calendar_e				{ background: transparent url(window-v-sprite.png) repeat-y right 0; padding-right:7px; }
+.calendar_content		{ background-color:#fdfdfd; border-style:solid; border-width:1px; border-left-color:#aaa; border-top-color:#aaa; border-right-color:#ddd; border-bottom-color:#ddd; }
+.calendar_sw			{ background: transparent url(window-sprite.png) no-repeat 0 -25px; padding-left:7px; }
+.calendar_se			{ background: transparent url(window-sprite.png) no-repeat right -25px; padding-right:7px; }
+.calendar_s				{ background: transparent url(window-h-sprite.png) repeat-x 0 -25px; height:7px; }
+
+.calendar select				{ border:none; margin:0 5px 0 5px; font-size:0.8em; background-color:Transparent; color:#33b; }
+.calendar table					{ border-collapse:collapse; margin:0; }
+.calendar table tr td			{ border:none; padding:0; }
+.calendar table tr.weekdays td	{ color:#888; padding:2px; }
+.calendar table tr td.weekno	{ color:#888; }
+.calendar a						{ display:block; text-decoration:none; color:#339; margin:1px; border:solid 1px Transparent; background-color:Transparent; }
+.calendar a:hover				{ border:solid 1px #999; }
+.calendar a.offMonth			{ color:#99d; }
+.calendar a.selected			{ background-color:#eef; border:solid 1px #999; }
+.calendar .holidayOnVenus a		{ color:#0f0; }
+.calendar_content table			{ text-align:center; margin-left:auto; margin-right:auto; }
 
 
 /* TabControl styles */
