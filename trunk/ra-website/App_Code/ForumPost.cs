@@ -160,10 +160,16 @@ namespace Entity
                 string baseUrl = arrs[1] as string;
                 foreach (Operator idx in opers)
                 {
-                    idx.SendEmail("Ra-Ajax Forums - " + Header,
-                        string.Format(@"A new forum post titled '{1}' has been posted {0}",
-                        baseUrl,
-                        Header));
+                    idx.SendEmail("Ra-Ajax Forums - " + (Header.StartsWith("Re: ") ? Header.Remove(0, 4) : Header),
+                        string.Format(@"Hello,
+
+A new post titled '{0}' has been posted at Ra-Ajax forums:
+{1}
+
+Best Regards,
+Ra-Ajax Team
+",
+                         Header, baseUrl));
                 }
             }
             catch (Exception)
