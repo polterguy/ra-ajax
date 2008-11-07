@@ -29,8 +29,8 @@ Ra.Control = Ra.klass();
 // "Optimized" constructor for creating a new Ra.Control without having to use the "new" keyword and
 // the whole name of the Control class...
 // Saves a significant amount of "dynamic" data for Ra...
-Ra.C = function(el, options) {
-  return new Ra.Control(el, options);
+Ra.C = function(el, opt) {
+  return new Ra.Control(el, opt);
 };
 
 
@@ -38,18 +38,20 @@ Ra.C = function(el, options) {
 Ra.Control._controls = [];
 
 
-Ra.Control.errorHandler = function(status, fullTrace) {
-  if( status != 0 ) // Probably "unload" process
-    alert(status + '\r\n' + fullTrace);
+Ra.Control.errorHandler = function(stat, trc) {
+  if( stat != 0 ) // Probably "unload" process
+    alert(stat + '\r\n' + trc);
 }
 
 
 // Static method to retrieve a specific Ra control
 // Pass in an ID and get the Ra.Control instance of the Control with the given ID
 Ra.Control.$ = function(id) {
-  for( var idx = 0; idx < Ra.Control._controls.length; idx++ ) {
-    if( Ra.Control._controls[idx].element.id == id ) {
-      return Ra.Control._controls[idx];
+  var ctrls = Ra.Control._controls;
+  var idx = ctrls.length;
+  while(idx--) {
+    if( ctrls[idx].element.id == id ) {
+      return ctrls[idx];
     }
   }
   return null;
@@ -59,16 +61,16 @@ Ra.Control.$ = function(id) {
 Ra.Control.prototype = {
 
   // CTOR
-  init: function(element, options) {
+  init: function(el, opt) {
 
     // Forward call to enable inheritance
-    this.initControl(element, options);
+    this.initControl(el, opt);
   },
 
-  initControl: function(element, options) {
+  initControl: function(el, opt) {
 
     // Wrapping DOM element
-    this.element = Ra.$(element);
+    this.element = Ra.$(el);
 
     // Setting default options
     this.options = Ra.extend({
@@ -89,7 +91,7 @@ Ra.Control.prototype = {
 
       // If set defines the element of an associated label which contains the text value and so on...
       label: null
-    }, options || {});
+    }, opt || {});
 
     // Checking to see if a "real" control was passed
     if( this.options.ctrl ) {
@@ -150,8 +152,8 @@ Ra.Control.prototype = {
   
 
   // Expects only a string
-  CssClass: function(value) {
-    this.element.className = value;
+  CssClass: function(val) {
+    this.element.className = val;
   },
 
   // Expects and array of arrays where each array-item is a key/value object
@@ -159,27 +161,27 @@ Ra.Control.prototype = {
   // and the value (second sub-item array) its value
   // Note you can also use this one to REMOVE styles by having an empty string 
   // as the "value" part.
-  AddStyle: function(values) {
-    for( var idx = 0; idx < values.length; idx++ ) {
-      this.element.setStyle(values[idx][0], values[idx][1]);
+  AddStyle: function(val) {
+    for( var idx = 0; idx < val.length; idx++ ) {
+      this.element.setStyle(val[idx][0], val[idx][1]);
     }
   },
 
   // Expects only a Text string, does a replace on the innerHTML with the updated text string
   // Useful for labels, textareas and so on...
-  Text: function(value) {
-    (this.options.label || this.element).setContent(value);
+  Text: function(val) {
+    (this.options.label || this.element).setContent(val);
   },
 
   // Expects a single character - Sets the access key (ALT + value) for giving focus to control
-  AccessKey: function(value) {
-    (this.options.ctrl || this.element).accesskey = value;
+  AccessKey: function(val) {
+    (this.options.ctrl || this.element).accesskey = val;
   },
 
   // Expects a text value, sets the "value" of the control to the given value
   // Useful for TextBoxes (input type="text") and so on...
-  Value: function(value) {
-    this.element.value = value;
+  Value: function(val) {
+    this.element.value = val;
   },
 
   // Sets focus to control
@@ -193,15 +195,15 @@ Ra.Control.prototype = {
   },
 
   // Expects a type - defines type of control (text, password etc...)
-  Type: function(value) {
-    (this.options.ctrl || this.element).type = value;
+  Type: function(val) {
+    (this.options.ctrl || this.element).type = val;
   },
 
   // Expects any value, will set that property of the element
   // Useful for sending "generic" attributes over to the element
-  Generic: function(values) {
-    for( var idx = 0; idx < values.length; idx++ ) {
-      (this.options.ctrl || this.element)[values[idx][0]] = values[idx][1];
+  Generic: function(val) {
+    for( var idx = 0; idx < val.length; idx++ ) {
+      (this.options.ctrl || this.element)[val[idx][0]] = val[idx][1];
     }
   },
 
@@ -247,7 +249,7 @@ Ra.Control.prototype = {
 
   // Called when an event is raised, the parameter passed is the this.options.serverEvent instance 
   // which we will use to know how to call our server
-  onEvent: function(evt, shouldStop, domEvt) {
+  onEvent: function(evt, stop, domEvt) {
     if( evt == 'keyup' ) {
       // This one needs SPECIAL handling to not drain resources
       if( !this._oldValue ) {
@@ -271,7 +273,7 @@ Ra.Control.prototype = {
     } else {
       this.callback(evt);
     }
-    return !shouldStop;
+    return !stop;
   },
 
   callback: function(evt) {
@@ -284,18 +286,18 @@ Ra.Control.prototype = {
     });
   },
 
-  onFinishedRequest: function(response) {
+  onFinishedRequest: function(resp) {
     if( this._oldValue )
       delete this._oldValue;
     if( this._hasStartedMoveTimer )
       delete this._hasStartedMoveTimer;
-    eval(response);
+    eval(resp);
   },
 
-  onFailedRequest: function(status, fullTrace) {
+  onFailedRequest: function(stat, trc) {
     if( this._oldValue )
       delete this._oldValue;
-    Ra.Control.errorHandler(status, fullTrace);
+    Ra.Control.errorHandler(stat, trc);
   },
 
 
@@ -323,7 +325,7 @@ Ra.Control.prototype = {
   // This one will also destroy all CHILD controls of the control...
   // If you override this method you probably will want to call the base
   // implementation called "destroyControl"!
-  destroy: function(invisibleHtml) {
+  destroy: function(ht) {
 
     // Forward calling to enable inheritance...
     this._destroyChildControls();
@@ -336,10 +338,10 @@ Ra.Control.prototype = {
     // Note that since all other "child controls" are children DOM elements of the "this DOM element"
     // there is no need to do this for the child controls since their HTML will disappear
     // anyway.
-    if (!invisibleHtml)
+    if (!ht)
         this.element.replace("<span id=\"" + this.element.id + "\" style=\"display:none;\" />");
     else
-        this.element.replace(invisibleHtml);
+        this.element.replace(ht);
   },
 
   // This function will search for child controls and make sure those too are detroyed...
@@ -361,8 +363,9 @@ Ra.Control.prototype = {
       // Checking to see that this is NOT the "this" control
       // And if it's a child control (defined as starting with the same id followed by an '_')
       // NOT bulletproof, but close enough...
-      if( ctrls[idx].element.id.indexOf(this.element.id) == 0 &&
-        ctrls[idx].element.id.substring(this.element.id.length, this.element.id.length + 1) == '_' ) {
+      var tId = this.element.id;
+      if( ctrls[idx].element.id.indexOf(tId) == 0 &&
+        ctrls[idx].element.id.substring(tId.length, tId.length + 1) == '_' ) {
           children.push(ctrls[idx]);
       }
     }
@@ -402,16 +405,17 @@ Ra.Control.prototype = {
     this._unlistenEventHandlers();
 
     // Looping through registered controls to remove the "this instance"
-    idx = Ra.Control._controls.length;
+    var ctrls = Ra.Control._controls;
+    idx = ctrls.length;
     while( idx-- ) {
-      if( Ra.Control._controls[idx].element.id == this.element.id ) {
+      if( ctrls[idx].element.id == this.element.id ) {
         // We have found our instance, idxToRemove now should contain the index of the control
         break;
       }
     }
 
     // Removes control out from registered controls collection
-    Ra.Control._controls.splice(idx, 1);
+    ctrls.splice(idx, 1);
   },
 
 
@@ -426,30 +430,30 @@ Ra.Control.prototype = {
   }
 }
 
-Ra.Control.callServerMethod = function(methodName, options, args) {
-  var methodArgs = '__FUNCTION_NAME=' + methodName;
+Ra.Control.callServerMethod = function(method, opt, args) {
+  var mArgs = '__FUNCTION_NAME=' + method;
   
-  options = Ra.extend({
+  opt = Ra.extend({
     onSuccess:function(){}, 
     onError:function(){}
-  }, options || {});
+  }, opt || {});
 
   if (args) {
     for (var idx = 0; idx < args.length; idx++) {
-      methodArgs += '&__ARG' + idx + '=' + args[idx];
+      mArgs += '&__ARG' + idx + '=' + args[idx];
     }
   }
   
   Ra.Control._methodReturnValue = null;
   new Ra.Ajax({
-    args: methodArgs,
+    args: mArgs,
     raCallback:true,
-    onSuccess: function(response) {
-      eval(response);
-      options.onSuccess(Ra.Control._methodReturnValue);
+    onSuccess: function(resp) {
+      eval(resp);
+      opt.onSuccess(Ra.Control._methodReturnValue);
     },
-    onError: function(status, fullTrace) { 
-      options.onError(status, fullTrace);
+    onError: function(sta, trc) { 
+      opt.onError(stat, trc);
     }
   });
 }

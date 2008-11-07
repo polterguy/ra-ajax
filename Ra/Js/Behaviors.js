@@ -27,12 +27,14 @@ Ra.Beha = Ra.klass();
 
 // Retrieve function
 Ra.Beha.$ = function(id) {
-  var idxCtrl = Ra.Control._controls.length;
+  var ctrls = Ra.Control._controls;
+  var idxCtrl = ctrls.length;
   while( idxCtrl-- ) {
-    var idxBeha = Ra.Control._controls[idxCtrl].options.beha.length;
+    var behvs = ctrls[idxCtrl].options.beha;
+    var idxBeha = behvs.length;
     while( idxBeha-- ) {
-      if( Ra.Control._controls[idxCtrl].options.beha[idxBeha].id == id )
-        return Ra.Control._controls[idxCtrl].options.beha[idxBeha];
+      if( behvs[idxBeha].id == id )
+        return behvs[idxBeha];
     }
   }
 }
@@ -41,8 +43,8 @@ Ra.Beha.$ = function(id) {
 Ra.Beha.prototype = {
 
   // CTOR
-  init: function(id, options) {
-    this.options = options;
+  init: function(id, opt) {
+    this.options = opt;
     this.id = id;
   },
 
@@ -50,7 +52,6 @@ Ra.Beha.prototype = {
   },
 
   handleJSON: function(json) {
-
     // Looping through all "top-level" objects and calling the functions for those keys
     for( var idxKey in json ) {
       this[idxKey](json[idxKey]);
@@ -77,8 +78,8 @@ Ra.extend(Ra.BObscur.prototype, Ra.Beha.prototype);
 
 // Creating IMPLEMENTATION of class
 Ra.extend(Ra.BObscur.prototype, {
-  init: function(id, options) {
-    this.options = options;
+  init: function(id, opt) {
+    this.options = opt;
     this.id = id;
     this.options = Ra.extend({
       color:'#000',
@@ -91,30 +92,31 @@ Ra.extend(Ra.BObscur.prototype, {
     if( this.options.zIndex == -1)
       this.options.zIndex = parseInt(parent.element.style.zIndex,10) - 1;
     this.el = document.createElement('div');
-    Ra.extend(this.el, Ra.Element.prototype);
-    this.el.id = this.id;
-    this.el.setStyle('position','absolute');
-    this.el.setStyle('width',parseInt(document.body.clientWidth) + 'px');
-    this.el.setStyle('height',parseInt(document.body.clientHeight) + 'px');
-    this.el.setStyle('left','0px');
-    this.el.setStyle('top','0px');
-    this.el.setStyle('backgroundColor',this.options.color);
-    this.el.setStyle('zIndex',this.options.zIndex);
-    this.el.setStyle('display','none');
-    document.getElementsByTagName('body')[0].appendChild(this.el);
+    var el = this.el;
+    Ra.extend(el, Ra.Element.prototype);
+    el.id = this.id;
+    el.setStyle('position','absolute');
+    el.setStyle('width',parseInt(document.body.clientWidth) + 'px');
+    el.setStyle('height',parseInt(document.body.clientHeight) + 'px');
+    el.setStyle('left','0px');
+    el.setStyle('top','0px');
+    el.setStyle('backgroundColor',this.options.color);
+    el.setStyle('zIndex',this.options.zIndex);
+    el.setStyle('display','none');
+    document.getElementsByTagName('body')[0].appendChild(el);
 
     var T = this;
-    new Ra.Effect(this.el, {
+    new Ra.Effect(el, {
       duration: 300,
       onStart: function() {
-        this.element.setOpacity(0);
-        this.element.setStyle('display','block');
+        el.setOpacity(0);
+        el.setStyle('display','block');
       },
       onFinished: function() {
-        this.element.setOpacity(T.options.opacity);
+        el.setOpacity(T.options.opacity);
       },
       onRender: function(pos) {
-        this.element.setOpacity(pos * T.options.opacity);
+        el.setOpacity(pos * T.options.opacity);
       },
       sinoidal:true
     });
@@ -197,8 +199,8 @@ Ra.extend(Ra.BDrag.prototype, {
 
   Handle: function(handle) {
     this.options.handle.stopObserving('mousedown', this.onMouseDown, this);
-    this.options.handle = handle;
-    this.options.handle.observe('mousedown', this.onMouseDown, this);
+    this.options.handle = Ra.$(handle);
+    handle.observe('mousedown', this.onMouseDown, this);
   },
 
   // Setter for the Snap Point which determines how the 
@@ -345,10 +347,11 @@ Ra.BDrop._droppers = [];
 
 Ra.BDrop.getAffected = function(x, y) {
   var retVal = [];
-  var idx = Ra.BDrop._droppers.length;
+  var drps = Ra.BDrop._droppers;
+  var idx = drps.length;
   while( idx-- ) {
-    if( Ra.BDrop._droppers[idx].parent.element.within(x,y) ) {
-      retVal.push(Ra.BDrop._droppers[idx]);
+    if( drps[idx].parent.element.within(x,y) ) {
+      retVal.push(drps[idx]);
     }
   }
   return retVal;
@@ -357,10 +360,11 @@ Ra.BDrop.getAffected = function(x, y) {
 
 Ra.BDrop.getUnAffected = function(x, y) {
   var retVal = [];
-  var idx = Ra.BDrop._droppers.length;
+  var drps = Ra.BDrop._droppers;
+  var idx = drps.length;
   while( idx-- ) {
-    if( !Ra.BDrop._droppers[idx].parent.element.within(x,y) ) {
-      retVal.push(Ra.BDrop._droppers[idx]);
+    if( !drps[idx].parent.element.within(x,y) ) {
+      retVal.push(drps[idx]);
     }
   }
   return retVal;
@@ -558,8 +562,8 @@ Ra.extend(Ra.BUpDel.prototype, {
   },
 
   onFinished: function() {
-    this._stopped = true;
     if( this.effect ) {
+      this._stopped = true;
       var T = this;
       this.effect.stopped = true;
       this.effect = new Ra.Effect(this.el, {
@@ -568,6 +572,7 @@ Ra.extend(Ra.BUpDel.prototype, {
           this.element.setOpacity(T.options.opacity);
           this.element.setStyle('display','none');
           delete T.effect;
+          delete T._stopped;
         },
         onRender: function(pos) {
           this.element.setOpacity((1 - pos) * T.options.opacity);

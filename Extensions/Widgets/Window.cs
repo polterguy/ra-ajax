@@ -23,6 +23,21 @@ namespace Ra.Extensions
     [ASP.ToolboxData("<{0}:Window runat=\"server\"></{0}:Window>")]
     public class Window : Panel, ASP.INamingContainer
     {
+        public class CreateNavigationalButtonsEvtArgs : EventArgs
+        {
+            private ASP.Control _ctrl;
+
+            internal CreateNavigationalButtonsEvtArgs(ASP.Control ctrl)
+            {
+                _ctrl = ctrl;
+            }
+
+            public ASP.Control Caption
+            {
+                get { return _ctrl; }
+            }
+        }
+
         Label _nw;
         Label _n;
         Label _ne;
@@ -48,6 +63,12 @@ namespace Ra.Extensions
         public event EventHandler Moved;
 
         /**
+         * Raised when window needs "additional navigational buttons" (next to the close button)
+         * Called immediately before Close button is created (if it is created)
+         */
+        public event EventHandler<CreateNavigationalButtonsEvtArgs> CreateNavigationalButtons;
+
+        /**
          * Header text of window
          */
         [DefaultValue("")]
@@ -55,6 +76,27 @@ namespace Ra.Extensions
         {
             get { return ViewState["Caption"] == null ? "" : (string)ViewState["Caption"]; }
             set { ViewState["Caption"] = value; }
+        }
+
+        /**
+         * If true (default value) then Window will have a "Close" icon which makes it possible
+         * to close it by clicking.
+         */
+        [DefaultValue(true)]
+        public bool Closable
+        {
+            get { return ViewState["Closable"] == null ? true : (bool)ViewState["Closable"]; }
+            set { ViewState["Closable"] = value; }
+        }
+
+        /**
+         * If true (default value) then Window can be dragged around and moved.
+         */
+        [DefaultValue(true)]
+        public bool Movable
+        {
+            get { return ViewState["Movable"] == null ? true : (bool)ViewState["Movable"]; }
+            set { ViewState["Movable"] = value; }
         }
 
         /**
@@ -98,10 +140,16 @@ namespace Ra.Extensions
             _caption.ID = "XXcaption";
             _n.Controls.Add(_caption);
 
-            _close = new LinkButton();
-            _close.ID = "XXclose";
-            _close.Click += new EventHandler(_close_Click);
-            _n.Controls.Add(_close);
+            if (CreateNavigationalButtons != null)
+                CreateNavigationalButtons(this, new CreateNavigationalButtonsEvtArgs(_n));
+
+            if (Closable)
+            {
+                _close = new LinkButton();
+                _close.ID = "XXclose";
+                _close.Click += new EventHandler(_close_Click);
+                _n.Controls.Add(_close);
+            }
 
             // Middle parts
             _body = new Label();
@@ -140,11 +188,18 @@ namespace Ra.Extensions
             _s.Text = "&nbsp;";
             _se.Controls.Add(_s);
 
-            _dragger = new BehaviorDraggable();
-            _dragger.ID = "XXdragger";
-            _dragger.Handle = _caption.ClientID;
-            _dragger.Dropped += new EventHandler(_dragger_Dropped);
-            Controls.Add(_dragger);
+            if (Movable)
+            {
+                _dragger = new BehaviorDraggable();
+                _dragger.ID = "XXdragger";
+                _dragger.Handle = _caption.ClientID;
+                _dragger.Dropped += new EventHandler(_dragger_Dropped);
+                Controls.Add(_dragger);
+            }
+            else
+            {
+                _caption.Style["cursor"] = "default";
+            }
 
             // Moving controls to where they SHOULD be...
             // This time to get the ViewState right...
@@ -183,7 +238,8 @@ namespace Ra.Extensions
             _caption.Text = Caption;
 
             // Action buttons
-            _close.CssClass = this.CssClass + "_close";
+            if (Closable)
+                _close.CssClass = this.CssClass + "_close";
 
             // Moving controls to where they SHOULD be...
             ReArrangeControls();

@@ -19,9 +19,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
     <head runat="server">
         <title>Untitled Page</title>
-        <link runat="server" id="includeWhite" href="media/skins/white/white-0.7.4.css" rel="stylesheet" type="text/css" />
-        <link runat="server" id="includeAlphacube" href="media/skins/alphacube/alphacube-0.7.4.css" rel="stylesheet" type="text/css" />
-        <link runat="server" id="includeMac" href="media/skins/mac/mac-0.7.4.css" rel="stylesheet" type="text/css" />
+        <link runat="server" id="includeWhite" href="media/skins/white/white-0.7.5.css" rel="stylesheet" type="text/css" />
+        <link runat="server" id="includeAlphacube" href="media/skins/alphacube/alphacube-0.7.5.css" rel="stylesheet" type="text/css" />
+        <link runat="server" id="includeMac" href="media/skins/mac/mac-0.7.5.css" rel="stylesheet" type="text/css" />
+        <link runat="server" id="includeSpread" href="media/skins/spread/spread-0.7.5.css" rel="stylesheet" type="text/css" />
         <link href="media/MainStyles-0.7.3.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
@@ -145,6 +146,9 @@
 			                        <li>
 			                            <a href="Ajax-AutoCompleter.aspx">Ra-Ajax - AutoCompleter</a>
 			                        </li>
+			                        <li>
+			                            <a href="Ajax-Wizard.aspx">Ra-Ajax - Wizard</a>
+			                        </li>
 			                    </ul>
 					        </ext:AccordionView>
 					    </ext:Accordion>
@@ -182,6 +186,7 @@
                                                 <asp:ListItem Text="Alphacube" />
                                                 <asp:ListItem Text="White" />
                                                 <asp:ListItem Text="Mac OS X" />
+                                                <asp:ListItem Text="Spread" />
                                             </asp:DropDownList>
                                         </p>
                                     </div>
@@ -217,6 +222,9 @@
 			                                    </li>
 			                                    <li>
 			                                        <a href="Ajax-Calendar.aspx">Ajax Calendar</a>
+			                                    </li>
+			                                    <li>
+			                                        <a href="Ajax-Wizard.aspx">Ajax Wizard</a>
 			                                    </li>
                                             </ul>
                                         </div>

@@ -120,7 +120,7 @@ input[type=text],input[type=password],textarea{width:12.25em;*width:11.9em;}
  */
 .window				{ display:block; }
 .window_nw			{ background: transparent url(window-sprite.png) no-repeat 0 0; padding-left:10px; position:relative; }
-.window_ne			{ background: transparent url(window-sprite.png) no-repeat right 0; padding-right:12px; }
+.window_ne			{ background: transparent url(window-sprite.png) no-repeat right 0; padding-right:10px; }
 .window_n			{ background: transparent url(window-h-sprite.png) repeat-x 0 0; overflow:hidden; height:25px; }
 .window_title		{ font-size:1.0em; position:absolute; top:5px; color:#333; -moz-user-select:none; -khtml-user-select: none; user-select: none; cursor:move; width:100%; }
 .window_close		{ width:23px; height:16px; background:transparent url(window-sprite.png) no-repeat -10px 0; position:absolute; top:0px; right:11px; }
@@ -145,7 +145,7 @@ http://ra-ajax.org
 
 .calendar				{ display:block; }
 .calendar_nw			{ background: transparent url(window-sprite.png) no-repeat 0px 0px; padding-left:10px; position:relative; }
-.calendar_ne			{ background: transparent url(window-sprite.png) no-repeat right 0; padding-right:6px; }
+.calendar_ne			{ background: transparent url(window-sprite.png) no-repeat right 0; padding-right:10px; }
 .calendar_n				{ background: transparent url(window-h-sprite.png) repeat-x 0 0; overflow:hidden; height:25px; }
 .calendar_title			{ position:absolute; top:5px; color:#333; width:100%; }
 .calendar_body			{ overflow:hidden; position:relative; }

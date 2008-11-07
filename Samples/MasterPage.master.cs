@@ -21,6 +21,7 @@ namespace Samples
             // Defaulting "alphacube" skin to be visible...
             includeWhite.Visible = false;
             includeMac.Visible = false;
+            includeSpread.Visible = false;
             if (!IsPostBack)
             {
                 if (Session["wndWowPosition"] != null)
@@ -60,16 +61,25 @@ namespace Samples
                     includeWhite.Visible = false;
                     includeAlphacube.Visible = true;
                     includeMac.Visible = false;
+                    includeSpread.Visible = false;
                     break;
                 case "White":
                     includeWhite.Visible = true;
                     includeAlphacube.Visible = false;
                     includeMac.Visible = false;
+                    includeSpread.Visible = false;
                     break;
                 case "Mac OS X":
                     includeWhite.Visible = false;
                     includeAlphacube.Visible = false;
                     includeMac.Visible = true;
+                    includeSpread.Visible = false;
+                    break;
+                case "Spread":
+                    includeWhite.Visible = false;
+                    includeAlphacube.Visible = false;
+                    includeMac.Visible = false;
+                    includeSpread.Visible = true;
                     break;
             }
         }

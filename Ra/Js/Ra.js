@@ -76,11 +76,11 @@ Ra.klass = function() {
 // the properties and functions from the base object is copied into the 
 // inherited object. The inherited object is returned
 // for creating better syntax
-Ra.extend = function(inherited, base) {
-  for (var prop in base) {
-    inherited[prop] = base[prop];
+Ra.extend = function(inh, bs) {
+  for (var prop in bs) {
+    inh[prop] = bs[prop];
   }
-  return inherited;
+  return inh;
 };
 
 
@@ -112,20 +112,20 @@ Ra.Element.prototype = {
   },
 
   // Replaces element with given HTML
-  replace: function(html) {
+  replace: function(htm) {
     // Storing id for later to be able to "re-extend" and return "this" back to caller
     var elId = this.id;
 
     // Creating node to wrap HTML content to replace this content with
     if( this.outerHTML ) {
-      this.outerHTML = html;
+      this.outerHTML = htm;
     } else {
-      var range = this.ownerDocument.createRange();
-      range.selectNode(this);
-      var newEl = range.createContextualFragment(html);
+      var rng = this.ownerDocument.createRange();
+      rng.selectNode(this);
+      var nE = rng.createContextualFragment(htm);
 
       // Doing replacing
-      this.parentNode.replaceChild(newEl, this);
+      this.parentNode.replaceChild(nE, this);
     }
 
     // Since this effectively REPLACES the element the return
@@ -146,8 +146,8 @@ Ra.Element.prototype = {
   // Inspired from prototype.js
   // Returns an object of { width, height } containing the width and height of the element
   getDimensions: function() {
-    var display = this.getStyle('display');
-    if (display != 'none' && display !== null) {
+    var dis = this.getStyle('display');
+    if (dis != 'none' && dis !== null) {
       // Safari bug
       return {
         width: this.offsetWidth - 
@@ -166,13 +166,13 @@ Ra.Element.prototype = {
     var orDis = els.display;
     els.visibility = 'hidden';
     els.display = 'block';
-    var orWidth = this.clientWidth;
-    var orHeight = this.clientHeight;
+    var orW = this.clientWidth;
+    var orH = this.clientHeight;
     els.display = orDis;
     els.visibility = orVis;
     return {
-      width: orWidth + (parseInt(this.getStyle('padding'), 10) || 0), 
-      height: orHeight + (parseInt(this.getStyle('padding'), 10) || 0)
+      width: orW + (parseInt(this.getStyle('padding'), 10) || 0), 
+      height: orH + (parseInt(this.getStyle('padding'), 10) || 0)
     };
   },
 
@@ -190,15 +190,18 @@ Ra.Element.prototype = {
   setStyle: function(key, value) {
     if( key == 'opacity' )
       this.setOpacity(value);
-    else {
+    else
       this.style[key] = value;
-    }
   },
 
   absolutize: function() {
+    if( this._hasAbsTized )
+      return;
+    var lft = this.getStyle('left');
+    var top = this.getStyle('top');
     if( this.getStyle('position') == 'absolute' && 
-      (this.getStyle('left') && this.getStyle('top')) && 
-      (this.getStyle('left') != 'auto' && this.getStyle('top') != 'auto') )
+      (lft && top) && 
+      (lft != 'auto' && top != 'auto') )
       return;
     var valueT = this.offsetTop  || 0;
     var valueL = this.offsetLeft  || 0;
@@ -218,27 +221,28 @@ Ra.Element.prototype = {
     this.setStyle('left',valueL + 'px');
     this.setStyle('top',valueT + 'px');
     this.setStyle('position','absolute');
+    this._hasAbsTized = true;
   },
 
   // Appends a class name to the class of the element
-  addClassName: function(className) {
-    this.className += (this.className ? ' ' : '') + className;
+  addClassName: function(cls) {
+    this.className += (this.className ? ' ' : '') + cls;
     return this;
   },
 
   // Removes a class name from the element
-  removeClassName: function(className) {
+  removeClassName: function(cls) {
     this.className = this.className.replace(
-      new RegExp("(^|\\s+)" + className + "(\\s+|$)"), ' ').replace(/^\s+/, '').replace(/\s+$/, '');
+      new RegExp("(^|\\s+)" + cls + "(\\s+|$)"), ' ').replace(/^\s+/, '').replace(/\s+$/, '');
     return this;
   },
 
   // Sets opacity, expects a value between 0.0 and 1.0 where 0 == invisible and 1 == completely visible
-  setOpacity: function(value) {
+  setOpacity: function(val) {
     if(!('opacity' in this.style)) {
-      this.setStyle('filter','alpha(opacity=' + Math.round(value * 100) + ')');
+      this.setStyle('filter','alpha(opacity=' + Math.round(val * 100) + ')');
     } else {
-      this.style.opacity = (value == 1 ? '' : (value < 0.0001 ? 0 : value));
+      this.style.opacity = (val >= 0.99 ? '' : (val <= 0.01 ? 0 : val));
     }
     return this;
   },
@@ -246,41 +250,41 @@ Ra.Element.prototype = {
   // Returns opacity value of element 1 == completely visible and 0 == completely invisible
   getOpacity: function() {
     if(!('opacity' in this.style)) {
-      var value = this.getStyle('filter').match(/alpha\(opacity=(.*)\)/);
-      if( value[1] ) {
-        return parseFloat(value[1]) / 100;
+      var val = this.getStyle('filter').match(/alpha\(opacity=(.*)\)/);
+      if( val[1] ) {
+        return parseFloat(val[1]) / 100;
       }
       return 1.0;
     } else {
-      if( this.getStyle('opacity') === '' ) {
+      var opc = this.getStyle('opacity');
+      if( opc === '' ) {
         return 1.0;
       }
-      return this.getStyle('opacity');
+      return opc;
     }
   },
 
   // Returns true if the given coordinates are within the element, false otherwise
   within: function(x, y) {
-
     // Finding the true x and y position of this element
-    var valueT = 0, valueL = 0;
+    var vaT = 0, vaL = 0;
     var el = this;
     do {
-      valueT += el.offsetTop  || 0;
-      valueL += el.offsetLeft || 0;
+      vaT += el.offsetTop  || 0;
+      vaL += el.offsetLeft || 0;
       el = el.offsetParent;
     } while (el);
 
-    return (y >= valueT &&
-            y <  valueT + this.offsetHeight &&
-            x >= valueL &&
-            x <  valueL + this.offsetWidth);
+    return (y >= vaT &&
+            y <  vaT + this.offsetHeight &&
+            x >= vaL &&
+            x <  vaL + this.offsetWidth);
   },
 
   // Observes an event with the given "func" parameter.
   // The callingContext will be the "this" pointer in the 
   // function call to the "func" when called.
-  observe: function(evtName, func, callingContext, extraParams) {
+  observe: function(evN, func, clCtx, exPar) {
 
     // Creating wrapper to wrap around function event handler
     // Note that this logic only handles ONE event handler per event type / element
@@ -290,9 +294,9 @@ Ra.Element.prototype = {
 
     var wr = function(event) {
       var evt = (event || window.event);
-      var prs = (extraParams || []);
+      var prs = (exPar || []);
       prs.push(evt);
-      var retVal = func.apply(callingContext, prs);
+      var retVal = func.apply(clCtx, prs);
       if( retVal === false ) {
         evt.cancelBubble = true;
         if( evt.stopPropagation )
@@ -301,39 +305,39 @@ Ra.Element.prototype = {
       }
     };
 
-    // Here we're "defaulting" the callingContext to the function unless it is explicitly given
-    if( !callingContext )
-      callingContext = func;
+    // Here we're "defaulting" the clCtx to the function unless it is explicitly given
+    if( !clCtx )
+      clCtx = func;
 
-    if( !callingContext._raAjaxEventGuid ) {
-      callingContext._raAjaxEventGuid = Ra.Element._guid++;
+    if( !clCtx._raAjaxEventGuid ) {
+      clCtx._raAjaxEventGuid = Ra.Element._guid++;
     }
     
-    this._wrappers[evtName + callingContext._raAjaxEventGuid] = wr;
+    this._wrappers[evN + clCtx._raAjaxEventGuid] = wr;
 
     // Adding up event handler
     if (this.addEventListener) {
-      this.addEventListener(evtName, wr, false);
+      this.addEventListener(evN, wr, false);
     } else {
-      this.attachEvent('on' + evtName, wr);
+      this.attachEvent('on' + evN, wr);
     }
     return this;
   },
 
-  stopObserving: function(evtName, func, callingContext) {
+  stopObserving: function(evN, func, clTx) {
 
-    // Here we're "defaulting" the callingContext to the function unless it is explicitly given
-    if( !callingContext )
-      callingContext = func;
+    // Here we're "defaulting" the clTx to the function unless it is explicitly given
+    if( !clTx )
+      clTx = func;
 
     // Retrieving event handler wrapper
-    var wr = this._wrappers[evtName + callingContext._raAjaxEventGuid];
+    var wr = this._wrappers[evN + clTx._raAjaxEventGuid];
 
     // Removing event handler from list
     if (this.removeEventListener) {
-      this.removeEventListener(evtName, wr, false);
+      this.removeEventListener(evN, wr, false);
     } else {
-      this.detachEvent('on' + evtName, wr);
+      this.detachEvent('on' + evN, wr);
     }
     return this;
   }
@@ -355,11 +359,11 @@ Ra.XHR.activeRequest = false;
 
 Ra.XHR.prototype = {
 
-  init: function(url, options) {
-    this.initXHR(url, options);
+  init: function(url, opt) {
+    this.initXHR(url, opt);
   },
 
-  initXHR: function(url, options) {
+  initXHR: function(url, opt) {
     this.url = url;
     this.options = Ra.extend({
       onSuccess:    function() {},
@@ -367,7 +371,7 @@ Ra.XHR.prototype = {
       onTimeout:    function() {},
       body:         '',
       queue:        true
-    }, options || {});
+    }, opt || {});
     if( Ra.XHR.activeRequest && this.options.queue ) {
       // We only throw exception if there is an existing XHR request from before AND
       // the queue is not explicitly overridden with a "false" value
@@ -416,11 +420,11 @@ Ra.XHR.prototype = {
           // Since 302 and 301 redirects are 100% transparent according to the w3c working draft
           // and all known implementations we need some OTHER mechanism to trap REDIRECTS!
           // This is being done by the server with a status code of _278_
-          var headers = this.xhr.getAllResponseHeaders().split('\n');
-          for( var idx = 0; idx < headers.length; idx++ ) {
-            if( headers[idx].indexOf('Location') != -1 ) {
+          var hdr = this.xhr.getAllResponseHeaders().split('\n');
+          for( var idx = 0; idx < hdr.length; idx++ ) {
+            if( hdr[idx].indexOf('Location') != -1 ) {
               // Found NEW location
-              var nLoc = headers[idx].substr(10);
+              var nLoc = hdr[idx].substr(10);
               window.location = nLoc;
               break;
             }
@@ -457,7 +461,7 @@ Ra.Form.preSerializers = [];
 
 Ra.Form.prototype = {
 
-  init: function(form, options) {
+  init: function(form, opt) {
     // If no form is given we automagically wrap the FIRST form on page
     this.form = form || document.getElementsByTagName('form')[0];
 
@@ -467,7 +471,7 @@ Ra.Form.prototype = {
       onFinished:     function() {},
       onError:        function() {},
       callingContext: null
-    }, options || {});
+    }, opt || {});
   },
 
   callback: function() {
@@ -497,8 +501,9 @@ Ra.Form.prototype = {
   serializeForm: function() {
 
     // Calling out to all of our pre-serialization handlers
-    for( var idx = 0; idx < Ra.Form.preSerializers.length; idx++ ) {
-      Ra.Form.preSerializers[idx].handler.call(Ra.Form.preSerializers[idx].context);
+    var prez = Ra.Form.preSerializers;
+    for( var idx = 0; idx < prez.length; idx++ ) {
+      prez[idx].handler.call(prez[idx].context);
     }
 
     // Return value
@@ -591,7 +596,7 @@ Ra.Ajax._startPumping = function() {
 };
 
 Ra.Ajax.prototype = {
-  init: function(options) {
+  init: function(opt) {
     this.options = Ra.extend({
 
       // Extra arguments passed to the server
@@ -616,7 +621,7 @@ Ra.Ajax.prototype = {
 
       // Calling context (this pointer) for onBefore and onSuccess
       callingContext: null
-    }, options || {});
+    }, opt || {});
 
     // Adding up the this request into the list of queued Ajax requests
     Ra.Ajax._activeRequests.push(this);
@@ -706,30 +711,30 @@ Ra.Effect = Ra.klass();
 
 
 // Shorthand (optimized) version of constructor to Ra.Effect
-Ra.E = function(el, options) {
-  return new Ra.Effect(el, options);
+Ra.E = function(el, opt) {
+  return new Ra.Effect(el, opt);
 };
 
 
 Ra.Effect.prototype = {
 
   // CTOR
-  init: function(element, options) {
-    this.initEffect(element, options);
+  init: function(element, opt) {
+    this.initEffect(element, opt);
   },
 
   // CTOR implementation to support inheritance 
   // without having to repeat all of this content
-  initEffect: function(element, options) {
+  initEffect: function(el, opt) {
     this.options = Ra.extend({
       duration: 1000,
       onStart: function() {},
       onFinished: function() {},
       onRender: null,
       transition: 'Linear'
-    }, options || {});
-    if( element ) {
-      this.element = Ra.$(element);
+    }, opt || {});
+    if( el ) {
+      this.element = Ra.$(el);
     }
     this.options.onStart.call(this);
     this.startTime = new Date().getTime();
@@ -746,12 +751,12 @@ Ra.Effect.prototype = {
     setTimeout(function() {
 
       // One tick
-      var curTime = new Date().getTime();
-      var delta = (curTime - T.startTime) / (T.options.duration);
-      if( curTime >= T.finishOn ) {
+      var cur = new Date().getTime();
+      var dlt = (cur - T.startTime) / (T.options.duration);
+      if( cur >= T.finishOn ) {
         T.options.onFinished.call(T);
       } else {
-        T.render(delta);
+        T.render(dlt);
         T.loop();
       }
 

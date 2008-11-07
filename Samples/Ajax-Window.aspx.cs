@@ -8,6 +8,7 @@
 
 using System;
 using Ra.Widgets;
+using Ra.Extensions;
 
 namespace Samples
 {
