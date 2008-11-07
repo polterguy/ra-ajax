@@ -40,7 +40,7 @@
 	    runat="server"
 	    Caption="Ajax Window - drag me"
 	    CssClass="window"
-	    OnClosed="window_Closed"
+	    OnClosed="window_Closed" 
 	    style="position:absolute;width:400px;height:300px;"
 	    id="window">
 

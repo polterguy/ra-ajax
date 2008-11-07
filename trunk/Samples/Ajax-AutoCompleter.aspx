@@ -62,5 +62,6 @@
         You would be surprised to find out how many people actually have the 
         middle-name; <code>"'\r\n;drop database Customers;--"</code> ;)
     </p>
+    <a href="Ajax-Wizard.aspx">On to AJax Wizard...</a>
 </asp:Content>
 
