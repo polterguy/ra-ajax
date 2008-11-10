@@ -21,6 +21,8 @@ namespace Ra.Extensions
      * window control, Panel with extra capabilities
      */
     [ASP.ToolboxData("<{0}:Window runat=\"server\"></{0}:Window>")]
+    [ASP.PersistChildren(true)]
+    [ASP.ParseChildren(true, "Content")]
     public class Window : Panel, ASP.INamingContainer
     {
         public class CreateNavigationalButtonsEvtArgs : EventArgs
@@ -99,18 +101,23 @@ namespace Ra.Extensions
             set { ViewState["Movable"] = value; }
         }
 
-        /**
-         * This is the actual inner control where the child controls are being rendered (re-arranged in PreRender)
-         */
-        public Label SurfaceControl
-        {
-            get { return _content; }
-        }
-
         protected override void OnInit(EventArgs e)
         {
             EnsureChildControls();
             base.OnInit(e);
+        }
+
+        /**
+         * The actual "content part" of the Window. This is where your child controls from the markup
+         * will be added. If you add up items dynamically to the Window then this is where you should
+         * add them up. So instead of using "myWindow.Controls.Add" you should normally use 
+         * "myWindow.Content.Add" when adding Controls dynamically to the Window.
+         */
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [ASP.PersistenceMode(ASP.PersistenceMode.InnerDefaultProperty)]
+        public ASP.ControlCollection Content
+        {
+            get { return _content.Controls; }
         }
 
         protected override void CreateChildControls()
@@ -124,7 +131,7 @@ namespace Ra.Extensions
             _nw = new Label();
             _nw.Tag = "div";
             _nw.ID = "XXnw";
-            Controls.Add(_nw);
+            base.Controls.Add(_nw);
 
             _ne = new Label();
             _ne.Tag = "div";
@@ -155,7 +162,7 @@ namespace Ra.Extensions
             _body = new Label();
             _body.Tag = "div";
             _body.ID = "XXbody";
-            Controls.Add(_body);
+            base.Controls.Add(_body);
 
             _w = new Label();
             _w.Tag = "div";
@@ -194,16 +201,12 @@ namespace Ra.Extensions
                 _dragger.ID = "XXdragger";
                 _dragger.Handle = _caption.ClientID;
                 _dragger.Dropped += new EventHandler(_dragger_Dropped);
-                Controls.Add(_dragger);
+                base.Controls.Add(_dragger);
             }
             else
             {
                 _caption.Style["cursor"] = "default";
             }
-
-            // Moving controls to where they SHOULD be...
-            // This time to get the ViewState right...
-            ReArrangeControls();
         }
 
         private void _dragger_Dropped(object sender, EventArgs e)
@@ -241,27 +244,8 @@ namespace Ra.Extensions
             if (Closable)
                 _close.CssClass = this.CssClass + "_close";
 
-            // Moving controls to where they SHOULD be...
-            ReArrangeControls();
-
             // Calling base...
             base.OnPreRender(e);
-        }
-
-        private void ReArrangeControls()
-        {
-            // Moving all controls where they SHOULD be
-            List<ASP.Control> controls = new List<ASP.Control>();
-            foreach (ASP.Control idx in Controls)
-            {
-                if (string.IsNullOrEmpty(idx.ID) || idx.ID.Substring(0, 2) != "XX")
-                    controls.Add(idx);
-            }
-            foreach (ASP.Control idx in controls)
-            {
-                Controls.Remove(idx);
-                _content.Controls.Add(idx);
-            }
         }
     }
 }
