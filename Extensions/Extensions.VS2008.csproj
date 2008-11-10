@@ -56,6 +56,7 @@
     <Compile Include="Helpers\CometQueue.cs" />
     <Compile Include="Widgets\AutoCompleter.cs" />
     <Compile Include="Widgets\AutoCompleterItem.cs" />
+    <Compile Include="Widgets\ResizeHandler.cs" />
     <Compile Include="Widgets\Menu.cs" />
     <Compile Include="Widgets\MenuItem.cs" />
     <Compile Include="Widgets\MenuItems.cs" />
@@ -85,6 +86,9 @@
       <Project>{82727C73-0B10-4F58-93F4-841E9397302C}</Project>
       <Name>Ra.VS2008</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Js\ResizeHandler.js" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
