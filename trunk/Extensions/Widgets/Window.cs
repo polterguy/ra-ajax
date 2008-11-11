@@ -101,6 +101,14 @@ namespace Ra.Extensions
             set { ViewState["Movable"] = value; }
         }
 
+        /**
+         * Actual content parts of Window
+         */
+        public Label SurfaceControl
+        {
+            get { return _content; }
+        }
+
         protected override void OnInit(EventArgs e)
         {
             EnsureChildControls();
