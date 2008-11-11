@@ -202,6 +202,9 @@
                                         <div style="padding:5px;font-size:0.8em;">
                                             <ul>
 			                                    <li>
+			                                        <a href="Viewport-Sample.aspx">Ajax Viewport</a>
+			                                    </li>
+			                                    <li>
 			                                        <a href="Ajax-TreeView.aspx">Ajax TreeView</a>
 			                                    </li>
 		                                        <li>
