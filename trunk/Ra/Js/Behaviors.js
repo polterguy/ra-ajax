@@ -96,8 +96,8 @@ Ra.extend(Ra.BObscur.prototype, {
     Ra.extend(el, Ra.Element.prototype);
     el.id = this.id;
     el.setStyle('position','absolute');
-    el.setStyle('width',parseInt(document.body.clientWidth) + 'px');
-    el.setStyle('height',parseInt(document.body.clientHeight) + 'px');
+    el.setStyle('width',parseInt(window.innerWidth || document.body.clientWidth) + 'px');
+    el.setStyle('height',parseInt(window.innerHeight || document.body.clientHeight) + 'px');
     el.setStyle('left','0px');
     el.setStyle('top','0px');
     el.setStyle('backgroundColor',this.options.color);
@@ -527,8 +527,8 @@ Ra.extend(Ra.BUpDel.prototype, {
     Ra.extend(this.el, Ra.Element.prototype);
     this.el.id = this.id;
     this.el.setStyle('position','absolute');
-    this.el.setStyle('width',parseInt(document.body.clientWidth) + 'px');
-    this.el.setStyle('height',parseInt(document.body.clientHeight) + 'px');
+    this.el.setStyle('width',parseInt(window.innerWidth || document.body.clientWidth) + 'px');
+    this.el.setStyle('height',parseInt(window.innerHeight || document.body.clientHeight) + 'px');
     this.el.setStyle('left','0px');
     this.el.setStyle('top','0px');
     this.el.setStyle('backgroundColor',this.options.color);
