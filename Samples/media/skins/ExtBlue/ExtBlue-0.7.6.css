@@ -181,13 +181,13 @@ http://ra-ajax.org
 .tab .tab-header ul li a { text-decoration:none; color:#333; padding:5px; }
 .tab .tab-header ul li a:hover { color:#00f; background-color:Transparent; }
 .tab .tab-header ul li span { display:inline-block; *height:18px; padding-top:5px; }
-.tab .tab-header ul li span.left { background:url('window-sprite.png') no-repeat; width:6px; border-bottom:solid 1px #CCD1FF; }
-.tab .tab-header ul li span.center { background:url('window-h-sprite.png') repeat-x; border-bottom:solid 1px #CCD1FF; }
-.tab .tab-header ul li span.right { background:url('window-sprite.png') no-repeat -37px 0; width:6px; border-bottom:solid 1px #CCD1FF; }
-.tab .tab-header ul li.active span.left { background:url('window-sprite.png') no-repeat; border-bottom:solid 1px #fff; }
-.tab .tab-header ul li.active span.center { background:url('window-h-sprite.png') repeat-x; border-bottom:solid 1px #fff; }
-.tab .tab-header ul li.active span.right { background:url('window-sprite.png') no-repeat -37px 0; border-bottom:solid 1px #fff; }
-.tab .content { padding:5px; background-color:#fdfdfd; border:solid 1px #CCD1FF; }
+.tab .tab-header ul li span.left { background:url('tab-sprite.png') no-repeat; width:10px; border-bottom:solid 1px #648CE8; }
+.tab .tab-header ul li span.center { background:url('tab-h-sprite.png') repeat-x; border-bottom:solid 1px #648CE8; }
+.tab .tab-header ul li span.right { background:url('tab-sprite.png') no-repeat -10px 0; width:10px; border-bottom:solid 1px #648CE8; }
+.tab .tab-header ul li.active span.left { background:url('tab-sprite.png') no-repeat; border-bottom:solid 1px #fff; }
+.tab .tab-header ul li.active span.center { background:url('tab-h-sprite.png') repeat-x; border-bottom:solid 1px #fff; }
+.tab .tab-header ul li.active span.right { background:url('tab-sprite.png') no-repeat -10px 0; border-bottom:solid 1px #fff; }
+.tab .content { padding:5px; background-color:#fdfdfd; border:solid 1px #648CE8; }
 
 
 /* Accordion */
@@ -240,9 +240,9 @@ http://ra-ajax.org
 
 /* Menu */
 
-.menu { background: transparent url(window-h-sprite.png) repeat-x 0 0; width:100%; padding:5px; position:relative; line-height:22px; height:28px; }
+.menu { background: transparent url(window-h-sprite.png) repeat-x 0 0; width:100%; position:relative; line-height:22px; height:28px; }
 .menu ul { display:inline; }
-.menu .item { cursor:pointer; color:#333; font-size:0.8em; }
+.menu .item { cursor:pointer; color:#333; font-size:0.8em; margin:5px; }
 .menu .item:hover { color:#00f; }
 .menu .top { display:inline; padding:2px; position:relative; }
 .menu .menu-dropper { border:solid 1px #648CE8; background-color:#BDC8FD; position:absolute; left:0px; width:150px; *top:24px; }
