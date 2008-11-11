@@ -22,7 +22,7 @@ namespace Samples
             includeWhite.Visible = false;
             includeMac.Visible = false;
             includeSpread.Visible = false;
-            includeExtBlue.Visible = false;
+            includeSapphire.Visible = false;
             if (!IsPostBack)
             {
                 if (Session["wndWowPosition"] != null)
@@ -63,35 +63,35 @@ namespace Samples
                     includeAlphacube.Visible = true;
                     includeMac.Visible = false;
                     includeSpread.Visible = false;
-                    includeExtBlue.Visible = false;
+                    includeSapphire.Visible = false;
                     break;
                 case "White":
                     includeWhite.Visible = true;
                     includeAlphacube.Visible = false;
                     includeMac.Visible = false;
                     includeSpread.Visible = false;
-                    includeExtBlue.Visible = false;
+                    includeSapphire.Visible = false;
                     break;
                 case "Mac OS X":
                     includeWhite.Visible = false;
                     includeAlphacube.Visible = false;
                     includeMac.Visible = true;
                     includeSpread.Visible = false;
-                    includeExtBlue.Visible = false;
+                    includeSapphire.Visible = false;
                     break;
                 case "Spread":
                     includeWhite.Visible = false;
                     includeAlphacube.Visible = false;
                     includeMac.Visible = false;
                     includeSpread.Visible = true;
-                    includeExtBlue.Visible = false;
+                    includeSapphire.Visible = false;
                     break;
-                case "Ext Blue":
+                case "Sapphire":
                     includeWhite.Visible = false;
                     includeAlphacube.Visible = false;
                     includeMac.Visible = false;
                     includeSpread.Visible = false;
-                    includeExtBlue.Visible = true;
+                    includeSapphire.Visible = true;
                     break;
             }
         }

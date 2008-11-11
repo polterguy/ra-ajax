@@ -23,7 +23,7 @@
         <link runat="server" id="includeAlphacube" href="media/skins/alphacube/alphacube-0.7.6.css" rel="stylesheet" type="text/css" />
         <link runat="server" id="includeMac" href="media/skins/mac/mac-0.7.6.css" rel="stylesheet" type="text/css" />
         <link runat="server" id="includeSpread" href="media/skins/spread/spread-0.7.6.css" rel="stylesheet" type="text/css" />
-        <link runat="server" id="includeExtBlue" href="media/skins/ExtBlue/ExtBlue-0.7.6.css" rel="stylesheet" type="text/css" />
+        <link runat="server" id="includeSapphire" href="media/skins/Sapphire/Sapphire-0.7.6.css" rel="stylesheet" type="text/css" />
         <link href="media/MainStyles-0.7.6.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
@@ -188,7 +188,7 @@
                                                 <asp:ListItem Text="White" />
                                                 <asp:ListItem Text="Mac OS X" />
                                                 <asp:ListItem Text="Spread" />
-                                                <asp:ListItem Text="Ext Blue" />
+                                                <asp:ListItem Text="Sapphire" />
                                             </asp:DropDownList>
                                         </p>
                                     </div>
