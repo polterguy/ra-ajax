@@ -83,7 +83,7 @@ namespace Ra.Extensions
         protected override string GetOpeningHTML()
         {
             // Dummy HTML DOM element to make registration and such easier...
-            return string.Format("<input type=\"hidden\" id=\"{0}\" />", ClientID);
+            return string.Format("<span style=\"display:hidden;\" id=\"{0}\" />", ClientID);
         }
     }
 }

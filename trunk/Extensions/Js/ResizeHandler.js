@@ -23,12 +23,15 @@ Ra.extend(Ra.ResHand.prototype, {
     this.initControl(el, opt);
     Ra.extend(window, Ra.Element.prototype);
     window.observe('resize', this.onResized, this);
-    this.callback();
+    this._size = {      width: window.innerWidth || document.body.clientWidth,       height: window.innerHeight || document.body.clientHeight    };    this.callback(this._size);
   },
-  onResized: function() {    this.callback();  },
-  callback: function() {
-    var size = {      width: window.innerWidth || document.body.clientWidth,       height: window.innerHeight || document.body.clientHeight    };    new Ra.Ajax({
-      args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=resized' + '&width=' + size.width + '&height=' + size.height,
+  onResized: function() {    this._size = {      width: window.innerWidth || document.body.clientWidth,       height: window.innerHeight || document.body.clientHeight    };    var T = this;    setTimeout(function(){      T.checkToSeeIfCallback();    }, 500);  },
+  checkToSeeIfCallback: function() {
+    var sz = {      width: window.innerWidth || document.body.clientWidth,       height: window.innerHeight || document.body.clientHeight    };    if( sz.width == this._size.width && sz.height == this._size.height ) {      this.callback(this._size);    } else {      this._size = sz;      var T = this;      setTimeout(function(){        T.checkToSeeIfCallback();      }, 500);    }  },
+
+  callback: function(sz) {
+    new Ra.Ajax({
+      args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=resized' + '&width=' + sz.width + '&height=' + sz.height,
       raCallback:true,
       onSuccess: this.onFinishedRequest,
       callingContext: this
