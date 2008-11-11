@@ -211,19 +211,10 @@
 		                                            <a href="Ajax-AutoCompleter.aspx">Ajax AutoCompleter</a>
 		                                        </li>
 			                                    <li>
-			                                        <a href="Effects.aspx">Ajax Effects</a>
-			                                    </li>
-			                                    <li>
-			                                        <a href="Ajax-Comet.aspx">Ajax Comet</a>
-			                                    </li>
-			                                    <li>
 			                                        <a href="Ajax-TabControl.aspx">Ajax TabControl</a>
 			                                    </li>
 			                                    <li>
 			                                        <a href="Ajax-Window.aspx">Ajax Window</a>
-			                                    </li>
-			                                    <li>
-			                                        <a href="Ajax-Menu.aspx">Ajax Menu</a>
 			                                    </li>
 			                                    <li>
 			                                        <a href="Ajax-Calendar.aspx">Ajax Calendar</a>

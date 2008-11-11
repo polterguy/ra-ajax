@@ -7,7 +7,6 @@
  */
 
 using System;
-using System.Drawing;
 using Ra.Widgets;
 using Ra.Extensions;
 
@@ -52,6 +51,7 @@ namespace Samples
         protected void resizer_Resized(object sender, ResizeHandler.ResizedEventArgs e)
         {
             lbl.Text = string.Format("Width: {0}, Height: {1}", e.Width, e.Height);
+            new EffectHighlight(lbl, 500).Render();
             int width = Math.Max(e.Width - 264, 400);
             int height = Math.Max(e.Height - 101, 200);
             int heightLeft = Math.Max(e.Height - 390, 50);

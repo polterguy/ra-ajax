@@ -40,7 +40,7 @@
                 runat="server" 
                 ID="pnlStatus" 
                 CssClass="status">
-                Name of your application or company - maybe a logo...?
+                Kickstart Your Web Apps with a <strong>Ra-Ajax Starter-Kit</strong>
             </ra:Panel>
 
             <!-- Menu -->
@@ -50,50 +50,50 @@
                 CssClass="menu" 
                 OnMenuItemSelected="menu_MenuItemSelected">
                 <ext:MenuItems runat="server" ID="mainItems">
-                    <ext:MenuItem runat="server" ID="WebStandards">
-                        Web Standards
+                    <ext:MenuItem runat="server" ID="file">
+                        File
                         <ext:MenuItems runat="server" ID="fileMenus">
-                            <ext:MenuItem runat="server" id="HTML">
-                                HTML
+                            <ext:MenuItem runat="server" id="openFile">
+                                Open file
                             </ext:MenuItem>
-                            <ext:MenuItem runat="server" id="CSS">
-                                CSS
+                            <ext:MenuItem runat="server" id="saveFile">
+                                Save file
                             </ext:MenuItem>
-                            <ext:MenuItem runat="server" id="JavaScript">
-                                JavaScript
+                            <ext:MenuItem runat="server" id="saveFileAs">
+                                Save file as...
                             </ext:MenuItem>
                         </ext:MenuItems>
                     </ext:MenuItem>
-                    <ext:MenuItem runat="server" ID="Ajax">
-                        Ajax
+                    <ext:MenuItem runat="server" ID="edit">
+                        Edit
                         <ext:MenuItems runat="server" ID="editMenus">
-                            <ext:MenuItem runat="server" id="jQuery">
-                                jQuery
+                            <ext:MenuItem runat="server" id="copy">
+                                Copy
                             </ext:MenuItem>
-                            <ext:MenuItem runat="server" id="Prototype">
-                                Prototype
+                            <ext:MenuItem runat="server" id="paste">
+                                Paste
                             </ext:MenuItem>
-                            <ext:MenuItem runat="server" id="MooTools">
-                                MooTools
+                            <ext:MenuItem runat="server" id="cut">
+                                Cut
                             </ext:MenuItem>
                         </ext:MenuItems>
                     </ext:MenuItem>
-                    <ext:MenuItem runat="server" ID="Lockin">
-                        Lock-in
-                        <ext:MenuItems runat="server" ID="optionsMenu">
-                            <ext:MenuItem runat="server" id="Microsoft">
-                                Microsoft
-                                <ext:MenuItems runat="server" ID="configItems">
-                                    <ext:MenuItem runat="server" id="ActiveX">
-                                        ActiveX
+                    <ext:MenuItem runat="server" ID="windows">
+                        Windows
+                        <ext:MenuItems runat="server" ID="windowsSub">
+                            <ext:MenuItem runat="server" id="arrange">
+                                Arrange
+                                <ext:MenuItems runat="server" ID="arrWindows">
+                                    <ext:MenuItem runat="server" id="leftAligned">
+                                        Left-Aligned
                                     </ext:MenuItem>
-                                    <ext:MenuItem runat="server" id="Silverlight">
-                                        Silverlight
+                                    <ext:MenuItem runat="server" id="rightAligned">
+                                        Right-Aligned
                                     </ext:MenuItem>
                                 </ext:MenuItems>
                             </ext:MenuItem>
-                            <ext:MenuItem runat="server" id="AdobeFlex">
-                                Adobe Flex
+                            <ext:MenuItem runat="server" id="closeAll">
+                                Close all
                             </ext:MenuItem>
                         </ext:MenuItems>
                     </ext:MenuItem>
@@ -119,24 +119,22 @@
                         
                         <ext:TreeNodes ID="TreeNodes1" runat="server" Expanded="true">
                             <ext:TreeNode runat="server" ID="good">
-                                <span title="This is the stuff we all LOVE! :)">
-                                    Other samples
-                                </span>
+                                Wow samples...
                                 <ext:TreeNodes ID="TreeNodes2" runat="server" Expanded="true">
                                     <ext:TreeNode runat="server" ID="TreeNode1">
-                                        <a href="Default.aspx">Main samples</a>
+                                        <a href="Default.aspx">Main Ajax Samples</a>
                                     </ext:TreeNode>
                                     <ext:TreeNode runat="server" ID="TreeNode5">
-                                        <a href="Ajax-TreeView.aspx">TreeView sample</a>
+                                        <a href="Ajax-TreeView.aspx">Ajax TreeView Sample</a>
                                     </ext:TreeNode>
                                     <ext:TreeNode runat="server" ID="TreeNode2">
-                                        <a href="Ajax-TabControl.aspx">TabControl sample</a>
+                                        <a href="Ajax-TabControl.aspx">Ajax TabControl Sample</a>
                                     </ext:TreeNode>
                                     <ext:TreeNode runat="server" ID="TreeNode3">
-                                        <a href="Ajax-Calendar.aspx">Calendar sample</a>
+                                        <a href="Ajax-Calendar.aspx">Ajax Calendar Sample</a>
                                     </ext:TreeNode>
                                     <ext:TreeNode runat="server" ID="TreeNode4">
-                                        <a href="Ajax-Wizard.aspx">Wizard sample</a>
+                                        <a href="Ajax-Wizard.aspx">Ajax Wizard Sample</a>
                                     </ext:TreeNode>
                                 </ext:TreeNodes>
                             </ext:TreeNode>
@@ -209,15 +207,23 @@
                     ID="pnlLeft" 
                     style="height:200px;overflow:auto;">
                     <div style="padding:5px;">
-                        <h2>Bottom left</h2>
-                        <ra:Label 
-                            runat="server" 
-                            ID="lbl" 
-                            Text="Size of Viewport" />
+                        <h2 style="text-align:center;">Bottom left</h2>
+                        <p>
+                            <ra:Label 
+                                runat="server" 
+                                ID="lbl" 
+                                style="font-weight:bold;"
+                                Text="Size of Viewport" />
+                        </p>
                         <p>
                             As you can see here the resizing will trigger a server-side event which in turn will resize
                             the windows so that at all times the Window will "fill the Viewport" except down to 
                             some "minimum threshold"...
+                        </p>
+                        <p>
+                            The resizing is possible due to the Ra-Ajax ResizeHandler Control which will trigger a
+                            server-side event every time the browser window is resized. Then the bottom-left and right
+                            Ajax Windows will be resized to make sure the entire browser window is "intelligently used".
                         </p>
                         <p>
                             Also all Windows are created such that when there is too much text to view at the same 
@@ -236,6 +242,7 @@
                 Caption="Right - main content"
                 style="width:750px;position:absolute;top:63px;left:260px;"
                 ID="wndRight">
+
                 <ra:Panel 
                     runat="server" 
                     ID="pnlRight" 
@@ -243,60 +250,88 @@
                     <div style="padding:5px;">
                         <ext:TabControl runat="server" ID="tab" CssClass="tab">
                             <ext:TabView 
-                                Caption="Ajax TabControl view 1" 
+                                Caption="Starter-Kit Tab 1" 
                                 runat="server" 
                                 ID="tab1" 
                                 style="background:White url('media/ajax.jpg') no-repeat;"
                                 CssClass="content">
                                 <h1>Sapphire Ra-Ajax Viewport Starter-Kit</h1>
                                 <p>
-                                    Basically a minimalistic implementation of a viewport. This is also a "starter kit" which
-                                    means it's a complete finished Visual Studio solution you can immediately start
-                                    using as a template for your own stuff.
+                                    This is something we call an <em>Ajax Starter-Kit</em>. A Starter-Kit
+                                    is something you can start out with which will give you some default layout and code 
+                                    to start out with. Normally this would speed up your initial web application
+                                    development so that you start flying by the first second instead of having to
+                                    fiddle with your own layout from day 1.
                                 </p>
                                 <p>
-                                    Since the TabControl by default has 100% width the TabControl too will follow as you resize
-                                    the Viewport. This whole magic was made possible by the newly created ResizeHandler Ajax Control
-                                    which will trigger an Ajax Callback and raise an event on the server-side when the Viewport
-                                    is resized.
+                                    Note though that there's no real code in this starter-kit. It's merely meant as a
+                                    fast GUI flyout. So you still need to do your own database connections, queries and
+                                    so on. But hopefully this will make it possible for you to start your projects
+                                    very fast instead of spending several days just to get the "initial layout" correct.
                                 </p>
                                 <p>
-                                    Notice how we've also set a background image for this TabView by modifying the 
-                                    styles. This is mostly for fun or "because we can" ... ;)
+                                    This starter-kit is an <em>Ajax Viewport Starter-Kit</em>. An Ajax Viewport is something
+                                    that makes sure that the entire browser surface is intelligently used and that the content
+                                    of the page is resized so that when the browser is resized the rest of the page is also 
+                                    resized.
                                     
                                 </p>
                                 <p>
-                                    Notice though that this is just a "starter kit" and doesn't really contain any
-                                    logic. But it's hopefully a pretty nice way to "start your projects running".
+                                    This Starter-Kit is licensed just as the rest of Ra-Ajax as LGPL. If this does not suite
+                                    your needs you can also purchase a commercial license of this Starter-Kit by visiting 
+                                    our "buy page" in our main website.
                                 </p>
                                 <p>
                                     This skin we're using here is called "sapphire" but you can probably change to
                                     other skins if you're not happy with the current look. Though this starter-kit
                                     is created towards the Sapphire skin and might need some minor adjustment to
-                                    work towards another skin, especially if that other skin have different size
+                                    work towards other skins. Especially if that other skin have different size
                                     of the borders and such for the Ajax Windows, Ajax TabControls etc...
                                 </p>
                             </ext:TabView>
-                            <ext:TabView Caption="Tab view 2" runat="server" ID="tab2" CssClass="content">
-        	                    <h1>Second TabView</h1>
+                            <ext:TabView 
+                                Caption="Tab 2" 
+                                runat="server" 
+                                ID="tab2" 
+                                style="background:White url('media/ajax2.jpg') no-repeat;"
+                                CssClass="content">
+        	                    <h1>2nd Tab</h1>
         	                    <p>
-        	                        Here's another TabView.
+        	                        The sample for this Starter-Kit displays all the content of the page by default. This should
+        	                        probably be changed if you want to authenticate access to your site. This can be done by
+        	                        un-commenting one line of code in the codebehind for this page.
         	                    </p>
         	                    <p>
-        	                        Of course everything in here is 100% interchangeable and "configurable"
+        	                        Or if you don't want authenticated access at all to your website but rather a completely open
+        	                        solution, then that too is very easy. Just remove some few lines of code, delete the login Window
+        	                        and then you have a "public website" Starter-Kit.
+        	                    </p>
+        	                    <h2>Hire us!</h2>
+        	                    <p>
+        	                        This Starter-Kit was actually created as a task for a customer of us which needed his project
+        	                        starting off the ground flying and didn't want to spend too much time fiddling with the starting
+        	                        of his own project. If you have some layout you would like to have especially made for *your*
+        	                        needs then please send us an <a href="mailto:thomas@ra-ajax.org">email</a> with the details.
+        	                        In general terms if you have some piece of work you would like to do where we can keep the
+        	                        copyright and the nature of the project is such that it also would benefit other users of Ra-Ajax
+        	                        then you get the "cheap price" for our hours.
         	                    </p>
         	                    <p>
-        	                        The Viewport is created so that the right and bottom left parts will resize
-        	                        down to some minimum threshold value as you resize the browser. This is possible
-        	                        due to the ResizeHandler control which is a part of the Extension project.
+        	                        If you have the need to keep the copyright for the work we do for you, then this is also possible.
+        	                        We have experience in a lot of fields, obviously we're experts in Ajax for ASP.NET but we're also
+        	                        very skilled in O/RM, design, architecture, DotNetNuke, and even WinForms.
         	                    </p>
         	                    <p>
-        	                        Also when you unncomment the line in the OnPreRender method the login control
-        	                        will be a "true" login control and actually hide everything which contains 
-        	                        sensitive data completely from the client and not make it a part of the HTML.
+        	                        We are the creators and copyright holders of Ra-Ajax. And probably (obviously) the gurus in this
+        	                        world when it comes to Ra-Ajax development. We also do training in use of Ra-Ajax. If you have needs
+        	                        we have the skills!
         	                    </p>
                             </ext:TabView>
-                            <ext:TabView Caption="Third" runat="server" ID="tab3" CssClass="content">
+                            <ext:TabView 
+                                Caption="Third" 
+                                runat="server" 
+                                ID="tab3" 
+                                CssClass="content">
         	                    <h1>Third TabView</h1>
         	                    <p>
         	                        Epsim lorum considari, 
