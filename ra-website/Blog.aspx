@@ -73,10 +73,12 @@
 	        CssClass="window"
 	        Visible="false"
 	        style="position:absolute;top:390px;">
-	        Are you sure you want to delete this blog post?
-	        <div style="padding:10px;text-align:center;">
-	            <ra:Button runat="server" ID="confirmDeleteButton" Text="Yes" OnClick="confirmDeleteButton_Click" />
-	            <ra:Button runat="server" ID="cancelDeleteButton" Text="No" OnClick="cancelDeleteButton_Click" />
+	        <div>
+	            Are you sure you want to delete this blog post?
+	            <div style="padding:10px;text-align:center;">
+	                <ra:Button runat="server" ID="confirmDeleteButton" Text="Yes" OnClick="confirmDeleteButton_Click" />
+	                <ra:Button runat="server" ID="cancelDeleteButton" Text="No" OnClick="cancelDeleteButton_Click" />
+	            </div>
 	        </div>
 	    </ext:Window>
         <ext:Window 
