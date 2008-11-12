@@ -166,7 +166,7 @@
                 Closable="false" 
                 Movable="false" 
                 OnCreateNavigationalButtons="wndRight_CreateNavigationalButtons"
-                Caption="Right - main content"
+                Caption="Main Content - "
                 style="width:750px;position:absolute;top:63px;left:260px;"
                 ID="wndRight">
 
@@ -184,6 +184,7 @@
                             BorderWidth="1px" 
                             CellPadding="2" 
                             ForeColor="Black" 
+                            AutoGenerateColumns="false"
                             GridLines="None">
                             <FooterStyle 
                                 BackColor="Tan" />
@@ -199,6 +200,18 @@
                                 Font-Bold="True" />
                             <AlternatingRowStyle 
                                 BackColor="PaleGoldenrod" />
+                            <Columns>
+                                <asp:BoundField 
+                                    DataField="Name" 
+                                    HeaderText="Name" />
+                                <asp:BoundField 
+                                    DataField="Address" 
+                                    HeaderText="Address" />
+                                <asp:BoundField 
+                                    DataField="Birthday" 
+                                    HeaderText="Birthday" 
+                                    DataFormatString="{0:dddd dd.MMMM yyyy}" />
+                            </Columns>
                         </asp:GridView>
                     </div>
                 </ra:Panel>
