@@ -54,6 +54,7 @@
     <Compile Include="Widgets\Menu.cs" />
     <Compile Include="Widgets\MenuItem.cs" />
     <Compile Include="Widgets\MenuItems.cs" />
+    <Compile Include="Widgets\ResizeHandler.cs" />
     <Compile Include="Widgets\RichEdit.cs" />
     <Compile Include="Widgets\InPlaceEdit.cs" />
     <Compile Include="Widgets\Timer.cs" />
@@ -80,6 +81,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Js\Comet.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Js\ResizeHandler.js" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
