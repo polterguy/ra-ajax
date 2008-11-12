@@ -82,7 +82,7 @@
         don't distribute the source code and you do not sue us"</em>.
     </p>
     <p>
-        Neither the Starter-Kits nor the proprietary license of Ra-Ajax gives you the rights to support oupdates, if 
+        Neither the Starter-Kits nor the proprietary license of Ra-Ajax gives you the rights to support updates, if 
         you need more support than we give you for free in your forums (which we're truly dedicated into doing BTW) 
         you should send us an <a href="mailto:thomas@ra-ajax.org">email</a> and ask us to do concultancy for you which 
         we are more than willing to do. We can also on an hourly basis modify an existing Starter-Kit for you if you wish.
