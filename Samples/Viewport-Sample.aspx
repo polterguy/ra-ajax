@@ -20,7 +20,7 @@
 <head runat="server">
     <title>Sapphire Ra-Ajax Viewport Starter-Kit</title>
     <link href="media/skins/Sapphire/Sapphire-0.8.0.css" rel="stylesheet" type="text/css" />
-    <link href="media/main.css" rel="stylesheet" type="text/css" />
+    <link href="media/ViewPortSample.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">

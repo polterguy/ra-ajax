@@ -205,6 +205,9 @@
 			                                        <a href="Viewport-Sample.aspx">Ajax Viewport</a>
 			                                    </li>
 			                                    <li>
+			                                        <a href="Viewport-GridView-Sample.aspx">Ajax GridView Viewport</a>
+			                                    </li>
+			                                    <li>
 			                                        <a href="Ajax-TreeView.aspx">Ajax TreeView</a>
 			                                    </li>
 		                                        <li>
