@@ -78,13 +78,6 @@
                                     </ul>
                                     <ul class="menuLinks">
                                         <li>
-                                            <strong>
-                                                <a runat="server"
-                                                    href="~/" 
-                                                    title="Ra-Ajax Samples Home">Starter-Kits - NEW!</a>
-                                            </strong>
-                                        </li>
-                                        <li>
                                             <a runat="server"
                                                 href="~/" 
                                                 title="Ra-Ajax Samples Home">Ra-Ajax Home</a>
@@ -108,6 +101,13 @@
                                             <a runat="server"
                                                 href="~/Author.aspx" 
                                                 title="About me">About us/Hire us</a>
+                                        </li>
+                                        <li>
+                                            <strong>
+                                                <a id="A2" runat="server"
+                                                    href="~/" 
+                                                    title="Ra-Ajax Samples Home">Starter-Kits - NEW!</a>
+                                            </strong>
                                         </li>
                                     </ul>
                                     <asp:Literal runat="server" ID="blogLinksWrapper" />
