@@ -78,6 +78,13 @@
                                     </ul>
                                     <ul class="menuLinks">
                                         <li>
+                                            <strong>
+                                                <a runat="server"
+                                                    href="~/" 
+                                                    title="Ra-Ajax Samples Home">Starter-Kits - NEW!</a>
+                                            </strong>
+                                        </li>
+                                        <li>
                                             <a runat="server"
                                                 href="~/" 
                                                 title="Ra-Ajax Samples Home">Ra-Ajax Home</a>
