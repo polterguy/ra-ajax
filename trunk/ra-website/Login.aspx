@@ -131,11 +131,6 @@
                         ID="finishRegister" 
                         Text="Finish" 
                         OnClick="finishRegister_Click" />
-                    <ra:Button 
-                        runat="server" 
-                        ID="btnCancelRegistration" 
-                        Text="Cancel" 
-                        OnClick="btnCancelRegistration_Click" />
                 </td>
             </tr>
         </table>
@@ -194,11 +189,6 @@
                         ID="btnChangeProfile" 
                         Text="Save" 
                         OnClick="btnChangeProfile_Click" />
-                    <ra:Button 
-                        runat="server" 
-                        ID="btnCancelSavingProfile" 
-                        Text="Cancel" 
-                        OnClick="btnCancelSavingProfile_Click" />
                 </td>
             </tr>
         </table>

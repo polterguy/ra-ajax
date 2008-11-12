@@ -86,20 +86,6 @@ namespace RaWebsite
             Register();
         }
 
-        protected void btnCancelRegistration_Click(object sender, EventArgs e)
-        {
-            pnlLogin.Visible = true;
-
-            // Fading in/out panels...
-            Effect effect = new EffectFadeIn(pnlLogin, 600);
-            effect.Render();
-            effect = new EffectFadeOut(pnlRegister, 600);
-            effect.Render();
-            pnlLogin.Style["display"] = "";
-            username.Focus();
-            username.Select();
-        }
-
         protected void finishRegister_Click(object sender, EventArgs e)
         {
             if (!ValidatePasswordMatch())
@@ -236,12 +222,6 @@ Have a nice day :)",
             new EffectFadeOut(pnlProfile, 400).Render();
             resultLabel.Text = "Your profile was updated successfully.";
             new EffectFadeIn(resultLabel, 400).Render();
-        }
-
-        protected void btnCancelSavingProfile_Click(object sender, EventArgs e)
-        {
-            resultLabel.Text = "";
-            new EffectFadeOut(pnlProfile, 400).Render();
         }
 
         private void Register()
