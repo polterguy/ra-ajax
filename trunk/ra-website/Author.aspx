@@ -50,6 +50,35 @@
         will be billed by the company Ra-Software AS which is a Norwegian company located in Porsgrunn, Norway. Both of us
         have developed code for computers since long before we were teenagers.
     </p>
+    <h2>Starting your project with an Ajax Starter-Kit</h2>
+    <p>
+        Often when you start a new project it might be difficult to know which end to start in. You may have a clea picture
+        of how you want your first page to look like, but you don't really know how to "start it". We can do such jobs for you
+        in such a way that we keep the copyright for the work we do anyou get free usage for the stuff we create for you.
+    </p>
+    <p>
+        Then when the job is done we would create a Starter-Kit out of the solution and provide it for download to
+        other customers of us. In fact all of our Starter-Kits are created using this method. And since we keep the 
+        copyright for the work we do there are also incentives for us to maintain the kit meaning you'd get free updates
+        to these starter-kits for 12 months running from the day you get the Starter-Sit.
+    </p>
+    <p>
+        Price for such custom Starter-Kits starts at $500 and goes updwards to normally less than $5000 depending upon the 
+        amount of work you would like to get done. For a "one pager" it would normally cost you less than $1000 while for
+        something more advanced like e.g. a "CMS Starter-Kit" with full DB support and all that would cost you significantly
+        more. (obviously)
+    </p>
+    <p>
+        Still none the less you get the "cheap price" since we keep the copyright for this work, and you also get free updates
+        from us since that would create incentives for us to maintain the thing for free in the future.
+    </p>
+    <p>
+        Have a look at our existing <a href="Starter-Kits.aspx">Ajax Starter-Kits</a> to see what you can expect.
+    </p>
+    <p>
+        All existing Starter-Kits we've got are also available for purchase if you don't want to use them in "LGPL form".
+        Starting from $29 which gives you full usage rights for one project with as many developers as you wish on that project.
+    </p>
     <h2>Price</h2>
     <p>
         Depends upon the work you'd like to get done. Normally we can give discounts for being able to use Ra-Ajax on 
