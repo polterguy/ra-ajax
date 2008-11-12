@@ -136,6 +136,9 @@
                                     <ext:TreeNode runat="server" ID="TreeNode4">
                                         <a href="Ajax-Wizard.aspx">Ajax Wizard Sample</a>
                                     </ext:TreeNode>
+                                    <ext:TreeNode runat="server" ID="TreeNode6">
+                                        <a href="http://ra-ajax.org">Main website</a>
+                                    </ext:TreeNode>
                                 </ext:TreeNodes>
                             </ext:TreeNode>
                             <ext:TreeNode runat="server" ID="bad">
@@ -366,7 +369,8 @@
             runat="server" 
             CssClass="window" 
             Caption="Please login"
-            Visible="false"
+            Visible="false" 
+            Closable="false"
             style="width:350px;position:absolute;top:150px;left:260px;z-index:5000;"
             ID="loginWnd">
             <div style="height:150px;">
