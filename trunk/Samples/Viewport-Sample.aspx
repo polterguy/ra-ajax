@@ -285,7 +285,7 @@
                                     our "buy page" in our main website.
                                 </p>
                                 <p>
-                                    This skin we're using here is called "sapphire" but you can probably change to
+                                    The skin we're using here is called "sapphire" but you can probably change to
                                     other skins if you're not happy with the current look. Though this starter-kit
                                     is created towards the Sapphire skin and might need some minor adjustment to
                                     work towards other skins. Especially if that other skin have different size
@@ -409,5 +409,9 @@
             <ra:BehaviorObscurable runat="server" ID="loginModal" ZIndex="4999" />
         </ext:Window>
     </form>
+    <script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
 </body>
 </html>
