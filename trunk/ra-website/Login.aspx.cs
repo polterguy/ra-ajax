@@ -123,14 +123,14 @@ namespace RaWebsite
     @"This message was automatically sent from the forums at http://ra-ajax.org due to registering a new user.
 If you where not the one registering at Ra-Ajax then please just ignore this message or delete it.
 
-To confirm your registration and activate your user account please go to;
+To confirm your registration and activate your user account please go to:
 {0}?idNewUser={1}
 
-Your username is; {1}
-Your password is; {2}
+Your username is: {1}
+Your password is: {2}
 
 Have a nice day :)",
-                    Request.Url.ToString(),
+                    Request.Url.ToString().Remove(Request.Url.ToString().IndexOf(Request.Url.Query)),
                     oper.Username,
                     oper.Pwd));
                 new EffectFadeOut(pnlRegister, 400).Render();
