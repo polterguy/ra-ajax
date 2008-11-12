@@ -25,6 +25,33 @@ namespace Samples
             }
         }
 
+        protected override void OnInit(EventArgs e)
+        {
+            // Creating our dynamically loaded nodes...
+            if (Session["user"] == "admin")
+            {
+                for (int idx = 0; idx < 10; idx++)
+                {
+                    TreeNode n = new TreeNode();
+                    n.ID = "first" + idx;
+                    System.Web.UI.WebControls.Literal l = new System.Web.UI.WebControls.Literal();
+                    l.Text = "Node " + idx;
+                    n.Controls.Add(l);
+                    dynamicNodes.Controls.Add(n);
+                }
+
+                // Since these nodes are NOT rendered BEFORE we log in our user
+                // we need to WAI until the user has been logged in, then create our nodes
+                // and then RE-render the dynamic TreeNodes
+                // Though we do NOT want to re-render the dynamic nodes the next time, but we
+                // still need to re-create it on the server in order to trap events and such...
+                if (ViewState["hasLoaded"] == null)
+                    dynamicNodes.ReRender();
+                ViewState["hasLoaded"] = true;
+            }
+            base.OnInit(e);
+        }
+
         // We want to wait as long as possible with this logic to make sure we're NOT
         // running this logic e.e. when user is actually logging in etc...
         protected override void OnPreRender(EventArgs e)
@@ -46,6 +73,11 @@ namespace Samples
 
         protected void menu_MenuItemSelected(object sender, EventArgs e)
         {
+        }
+
+        protected void tree_SelectedNodeChanged(object sender, EventArgs e)
+        {
+            lblStatus.Text = tree.SelectedNodes[0].ID;
         }
 
         protected void resizer_Resized(object sender, ResizeHandler.ResizedEventArgs e)

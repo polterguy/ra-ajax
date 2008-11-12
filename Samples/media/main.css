@@ -15,3 +15,7 @@ a { text-decoration:none; }
 .loginTbl tr td { border:none; }
 
 .status { color:White; font-size:1.2em; width:100%; background:url('bg-header.png') repeat-x; height:30px; line-height:28px; text-align:center; padding-left:auto; padding-right:auto; }
+
+.statusItem { float:left; width:32%; }
+
+
