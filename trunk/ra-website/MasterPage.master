@@ -105,8 +105,8 @@
                                         <li>
                                             <strong>
                                                 <a id="A2" runat="server"
-                                                    href="~/" 
-                                                    title="Ra-Ajax Samples Home">Starter-Kits - NEW!</a>
+                                                    href="~/Starter-Kits.aspx" 
+                                                    title="Ra-Ajax Starter-Kits">Starter-Kits - NEW!</a>
                                             </strong>
                                         </li>
                                     </ul>
