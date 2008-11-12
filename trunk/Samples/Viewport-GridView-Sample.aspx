@@ -164,7 +164,8 @@
                 runat="server" 
                 CssClass="window" 
                 Closable="false" 
-                Movable="false"
+                Movable="false" 
+                OnCreateNavigationalButtons="wndRight_CreateNavigationalButtons"
                 Caption="Right - main content"
                 style="width:750px;position:absolute;top:63px;left:260px;"
                 ID="wndRight">

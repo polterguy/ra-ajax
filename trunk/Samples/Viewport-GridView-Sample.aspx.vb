@@ -41,6 +41,20 @@ Namespace Samples
             End If
             MyBase.OnPreRender(e)
         End Sub
+
+        Protected Sub wndRight_CreateNavigationalButtons(ByVal sender As Object, ByVal e As Window.CreateNavigationalButtonsEvtArgs)
+            Dim prev as new LinkButton()
+            prev.ID = "prev"
+            prev.CssClass = "window_prev"
+            prev.ToolTip = "Click to page to previous"
+            e.Caption.Controls.Add(prev)
+
+            Dim nxt as new LinkButton()
+            nxt.ID = "prev"
+            nxt.CssClass = "window_next"
+            nxt.ToolTip = "Click to page to next"
+            e.Caption.Controls.Add(nxt)
+        End Sub
         
         Protected Sub resizer_Resized(ByVal sender As Object, ByVal e As ResizeHandler.ResizedEventArgs)
             lbl.Text = String.Format("Width: {0}, Height: {1}", e.Width, e.Height)

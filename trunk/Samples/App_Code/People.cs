@@ -51,6 +51,13 @@ public sealed class PeopleDatabase
                 tmp.Add(new People("Bill Gates", "Seattle", new DateTime(1952, 4, 20)));
                 tmp.Add(new People("Steve Jobs", "San Fransisco", new DateTime(1954, 3, 1)));
                 tmp.Add(new People("Weird Al Jankovich", "Somewhere", new DateTime(1965, 8, 29)));
+                tmp.Add(new People("Ola Dunk", "Larvik", new DateTime(1978, 9, 11)));
+                tmp.Add(new People("Milton Friedman", "Boston", new DateTime(1928, 2, 4)));
+                tmp.Add(new People("John F. Kennedy", "Los Angeles", new DateTime(1918, 4, 9)));
+                tmp.Add(new People("Al Capone", "Chicago", new DateTime(1892, 4, 29)));
+                tmp.Add(new People("Johhny Johnson", "Stockholm", new DateTime(1983, 5, 3)));
+                tmp.Add(new People("Hauk Sigurdson", "Reykjavik", new DateTime(1978, 11, 10)));
+                tmp.Add(new People("Severin Suveren", "Scandinavia", new DateTime(1967, 12, 1)));
                 ((Page)HttpContext.Current.CurrentHandler).Items["PeopleDatabase"] = tmp;
             }
             return (List<People>)(((Page)HttpContext.Current.CurrentHandler).Items["PeopleDatabase"]);
