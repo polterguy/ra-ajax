@@ -19,7 +19,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Sapphire Ra-Ajax Viewport Starter-Kit</title>
-    <link href="media/skins/Sapphire/Sapphire-0.7.6.css" rel="stylesheet" type="text/css" />
+    <link href="media/skins/Sapphire/Sapphire-0.8.0.css" rel="stylesheet" type="text/css" />
     <link href="media/main.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -40,7 +40,18 @@
                 runat="server" 
                 ID="pnlStatus" 
                 CssClass="status">
-                Kickstart Your Web Apps with a <strong>Ra-Ajax Starter-Kit</strong>
+                <div class="statusItem">
+                    Kickstart Your Web Apps with a <strong>Ra-Ajax Starter-Kit</strong>
+                </div>
+                <div class="statusItem">
+                    Here you can put your company logo
+                </div>
+                <div class="statusItem">
+                    <ra:Label 
+                        runat="server" 
+                        ID="lblStatus" 
+                        Text="Status text for your application" />
+                </div>
             </ra:Panel>
 
             <!-- Menu -->
@@ -113,6 +124,7 @@
                     <ext:Tree 
                         runat="server" 
                         ID="tree" 
+                        OnSelectedNodeChanged="tree_SelectedNodeChanged"
                         CssClass="tree"
                         Expansion="SingleClickPlusSign">
                         
@@ -190,6 +202,10 @@
                                 </ext:TreeNodes>
                             </ext:TreeNode>
 
+                            <ext:TreeNode runat="server" ID="dynamicNode">
+                                Dynamically loaded nodes...
+                                <ext:TreeNodes ID="dynamicNodes" runat="server" />
+                            </ext:TreeNode>
 
                         </ext:TreeNodes>
                     </ext:Tree>
@@ -371,7 +387,7 @@
             Caption="Please login"
             Visible="false" 
             Closable="false"
-            style="width:350px;position:absolute;top:150px;left:260px;z-index:5000;"
+            style="width:350px;position:relative;z-index:5000;margin-left:auto;margin-right:auto;"
             ID="loginWnd">
             <div style="height:150px;">
                 <table class="loginTbl">
