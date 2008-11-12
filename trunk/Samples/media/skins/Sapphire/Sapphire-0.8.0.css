@@ -125,8 +125,8 @@ input[type=text],input[type=password],textarea{width:12.25em;*width:11.9em;}
 .window_title		{ font-size:0.8em; position:absolute; top:5px; color:#333; -moz-user-select:none; -khtml-user-select: none; user-select: none; cursor:move; width:100%; }
 .window_close		{ width:23px; height:16px; line-height:16px; background:transparent url(window-sprite.png) no-repeat -10px 0; position:absolute; top:0px; right:0px; }
 .window_close:hover	{ background-color:transparent; background-position:-10px -16px; }
-.window_prev		{ width:23px; height:16px; background:transparent url(window-sprite.png) no-repeat -10px -32px; position:absolute; top:3px; right:45px; }
-.window_next		{ width:23px; height:16px; background:transparent url(window-sprite.png) no-repeat -10px -48px; position:absolute; top:3px; right:28px; }
+.window_prev		{ width:23px; height:16px; background:transparent url(window-sprite.png) no-repeat -10px -32px; position:absolute; top:3px; right:35px; }
+.window_next		{ width:23px; height:16px; background:transparent url(window-sprite.png) no-repeat -10px -48px; position:absolute; top:3px; right:18px; }
 .window_body		{ overflow:hidden; position:relative; }
 .window_w			{ background: transparent url(window-v-sprite.png) repeat-y 0 0; padding-left:7px; }
 .window_e			{ background: transparent url(window-v-sprite.png) repeat-y right 0; padding-right:7px; }
