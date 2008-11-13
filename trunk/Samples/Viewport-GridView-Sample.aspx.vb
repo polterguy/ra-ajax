@@ -57,7 +57,8 @@ Namespace Samples
             grid.DataBind()
             wndRight.Caption = "Main Content - " & PeopleDatabase.Database.Count _
                 & " Records - Showing page " & (PageIndex + 1).ToString() _
-                & " of " & CType((PeopleDatabase.Database.Count / PageSize).ToString(), Integer)
+                & " of " & CType(((PeopleDatabase.Database.Count / PageSize) _
+                + IIf(PeopleDatabase.Database.Count Mod PageSize > 0, 1, 0)).ToString(), Integer)
         End Sub
 
         Protected Sub filter_KeyUp(ByVal sender As Object, ByVal e As EventArgs)
