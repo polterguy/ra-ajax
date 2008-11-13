@@ -17,6 +17,8 @@ Namespace Samples
         Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs)
             ' Remove this line, just here for "testing purposes" to make it easy to "log out"
             If Not IsPostBack Then
+                PeopleDatabase.Filter = ""
+                PeopleDatabase.Sorting = PeopleDatabase.Sort.Name
                 DataBindGridView()
             End If
         End Sub
@@ -53,7 +55,9 @@ Namespace Samples
             src.CurrentPageIndex = PageIndex
             grid.DataSource = src
             grid.DataBind()
-            wndRight.Caption = "Main Content - " & (PageIndex + 1).ToString() & "/" & CType((PeopleDatabase.Database.Count / PageSize).ToString(), Integer)
+            wndRight.Caption = "Main Content - " & PeopleDatabase.Database.Count _
+                & " Records - Showing page " & (PageIndex + 1).ToString() _
+                & " of " & CType((PeopleDatabase.Database.Count / PageSize).ToString(), Integer)
         End Sub
 
         Protected Sub filter_KeyUp(ByVal sender As Object, ByVal e As EventArgs)
@@ -83,6 +87,8 @@ Namespace Samples
 
         Protected Sub EditEntry(ByVal sender As Object, ByVal e As EventArgs)
             editWindow.Visible = True
+            editBirth.Visible = False
+            editShowCalendar.Visible = True
             editName.Select()
             editName.Focus()
             Dim hid As HiddenField = CType(CType(sender, RaControl).Parent.Controls(1), HiddenField)

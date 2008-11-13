@@ -114,6 +114,7 @@
                     <p>
                         <ra:TextBox 
                             runat="server" 
+                            AccessKey="F"
                             OnKeyUp="filter_KeyUp"
                             ID="filter" />
                     </p>
@@ -267,7 +268,7 @@
             Caption="Edit entry"
             Visible="false" 
             Closable="true"
-            style="width:550px;position:relative;z-index:5000;margin-left:auto;margin-right:auto;"
+            style="width:350px;position:relative;z-index:5000;margin-left:auto;margin-right:auto;"
             ID="editWindow">
             <div style="padding:15px;position:relative;">
                 <table class="loginTbl">
@@ -311,7 +312,7 @@
                     ID="editSave" 
                     Text="Save" 
                     OnClick="editSave_Click"
-                    style="position:absolute;right:0px;bottom:0px;" />
+                    style="position:absolute;right:10px;bottom:10px;" />
             </div>
             <ra:BehaviorObscurable runat="server" ID="BehaviorObscurable1" ZIndex="4999" />
         </ext:Window>
