@@ -29,11 +29,13 @@
     </p>
     <h2>Kariem Ali</h2>
     <p>
+        <img src="media/Kariem.jpg" alt="Kariem Ali" style="float:left;padding:5px;" />
         Kariem is from Alexandria in Egypt and have been working together with Thomas almost since the beginning
         of Gaiaware and Gaia Ajax Widgets. Kariem is born in 1982 and have previously been working a lot with
         <a href="http://www.dotnetnuke.com">DotNetNuke</a> in addition to obviously also a lot of Ajax and JavaScript.
         Kariem speaks English and Arabic fluently.
     </p>
+    <br style="clear:both;" />
     <h2>Hire us</h2>
     <p>
         We are both available for hire through our company Ra-Software AS which is a Norwegian company for doing 
