@@ -30,7 +30,6 @@ namespace Samples
                     Point pt = (Point)Session["wndWowPosition"];
                     wowWnd.Style["left"] = pt.X.ToString() + "px";
                     wowWnd.Style["top"] = pt.Y.ToString() + "px";
-                    wowWnd.Style["position"] = "absolute";
                 }
                 string url = this.Request.Url.ToString();
                 url = url.Substring(url.LastIndexOf("/") + 1);
