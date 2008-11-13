@@ -28,7 +28,7 @@ namespace Samples
         protected override void OnInit(EventArgs e)
         {
             // Creating our dynamically loaded nodes...
-            if (Session["user"] == "admin")
+            if (Session["user"] != null && ((string)Session["user"]) == "admin")
             {
                 for (int idx = 0; idx < 10; idx++)
                 {

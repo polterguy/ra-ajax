@@ -52,7 +52,7 @@
                     <ext:MenuItem runat="server" ID="file">
                         File
                         <ext:MenuItems runat="server" ID="fileMenus">
-                            <ext:MenuItem runat="server" id="openFile">
+                            <ext:MenuItem runat="server" id="openFileMenu">
                                 Open file
                             </ext:MenuItem>
                             <ext:MenuItem runat="server" id="saveFile">
