@@ -19,8 +19,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Sapphire Ra-Ajax Viewport Starter-Kit</title>
-    <link href="media/skins/Sapphire/Sapphire-0.8.0.css" rel="stylesheet" type="text/css" />
-    <link href="media/ViewPortSample.css" rel="stylesheet" type="text/css" />
+    <link href="media/skins/Sapphire/Sapphire-0.8.1.css" rel="stylesheet" type="text/css" />
+    <link href="media/ViewPortSample-0.8.1.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -137,7 +137,7 @@
                                         <a href="Viewport-GridView-Sample.aspx">GridView Ajax Starter-Kit</a>
                                     </ext:TreeNode>
                                     <ext:TreeNode runat="server" ID="TreeNode1">
-                                        <a href="Default.aspx">Main Ajax Samples</a>
+                                        <a runat="server" href="~">Main Ajax Samples</a>
                                     </ext:TreeNode>
                                     <ext:TreeNode runat="server" ID="TreeNode5">
                                         <a href="Ajax-TreeView.aspx">Ajax TreeView Sample</a>
