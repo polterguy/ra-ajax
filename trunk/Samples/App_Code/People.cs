@@ -45,6 +45,20 @@ public class People
 
 public sealed class PeopleDatabase
 {
+    public static string Filter
+    {
+        get
+        {
+            if (HttpContext.Current.Session["Filter"] == null)
+                return "";
+            return HttpContext.Current.Session["Filter"].ToString();
+        }
+        set
+        {
+            HttpContext.Current.Session["Filter"] = value;
+        }
+    }
+
     public static List<People> Database
     {
         get
@@ -68,7 +82,16 @@ public sealed class PeopleDatabase
                 tmp.Add(new People("Severin Suveren", "Scandinavia", new DateTime(1967, 12, 1)));
                 HttpContext.Current.Session["PeopleDatabase"] = tmp;
             }
-            return (List<People>)HttpContext.Current.Session["PeopleDatabase"];
+            List<People> original = (List<People>)HttpContext.Current.Session["PeopleDatabase"];
+            if (Filter == string.Empty)
+                return original;
+            List<People> retVal = new List<People>(original);
+            retVal.RemoveAll(
+                delegate(People idx)
+                {
+                    return idx.Address.ToLower().IndexOf(Filter) == -1 && idx.Name.ToLower().IndexOf(Filter) == -1;
+                });
+            return retVal;
         }
     }
 }
