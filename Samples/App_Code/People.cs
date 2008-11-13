@@ -8,13 +8,20 @@ public class People
     private string _name;
     private string _address;
     private DateTime _birthday;
+    private Guid _id;
+
+    public Guid ID
+    {
+        get { return _id; }
+        set { _id = value; }
+    }
 
     public string Name
     {
         get { return _name; }
         set { _name = value; }
     }
-    
+
     public string Address
     {
         get { return _address; }
@@ -32,6 +39,7 @@ public class People
         _name = name;
         _address = address;
         _birthday = birthday;
+        _id = Guid.NewGuid();
     }
 }
 
@@ -41,7 +49,7 @@ public sealed class PeopleDatabase
     {
         get
         {
-            if (((Page)HttpContext.Current.CurrentHandler).Items["PeopleDatabase"] == null)
+            if (HttpContext.Current.Session["PeopleDatabase"] == null)
             {
                 List<People> tmp = new List<People>();
                 tmp.Add(new People("Thomas Hansen", "Norway", new DateTime(1974, 5, 16)));
@@ -58,9 +66,9 @@ public sealed class PeopleDatabase
                 tmp.Add(new People("Johhny Johnson", "Stockholm", new DateTime(1983, 5, 3)));
                 tmp.Add(new People("Hauk Sigurdson", "Reykjavik", new DateTime(1978, 11, 10)));
                 tmp.Add(new People("Severin Suveren", "Scandinavia", new DateTime(1967, 12, 1)));
-                ((Page)HttpContext.Current.CurrentHandler).Items["PeopleDatabase"] = tmp;
+                HttpContext.Current.Session["PeopleDatabase"] = tmp;
             }
-            return (List<People>)(((Page)HttpContext.Current.CurrentHandler).Items["PeopleDatabase"]);
+            return (List<People>)HttpContext.Current.Session["PeopleDatabase"];
         }
     }
 }

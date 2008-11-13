@@ -211,6 +211,20 @@
                                     DataField="Birthday" 
                                     HeaderText="Birthday" 
                                     DataFormatString="{0:dddd dd.MMMM yyyy}" />
+                                <asp:TemplateField HeaderText="Edit">
+                                    <HeaderTemplate>
+                                        Edit
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <ra:HiddenField 
+                                            runat="server" 
+                                            Value='<%#Eval("ID") %>' />
+                                        <ra:LinkButton 
+                                            runat="server" 
+                                            OnClick="EditEntry"
+                                            Text="Edit..." />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                             </Columns>
                         </asp:GridView>
                     </div>
@@ -219,6 +233,60 @@
         </ra:Panel>
 
         <!-- Login Window -->
+        <ext:Window 
+            runat="server" 
+            CssClass="window" 
+            Caption="Edit entry"
+            Visible="false" 
+            Closable="true"
+            style="width:550px;position:relative;z-index:5000;margin-left:auto;margin-right:auto;"
+            ID="editWindow">
+            <div style="padding:15px;position:relative;">
+                <table class="loginTbl">
+                    <tr>
+                        <td>Name</td>
+                        <td>
+                            <ra:TextBox 
+                                runat="server" 
+                                ID="editName" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td>
+                            <ra:TextBox 
+                                runat="server" 
+                                ID="editAdr" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Date of birth</td>
+                        <td>
+                            <ra:LinkButton 
+                                runat="server" 
+                                OnClick="editShowCalendar_Click"
+                                ID="editShowCalendar" />
+                            <ext:Calendar 
+                                runat="server" 
+                                ID="editBirth" 
+                                Visible="false" 
+                                OnDateClicked="editBirth_DateClicked"
+                                CssClass="calendar" />
+                        </td>
+                    </tr>
+                </table>
+                <ra:HiddenField 
+                    runat="server" 
+                    ID="editHidden" />
+                <ra:Button 
+                    runat="server" 
+                    ID="editSave" 
+                    Text="Save" 
+                    OnClick="editSave_Click"
+                    style="position:absolute;right:0px;bottom:0px;" />
+            </div>
+            <ra:BehaviorObscurable runat="server" ID="BehaviorObscurable1" ZIndex="4999" />
+        </ext:Window>
         <ext:Window 
             runat="server" 
             CssClass="window" 

@@ -93,6 +93,9 @@ namespace Ra.Extensions
             set
             {
                 ViewState["Value"] = value;
+                Controls.Clear();
+                CreateChildControls();
+                ReRender();
             }
         }
 
