@@ -58,6 +58,57 @@ Namespace Samples
             wndRight.Caption = "Main Content - " & (PageIndex + 1).ToString() & "/" & CType((PeopleDatabase.Database.Count / PageSize).ToString(), Integer)
         End Sub
 
+        Protected Sub EditEntry(ByVal sender As Object, ByVal e As EventArgs)
+            editWindow.Visible = True
+            Dim hid As HiddenField = CType(CType(sender, RaControl).Parent.Controls(1), HiddenField)
+            Dim g As New Guid(hid.Value)
+            Dim p As People = Nothing
+            For Each idx As People In PeopleDatabase.Database
+                If idx.ID = g Then
+                    p = idx
+                End If
+            Next
+            editName.Text = p.Name
+            editAdr.Text = p.Address
+            editHidden.Value = p.ID.ToString()
+            editShowCalendar.Text = p.Birthday.ToString("dddd dd.MMMM yyyy", System.Globalization.CultureInfo.InvariantCulture)
+            editBirth.Value = p.Birthday
+        End Sub
+
+        Protected Sub editShowCalendar_Click(ByVal sender As Object, ByVal e As EventArgs)
+            editBirth.Visible = True
+            editShowCalendar.Visible = False
+            Dim effect As New EffectRollDown(editBirth, 200)
+            effect.Render()
+        End Sub
+
+        Protected Sub editSave_Click(ByVal sender As Object, ByVal e As EventArgs)
+            editWindow.Visible = False
+
+            Dim g As New Guid(editHidden.Value)
+            Dim p As People = Nothing
+            For Each idx As People In PeopleDatabase.Database
+                If idx.ID = g Then
+                    p = idx
+                End If
+            Next
+            p.Name = editName.Text
+            p.Address = editAdr.Text
+            p.Birthday = editBirth.Value
+            DataBindGridView()
+            pnlRight.ReRender()
+
+            Dim effect As New EffectTimeout(500)
+            effect.ChainThese(New EffectHighlight(pnlRight, 500))
+            effect.Render()
+        End Sub
+
+        Protected Sub editBirth_DateClicked(ByVal sender As Object, ByVal e As EventArgs)
+            editBirth.Visible = False
+            editShowCalendar.Visible = True
+            editShowCalendar.Text = editBirth.Value.ToString("dddd dd.MMMM yyyy", System.Globalization.CultureInfo.InvariantCulture)
+        End Sub
+
         ' We want to wait as long as possible with this logic to make sure we're NOT
         ' running this logic e.e. when user is actually logging in etc...
         Protected Overloads Overrides Sub OnPreRender(ByVal e As EventArgs)
