@@ -93,7 +93,6 @@ namespace Ra.Extensions
             set
             {
                 ViewState["Value"] = value;
-                Controls.Clear();
                 CreateChildControls();
                 ReRender();
             }
@@ -135,6 +134,7 @@ namespace Ra.Extensions
 
         protected override void CreateChildControls()
         {
+            Controls.Clear();
             CreateWindowControls();
             CreateCalendarControls();
             Controls.Add(_nw);
