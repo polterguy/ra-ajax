@@ -18,7 +18,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>GridView Ra-Ajax Starter-Kit</title>
+    <title>GridView/DataGrid Ra-Ajax Starter-Kit</title>
     <link href="media/skins/Sapphire/Sapphire-0.8.0.css" rel="stylesheet" type="text/css" />
     <link href="media/ViewPortGridViewSample.css" rel="stylesheet" type="text/css" />
 </head>
@@ -40,7 +40,7 @@
                 runat="server" 
                 ID="pnlStatus" 
                 CssClass="status">
-                Kickstart Your Web Apps with a <strong>Ra-Ajax Starter-Kit</strong>
+                Kickstart Your Web Apps with the <strong>Ra-Ajax GridView/DataGrid Starter-Kit</strong>
             </ra:Panel>
 
             <!-- Menu -->
@@ -173,9 +173,13 @@
 
                 <ra:Panel 
                     runat="server" 
-                    ID="pnlRight" 
+                    ID="pnlRightOuter" 
                     style="height:488px;overflow:auto;">
-                    <div style="padding:5px;">
+                    <h1 style="margin-left:auto;margin-right:auto;text-align:center;">GridView or DataGrid Ajax Starter-Kit</h1>
+                    <ra:Panel 
+                        runat="server" 
+                        ID="pnlRight" 
+                        style="padding:5px;">
                         <asp:GridView 
                             runat="server" 
                             ID="grid" 
@@ -228,7 +232,7 @@
                                 </asp:TemplateField>
                             </Columns>
                         </asp:GridView>
-                    </div>
+                    </ra:Panel>
                 </ra:Panel>
             </ext:Window>
         </ra:Panel>
