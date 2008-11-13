@@ -14,12 +14,9 @@ Namespace Samples
     Public Partial Class ViewportGridView
         Inherits System.Web.UI.Page
 
-        Private _triedToLogin As Boolean
-        
-        Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs)
-            ' Remove this line, just here for "testing purposes" to make it easy to "log out"
-            If Not IsPostBack Then
-                Session("user") = Nothing
+        Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs)
+            ' Remove this line, just here for "testing purposes" to make it easy to "log out"
+            If Not IsPostBack Then
                 DataBindGridView()
             End If
         End Sub
@@ -66,6 +63,24 @@ Namespace Samples
             pnlRight.ReRender()
         End Sub
 
+        Protected Sub SortName(ByVal sender As Object, ByVal e As EventArgs)
+            PeopleDatabase.Sorting = PeopleDatabase.Sort.Name
+            DataBindGridView()
+            pnlRight.ReRender()
+        End Sub
+
+        Protected Sub SortAddress(ByVal sender As Object, ByVal e As EventArgs)
+            PeopleDatabase.Sorting = PeopleDatabase.Sort.Adr
+            DataBindGridView()
+            pnlRight.ReRender()
+        End Sub
+
+        Protected Sub SortBirthday(ByVal sender As Object, ByVal e As EventArgs)
+            PeopleDatabase.Sorting = PeopleDatabase.Sort.Birthdate
+            DataBindGridView()
+            pnlRight.ReRender()
+        End Sub
+
         Protected Sub EditEntry(ByVal sender As Object, ByVal e As EventArgs)
             editWindow.Visible = True
             editName.Select()
@@ -79,6 +94,7 @@ Namespace Samples
                 End If
             Next
             editName.Text = p.Name
+            editWindow.Caption = "Edit; " & p.Name
             editAdr.Text = p.Address
             editHidden.Value = p.ID.ToString()
             editShowCalendar.Text = p.Birthday.ToString("dddd dd.MMMM yyyy", System.Globalization.CultureInfo.InvariantCulture)
@@ -119,36 +135,18 @@ Namespace Samples
             editShowCalendar.Text = editBirth.Value.ToString("dddd dd.MMMM yyyy", System.Globalization.CultureInfo.InvariantCulture)
         End Sub
 
-        ' We want to wait as long as possible with this logic to make sure we're NOT
-        ' running this logic e.e. when user is actually logging in etc...
-        Protected Overloads Overrides Sub OnPreRender(ByVal e As EventArgs)
-            If Session("user") Is Nothing AndAlso Not _triedToLogin AndAlso Not loginWnd.Visible Then
-                ' Uncomment the line below to have "true" login logic...
-                ' This line is commented just to make everything show for "bling reasons"...
-                'everything.Visible = false;
-                loginWnd.Visible = True
-                Dim effect As Effect = New EffectFadeIn(loginWnd, 1000)
-                effect.Render()
-                username.Text = "username"
-                password.Text = "password"
-                username.Select()
-                username.Focus()
-            End If
-            MyBase.OnPreRender(e)
-        End Sub
-
         Protected Sub wndRight_CreateNavigationalButtons(ByVal sender As Object, ByVal e As Window.CreateNavigationalButtonsEvtArgs)
             Dim prev As New LinkButton()
             prev.ID = "prev"
             prev.CssClass = "window_prev"
-            prev.ToolTip = "Click to page to previous"
+            prev.Tooltip = "Click to page to previous"
             AddHandler prev.Click, AddressOf prev_Click
             e.Caption.Controls.Add(prev)
 
             Dim nxt As New LinkButton()
             nxt.ID = "next"
             nxt.CssClass = "window_next"
-            nxt.ToolTip = "Click to page to next"
+            nxt.Tooltip = "Click to page to next"
             AddHandler nxt.Click, AddressOf nxt_Click
             e.Caption.Controls.Add(nxt)
         End Sub
@@ -173,7 +171,7 @@ Namespace Samples
 
         Protected Sub resizer_Resized(ByVal sender As Object, ByVal e As ResizeHandler.ResizedEventArgs)
             lbl.Text = String.Format("Width: {0}, Height: {1}", e.Width, e.Height)
-            Dim effect = New EffectHighlight(lbl, 500)
+            Dim effect As New EffectHighlight(lbl, 500)
             effect.Render()
             Dim width As Integer = Math.Max(e.Width - 264, 400)
             Dim height As Integer = Math.Max(e.Height - 101, 200)
@@ -181,21 +179,6 @@ Namespace Samples
             wndRight.Style("width") = width.ToString() & "px"
             pnlRightOuter.Style("height") = height.ToString() & "px"
             pnlLeft.Style("height") = heightLeft.ToString() & "px"
-        End Sub
-
-        Protected Sub loginBtn_Click(ByVal sender As Object, ByVal e As EventArgs)
-            _triedToLogin = True
-            If username.Text = "admin" And password.Text = "admin" Then
-                loginWnd.Visible = False
-                everything.Visible = True
-                Session("user") = "admin"
-            Else
-                loginInfo.Text = "Username; <strong>'admin'</strong>, Password; <strong>'admin'</strong>"
-                Dim effect = New EffectHighlight(loginInfo, 500)
-                effect.Render()
-                username.Select()
-                username.Focus()
-            End If
         End Sub
     End Class
 End Namespace

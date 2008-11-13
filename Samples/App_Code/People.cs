@@ -45,6 +45,22 @@ public class People
 
 public sealed class PeopleDatabase
 {
+    public enum Sort { Name, Adr, Birthdate }
+
+    public static Sort Sorting
+    {
+        get
+        {
+            if (HttpContext.Current.Session["Sorting"] == null)
+                return Sort.Name;
+            return (Sort)HttpContext.Current.Session["Sorting"];
+        }
+        set
+        {
+            HttpContext.Current.Session["Sorting"] = value;
+        }
+    }
+
     public static string Filter
     {
         get
@@ -83,13 +99,29 @@ public sealed class PeopleDatabase
                 HttpContext.Current.Session["PeopleDatabase"] = tmp;
             }
             List<People> original = (List<People>)HttpContext.Current.Session["PeopleDatabase"];
-            if (Filter == string.Empty)
-                return original;
             List<People> retVal = new List<People>(original);
-            retVal.RemoveAll(
+            if (Filter != string.Empty)
+            {
+                retVal.RemoveAll(
                 delegate(People idx)
                 {
                     return idx.Address.ToLower().IndexOf(Filter) == -1 && idx.Name.ToLower().IndexOf(Filter) == -1;
+                });
+            }
+            retVal.Sort(
+                delegate(People left, People right)
+                {
+                    switch (Sorting)
+                    {
+                        case Sort.Name:
+                            return left.Name.CompareTo(right.Name);
+                        case Sort.Adr:
+                            return left.Address.CompareTo(right.Address);
+                        case Sort.Birthdate:
+                            return left.Birthday.CompareTo(right.Birthday);
+                        default:
+                            throw new Exception("Undefined sorting column found");
+                    }
                 });
             return retVal;
         }

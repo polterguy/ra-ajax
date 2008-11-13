@@ -206,17 +206,40 @@
                             <AlternatingRowStyle 
                                 BackColor="PaleGoldenrod" />
                             <Columns>
-                                <asp:BoundField 
-                                    DataField="Name" 
-                                    HeaderText="Name" />
-                                <asp:BoundField 
-                                    DataField="Address" 
-                                    HeaderText="Address" />
-                                <asp:BoundField 
-                                    DataField="Birthday" 
-                                    HeaderText="Birthday" 
-                                    DataFormatString="{0:dddd dd.MMMM yyyy}" />
-                                <asp:TemplateField HeaderText="Edit">
+                                <asp:TemplateField>
+                                    <HeaderTemplate>
+                                        <ra:LinkButton 
+                                            runat="server"
+                                            OnClick="SortName" 
+                                            Text="Name" />
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <%#Eval("Name")%>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField>
+                                    <HeaderTemplate>
+                                        <ra:LinkButton 
+                                            runat="server" 
+                                            OnClick="SortAddress" 
+                                            Text="Address" />
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <%#Eval("Address")%>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField>
+                                    <HeaderTemplate>
+                                        <ra:LinkButton 
+                                            runat="server" 
+                                            OnClick="SortBirthday" 
+                                            Text="Birthday" />
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <%#Eval("Birthday", "{0:dddd dd.MMMM yyyy}")%>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField>
                                     <HeaderTemplate>
                                         Edit
                                     </HeaderTemplate>
@@ -291,49 +314,6 @@
                     style="position:absolute;right:0px;bottom:0px;" />
             </div>
             <ra:BehaviorObscurable runat="server" ID="BehaviorObscurable1" ZIndex="4999" />
-        </ext:Window>
-        <ext:Window 
-            runat="server" 
-            CssClass="window" 
-            Caption="Please login"
-            Visible="false" 
-            Closable="false"
-            style="width:350px;position:relative;z-index:5000;margin-left:auto;margin-right:auto;"
-            ID="loginWnd">
-            <div style="height:150px;">
-                <table class="loginTbl">
-                    <tr>
-                        <td colspan="2">
-                            <ra:Label 
-                                runat="server" 
-                                ID="loginInfo" 
-                                Text="Please login with admin/admin" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Username:</td>
-                        <td>
-                            <ra:TextBox runat="server" ID="username" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Password:</td>
-                        <td>
-                            <ra:TextBox runat="server" ID="password" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" style="text-align:right;">
-                            <ra:Button 
-                                runat="server" 
-                                ID="loginBtn" 
-                                Text="Login" 
-                                OnClick="loginBtn_Click" />
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <ra:BehaviorObscurable runat="server" ID="loginModal" ZIndex="4999" />
         </ext:Window>
     </form>
     <script type="text/javascript">
