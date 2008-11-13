@@ -74,7 +74,7 @@ namespace Ra
          */
         public bool IsCallback
         {
-            get { return CurrentPage.Request.Params["__RA_CALLBACK"] == "true"; }
+            get { return CurrentPage.Request.Params["__RA_CALLBACK"] == "true" && CurrentPage.Request.Params["HTTP_X_MICROSOFTAJAX"] == null; }
         }
 
         // Set this one to true to bypass the Response.Filter logic and toss in your own version of it...
@@ -178,6 +178,9 @@ namespace Ra
             // Making sure we only run the initialization logic ONCE...!!
             if (RaControls.Count == 1)
             {
+                if (CurrentPage.Request.Params["HTTP_X_MICROSOFTAJAX"] != null)
+                    return;
+
                 if (IsCallback)
                 {
                     // This is a Ra-Ajax callback, we need to wait until the Page Load 
