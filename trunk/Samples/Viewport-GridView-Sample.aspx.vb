@@ -70,18 +70,27 @@ Namespace Samples
 
         Protected Sub SortName(ByVal sender As Object, ByVal e As EventArgs)
             PeopleDatabase.Sorting = PeopleDatabase.Sort.Name
+            PageIndex = 0
+            filter.Text = ""
+            PeopleDatabase.Filter = ""
             DataBindGridView()
             pnlRight.ReRender()
         End Sub
 
         Protected Sub SortAddress(ByVal sender As Object, ByVal e As EventArgs)
             PeopleDatabase.Sorting = PeopleDatabase.Sort.Adr
+            PageIndex = 0
+            filter.Text = ""
+            PeopleDatabase.Filter = ""
             DataBindGridView()
             pnlRight.ReRender()
         End Sub
 
         Protected Sub SortBirthday(ByVal sender As Object, ByVal e As EventArgs)
             PeopleDatabase.Sorting = PeopleDatabase.Sort.Birthdate
+            PageIndex = 0
+            filter.Text = ""
+            PeopleDatabase.Filter = ""
             DataBindGridView()
             pnlRight.ReRender()
         End Sub
@@ -177,9 +186,6 @@ Namespace Samples
         End Sub
 
         Protected Sub resizer_Resized(ByVal sender As Object, ByVal e As ResizeHandler.ResizedEventArgs)
-            lbl.Text = String.Format("Width: {0}, Height: {1}", e.Width, e.Height)
-            Dim effect As New EffectHighlight(lbl, 500)
-            effect.Render()
             Dim width As Integer = Math.Max(e.Width - 264, 400)
             Dim height As Integer = Math.Max(e.Height - 101, 200)
             Dim heightLeft As Integer = Math.Max(e.Height - 390, 50)

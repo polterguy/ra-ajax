@@ -40,7 +40,7 @@
                 runat="server" 
                 ID="pnlStatus" 
                 CssClass="status">
-                Kickstart Your Web Apps with the <strong>Ra-Ajax GridView/DataGrid Starter-Kit</strong>
+                Kickstart Your Web Apps with the <strong>Ra-Ajax VB.NET GridView/DataGrid Starter-Kit</strong>
             </ra:Panel>
 
             <!-- Menu -->
@@ -118,6 +118,9 @@
                             OnKeyUp="filter_KeyUp"
                             ID="filter" />
                     </p>
+                    <p>
+                        ALT+SHIFT+F gives focus to filtering TextBox in FireFox.
+                    </p>
                 </div>
             </ext:Window>
 
@@ -135,28 +138,15 @@
                     ID="pnlLeft" 
                     style="height:200px;overflow:auto;">
                     <div style="padding:5px;">
-                        <h2 style="text-align:center;">Bottom left</h2>
-                        <p>
-                            <ra:Label 
-                                runat="server" 
-                                ID="lbl" 
-                                style="font-weight:bold;"
-                                Text="Size of Viewport" />
-                        </p>
-                        <p>
-                            As you can see here the resizing will trigger a server-side event which in turn will resize
-                            the windows so that at all times the Window will "fill the Viewport" except down to 
-                            some "minimum threshold"...
-                        </p>
-                        <p>
-                            The resizing is possible due to the Ra-Ajax ResizeHandler Control which will trigger a
-                            server-side event every time the browser window is resized. Then the bottom-left and right
-                            Ajax Windows will be resized to make sure the entire browser window is "intelligently used".
-                        </p>
-                        <p>
-                            Also all Windows are created such that when there is too much text to view at the same 
-                            time with their current size then scrollbars will appear and make the Window scrollable...
-                        </p>
+                        <ul>
+                            <li><a href="Default.aspx">Main Ajax Samples</a></li>
+                            <li><a href="Viewport-Sample.aspx">Sapphire Ajax Viewport Sample</a></li>
+                            <li><a href="Ajax-TreeView.aspx">Ajax TreeView Sample</a></li>
+                            <li><a href="Ajax-TabControl.aspx">Ajax TabControl Sample</a></li>
+                            <li><a href="Ajax-Calendar.aspx">Ajax Calendar Sample</a></li>
+                            <li><a href="Ajax-Wizard.aspx">Ajax Wizard Sample</a></li>
+                            <li><a href="http://ra-ajax.org">Main Ra-Ajax Website</a></li>
+                        </ul>
                     </div>
                 </ra:Panel>
             </ext:Window>

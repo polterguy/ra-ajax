@@ -50,7 +50,7 @@
                     <ra:Label 
                         runat="server" 
                         ID="lblStatus" 
-                        Text="Status text for your application" />
+                        Text="This is a C# Ajax Starter-Kit" />
                 </div>
             </ra:Panel>
 
@@ -133,6 +133,9 @@
                             <ext:TreeNode runat="server" ID="good">
                                 Wow samples...
                                 <ext:TreeNodes ID="TreeNodes2" runat="server" Expanded="true">
+                                    <ext:TreeNode runat="server" ID="TreeNode9">
+                                        <a href="Viewport-GridView-Sample.aspx">GridView Ajax Starter-Kit</a>
+                                    </ext:TreeNode>
                                     <ext:TreeNode runat="server" ID="TreeNode1">
                                         <a href="Default.aspx">Main Ajax Samples</a>
                                     </ext:TreeNode>
@@ -149,7 +152,7 @@
                                         <a href="Ajax-Wizard.aspx">Ajax Wizard Sample</a>
                                     </ext:TreeNode>
                                     <ext:TreeNode runat="server" ID="TreeNode6">
-                                        <a href="http://ra-ajax.org">Main website</a>
+                                        <a href="http://ra-ajax.org">Main Ra-Ajax website</a>
                                     </ext:TreeNode>
                                 </ext:TreeNodes>
                             </ext:TreeNode>
