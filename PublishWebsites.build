@@ -1,50 +1,50 @@
 <?xml version="1.0"?>
 <project name="PublishWebsites" default="all" xmlns="http://nant.sf.net/release/0.85/nant.xsd">
 
-	<nant buildfile="Ra.build" />
-	<load-properties properties-file="build.properties" />
+  <nant buildfile="Ra.build" />
+  <load-properties properties-file="build.properties" />
 
-	<target name="all" depends="publish.samples,publish.ra.website" />
+  <target name="all" depends="publish.samples,publish.ra.website" />
 
-	<target name="compile.resource.cacher" description="Compile the Resource Cacher used By the Websites">
-		<csc verbose="false" target="library" output="${output.dir}/${resources.dir}/${resource.cacher.name}.dll" debug="${debug}">
-			<sources>
-				<include name="${resource.cacher.name}/**/*.cs" />
-				<exclude name="${resource.cacher.name}/obj/**/*.*" />
-			</sources>
-		</csc>
-	</target>
+  <target name="compile.resource.cacher" description="Compile the Resource Cacher used By the Websites">
+    <csc verbose="false" target="library" output="${output.dir}/${resources.dir}/${resource.cacher.name}.dll" debug="${debug}">
+      <sources>
+        <include name="${resource.cacher.name}/**/*.cs" />
+        <exclude name="${resource.cacher.name}/obj/**/*.*" />
+      </sources>
+    </csc>
+  </target>
 
-	<target name="publish.samples" depends="compile.resource.cacher" description="Publish and Precompile the Samples Website">
-		<copy overwrite="true" todir="${output.dir}/${samples.dir}">
-			<fileset basedir="${samples.dir}">
+  <target name="publish.samples" depends="compile.resource.cacher" description="Publish and Precompile the Samples Website">
+    <copy overwrite="true" todir="${output.dir}/${samples.dir}">
+      <fileset basedir="${samples.dir}">
         <include name="**/*.cs" />
         <include name="**/*.vb" />
-				<include name="**/*.aspx" />
-				<include name="**/*.asax" />
-				<include name="**/*.ascx" />
-				<include name="**/*.master" />
-				<include name="media/**/*.*" />
-			</fileset>
-		</copy>
-		
-		<mkdir dir="${output.dir}/${samples.dir}/bin" />
-		<copy flatten="true" todir="${output.dir}/${samples.dir}/bin">
-			<fileset basedir="${output.dir}">
-				<include name="${library.dir}/${gzipped.dir}/${ra.name}.dll" />
-				<include name="${library.dir}/${gzipped.dir}/${ext.name}.dll" />
-				<include name="${resources.dir}/${resource.cacher.name}.dll" />
-			</fileset>
-		</copy>
+        <include name="**/*.aspx" />
+        <include name="**/*.asax" />
+        <include name="**/*.ascx" />
+        <include name="**/*.master" />
+        <include name="media/**/*.*" />
+      </fileset>
+    </copy>
 
-		<!-- 
+    <mkdir dir="${output.dir}/${samples.dir}/bin" />
+    <copy flatten="true" todir="${output.dir}/${samples.dir}/bin">
+      <fileset basedir="${output.dir}">
+        <include name="${library.dir}/${gzipped.dir}/${ra.name}.dll" />
+        <include name="${library.dir}/${gzipped.dir}/${ext.name}.dll" />
+        <include name="${resources.dir}/${resource.cacher.name}.dll" />
+      </fileset>
+    </copy>
+
+    <!-- 
 			Since the JS included in the Library dlls is GZipped, we need to add a Global.asax with
 			the following content to the samples website to indicate to the browser the content-encoding 
 			of the JS files.
 		-->
-		<file-create overwrite="true" filename="${output.dir}/${samples.dir}/Global.asax">
-			<content>
-<![CDATA[<%@ Application Language="C#" %>
+    <file-create overwrite="true" filename="${output.dir}/${samples.dir}/Global.asax">
+      <content>
+        <![CDATA[<%@ Application Language="C#" %>
 <script runat="server">
 	void Application_EndRequest(object sender, EventArgs e)
 	{
@@ -60,75 +60,75 @@
 		}
 	}
 </script>]]>
-			</content>
-		</file-create>
+      </content>
+    </file-create>
 
-		<echo message="Precompiling Website '${output.dir}/${samples.dir}' to '${output.dir}/${samples.precompiled.dir}'." />
-		<exec program="${framework.dir}/aspnet_compiler.exe"
+    <echo message="Precompiling Website '${output.dir}/${samples.dir}' to '${output.dir}/${samples.precompiled.dir}'." />
+    <exec program="${framework.dir}/aspnet_compiler.exe"
 			commandline="-v ${samples.dir} -p ${output.dir}/${samples.dir} -u -f ${output.dir}/${samples.precompiled.dir} -c -nologo"
 			if="${file::exists(framework.dir + '/aspnet_compiler.exe')}" />
 
-		<copy flatten="true" overwrite="true" todir="${output.dir}/${samples.dir}/bin">
-			<fileset basedir="${output.dir}/${library.dir}/${uncompressed.dir}">
-				<include name="${ra.name}.dll" />
-				<include name="${ext.name}.dll" />
-			</fileset>
-		</copy>
-		<delete file="${output.dir}/${samples.dir}/Global.asax" />
-		
-		<cssmin gzip="${css.gzip}" overwrite="true">
-			<fileset basedir="${output.dir}/${samples.precompiled.dir}">
-				<include name="media/**/*.css" />
-			</fileset>
-		</cssmin>
+    <copy flatten="true" overwrite="true" todir="${output.dir}/${samples.dir}/bin">
+      <fileset basedir="${output.dir}/${library.dir}/${uncompressed.dir}">
+        <include name="${ra.name}.dll" />
+        <include name="${ext.name}.dll" />
+      </fileset>
+    </copy>
+    <delete file="${output.dir}/${samples.dir}/Global.asax" />
 
-		<copy overwrite="true" todir="${output.dir}/${samples.precompiled.dir}">
-			<fileset basedir="${output.dir}/${samples.dir}">
-				<include name="**/*.cs" />
-				<exclude name="**/*.master.cs" />
-				<exclude name="App_Code/*.cs" />
-			</fileset>
-		</copy>
-	</target>
+    <cssmin gzip="${css.gzip}" overwrite="true">
+      <fileset basedir="${output.dir}/${samples.precompiled.dir}">
+        <include name="media/**/*.css" />
+      </fileset>
+    </cssmin>
 
-	<target name="publish.ra.website" depends="compile.resource.cacher" description="Publish and Precompile the Ra-Ajax Website">
-		<copy overwrite="true" todir="${output.dir}/${ra.website.dir}">
-			<fileset basedir="${ra.website.dir}">
-				<include name="**/*.cs" />
-				<include name="**/*.aspx" />
-				<include name="**/*.asax" />
-				<include name="**/*.ascx" />
-				<include name="**/*.master" />
-				<include name="media/**/*.*" />
-			</fileset>
-		</copy>
+    <copy overwrite="true" todir="${output.dir}/${samples.precompiled.dir}">
+      <fileset basedir="${output.dir}/${samples.dir}">
+        <include name="**/*.cs" />
+        <exclude name="**/*.master.cs" />
+        <exclude name="App_Code/*.cs" />
+      </fileset>
+    </copy>
+  </target>
 
-		<mkdir dir="${output.dir}/${ra.website.dir}/bin" />
-		<copy flatten="true" todir="${output.dir}/${ra.website.dir}/bin">
-			<fileset>
-				<include name="${output.dir}/${library.dir}/${gzipped.dir}/${ra.name}.dll" />
-				<include name="${output.dir}/${library.dir}/${gzipped.dir}/${ext.name}.dll" />
-				<include name="${output.dir}/${resources.dir}/${resource.cacher.name}.dll" />
-				<include name="${references.dir}/**/*.dll" />
-				<exclude name="${references.dir}/NAnt.Core.dll" />
-			</fileset>
-		</copy>
+  <target name="publish.ra.website" depends="compile.resource.cacher" description="Publish and Precompile the Ra-Ajax Website">
+    <copy overwrite="true" todir="${output.dir}/${ra.website.dir}">
+      <fileset basedir="${ra.website.dir}">
+        <include name="**/*.cs" />
+        <include name="**/*.aspx" />
+        <include name="**/*.asax" />
+        <include name="**/*.ascx" />
+        <include name="**/*.master" />
+        <include name="media/**/*.*" />
+      </fileset>
+    </copy>
 
-		<!-- 
+    <mkdir dir="${output.dir}/${ra.website.dir}/bin" />
+    <copy flatten="true" todir="${output.dir}/${ra.website.dir}/bin">
+      <fileset>
+        <include name="${output.dir}/${library.dir}/${gzipped.dir}/${ra.name}.dll" />
+        <include name="${output.dir}/${library.dir}/${gzipped.dir}/${ext.name}.dll" />
+        <include name="${output.dir}/${resources.dir}/${resource.cacher.name}.dll" />
+        <include name="${references.dir}/**/*.dll" />
+        <exclude name="${references.dir}/NAnt.Core.dll" />
+      </fileset>
+    </copy>
+
+    <!-- 
 			Since ra-website already includes a Global.asax we just need to add the following code to the
 			Application_BeginRequest method inside that file, to indicate to the browser the content-encoding 
 			of the JS files.
 		-->
-		<file-insert-text 
-			if="${file::exists(output.dir + '/' + ra.website.dir + '/Global.asax')}" 
+    <file-insert-text
+			if="${file::exists(output.dir + '/' + ra.website.dir + '/Global.asax')}"
 			filename="${output.dir}/${ra.website.dir}/Global.asax">
-			<insert-after>
-				<![CDATA[
+      <insert-after>
+        <![CDATA[
     void Application_EndRequest(object sender, EventArgs e)
     { ]]>
-			</insert-after>
-			<text-to-insert>
-				<![CDATA[
+      </insert-after>
+      <text-to-insert>
+        <![CDATA[
 if (Request.Path.ToLowerInvariant().EndsWith("webresource.axd") && 
 	HttpContext.Current.Response.ContentType.ToLowerInvariant() == "text/javascript")
 {
@@ -140,19 +140,19 @@ if (Request.Path.ToLowerInvariant().EndsWith("webresource.axd") &&
 	HttpContext.Current.Response.AppendHeader("Content-Encoding", "gzip");
 }
 				]]>
-			</text-to-insert>
-		</file-insert-text>
+      </text-to-insert>
+    </file-insert-text>
 
-		<echo message="Precompiling Website '${output.dir}/${ra.website.dir}' to '${output.dir}/${ra.website.precompiled.dir}'." />
-		<exec program="${framework.dir}/aspnet_compiler.exe"
+    <echo message="Precompiling Website '${output.dir}/${ra.website.dir}' to '${output.dir}/${ra.website.precompiled.dir}'." />
+    <exec program="${framework.dir}/aspnet_compiler.exe"
 			commandline="-v ${ra.website.dir} -p ${output.dir}/${ra.website.dir} -u -f ${output.dir}/${ra.website.precompiled.dir} -c -nologo"
 			if="${file::exists(framework.dir + '/aspnet_compiler.exe')}" />
 
-		<cssmin gzip="${css.gzip}" overwrite="true">
-			<fileset basedir="${output.dir}/${ra.website.precompiled.dir}">
-				<include name="media/**/*.css" />
-			</fileset>
-		</cssmin>
-	</target>
+    <cssmin gzip="${css.gzip}" overwrite="true">
+      <fileset basedir="${output.dir}/${ra.website.precompiled.dir}">
+        <include name="media/**/*.css" />
+      </fileset>
+    </cssmin>
+  </target>
 
 </project>
