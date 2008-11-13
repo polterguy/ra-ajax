@@ -55,10 +55,10 @@ Namespace Samples
             src.CurrentPageIndex = PageIndex
             grid.DataSource = src
             grid.DataBind()
+            Dim pages As Integer = PeopleDatabase.Database.Count \ PageSize + IIf(PeopleDatabase.Database.Count Mod PageSize > 0, 1, 0)
             wndRight.Caption = "Main Content - " & PeopleDatabase.Database.Count _
                 & " Records - Showing page " & (PageIndex + 1).ToString() _
-                & " of " & CType(((PeopleDatabase.Database.Count / PageSize) _
-                + IIf(PeopleDatabase.Database.Count Mod PageSize > 0, 1, 0)).ToString(), Integer)
+                & " of " & pages
         End Sub
 
         Protected Sub filter_KeyUp(ByVal sender As Object, ByVal e As EventArgs)
