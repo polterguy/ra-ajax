@@ -13,7 +13,8 @@ Imports Ra.Extensions
 Namespace Samples
     Public Partial Class ViewportGridView
         Inherits System.Web.UI.Page
-        Private _triedToLogin As Boolean
+
+        Private _triedToLogin As Boolean
         
         Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs)
             ' Remove this line, just here for "testing purposes" to make it easy to "log out"
@@ -58,8 +59,17 @@ Namespace Samples
             wndRight.Caption = "Main Content - " & (PageIndex + 1).ToString() & "/" & CType((PeopleDatabase.Database.Count / PageSize).ToString(), Integer)
         End Sub
 
+        Protected Sub filter_KeyUp(ByVal sender As Object, ByVal e As EventArgs)
+            PeopleDatabase.Filter = filter.Text
+            PageIndex = 0
+            DataBindGridView()
+            pnlRight.ReRender()
+        End Sub
+
         Protected Sub EditEntry(ByVal sender As Object, ByVal e As EventArgs)
             editWindow.Visible = True
+            editName.Select()
+            editName.Focus()
             Dim hid As HiddenField = CType(CType(sender, RaControl).Parent.Controls(1), HiddenField)
             Dim g As New Guid(hid.Value)
             Dim p As People = Nothing

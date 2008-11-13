@@ -108,12 +108,13 @@
                 Movable="false" 
                 Closable="false"
                 CssClass="window">
-                <div style="height:180px;overflow:auto;margin:25px;border:dotted 1px #999; background-color:#fefefe;padding:10px;">
+                <div style="height:178px;overflow:auto;margin:25px;border:dotted 1px #999; background-color:#fefefe;padding:10px;">
                     <p>Here is your left view</p>
                     <p>Filter GridView</p>
                     <p>
                         <ra:TextBox 
                             runat="server" 
+                            OnKeyUp="filter_KeyUp"
                             ID="filter" />
                     </p>
                 </div>
