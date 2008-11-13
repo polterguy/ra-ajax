@@ -109,7 +109,7 @@ Namespace Samples
             pnlRight.ReRender()
 
             Dim effect As New EffectTimeout(500)
-            effect.ChainThese(New EffectHighlight(pnlRight, 500))
+            effect.ChainThese(New EffectHighlight(pnlRightOuter, 500))
             effect.Render()
         End Sub
 
@@ -179,7 +179,7 @@ Namespace Samples
             Dim height As Integer = Math.Max(e.Height - 101, 200)
             Dim heightLeft As Integer = Math.Max(e.Height - 390, 50)
             wndRight.Style("width") = width.ToString() & "px"
-            pnlRight.Style("height") = height.ToString() & "px"
+            pnlRightOuter.Style("height") = height.ToString() & "px"
             pnlLeft.Style("height") = heightLeft.ToString() & "px"
         End Sub
 
