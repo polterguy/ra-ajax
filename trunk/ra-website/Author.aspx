@@ -16,55 +16,67 @@
     ContentPlaceHolderID="cnt1" 
     Runat="Server">
 
-    <h1>About us</h1>
+    <h1>About us - Hire us</h1>
     <p>
         Ra-Ajax is maintained by Thomas Hansen (Norway) and Kariem Ali (Egypt). We are two developers who enjoy
         building great tools for developers and with a special love for Ajax and RIA Frameworks.
     </p>
+    <img src="media/Kariem.jpg" alt="Kariem Ali" style="float:left;padding:15px;" />
+    <h2>Kariem Ali</h2>
     <p>
-        <img src="media/Kariem.jpg" alt="Kariem Ali" style="float:left;padding:15px;" />
-        <h2>Kariem Ali</h2>
         Kariem is from Alexandria in Egypt and have been working together with Thomas almost since the beginning
         of Gaiaware and Gaia Ajax Widgets. Kariem is born in 1982 and have previously been working a lot with
         <a href="http://www.dotnetnuke.com">DotNetNuke</a> in addition to obviously also a lot of Ajax and JavaScript.
-        Kariem speaks English and Arabic fluently.
+        Kariem speaks English and Arabic fluently. Kariem has also worked with WinForms and some Lisp. In addition
+        Kariem has extensive knowledge of Unit Testing, with a special touch on Unit Testing for Web GUI by using
+        tools like WatiN and so on. Kariem has worked with System Development since he was 12 years old, first as
+        a hobby, later in his grown up life as a professional. Kariem is a great system developer, very dedicated to 
+        delivering quality, loves to give great service and lives to please :)
     </p>
     <br style="clear:both;" />
+    <img src="media/Thomas-Hansen.jpg" alt="Kariem Ali" style="float:right;padding:15px;" />
+    <h2>Thomas Hansen</h2>
     <p>
-        <img src="media/Thomas-Hansen.jpg" alt="Kariem Ali" style="float:right;padding:15px;" />
-        <h2>Thomas Hansen</h2>
-        I am the founding father of <em>SmartWin++, Gaia Ajax Widgets and Gaiaware AS</em>. 
-        I have mostly developed libraries my entire carreer and especially focused on Ajax, Open Source and 
-        Open Standards. I am born in 1974 in Norway and I speak Norwegian and English fluently.
+        Thomas Hansen is the founding father of <em>SmartWin++, Gaia Ajax Widgets and Gaiaware AS</em>. 
+        Thomas have mostly developed libraries his entire carreer with a special focus on Ajax, Open Source and 
+        Open Standards. Thomas is born in 1974 in Norway and speak Norwegian and English fluently. Thomas is
+        the copyright holder of Ra-Ajax and also the founder of Ra-Ajax - together with Kariem. Thomas has
+        worked with everything imaginable in the IT industry; ERP systems, CRM systems, ORM libraries, C++,
+        COM, Database systems, C++ GUI libraries but his heart is warmest when he does Ajax. Thomas have
+        been doing System Development since he was 8 years old which now is 26 years ago. Thomas have been CTO
+        of his own company which he himself founded (Gaiaware), working with consultancy, done coaching, overall
+        architecture, done teaching and tutoring and mostly everything imaginable.
     </p>
     <br style="clear:both;" />
     <h2>Hire us</h2>
     <p>
-        We are both available for hire through our company Ra-Software AS which is a Norwegian company for doing 
-        system development on consultancy basis. If you would like to hire us then <a href="mailto:thomas@ra-ajax.org">send Thomas an email</a>
-        and explain the job you would want to get done with some few words and we'll pick it up from there.
+        We are both available for hire through the company Ra-Software AS which is a Norwegian privately held company 
+        mainly focusing on system development on consultancy basis. If you would like to hire us then 
+        <a href="mailto:thomas@ra-ajax.org">send Thomas an email</a> and explain the job you would want to get done 
+        with some few words and we'll pick it up from there.
     </p>
     <h2>Qualifications</h2>
     <p>
-        We are both experts in Ajax development, and off course probably the best resources on Ra-Ajax, but in addition
-        we also have expertice on different technologies like ORM, design, architecture, process, team building, DotNetNuke, 
-        WinForms, C++, C#, VB.NET and practically mostly anything you can think about though with a clear bias towards 
-        .Net and Mono technologies. We are available for hire either individually or as a team. Though since we have a 
-        little bit of different qualifications you will often get more value for your money by hiring the both of us. You 
-        will be billed by the company Ra-Software AS which is a Norwegian company located in Porsgrunn, Norway. Both of us
-        have developed code for computers since long before we were teenagers.
+        We are both experts in Ajax development, and of course probably the best resources in the world on Ra-Ajax - since we
+        are creating it, but in addition we also have expertice on different technologies like ORM, design, architecture, 
+        process, team building, DotNetNuke, WinForms, C++, C#, VB.NET and practically anything you can think about though 
+        with a clear bias towards .Net technologies. We are available for hire either individually or as a team. You will 
+        be billed by the company Ra-Software AS which is a Norwegian company located in Porsgrunn. Both of us have developed 
+        code for computers since long before we were teenagers. We can do mostly anything 
+        that has to do with System Development, including Training, Coaching, development, projects, management, C#, VB.NET, 
+        C++, Web, WinForms etc...
     </p>
     <h2>Starting your project with an Ajax Starter-Kit</h2>
     <p>
-        Often when you start a new project it might be difficult to know which end to start in. You may have a clea picture
+        Often when you start a new project it might be difficult to know which end to start in. You may have a clear picture
         of how you want your first page to look like, but you don't really know how to "start it". We can do such jobs for you
-        in such a way that we keep the copyright for the work we do anyou get free usage for the stuff we create for you.
+        in such a way that we keep the copyright for the work we do and you get free usage for the stuff we create for you.
     </p>
     <p>
-        Then when the job is done we would create a Starter-Kit out of the solution and provide it for download to
-        other customers of us. In fact all of our Starter-Kits are created using this method. And since we keep the 
-        copyright for the work we do there are also incentives for us to maintain the kit meaning you'd get free updates
-        to these starter-kits for 12 months running from the day you get the Starter-Sit.
+        Then when the job is done we would create an <a href="Starter-Kits.aspx">Ajax Starter-Kit</a> out of the solution and 
+        provide it for download to other customers of us. In fact all of our Starter-Kits are created using this method. 
+        And since we keep the copyright for the work we do there are also incentives for us to maintain the kit meaning 
+        you'd get free updates to these starter-kits for 12 months running from the day you get the Starter-Sit.
     </p>
     <p>
         Price for such custom Starter-Kits starts at $500 and goes updwards to normally less than $5000 depending upon the 
@@ -81,18 +93,45 @@
     </p>
     <p>
         All existing Starter-Kits we've got are also available for purchase if you don't want to use them in "LGPL form".
-        Starting from $29 which gives you full usage rights for one project with as many developers as you wish on that project.
+        Starting from <strong>$29</strong> which gives you full usage rights for one project with as many developers as 
+        you wish on that project. To purchase existing Starter-Kits, go to our <a href="Starter-Kits.aspx">Ajax Starter-Kits</a>
+        page and see if there's something tempting you there :)
     </p>
     <h2>Price</h2>
     <p>
-        Depends upon the work you'd like to get done. Normally we can give discounts for being able to use Ra-Ajax on 
-        the job and even further discounts if you can let us build extension controls for Ra-Ajax which we can keep
-        the copyright for. Generally speaking the more "closed" the work is the higher the price. We are both
-        very much in love with Open Source, Open Standards, Open Web technology and Open Innovation. The price range 
-        can be anything between $100 per hour to $400 for more demanding jobs with less personal incentives behind them 
-        for us. If we can use Ra-Ajax on a long term project keeping copyright for much of the stuff we're creating and
-        being able to Open Source the end product we're most happy and you will get our cheapest price. None of us
-        does Silverlight or Adobe Flash/Flex development regardless of the price you offer us.
+        We are expensive! At least if you think of what you're paying us per hour of work we're doing. But System Development
+        is not like conventional engineering. System development is a highly creative work and the more experience and passion
+        you've got for it the better you are at delivering value for your customers. I think Paul Graham is perfectly correct
+        when he says that; <em>"95% of all great projects and code on the planet is delivered by 5% of all the developers"</em>.
+        And we (Thomas &amp; Kariem) definitely belong to that 5% lot...
+    </p>
+    <p>
+        After all, when developers get stuck, they come to us...
+    </p>
+    <p>
+        This is why we prefer to not work on an per hourly basis, but rather deliver fixed cost prices to our customers because
+        then they can compare the cost of the value they're getting from us with the value others are giving for the same price.
+        Then if we spend a fraction of the time delivering the same or higher value and at the same time spending a fraction of
+        the time delivering that value - then you earn on the end product - while we get higher rates than "the average".
+    </p>
+    <p>
+        So while yes, we are "expensive", but still "expensive" is often more cheap. Who would you take financial advice from
+        if you could choose between getting it for free from your grandma or pay Warren Buffet $1000 per hour? Or who would you
+        have paint your ceiling, Michelangelo for $1000 per hour, or your nephew for $10 per hour? Who do you think would end
+        up being more expensive for you?
+    </p>
+    <p>
+        Also when you deliver IT systems the real cost of that system is maintenance, 80% in fact according to several financial
+        analytics companies. We deliver high quality code for you which you can live with for years and which will "just work" 
+        for you for a very long time to come.
+    </p>
+    <p>
+        So while we are expensive "per hour" we are *very* cheap when you conside the total cost of ownership of your solution.
+        When we deliver, you get satisfied! For YEARS to come!
+    </p>
+    <p>
+        If you've got a project you wish us to look into for you then <a href="mailto:thomas@ra-ajax.org">send us an email</a>
+        and explain with some few words what you would want us to do and we'll pick it up from there :)
     </p>
 
 </asp:Content>

@@ -4,7 +4,7 @@
     AutoEventWireup="true" 
     CodeFile="Donate.aspx.cs" 
     Inherits="Donate" 
-    Title="Donate to the Gaiaware, Gaia Ajax and Bård Stranheim law suite fund" %>
+    Title="Donate to Ra-Ajax" %>
 
 <%@ Register 
     Assembly="Ra" 
@@ -21,27 +21,12 @@
     ContentPlaceHolderID="cnt1"
     Runat="Server">
 
-    <h1>Donate to the Gaiaware, Gaia Ajax and Bård Stranheim law suite fund</h1>
+    <h1>Donate to Ra-Ajax</h1>
     <p>
-        Thomas Hansen (me) the creator of Ra-Ajax is 
-        <a href="http://ra-ajax.org/gaiaware-and-b-rd-stranheim-declaring-war-on-ra-ajax.blog">being sued by Gaiaware and Bård Stranheim</a>
-        due to that Gaiaware and Bård Stranheim does not want me to develop LGPL licensed and free of charge Ajax
-        Libraries for ASP.NET. Read the entire story in this sequence:
-    </p>
-    <ul class="bulList">
-        <li><a href="http://ra-ajax.org/goodbye-gaia-ajax-widgets-hello-ra-ajax.blog">Goodbye Gaia Ajax Widgets, hello Ra-Ajax</a></li>
-        <li><a href="http://ra-ajax.org/being-sued-by-gaiaware-and-b-rd-stranheim.blog">Being sued by Gaiaware and Bård Stranheim</a></li>
-        <li><a href="http://ra-ajax.org/gaiaware-and-b-rd-stranheim-declaring-war-on-ra-ajax.blog">Gaiaware and Bård Stranheim Declaring War on Ra-Ajax</a></li>
-        <li><a href="http://ra-ajax.org/why-we-will-win-the-law-suite-against-gaiaware-and-b-rd-stranheim.blog">Why we will win the law suite against Gaiaware and Bård Stranheim</a></li>
-    </ul>
-    <p>
-        In this battle for the freedom to pursue our dreams and doing what we feel is the right thing to do, we need your
-        help. A law suite like this is not cheap, the estimated price of it according to my lawyer is roughly $25,000 and while
-        Bård Stranheim has roughly $10,000,000. Me, Kariem and Ra-Software have roughly $0 (zero)
-    </p>
-    <p>
-        Therefor me, Kariem and more importantly Ra-Ajax which collectively is underneath the company Ra-Software AS
-        need your help. Click the below PayPal button to donate to the law suite fund.
+        Ra-Ajax is our gift to the world. In addition we need a great Ajax library like Ra-Ajax ourselves when doing
+        Ajax development ourselves. But even though we're giving away Ra-Ajax for free it is not free to maintain and
+        develop. And we would appreciate all the help you could give us to help make Ra-Ajax better. Click the below
+        PayPal button to go to PayPal and help us out making the best Ajax library in the world for ASP.NET.
     </p>
     <p>
         (leads you to PayPal)
@@ -51,24 +36,30 @@
         </a>
     </p>
     <p>
-        This is effectively a war on Ra-Ajax' right to live on as an LGPL project and a free of charge Ajax library for ASP.NET
-        developers. And when everything else is taken away, this is really about whether or not I am free to do what I see fit
-        and what me and Kariem believe is the best thing for the world. Bård Stranheim believes that my actions and Ra-Ajax is
-        damaging to him and his ability to earn money on selling licenses on <em>Gaia Ajax</em> - but that is not really my
-        problem. He can easily solve that by creating better Ajax libraries for ASP.NET than me and Kariem. To try to stop
-        Ra-Ajax as a project by suing us and forcing us to stop developing Ra-Ajax is not the right way to do this.
+        Some reasons why you would want to donate to Ra-Ajax and Ra-Software AS - the company behind Ra-Ajax are;
+        <ul>
+            <li>You're using it yourself and you think it's a great tool and want to show your appreciation</li>
+            <li>You would like to see IT become a commodity and think Ajax and Open Web tools are the enablers of this to happen</li>
+            <li>You dislike big companies having a monopoly on your development cycle and think that LGPL is a great tool to remove Lock-In, EEE and FUD</li>
+            <li>You would like to help us out in the <a href="http://ra-ajax.org/gaiaware-and-b-rd-stranheim-declaring-war-on-ra-ajax.blog">ongoing law suite against Gaiaware</a></li>
+            <li>We have given you superb free support in our forums and thereby helped you save a lot of time on your own projects</li>
+            <li>We created another release for you where we fixed a bug that stopped you from moving forward in your own project</li>
+            <li>You live in a rich country or work in a rich company and would like to see people with less means also have great Ajax tools</li>
+        </ul>
     </p>
     <p>
-        I will periodically blog about how much money have been raised and updates on the law suite. You can subscribe
-        to my blog from here; <a href="http://ra-ajax.org/thomas.blogger?rss=true">Thomas Hansen's blog</a>.
+        There are probably a gazillion reasons to donate, and not many to not donate. And fact is that if everyone who
+        used Ra-Ajax would donate one dollar each which is very little compared to the value Ra-Ajax gives you we would
+        probably not have to do anything else then creating great Ajax tools for you which you and the rest of the world
+        can use in their own projects - for FREE!
     </p>
     <p>
-        We also need help in any ways you can give. Some suggestions here is that you can write about this in blogs, you can link
-        to this page in your email signatures, tell your friends, you can write about this in forums and other places. We need the
-        truth to get out there! You can also contribute by being an expert witness for us to help us prove that Ra-Ajax is not an
-        "extension" or "off-spring" from Gaia Ajax Widgets - whatever that means. You can give us hints and tips about how to fight
-        this battle if you are experienced in such cases or any other ways you see fit to help our cause. Only by mobilizing the
-        masses and standing together in this battle for freedom and against injustice we can win!
+        Whatever your reasons are, we are happy for every dollar that comes our way. And every dollar given to Ra-Ajax will
+        be spent wisely in the constant ongoing maintenance and further development of Ra-Ajax. Every dollar we receive in
+        donations are another dollar we don't have to earn on doing off topic consultancy work to make our living. This
+        effectively means that if we could cover our living expenses completely on donations we would be working 100%
+        on Ra-Ajax all the time instead of having to spend 50% of our time billing hours to make a living for ourselves.
     </p>
+
 </asp:Content>
 
