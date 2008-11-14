@@ -30,14 +30,15 @@
 			    	        <div class="yui-gf">
 			    	            <ext:Window 
 			    	                runat="server" 
-			    	                style="position:absolute;top:15px;right:15px;width:250px;"
-			    	                Caption="Help us!"
+			    	                style="position:absolute;top:15px;right:150px;width:400px;font-size:0.9em;"
+			    	                Caption="New stuff"
 			    	                CssClass="alphacube">
 			    	                <div style="padding:5px;">
-			    	                    Help support the 
-			    	                    <a runat="server" href="~/Donate.aspx">law suite brought upon us by Gaiaware and Bård Stranheim</a>
-			    	                    to shut down Ra-Ajax and stop us from creating LGPL licensed and free of charge 
-			    	                    Ajax Libraries for ASP.NET.
+			    	                    <ul>
+			    	                        <li><a href="Testimonials.aspx">Customer Testimonials</a></li>
+			    	                        <li><a href="Starter-Kits.aspx">Purchase an Ajax Starter-Kits</a></li>
+			    	                        <li><a href="Donate.aspx">Donate to Ra-Ajax development</a></li>
+			    	                    </ul>
 			    	                </div>
 			    	            </ext:Window>
             	                <div class="yui-u first major-links" style="line-height:20px;margin-left:10px;width:18%;">
@@ -100,11 +101,18 @@
                                         <li>
                                             <a runat="server"
                                                 href="~/Author.aspx" 
-                                                title="About me">About us/Hire us</a>
+                                                title="About me">Hire us - Updated</a>
                                         </li>
                                         <li>
                                             <strong>
                                                 <a id="A2" runat="server"
+                                                    href="~/Testimonials.aspx"
+                                                    title="Ra-Ajax Testimonials">Testimonials - NEW!</a>
+                                            </strong>
+                                        </li>
+                                        <li>
+                                            <strong>
+                                                <a runat="server"
                                                     href="~/Starter-Kits.aspx" 
                                                     title="Ra-Ajax Starter-Kits">Starter-Kits - NEW!</a>
                                             </strong>
