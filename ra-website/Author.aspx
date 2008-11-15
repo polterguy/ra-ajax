@@ -24,14 +24,13 @@
     <img src="media/Kariem.jpg" alt="Kariem Ali" style="float:left;padding:15px;" />
     <h2>Kariem Ali</h2>
     <p>
-        Kariem is from Alexandria in Egypt and have been working together with Thomas almost since the beginning
-        of Gaiaware and Gaia Ajax Widgets. Kariem is born in 1982 and have previously been working a lot with
-        <a href="http://www.dotnetnuke.com">DotNetNuke</a> in addition to obviously also a lot of Ajax and JavaScript.
-        Kariem speaks English and Arabic fluently. Kariem has also worked with WinForms and some Lisp. In addition
-        Kariem has extensive knowledge of Unit Testing, with a special touch on Unit Testing for Web GUI by using
-        tools like WatiN and so on. Kariem has worked with System Development since he was 12 years old, first as
-        a hobby, later in his grown up life as a professional. Kariem is a great system developer, very dedicated to 
-        delivering quality, loves to give great service and lives to please :)
+        Kariem is from Alexandria, Egypt he was born in 1982 and has been working together with Thomas almost since the 
+        beginning of Gaiaware and Gaia Ajax Widgets. Kariem has extensive experience with the .NET platform, 
+        <a href="http://www.dotnetnuke.com">DotNetNuke</a>, Ajax and JavaScript. In addition to extensive knowledge of Unit 
+        Testing, with a special touch on Unit Testing for Web GUI using tools like WatiN and so on. He has worked with 
+        System Development since he was 12 years old, first as a hobby, later in his grown up life as a professional.  
+        He speaks English and Arabic fluently. Kariem is a great system developer, very dedicated to delivering quality, loves 
+        to give great service and lives to please :)
     </p>
     <br style="clear:both;" />
     <img src="media/Thomas-Hansen.jpg" alt="Kariem Ali" style="float:right;padding:15px;" />
