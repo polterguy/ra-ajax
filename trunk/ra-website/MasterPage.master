@@ -30,13 +30,13 @@
 			    	        <div class="yui-gf">
 			    	            <ext:Window 
 			    	                runat="server" 
-			    	                style="position:absolute;top:15px;right:150px;width:400px;font-size:0.9em;"
+			    	                style="position:absolute;top:15px;right:150px;width:300px;font-size:0.9em;"
 			    	                Caption="New stuff"
 			    	                CssClass="alphacube">
 			    	                <div style="padding:5px;">
 			    	                    <ul>
 			    	                        <li><a href="Testimonials.aspx">Customer Testimonials</a></li>
-			    	                        <li><a href="Starter-Kits.aspx">Purchase an Ajax Starter-Kits</a></li>
+			    	                        <li><a href="Starter-Kits.aspx">Purchase an Ajax Starter-Kit</a></li>
 			    	                        <li><a href="Donate.aspx">Donate to Ra-Ajax development</a></li>
 			    	                    </ul>
 			    	                </div>

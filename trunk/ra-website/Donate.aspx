@@ -37,16 +37,16 @@
     </p>
     <p>
         Some reasons why you would want to donate to Ra-Ajax and Ra-Software AS - the company behind Ra-Ajax are;
-        <ul>
-            <li>You're using it yourself and you think it's a great tool and want to show your appreciation</li>
-            <li>You would like to see IT become a commodity and think Ajax and Open Web tools are the enablers of this to happen</li>
-            <li>You dislike big companies having a monopoly on your development cycle and think that LGPL is a great tool to remove Lock-In, EEE and FUD</li>
-            <li>You would like to help us out in the <a href="http://ra-ajax.org/gaiaware-and-b-rd-stranheim-declaring-war-on-ra-ajax.blog">ongoing law suite against Gaiaware</a></li>
-            <li>We have given you superb free support in our forums and thereby helped you save a lot of time on your own projects</li>
-            <li>We created another release for you where we fixed a bug that stopped you from moving forward in your own project</li>
-            <li>You live in a rich country or work in a rich company and would like to see people with less means also have great Ajax tools</li>
-        </ul>
     </p>
+    <ul>
+        <li>You're using it yourself and you think it's a great tool and want to show your appreciation</li>
+        <li>You would like to see IT become a commodity and think Ajax and Open Web tools are the enablers of this to happen</li>
+        <li>You dislike big companies having a monopoly on your development cycle and think that LGPL is a great tool to remove Lock-In, EEE and FUD</li>
+        <li>You would like to help us out in the <a href="http://ra-ajax.org/gaiaware-and-b-rd-stranheim-declaring-war-on-ra-ajax.blog">ongoing law suite against Gaiaware</a></li>
+        <li>We have given you superb free support in our forums and thereby helped you save a lot of time on your own projects</li>
+        <li>We created another release for you where we fixed a bug that stopped you from moving forward in your own project</li>
+        <li>You live in a rich country or work in a rich company and would like to see people with less means also have great Ajax tools</li>
+    </ul>
     <p>
         There are probably a gazillion reasons to donate, and not many to not donate. And fact is that if everyone who
         used Ra-Ajax would donate one dollar each which is very little compared to the value Ra-Ajax gives you we would
