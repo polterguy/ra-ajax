@@ -21,19 +21,19 @@
         Ra-Ajax is maintained by Thomas Hansen (Norway) and Kariem Ali (Egypt). We are two developers who enjoy
         building great tools for developers and with a special love for Ajax and RIA Frameworks.
     </p>
-    <img src="media/Kariem.jpg" alt="Kariem Ali" style="float:left;padding:15px;" />
+    <img src="media/Kariem.jpg" alt="Kariem Ali" style="float:left;padding:10px;" />
     <h2>Kariem Ali</h2>
     <p>
         Kariem is from Alexandria, Egypt he was born in 1982 and has been working together with Thomas almost since the 
-        beginning of Gaiaware and Gaia Ajax Widgets. Kariem has extensive experience with the .NET platform, 
+        beginning of Gaiaware and Gaia Ajax Widgets. Kariem has extensive experience with COM, the .NET platform,
         <a href="http://www.dotnetnuke.com">DotNetNuke</a>, Ajax and JavaScript. In addition to extensive knowledge of Unit 
         Testing, with a special touch on Unit Testing for Web GUI using tools like WatiN and so on. He has worked with 
         System Development since he was 12 years old, first as a hobby, later in his grown up life as a professional.  
         He speaks English and Arabic fluently. Kariem is a great system developer, very dedicated to delivering quality, loves 
         to give great service and lives to please :)
     </p>
-    <br style="clear:both;" />
-    <img src="media/Thomas-Hansen.jpg" alt="Kariem Ali" style="float:right;padding:15px;" />
+    <br style="clear:right;" />
+    <img src="media/Thomas-Hansen.jpg" alt="Thomas Hansen" style="float:right;margin-top:35px;padding:10px;" />
     <h2>Thomas Hansen</h2>
     <p>
         Thomas Hansen is the founding father of <em>SmartWin++, Gaia Ajax Widgets and Gaiaware AS</em>. 
