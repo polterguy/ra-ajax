@@ -83,7 +83,7 @@
     <EmbeddedResource Include="Js\Comet.js" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Js\ResizeHandler.js" />
+    <EmbeddedResource Include="Js\ResizeHandler.js" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
