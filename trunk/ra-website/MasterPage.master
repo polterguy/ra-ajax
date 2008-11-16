@@ -35,12 +35,12 @@
 			    	                CssClass="alphacube">
 			    	                <div style="padding:5px;">
 			    	                    <ul>
-			    	                        <li><a href="Testimonials.aspx">Customer Testimonials</a></li>
-			    	                        <li><a href="Starter-Kits.aspx">Purchase an Ajax Starter-Kit</a></li>
-			    	                        <li><a href="Donate.aspx">Donate to Ra-Ajax development</a></li>
+			    	                        <li><a runat="server" href="~/Testimonials.aspx">Customer Testimonials</a></li>
+			    	                        <li><a runat="server" href="~/Starter-Kits.aspx">Purchase an Ajax Starter-Kit</a></li>
+			    	                        <li><a runat="server" href="~/Donate.aspx">Donate to Ra-Ajax development</a></li>
 			    	                        <li><a href="http://ra-ajax.org/samples/Viewport-GridView-Sample.aspx">VB.NET GridView Starter-Kit Sample</a></li>
 			    	                        <li><a href="http://ra-ajax.org/samples/Viewport-Sample.aspx">SapphireViewport Starter-Kit Sample</a></li>
-			    	                        <li><a href="Author.aspx">Hire us - updated</a></li>
+			    	                        <li><a runat="server" href="~/Author.aspx">Hire us - updated</a></li>
 			    	                    </ul>
 			    	                </div>
 			    	            </ext:Window>
