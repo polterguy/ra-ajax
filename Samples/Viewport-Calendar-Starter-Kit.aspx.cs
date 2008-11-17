@@ -22,6 +22,10 @@ namespace Samples
                 calendarStart.Value = DateTime.Now.Date;
                 calendarEnd.Value = DateTime.Now.AddDays(7).Date;
                 UpdateActivitiesGrid();
+
+                // Calendar rendering logic throws if you have StartsOn defined and
+                // no date...
+                activityWhen.Value = DateTime.Now.Date;
             }
         }
 
@@ -78,6 +82,11 @@ namespace Samples
                 {
                     return !(idx.When >= calendarStart.Value && idx.When < calendarEnd.Value);
                 });
+            activities.Sort(
+                delegate(Activity left, Activity right)
+                {
+                    return left.When.CompareTo(right.When);
+                });
             grid.DataSource = activities;
             grid.DataBind();
             pnlBottomLeft.ReRender();
@@ -115,6 +124,61 @@ namespace Samples
                     break;
                 }
             }
+        }
+
+        protected void EditItem(object sender, EventArgs e)
+        {
+            // Running effects...
+            if (intro.Style["display"] != "none")
+            {
+                new EffectFadeOut(intro, 500)
+                    .ChainThese(new EffectFadeIn(editPnl, 500))
+                    .Render();
+            }
+            else
+            {
+                new EffectHighlight(pnlRight, 500).Render();
+            }
+
+            // Finding the Activity which was clicked
+            Guid id = new Guid(((sender as LinkButton).Parent.Controls[1] as HiddenField).Value);
+            Activity a = ActivitiesDatabase.Database.Find(
+                delegate(Activity idx)
+                {
+                    return idx.ID == id;
+                });
+
+            // "Binding" the Editing parts...
+            activityHeader.Text = a.Header;
+            activityBody.Text = a.Body;
+            activityBody.Select();
+            activityBody.Focus();
+            activityWhen.Value = a.When;
+            activityId.Value = a.ID.ToString();
+        }
+
+        protected void save_Click(object sender, EventArgs e)
+        {
+            Guid id = new Guid(activityId.Value);
+
+            Activity a = ActivitiesDatabase.Database.Find(
+                delegate(Activity idx)
+                {
+                    return idx.ID == id;
+                });
+            a.Body = activityBody.Text;
+            a.Header = activityHeader.Text;
+            a.When = activityWhen.Value;
+            UpdateActivitiesGrid();
+
+            // Some nice effects...
+            new EffectFadeOut(editPnl, 500)
+                .ChainThese(new EffectFadeIn(intro, 500))
+                .Render();
+
+            // Making sure we're re-rendering our Calendars
+            calendarEnd.Value = calendarEnd.Value;
+            calendarStart.Value = calendarStart.Value;
         }
     }
 }
