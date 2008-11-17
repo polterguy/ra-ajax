@@ -59,7 +59,7 @@ namespace Ra.Extensions
         Label _ne;
         Label _w;
         Label _body;
-        Label _content;
+        Label _content = new Label();
         Label _e;
         Label _sw;
         Label _s;
@@ -93,8 +93,9 @@ namespace Ra.Extensions
             set
             {
                 ViewState["Value"] = value;
-                CreateChildControls();
-                ReRender();
+                _content.Controls.Clear();
+                CreateCalendarControls();
+                _content.ReRender();
             }
         }
 
@@ -120,6 +121,11 @@ namespace Ra.Extensions
             }
         }
 
+        public Label ContentControl
+        {
+            get { return _content; }
+        }
+
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -135,6 +141,7 @@ namespace Ra.Extensions
         protected override void CreateChildControls()
         {
             Controls.Clear();
+            _content.Controls.Clear();
             CreateWindowControls();
             CreateCalendarControls();
             Controls.Add(_nw);
@@ -177,7 +184,6 @@ namespace Ra.Extensions
             _e.ID = "e";
             _w.Controls.Add(_e);
 
-            _content = new Label();
             _content.Tag = "div";
             _content.ID = "content";
             _e.Controls.Add(_content);
