@@ -19,7 +19,7 @@ namespace Samples
             if (!IsPostBack)
             {
                 calendarStart.Value = DateTime.Now.Date;
-                calendarEnd.Value = DateTime.Now.Date;
+                calendarEnd.Value = DateTime.Now.AddDays(7).Date;
             }
         }
 
