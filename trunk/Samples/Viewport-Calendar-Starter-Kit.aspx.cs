@@ -23,10 +23,6 @@ namespace Samples
             }
         }
 
-        protected void menu_MenuItemSelected(object sender, EventArgs e)
-        {
-        }
-
         protected void resizer_Resized(object sender, ResizeHandler.ResizedEventArgs e)
         {
             int width = Math.Max(e.Width - 359, 400);
@@ -35,6 +31,48 @@ namespace Samples
             pnlBottomLeft.Style["height"] = heightLeft.ToString() + "px";
             wndRight.Style["width"] = width.ToString() + "px";
             pnlRight.Style["height"] = height.ToString() + "px";
+        }
+
+        protected void calendarStart_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (calendarStart.Value > calendarEnd.Value)
+                calendarEnd.Value = calendarStart.Value;
+            else
+            {
+                // To force a re-rendering of all our calendars
+                calendarEnd.Value = calendarEnd.Value;
+            }
+
+            // To force a re-rendering of all our calendars
+            calendarStart.Value = calendarStart.Value;
+        }
+
+        protected void calendarEnd_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (calendarEnd.Value < calendarStart.Value)
+                calendarStart.Value = calendarEnd.Value;
+            else
+            {
+                // To force a re-rendering of all our calendars
+                calendarStart.Value = calendarStart.Value;
+            }
+            calendarEnd.Value = calendarEnd.Value;
+        }
+
+        protected void calendarStart_RenderDay(object sender, Calendar.RenderDayEventArgs e)
+        {
+            if (e.Date >= calendarStart.Value && e.Date <= calendarEnd.Value)
+            {
+                e.Cell.Attributes.Add("class", "dateSelected");
+            }
+        }
+
+        protected void calendarEnd_RenderDay(object sender, Calendar.RenderDayEventArgs e)
+        {
+            if (e.Date >= calendarStart.Value && e.Date <= calendarEnd.Value)
+            {
+                e.Cell.Attributes.Add("class", "dateSelected");
+            }
         }
     }
 }

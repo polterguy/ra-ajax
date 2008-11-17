@@ -43,8 +43,7 @@
         <ext:Menu 
             runat="server" 
             ID="menu" 
-            CssClass="menu" 
-            OnMenuItemSelected="menu_MenuItemSelected">
+            CssClass="menu">
             <ext:MenuItems runat="server" ID="mainItems">
                 <ext:MenuItem runat="server" ID="file">
                     File
@@ -100,6 +99,8 @@
         <ext:Calendar 
             runat="server" 
             ID="calendarStart" 
+            OnSelectedValueChanged="calendarStart_SelectedValueChanged" 
+            OnRenderDay="calendarStart_RenderDay"
             style="width:170px;position:absolute;left:5px;top:63px;"
             CssClass="calendar" />
 
@@ -107,6 +108,8 @@
         <ext:Calendar 
             runat="server" 
             ID="calendarEnd" 
+            OnRenderDay="calendarEnd_RenderDay"
+            OnSelectedValueChanged="calendarEnd_SelectedValueChanged"
             style="width:170px;position:absolute;left:180px;top:63px;"
             CssClass="calendar" />
 
