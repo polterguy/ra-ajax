@@ -252,7 +252,7 @@
                             To check out some of our other examples click one of the links below;
                         </p>
                         <ul>
-                            <li><a href="Default.aspx">Main Ajax Samples</a></li>
+                            <li><a runat="server" href="~/">Main Ajax Samples</a></li>
                             <li><a href="Viewport-Sample.aspx">Sapphire Ajax Starter-Kit Sample (C#)</a></li>
                             <li><a href="Viewport-GridView-Sample.aspx">GridView Ajax Starter-Kit Sample (VB.NET)</a></li>
                             <li><a href="Ajax-TreeView.aspx">Ajax TreeView Sample</a></li>

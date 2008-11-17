@@ -197,15 +197,18 @@
                                         runat="server" 
                                         OnMoved="wowWnd_Moved"
                                         Caption="Wow samples" 
-                                        style="width:150px;position:absolute;z-index:1000;right:25px;top:10px;"
+                                        style="width:250px;position:absolute;z-index:1000;right:25px;top:10px;"
                                         CssClass="window">
                                         <div style="padding:5px;font-size:0.8em;">
                                             <ul>
 			                                    <li>
-			                                        <a href="Viewport-Sample.aspx">Ajax Viewport</a>
+			                                        <a href="Viewport-Calendar-Starter-Kit.aspx">Ajax Calendar Starter-Kit</a>
 			                                    </li>
 			                                    <li>
-			                                        <a href="Viewport-GridView-Sample.aspx">Ajax GridView Viewport</a>
+			                                        <a href="Viewport-Sample.aspx">Ajax Viewport Starter-Kit</a>
+			                                    </li>
+			                                    <li>
+			                                        <a href="Viewport-GridView-Sample.aspx">Ajax GridView Starter-Kit (VB.NET)</a>
 			                                    </li>
 			                                    <li>
 			                                        <a href="Ajax-TreeView.aspx">Ajax TreeView</a>
