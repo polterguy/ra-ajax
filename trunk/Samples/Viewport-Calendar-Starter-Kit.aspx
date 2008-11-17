@@ -99,9 +99,10 @@
         <ext:Calendar 
             runat="server" 
             ID="calendarStart" 
+            Caption="Start of period"
+            StartsOn="Sunday"
             OnSelectedValueChanged="calendarStart_SelectedValueChanged" 
             OnRenderDay="calendarStart_RenderDay"
-            Caption="Start of period"
             style="width:170px;position:absolute;left:5px;top:63px;"
             CssClass="calendar" />
 
@@ -109,7 +110,8 @@
         <ext:Calendar 
             runat="server" 
             ID="calendarEnd" 
-            Caption="End of period"
+            Caption="End of period" 
+            StartsOn="Sunday"
             OnRenderDay="calendarEnd_RenderDay"
             OnSelectedValueChanged="calendarEnd_SelectedValueChanged"
             style="width:170px;position:absolute;left:180px;top:63px;"
@@ -120,14 +122,14 @@
             runat="server" 
             ID="wndBottomLeft" 
             Caption="Top left"
-            style="width:345px;position:absolute;left:5px;top:222px;" 
+            style="width:345px;position:absolute;left:5px;top:238px;" 
             Movable="false" 
             Closable="false"
             CssClass="window">
             <ra:Panel 
                 runat="server" 
                 ID="pnlBottomLeft" 
-                style="height:300px;overflow:auto;">
+                style="height:284px;overflow:auto;">
                 Bottom left
             </ra:Panel>
         </ext:Window>

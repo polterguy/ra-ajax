@@ -27,7 +27,7 @@ namespace Samples
         {
             int width = Math.Max(e.Width - 359, 400);
             int height = Math.Max(e.Height - 101, 200);
-            int heightLeft = Math.Max(e.Height - 260, 50);
+            int heightLeft = Math.Max(e.Height - 276, 50);
             pnlBottomLeft.Style["height"] = heightLeft.ToString() + "px";
             wndRight.Style["width"] = width.ToString() + "px";
             pnlRight.Style["height"] = height.ToString() + "px";
@@ -65,6 +65,7 @@ namespace Samples
             {
                 e.Cell.Attributes.Add("class", "dateSelected");
             }
+            CheckToSeeIfActivity(e);
         }
 
         protected void calendarEnd_RenderDay(object sender, Calendar.RenderDayEventArgs e)
@@ -72,6 +73,23 @@ namespace Samples
             if (e.Date >= calendarStart.Value && e.Date < calendarEnd.Value)
             {
                 e.Cell.Attributes.Add("class", "dateSelected");
+            }
+            CheckToSeeIfActivity(e);
+        }
+
+        private static void CheckToSeeIfActivity(Calendar.RenderDayEventArgs e)
+        {
+            foreach (Activity idx in ActivitiesDatabase.Database)
+            {
+                if (idx.When.Date == e.Date)
+                {
+                    string cls = e.Cell.Attributes["class"];
+                    if (cls == null)
+                        cls = "";
+                    cls += " activity";
+                    e.Cell.Attributes["class"] = cls;
+                    break;
+                }
             }
         }
     }
