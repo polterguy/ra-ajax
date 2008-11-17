@@ -18,6 +18,6 @@ a { text-decoration:none; }
 
 .dateSelected { background-color:#eee; }
 
-.activity { background-image:url(dot.png); background-repeat:no-repeat; background-position:top left; }
+.activity { background-image:url(dot.png); background-repeat:no-repeat; background-position:top right; }
 
 
