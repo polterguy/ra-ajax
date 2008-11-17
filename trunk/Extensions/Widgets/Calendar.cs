@@ -126,6 +126,22 @@ namespace Ra.Extensions
             get { return _content; }
         }
 
+        /**
+         * Overrides the caption of the Calendar. The caption will normally display the "current date" unless
+         * this property is set to something else than null
+         */
+        [DefaultValue(null)]
+        public string Caption
+        {
+            get
+            {
+                if (ViewState["Caption"] == null)
+                    return null;
+                return (string)ViewState["Caption"];
+            }
+            set { ViewState["Caption"] = value; }
+        }
+
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -264,7 +280,10 @@ namespace Ra.Extensions
             _content.CssClass = cssClass + "_content calendar";
             _body.CssClass = cssClass + "_body";
             _caption.CssClass = cssClass + "_title";
-            _caption.Text = Value.ToString("dddd - dd. MMM yy", System.Globalization.CultureInfo.InvariantCulture);
+            if (Caption == null)
+                _caption.Text = Value.ToString("dddd - dd. MMM yy", System.Globalization.CultureInfo.InvariantCulture);
+            else
+                _caption.Text = Caption;
 
             // Calling base...
             base.OnPreRender(e);

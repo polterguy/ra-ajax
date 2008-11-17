@@ -36,7 +36,7 @@ namespace Samples
         protected void calendarStart_SelectedValueChanged(object sender, EventArgs e)
         {
             if (calendarStart.Value > calendarEnd.Value)
-                calendarEnd.Value = calendarStart.Value;
+                calendarEnd.Value = calendarStart.Value.AddDays(1);
             else
             {
                 // To force a re-rendering of all our calendars
@@ -49,8 +49,8 @@ namespace Samples
 
         protected void calendarEnd_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (calendarEnd.Value < calendarStart.Value)
-                calendarStart.Value = calendarEnd.Value;
+            if (calendarEnd.Value <= calendarStart.Value)
+                calendarStart.Value = calendarEnd.Value.AddDays(-1);
             else
             {
                 // To force a re-rendering of all our calendars
@@ -61,7 +61,7 @@ namespace Samples
 
         protected void calendarStart_RenderDay(object sender, Calendar.RenderDayEventArgs e)
         {
-            if (e.Date >= calendarStart.Value && e.Date <= calendarEnd.Value)
+            if (e.Date >= calendarStart.Value && e.Date < calendarEnd.Value)
             {
                 e.Cell.Attributes.Add("class", "dateSelected");
             }
@@ -69,7 +69,7 @@ namespace Samples
 
         protected void calendarEnd_RenderDay(object sender, Calendar.RenderDayEventArgs e)
         {
-            if (e.Date >= calendarStart.Value && e.Date <= calendarEnd.Value)
+            if (e.Date >= calendarStart.Value && e.Date < calendarEnd.Value)
             {
                 e.Cell.Attributes.Add("class", "dateSelected");
             }
