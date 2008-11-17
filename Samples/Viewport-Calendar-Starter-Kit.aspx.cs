@@ -9,6 +9,7 @@
 using System;
 using Ra.Widgets;
 using Ra.Extensions;
+using System.Collections.Generic;
 
 namespace Samples
 {
@@ -20,6 +21,7 @@ namespace Samples
             {
                 calendarStart.Value = DateTime.Now.Date;
                 calendarEnd.Value = DateTime.Now.AddDays(7).Date;
+                UpdateActivitiesGrid();
             }
         }
 
@@ -27,7 +29,7 @@ namespace Samples
         {
             int width = Math.Max(e.Width - 359, 400);
             int height = Math.Max(e.Height - 101, 200);
-            int heightLeft = Math.Max(e.Height - 276, 50);
+            int heightLeft = Math.Max(e.Height - 286, 50);
             pnlBottomLeft.Style["height"] = heightLeft.ToString() + "px";
             wndRight.Style["width"] = width.ToString() + "px";
             pnlRight.Style["height"] = height.ToString() + "px";
@@ -45,6 +47,7 @@ namespace Samples
 
             // To force a re-rendering of all our calendars
             calendarStart.Value = calendarStart.Value;
+            UpdateActivitiesGrid();
         }
 
         protected void calendarEnd_SelectedValueChanged(object sender, EventArgs e)
@@ -57,6 +60,27 @@ namespace Samples
                 calendarStart.Value = calendarStart.Value;
             }
             calendarEnd.Value = calendarEnd.Value;
+            UpdateActivitiesGrid();
+        }
+
+        private void UpdateActivitiesGrid()
+        {
+            string str = "";
+            str += calendarStart.Value.ToString("dddd dd. MMM yy");
+            str += " - ";
+            str += calendarEnd.Value.ToString("dddd dd. MMM yy");
+            str += " - ";
+            str += (calendarEnd.Value - calendarStart.Value).TotalDays + " days";
+            wndBottomLeft.Caption = str;
+            List<Activity> activities = new List<Activity>(ActivitiesDatabase.Database);
+            activities.RemoveAll(
+                delegate(Activity idx)
+                {
+                    return !(idx.When >= calendarStart.Value && idx.When < calendarEnd.Value);
+                });
+            grid.DataSource = activities;
+            grid.DataBind();
+            pnlBottomLeft.ReRender();
         }
 
         protected void calendarStart_RenderDay(object sender, Calendar.RenderDayEventArgs e)

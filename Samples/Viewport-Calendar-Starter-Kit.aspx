@@ -129,8 +129,51 @@
             <ra:Panel 
                 runat="server" 
                 ID="pnlBottomLeft" 
-                style="height:284px;overflow:auto;">
-                Bottom left
+                style="height:284px;overflow:auto;padding:5px;">
+                <asp:GridView 
+                    runat="server" 
+                    ID="grid" 
+                    AutoGenerateColumns="false"
+                    BackColor="White" 
+                    BorderColor="#DEDFDE" 
+                    Font-Size="0.8em"
+                    BorderStyle="None" 
+                    BorderWidth="1px" 
+                    CellPadding="4" 
+                    Width="100%"
+                    ForeColor="Black" 
+                    GridLines="Vertical">
+
+                    <FooterStyle BackColor="#CCCC99" />
+                    <RowStyle BackColor="#F7F7DE" />
+                    <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+                    <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+                    <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+                    <AlternatingRowStyle BackColor="White" />
+
+                    <Columns>
+                        <asp:TemplateField>
+                            <HeaderTemplate>
+                                Date
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <%#Eval("When", "{0:dddd dd.MMM - yy}")%>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <HeaderTemplate>
+                                Header
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <ra:LinkButton 
+                                    runat="server" 
+                                    Tooltip='<%#Eval("Body")%>'
+                                    Text='<%#Eval("Header")%>' />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+
+                </asp:GridView>
             </ra:Panel>
         </ext:Window>
 
@@ -146,8 +189,34 @@
             <ra:Panel 
                 runat="server" 
                 ID="pnlRight" 
-                style="height:300px;overflow:auto;">
-                bottom left
+                style="height:300px;overflow:auto;background-color:White;">
+                <div style="padding:15px;">
+                    <ra:Panel 
+                        runat="server" 
+                        ID="intro" 
+                        style="background:White url('media/ajax.jpg') no-repeat;">
+                        <h1>Ra-Ajax Starter-Kit for Calendar Applications</h1>
+                        <p>
+                            This is an example of how to utilize Ra-Ajax to build a Calendar Application
+                            like e.g. GCalendar or something similar. It is written in C# and would probably
+                            give you a head start if you need a calendar based application.
+                        </p>
+                        <p>
+                            As you can see to the left you can choose the period to view activities from by 
+                            changing the Start and End dates. Then the GridView to the left below the Calendars
+                            will re-bind and show whatever activities are within that period.
+                        </p>
+                        <p>
+                            Then when you click one of the activities you will get to see it's details and
+                            also edit it.
+                        </p>
+                        <p>
+                            Note that this is just a "Starter-Kit" and by far not a complete application in
+                            any ways. Think of it like 200 lines of head-start code which you can use yourself
+                            in your own applications if you need a calendar based application yourself.
+                        </p>
+                    </ra:Panel>
+                </div>
             </ra:Panel>
         </ext:Window>
 
