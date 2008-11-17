@@ -20,7 +20,7 @@ namespace Samples
             if (!IsPostBack)
             {
                 calendarStart.Value = DateTime.Now.Date;
-                calendarEnd.Value = DateTime.Now.AddDays(7).Date;
+                calendarEnd.Value = DateTime.Now.AddDays(14).Date;
                 UpdateActivitiesGrid();
 
                 // Calendar rendering logic throws if you have StartsOn defined and
