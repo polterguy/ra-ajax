@@ -101,6 +101,7 @@
             ID="calendarStart" 
             OnSelectedValueChanged="calendarStart_SelectedValueChanged" 
             OnRenderDay="calendarStart_RenderDay"
+            Caption="Start of period"
             style="width:170px;position:absolute;left:5px;top:63px;"
             CssClass="calendar" />
 
@@ -108,6 +109,7 @@
         <ext:Calendar 
             runat="server" 
             ID="calendarEnd" 
+            Caption="End of period"
             OnRenderDay="calendarEnd_RenderDay"
             OnSelectedValueChanged="calendarEnd_SelectedValueChanged"
             style="width:170px;position:absolute;left:180px;top:63px;"
