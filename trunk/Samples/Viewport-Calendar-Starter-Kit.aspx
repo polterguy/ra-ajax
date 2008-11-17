@@ -248,6 +248,19 @@
                             any ways. Think of it like 200 lines of head-start code which you can use yourself
                             in your own applications if you need a calendar based application yourself.
                         </p>
+                        <p>
+                            To check out some of our other examples click one of the links below;
+                        </p>
+                        <ul>
+                            <li><a href="Default.aspx">Main Ajax Samples</a></li>
+                            <li><a href="Viewport-Sample.aspx">Sapphire Ajax Starter-Kit Sample (C#)</a></li>
+                            <li><a href="Viewport-GridView-Sample.aspx">GridView Ajax Starter-Kit Sample (VB.NET)</a></li>
+                            <li><a href="Ajax-TreeView.aspx">Ajax TreeView Sample</a></li>
+                            <li><a href="Ajax-TabControl.aspx">Ajax TabControl Sample</a></li>
+                            <li><a href="Ajax-Calendar.aspx">Ajax Calendar Sample</a></li>
+                            <li><a href="Ajax-Wizard.aspx">Ajax Wizard Sample</a></li>
+                            <li><a href="http://ra-ajax.org">Main Ra-Ajax Website</a></li>
+                        </ul>
                     </ra:Panel>
                 </div>
             </ra:Panel>
