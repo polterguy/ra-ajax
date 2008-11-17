@@ -39,6 +39,16 @@
         <em>The above Starter-Kit is our "VB.NET Ajax GridView/DataGrid Starter-Kit" and can be seen in real life 
         <a href="http://ra-ajax.org/samples/Viewport-GridView-Sample.aspx">in our VB.NET Ajax GridView/DataGrid Starter-Kit sample</a>. This Starter-Kit is created in VB.NET</em>
     </p>
+    <p style="margin-left:auto;margin-right:auto;text-align:center;">
+        <a href="http://ra-ajax.org/samples/Viewport-Calendar-Starter-Kit.aspx">
+            <img 
+                src="media/ajax-calendar-starter-kit.jpg" 
+                alt="C# Ajax Calendar Starter-Kit" />
+        </a>
+        <br />
+        <em>The above Starter-Kit is our Ajax Calendar Starter-Kit and can be seen in real life 
+        <a href="http://ra-ajax.org/samples/Viewport-Calendar-Starter-Kit.aspx">in our Ajax Calendar Starter-Kit sample</a>. This Starter-Kit is created in C#</em>
+    </p>
     <p>
         All of our Starter-Kits are licensed as LGPL, just like the rest of Ra-Ajax, but if you're uncomfortable with 
         that then you can purchase a commercial license for any Starter-Kit you wish. This commercial license basically
