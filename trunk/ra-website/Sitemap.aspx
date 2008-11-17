@@ -42,13 +42,25 @@
                 <li>
                     <a id="A10" runat="server" href="~/Kariem.blogger" title="Kariem Ali's Blog">Kariem Ali's Blog</a>
                 </li>
+                <li>
+                    <a id="A2" runat="server" href="~/Rick.blogger" title="Rick Gibson's Blog">Rick Gibson's Blog</a>
+                </li>
             </ul>
         </li>
         <li>
             <a id="A7" runat="server" href="~/Forums/Forums.aspx" title="Ra-Ajax Forums">Ra-Ajax Forums</a>
         </li>
         <li>
-            <a id="A8" runat="server" href="~/Author.aspx" title="About Us">About Us</a>
+            <a id="A8" runat="server" href="~/Author.aspx" title="Hire Ajax Experts">Hire Ajax Experts</a>
+        </li>
+        <li>
+            <a id="A4" runat="server" href="~/Testimonials.aspx" title="Testimonials">Testimonials</a>
+        </li>
+        <li>
+            <a id="A11" runat="server" href="Starter-Kits.aspx" title="Ajax Starter-Kits">Ajax Starter-Kits - Purchase</a>
+        </li>
+        <li>
+            <a id="A12" runat="server" href="~/Donate.aspx" title="Donate to Ra-Ajax">Donate to Ra-Ajax</a>
         </li>
     </ul>
     
