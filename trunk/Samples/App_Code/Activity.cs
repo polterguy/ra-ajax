@@ -8,12 +8,20 @@ public class Activity
     private string _header;
     private string _body;
     private DateTime _when;
+    private Guid _id;
 
     public Activity(string header, string body, DateTime when)
     {
         _header = header;
         _body = body;
         _when = when;
+        _id = Guid.NewGuid();
+    }
+
+    public Guid ID
+    {
+        get { return _id; }
+        set { _id = value; }
     }
 
     public string Header
@@ -48,6 +56,8 @@ public sealed class ActivitiesDatabase
                 tmp.Add(new Activity("Sprint meeting", "Sprint talk with the rest of the team", DateTime.Now.AddDays(1)));
                 tmp.Add(new Activity("Vacation", "Starting my vacation", DateTime.Now.AddDays(7)));
                 tmp.Add(new Activity("Back from Vacation", "Coming back from my vacation", DateTime.Now.AddDays(21)));
+                tmp.Add(new Activity("New project", "Starting our new Scrum project", DateTime.Now.AddDays(24)));
+                tmp.Add(new Activity("First Sprint meeting", "First Sprin in new Scrum project", DateTime.Now.AddDays(26)));
                 HttpContext.Current.Session["ActivitiesDatabase"] = tmp;
             }
             return (List<Activity>)HttpContext.Current.Session["ActivitiesDatabase"];
