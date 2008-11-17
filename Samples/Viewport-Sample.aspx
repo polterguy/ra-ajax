@@ -133,8 +133,11 @@
                             <ext:TreeNode runat="server" ID="good">
                                 Wow samples...
                                 <ext:TreeNodes ID="TreeNodes2" runat="server" Expanded="true">
+                                    <ext:TreeNode runat="server" ID="TreeNode10">
+                                        <a href="Viewport-Calendar-Starter-Kit.aspx">Calendar Starter-Kit (C#)</a>
+                                    </ext:TreeNode>
                                     <ext:TreeNode runat="server" ID="TreeNode9">
-                                        <a href="Viewport-GridView-Sample.aspx">GridView Ajax Starter-Kit</a>
+                                        <a href="Viewport-GridView-Sample.aspx">GridView Starter-Kit (VB.NET)</a>
                                     </ext:TreeNode>
                                     <ext:TreeNode runat="server" ID="TreeNode1">
                                         <a runat="server" href="~">Main Ajax Samples</a>

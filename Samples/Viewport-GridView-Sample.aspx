@@ -140,7 +140,8 @@
                     <div style="padding:5px;">
                         <ul>
                             <li><a href="Default.aspx">Main Ajax Samples</a></li>
-                            <li><a href="Viewport-Sample.aspx">Sapphire Ajax Viewport Sample</a></li>
+                            <li><a href="Viewport-Sample.aspx">Sapphire Ajax Starter-Kit Sample (C#)</a></li>
+                            <li><a href="Viewport-Calendar-Starter-Kit.aspx">Calendar Ajax Starter-Kit Sample (C#)</a></li>
                             <li><a href="Ajax-TreeView.aspx">Ajax TreeView Sample</a></li>
                             <li><a href="Ajax-TabControl.aspx">Ajax TabControl Sample</a></li>
                             <li><a href="Ajax-Calendar.aspx">Ajax Calendar Sample</a></li>
