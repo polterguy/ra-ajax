@@ -165,8 +165,12 @@
                                 Header
                             </HeaderTemplate>
                             <ItemTemplate>
+                                <ra:HiddenField ID="HiddenField1" 
+                                    runat="server" 
+                                    Value='<%#Eval("ID") %>' />
                                 <ra:LinkButton 
                                     runat="server" 
+                                    OnClick="EditItem"
                                     Tooltip='<%#Eval("Body")%>'
                                     Text='<%#Eval("Header")%>' />
                             </ItemTemplate>
@@ -189,13 +193,42 @@
             <ra:Panel 
                 runat="server" 
                 ID="pnlRight" 
-                style="height:300px;overflow:auto;background-color:White;">
+                style="height:300px;overflow:auto;background-color:#fff;">
                 <div style="padding:15px;">
                     <ra:Panel 
                         runat="server" 
+                        ID="editPnl"
+                        style="display:none;">
+                        <ra:HiddenField 
+                            runat="server" 
+                            ID="activityId" />
+                        <h2>
+                            <ext:InPlaceEdit 
+                                runat="server" 
+                                ID="activityHeader" />
+                        </h2>
+                        <ra:TextArea 
+                            runat="server" 
+                            style="background-color:Transparent;width:50%;height:170px;border:dotted 1px #999;float:left;margin-right:10px;"
+                            ID="activityBody" />
+                        <ext:Calendar 
+                            runat="server" 
+                            ID="activityWhen" 
+                            StartsOn="Sunday"
+                            style="width:170px;float:left;"
+                            CssClass="calendar" />
+                        <ra:Button 
+                            runat="server" 
+                            ID="save" 
+                            Text="Save" 
+                            OnClick="save_Click"
+                            style="clear:both;display:block;" />
+                    </ra:Panel>
+                    <ra:Panel 
+                        runat="server" 
                         ID="intro" 
-                        style="background:White url('media/ajax.jpg') no-repeat;">
-                        <h1>Ra-Ajax Starter-Kit for Calendar Applications</h1>
+                        style="background:White url('media/ajax.jpg') no-repeat;min-height:280px;">
+                        <h1>Ra-Ajax Starter-Kit for Calendar Applications - C#</h1>
                         <p>
                             This is an example of how to utilize Ra-Ajax to build a Calendar Application
                             like e.g. GCalendar or something similar. It is written in C# and would probably
