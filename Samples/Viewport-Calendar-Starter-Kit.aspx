@@ -168,7 +168,7 @@
                                 Header
                             </HeaderTemplate>
                             <ItemTemplate>
-                                <ra:HiddenField ID="HiddenField1" 
+                                <ra:HiddenField 
                                     runat="server" 
                                     Value='<%#Eval("ID") %>' />
                                 <ra:LinkButton 
@@ -178,10 +178,31 @@
                                     Text='<%#Eval("Header")%>' />
                             </ItemTemplate>
                         </asp:TemplateField>
+                        <asp:TemplateField>
+                            <HeaderTemplate>
+                                Delete
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <ra:HiddenField 
+                                    runat="server" 
+                                    Value='<%#Eval("ID") %>' />
+                                <ra:LinkButton 
+                                    runat="server" 
+                                    OnClick="DeleteItem"
+                                    Tooltip='<%#Eval("Body")%>'
+                                    Text="Delete" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
 
                 </asp:GridView>
             </ra:Panel>
+            <ra:Button 
+                runat="server" 
+                Text="Create new Activity..."
+                style="height:34px;width:100%;"
+                OnClick="create_Click"
+                ID="create" />
         </ext:Window>
 
         <!-- Right - Main Content -->
@@ -196,7 +217,7 @@
             <ra:Panel 
                 runat="server" 
                 ID="pnlRight" 
-                style="height:300px;overflow:auto;background-color:#fff;">
+                style="height:300px;overflow:auto;">
                 <div style="padding:15px;">
                     <ra:Panel 
                         runat="server" 
@@ -272,6 +293,55 @@
                     </ra:Panel>
                 </div>
             </ra:Panel>
+        </ext:Window>
+
+        <!-- Create new activity Window -->
+        <ext:Window 
+            runat="server" 
+            CssClass="window" 
+            Visible="false"
+            Caption="Create new Activity"
+            style="width:600px;position:relative;top:25px;margin-left:auto;margin-right:auto;z-index:5000;"
+            ID="createWindow">
+            <div style="height:220px;margin:15px;position:relative;">
+                <div style="float:left;width:65%;">
+                    <div 
+                        style="float:left;width:20%;height:25px;text-align:right;padding-right:5px;">
+                        Header
+                    </div>
+                    <div style="float:left;width:70%;height:25px;">
+                        <ra:TextBox 
+                            runat="server" 
+                            style="width:100%;"
+                            ID="createHeader" />
+                    </div>
+                    <div 
+                        style="clear:both;float:left;width:20%;height:150px;text-align:right;vertical-align:top;padding-right:5px;">
+                        Body
+                    </div>
+                    <div style="float:left;width:70%;height:150px;">
+                        <ra:TextArea 
+                            runat="server" 
+                            style="width:100%;height:148px;border:dotted 1px #999;margin-right:10px;"
+                            ID="createBody" />
+                    </div>
+                </div>
+                <div style="float:left;width:34%;">
+                    <ext:Calendar 
+                        runat="server" 
+                        ID="createDate" 
+                        StartsOn="Sunday"
+                        style="width:170px;"
+                        CssClass="calendar" />
+                </div>
+                <ra:Button 
+                    runat="server" 
+                    ID="createBtn" 
+                    OnClick="createBtn_Click"
+                    style="position:absolute;bottom:0;right:0;"
+                    Text="Save" />
+            </div>
+            <ra:BehaviorObscurable runat="server" ID="obscurer" ZIndex="4999" />
         </ext:Window>
 
     </form>

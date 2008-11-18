@@ -89,7 +89,7 @@ namespace Ra.Extensions
          */
         public DateTime Value
         {
-            get { return ViewState["Value"] == null ? DateTime.MinValue : (DateTime)ViewState["Value"]; }
+            get { return ViewState["Value"] == null ? DateTime.Now.Date : (DateTime)ViewState["Value"]; }
             set
             {
                 ViewState["Value"] = value;
