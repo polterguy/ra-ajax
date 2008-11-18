@@ -112,7 +112,6 @@ Ra.Control.prototype = {
     if( this.options.select ) {
       this.element.select();
     }
-
     // Registering control
     Ra.Control._controls.push(this);
 
