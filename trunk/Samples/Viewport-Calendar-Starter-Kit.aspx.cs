@@ -10,6 +10,7 @@ using System;
 using Ra.Widgets;
 using Ra.Extensions;
 using System.Collections.Generic;
+using Ra;
 
 namespace Samples
 {
@@ -69,6 +70,16 @@ namespace Samples
 
         private void UpdateActivitiesGrid()
         {
+            // Resetting the "current editing item"
+            grid.SelectedIndex = -1;
+
+            if (editPnl.Style["display"] != "none")
+            {
+                new EffectFadeOut(editPnl, 500)
+                    .ChainThese(new EffectFadeIn(intro, 500))
+                    .Render();
+            }
+
             string str = "";
             str += calendarStart.Value.ToString("dddd dd. MMM yy");
             str += " - ";
@@ -142,6 +153,13 @@ namespace Samples
 
             // Finding the Activity which was clicked
             Guid id = new Guid(((sender as LinkButton).Parent.Controls[1] as HiddenField).Value);
+
+            // Setting the BG color of the current editing item in our GridView...
+            int index = ((sender as LinkButton).Parent.Parent as System.Web.UI.WebControls.GridViewRow).RowIndex;
+            grid.SelectedIndex = index;
+            pnlBottomLeft.ReRender();
+
+            // Finding our activity
             Activity a = ActivitiesDatabase.Database.Find(
                 delegate(Activity idx)
                 {
