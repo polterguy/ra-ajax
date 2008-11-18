@@ -20,9 +20,9 @@ namespace Ra.Extensions
      * Label control which enables editing when clicked
      */
     [ASP.ToolboxData("<{0}:InPlaceEdit runat=server />")]
-    public class InPlaceEdit : Panel, ASP.INamingContainer
+    public class InPlaceEdit : Label, ASP.INamingContainer
     {
-        private LinkButton _link = new LinkButton();
+        private Label _link = new Label();
         private TextBox _text = new TextBox();
 
         /**

@@ -52,7 +52,7 @@ public sealed class ActivitiesDatabase
             if (HttpContext.Current.Session["ActivitiesDatabase"] == null)
             {
                 List<Activity> tmp = new List<Activity>();
-                tmp.Add(new Activity("Deliver projects", "Delivering the current project to the customer and talk about futures", DateTime.Now.AddDays(1)));
+                tmp.Add(new Activity("Deliver project", "Delivering the current project to the customer and talk about futures", DateTime.Now.AddDays(1)));
                 tmp.Add(new Activity("Meeting", "Meeting with the rest of the team - organize my vacation - delegate responsibilities...", DateTime.Now.AddDays(3)));
                 tmp.Add(new Activity("Vacation", "Starting my vacation", DateTime.Now.AddDays(7)));
                 tmp.Add(new Activity("Back from Vacation", "Coming back from my vacation", DateTime.Now.AddDays(21)));

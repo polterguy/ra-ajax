@@ -18,7 +18,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Ra-Ajax Calendar Starter-Kit</title>
+    <title>Ra-Ajax Calendar Starter-Kit Sample</title>
     <link href="media/skins/Sapphire/Sapphire-0.8.1.css" rel="stylesheet" type="text/css" />
     <link href="media/Calendar-0.8.1.css" rel="stylesheet" type="text/css" />
 </head>
@@ -36,7 +36,10 @@
             runat="server" 
             ID="pnlStatus" 
             CssClass="status">
-            Kickstart Your Web Apps with a <strong>Ra-Ajax Starter-Kit</strong>
+            <ra:Label 
+                runat="server" 
+                ID="status" 
+                Text="Kickstart Your Web Apps with a <strong>Ra-Ajax Starter-Kit</strong>" />
         </ra:Panel>
 
         <!-- Menu -->
@@ -204,7 +207,8 @@
                             ID="activityId" />
                         <ext:InPlaceEdit 
                             runat="server"
-                            style="font-size:1.6em;"
+                            Tag="h2"
+                            style="cursor:pointer;"
                             ID="activityHeader" />
                         <ra:TextArea 
                             runat="server" 
@@ -216,12 +220,17 @@
                             StartsOn="Sunday"
                             style="width:170px;float:left;"
                             CssClass="calendar" />
+                        <br style="clear:both;" />
                         <ra:Button 
                             runat="server" 
                             ID="save" 
                             Text="Save" 
-                            OnClick="save_Click"
-                            style="clear:both;display:block;" />
+                            OnClick="save_Click" />
+                        <ra:Button 
+                            runat="server" 
+                            ID="close" 
+                            Text="Close" 
+                            OnClick="close_Click" />
                     </ra:Panel>
                     <ra:Panel 
                         runat="server" 
