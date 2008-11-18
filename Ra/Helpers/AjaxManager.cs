@@ -196,6 +196,8 @@ namespace Ra
                 }
                 else
                 {
+                    CurrentPage.LoadComplete += CurrentPage_LoadComplete_NO_AJAX;
+
                     // Checking to see if the Filtering logic has been supressed
                     if (!SupressAjaxFilters)
                         CurrentPage.Response.Filter = new PostbackFilter(CurrentPage.Response.Filter);
@@ -203,11 +205,21 @@ namespace Ra
             }
         }
 
+        void CurrentPage_LoadComplete_NO_AJAX(object sender, EventArgs e)
+        {
+            // Turning OFF form values caching...
+            // Unless we do this then FireFox will RETAIN its OLD values for form elements
+            // including the ViewState which practically will completely break the back
+            // button in addition to breaking down all Ajax when clicking back, forward or refresh
+            // in FireFox...
+            CurrentPage.Form.Attributes.Add("autocomplete", "off");
+        }
+
         private void CurrentPage_LoadComplete(object sender, EventArgs e)
         {
             // Finding the Control which initiated the request
             string idOfControl = CurrentPage.Request.Params["__RA_CONTROL"];
-            
+
             // Checking to see if this is a "non-Control" callback...
             if (string.IsNullOrEmpty(idOfControl))
             {

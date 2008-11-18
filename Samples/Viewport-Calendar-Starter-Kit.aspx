@@ -202,11 +202,10 @@
                         <ra:HiddenField 
                             runat="server" 
                             ID="activityId" />
-                        <h2>
-                            <ext:InPlaceEdit 
-                                runat="server" 
-                                ID="activityHeader" />
-                        </h2>
+                        <ext:InPlaceEdit 
+                            runat="server"
+                            style="font-size:1.6em;"
+                            ID="activityHeader" />
                         <ra:TextArea 
                             runat="server" 
                             style="background-color:Transparent;width:50%;height:170px;border:dotted 1px #999;float:left;margin-right:10px;"
