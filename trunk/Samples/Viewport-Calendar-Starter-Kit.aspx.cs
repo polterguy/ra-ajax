@@ -34,7 +34,7 @@ namespace Samples
         {
             int width = Math.Max(e.Width - 359, 400);
             int height = Math.Max(e.Height - 101, 200);
-            int heightLeft = Math.Max(e.Height - 286, 50);
+            int heightLeft = Math.Max(e.Height - 320, 50);
             pnlBottomLeft.Style["height"] = heightLeft.ToString() + "px";
             wndRight.Style["width"] = width.ToString() + "px";
             pnlRight.Style["height"] = height.ToString() + "px";
@@ -137,6 +137,26 @@ namespace Samples
             }
         }
 
+        protected void create_Click(object sender, EventArgs e)
+        {
+            createWindow.Visible = true;
+            createHeader.Text = "Header of activity";
+            createHeader.Select();
+            createHeader.Focus();
+        }
+
+        protected void createBtn_Click(object sender, EventArgs e)
+        {
+            createWindow.Visible = false;
+            Activity a = new Activity(createHeader.Text, createBody.Text, createDate.Value);
+            ActivitiesDatabase.Database.Add(a);
+
+            // Making sure our Calendar controls are being re-rendered...
+            calendarEnd.Value = calendarEnd.Value;
+            calendarStart.Value = calendarStart.Value;
+            UpdateActivitiesGrid();
+        }
+
         protected void EditItem(object sender, EventArgs e)
         {
             // Running effects...
@@ -173,6 +193,32 @@ namespace Samples
             activityBody.Focus();
             activityWhen.Value = a.When;
             activityId.Value = a.ID.ToString();
+        }
+
+        protected void DeleteItem(object sender, EventArgs e)
+        {
+            // Running effects...
+            if (editPnl.Style["display"] != "none")
+            {
+                new EffectFadeOut(editPnl, 500)
+                    .ChainThese(new EffectFadeIn(intro, 500))
+                    .Render();
+            }
+            new EffectHighlight(pnlBottomLeft, 500).Render();
+
+            // Finding the Activity which was clicked
+            Guid id = new Guid(((sender as LinkButton).Parent.Controls[1] as HiddenField).Value);
+
+            // Finding our activity
+            ActivitiesDatabase.Database.RemoveAll(
+                delegate(Activity idx)
+                {
+                    return idx.ID == id;
+                });
+            grid.SelectedIndex = -1;
+            calendarEnd.Value = calendarEnd.Value;
+            calendarStart.Value = calendarStart.Value;
+            UpdateActivitiesGrid();
         }
 
         protected void save_Click(object sender, EventArgs e)
