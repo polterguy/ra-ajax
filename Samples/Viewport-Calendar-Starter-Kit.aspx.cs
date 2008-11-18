@@ -197,6 +197,20 @@ namespace Samples
             // Making sure we're re-rendering our Calendars
             calendarEnd.Value = calendarEnd.Value;
             calendarStart.Value = calendarStart.Value;
+
+            status.Text = "Updating item";
+            new EffectHighlightText(status, 500).Render();
+        }
+
+        protected void close_Click(object sender, EventArgs e)
+        {
+            // Updating to remove the EditIndex bugger...
+            UpdateActivitiesGrid();
+
+            // Some nice effects...
+            new EffectFadeOut(editPnl, 500)
+                .ChainThese(new EffectFadeIn(intro, 500))
+                .Render();
         }
     }
 }

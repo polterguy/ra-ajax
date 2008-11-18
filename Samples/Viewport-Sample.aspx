@@ -127,8 +127,7 @@
                         OnSelectedNodeChanged="tree_SelectedNodeChanged"
                         CssClass="tree"
                         Expansion="SingleClickPlusSign">
-                        
-                        
+
                         <ext:TreeNodes ID="TreeNodes1" runat="server" Expanded="true">
                             <ext:TreeNode runat="server" ID="good">
                                 Wow samples...
