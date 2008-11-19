@@ -25,26 +25,24 @@
         <a href="Viewport-Calendar-Starter-Kit.aspx" class="links">
             <span class="image1">&nbsp;</span>
             <span class="header">Ajax Calendar Starter-Kit</span>
-            <span class="text">Demonstrates how to create an Ajax Calendar Application in addition to being an "Ajax Starter-Kit" for your own projects. <br />Written in C#...<br />$29 for a commercial license...</span>
+            <span class="text">Demonstrates how to create an Ajax Calendar Application in addition to being an "Ajax Starter-Kit" for your own projects. <br />Written in C#...<br /><strong>$29 for a commercial license...</strong></span>
         </a>
     </div>
     <div class="thumbs">
         <a href="Viewport-Sample.aspx" class="links">
             <span class="image2">&nbsp;</span>
             <span class="header">Ajax Viewport Starter-Kit</span>
-            <span class="text">Demonstrates how to create an Ajax Viewport Application with a TreeView and an Ajax TabControl in addition to being an "Ajax Starter-Kit" for your own projects. <br />Written in C#...<br />$29 for a commercial license...</span>
+            <span class="text">Demonstrates how to create an Ajax Viewport Application with a TreeView and an Ajax TabControl in addition to being an "Ajax Starter-Kit" for your own projects. <br />Written in C#...<br /><strong>$29 for a commercial license...</strong></span>
         </a>
     </div>
     <div class="thumbs">
         <a href="Viewport-GridView-Sample.aspx" class="links">
             <span class="image3">&nbsp;</span>
             <span class="header">Ajax GridView/DataGrid Starter-Kit</span>
-            <span class="text">Demonstrates how to create an Ajax GridView/DataGrid Application in addition to being an "Ajax Starter-Kit" for your own projects. <br />Written in VB.NET...<br />$29 for a commercial license...</span>
+            <span class="text">Demonstrates how to create an Ajax GridView/DataGrid Application in addition to being an "Ajax Starter-Kit" for your own projects. <br />Written in VB.NET...<br /><strong>$29 for a commercial license...</strong></span>
         </a>
     </div>
-    <br style="clear:both;" />
-
-    <h2>Hello World Ajax Application</h2>
+    <h2 style="clear:both;">Hello World Ajax Application</h2>
     <p>
         Now that we have your attention you can try out our <em>"Hello World"</em> Ajax application below.
         Type something into the TextBox below and click Submit...

@@ -19,11 +19,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
     <head runat="server">
         <title>Untitled Page</title>
-        <link runat="server" id="includeWhite" href="media/skins/white/white-0.8.1.css" rel="stylesheet" type="text/css" />
-        <link runat="server" id="includeAlphacube" href="media/skins/alphacube/alphacube-0.8.1.css" rel="stylesheet" type="text/css" />
-        <link runat="server" id="includeMac" href="media/skins/mac/mac-0.8.1.css" rel="stylesheet" type="text/css" />
-        <link runat="server" id="includeSpread" href="media/skins/spread/spread-0.8.1.css" rel="stylesheet" type="text/css" />
-        <link runat="server" id="includeSapphire" href="media/skins/Sapphire/Sapphire-0.8.1.css" rel="stylesheet" type="text/css" />
+        <link runat="server" id="includeSteel" href="media/skins/steel/steel-0.8.4.css" rel="stylesheet" type="text/css" />
+        <link runat="server" id="includeAlphacube" href="media/skins/alphacube/alphacube-0.8.4.css" rel="stylesheet" type="text/css" />
+        <link runat="server" id="includeWhite" href="media/skins/white/white-0.8.4.css" rel="stylesheet" type="text/css" />
+        <link runat="server" id="includeMac" href="media/skins/mac/mac-0.8.4.css" rel="stylesheet" type="text/css" />
+        <link runat="server" id="includeSpread" href="media/skins/spread/spread-0.8.4.css" rel="stylesheet" type="text/css" />
+        <link runat="server" id="includeSapphire" href="media/skins/Sapphire/Sapphire-0.8.4.css" rel="stylesheet" type="text/css" />
         <link href="media/MainStyles-0.8.4.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
@@ -184,11 +185,12 @@
                                                 ID="chooseSkin" 
                                                 AutoPostBack="true" 
                                                 OnSelectedIndexChanged="chooseSkin_SelectedIndexChanged">
+                                                <asp:ListItem Text="Steel" />
+                                                <asp:ListItem Text="Sapphire" />
                                                 <asp:ListItem Text="Alphacube" />
                                                 <asp:ListItem Text="White" />
                                                 <asp:ListItem Text="Mac OS X" />
                                                 <asp:ListItem Text="Spread" />
-                                                <asp:ListItem Text="Sapphire" />
                                             </asp:DropDownList>
                                         </p>
                                     </div>
