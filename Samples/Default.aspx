@@ -16,16 +16,36 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ra-Ajax Samples</h1>
+    <h1>Ra-Ajax Samples - "Get it" in 15 seconds</h1>
     <p>
-        Welcome to the main samples for Ra-Ajax. These samples are written in such a way that it makes
-        a lot more sense to read them <em>sequentially</em>. This means that you should start at the top with the 
-        "Samples Start Page" (the page you're reading) and work your way down as you read on. 
-        Later on, you can go directly to a specific sample page for reference purposes. 
+        Ra-Ajax is an Open Source and Free of Charge Ajax Library for ASP.NET. Below are our three 
+        most proud Ajax Examples which will help you "get it" in less than a minute.
     </p>
+    <p style="text-align:center;font-size:0.9em;">
+        <a href="Viewport-Calendar-Starter-Kit.aspx" style="margin-left:auto;margin-right:auto;border:dotted 1px #ddd;display:block;width:400px;padding:15px;">
+            <span style="font-size:1.3em;padding-bottom:10px;display:block;">Ajax Calendar Starter-Kit</span>
+            <span style="margin-left:auto;margin-right:auto;background:Transparent url(media/ajax-starter-kits.jpg) no-repeat -377px 0;display:block;width:188px;height:150px;">&nbsp;</span>
+            <span style="padding-top:10px;display:block;">Demonstrates how to create an Ajax Calendar Application in addition to being an "Ajax Starter-Kit" for your own projects. <br />Written in C#...</span>
+        </a>
+    </p>
+    <p style="text-align:center;">
+        <a href="Viewport-Sample.aspx" style="margin-left:auto;margin-right:auto;border:dotted 1px #ddd;display:block;width:400px;padding:15px;">
+            <span style="font-size:1.3em;padding-bottom:10px;display:block;">Ajax Viewport Starter-Kit</span>
+            <span style="margin-left:auto;margin-right:auto;background:Transparent url(media/ajax-starter-kits.jpg) no-repeat 0 0;display:block;width:188px;height:150px;">&nbsp;</span>
+            <span style="padding-top:10px;display:block;">Demonstrates how to create an Ajax Viewport Application with a TreeView and an Ajax TabControl in addition to being an "Ajax Starter-Kit" for your own projects. <br />Written in C#...</span>
+        </a>
+    </p>
+    <p style="text-align:center;">
+        <a href="Viewport-GridView-Sample.aspx" style="margin-left:auto;margin-right:auto;border:dotted 1px #ddd;display:block;width:400px;padding:15px;">
+            <span style="font-size:1.3em;padding-bottom:10px;display:block;">Ajax GridView/DataGrid Starter-Kit</span>
+            <span style="margin-left:auto;margin-right:auto;background:Transparent url(media/ajax-starter-kits.jpg) no-repeat -188px 0;display:block;width:188px;height:150px;">&nbsp;</span>
+            <span style="padding-top:10px;display:block;">Demonstrates how to create an Ajax GridView/DataGrid Application in addition to being an "Ajax Starter-Kit" for your own projects. <br />Written in VB.NET...</span>
+        </a>
+    </p>
+    <h2>Hello World Ajax Application</h2>
     <p>
-        Here we start with the
-        <em>Hello World</em> application. Type your name into the textbox and click the Submit button.
+        Now that we have your attention you can try out our <em>"Hello World"</em> Ajax application below.
+        Type something into the TextBox below and click Submit...
     </p>
     <p>
         <ra:TextBox 
@@ -52,7 +72,7 @@
         <a rel="nofollow" href="http://anthemdotnet.com/">Anthem.Net</a> in that you can run pretty advanced Ajax 
         functionality without being forced into writing JavaScript at all. Though there is one crucial 
         difference between Ra-Ajax and most other Ajax Frameworks - Ra-Ajax uses 
-        <a rel="nofollow" href="http://weblogs.asp.net/despos/archive/2007/09/19/partial-rendering-misses-ajax-architectural-points.aspx">Partial Rendering</a>
+        <a href="http://weblogs.asp.net/despos/archive/2007/09/19/partial-rendering-misses-ajax-architectural-points.aspx">Partial Rendering</a>
         as seldom as possible but relies instead on sending changes back to the client from the server
         as <a rel="nofollow" href="http://www.json.org/">JSON</a> which then again is mapped towards functions on the 
         Client Side JavaScript. Only when absolutely neccessary Ra-Ajax will actually resort to Partial 
@@ -66,6 +86,9 @@
     <p>
         The above is the JSON sent from the server to the label on the client side to update the text value
         of the label.
+    </p>
+    <p>
+        <em>Partial Rendering</em> is the way ASP.NET AJAX works and Partial Rendering is <strong>bad</strong>!
     </p>
     <h2>Why not just use the far easier Partial Rendering method?</h2>
     <p>
@@ -208,6 +231,12 @@
         like browser compatibility, JavaScript bugs, security issues and so on. Instead you could focus all of your 
         energy on your <em>domain problems</em> instead of having to fiddle with the "Assembly Programming Language
         of the 21st Century"...
+    </p>
+    <p>
+        PS!<br />
+        These samples are written so that they make a lot of sense to read for reference purposes in a sequential 
+        manner. Meaning you can just read every piece of text on all our samples and then click the link at the bottom
+        everytime you finish a page. If you're ready to do this then click the link below to go to our next Ajax Sample.
     </p>
     <a href="Flexible.aspx">On to "Flexible Ajax Event System"...</a>
 </asp:Content>
