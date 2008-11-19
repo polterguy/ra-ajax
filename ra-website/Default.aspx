@@ -46,7 +46,7 @@
         <a href="http://ra-ajax.org/samples/Viewport-Sample.aspx" class="links">
             <span class="image2">&nbsp;</span>
             <span class="header">Ajax Viewport Starter-Kit</span>
-            <span class="text">Demonstrates how to create an Ajax Viewport Application with a TreeView and an Ajax TabControl in addition to being an "Ajax Starter-Kit" for your own projects.</span>
+            <span class="text">Demonstrates how to create an Ajax Viewport Application with a TreeView and an Ajax TabControl in addition to being an "Ajax Starter-Kit" for your own projects. <br />Written in C#...</span>
         </a>
     </div>
     <div class="thumbs">
