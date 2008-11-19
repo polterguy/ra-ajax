@@ -19,6 +19,7 @@ namespace Samples
         protected void Page_Load(object sender, EventArgs e)
         {
             // Defaulting "alphacube" skin to be visible...
+            includeAlphacube.Visible = false;
             includeWhite.Visible = false;
             includeMac.Visible = false;
             includeSpread.Visible = false;
@@ -57,7 +58,16 @@ namespace Samples
         {
             switch (chooseSkin.SelectedItem.Text)
             {
+                case "Steel":
+                    includeSteel.Visible = true;
+                    includeWhite.Visible = false;
+                    includeAlphacube.Visible = false;
+                    includeMac.Visible = false;
+                    includeSpread.Visible = false;
+                    includeSapphire.Visible = false;
+                    break;
                 case "Alphacube":
+                    includeSteel.Visible = false;
                     includeWhite.Visible = false;
                     includeAlphacube.Visible = true;
                     includeMac.Visible = false;
@@ -65,6 +75,7 @@ namespace Samples
                     includeSapphire.Visible = false;
                     break;
                 case "White":
+                    includeSteel.Visible = false;
                     includeWhite.Visible = true;
                     includeAlphacube.Visible = false;
                     includeMac.Visible = false;
@@ -72,6 +83,7 @@ namespace Samples
                     includeSapphire.Visible = false;
                     break;
                 case "Mac OS X":
+                    includeSteel.Visible = false;
                     includeWhite.Visible = false;
                     includeAlphacube.Visible = false;
                     includeMac.Visible = true;
@@ -79,6 +91,7 @@ namespace Samples
                     includeSapphire.Visible = false;
                     break;
                 case "Spread":
+                    includeSteel.Visible = false;
                     includeWhite.Visible = false;
                     includeAlphacube.Visible = false;
                     includeMac.Visible = false;
@@ -86,6 +99,7 @@ namespace Samples
                     includeSapphire.Visible = false;
                     break;
                 case "Sapphire":
+                    includeSteel.Visible = false;
                     includeWhite.Visible = false;
                     includeAlphacube.Visible = false;
                     includeMac.Visible = false;
