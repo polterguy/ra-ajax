@@ -221,6 +221,9 @@ namespace Ra
             // Finding the Control which initiated the request
             string idOfControl = CurrentPage.Request.Params["__RA_CONTROL"];
 
+            // Setting Response Content-Type to JavaScript
+            CurrentPage.Response.ContentType = "text/javascript";
+
             // Checking to see if this is a "non-Control" callback...
             if (string.IsNullOrEmpty(idOfControl))
             {

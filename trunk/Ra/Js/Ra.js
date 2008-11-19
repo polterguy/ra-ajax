@@ -394,7 +394,7 @@ Ra.XHR.prototype = {
 
     // Opening transport and setting headers
     this.xhr.open('POST', this.url, true);
-    this.xhr.setRequestHeader('Accept', 'text/javascript, text/html, application/xml, text/xml, */*');
+    this.xhr.setRequestHeader('Accept', 'text/javascript');
     this.xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
 
     // Setting our callback function for the ready state changed event
