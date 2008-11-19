@@ -114,7 +114,7 @@ namespace Samples
 
         protected void get_huge(object sender, EventArgs e)
         {
-            for (int idx = 0; idx < 500; idx++)
+            for (int idx = 0; idx < 200; idx++)
             {
                 TreeNode t = new TreeNode();
                 t.EnableViewState = false;
