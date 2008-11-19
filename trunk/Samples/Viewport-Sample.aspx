@@ -312,6 +312,13 @@
                                     work towards other skins. Especially if that other skin have different size
                                     of the borders and such for the Ajax Windows, Ajax TabControls etc...
                                 </p>
+                                <p>
+                                    <strong>
+                                        A proprietary license (Commercial License) for this Ajax Starter-Kit can be 
+                                        purchased for $29 at our 
+                                        <a href="http://ra-ajax.org/Starter-Kits.aspx">Ajax Starter-Kits shop</a>.
+                                    </strong>
+                                </p>
                             </ext:TabView>
                             <ext:TabView 
                                 Caption="Tab 2" 

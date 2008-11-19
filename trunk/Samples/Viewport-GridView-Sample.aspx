@@ -248,6 +248,13 @@
                             </Columns>
                         </asp:GridView>
                     </ra:Panel>
+                    <p style="padding:10px;">
+                        <strong>
+                            A proprietary license (Commercial License) for this Ajax Starter-Kit can be 
+                            purchased for $29 at our 
+                            <a href="http://ra-ajax.org/Starter-Kits.aspx">Ajax Starter-Kits shop</a>.
+                        </strong>
+                    </p>
                 </ra:Panel>
             </ext:Window>
         </ra:Panel>

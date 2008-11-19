@@ -278,6 +278,13 @@
                             in your own applications if you need a calendar based application yourself.
                         </p>
                         <p>
+                            <strong>
+                                A proprietary license (Commercial License) for this Ajax Starter-Kit can be 
+                                purchased for $29 at our 
+                                <a href="http://ra-ajax.org/Starter-Kits.aspx">Ajax Starter-Kits shop</a>.
+                            </strong>
+                        </p>
+                        <p>
                             To check out some of our other examples click one of the links below;
                         </p>
                         <ul>
