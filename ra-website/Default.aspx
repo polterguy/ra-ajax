@@ -91,5 +91,24 @@
         stateful client pattern which makes it possible for Ra-Ajax to not rely at all on Partial Rendering.
         <strong>This makes you extremely productive</strong>.
     </p>
+    <h2>Leave your troubles behind</h2>
+    <p>
+        Compared to other Ajax Frameworks, Ra-Ajax will feel like a miracle. In fact, forget everything 
+        you think you know about Ajax. Ra-Ajax changes the whole ball game. With Ra-Ajax you can deliver
+        web applications before your competitors have even finished up deciding which JavaScript frameworks 
+        to us. With Ra-Ajax your apps will run on everything, including your cousin's toaster - if it has
+        a browser. With Ra-Ajax you can actually claim your life back - imagine an Ajax Framework with a 
+        <em>"see your family again guarantee"</em>. In fact when your children grows up Ra-Ajax will be
+        the reason why you were able to be there for them since it makes you deliver in a fraction of the 
+        time any other Ajax Framework will let you deliver in.
+    </p>
+    <h2>Satisfaction guaranteed!</h2>
+    <p>
+        In fact we're so sure of that Ra-Ajax will completely change your life that if you 
+        <a href="http://ra-ajax.org/Starter-Kits.aspx">purchase one of our commercial Starter-Kits</a> 
+        and you any time before 1 year have passed are for any reasons not satisfied we will 
+        give you all your money back - AND let you keep using the Starter-Kit for free under the 
+        commercial license terms. No questions asked!
+    </p>
 </asp:Content>
 
