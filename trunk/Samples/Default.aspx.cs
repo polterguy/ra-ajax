@@ -13,15 +13,6 @@ namespace Samples
 {
     public partial class _Default : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            if (!IsPostBack)
-            {
-                name.Focus();
-                name.Select();
-            }
-        }
-
         protected void submit_Click(object sender, EventArgs e)
         {
             string gn = string.IsNullOrEmpty(name.Text.Trim()) ? "stranger" : name.Text;

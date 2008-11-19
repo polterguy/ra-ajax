@@ -196,7 +196,7 @@
                                         ID="wowWnd" 
                                         runat="server" 
                                         OnMoved="wowWnd_Moved"
-                                        Caption="Wow samples" 
+                                        Caption="Ajax Starter-Kits" 
                                         style="width:250px;position:absolute;z-index:1000;right:25px;top:10px;"
                                         CssClass="window">
                                         <div style="padding:5px;font-size:0.8em;">
@@ -209,24 +209,6 @@
 			                                    </li>
 			                                    <li>
 			                                        <a href="Viewport-GridView-Sample.aspx">Ajax GridView Starter-Kit (VB.NET)</a>
-			                                    </li>
-			                                    <li>
-			                                        <a href="Ajax-TreeView.aspx">Ajax TreeView</a>
-			                                    </li>
-		                                        <li>
-		                                            <a href="Ajax-AutoCompleter.aspx">Ajax AutoCompleter</a>
-		                                        </li>
-			                                    <li>
-			                                        <a href="Ajax-TabControl.aspx">Ajax TabControl</a>
-			                                    </li>
-			                                    <li>
-			                                        <a href="Ajax-Window.aspx">Ajax Window</a>
-			                                    </li>
-			                                    <li>
-			                                        <a href="Ajax-Calendar.aspx">Ajax Calendar</a>
-			                                    </li>
-			                                    <li>
-			                                        <a href="Ajax-Wizard.aspx">Ajax Wizard</a>
 			                                    </li>
                                             </ul>
                                         </div>
