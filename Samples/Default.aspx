@@ -21,25 +21,25 @@
         Ra-Ajax is an Open Source and Free of Charge Ajax Library for ASP.NET. Below are our three 
         most proud Ajax Examples which will help you "get it" in less than a minute.
     </p>
-    <p style="text-align:center;font-size:0.9em;">
-        <a href="Viewport-Calendar-Starter-Kit.aspx" style="margin-left:auto;margin-right:auto;border:dotted 1px #ddd;display:block;width:400px;padding:15px;">
-            <span style="font-size:1.3em;padding-bottom:10px;display:block;">Ajax Calendar Starter-Kit</span>
-            <span style="margin-left:auto;margin-right:auto;background:Transparent url(media/ajax-starter-kits.jpg) no-repeat -377px 0;display:block;width:188px;height:150px;">&nbsp;</span>
-            <span style="padding-top:10px;display:block;">Demonstrates how to create an Ajax Calendar Application in addition to being an "Ajax Starter-Kit" for your own projects. <br />Written in C#...</span>
+    <p class="thumbs">
+        <a href="Viewport-Calendar-Starter-Kit.aspx" class="links">
+            <span class="header">Ajax Calendar Starter-Kit</span>
+            <span class="image1">&nbsp;</span>
+            <span class="text">Demonstrates how to create an Ajax Calendar Application in addition to being an "Ajax Starter-Kit" for your own projects. <br />Written in C#...</span>
         </a>
     </p>
-    <p style="text-align:center;">
-        <a href="Viewport-Sample.aspx" style="margin-left:auto;margin-right:auto;border:dotted 1px #ddd;display:block;width:400px;padding:15px;">
-            <span style="font-size:1.3em;padding-bottom:10px;display:block;">Ajax Viewport Starter-Kit</span>
-            <span style="margin-left:auto;margin-right:auto;background:Transparent url(media/ajax-starter-kits.jpg) no-repeat 0 0;display:block;width:188px;height:150px;">&nbsp;</span>
-            <span style="padding-top:10px;display:block;">Demonstrates how to create an Ajax Viewport Application with a TreeView and an Ajax TabControl in addition to being an "Ajax Starter-Kit" for your own projects. <br />Written in C#...</span>
+    <p class="thumbs">
+        <a href="Viewport-Sample.aspx" class="links">
+            <span class="header">Ajax Viewport Starter-Kit</span>
+            <span class="image2">&nbsp;</span>
+            <span class="text">Demonstrates how to create an Ajax Viewport Application with a TreeView and an Ajax TabControl in addition to being an "Ajax Starter-Kit" for your own projects. <br />Written in C#...</span>
         </a>
     </p>
-    <p style="text-align:center;">
-        <a href="Viewport-GridView-Sample.aspx" style="margin-left:auto;margin-right:auto;border:dotted 1px #ddd;display:block;width:400px;padding:15px;">
-            <span style="font-size:1.3em;padding-bottom:10px;display:block;">Ajax GridView/DataGrid Starter-Kit</span>
-            <span style="margin-left:auto;margin-right:auto;background:Transparent url(media/ajax-starter-kits.jpg) no-repeat -188px 0;display:block;width:188px;height:150px;">&nbsp;</span>
-            <span style="padding-top:10px;display:block;">Demonstrates how to create an Ajax GridView/DataGrid Application in addition to being an "Ajax Starter-Kit" for your own projects. <br />Written in VB.NET...</span>
+    <p class="thumbs">
+        <a href="Viewport-GridView-Sample.aspx" class="links">
+            <span class="header">Ajax GridView/DataGrid Starter-Kit</span>
+            <span class="image3">&nbsp;</span>
+            <span class="text">Demonstrates how to create an Ajax GridView/DataGrid Application in addition to being an "Ajax Starter-Kit" for your own projects. <br />Written in VB.NET...</span>
         </a>
     </p>
     <h2>Hello World Ajax Application</h2>

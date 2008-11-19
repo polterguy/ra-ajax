@@ -42,6 +42,7 @@ span > input + label { padding-right:3px;padding-left:3px; vertical-align:middle
 .w3c { margin-top:15px; margin-left:25px; }
 .code { margin:0;padding:0; width:100%; height:450px; overflow:auto; font-size:0.8em; }
 
+
 /* Droppables and Draggable sample */
 
 .dragContainer { position:relative; margin-top:15px; }
@@ -51,5 +52,17 @@ span > input + label { padding-right:3px;padding-left:3px; vertical-align:middle
 .droppablesTouched { background-color:Yellow; }
 .slider { width:198px; border:solid 1px Black; padding-top:1px; padding-left:1px; position:absolute; height:21px; }
 .slidThumb { display:block; cursor:move; position:absolute; color:#33f; border:solid 1px #33f; width:25px; height:18px; -moz-user-select:none;*left:1px;*top:1px; }
+
+
+/* Ajax Samples Landing Page */
+
+.thumbs { text-align:center;font-size:0.9em; }
+.thumbs .links { margin-left:auto;margin-right:auto;border:dotted 1px #ddd;display:block;width:400px;padding:15px; }
+.thumbs .links .header { font-size:1.3em;padding-bottom:10px;display:block; }
+.thumbs .links .image1 { margin-left:auto;margin-right:auto;background:Transparent url(ajax-starter-kits.jpg) no-repeat -377px 0;display:block;width:188px;height:150px; }
+.thumbs .links .image2 { margin-left:auto;margin-right:auto;background:Transparent url(ajax-starter-kits.jpg) no-repeat 0 0;display:block;width:188px;height:150px; }
+.thumbs .links .image3 { margin-left:auto;margin-right:auto;background:Transparent url(ajax-starter-kits.jpg) no-repeat -188px 0;display:block;width:188px;height:150px; }
+.thumbs .links .text { padding-top:10px;display:block; }
+
 
 
