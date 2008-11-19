@@ -21,27 +21,29 @@
         Ra-Ajax is an Open Source and Free of Charge Ajax Library for ASP.NET. Below are our three 
         most proud Ajax Examples which will help you "get it" in less than a minute.
     </p>
-    <p class="thumbs">
+    <div class="thumbs">
         <a href="Viewport-Calendar-Starter-Kit.aspx" class="links">
-            <span class="header">Ajax Calendar Starter-Kit</span>
             <span class="image1">&nbsp;</span>
+            <span class="header">Ajax Calendar Starter-Kit</span>
             <span class="text">Demonstrates how to create an Ajax Calendar Application in addition to being an "Ajax Starter-Kit" for your own projects. <br />Written in C#...</span>
         </a>
-    </p>
-    <p class="thumbs">
+    </div>
+    <div class="thumbs">
         <a href="Viewport-Sample.aspx" class="links">
-            <span class="header">Ajax Viewport Starter-Kit</span>
             <span class="image2">&nbsp;</span>
+            <span class="header">Ajax Viewport Starter-Kit</span>
             <span class="text">Demonstrates how to create an Ajax Viewport Application with a TreeView and an Ajax TabControl in addition to being an "Ajax Starter-Kit" for your own projects. <br />Written in C#...</span>
         </a>
-    </p>
-    <p class="thumbs">
+    </div>
+    <div class="thumbs">
         <a href="Viewport-GridView-Sample.aspx" class="links">
-            <span class="header">Ajax GridView/DataGrid Starter-Kit</span>
             <span class="image3">&nbsp;</span>
+            <span class="header">Ajax GridView/DataGrid Starter-Kit</span>
             <span class="text">Demonstrates how to create an Ajax GridView/DataGrid Application in addition to being an "Ajax Starter-Kit" for your own projects. <br />Written in VB.NET...</span>
         </a>
-    </p>
+    </div>
+    <br style="clear:both;" />
+
     <h2>Hello World Ajax Application</h2>
     <p>
         Now that we have your attention you can try out our <em>"Hello World"</em> Ajax application below.

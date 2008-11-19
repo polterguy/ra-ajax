@@ -196,21 +196,28 @@
                                         ID="wowWnd" 
                                         runat="server" 
                                         OnMoved="wowWnd_Moved"
-                                        Caption="Ajax Starter-Kits" 
-                                        style="width:250px;position:absolute;z-index:1000;right:25px;top:10px;"
+                                        Caption="New Stuff - MUST Check Out - Starter-Kits" 
+                                        style="width:350px;position:absolute;z-index:1000;right:25px;top:10px;"
                                         CssClass="window">
-                                        <div style="padding:5px;font-size:0.8em;">
-                                            <ul>
-			                                    <li>
-			                                        <a href="Viewport-Calendar-Starter-Kit.aspx">Ajax Calendar Starter-Kit</a>
-			                                    </li>
-			                                    <li>
-			                                        <a href="Viewport-Sample.aspx">Ajax Viewport Starter-Kit</a>
-			                                    </li>
-			                                    <li>
-			                                        <a href="Viewport-GridView-Sample.aspx">Ajax GridView Starter-Kit (VB.NET)</a>
-			                                    </li>
-                                            </ul>
+                                        <div style="padding:5px;font-size:0.8em;height:190px;">
+                                            <div class="thumbsSmall">
+                                                <a href="Viewport-Calendar-Starter-Kit.aspx" class="linksSmall">
+                                                    <span class="image1Small">&nbsp;</span>
+                                                    <span class="headerSmall">Ajax Calendar Starter-Kit - C#</span>
+                                                </a>
+                                            </div>
+                                            <div class="thumbsSmall">
+                                                <a href="Viewport-Sample.aspx" class="linksSmall">
+                                                    <span class="image2Small">&nbsp;</span>
+                                                    <span class="headerSmall">Ajax Viewport Starter-Kit - C#</span>
+                                                </a>
+                                            </div>
+                                            <div class="thumbsSmall">
+                                                <a href="Viewport-GridView-Sample.aspx" class="linksSmall">
+                                                    <span class="image3Small">&nbsp;</span>
+                                                    <span class="headerSmall">Ajax DataGrid Starter-Kit - VB.NET</span>
+                                                </a>
+                                            </div>
                                         </div>
                                     </ext:Window>
 					                <div class="w3c">
