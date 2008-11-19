@@ -19,8 +19,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>GridView/DataGrid Ra-Ajax Starter-Kit</title>
-    <link href="media/skins/Sapphire/Sapphire-0.8.1.css" rel="stylesheet" type="text/css" />
-    <link href="media/ViewPortGridViewSample-0.8.1.css" rel="stylesheet" type="text/css" />
+    <link href="media/skins/Sapphire/Sapphire-0.8.4.css" rel="stylesheet" type="text/css" />
+    <link href="media/ViewPortGridViewSample-0.8.4.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">
