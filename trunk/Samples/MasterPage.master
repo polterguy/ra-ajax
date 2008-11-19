@@ -161,6 +161,9 @@
 			                	<div class="yui-u first major-links">
 				                    <ul>
 				                        <li>
+				                            <a runat="server" href="~/">Main Ra-Ajax Samples</a>
+				                        </li>
+				                        <li>
 				                            <a href="http://code.google.com/p/ra-ajax/">Download Ra-Ajax</a>
 				                        </li>
 				                        <li>
@@ -169,15 +172,7 @@
 				                                title="Back to main Ra-Ajax website">Main Ra-Ajax website</a>
 				                        </li>
 				                    </ul>
-					                <div class="codeBtn">
-					                    <ra:ImageButton 
-					                        runat="server" 
-					                        ID="btnShowCode" 
-					                        ImageUrl="media/show_code.png" 
-					                        AlternateText="Show Code" 
-					                        OnClick="btnShowCode_Click" />
-					                </div>
-                                    <div>
+                                    <div style="padding-top:15px;">
                                         <p>
                                             Skin:
                                             <asp:DropDownList 
@@ -194,6 +189,15 @@
                                             </asp:DropDownList>
                                         </p>
                                     </div>
+					                <div class="codeBtn">
+					                    <ra:ImageButton 
+					                        runat="server" 
+					                        ID="btnShowCode" 
+					                        ImageUrl="media/show_code.png" 
+					                        AlternateText="Show Code" 
+					                        Tooltip="Show code of this Ajax Sample"
+					                        OnClick="btnShowCode_Click" />
+					                </div>
                                     <ext:Window 
                                         ID="wowWnd" 
                                         runat="server" 
@@ -222,13 +226,6 @@
                                             </div>
                                         </div>
                                     </ext:Window>
-					                <div class="w3c">
-                                        <a href="http://validator.w3.org/check?uri=referer">
-                                            <img 
-                                                src="media/valid-xhtml10.png" 
-                                                alt="Valid XHTML 1.0 Transitional" />
-                                        </a>
-                                    </div>
 				                </div>
 			                	<div class="yui-u cnt">
                                     <ra:Panel 
@@ -292,6 +289,13 @@
                         All the content (written text) at this webpage is licensed under the 
                         <a href="http://www.gnu.org/copyleft/fdl.html">GFDL</a>.
                     </p>
+	                <div class="w3c">
+                        <a href="http://validator.w3.org/check?uri=referer">
+                            <img 
+                                src="media/valid-xhtml10.png" 
+                                alt="Valid XHTML 1.0 Transitional" />
+                        </a>
+                    </div>
                 </div>
 	        </form>
         </div>
