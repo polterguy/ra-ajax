@@ -35,16 +35,36 @@
     </p>
     <asp:GridView 
         runat="server" 
-        ID="datagrid"
-        CssClass="datagrid"
-        GridLines="Horizontal"
-        AutoGenerateColumns="False">
+        ID="datagrid" 
+        BackColor="LightGoldenrodYellow" 
+        BorderColor="Tan" 
+        style="width:100%;"
+        BorderWidth="1px" 
+        CellPadding="2" 
+        ForeColor="Black" 
+        AutoGenerateColumns="false"
+        GridLines="None">
+        <FooterStyle 
+            BackColor="Tan" />
+        <PagerStyle 
+            BackColor="PaleGoldenrod" 
+            ForeColor="DarkSlateBlue" 
+            HorizontalAlign="Center" />
+        <SelectedRowStyle 
+            BackColor="DarkSlateBlue" 
+            ForeColor="GhostWhite" />
+        <HeaderStyle 
+            BackColor="Tan" 
+            Font-Bold="True" />
+        <AlternatingRowStyle 
+            BackColor="PaleGoldenrod" />
         <Columns>
             <asp:TemplateField HeaderText="Name">
                 <ItemTemplate>
                     <ext:InPlaceEdit 
                         runat="server" 
                         OnTextChanged="NameChanged"
+                        style="color:Blue;cursor:pointer;"
                         Text='<%# Eval("Name")%>' />
                 </ItemTemplate>
             </asp:TemplateField>

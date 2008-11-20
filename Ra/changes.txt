@@ -65,4 +65,7 @@
   The Obscurer now should cover the Browser Viewport for ALL browser in ALL 
   scenarios!
 
+* Fixed a bug in EffectMove which makes IE fail when you're moving to a 
+  negative value.
+
 
