@@ -252,6 +252,19 @@ namespace Ra.Extensions
             if (Closable)
                 _close.CssClass = this.CssClass + "_close";
 
+            // Making sure that all Behaviors are in WINDOW and NOT in "content Panel"
+            List<ASP.Control> tmp = new List<System.Web.UI.Control>();
+            foreach (ASP.Control idx in _content.Controls)
+            {
+                if (idx is Behavior)
+                    tmp.Add(idx);
+            }
+            foreach (ASP.Control idx in tmp)
+            {
+                _content.Controls.Remove(idx);
+                Controls.Add(idx);
+            }
+
             // Calling base...
             base.OnPreRender(e);
         }

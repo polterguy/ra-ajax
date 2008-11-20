@@ -88,7 +88,7 @@
                 no content is being added to the DOM or HTML before the Window is being made Visible.
             </p>
         </div>
-        <ra:BehaviorObscurable runat="server" id="obscurer" ZIndex="1001" />
+        <ra:BehaviorObscurable runat="server" id="obscurer" />
 
     </ext:Window>
 
