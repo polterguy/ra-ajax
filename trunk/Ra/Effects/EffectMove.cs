@@ -95,8 +95,8 @@ namespace Ra.Widgets
         public override string RenderParalledOnFinished()
         {
             return string.Format(@"
-    this.element.setStyle('left',{0}+'px');
-    this.element.setStyle('top',{1}+'px');
+    this.element.setStyle('left','{0}px');
+    this.element.setStyle('top','{1}px');
 ",
                 _left, _top);
         }
@@ -105,11 +105,11 @@ namespace Ra.Widgets
         {
             return string.Format(@"
     var deltaL = ({0} - this.startL) * pos;
-    var newL = parseInt(deltaL + this.startL, 10);
+    var newL = parseInt((deltaL) + this.startL, 10);
     this.element.setStyle('left',newL + 'px');
 
     var deltaT = ({1} - this.startT) * pos;
-    var newT = parseInt(deltaT + this.startT, 10);
+    var newT = parseInt((deltaT) + this.startT, 10);
     this.element.setStyle('top',newT + 'px');
 ",
                 _left, _top);

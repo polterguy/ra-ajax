@@ -29,7 +29,7 @@ span > input + label { padding-right:3px;padding-left:3px; vertical-align:middle
 .bulList li { list-style:disc outside; margin-left:2em; }
 .datagrid { width:100%;background-color:#eee; }
 .spacer { height:200px; }
-.spacerLarge { height:300px; }
+.spacerLarge { height:320px; }
 .spacerSmall { height:50px; }
 .smallWnd { width:250px; height:280px; z-index:500; position:absolute; *left:1px; *top:1px; }
 .wndWrapper { position:absolute; }
