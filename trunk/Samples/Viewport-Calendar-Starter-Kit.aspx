@@ -310,7 +310,7 @@
             Caption="Create new Activity"
             style="width:600px;position:relative;top:25px;margin-left:auto;margin-right:auto;z-index:5000;"
             ID="createWindow">
-            <div style="height:220px;margin:15px;position:relative;">
+            <div style="height:220px;padding:15px;position:relative;">
                 <div style="float:left;width:65%;">
                     <div 
                         style="float:left;width:20%;height:25px;text-align:right;padding-right:5px;">

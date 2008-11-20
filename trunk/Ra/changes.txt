@@ -1,0 +1,22 @@
+
+
+
+***************************************************************************************
+
+      ChangeLog for Ra-Ajax
+
+***************************************************************************************
+
+   -------------------------------------------------------------------------------
+
+           Version 0.8.5
+
+* Fixed a bug with setting focus which makes IE fail if DOM element is not visible
+  for some reasons (ancestor node might have display:none)
+  It still fails, but at least it fails without shutting down all future Ajax and
+  giving error messages.
+  Relevant for Calendar Starter-Kit.
+
+* Fixed a display bug with IE in Calendar Starter-Kit which made the "Create new Activity"
+  window show up "weird"...
+
