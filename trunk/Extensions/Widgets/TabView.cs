@@ -22,8 +22,23 @@ namespace Ra.Extensions
     [ASP.ToolboxData("<{0}:TabView runat=\"server\"></{0}:TabView>")]
     public class TabView : Panel
     {
+        private LinkButton _btnInParent;
+        private Label _listElementInParent;
+
+        internal LinkButton Button
+        {
+            get { return _btnInParent; }
+            set { _btnInParent = value; }
+        }
+
+        internal Label ListElement
+        {
+            get { return _listElementInParent; }
+            set { _listElementInParent = value; }
+        }
+
         /**
-         * text header of tabview
+         * Header text of tabview
          */
         [DefaultValue("")]
         public string Caption
@@ -34,8 +49,18 @@ namespace Ra.Extensions
                 ViewState["Caption"] = value;
             }
         }
-		
-		protected override void OnPreRender (EventArgs e)
+
+        /**
+         * Disables or Enables the Tab. Default value is true
+         */
+        [DefaultValue(true)]
+        public bool Enabled
+        {
+            get { return ViewState["Enabled"] == null ? true : (bool)ViewState["Enabled"]; }
+            set { ViewState["Enabled"] = value; }
+        }
+
+        protected override void OnPreRender(EventArgs e)
 		{
 			if ((Parent as TabControl).ActiveTabView.ClientID == this.ClientID)
 			{

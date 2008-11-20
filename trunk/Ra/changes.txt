@@ -81,5 +81,15 @@
 * Fixed height of "Create new activity" on Calendar Starter-Kit since some Safari 
   doesn't respect height style of input form elements...!
 
+* You can now change the Visible property of TabViews inside of TabControls
+  in Ajax Callbacks
+
+* You can now change the Caption property of TabViews in Ajax Callbacks
+
+* The TabView now have an "Enabled" property which defaults to true. If
+  it is false then the TabView *cannot* bet set to the ActiveTab by 
+  clicking it. You will also get visual clues in the skins of the TabControl 
+  if you set this property to false...
+
 
 

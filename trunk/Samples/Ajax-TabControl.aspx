@@ -31,7 +31,7 @@
         dynamically if you want a smaller bandwidth footprint on your Ajax TabControl solution.
     </p>
     <ext:TabControl runat="server" ID="tab" CssClass="tab">
-        <ext:TabView Caption="Ajax TabControl view 1" runat="server" ID="tab1" CssClass="content">
+        <ext:TabView Caption="Ajax TabControl" runat="server" ID="tab1" CssClass="content">
         	<p>
         	    Here you can see the content of the first TabControlView...
         	</p>
@@ -52,10 +52,14 @@
         	    see you can very easily create other Ajax Controls which you put inside of the TabControl.
         	</p>
         	<p>
+        	    Clicking the button below will change the Caption of this tab, toggle the visibility of the 
+        	    third tab and toggle the 1st tab to disabled/enabled...
+        	</p>
+        	<p>
         	    <ra:Button 
         		    runat="server" 
         		    id="tabBtn" 
-        		    Text="Button" 
+        		    Text="Click me..." 
         		    OnClick="tabBtn_Click" />
             </p>
         </ext:TabView>
@@ -64,6 +68,13 @@
         	    And here's yet another TabControlView.
         	    <br />
         	    Just for the fun we've added some <span style="color:Red;">fancy</span> HTML here...
+        	</p>
+        </ext:TabView>
+        <ext:TabView Caption="Fourth TabView" runat="server" ID="TabView1" CssClass="content">
+            <p>
+        	    Yet another TabView...!
+        	    <br />
+        	    Ipsum, opsum, priari, whatever.... ;)
         	</p>
         </ext:TabView>
     </ext:TabControl>
