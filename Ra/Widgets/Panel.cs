@@ -23,16 +23,27 @@ namespace Ra.Widgets
     {
         #region [ -- Overridden (abstract/virtual) methods from RaControl -- ]
 
+        /**
+         * The HTML tag used to render the label, defaults to span
+         */
+        [DefaultValue("div")]
+        public string Tag
+        {
+            get { return ViewState["Tag"] == null ? "div" : (string)ViewState["Tag"]; }
+            set { ViewState["Tag"] = value; }
+        }
+
         protected override string GetOpeningHTML()
         {
-            return string.Format("<div id=\"{0}\"{1}>",
+            return string.Format("<{2} id=\"{0}\"{1}>",
                 ClientID,
-                GetWebControlAttributes());
+                GetWebControlAttributes(),
+                Tag);
         }
 		
 		protected override string GetClosingHTML ()
 		{
-			return "</div>";
+			return string.Format("</{0}>", Tag);
 		}
 
         #endregion

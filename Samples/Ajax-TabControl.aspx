@@ -60,7 +60,11 @@
             </p>
         </ext:TabView>
         <ext:TabView Caption="Third" runat="server" ID="tab3" CssClass="content">
-        	And here's yet another TabControlView
+            <p>
+        	    And here's yet another TabControlView.
+        	    <br />
+        	    Just for the fun we've added some <span style="color:Red;">fancy</span> HTML here...
+        	</p>
         </ext:TabView>
     </ext:TabControl>
     <h2>Ra-Ajax is Open Source (and free of charge)</h2>

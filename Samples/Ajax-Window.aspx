@@ -41,7 +41,7 @@
 	    Caption="Ajax Window - drag me"
 	    CssClass="window"
 	    OnClosed="window_Closed" 
-	    style="position:absolute;width:400px;height:300px;"
+	    style="position:absolute;width:400px;height:300px;z-index:1000;"
 	    id="window">
 
 	    <div style="padding:0 15px 5px 15px;">
@@ -78,7 +78,7 @@
         Caption="Ajax Window - drag me"
         CssClass="window"
         Visible="false"
-        style="position:absolute;top:500px;left:300px;width:250px;z-index:1001;"
+        style="position:absolute;top:500px;left:300px;width:250px;z-index:1003;"
         id="window2">
 
         <div style="padding:15px 15px 15px 15px;">
@@ -88,7 +88,7 @@
                 no content is being added to the DOM or HTML before the Window is being made Visible.
             </p>
         </div>
-        <ra:BehaviorObscurable runat="server" id="obscurer" ZIndex="1000" />
+        <ra:BehaviorObscurable runat="server" id="obscurer" ZIndex="1001" />
 
     </ext:Window>
 

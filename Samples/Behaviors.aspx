@@ -125,55 +125,6 @@
     	Note that the above Ajax Slider control is intentionally kept ugly to make sure the code is easy to understand and
     	may serve as a reference for others wanting to create their own Ajax Extension Controls using Ra-Ajax.
     </p>
-    <h2>Ajax Window Sample</h2>
-    <p>
-    	Here we have created an Ajax Window using Ajax Behaviors for references. The Ajax Window is also a perfect example of how
-    	to create your own Ajax Extension Controls. It is not meant as an exhaustive Ajax Window implementation but rather a "pointing finger"
-    	towards how to create your own Ajax Window. Though of course feel free to use it as it is...
-    </p>
-    <p>
-        <ra:LinkButton 
-            runat="server" 
-            ID="lnkWnd" 
-            OnClick="lnkWnd_Click" />
-    </p>
-    <div class="wndWrapper">
-        <ext:WindowLight 
-    	    runat="server"
-    	    Caption="Ajax Window"
-    	    CssClass="window smallWnd" 
-    	    OnClosed="window_Closed"
-    	    id="window">
-    	    <div style="padding:5px;">
-    	        <p>
-			        Here you can see an example of an Ajax Window created as a composition control utilizing Ajax Behaviors.
-			    </p>
-			    <p>
-			        <ra:Button 
-				        runat="server" 
-				        id="btn" 
-				        Text="Click me" 
-				        OnClick="btn_Click" />
-				</p>
-		    </div>
-        </ext:WindowLight>
-    </div>
-    <p>
-    	This Window is purely built on the server with 84 lines of code in total (as of the 18th of September 2008) and has
-    	no Custom JavaScript in it at all. In fact the Window is created using these Ajax Controls. 
-    </p>
-    <ul class="bulList">
-    	<li>ASP.NET Panel</li>
-    	<li>Ra-Ajax LinkButton</li>
-    	<li>Ra-Ajax Label</li>
-    	<li>BehaviorDraggable</li>
-    </ul>
-    <p>
-    	And by combining those "building block controls" we're able to create a relatively advanced Ajax Window
-    	without having to resort to JavaScript at all. This is a general pattern in Ra-Ajax in fact - You
-    	can always build fairly complex Ajax Controls yourself by combining the existing "less complex" Controls 
-    	in Ra-Ajax together to form your complex Ajax Control.
-    </p>
     <a href="Combining.aspx">On to Combining Controls</a>
 </asp:Content>
 

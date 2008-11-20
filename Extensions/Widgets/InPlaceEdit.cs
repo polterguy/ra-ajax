@@ -20,7 +20,7 @@ namespace Ra.Extensions
      * Label control which enables editing when clicked
      */
     [ASP.ToolboxData("<{0}:InPlaceEdit runat=server />")]
-    public class InPlaceEdit : Label, ASP.INamingContainer
+    public class InPlaceEdit : Panel, ASP.INamingContainer
     {
         private Label _link = new Label();
         private TextBox _text = new TextBox();
@@ -48,10 +48,10 @@ namespace Ra.Extensions
             }
         }
 
-        protected override void LoadViewState(object savedState)
+        protected override void OnInit(EventArgs e)
         {
-            base.LoadViewState(savedState);
             EnsureChildControls();
+            base.OnInit(e);
         }
 
         protected override void CreateChildControls()
