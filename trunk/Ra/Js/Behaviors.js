@@ -100,11 +100,37 @@ Ra.extend(Ra.BObscur.prototype, {
     el.setStyle('height',parseInt(document.body.clientHeight || self.innerHeight || document.documentElement.clientHeight) + 'px');
     el.setStyle('left','0px');
     el.setStyle('top','0px');
-    el.setStyle('backgroundColor',this.options.color);
     el.setStyle('zIndex',this.options.zIndex);
-    el.setStyle('display','none');
+
+    // We must add the node to the DOM before we can begin computing its offset according to the browser...
     parent.element.parentNode.appendChild(el);
 
+    // In case we have margins, borders and so on (e.g. margin-right:auto etc) we need to calculate
+    // the exact position of the element after being added to the DOM and then add the element with
+    // that NEGATIVE value as its top/left position...
+    var valueT = el.offsetTop  || 0;
+    var valueL = el.offsetLeft  || 0;
+    var el2 = el.offsetParent;
+
+    while (el2) {
+      valueT += el2.offsetTop  || 0;
+      valueL += el2.offsetLeft || 0;
+      el2 = el2.offsetParent;
+    }
+    
+    if( valueL )
+      el.setStyle('left',(-valueL) + 'px');
+    if( valueT )
+      el.setStyle('top',(-valueT) + 'px');
+
+    // Only when we HAVE calculated the node's exact position we can make it IN-visible...
+    el.setStyle('display','none');
+
+    // Then when we have made IN-visible (not before) we can set its background color
+    // If we do this earlier the browser will "flash"...
+    el.setStyle('backgroundColor',this.options.color);
+
+    // Then we can run the animation effect which will slowly show the obscurer...
     var T = this;
     new Ra.Effect(el, {
       duration: 300,

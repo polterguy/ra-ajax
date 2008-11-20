@@ -348,7 +348,7 @@
                     style="position:absolute;bottom:0;right:0;"
                     Text="Save" />
             </div>
-            <ra:BehaviorObscurable runat="server" ID="obscurer" ZIndex="4999" />
+            <ra:BehaviorObscurable runat="server" ID="obscurer" />
         </ext:Window>
 
     </form>

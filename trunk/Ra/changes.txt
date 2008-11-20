@@ -60,4 +60,9 @@
 * Fixed a bug in BehaviorObscurer which made it not obscure the entire document
   viewport in FireFox (and possibly other browsers too)
 
+* Fixed a bug in BehaviorObscurer which made the obscurer NOT cover the entire 
+  browser Viewport (always)
+  The Obscurer now should cover the Browser Viewport for ALL browser in ALL 
+  scenarios!
+
 
