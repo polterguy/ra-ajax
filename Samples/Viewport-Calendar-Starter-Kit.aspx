@@ -197,12 +197,15 @@
 
                 </asp:GridView>
             </ra:Panel>
-            <ra:Button 
-                runat="server" 
-                Text="Create new Activity..."
-                style="height:34px;width:100%;"
-                OnClick="create_Click"
-                ID="create" />
+            <div style="height:34px;">
+                <!-- Safari doesn't respect height style on input form elements...!! -->
+                <ra:Button 
+                    runat="server" 
+                    Text="Create new Activity..."
+                    style="height:34px;width:100%;"
+                    OnClick="create_Click"
+                    ID="create" />
+            </div>
         </ext:Window>
 
         <!-- Right - Main Content -->

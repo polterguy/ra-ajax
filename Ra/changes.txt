@@ -74,7 +74,11 @@
 
 * BehaviorObscurer will resize itself when browser is being resized. 
   Previously the Obscurer would never resize itself when browser was being 
-  resized.
+  resized. This would previously make it possible to get to controls actually
+  behind the obscurer.
+
+* Fixed height of "Add new button" on Calendar Starter-Kit since some Safari 
+  doesn't respect height style of input form elements...!
 
 
 
