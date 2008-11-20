@@ -60,9 +60,12 @@ span > input + label { padding-right:3px;padding-left:3px; vertical-align:middle
 .thumbs .links { margin-left:auto; margin-right:auto; display:block; padding:15px; overflow:auto; border:dotted 1px #ddd; }
 .thumbs .links:hover { border:solid 1px #00f; }
 .thumbs .links .header { font-size:1.0em; font-weight:bold; display:block; }
-.thumbs .links .image1 { float:left; margin-right:10px; background:Transparent url(ajax-starter-kits.jpg) no-repeat -377px 0; display:block; width:188px; height:150px; }
-.thumbs .links .image2 { float:left; margin-right:10px; background:Transparent url(ajax-starter-kits.jpg) no-repeat 0 0; display:block; width:188px; height:150px; }
-.thumbs .links .image3 { float:left; margin-right:10px; background:Transparent url(ajax-starter-kits.jpg) no-repeat -188px 0; display:block; width:188px; height:150px; }
+.thumbs .links .image1 { float:left; margin-right:10px; background:url('ajax-starter-kits.jpg') no-repeat -377px 0; 
+display:block; width:188px; height:150px; }
+.thumbs .links .image2 { float:left; margin-right:10px; background:url('ajax-starter-kits.jpg') no-repeat 0 0; 
+display:block; width:188px; height:150px; }
+.thumbs .links .image3 { float:left; margin-right:10px; background:url('ajax-starter-kits.jpg') no-repeat -188px 0; 
+display:block; width:188px; height:150px; }
 .thumbs .links .text   { font-size:0.9em; padding-top:5px; display:block; }
 
 
@@ -72,8 +75,11 @@ span > input + label { padding-right:3px;padding-left:3px; vertical-align:middle
 .thumbsSmall .linksSmall { display:block; padding:5px; overflow:auto; border:dotted 1px #ddd; }
 .thumbsSmall .linksSmall:hover { border:solid 1px #00f; }
 .thumbsSmall .linksSmall .headerSmall { font-size:1.0em; font-weight:bold; display:block; }
-.thumbsSmall .linksSmall .image1Small { float:left; margin-right:10px; background:Transparent url(ajax-starter-kits.jpg) no-repeat -691px 0; display:block; width:63px; height:50px; }
-.thumbsSmall .linksSmall .image2Small { float:left; margin-right:10px; background:Transparent url(ajax-starter-kits.jpg) no-repeat -565px 0; display:block; width:63px; height:50px; }
-.thumbsSmall .linksSmall .image3Small { float:left; margin-right:10px; background:Transparent url(ajax-starter-kits.jpg) no-repeat -628px 0; display:block; width:63px; height:50px; }
+.thumbsSmall .linksSmall .image1Small { float:left; margin-right:10px; background:url('ajax-starter-kits.jpg') no-repeat -691px 0; 
+display:block; width:63px; height:50px; }
+.thumbsSmall .linksSmall .image2Small { float:left; margin-right:10px; background:url('ajax-starter-kits.jpg') no-repeat -565px 0; 
+display:block; width:63px; height:50px; }
+.thumbsSmall .linksSmall .image3Small { float:left; margin-right:10px; background:url('ajax-starter-kits.jpg') no-repeat -628px 0; 
+display:block; width:63px; height:50px; }
 
 

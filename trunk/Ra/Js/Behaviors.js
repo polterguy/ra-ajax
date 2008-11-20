@@ -96,14 +96,14 @@ Ra.extend(Ra.BObscur.prototype, {
     Ra.extend(el, Ra.Element.prototype);
     el.id = this.id;
     el.setStyle('position','absolute');
-    el.setStyle('width',parseInt(window.innerWidth || document.body.clientWidth) + 'px');
-    el.setStyle('height',parseInt(window.innerHeight || document.body.clientHeight) + 'px');
+    el.setStyle('width',parseInt(document.body.clientWidth || self.innerWidth || document.documentElement.clientWidth) + 'px');
+    el.setStyle('height',parseInt(document.body.clientHeight || self.innerHeight || document.documentElement.clientHeight) + 'px');
     el.setStyle('left','0px');
     el.setStyle('top','0px');
     el.setStyle('backgroundColor',this.options.color);
     el.setStyle('zIndex',this.options.zIndex);
     el.setStyle('display','none');
-    document.getElementsByTagName('body')[0].appendChild(el);
+    parent.element.parentNode.appendChild(el);
 
     var T = this;
     new Ra.Effect(el, {

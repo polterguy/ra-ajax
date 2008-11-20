@@ -47,3 +47,17 @@
   for a long time for the Label property. This means you can have a Panel render
   as e.g. <p></p> etc...
 
+* Fixed a bug in Window which makes all declaratively created Behaviors (including
+  BehaviorObscurer) attach to the Content control collection instead of the Window
+  itself. This creates "skewed visuals" for Obscurers on Window. This means BTW
+  that there is probably few if any reasons for giving the Obscurer an explicit
+  ZIndex property...
+
+* Fixed a bug in BehaviorObscurer which made it obscure also the Control it was 
+  ment to make modal if there's an HTML element in the page below the Form element
+  with absolute or relative position. Applies only for IE. 
+
+* Fixed a bug in BehaviorObscurer which made it not obscure the entire document
+  viewport in FireFox (and possibly other browsers too)
+
+
