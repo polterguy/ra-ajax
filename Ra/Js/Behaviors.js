@@ -96,8 +96,6 @@ Ra.extend(Ra.BObscur.prototype, {
     Ra.extend(el, Ra.Element.prototype);
     el.id = this.id;
     el.setStyle('position','absolute');
-    el.setStyle('width',parseInt(document.body.clientWidth || self.innerWidth || document.documentElement.clientWidth) + 'px');
-    el.setStyle('height',parseInt(document.body.clientHeight || self.innerHeight || document.documentElement.clientHeight) + 'px');
     el.setStyle('left','0px');
     el.setStyle('top','0px');
     el.setStyle('zIndex',this.options.zIndex);
@@ -105,23 +103,13 @@ Ra.extend(Ra.BObscur.prototype, {
     // We must add the node to the DOM before we can begin computing its offset according to the browser...
     parent.element.parentNode.appendChild(el);
 
+    // Listening to the "resized" event since we then want to resize our obscurer surface...
+    window.observe('resize', this.onResized, this);
+
     // In case we have margins, borders and so on (e.g. margin-right:auto etc) we need to calculate
     // the exact position of the element after being added to the DOM and then add the element with
     // that NEGATIVE value as its top/left position...
-    var valueT = el.offsetTop  || 0;
-    var valueL = el.offsetLeft  || 0;
-    var el2 = el.offsetParent;
-
-    while (el2) {
-      valueT += el2.offsetTop  || 0;
-      valueL += el2.offsetLeft || 0;
-      el2 = el2.offsetParent;
-    }
-    
-    if( valueL )
-      el.setStyle('left',(-valueL) + 'px');
-    if( valueT )
-      el.setStyle('top',(-valueT) + 'px');
+    this.onResized();
 
     // Only when we HAVE calculated the node's exact position we can make it IN-visible...
     el.setStyle('display','none');
@@ -148,7 +136,34 @@ Ra.extend(Ra.BObscur.prototype, {
     });
   },
 
+  onResized: function() {
+
+    // If some DOM node inbetween obscurer and window root has
+    // e.g. borders or margins (e.g. margin-left:auto) we need to
+    // accommodate for that by subtracting those parts AWAY and creating
+    // a "negative position" for our obscurer element
+    var valueT = this.el.offsetTop  || 0;
+    var valueL = this.el.offsetLeft  || 0;
+    var el = this.el.offsetParent;
+
+    while (el) {
+      valueT += el.offsetTop  || 0;
+      valueL += el.offsetLeft || 0;
+      el = el.offsetParent;
+    }
+
+    if( valueL )
+      this.el.setStyle('left',(-valueL) + 'px');
+    if( valueT )
+      this.el.setStyle('top',(-valueT) + 'px');
+
+    // Setting width and height to size of viewport...
+    this.el.setStyle('width',parseInt(document.body.clientWidth || self.innerWidth || document.documentElement.clientWidth) + 'px');
+    this.el.setStyle('height',parseInt(document.body.clientHeight || self.innerHeight || document.documentElement.clientHeight) + 'px');
+  },
+
   destroy: function() {
+    window.stopObserving('resize', this.onResized, this);
     var T = this;
     new Ra.Effect(this.el, {
       duration: 300,

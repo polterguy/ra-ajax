@@ -72,5 +72,9 @@
   hovering in IE the skin changed to a color background which was not 
   intentionally.
 
+* BehaviorObscurer will resize itself when browser is being resized. 
+  Previously the Obscurer would never resize itself when browser was being 
+  resized.
+
 
 
