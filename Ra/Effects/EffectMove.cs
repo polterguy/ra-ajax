@@ -87,8 +87,8 @@ namespace Ra.Widgets
         {
 			UpdateStyleCollection();
             return @"
-    this.startL = parseInt(this.element.getStyle('left'), 10);
-    this.startT = parseInt(this.element.getStyle('top'), 10);
+    this.startL = parseInt(this.element.getStyle('left'), 10) || 0;
+    this.startT = parseInt(this.element.getStyle('top'), 10) || 0;
 ";
         }
 
@@ -104,13 +104,13 @@ namespace Ra.Widgets
         public override string RenderParalledOnRender()
         {
             return string.Format(@"
-    var deltaL = ({0} - this.startL) * pos;
+    var deltaL = (({0}) - this.startL) * pos;
     var newL = parseInt((deltaL) + this.startL, 10);
-    this.element.setStyle('left',newL + 'px');
+    this.element.setStyle('left',(newL) + 'px');
 
-    var deltaT = ({1} - this.startT) * pos;
+    var deltaT = (({1}) - this.startT) * pos;
     var newT = parseInt((deltaT) + this.startT, 10);
-    this.element.setStyle('top',newT + 'px');
+    this.element.setStyle('top',(newT) + 'px');
 ",
                 _left, _top);
         }
