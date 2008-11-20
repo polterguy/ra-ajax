@@ -133,8 +133,8 @@ Ra.BObscureCommon.prototype = {
     }
 
     // Setting width and height to size of viewport...
-    this.el.setStyle('width',parseInt(document.body.clientWidth || self.innerWidth || document.documentElement.clientWidth) + 'px');
-    this.el.setStyle('height',parseInt(document.body.clientHeight || self.innerHeight || document.documentElement.clientHeight) + 'px');
+    this.el.setStyle('width',parseInt(document.body.clientWidth) + 'px');
+    this.el.setStyle('height',parseInt(document.body.clientHeight) + 'px');
   },
 
   destroyObscurer: function(){
