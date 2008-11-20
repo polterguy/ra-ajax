@@ -108,7 +108,7 @@
                 Movable="false" 
                 Closable="false"
                 CssClass="window">
-                <div style="height:178px;overflow:auto;margin:25px;border:dotted 1px #999; background-color:#fefefe;padding:10px;">
+                <div style="height:228px;overflow:auto;border:dotted 1px #999; background-color:#fefefe;padding:10px;">
                     <p>Here is your left view</p>
                     <p>Filter GridView</p>
                     <p>

@@ -102,6 +102,7 @@
     <EmbeddedResource Include="Js\Behaviors.js" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="changes.txt" />
     <Content Include="license-GPL.txt" />
     <Content Include="license.txt" />
     <Content Include="ReadMe.txt" />

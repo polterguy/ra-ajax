@@ -57,6 +57,7 @@
     <ext:Calendar 
         runat="server" 
         ID="calendar" 
+        style="width:190px;"
         OnSelectedValueChanged="calendar_SelectedValueChanged"
         CssClass="calendar" />
 

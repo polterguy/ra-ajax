@@ -25,21 +25,6 @@ namespace Samples
             }
         }
 
-        protected void window_Closed(object sender, EventArgs e)
-        {
-            lnkWnd.Text = "Windows was closed";
-            Effect effect = new EffectHighlight(lnkWnd, 400);
-            effect.Render();
-        }
-
-        protected void lnkWnd_Click(object sender, EventArgs e)
-        {
-            window.Visible = true;
-            Effect effect = new EffectHighlight(window, 400);
-            effect.Joined.Add(new EffectFadeIn());
-            effect.Render();
-        }
-
         protected void dropper_Dropped(object sender, BehaviorDroppable.DroppedEventArgs e)
         {
             dropperLbl.Text = e.Dragger.Parent.ID + " was dropped";
@@ -76,11 +61,6 @@ namespace Samples
         {
             lbl2.Visible = !lbl2.Visible;
             btnHide2.Text = lbl2.Visible ? "Hide second label" : "Show second label";
-        }
-
-        protected void btn_Click(object sender, EventArgs e)
-        {
-            btn.Text = "Clicked..!!";
         }
     }
 }

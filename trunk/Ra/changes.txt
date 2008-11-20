@@ -1,15 +1,25 @@
 
 
 
-***************************************************************************************
+  *******************************************************************************
 
-      ChangeLog for Ra-Ajax
+                             ChangeLog for Ra-Ajax
 
-***************************************************************************************
+  *******************************************************************************
 
-   -------------------------------------------------------------------------------
+  -------------------------------------------------------------------------------
 
-           Version 0.8.5
+                                Version 0.8.5
+
+  -------------------------------------------------------------------------------
+
+* Added a more "formal process" to our development cycle. This changelog is one
+  example of that.
+  - This means we'll have (standardly) one release maximum per week, this will be
+    on Fridays. Hopefully every Friday. These are "maintenance releases".
+  - Then every first Friday of every month we will have a "major release" where
+    we will increase the major version number. This will make the 1.0 release hit
+    the download are first Friday in January 2009 if we succeed.
 
 * Fixed a bug with setting focus which makes IE fail if DOM element is not visible
   for some reasons (ancestor node might have display:none)
@@ -17,6 +27,23 @@
   giving error messages.
   Relevant for Calendar Starter-Kit.
 
-* Fixed a display bug with IE in Calendar Starter-Kit which made the "Create new Activity"
-  window show up "weird"...
+* Fixed a display bug with IE in Calendar Starter-Kit which made the "Create new 
+  Activity" window show up "skewed"...
+
+* Changed the number of nodes in our "Huge Nodes Collection" TreeView - TreeNode 
+  in the TreeView sample from 500 to 200 nodes since 500 has a bad tendency of 
+  crashing IE...
+
+* Brushed up some of the styles for the sample website. Blue borders around thumbs
+  etc...
+
+* Fixed styling bug with Calendar in Combining Controls sample.
+
+* Fixed a severe bug in InPlaceEdit which made the Text property being rendered 
+  twice. This happened due to inheriting the InPlaceEdit from Label. It is now
+  inheriting from Panel.
+
+* Added support for overriding the Tag property of the Panel - just as we've had
+  for a long time for the Label property. This means you can have a Panel render
+  as e.g. <p></p> etc...
 

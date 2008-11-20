@@ -32,6 +32,7 @@
     <ext:InPlaceEdit 
         runat="server" 
         ID="inpl" 
+        style="color:Blue;cursor:pointer;"
         OnTextChanged="inpl_TextChanged" 
         Text="Click to edit" />
 

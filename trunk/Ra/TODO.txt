@@ -3,6 +3,10 @@
 
 * More effects, EffectZoom (zooms fonts)
 
+* TabControl renders funny in IE
+
+* RichEdit doesn't work in IE (maybe others too)
+
 * Child controls in BehaviorUpdate...!!!!
 
 * Comet doesn't work in FF...!
