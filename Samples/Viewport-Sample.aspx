@@ -434,7 +434,7 @@
                     </tr>
                 </table>
             </div>
-            <ra:BehaviorObscurable runat="server" ID="loginModal" ZIndex="4999" />
+            <ra:BehaviorObscurable runat="server" ID="loginModal" />
         </ext:Window>
     </form>
     <script type="text/javascript">
