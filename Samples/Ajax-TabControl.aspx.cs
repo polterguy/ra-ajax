@@ -16,6 +16,9 @@ namespace Samples
         protected void tabBtn_Click(object sender, EventArgs e)
         {
             tabBtn.Text = "Clicked";
+            tab1.Enabled = !tab1.Enabled;
+            tab2.Caption = "I changed";
+            tab3.Visible = !tab3.Visible;
         }
     }
 }

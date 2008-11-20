@@ -128,7 +128,7 @@ input[type=text],input[type=password],textarea{width:12.25em;*width:11.9em;}
 .window_body		{ overflow:hidden; position:relative; }
 .window_w			{ background: transparent url(window-v-sprite.png) repeat-y 0 0; padding-left:7px; }
 .window_e			{ background: transparent url(window-v-sprite.png) repeat-y right 0; padding-right:7px; }
-.window_content		{ background-color:#A8E803; }
+.window_content		{ background-color:#fff; border-style:solid; border-width:1px; border-color:#eee; }
 .window_sw			{ background: transparent url(window-sprite.png) no-repeat 0 -25px; padding-left:5px; }
 .window_se			{ background: transparent url(window-sprite.png) no-repeat right -25px; padding-right:5px; }
 .window_s			{ background: transparent url(window-h-sprite.png) repeat-x 0 -24px; height:7px; }
@@ -151,7 +151,7 @@ http://ra-ajax.org
 .calendar_body			{ overflow:hidden; position:relative; }
 .calendar_w				{ background: transparent url(window-v-sprite.png) repeat-y 0 0; padding-left:7px; }
 .calendar_e				{ background: transparent url(window-v-sprite.png) repeat-y right 0; padding-right:7px; }
-.calendar_content		{ font-size:0.8em; background-color:#A8E803; }
+.calendar_content		{ font-size:0.8em; background-color:#fff; border-style:solid; border-width:1px; border-color:#eee; }
 .calendar_sw			{ background: transparent url(window-sprite.png) no-repeat 0 -25px; padding-left:7px; }
 .calendar_se			{ background: transparent url(window-sprite.png) no-repeat right -25px; padding-right:7px; }
 .calendar_s				{ background: transparent url(window-h-sprite.png) repeat-x 0 -25px; height:7px; }
@@ -178,22 +178,24 @@ http://ra-ajax.org
 .tab .tab-header ul li.first { margin-left:3px; }
 .tab .tab-header ul li a { text-decoration:none; color:#333; padding:5px; }
 .tab .tab-header ul li a:hover { color:#00f; background-color:Transparent; }
+.tab .tab-header ul li.tab-disabled a { color:#faa; }
+.tab .tab-header ul li.tab-disabled a:hover { color:#f99; }
 .tab .tab-header ul li span { display:inline-block; *height:18px; padding-top:5px; }
-.tab .tab-header ul li span.left { background:url('window-sprite.png') no-repeat; width:6px; border-bottom:solid 1px #fff; }
-.tab .tab-header ul li span.center { background:url('window-h-sprite.png') repeat-x; border-bottom:solid 1px #fff; }
-.tab .tab-header ul li span.right { background:url('window-sprite.png') no-repeat -37px 0; width:6px; border-bottom:solid 1px #fff; }
-.tab .tab-header ul li.active span.left { background:url('window-sprite.png') no-repeat; border-bottom:solid 1px #A8E803; }
-.tab .tab-header ul li.active span.center { background:url('window-h-sprite.png') repeat-x; border-bottom:solid 1px #A8E803; }
-.tab .tab-header ul li.active span.right { background:url('window-sprite.png') no-repeat -37px 0; border-bottom:solid 1px #A8E803; }
-.tab .content { padding:5px; background-color:#A8E803; border:solid 1px #fff; }
+.tab .tab-header ul li span.left { background:url('window-sprite.png') no-repeat; width:6px; border-bottom:solid 1px #CCD1FF; }
+.tab .tab-header ul li span.center { background:url('window-h-sprite.png') repeat-x; border-bottom:solid 1px #CCD1FF; }
+.tab .tab-header ul li span.right { background:url('window-sprite.png') no-repeat -37px 0; width:6px; border-bottom:solid 1px #CCD1FF; }
+.tab .tab-header ul li.active span.left { background:url('window-sprite.png') no-repeat; border-bottom:solid 1px #fff; }
+.tab .tab-header ul li.active span.center { background:url('window-h-sprite.png') repeat-x; border-bottom:solid 1px #fff; }
+.tab .tab-header ul li.active span.right { background:url('window-sprite.png') no-repeat -37px 0; border-bottom:solid 1px #fff; }
+.tab .content { padding:5px; background-color:#fdfdfd; border:solid 1px #CCD1FF; }
 
 
 /* Accordion */
 
 .accordion {}
-.accordion .body { overflow:hidden; background-color:#A8E803; font-size:small; }
+.accordion .body { overflow:hidden; background-color:#fff; font-size:small; }
 .accordion .body-content { padding:5px; border-left:solid 1px #CCD1FF; border-right:solid 1px #CCD1FF; border-bottom:solid 1px #CCD1FF; }
-.accordion .accordion-header { background:url('window-h-sprite.png') repeat-x 0 -1px; }
+.accordion .accordion-header { border:solid 1px #CCD1FF; background-color:#fff; }
 .accordion .accordion-header a { text-decoration:none; padding:5px; display:block; color:#333; }
 .accordion .accordion-header a:hover { background:inherit; color:#00f; }
 

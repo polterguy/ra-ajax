@@ -76,16 +76,10 @@ namespace Ra.Extensions
 			}
 		}
 
-        protected override void LoadViewState(object savedState)
+        protected override void OnInit(EventArgs e)
         {
-            base.LoadViewState(savedState);
-
-            // Since we're dependant upon that the ViewState has finished loading before
-            // we initialize the ChildControls since how the child controls (and which)
-            // child controls are being re-created is dependant upon a ViewState saved value
-            // this is the earliest possible time we can reload the ChildControls for the
-            // Control
             EnsureChildControls();
+            base.OnInit(e);
         }
 
         protected override void CreateChildControls()
@@ -100,9 +94,25 @@ namespace Ra.Extensions
             Controls.AddAt(0, _topPanel);
 		}
 
+        private int Count
+        {
+            get
+            {
+                int retVal = 0;
+                foreach(TabView idx in Views)
+                {
+                    retVal += 1;
+                }
+                return retVal;
+            }
+        }
+
         private void CreateChildTabViews()
         {
             HTML.HtmlGenericControl ul = new HTML.HtmlGenericControl("ul");
+
+            Label[] _tabHeaders = new Label[Count];
+            int idxTabView = 0;
 
             int litCount = 0;
             for (int idx = 0; idx < Controls.Count; idx++)
@@ -114,7 +124,8 @@ namespace Ra.Extensions
                 }
                 int tabView = idx - litCount;
                 TabView view = Controls[idx] as TabView;
-                HTML.HtmlGenericControl li = new HTML.HtmlGenericControl("li");
+                _tabHeaders[idxTabView] = new Label();
+                _tabHeaders[idxTabView].Tag = "li";
 
                 string cssClass = "";
                 if (tabView == ActiveTabViewIndex)
@@ -122,16 +133,16 @@ namespace Ra.Extensions
                 if (tabView == 0)
                     cssClass += "first ";
                 if (!string.IsNullOrEmpty(cssClass))
-                    li.Attributes.Add("class", cssClass);
+                    _tabHeaders[idxTabView].CssClass = cssClass;
 
                 HTML.HtmlGenericControl left = new HTML.HtmlGenericControl("span");
                 left.Attributes.Add("class", "left");
                 left.InnerHtml = "&nbsp;";
-                li.Controls.Add(left);
+                _tabHeaders[idxTabView].Controls.Add(left);
 
                 HTML.HtmlGenericControl center = new HTML.HtmlGenericControl("span");
                 center.Attributes.Add("class", "center");
-                li.Controls.Add(center);
+                _tabHeaders[idxTabView].Controls.Add(center);
 
                 LinkButton btn = new LinkButton();
                 btn.Text = view.Caption;
@@ -139,21 +150,55 @@ namespace Ra.Extensions
                 btn.Click += new EventHandler(btn_Click);
                 center.Controls.Add(btn);
 
+                // Setting controls to view
+                view.ListElement = _tabHeaders[idxTabView];
+                view.Button = btn;
+
                 HTML.HtmlGenericControl right = new HTML.HtmlGenericControl("span");
                 right.Attributes.Add("class", "right");
                 right.InnerHtml = "&nbsp;";
-                li.Controls.Add(right);
+                _tabHeaders[idxTabView].Controls.Add(right);
 
-                ul.Controls.Add(li);
+                ul.Controls.Add(_tabHeaders[idxTabView]);
+                idxTabView += 1;
             }
 
             _topPanel.Controls.Add(ul);
+        }
+
+        protected override void OnPreRender(EventArgs e)
+        {
+            foreach (TabView idx in Views)
+            {
+                idx.Button.Text = idx.Caption;
+                idx.ListElement.Visible = idx.Visible;
+                if (idx.Enabled)
+                {
+                    idx.ListElement.CssClass = idx.ListElement.CssClass.Replace(" tab-disabled", "");
+                }
+                else
+                {
+                    if (idx.ListElement.CssClass.IndexOf(" tab-disabled") == -1)
+                        idx.ListElement.CssClass += " tab-disabled";
+                }
+            }
+            base.OnPreRender(e);
         }
 
         private void btn_Click(object sender, EventArgs e)
         {
             LinkButton btn = sender as LinkButton;
             int newIdx = Int32.Parse(btn.ID.Replace("tab_view_btn", ""));
+
+            int idxNo = 0;
+            foreach (TabView idx in Views)
+            {
+                if (idxNo++ == newIdx)
+                {
+                    if (!idx.Enabled)
+                        return;
+                }
+            }
 			this.SetActiveTabViewIndex(newIdx);
             if (ActiveTabViewChanged != null)
                 ActiveTabViewChanged(this, new EventArgs());
