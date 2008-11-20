@@ -3,6 +3,13 @@
 
 * More effects, EffectZoom (zooms fonts)
 
+* TODO make obscurer (updater) resize on browser resize...
+  (And fill entire viewport)
+
+* Fix "Steel" skin Menu looks...
+
+* Chrome Calendar Viewport Calendar controls "looks funny" (black background)
+
 * TabControl renders funny in IE
 
 * RichEdit doesn't work in IE (maybe others too)
