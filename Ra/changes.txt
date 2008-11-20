@@ -68,5 +68,9 @@
 * Fixed a bug in EffectMove which made IE fail if element did not have an
   explicit top or left style before effect was initiated.
 
+* Fixed hovering bugs in IE in Accordion skins "Sapphire" and "Steel". When
+  hovering in IE the skin changed to a color background which was not 
+  intentionally.
+
 
 
