@@ -200,7 +200,7 @@ http://ra-ajax.org
 .accordion .body-content { padding:5px; border-left:solid 1px #CCD1FF; border-right:solid 1px #CCD1FF; border-bottom:solid 1px #CCD1FF; }
 .accordion .accordion-header { background: transparent url(window-h-sprite.png) repeat-x 0 0; }
 .accordion .accordion-header a { text-decoration:none; padding:5px; display:block; color:#333; font-size:0.8em; }
-.accordion .accordion-header a:hover { background:inherit; color:#00f; }
+.accordion .accordion-header a:hover { background: transparent url(window-h-sprite.png) repeat-x 0 0; color:#00f; }
 
 
 /* TreeView */
