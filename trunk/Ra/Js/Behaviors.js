@@ -104,6 +104,8 @@ Ra.extend(Ra.BObscur.prototype, {
     parent.element.parentNode.appendChild(el);
 
     // Listening to the "resized" event since we then want to resize our obscurer surface...
+    if( !window.observe )
+      Ra.extend(window, Ra.Element.prototype);
     window.observe('resize', this.onResized, this);
 
     // In case we have margins, borders and so on (e.g. margin-right:auto etc) we need to calculate
