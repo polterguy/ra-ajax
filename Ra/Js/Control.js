@@ -185,7 +185,8 @@ Ra.Control.prototype = {
 
   // Sets focus to control
   Focus: function() {
-    this.element.focus();
+    // Silently catching since Focus fails in IE (and throws) if DOM node (or ancestor node) is "display:none"...
+    try { this.element.focus(); } catch(e) { }
   },
 
   // Selects a range from e.g. a TextBox
