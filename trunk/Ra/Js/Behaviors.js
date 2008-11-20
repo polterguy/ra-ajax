@@ -64,33 +64,13 @@ Ra.Beha.prototype = {
 
 
 
-// ==============================================================================
-//
-// This is the BehaviorObscurable
-//
-// ==============================================================================
-Ra.BObscur = Ra.klass();
+// Common "obscuring" logic
+// This class is used for all Behaviors that needs for some reasons to "obscure" the viewport...
+Ra.BObscureCommon = {};
 
 
-// Inheriting from Behavior base class
-Ra.extend(Ra.BObscur.prototype, Ra.Beha.prototype);
-
-
-// Creating IMPLEMENTATION of class
-Ra.extend(Ra.BObscur.prototype, {
-  init: function(id, opt) {
-    this.options = opt;
-    this.id = id;
-    this.options = Ra.extend({
-      color:'#000',
-      opacity: 0.5,
-      zIndex:-1
-    }, this.options || {});
-  },
-
-  initBehavior: function(parent) {
-    if( this.options.zIndex == -1)
-      this.options.zIndex = parseInt(parent.element.style.zIndex,10) - 1;
+Ra.BObscureCommon.prototype = {
+  createObscurer: function(parentElement) {
     this.el = document.createElement('div');
     var el = this.el;
     Ra.extend(el, Ra.Element.prototype);
@@ -101,7 +81,7 @@ Ra.extend(Ra.BObscur.prototype, {
     el.setStyle('zIndex',this.options.zIndex);
 
     // We must add the node to the DOM before we can begin computing its offset according to the browser...
-    parent.element.parentNode.appendChild(el);
+    parentElement.appendChild(el);
 
     // Listening to the "resized" event since we then want to resize our obscurer surface...
     if( !window.observe )
@@ -119,23 +99,6 @@ Ra.extend(Ra.BObscur.prototype, {
     // Then when we have made IN-visible (not before) we can set its background color
     // If we do this earlier the browser will "flash"...
     el.setStyle('backgroundColor',this.options.color);
-
-    // Then we can run the animation effect which will slowly show the obscurer...
-    var T = this;
-    new Ra.Effect(el, {
-      duration: 300,
-      onStart: function() {
-        el.setOpacity(0);
-        el.setStyle('display','block');
-      },
-      onFinished: function() {
-        el.setOpacity(T.options.opacity);
-      },
-      onRender: function(pos) {
-        el.setOpacity(pos * T.options.opacity);
-      },
-      sinoidal:true
-    });
   },
 
   onResized: function() {
@@ -154,18 +117,90 @@ Ra.extend(Ra.BObscur.prototype, {
       el = el.offsetParent;
     }
 
-    if( valueL )
-      this.el.setStyle('left',(-valueL) + 'px');
-    if( valueT )
-      this.el.setStyle('top',(-valueT) + 'px');
+    if( valueL ) {
+      if( valueL > 0 )
+        valueL *= -1;
+      else
+        valueL = 0;
+      this.el.setStyle('left', valueL + 'px');
+    }
+    if( valueT ) {
+      if( valueT > 0 )
+        valueT *= -1;
+      else
+        valueL = 0;
+      this.el.setStyle('top', valueT + 'px');
+    }
 
     // Setting width and height to size of viewport...
     this.el.setStyle('width',parseInt(document.body.clientWidth || self.innerWidth || document.documentElement.clientWidth) + 'px');
     this.el.setStyle('height',parseInt(document.body.clientHeight || self.innerHeight || document.documentElement.clientHeight) + 'px');
   },
 
-  destroy: function() {
+  destroyObscurer: function(){
     window.stopObserving('resize', this.onResized, this);
+  }
+};
+
+
+
+
+
+// ==============================================================================
+//
+// This is the BehaviorObscurable
+//
+// ==============================================================================
+Ra.BObscur = Ra.klass();
+
+
+// Inheriting from Behavior base class
+Ra.extend(Ra.BObscur.prototype, Ra.Beha.prototype);
+
+
+// Inheriting from common obscurer
+Ra.extend(Ra.BObscur.prototype, Ra.BObscureCommon.prototype);
+
+
+// Creating IMPLEMENTATION of class
+Ra.extend(Ra.BObscur.prototype, {
+  init: function(id, opt) {
+    this.options = opt;
+    this.id = id;
+    this.options = Ra.extend({
+      color:'#000',
+      opacity: 0.5,
+      zIndex:-1
+    }, this.options || {});
+  },
+
+  initBehavior: function(parent) {
+    if( this.options.zIndex == -1)
+      this.options.zIndex = parseInt(parent.element.style.zIndex,10) - 1;
+
+    // Creating obscurer (from base class)
+    this.createObscurer(parent.element.parentNode);
+
+    // Then we can run the animation effect which will slowly show the obscurer...
+    var T = this;
+    new Ra.Effect(this.el, {
+      duration: 300,
+      onStart: function() {
+        T.el.setOpacity(0);
+        T.el.setStyle('display','block');
+      },
+      onFinished: function() {
+        T.el.setOpacity(T.options.opacity);
+      },
+      onRender: function(pos) {
+        T.el.setOpacity(pos * T.options.opacity);
+      },
+      sinoidal:true
+    });
+  },
+
+  destroy: function() {
+    this.destroyObscurer();
     var T = this;
     new Ra.Effect(this.el, {
       duration: 300,
@@ -536,6 +571,10 @@ Ra.BUpDel = Ra.klass();
 Ra.extend(Ra.BUpDel.prototype, Ra.BUpdate.prototype);
 
 
+// Inheriting from common obscurer
+Ra.extend(Ra.BUpDel.prototype, Ra.BObscureCommon.prototype);
+
+
 // Creating IMPLEMENTATION of class
 Ra.extend(Ra.BUpDel.prototype, {
 
@@ -565,19 +604,34 @@ Ra.extend(Ra.BUpDel.prototype, {
       T.onFinished.apply(T, []);
     };
 
-    // Creating "obscurer" element
-    this.el = document.createElement('div');
-    Ra.extend(this.el, Ra.Element.prototype);
-    this.el.id = this.id;
-    this.el.setStyle('position','absolute');
-    this.el.setStyle('width',parseInt(window.innerWidth || document.body.clientWidth) + 'px');
-    this.el.setStyle('height',parseInt(window.innerHeight || document.body.clientHeight) + 'px');
-    this.el.setStyle('left','0px');
-    this.el.setStyle('top','0px');
-    this.el.setStyle('backgroundColor',this.options.color);
-    this.el.setStyle('zIndex','5000');
-    this.el.setStyle('display','none');
-    document.getElementsByTagName('body')[0].appendChild(this.el);
+    // Creating obscurer from base class
+    this.createObscurer(document.getElementsByTagName('body')[0]);
+  },
+
+  onResized: function() {
+
+    // If some DOM node inbetween obscurer and window root has
+    // e.g. borders or margins (e.g. margin-left:auto) we need to
+    // accommodate for that by subtracting those parts AWAY and creating
+    // a "negative position" for our obscurer element
+    var valueT = this.el.offsetTop  || 0;
+    var valueL = this.el.offsetLeft  || 0;
+    var el = this.el.offsetParent;
+
+    while (el) {
+      valueT += el.offsetTop  || 0;
+      valueL += el.offsetLeft || 0;
+      el = el.offsetParent;
+    }
+
+    if( valueL )
+      this.el.setStyle('left',(-valueL) + 'px');
+    if( valueT )
+      this.el.setStyle('top',(-valueT) + 'px');
+
+    // Setting width and height to size of viewport...
+    this.el.setStyle('width',parseInt(document.body.clientWidth || self.innerWidth || document.documentElement.clientWidth) + 'px');
+    this.el.setStyle('height',parseInt(document.body.clientHeight || self.innerHeight || document.documentElement.clientHeight) + 'px');
   },
 
   Opacity: function(value) {
@@ -630,7 +684,7 @@ Ra.extend(Ra.BUpDel.prototype, {
       this.effect.stopped = true;
       delete this.effect;
     }
-    this.el.remove();
+    this.destroyObscurer();
   }
 });
 })();
