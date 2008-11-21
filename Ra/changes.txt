@@ -114,6 +114,13 @@
   Note that this only happens if you return "double false" from your JS event
   handlers as in; [false, false]...!
 
+* Fixed so that MouseOut does NOT trigger when mouse enters a child element
+  of the one handling the MouseOut event.
+
+* Fixed so that MouseOver does NOT trigger when mouse re-enters from a child 
+  element and back into the main surface of the control.
+
+
 
 
 

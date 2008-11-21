@@ -281,6 +281,13 @@ Ra.Element.prototype = {
             x <  vaL + this.offsetWidth);
   },
 
+  isLeaveEnter: function(e, node) { 
+    var rel = e.relatedTarget ? e.relatedTarget : (e.type == 'mouseout' ? e.toElement : e.fromElement);
+    while (rel && rel != node)
+      rel = rel.parentNode;
+    return (rel != node);
+  },
+
   // Observes an event with the given "func" parameter.
   // The callingContext will be the "this" pointer in the 
   // function call to the "func" when called.
@@ -292,8 +299,17 @@ Ra.Element.prototype = {
       this._wrappers = [];
     }
 
+    var T = this;
     var wr = function(event) {
       var evt = (event || window.event);
+
+      // MouseOut and MouseOver requires "special handling" to verify it actually IS a MouseOut or MouseOver
+      // (to mimick the "mouseenter" and "mouseleave" model from Microsoft - which is FAR more logical
+      // then the W3C model...!)
+      if( evN == 'mouseover' || evN == 'mouseout' ) {
+        if( !T.isLeaveEnter(evt, T) )
+          return;
+      }
       var prs = (exPar || []);
       prs.push(evt);
       var retVal = func.apply(clCtx, prs);
