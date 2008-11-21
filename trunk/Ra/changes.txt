@@ -11,6 +11,11 @@
 
                                 Version 0.8.5
 
+       This version have been a seriously "stabilizer" which means that we 
+       haven't added up much features but probably all users will feel that
+       some parts of Ra-Ajax which had some bugs for them are now better and
+       far more stable in usage.
+
   -------------------------------------------------------------------------------
 
 * Added a more "formal process" to our development cycle. This changelog is one
@@ -106,6 +111,8 @@
   relied on being able to stop a DOM event from bubbling now works in both
   Safari and Chrome (it wasn't really that much that relied on being abl to 
   stop events though)
+  Note that this only happens if you return "double false" from your JS event
+  handlers as in; [false, false]...!
 
 
 

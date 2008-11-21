@@ -119,7 +119,7 @@
                             ID="filter" />
                     </p>
                     <p>
-                        ALT+SHIFT+F gives focus to filtering TextBox in FireFox.
+                        ALT+SHIFT+F gives focus to filtering TextBox in FireFox. ALT + F in Chrome
                     </p>
                 </div>
             </ext:Window>
