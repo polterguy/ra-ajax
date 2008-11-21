@@ -9,6 +9,8 @@
 
 * TabControl renders funny in IE
 
+* Ajax-DropDownList.aspx doesn't work in IE (switch twice, need to set to "0" and not "-1" when removing size property probably)
+
 * RichEdit doesn't work in IE (maybe others too)
 
 * Child controls in BehaviorUpdate...!!!!
