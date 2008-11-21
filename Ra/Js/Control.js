@@ -139,7 +139,10 @@ Ra.Control.prototype = {
       var el = Ra.Control.$(this.options.def_wdg).element;
       el.focus();
       el.click();
-      return false;
+      // Double false will even prevent the default action...!
+      // VERY few times you want to use this since it breaks clicking e.g. links in e.g. FireFox
+      // but when you need it it's VERY handy...!
+      return [false, false];
     }
   },
 

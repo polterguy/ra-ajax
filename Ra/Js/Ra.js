@@ -301,6 +301,12 @@ Ra.Element.prototype = {
         evt.cancelBubble = true;
         if( evt.stopPropagation )
           evt.stopPropagation();
+        return false;
+      }
+      else if( retVal != null && retVal.length == 2 && retVal[0] === false && retVal[1] == false ) {
+        evt.cancelBubble = true;
+        if( evt.stopPropagation )
+          evt.stopPropagation();
         if( evt.preventDefault)
           evt.preventDefault();
         return false;
