@@ -91,5 +91,17 @@
   clicking it. You will also get visual clues in the skins of the TabControl 
   if you set this property to false...
 
+* Added DefaultWidget property for Ra Panel (and therefore also Window etc)
+  which if defined will target the widget with the given ID for being clicked 
+  when Enter key is pressed when something inside that Panel has focus.
+  Very useful for having default buttons being triggered when user clicks
+  enter inside a Panel. Kind of the same as DefaultButton from normal ASP.NET
+  Controls. Though DefaultWidget can target ANY type of Widget, including 
+  CheckBoxes, DropDownLists etc in addition to Buttons. This ie because in
+  Ra-Ajax also non-button controls can observe the Click event...
+
+
+
+
 
 

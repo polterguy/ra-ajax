@@ -89,6 +89,9 @@ Ra.Control.prototype = {
       // Behvaiors
       beha: {},
 
+      // Default widget. Will be clicked when enter is pressed
+      def_wdg: null,
+
       // If set defines the element of an associated label which contains the text value and so on...
       label: null
     }, opt || {});
@@ -96,6 +99,10 @@ Ra.Control.prototype = {
     // Checking to see if a "real" control was passed
     if( this.options.ctrl ) {
       this.options.ctrl = Ra.$(this.options.ctrl);
+    }
+
+    if( this.options.def_wdg ) {
+      this.element.observe('keypress', this.onKeyPressCheckEnter, this);
     }
 
     // Checking to see if an extra Label was passed
@@ -125,6 +132,13 @@ Ra.Control.prototype = {
       this.options.beha[idx].initBehavior(this);
     }
 
+  },
+
+  onKeyPressCheckEnter: function(evt) {
+    if( evt.keyCode == 13 ) {
+      Ra.Control.$(this.options.def_wdg).element.click();
+      return false;
+    }
   },
 
   // This is the method being called from the server-side when
