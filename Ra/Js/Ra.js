@@ -301,6 +301,8 @@ Ra.Element.prototype = {
         evt.cancelBubble = true;
         if( evt.stopPropagation )
           evt.stopPropagation();
+        if( evt.preventDefault)
+          evt.preventDefault();
         return false;
       }
     };
