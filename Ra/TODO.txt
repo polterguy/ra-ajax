@@ -15,8 +15,6 @@
 
 * Comet doesn't work in FF...!
 
-* Set TabViews to Visible/InVisible doesn't work...
-
 * Enter key to click buttons (login etc...)
 
 * GetPreviousInParentCollection and GetNextInParentCollection methods on Manager...

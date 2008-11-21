@@ -22,16 +22,13 @@
     runat="server">
 
     <h1>Ajax TabControl Sample</h1>
-    <p>
-        This is our <em>Ajax TabControl Widget</em>. The Ra-Ajax TabControl is as most of the extension controls
-        also entirely built on the server with no Custom JavaScript. It as quite similar in regards to UI as our 
-        <a href="Ajax-Accordion.aspx">Ajax Accordion</a>. Just like the Accordion our TabControl also renders 
-        all the TabViews on the initial rendering and then later just shows and hides the TabViews you want it 
-        to display. You can however trap the <em>ActiveTabViewChanged</em> event and then populate your TabViews
-        dynamically if you want a smaller bandwidth footprint on your Ajax TabControl solution.
-    </p>
     <ext:TabControl runat="server" ID="tab" CssClass="tab">
-        <ext:TabView Caption="Ajax TabControl" runat="server" ID="tab1" CssClass="content">
+        <ext:TabView Caption="Ajax TabControl" runat="server" ID="tab1" CssClass="content" style="padding:15px;">
+            <p>
+                This is our <em>Ajax TabControl Widget</em>. The Ra-Ajax TabControl is as most of the extension controls
+                also entirely built on the server with no Custom JavaScript. It as quite similar in regards to UI as our 
+                <a href="Ajax-Accordion.aspx">Ajax Accordion</a>. 
+            </p>
         	<p>
         	    Here you can see the content of the first TabControlView...
         	</p>
@@ -42,7 +39,7 @@
         	    developer won't even notice the difference.
         	</p>
         </ext:TabView>
-        <ext:TabView Caption="Tab view 2" runat="server" ID="tab2" CssClass="content">
+        <ext:TabView Caption="Tab view 2" runat="server" ID="tab2" CssClass="content" style="padding:15px;">
         	<p>
         	    Here's another TabControlView.
         	</p>
@@ -63,7 +60,7 @@
         		    OnClick="tabBtn_Click" />
             </p>
         </ext:TabView>
-        <ext:TabView Caption="Third" runat="server" ID="tab3" CssClass="content">
+        <ext:TabView Caption="Third" runat="server" ID="tab3" CssClass="content" style="padding:15px;">
             <p>
         	    And here's yet another TabControlView.
         	    <br />

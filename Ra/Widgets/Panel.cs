@@ -33,12 +33,33 @@ namespace Ra.Widgets
             set { ViewState["Tag"] = value; }
         }
 
+        /**
+         * The button that will be clicked if user clicks enter (Carriage Return) within the panel 
+         * somehow. E.g. by having focus in TextBox and clicking Enter...
+         */
+        [DefaultValue(null)]
+        public string DefaultWidget
+        {
+            get { return ViewState["DefaultWidget"] == null ? null : (string)ViewState["DefaultWidget"]; }
+            set { ViewState["DefaultWidget"] = value; }
+        }
+
         protected override string GetOpeningHTML()
         {
             return string.Format("<{2} id=\"{0}\"{1}>",
                 ClientID,
                 GetWebControlAttributes(),
                 Tag);
+        }
+
+        protected override string GetClientSideScriptOptions()
+        {
+            string retVal = "";
+            if (!string.IsNullOrEmpty(DefaultWidget))
+                retVal += string.Format("def_wdg:'{0}'", AjaxManager.Instance.FindControl(DefaultWidget).ClientID);
+            if (_hasSetFocus)
+                retVal += ",focus:true";
+            return retVal;
         }
 		
 		protected override string GetClosingHTML ()

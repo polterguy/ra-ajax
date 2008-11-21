@@ -398,7 +398,8 @@
             CssClass="window" 
             Caption="Please login"
             Visible="false" 
-            Closable="false"
+            Closable="false" 
+            DefaultWidget="loginBtn"
             style="width:350px;position:relative;z-index:5000;margin-left:auto;margin-right:auto;"
             ID="loginWnd">
             <div style="height:150px;">
