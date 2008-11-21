@@ -17,6 +17,26 @@ namespace Samples
         {
         }
 
+        protected void pnlMouse_MouseOver(object sender, EventArgs e)
+        {
+            lblResult.Text = "Mouse over";
+        }
+
+        protected void pnlMouse_MouseOut(object sender, EventArgs e)
+        {
+            lblResult.Text = "Mouse out";
+        }
+
+        protected void pnlMouse2_MouseOver(object sender, EventArgs e)
+        {
+            lblResult2.Text = "Mouse over";
+        }
+
+        protected void pnlMouse2_MouseOut(object sender, EventArgs e)
+        {
+            lblResult2.Text = "Mouse out";
+        }
+
         protected void btn_MouseOver(object sender, EventArgs e)
         {
             btn.Text = "Mouse Over";
