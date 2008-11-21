@@ -99,6 +99,7 @@
   Controls. Though DefaultWidget can target ANY type of Widget, including 
   CheckBoxes, DropDownLists etc in addition to Buttons. This ie because in
   Ra-Ajax also non-button controls can observe the Click event...
+  When DefaultWidget is being triggered that Widget will also gain Focus.
 
 
 

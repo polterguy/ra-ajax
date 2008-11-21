@@ -136,7 +136,9 @@ Ra.Control.prototype = {
 
   onKeyPressCheckEnter: function(evt) {
     if( evt.keyCode == 13 ) {
-      Ra.Control.$(this.options.def_wdg).element.click();
+      var el = Ra.Control.$(this.options.def_wdg).element;
+      el.focus();
+      el.click();
       return false;
     }
   },
