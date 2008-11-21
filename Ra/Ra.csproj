@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Behaviors\BehaviorObscurable.cs" />
+    <Compile Include="Effects\EffectHighlightText.cs" />
     <Compile Include="Effects\EffectMove.cs" />
     <Compile Include="Effects\EffectSize.cs" />
     <Compile Include="Effects\EffectRollUp.cs" />
@@ -95,6 +96,7 @@
     <EmbeddedResource Include="Js\Behaviors.js" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="changes.txt" />
     <Content Include="license-GPL.txt" />
     <Content Include="license.txt" />
     <Content Include="ReadMe.txt" />
