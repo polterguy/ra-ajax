@@ -101,7 +101,11 @@
   Ra-Ajax also non-button controls can observe the Click event...
   When DefaultWidget is being triggered that Widget will also gain Focus.
 
-
+* Fixed a bug in the internals of Ra-Ajax which made stopping events on both
+  Safari and Chrome not work. This means that everything in Ra-Ajax which
+  relied on being able to stop a DOM event from bubbling now works in both
+  Safari and Chrome (it wasn't really that much that relied on being abl to 
+  stop events though)
 
 
 
