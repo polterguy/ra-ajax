@@ -98,6 +98,11 @@
 * Steel skin didn't work on Linux due to a casing bug in inclusion
   of CSS file. This is fixed now.
 
+* Added "EscPressed" event for TextBox.
+
+* Added support for clicking Escape key in InPlaceEdit. This will
+  disable the editing and discard the newly written value.
+
 
 
 

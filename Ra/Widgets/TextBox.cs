@@ -50,9 +50,14 @@ namespace Ra.Widgets
         public event EventHandler Blur;
 
         /**
-         * Raised when carriage return is pressed when textbox has focus
+         * Raised when Carriage Return (Enter) is pressed when textbox has focus
          */
         public event EventHandler EnterPressed;
+
+        /**
+         * Raised when Escape (Esc) is pressed when textbox has focus
+         */
+        public event EventHandler EscPressed;
 
         /**
          * Raised when control receives Focus, opposite of Blur
@@ -197,6 +202,10 @@ namespace Ra.Widgets
                     if (EnterPressed != null)
                         EnterPressed(this, new EventArgs());
                     break;
+                case "esc":
+                    if (EscPressed != null)
+                        EscPressed(this, new EventArgs());
+                    break;
                 case "focus":
                     if (Focused != null)
                         Focused(this, new EventArgs());
@@ -248,6 +257,12 @@ namespace Ra.Widgets
                 if (evts.Length != 0)
                     evts += ",";
                 evts += "['enter']";
+            }
+            if (EscPressed != null)
+            {
+                if (evts.Length != 0)
+                    evts += ",";
+                evts += "['esc']";
             }
 			return evts;
         }

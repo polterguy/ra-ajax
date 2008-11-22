@@ -237,6 +237,9 @@ Ra.Control.prototype = {
         case 'enter':
           this.element.observe('keypress', this.onCheckEnter, this);
           break;
+        case 'esc':
+          this.element.observe('keydown', this.onCheckEsc, this);
+          break;
         default:
           // This one will prioritize the third event parameter, then the ctrl option and finally
           // the this.element if the two previous was undefined or not given
@@ -253,6 +256,13 @@ Ra.Control.prototype = {
   onCheckEnter: function(evt) {
     if( evt.keyCode == 13 ) {
       this.callback('enter');
+      return [false, false];
+    }
+  },
+
+  onCheckEsc: function(evt) {
+    if( evt.keyCode == 27 ) {
+      this.callback('esc');
       return [false, false];
     }
   },
@@ -461,6 +471,9 @@ Ra.Control.prototype = {
       switch( evts[idx][0] ) {
         case 'enter':
           this.element.stopObserving('keypress', this.onCheckEnter, this);
+          break;
+        case 'esc':
+          this.element.stopObserving('keydown', this.onCheckEsc, this);
           break;
         default:
           (this.options.ctrl || this.element).stopObserving(evts[idx][0], this.onEvent, this);
