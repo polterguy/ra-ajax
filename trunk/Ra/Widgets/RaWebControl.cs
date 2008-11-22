@@ -198,23 +198,23 @@ namespace Ra.Widgets
                     evts += ",";
                 evts += "['mouseup']";
             }
-            if (MouseOver != null)
-            {
-                if (evts.Length != 0)
-                    evts += ",";
-                evts += "['mouseover']";
-            }
             if (MouseMove != null)
             {
                 if (evts.Length != 0)
                     evts += ",";
                 evts += "['mousemove']";
             }
+            if (MouseOver != null)
+            {
+                if (evts.Length != 0)
+                    evts += ",";
+                evts += GetMouseOverEventScript();
+            }
             if (MouseOut != null)
             {
                 if (evts.Length != 0)
                     evts += ",";
-                evts += "['mouseout']";
+                evts += GetMouseOutEventScript();
             }
             if (KeyPress != null)
             {
@@ -235,6 +235,16 @@ namespace Ra.Widgets
                 evts += "['keyup']";
             }
             return evts;
+        }
+
+        protected virtual string GetMouseOutEventScript()
+        {
+            return "['mouseout']";
+        }
+
+        protected virtual string GetMouseOverEventScript()
+        {
+            return "['mouseover']";
         }
 
         #region [ -- Overridden Base Class methods -- ]
