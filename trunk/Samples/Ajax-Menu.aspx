@@ -33,51 +33,29 @@
         ID="lbl" />
     <ext:Menu runat="server" ID="menu" CssClass="menu" OnMenuItemSelected="menu_MenuItemSelected">
         <ext:MenuItems runat="server" ID="mainItems">
-            <ext:MenuItem runat="server" ID="WebStandards">
-                Web Standards
+            <ext:MenuItem runat="server" ID="WebStandards" Text="Web Standards">
                 <ext:MenuItems runat="server" ID="fileMenus">
-                    <ext:MenuItem runat="server" id="HTML">
-                        HTML
-                    </ext:MenuItem>
-                    <ext:MenuItem runat="server" id="CSS">
-                        CSS
-                    </ext:MenuItem>
-                    <ext:MenuItem runat="server" id="JavaScript">
-                        JavaScript
-                    </ext:MenuItem>
+                    <ext:MenuItem runat="server" id="HTML" Text="HTML" />
+                    <ext:MenuItem runat="server" id="CSS" Text="CSS" />
+                    <ext:MenuItem runat="server" id="JavaScript" Text="JavaScript" />
                 </ext:MenuItems>
             </ext:MenuItem>
-            <ext:MenuItem runat="server" ID="Ajax">
-                Ajax
+            <ext:MenuItem runat="server" ID="Ajax" Text="Ajax">
                 <ext:MenuItems runat="server" ID="editMenus">
-                    <ext:MenuItem runat="server" id="jQuery">
-                        jQuery
-                    </ext:MenuItem>
-                    <ext:MenuItem runat="server" id="Prototype">
-                        Prototype
-                    </ext:MenuItem>
-                    <ext:MenuItem runat="server" id="MooTools">
-                        MooTools
-                    </ext:MenuItem>
+                    <ext:MenuItem runat="server" id="jQuery" Text="jQuery" />
+                    <ext:MenuItem runat="server" id="Prototype" Text="Prototype.js" />
+                    <ext:MenuItem runat="server" id="MooTools" Text="MooTools" />
                 </ext:MenuItems>
             </ext:MenuItem>
-            <ext:MenuItem runat="server" ID="Lockin">
-                Lock-in
+            <ext:MenuItem runat="server" ID="Lockin" Text="Lock-In">
                 <ext:MenuItems runat="server" ID="optionsMenu">
-                    <ext:MenuItem runat="server" id="Microsoft">
-                        Microsoft
+                    <ext:MenuItem runat="server" id="Microsoft" Text="Microsoft">
                         <ext:MenuItems runat="server" ID="configItems">
-                            <ext:MenuItem runat="server" id="ActiveX">
-                                ActiveX
-                            </ext:MenuItem>
-                            <ext:MenuItem runat="server" id="Silverlight">
-                                Silverlight
-                            </ext:MenuItem>
+                            <ext:MenuItem runat="server" id="ActiveX" Text="ActiveX" />
+                            <ext:MenuItem runat="server" id="Silverlight" Text="Silverlight" />
                         </ext:MenuItems>
                     </ext:MenuItem>
-                    <ext:MenuItem runat="server" id="AdobeFlex">
-                        Adobe Flex
-                    </ext:MenuItem>
+                    <ext:MenuItem runat="server" id="AdobeFlex" Text="Adobe Flex" />
                 </ext:MenuItems>
             </ext:MenuItem>
         </ext:MenuItems>

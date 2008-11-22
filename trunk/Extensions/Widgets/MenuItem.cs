@@ -18,10 +18,11 @@ using System.Collections.Generic;
 namespace Ra.Extensions
 {
     [ASP.ToolboxData("<{0}:MenuItem runat=\"server\"></{0}:MenuItem>")]
-    public class MenuItem : Panel, ASP.INamingContainer
+    public class MenuItem : Label, ASP.INamingContainer
     {
         protected override void OnInit(EventArgs e)
         {
+            this.Tag = "li";
             this.Click += MenuItem_Click;
             base.OnInit(e);
         }
@@ -119,24 +120,6 @@ namespace Ra.Extensions
                     break;
                 }
             }
-        }
-
-        protected override string GetOpeningHTML()
-        {
-            return string.Format("<li id=\"{0}\"{1}>",
-                ClientID,
-                GetWebControlAttributes());
-        }
-
-        protected override string GetClosingHTML()
-        {
-            return "</li>";
-        }
-
-        // Must override this bugger to not break XHTML compliance on in-visible items...
-        public override string GetInvisibleHTML()
-        {
-            return string.Format("<li id=\"{0}\" style=\"display:none;\" />", ClientID);
         }
     }
 }

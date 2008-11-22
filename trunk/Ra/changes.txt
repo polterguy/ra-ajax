@@ -1,11 +1,39 @@
 
 
 
-  *******************************************************************************
+  ******************************************************************
 
-                             ChangeLog for Ra-Ajax
+                        ChangeLog for Ra-Ajax
 
-  *******************************************************************************
+  ******************************************************************
+
+  ------------------------------------------------------------------
+
+                          Version 0.8.6
+
+       This is more of a feature release then the previous one, 
+       though we are still mainly focusing on bug fixes - we've 
+       still had the time for more features this time then the 
+       previous release.
+
+  ------------------------------------------------------------------
+
+* Changed the inheritance chain of the Menu widget. The MenuItems 
+  is now inheriting from Panel and the MenuItem is now inheriting
+  from Label. This should make it easier for you to construct
+  "dummy" Menus which only contains text and nothing more due to
+  that the Label have the Text property. You can still add Child
+  Controls to MenuItem controls, but if you don't need anything
+  else then a Text property for your menu items then you can 
+  create smaller and easier understood code by not being forced 
+  to create a Literal control to contain the Text but rather use
+  the Text property directly from the MenuItem control.
+  The DOM structure for the Menu however is completely unchanged...
+  Check out the Ajax-Menu.aspx for a sample of using the Text 
+  property directly instead of adding Literal child controls...
+
+
+
 
   -------------------------------------------------------------------------------
 
