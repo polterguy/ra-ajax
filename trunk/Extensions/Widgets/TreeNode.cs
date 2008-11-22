@@ -31,7 +31,6 @@ namespace Ra.Extensions
         protected override void OnInit(EventArgs e)
         {
             Tag = "li";
-            RenderChildControlsBeforeText = true;
             EnsureChildControls();
             if (ParentTree.Expansion == Tree.ExpansionType.SingleClickEntireRow)
             {
@@ -44,6 +43,27 @@ namespace Ra.Extensions
                 _expander.Click += ExpansionWidget_Click;
             }
             base.OnInit(e);
+        }
+
+        protected override void RenderChildren(System.Web.UI.HtmlTextWriter writer)
+        {
+            foreach (ASP.Control idx in Controls)
+            {
+                if (idx is TreeNodes)
+                    continue;
+                idx.RenderControl(writer);
+            }
+            writer.Write(Text);
+            if (ChildTreeNodes != null)
+                ChildTreeNodes.RenderControl(writer);
+        }
+
+        protected override string GetOpeningHTML()
+        {
+            return string.Format("<{1} id=\"{0}\"{2}>",
+                ClientID,
+                Tag,
+                GetWebControlAttributes());
         }
 
         public RaWebControl ExpanderControl
