@@ -95,6 +95,9 @@
 * You can now click carriage return (enter) in InPlaceEdit to submit
   the changes you've done without having the form postback.
 
+* Steel skin didn't work on Linux due to a casing bug in inclusion
+  of CSS file. This is fixed now.
+
 
 
 
