@@ -13,6 +13,8 @@
 
 * Child controls in BehaviorUpdate...!!!!
 
+* Add up samples Starter-Kits which uses Northwind for easily create DB Ajax Apps for our users... (Adrian...)
+
 * Comet doesn't work in FF...!
 
 * GetPreviousInParentCollection and GetNextInParentCollection methods on Manager...
@@ -36,29 +38,25 @@
 
 * Make sure TreeNodes has if GetChildNodes is defined ZERO "static" items defined...
 
-* Implement "validation" on Tree control(s) meaning TreeNode MUST be child of TreeNodes, TreeNodes MUST
-  be child of Tree or TreeNode and Tree and TreeNode must have [0,1] TreeNodes control etc...
+* Fix MouseOver/Out on CheckBox and RadioButton...
 
-* Validation (see above) for Menu hierarchy too...
+* Implement "validation" on Menu control(s) meaning MenuItem MUST be child of MenuItems, MenuNodes MUST
+  be child of Menu or MenuNode and Menu and MenuNode must have [0,1] MenuNodes control etc...
 
 * Create "delayed destroy" which uses an effect and then in the onFinished actually does the destruction...
 
 * Property for "killing" Carriage Return on TextBoxes. This will be very useful
   in e.g. the InPlaceEdit since currently it does a POSTBACK if users clicks Carriage Return
   which is VERY bad...
+  Maybe "OnEnter" event...?
+  Or maybe add up a display:none control which handles click and then have DefaultWidget set...?
 
 * Comet external raising event and setting for allowing it. GET argument raises event on page...
-
-* Fix CheckBox and RadioButton so that also e.g. OnMouseOver triggers on CONTROL and not only
-  text as it does today. Maybe something like "mouseenter/mouseleave" from MooTools can help
-  us here and then trap the TOP element (span) ...?
 
 * Create class of JSON values instead of using dictionary like today in RaControl for
   clarity. Still needs to be "overridable" for on RaControl
 
 * Implement GetAttribute on RaWebControl
-
-* Fix a set of beautiful skins for all extension-controls.
 
 * Fade effects doesn't work in Konqueror, probably setOpacity and getOpacity does something wrong...
 
@@ -70,7 +68,8 @@
 
 * RichEdit doesn't work in Konqueror 
 
-* RichEdit when selecting text across formatting (italics) and doing formatting doesn't format the already formatted text...
+* RichEdit when selecting text across formatting (italics) and doing formatting doesn't format the already 
+  formatted text...
 
 
 
