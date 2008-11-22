@@ -43,12 +43,6 @@
 
 * Create "delayed destroy" which uses an effect and then in the onFinished actually does the destruction...
 
-* Property for "killing" Carriage Return on TextBoxes. This will be very useful
-  in e.g. the InPlaceEdit since currently it does a POSTBACK if users clicks Carriage Return
-  which is VERY bad...
-  Maybe "OnEnter" event...?
-  Or maybe add up a display:none control which handles click and then have DefaultWidget set...?
-
 * Comet external raising event and setting for allowing it. GET argument raises event on page...
 
 * Create class of JSON values instead of using dictionary like today in RaControl for
