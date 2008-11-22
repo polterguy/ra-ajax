@@ -45,6 +45,10 @@ namespace Ra.Extensions
             base.OnInit(e);
         }
 
+        // ORDER COUNTS!
+        // Therefore we need to override the rendering of the children to make
+        // sure the spacer and "control" controls are rendered first, then
+        // the Text property and THEN the ChildTreeNodes bugger...
         protected override void RenderChildren(System.Web.UI.HtmlTextWriter writer)
         {
             foreach (ASP.Control idx in Controls)
@@ -58,6 +62,9 @@ namespace Ra.Extensions
                 ChildTreeNodes.RenderControl(writer);
         }
 
+        // Overriding to REMOVE the rendering of the Text property
+        // since we're dealing with that in the RenderChildren parts
+        // of this class...
         protected override string GetOpeningHTML()
         {
             return string.Format("<{1} id=\"{0}\"{2}>",

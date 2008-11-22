@@ -34,9 +34,7 @@ namespace Samples
                 {
                     TreeNode n = new TreeNode();
                     n.ID = "first" + idx;
-                    System.Web.UI.WebControls.Literal l = new System.Web.UI.WebControls.Literal();
-                    l.Text = "Node " + idx;
-                    n.Controls.Add(l);
+                    n.Text = "Node " + idx;
                     dynamicNodes.Controls.Add(n);
                 }
 
