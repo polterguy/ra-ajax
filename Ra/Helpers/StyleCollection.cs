@@ -172,6 +172,7 @@ namespace Ra.Widgets
                     // overwrite the previous one since this might occur when rendering multiple effects
                     // which all modifies the ViewStateValue and then the LAST ViewStateValue is the one
                     // which should have precedence...
+                    oldValue.Value = oldValue.ViewStateValue;
                     oldValue.ViewStateValue = value;
                     oldValue.ViewStateValueLocked = true;
                 }
@@ -264,19 +265,19 @@ namespace Ra.Widgets
             return GetStyles(false);
         }
 
-        public string ToString(bool dropNonCSSValues)
+        public string ToString(bool dropNonCSSValues, bool dropViewStateOnlyValues)
         {
-            return GetStyles(false, dropNonCSSValues);
+            return GetStyles(false, dropNonCSSValues, dropViewStateOnlyValues);
         }
 
         private string GetStyles(bool returnOnlyViewStateValues)
         {
-			return GetStyles(returnOnlyViewStateValues, false);
+			return GetStyles(returnOnlyViewStateValues, false, false);
         }
 
 		// This method is mostly used only for the ToString bugger, serialization to ViewState
 		// and creation of style HTML attribute.
-        private string GetStyles(bool returnOnlyViewStateValues, bool dropNonCSSValues)
+        private string GetStyles(bool returnOnlyViewStateValues, bool dropNonCSSValues, bool dropViewStateOnlyValues)
         {
             string retVal = "";
             foreach (string idxKey in _styleValues.Keys)
@@ -304,11 +305,15 @@ namespace Ra.Widgets
                 }
                 else
                 {
-                    // TODO: Do we need to check to see if the Value is null here.....??
-                    string value = _styleValues[idxKey].Value == null ? 
-                        _styleValues[idxKey].ViewStateValue : 
-                        _styleValues[idxKey].Value;
-                    retVal += idxKey + ":" + value + ";";
+                    string value = null;
+                    if (dropViewStateOnlyValues && _styleValues[idxKey].ViewStateValueLocked)
+                        value = _styleValues[idxKey].Value;
+                    else
+                        value = _styleValues[idxKey].Value == null ?
+                             _styleValues[idxKey].ViewStateValue :
+                             _styleValues[idxKey].Value;
+                    if (value != null)
+                        retVal += idxKey + ":" + value + ";";
                 }
             }
             return retVal;

@@ -297,7 +297,7 @@ namespace Ra.Widgets
 
         private string GetStyleHTMLFormatedAttribute()
         {
-            string style = Style.ToString(true);
+            string style = Style.ToString(true, true);
             if (!string.IsNullOrEmpty(style))
                 style = string.Format(" style=\"{0}\"", style);
             return style;
