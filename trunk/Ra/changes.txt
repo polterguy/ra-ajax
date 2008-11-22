@@ -51,6 +51,27 @@
   have the opportunity to change your code to a far easier to 
   understand code-model.
 
+* Fixed a severe bug in the Style serialization logic which makes
+  the styles rendered by effects also render into the style 
+  attribute of the control occassionally. This made it impossible
+  to e.g make a Window initially in-visible while at the same time
+  fade it into view with an effect since the Window would "flash"
+  and be initially visible until the effect started running on
+  the page.
+
+* Added up a new effect called "EffectFocusAndSelect" which is 
+  useful for times when you have something which fades in but
+  you still want to give focus to some control inside of that
+  control. The Focus and Select methods will *fail* in such
+  circumstances and for such scenarios the EffectFocusAndSelect
+  might come in handy.
+
+* Fixed the Viewport-Sample.aspx so that it have the Login Window
+  initially IN-visible and fades it into view as the sample is 
+  finished loading.
+
+
+
 
 
   -------------------------------------------------------------------------------

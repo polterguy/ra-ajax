@@ -380,7 +380,7 @@
             Visible="false" 
             Closable="false" 
             DefaultWidget="loginBtn"
-            style="width:350px;position:relative;z-index:5000;margin-left:auto;margin-right:auto;"
+            style="width:350px;position:relative;z-index:5000;margin-left:auto;margin-right:auto;display:none;"
             ID="loginWnd">
             <div style="height:150px;">
                 <table class="loginTbl">

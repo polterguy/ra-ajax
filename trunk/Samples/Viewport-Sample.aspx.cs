@@ -60,11 +60,11 @@ namespace Samples
                 // This line is commented just to make everything show for "bling reasons"...
                 //everything.Visible = false;
                 loginWnd.Visible = true;
-                new EffectFadeIn(loginWnd, 1000).Render();
+                new EffectFadeIn(loginWnd, 1000)
+                    .ChainThese(new EffectFocusAndSelect(username))
+                    .Render();
                 username.Text = "username";
                 password.Text = "password";
-                username.Select();
-                username.Focus();
             }
             base.OnPreRender(e);
         }
