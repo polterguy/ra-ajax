@@ -74,7 +74,14 @@ namespace Ra.Extensions
             _text.Visible = false;
 			_text.Blur += _text_Updated;
             _text.EnterPressed += _text_Updated;
+            _text.EscPressed += _text_EscPressed;
             Controls.Add(_text);
+        }
+
+        void _text_EscPressed(object sender, EventArgs e)
+        {
+            _text.Visible = false;
+            _link.Visible = true;
         }
 
         private void _text_Updated(object sender, EventArgs e)
