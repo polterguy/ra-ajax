@@ -70,6 +70,13 @@
   initially IN-visible and fades it into view as the sample is 
   finished loading.
 
+* Fixed the SelectList so that you can now change it without
+  experiencing bugs in Ajax Callbacks. Though this means that
+  the default value of the Size property is now "1" and not "-1"
+  as it was previously. This fixed it so that you can change the
+  Size property of it in IE in addition to that you can change it
+  in Chrome without experiencing funny rendering bugs or errors.
+
 
 
 

@@ -30,7 +30,7 @@ namespace Samples
 
         protected void btnChange_Click(object sender, EventArgs e)
         {
-            list.Size = list.Size == -1 ? 4 : -1;
+            list.Size = list.Size == 1 ? 4 : 1;
             btnChange.Text = list.Size > 0 ? "Change to SelectList" : "Change to ListBox";
         }
     }

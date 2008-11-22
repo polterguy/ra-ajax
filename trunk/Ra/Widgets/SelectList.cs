@@ -82,10 +82,10 @@ namespace Ra.Widgets
             }
         }
 
-        [DefaultValue(-1)]
+        [DefaultValue(1)]
         public int Size
         {
-            get { return ViewState["Size"] == null ? -1 : (int)ViewState["Size"]; }
+            get { return ViewState["Size"] == null ? 1 : (int)ViewState["Size"]; }
             set
             {
                 if (value != Size)
