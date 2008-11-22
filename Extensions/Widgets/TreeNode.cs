@@ -21,7 +21,7 @@ namespace Ra.Extensions
      * TreeNodes actual child items. This is the actual treenode for the TreeNodes control
      */
     [ASP.ToolboxData("<{0}:TreeNode runat=\"server\"></{0}:TreeNode>")]
-    public class TreeNode : Panel, ASP.INamingContainer
+    public class TreeNode : Label, ASP.INamingContainer
     {
         // Composition controls
         private WEBCTRLS.Label[] _spacers;
@@ -30,6 +30,8 @@ namespace Ra.Extensions
 
         protected override void OnInit(EventArgs e)
         {
+            Tag = "li";
+            RenderChildControlsBeforeText = true;
             EnsureChildControls();
             if (ParentTree.Expansion == Tree.ExpansionType.SingleClickEntireRow)
             {
@@ -286,24 +288,6 @@ namespace Ra.Extensions
                     ChildTreeNodes.Style["display"] = "none";
                 }
             }
-        }
-
-        protected override string GetOpeningHTML()
-        {
-            return string.Format("<li id=\"{0}\"{1}>",
-                ClientID,
-                GetWebControlAttributes());
-        }
-
-        protected override string GetClosingHTML()
-        {
-            return "</li>";
-        }
-
-        // Must override this bugger to not break XHTML compliance on in-visible items...
-        public override string GetInvisibleHTML()
-        {
-            return string.Format("<li id=\"{0}\" style=\"display:none;\" />", ClientID);
         }
     }
 }
