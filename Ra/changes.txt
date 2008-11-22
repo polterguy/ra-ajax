@@ -33,31 +33,15 @@
   property directly instead of adding Literal child controls...
 
 * Changed the inheritance chain also for the Tree widget. This
-  means that for "text only" Tree Nodes you can just set the 
-  Text property instead of fiddling with Literal controls like
-  you previously had to. TreeNodes inherits from Panel now and
-  TreeNode inherits from Label. There are noe changes to the 
-  DOM structure due to this however. Note that this will NOT
-  work if the TreeNode have Children. Meaning this logic only
-  works for TreeNode items without children since it takes
-  advantage of the new RenderChildControlsBeforeText property
-  on the Label which will render ALL child controls after the 
-  Text property and don't discriminate between the child 
-  treenodes or the text.
-  But for the places where you have leaf nodes which only 
-  contains Text and no child Tree Items this is a useful 
-  addition to simplifying your code.
-  By applying this logic to our own samples we were able to
-  save roughly 10 lines of .ASPX code and about 25 lines of
-  C# code...
-
-* Added up RenderChildControlsBeforeText property on Label 
-  which if set to true (defaults to false) will render the child
-  controls BEFORE it renders the Text property of the label.
-  This is useful for places where you want to have both a Text
-  property of your label and child controls but the order 
-  counts. Useful for Control Developers...
-
+  means that for Tree Nodes you can just set the Text property 
+  instead of fiddling with Literal controls like you previously 
+  had to. TreeNodes inherits from Panel now and TreeNode 
+  inherits from Label. There are noe changes to the DOM 
+  structure due to this however.  See sample of usage in our 
+  Ajax-TreeView.aspx sample. We reduced the amount of code in the
+  .ASPX page by roughly 20 with this logic and in the C# codebehind
+  file with roughly 30 lines of code by introducing this logic.
+  Not to mention the logic is far easier to understand now...
 
 
 

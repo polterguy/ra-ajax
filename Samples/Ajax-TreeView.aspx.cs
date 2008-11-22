@@ -43,13 +43,7 @@ namespace Samples
             // First child TreeNode
             TreeNode item = new TreeNode();
             item.ID = "HTML_normal_tree";
-
-            // We cannot use the Text Property of the TreeNode unless
-            // the TreeNode does NOT have children...
-            ASPCTRLS.LiteralControl lit = new ASPCTRLS.LiteralControl();
-            lit.Text = "HTML";
-            lit.ID = "HTML_normal_lit";
-            item.Controls.Add(lit);
+            item.Text = "HTML";
 
             // Creating more children for the HTML node
             TreeNodes htmlNodes = new TreeNodes();
