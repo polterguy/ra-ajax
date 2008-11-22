@@ -25,7 +25,7 @@ namespace Ra.Extensions
      * that one put your child TreeNode items.
      */
     [ASP.ToolboxData("<{0}:Tree runat=\"server\"></{0}:Tree>")]
-    public class Tree : RaWebControl, ASP.INamingContainer
+    public class Tree : Panel, ASP.INamingContainer
     {
         /**
          * Enum describing how TreeNode items in the Tree should be expanded
@@ -47,6 +47,19 @@ namespace Ra.Extensions
          * Raised when a TreeNode is selected by the user
          */
         public event EventHandler SelectedNodeChanged;
+
+        protected override void OnPreRender(EventArgs e)
+        {
+            int count = 0;
+            foreach (ASP.Control idx in Controls)
+            {
+                if (idx is TreeNodes)
+                    count += 1;
+            }
+            if (count != 1)
+                throw new Exception("Every Tree Control must have EXACTLY *1* TreeNodes");
+            base.OnPreRender(e);
+        }
 
         /**
          * The nodes that have been currently selected by either the user or through code
@@ -121,18 +134,6 @@ namespace Ra.Extensions
         {
             if (SelectedNodeChanged != null)
                 SelectedNodeChanged(this, new EventArgs());
-        }
-
-        protected override string GetOpeningHTML()
-        {
-            return string.Format("<div id=\"{0}\"{1}>",
-                ClientID,
-                GetWebControlAttributes());
-        }
-
-        protected override string GetClosingHTML()
-        {
-            return "</div>";
         }
     }
 }

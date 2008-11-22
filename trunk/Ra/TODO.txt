@@ -9,15 +9,11 @@
 
 * TabControl renders funny in IE
 
-* Ajax-DropDownList.aspx doesn't work in IE (switch twice, need to set to "0" and not "-1" when removing size property probably)
-
 * RichEdit doesn't work in IE (maybe others too)
 
 * Child controls in BehaviorUpdate...!!!!
 
 * Comet doesn't work in FF...!
-
-* Enter key to click buttons (login etc...)
 
 * GetPreviousInParentCollection and GetNextInParentCollection methods on Manager...
   Or maybe on RaControl...?
@@ -36,7 +32,7 @@
 
 * DateTimePicker Control
 
-* Check to see if we can support postbascks when JS is turned OFF...
+* Check to see if we can support postbacks when JS is turned OFF...
 
 * Make sure TreeNodes has if GetChildNodes is defined ZERO "static" items defined...
 

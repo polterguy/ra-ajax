@@ -215,6 +215,16 @@ namespace Ra.Extensions
 
         protected override void OnPreRender(EventArgs e)
         {
+            if (!(this.Parent is TreeNodes))
+                throw new Exception("Cannot have a TreeNode being a child of anything else but a TreeNodes collection");
+            int count = 0;
+            foreach (ASP.Control idx in Controls)
+            {
+                if (idx is TreeNodes)
+                    count += 1;
+            }
+            if (count > 1)
+                throw new Exception("Cannot have more then one TreeNodes per TreeNode in your page");
             BuildCss();
             base.OnPreRender(e);
         }

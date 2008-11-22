@@ -69,6 +69,13 @@ namespace Ra.Extensions
             EnsureChildControls();
         }
 
+        protected override void OnPreRender(EventArgs e)
+        {
+            if (!(this.Parent is TreeNode) && !(this.Parent is Tree))
+                throw new Exception("TreeNodes can only be child of Tree and TreeNode controls");
+            base.OnPreRender(e);
+        }
+
         protected override void CreateChildControls()
         {
             base.CreateChildControls();

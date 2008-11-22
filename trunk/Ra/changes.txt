@@ -77,6 +77,14 @@
   Size property of it in IE in addition to that you can change it
   in Chrome without experiencing funny rendering bugs or errors.
 
+* Added up exceptions for the Tree Control hierarchy in such a way
+  that you will now get intelligent exceptions if you mess up your
+  Tree hierarchy by e.g. adding more then one TreeNodes per TreeNode
+  or have a Tree Control without a TreeNodes collection etc.
+  This is being done in the rendering phase though so you're still
+  free to dynamically add up controls in codebehind without 
+  experiencing false positives (exceptions where there shouldn't be)
+
 
 
 
