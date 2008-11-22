@@ -18,13 +18,19 @@ using System.Collections.Generic;
 namespace Ra.Extensions
 {
     [ASP.ToolboxData("<{0}:MenuItems runat=\"server\"></{0}:MenuItems>")]
-    public class MenuItems : RaWebControl, ASP.INamingContainer
+    public class MenuItems : Panel, ASP.INamingContainer
     {
         [DefaultValue(false)]
         internal bool Expanded
         {
             get { return ViewState["Expanded"] == null ? false : (bool)ViewState["Expanded"]; }
             set { ViewState["Expanded"] = value; }
+        }
+
+        protected override void OnInit(EventArgs e)
+        {
+            this.Tag = "ul";
+            base.OnInit(e);
         }
 
         protected override void OnPreRender(EventArgs e)
@@ -95,18 +101,6 @@ namespace Ra.Extensions
                     new EffectFadeOut(this, 300)
                         .Render();
             }
-        }
-
-        protected override string GetOpeningHTML()
-        {
-            return string.Format("<ul id=\"{0}\"{1}>",
-                ClientID,
-                GetWebControlAttributes());
-        }
-
-        protected override string GetClosingHTML()
-        {
-            return "</ul>";
         }
     }
 }
