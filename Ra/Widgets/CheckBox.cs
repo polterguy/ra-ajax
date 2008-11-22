@@ -180,6 +180,16 @@ namespace Ra.Widgets
 			return retVal;
 		}
 
+        protected override string GetMouseOutEventScript()
+        {
+            return string.Format("['mouseout', false, '{0}']", ClientID);
+        }
+
+        protected override string GetMouseOverEventScript()
+        {
+            return string.Format("['mouseover', false, '{0}']", ClientID);
+        }
+
         protected override string GetEventsRegisterScript()
         {
             string evts = base.GetEventsRegisterScript();

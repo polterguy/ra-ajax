@@ -85,6 +85,9 @@
   free to dynamically add up controls in codebehind without 
   experiencing false positives (exceptions where there shouldn't be)
 
+* Now RadioButton and CheckBox will trigger MouseOver and MouseOut
+  events also when hovering over/out of the label parts of them.
+
 
 
 
