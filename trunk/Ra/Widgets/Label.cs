@@ -39,6 +39,19 @@ namespace Ra.Widgets
         }
 
         /**
+         * If true then the Text property will be rendered AFTER the Child controls have bee rendered.
+         * This is useful for places where you have Child Controls in the Label and you need to control
+         * the rendering order of the Text versus the Child Controls order. Default value is false.
+         * This property cannot be changed in Ajax Callbacks without calling ReRender on the label...
+         */
+        [DefaultValue(false)]
+        public bool RenderChildControlsBeforeText
+        {
+            get { return ViewState["RenderChildControlsBeforeText"] == null ? false : (bool)ViewState["RenderChildControlsBeforeText"]; }
+            set { ViewState["RenderChildControlsBeforeText"] = value; }
+        }
+
+        /**
          * The HTML tag used to render the label, defaults to span
          */
         [DefaultValue("span")]
@@ -57,14 +70,14 @@ namespace Ra.Widgets
         {
             return string.Format("<{2} id=\"{0}\"{3}>{1}",
                 ClientID,
-                Text,
+                (RenderChildControlsBeforeText ? "" : Text),
                 Tag,
                 GetWebControlAttributes());
         }
 
         protected override string GetClosingHTML()
         {
-            return string.Format("</{0}>", Tag);
+            return string.Format("{1}</{0}>", Tag, (RenderChildControlsBeforeText ? Text : ""));
         }
 
         #endregion

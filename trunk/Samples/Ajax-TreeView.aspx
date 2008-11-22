@@ -85,21 +85,13 @@
                         Proprietary lock-in crap
                     </span>
                     <ext:TreeNodes runat="server">
-                        <ext:TreeNode runat="server" ID="flex">
-                            Adobe Flex
-                        </ext:TreeNode>
-                        <ext:TreeNode runat="server" ID="silverlight">
-                            Silverlight
-                        </ext:TreeNode>
+                        <ext:TreeNode runat="server" ID="flex" Text="Adobe Flex" />
+                        <ext:TreeNode runat="server" ID="silverlight" Text="Silverlight" />
                         <ext:TreeNode runat="server" ID="activex">
                             ActiveX
                             <ext:TreeNodes runat="server">
-                                <ext:TreeNode runat="server" ID="activex1">
-                                    ActiveX 1.0
-                                </ext:TreeNode>
-                                <ext:TreeNode runat="server" ID="activex2">
-                                    ActiveX 2.0
-                                </ext:TreeNode>
+                                <ext:TreeNode runat="server" ID="activex1" Text="ActiveX 1.0" />
+                                <ext:TreeNode runat="server" ID="activex2" Text="ActiveX 2.0" />
                             </ext:TreeNodes>
                         </ext:TreeNode>
                     </ext:TreeNodes>
@@ -116,21 +108,13 @@
                         Cakes recipes
                     </span>
                     <ext:TreeNodes ID="cakeRecipes" runat="server">
-                        <ext:TreeNode runat="server" ID="brownie">
-                            Brownies
-                        </ext:TreeNode>
-                        <ext:TreeNode runat="server" ID="applecake">
-                            Apple Cake
-                        </ext:TreeNode>
+                        <ext:TreeNode runat="server" ID="brownie" Text="Brownies" />
+                        <ext:TreeNode runat="server" ID="applecake" Text="Apple Cake" />
                         <ext:TreeNode runat="server" ID="crackers">
                             Crackers
                             <ext:TreeNodes ID="cracks" runat="server">
-                                <ext:TreeNode runat="server" ID="ritz">
-                                    Ritz
-                                </ext:TreeNode>
-                                <ext:TreeNode runat="server" ID="chochips">
-                                    Chocolate chips
-                                </ext:TreeNode>
+                                <ext:TreeNode runat="server" ID="ritz" Text="Ritz" />
+                                <ext:TreeNode runat="server" ID="chochips" Text="Chocolate chips" />
                             </ext:TreeNodes>
                         </ext:TreeNode>
                     </ext:TreeNodes>

@@ -27,7 +27,7 @@ namespace Ra.Extensions
      * a GetChildNodes event handler for it but only add up items statically inside of it.
      */
     [ASP.ToolboxData("<{0}:TreeNodes runat=\"server\"></{0}:TreeNodes>")]
-    public class TreeNodes : RaWebControl, ASP.INamingContainer
+    public class TreeNodes : Panel, ASP.INamingContainer
     {
         private bool _hasLoadedDynamicControls;
         private bool _expanded;
@@ -51,6 +51,12 @@ namespace Ra.Extensions
         {
             get { return _expanded; }
             set { _expanded = value; }
+        }
+
+        protected override void OnInit(EventArgs e)
+        {
+            Tag = "ul";
+            base.OnInit(e);
         }
 
         protected override void OnLoad(EventArgs e)
@@ -143,18 +149,6 @@ namespace Ra.Extensions
             new EffectRollUp(this, 200)
                 .JoinThese(new EffectFadeOut())
                 .Render();
-        }
-
-        protected override string GetOpeningHTML()
-        {
-            return string.Format("<ul id=\"{0}\"{1}>",
-                ClientID,
-                GetWebControlAttributes());
-        }
-
-        protected override string GetClosingHTML()
-        {
-            return "</ul>";
         }
     }
 }

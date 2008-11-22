@@ -43,6 +43,9 @@ namespace Samples
             // First child TreeNode
             TreeNode item = new TreeNode();
             item.ID = "HTML_normal_tree";
+
+            // We cannot use the Text Property of the TreeNode unless
+            // the TreeNode does NOT have children...
             ASPCTRLS.LiteralControl lit = new ASPCTRLS.LiteralControl();
             lit.Text = "HTML";
             lit.ID = "HTML_normal_lit";
@@ -59,10 +62,7 @@ namespace Samples
             // Second child TreeNode
             item = new TreeNode();
             item.ID = "XHTML_tree";
-            lit = new ASPCTRLS.LiteralControl();
-            lit.Text = "XHTML";
-            lit.ID = "XHTML_lit";
-            item.Controls.Add(lit);
+            item.Text = "XHTML";
             parent.Controls.Add(item);
         }
 
@@ -73,42 +73,27 @@ namespace Samples
 
             TreeNode item = new TreeNode();
             item.ID = "HTML1";
-            ASPCTRLS.LiteralControl lit = new ASPCTRLS.LiteralControl();
-            lit.Text = "HTML 1";
-            lit.ID = "HTML_lit_1";
-            item.Controls.Add(lit);
+            item.Text = "HTML 1";
             parent.Controls.Add(item);
 
             item = new TreeNode();
             item.ID = "HTML2";
-            lit = new ASPCTRLS.LiteralControl();
-            lit.Text = "HTML 2";
-            lit.ID = "HTML_lit_2";
-            item.Controls.Add(lit);
+            item.Text = "HTML 2";
             parent.Controls.Add(item);
 
             item = new TreeNode();
             item.ID = "HTML3";
-            lit = new ASPCTRLS.LiteralControl();
-            lit.Text = "HTML 3";
-            lit.ID = "HTML_lit_3";
-            item.Controls.Add(lit);
+            item.Text = "HTML 3";
             parent.Controls.Add(item);
 
             item = new TreeNode();
             item.ID = "HTML4";
-            lit = new ASPCTRLS.LiteralControl();
-            lit.Text = "HTML 4";
-            lit.ID = "HTML_lit_4";
-            item.Controls.Add(lit);
+            item.Text = "HTML 4";
             parent.Controls.Add(item);
 
             item = new TreeNode();
             item.ID = "HTML5";
-            lit = new ASPCTRLS.LiteralControl();
-            lit.Text = "HTML 5";
-            lit.ID = "HTML_lit_5";
-            item.Controls.Add(lit);
+            item.Text = "HTML 5";
             parent.Controls.Add(item);
         }
 
@@ -119,79 +104,76 @@ namespace Samples
                 TreeNode t = new TreeNode();
                 t.EnableViewState = false;
                 t.ID = "huge_" + idx;
-                System.Web.UI.LiteralControl l = new System.Web.UI.LiteralControl();
-                l.Text = "Huge # " + idx;
-                l.EnableViewState = false;
+                t.Text = "Huge # " + idx;
                 switch (idx)
                 {
                     case 0:
-                        l.Text += " - <em>when you</em>";
+                        t.Text += " - <em>when you</em>";
                         break;
                     case 1:
-                        l.Text += " - <em>expanded</em>";
+                        t.Text += " - <em>expanded</em>";
                         break;
                     case 2:
-                        l.Text += " - <em>this huge</em>";
+                        t.Text += " - <em>this huge</em>";
                         break;
                     case 3:
-                        l.Text += " - <em>tree node</em>";
+                        t.Text += " - <em>tree node</em>";
                         break;
                     case 4:
-                        l.Text += " - <em>your entire</em>";
+                        t.Text += " - <em>your entire</em>";
                         break;
                     case 5:
-                        l.Text += " - <em>page will</em>";
+                        t.Text += " - <em>page will</em>";
                         break;
                     case 6:
-                        l.Text += " - <em>feel</em>";
+                        t.Text += " - <em>feel</em>";
                         break;
                     case 7:
-                        l.Text += " - <em>as going</em>";
+                        t.Text += " - <em>as going</em>";
                         break;
                     case 8:
-                        l.Text += " - <em>through</em>";
+                        t.Text += " - <em>through</em>";
                         break;
                     case 9:
-                        l.Text += " - <em>syrup</em>";
+                        t.Text += " - <em>syrup</em>";
                         break;
                     case 10:
-                        l.Text += " - <em>and feel</em>";
+                        t.Text += " - <em>and feel</em>";
                         break;
                     case 11:
-                        l.Text += " - <em>less</em>";
+                        t.Text += " - <em>less</em>";
                         break;
                     case 12:
-                        l.Text += " - <em>responsive</em>";
+                        t.Text += " - <em>responsive</em>";
                         break;
                     case 13:
-                        l.Text += " - <em>this has nothing</em>";
+                        t.Text += " - <em>this has nothing</em>";
                         break;
                     case 14:
-                        l.Text += " - <em>todo with </em>";
+                        t.Text += " - <em>todo with </em>";
                         break;
                     case 15:
-                        l.Text += " - <em>Ra-Ajax but</em>";
+                        t.Text += " - <em>Ra-Ajax but</em>";
                         break;
                     case 16:
-                        l.Text += " - <em>rather the</em>";
+                        t.Text += " - <em>rather the</em>";
                         break;
                     case 17:
-                        l.Text += " - <em>sheer amount </em>";
+                        t.Text += " - <em>sheer amount </em>";
                         break;
                     case 18:
-                        l.Text += " - <em>of DOM nodes</em>";
+                        t.Text += " - <em>of DOM nodes</em>";
                         break;
                     case 19:
-                        l.Text += " - <em>in your page</em>";
+                        t.Text += " - <em>in your page</em>";
                         break;
                     case 20:
-                        l.Text += " - <em>after the</em>";
+                        t.Text += " - <em>after the</em>";
                         break;
                     case 21:
-                        l.Text += " - <em>expansion.</em>";
+                        t.Text += " - <em>expansion.</em>";
                         break;
                 }
-                t.Controls.Add(l);
                 huge_collection_node.Controls.Add(t);
             }
         }
