@@ -88,6 +88,13 @@
 * Now RadioButton and CheckBox will trigger MouseOver and MouseOut
   events also when hovering over/out of the label parts of them.
 
+* You can now trap "EnterPressed" event for TextBox. This will
+  actually stop the propagating of the event back up and stop the
+  default action which actually is submitting the form.
+
+* You can now click carriage return (enter) in InPlaceEdit to submit
+  the changes you've done without having the form postback.
+
 
 
 

@@ -233,13 +233,27 @@ Ra.Control.prototype = {
     var evts = this.options.evts;
     var idx = evts.length;
     while( idx-- ) {
-      // This one will prioritize the third event parameter, then the ctrl option and finally
-      // the this.element if the two previous was undefined or not given
-      (evts[idx].length > 2 ? Ra.$(evts[idx][2]) : (this.options.ctrl || this.element)).observe(
-        evts[idx][0], 
-        this.onEvent, 
-        this, 
-        [evts[idx][0], evts[idx][1]] );
+      switch( evts[idx][0] ) {
+        case 'enter':
+          this.element.observe('keypress', this.onCheckEnter, this);
+          break;
+        default:
+          // This one will prioritize the third event parameter, then the ctrl option and finally
+          // the this.element if the two previous was undefined or not given
+          (evts[idx].length > 2 ? Ra.$(evts[idx][2]) : (this.options.ctrl || this.element)).observe(
+            evts[idx][0], 
+            this.onEvent, 
+            this, 
+            [evts[idx][0], evts[idx][1]] );
+          break;
+      }
+    }
+  },
+
+  onCheckEnter: function(evt) {
+    if( evt.keyCode == 13 ) {
+      this.callback('enter');
+      return [false, false];
     }
   },
 
@@ -444,7 +458,14 @@ Ra.Control.prototype = {
     var evts = this.options.evts;
     var idx = evts.length;
     while( idx-- ) {
-      (this.options.ctrl || this.element).stopObserving(evts[idx][0], this.onEvent, this);
+      switch( evts[idx][0] ) {
+        case 'enter':
+          this.element.stopObserving('keypress', this.onCheckEnter, this);
+          break;
+        default:
+          (this.options.ctrl || this.element).stopObserving(evts[idx][0], this.onEvent, this);
+          break;
+      }
     }
   }
 }

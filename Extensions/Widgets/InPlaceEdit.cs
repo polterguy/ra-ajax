@@ -63,7 +63,7 @@ namespace Ra.Extensions
         {
             // Creating LinkButton
             _link.ID = "btn";
-            _link.Click += new EventHandler(_link_Click);
+            _link.Click += _link_Click;
             _link.Text = Text;
             Controls.Add(_link);
 
@@ -72,11 +72,12 @@ namespace Ra.Extensions
             _text.ID = "txt";
             _text.Text = _link.Text;
             _text.Visible = false;
-			_text.Blur += new EventHandler(_text_Blur);
+			_text.Blur += _text_Updated;
+            _text.EnterPressed += _text_Updated;
             Controls.Add(_text);
         }
 
-        private void _text_Blur(object sender, EventArgs e)
+        private void _text_Updated(object sender, EventArgs e)
         {
             _link.Text = _text.Text;
             _text.Visible = false;
