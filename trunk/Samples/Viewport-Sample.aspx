@@ -129,14 +129,13 @@
                         Expansion="SingleClickPlusSign">
 
                         <ext:TreeNodes ID="TreeNodes1" runat="server" Expanded="true">
-                            <ext:TreeNode runat="server" ID="good">
-                                Wow samples...
+                            <ext:TreeNode runat="server" ID="good" Text="Wow samples...">
                                 <ext:TreeNodes ID="TreeNodes2" runat="server" Expanded="true">
                                     <ext:TreeNode runat="server" ID="TreeNode10">
                                         <a href="Viewport-Calendar-Starter-Kit.aspx">Calendar Starter-Kit (C#)</a>
                                     </ext:TreeNode>
                                     <ext:TreeNode runat="server" ID="TreeNode9">
-                                        <a href="Viewport-GridView-Sample.aspx">GridView Starter-Kit (VB.NET)</a>
+                                        <a href="Viewport-GridView-Sample.aspx">GridView Starter-Kit (VB)</a>
                                     </ext:TreeNode>
                                     <ext:TreeNode runat="server" ID="TreeNode1">
                                         <a runat="server" href="~">Main Ajax Samples</a>
@@ -163,21 +162,12 @@
                                     Proprietary lock-in crap
                                 </span>
                                 <ext:TreeNodes ID="TreeNodes6" runat="server">
-                                    <ext:TreeNode runat="server" ID="flex">
-                                        Adobe Flex
-                                    </ext:TreeNode>
-                                    <ext:TreeNode runat="server" ID="TreeNode7">
-                                        Silverlight
-                                    </ext:TreeNode>
-                                    <ext:TreeNode runat="server" ID="TreeNode8">
-                                        ActiveX
+                                    <ext:TreeNode runat="server" ID="rigid" Text="Adobe Flex" />
+                                    <ext:TreeNode runat="server" ID="silvercrap" Text="Silverlight" />
+                                    <ext:TreeNode runat="server" ID="ActiveX" Text="ActiveX">
                                         <ext:TreeNodes ID="TreeNodes7" runat="server">
-                                            <ext:TreeNode runat="server" ID="activex1">
-                                                ActiveX 1.0
-                                            </ext:TreeNode>
-                                            <ext:TreeNode runat="server" ID="activex2">
-                                                ActiveX 2.0
-                                            </ext:TreeNode>
+                                            <ext:TreeNode runat="server" ID="activex1" Text="ActiveX 1.0" />
+                                            <ext:TreeNode runat="server" ID="activex2" Text="ActiveX 2.0" />
                                         </ext:TreeNodes>
                                     </ext:TreeNode>
                                 </ext:TreeNodes>
@@ -187,28 +177,18 @@
                                     Cakes recipes
                                 </span>
                                 <ext:TreeNodes ID="cakeRecipes" runat="server">
-                                    <ext:TreeNode runat="server" ID="brownie">
-                                        Brownies
-                                    </ext:TreeNode>
-                                    <ext:TreeNode runat="server" ID="applecake">
-                                        Apple Cake
-                                    </ext:TreeNode>
-                                    <ext:TreeNode runat="server" ID="crackers">
-                                        Crackers
+                                    <ext:TreeNode runat="server" ID="brownie" Text="Brownies" />
+                                    <ext:TreeNode runat="server" ID="applecake" Text="Apple Cake" />
+                                    <ext:TreeNode runat="server" ID="crackers" Text="Crackers">
                                         <ext:TreeNodes ID="cracks" runat="server">
-                                            <ext:TreeNode runat="server" ID="ritz">
-                                                Ritz
-                                            </ext:TreeNode>
-                                            <ext:TreeNode runat="server" ID="chochips">
-                                                Chocolate chips
-                                            </ext:TreeNode>
+                                            <ext:TreeNode runat="server" ID="ritz" Text="Ritz" />
+                                            <ext:TreeNode runat="server" ID="chochips" Text="Chocolate chips" />
                                         </ext:TreeNodes>
                                     </ext:TreeNode>
                                 </ext:TreeNodes>
                             </ext:TreeNode>
 
-                            <ext:TreeNode runat="server" ID="dynamicNode">
-                                Dynamically loaded nodes...
+                            <ext:TreeNode runat="server" ID="dynamicNode" Text="Dynamically loaded nodes...">
                                 <ext:TreeNodes ID="dynamicNodes" runat="server" />
                             </ext:TreeNode>
 

@@ -12,8 +12,8 @@
                           Version 0.8.6
 
        This is more of a feature release then the previous one, 
-       though we are still mainly focusing on bug fixes - we've 
-       still had the time for more features this time then the 
+       though we are still mainly focusing on bug fixes - we 
+       still had the time for more features this time then in the 
        previous release.
 
   ------------------------------------------------------------------
@@ -31,6 +31,10 @@
   The DOM structure for the Menu however is completely unchanged...
   Check out the Ajax-Menu.aspx for a sample of using the Text 
   property directly instead of adding Literal child controls...
+  This doesn't render incompatible changes in any way, but it makes
+  it easier to create Menus in the future and if you wish you also
+  have the opportunity to change your code to a far easier to 
+  understand code-model.
 
 * Changed the inheritance chain also for the Tree widget. This
   means that for Tree Nodes you can just set the Text property 
@@ -42,6 +46,10 @@
   .ASPX page by roughly 20 with this logic and in the C# codebehind
   file with roughly 30 lines of code by introducing this logic.
   Not to mention the logic is far easier to understand now...
+  This doesn't render incompatible changes in any way, but it makes
+  it easier to create Menus in the future and if you wish you also
+  have the opportunity to change your code to a far easier to 
+  understand code-model.
 
 
 
