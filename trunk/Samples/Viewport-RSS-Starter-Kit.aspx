@@ -108,6 +108,21 @@
                                         <a rel="nofollow" href='<%#Eval("WebLink")%>'><%#Eval("Title")%></a>
                                     </ItemTemplate>
                                 </asp:TemplateField>
+                                <asp:TemplateField>
+                                    <HeaderTemplate>
+                                        Delete
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <ra:HiddenField 
+                                            runat="server" 
+                                            Value='<%#Eval("Id")%>' />
+                                        <ra:Button 
+                                            ID="Button1" 
+                                            runat="server" 
+                                            OnClick="DeleteFeed"
+                                            Text="Delete" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                             </Columns>
                         </asp:GridView>
                     </ra:Panel>
@@ -159,6 +174,11 @@
                         <p>
                             So if you have the need for an <em>Ajax Really Simple Syndication Start-Kit</em> (Ajax RSS reader)
                             then $29 for this Starter-Kit would probably be money well spent.
+                        </p>
+                        <p>
+                            These Ajax Starter-Kits doesn't contain any database logic. Normally you would use them
+                            in combination with some sort of database in a "real" application. But to keep the code
+                            easy to understand we've deliberately avoided adding complexity like databases and such.
                         </p>
                     </ra:Panel>
                 </div>
