@@ -1,6 +1,8 @@
 
                  TODO list for Ra-Ajax
 
+* Moving Window (probably due to new Style serialization logic) goes completely bananas...!!!!!
+
 * More effects, EffectZoom (zooms fonts)
 
 * Create RSS Tutorial
