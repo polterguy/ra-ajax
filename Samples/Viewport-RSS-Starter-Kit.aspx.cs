@@ -90,11 +90,42 @@ namespace Samples
             }
         }
 
+        protected void add_Click(object sender, EventArgs e)
+        {
+            addWindow.Visible = true;
+            addUrl.Text = "URL of RSS Feed";
+            addUrl.Select();
+            addUrl.Focus();
+        }
+
+        protected void addBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                RSS r = new RSS(addUrl.Text);
+                if (r.Items.Count == 0)
+                    throw new Exception("X");
+                RSSDatabase.Database.Add(r);
+                grid.DataSource = RSSDatabase.Database;
+                grid.DataBind();
+                gridWrapper.ReRender();
+                RSSFeeds.Controls.Clear();
+                CreateTree();
+                tree.ReRender();
+                addWindow.Visible = false;
+            }
+            catch (Exception err)
+            {
+                errLbl.Text = "NOT a valid RSS 2.0 Feed";
+                new EffectHighlight(errLbl, 200).Render();
+            }
+        }
+
         protected void resizer_Resized(object sender, ResizeHandler.ResizedEventArgs e)
         {
             int width = Math.Max(e.Width - 414, 400);
             int height = Math.Max(e.Height - 103, 200);
-            int heightLeft = Math.Max(e.Height - 362, 50);
+            int heightLeft = Math.Max(e.Height - 396, 50);
             wndRight.Style["width"] = width.ToString() + "px";
             pnlRight.Style["height"] = height.ToString() + "px";
             pnlLeft.Style["height"] = heightLeft.ToString() + "px";

@@ -105,7 +105,7 @@
                                         Go to website
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        <a href='<%#Eval("WebLink")%>'><%#Eval("Title")%></a>
+                                        <a rel="nofollow" href='<%#Eval("WebLink")%>'><%#Eval("Title")%></a>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>
@@ -113,6 +113,15 @@
                     </ra:Panel>
                 </div>
             </ra:Panel>
+            <div style="height:34px;">
+                <!-- Safari doesn't respect height style on input form elements...!! -->
+                <ra:Button 
+                    runat="server" 
+                    Text="Add new RSS feed..."
+                    style="height:34px;width:100%;"
+                    OnClick="add_Click"
+                    ID="add" />
+            </div>
         </ext:Window>
 
         <!-- Right - main content -->
@@ -131,7 +140,7 @@
                 style="background:White url('media/ajax.jpg') no-repeat;min-height:280px;overflow:auto;padding:15px;">
                 <div style="padding:5px;">
                     <ra:Label runat="server" ID="header" Tag="h1" Text="Ra-Ajax RSS Starter-Kit (C#)" />
-                    <ra:Label runat="server" ID="date" Tag="p" style="font-style:italics;" />
+                    <ra:Label runat="server" ID="date" Tag="p" style="font-style:italic;" />
                     <ra:Label runat="server" ID="body" Tag="p" />
                     <ra:Label runat="server" ID="link" Tag="p" />
                     <ra:Panel runat="server" ID="intro">
@@ -154,6 +163,41 @@
                     </ra:Panel>
                 </div>
             </ra:Panel>
+        </ext:Window>
+
+
+        <!-- Create new activity Window -->
+        <ext:Window 
+            runat="server" 
+            CssClass="window" 
+            Visible="false"
+            Caption="Add new RSS Feed - MUST be RSS 2.0" 
+            DefaultWidget="addBtn"
+            style="width:450px;position:relative;top:25px;margin-left:auto;margin-right:auto;z-index:5000;"
+            ID="addWindow">
+            <div style="height:80px;padding:15px;position:relative;">
+                <div style="width:90%;">
+                    <div 
+                        style="float:left;width:20%;height:25px;text-align:right;padding-right:5px;">
+                        URL
+                    </div>
+                    <div style="float:left;width:70%;height:25px;">
+                        <ra:TextBox 
+                            runat="server" 
+                            style="width:100%;"
+                            ID="addUrl" />
+                    </div>
+                </div>
+                <br style="clear:both;" />
+                <ra:Label runat="server" ID="errLbl" />
+                <ra:Button 
+                    runat="server" 
+                    ID="addBtn" 
+                    OnClick="addBtn_Click"
+                    style="position:absolute;bottom:0;right:0;"
+                    Text="Save" />
+            </div>
+            <ra:BehaviorObscurable runat="server" ID="obscurer" />
         </ext:Window>
     </form>
     <script type="text/javascript">
