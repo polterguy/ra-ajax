@@ -19,7 +19,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Ra-Ajax RSS Starter-Kit</title>
-    <link href="media/skins/steel/Steel-0.8.5.css" rel="stylesheet" type="text/css" />
+    <link id="steel" runat="server" href="media/skins/steel/Steel-0.8.5.css" rel="stylesheet" type="text/css" />
+    <link id="sapphire" visible="false" runat="server" href="media/skins/Sapphire/Sapphire-0.8.5.css" rel="stylesheet" type="text/css" />
     <link href="media/RssStarterKit-0.8.5.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -35,7 +36,16 @@
             runat="server" 
             ID="pnlStatus" 
             CssClass="status">
-            Kickstart Your Web Apps with the <strong>Ra-Ajax RSS Starter-Kit</strong>
+            Kickstart Your Web Apps with the <strong>Ra-Ajax RSS Starter-Kit</strong> - Skin; 
+            <asp:DropDownList 
+                runat="server" 
+                ID="skin" 
+                style="font-size:0.8em;" 
+                AutoPostBack="true" 
+                OnSelectedIndexChanged="skin_SelectedIndexChanged">
+                <asp:ListItem Text="Steel" />
+                <asp:ListItem Text="Sapphire" />
+            </asp:DropDownList>
         </ra:Panel>
 
         <!-- Top left parts -->
@@ -105,7 +115,7 @@
                                         Go to website
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        <a rel="nofollow" href='<%#Eval("WebLink")%>'><%#Eval("Title")%></a>
+                                        <a rel="nofollow" target="_blank" href='<%#Eval("WebLink")%>'><%#Eval("Title")%></a>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField>

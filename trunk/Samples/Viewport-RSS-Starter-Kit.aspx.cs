@@ -114,6 +114,21 @@ namespace Samples
             tree.ReRender();
         }
 
+        protected void skin_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (skin.SelectedItem.Text)
+            {
+                case "Sapphire":
+                    sapphire.Visible = true;
+                    steel.Visible = false;
+                    break;
+                case "Steel":
+                    sapphire.Visible = false;
+                    steel.Visible = true;
+                    break;
+            }
+        }
+
         protected void addBtn_Click(object sender, EventArgs e)
         {
             try
