@@ -3,6 +3,8 @@
 
 * More effects, EffectZoom (zooms fonts)
 
+* Create RSS Tutorial
+
 * Fix "Steel" skin Menu looks...
 
 * Chrome Calendar Viewport Calendar controls "looks funny" (black background)
