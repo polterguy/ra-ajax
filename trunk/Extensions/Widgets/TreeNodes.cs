@@ -143,16 +143,18 @@ namespace Ra.Extensions
         }
 
         // Used for animating down when expanded
-        internal void RollDown()
+        public void RollDown()
         {
+            Expanded = true;
             new EffectRollDown(this, 200)
                 .JoinThese(new EffectFadeIn())
                 .Render();
         }
 
         // Used for animating up when collapsed
-        internal void RollUp()
+        public void RollUp()
         {
+            Expanded = false;
             new EffectRollUp(this, 200)
                 .JoinThese(new EffectFadeOut())
                 .Render();

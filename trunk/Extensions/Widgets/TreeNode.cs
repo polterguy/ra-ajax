@@ -159,7 +159,7 @@ namespace Ra.Extensions
             }
         }
 
-        private TreeNodes ChildTreeNodes
+        public TreeNodes ChildTreeNodes
         {
             get
             {
@@ -179,13 +179,11 @@ namespace Ra.Extensions
             {
                 if (!ChildTreeNodes.Expanded)
                 {
-                    ChildTreeNodes.Expanded = true;
                     ChildTreeNodes.RollDown();
                     ChildTreeNodes.RaiseGetChildNodes();
                 }
                 else
                 {
-                    ChildTreeNodes.Expanded = false;
                     ChildTreeNodes.RollUp();
                 }
             }
