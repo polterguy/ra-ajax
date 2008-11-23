@@ -76,6 +76,18 @@ namespace Samples
                         .ChainThese(new EffectHighlight(body, 300)))
                     .Render();
             }
+            else
+            {
+                // Clicking a ROOT node...
+                // Collapsing all other root nodes but the one clicked...
+                foreach (TreeNode idx in RSSFeeds.Controls)
+                {
+                    if (idx.ID != id && idx.ChildTreeNodes != null && idx.ChildTreeNodes.Expanded)
+                    {
+                        idx.ChildTreeNodes.RollUp();
+                    }
+                }
+            }
         }
 
         protected void resizer_Resized(object sender, ResizeHandler.ResizedEventArgs e)

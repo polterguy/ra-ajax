@@ -9,6 +9,7 @@ public class RSS
 {
     private string _url;
     private string _title;
+    private string _webLink;
     private List<RSSItem> _items = new List<RSSItem>();
     private Guid _id = Guid.NewGuid();
 
@@ -33,6 +34,11 @@ public class RSS
         get { return _title; }
     }
 
+    public string WebLink
+    {
+        get { return _webLink; }
+    }
+
     public List<RSSItem> Items
     {
         get { return _items; }
@@ -46,6 +52,7 @@ public class RSS
         doc.Load(res.GetResponseStream());
 
         _title = doc.DocumentElement.SelectNodes("channel/title")[0].InnerText;
+        _webLink = doc.DocumentElement.SelectNodes("channel/link")[0].InnerText;
 
         XmlNodeList list = doc.DocumentElement.SelectNodes("channel/item");
         foreach (XmlElement idx in list)

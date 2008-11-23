@@ -106,6 +106,12 @@
 * Slightly optimized the serialization of forms when initiating an
   Ajax callback...
 
+* You can now call RollDown and RollUp on TreeNodes from your own
+  code which means that you can programmatically expand and collapse
+  TreeNodes in codebehind. This also means that you can 
+  programmatically (easily) check if a node is expanded or not by
+  checking the Expanded property since this property now is public.
+
 
 
 

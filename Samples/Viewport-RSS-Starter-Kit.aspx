@@ -102,10 +102,10 @@
                             <Columns>
                                 <asp:TemplateField>
                                     <HeaderTemplate>
-                                        Url
+                                        Go to website
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        <%#Eval("Title")%>
+                                        <a href='<%#Eval("WebLink")%>'><%#Eval("Title")%></a>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>
@@ -121,7 +121,7 @@
             CssClass="window" 
             Closable="false" 
             Movable="false"
-            Caption="Content from Active RSS Feed"
+            Caption="Read RSS Item - choose in the TreeView to the left"
             style="width:650px;position:absolute;top:35px;left:410px;"
             ID="wndRight">
 
