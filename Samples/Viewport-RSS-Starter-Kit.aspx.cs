@@ -98,6 +98,22 @@ namespace Samples
             addUrl.Focus();
         }
 
+        protected void DeleteFeed(object sender, EventArgs e)
+        {
+            Guid id = new Guid(((sender as Button).Parent.Controls[1] as HiddenField).Value);
+            RSSDatabase.Database.RemoveAll(
+                delegate(RSS idx)
+                {
+                    return idx.Id == id;
+                });
+            grid.DataSource = RSSDatabase.Database;
+            grid.DataBind();
+            gridWrapper.ReRender();
+            RSSFeeds.Controls.Clear();
+            CreateTree();
+            tree.ReRender();
+        }
+
         protected void addBtn_Click(object sender, EventArgs e)
         {
             try
