@@ -60,7 +60,11 @@ public class RSS
             string title = idx.SelectNodes("title")[0].InnerText;
             DateTime date = DateTime.Parse(idx.SelectNodes("pubDate")[0].InnerText.Replace(" +0000", ""));
             string body = idx.SelectNodes("description")[0].InnerText;
-            string url = idx.SelectNodes("guid")[0].InnerText;
+            string url = "";
+            if (idx.SelectNodes("guid").Count > 0)
+                url = idx.SelectNodes("guid")[0].InnerText;
+            else
+                url = idx.SelectNodes("link")[0].InnerText;
             Items.Add(new RSSItem(title, body, date, url));
         }
     }
@@ -124,6 +128,9 @@ public sealed class RSSDatabase
                 tmp.Add(new RSS("http://feeds.feedburner.com/ajaxian"));
                 tmp.Add(new RSS("http://feeds.dzone.com/dzone/frontpage"));
                 tmp.Add(new RSS("http://blog.stackoverflow.com/feed/"));
+                tmp.Add(new RSS("http://ra-ajax.org/thomas.blogger?rss=true"));
+                tmp.Add(new RSS("http://ra-ajax.org/Kariem.blogger?rss=true"));
+                tmp.Add(new RSS("http://ra-ajax.org/Rick.blogger?rss=true"));
                 HttpContext.Current.Session["RSSDatabase"] = tmp;
             }
             return (List<RSS>)HttpContext.Current.Session["RSSDatabase"];
