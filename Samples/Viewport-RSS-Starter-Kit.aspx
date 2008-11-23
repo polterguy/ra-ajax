@@ -201,7 +201,7 @@
             runat="server" 
             CssClass="window" 
             Visible="false"
-            Caption="Add new RSS Feed - MUST be RSS 2.0" 
+            Caption="Add new RSS Feed - MUST be RSS 2.0"
             DefaultWidget="addBtn"
             style="width:450px;position:relative;top:25px;margin-left:auto;margin-right:auto;z-index:5000;"
             ID="addWindow">
