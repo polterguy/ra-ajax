@@ -41,6 +41,25 @@
 					        AnimationSpeed="400">
 
 					        <ext:AccordionView 
+					            Caption="Ajax Starter-Kits" 
+					            runat="server" 
+					            ID="accView0">
+			                    <ul>
+			                        <li>
+			                            <a href="Viewport-RSS-Starter-Kit.aspx">Ajax RSS Reader (C#) - <strong>NEW!</strong></a>
+			                        </li>
+			                        <li>
+			                            <a href="Viewport-Calendar-Starter-Kit.aspx">Ajax Calendar Starter-Kit (C#)</a>
+			                        </li>
+			                        <li>
+			                            <a href="Viewport-Sample.aspx">Ajax Viewport Starter-Kit (C#)</a>
+			                        </li>
+			                        <li>
+			                            <a href="Viewport-GridView-Sample.aspx">Ajax DataGrid Starter-Kit (VB.NET)</a>
+			                        </li>
+			                    </ul>
+					        </ext:AccordionView>
+					        <ext:AccordionView 
 					            Caption="Concept Samples" 
 					            runat="server" 
 					            ID="accView1">
