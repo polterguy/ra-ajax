@@ -531,13 +531,14 @@ Ra.Form.prototype = {
     }
 
     // Return value
-    var retVal = '';
+    var retVal = [];
 
     // Getting ALL elements inside of form element
     var els = this.form.getElementsByTagName('*');
 
     // Looping through all elements inside of form and checking to see if they're "form elements"
-    for( idx = 0; idx < els.length; idx++ ) {
+    var idx = els.length;
+    while( idx-- ) {
       var el = els[idx];
 
       // According to the HTTP/HTML specs we shouldn't serialize disabled controls
@@ -552,34 +553,26 @@ Ra.Form.prototype = {
               // should submit those anyway
               case 'checkbox':
               case 'radio':
+                // We only serialize checked radiobuttons...
                 if( el.checked ) {
-                  if( retVal.length > 0 ) {
-                    retVal += '&';
-                  }
-                  retVal += el.name + '=' + encodeURIComponent(el.value);
+                  retVal.push(el.name + '=' + encodeURIComponent(el.value));
                 }
                 break;
               case 'hidden':
               case 'password':
               case 'text':
-                if( retVal.length > 0 ) {
-                  retVal += '&';
-                }
-                retVal += el.name + '=' + encodeURIComponent(el.value);
+                retVal.push(el.name + '=' + encodeURIComponent(el.value));
                 break;
             }
             break;
           case 'select':
           case 'textarea':
-            if( retVal.length > 0 ) {
-              retVal += '&';
-            }
-            retVal += el.name + '=' + encodeURIComponent(el.value);
+            retVal.push(el.name + '=' + encodeURIComponent(el.value));
             break;
         }
       }
     }
-    return retVal;
+    return retVal.join('&');
   }
 };
 

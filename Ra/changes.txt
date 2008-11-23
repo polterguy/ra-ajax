@@ -103,6 +103,9 @@
 * Added support for clicking Escape key in InPlaceEdit. This will
   disable the editing and discard the newly written value.
 
+* Slightly optimized the serialization of forms when initiating an
+  Ajax callback...
+
 
 
 
