@@ -54,6 +54,18 @@
         control is that it also have support for special rendering of days. This means that you can add up
         your own controls inside any specific cell in it.
     </p>
+    <h2>Ajax DateTimePicker</h2>
+    <p>
+        Ra-Ajax also have a DateTimePicker which actually is just the Calendar with a couple of extra
+        controls.
+    </p>
+    <ext:DateTimePicker 
+        runat="server" 
+        ID="Calendar1" 
+        CssClass="calendar" 
+        style="width:200px;"
+        OnSelectedValueChanged="calTab_SelectedValueChanged"
+        Value="2008.07.20 23:54" />
     <h2>Ra-Ajax and Mono/Linux/Apache</h2>
     <p>
         Did you know that even though Ra-Ajax is written on top of .Net, it is still possible (and easy) to deploy

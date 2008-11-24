@@ -98,7 +98,7 @@
 
 * You can now trap "EnterPressed" event for TextBox. This will
   actually stop the propagating of the event back up and stop the
-  default action which actually is submitting the form.
+  default action which is submitting the form.
 
 * You can now click carriage return (enter) in InPlaceEdit to submit
   the changes you've done without having the form postback.
@@ -123,8 +123,16 @@
 * Added a new Ajax Starter-Kit - an RSS reader. Sample is called
   Viewport-RSS-Starter-Kit.aspx. It features an RSS reader where
   you can add and delete RSS feeds and read (fully ajaxified) news
-  items from those RSS endpoints. Note it only support RSS 2.0 and
-  not Atom or RSS 1.0.
+  items from those RSS endpoints. Note it currently only support 
+  RSS 2.0 and not Atom or RSS 1.0.
+
+* Added the "CreateExtraControlsAtBottom" event for the Calendar
+  which if handled can create "extra controls" and append in
+  between the calendar surface and the "today button". This is
+  being used in the newly created DateTimePicker...
+
+* Created an Ajax DateTimePicker which can fetch time values in
+  addition to the date values.
 
 
 

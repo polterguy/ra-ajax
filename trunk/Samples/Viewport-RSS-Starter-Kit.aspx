@@ -144,7 +144,8 @@
                     runat="server" 
                     Text="Add new RSS feed..."
                     style="height:34px;width:100%;"
-                    OnClick="add_Click"
+                    OnClick="add_Click" 
+                    AccessKey="A"
                     ID="add" />
             </div>
         </ext:Window>
@@ -214,7 +215,8 @@
                     <div style="float:left;width:70%;height:25px;">
                         <ra:TextBox 
                             runat="server" 
-                            style="width:100%;"
+                            style="width:100%;" 
+                            OnEscPressed="addUrl_EscPressed"
                             ID="addUrl" />
                     </div>
                 </div>

@@ -147,9 +147,16 @@ namespace Samples
             }
             catch (Exception err)
             {
+                addUrl.Focus();
+                addUrl.Select();
                 errLbl.Text = "NOT a valid RSS 2.0 Feed";
                 new EffectHighlight(errLbl, 200).Render();
             }
+        }
+
+        protected void addUrl_EscPressed(object sender, EventArgs e)
+        {
+            addWindow.Visible = false;
         }
 
         protected void resizer_Resized(object sender, ResizeHandler.ResizedEventArgs e)
