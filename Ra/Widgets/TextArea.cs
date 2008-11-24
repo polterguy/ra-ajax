@@ -35,6 +35,11 @@ namespace Ra.Widgets
         public event EventHandler Blur;
 
         /**
+         * Raised when Escape (Esc) is pressed when textbox has focus
+         */
+        public event EventHandler EscPressed;
+
+        /**
          * Raised when control receives Focus, opposite of Blur
          */
         public event EventHandler Focused;
@@ -189,6 +194,10 @@ namespace Ra.Widgets
                     if (TextChanged != null)
                         TextChanged(this, new EventArgs());
                     break;
+                case "esc":
+                    if (EscPressed != null)
+                        EscPressed(this, new EventArgs());
+                    break;
                 case "blur":
                     if (Blur != null)
                         Blur(this, new EventArgs());
@@ -239,7 +248,13 @@ namespace Ra.Widgets
                     evts += ",";
                 evts += "['focus']";
             }
-			return evts;
+            if (EscPressed != null)
+            {
+                if (evts.Length != 0)
+                    evts += ",";
+                evts += "['esc']";
+            }
+            return evts;
         }
 
         // Override this one to create specific HTML for your widgets

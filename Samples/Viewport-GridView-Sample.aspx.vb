@@ -155,14 +155,16 @@ Namespace Samples
             Dim prev As New LinkButton()
             prev.ID = "prev"
             prev.CssClass = "window_prev"
-            prev.Tooltip = "Click to page to previous"
+            prev.AccessKey = "P"
+            prev.Tooltip = "Click to page to previous (ALT+SHIFT+P in FireFox)"
             AddHandler prev.Click, AddressOf prev_Click
             e.Caption.Controls.Add(prev)
 
             Dim nxt As New LinkButton()
             nxt.ID = "next"
             nxt.CssClass = "window_next"
-            nxt.Tooltip = "Click to page to next"
+            nxt.AccessKey = "N"
+            nxt.Tooltip = "Click to page to next  (ALT+SHIFT+N in FireFox)"
             AddHandler nxt.Click, AddressOf nxt_Click
             e.Caption.Controls.Add(nxt)
         End Sub

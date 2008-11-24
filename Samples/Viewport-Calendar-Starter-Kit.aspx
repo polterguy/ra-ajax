@@ -202,6 +202,8 @@
                 <ra:Button 
                     runat="server" 
                     Text="Create new Activity..."
+                    AccessKey="C" 
+                    Tooltip="Keyboard shortcut ALT+SHIFT+C (FireFox)"
                     style="height:34px;width:100%;"
                     OnClick="create_Click"
                     ID="create" />
@@ -322,6 +324,7 @@
                     <div style="float:left;width:70%;height:25px;">
                         <ra:TextBox 
                             runat="server" 
+                            OnEscPressed="createWindow_EscPressed"
                             style="width:100%;"
                             ID="createHeader" />
                     </div>
@@ -332,6 +335,7 @@
                     <div style="float:left;width:70%;height:150px;">
                         <ra:TextArea 
                             runat="server" 
+                            OnEscPressed="createWindow_EscPressed"
                             style="width:100%;height:148px;border:dotted 1px #999;margin-right:10px;"
                             ID="createBody" />
                     </div>
