@@ -123,10 +123,16 @@ namespace Ra.Extensions
             get { return ViewState["Value"] == null ? DateTime.Now.Date : (DateTime)ViewState["Value"]; }
             set
             {
+                DateTime oldValue = Value;
                 ViewState["Value"] = value;
-                _content.Controls.Clear();
-                CreateCalendarControls();
-                _content.ReRender();
+                if (oldValue.Date != value.Date)
+                {
+                    // For cases where only the time parts have changed we do NOT
+                    // re-render the controls
+                    _content.Controls.Clear();
+                    CreateCalendarControls();
+                    _content.ReRender();
+                }
             }
         }
 
