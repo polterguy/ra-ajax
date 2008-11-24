@@ -51,6 +51,7 @@
     <Compile Include="Widgets\AccordionView.cs" />
     <Compile Include="Widgets\Comet.cs" />
     <Compile Include="Helpers\CometQueue.cs" />
+    <Compile Include="Widgets\DateTimePicker.cs" />
     <Compile Include="Widgets\Menu.cs" />
     <Compile Include="Widgets\MenuItem.cs" />
     <Compile Include="Widgets\MenuItems.cs" />
