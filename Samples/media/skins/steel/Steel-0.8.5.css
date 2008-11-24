@@ -171,7 +171,8 @@ http://ra-ajax.org
 .calendar a.selected			{ background-color:#eef; border:solid 1px #999; }
 .calendar .holidayOnVenus a		{ color:#0f0; }
 .calendar_content table			{ text-align:center; margin-left:auto; margin-right:auto; }
-
+.calendar .hour					{ display:inline; width:20px; margin-right:5px; }
+.calendar .minutes				{ display:inline; width:20px; }
 
 /* TabControl styles */
 

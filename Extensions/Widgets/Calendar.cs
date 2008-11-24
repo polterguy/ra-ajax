@@ -24,6 +24,30 @@ namespace Ra.Extensions
     public class Calendar : Panel, ASP.INamingContainer
     {
         /**
+         * EventArgs being passed into the CreateNavigationalButtons events
+         */
+        public class CreateExtraControlsAtBottomEvtArgs : EventArgs
+        {
+            private List<ASP.Control> _ctrls = new List<ASP.Control>();
+
+            internal CreateExtraControlsAtBottomEvtArgs()
+            { }
+
+            /**
+             * Append your controls into this list and they will be automatically 
+             * appended at the bottom of the control. Note that for every control
+             * in this list you will get one new row in the table actually composing 
+             * the Calendar. This means that if you want to have more then one control
+             * per row in the table you must append those two controls into a Literal
+             * control or something which wraps them both.
+             */
+            public List<ASP.Control> Controls
+            {
+                get { return _ctrls; }
+            }
+        }
+
+        /**
          * EventArgs class for the RenderDay Event
          */
         public class RenderDayEventArgs : EventArgs
@@ -64,7 +88,7 @@ namespace Ra.Extensions
         Label _sw;
         Label _s;
         Label _se;
-        Label _caption;
+        protected Label _caption;
 
         /**
          * Raised when Value is changed by user. Can be raised by chaning month and year contrary
@@ -78,6 +102,13 @@ namespace Ra.Extensions
          * is clicked
          */
         public event EventHandler DateClicked;
+
+        /**
+         * Handle this event if you need to create "extra controls" at the bottom of
+         * the calendar for any reasons. Ra-Ajax uses this one internally to create its
+         * DateTimePicker control
+         */
+        public event EventHandler<CreateExtraControlsAtBottomEvtArgs> CreateExtraControlsAtBottom;
 
         /**
          * Called once for every date which is rendered within the current month if defined
@@ -257,6 +288,27 @@ namespace Ra.Extensions
                     break;
             }
 
+            // Creating "extra controls" to append at bottom
+            if (CreateExtraControlsAtBottom != null)
+            {
+                CreateExtraControlsAtBottomEvtArgs evt = new CreateExtraControlsAtBottomEvtArgs();
+                CreateExtraControlsAtBottom(this, evt);
+                int idxNo = 0;
+                foreach (ASP.Control idx in evt.Controls)
+                {
+                    HTML.HtmlTableRow row = new HTML.HtmlTableRow();
+                    row.ID = "extraRow" + idxNo;
+                    HTML.HtmlTableCell cell = new HTML.HtmlTableCell();
+                    cell.ID = "extraCell" + idxNo;
+                    cell.ColSpan = 8;
+                    cell.Controls.Add(idx);
+                    row.Cells.Add(cell);
+                    tbl.Rows.Add(row);
+                    idxNo += 1;
+                }
+            }
+
+            // Today button...
             CreateTodayButton(tbl);
 
             // Rooting the Table as the LAST thing we do...!

@@ -125,9 +125,6 @@ public sealed class RSSDatabase
             if (HttpContext.Current.Session["RSSDatabase"] == null)
             {
                 List<RSS> tmp = new List<RSS>();
-                tmp.Add(new RSS("http://feeds.feedburner.com/ajaxian"));
-                tmp.Add(new RSS("http://feeds.dzone.com/dzone/frontpage"));
-                tmp.Add(new RSS("http://blog.stackoverflow.com/feed/"));
                 tmp.Add(new RSS("http://ra-ajax.org/thomas.blogger?rss=true"));
                 tmp.Add(new RSS("http://ra-ajax.org/Kariem.blogger?rss=true"));
                 tmp.Add(new RSS("http://ra-ajax.org/Rick.blogger?rss=true"));

@@ -56,6 +56,7 @@
     <Compile Include="Helpers\CometQueue.cs" />
     <Compile Include="Widgets\AutoCompleter.cs" />
     <Compile Include="Widgets\AutoCompleterItem.cs" />
+    <Compile Include="Widgets\DateTimePicker.cs" />
     <Compile Include="Widgets\ResizeHandler.cs" />
     <Compile Include="Widgets\Menu.cs" />
     <Compile Include="Widgets\MenuItem.cs" />

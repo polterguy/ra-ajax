@@ -25,6 +25,9 @@ namespace Ra.Extensions
     [ASP.ParseChildren(true, "Content")]
     public class Window : Panel, ASP.INamingContainer
     {
+        /**
+         * EventArgs being passed into the CreateNavigationalButtons events
+         */
         public class CreateNavigationalButtonsEvtArgs : EventArgs
         {
             private ASP.Control _ctrl;
@@ -34,6 +37,9 @@ namespace Ra.Extensions
                 _ctrl = ctrl;
             }
 
+            /**
+             * This is the Caption control which you can add child controls onto
+             */
             public ASP.Control Caption
             {
                 get { return _ctrl; }
