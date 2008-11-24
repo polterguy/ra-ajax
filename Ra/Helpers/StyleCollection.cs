@@ -15,44 +15,49 @@ using System.Web.UI;
 namespace Ra.Widgets
 {
     /**
-     * Style collection class
+     * Style collection class. Used in RaWebControl to track style properties
      */
     public class StyleCollection
     {
         private class StyleValue
         {
-            // Since some Style values are only there to be serialized to the ViewState
-            // and not sent as JSON back to the client or rendered into the HTML markup
-            // we differentiate between these two value by having two different
-            // values for those concepts.
-            // Though most of the time these values are the same, sometimes especially when
-            // effects are being rendered they might actually be different...
-            private string _value;
+            private string _beforeViewStateTrackingValue;
             private string _viewStateValue;
-            private bool _viewStateValueFromNonJSON;
+            private string _afterViewStateTrackingValue;
+            private string _onlyViewStateValue;
 
-            public StyleValue(string value, string viewStateValue)
+            public StyleValue()
+            { }
+
+            // This is the one found in e.g. .ASPX file or in OnInit or which in 
+            // any other ways are set BEFORE TrackingViewState has been called
+            public string BeforeViewStateTrackingValue
             {
-                this._value = value;
-                this._viewStateValue = viewStateValue;
+                get { return _beforeViewStateTrackingValue; }
+                set { _beforeViewStateTrackingValue = value; }
             }
 
-            public string Value
-            {
-                get { return _value; }
-                set { _value = value; }
-            }
-
+            // This is the value which is actually in the ViewState - e.g. from previous call etc...
             public string ViewStateValue
             {
                 get { return _viewStateValue; }
                 set { _viewStateValue = value; }
             }
 
-            public bool ViewStateValueLocked
+            // This one is set AFTER the ViewState has been loaded and TrackViewState has been called
+            // This is the one being rendered into the Response either through JSON or through the HTML
+            public string AfterViewStateTrackingValue
             {
-                get { return _viewStateValueFromNonJSON; }
-                set { _viewStateValueFromNonJSON = value; }
+                get { return _afterViewStateTrackingValue; }
+                set { _afterViewStateTrackingValue = value; }
+            }
+
+            // This one is used only for effects which needs to manipulate the style collection
+            // on the client but does NOT want it to be written into the response (HTML/JSON) in any ways...
+            public string OnlyViewStateValue
+            {
+                get { return _onlyViewStateValue; }
+                set { _onlyViewStateValue = value; }
             }
         }
 
@@ -83,7 +88,7 @@ namespace Ra.Widgets
                 Dictionary<string, string> styles = _control.GetJSONValueDictionary("AddStyle");
                 foreach (string idxKey in _styleValues.Keys)
                 {
-                    if (_styleValues[idxKey].Value != null)
+                    if (_styleValues[idxKey].AfterViewStateTrackingValue != null)
                     {
                         // Transforming from CSS file syntax to DOM syntax, e.g. background-color ==> backgroundColor
                         // and border-style ==> borderStyle
@@ -93,7 +98,7 @@ namespace Ra.Widgets
                             int where = idx.IndexOf('-');
                             idx = idx.Substring(0, where) + idx.Substring(where + 1, 1).ToUpper() + idx.Substring(where + 2);
                         }
-                        styles[idx] = _styleValues[idxKey].Value;
+                        styles[idx] = _styleValues[idxKey].AfterViewStateTrackingValue;
                     }
                 }
             }
@@ -121,71 +126,53 @@ namespace Ra.Widgets
          */
         public void SetStyleValueViewStateOnly(string idx, string value)
         {
-            SetStyleValue(idx, value, false);
+            SetStyleValue(idx, value, true);
         }
 
-        private void SetStyleValue(string idx, string value, bool sendChanges)
+        private void SetStyleValue(string idx, string value, bool viewStateOnly)
         {
             // Short cutting if value is not changed
             if (this[idx] == value)
                 return;
 
-            // Checking to see if we should send this value as JSON back to client
-            // Note that even though our user-code has told us that he wants to
-            // transmit changes back to client, this is still an equation of also whether or
-            // not the control is tracking ViewState and the value is not the same as the previous value
-            // etc...
-            bool shouldJson =
-                sendChanges &&
-                _trackingViewState &&
-                (!_styleValues.ContainsKey(idx) || _styleValues[idx].Value != value);
-
             // Adding to StyleCollection
-            AddStyleToCollection(idx, value, shouldJson);
+            AddStyleToCollection(idx, value, viewStateOnly);
         }
 
-        private void AddStyleToCollection(string idx, string value, bool shouldJson)
+        private void AddStyleToCollection(string idx, string value, bool viewStateOnly)
         {
             if (_styleValues.ContainsKey(idx))
             {
                 // Key exists from before
                 StyleValue oldValue = _styleValues[idx];
-                if (shouldJson)
+                if (viewStateOnly)
                 {
-                    // ONLY if shouldJson == true we set the "Value" property since that's the one
-                    // being sent as JSON back to the client...
-                    oldValue.Value = value;
-
-                    // Note that if the ViewStateValue has been previously set by a method
-                    // call which had shouldJson == false then we do NOT UPDATED the ViewStateValue
-                    // since this might occur if you set Style values on the control AFTER you have 
-                    // rendered effects and in such cases the Effect StyleValue change should have
-                    // "ViewState priority" and override the Style value explicitly set in user-code...
-                    if (!oldValue.ViewStateValueLocked)
-                        oldValue.ViewStateValue = value;
+                    oldValue.OnlyViewStateValue = value;
                 }
                 else
                 {
-                    // If we should not JSON this value we ONLY set the ViewStateValue since this
-                    // might be a "ViewState-only" value...
-                    // Note that even though the ViewStateValueLocked is true we still
-                    // overwrite the previous one since this might occur when rendering multiple effects
-                    // which all modifies the ViewStateValue and then the LAST ViewStateValue is the one
-                    // which should have precedence...
-                    oldValue.Value = oldValue.ViewStateValue;
-                    oldValue.ViewStateValue = value;
-                    oldValue.ViewStateValueLocked = true;
+                    if (_trackingViewState)
+                        oldValue.AfterViewStateTrackingValue = value;
+                    else
+                        oldValue.BeforeViewStateTrackingValue = value;
                 }
             }
             else
             {
                 // Key doesn't exist from before
-                StyleValue nValue = new StyleValue(null, value);
+                StyleValue nValue = new StyleValue();
 
-                // Note that we only set the "Value" property if this value is supposed to be
-                // serialized back to the client through the JSON mechanism
-                if (shouldJson)
-                    nValue.Value = value;
+                if (viewStateOnly)
+                {
+                    nValue.OnlyViewStateValue = value;
+                }
+                else
+                {
+                    if (_trackingViewState)
+                        nValue.AfterViewStateTrackingValue = value;
+                    else
+                        nValue.BeforeViewStateTrackingValue = value;
+                }
 
                 // Storing it in our dictionary...
                 _styleValues[idx] = nValue;
@@ -203,18 +190,21 @@ namespace Ra.Widgets
                 if (idx.ToLower() != idx)
                     throw new ApplicationException("Cannot have a style property which contains uppercase letters");
 
-                // Note that since it's most semantically correct to return the ViewStateValue
-                // since that will be the Value of the style property on the next request we do NOT
-                // return the Value but rather the ViewStateValue which might give "funny results" if you
-                // retrieve the ViewStateValue after an Effect has rendered.
-                // However since this will be the value on the next request, this is the semantically "best" 
-                // solution when having to choose between two evils....
                 if (_styleValues.ContainsKey(idx))
-                    return _styleValues[idx].ViewStateValue;
+                {
+                    if (_styleValues[idx].OnlyViewStateValue != null)
+                        return _styleValues[idx].OnlyViewStateValue;
+                    else if (_styleValues[idx].AfterViewStateTrackingValue != null)
+                        return _styleValues[idx].AfterViewStateTrackingValue;
+                    else if (_styleValues[idx].ViewStateValue != null)
+                        return _styleValues[idx].ViewStateValue;
+                    else
+                        return _styleValues[idx].BeforeViewStateTrackingValue;
+                }
 
                 return null;
 			}
-			set { this.SetStyleValue(idx, value, true); }
+			set { this.SetStyleValue(idx, value, false); }
 		}
 
         /**
@@ -260,61 +250,33 @@ namespace Ra.Widgets
             return styleString;
         }
 
-        public override string ToString()
-        {
-            return GetStyles(false);
-        }
-
-        public string ToString(bool dropNonCSSValues, bool dropViewStateOnlyValues)
-        {
-            return GetStyles(false, dropNonCSSValues, dropViewStateOnlyValues);
-        }
-
-        private string GetStyles(bool returnOnlyViewStateValues)
-        {
-			return GetStyles(returnOnlyViewStateValues, false, false);
-        }
-
-		// This method is mostly used only for the ToString bugger, serialization to ViewState
-		// and creation of style HTML attribute.
-        private string GetStyles(bool returnOnlyViewStateValues, bool dropNonCSSValues, bool dropViewStateOnlyValues)
+        public string GetViewStateOnlyStyles()
         {
             string retVal = "";
             foreach (string idxKey in _styleValues.Keys)
             {
-				// For cases where we're rendering style attribute (among other things)
-				if (dropNonCSSValues)
-				{
-					// TODO: These values should have their own "hacks" to be able to render the values also
-					// for "HTML rendering" cases...
-					switch (idxKey)
-					{
-						case "opacity":
-						    this._control.AddInitCall(string.Format("element.setOpacity({0})", _styleValues[idxKey].Value));
-							continue;
-					}
-				}
-				
-				// If we're serializing to ViewState we don't want to have the "static" values
-				// which are defined in .ASPX file or before OnInit...
-                if (returnOnlyViewStateValues)
-                {
-                    // Here we are returning ONLY the ViewStateValue
-                    if (_styleValues[idxKey].ViewStateValue != null)
-                        retVal += idxKey + ":" + _styleValues[idxKey].ViewStateValue + ";";
-                }
-                else
-                {
-                    string value = null;
-                    if (dropViewStateOnlyValues && _styleValues[idxKey].ViewStateValueLocked)
-                        value = _styleValues[idxKey].Value;
-                    else
-                        value = _styleValues[idxKey].Value == null ?
-                             _styleValues[idxKey].ViewStateValue :
-                             _styleValues[idxKey].Value;
-                    if (value != null)
-                        retVal += idxKey + ":" + value + ";";
-                }
+                // Here we are returning ONLY the ViewStateValue
+                if (_styleValues[idxKey].OnlyViewStateValue != null)
+                    retVal += idxKey + ":" + _styleValues[idxKey].OnlyViewStateValue + ";";
+                else if (_styleValues[idxKey].AfterViewStateTrackingValue != null)
+                    retVal += idxKey + ":" + _styleValues[idxKey].AfterViewStateTrackingValue + ";";
+                else if (_styleValues[idxKey].ViewStateValue != null)
+                    retVal += idxKey + ":" + _styleValues[idxKey].ViewStateValue + ";";
+            }
+            return retVal;
+        }
+
+        public string GetStylesForResponse()
+        {
+            string retVal = "";
+            foreach (string idxKey in _styleValues.Keys)
+            {
+                if (_styleValues[idxKey].AfterViewStateTrackingValue != null)
+                    retVal += idxKey + ":" + _styleValues[idxKey].AfterViewStateTrackingValue + ";";
+                if (_styleValues[idxKey].ViewStateValue != null)
+                    retVal += idxKey + ":" + _styleValues[idxKey].ViewStateValue + ";";
+                else if (_styleValues[idxKey].BeforeViewStateTrackingValue != null)
+                    retVal += idxKey + ":" + _styleValues[idxKey].BeforeViewStateTrackingValue + ";";
             }
             return retVal;
         }
@@ -334,13 +296,15 @@ namespace Ra.Widgets
             foreach (string idx in stylePairs)
             {
                 string[] raw = idx.Split(':');
-                _styleValues[raw[0]] = new StyleValue(null, raw[1]);
+                StyleValue v = new StyleValue();
+                v.ViewStateValue = raw[1];
+                _styleValues[raw[0]] = v;
             }
         }
 
         internal object SaveViewState()
         {
-            return GetStyles(true);
+            return GetViewStateOnlyStyles();
         }
 
         internal void TrackViewState()
