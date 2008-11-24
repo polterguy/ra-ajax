@@ -530,7 +530,7 @@ namespace Ra.Extensions
 
         private void today_Click(object sender, EventArgs e)
         {
-            Value = DateTime.Now.Date;
+            Value = DateTime.Now;
             _content.ReRender();
             _content.Controls.Clear();
             CreateCalendarControls();
@@ -544,7 +544,7 @@ namespace Ra.Extensions
         {
             SelectList drop = sender as SelectList;
             int newMonth = Int32.Parse(drop.SelectedItem.Value);
-            DateTime newValue = new DateTime(Value.Year, newMonth, Math.Min(28, Value.Day));
+            DateTime newValue = new DateTime(Value.Year, newMonth, Math.Min(28, Value.Day), Value.Hour, Value.Minute, 0);
             if (Value.Date != newValue.Date)
             {
                 Value = newValue;
@@ -560,7 +560,7 @@ namespace Ra.Extensions
         {
             SelectList drop = sender as SelectList;
             int newYear = Int32.Parse(drop.SelectedItem.Value);
-            DateTime newValue = new DateTime(newYear, Value.Month, Math.Min(28, Value.Day));
+            DateTime newValue = new DateTime(newYear, Value.Month, Math.Min(28, Value.Day), Value.Hour, Value.Minute, 0);
             if (Value.Date != newValue.Date)
             {
                 Value = newValue;
@@ -578,7 +578,7 @@ namespace Ra.Extensions
             DateTime newValue = DateTime.ParseExact(button.ID, "yyyy_MM_dd", System.Globalization.CultureInfo.InvariantCulture);
             if (Value.Date != newValue.Date)
             {
-                Value = newValue;
+                Value = new DateTime(newValue.Year, newValue.Month, newValue.Day, Value.Hour, Value.Minute, 0);
                 _content.ReRender();
                 _content.Controls.Clear();
                 CreateCalendarControls();
