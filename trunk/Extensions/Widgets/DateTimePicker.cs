@@ -45,13 +45,11 @@ namespace Ra.Extensions
 
             _hour.ID = "hour";
             _hour.CssClass = "hour";
-            _hour.Focused += _hour_Focused;
             _hour.TextChanged += _hour_TextChanged;
             lit.Controls.Add(_hour);
 
             _minutes.ID = "minutes";
             _minutes.CssClass = "minutes";
-            _minutes.Focused += _minutes_Focused;
             _minutes.TextChanged += _minutes_TextChanged;
             lit.Controls.Add(_minutes);
 
@@ -72,18 +70,6 @@ namespace Ra.Extensions
             int nHour = 1;
             Int32.TryParse(_hour.Text, out nHour);
             this.Value = new DateTime(d.Year, d.Month, d.Day, nHour, d.Minute, 1);
-        }
-
-        void _minutes_Focused(object sender, EventArgs e)
-        {
-            _minutes.Select();
-            _minutes.Focus();
-        }
-
-        void _hour_Focused(object sender, EventArgs e)
-        {
-            _hour.Select();
-            _hour.Focus();
         }
     }
 }
