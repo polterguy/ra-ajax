@@ -114,9 +114,9 @@
 
 * Added a new Ajax Starter-Kit - an RSS reader. Sample is called
   Viewport-RSS-Starter-Kit.aspx. It features an RSS reader where
-  you can add and delete RSS URLa and read (fully ajaxified) news
-  items from those RSS endpoints. Note it only support RSS2.0 and
-  not Atom or RSS1.0 etc.
+  you can add and delete RSS feeds and read (fully ajaxified) news
+  items from those RSS endpoints. Note it only support RSS 2.0 and
+  not Atom or RSS 1.0.
 
 
 
