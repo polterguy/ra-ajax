@@ -134,6 +134,12 @@
 * Created an Ajax DateTimePicker which can fetch time values in
   addition to the date values.
 
+* Added up keyboard shortcuts for most Starter-Kits where it 
+  makes sense. E.g. GridView uses ALT+SHIFT+N/P for next and
+  previous. Calendar Starter-Kit have ALT+SHIFT+C for creating
+  a new Activity and ESCAPE for closing "new activity window".
+  Etc...
+
 
 
 

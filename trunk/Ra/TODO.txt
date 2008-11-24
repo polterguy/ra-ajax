@@ -34,8 +34,6 @@
 
 * Comet does not work correctly in Safari
 
-* DateTimePicker Control
-
 * Check to see if we can support postbacks when JS is turned OFF...
 
 * Make sure TreeNodes has if GetChildNodes is defined ZERO "static" items defined...

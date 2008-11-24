@@ -145,7 +145,8 @@
                     Text="Add new RSS feed..."
                     style="height:34px;width:100%;"
                     OnClick="add_Click" 
-                    AccessKey="A"
+                    AccessKey="A" 
+                    Tooltip="Keyboard shortcut ALT+SHIFT+A (FireFox)"
                     ID="add" />
             </div>
         </ext:Window>

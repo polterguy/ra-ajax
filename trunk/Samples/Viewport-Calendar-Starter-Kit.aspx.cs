@@ -40,6 +40,11 @@ namespace Samples
             pnlRight.Style["height"] = height.ToString() + "px";
         }
 
+        protected void createWindow_EscPressed(object sender, EventArgs e)
+        {
+            createWindow.Visible = false;
+        }
+
         protected void calendarStart_SelectedValueChanged(object sender, EventArgs e)
         {
             if (calendarStart.Value > calendarEnd.Value)
