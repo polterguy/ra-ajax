@@ -57,7 +57,15 @@
   to e.g make a Window initially in-visible while at the same time
   fade it into view with an effect since the Window would "flash"
   and be initially visible until the effect started running on
-  the page.
+  the page. This was a pretty obscur and hard to track bug which
+  would occassionally make the Style serialization logic not work
+  as intended. If you had problems with Styles serialization logic
+  previously then this is highly likely the reason. This should 
+  also probably make some of your "advanced logic" render a 
+  *smaller* ViewState for you since often this would fail in such
+  a way that it would render ViewState value it didn't have to 
+  render as in render changes done before tracking of ViewState
+  was triggered into the ViewState.
 
 * Added up a new effect called "EffectFocusAndSelect" which is 
   useful for times when you have something which fades in but
