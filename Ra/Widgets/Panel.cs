@@ -56,7 +56,7 @@ namespace Ra.Widgets
         {
             string retVal = "";
             if (!string.IsNullOrEmpty(DefaultWidget))
-                retVal += string.Format("def_wdg:'{0}'", AjaxManager.Instance.FindControl(DefaultWidget).ClientID);
+                retVal += string.Format("def_wdg:'{0}'", AjaxManager.Instance.FindControl(this, DefaultWidget).ClientID);
             if (_hasSetFocus)
                 retVal += ",focus:true";
             return retVal;
