@@ -89,7 +89,7 @@ namespace Ra
             set { _supressFilters = value; }
         }
 
-        private Control FindControl(Control current, string id)
+        public Control FindControl(Control current, string id)
         {
             if (current.ID == id)
                 return current;

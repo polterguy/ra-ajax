@@ -51,7 +51,11 @@ Ra.extend(Ra.Timer.prototype, {
   },
 
   Enabled: function(value) {
+    var wasEnabled = this.options.enabled;
     this.options.enabled = value;
+    if( value && !wasEnabled ) {
+      this.start();
+    }
   },
 
   onFinishedTicking: function(response){
