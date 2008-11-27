@@ -53,7 +53,7 @@ namespace Ra.Extensions
             }
         }
 
-        TextBox _txt;
+        TextBox _txt = new TextBox();
         Label _items;
 
         /**
@@ -75,6 +75,26 @@ namespace Ra.Extensions
         {
             get { return ViewState["SelectedItem"] == null ? null : (string)ViewState["SelectedItem"]; }
             set { ViewState["SelectedItem"] = value; }
+        }
+
+        /**
+         * Keyboard shortcut to reach the TextBox of the autocompleter
+         */
+        [DefaultValue("")]
+        public string AccessKey
+        {
+            get { return _txt.AccessKey; }
+            set { _txt.AccessKey = value; }
+        }
+
+        /**
+         * Tooltip for control
+         */
+        [DefaultValue("")]
+        public string Tooltip
+        {
+            get { return _txt.Tooltip; }
+            set { _txt.Tooltip = value; }
         }
 
         protected override void OnInit(EventArgs e)
@@ -103,7 +123,6 @@ namespace Ra.Extensions
         private void CreateAutoCompleterControls()
         {
             // Creating TextBox
-            _txt = new TextBox();
             _txt.ID = "txt";
             _txt.CssClass = this.CssClass + "-text";
             _txt.KeyUp += new EventHandler(_txt_KeyUp);

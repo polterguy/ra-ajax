@@ -143,6 +143,10 @@
 * Fixed a bug which made it impossible to enable a timer which
   was disabled during an Ajax Callback
 
+* Added support for AccessKey for AutoCompleter.
+
+* Added support for Tooltips for AutoCompleter
+
 
 
 
