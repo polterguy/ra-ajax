@@ -32,6 +32,9 @@
   attribute for Firefox on Debian installations which in turn
   made the whole Ajax engine for Ra-Ajax go into "undefined state"
   when user clicked Back, Forward or Refresh buttons...
+  This is actually due to a copyright issue between Mozilla and
+  Debian which made them re-brand the browser to a different name
+  in their (Debian) distribution...
 
 * Fixed a bug that made it impossible to style the WHOLE CheckBox
   and RadioButton. Previously the RadioButton and the CheckBox
