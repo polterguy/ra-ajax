@@ -9,6 +9,48 @@
 
   ------------------------------------------------------------------
 
+                          Version 0.9.0
+
+       Say something intelligent about this release here...
+
+  ------------------------------------------------------------------
+
+* Fixed a bug in Style serialization logic (again) unfortunately
+  a small rendering bug came into the 0.8.6 release which was that
+  the "GetStylesForResponse" method in StyleCollection.cs would
+  actually serialize BOTH the ViewState value AND the 
+  "AfterViewStateTracking" value which would occassionally make 
+  the same style appear *twice* in the style attribute of the 
+  control. This is fixed now.
+
+* Fixed a bug that renders Style value even if they're "empty".
+  In Ajax callbacks this should happen, though when rendering
+  HTML for some reasons it should never render "empty" value
+  like e.g. "display:;" etc. This is now fixed.
+
+* Fixed a bug which didn't apply the 'autocomplete="off"'
+  attribute for Firefox on Debian installations which in turn
+  made the whole Ajax engine for Ra-Ajax go into "undefined state"
+  when user clicked Back, Forward or Refresh buttons...
+
+* Fixed a bug that made it impossible to style the WHOLE CheckBox
+  and RadioButton. Previously the RadioButton and the CheckBox
+  would apply the style and CssClass properties to only the input
+  element itself and not the entire span wrapping the whole thing.
+  This made it impossible to style the "whole thing". Note that
+  this might render compatibility problems for you if you have
+  "walk arounds" already for this problem. If your CheckBoxes
+  and RadioButtons looks funny, then this is the reason. To fix
+  this in existing projects realize that the style and class
+  attributes are now applied ONLY for a SPAN element which
+  actually WRAPS the entire control.
+
+
+
+
+
+  ------------------------------------------------------------------
+
                           Version 0.8.6
 
        This is more of a feature release then the previous one, 

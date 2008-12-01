@@ -271,12 +271,17 @@ namespace Ra.Widgets
             string retVal = "";
             foreach (string idxKey in _styleValues.Keys)
             {
+                string value = "";
                 if (_styleValues[idxKey].AfterViewStateTrackingValue != null)
-                    retVal += idxKey + ":" + _styleValues[idxKey].AfterViewStateTrackingValue + ";";
-                if (_styleValues[idxKey].ViewStateValue != null)
-                    retVal += idxKey + ":" + _styleValues[idxKey].ViewStateValue + ";";
+                    value = _styleValues[idxKey].AfterViewStateTrackingValue;
+                else if (_styleValues[idxKey].ViewStateValue != null)
+                    value = _styleValues[idxKey].ViewStateValue;
                 else if (_styleValues[idxKey].BeforeViewStateTrackingValue != null)
-                    retVal += idxKey + ":" + _styleValues[idxKey].BeforeViewStateTrackingValue + ";";
+                    value = _styleValues[idxKey].BeforeViewStateTrackingValue;
+
+                // NOT rendering "empty" styles...
+                if (value != "")
+                    retVal += idxKey + ":" + value + ";";
             }
             return retVal;
         }
