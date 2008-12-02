@@ -97,6 +97,16 @@ namespace Ra.Extensions
             set { _txt.Tooltip = value; }
         }
 
+        /**
+         * Text for control
+         */
+        [DefaultValue("")]
+        public string Text
+        {
+            get { return _txt.Text; }
+            set { _txt.Text = value; }
+        }
+
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
@@ -187,6 +197,11 @@ namespace Ra.Extensions
         public override void Focus()
         {
             _txt.Focus();
+        }
+
+        public void Select()
+        {
+            _txt.Select();
         }
     }
 }
