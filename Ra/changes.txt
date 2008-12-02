@@ -48,6 +48,11 @@
   attributes are now applied ONLY for a SPAN element which
   actually WRAPS the entire control.
 
+* Added Text property for AutoCompleter which can be set and 
+  retrieved.
+
+* AutoCompleter now works when setting Focus and Select on it.
+
 
 
 
