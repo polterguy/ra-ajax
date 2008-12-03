@@ -58,19 +58,5 @@ namespace RaSelector
             }
             return null;
         }
-
-        /**
-         * Recursively search for Control with given CSS class and returns it as T
-         */
-        public static T FindFirstByCssClass<T>(Control from, string cssClass) where T : Control
-        {
-            return Selector.SelectFirst<T>(from,
-                delegate(Control idx)
-                {
-                    if (idx is WebControl)
-                        return (idx as WebControl).CssClass == cssClass;
-                    return false;
-                });
-        }
     }
 }
