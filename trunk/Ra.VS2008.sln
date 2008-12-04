@@ -66,7 +66,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "TestWebSite", "TestWebSite\", "{D349FCEF-F24B-4A84-BC33-04E4950F53C9}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFramework = "2.0"
-		ProjectReferences = "{DA39B87F-8E68-4461-9C24-5778921497A5}|Extensions.dll;{82727C73-0B10-4F58-93F4-841E9397302C}|Ra.dll;"
+		ProjectReferences = "{DA39B87F-8E68-4461-9C24-5778921497A5}|Extensions.dll;{82727C73-0B10-4F58-93F4-841E9397302C}|Ra.dll;{DAB72895-17EF-4146-86B9-CDF24FD678B2}|RaSelector.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/TestWebSite"
 		Debug.AspNetCompiler.PhysicalPath = "TestWebSite\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\TestWebSite\"
