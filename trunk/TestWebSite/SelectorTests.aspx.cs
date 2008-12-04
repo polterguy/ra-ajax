@@ -24,4 +24,12 @@ public partial class SelectorTests : System.Web.UI.Page
                 return false;
             }).Text = "new text";
     }
+
+    protected void testButton_Click(object sender, EventArgs e)
+    {
+        foreach (Button idx in Selector.Select<Button>(recursiveTest))
+        {
+            idx.Text = "enumerable passed";
+        }
+    }
 }

@@ -30,8 +30,14 @@
                     <ra:Button runat="server" ID="thirdButton" Text="click me" OnClick="third_click" />
                     <ra:Button runat="server" ID="fourthButton" CssClass="testCss" Text="click me" OnClick="fourth_click" />
                 </ra:Panel>
+                <ra:Panel runat="server" ID="recursive5">
+                    <ra:Panel runat="server" ID="recursive6">
+                        <ra:Button runat="server" ID="fifthButton" Text="click me" />
+                    </ra:Panel>
+                </ra:Panel>
             </ra:Panel>
         </ra:Panel>
+        <ra:Button runat="server" ID="enumerableButton" Text="click me" OnClick="testButton_Click" />
     </form>
 </body>
 </html>

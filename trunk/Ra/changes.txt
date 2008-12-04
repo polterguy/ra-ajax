@@ -55,7 +55,9 @@
 
 * Started the implementation of a "Selector Engine" for the 
   server-side where you can query for Controls on the server
-  side.
+  side. This project is called RaSelector and will probably
+  come VERY handy in especially for finding controls within
+  Repeaters and GridViews etc...
 
 
 
