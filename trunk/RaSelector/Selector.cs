@@ -23,7 +23,7 @@ namespace RaSelector
     public static class Selector
     {
         /**
-         * Recursively searches Control hierarchy for matches matching FindDelegate and returns it as T
+         * Recursively searches Control hierarchy for matches for Predicate and returns it as T
          */
         public static T SelectFirst<T>(Control from, Predicate<Control> predicate) where T : Control
         {
@@ -53,7 +53,7 @@ namespace RaSelector
 
         /**
          * Recursively search Control hierarcy for ALL controls that 
-         * matches the given delegate and returns them as T
+         * matches the given Predicate and returns them as T
          */
         public static IEnumerable<T> Select<T>(Control from, Predicate<Control> predicate) where T : Control
         {
