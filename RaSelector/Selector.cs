@@ -64,7 +64,7 @@ namespace RaSelector
             }
             foreach (Control idx in from.Controls)
             {
-                foreach (T idxInner in Select<T>(idx))
+                foreach (T idxInner in Select<T>(idx, predicate))
                 {
                     yield return idxInner;
                 }

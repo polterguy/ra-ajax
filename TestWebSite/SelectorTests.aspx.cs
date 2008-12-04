@@ -25,11 +25,23 @@ public partial class SelectorTests : System.Web.UI.Page
             }).Text = "new text";
     }
 
-    protected void testButton_Click(object sender, EventArgs e)
+    protected void enumerableButton_Click(object sender, EventArgs e)
     {
         foreach (Button idx in Selector.Select<Button>(recursiveTest))
         {
             idx.Text = "enumerable passed";
+        }
+    }
+
+    protected void enumerableButton2_Click(object sender, EventArgs e)
+    {
+        foreach (Button idx in Selector.Select<Button>(recursiveTest,
+            delegate(System.Web.UI.Control idxBtn)
+            {
+                return (idxBtn is RaWebControl) && (idxBtn as RaWebControl).CssClass == "enumCssClass";
+            }))
+        {
+            idx.Text = "enumerable CSS passed";
         }
     }
 }
