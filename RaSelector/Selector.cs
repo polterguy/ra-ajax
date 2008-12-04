@@ -9,6 +9,7 @@
 using System;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Collections.Generic;
 
 namespace RaSelector
 {
@@ -27,7 +28,7 @@ namespace RaSelector
         public delegate bool FindDelegate(Control idx);
 
         /**
-         * Recursively search for Control which matches FindDelegate and returns it as T
+         * Recursively searches Control hierarchy for matches matching FindDelegate and returns it as T
          */
         public static T SelectFirst<T>(Control from, FindDelegate del) where T : Control
         {
@@ -43,7 +44,7 @@ namespace RaSelector
         }
 
         /**
-         * Recursively search int Control hierarcy for the first control that 
+         * Recursively searches Control hierarchy for the first control that 
          * matches the type of T and returns it as T
          */
         public static T SelectFirst<T>(Control from) where T : Control
@@ -57,6 +58,23 @@ namespace RaSelector
                     return tmpRetVal;
             }
             return null;
+        }
+
+        /**
+         * Recursively search Control hierarcy for ALL controls that 
+         * matches the type of T and returns them as T
+         */
+        public static IEnumerable<T> Select<T>(Control from) where T : Control
+        {
+            if (from is T)
+                yield return from as T;
+            foreach (Control idx in from.Controls)
+            {
+                foreach(T idxInner in Select<T>(idx))
+                {
+                    yield return idxInner;
+                }
+            }
         }
     }
 }
