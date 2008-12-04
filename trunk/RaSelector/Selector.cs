@@ -49,15 +49,31 @@ namespace RaSelector
          */
         public static T SelectFirst<T>(Control from) where T : Control
         {
+            return SelectFirst<T>(from,
+                delegate(Control idx)
+                {
+                    return idx is T;
+                });
+        }
+
+        /**
+         * Recursively search Control hierarcy for ALL controls that 
+         * matches the given delegate and returns them as T
+         */
+        public static IEnumerable<T> Select<T>(Control from, FindDelegate del) where T : Control
+        {
             if (from is T)
-                return from as T;
+            {
+                if (del(from))
+                    yield return from as T;
+            }
             foreach (Control idx in from.Controls)
             {
-                T tmpRetVal = SelectFirst<T>(idx);
-                if (tmpRetVal != null)
-                    return tmpRetVal;
+                foreach (T idxInner in Select<T>(idx))
+                {
+                    yield return idxInner;
+                }
             }
-            return null;
         }
 
         /**
@@ -66,15 +82,11 @@ namespace RaSelector
          */
         public static IEnumerable<T> Select<T>(Control from) where T : Control
         {
-            if (from is T)
-                yield return from as T;
-            foreach (Control idx in from.Controls)
-            {
-                foreach(T idxInner in Select<T>(idx))
+            return Select<T>(from,
+                delegate(Control idx)
                 {
-                    yield return idxInner;
-                }
-            }
+                    return idx is T;
+                });
         }
     }
 }
