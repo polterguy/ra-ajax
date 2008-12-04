@@ -28,6 +28,7 @@
             <ra:Panel runat="server" ID="recursive3">
                 <ra:Panel runat="server" ID="recursive4">
                     <ra:Button runat="server" ID="thirdButton" Text="click me" OnClick="third_click" />
+                    <ra:Button runat="server" ID="fourthButton" CssClass="testCss" Text="click me" OnClick="fourth_click" />
                 </ra:Panel>
             </ra:Panel>
         </ra:Panel>
