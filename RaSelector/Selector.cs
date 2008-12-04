@@ -23,20 +23,15 @@ namespace RaSelector
     public static class Selector
     {
         /**
-         * Generic find delegate to use your own custom find clause
-         */
-        public delegate bool FindDelegate(Control idx);
-
-        /**
          * Recursively searches Control hierarchy for matches matching FindDelegate and returns it as T
          */
-        public static T SelectFirst<T>(Control from, FindDelegate del) where T : Control
+        public static T SelectFirst<T>(Control from, Predicate<Control> predicate) where T : Control
         {
-            if (del(from))
+            if (predicate(from))
                 return from as T;
             foreach (Control idx in from.Controls)
             {
-                T tmpRetVal = SelectFirst<T>(idx, del);
+                T tmpRetVal = SelectFirst<T>(idx, predicate);
                 if (tmpRetVal != null)
                     return tmpRetVal;
             }
@@ -60,11 +55,11 @@ namespace RaSelector
          * Recursively search Control hierarcy for ALL controls that 
          * matches the given delegate and returns them as T
          */
-        public static IEnumerable<T> Select<T>(Control from, FindDelegate del) where T : Control
+        public static IEnumerable<T> Select<T>(Control from, Predicate<Control> predicate) where T : Control
         {
             if (from is T)
             {
-                if (del(from))
+                if (predicate(from))
                     yield return from as T;
             }
             foreach (Control idx in from.Controls)
