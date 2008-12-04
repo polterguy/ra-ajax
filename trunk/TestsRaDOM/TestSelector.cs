@@ -42,6 +42,17 @@ namespace NUnitTests
             Assert.AreEqual(Browser.Button("recursiveTest_recursive3_recursive5_recursive6_fifthButton").Text, "enumerable passed");
             Assert.AreEqual(Browser.Button("enumerableButton").Text, "click me");
         }
+
+        [NUnit.Framework.Test]
+        public void EnumerableCSSTest()
+        {
+            Browser.Button("enumerableButton2").Click();
+            Assert.AreEqual(Browser.Button("recursiveTest_recursive3_recursive4_thirdButton").Text, "enumerable CSS passed");
+            Assert.AreNotEqual(Browser.Button("recursiveTest_recursive3_recursive4_fourthButton").Text, "enumerable CSS passed");
+            Assert.AreEqual(Browser.Button("recursiveTest_recursive3_recursive5_recursive6_fifthButton").Text, "enumerable CSS passed");
+            Assert.AreEqual(Browser.Button("enumerableButton").Text, "click me");
+            Assert.AreEqual(Browser.Button("enumerableButton2").Text, "click me");
+        }
     }
 }
 
