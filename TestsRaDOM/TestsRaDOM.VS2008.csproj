@@ -58,6 +58,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TestSelector.cs" />
     <Compile Include="TestWebMethodsMaster.cs" />
     <Compile Include="TestWebMethods.cs" />
     <Compile Include="EventSystem.cs" />
