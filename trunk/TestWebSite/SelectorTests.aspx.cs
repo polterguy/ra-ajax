@@ -13,4 +13,15 @@ public partial class SelectorTests : System.Web.UI.Page
     {
         Selector.SelectFirst<Button>(recursiveTest).Text = Selector.SelectFirst<Button>(recursiveTest).ID;
     }
+
+    protected void fourth_click(object sender, EventArgs e)
+    {
+        Selector.SelectFirst<Button>(recursiveTest,
+            delegate(System.Web.UI.Control idx)
+            {
+                if (idx is RaWebControl)
+                    return (idx as RaWebControl).CssClass == "testCss";
+                return false;
+            }).Text = "new text";
+    }
 }

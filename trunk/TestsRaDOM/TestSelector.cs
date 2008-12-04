@@ -25,6 +25,13 @@ namespace NUnitTests
             Browser.Button("recursiveTest_recursive3_recursive4_thirdButton").Click();
             Assert.AreEqual(Browser.Button("recursiveTest_recursive3_recursive4_thirdButton").Text, "thirdButton");
         }
+
+        [NUnit.Framework.Test]
+        public void CssSelectorTest()
+        {
+            Browser.Button("recursiveTest_recursive3_recursive4_fourthButton").Click();
+            Assert.AreEqual(Browser.Button("recursiveTest_recursive3_recursive4_fourthButton").Text, "new text");
+        }
     }
 }
 
