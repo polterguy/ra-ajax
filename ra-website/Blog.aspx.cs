@@ -170,8 +170,6 @@ namespace RaWebsite
                 Operator oper = Operator.FindOne(Expression.Eq("Username", Request.Params["blogger"]));
                 foreach (Entity.Blog idx in Entity.Blog.FindAll(Order.Desc("Created"), Expression.Eq("Operator", oper)))
                 {
-                    if (idxNo++ > 50)
-                        break;
                     blogs.Add(idx);
                 }
                 return blogs;
