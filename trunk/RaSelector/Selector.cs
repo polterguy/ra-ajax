@@ -52,6 +52,19 @@ namespace RaSelector
         }
 
         /**
+         * Recursively searches Control hierarchy for the first control that 
+         * have the given ID and returns it as T. Kind of like the "recursive FindControl"
+         */
+        public static T FindControl<T>(Control from, string id) where T : Control
+        {
+            return SelectFirst<T>(from,
+                delegate(Control idx)
+                {
+                    return idx.ID == id;
+                });
+        }
+
+        /**
          * Recursively search Control hierarcy for ALL controls that 
          * matches the given Predicate and returns them as T
          */
