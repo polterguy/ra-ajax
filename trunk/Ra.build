@@ -12,7 +12,6 @@
   </target>
 
   <target name="init" description="Necessary Initializations">
-    <mkdir dir="${output.dir}/${resources.dir}" />
     <mkdir dir="${output.dir}/${library.dir}/${gzipped.dir}" />
     <mkdir dir="${output.dir}/${library.dir}/${uncompressed.dir}" />
   </target>
