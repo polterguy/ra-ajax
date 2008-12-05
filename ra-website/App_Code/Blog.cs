@@ -76,8 +76,7 @@ namespace Entity
                     {
                         Url = Url.Substring(0, index) + "-" + Url.Substring(index + 1);
                     }
-                    else
-                        index += 1;
+                    index += 1;
                 }
                 Url = Url.Trim('-');
                 bool found = true;
