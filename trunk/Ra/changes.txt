@@ -53,11 +53,12 @@
 
 * AutoCompleter now works when setting Focus and Select on it.
 
-* Started the implementation of a "Selector Engine" for the 
-  server-side where you can query for Controls on the server
-  side. This project is called RaSelector and will probably
-  come VERY handy in especially for finding controls within
-  Repeaters and GridViews etc...
+* Created a new project which is a "selector engine" for the 
+  server-side. Kind of like the jQuery version for server-side
+  WebControl and Control traversal and selection.
+  This project is called RaSelector and can be thought of like
+  an "advanced version" of a recursive FindControl 
+  implementation...
 
 
 

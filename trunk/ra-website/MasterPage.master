@@ -37,19 +37,19 @@
                                         <div class="thumbsSmall">
                                             <a href="http://ra-ajax.org/samples/Viewport-Calendar-Starter-Kit.aspx" class="linksSmall">
                                                 <span class="image1Small">&nbsp;</span>
-                                                <span class="headerSmall">Ajax Calendar Starter-Kit - C#<br />Price $29</span>
+                                                <span class="headerSmall">Ajax Calendar Starter-Kit - C#</span>
                                             </a>
                                         </div>
                                         <div class="thumbsSmall">
                                             <a href="http://ra-ajax.org/samples/Viewport-Sample.aspx" class="linksSmall">
                                                 <span class="image2Small">&nbsp;</span>
-                                                <span class="headerSmall">Ajax Viewport Starter-Kit - C#<br />Price $29</span>
+                                                <span class="headerSmall">Ajax Viewport Starter-Kit - C#</span>
                                             </a>
                                         </div>
                                         <div class="thumbsSmall">
                                             <a href="http://ra-ajax.org/samples/Viewport-GridView-Sample.aspx" class="linksSmall">
                                                 <span class="image3Small">&nbsp;</span>
-                                                <span class="headerSmall">Ajax DataGrid Starter-Kit - VB.NET<br />Price $29</span>
+                                                <span class="headerSmall">Ajax DataGrid Starter-Kit - VB.NET</span>
                                             </a>
                                         </div>
                                     </div>
@@ -172,14 +172,5 @@
             </div>
             </form>
         </div>
-        <script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-        </script>
-
-        <script type="text/javascript">
-var pageTracker = _gat._getTracker("UA-4923736-2");
-pageTracker._trackPageview();
-        </script>
     </body>
 </html>
