@@ -53,6 +53,13 @@ namespace NUnitTests
             Assert.AreEqual(Browser.Button("enumerableButton").Text, "click me");
             Assert.AreEqual(Browser.Button("enumerableButton2").Text, "click me");
         }
+
+        [NUnit.Framework.Test]
+        public void FindControlTest()
+        {
+            Browser.Button("findControlBtn").Click();
+            Assert.AreEqual(Browser.Button("recursiveTest_recursive3_recursive5_recursive6_fifthButton").Text, "findControl worked");
+        }
     }
 }
 

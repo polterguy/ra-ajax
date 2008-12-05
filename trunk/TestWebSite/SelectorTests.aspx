@@ -39,6 +39,7 @@
         </ra:Panel>
         <ra:Button runat="server" ID="enumerableButton" Text="click me" OnClick="enumerableButton_Click" />
         <ra:Button runat="server" ID="enumerableButton2" Text="click me" OnClick="enumerableButton2_Click" />
+        <ra:Button runat="server" ID="findControlBtn" Text="click me" OnClick="findControlBtn_Click" />
     </form>
 </body>
 </html>

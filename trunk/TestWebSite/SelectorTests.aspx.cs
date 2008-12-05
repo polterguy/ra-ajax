@@ -44,4 +44,9 @@ public partial class SelectorTests : System.Web.UI.Page
             idx.Text = "enumerable CSS passed";
         }
     }
+
+    protected void findControlBtn_Click(object sender, EventArgs e)
+    {
+        Selector.FindControl<Button>(Form, "fifthButton").Text = "findControl worked";
+    }
 }
