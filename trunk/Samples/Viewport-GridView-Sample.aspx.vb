@@ -68,6 +68,10 @@ Namespace Samples
             pnlRight.ReRender()
         End Sub
 
+        Protected Sub EscClicked(ByVal sender As Object, ByVal e As EventArgs)
+            editWindow.Visible = False
+        End Sub
+
         Protected Sub SortName(ByVal sender As Object, ByVal e As EventArgs)
             PeopleDatabase.Sorting = PeopleDatabase.Sort.Name
             PageIndex = 0
