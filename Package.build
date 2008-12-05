@@ -45,6 +45,15 @@
     </fileset>
   </copy>
 
+  <copy overwrite="true" todir="${output.dir}/${ra.selector.name}">
+    <fileset basedir="${ra.selector.name}">
+      <exclude name="obj/**/*.*" />
+      <exclude name="**/*VS2008.csproj" />
+      <include name="**/*.cs" />
+      <include name="**/*.csproj" />
+    </fileset>
+  </copy>
+
   <copy overwrite="true" todir="${output.dir}/${ra.build.tasks.name}">
     <fileset basedir="${ra.build.tasks.name}">
       <exclude name="obj/**/*.*" />
@@ -74,6 +83,9 @@
     <fileset basedir="${output.dir}/${resource.cacher.name}" prefix="${resource.cacher.name}">
       <include name="**/*" />
     </fileset>
+    <fileset basedir="${output.dir}/${ra.selector.name}" prefix="${ra.selector.name}">
+      <include name="**/*" />
+    </fileset>
     <fileset basedir="${output.dir}/${ra.build.tasks.name}" prefix="${ra.build.tasks.name}">
       <include name="**/*" />
     </fileset>
@@ -96,9 +108,9 @@
       <include name="${ext.name}/**" />
       <include name="${samples.dir}/**" />
       <include name="${library.dir}/**" />
-      <include name="${resources.dir}/**" />
       <include name="${ra.website.dir}/**" />
       <include name="${references.dir}/**" />
+      <include name="${ra.selector.name}/**" />
       <include name="${ra.build.tasks.name}/**" />
       <include name="${resource.cacher.name}/**" />
     </fileset>
