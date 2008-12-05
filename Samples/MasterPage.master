@@ -65,9 +65,6 @@
 					            ID="accView1">
 			                    <ul>
 			                        <li>
-			                            <a runat="server" href="~">Samples Start Page</a>
-			                        </li>
-			                        <li>
 			                            <a href="Flexible.aspx">Ra-Ajax - Event System</a>
 			                        </li>
 			                        <li>
@@ -228,19 +225,19 @@
                                             <div class="thumbsSmall">
                                                 <a href="Viewport-Calendar-Starter-Kit.aspx" class="linksSmall">
                                                     <span class="image1Small">&nbsp;</span>
-                                                    <span class="headerSmall">Ajax Calendar Starter-Kit - C#</span>
+                                                    <span class="headerSmall">Ajax Calendar Starter-Kit - C#<br />GCalendar kind of Starter-Kit</span>
                                                 </a>
                                             </div>
                                             <div class="thumbsSmall">
                                                 <a href="Viewport-Sample.aspx" class="linksSmall">
                                                     <span class="image2Small">&nbsp;</span>
-                                                    <span class="headerSmall">Ajax Viewport Starter-Kit - C#</span>
+                                                    <span class="headerSmall">Ajax Viewport Starter-Kit - C#<br />Features Ajax Login, TreeView and TabControl</span>
                                                 </a>
                                             </div>
                                             <div class="thumbsSmall">
                                                 <a href="Viewport-GridView-Sample.aspx" class="linksSmall">
                                                     <span class="image3Small">&nbsp;</span>
-                                                    <span class="headerSmall">Ajax DataGrid Starter-Kit - VB.NET</span>
+                                                    <span class="headerSmall">Ajax DataGrid Starter-Kit - VB.NET<br />VB.NET sample creating an Ajax DataGrid</span>
                                                 </a>
                                             </div>
                                         </div>

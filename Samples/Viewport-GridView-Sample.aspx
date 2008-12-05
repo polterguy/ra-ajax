@@ -263,7 +263,8 @@
         <ext:Window 
             runat="server" 
             CssClass="window" 
-            Caption="Edit entry"
+            Caption="Edit entry" 
+            DefaultWidget="editSave"
             Visible="false" 
             Closable="true"
             style="width:350px;position:relative;z-index:5000;margin-left:auto;margin-right:auto;"
@@ -275,6 +276,7 @@
                         <td>
                             <ra:TextBox 
                                 runat="server" 
+                                OnEscPressed="EscClicked"
                                 ID="editName" />
                         </td>
                     </tr>
@@ -283,6 +285,7 @@
                         <td>
                             <ra:TextBox 
                                 runat="server" 
+                                OnEscPressed="EscClicked"
                                 ID="editAdr" />
                         </td>
                     </tr>
@@ -315,9 +318,5 @@
             <ra:BehaviorObscurable runat="server" ID="BehaviorObscurable1" />
         </ext:Window>
     </form>
-    <script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-    </script>
 </body>
 </html>
