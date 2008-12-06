@@ -21,5 +21,17 @@ namespace Samples
                 "the server when the request was being sent to make sure you would notice " +
                 "the Ajax Updater";
         }
+
+        protected void btn2_Click(object sender, EventArgs e)
+        {
+            lbl.Text = "This request was too fast to trigger updater " +
+                "since updater waits for 0.5 seconds before kicking in";
+        }
+
+        protected void btn3_Click(object sender, EventArgs e)
+        {
+            System.Threading.Thread.Sleep(600);
+            lbl.Text = "Did you notice how only 'parts' of the effect was running?";
+        }
     }
 }
