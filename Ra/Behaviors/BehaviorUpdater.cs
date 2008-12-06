@@ -21,6 +21,27 @@ namespace Ra.Widgets
     [ASP.ToolboxData("<{0}:BehaviorUpdater runat=\"server\" />")]
 	public class BehaviorUpdater : Behavior
 	{
+        public BehaviorUpdater()
+        { }
+
+        public BehaviorUpdater(int delay)
+        {
+            Delay = delay;
+        }
+
+        public BehaviorUpdater(int delay, decimal opacity)
+        {
+            Delay = delay;
+            Opacity = opacity;
+        }
+
+        public BehaviorUpdater(int delay, decimal opacity, Color color)
+        {
+            Delay = delay;
+            Opacity = opacity;
+            Color = color;
+        }
+
         /**
          * Number of milliseconds which will pass before the obscurer will animate into view
          * and show up. If the request is going fast then by having a sane value for this property

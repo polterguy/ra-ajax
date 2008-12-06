@@ -591,7 +591,9 @@ Ra.extend(Ra.BUpDel.prototype, {
       opacity: 0.5
     }, this.options || {});
     this.options.onStart = function() {
-      delete this._stopped;
+
+      // Makings sure we delete the "has finished request signal"...
+      delete T._finishedRequest;
       if( !T.options.delay ) {
         T.onStart.apply(T, []);
       } else {
@@ -639,8 +641,11 @@ Ra.extend(Ra.BUpDel.prototype, {
   },
 
   onStart: function() {
-    if( this._stopped )
+
+    // Checking to see if request finished before we could execute the "wait time"...
+    if( this._finishedRequest)
       return;
+
     var T = this;
     this.effect = new Ra.Effect(this.el, {
       duration: 800,
@@ -659,8 +664,11 @@ Ra.extend(Ra.BUpDel.prototype, {
   },
 
   onFinished: function() {
+
+    // Signalizing that request has finished in case obscurer effect haven't started yet...
+    this._finishedRequest = true;
+
     if( this.effect ) {
-      this._stopped = true;
       var T = this;
       this.effect.stopped = true;
       this.effect = new Ra.Effect(this.el, {
@@ -669,7 +677,6 @@ Ra.extend(Ra.BUpDel.prototype, {
           this.element.setOpacity(T.options.opacity);
           this.element.setStyle('display','none');
           delete T.effect;
-          delete T._stopped;
         },
         onRender: function(pos) {
           this.element.setOpacity((1 - pos) * T.options.opacity);
@@ -685,6 +692,7 @@ Ra.extend(Ra.BUpDel.prototype, {
       delete this.effect;
     }
     this.destroyObscurer();
+    this.el.remove();
   }
 });
 })();

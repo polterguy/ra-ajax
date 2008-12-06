@@ -25,7 +25,7 @@ namespace Ra.Extensions
         private LinkButton _btnInParent;
         private Label _listElementInParent;
 
-        internal LinkButton Button
+        public LinkButton Button
         {
             get { return _btnInParent; }
             set { _btnInParent = value; }

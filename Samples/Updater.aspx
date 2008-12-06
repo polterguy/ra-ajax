@@ -28,9 +28,33 @@
         <ra:Button 
     	    runat="server" 
     	    id="btn" 
-    	    Text="Click me" 
+    	    Text="Triggers updater, sleeps for 2 seconds on server" 
     	    OnClick="btn_Click">
     	    <ra:BehaviorUpdater 
+    		    runat="server"
+    		    Color="#aaaaaa" 
+    		    Delay="500" />
+        </ra:Button>
+    </p>
+    <p>
+        <ra:Button 
+    	    runat="server" 
+    	    id="btn2" 
+    	    Text="Does NOT trigger updater - executes too fast" 
+    	    OnClick="btn2_Click">
+    	    <ra:BehaviorUpdater ID="BehaviorUpdater1" 
+    		    runat="server"
+    		    Color="#aaaaaa" 
+    		    Delay="500" />
+        </ra:Button>
+    </p>
+    <p>
+        <ra:Button 
+    	    runat="server" 
+    	    id="btn3" 
+    	    Text="Triggers updater, but only slightly. Sleeps for 0.6 seconds" 
+    	    OnClick="btn3_Click">
+    	    <ra:BehaviorUpdater ID="BehaviorUpdater2" 
     		    runat="server"
     		    Color="#aaaaaa" 
     		    Delay="500" />

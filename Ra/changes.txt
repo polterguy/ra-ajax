@@ -9,9 +9,38 @@
 
   ------------------------------------------------------------------
 
-                          Version 0.9.0
+                          Version 0.9.1
 
        Say something intelligent about this release here...
+
+  ------------------------------------------------------------------
+
+* Changed the "Button" property of the TabView to public since it's
+  the only way to add up BehaviorUpdater to it. This means that you
+  can now have BehaviorUpdater attached to specific TabViews to ease
+  the experience on the user for tabview changes that might take
+  some time.
+
+* Made a couple of extra constructors for BehaviorUpdater since it
+  is often created in code and thereby it's easier to add them up
+  with properties when there are constructors taking their 
+  properties.
+
+* Fixed bug in BehaviorUpdater that made it sometimes lock the 
+  entire screen until a browser refresh was executed. This was
+  especially happening in combination with that some container
+  wrapping the widget with the obscurer was being ReRendered.
+
+
+
+
+
+  ------------------------------------------------------------------
+
+                          Version 0.9.0
+
+       Fixed some serious bugs and also added up a new
+       recursive FindControl which is quite powerful.
 
   ------------------------------------------------------------------
 
