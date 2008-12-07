@@ -132,16 +132,21 @@ namespace Ra.Extensions
 
         private void CreateAutoCompleterControls()
         {
+            // Figuring out CSS class to use
+            string cssClass = this.CssClass;
+            if (cssClass.IndexOf(' ') != -1)
+                cssClass = cssClass.Split(' ')[0];
+
             // Creating TextBox
             _txt.ID = "txt";
-            _txt.CssClass = this.CssClass + "-text";
+            _txt.CssClass = cssClass + "-text";
             _txt.KeyUp += new EventHandler(_txt_KeyUp);
             Controls.Add(_txt);
 
             // Creating wrapper for dynamically retrieved items
             _items = new Label();
             _items.ID = "items";
-            _items.CssClass = this.CssClass + "-items";
+            _items.CssClass = cssClass + "-items";
             _items.Tag = "ul";
             Controls.Add(_items);
         }

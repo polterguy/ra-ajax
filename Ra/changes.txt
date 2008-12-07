@@ -41,6 +41,14 @@
   to completely eliminate the usage of the style property in
   the Window.
 
+* You can now add up more then one CssClass to the AutoCompleter 
+  by e.g. doing something like this; CssClass="auto myCustomClass".
+  The AutoCompleter will only use the first CssClass (auto above) to
+  figure out the skin parts. The second CssClass will only
+  affect the root DOM node of your AutoCompleter. This makes it 
+  possible to completely eliminate the usage of the style property 
+  in the AutoCompleter.
+
 
 
 
