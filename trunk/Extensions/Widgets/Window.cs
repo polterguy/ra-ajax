@@ -239,24 +239,28 @@ namespace Ra.Extensions
         protected override void OnPreRender(EventArgs e)
         {
             // Setting the CSS classes for all "decoration controls"
-            _nw.CssClass = this.CssClass + "_nw";
-            _n.CssClass = this.CssClass + "_n";
-            _ne.CssClass = this.CssClass + "_ne";
-            _e.CssClass = this.CssClass + "_e";
-            _se.CssClass = this.CssClass + "_se";
-            _s.CssClass = this.CssClass + "_s";
-            _sw.CssClass = this.CssClass + "_sw";
-            _w.CssClass = this.CssClass + "_w";
-            _content.CssClass = this.CssClass + "_content";
-            _body.CssClass = this.CssClass + "_body";
-            _caption.CssClass = this.CssClass + "_title";
+            string cssClass = this.CssClass;
+            if (cssClass.IndexOf(' ') != -1)
+                cssClass = cssClass.Split(' ')[0];
+
+            _nw.CssClass = cssClass + "_nw";
+            _n.CssClass = cssClass + "_n";
+            _ne.CssClass = cssClass + "_ne";
+            _e.CssClass = cssClass + "_e";
+            _se.CssClass = cssClass + "_se";
+            _s.CssClass = cssClass + "_s";
+            _sw.CssClass = cssClass + "_sw";
+            _w.CssClass = cssClass + "_w";
+            _content.CssClass = cssClass + "_content";
+            _body.CssClass = cssClass + "_body";
+            _caption.CssClass = cssClass + "_title";
 
             // Making sure our Caption is displayed correctly
             _caption.Text = Caption;
 
             // Action buttons
             if (Closable)
-                _close.CssClass = this.CssClass + "_close";
+                _close.CssClass = cssClass + "_close";
 
             // Making sure that all Behaviors are in WINDOW and NOT in "content Panel"
             List<ASP.Control> tmp = new List<System.Web.UI.Control>();

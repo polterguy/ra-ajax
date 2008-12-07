@@ -30,6 +30,16 @@
   entire screen until a browser refresh was executed. This was
   especially happening in combination with that some container
   wrapping the widget with the obscurer was being ReRendered.
+  This is a severe bug in the previous version, if you are using
+  BehaviorUpdater.
+
+* You can now add up more then one CssClass to the Window by e.g.
+  doing something like this; CssClass="window myCustomClass".
+  The Window will only use the first CssClass (window above) to
+  figure out the skin parts. The second CssClass will only
+  affect the root DOM node of your Window. This makes it possible
+  to completely eliminate the usage of the style property in
+  the Window.
 
 
 
