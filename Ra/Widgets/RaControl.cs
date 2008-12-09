@@ -31,6 +31,17 @@ namespace Ra.Widgets
         protected bool _hasSetFocus;
         private List<string> _extraInitFunctions = new List<string>();
 
+        /**
+         * Extra information you can "tag" control with. BE CAREFUL with this one though since it adds
+         * to the ViewState. Don't add up LARGE things into it...
+         */
+        [DefaultValue("")]
+        public string Xtra
+        {
+            get { return ViewState["Xtra"] == null ? "" : (string)ViewState["Xtra"]; }
+            set { ViewState["Xtra"] = value; }
+        }
+
         protected override void LoadControlState(object savedState)
 		{
 			if (!AjaxManager.Instance.IsCallback)
