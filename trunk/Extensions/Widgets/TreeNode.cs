@@ -34,13 +34,17 @@ namespace Ra.Extensions
             EnsureChildControls();
             if (ParentTree.Expansion == Tree.ExpansionType.SingleClickEntireRow)
             {
-                this.Click += TreeNode_Click;
+                this.Click += TreeNode_Selected;
                 this.Click += ExpansionWidget_Click;
             }
             else if (ParentTree.Expansion == Tree.ExpansionType.SingleClickPlusSign)
             {
-                this.Click += TreeNode_Click;
+                this.Click += TreeNode_Selected;
                 _expander.Click += ExpansionWidget_Click;
+            }
+            else if (ParentTree.Expansion == Tree.ExpansionType.None)
+            {
+                this.Click += TreeNode_Selected;
             }
             base.OnInit(e);
         }
@@ -189,7 +193,7 @@ namespace Ra.Extensions
             }
         }
 
-        private void TreeNode_Click(object sender, EventArgs e)
+        private void TreeNode_Selected(object sender, EventArgs e)
         {
             // Setting SelectedNode and raising the SelectedNodeChanged on the
             // parent Tree control
