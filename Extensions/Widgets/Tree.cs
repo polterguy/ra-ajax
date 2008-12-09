@@ -40,7 +40,12 @@ namespace Ra.Extensions
             /**
              * Only plus sign can be clicked to expand TreeNode
              */
-            SingleClickPlusSign
+            SingleClickPlusSign,
+
+            /**
+             * Signals that expansions of TreeNodes is NOT allowed...!
+             */
+            None
         }
 
         /**

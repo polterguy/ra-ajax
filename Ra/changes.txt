@@ -49,6 +49,12 @@
   possible to completely eliminate the usage of the style property 
   in the AutoCompleter.
 
+* Added the possibility of DENYING expansion of TreeNode items in
+  the Tree Control. If this is set there is nothing the user can
+  do which will trigger "expansion". Might be useful for scenarios
+  where you either don't want to allow user exansion or you want
+  "something else" to trigger the expansion of TreeNode items...
+
 
 
 
