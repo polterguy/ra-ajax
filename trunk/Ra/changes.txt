@@ -55,6 +55,15 @@
   where you either don't want to allow user exansion or you want
   "something else" to trigger the expansion of TreeNode items...
 
+* Added up an extra property called "Xtra" on RaControl (meaning
+  all controls in Ra-Ajax) which is meant to be extra information
+  that controls can store which is only meant for being handled on
+  the server. This is especially useful in scenarios where you're
+  e.g. through databinding creating controls in e.g. a GridView or
+  a Repeater and you need to know the ID of the "current record" 
+  for a "Delete record" LinkButton etc. But be CAREFUL with it since
+  it adds to the ViewState of your page. So DON'T misuse it!
+
 
 
 
