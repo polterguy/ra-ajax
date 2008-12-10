@@ -81,6 +81,7 @@
 	    Also this sample demonstrates that you can create Ajax Windows which are not movable and are statically
 	    displayed in your page...
 	</p>
+	<a href="Ajax-MessageBox.aspx">On to Ajax MessageBox sample...</a>
 </asp:Content>
 
 
