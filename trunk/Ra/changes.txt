@@ -64,6 +64,14 @@
   for a "Delete record" LinkButton etc. But be CAREFUL with it since
   it adds to the ViewState of your page. So DON'T misuse it!
 
+* Created a new Widgets - MessageBox which does exactly what you
+  think it does - and more. You can also in addition to the Yes, No,
+  Cancel and OK buttons also create it in "get simple user input"
+  mode. Just a nifty shorthand around a modal Ajax Window with a
+  couple of buttons and text areas within. But it'll decrease the 
+  amount of coding needed on your behalf when needing a simple
+  MessageBox.
+
 
 
 
