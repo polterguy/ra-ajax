@@ -78,7 +78,6 @@
         Caption="Some sample MessageBox" 
         Body="This is the body of your MessageBox. This one has only an OK button..."
         style="width:250px;position:absolute;left:250px;top:250px;z-index:5000;" 
-        CssClass="window" 
         MessageBoxType="OK"
         OnClosed="MessageBox_Closed" />
     <ext:MessageBox 
@@ -87,7 +86,6 @@
         Caption="Some sample MessageBox" 
         Body="This is the body of your MessageBox... As you can see you can also add a Cancel button to get verifications from your users..."
         style="width:250px;position:absolute;left:250px;top:250px;z-index:5000;" 
-        CssClass="window"
         MessageBoxType="OK_Cancel"
         OnClosed="MessageBox_Closed" />
     <ext:MessageBox 
@@ -96,7 +94,6 @@
         Caption="Yes/No/Cancel MessageBox" 
         Body="Here's a Yes/No/Cancel message box"
         style="width:250px;position:absolute;left:250px;top:250px;z-index:5000;" 
-        CssClass="window"
         MessageBoxType="Yes_No_Cancel"
         OnClosed="MessageBox_Closed" />
     <ext:MessageBox 
@@ -105,7 +102,6 @@
         Caption="Give me some input" 
         Body="I want to know the meaning of life..."
         style="width:250px;position:absolute;left:250px;top:250px;z-index:5000;" 
-        CssClass="window"
         MessageBoxType="Get_Text"
         OnClosed="MessageBox_Closed" />
     <ext:MessageBox 
@@ -114,7 +110,6 @@
         Caption="Give me some input" 
         Body="I want to know the meaning of life..."
         style="width:250px;position:absolute;left:250px;top:250px;z-index:5000;" 
-        CssClass="window"
         MessageBoxType="Get_Text_Multiple_Lines"
         OnClosed="MessageBox_Closed" />
 </asp:Content>

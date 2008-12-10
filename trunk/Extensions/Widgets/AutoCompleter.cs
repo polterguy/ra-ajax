@@ -68,6 +68,22 @@ namespace Ra.Extensions
         public event EventHandler AutoCompleterItemSelected;
 
         /**
+         * Overridden to provide a sane default value
+         */
+        [DefaultValue("auto")]
+        public override string CssClass
+        {
+            get
+            {
+                string retVal = base.CssClass;
+                if (retVal == string.Empty)
+                    retVal = "auto";
+                return retVal;
+            }
+            set { base.CssClass = value; }
+        }
+
+        /**
          * This is the item which currently is selected (if any)
          */
         [DefaultValue(null)]

@@ -47,6 +47,22 @@ namespace Ra.Extensions
         }
 
         /**
+         * Overridden to provide a sane default value
+         */
+        [DefaultValue("accordion")]
+        public override string CssClass
+        {
+            get
+            {
+                string retVal = base.CssClass;
+                if (retVal == string.Empty)
+                    retVal = "accordion";
+                return retVal;
+            }
+            set { base.CssClass = value; }
+        }
+
+        /**
          * When changing active panel there will be a drop-down/up effect. This property defines the
          * number of milliseconds the animation will spend.
          */

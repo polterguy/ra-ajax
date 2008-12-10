@@ -22,7 +22,7 @@
     runat="server">
 
     <h1>Ajax TabControl Sample</h1>
-    <ext:TabControl runat="server" ID="tab" CssClass="tab">
+    <ext:TabControl runat="server" ID="tab">
         <ext:TabView Caption="Ajax TabControl" runat="server" ID="tab1" CssClass="content" style="padding:15px;">
             <p>
                 This is our <em>Ajax TabControl Widget</em>. The Ra-Ajax TabControl is as most of the extension controls

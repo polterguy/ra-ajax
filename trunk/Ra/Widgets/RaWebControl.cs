@@ -82,7 +82,7 @@ namespace Ra.Widgets
          * attribute on the HTML element.
          */
         [DefaultValue("")]
-        public string CssClass
+        public virtual string CssClass
         {
             get { return ViewState["CssClass"] == null ? "" : (string)ViewState["CssClass"]; }
             set
@@ -97,7 +97,7 @@ namespace Ra.Widgets
          * Tooltip text of control, will show when mouse is hovered over control...
          */
         [DefaultValue("")]
-        public string Tooltip
+        public virtual string Tooltip
         {
             get { return ViewState["Tooltip"] == null ? "" : (string)ViewState["Tooltip"]; }
             set
@@ -111,7 +111,7 @@ namespace Ra.Widgets
         /**
          * Collection of style-values, maps to the style attribute on the root HTML element
          */
-        public StyleCollection Style
+        public virtual StyleCollection Style
         {
             get { return _styles; }
         }

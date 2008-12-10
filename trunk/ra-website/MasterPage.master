@@ -31,8 +31,7 @@
 			    	            <ext:Window 
 			    	                runat="server" 
 			    	                style="position:absolute;top:15px;right:150px;width:350px;font-size:0.9em;border:none;background-color:Transparent;"
-			    	                Caption="New stuff"
-			    	                CssClass="window">
+			    	                Caption="New stuff">
                                     <div style="padding:5px;font-size:0.8em;height:190px;">
                                         <div class="thumbsSmall">
                                             <a href="http://ra-ajax.org/samples/Viewport-Calendar-Starter-Kit.aspx" class="linksSmall">

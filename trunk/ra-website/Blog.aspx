@@ -70,7 +70,6 @@
 	        runat="server"
 	        ID="confirmDeleteWindow"
 	        Caption="Confirm Delete"
-	        CssClass="window"
 	        Visible="false"
 	        style="position:absolute;top:390px;">
 	        <div>
@@ -85,7 +84,6 @@
 	        runat="server"
 	        ID="pnlNewBlog"
 	        Caption="Add New Blog Post"
-	        CssClass="window"
 	        Visible="false"
 	        style="position:absolute;top:290px;left:250px;"> 
 	        <div style="padding:15px;">
@@ -125,7 +123,6 @@
 	        runat="server"
 	        ID="pnlImages"
 	        Caption="Add New Image"
-	        CssClass="window"
 	        Visible="false"
 	        style="position:absolute;top:290px;left:250px;width:600px;padding:5px;"> 
 	        <div style="padding:15px;overflow:auto;height:500px;">
