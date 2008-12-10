@@ -22,6 +22,22 @@ namespace Ra.Extensions
     {
         public event EventHandler MenuItemSelected;
 
+        /**
+         * Overridden to provide a sane default value
+         */
+        [DefaultValue("menu")]
+        public override string CssClass
+        {
+            get
+            {
+                string retVal = base.CssClass;
+                if (retVal == string.Empty)
+                    retVal = "menu";
+                return retVal;
+            }
+            set { base.CssClass = value; }
+        }
+
         internal void RaiseMenuItemSelected(MenuItem item)
         {
             if (MenuItemSelected != null)

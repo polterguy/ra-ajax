@@ -53,6 +53,22 @@ namespace Ra.Extensions
          */
         public event EventHandler SelectedNodeChanged;
 
+        /**
+         * Overridden to provide a sane default value
+         */
+        [DefaultValue("tree")]
+        public override string CssClass
+        {
+            get
+            {
+                string retVal = base.CssClass;
+                if (retVal == string.Empty)
+                    retVal = "tree";
+                return retVal;
+            }
+            set { base.CssClass = value; }
+        }
+
         protected override void OnPreRender(EventArgs e)
         {
             int count = 0;

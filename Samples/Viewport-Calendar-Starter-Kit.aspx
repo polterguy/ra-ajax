@@ -45,8 +45,7 @@
         <!-- Menu -->
         <ext:Menu 
             runat="server" 
-            ID="menu" 
-            CssClass="menu">
+            ID="menu">
             <ext:MenuItems runat="server" ID="mainItems">
                 <ext:MenuItem runat="server" ID="file">
                     File
@@ -106,8 +105,7 @@
             StartsOn="Sunday"
             OnSelectedValueChanged="calendarStart_SelectedValueChanged" 
             OnRenderDay="calendarStart_RenderDay"
-            style="width:170px;position:absolute;left:5px;top:63px;"
-            CssClass="calendar" />
+            style="width:170px;position:absolute;left:5px;top:63px;" />
 
         <!-- Calendar end -->
         <ext:Calendar 
@@ -117,8 +115,7 @@
             StartsOn="Sunday"
             OnRenderDay="calendarEnd_RenderDay"
             OnSelectedValueChanged="calendarEnd_SelectedValueChanged"
-            style="width:170px;position:absolute;left:180px;top:63px;"
-            CssClass="calendar" />
+            style="width:170px;position:absolute;left:180px;top:63px;" />
 
         <!-- Bottom left parts -->
         <ext:Window 
@@ -127,8 +124,7 @@
             Caption="Top left"
             style="width:345px;position:absolute;left:5px;top:238px;" 
             Movable="false" 
-            Closable="false"
-            CssClass="window">
+            Closable="false">
             <ra:Panel 
                 runat="server" 
                 ID="pnlBottomLeft" 
@@ -213,7 +209,6 @@
         <!-- Right - Main Content -->
         <ext:Window 
             runat="server" 
-            CssClass="window" 
             Closable="false" 
             Movable="false"
             Caption="Main content"
@@ -244,8 +239,7 @@
                             runat="server" 
                             ID="activityWhen" 
                             StartsOn="Sunday"
-                            style="width:170px;float:left;"
-                            CssClass="calendar" />
+                            style="width:170px;float:left;" />
                         <br style="clear:both;" />
                         <ra:Button 
                             runat="server" 
@@ -310,7 +304,6 @@
         <!-- Create new activity Window -->
         <ext:Window 
             runat="server" 
-            CssClass="window" 
             Visible="false"
             Caption="Create new Activity"
             style="width:600px;position:relative;top:25px;margin-left:auto;margin-right:auto;z-index:5000;"
@@ -345,8 +338,7 @@
                         runat="server" 
                         ID="createDate" 
                         StartsOn="Sunday"
-                        style="width:170px;"
-                        CssClass="calendar" />
+                        style="width:170px;" />
                 </div>
                 <ra:Button 
                     runat="server" 

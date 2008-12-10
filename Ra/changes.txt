@@ -72,6 +72,14 @@
   amount of coding needed on your behalf when needing a simple
   MessageBox.
 
+* Implemented sane defaults for the CssClass of every widget which
+  are "skinned". This means that for instance for the Window the
+  default CssClass will no longer be "", but rather "window" and
+  so on. This makes it easier to start using Ra-Ajax since you
+  don't have to supply these values yourself - which sometimes
+  will make it harder to start using Ra-Ajax and confuse you in
+  the beginning.
+
 
 
 

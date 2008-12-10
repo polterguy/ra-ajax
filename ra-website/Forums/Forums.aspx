@@ -32,7 +32,6 @@
 	    runat="server"
 	    ID="pnlNewPost"
 	    Caption="Add New Post"
-	    CssClass="window"
 	    Visible="false"
 	    style="position:absolute;top:450px;left:324px;padding:15px;width:550px;z-index:1001;">
         <ra:BehaviorObscurable runat="server" id="obscurer" />

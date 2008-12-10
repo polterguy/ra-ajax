@@ -31,7 +31,7 @@
         CssClass="infoLbl" 
         Text="Watch me change..."
         ID="lbl" />
-    <ext:Menu runat="server" ID="menu" CssClass="menu" OnMenuItemSelected="menu_MenuItemSelected">
+    <ext:Menu runat="server" ID="menu" OnMenuItemSelected="menu_MenuItemSelected">
         <ext:MenuItems runat="server" ID="mainItems">
             <ext:MenuItem runat="server" ID="WebStandards" Text="Web Standards">
                 <ext:MenuItems runat="server" ID="fileMenus">

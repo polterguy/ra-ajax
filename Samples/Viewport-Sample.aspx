@@ -58,7 +58,6 @@
             <ext:Menu 
                 runat="server" 
                 ID="menu" 
-                CssClass="menu" 
                 OnMenuItemSelected="menu_MenuItemSelected">
                 <ext:MenuItems runat="server" ID="mainItems">
                     <ext:MenuItem runat="server" ID="file">
@@ -118,14 +117,12 @@
                 Caption="Top left"
                 style="width:250px;position:absolute;left:5px;top:63px;" 
                 Movable="false" 
-                Closable="false"
-                CssClass="window">
+                Closable="false">
                 <div style="height:250px;overflow:auto;">
                     <ext:Tree 
                         runat="server" 
                         ID="tree" 
                         OnSelectedNodeChanged="tree_SelectedNodeChanged"
-                        CssClass="tree"
                         Expansion="SingleClickPlusSign">
 
                         <ext:TreeNodes ID="TreeNodes1" runat="server" Expanded="true">
@@ -200,7 +197,6 @@
             <!-- Bottom left -->
             <ext:Window 
                 runat="server" 
-                CssClass="window" 
                 Closable="false" 
                 Movable="false"
                 Caption="Bottom left"
@@ -240,7 +236,6 @@
             <!-- Right - main content -->
             <ext:Window 
                 runat="server" 
-                CssClass="window" 
                 Closable="false" 
                 Movable="false"
                 Caption="Right - main content"
@@ -252,7 +247,7 @@
                     ID="pnlRight" 
                     style="height:488px;overflow:auto;">
                     <div style="padding:5px;">
-                        <ext:TabControl runat="server" ID="tab" CssClass="tab">
+                        <ext:TabControl runat="server" ID="tab">
                             <ext:TabView 
                                 Caption="Starter-Kit Tab 1" 
                                 runat="server" 
@@ -375,7 +370,6 @@
         <!-- Login Window -->
         <ext:Window 
             runat="server" 
-            CssClass="window" 
             Caption="Please login"
             Visible="false" 
             Closable="false" 

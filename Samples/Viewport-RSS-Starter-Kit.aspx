@@ -55,14 +55,12 @@
             Caption="RSS Items"
             style="width:400px;position:absolute;left:5px;top:35px;" 
             Movable="false" 
-            Closable="false"
-            CssClass="window">
+            Closable="false">
             <div style="height:250px;overflow:auto;">
                 <ext:Tree 
                     runat="server" 
                     ID="tree" 
                     OnSelectedNodeChanged="tree_SelectedNodeChanged"
-                    CssClass="tree"
                     Expansion="SingleClickEntireRow">
                     <ext:TreeNodes ID="RSSFeeds" runat="server" />
                 </ext:Tree>
@@ -72,7 +70,6 @@
         <!-- Bottom left -->
         <ext:Window 
             runat="server" 
-            CssClass="window" 
             Closable="false" 
             Movable="false"
             Caption="RSS Feeds"
@@ -154,7 +151,6 @@
         <!-- Right - main content -->
         <ext:Window 
             runat="server" 
-            CssClass="window" 
             Closable="false" 
             Movable="false"
             Caption="Read RSS Item - choose in the TreeView to the left"
@@ -201,7 +197,6 @@
         <!-- Create new activity Window -->
         <ext:Window 
             runat="server" 
-            CssClass="window" 
             Visible="false"
             Caption="Add new RSS Feed - MUST be RSS 2.0"
             DefaultWidget="addBtn"

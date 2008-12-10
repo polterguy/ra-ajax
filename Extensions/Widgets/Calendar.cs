@@ -116,6 +116,22 @@ namespace Ra.Extensions
         public event EventHandler<RenderDayEventArgs> RenderDay;
 
         /**
+         * Overridden to provide a sane default value
+         */
+        [DefaultValue("calendar")]
+        public override string CssClass
+        {
+            get
+            {
+                string retVal = base.CssClass;
+                if (retVal == string.Empty)
+                    retVal = "calendar";
+                return retVal;
+            }
+            set { base.CssClass = value; }
+        }
+
+        /**
          * Selected value of calendar
          */
         public DateTime Value

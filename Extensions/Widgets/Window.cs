@@ -77,6 +77,22 @@ namespace Ra.Extensions
         public event EventHandler<CreateNavigationalButtonsEvtArgs> CreateNavigationalButtons;
 
         /**
+         * Overridden to provide a sane default value
+         */
+        [DefaultValue("window")]
+        public override string CssClass
+        {
+            get
+            {
+                string retVal = base.CssClass;
+                if (retVal == string.Empty)
+                    retVal = "window";
+                return retVal;
+            }
+            set { base.CssClass = value; }
+        }
+
+        /**
          * Header text of window
          */
         [DefaultValue("")]

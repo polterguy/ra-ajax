@@ -29,7 +29,6 @@
     <ext:Window 
 	    runat="server"
 	    Caption="Ajax Wizard Window"
-	    CssClass="window" 
 	    Movable="false"
 	    OnCreateNavigationalButtons="wizard_CreateNavigationalButtons"
 	    style="width:420px;margin-bottom:15px;"

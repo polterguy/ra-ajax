@@ -37,7 +37,6 @@
 					    <ext:Accordion 
 					        runat="server" 
 					        ID="accordion"
-					        CssClass="accordion"
 					        AnimationSpeed="400">
 
 					        <ext:AccordionView 
@@ -222,8 +221,7 @@
                                         runat="server" 
                                         OnMoved="wowWnd_Moved"
                                         Caption="New Stuff - MUST Check Out - Starter-Kits" 
-                                        style="width:350px;position:absolute;z-index:1000;right:25px;top:10px;"
-                                        CssClass="window">
+                                        style="width:350px;position:absolute;z-index:1000;right:25px;top:10px;">
                                         <div style="padding:5px;font-size:0.8em;height:190px;">
                                             <div class="thumbsSmall">
                                                 <a href="Viewport-Calendar-Starter-Kit.aspx" class="linksSmall">
@@ -264,8 +262,7 @@
                                     <ext:TabControl 
                                         runat="server" 
                                         Visible="false"
-                                        ID="tabShowCode" 
-                                        CssClass="tab">
+                                        ID="tabShowCode">
 
                                         <ext:TabView 
                                             Caption="C# Code" 

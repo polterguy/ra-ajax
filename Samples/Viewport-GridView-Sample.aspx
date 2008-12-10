@@ -46,8 +46,7 @@
             <!-- Menu -->
             <ext:Menu 
                 runat="server" 
-                ID="menu" 
-                CssClass="menu">
+                ID="menu">
                 <ext:MenuItems runat="server" ID="mainItems">
                     <ext:MenuItem runat="server" ID="file">
                         File
@@ -106,8 +105,7 @@
                 Caption="Top left"
                 style="width:250px;position:absolute;left:5px;top:63px;" 
                 Movable="false" 
-                Closable="false"
-                CssClass="window">
+                Closable="false">
                 <div style="height:228px;overflow:auto;border:dotted 1px #999; background-color:#fefefe;padding:10px;">
                     <p>Here is your left view</p>
                     <p>Filter GridView</p>
@@ -127,7 +125,6 @@
             <!-- Bottom left -->
             <ext:Window 
                 runat="server" 
-                CssClass="window" 
                 Closable="false" 
                 Movable="false"
                 Caption="Bottom left"
@@ -155,7 +152,6 @@
             <!-- Right - main content -->
             <ext:Window 
                 runat="server" 
-                CssClass="window" 
                 Closable="false" 
                 Movable="false" 
                 OnCreateNavigationalButtons="wndRight_CreateNavigationalButtons"
@@ -262,7 +258,6 @@
         <!-- Login Window -->
         <ext:Window 
             runat="server" 
-            CssClass="window" 
             Caption="Edit entry" 
             DefaultWidget="editSave"
             Visible="false" 
@@ -300,8 +295,7 @@
                                 runat="server" 
                                 ID="editBirth" 
                                 Visible="false" 
-                                OnDateClicked="editBirth_DateClicked"
-                                CssClass="calendar" />
+                                OnDateClicked="editBirth_DateClicked" />
                         </td>
                     </tr>
                 </table>

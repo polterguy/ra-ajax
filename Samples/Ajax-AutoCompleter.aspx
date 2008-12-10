@@ -34,7 +34,6 @@
     <ext:AutoCompleter 
         runat="server" 
         ID="auto" 
-        CssClass="auto"
         OnAutoCompleterItemSelected="auto_AutoCompleterItemSelected"
         OnRetrieveAutoCompleterItems="auto_RetrieveAutoCompleterItems" />
     <p>

@@ -33,7 +33,6 @@
     <ext:Calendar 
         runat="server" 
         ID="calTab" 
-        CssClass="calendar" 
         style="width:200px;"
         OnSelectedValueChanged="calTab_SelectedValueChanged"
         Value="2008.07.20 23:54" />
@@ -62,7 +61,6 @@
     <ext:DateTimePicker 
         runat="server" 
         ID="Calendar1" 
-        CssClass="calendar" 
         style="width:200px;"
         OnSelectedValueChanged="calTab_SelectedValueChanged"
         Value="2008.07.20 23:54" />

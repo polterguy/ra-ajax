@@ -31,6 +31,22 @@ namespace Ra.Extensions
         public event EventHandler ActiveTabViewChanged;
 
         /**
+         * Overridden to provide a sane default value
+         */
+        [DefaultValue("tab")]
+        public override string CssClass
+        {
+            get
+            {
+                string retVal = base.CssClass;
+                if (retVal == string.Empty)
+                    retVal = "tab";
+                return retVal;
+            }
+            set { base.CssClass = value; }
+        }
+
+        /**
          * Gets or sets the actively viewed TabView
          */
         [DefaultValue(0)]
