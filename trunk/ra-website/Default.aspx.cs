@@ -13,5 +13,14 @@ namespace RaWebsite
 {
     public partial class _Default : System.Web.UI.Page
     {
+        protected void btn_Click(object sender, EventArgs e)
+        {
+            btn.Text = "Hello world";
+            new EffectSize(btn, 500, 20, 55)
+                .ChainThese(new EffectFadeOut(btn, 500)
+                        .ChainThese(new EffectFadeIn(btn, 500)
+                            .ChainThese(new EffectSize(btn, 200, 80, 500)
+                                .ChainThese(new EffectHighlight(btn, 500))))).Render();
+        }
     }
 }

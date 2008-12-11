@@ -78,7 +78,9 @@
   so on. This makes it easier to start using Ra-Ajax since you
   don't have to supply these values yourself - which sometimes
   will make it harder to start using Ra-Ajax and confuse you in
-  the beginning.
+  the beginning. This was also done in the combination with making
+  the CssClass in the RaWebControl virtual. So no you can override
+  that property. Which also makes kind of sense...
 
 
 

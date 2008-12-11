@@ -16,21 +16,18 @@
     ContentPlaceHolderID="cnt1" 
     Runat="Server">
 
-    <h1>Breathtaking Ajax for ASP.NET - Free of Charge and Open Source</h1>
+    <h1>Dead simple Ajax for ASP.NET - Free and Open Source</h1>
     <p>
-        Ra-Ajax is an <em>Open Source and Free of Charge</em> 
-        <a href="managed-ajax-a-new-approach-to-ajax.blog" title="Managed Ajax">Managed Ajax library</a> for 
-        ASP.NET and <a href="http://www.mono-project.com/Main_Page">Mono</a>. Ra-Ajax is licensed under the 
-        <a href="http://www.gnu.org/licenses/lgpl.html">LGPL3 license</a> and therefore effectively 
-        <strong>Free of Charge</strong> - even though we charge for using some parts of Ra-Ajax commercially. 
-        Ra-Ajax is built around the assumption that Partial Rendering sucks and JavaScript is hard. Every 
-        single sample here in the samples section is written entirely without 
-        <em>one line of Custom JavaScript</em>. This makes you;
+        With Ra-Ajax, there’s no need to switch to proprietary Frameworks like Silverlight or Adobe Flex 
+        when your business requirements become more complex. Application scalability is important to us, 
+        so with our technology you can very rapidly create the simplest of sites, or the most complex 
+        multifaceted dynamic applications, all while leveraging the skills you already have. How is this 
+        possible?
     </p>
     <ul>
-        <li>More productive</li>
-        <li>More wealthy</li>
-        <li>More happy</li>
+        <li>You don't need to use JavaScript</li>
+        <li>You can create really complex things with dead simple code</li>
+        <li>It scales to the sky on all metrics</li>
     </ul>
     <p>
         Try out some of our proudest examples in Ra-Ajax below...
@@ -56,20 +53,43 @@
             <span class="text">Demonstrates how to create an Ajax GridView/DataGrid Application in addition to being an "Ajax Starter-Kit" for your own projects. <br />Written in VB.NET...</span>
         </a>
     </div>
-    <ra:Panel 
-        runat="server" 
-        ID="pnlResults" 
-        Visible="false" 
-        style="border:solid 1px Black;background-color:Yellow;width:400px;padding:25px;float:left;display:none;margin-bottom:10px;">
-        <ra:Label 
+    <p>
+        ...most of these samples are less then 300 lines of code, and all of them are contained in 
+        our <a href="http://code.google.com/p/ra-ajax/">download</a>.
+    </p>
+    <p>
+        The <em>Hello World</em> application...
+    </p>
+    <p>
+        <ra:Button 
             runat="server" 
-            ID="lblResults" 
-            style="font-weight:bold;" />
-        <p>
-            Notice how there was no "custom JavaScript" written to show this Panel. Everything was done on the
-            server in pure C# and resembles the ASP.NET WebControls way of writing Web Applications.
-        </p>
-    </ra:Panel>
+            ID="btn" 
+            OnClick="btn_Click"
+            Text="Click me..." />
+    </p>
+    <p>
+        All the code written to do the above is here;
+    </p>
+    <pre>
+<strong>.ASPX</strong>;
+<span style="color:Blue;">&lt;</span><span style="color:#b00;">ra</span><span style="color:Blue;">:</span><span style="color:#b00;">Button</span>
+    <span style="color:Red;">runat</span><span style="color:Blue;">="server" </span>
+    <span style="color:Red;">ID</span><span style="color:Blue;">="Button1" </span>
+    <span style="color:Red;">OnClick</span><span style="color:Blue;">="btn_Click"</span>
+    <span style="color:Red;">Text</span><span style="color:Blue;">="Click me..." /&gt;</span>
+    </pre>
+    <pre>
+<strong>C#</strong>;
+<span style="color:Blue;">protected void</span> btn_Click(<span style="color:Blue;">object</span> sender, <span style="color:#06b;">EventArgs</span> e)
+{
+    btn.Text = <span style="color:#b00;">"Hello world"</span>;
+    <span style="color:Blue;">new</span> <span style="color:#06b;">EffectSize</span>(btn, 500, 10, 25)
+      .ChainThese(<span style="color:Blue;">new</span> <span style="color:#06b;">EffectFadeOut</span>(btn, 500)
+        .ChainThese(<span style="color:Blue;">new</span> <span style="color:#06b;">EffectFadeIn</span>(btn, 500)
+          .ChainThese(<span style="color:Blue;">new</span> <span style="color:#06b;">EffectSize</span>(btn, 200, 80, 500)
+            .ChainThese(<span style="color:Blue;">new</span> <span style="color:#06b;">EffectHighlight</span>(btn, 500))))).Render();
+}
+    </pre>
     <h2 style="clear:both;">Up running in minutes</h2>
     <p>
         Thanx to Ra-Ajax' close resemblance to the ASP.NET WebControls method of development
@@ -94,7 +114,7 @@
     <h2>Leave your troubles behind</h2>
     <p>
         Compared to other Ajax Frameworks, Ra-Ajax will feel like a miracle. In fact, forget everything 
-        you think you know about Ajax. Ra-Ajax changes the whole ball game. With Ra-Ajax you can deliver
+        you think you knew about Ajax. Ra-Ajax changes the whole ball game. With Ra-Ajax you can deliver
         web applications before your competitors have even finished up deciding which JavaScript frameworks 
         to us. With Ra-Ajax your apps will run on everything, including your cousin's toaster - if it has
         a browser. With Ra-Ajax you can actually claim your life back - imagine an Ajax Framework with a 
