@@ -232,13 +232,13 @@
                                             <div class="thumbsSmall">
                                                 <a href="Viewport-Sample.aspx" class="linksSmall">
                                                     <span class="image2Small">&nbsp;</span>
-                                                    <span class="headerSmall">Ajax Viewport Starter-Kit - C#<br />Features Ajax Login, TreeView and TabControl</span>
+                                                    <span class="headerSmall">Ajax Viewport Starter-Kit - C#<br />Features Ajax Login, TreeView++</span>
                                                 </a>
                                             </div>
                                             <div class="thumbsSmall">
                                                 <a href="Viewport-GridView-Sample.aspx" class="linksSmall">
                                                     <span class="image3Small">&nbsp;</span>
-                                                    <span class="headerSmall">Ajax DataGrid Starter-Kit - VB.NET<br />VB.NET sample creating an Ajax DataGrid</span>
+                                                    <span class="headerSmall">Ajax DataGrid Starter-Kit - VB.NET<br />VB.NET sample with Ajax DataGrid</span>
                                                 </a>
                                             </div>
                                         </div>
