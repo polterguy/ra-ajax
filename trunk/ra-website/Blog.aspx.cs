@@ -166,7 +166,6 @@ namespace RaWebsite
             get 
             {
                 List<Entity.Blog> blogs = new List<Entity.Blog>();
-                int idxNo = 0;
                 Operator oper = Operator.FindOne(Expression.Eq("Username", Request.Params["blogger"]));
                 foreach (Entity.Blog idx in Entity.Blog.FindAll(Order.Desc("Created"), Expression.Eq("Operator", oper)))
                 {

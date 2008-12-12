@@ -19,9 +19,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Ra-Ajax RSS Starter-Kit</title>
-    <link id="steel" runat="server" href="media/skins/steel/Steel-0.8.5.css" rel="stylesheet" type="text/css" />
-    <link id="sapphire" visible="false" runat="server" href="media/skins/Sapphire/Sapphire-0.8.5.css" rel="stylesheet" type="text/css" />
-    <link href="media/RssStarterKit-0.8.5.css" rel="stylesheet" type="text/css" />
+    <link id="steel" runat="server" href="media/skins/steel/Steel-0.9.1.css" rel="stylesheet" type="text/css" />
+    <link id="sapphire" visible="false" runat="server" href="media/skins/Sapphire/Sapphire-0.9.1.css" rel="stylesheet" type="text/css" />
+    <link href="media/RssStarterKit-0.9.1.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">

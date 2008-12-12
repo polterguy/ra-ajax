@@ -107,7 +107,7 @@ namespace Ra.Extensions
          * Tooltip for control
          */
         [DefaultValue("")]
-        public string Tooltip
+        public override string Tooltip
         {
             get { return _txt.Tooltip; }
             set { _txt.Tooltip = value; }
