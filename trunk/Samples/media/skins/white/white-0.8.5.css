@@ -178,12 +178,14 @@ http://ra-ajax.org
 .tab .tab-header ul li.first { margin-left:3px; }
 .tab .tab-header ul li a { text-decoration:none; color:#333; padding:5px; }
 .tab .tab-header ul li a:hover { color:#00f; background-color:Transparent; }
-.tab .tab-header ul li.tab-disabled a { color:#faa; }
+.tab .tab-header ul li.tab-disabled a { color:#faa; cursor:default; }
 .tab .tab-header ul li.tab-disabled a:hover { color:#f99; }
 .tab .tab-header ul li span { display:inline-block; *height:18px; padding-top:5px; }
 .tab .tab-header ul li span.left { background:url('window-sprite.png') no-repeat; width:6px; border-bottom:solid 1px #CCD1FF; }
 .tab .tab-header ul li span.center { background:url('window-h-sprite.png') repeat-x; border-bottom:solid 1px #CCD1FF; }
 .tab .tab-header ul li span.right { background:url('window-sprite.png') no-repeat -37px 0; width:6px; border-bottom:solid 1px #CCD1FF; }
+.tab .tab-header ul li.active a { cursor:default; }
+.tab .tab-header ul li.active a:hover { color:inherit; }
 .tab .tab-header ul li.active span.left { background:url('window-sprite.png') no-repeat; border-bottom:solid 1px #fff; }
 .tab .tab-header ul li.active span.center { background:url('window-h-sprite.png') repeat-x; border-bottom:solid 1px #fff; }
 .tab .tab-header ul li.active span.right { background:url('window-sprite.png') no-repeat -37px 0; border-bottom:solid 1px #fff; }

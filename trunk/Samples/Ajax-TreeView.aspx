@@ -27,7 +27,7 @@
         with your browser. You can choose to render items "statically" in markup or "dynamically" through event handlers.
         And you can mix these two methods in the same TreeView control just as you wish.
     </p>
-    <div style="overflow:auto;">
+    <div>
         <ext:Tree 
             runat="server" 
             ID="tree" 
@@ -135,6 +135,7 @@
             </p>
         </ra:Panel>
     </div>
+    <br style="clear:both;" />
     <p>
         The above TreeView has three root TreeNodes. None of these root items are expanded. Click to expand any
         TreeViewNode. In the two first ones there are three child TreeNodes where one of those have dynamically 
