@@ -145,7 +145,7 @@ namespace Samples
                 tree.ReRender();
                 addWindow.Visible = false;
             }
-            catch (Exception err)
+            catch (Exception)
             {
                 addUrl.Focus();
                 addUrl.Select();
