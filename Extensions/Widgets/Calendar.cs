@@ -385,7 +385,7 @@ namespace Ra.Extensions
             bottomCell.ColSpan = 8;
             LinkButton today = new LinkButton();
             today.ID = "todayBtn";
-            today.Text = DateTime.Now.ToString("MMMM d, yyyy", System.Threading.Thread.CurrentThread.CurrentUICulture);
+            today.Text = "Today";
             today.Click += new EventHandler(today_Click);
             today.EnableViewState = false;
             bottomCell.Controls.Add(today);

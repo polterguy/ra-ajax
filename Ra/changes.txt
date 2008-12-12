@@ -82,6 +82,14 @@
   the CssClass in the RaWebControl virtual. So no you can override
   that property. Which also makes kind of sense...
 
+* Changed the Text of the today button to "Today" since the date
+  showing was not that intuitive (thank you Matt)
+
+* Fixed so that both disabled tabs and active tabs no longer have
+  the pointer cursor in addition to that they also don't animate
+  the colors (that much) as previously. This makes the appearance
+  of that they're "less interactive" then previously.
+
 
 
 
