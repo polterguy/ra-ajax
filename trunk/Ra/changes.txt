@@ -11,7 +11,8 @@
 
                           Version 0.9.2
 
-       Optimalizations and more...
+       LOTS of optimizations...
+       Plus some bug-fixes...
 
   ------------------------------------------------------------------
 
