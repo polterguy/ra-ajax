@@ -255,13 +255,28 @@ namespace Ra.Widgets
             string retVal = "";
             foreach (string idxKey in _styleValues.Keys)
             {
+                string value = "";
                 // Here we are returning ONLY the ViewStateValue
                 if (_styleValues[idxKey].OnlyViewStateValue != null)
-                    retVal += TransformToViewStateShorthand(idxKey) + ":" + _styleValues[idxKey].OnlyViewStateValue + ";";
+                {
+                    value = _styleValues[idxKey].OnlyViewStateValue;
+                }
                 else if (_styleValues[idxKey].AfterViewStateTrackingValue != null)
-                    retVal += TransformToViewStateShorthand(idxKey) + ":" + _styleValues[idxKey].AfterViewStateTrackingValue + ";";
+                {
+                    value = _styleValues[idxKey].AfterViewStateTrackingValue;
+                }
                 else if (_styleValues[idxKey].ViewStateValue != null)
-                    retVal += TransformToViewStateShorthand(idxKey) + ":" + _styleValues[idxKey].ViewStateValue + ";";
+                {
+                    value = _styleValues[idxKey].ViewStateValue;
+                }
+                if (!string.IsNullOrEmpty(value))
+                {
+                    retVal +=
+                        TransformToViewStateShorthand(idxKey) +
+                        ":" +
+                        value +
+                        ";";
+                }
             }
             return retVal;
         }
@@ -273,11 +288,17 @@ namespace Ra.Widgets
             {
                 string value = "";
                 if (_styleValues[idxKey].AfterViewStateTrackingValue != null)
+                {
                     value = _styleValues[idxKey].AfterViewStateTrackingValue;
+                }
                 else if (_styleValues[idxKey].ViewStateValue != null)
+                {
                     value = _styleValues[idxKey].ViewStateValue;
+                }
                 else if (_styleValues[idxKey].BeforeViewStateTrackingValue != null)
+                {
                     value = _styleValues[idxKey].BeforeViewStateTrackingValue;
+                }
 
                 // NOT rendering "empty" styles...
                 if (value != "")
