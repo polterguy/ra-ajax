@@ -257,11 +257,11 @@ namespace Ra.Widgets
             {
                 // Here we are returning ONLY the ViewStateValue
                 if (_styleValues[idxKey].OnlyViewStateValue != null)
-                    retVal += idxKey + ":" + _styleValues[idxKey].OnlyViewStateValue + ";";
+                    retVal += TransformToViewStateShorthand(idxKey) + ":" + _styleValues[idxKey].OnlyViewStateValue + ";";
                 else if (_styleValues[idxKey].AfterViewStateTrackingValue != null)
-                    retVal += idxKey + ":" + _styleValues[idxKey].AfterViewStateTrackingValue + ";";
+                    retVal += TransformToViewStateShorthand(idxKey) + ":" + _styleValues[idxKey].AfterViewStateTrackingValue + ";";
                 else if (_styleValues[idxKey].ViewStateValue != null)
-                    retVal += idxKey + ":" + _styleValues[idxKey].ViewStateValue + ";";
+                    retVal += TransformToViewStateShorthand(idxKey) + ":" + _styleValues[idxKey].ViewStateValue + ";";
             }
             return retVal;
         }
@@ -303,7 +303,133 @@ namespace Ra.Widgets
                 string[] raw = idx.Split(':');
                 StyleValue v = new StyleValue();
                 v.ViewStateValue = raw[1];
-                _styleValues[raw[0]] = v;
+                _styleValues[TransformFromViewStateShorthand(raw[0])] = v;
+            }
+        }
+
+        private string TransformFromViewStateShorthand(string key)
+        {
+            switch (key)
+            {
+                case "a":
+                    return "background";
+                case "b":
+                    return "background-color";
+                case "c":
+                    return "border";
+                case "d":
+                    return "cursor";
+                case "e":
+                    return "display";
+                case "f":
+                    return "position";
+                case "g":
+                    return "height";
+                case "h":
+                    return "width";
+                case "i":
+                    return "font";
+                case "j":
+                    return "margin";
+                case "k":
+                    return "padding";
+                case "l":
+                    return "left";
+                case "m":
+                    return "overflow";
+                case "n":
+                    return "right";
+                case "o":
+                    return "top";
+                case "p":
+                    return "z-index";
+                case "q":
+                    return "color";
+                case "r":
+                    return "text-align";
+                case "s":
+                    return "opacity";
+                case "t":
+                    return "bottom";
+                case "u":
+                    return "line-height";
+                case "v":
+                    return "background-image";
+                case "w":
+                    return "background-position";
+                case "x":
+                    return "border-color";
+                case "y":
+                    return "border-width";
+                case "z":
+                    return "font-family";
+                case "1":
+                    return "font-size";
+                default:
+                    return key;
+            }
+        }
+
+        private string TransformToViewStateShorthand(string key)
+        {
+            switch (key)
+            {
+                case "background":
+                    return "a";
+                case "background-color":
+                    return "b";
+                case "border":
+                    return "c";
+                case "cursor":
+                    return "d";
+                case "display":
+                    return "e";
+                case "position":
+                    return "f";
+                case "height":
+                    return "g";
+                case "width":
+                    return "h";
+                case "font":
+                    return "i";
+                case "margin":
+                    return "j";
+                case "padding":
+                    return "k";
+                case "left":
+                    return "l";
+                case "overflow":
+                    return "m";
+                case "right":
+                    return "n";
+                case "top":
+                    return "o";
+                case "z-index":
+                    return "p";
+                case "color":
+                    return "q";
+                case "text-align":
+                    return "r";
+                case "opacity":
+                    return "s";
+                case "bottom":
+                    return "t";
+                case "line-height":
+                    return "u";
+                case "background-image":
+                    return "v";
+                case "background-position":
+                    return "w";
+                case "border-color":
+                    return "x";
+                case "border-width":
+                    return "y";
+                case "font-family":
+                    return "z";
+                case "font-size":
+                    return "1";
+                default:
+                    return key;
             }
         }
 

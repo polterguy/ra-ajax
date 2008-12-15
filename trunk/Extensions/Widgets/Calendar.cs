@@ -128,7 +128,17 @@ namespace Ra.Extensions
                     retVal = "calendar";
                 return retVal;
             }
-            set { base.CssClass = value; }
+            set
+            {
+                bool sameClass = value == base.CssClass;
+                base.CssClass = value;
+                if (!sameClass && _nw != null)
+                {
+                    // If class has actually *changed* AND we have created the child composition
+                    // controls...
+                    SetCssClassesAndMore();
+                }
+            }
         }
 
         /**
@@ -162,15 +172,6 @@ namespace Ra.Extensions
             set
             {
                 ViewState["StartsOn"] = value;
-            }
-        }
-
-        private LinkButton SelectedValueBtn
-        {
-            get { return ViewState["SelectedValueBtn"] == null ? null : (LinkButton)FindControl((string)ViewState["SelectedValueBtn"]); }
-            set
-            {
-                ViewState["SelectedValueBtn"] = value.ID;
             }
         }
 
@@ -219,59 +220,75 @@ namespace Ra.Extensions
 
         private void CreateWindowControls()
         {
+            // Gteting CssClass of Calendar control
+            string cssClass = CssClass;
+            if (cssClass.IndexOf(" ") != -1)
+                cssClass = cssClass.Split(' ')[0];
+
             // Top parts
             _nw = new Label();
             _nw.Tag = "div";
             _nw.ID = "nw";
+            _nw.CssClass = cssClass + "_nw";
 
             _ne = new Label();
             _ne.Tag = "div";
             _ne.ID = "ne";
+            _ne.CssClass = cssClass + "_ne";
             _nw.Controls.Add(_ne);
 
             _n = new Label();
             _n.Tag = "div";
             _n.ID = "n";
+            _n.CssClass = cssClass + "_n";
             _ne.Controls.Add(_n);
 
             _caption = new Label();
             _caption.ID = "capt";
+            _caption.CssClass = cssClass + "_title";
             _n.Controls.Add(_caption);
 
             // Middle parts
             _body = new Label();
             _body.Tag = "div";
             _body.ID = "body";
+            _body.CssClass = cssClass + "_body";
 
             _w = new Label();
             _w.Tag = "div";
             _w.ID = "w";
+            _w.CssClass = cssClass + "_w";
             _body.Controls.Add(_w);
 
             _e = new Label();
             _e.Tag = "div";
             _e.ID = "e";
+            _e.CssClass = cssClass + "_e";
             _w.Controls.Add(_e);
 
             _content.Tag = "div";
             _content.ID = "content";
+            _content.CssClass = cssClass + "_content calendar";
             _e.Controls.Add(_content);
 
             // Bottom parts
             _sw = new Label();
             _sw.Tag = "div";
             _sw.ID = "sw";
+            _sw.CssClass = cssClass + "_sw";
             _body.Controls.Add(_sw);
 
             _se = new Label();
             _se.Tag = "div";
             _se.ID = "se";
+            _se.CssClass = cssClass + "_se";
             _sw.Controls.Add(_se);
 
             _s = new Label();
             _s.Tag = "div";
             _s.ID = "s";
             _s.Text = "&nbsp;";
+            _s.CssClass = cssClass + "_s";
             _se.Controls.Add(_s);
         }
 
@@ -339,6 +356,17 @@ namespace Ra.Extensions
 
         protected override void OnPreRender(EventArgs e)
         {
+            if (Caption == null)
+                _caption.Text = Value.ToString("dddd - dd. MMM yy", System.Globalization.CultureInfo.InvariantCulture);
+            else
+                _caption.Text = Caption;
+
+            // Calling base...
+            base.OnPreRender(e);
+        }
+
+        private void SetCssClassesAndMore()
+        {
             // Setting the CSS classes for all "decoration controls"
             string cssClass = CssClass;
             if (cssClass.IndexOf(" ") != -1)
@@ -354,13 +382,6 @@ namespace Ra.Extensions
             _content.CssClass = cssClass + "_content calendar";
             _body.CssClass = cssClass + "_body";
             _caption.CssClass = cssClass + "_title";
-            if (Caption == null)
-                _caption.Text = Value.ToString("dddd - dd. MMM yy", System.Globalization.CultureInfo.InvariantCulture);
-            else
-                _caption.Text = Caption;
-
-            // Calling base...
-            base.OnPreRender(e);
         }
 
         private DateTime FindStartDate()
@@ -406,7 +427,6 @@ namespace Ra.Extensions
             if (idxDate == Value.Date)
             {
                 btn.CssClass = "selected";
-                SelectedValueBtn = btn;
             }
             else if (idxDate.Month != Value.Month)
                 btn.CssClass = "offMonth";

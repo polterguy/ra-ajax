@@ -56,9 +56,9 @@ namespace Ra.Extensions
         Label _sw;
         Label _s;
         Label _se;
-        Label _caption;
-        LinkButton _close;
-        BehaviorDraggable _dragger;
+        Label _caption = new Label();
+        LinkButton _close = new LinkButton();
+        BehaviorDraggable _dragger = new BehaviorDraggable();
 
         /**
          * Raised when window is closed by clicking the close icon
@@ -89,7 +89,17 @@ namespace Ra.Extensions
                     retVal = "window";
                 return retVal;
             }
-            set { base.CssClass = value; }
+            set
+            {
+                bool sameClass = value == base.CssClass;
+                base.CssClass = value;
+                if (!sameClass && _nw != null)
+                {
+                    // If class has actually *changed* AND we have created the child composition
+                    // controls...
+                    SetCssClassesAndMore();
+                }
+            }
         }
 
         /**
@@ -98,8 +108,8 @@ namespace Ra.Extensions
         [DefaultValue("")]
         public string Caption
         {
-            get { return ViewState["Caption"] == null ? "" : (string)ViewState["Caption"]; }
-            set { ViewState["Caption"] = value; }
+            get { return _caption.Text; }
+            set { _caption.Text = value; }
         }
 
         /**
@@ -109,8 +119,8 @@ namespace Ra.Extensions
         [DefaultValue(true)]
         public bool Closable
         {
-            get { return ViewState["Closable"] == null ? true : (bool)ViewState["Closable"]; }
-            set { ViewState["Closable"] = value; }
+            get { return _close.Visible; }
+            set { _close.Visible = value; }
         }
 
         /**
@@ -119,8 +129,12 @@ namespace Ra.Extensions
         [DefaultValue(true)]
         public bool Movable
         {
-            get { return ViewState["Movable"] == null ? true : (bool)ViewState["Movable"]; }
-            set { ViewState["Movable"] = value; }
+            get { return _dragger.Visible; }
+            set
+            {
+                _dragger.Visible = value;
+                _caption.Style["cursor"] = value ? "" : "default";
+            }
         }
 
         /**
@@ -157,86 +171,91 @@ namespace Ra.Extensions
 
         private void CreateWindowControls()
         {
+            // Parsing the CssClass since we're constructing CssClasses for 
+            // Child Controls this way...
+            string cssClass = this.CssClass;
+            if (cssClass.IndexOf(' ') != -1)
+                cssClass = cssClass.Split(' ')[0];
+
             // Top parts
             _nw = new Label();
             _nw.Tag = "div";
             _nw.ID = "XXnw";
+            _nw.CssClass = cssClass + "_nw";
             base.Controls.Add(_nw);
 
             _ne = new Label();
             _ne.Tag = "div";
             _ne.ID = "XXne";
+            _ne.CssClass = cssClass + "_ne";
             _nw.Controls.Add(_ne);
 
             _n = new Label();
             _n.Tag = "div";
             _n.ID = "XXn";
+            _n.CssClass = cssClass + "_n";
             _ne.Controls.Add(_n);
 
-            _caption = new Label();
             _caption.ID = "XXcaption";
+            _caption.CssClass = cssClass + "_title";
             _n.Controls.Add(_caption);
 
             if (CreateNavigationalButtons != null)
                 CreateNavigationalButtons(this, new CreateNavigationalButtonsEvtArgs(_n));
 
-            if (Closable)
-            {
-                _close = new LinkButton();
-                _close.ID = "XXclose";
-                _close.Click += new EventHandler(_close_Click);
-                _n.Controls.Add(_close);
-            }
+            _close.ID = "XXclose";
+            _close.Click += new EventHandler(_close_Click);
+            _close.CssClass = cssClass + "_close";
+            _n.Controls.Add(_close);
 
             // Middle parts
             _body = new Label();
             _body.Tag = "div";
             _body.ID = "XXbody";
+            _body.CssClass = cssClass + "_body";
             base.Controls.Add(_body);
 
             _w = new Label();
             _w.Tag = "div";
             _w.ID = "XXw";
+            _w.CssClass = cssClass + "_w";
             _body.Controls.Add(_w);
 
             _e = new Label();
             _e.Tag = "div";
             _e.ID = "XXe";
+            _e.CssClass = cssClass + "_e";
             _w.Controls.Add(_e);
 
             _content.Tag = "div";
             _content.ID = "XXcontent";
+            _content.CssClass = cssClass + "_content";
             _e.Controls.Add(_content);
 
             // Bottom parts
             _sw = new Label();
             _sw.Tag = "div";
             _sw.ID = "XXsw";
+            _sw.CssClass = cssClass + "_sw";
             _body.Controls.Add(_sw);
 
             _se = new Label();
             _se.Tag = "div";
             _se.ID = "XXse";
+            _se.CssClass = cssClass + "_se";
             _sw.Controls.Add(_se);
 
             _s = new Label();
             _s.Tag = "div";
             _s.ID = "XXs";
             _s.Text = "&nbsp;";
+            _s.CssClass = cssClass + "_s";
             _se.Controls.Add(_s);
 
-            if (Movable)
-            {
-                _dragger = new BehaviorDraggable();
-                _dragger.ID = "XXdragger";
-                _dragger.Handle = _caption.ClientID;
-                _dragger.Dropped += new EventHandler(_dragger_Dropped);
-                base.Controls.Add(_dragger);
-            }
-            else
-            {
-                _caption.Style["cursor"] = "default";
-            }
+            _dragger.ID = "XXdragger";
+            _dragger.Handle = _caption.ClientID;
+            _dragger.Dropped += new EventHandler(_dragger_Dropped);
+            base.Controls.Add(_dragger);
         }
 
         private void _dragger_Dropped(object sender, EventArgs e)
@@ -253,6 +272,28 @@ namespace Ra.Extensions
         }
 
         protected override void OnPreRender(EventArgs e)
+        {
+            // Making sure we're setting the properties correctly
+            _close.Visible = Closable;
+
+            // Making sure that all Behaviors are in WINDOW and NOT in "content Panel"
+            List<ASP.Control> tmp = new List<System.Web.UI.Control>();
+            foreach (ASP.Control idx in _content.Controls)
+            {
+                if (idx is Behavior)
+                    tmp.Add(idx);
+            }
+            foreach (ASP.Control idx in tmp)
+            {
+                _content.Controls.Remove(idx);
+                Controls.Add(idx);
+            }
+
+            // Calling base...
+            base.OnPreRender(e);
+        }
+
+        private void SetCssClassesAndMore()
         {
             // Setting the CSS classes for all "decoration controls"
             string cssClass = this.CssClass;
@@ -271,28 +312,9 @@ namespace Ra.Extensions
             _body.CssClass = cssClass + "_body";
             _caption.CssClass = cssClass + "_title";
 
-            // Making sure our Caption is displayed correctly
-            _caption.Text = Caption;
-
             // Action buttons
             if (Closable)
                 _close.CssClass = cssClass + "_close";
-
-            // Making sure that all Behaviors are in WINDOW and NOT in "content Panel"
-            List<ASP.Control> tmp = new List<System.Web.UI.Control>();
-            foreach (ASP.Control idx in _content.Controls)
-            {
-                if (idx is Behavior)
-                    tmp.Add(idx);
-            }
-            foreach (ASP.Control idx in tmp)
-            {
-                _content.Controls.Remove(idx);
-                Controls.Add(idx);
-            }
-
-            // Calling base...
-            base.OnPreRender(e);
         }
     }
 }

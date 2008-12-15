@@ -618,11 +618,14 @@ namespace Ra.Widgets
 			bool isFirst = true;
 			foreach (Behavior idx in Behaviors)
 			{
-				if (isFirst)
-					isFirst = false;
-				else
-					retVal += ",";
-				retVal += idx.GetRegistrationScript(); 
+                if (idx.Visible)
+                {
+                    if (isFirst)
+                        isFirst = false;
+                    else
+                        retVal += ",";
+                    retVal += idx.GetRegistrationScript();
+                }
 			}
 			if (retVal != string.Empty)
 				retVal = "[" + retVal + "]";
