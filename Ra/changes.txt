@@ -34,6 +34,10 @@
   "lightweight" to use we still encourage our users to use the
   CssClass properties as much as possible still...
 
+* Changed some of the samples to be slightly more "relevant".
+  E.g. the Button, CheckBox and TreeView samples are changed
+  to not show that much off topic features.
+
 
 
 

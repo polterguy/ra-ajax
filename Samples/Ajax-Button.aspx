@@ -26,17 +26,7 @@
         runat="server" 
         ID="btn" 
         OnClick="click" 
-        OnMouseOut="mouseout" 
-        OnMouseOver="mouseover" 
         Text="Ajax Button" />
-    <p>
-        As you can see we have here created Event Handlers for <em>OnClick, OnMouseOut and OnMouseOver</em>.
-        In addition the button also has events for <em>Focus and Blur</em>. If you try to move the mouse
-        over the button you will see that it changes text to "mouseover" while if you try to move the
-        mouse out it will yet again change to "mouseout" and when clicked it will show the text "clicked".
-        In addition the <em>OnClick</em> event handler will manipulate the styles, changing the background color
-        of the button to Yellow.
-    </p>
     <h2>CSS Styles and Ra-Ajax</h2>
     <p>
         In addition, the <em>Ra-Ajax Button</em>, as most other Ra-Ajax Controls, has a style 

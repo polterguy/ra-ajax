@@ -18,8 +18,8 @@
 
     <h1>Ra-Ajax Samples - CheckBox</h1>
     <p>
-        Here is the reference example for the <em>Ra-Ajax CheckBox Control</em>. Here we have Event Handlers for 
-        <em>OnCheckedChanged, OnMouseOut and OnMouseOver</em>. As you can see the Ra-Ajax CheckBox is quite
+        Here is the reference example for the <em>Ra-Ajax CheckBox Control</em>. Here we have Event Handlers 
+        only for the <em>OnCheckedChanged</em>. As you can see the Ra-Ajax CheckBox is quite
         similar to the <a href="Ajax-Button.aspx">Ra-Ajax Button</a>. Though instead of the OnClick Event
         it handles the <em>OnCheckedChanged</em> Event. In addition it has a <em>Checked</em> property
         which basically is true if the CheckBox is checked and otherwise false.
@@ -28,8 +28,6 @@
         runat="server" 
         ID="btn"  
         OnCheckedChanged="checkedchanged" 
-        OnMouseOut="mouseout" 
-        OnMouseOver="mouseover" 
         Text="Ajax CheckBox" />
     <h2>About the Ra-Ajax Inheritance Hierarchy</h2>
     <p>

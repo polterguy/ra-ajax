@@ -17,16 +17,9 @@ namespace Samples
         {
             (sender as Button).Text = "clicked";
             (sender as Button).Style["background-color"] = "Yellow";
-        }
-
-        protected void mouseout(object sender, EventArgs e)
-        {
-            (sender as Button).Text = "mouseout";
-        }
-
-        protected void mouseover(object sender, EventArgs e)
-        {
-            (sender as Button).Text = "mouseover";
+            new EffectSize(sender as Button, 500, 15, 25).ChainThese(
+                new EffectSize(sender as Button, 500, 100, 250))
+            .Render();
         }
     }
 }
