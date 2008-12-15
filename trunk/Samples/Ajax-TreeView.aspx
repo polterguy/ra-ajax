@@ -152,11 +152,8 @@
     </p>
     <p>
         This can be seen in the "HUGE collection" TreeViewNode. None of its children are rendered in the markup, but
-        when expanded you will actually get <strong>*200* new items</strong>. Still the initial rendering of the page
-        is very small and those 200 items will not pollute the initial rendering of the page at all. Though when that
-        node has been rendered the DOM will be so stuffed with HTML elements that the entire page will feel like going
-        into "syrup". And for older browsers (IE) the browser might even CRASH when expanding this node. Though we still
-        felt like having the "200 nodes" node there to show of the capabilities of the TreeView Control in Ra-Ajax.
+        when expanded you will actually get 50 new items. Still the initial rendering of the page
+        is very small and those 50 items will not pollute the initial rendering of the page at all.
     </p>
     <h2>Advantages of the Ra-Ajax TreeView</h2>
     <p>

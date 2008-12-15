@@ -16,17 +16,8 @@ namespace Samples
         protected void checkedchanged(object sender, EventArgs e)
         {
             (sender as CheckBox).Text = "checked changed " + (sender as CheckBox).Checked;
-            (sender as CheckBox).Style["background-color"] = "Yellow";
-        }
-
-        protected void mouseout(object sender, EventArgs e)
-        {
-            (sender as CheckBox).Text = "mouseout";
-        }
-
-        protected void mouseover(object sender, EventArgs e)
-        {
-            (sender as CheckBox).Text = "mouseover";
+            new EffectHighlight(sender as CheckBox, 500)
+                .Render();
         }
     }
 }
