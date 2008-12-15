@@ -30,6 +30,9 @@
   ViewState size when saving Style values into the ViewState.
   This should optimize quite a lot of ViewState away if you're 
   using the Style property heavily in Callbacks and Postbacks...
+  Note that even though this makes the Style collection more
+  "lightweight" to use we still encourage our users to use the
+  CssClass properties as much as possible still...
 
 
 
