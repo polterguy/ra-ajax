@@ -112,5 +112,6 @@
         style="width:250px;position:absolute;left:250px;top:250px;z-index:5000;" 
         MessageBoxType="Get_Text_Multiple_Lines"
         OnClosed="MessageBox_Closed" />
+    <a href="Ajax-CRUD.aspx">On to Ajax CRUD sample</a>
 </asp:Content>
 
