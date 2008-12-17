@@ -133,6 +133,11 @@ Ra.E('{0}', {{
 
         private void btn_Click(object sender, EventArgs e)
         {
+            SetActive();
+        }
+
+        public void SetActive()
+        {
             if (IsActive())
                 return;
             string oldActiveClientId = "";

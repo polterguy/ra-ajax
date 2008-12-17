@@ -39,6 +39,10 @@
   E.g. the Button, CheckBox and TreeView samples are changed
   to not show that much off topic features.
 
+* Added up a new "CodeProject Forum-like" Starter-Kit which
+  demonstrates how to create an Ajax Forum. Kind of like the
+  CodeProject.com forums, only 100 times better ... ;)
+
 
 
 
