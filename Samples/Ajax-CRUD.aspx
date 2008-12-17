@@ -184,6 +184,7 @@
             ID="acc3" 
             style="position:relative;"
             Caption="Purpose with journey">
+            <h2>Results</h2>
             <p>
                 Congratuations
                 <ra:Label runat="server" style="font-weight:bold;" id="fullName" />
@@ -218,7 +219,7 @@
     <p>
         Creating CRUD applications in Ra-Ajax is very easy, the above sample just demonstrates how you
         could create a "travel expenses calculator" for your company or something. I haven't added any
-        "math" behind it, but I thnk you'll get the point quite easily by dissecting the code which is
+        "math" behind it, but I think you'll get the point quite easily by dissecting the code which is
         very small and probably quite understandable...
     </p>
     <p>
@@ -227,11 +228,11 @@
         had hired a consulting company (MakingWaves) to implement their travel expenses calculator.
         I think it was a very nice project since it included a pretty "pro Microsoft company" doing
         Open Source for the government (the code was BSD licensed) in addition to that it was the
-        government creating not only an Open Portal where Norwegians could calculate their own "travel
-        expenses" as citizens. But...
+        government creating not only an Open publicly available Portal where Norwegians could calculate 
+		their own "travel expenses" as citizens but also even Open Source licensing it. However...
     </p>
     <p>
-        Unfortunately the built the thing in Flash... Which I find a little bit depressing since there
+        Unfortunately they built the thing in Flash... Which I find a little bit depressing since there
         is absolutely no reasons what so ever why someone would choose Flash for a solution like this.
     </p>
     <p>
@@ -239,4 +240,3 @@
         Ra-Ajax, so I did ;)
     </p>
 </asp:Content>
-

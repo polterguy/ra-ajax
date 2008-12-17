@@ -172,6 +172,9 @@
 			                        <li>
 			                            <a href="Ajax-MessageBox.aspx">Ra-Ajax - MessageBox</a>
 			                        </li>
+			                        <li>
+			                            <a href="Ajax-CRUD.aspx">Ra-Ajax - CRUD</a>
+			                        </li>
 			                    </ul>
 					        </ext:AccordionView>
 					    </ext:Accordion>
