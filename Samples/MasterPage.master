@@ -45,7 +45,10 @@
 					            ID="accView0">
 			                    <ul>
 			                        <li>
-			                            <a href="Viewport-RSS-Starter-Kit.aspx">Ajax RSS Reader (C#) - <strong>NEW!</strong></a>
+			                            <a href="Ajax-Forum-Starter-Kit.aspx">Ajax Forum Starter-Kit (C#) - <strong>NEW!</strong></a>
+			                        </li>
+			                        <li>
+			                            <a href="Viewport-RSS-Starter-Kit.aspx">Ajax RSS Reader (C#)</a>
 			                        </li>
 			                        <li>
 			                            <a href="Viewport-Calendar-Starter-Kit.aspx">Ajax Calendar Starter-Kit (C#)</a>
