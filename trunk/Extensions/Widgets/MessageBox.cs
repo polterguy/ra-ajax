@@ -106,7 +106,7 @@ namespace Ra.Extensions
             }
         }
 
-        public event EventHandler<ClosedEventArgs> Closed;
+        public new event EventHandler<ClosedEventArgs> Closed;
 
         private Label _body;
         private Button _ok;
