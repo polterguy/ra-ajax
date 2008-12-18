@@ -3,7 +3,7 @@
 
   <target name="load.custom.tasks" description="Load the custom NAnt tasks">
     <mkdir dir="Ra.Build.Tasks/bin/release/" />
-    <csc target="library" output="Ra.Build.Tasks/bin/release/Ra.Build.Tasks.dll" debug="false">
+    <csc target="library" optimize="true" output="Ra.Build.Tasks/bin/release/Ra.Build.Tasks.dll" debug="false">
       <sources>
         <include name="Ra.Build.Tasks/**/*.cs" />
       </sources>

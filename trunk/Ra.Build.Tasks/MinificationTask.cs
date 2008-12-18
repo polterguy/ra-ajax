@@ -51,6 +51,7 @@ namespace Ra.Build.Tasks
         protected bool _overwrite;
         protected bool _flatten;
         protected bool _gZip;
+        protected string _concatenateTo;
         protected DirectoryInfo _toDirectory;
         protected FileSet _files = new FileSet();
 
@@ -71,6 +72,14 @@ namespace Ra.Build.Tasks
         {
             get { return _gZip; }
             set { _gZip = value; }
+        }
+
+        [TaskAttribute("concat-to")]
+        [StringValidator()]
+        public virtual string ConcatenateTo
+        {
+            get { return _concatenateTo; }
+            set { _concatenateTo = value; }
         }
 
         [TaskAttribute("flatten")]
@@ -122,6 +131,8 @@ namespace Ra.Build.Tasks
             Log(Level.Info, MINIFY_INFO_MSG, _files.FileNames.Count, 
                 _overwrite ? "inplace" : string.Format(CultureInfo.InvariantCulture, "to '{0}'", _toDirectory.FullName));
 
+            string concatenatedPath = string.Empty;
+            
             foreach (string srcPath in _files.FileNames)
             {
                 FileInfo srcFile = new FileInfo(srcPath);
@@ -143,7 +154,18 @@ namespace Ra.Build.Tasks
                     }
 
                     Log(Level.Verbose, MINIFY_VERBOSE_MSG, srcPath, destPath);
-                    Minify(srcPath, destPath);
+
+                    if (string.IsNullOrEmpty(_concatenateTo))
+                    {
+                        Minify(srcPath, destPath);
+                    }
+                    else
+                    {
+                        concatenatedPath = Path.Combine(Path.GetDirectoryName(destPath), "_concatenated.temp");
+                        string srcJs = File.ReadAllText(srcPath);
+                        using (StreamWriter sw = new StreamWriter(File.Open(concatenatedPath, FileMode.Append, FileAccess.Write, FileShare.None)))
+                            sw.WriteLine(srcJs);
+                    }
                 }
                 else
                 {
@@ -151,6 +173,12 @@ namespace Ra.Build.Tasks
                         string.Format(CultureInfo.InvariantCulture, FILE_NOT_FOUND, srcFile.FullName),
                         Location);
                 }
+            }
+
+            if (!string.IsNullOrEmpty(_concatenateTo) && File.Exists(concatenatedPath))
+            {
+                Minify(concatenatedPath, Path.Combine(Path.GetDirectoryName(concatenatedPath), _concatenateTo));
+                File.Delete(concatenatedPath);
             }
         }
 

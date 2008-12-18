@@ -17,9 +17,11 @@
   </target>
 
   <target name="compile.lib.uncompressed" depends="clean,init" description="Compile the DLLs with uncompressed JS files">
-    <jsmin gzip="false" todir="${output.dir}/${ra.name}/Js">
-      <fileset basedir="${ra.name}/Js">
-        <include name="**/*.js" />
+    <jsmin gzip="false" todir="${output.dir}/${ra.name}/Js" concat-to="${concatenated.js.file}">
+      <fileset>
+        <include name="${ra.name}/Js/Ra.js" asis="true" />
+        <include name="${ra.name}/Js/Control.js" asis="true" />
+        <include name="${ra.name}/Js/Behaviors.js" asis="true" />
       </fileset>
     </jsmin>
     <jsmin gzip="false" todir="${output.dir}/${ext.name}/Js">
@@ -27,7 +29,13 @@
         <include name="**/*.js" />
       </fileset>
     </jsmin>
-    <csc verbose="false" target="library" output="${output.dir}/${library.dir}/${uncompressed.dir}/${ra.name}.dll" debug="${debug}">
+    <if test="${debug}">
+      <property name="concat" value="" />
+    </if>
+    <if test="${not debug}">
+      <property name="concat" value="CONCAT" />
+    </if>
+    <csc verbose="false" target="library" define="${concat}" optimize="${not debug}" output="${output.dir}/${library.dir}/${uncompressed.dir}/${ra.name}.dll" debug="${debug}">
       <sources>
         <include name="${ra.name}/**/*.cs" />
         <exclude name="${ra.name}/obj/**/*.*" />
@@ -37,7 +45,7 @@
         <include name="${output.dir}/${ra.name}/Js/**/*.js" unless="${debug}" />
       </resources>
     </csc>
-    <csc verbose="false" target="library" output="${output.dir}/${library.dir}/${uncompressed.dir}/${ext.name}.dll" debug="${debug}">
+    <csc verbose="false" target="library" optimize="${not debug}" output="${output.dir}/${library.dir}/${uncompressed.dir}/${ext.name}.dll" debug="${debug}">
       <sources>
         <include name="${ext.name}/**/*.cs" />
         <exclude name="${ext.name}/obj/**/*.*" />
@@ -50,12 +58,14 @@
         <include name="${output.dir}/${library.dir}/${uncompressed.dir}/${ra.name}.dll" />
       </references>
     </csc>
+    <delete dir="${output.dir}/${ra.name}/Js" />
   </target>
-
   <target name="compile.lib.gzipped" depends="clean,init" description="Compile the DLLs with GZipped JS files">
-    <jsmin gzip="true" todir="${output.dir}/${ra.name}/Js">
-      <fileset basedir="${ra.name}/Js">
-        <include name="**/*.js" />
+    <jsmin gzip="true" todir="${output.dir}/${ra.name}/Js" concat-to="${concatenated.js.file}">
+      <fileset>
+        <include name="${ra.name}/Js/Ra.js" asis="true" />
+        <include name="${ra.name}/Js/Control.js" asis="true" />
+        <include name="${ra.name}/Js/Behaviors.js" asis="true" />
       </fileset>
     </jsmin>
     <jsmin gzip="true" todir="${output.dir}/${ext.name}/Js">
@@ -63,7 +73,13 @@
         <include name="**/*.js" />
       </fileset>
     </jsmin>
-    <csc verbose="false" target="library" output="${output.dir}/${library.dir}/${gzipped.dir}/${ra.name}.dll" debug="${debug}">
+    <if test="${debug}">
+      <property name="concat" value="" />
+    </if>
+    <if test="${not debug}">
+      <property name="concat" value="CONCAT" />
+    </if>
+    <csc verbose="false" target="library" define="${concat}" optimize="${not debug}" output="${output.dir}/${library.dir}/${gzipped.dir}/${ra.name}.dll" debug="${debug}">
       <sources>
         <include name="${ra.name}/**/*.cs" />
         <exclude name="${ra.name}/obj/**/*.*" />
@@ -73,7 +89,7 @@
         <include name="${output.dir}/${ra.name}/Js/**/*.js" unless="${debug}" />
       </resources>
     </csc>
-    <csc verbose="false" target="library" output="${output.dir}/${library.dir}/${gzipped.dir}/${ext.name}.dll" debug="${debug}">
+    <csc verbose="false" target="library" optimize="${not debug}" output="${output.dir}/${library.dir}/${gzipped.dir}/${ext.name}.dll" debug="${debug}">
       <sources>
         <include name="${ext.name}/**/*.cs" />
         <exclude name="${ext.name}/obj/**/*.*" />

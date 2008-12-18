@@ -19,8 +19,11 @@ using System.Globalization;
 
 
 [assembly: WebResource("Ra.Js.Ra.js", "text/javascript")]
+
+#if !CONCAT
 [assembly: WebResource("Ra.Js.Control.js", "text/javascript")]
 [assembly: WebResource("Ra.Js.Behaviors.js", "text/javascript")]
+#endif
 
 namespace Ra
 {
@@ -325,7 +328,9 @@ namespace Ra
 
         internal void IncludeMainControlScripts()
         {
+#if !CONCAT
 			IncludeScriptFromResource("Control.js");
+#endif
         }
 
 		internal void IncludeScriptFromResource(string script)

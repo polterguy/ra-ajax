@@ -97,7 +97,7 @@ namespace Ra.Extensions
         public event EventHandler SelectedValueChanged;
 
         /**
-         * Raised when a specific date is clicked, this evnt will not be raised when
+         * Raised when a specific date is clicked, this event will not be raised when
          * year or month is changed, only when a specific date is clicked or the "Today" date
          * is clicked
          */
@@ -123,10 +123,7 @@ namespace Ra.Extensions
         {
             get
             {
-                string retVal = base.CssClass;
-                if (retVal == string.Empty)
-                    retVal = "calendar";
-                return retVal;
+                return string.IsNullOrEmpty(base.CssClass) ? "calendar" : base.CssClass;
             }
             set
             {
