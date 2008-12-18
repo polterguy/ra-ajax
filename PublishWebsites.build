@@ -7,7 +7,7 @@
   <target name="all" depends="publish.samples,publish.ra.website" />
 
   <target name="compile.resource.cacher" description="Compile the Resource Cacher used By the Websites">
-    <csc verbose="false" target="library" output="${output.dir}/${library.dir}/${resource.cacher.name}.dll" debug="${debug}">
+    <csc verbose="false" target="library" optimize="${not debug}" output="${output.dir}/${library.dir}/${resource.cacher.name}.dll" debug="${debug}">
       <sources>
         <include name="${resource.cacher.name}/**/*.cs" />
         <exclude name="${resource.cacher.name}/obj/**/*.*" />
@@ -16,7 +16,7 @@
   </target>
 
   <target name="compile.ra.selector" description="Compile Ra Selector">
-    <csc verbose="false" target="library" output="${output.dir}/${library.dir}/${ra.selector.name}.dll" debug="${debug}">
+    <csc verbose="false" target="library" optimize="${not debug}" output="${output.dir}/${library.dir}/${ra.selector.name}.dll" debug="${debug}">
       <sources>
         <include name="${ra.selector.name}/**/*.cs" />
         <exclude name="${ra.selector.name}/obj/**/*.*" />

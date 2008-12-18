@@ -22,7 +22,9 @@ namespace Ra.Widgets
 	    protected override void OnInit(EventArgs e)
 	    {
 	        base.OnInit(e);
+#if !CONCAT
 			AjaxManager.Instance.IncludeScriptFromResource("Behaviors.js");
+#endif
 	    }
 
         protected override string GetOpeningHTML()
