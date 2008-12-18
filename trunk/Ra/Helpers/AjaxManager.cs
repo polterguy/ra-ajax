@@ -42,6 +42,7 @@ namespace Ra
         private HtmlTextWriter _writer;
         private MemoryStream _memStreamBack;
         private HtmlTextWriter _writerBack;
+        private string _requestViewState;
 
         /**
          * Public accessor, only way to access instance of class
@@ -221,6 +222,10 @@ namespace Ra
 
         private void CurrentPage_LoadComplete(object sender, EventArgs e)
         {
+            // Storing request viewstate in order to be able to "diff" 
+            // them in rendering of response
+            _requestViewState = CurrentPage.Request.Params["__VIEWSTATE"];
+
             // Finding the Control which initiated the request
             string idOfControl = CurrentPage.Request.Params["__RA_CONTROL"];
 
@@ -439,7 +444,23 @@ namespace Ra
                 string wholePageContent = reader.ReadToEnd();
 
                 if (wholePageContent.IndexOf("__VIEWSTATE") != -1)
-                    writer.WriteLine("Ra.$F('__VIEWSTATE').value = '{0}';", GetViewState(wholePageContent, "__VIEWSTATE"));
+                {
+                    int idxOfChange = 0;
+                    string responseViewState = GetViewState(wholePageContent, "__VIEWSTATE");
+                    if (!string.IsNullOrEmpty(_requestViewState))
+                    {
+                        for (; idxOfChange < responseViewState.Length && idxOfChange < _requestViewState.Length; idxOfChange++)
+                        {
+                            if (_requestViewState[idxOfChange] != responseViewState[idxOfChange])
+                                break;
+                        }
+                        if (idxOfChange >= responseViewState.Length)
+                            responseViewState = "";
+                        else
+                            responseViewState = responseViewState.Substring(idxOfChange);
+                    }
+                    writer.WriteLine("Ra.$F('__VIEWSTATE', '{0}', {1});", responseViewState, idxOfChange);
+                }
                 if (wholePageContent.IndexOf("__EVENTVALIDATION") != -1)
                     writer.WriteLine("Ra.$F('__EVENTVALIDATION').value = '{0}';", GetViewState(wholePageContent, "__EVENTVALIDATION"));
 

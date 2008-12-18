@@ -45,7 +45,11 @@ Ra.$ = function(id) {
 
 // $F method, returns an existing element or create a hidden field with the given ID
 // and injects into the first form element on the page
-Ra.$F = function(id) {
+// If "newValue" is not undefined it will replace the existing
+// value of the form element starting from "offset" into existing value
+// replacing with "newValue"
+// Useful for incrementally update the __VIEWSTATE hidden input field...
+Ra.$F = function(id, newValue, offset) {
   var el = document.getElementById(id);
   if( !el ) {
     el = document.createElement('input');
@@ -55,6 +59,9 @@ Ra.$F = function(id) {
     document.getElementsByTagName('form')[0].appendChild(el);
   }
   Ra.extend(el, Ra.Element.prototype);
+  if( newValue ) {
+    el.value = el.value.substring(0, offset) + newValue;
+  }
   return el;
 };
 
