@@ -43,6 +43,26 @@
   demonstrates how to create an Ajax Forum. Kind of like the
   CodeProject.com forums, only 100 times better ... ;)
 
+* In the release build there will only be created one JS file
+  for inclusion on your pages. This was chosen since due to 
+  the extremely small amounts of JavaScript in Ra-Ajax anyway
+  there is no point in "modularizing" them anyway.
+
+* We are now "packing" the ViewState which means that we only
+  return ViewState from the server from the first point where
+  the ViewState has changed. This should theoretically save
+  a little less then 25% (maybe 20% in average) of ViewState
+  bandwidth in total since roughly estimated only 60%
+  of the ViewState will be returned from the server.
+  Though the numbers will vary depending on which parts of
+  the page the user is interacting with and where in the 
+  ViewState changes occurs etc...
+  This is because we find the *first byte* where a change
+  occurs and we return everything from *that* point. Though
+  our guess is that about 40% in average of the ViewState will
+  be returned fromj the server which means you're saving 20%
+  of ViewState bandwidth in total...
+
 
 
 
