@@ -9,6 +9,20 @@
 
   ------------------------------------------------------------------
 
+                          Version 1.0.0
+
+       Releasing the first stable version of Ra-Ajax
+
+  ------------------------------------------------------------------
+
+* Ra-Ajax now has 100% Mono compatibility with all its samples
+
+
+
+
+
+  ------------------------------------------------------------------
+
                           Version 0.9.2
 
        LOTS of optimizations...
