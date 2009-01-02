@@ -19,9 +19,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>An Ajax Forum Starter-Kit</title>
-    <link id="steel" runat="server" href="media/skins/steel/Steel-0.9.1.css" rel="stylesheet" type="text/css" />
-    <link id="sapphire" visible="false" runat="server" href="media/skins/Sapphire/Sapphire-0.9.1.css" rel="stylesheet" type="text/css" />
-    <link href="media/Forum-Starter-Kit-0.9.1.css" rel="stylesheet" type="text/css" />
+    <link id="steel" runat="server" href="media/skins/steel/Steel-1.0.css" rel="stylesheet" type="text/css" />
+    <link id="sapphire" visible="false" runat="server" href="media/skins/Sapphire/Sapphire-1.0.css" rel="stylesheet" type="text/css" />
+    <link href="media/Forum-Starter-Kit-1.0.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">

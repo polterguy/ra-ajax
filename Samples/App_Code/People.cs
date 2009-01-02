@@ -122,6 +122,10 @@ public sealed class PeopleDatabase
                         default:
                             throw new Exception("Undefined sorting column found");
                     }
+                    // A bug in Mono makes it believe that the "throw statement" stops the delegate from
+                    // functionaing since it doesn't return a value...
+                    // Therefore we need this dummy thing here...
+                    return 0;
                 });
             return retVal;
         }

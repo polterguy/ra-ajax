@@ -49,7 +49,10 @@ namespace Ra.Widgets
 				// For postbacks and initial hits we ALWAYS re-render all controls (obviously)
 				_hasRendered = false;
 			}
-			else if (savedState != null)
+            // Mono sometimes messes up the types here for what reasons I don't know... :(
+            // It appears that it tries to load control state for objects added dynamically this round
+            // which obviously is WRONG...!
+            else if (savedState != null && savedState.GetType() == typeof(bool))
 			{
 				_hasRendered = (bool)savedState;
 			}

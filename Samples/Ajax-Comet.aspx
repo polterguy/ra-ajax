@@ -4,7 +4,6 @@
     AutoEventWireup="true" 
     CodeFile="Ajax-Comet.aspx.cs" 
     Async="true" 
-    AsyncTimeout="20"
     Inherits="Samples.AjaxComet" 
     Title="Ra-Ajax Comet Sample" %>
 

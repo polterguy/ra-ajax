@@ -48,7 +48,7 @@ Namespace Samples
         End Property
 
         Private Sub DataBindGridView()
-            Dim src As New PagedDataSource()
+            Dim src As New System.Web.UI.WebControls.PagedDataSource()
             src.DataSource = PeopleDatabase.Database
             src.AllowPaging = True
             src.PageSize = PageSize
