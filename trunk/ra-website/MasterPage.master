@@ -167,7 +167,7 @@
                     </div>
                 </div>
                 <div id="ft">
-                Copyright 2008 - <a href="mailto:thomas@ra-ajax.org">Ra Software AS</a> - <a id="A1" runat="server" href="~/Sitemap.aspx" title="Sitemap">Sitemap</a>
+                Copyright 2008 - 2009 - <a href="mailto:thomas@ra-ajax.org">Ra Software AS</a> - <a id="A1" runat="server" href="~/Sitemap.aspx" title="Sitemap">Sitemap</a>
             </div>
             </form>
         </div>
