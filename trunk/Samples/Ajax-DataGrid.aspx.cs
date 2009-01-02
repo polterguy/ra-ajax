@@ -6,6 +6,15 @@
  * 
  */
 
+/*
+ * This is the only sample which as of 2. January 2009 does not work with Mono
+ * which is probably due to a bug in the GridView Mono implementation...
+ * If you need Grids in your own applications and yo want to run them on Mono 
+ * you should probably rather use a Repeater or something else then the GridView
+ * since it appears to not be 100% working with Mono for some reasons...
+ */
+
+
 using System;
 using System.Collections.Generic;
 using Ra.Widgets;

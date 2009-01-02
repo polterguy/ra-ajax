@@ -14,6 +14,12 @@ namespace Samples
 {
     public partial class AjaxComet : System.Web.UI.Page
     {
+        protected override void OnInit(EventArgs e)
+        {
+            this.AsyncTimeout = new TimeSpan(0, 0, 20);
+            base.OnInit(e);
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (comet.IsQueueFull)

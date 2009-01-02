@@ -87,10 +87,25 @@ namespace Ra.Extensions
 
         protected override void LoadControlState(object savedState)
         {
-            object[] tmp = savedState as object[];
-            _hasLoadedDynamicControls = (bool)tmp[0];
-            _expanded = (bool)tmp[1];
-            base.LoadControlState(tmp[2]);
+            if (savedState != null)
+            {
+                object[] tmp = savedState as object[];
+                // Mono sometimes messes up the types here for what reasons I don't know... :(
+                // It appears that it tries to load control state for objects added dynamically this round
+                // which obviously is WRONG...!
+                if (tmp != null)
+                {
+                    if (tmp[0] != null && tmp[0].GetType() == typeof(bool))
+                    {
+                        _hasLoadedDynamicControls = (bool)tmp[0];
+                    }
+                    if (tmp[1] != null && tmp[1].GetType() == typeof(bool))
+                    {
+                        _expanded = (bool)tmp[1];
+                    }
+                    base.LoadControlState(tmp[2]);
+                }
+            }
         }
 
         protected override object SaveControlState()

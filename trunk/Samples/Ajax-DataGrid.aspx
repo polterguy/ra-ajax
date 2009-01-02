@@ -41,7 +41,7 @@
         style="width:100%;"
         BorderWidth="1px" 
         CellPadding="2" 
-        ForeColor="Black" 
+        ForeColor="Black"
         AutoGenerateColumns="false"
         GridLines="None">
         <FooterStyle 
