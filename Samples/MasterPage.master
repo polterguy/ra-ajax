@@ -43,7 +43,7 @@
 					            Caption="Ajax Starter-Kits" 
 					            runat="server" 
 					            ID="accView0">
-			                    <ul>
+			                    <ul class="accLinks">
 			                        <li>
 			                            <a href="Ajax-Forum-Starter-Kit.aspx">Ajax Forum Starter-Kit (C#) - <strong>NEW!</strong></a>
 			                        </li>
@@ -65,27 +65,27 @@
 					            Caption="Concept Samples" 
 					            runat="server" 
 					            ID="accView1">
-			                    <ul>
+			                    <ul class="accLinks">
 			                        <li>
-			                            <a href="Flexible.aspx">Ra-Ajax - Event System</a>
+			                            <a href="Flexible.aspx">Event System</a>
 			                        </li>
 			                        <li>
-			                            <a href="Effects.aspx">Ra-Ajax - Effects</a>
+			                            <a href="Effects.aspx">Ajax Effects</a>
 			                        </li>
 			                        <li>
-			                            <a href="Behaviors.aspx">Ra-Ajax - Behaviors</a>
+			                            <a href="Behaviors.aspx">Ajax Behaviors</a>
 			                        </li>
 			                        <li>
-			                            <a href="Combining.aspx">Ra-Ajax - Combining Controls</a>
+			                            <a href="Combining.aspx">Combining Controls</a>
 			                        </li>
 			                        <li>
-			                            <a href="Dynamic.aspx">Ra-Ajax - Dynamic Controls</a>
+			                            <a href="Dynamic.aspx">Dynamic Ajax Controls</a>
 			                        </li>
 			                        <li>
-			                            <a href="Updater.aspx">Ra-Ajax - Updaters</a>
+			                            <a href="Updater.aspx">Ajax Updaters</a>
 			                        </li>
 			                        <li>
-			                            <a href="Ajax-Comet.aspx">Ra-Ajax - Comet</a>
+			                            <a href="Ajax-Comet.aspx">Ajax Comet</a>
 			                        </li>
 			                    </ul>
 					        </ext:AccordionView>
@@ -93,87 +93,87 @@
 					            Caption="Reference Samples" 
 					            runat="server" 
 					            ID="accView2">
-			                    <ul>
+			                    <ul class="accLinks">
 			                        <li>
-			                            <a href="Ajax-Button.aspx">Ra-Ajax - Button</a>
+			                            <a href="Ajax-Button.aspx">Ajax Button</a>
 			                        </li>
 			                        <li>
-			                            <a href="Ajax-CheckBox.aspx">Ra-Ajax - CheckBox</a>
+			                            <a href="Ajax-CheckBox.aspx">Ajax CheckBox</a>
 			                        </li>
 			                        <li>
-			                            <a href="Ajax-DropDownList.aspx">Ra-Ajax - SelectList</a>
+			                            <a href="Ajax-DropDownList.aspx">Ajax SelectList (DropDownList)</a>
 			                        </li>
 			                        <li>
-			                            <a href="Ajax-HiddenField.aspx">Ra-Ajax - HiddenField</a>
+			                            <a href="Ajax-HiddenField.aspx">Ajax HiddenField</a>
 			                        </li>
 			                        <li>
-			                            <a href="Ajax-Image.aspx">Ra-Ajax - Image</a>
+			                            <a href="Ajax-Image.aspx">Ajax Image</a>
 			                        </li>
 			                        <li>
-			                            <a href="Ajax-ImageButton.aspx">Ra-Ajax - ImageButton</a>
+			                            <a href="Ajax-ImageButton.aspx">Ajax ImageButton</a>
 			                        </li>
 			                        <li>
-			                            <a href="Ajax-Label.aspx">Ra-Ajax - Label</a>
+			                            <a href="Ajax-Label.aspx">Ajax Label</a>
 			                        </li>
 			                        <li>
-			                            <a href="Ajax-LinkButton.aspx">Ra-Ajax - LinkButton</a>
+			                            <a href="Ajax-LinkButton.aspx">Ajax LinkButton</a>
 			                        </li>
 			                        <li>
-			                            <a href="Ajax-Panel.aspx">Ra-Ajax - Panel</a>
+			                            <a href="Ajax-Panel.aspx">Ajax Panel</a>
 			                        </li>
 			                        <li>
-			                            <a href="Ajax-RadioButton.aspx">Ra-Ajax - RadioButton</a>
+			                            <a href="Ajax-RadioButton.aspx">Ajax RadioButton</a>
 			                        </li>
 			                        <li>
-			                            <a href="Ajax-TextArea.aspx">Ra-Ajax - TextArea</a>
+			                            <a href="Ajax-TextArea.aspx">Ajax TextArea</a>
 			                        </li>
 			                        <li>
-			                            <a href="Ajax-TextBox.aspx">Ra-Ajax - TextBox</a>
+			                            <a href="Ajax-TextBox.aspx">Ajax TextBox</a>
 			                        </li>
 			                        <li>
-			                            <a href="Ajax-Accordion.aspx">Ra-Ajax - Accordion</a>
+			                            <a href="Ajax-Accordion.aspx">Ajax Accordion</a>
 			                        </li>
 			                        <li>
-			                            <a href="Ajax-Calendar.aspx">Ra-Ajax - Calendar</a>
+			                            <a href="Ajax-Calendar.aspx">Ajax Calendar</a>
 			                        </li>
 			                        <li>
-			                            <a href="Ajax-InPlaceEdit.aspx">Ra-Ajax - InPlaceEdit</a>
+			                            <a href="Ajax-InPlaceEdit.aspx">Ajax InPlaceEdit</a>
 			                        </li>
 			                        <li>
-			                            <a href="Ajax-RichEdit.aspx">Ra-Ajax - RichEdit</a>
+			                            <a href="Ajax-RichEdit.aspx">Ajax RichEdit</a>
 			                        </li>
 			                        <li>
-			                            <a href="Ajax-Timer.aspx">Ra-Ajax - Timer</a>
+			                            <a href="Ajax-Timer.aspx">Ajax Timer</a>
 			                        </li>
 			                        <li>
-			                            <a href="Ajax-TabControl.aspx">Ra-Ajax - TabControl</a>
+			                            <a href="Ajax-TabControl.aspx">Ajax TabControl</a>
 			                        </li>
 			                        <li>
-			                            <a href="Ajax-Window.aspx">Ra-Ajax - Window</a>
+			                            <a href="Ajax-Window.aspx">Ajax Window</a>
 			                        </li>
 			                        <li>
-			                            <a href="Ajax-DataGrid.aspx">Ra-Ajax - DataGrid</a>
+			                            <a href="Ajax-DataGrid.aspx">Ajax DataGrid</a>
 			                        </li>
 			                        <li>
-			                            <a href="Ajax-TreeView.aspx">Ra-Ajax - TreeView</a>
+			                            <a href="Ajax-TreeView.aspx">Ajax TreeView</a>
 			                        </li>
 			                        <li>
-			                            <a href="Ajax-Menu.aspx">Ra-Ajax - Menu</a>
+			                            <a href="Ajax-Menu.aspx">Ajax Menu</a>
 			                        </li>
 			                        <li>
-			                            <a href="Ajax-WebMethod.aspx">Ra-Ajax - WebMethods</a>
+			                            <a href="Ajax-WebMethod.aspx">Ajax WebMethods</a>
 			                        </li>
 			                        <li>
-			                            <a href="Ajax-AutoCompleter.aspx">Ra-Ajax - AutoCompleter</a>
+			                            <a href="Ajax-AutoCompleter.aspx">Ajax AutoCompleter</a>
 			                        </li>
 			                        <li>
-			                            <a href="Ajax-Wizard.aspx">Ra-Ajax - Wizard</a>
+			                            <a href="Ajax-Wizard.aspx">Ajax Wizard</a>
 			                        </li>
 			                        <li>
-			                            <a href="Ajax-MessageBox.aspx">Ra-Ajax - MessageBox</a>
+			                            <a href="Ajax-MessageBox.aspx">Ajax MessageBox</a>
 			                        </li>
 			                        <li>
-			                            <a href="Ajax-CRUD.aspx">Ra-Ajax - CRUD</a>
+			                            <a href="Ajax-CRUD.aspx">Ajax CRUD forms</a>
 			                        </li>
 			                    </ul>
 					        </ext:AccordionView>
