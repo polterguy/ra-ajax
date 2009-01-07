@@ -92,6 +92,29 @@ namespace Ra.Extensions
 			}
 		}
 
+        /**
+         * If true then the changing of Active view will happen purely on the client and
+         * not create an Ajax Request at all. Warning! If you chose to set this property
+         * to true, then the control will not raise the ActiveViewChanged event
+         * when active view is changed!
+         * Also this value must be set when control is created or shown for the first time
+         * and cannot be changed after control is created.
+         */
+        [DefaultValue(false)]
+        public bool ClientSideChange
+        {
+            get
+            {
+                if (ViewState["ClientSideChange"] == null)
+                    return false;
+                return (bool)ViewState["ClientSideChange"];
+            }
+            set
+            {
+                ViewState["ClientSideChange"] = value;
+            }
+        }
+
         protected override void OnInit(EventArgs e)
         {
             EnsureChildControls();
@@ -163,7 +186,6 @@ namespace Ra.Extensions
                 LinkButton btn = new LinkButton();
                 btn.Text = view.Caption;
                 btn.ID = "tab_view_btn" + tabView;
-                btn.Click += new EventHandler(btn_Click);
                 center.Controls.Add(btn);
 
                 // Setting controls to view
@@ -180,6 +202,48 @@ namespace Ra.Extensions
             }
 
             _topPanel.Controls.Add(ul);
+
+            foreach (TabView idx in Views)
+            {
+                if (ClientSideChange)
+                {
+                    string exTabs = "";
+                    string exTabsBody = "";
+                    foreach (TabView idxView in Views)
+                    {
+                        if (!string.IsNullOrEmpty(exTabs))
+                            exTabs += ",";
+                        exTabs += "'" + idxView.ListElement.ClientID + "'";
+                        if (!string.IsNullOrEmpty(exTabsBody))
+                            exTabsBody += ",";
+                        exTabsBody += "'" + idxView.ClientID + "'";
+                    }
+                    string func = string.Format(@"function() {{
+var tabs = [{0}];
+var tabsBody = [{2}];
+var oldSelBtn;
+var oldSelTab;
+for( var idx=0; idx < tabs.length; idx++ ) {{
+  var el = Ra.$(tabs[idx]);
+  if( el.className.indexOf('active') != -1 ) {{
+    oldSelBtn = el;
+    oldSelTab = Ra.$(tabsBody[idx]);
+  }}
+}}
+if( Ra.$('{1}').className.indexOf('tab-disabled') != -1 )
+  return;
+oldSelBtn.removeClassName('active');
+Ra.$('{1}').addClassName('active');
+oldSelTab.style.display = 'none';
+Ra.$('{3}').style.display = '';
+}}", exTabs, idx.ListElement.ClientID, exTabsBody, idx.ClientID);
+                    idx.Button.OnClickClientSide = func;
+                }
+                else
+                {
+                    idx.Button.Click += btn_Click;
+                }
+            }
         }
 
         protected override void OnPreRender(EventArgs e)

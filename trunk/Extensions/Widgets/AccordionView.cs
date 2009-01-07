@@ -96,10 +96,10 @@ Ra.E('{0}_CHILDREN', {{
     this.element.setStyle('height',(this.otherToHeight * pos) + 'px');
     this.other.setStyle('height',(this.elementFromHeight * (1.0 - pos)) + 'px');
 }},
-  duration:400,
+  duration:{2},
   transition:'Explosive'
 }});
-}}", ClientID, exAccs);
+}}", ClientID, exAccs, (Parent as Accordion).AnimationDuration);
                 btn.OnClickClientSide = func;
             }
             else
