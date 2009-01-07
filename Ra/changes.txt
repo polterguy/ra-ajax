@@ -14,6 +14,7 @@
        Optimizing by making alternatives to move more DHTML 
        logic to the client + other features and bugfixes...
        Also some IE6 bug fixes...
+       And lots of other features and bugfixes...
 
   ------------------------------------------------------------------
 
@@ -40,6 +41,12 @@
   will be raised when you switch active TabView. Though it
   should also optimize the switching of tabs since no Ajax
   request is necessary when switching active View.
+
+* Ra-Ajax now have basic WYSIWYG and Design Time support. 
+  It's not a fully fledged design time support. But at 
+  least it's good enough to ge a "rough picture" of how the 
+  controls will look like in real life. And it also makes 
+  the setting of properties easier.
 
 
 

@@ -182,11 +182,11 @@ namespace Ra.Widgets
 		public override void RenderControl(HtmlTextWriter writer)
 		{
 			if (DesignMode)
-				throw new ApplicationException("Ra-Ajax doesn't support Design time");
+                ;// throw new ApplicationException("Ra-Ajax doesn't support Design time");
 
 			if (Visible)
 			{
-				if (AjaxManager.Instance.IsCallback)
+				if (!DesignMode && AjaxManager.Instance.IsCallback)
 				{
 					// PRIORITY COUNTS...!!
 					if (IsAnyAncestorRenderingHtml)
@@ -219,7 +219,8 @@ namespace Ra.Widgets
 					writer.Write(GetOpeningHTML());
 					RenderChildren(writer);
 					writer.Write(GetClosingHTML());
-					AjaxManager.Instance.Writer.WriteLine(GetClientSideScript());
+                    if (!DesignMode)
+                        AjaxManager.Instance.Writer.WriteLine(GetClientSideScript());
 				}
 			}
 			else // if (!Visible)
@@ -466,17 +467,20 @@ namespace Ra.Widgets
 		protected override void OnInit(EventArgs e)
 		{
 			if (DesignMode)
-				throw new ApplicationException("Ra-Ajax doesn't support Design time");
+                ;// throw new ApplicationException("Ra-Ajax doesn't support Design time");
 
 			// To initialize control
-			AjaxManager.Instance.InitializeControl(this);
+            if (!DesignMode)
+            {
+                AjaxManager.Instance.InitializeControl(this);
 
-			// Including JavaScript
-			AjaxManager.Instance.IncludeMainRaScript();
-			AjaxManager.Instance.IncludeMainControlScripts();
+                // Including JavaScript
+                AjaxManager.Instance.IncludeMainRaScript();
+                AjaxManager.Instance.IncludeMainControlScripts();
 
-			// Registering control with the AjaxManager
-			AjaxManager.Instance.CurrentPage.RegisterRequiresControlState(this);
+                // Registering control with the AjaxManager
+                AjaxManager.Instance.CurrentPage.RegisterRequiresControlState(this);
+            }
 
 			base.OnInit(e);
 		}
