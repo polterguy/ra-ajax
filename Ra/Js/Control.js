@@ -119,6 +119,11 @@ Ra.Control.prototype = {
     if( this.options.select ) {
       this.element.select();
     }
+
+    if( this.options.clientClick ) {
+      this.element.observe('click', this.options.clientClick, this);
+    }
+
     // Registering control
     Ra.Control._controls.push(this);
 
@@ -216,6 +221,14 @@ Ra.Control.prototype = {
   // Expects a type - defines type of control (text, password etc...)
   Type: function(val) {
     (this.options.ctrl || this.element).type = val;
+  },
+
+  OnClickClientSide: function(val) {
+    if( this.options.clientClick )
+      this.element.stopObserving('click', this.options.clientClick, this);
+    this.options.clientClick = val;
+    if( this.options.clientClick.length > 0 )
+      this.element.observe('click', this.options.clientClick, this);
   },
 
   // Expects any value, will set that property of the element
@@ -438,6 +451,9 @@ Ra.Control.prototype = {
   // Basically unlisetens all events and removes object out 
   // of registered controls collection
   _destroyThisControl: function() {
+
+    if( this.options.clientClick )
+      this.element.stopObserving('click', this.options.clientClick, this);
 
     var idx = this.options.beha.length;
     while( idx-- ) {

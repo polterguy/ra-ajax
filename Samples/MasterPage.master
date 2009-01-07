@@ -36,6 +36,7 @@
                 	<div class="yui-b navigation">
 					    <ext:Accordion 
 					        runat="server" 
+					        ClientSideChange="true"
 					        ID="accordion"
 					        AnimationSpeed="400">
 

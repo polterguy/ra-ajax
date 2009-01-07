@@ -9,6 +9,34 @@
 
   ------------------------------------------------------------------
 
+                          Version 1.0.1
+
+       Optimizing by making alternatives to move more DHTML 
+       logic to the client + other features and bugfixes...
+       Also some IE6 bug fixes...
+
+  ------------------------------------------------------------------
+
+* RaWebControl now have a property called "OnClickClientSide"
+  which if set is expected to be a JavaScript function reference
+  and will trigger when RaWebControl is clicked.
+
+* Accordion can now be set to Client-Side change mode by setting
+  the property "ClientSideChange" to true. If this property is
+  true then no Ajax Request will be triggered when you change
+  the active AccordionView by clicking the headers - but instead
+  the change logic will entirely run on the client. This means
+  that among other things no "ActiveAccordionViewChanged" event
+  will be raised when you switch active AccordionView. Though it
+  should also optimize the switching of accordions since no Ajax
+  request is necessary when switching active View.
+
+
+
+
+
+  ------------------------------------------------------------------
+
                           Version 1.0.0
 
        Releasing the first stable version of Ra-Ajax

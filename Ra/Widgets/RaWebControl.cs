@@ -109,6 +109,25 @@ namespace Ra.Widgets
         }
 
         /**
+         * Client-side event (JavaScript function) which will trigger when button is clicked.
+         * Normally you wouldn't use this except when developing controls yourself. Be very careful
+         * with this method since it "moves you into JS land" which often is a dangerous place to be.
+         * The reason why we chose to have it in the first place is because some controls needs to trap
+         * events on the client-side. Like for instance the Accordion.
+         */
+        [DefaultValue("")]
+        public string OnClickClientSide
+        {
+            get { return ViewState["OnClickClientSide"] == null ? "" : (string)ViewState["OnClickClientSide"]; }
+            set
+            {
+                if (value != OnClickClientSide)
+                    SetJSONValueString("OnClickClientSide", value);
+                ViewState["OnClickClientSide"] = value;
+            }
+        }
+
+        /**
          * Collection of style-values, maps to the style attribute on the root HTML element
          */
         public virtual StyleCollection Style
@@ -276,6 +295,18 @@ namespace Ra.Widgets
 
             // When we save the ViewState we save the base class object as the second instance in the array...
             base.LoadViewState(content[1]);
+        }
+
+        protected override string GetClientSideScriptOptions()
+        {
+            string retVal = base.GetClientSideScriptOptions();
+            if (!string.IsNullOrEmpty(OnClickClientSide))
+            {
+                if (!string.IsNullOrEmpty(retVal))
+                    retVal += ",";
+                retVal += "clientClick:" + OnClickClientSide;
+            }
+            return retVal;
         }
 
         #endregion
