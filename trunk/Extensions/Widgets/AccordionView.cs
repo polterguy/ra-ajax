@@ -63,7 +63,49 @@ namespace Ra.Extensions
             LinkButton btn = new LinkButton();
             btn.ID = "change_active";
             btn.Text = Caption;
-            btn.Click += new EventHandler(btn_Click);
+            if ((Parent as Accordion).ClientSideChange)
+            {
+                string exAccs = "";
+                foreach (AccordionView idx in (Parent as Accordion).Views)
+                {
+                    if (!string.IsNullOrEmpty(exAccs))
+                        exAccs += ",";
+                    exAccs += "'" + idx.ClientID + "_CHILDREN'";
+                }
+                string func = string.Format(@"function() {{
+Ra.E('{0}_CHILDREN', {{
+  onStart: function() {{
+    var others = [{1}];
+    var other = '';
+    for( var idx = 0; idx < others.length; idx++ ) {{
+      if( Ra.$(others[idx]).style.display != 'none')
+        other = others[idx];
+    }}
+    this.other = Ra.$(other);
+    this.otherToHeight = this.element.getDimensions().height;
+    this.elementFromHeight = this.other.getDimensions().height;
+    this.element.setStyle('height','0px');
+    this.element.setStyle('display','');
+}},
+  onFinished: function() {{
+    this.other.setStyle('display','none');
+    this.other.setStyle('height','');
+    this.element.setStyle('height',this.otherToHeight + 'px');
+}},
+  onRender: function(pos) {{
+    this.element.setStyle('height',(this.otherToHeight * pos) + 'px');
+    this.other.setStyle('height',(this.elementFromHeight * (1.0 - pos)) + 'px');
+}},
+  duration:400,
+  transition:'Explosive'
+}});
+}}", ClientID, exAccs);
+                btn.OnClickClientSide = func;
+            }
+            else
+            {
+                btn.Click += new EventHandler(btn_Click);
+            }
             topWrapper.Controls.Add(btn);
 
             Controls.AddAt(0, topWrapper);

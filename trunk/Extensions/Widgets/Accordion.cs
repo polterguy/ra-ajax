@@ -82,6 +82,29 @@ namespace Ra.Extensions
         }
 
         /**
+         * If true then the changing of ActiveTab will happen purely on the client and
+         * not create an Ajax Request at all. Warning! If you chose to set this property
+         * to true, then the accordion will not raise the ActiveAccordionViewChanged event
+         * when active accordion is raised!
+         * Also this value must be set when accordion is created or shown for the first time
+         * and cannot be changed after accordion is created.
+         */
+        [DefaultValue(false)]
+        public bool ClientSideChange
+        {
+            get
+            {
+                if (ViewState["ClientSideChange"] == null)
+                    return false;
+                return (bool)ViewState["ClientSideChange"];
+            }
+            set
+            {
+                ViewState["ClientSideChange"] = value;
+            }
+        }
+
+        /**
          * All AccordionViews within the accordion
          */
         [Browsable(false)]
