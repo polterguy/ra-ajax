@@ -54,6 +54,9 @@
                                     </div>
 			    	            </ext:Window>
             	                <div class="yui-u first major-links" style="line-height:20px;margin-left:10px;width:18%;">
+            	                    <a href="http://code.google.com/p/ra-ajax/" style="margin-left:-10px;">
+            	                        <img src="media/download.jpg" alt="Download Ra-Ajax" />
+            	                    </a>
             	                    <ra:Panel
             	                        runat="server"
             	                        id="userInfoPanel"
