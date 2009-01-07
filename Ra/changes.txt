@@ -31,6 +31,16 @@
   should also optimize the switching of accordions since no Ajax
   request is necessary when switching active View.
 
+* TabControl can now be set to Client-Side change mode by setting
+  the property "ClientSideChange" to true. If this property is
+  true then no Ajax Request will be triggered when you change
+  the active TabView by clicking the headers - but instead
+  the change logic will entirely run on the client. This means
+  that among other things no "ActiveTabViewChanged" event
+  will be raised when you switch active TabView. Though it
+  should also optimize the switching of tabs since no Ajax
+  request is necessary when switching active View.
+
 
 
 
