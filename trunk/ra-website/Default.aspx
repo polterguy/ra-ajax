@@ -16,19 +16,20 @@
     ContentPlaceHolderID="cnt1" 
     Runat="Server">
 
-    <h1>Dead simple Ajax for ASP.NET - Free and Open Source</h1>
+    <h1>*Really* easy Ajax for ASP.NET</h1>
     <p>
-        With Ra-Ajax, there’s no need to switch to proprietary Frameworks like Silverlight or Adobe Flex 
-        when your business requirements become more complex. Application scalability is important to us, 
-        so with our technology you can very rapidly create the simplest of sites, or the most complex 
-        multifaceted dynamic applications, all while leveraging the skills you already have. How is this 
-        possible?
+        Ra-Ajax is an <em>Open Source and Free of Charge</em> Ajax library for ASP.NET. With Ra-Ajax you will
+        experience;
     </p>
     <ul>
-        <li>You don't need to use JavaScript</li>
-        <li>You can create really complex things with dead simple code</li>
-        <li>It scales to the sky on all metrics</li>
+        <li>Way faster Time2Market</li>
+        <li>More beautiful applications</li>
+        <li>Way more flexibility</li>
     </ul>
+    <p>
+        Ra-Ajax puts the <em>"code less, create more"</em> slogan to new heights! And that without
+        compromising flexibility what-so-ever! Ra-Ajax is just <em>"more gain for less pain"</em>, period!
+    </p>
     <p>
         Try out some of our proudest examples in Ra-Ajax below...
     </p>
@@ -108,7 +109,7 @@
     <h2>Forget JavaScript - Ditch Partial Rendering</h2>
     <p>
         Ra-Ajax completely abstracts away the very concept of JavaScript. In addition Ra-Ajax uses a
-        stateful client pattern which makes it possible for Ra-Ajax to not rely at all on Partial Rendering.
+        stateful client pattern which makes it possible for you to completely forget about Partial Rendering.
         <strong>This makes you extremely productive</strong>.
     </p>
     <h2>Leave your troubles behind</h2>
@@ -129,6 +130,12 @@
         and you any time before 1 year have passed are for any reasons not satisfied we will 
         give you all your money back - AND let you keep using the Starter-Kit for free under the 
         commercial license terms. No questions asked!
+    </p>
+    <p>
+        So why not <a href="http://code.google.com/p/ra-ajax/">download and test Ra-Ajax for yourself</a>.
+        You already know what's needed to use it, it's free of charge and all you really risk is
+        wasting 850KB of bandwidth while downloading Ra-Ajax. You will <strong>*not*</strong> regret it!
+        And the Ra-Ajax download comes with *TONS* of samples for you to look at for inspiration.
     </p>
 </asp:Content>
 
