@@ -4,7 +4,7 @@
     AutoEventWireup="true" 
     CodeFile="Effects.aspx.cs" 
     Inherits="Samples.Effects" 
-    Title="Ra-Ajax Effects" %>
+    Title="Ajax Effects" %>
 
 <%@ Register 
     Assembly="Ra" 
@@ -16,11 +16,11 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ra-Ajax Samples - Ajax Effects</h1>
+    <h1>Ajax Effects</h1>
     <p>
-        There is no fun in Ajax unless you have a powerful Ajax Effect Collection coupled with
-        your Ajax Library. Ra-Ajax contains several different predefined Ajax Effects. It is also
-        very easy to create your own Ajax Effects by looking at the source for any of the existing ones.
+        Ra-Ajax have an extremely powerful <em>Ajax Effect collection</em>. And all Effects can be 
+        "chained" and "joined". Below are three joined Effects. As you can see they all execute 
+        at the same time.
     </p>
     <ra:Button 
         runat="server" 
@@ -36,9 +36,9 @@
     </ra:Panel>
     <div class="spacer">&nbsp;</div>
     <p>
-        The effect you just observed is actually three <em>joined</em> effects which means that all the effects
+        The effect you just observed is actually three <em>joined Ajax effects</em> which means that all the effects
         will run on the same Control with the same duration and conserving resources on the client and give the impression
-        of being "one" effect even though technically they're unrelated and only distinct effects that are "joined".
+        of being "one" effect even though technically they're unrelated and actualy distinct effects that are "joined".
     </p>
     <p>
         Now try to click the button below here to see another Ajax Effect.
@@ -86,7 +86,7 @@
     <h2>Chaining Ajax Effects</h2>
     <p>
         Sometimes you want to <em>chain</em> effects. This can easily be accomplished by adding to the Chained
-        list of effects on your parent effect. The chained effects will be rendered immediately after the parent
+        list of effects on your parent effect. The chained effects will be rendered in order after the parent
         effect is finished rendering and thereby creating a sequence of effects which can be Paralleled, Chained
         and basically be as long and deep as you wish. Below we have probably gone a little bit "over the edge"
         with chaining effects to demonstrate this in real life for you. Have a look at the code to see how we're

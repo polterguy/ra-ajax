@@ -78,6 +78,13 @@
                 <p>
                     ...as you can see...!!
                 </p>
+                <p>
+                    <strong>
+                        A proprietary license (Commercial License) for this Ajax Starter-Kit can be 
+                        purchased for $29 at our 
+                        <a href="http://ra-ajax.org/Starter-Kits.aspx">Ajax Starter-Kits shop</a>.
+                    </strong>
+                </p>
             </div>
         </ext:Window>
 

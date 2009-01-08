@@ -23,7 +23,7 @@ namespace Ra.Extensions
     public class TabView : Panel
     {
         private LinkButton _btnInParent;
-        private Label _listElementInParent;
+        private Panel _listElementInParent;
 
         public LinkButton Button
         {
@@ -31,7 +31,7 @@ namespace Ra.Extensions
             set { _btnInParent = value; }
         }
 
-        internal Label ListElement
+        internal Panel ListElement
         {
             get { return _listElementInParent; }
             set { _listElementInParent = value; }
