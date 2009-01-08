@@ -27,12 +27,6 @@ namespace Samples
         protected void submit2_Click(object sender, EventArgs e)
         {
             pnl.Style[Styles.backgroundColor] = pnl.Style[Styles.backgroundColor] == "Orange" ? "Yellow" : "Orange";
-
-            // This line of code is actually *VERY* convenient since setting an element's
-            // opacity so that it works for all different browsers is a *NIGHTMARE*...!
-            // Ra-Ajax completely abstracts away that problem...
-            // This works on ALL browser 100% transparently
-            pnl.Style[Styles.opacity] = "0.5";
         }
     }
 }

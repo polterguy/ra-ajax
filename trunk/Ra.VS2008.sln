@@ -25,7 +25,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Samples", "Samples\", "{352
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "2592"
+		VWDPort = "54523"
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ra.Build.Tasks.VS2008", "Ra.Build.Tasks\Ra.Build.Tasks.VS2008.csproj", "{704AE5D2-665F-472F-9BC2-C48B8E33DD0C}"

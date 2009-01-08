@@ -150,7 +150,7 @@ namespace Ra.Extensions
         {
             HTML.HtmlGenericControl ul = new HTML.HtmlGenericControl("ul");
 
-            Label[] _tabHeaders = new Label[Count];
+            Panel[] _tabHeaders = new Panel[Count];
             int idxTabView = 0;
 
             int litCount = 0;
@@ -163,7 +163,7 @@ namespace Ra.Extensions
                 }
                 int tabView = idx - litCount;
                 TabView view = Controls[idx] as TabView;
-                _tabHeaders[idxTabView] = new Label();
+                _tabHeaders[idxTabView] = new Panel();
                 _tabHeaders[idxTabView].Tag = "li";
 
                 string cssClass = "";

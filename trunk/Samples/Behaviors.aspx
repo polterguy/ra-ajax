@@ -4,7 +4,7 @@
     AutoEventWireup="true" 
     CodeFile="Behaviors.aspx.cs" 
     Inherits="Samples.Behaviors" 
-    Title="Ra-Ajax Behaviors Sample" %>
+    Title="Ajax Behaviors" %>
 
 <%@ Register 
     Assembly="Ra" 
@@ -21,18 +21,12 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ra-Ajax Samples - Behaviors</h1>
+    <h1>Ajax Behaviors</h1>
     <p>
-    	An <em>Ajax Behavior</em> is a type of object you can attach to an existing Widget or Ajax Control which will
-    	modify the <em>behavior</em> of that Ajax Control. Many different Ajax Behaviors exists in Ra-Ajax like for 
-    	instance the <em>BehaviorDraggable</em>, which you can see below. This Behavior makes any widget Draggable. 
-    	By attaching a Behavior to an existing widget you basically modify its capabilities. For instance when 
-    	you attach the BehaviorDraggable to a Widget, that Widget becomes <em>Draggable</em> and you can drag and drop 
-    	the widget around on the screen and even trap server-side events when the widget is dropped to its new position.
-    	Where you of course have access to its new position in that Event Handler in your C# server-side code.
-    </p>
-    <p>
-    	Try to drag and drop the Label below to see the BehaviorDraggable in action.
+    	An <em>Ajax Behavior</em> is a type you can attach to existing Widgets which will
+    	modify the <em>behavior</em> of that widget. The two blue rectangles below are actually just normal
+    	Panels which are modified with the <em>BehaviorDraggable</em> so that you can drag them around
+    	on screen.
     </p>
 	<ra:Button 
 		runat="server" 
@@ -89,17 +83,9 @@
     </div>
 
     <div class="spacer">&nbsp;</div>
-
-    <h2>Ajax Behaviors is a BIG gun!</h2>
     <p>
-    	All though this gives you a lot of power it is very easy to overdo Ajax Behaviors by adding them in
-    	places where they either make no sense or they break the normal expected logic of a webpage. Like for instance I would
-    	be careful with adding up BehaviorDraggable to an Ajax Button since that would probably to such a large degree change
-    	the "expected behavior" for that button that your users would be confused when trying to interact with that button etc...
-    </p>
-    <p>
-    	Ajax Behaviors is a BIG weapon and like all big weapons it should be handled with care and not misused since then it
-    	has the nasty habit of doing bad things towards your feet ;)
+        The gray rectangle to the right is modified with the <em>BehaviorDroppable</em> so that it will
+        be a "drop point" for your draggable panels.
     </p>
     <h2>Create even richer Ajax Controls by combining Behaviors</h2>
     <p>
@@ -121,9 +107,32 @@
 	    </ra:Label>
     </div>
     <div class="spacerSmall">&nbsp;</div>
+    <h2>Ra-Ajax respects HTML</h2>
     <p>
-    	Note that the above Ajax Slider control is intentionally kept ugly to make sure the code is easy to understand and
-    	may serve as a reference for others wanting to create their own Ajax Extension Controls using Ra-Ajax.
+        Many Ajax Libraries are creating their widgets through JavaScript. When you look at the HTML source
+        of Ajax libraries like that you will see one or two &lt;span&gt; elements. Little or none of the text
+        you are physically seeing in your page will be found in the HTML of your page. The problem with such an 
+        approach is that Google and other Search Engines will also see nothing but these empty spans.
+    </p>
+    <p>
+        This makes such Ajax libraries unsuitable for Search Engine Friendly Applications. With 
+        Ra-Ajax you can easily create really Rich Internet Applications and still have everything be 100% 
+        visible for Search Engines.
+    </p>
+    <p>
+        If you click <em>"View Source"</em> for this page you will see all the HTML for the Accordion to the right,
+        the Window at the top and the draggable labels. Very few Ajax Libraries does this in fact! Most popular 
+        Ajax Libraries will create widgets through sending in HTML text as JavaScript - which makes all Search Engines
+        choke and not understand what your page is about.
+    </p>
+    <p>
+        This makes you loose a lot of potential customers since Google will send you fewer visitors, in addition to 
+        making it much harder for screen-readers and accessibility.
+    </p>
+    <p>
+        When you combine that with the fact that Ra-Ajax has about 10 KB of JavaScript in total, you 
+        realize that with Ra-Ajax you can actually create front websites which will completely outperform
+        your competitors in both visibility and performance!
     </p>
     <a href="Combining.aspx">On to Combining Controls</a>
 </asp:Content>

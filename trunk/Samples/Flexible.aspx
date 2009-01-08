@@ -4,7 +4,7 @@
     AutoEventWireup="true" 
     CodeFile="Flexible.aspx.cs" 
     Inherits="Samples.Flexible" 
-    Title="Ra-Ajax Flexibility" %>
+    Title="Ajax Event System" %>
 
 <%@ Register 
     Assembly="Ra" 
@@ -16,7 +16,7 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ra-Ajax Samples - Event System</h1>
+    <h1>Ajax Event System</h1>
     <p>
         Normally in ASP.NET WebControls you would expect a Button to have OnClick and mostly no
         other Event Handlers. In Ra-Ajax all the Ajax Controls have tons of additional event handlers
@@ -82,6 +82,11 @@
         And all those events will automagically map to server side events and you wouldn't have to
         write any JavaScript at all to handle them!
     </p>
+    <p>
+        And if you must trap events on the Client for performance reasons, you can use the
+        <em>OnClickClientSide</em> property which takes a reference to a client-side JavaScipt
+        function to trap click events on the client.
+    </p>
     <h2>Do anything from anywhere!</h2>
     <p>
         In Ra-Ajax you can do <em>anything from anywhere</em>. This means that for instance in the 
@@ -105,32 +110,25 @@
     </ra:Panel>
     <div class="spacerSmall">&nbsp;</div>
     <p>
-        This makes it very easy to create "advanced functionality". Now by adding a little bit of <em>Ajax Effects</em>
-        in addition, this becomes even more interesting...
+        This is very similar to the way you're used to develop in JavaScript and conventional ASP.NET
+        "postback" WebControls. All the Ra-Ajax controls have overridden the rendering logic so that
+        any change you do to them while on the server will automagically return back to the client.
+        This is almost unique to Ra-Ajax and gives you extreme flexibility in your solutions.
     </p>
     <p>
-    	Just to be clear; <em>the Ajax Button and the Ajax TextBox also have the OnClick Event Handlers and
-    	the OnTextChanged Event Handlers. (of course)</em>
+        For instance in the expand tree node event of our TreeView you could create a new TreeView,
+        inject it into a Window, make that window Modal and show it as a child control of your TabControl
+        on a totally different part of your page. Of course that specific sample seldom makes sense, 
+        but the flexibility which you get with Ra-Ajax is almost unique to Ra-Ajax and makes your life
+        as an Ajax Application developer a lot easier to live!
     </p>
-    <h2>How did we do this?</h2>
     <p>
-        I know for a fact that TONS of JS developers seeks this answer, and all though I personally think
-        one should not as an application developer develop in JavaScript I will still give you the code to do
-        it in JavaScript yourself.
+        This makes it very easy to create stunningly rich functionality! Unmatched by all other existing
+        Ajax Framework out there...
     </p>
-    <pre>
-function isLeaveEnter(e, node) { 
-  var rel = e.relatedTarget ? e.relatedTarget : 
-    (e.type == 'mouseout' ? e.toElement : e.fromElement);
-  while (rel && rel != node)
-    rel = rel.parentNode;
-  return (rel != node);
-}
-    </pre>
     <p>
-        The above code will if called return *true* if it actually truly is a MouseOver or MouseOut event
-        and false in any other case. But as I said, don't do this yourself. 
-        <a href="http://code.google.com/p/ra-ajax/">Use Ra-Ajax</a> instead... ;)
+        And out of the box you get it to work on all main browsers - no hassle! Even Opera for embedded
+        devices and iPhone!
     </p>
     <a href="Effects.aspx">On to "Ajax Effects"...</a>
 </asp:Content>
