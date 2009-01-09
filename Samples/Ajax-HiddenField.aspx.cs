@@ -30,7 +30,7 @@ namespace Samples
 
         protected void retrieveValue_Click(object sender, EventArgs e)
         {
-            retrieveValue.Text = hid.Value;
+            txt.Text = hid.Value;
         }
     }
 }

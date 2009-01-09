@@ -27,6 +27,16 @@
 // Ra will extend the DOM object with the Ra specific methods
 Ra = {};
 
+// Browser sniffing (yes I know, it's bad, but sometimes necessary ... ;)
+Ra.Browser = {
+  IE:             window.attachEvent && !window.opera,
+  IE6:            window.attachEvent && !window.opera && navigator.userAgent.indexOf('MSIE 6') != -1,
+  Opera:          !!window.opera,
+  WebKit:         navigator.userAgent.indexOf('AppleWebKit') != -1,
+  Gecko:          navigator.userAgent.indexOf('Gecko') != -1,
+  MobileSafari:   !!navigator.userAgent.match(/Apple.*Mobile.*Safari/)
+};
+
 // Empty function useful for different things like for instance "killing events" and similar constructs
 Ra.emptyFunction = function() {};
 
@@ -155,31 +165,29 @@ Ra.Element.prototype = {
   getDimensions: function() {
     var dis = this.getStyle('display');
     if (dis != 'none' && dis !== null) {
-      // Safari bug
       return {
-        width: this.offsetWidth - 
-          (parseInt(this.getStyle('paddingLeft'), 10) || 0) - 
-          (parseInt(this.getStyle('paddingRight'), 10) || 0), 
-        height: this.offsetHeight - 
-          (parseInt(this.getStyle('paddingTop'), 10) || 0) - 
-          (parseInt(this.getStyle('paddingBottom'), 10) || 0)
+        width: this.offsetWidth,
+        height: this.offsetHeight
       };
     }
-
-    // All *Width and *Height properties give 0 on elements with display none,
-    // so enable the element temporarily
+    // All width and height returns 0 when display == none,
+    // Therefore we temporary show the element...
     var els = this.style;
     var orVis = els.visibility;
+    var orPos = els.position;
     var orDis = els.display;
     els.visibility = 'hidden';
+    if( Ra.Browser.IE6 )
+      els.position = 'absolute'; // Without the absolute thing, IE6 won't work...
     els.display = 'block';
     var orW = this.clientWidth;
     var orH = this.clientHeight;
     els.display = orDis;
+    els.position = orPos;
     els.visibility = orVis;
     return {
-      width: orW + (parseInt(this.getStyle('padding'), 10) || 0), 
-      height: orH + (parseInt(this.getStyle('padding'), 10) || 0)
+        width: orW, 
+        height: orH
     };
   },
 

@@ -180,6 +180,9 @@ Namespace Samples
             PageIndex -= 1
             DataBindGridView()
             pnlRight.ReRender()
+            Dim eff As New EffectRollUp(pnlRight, 200)
+            eff.ChainThese(New EffectRollDown(pnlRight, 200))
+            eff.Render()
         End Sub
 
         Protected Sub nxt_Click(ByVal sender As Object, ByVal e As EventArgs)
@@ -189,6 +192,9 @@ Namespace Samples
             PageIndex += 1
             DataBindGridView()
             pnlRight.ReRender()
+            Dim eff As New EffectRollUp(pnlRight, 200)
+            eff.ChainThese(New EffectRollDown(pnlRight, 200))
+            eff.Render()
         End Sub
 
         Protected Sub resizer_Resized(ByVal sender As Object, ByVal e As ResizeHandler.ResizedEventArgs)

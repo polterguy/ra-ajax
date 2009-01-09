@@ -11,10 +11,9 @@
 
                           Version 1.0.1
 
-       Optimizing by making alternatives to move more DHTML 
-       logic to the client + other features and bugfixes...
-       Also some IE6 bug fixes...
-       And lots of other features and bugfixes...
+       Client-Side optimizations.
+       IE6 bug fixes...
+       +++
 
   ------------------------------------------------------------------
 
@@ -47,6 +46,35 @@
   least it's good enough to ge a "rough picture" of how the 
   controls will look like in real life. And it also makes 
   the setting of properties easier.
+
+* Fixed a bug in Ra.js - getDimensions which made among other
+  things the accordion animation not work for IE6. This have 
+  implications only for IE6.
+
+* Fixed a bug in getDimensions which made it "unpredictable".
+  Now it works the same way as the prototype.js version 
+  (and also probably jQuery version) but it might make
+  calculations for some of the effects (e.g. EffectSize)
+  screwed since it doesn't take into account the paddings
+  and such. If you get "jumpy effects" after upgrading
+  then you should carefully remove paddings for elements
+  you're running the effects on and exchange them with 
+  margins on the root elements inside of these animated
+  elements.
+  BREAKING CHANGE...!! (but not that dangerous)
+
+* There's now a pretty nice JS addition to Ra-Ajax in Ra.js
+  which should pretty accurately figure out the browser
+  version. It even have a "special case" for IE6 which
+  should work as good as browser sniffing is possible to
+  get to work...
+
+* Changed the previous and next hover background-color 
+  buttons for the skins that supports them in Window
+  to give "visual clues" that they are "clickable"...
+
+* Added some "effect candy" for the VB.NET DataGrid
+  Starter-Kit when paging the DataGrid.
 
 
 
