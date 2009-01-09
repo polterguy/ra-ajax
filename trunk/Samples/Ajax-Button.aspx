@@ -55,6 +55,6 @@
         But all this is completely abstracted away so you don't have to think of anything else than changing
         styles for your controls by using the <em>Style property</em> of your Ajax Controls.
     </p>
-    <a href="Ajax-CheckBox.aspx">On top Ajax CheckBox sample</a>
+    <a href="Ajax-CheckBox.aspx">On to Ajax CheckBox sample</a>
 </asp:Content>
 

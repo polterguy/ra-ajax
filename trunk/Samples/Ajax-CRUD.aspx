@@ -41,7 +41,7 @@
             Caption="Personal information">
 
             <p>Please give us your personal information</p>
-            <table style="font-size:0.7em;width:60%;float:left;border-right:dashed 1px #999;">
+            <table style="width:60%;float:left;font-size:0.7em;border-right:dashed 1px #999;">
                 <tr>
                     <td>Firstname/Lastname</td>
                     <td>
@@ -88,7 +88,7 @@
                     </td>
                 </tr>
             </table>
-            <table style="font-size:0.7em;width:35%;float:left;">
+            <table style="width:35%;float:left;font-size:0.7em;">
                 <tr>
                     <td>Position</td>
                     <td>

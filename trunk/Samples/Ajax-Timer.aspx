@@ -37,14 +37,17 @@
     <ra:Panel 
         runat="server" 
         ID="pnlTimer" 
-        style="position:absolute;border:solid 1px Black;background-color:Yellow;width:400px;height:200px;padding:25px;float:left;">
-        <p style="z-index:100;">
+        style="position:absolute;border:solid 1px Black;background-color:Yellow;width:400px;height:200px;">
+        <p style="z-index:100;margin:25px;">
             Follow this one as it grows randomly around due to the timer which creates an Ajax Effect on the server
             and updates the label below.
             <br />
             <ra:Label runat="server" ID="date" style="font-style:italic;color:#999;" Text="Date" />
         </p>
-        <ra:Panel runat="server" ID="pnlTimer2" style="z-index:99;background-color:Red;position:absolute;width:25px;height:25px;top:0px;left:0px;">
+        <ra:Panel 
+            runat="server" 
+            ID="pnlTimer2" 
+            style="z-index:99;background-color:Red;position:absolute;width:25px;height:25px;top:0px;left:0px;">
             &nbsp;
         </ra:Panel>
     </ra:Panel>
