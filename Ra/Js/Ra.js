@@ -166,8 +166,12 @@ Ra.Element.prototype = {
     var dis = this.getStyle('display');
     if (dis != 'none' && dis !== null) {
       return {
-        width: this.offsetWidth,
-        height: this.offsetHeight
+        width: this.offsetWidth - 
+          (parseInt(this.getStyle('paddingLeft'), 10) || 0) - 
+          (parseInt(this.getStyle('paddingRight'), 10) || 0), 
+        height: this.offsetHeight - 
+          (parseInt(this.getStyle('paddingTop'), 10) || 0) - 
+          (parseInt(this.getStyle('paddingBottom'), 10) || 0)
       };
     }
     // All width and height returns 0 when display == none,
@@ -186,8 +190,8 @@ Ra.Element.prototype = {
     els.position = orPos;
     els.visibility = orVis;
     return {
-        width: orW, 
-        height: orH
+      width: orW + (parseInt(this.getStyle('padding'), 10) || 0), 
+      height: orH + (parseInt(this.getStyle('padding'), 10) || 0)
     };
   },
 
