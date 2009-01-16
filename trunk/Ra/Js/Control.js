@@ -305,7 +305,7 @@ Ra.Control.prototype = {
 
   // Called when an event is raised, the parameter passed is the this.options.serverEvent instance 
   // which we will use to know how to call our server
-  onEvent: function(evt, stop, domEvt) {
+  onEvent: function(evt, stop) {
     if( evt == 'keyup' ) {
       // This one needs SPECIAL handling to not drain resources
       if( !this._oldValue ) {

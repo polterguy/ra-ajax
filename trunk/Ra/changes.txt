@@ -9,6 +9,21 @@
 
   ------------------------------------------------------------------
 
+                          Version 1.0.2
+
+       Bug fixes and more client-side optimizations...
+
+  ------------------------------------------------------------------
+
+* Fixed a bug which ocassionally made the same scripts be included
+  more then once in core...
+
+
+
+
+
+  ------------------------------------------------------------------
+
                           Version 1.0.1
 
        Client-Side optimizations.

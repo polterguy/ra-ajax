@@ -69,6 +69,27 @@ namespace Ra.Extensions
             set { base.CssClass = value; }
         }
 
+        /**
+         * If true then the expanding of nodes will happen purely on the client IF POSSIBLE and
+         * not create an Ajax Request at all. 
+         * This value must be set when control is created or shown for the first time
+         * and cannot be changed after control is created.
+         */
+        [DefaultValue(false)]
+        public bool ClientSideExpansion
+        {
+            get
+            {
+                if (ViewState["ClientSideExpansion"] == null)
+                    return false;
+                return (bool)ViewState["ClientSideExpansion"];
+            }
+            set
+            {
+                ViewState["ClientSideExpansion"] = value;
+            }
+        }
+
         protected override void OnPreRender(EventArgs e)
         {
             int count = 0;

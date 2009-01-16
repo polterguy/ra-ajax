@@ -15,6 +15,8 @@ using System.IO;
 using HTML = System.Web.UI.HtmlControls;
 using System.Collections.Generic;
 
+[assembly: ASP.WebResource("Extensions.Js.Tree.js", "text/javascript")]
+
 namespace Ra.Extensions
 {
     /**
@@ -25,27 +27,45 @@ namespace Ra.Extensions
     {
         // Composition controls
         private WEBCTRLS.Label[] _spacers;
-        private Label _expander;
+        private Label _expander = new Label();
         private Label _icon;
 
         protected override void OnInit(EventArgs e)
         {
             Tag = "li";
-            EnsureChildControls();
             if (ParentTree.Expansion == Tree.ExpansionType.SingleClickEntireRow)
             {
                 this.Click += TreeNode_Selected;
-                this.Click += ExpansionWidget_Click;
+                if (ParentTree.ClientSideExpansion)
+                {
+                    AjaxManager.Instance.IncludeScriptFromResource(typeof(TreeNode), "Extensions.Js.Tree.js");
+                    this.OnClickClientSide += 
+                        string.Format("function(){{Ra.Control.$('{0}').expand();return false;}}", ClientID);
+                }
+                else
+                {
+                    this.Click += ExpandNode;
+                }
             }
             else if (ParentTree.Expansion == Tree.ExpansionType.SingleClickPlusSign)
             {
                 this.Click += TreeNode_Selected;
-                _expander.Click += ExpansionWidget_Click;
+                if (ParentTree.ClientSideExpansion)
+                {
+                    AjaxManager.Instance.IncludeScriptFromResource(typeof(TreeNode), "Extensions.Js.Tree.js");
+                    _expander.OnClickClientSide +=
+                        string.Format("function(){{Ra.Control.$('{0}').expand();return false;}}", ClientID);
+                }
+                else
+                {
+                    _expander.Click += ExpandNode;
+                }
             }
             else if (ParentTree.Expansion == Tree.ExpansionType.None)
             {
                 this.Click += TreeNode_Selected;
             }
+            EnsureChildControls();
             base.OnInit(e);
         }
 
@@ -87,6 +107,38 @@ namespace Ra.Extensions
             CreateCompositionControls();
         }
 
+        protected override string GetClientSideScriptType()
+        {
+            if (ParentTree.ClientSideExpansion)
+            {
+                return "new Ra.TreeNode";
+            }
+            else
+            {
+                return base.GetClientSideScriptType();
+            }
+        }
+
+        protected override string GetClientSideScriptOptions()
+        {
+            string retVal = base.GetClientSideScriptOptions();
+            if (ParentTree.ClientSideExpansion)
+            {
+                if (this.ChildTreeNodes != null)
+                {
+                    if (!string.IsNullOrEmpty(retVal))
+                        retVal += ",";
+                    if (this.ChildTreeNodes.HasChildren)
+                    {
+                        // This value defaults to false in JS file anyway...
+                        retVal += "hasChildren:true,";
+                    }
+                    retVal += "childCtrl:'" + this.ChildTreeNodes.ClientID + "'";
+                }
+            }
+            return retVal;
+        }
+
         private void CreateCompositionControls()
         {
             // Note that since (for simplicity) we're adding ALL "composition" controls
@@ -102,7 +154,6 @@ namespace Ra.Extensions
             Controls.AddAt(0, _icon);
 
             // Expander wrapper
-            _expander = new Label();
             _expander.ID = "expanderControl";
             Controls.AddAt(0, _expander);
 
@@ -176,7 +227,15 @@ namespace Ra.Extensions
             }
         }
 
-        private void ExpansionWidget_Click(object sender, EventArgs e)
+        public override void DispatchEvent(string name)
+        {
+            if (name == "clientClick")
+                ExpandNode(this, new EventArgs());
+            else
+                base.DispatchEvent(name);
+        }
+
+        private void ExpandNode(object sender, EventArgs e)
         {
             // Expanding/Collapsing the ChildTreeNodes control
             if (ChildTreeNodes != null)
