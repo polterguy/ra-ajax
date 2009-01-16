@@ -367,7 +367,14 @@ namespace Ra
                 CurrentPage.ClientScript.RegisterClientScriptResource(type, id);
             }
             string resource = CurrentPage.ClientScript.GetWebResourceUrl(type, id);
-            _scriptIncludes.Add(resource);
+            if (!_scriptIncludes.Exists(
+                delegate(string idx)
+                {
+                    return idx == resource;
+                }))
+            {
+                _scriptIncludes.Add(resource);
+            }
         }
 
         /**
