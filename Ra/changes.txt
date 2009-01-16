@@ -18,6 +18,20 @@
 * Fixed a bug which ocassionally made the same scripts be included
   more then once in core...
 
+* Added support for having "Client-Side animations" for the Tree
+  Control. This works so that if the TreeView have fetched child
+  items already or they have been rendered in the HTML/DOM already
+  then the animating of the expansion/collapsing of the 
+  child-controls will purely happen on the client without having
+  to go towards the server. This should seriously make the Tree
+  control behave more responsive. Note that this feature is 
+  *EXPERIMENTAL* and you should be careful with it in production
+  environments. Also when the tree control is set in this rendering
+  mode then no "state" will be preserved if you trigger a conventional
+  postback for some reasons.
+  To set the Tree Control in this mode set the "ClientSideExpansion"
+  property to *true*. The default value is false.
+
 
 
 
