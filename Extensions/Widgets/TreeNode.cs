@@ -35,7 +35,8 @@ namespace Ra.Extensions
             Tag = "li";
             if (ParentTree.Expansion == Tree.ExpansionType.SingleClickEntireRow)
             {
-                this.Click += TreeNode_Selected;
+                if (ParentTree.SelectionMode != Tree.SelectionModeType.NoSelection)
+                    this.Click += TreeNode_Selected;
                 if (ParentTree.ClientSideExpansion)
                 {
                     AjaxManager.Instance.IncludeScriptFromResource(typeof(TreeNode), "Extensions.Js.Tree.js");
@@ -49,7 +50,8 @@ namespace Ra.Extensions
             }
             else if (ParentTree.Expansion == Tree.ExpansionType.SingleClickPlusSign)
             {
-                this.Click += TreeNode_Selected;
+                if (ParentTree.SelectionMode != Tree.SelectionModeType.NoSelection)
+                    this.Click += TreeNode_Selected;
                 if (ParentTree.ClientSideExpansion)
                 {
                     AjaxManager.Instance.IncludeScriptFromResource(typeof(TreeNode), "Extensions.Js.Tree.js");
@@ -63,7 +65,8 @@ namespace Ra.Extensions
             }
             else if (ParentTree.Expansion == Tree.ExpansionType.None)
             {
-                this.Click += TreeNode_Selected;
+                if (ParentTree.SelectionMode != Tree.SelectionModeType.NoSelection)
+                    this.Click += TreeNode_Selected;
             }
             EnsureChildControls();
             base.OnInit(e);
@@ -256,7 +259,7 @@ namespace Ra.Extensions
         {
             // Setting SelectedNode and raising the SelectedNodeChanged on the
             // parent Tree control
-            if( ParentTree.AllowMultipleSelectedItems)
+            if( ParentTree.SelectionMode == Tree.SelectionModeType.MultipleSelection)
             {
                 List<TreeNode> nodes = new List<TreeNode>(ParentTree.SelectedNodes);
                 

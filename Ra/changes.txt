@@ -9,6 +9,24 @@
 
   ------------------------------------------------------------------
 
+                          Version 1.0.3
+
+       Bug fixes and more client-side optimizations...
+
+  ------------------------------------------------------------------
+
+* Added support for having TreeView NOT trigger selection of items
+  at all as an option. This is a *BREAKING CHANGE* since the 
+  "AllowMultipleSelectedItems" property is now obsolete and exchanged
+  with the "SelectionMode" property. This means that the TreeView can
+  now be set in MultipleSelection, SingleSelection and NoSelection.
+
+
+
+
+
+  ------------------------------------------------------------------
+
                           Version 1.0.2
 
        Bug fixes and more client-side optimizations...
@@ -31,6 +49,26 @@
   postback for some reasons.
   To set the Tree Control in this mode set the "ClientSideExpansion"
   property to *true*. The default value is false.
+  This obviously don't work when Tree control is set so that 
+  Expansion property is "SingleClickEntireRow" unless you also set 
+  the SelectionMode to "NoSelection" since then the
+  actual expansion of the TreeNodes are the same click DOM
+  element as the element you click to select nodes. And to
+  select nodes is obviously an event that should and must trigger
+  a sever-side event.
+  Note that even though this works relatively perfect there
+  are "border cases" where things doesn't work perfect. This
+  is mostly due to that when client-side expansion/collapsing
+  is occuring then the DOM is updated but not the server-side
+  style collection. This means that e.g. when you expand a node
+  on the client and then later select that same node. Then
+  there is no way the server can now that that node is expanded
+  and it will seem like for the server that the newly selected 
+  node is actually *NOT* expanded. Therefore I would encourage
+  you to only use this for "completely dead" trees which 
+  effectively means Trees that purely live on the client.
+  Say like for instance a "menu" which can't handle selections
+  anyway etc...
 
 
 

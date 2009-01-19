@@ -28,6 +28,28 @@ namespace Ra.Extensions
     public class Tree : Panel, ASP.INamingContainer
     {
         /**
+         * How and if items can be selected in the TreeView control
+         */
+        public enum SelectionModeType
+        {
+            /**
+             * Only one TreeNode can be selected at the time
+             */
+            SingleSelection,
+
+            /**
+             * Multiple items can be selected in the TreeView
+             */
+            MultipleSelection,
+
+            /**
+             * Items can only be selected from code. Nothing the user does in regards 
+             * to the TreeView can select nodes in the TreeView.
+             */
+            NoSelection
+        }
+
+        /**
          * Enum describing how TreeNode items in the Tree should be expanded
          */
         public enum ExpansionType
@@ -158,17 +180,29 @@ namespace Ra.Extensions
          * If true you can select multiple nodes by clicking CTRL while selecting
          */
         [DefaultValue(false)]
+        [Obsolete("Instead of using this property you should use the SelectionMode property", true)]
         public bool AllowMultipleSelectedItems
+        {
+            get { throw new ApplicationException("Usage of obsolete property AllowMultipleSelectedItems, use SelectionMode instead"); }
+            set { throw new ApplicationException("Usage of obsolete property AllowMultipleSelectedItems, use SelectionMode instead"); }
+        }
+
+        /**
+         * Defines how/if the user can select items and if the user can select multiple items
+         * at the same time.
+         */
+        [DefaultValue(SelectionModeType.SingleSelection)]
+        public SelectionModeType SelectionMode
         {
             get
             {
-                if (ViewState["AllowMultipleSelectedItems"] == null)
-                    return false;
-                return (bool)ViewState["AllowMultipleSelectedItems"];
+                if (ViewState["SelectionMode"] == null)
+                    return SelectionModeType.SingleSelection;
+                return (SelectionModeType)ViewState["SelectionMode"];
             }
             set
             {
-                ViewState["AllowMultipleSelectedItems"] = value;
+                ViewState["SelectionMode"] = value;
             }
         }
 

@@ -196,7 +196,10 @@ namespace Samples
         {
             if (tree.SelectedNodes.Length > 0)
                 tree.SelectedNodes = new TreeNode[1] { tree.SelectedNodes[tree.SelectedNodes.Length - 1] };
-            tree.AllowMultipleSelectedItems = allowMultiSelectionCheckBox.Checked;
+            tree.SelectionMode = 
+                allowMultiSelectionCheckBox.Checked ? 
+                    Tree.SelectionModeType.MultipleSelection : 
+                    Tree.SelectionModeType.SingleSelection;
         }
 
         protected void selected(object sender, EventArgs e)
