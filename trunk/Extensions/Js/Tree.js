@@ -42,7 +42,8 @@ Ra.extend(Ra.TreeNode.prototype, {
       // Running effect to show/hide...
       if( Ra.$(this.options.childCtrl).style.display != 'none') {
         this.element.removeClassName('expanded');
-        this.element.addClassName('collapsed');
+        if( this.element.className.indexOf('collapsed') == -1 )
+          this.element.addClassName('collapsed');
         Ra.E(this.options.childCtrl, {
           onStart: function() {
             this._fromHeight = this.element.getDimensions().height;
@@ -61,7 +62,8 @@ Ra.extend(Ra.TreeNode.prototype, {
           transition:'Explosive'
         });
       } else {
-        this.element.addClassName('expanded');
+        if( this.element.className.indexOf('expanded') == -1 )
+          this.element.addClassName('expanded');
         this.element.removeClassName('collapsed');
         Ra.E(this.options.childCtrl, {
           onStart: function() {

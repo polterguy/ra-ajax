@@ -31,7 +31,9 @@
         <ext:Tree 
             runat="server" 
             ID="tree" 
-            Expansion="SingleClickPlusSign" ClientSideExpansion="true"
+            Expansion="SingleClickPlusSign"
+            SelectionMode="SingleSelection"
+            ClientSideExpansion="true" 
             OnSelectedNodeChanged="selected"
             style="width:250px;float:left;">
             
