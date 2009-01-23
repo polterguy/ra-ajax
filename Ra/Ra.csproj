@@ -75,6 +75,7 @@
     <Compile Include="Widgets\RadioButton.cs" />
     <Compile Include="Widgets\SelectList.cs" />
     <Compile Include="Widgets\ImageButton.cs" />
+    <Compile Include="Widgets\DynamicControl.cs" />
     <Compile Include="Widgets\TextArea.cs" />
     <Compile Include="Widgets\Label.cs" />
     <Compile Include="Widgets\RaControl.cs" />
