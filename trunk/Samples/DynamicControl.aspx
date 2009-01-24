@@ -16,7 +16,7 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
     
-    <ra:Button ID="staticButton" runat="server" Text="Change Label Text (Static Button)" OnClick="staticButton_Click" />
+    <ra:Button ID="staticButton" runat="server" Text="Add Dynamic Button" OnClick="staticButton_Click" />
     <ra:Label ID="label" runat="server" />
     
     <ra:DynamicControl runat="server" ID="dynamicControl1" OnDynamicLoad="dynamicControl1_DynamicLoad" />

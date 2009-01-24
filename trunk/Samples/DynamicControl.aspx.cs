@@ -20,7 +20,7 @@ namespace Samples
 
         protected void staticButton_Click(object sender, EventArgs e)
         {
-            label.Text = "Hi From Static Button";
+            AddDynamicButton();
         }
 
         protected void dynamicControl1_DynamicLoad(object sender, DynamicControl.DynamicControlEventArgs e)
@@ -30,10 +30,6 @@ namespace Samples
                 case "dynamicButton":
                     AddDynamicButton();
                     break;
-                default:
-                    // First Time
-                    AddDynamicButton();
-                    break;
             }
         }
 
@@ -41,8 +37,8 @@ namespace Samples
         {
             Button dynamicButton = new Button();
             dynamicButton.ID = "dynamicButton";
-            dynamicButton.Text = "Change Label Text (Dynamic Button)";
-            dynamicButton.Click += delegate { label.Text = "Hi from Dynamic Button\n"; };
+            dynamicButton.Text = "Change Label Text";
+            dynamicButton.Click += delegate { label.Text = string.Format("From Dynamic Button Click: {0}", DateTime.Now); };
 
             dynamicControl1.AddControl(dynamicButton);
         }
