@@ -13,36 +13,19 @@ using WEBCTRLS = System.Web.UI.WebControls;
 
 namespace Ra.Widgets
 {
-    [ASP.ToolboxData("<{0}:DynamicControl runat=\"server\" />")]
-    public class DynamicControl : Panel
+    [ASP.ToolboxData("<{0}:DynamicControl2 runat=\"server\" />")]
+    public class DynamicControl2 : Panel
     {
-        public class DynamicControlEventArgs : EventArgs
-        {
-            private string _dynamicControlID;
+        public delegate void DynamicLoadDelegate();
 
-            public string DynamicControlID
-            {
-              get { return _dynamicControlID; }
-              set { _dynamicControlID = value; }
-            }
-
-            internal DynamicControlEventArgs(string dynamicControlID)
-            {
-                _dynamicControlID = dynamicControlID;
-            }
-        }
-
-        public event EventHandler<DynamicControlEventArgs> DynamicLoad;
+        public DynamicLoadDelegate DynamicLoad;
 
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
 
-            string dynamicControlID = ViewState["_dynamicControlID"] != null ? 
-                ViewState["_dynamicControlID"].ToString() : string.Empty;
-
-            if (DynamicLoad != null)
-                DynamicLoad(this, new DynamicControlEventArgs(dynamicControlID));
+            if (DynamicLoad != null && ViewState["_dynamicControlID"] != null)
+                DynamicLoad();
         }
 
         public void AddControl(ASP.Control control)
@@ -54,6 +37,7 @@ namespace Ra.Widgets
                 Controls.Remove(control);
 
             ViewState["_dynamicControlID"] = control.ID;
+
             Controls.Add(control);
             ReRender();
         }
@@ -66,6 +50,12 @@ namespace Ra.Widgets
                 return;
             if (Controls.Contains(control))
                 Controls.Remove(control);
+        }
+
+        public void Show()
+        {
+            if (DynamicLoad != null)
+                DynamicLoad();
         }
     }
 }
