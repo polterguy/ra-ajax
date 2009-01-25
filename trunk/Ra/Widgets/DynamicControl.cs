@@ -18,17 +18,17 @@ namespace Ra.Widgets
     {
         public class DynamicControlEventArgs : EventArgs
         {
-            private string _dynamicControlTypeName;
+            private string _TypeName;
 
-            public string DynamicControlTypeName
+            public string TypeName
             {
-              get { return _dynamicControlTypeName; }
-              set { _dynamicControlTypeName = value; }
+                get { return _TypeName; }
+                set { _TypeName = value; }
             }
 
-            internal DynamicControlEventArgs(string dynamicControlTypeName)
+            internal DynamicControlEventArgs(string typeName)
             {
-                _dynamicControlTypeName = dynamicControlTypeName;
+                _dynamicControlTypeName = typeName;
             }
         }
 
@@ -36,26 +36,23 @@ namespace Ra.Widgets
 
         protected override void OnLoad(EventArgs e)
         {
-            if (DynamicLoad != null && ViewState["_dynamicControlTypeName"] != null)
-                DynamicLoad(this, new DynamicControlEventArgs(ViewState["_dynamicControlTypeName"].ToString()));
+            string typeName = ViewState["_typeName"] as string;
+            if (DynamicLoad != null && typeName != null)
+                DynamicLoad(this, new DynamicControlEventArgs(typeName));
 
             base.OnLoad(e);
         }
 
-        [Browsable(false)]
-        public ASP.Control Control
+        public void SetControl(ASP.Control ctrl, string typeName)
         {
-            set
-            {
-                if (value == null)
-                    return;
+            Controls.Clear();
 
-                Controls.Clear();
+            if (value == null)
+                return;
 
-                ViewState["_dynamicControlTypeName"] = value.GetType().FullName;
-                Controls.Add(value);
-                ReRender();
-            }
+            ViewState["_typeName"] = typeName;
+            Controls.Add(ctrl);
+            ReRender();
         }
     }
 }
