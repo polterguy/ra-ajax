@@ -19,11 +19,18 @@ namespace Ra.Widgets
         public class DynamicControlEventArgs : EventArgs
         {
             private string _TypeName;
+            private ASP.Control _control;
 
             public string TypeName
             {
                 get { return _TypeName; }
                 set { _TypeName = value; }
+            }
+
+            public ASP.Control Control
+            {
+                get { return _control; }
+                set { _control = value; }
             }
 
             internal DynamicControlEventArgs(string typeName)
@@ -36,22 +43,27 @@ namespace Ra.Widgets
 
         protected override void OnLoad(EventArgs e)
         {
-            string typeName = ViewState["_typeName"] as string;
-            if (DynamicLoad != null && typeName != null)
-                DynamicLoad(this, new DynamicControlEventArgs(typeName));
-
+            LoadDynamicControl();
             base.OnLoad(e);
         }
 
-        public void SetControl(ASP.Control control, string typeName)
+        private void LoadDynamicControl()
+        {
+            string typeName = ViewState["_typeName"] as string;
+            if (DynamicLoad != null && typeName != null)
+            {
+                DynamicControlEventArgs e = new DynamicControlEventArgs(typeName);
+                DynamicLoad(this, e);
+                Controls.Add(e.Control);
+            }
+        }
+
+        public void SetControl(string typeName)
         {
             Controls.Clear();
 
-            if (control == null)
-                return;
-
             ViewState["_typeName"] = typeName;
-            Controls.Add(control);
+            LoadDynamicControl();
             ReRender();
         }
     }
