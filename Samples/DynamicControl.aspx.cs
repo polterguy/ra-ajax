@@ -36,7 +36,6 @@ namespace Samples
         private void AddDynamicButton()
         {
             Button dynamicButton = new Button();
-            dynamicButton.ID = "dynamicButton";
             dynamicButton.Text = "Change Label Text";
             dynamicButton.Click += delegate { label.Text = string.Format("From Dynamic Button Click: {0}", DateTime.Now); };
 

@@ -43,15 +43,15 @@ namespace Ra.Widgets
             base.OnLoad(e);
         }
 
-        public void SetControl(ASP.Control ctrl, string typeName)
+        public void SetControl(ASP.Control control, string typeName)
         {
             Controls.Clear();
 
-            if (value == null)
+            if (control == null)
                 return;
 
             ViewState["_typeName"] = typeName;
-            Controls.Add(ctrl);
+            Controls.Add(control);
             ReRender();
         }
     }
