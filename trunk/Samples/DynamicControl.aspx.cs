@@ -9,18 +9,15 @@
 using System;
 using Ra.Widgets;
 using System.Threading;
+using System.Web.UI;
 
 namespace Samples
 {
     public partial class DynamicControlSample : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-        }
-
         protected void staticButton_Click(object sender, EventArgs e)
         {
-            AddDynamicButton();
+            dynamicControl1.SetControl("dynamicButton");
         }
 
         protected void dynamicControl1_DynamicLoad(object sender, DynamicControl.DynamicControlEventArgs e)
@@ -28,18 +25,17 @@ namespace Samples
             switch (e.TypeName)
             {
                 case "dynamicButton":
-                    AddDynamicButton();
+                    e.Control = AddDynamicButton();
                     break;
             }
         }
 
-        private void AddDynamicButton()
+        private Control AddDynamicButton()
         {
             Button dynamicButton = new Button();
             dynamicButton.Text = "Change Label Text";
             dynamicButton.Click += delegate { label.Text = string.Format("From Dynamic Button Click: {0}", DateTime.Now); };
-
-            dynamicControl1.SetControl(dynamicButton, "dynamicButton");
+            return dynamicButton;
         }
     }
 }
