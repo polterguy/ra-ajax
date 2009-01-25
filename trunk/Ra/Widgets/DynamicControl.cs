@@ -28,7 +28,7 @@ namespace Ra.Widgets
 
             internal DynamicControlEventArgs(string typeName)
             {
-                _dynamicControlTypeName = typeName;
+                _TypeName = typeName;
             }
         }
 
