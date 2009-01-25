@@ -18,17 +18,17 @@ namespace Ra.Widgets
     {
         public class DynamicControlEventArgs : EventArgs
         {
-            private string _dynamicControlID;
+            private string _dynamicControlTypeName;
 
-            public string DynamicControlID
+            public string DynamicControlTypeName
             {
-              get { return _dynamicControlID; }
-              set { _dynamicControlID = value; }
+              get { return _dynamicControlTypeName; }
+              set { _dynamicControlTypeName = value; }
             }
 
-            internal DynamicControlEventArgs(string dynamicControlID)
+            internal DynamicControlEventArgs(string dynamicControlTypeName)
             {
-                _dynamicControlID = dynamicControlID;
+                _dynamicControlTypeName = dynamicControlTypeName;
             }
         }
 
@@ -36,36 +36,26 @@ namespace Ra.Widgets
 
         protected override void OnLoad(EventArgs e)
         {
+            if (DynamicLoad != null && ViewState["_dynamicControlTypeName"] != null)
+                DynamicLoad(this, new DynamicControlEventArgs(ViewState["_dynamicControlTypeName"].ToString()));
+
             base.OnLoad(e);
-
-            string dynamicControlID = ViewState["_dynamicControlID"] != null ? 
-                ViewState["_dynamicControlID"].ToString() : string.Empty;
-
-            if (DynamicLoad != null)
-                DynamicLoad(this, new DynamicControlEventArgs(dynamicControlID));
         }
 
-        public void AddControl(ASP.Control control)
+        [Browsable(false)]
+        public ASP.Control Control
         {
-            if (control == null)
-                return;
+            set
+            {
+                if (value == null)
+                    return;
 
-            if (Controls.Contains(control))
-                Controls.Remove(control);
+                Controls.Clear();
 
-            ViewState["_dynamicControlID"] = control.ID;
-            Controls.Add(control);
-            ReRender();
-        }
-
-        public void RemoveControl(ASP.Control control)
-        {
-            ViewState["_dynamicControlID"] = null;
-
-            if (control == null)
-                return;
-            if (Controls.Contains(control))
-                Controls.Remove(control);
+                ViewState["_dynamicControlTypeName"] = value.GetType().FullName;
+                Controls.Add(value);
+                ReRender();
+            }
         }
     }
 }
