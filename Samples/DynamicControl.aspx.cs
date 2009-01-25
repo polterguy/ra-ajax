@@ -40,7 +40,7 @@ namespace Samples
             dynamicButton.Text = "Change Label Text";
             dynamicButton.Click += delegate { label.Text = string.Format("From Dynamic Button Click: {0}", DateTime.Now); };
 
-            dynamicControl1.AddControl(dynamicButton);
+            dynamicControl1.SetControl(dynamicButton, "dynamicButton");
         }
     }
 }
