@@ -25,7 +25,7 @@ namespace Samples
 
         protected void dynamicControl1_DynamicLoad(object sender, DynamicControl.DynamicControlEventArgs e)
         {
-            switch (e.DynamicControlID)
+            switch (e.DynamicControlTypeName)
             {
                 case "dynamicButton":
                     AddDynamicButton();
