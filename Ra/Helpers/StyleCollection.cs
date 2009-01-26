@@ -316,7 +316,10 @@ namespace Ra.Widgets
         {
             if (string.IsNullOrEmpty(state))
                 return;
-            
+
+            /// Removing whitespaces...
+            state = state.Trim();
+
             string[] stylePairs = state.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
             
             foreach (string idx in stylePairs)
