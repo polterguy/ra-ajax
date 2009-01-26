@@ -17,24 +17,28 @@ namespace Samples
     {
         protected void staticButton_Click(object sender, EventArgs e)
         {
-            dynamicControl1.Initialize("dynamicButton");
+            dynamicControl1.ReLoadControls("dynamicButton");
         }
 
-        protected void dynamicControl1_DynamicLoad(object sender, DynamicControl.DynamicControlEventArgs e)
+        protected void dynamicControl1_LoadControls(object sender, DynamicControl.DynamicControlEventArgs e)
         {
-            switch (e.ControlKey)
+            switch (e.Key)
             {
                 case "dynamicButton":
-                    AddDynamicButton();
+                    LoadDynamicButton();
                     break;
             }
         }
 
-        private void AddDynamicButton()
+        private void LoadDynamicButton()
         {
             Button dynamicButton = new Button();
             dynamicButton.Text = "Change Label Text";
-            dynamicButton.Click += delegate { label.Text = string.Format("From Dynamic Button Click: {0}", DateTime.Now); };
+            dynamicButton.Click += 
+                delegate
+                {
+                    label.Text = string.Format("From Dynamic Button Click: {0}", DateTime.Now);
+                };
             dynamicControl1.Controls.Add(dynamicButton);
 
             Label lbl = new Label();
