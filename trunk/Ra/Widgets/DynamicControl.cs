@@ -18,24 +18,17 @@ namespace Ra.Widgets
     {
         public class DynamicControlEventArgs : EventArgs
         {
-            private string _TypeName;
-            private ASP.Control _control;
+            private string _controlKey;
 
-            public string TypeName
+            public string ControlKey
             {
-                get { return _TypeName; }
-                set { _TypeName = value; }
+                get { return _controlKey; }
+                set { _controlKey = value; }
             }
 
-            public ASP.Control Control
+            internal DynamicControlEventArgs(string controlKey)
             {
-                get { return _control; }
-                set { _control = value; }
-            }
-
-            internal DynamicControlEventArgs(string typeName)
-            {
-                _TypeName = typeName;
+                _controlKey = controlKey;
             }
         }
 
@@ -49,20 +42,19 @@ namespace Ra.Widgets
 
         private void LoadDynamicControl()
         {
-            string typeName = ViewState["_typeName"] as string;
+            string typeName = ViewState["_controlKey"] as string;
             if (DynamicLoad != null && typeName != null)
             {
                 DynamicControlEventArgs e = new DynamicControlEventArgs(typeName);
                 DynamicLoad(this, e);
-                Controls.Add(e.Control);
             }
         }
 
-        public void SetControl(string typeName)
+        public void Initialize(string controlKey)
         {
             Controls.Clear();
 
-            ViewState["_typeName"] = typeName;
+            ViewState["_controlKey"] = controlKey;
             LoadDynamicControl();
             ReRender();
         }
