@@ -24,6 +24,21 @@ namespace Ra.Widgets
         private bool _selected;
 
         /**
+         * Creates a default item
+         */
+        public ListItem()
+        { }
+
+        /**
+         * Creates a default item with the given text/value
+         */
+        public ListItem(string text, string value)
+        {
+            _text = text;
+            _value = value;
+        }
+
+        /**
          * True if item is selected
          */
         public bool Selected

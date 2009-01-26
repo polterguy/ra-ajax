@@ -21,6 +21,16 @@
   with the "SelectionMode" property. This means that the TreeView can
   now be set in MultipleSelection, SingleSelection and NoSelection.
 
+* Fixed a bug in ListItem (SelectList) which made them to never be 
+  "selected".
+
+* Added support for SelectedIndex on SelectList.
+
+* Added overloaded constructor for ListItem taking Text and Value
+  property.
+
+* Added support for TabIndex on all RaWebControl inherited controls.
+
 
 
 

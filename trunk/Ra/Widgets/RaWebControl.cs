@@ -109,6 +109,21 @@ namespace Ra.Widgets
         }
 
         /**
+         * TabIndex value of control
+         */
+        [DefaultValue(0)]
+        public int TabIndex
+        {
+            get { return ViewState["TabIndex"] == null ? 0 : (int)ViewState["TabIndex"]; }
+            set
+            {
+                if (value != TabIndex)
+                    SetJSONGenericValue("tabindex", value.ToString());
+                ViewState["TabIndex"] = value;
+            }
+        }
+
+        /**
          * Client-side event (JavaScript function) which will trigger when button is clicked.
          * Normally you wouldn't use this except when developing controls yourself. Be very careful
          * with this method since it "moves you into JS land" which often is a dangerous place to be.
@@ -137,7 +152,14 @@ namespace Ra.Widgets
 
         protected string GetWebControlAttributes()
         {
-            return GetCssClassHTMLFormatedAttribute() + GetStyleHTMLFormatedAttribute() + GetTooltipAttribute();
+            string retVal = GetCssClassHTMLFormatedAttribute() + GetStyleHTMLFormatedAttribute() + GetTooltipAttribute();
+            if (TabIndex != 0)
+            {
+                if (!string.IsNullOrEmpty(retVal))
+                    retVal += " ";
+                retVal += "tabindex=\"" + TabIndex + "\"";
+            }
+            return retVal;
         }
 
         private string GetTooltipAttribute()
