@@ -18,21 +18,21 @@ namespace Ra.Widgets
     {
         public class DynamicControlEventArgs : EventArgs
         {
-            private string _controlKey;
+            private string _key;
 
-            public string ControlKey
+            public string Key
             {
-                get { return _controlKey; }
-                set { _controlKey = value; }
+                get { return _key; }
+                set { _key = value; }
             }
 
-            internal DynamicControlEventArgs(string controlKey)
+            internal DynamicControlEventArgs(string key)
             {
-                _controlKey = controlKey;
+                _key = key;
             }
         }
 
-        public event EventHandler<DynamicControlEventArgs> DynamicLoad;
+        public event EventHandler<DynamicControlEventArgs> LoadControls;
 
         protected override void OnLoad(EventArgs e)
         {
@@ -42,19 +42,19 @@ namespace Ra.Widgets
 
         private void LoadDynamicControl()
         {
-            string typeName = ViewState["_controlKey"] as string;
-            if (DynamicLoad != null && typeName != null)
+            string typeName = ViewState["_key"] as string;
+            if (LoadControls != null && typeName != null)
             {
                 DynamicControlEventArgs e = new DynamicControlEventArgs(typeName);
-                DynamicLoad(this, e);
+                LoadControls(this, e);
             }
         }
 
-        public void Initialize(string controlKey)
+        public void ReLoadControls(string key)
         {
             Controls.Clear();
 
-            ViewState["_controlKey"] = controlKey;
+            ViewState["_key"] = key;
             LoadDynamicControl();
             ReRender();
         }
