@@ -35,7 +35,8 @@
   exception when there's a whitespace at the end of the style
   collection.
 
-
+* Fixed a bug in InPalceEdit that made it not work properly in
+  Opera and on Mono.
 
 
 
