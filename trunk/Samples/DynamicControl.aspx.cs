@@ -20,7 +20,7 @@ namespace Samples
             dynamicControl1.ReLoadControls("dynamicButton");
         }
 
-        protected void dynamicControl1_LoadControls(object sender, DynamicControl.DynamicControlEventArgs e)
+        protected void dynamicControl1_LoadControls(object sender, Ra.Widgets.Dynamic.LoadControlsEventArgs e)
         {
             switch (e.Key)
             {

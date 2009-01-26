@@ -13,10 +13,10 @@ using WEBCTRLS = System.Web.UI.WebControls;
 
 namespace Ra.Widgets
 {
-    [ASP.ToolboxData("<{0}:DynamicControl runat=\"server\" />")]
-    public class DynamicControl : Panel
+    [ASP.ToolboxData("<{0}:Dynamic runat=\"server\" />")]
+    public class Dynamic : Panel
     {
-        public class DynamicControlEventArgs : EventArgs
+        public class LoadControlsEventArgs : EventArgs
         {
             private string _key;
 
@@ -26,13 +26,13 @@ namespace Ra.Widgets
                 set { _key = value; }
             }
 
-            internal DynamicControlEventArgs(string key)
+            internal LoadControlsEventArgs(string key)
             {
                 _key = key;
             }
         }
 
-        public event EventHandler<DynamicControlEventArgs> LoadControls;
+        public event EventHandler<LoadControlsEventArgs> LoadControls;
 
         protected override void OnLoad(EventArgs e)
         {
@@ -45,7 +45,7 @@ namespace Ra.Widgets
             string typeName = ViewState["_key"] as string;
             if (LoadControls != null && typeName != null)
             {
-                DynamicControlEventArgs e = new DynamicControlEventArgs(typeName);
+                LoadControlsEventArgs e = new LoadControlsEventArgs(typeName);
                 LoadControls(this, e);
             }
         }

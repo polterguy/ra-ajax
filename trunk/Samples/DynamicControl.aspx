@@ -19,6 +19,6 @@
     <ra:Button ID="staticButton" runat="server" Text="Add Dynamic Button" OnClick="staticButton_Click" />
     <ra:Label ID="label" runat="server" />
 
-    <ra:DynamicControl runat="server" ID="dynamicControl1" OnLoadControls="dynamicControl1_LoadControls" />
+    <ra:Dynamic runat="server" ID="dynamicControl1" OnLoadControls="dynamicControl1_LoadControls" />
 
 </asp:Content>
