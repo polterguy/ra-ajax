@@ -16,6 +16,11 @@ namespace Samples
         protected void selectedchanged(object sender, EventArgs e)
         {
             lblResults2.Text = list.SelectedItem.Text;
+            foreach (ListItem idx in list.Items)
+            {
+                lblResults2.Text += idx.Selected.ToString();
+            }
+            lblResults2.Text += list.SelectedIndex.ToString();
         }
 
         protected void mouseout(object sender, EventArgs e)

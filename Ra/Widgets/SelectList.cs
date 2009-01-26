@@ -114,7 +114,11 @@ namespace Ra.Widgets
             get
             {
                 if (_selectedItemValue == null)
+                {
+                    if (Items == null || Items.Count == 0)
+                        return null;
                     return Items[0];
+                }
                 return Items.Find(
                     delegate(ListItem idx)
                     {
@@ -136,9 +140,43 @@ namespace Ra.Widgets
             }
         }
 
+        /**
+         * Currently selected item, active item from Items collection
+         */
+        public int SelectedIndex
+        {
+            get
+            {
+                if (Items == null || Items.Count == 0)
+                    return -1;
+                int idxNo = 0;
+                foreach (ListItem idx in Items)
+                {
+                    if (idx.Selected)
+                        return idxNo;
+                    idxNo += 1;
+                }
+                return 0;
+            }
+            set
+            {
+                if (value == SelectedIndex)
+                    return;
+                int idxNo = 0;
+                foreach (ListItem idx in Items)
+                {
+                    idx.Selected = idxNo == value;
+                    if (idx.Selected)
+                        _selectedItemValue = idx.Value;
+                    idxNo += 1;
+                }
+                SetJSONGenericValue("value", _selectedItemValue);
+            }
+        }
+
         #endregion
 
-        protected override void TrackViewState()
+            protected override void TrackViewState()
         {
             Items.TrackViewState();
             base.TrackViewState();
@@ -155,7 +193,16 @@ namespace Ra.Widgets
             // the postback value BEFORE Page_Load event is fired...
             if (Enabled && AjaxManager.Instance.CurrentPage.IsPostBack)
             {
-                _selectedItemValue = AjaxManager.Instance.CurrentPage.Request.Params[ClientID];
+                SetSelectedItem();
+            }
+        }
+
+        private void SetSelectedItem()
+        {
+            _selectedItemValue = AjaxManager.Instance.CurrentPage.Request.Params[ClientID];
+            foreach (ListItem idx in Items)
+            {
+                idx.Selected = idx.Value == _selectedItemValue;
             }
         }
 
@@ -174,7 +221,7 @@ namespace Ra.Widgets
             // the postback value BEFORE Page_Load event is fired...
             if (Enabled && !this.IsViewStateEnabled && AjaxManager.Instance.CurrentPage.IsPostBack)
             {
-                _selectedItemValue = AjaxManager.Instance.CurrentPage.Request.Params[ClientID];
+                SetSelectedItem();
             }
             base.OnInit(e);
         }
