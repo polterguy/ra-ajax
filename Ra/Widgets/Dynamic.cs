@@ -16,6 +16,7 @@ namespace Ra.Widgets
     [ASP.ToolboxData("<{0}:Dynamic runat=\"server\" />")]
     public class Dynamic : Panel
     {
+        private string _key;
         public class LoadControlsEventArgs : EventArgs
         {
             private string _key;
@@ -40,12 +41,35 @@ namespace Ra.Widgets
             base.OnLoad(e);
         }
 
+        protected override void LoadControlState(object savedState)
+        {
+            if (savedState != null)
+            {
+                object[] controlSatate = savedState as object[];
+
+                if (controlSatate != null)
+                {
+                    if (controlSatate[0] != null && controlSatate[0].GetType() == typeof(string))
+                        _key = controlSatate[0].ToString();
+                    
+                    base.LoadControlState(controlSatate[1]);
+                }
+            }
+        }
+
+        protected override object SaveControlState()
+        {
+            object[] controlState = new object[2];
+            controlState[0] = _key;
+            controlState[1] = base.SaveControlState();
+            return controlState;
+        }
+
         private void LoadDynamicControl()
         {
-            string key = ViewState["_key"] as string;
-            if (LoadControls != null && key != null)
+            if (LoadControls != null && !string.IsNullOrEmpty(_key))
             {
-                LoadControlsEventArgs e = new LoadControlsEventArgs(key);
+                LoadControlsEventArgs e = new LoadControlsEventArgs(_key);
                 LoadControls(this, e);
             }
         }
@@ -54,7 +78,7 @@ namespace Ra.Widgets
         {
             Controls.Clear();
 
-            ViewState["_key"] = key;
+            _key = key;
             LoadDynamicControl();
             ReRender();
         }
