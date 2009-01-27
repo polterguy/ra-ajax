@@ -68,6 +68,7 @@
     <Compile Include="Helpers\AjaxManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Widgets\CheckBox.cs" />
+    <Compile Include="Widgets\Dynamic.cs" />
     <Compile Include="Widgets\LinkButton.cs" />
     <Compile Include="Widgets\Panel.cs" />
     <Compile Include="Widgets\HiddenField.cs" />
@@ -75,7 +76,6 @@
     <Compile Include="Widgets\RadioButton.cs" />
     <Compile Include="Widgets\SelectList.cs" />
     <Compile Include="Widgets\ImageButton.cs" />
-    <Compile Include="Widgets\DynamicControl.cs" />
     <Compile Include="Widgets\TextArea.cs" />
     <Compile Include="Widgets\Label.cs" />
     <Compile Include="Widgets\RaControl.cs" />
