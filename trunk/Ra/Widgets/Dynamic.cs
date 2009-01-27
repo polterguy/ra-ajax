@@ -36,12 +36,6 @@ namespace Ra.Widgets
 
         public event EventHandler<LoadControlsEventArgs> LoadControls;
 
-        protected override void OnLoad(EventArgs e)
-        {
-            LoadDynamicControl();
-            base.OnLoad(e);
-        }
-
         protected override void LoadControlState(object savedState)
         {
             if (savedState != null)
@@ -64,6 +58,15 @@ namespace Ra.Widgets
             controlState[0] = _key;
             controlState[1] = base.SaveControlState();
             return controlState;
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            if (Page.IsPostBack)
+            {
+                LoadDynamicControl();
+            }
+            base.OnLoad(e);
         }
 
         private void LoadDynamicControl()

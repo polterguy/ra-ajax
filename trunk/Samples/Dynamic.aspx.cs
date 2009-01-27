@@ -8,54 +8,62 @@
 
 using System;
 using Ra.Widgets;
+using System.Web.UI.DataVisualization.Charting;
+using System.Web.UI;
+using RaSelector;
 
 namespace Samples
 {
-    public partial class Dynamic : System.Web.UI.Page
+    public partial class Dynamic_Sample : Dynamic
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-                ViewState["control"] = dropper.SelectedItem.Value;
-
-            if (ViewState["control"].Equals("custom"))
             {
-                LoadCustomControls();
-            }
-            else
-            {
-                System.Web.UI.Control ctrl = LoadControl(ViewState["control"].ToString() + ".ascx");
-                pnlDynamicControls.Controls.Add(ctrl);
+                dynamic.ReLoadControls("ChartDataCollector.ascx");
             }
         }
 
-        private void LoadCustomControls()
+        protected void dynamic_LoadControls(object sender, Ra.Widgets.Dynamic.LoadControlsEventArgs e)
         {
-            Button tmp = new Button();
-            tmp.Text = "Click me";
-            tmp.Click += new EventHandler(tmp_Click);
-            pnlDynamicControls.Controls.Add(tmp);
+            Control ctrl = Page.LoadControl(e.Key);
+            if (e.Key == "Chart.ascx")
+            {
+                Series series = new Series("Column");
+                series.ChartType = SeriesChartType.Column;
+                series.BorderWidth = 2;
+                series.ShadowOffset = 3;
+                series.Points.AddY(First);
+                series.Points.AddY(Second);
+                series.Points.AddY(Third);
+                Selector.SelectFirst<System.Web.UI.DataVisualization.Charting.Chart>(ctrl).Series.Add(series);
+                series = new Series("Spline");
+                series.ChartType = SeriesChartType.Spline;
+                series.BorderWidth = 5;
+                series.ShadowOffset = 4;
+                series.Points.AddY(First);
+                series.Points.AddY(Second);
+                series.Points.AddY(Third);
+                Selector.SelectFirst<System.Web.UI.DataVisualization.Charting.Chart>(ctrl).Series.Add(series);
+                reset.Visible = true;
+            }
+            dynamic.Controls.Add(ctrl);
         }
 
-        void tmp_Click(object sender, EventArgs e)
+        protected void reset_Click(object sender, EventArgs e)
         {
-            (sender as Button).Text = "Clicked...!!";
+            dynamic.ReLoadControls("ChartDataCollector.ascx");
+            reset.Visible = false;
         }
 
-        protected void dropper_SelectedIndexChanged(object sender, EventArgs e)
+        public override void Change(string from)
         {
-            pnlDynamicControls.Controls.Clear();
-            if (dropper.SelectedItem.Value == "custom")
+            switch (from)
             {
-                LoadCustomControls();
+                case "ChartDataCollector.ascx":
+                    dynamic.ReLoadControls("Chart.ascx");
+                    break;
             }
-            else
-            {
-                System.Web.UI.Control ctrl = LoadControl(dropper.SelectedItem.Value + ".ascx");
-                pnlDynamicControls.Controls.Add(ctrl);
-            }
-            pnlDynamicControls.ReRender();
-            ViewState["control"] = dropper.SelectedItem.Value;
         }
     }
 }
