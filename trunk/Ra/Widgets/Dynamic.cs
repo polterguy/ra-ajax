@@ -42,10 +42,10 @@ namespace Ra.Widgets
 
         private void LoadDynamicControl()
         {
-            string typeName = ViewState["_key"] as string;
-            if (LoadControls != null && typeName != null)
+            string key = ViewState["_key"] as string;
+            if (LoadControls != null && key != null)
             {
-                LoadControlsEventArgs e = new LoadControlsEventArgs(typeName);
+                LoadControlsEventArgs e = new LoadControlsEventArgs(key);
                 LoadControls(this, e);
             }
         }
