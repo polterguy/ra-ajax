@@ -17,6 +17,7 @@ namespace Ra.Widgets
     public class Dynamic : Panel
     {
         private string _key;
+
         public class LoadControlsEventArgs : EventArgs
         {
             private string _key;
