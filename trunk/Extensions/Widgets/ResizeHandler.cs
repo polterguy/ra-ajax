@@ -61,16 +61,34 @@ namespace Ra.Extensions
             AjaxManager.Instance.IncludeScriptFromResource(typeof(Timer), "Extensions.Js.ResizeHandler.js");
         }
 
+        public int Width
+        {
+            get { return (int)ViewState["_width"]; }
+            private set { ViewState["_width"] = value; }
+        }
+
+        public int Height
+        {
+            get { return (int)ViewState["_height"]; }
+            private set { ViewState["_height"] = value; }
+        }
+
         void IRaControl.DispatchEvent(string name)
         {
             switch (name)
             {
                 case "resized":
                     if (Resized != null)
-                        Resized(this, 
+                    {
+                        int width = Int32.Parse(Page.Request.Params["width"]);
+                        int height = Int32.Parse(Page.Request.Params["height"]);
+                        Width = width;
+                        Height = height;
+                        Resized(this,
                             new ResizedEventArgs(
-                                Int32.Parse(Page.Request.Params["width"]), 
-                                Int32.Parse(Page.Request.Params["height"])));
+                                width,
+                                height));
+                    }
                     break;
             }
         }
