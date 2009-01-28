@@ -37,6 +37,8 @@
             runat="server" 
             ID="reset" 
             Text="Reset" 
+            AccessKey="R"
+            Tooltip="R is shortcut key"
             Visible="false" 
             OnClick="reset_Click" />
     </p>
