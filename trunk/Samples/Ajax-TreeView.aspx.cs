@@ -96,7 +96,6 @@ namespace Samples
             for (int idx = 0; idx < 50; idx++)
             {
                 TreeNode t = new TreeNode();
-                t.EnableViewState = false;
                 t.ID = "huge_" + idx;
                 t.Text = "Huge # " + idx;
                 switch (idx)
