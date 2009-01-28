@@ -1,15 +1,25 @@
-<?xml version="1.0"?>
-<configuration>
-  <system.web>
-    <httpHandlers>
-      <add path="ChartImg.axd" verb="GET,HEAD" type="System.Web.UI.DataVisualization.Charting.ChartHttpHandler, System.Web.DataVisualization, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" validate="false"/>
-    </httpHandlers>
-    <compilation debug="true"/>
-    <authentication mode="Windows"/>
-  </system.web>
+<appSettings>
+  <add key="ChartImageHandler" value="storage=file;timeout=20;dir=TempImageFiles;" />
+</appSettings>
+<system.web>
+  <httpHandlers>
+    <add
+        path="ChartImg.axd"
+        verb="GET,HEAD"
+        type="System.Web.UI.DataVisualization.Charting.ChartHttpHandler, System.Web.DataVisualization, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+        validate="false"/>
+  </httpHandlers>
+  <compilation debug="true"/>
+  <authentication mode="Windows"/>
+</system.web>
   <system.webServer>
     <handlers>
-      <add name="ChartImageHandler" preCondition="integratedMode" verb="GET,HEAD" path="ChartImg.axd" type="System.Web.UI.DataVisualization.Charting.ChartHttpHandler, System.Web.DataVisualization, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
+      <add
+          name="ChartImageHandler"
+          preCondition="integratedMode"
+          verb="GET,HEAD"
+          path="ChartImg.axd"
+          type="System.Web.UI.DataVisualization.Charting.ChartHttpHandler, System.Web.DataVisualization, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
       <!--
       <add verb="*" path="*.gif" type="ResourceCacher.FarFutureExpires, ResourceCacher"/>
       <add verb="*" path="*.png" type="ResourceCacher.FarFutureExpires, ResourceCacher"/>
