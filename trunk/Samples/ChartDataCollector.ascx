@@ -41,6 +41,8 @@
             <ra:Button 
                 runat="server" 
                 ID="save" 
+                AccessKey="V" 
+                Tooltip="V is shortcut key"
                 OnClick="save_Click"
                 Text="View Graph" />
         </td>
