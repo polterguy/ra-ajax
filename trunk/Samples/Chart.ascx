@@ -12,6 +12,7 @@
 <chart:Chart 
     id="Chart1" 
     runat="server" 
+    ImageStorageMode="UseImageLocation"
     Height="296px" 
     Width="412px" 
     ImageLocation="~/TempImages/ChartPic_#SEQ(300,3)" 
