@@ -536,7 +536,7 @@ namespace Ra.Extensions
                 idxItem.Text = new DateTime(Value.Year, idxMonth, 1).ToString("MMM", System.Threading.Thread.CurrentThread.CurrentUICulture);
                 idxItem.Value = idxMonth.ToString();
                 if (idxMonth == Value.Month)
-                    idxItem.Selected = true;
+                    month.SelectedItem = idxItem;
                 month.Items.Add(idxItem);
             }
             month.SelectedIndexChanged += new EventHandler(month_SelectedIndexChanged);
@@ -554,7 +554,7 @@ namespace Ra.Extensions
                 idxItem.Text = idxYear.ToString();
                 idxItem.Value = idxYear.ToString();
                 if (idxYear == Value.Year)
-                    idxItem.Selected = true;
+                    year.SelectedItem = idxItem;
                 year.Items.Add(idxItem);
             }
             year.SelectedIndexChanged += new EventHandler(year_SelectedIndexChanged);
