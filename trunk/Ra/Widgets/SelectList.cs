@@ -184,6 +184,7 @@ namespace Ra.Widgets
             object[] content = savedState as object[];
             Items.LoadViewState(content[0]);
             base.LoadViewState(content[1]);
+            _selectedItemValue = (string)ViewState["_selectedItemValue"];
 
             // Since if ViewState is DISABLED we will NEVER come into this bugger we need to
             // have the same logic in OnInit since we really should modify the Text value to
@@ -203,6 +204,7 @@ namespace Ra.Widgets
         {
             object[] retVal = new object[2];
             retVal[0] = Items.SaveViewState();
+            ViewState["_selectedItemValue"] = _selectedItemValue;
             retVal[1] = base.SaveViewState();
             return retVal;
         }
