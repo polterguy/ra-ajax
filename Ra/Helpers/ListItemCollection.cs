@@ -16,9 +16,9 @@ namespace Ra.Widgets
     public class ListItemCollection : ICollection, IList<ListItem>, IStateManager
     {
         private List<ListItem> _list = new List<ListItem>();
-        private RaControl _control;
+        private SelectList _control;
 
-        public ListItemCollection(RaControl control)
+        public ListItemCollection(SelectList control)
         {
             _control = control;
         }
