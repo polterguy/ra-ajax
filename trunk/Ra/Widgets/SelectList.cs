@@ -173,7 +173,7 @@ namespace Ra.Widgets
 
         #endregion
 
-            protected override void TrackViewState()
+        protected override void TrackViewState()
         {
             Items.TrackViewState();
             base.TrackViewState();
