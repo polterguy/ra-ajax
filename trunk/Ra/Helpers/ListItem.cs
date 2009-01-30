@@ -21,7 +21,7 @@ namespace Ra.Widgets
         private string _value;
         private string _text;
         private bool _enabled = true;
-        private bool _selected;
+        private SelectList _selectList;
 
         /**
          * Creates a default item
@@ -43,9 +43,15 @@ namespace Ra.Widgets
          */
         public bool Selected
         {
-            get { return _selected; }
-            set { _selected = value; }
+            get { return _selectList.SelectedItem.Equals(this); }
         }
+
+        internal SelectList SelectList
+        {
+            get { return _selectList; }
+            set { _selectList = value; }
+        }
+
 
         /**
          * If false item is disabled
