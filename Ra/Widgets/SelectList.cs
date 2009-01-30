@@ -164,7 +164,10 @@ namespace Ra.Widgets
                         _selectedItemValue = idx.Value;
                     idxNo += 1;
                 }
-                SetJSONGenericValue("value", _selectedItemValue);
+                if (IsTrackingViewState)
+                {
+                    SetJSONGenericValue("value", _selectedItemValue);
+                }
             }
         }
 
@@ -194,10 +197,6 @@ namespace Ra.Widgets
         private void SetSelectedItem()
         {
             _selectedItemValue = AjaxManager.Instance.CurrentPage.Request.Params[ClientID];
-            foreach (ListItem idx in Items)
-            {
-                idx.Selected = idx.Value == _selectedItemValue;
-            }
         }
 
         protected override object SaveViewState()
@@ -292,8 +291,6 @@ namespace Ra.Widgets
                 bool isSelected = false;
                 if (_selectedItemValue != null)
                     isSelected = _selectedItemValue == idx.Value;
-                else
-                    isSelected = idx.Selected;
                 retVal += string.Format("<option value=\"{0}\"{2}{3}>{1}</option>",
                     idx.Value,
                     (string.IsNullOrEmpty(idx.Text) ? idx.Value : idx.Text),
