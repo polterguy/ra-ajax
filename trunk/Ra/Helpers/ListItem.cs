@@ -44,6 +44,13 @@ namespace Ra.Widgets
         public bool Selected
         {
             get { return _selectList.SelectedItem.Equals(this); }
+            set
+            {
+                if (value)
+                    _selectList.SelectedItem = this;
+                else if (this.Selected)
+                    _selectList.SelectedIndex = 0;
+            }
         }
 
         internal SelectList SelectList
