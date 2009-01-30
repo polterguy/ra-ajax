@@ -127,14 +127,9 @@ namespace Ra.Widgets
             }
             set
             {
+                _selectedItemValue = value.Value;
                 if (IsTrackingViewState)
                 {
-                    foreach (ListItem idx in Items)
-                    {
-                        if (idx != value)
-                            idx.Selected = false;
-                    }
-                    _selectedItemValue = value.Value;
                     this.SetJSONValueString("Value", value.Value);
                 }
             }
@@ -165,8 +160,7 @@ namespace Ra.Widgets
                 int idxNo = 0;
                 foreach (ListItem idx in Items)
                 {
-                    idx.Selected = idxNo == value;
-                    if (idx.Selected)
+                    if(idxNo == value)
                         _selectedItemValue = idx.Value;
                     idxNo += 1;
                 }
