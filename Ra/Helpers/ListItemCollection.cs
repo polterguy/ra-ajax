@@ -177,9 +177,8 @@ namespace Ra.Widgets
                 object[] listItemViewState = values[idx + 1] as object[];
                 ListItem idxItem = new ListItem();
                 idxItem.Enabled = (bool)listItemViewState[0];
-                idxItem.Selected = (bool)listItemViewState[1];
-                idxItem.Text = listItemViewState[2].ToString();
-                idxItem.Value = listItemViewState[3].ToString();
+                idxItem.Text = listItemViewState[1].ToString();
+                idxItem.Value = listItemViewState[2].ToString();
                 _list.Add(idxItem);
             }
         }
@@ -191,11 +190,10 @@ namespace Ra.Widgets
             int idxNo = 1;
             foreach (ListItem idxItem in this)
             {
-                object[] listItemViewState = new object[4];
+                object[] listItemViewState = new object[3];
                 listItemViewState[0] = idxItem.Enabled;
-                listItemViewState[1] = idxItem.Selected;
-                listItemViewState[2] = idxItem.Text;
-                listItemViewState[3] = idxItem.Value;
+                listItemViewState[1] = idxItem.Text;
+                listItemViewState[2] = idxItem.Value;
                 retVal[idxNo++] = listItemViewState;
             }
             return retVal;
