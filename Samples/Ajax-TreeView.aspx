@@ -96,7 +96,7 @@
                 </ext:TreeNode>
                 <ext:TreeNode runat="server" ID="huge_collection">
                     <span title="This node will take some time to expand, be patient... Also be CAREFUL e.g. Internet Explorer might actually CRASH when expanding this TreeViewNode">
-                        HUGE collection of TreeNodes
+                        Big collection of TreeNodes
                     </span>
                     <ext:TreeNodes ID="huge_collection_node" runat="server" OnGetChildNodes="get_huge" />
                 </ext:TreeNode>
