@@ -34,17 +34,19 @@
         <include name="**/*.ascx" />
         <include name="**/*.master" />
         <include name="media/**/*.*" />
+        <include name="ChartImages/**/*.*" />
       </fileset>
     </copy>
 
     <mkdir dir="${output.dir}/${samples.dir}/bin" />
     <copy flatten="true" todir="${output.dir}/${samples.dir}/bin">
-      <fileset basedir="${output.dir}">
-        <include name="${library.dir}/${gzipped.dir}/${ra.name}.dll" />
-        <include name="${library.dir}/${gzipped.dir}/${ext.name}.dll" />
-        <include name="${library.dir}/${ra.selector.name}.dll" />
-        <include name="${library.dir}/${resource.cacher.name}.dll" />
-      </fileset>
+      <fileset>
+        <include name="${output.dir}/${library.dir}/${gzipped.dir}/${ra.name}.dll" />
+        <include name="${output.dir}/${library.dir}/${gzipped.dir}/${ext.name}.dll" />
+        <include name="${output.dir}/${library.dir}/${ra.selector.name}.dll" />
+        <include name="${output.dir}/${library.dir}/${resource.cacher.name}.dll" />
+		<include name="${references.dir}/System.Web.DataVisualization.dll" />
+	  </fileset>
     </copy>
 
     <!-- 

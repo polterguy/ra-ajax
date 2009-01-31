@@ -15,7 +15,7 @@
     ImageStorageMode="UseImageLocation"
     Height="296px" 
     Width="412px" 
-    ImageLocation="~/TempImages/ChartPic_#SEQ(300,3)" 
+    ImageLocation="~/ChartImages/ChartPic_#SEQ(300,3)" 
     Palette="BrightPastel" 
     imagetype="Png" 
     BorderDashStyle="Solid" 
