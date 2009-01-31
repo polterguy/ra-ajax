@@ -39,9 +39,10 @@ Ra.Control._controls = [];
 
 
 Ra.Control.errorHandler = function(stat, trc) {
-  if( stat != 0 ) // Probably "unload" process
+  if( stat !== 0 ) { // Probably "unload" process
     alert(stat + '\r\n' + trc);
-}
+  }
+};
 
 
 // Static method to retrieve a specific Ra control
@@ -224,11 +225,13 @@ Ra.Control.prototype = {
   },
 
   OnClickClientSide: function(val) {
-    if( this.options.clientClick )
+    if( this.options.clientClick ) {
       this.element.stopObserving('click', this.options.clientClick, this);
+    }
     this.options.clientClick = val;
-    if( this.options.clientClick.length > 0 )
+    if( this.options.clientClick.length > 0 ) {
       this.element.observe('click', this.options.clientClick, this);
+    }
   },
 
   // Expects any value, will set that property of the element
@@ -306,11 +309,11 @@ Ra.Control.prototype = {
   // Called when an event is raised, the parameter passed is the this.options.serverEvent instance 
   // which we will use to know how to call our server
   onEvent: function(evt, stop) {
+    var T = this;
     if( evt == 'keyup' ) {
       // This one needs SPECIAL handling to not drain resources
       if( !this._oldValue ) {
         this._oldValue = this.getValue();
-        var T = this;
         setTimeout(function() {
           T.checkValueForKeyUp();
         }, 500);
@@ -319,7 +322,6 @@ Ra.Control.prototype = {
       // This one too needs special handling
       // We don't want to poll server EVERY time user is moving 
       // mouse so we make sure we do it maximum 5 times per second
-      var T = this;
       if( !this._hasStartedMoveTimer ) {
         this._hasStartedMoveTimer = true;
         setTimeout(function() {
@@ -333,7 +335,7 @@ Ra.Control.prototype = {
   },
 
   callback: function(evt) {
-    new Ra.Ajax({
+    var x = new Ra.Ajax({
       args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=' + evt,
       raCallback:true,
       onSuccess: this.onFinishedRequest,
@@ -343,16 +345,19 @@ Ra.Control.prototype = {
   },
 
   onFinishedRequest: function(resp) {
-    if( this._oldValue )
+    if( this._oldValue ) {
       delete this._oldValue;
-    if( this._hasStartedMoveTimer )
+    }
+    if( this._hasStartedMoveTimer ) {
       delete this._hasStartedMoveTimer;
+    }
     eval(resp);
   },
 
   onFailedRequest: function(stat, trc) {
-    if( this._oldValue )
+    if( this._oldValue ) {
       delete this._oldValue;
+    }
     Ra.Control.errorHandler(stat, trc);
   },
 
@@ -394,10 +399,11 @@ Ra.Control.prototype = {
     // Note that since all other "child controls" are children DOM elements of the "this DOM element"
     // there is no need to do this for the child controls since their HTML will disappear
     // anyway.
-    if (!ht)
+    if (!ht) {
         this.element.replace("<span id=\"" + this.element.id + "\" style=\"display:none;\" />");
-    else
+    } else {
         this.element.replace(ht);
+    }
   },
 
   // This function will search for child controls and make sure those too are detroyed...
@@ -420,16 +426,16 @@ Ra.Control.prototype = {
       // And if it's a child control (defined as starting with the same id followed by an '_')
       // NOT bulletproof, but close enough...
       var tId = this.element.id;
-      if( ctrls[idx].element.id.indexOf(tId) == 0 &&
+      if( ctrls[idx].element.id.indexOf(tId) === 0 &&
         ctrls[idx].element.id.substring(tId.length, tId.length + 1) == '_' ) {
           children.push(ctrls[idx]);
       }
     }
 
     // Now looping through and destroying all objects
-    var idx = children.length;
-    while( idx-- ) {
-      children[idx].destroyThis();
+    var i = children.length;
+    while( i-- ) {
+      children[i].destroyThis();
     }
   },
 
@@ -452,8 +458,9 @@ Ra.Control.prototype = {
   // of registered controls collection
   _destroyThisControl: function() {
 
-    if( this.options.clientClick )
+    if( this.options.clientClick ) {
       this.element.stopObserving('click', this.options.clientClick, this);
+    }
 
     var idx = this.options.beha.length;
     while( idx-- ) {
@@ -497,7 +504,7 @@ Ra.Control.prototype = {
       }
     }
   }
-}
+};
 
 Ra.Control.callServerMethod = function(method, opt, args) {
   var mArgs = '__FUNCTION_NAME=' + method;
@@ -514,41 +521,17 @@ Ra.Control.callServerMethod = function(method, opt, args) {
   }
   
   Ra.Control._methodReturnValue = null;
-  new Ra.Ajax({
+  var x = new Ra.Ajax({
     args: mArgs,
     raCallback:true,
     onSuccess: function(resp) {
       eval(resp);
       opt.onSuccess(Ra.Control._methodReturnValue);
     },
-    onError: function(sta, trc) { 
+    onError: function(stat, trc) { 
       opt.onError(stat, trc);
     }
   });
-}
+};
+
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
