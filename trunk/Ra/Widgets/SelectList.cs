@@ -189,7 +189,7 @@ namespace Ra.Widgets
             // Since if ViewState is DISABLED we will NEVER come into this bugger we need to
             // have the same logic in OnInit since we really should modify the Text value to
             // the postback value BEFORE Page_Load event is fired...
-            if (Enabled && AjaxManager.Instance.CurrentPage.IsPostBack)
+            if (Enabled && AjaxManager.Instance.CurrentPage.IsPostBack && _selectedItemValue == null)
             {
                 SetSelectedItem();
             }
@@ -214,7 +214,7 @@ namespace Ra.Widgets
             // Since if ViewState is DISABLED we will NEVER come into LoadViewState we need to
             // have the same logic in OnInit since we really should modify the Text value to
             // the postback value BEFORE Page_Load event is fired...
-            if (Enabled && !this.IsViewStateEnabled && AjaxManager.Instance.CurrentPage.IsPostBack)
+            if (Enabled && !this.IsViewStateEnabled && AjaxManager.Instance.CurrentPage.IsPostBack && _selectedItemValue == null)
             {
                 SetSelectedItem();
             }
