@@ -42,8 +42,9 @@ Ra.emptyFunction = function() {};
 
 // $ method, used to retrieve elements on document
 Ra.$ = function(id) {
-  if( id.setOpacity )
+  if( id.setOpacity ) {
     return id;
+  }
   var el = document.getElementById(id);
   if( !el ) {
     return null;
@@ -181,8 +182,9 @@ Ra.Element.prototype = {
     var orPos = els.position;
     var orDis = els.display;
     els.visibility = 'hidden';
-    if( Ra.Browser.IE6 )
+    if( Ra.Browser.IE6 ) {
       els.position = 'absolute'; // Without the absolute thing, IE6 won't work...
+    }
     els.display = 'block';
     var orW = this.clientWidth;
     var orH = this.clientHeight;
@@ -198,41 +200,45 @@ Ra.Element.prototype = {
   getStyle: function(key) {
     var val = this.style[key];
     if( !val ) {
-      if( this.currentStyle )
+      if( this.currentStyle ) {
         val = this.currentStyle[key];
-      else if( window.getComputedStyle )
+      } else if( window.getComputedStyle ) {
         val = document.defaultView.getComputedStyle(this, null)[key];
+      }
     }
     return val;
   },
 
   setStyle: function(key, value) {
-    if( key == 'opacity' )
+    if( key == 'opacity' ) {
       this.setOpacity(value);
-    else
+    } else {
       this.style[key] = value;
+    }
   },
 
   absolutize: function() {
-    if( this._hasAbsTized )
+    if( this._hasAbsTized ) {
       return;
+    }
     var lft = this.getStyle('left');
     var top = this.getStyle('top');
-    if( this.getStyle('position') == 'absolute' && 
-      (lft && top) && 
-      (lft != 'auto' && top != 'auto') )
+    if( this.getStyle('position') == 'absolute' && (lft && top) && (lft != 'auto' && top != 'auto') ) {
       return;
+    }
     var valueT = this.offsetTop  || 0;
     var valueL = this.offsetLeft  || 0;
     var el = this.offsetParent;
 
     while (el) {
       Ra.extend(el, Ra.Element.prototype);
-      if( el.tagName == 'BODY' )
+      if( el.tagName == 'BODY' ) {
         break;
+      }
       var pos = el.getStyle('position');
-      if( pos == 'relative' || pos == 'absolute')
+      if( pos == 'relative' || pos == 'absolute') {
         break;
+      }
       valueT += el.offsetTop  || 0;
       valueL += el.offsetLeft || 0;
       el = el.offsetParent;
@@ -302,8 +308,9 @@ Ra.Element.prototype = {
 
   isLeaveEnter: function(e, node) { 
     var rel = e.relatedTarget ? e.relatedTarget : (e.type == 'mouseout' ? e.toElement : e.fromElement);
-    while (rel && rel != node)
+    while (rel && rel != node) {
       rel = rel.parentNode;
+    }
     return (rel != node);
   },
 
@@ -326,31 +333,35 @@ Ra.Element.prototype = {
       // (to mimick the "mouseenter" and "mouseleave" model from Microsoft - which is FAR more logical
       // then the W3C model...!)
       if( evN == 'mouseover' || evN == 'mouseout' ) {
-        if( !T.isLeaveEnter(evt, T) )
+        if( !T.isLeaveEnter(evt, T) ) {
           return;
+        }
       }
       var prs = (exPar || []);
       prs.push(evt);
       var retVal = func.apply(clCtx, prs);
       if( retVal === false ) {
         evt.cancelBubble = true;
-        if( evt.stopPropagation )
+        if( evt.stopPropagation ) {
           evt.stopPropagation();
+        }
         return false;
-      }
-      else if( retVal != null && retVal.length == 2 && retVal[0] === false && retVal[1] == false ) {
+      } else if( retVal && retVal.length == 2 && retVal[0] === false && retVal[1] === false ) {
         evt.cancelBubble = true;
-        if( evt.stopPropagation )
+        if( evt.stopPropagation ) {
           evt.stopPropagation();
-        if( evt.preventDefault)
+        }
+        if( evt.preventDefault) {
           evt.preventDefault();
+        }
         return false;
       }
     };
 
     // Here we're "defaulting" the clCtx to the function unless it is explicitly given
-    if( !clCtx )
+    if( !clCtx ) {
       clCtx = func;
+    }
 
     if( !clCtx._raAjaxEventGuid ) {
       clCtx._raAjaxEventGuid = Ra.Element._guid++;
@@ -370,8 +381,9 @@ Ra.Element.prototype = {
   stopObserving: function(evN, func, clTx) {
 
     // Here we're "defaulting" the clTx to the function unless it is explicitly given
-    if( !clTx )
+    if( !clTx ) {
       clTx = func;
+    }
 
     // Retrieving event handler wrapper
     var wr = this._wrappers[evN + clTx._raAjaxEventGuid];
@@ -485,7 +497,7 @@ Ra.XHR.prototype = {
       Ra.XHR.activeRequest = false;
     }
   }
-}
+};
 
 
 
@@ -545,8 +557,8 @@ Ra.Form.prototype = {
 
     // Calling out to all of our pre-serialization handlers
     var prez = Ra.Form.preSerializers;
-    for( var idx = 0; idx < prez.length; idx++ ) {
-      prez[idx].handler.call(prez[idx].context);
+    for( var i = 0; i < prez.length; i++ ) {
+      prez[i].handler.call(prez[i].context);
     }
 
     // Return value
@@ -780,8 +792,9 @@ Ra.Effect.prototype = {
 
   // Called once every 10 millisecond. Heartbeat of animation
   loop: function() {
-    if( this.stopped )
+    if( this.stopped ) {
       return;
+    }
     var T = this;
 
     setTimeout(function() {
@@ -817,6 +830,5 @@ Ra.Effect.prototype = {
     this.options.onRender.call(this, pos);
   }
 };
-
 
 })();
