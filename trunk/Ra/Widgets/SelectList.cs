@@ -179,25 +179,11 @@ namespace Ra.Widgets
             base.TrackViewState();
         }
 
-        protected override void LoadViewState(object savedState)
-        {
-            object[] content = savedState as object[];
-            Items.LoadViewState(content[0]);
-            base.LoadViewState(content[1]);
-            _selectedItemValue = (string)ViewState["_selectedItemValue"];
-
-            // Since if ViewState is DISABLED we will NEVER come into this bugger we need to
-            // have the same logic in OnInit since we really should modify the Text value to
-            // the postback value BEFORE Page_Load event is fired...
-            if (Enabled && AjaxManager.Instance.CurrentPage.IsPostBack && _selectedItemValue == null)
-            {
-                SetSelectedItem();
-            }
-        }
-
         private void SetSelectedItem()
         {
-            _selectedItemValue = AjaxManager.Instance.CurrentPage.Request.Params[ClientID];
+            string newVal = AjaxManager.Instance.CurrentPage.Request.Params[ClientID];
+            if (newVal != null)
+                _selectedItemValue = newVal;
         }
 
         protected override object SaveViewState()
@@ -209,12 +195,21 @@ namespace Ra.Widgets
             return retVal;
         }
 
+        protected override void LoadViewState(object savedState)
+        {
+            object[] content = savedState as object[];
+            Items.LoadViewState(content[0]);
+            base.LoadViewState(content[1]);
+            if (_selectedItemValue == null)
+                _selectedItemValue = (string)ViewState["_selectedItemValue"];
+        }
+
         protected override void OnInit(EventArgs e)
         {
             // Since if ViewState is DISABLED we will NEVER come into LoadViewState we need to
             // have the same logic in OnInit since we really should modify the Text value to
             // the postback value BEFORE Page_Load event is fired...
-            if (Enabled && !this.IsViewStateEnabled && AjaxManager.Instance.CurrentPage.IsPostBack && _selectedItemValue == null)
+            if (Enabled && AjaxManager.Instance.CurrentPage.IsPostBack)
             {
                 SetSelectedItem();
             }

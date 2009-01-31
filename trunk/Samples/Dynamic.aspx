@@ -67,11 +67,9 @@
     </p>
     <p>
         If you are stuck with problems regarding Dynamically Created Ra-Ajax Controls then
-        please make sure to read and understand what's said here, since chances are that
-        you are doing something wrong when creating them, re-creating them, deleting the
-        "old ones" or calling ReRender. Then if you are still stuck, feel free to post
-        a question in our <a href="http://ra-ajax.org/Forums/Forums.aspx">forums</a> asking 
-        for help.
+        you probably need to check up the <em>Ra-Ajax Dynamic Control</em> which is the one
+        being showcased on this page. It very effectively abstracts away all these problems 
+        if used correctly.
     </p>
     <a href="Updater.aspx">On to Ajax Updater Sample</a>
 </asp:Content>
