@@ -33,11 +33,12 @@ Ra.Beha.$ = function(id) {
     var behvs = ctrls[idxCtrl].options.beha;
     var idxBeha = behvs.length;
     while( idxBeha-- ) {
-      if( behvs[idxBeha].id == id )
+      if( behvs[idxBeha].id == id ) {
         return behvs[idxBeha];
+      }
     }
   }
-}
+};
 
 
 Ra.Beha.prototype = {
@@ -57,7 +58,7 @@ Ra.Beha.prototype = {
       this[idxKey](json[idxKey]);
     }
   }
-}
+};
 
 
 
@@ -84,8 +85,9 @@ Ra.BObscureCommon.prototype = {
     parentElement.appendChild(el);
 
     // Listening to the "resized" event since we then want to resize our obscurer surface...
-    if( !window.observe )
+    if( !window.observe ) {
       Ra.extend(window, Ra.Element.prototype);
+    }
     window.observe('resize', this.onResized, this);
 
     // In case we have margins, borders and so on (e.g. margin-right:auto etc) we need to calculate
@@ -118,23 +120,25 @@ Ra.BObscureCommon.prototype = {
     }
 
     if( valueL ) {
-      if( valueL > 0 )
+      if( valueL > 0 ) {
         valueL *= -1;
-      else
+      } else {
         valueL = 0;
+      }
       this.el.setStyle('left', valueL + 'px');
     }
     if( valueT ) {
-      if( valueT > 0 )
+      if( valueT > 0 ) {
         valueT *= -1;
-      else
+      } else {
         valueL = 0;
+      }
       this.el.setStyle('top', valueT + 'px');
     }
 
     // Setting width and height to size of viewport...
-    this.el.setStyle('width',parseInt(document.body.clientWidth) + 'px');
-    this.el.setStyle('height',parseInt(document.body.clientHeight) + 'px');
+    this.el.setStyle('width',parseInt(document.body.clientWidth, 10) + 'px');
+    this.el.setStyle('height',parseInt(document.body.clientHeight, 10) + 'px');
   },
 
   destroyObscurer: function(){
@@ -175,15 +179,16 @@ Ra.extend(Ra.BObscur.prototype, {
   },
 
   initBehavior: function(parent) {
-    if( this.options.zIndex == -1)
+    if( this.options.zIndex == -1) {
       this.options.zIndex = parseInt(parent.element.style.zIndex,10) - 1;
+    }
 
     // Creating obscurer (from base class)
     this.createObscurer(parent.element.parentNode);
 
     // Then we can run the animation effect which will slowly show the obscurer...
     var T = this;
-    new Ra.Effect(this.el, {
+    var dummy = new Ra.Effect(this.el, {
       duration: 300,
       onStart: function() {
         T.el.setOpacity(0);
@@ -202,7 +207,7 @@ Ra.extend(Ra.BObscur.prototype, {
   destroy: function() {
     this.destroyObscurer();
     var T = this;
-    new Ra.Effect(this.el, {
+    var dummy = new Ra.Effect(this.el, {
       duration: 300,
       onFinished: function() {
         T.el.remove();
@@ -312,8 +317,9 @@ Ra.extend(Ra.BDrag.prototype, {
   // is currently being trapped for the DOM element of the control
   // but should be trapped for the document.body element.
   onMouseUp: function(event) {
-    if( !this._hasCaption || !this._hasDragged )
+    if( !this._hasCaption || !this._hasDragged ) {
       return;
+    }
     this._hasCaption = false;
     delete this._pos;
 
@@ -329,13 +335,14 @@ Ra.extend(Ra.BDrag.prototype, {
       var idx = affectedDroppers.length;
       dropParams = '&drops=';
       while( idx-- ) {
-        if( idx > 0 )
+        if( idx > 0 ) {
           dropParams += ',';
+        }
         dropParams += affectedDroppers[idx].id;
         affectedDroppers[idx].unTouch();
       }
     }
-    new Ra.Ajax({
+    var dummy = new Ra.Ajax({
       args:'__RA_CONTROL=' + this.id + '&__EVENT_NAME=dropped' + '&x=' + newX + '&y=' + newY + dropParams,
       raCallback:true,
       onSuccess: this.onFinishedRequest,
@@ -433,7 +440,7 @@ Ra.BDrop.getAffected = function(x, y) {
     }
   }
   return retVal;
-}
+};
 
 
 Ra.BDrop.getUnAffected = function(x, y) {
@@ -446,7 +453,7 @@ Ra.BDrop.getUnAffected = function(x, y) {
     }
   }
   return retVal;
-}
+};
 
 
 // Inheriting from Ra.Control
@@ -472,22 +479,24 @@ Ra.extend(Ra.BDrop.prototype, {
   },
 
   touched: function() {
-    if( this.isTouched || this.parent.element.className.indexOf(this.options.touched) != -1 )
+    if( this.isTouched || this.parent.element.className.indexOf(this.options.touched) != -1 ) {
       return;
+    }
     this.isTouched = true;
     this._oldClassName = this.parent.element.className;
     this.parent.element.addClassName(this.options.touched);
   },
 
   unTouch: function() {
-    if( !this.isTouched )
+    if( !this.isTouched ) {
       return;
+    }
     this.isTouched = false;
     this.parent.element.removeClassName(this.options.touched);
   },
 
   destroy: function() {
-    idx = Ra.BDrop._droppers.length;
+    var idx = Ra.BDrop._droppers.length;
     while( idx-- ) {
       if( Ra.BDrop._droppers[idx].id == this.id ) {
         // We have found our instance, idxToRemove now should contain the index of the control
@@ -547,12 +556,12 @@ Ra.extend(Ra.BUpdate.prototype, {
     parent.onFinishedRequest = function(response) {
       T.options.onFinished.apply(this, []);
       T._originalOnFinished.apply(T.parent, [response]);
-    }
+    };
 
     this._originalonFailed = parent.onFailedRequest;
     parent.onFailedRequest = function(status, fullTrace) {
       T._originalonFailed.apply(T.parent, [status, fullTrace]);
-    }
+    };
   }
 
 });
@@ -626,14 +635,16 @@ Ra.extend(Ra.BUpDel.prototype, {
       el = el.offsetParent;
     }
 
-    if( valueL )
+    if( valueL ) {
       this.el.setStyle('left',(-valueL) + 'px');
-    if( valueT )
+    }
+    if( valueT ) {
       this.el.setStyle('top',(-valueT) + 'px');
+    }
 
     // Setting width and height to size of viewport...
-    this.el.setStyle('width',parseInt(document.body.clientWidth || self.innerWidth || document.documentElement.clientWidth) + 'px');
-    this.el.setStyle('height',parseInt(document.body.clientHeight || self.innerHeight || document.documentElement.clientHeight) + 'px');
+    this.el.setStyle('width',parseInt(document.body.clientWidth || self.innerWidth || document.documentElement.clientWidth, 10) + 'px');
+    this.el.setStyle('height',parseInt(document.body.clientHeight || self.innerHeight || document.documentElement.clientHeight, 10) + 'px');
   },
 
   Opacity: function(value) {
@@ -643,8 +654,9 @@ Ra.extend(Ra.BUpDel.prototype, {
   onStart: function() {
 
     // Checking to see if request finished before we could execute the "wait time"...
-    if( this._finishedRequest)
+    if( this._finishedRequest) {
       return;
+    }
 
     var T = this;
     this.effect = new Ra.Effect(this.el, {
