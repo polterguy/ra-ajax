@@ -47,8 +47,9 @@ namespace Samples
                 Selector.SelectFirst<System.Web.UI.DataVisualization.Charting.Chart>(ctrl).Series.Add(series);
                 reset.Visible = true;
             }
-            new EffectFadeIn(dynamic, 300)
-                .Render();
+            if (IsPostBack)
+                new EffectFadeIn(dynamic, 300)
+                    .Render();
             dynamic.Controls.Add(ctrl);
         }
 

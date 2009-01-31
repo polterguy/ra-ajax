@@ -82,7 +82,7 @@ namespace Ra.Widgets
         public void Insert(int index, ListItem item)
         {
             _list.Insert(index, item);
-            item.SelectList = this._control as SelectList;
+            item.SelectList = this._control;
             _control.ReRender();
         }
 
@@ -101,7 +101,7 @@ namespace Ra.Widgets
             set
             {
                 _list[index] = value;
-                value.SelectList = this._control as SelectList;
+                value.SelectList = this._control;
                 _control.ReRender();
             }
         }
@@ -115,7 +115,7 @@ namespace Ra.Widgets
         public void Add(ListItem item)
         {
             _list.Add(item);
-            item.SelectList = this._control as SelectList;
+            item.SelectList = this._control;
             _control.ReRender();
         }
 
@@ -179,6 +179,7 @@ namespace Ra.Widgets
                 idxItem.Enabled = (bool)listItemViewState[0];
                 idxItem.Text = listItemViewState[1].ToString();
                 idxItem.Value = listItemViewState[2].ToString();
+                idxItem.SelectList = this._control;
                 _list.Add(idxItem);
             }
         }
