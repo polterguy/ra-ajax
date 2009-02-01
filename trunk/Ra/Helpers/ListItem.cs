@@ -38,6 +38,7 @@ namespace Ra.Widgets
             _value = value;
         }
 
+        private bool _hasSetSelectedTrue;
         /**
          * True if item is selected
          */
@@ -47,7 +48,12 @@ namespace Ra.Widgets
             set
             {
                 if (value)
-                    _selectList.SelectedItem = this;
+                {
+                    if (_selectList == null)
+                        _hasSetSelectedTrue = true;
+                    else
+                        _selectList.SelectedItem = this;
+                }
                 else if (this.Selected)
                     _selectList.SelectedIndex = 0;
             }
@@ -56,7 +62,12 @@ namespace Ra.Widgets
         internal SelectList SelectList
         {
             get { return _selectList; }
-            set { _selectList = value; }
+            set
+            {
+                _selectList = value;
+                if (_hasSetSelectedTrue)
+                    _selectList.SelectedItem = this;
+            }
         }
 
 
