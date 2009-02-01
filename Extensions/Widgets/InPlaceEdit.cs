@@ -103,8 +103,7 @@ namespace Ra.Extensions
                 _text.Text = _link.Text;
             _text.Style["display"] = "inline";
             _link.Style["display"] = "none";
-            _text.Focus();
-            _text.Select();
+            new EffectFocusAndSelect(_text).Render();
         }
 
         protected override void OnPreRender(EventArgs e)
