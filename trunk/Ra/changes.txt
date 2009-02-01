@@ -31,6 +31,9 @@
 
 * Added support for TabIndex on all RaWebControl inherited controls.
 
+  - All the above changes should make it easier to port an "existing"
+    ASP.NET WebControls application to Ra-Ajax ...
+
 * Fixed a bug in Style collection which makes the logic throw an 
   exception when there's a whitespace at the end of the style
   collection.

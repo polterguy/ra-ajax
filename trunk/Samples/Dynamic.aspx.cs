@@ -20,7 +20,7 @@ namespace Samples
         {
             if (!IsPostBack)
             {
-                dynamic.ReLoadControls("ChartDataCollector.ascx");
+                dynamic.ReLoadControls("Chart.ascx");
             }
         }
 
