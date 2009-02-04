@@ -7,6 +7,25 @@
 
   ******************************************************************
 
+
+  ------------------------------------------------------------------
+
+                          Version 1.1.0
+
+       Bug fixes, some quite severe...!
+
+  ------------------------------------------------------------------
+
+* Fixed so that Accordion now when is set to ClientSideChange="true"
+  it won't finish the animation with an explicit height for the 
+  element being shown. This was a bug and would make the Auto-Resize
+  feature of the Accordion not work fully when animation was being
+  done on the client.
+
+
+
+
+
   ------------------------------------------------------------------
 
                           Version 1.0.3

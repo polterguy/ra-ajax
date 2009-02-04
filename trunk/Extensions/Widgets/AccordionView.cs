@@ -90,7 +90,7 @@ Ra.E('{0}_CHILDREN', {{
   onFinished: function() {{
     this.other.setStyle('display','none');
     this.other.setStyle('height','');
-    this.element.setStyle('height',this.otherToHeight + 'px');
+    this.element.setStyle('height','');
 }},
   onRender: function(pos) {{
     this.element.setStyle('height',(this.otherToHeight * pos) + 'px');
