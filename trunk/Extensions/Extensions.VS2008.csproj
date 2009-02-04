@@ -45,10 +45,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Widgets\ExtButton.cs" />
     <Compile Include="Widgets\Calendar.cs" />
     <Compile Include="Widgets\Accordion.cs" />
     <Compile Include="Widgets\AccordionView.cs" />

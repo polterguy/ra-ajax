@@ -262,6 +262,13 @@ http://ra-ajax.org
 .auto-item:hover { border-top:solid 1px #CCD1FF; border-bottom:solid 1px #CCD1FF; background-color:#fafaff; }
 
 
+/* Extended Button */
+.button { border:none 0; background-color:Transparent; }
+.button .bLeft { background:Transparent url(window-sprite.png) no-repeat 0 0; padding-left:7px; display:block; height:32px; }
+.button .bCenter { background:Transparent url(window-h-sprite.png) repeat-x 0 0; display:block; height:32px; padding-top:7px; }
+.button .bRight { background:Transparent url(window-sprite.png) no-repeat top right; padding-right:7px; display:block; height:32px; }
+
+
 /* Window-LIGHT...! */
 
 .wnd-light { border:solid 1px #CCD1FF; background-color:#fff; }

@@ -11,6 +11,11 @@
     Namespace="Ra.Widgets" 
     TagPrefix="ra" %>
 
+<%@ Register 
+    Assembly="Extensions" 
+    Namespace="Ra.Extensions" 
+    TagPrefix="ext" %>
+
 <asp:Content 
     ID="Content1" 
     ContentPlaceHolderID="cnt1" 
@@ -47,7 +52,7 @@
                 Text="Try to hover over this panel too" />
         </ra:Panel>
         <br />
-        <ra:Button 
+        <ext:ExtButton 
             runat="server" 
             id="btn"
             OnMouseOver="btn_MouseOver"
