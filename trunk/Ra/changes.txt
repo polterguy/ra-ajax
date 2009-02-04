@@ -34,6 +34,10 @@
 
   ------------------------------------------------------------------
 
+* Added a new Widget called "Dynamic" which completely takes away 
+  the hassle of creating Dynamically created controls. A great sample
+  of use is the "Dynamic.aspx" page which is completely rewritten.
+
 * Added support for having TreeView NOT trigger selection of items
   at all as an option. This is a *BREAKING CHANGE* since the 
   "AllowMultipleSelectedItems" property is now obsolete and exchanged
@@ -57,7 +61,7 @@
   exception when there's a whitespace at the end of the style
   collection.
 
-* Fixed a bug in InPalceEdit that made it not work properly in
+* Fixed a bug in InPlaceEdit that made it not work properly in
   Opera and on Mono.
 
 
