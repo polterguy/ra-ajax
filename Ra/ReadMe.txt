@@ -12,7 +12,9 @@ needs fulfilled in Ra-Ajax itself. :)
 
 Ra-Ajax is hosted at; http://code.google.com/p/ra-ajax/
 
-Ra-Ajax is the copyright of Thomas Hansen - thomas@ra-ajax.org
+Ra-Ajax is the copyright of Thomas Hansen - thomas@ra-ajax.org but 
+maintained by Ra-Software AS, a Norwegian based software company with two
+employees. Thomas Hansen and Kariem Ali (which lives in Egypt/Alexandria)
 
 The license for Ra-Ajax can be found on disc in the same folder as this 
 file and is a pure LGPL version 3 license. Basically it says that you 
@@ -23,7 +25,7 @@ to post questions at our forum section at http://ra-ajax.org
 
 Since the LGPL 3 is a set of additional permissions on top of the GPL3
 and Free Software Foundation suggests that you should include BOTH licenses
-when creating LGPL work, I have included also the GPL3 license in the file 
+when creating LGPL work, we have included also the GPL3 license in the file 
 called "license-GPL.txt" though the main license file and the "entry point"
 for understanding the license of Ra-Ajax is the "license.txt" file.
 

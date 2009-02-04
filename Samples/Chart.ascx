@@ -2,7 +2,7 @@
     Language="C#" 
     AutoEventWireup="true" 
     CodeFile="Chart.ascx.cs" 
-    Inherits="Chart" %>
+    Inherits="Samples.Chart" %>
 
 <%@ Register 
     Assembly="System.Web.DataVisualization" 
