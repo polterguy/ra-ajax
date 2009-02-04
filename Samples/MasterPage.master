@@ -19,12 +19,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
     <head runat="server">
         <title>Untitled Page</title>
-        <link runat="server" id="includeSteel" href="media/skins/steel/Steel-1.0.css" rel="stylesheet" type="text/css" />
-        <link runat="server" id="includeAlphacube" href="media/skins/alphacube/alphacube-1.0.css" rel="stylesheet" type="text/css" />
-        <link runat="server" id="includeWhite" href="media/skins/white/white-1.0.css" rel="stylesheet" type="text/css" />
-        <link runat="server" id="includeMac" href="media/skins/mac/mac-1.0.css" rel="stylesheet" type="text/css" />
-        <link runat="server" id="includeSpread" href="media/skins/spread/spread-1.0.css" rel="stylesheet" type="text/css" />
-        <link runat="server" id="includeSapphire" href="media/skins/Sapphire/Sapphire-1.0.css" rel="stylesheet" type="text/css" />
+        <link runat="server" id="includeSteel" href="media/skins/steel/Steel-1.1.css" rel="stylesheet" type="text/css" />
+        <link runat="server" id="includeAlphacube" href="media/skins/alphacube/alphacube-1.1.css" rel="stylesheet" type="text/css" />
+        <link runat="server" id="includeWhite" href="media/skins/white/white-1.1.css" rel="stylesheet" type="text/css" />
+        <link runat="server" id="includeMac" href="media/skins/mac/mac-1.1.css" rel="stylesheet" type="text/css" />
+        <link runat="server" id="includeSpread" href="media/skins/spread/spread-1.1.css" rel="stylesheet" type="text/css" />
+        <link runat="server" id="includeSapphire" href="media/skins/Sapphire/Sapphire-1.1.css" rel="stylesheet" type="text/css" />
         <link href="media/MainStyles-1.0.css" rel="stylesheet" type="text/css" />
     </head>
     <body>

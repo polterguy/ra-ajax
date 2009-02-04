@@ -122,20 +122,16 @@ input[type=text],input[type=password],textarea{width:12.25em;*width:11.9em;}
 .window_nw			{ background: transparent url(window-sprite.png) no-repeat 0 0; padding-left:10px; position:relative; }
 .window_ne			{ background: transparent url(window-sprite.png) no-repeat right 0; padding-right:10px; }
 .window_n			{ background: transparent url(window-h-sprite.png) repeat-x 0 0; overflow:hidden; height:25px; }
-.window_title		{ font-size:0.8em; position:absolute; top:5px; color:#333; -moz-user-select:none; -khtml-user-select: none; user-select: none; cursor:move; width:100%; }
-.window_close		{ width:23px; height:16px; line-height:16px; background:transparent url(window-sprite.png) no-repeat -10px 0; position:absolute; top:0px; right:0px; }
+.window_title		{ font-size:1.0em; position:absolute; top:5px; color:#333; -moz-user-select:none; -khtml-user-select: none; user-select: none; cursor:move; width:100%; }
+.window_close		{ width:23px; height:16px; background:transparent url(window-sprite.png) no-repeat -10px 0; position:absolute; top:0px; right:11px; }
 .window_close:hover	{ background-color:transparent; background-position:-10px -16px; }
-.window_prev		{ width:23px; height:16px; background:transparent url(window-sprite.png) no-repeat -10px -32px; position:absolute; top:3px; right:35px; }
-.window_next		{ width:23px; height:16px; background:transparent url(window-sprite.png) no-repeat -10px -48px; position:absolute; top:3px; right:18px; }
-.window_prev:hover	{ background-color:#ccb; }
-.window_next:hover	{ background-color:#ccb; }
 .window_body		{ overflow:hidden; position:relative; }
 .window_w			{ background: transparent url(window-v-sprite.png) repeat-y 0 0; padding-left:7px; }
 .window_e			{ background: transparent url(window-v-sprite.png) repeat-y right 0; padding-right:7px; }
-.window_content		{ background-color:#fafaff; border-style:solid; border-width:1px; border-left-color:#999; border-top-color:#999; border-right-color:#aaa; border-bottom-color:#aaa; }
+.window_content		{ background-color:#fff; border-style:solid; border-width:1px; border-color:#eee; }
 .window_sw			{ background: transparent url(window-sprite.png) no-repeat 0 -25px; padding-left:5px; }
 .window_se			{ background: transparent url(window-sprite.png) no-repeat right -25px; padding-right:5px; }
-.window_s			{ background: transparent url(window-h-sprite.png) repeat-x 0 -25px; height:7px; }
+.window_s			{ background: transparent url(window-h-sprite.png) repeat-x 0 -24px; height:7px; }
 
 
 /*
@@ -148,18 +144,16 @@ http://ra-ajax.org
 /* Calendar specific CSS */
 
 .calendar				{ display:block; }
-.calendar_nw			{ background: transparent url(window-sprite.png) no-repeat 0 0; padding-left:10px; position:relative; }
+.calendar_nw			{ background: transparent url(window-sprite.png) no-repeat 0px 0px; padding-left:10px; position:relative; }
 .calendar_ne			{ background: transparent url(window-sprite.png) no-repeat right 0; padding-right:10px; }
 .calendar_n				{ background: transparent url(window-h-sprite.png) repeat-x 0 0; overflow:hidden; height:25px; }
-.calendar_title			{ font-size:0.8em; position:absolute; top:5px; color:#333; width:100%; }
-.calendar_close			{ width:23px; height:16px; line-height:16px; background:transparent url(window-sprite.png) no-repeat -10px 0; position:absolute; top:0px; right:0px; }
-.calendar_close:hover	{ background-color:transparent; background-position:-10px -16px; }
+.calendar_title			{ position:absolute; top:5px; color:#333; width:100%; }
 .calendar_body			{ overflow:hidden; position:relative; }
 .calendar_w				{ background: transparent url(window-v-sprite.png) repeat-y 0 0; padding-left:7px; }
 .calendar_e				{ background: transparent url(window-v-sprite.png) repeat-y right 0; padding-right:7px; }
-.calendar_content		{ background-color:#fafaff; border-style:solid; border-width:1px; border-left-color:#999; border-top-color:#999; border-right-color:#aaa; border-bottom-color:#aaa; font-size:0.7em; }
-.calendar_sw			{ background: transparent url(window-sprite.png) no-repeat 0 -25px; padding-left:5px; }
-.calendar_se			{ background: transparent url(window-sprite.png) no-repeat right -25px; padding-right:5px; }
+.calendar_content		{ font-size:0.8em; background-color:#fff; border-style:solid; border-width:1px; border-color:#eee; }
+.calendar_sw			{ background: transparent url(window-sprite.png) no-repeat 0 -25px; padding-left:7px; }
+.calendar_se			{ background: transparent url(window-sprite.png) no-repeat right -25px; padding-right:7px; }
 .calendar_s				{ background: transparent url(window-h-sprite.png) repeat-x 0 -25px; height:7px; }
 
 .calendar select				{ border:none; margin:0 5px 0 5px; background-color:Transparent; color:#00f; }
@@ -182,31 +176,30 @@ http://ra-ajax.org
 .tab .tab-header ul { }
 .tab .tab-header ul li { display:inline; padding-right:2px; }
 .tab .tab-header ul li.first { margin-left:3px; }
-.tab .tab-header ul li a { text-decoration:none; color:#777; padding:5px; }
+.tab .tab-header ul li a { text-decoration:none; color:#333; padding:5px; }
 .tab .tab-header ul li a:hover { color:#00f; background-color:Transparent; }
-.tab .tab-header ul li.active  a { text-decoration:none; color:#000; padding:5px; }
 .tab .tab-header ul li.tab-disabled a { color:#faa; cursor:default; }
 .tab .tab-header ul li.tab-disabled a:hover { color:#f99; }
 .tab .tab-header ul li span { display:inline-block; *height:18px; padding-top:5px; }
-.tab .tab-header ul li span.left { background:url('tab-sprite.png') no-repeat; width:10px; border-bottom:solid 1px #648CE8; }
-.tab .tab-header ul li span.center { background:url('tab-h-sprite.png') repeat-x; border-bottom:solid 1px #648CE8; }
-.tab .tab-header ul li span.right { background:url('tab-sprite.png') no-repeat -10px 0; width:10px; border-bottom:solid 1px #648CE8; }
+.tab .tab-header ul li span.left { background:url('window-sprite.png') no-repeat; width:6px; border-bottom:solid 1px #CCD1FF; }
+.tab .tab-header ul li span.center { background:url('window-h-sprite.png') repeat-x; border-bottom:solid 1px #CCD1FF; }
+.tab .tab-header ul li span.right { background:url('window-sprite.png') no-repeat -37px 0; width:6px; border-bottom:solid 1px #CCD1FF; }
 .tab .tab-header ul li.active a { cursor:default; }
 .tab .tab-header ul li.active a:hover { color:inherit; }
-.tab .tab-header ul li.active span.left { background:url('tab-sprite.png') no-repeat; border-bottom:solid 1px #fff; }
-.tab .tab-header ul li.active span.center { background:url('tab-h-sprite.png') repeat-x; border-bottom:solid 1px #fff; }
-.tab .tab-header ul li.active span.right { background:url('tab-sprite.png') no-repeat -10px 0; border-bottom:solid 1px #fff; }
-.tab .content { padding:5px; background-color:#fdfdfd; border:solid 1px #648CE8; }
+.tab .tab-header ul li.active span.left { background:url('window-sprite.png') no-repeat; border-bottom:solid 1px #fff; }
+.tab .tab-header ul li.active span.center { background:url('window-h-sprite.png') repeat-x; border-bottom:solid 1px #fff; }
+.tab .tab-header ul li.active span.right { background:url('window-sprite.png') no-repeat -37px 0; border-bottom:solid 1px #fff; }
+.tab .content { padding:5px; background-color:#fdfdfd; border:solid 1px #CCD1FF; }
 
 
 /* Accordion */
 
 .accordion {}
-.accordion .body { overflow:hidden; background-color:#fdfdfd; font-size:small; }
+.accordion .body { overflow:hidden; background-color:#fff; font-size:small; }
 .accordion .body-content { padding:5px; border-left:solid 1px #CCD1FF; border-right:solid 1px #CCD1FF; border-bottom:solid 1px #CCD1FF; }
-.accordion .accordion-header { background: transparent url(window-h-sprite.png) repeat-x 0 0; }
-.accordion .accordion-header a { text-decoration:none; padding:5px; display:block; color:#333; font-size:0.8em; }
-.accordion .accordion-header a:hover { background: transparent url(window-h-sprite.png) repeat-x 0 0; color:#00f; }
+.accordion .accordion-header { border:solid 1px #CCD1FF; background-color:#fff; }
+.accordion .accordion-header a { text-decoration:none; padding:5px; display:block; color:#333; }
+.accordion .accordion-header a:hover { background:inherit; color:#00f; }
 
 
 /* TreeView */
@@ -249,14 +242,14 @@ http://ra-ajax.org
 
 /* Menu */
 
-.menu { background: transparent url(window-h-sprite.png) repeat-x 0 0; width:100%; position:relative; line-height:22px; height:28px; }
+.menu { background-color:#fff; border:solid 1px #CCD1FF; width:100%; padding:5px; position:relative; }
 .menu ul { display:inline; }
-.menu .item { cursor:pointer; color:#333; font-size:0.8em; margin:5px; }
+.menu .item { cursor:pointer; color:#333; }
 .menu .item:hover { color:#00f; }
 .menu .top { display:inline; padding:2px; position:relative; }
-.menu .menu-dropper { border:solid 1px #648CE8; background-color:#BDC8FD; position:absolute; left:0px; width:150px; *top:24px; }
+.menu .menu-dropper { border:solid 1px #CCD1FF; background-color:#fff; position:absolute; left:0px; width:150px; *top:24px; }
 .menu .menu-dropper .drop-item { display:block; color:#333; padding-left:15px; padding:5px; }
-.menu .menu-dropper .drop-item:hover { color:#66f; background-color:#cDd8Ff; }
+.menu .menu-dropper .drop-item:hover { color:#66f; background-color:#fcfcfc; }
 .menu .menu-dropper .sub-dropper { left: 150px; top:-1px; }
 
 
@@ -267,6 +260,13 @@ http://ra-ajax.org
 .auto-items { position:absolute; border:solid 1px #CCD1FF; background-color:#fff; width:170px; padding:5px; }
 .auto-item { border:solid 1px Transparent; cursor:pointer; }
 .auto-item:hover { border-top:solid 1px #CCD1FF; border-bottom:solid 1px #CCD1FF; background-color:#fafaff; }
+
+
+/* Extended Button */
+.button { border:none 0; background-color:Transparent; }
+.button .bLeft { background:Transparent url(window-sprite.png) no-repeat 0 0; padding-left:7px; display:block; height:32px; }
+.button .bCenter { background:Transparent url(window-h-sprite.png) repeat-x 0 0; display:block; height:32px; padding-top:7px; }
+.button .bRight { background:Transparent url(window-sprite.png) no-repeat top right; padding-right:7px; display:block; height:32px; }
 
 
 /* Window-LIGHT...! */
