@@ -33,7 +33,9 @@ namespace Ra.Widgets
         {
             return @"
     this.element.focus();
-    this.element.select();
+    if( this.element.select ) {
+      this.element.select();
+    }
 ";
         }
 
