@@ -597,6 +597,16 @@ Ra.Form.prototype = {
             }
             break;
           case 'select':
+            if( el.multiple ) {
+              for (var i = 0; i < el.options.length; i++) {
+                if( el.options[i].selected ) {
+                  retVal.push(el.name + '=' + encodeURIComponent(el.options[i].value))
+                }
+              }
+            } else {
+              retVal.push(el.name + '=' + encodeURIComponent(el.value));
+            }
+            break;
           case 'textarea':
             retVal.push(el.name + '=' + encodeURIComponent(el.value));
             break;
