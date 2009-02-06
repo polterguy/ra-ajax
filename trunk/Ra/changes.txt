@@ -22,7 +22,7 @@
   feature of the Accordion not work fully when animation was being
   done on the client.
 
-
+* Fixed a bug in HTML select form element serialization
 
 
 
