@@ -10,6 +10,22 @@
 
   ------------------------------------------------------------------
 
+                          Version 1.1.1
+
+               Bug fixes and minor changes...
+
+  ------------------------------------------------------------------
+
+* Window will now have a default Caption of "&nbsp;" if you don't 
+  set it. This is because of that the Window will not be draggable
+  unless you explicitly set its Caption in your own code.
+
+
+
+
+
+  ------------------------------------------------------------------
+
                           Version 1.1.0
 
        Bug fixes, some quite severe...!
