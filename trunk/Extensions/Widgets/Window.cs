@@ -108,7 +108,12 @@ namespace Ra.Extensions
         [DefaultValue("")]
         public string Caption
         {
-            get { return _caption.Text; }
+            get
+            {
+                if (string.IsNullOrEmpty(_caption.Text))
+                    _caption.Text = "&nbsp;";
+                return _caption.Text;
+            }
             set { _caption.Text = value; }
         }
 

@@ -21,6 +21,7 @@ namespace Ra.Widgets
         public class LoadControlsEventArgs : EventArgs
         {
             private string _key;
+            private object _extra;
 
             public string Key
             {
@@ -28,9 +29,16 @@ namespace Ra.Widgets
                 set { _key = value; }
             }
 
-            internal LoadControlsEventArgs(string key)
+            public object Extra
+            {
+                get { return _extra; }
+                set { _extra = value; }
+            }
+
+            internal LoadControlsEventArgs(string key, object extra)
             {
                 _key = key;
+                _extra = extra;
             }
         }
 
@@ -64,26 +72,31 @@ namespace Ra.Widgets
         {
             if (Page.IsPostBack)
             {
-                LoadDynamicControl();
+                LoadDynamicControl(null);
             }
             base.OnLoad(e);
         }
 
-        private void LoadDynamicControl()
+        private void LoadDynamicControl(object extra)
         {
             if (LoadControls != null && !string.IsNullOrEmpty(_key))
             {
-                LoadControlsEventArgs e = new LoadControlsEventArgs(_key);
+                LoadControlsEventArgs e = new LoadControlsEventArgs(_key, extra);
                 LoadControls(this, e);
             }
         }
 
         public void ReLoadControls(string key)
         {
+            ReLoadControls(key, null);
+        }
+
+        public void ReLoadControls(string key, object extra)
+        {
             Controls.Clear();
 
             _key = key;
-            LoadDynamicControl();
+            LoadDynamicControl(extra);
             ReRender();
         }
     }
