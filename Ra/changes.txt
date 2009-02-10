@@ -20,6 +20,14 @@
   set it. This is because of that the Window will not be draggable
   unless you explicitly set its Caption in your own code.
 
+* Added support for the Dynamic Control to take an addition
+  "initialization" object when being ReLoaded explicitly. Note that
+  this parameter will not be serialized and given again on next 
+  callback, but will be available when the control is signaled to
+  ReLoad its controls in your own code. This means that you can 
+  pass in "initialization objects" to the "ReLoadControls" method
+  which will be passed in to your "LoadControls" event handler.
+
 
 
 
