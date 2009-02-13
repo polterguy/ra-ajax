@@ -52,9 +52,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 	EndProjectSection
 	ProjectSection(SolutionItems) = preProject
 		build.properties = build.properties
+		changes.txt = changes.txt
 		CustomTasks.build = CustomTasks.build
+		license-GPL.txt = license-GPL.txt
+		license.txt = license.txt
 		Ra.build = Ra.build
-		README.txt = README.txt
+		ReadMe.txt = ReadMe.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaSelector", "RaSelector\RaSelector.csproj", "{1D24FB65-C035-44E5-83A4-34AA1DA84BF4}"
