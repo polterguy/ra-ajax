@@ -8,7 +8,7 @@
     <fileset>
       <include name="Ra.sln" />
       <include name="Ra.build" />
-      <include name="README.txt" />
+      <include name="*.txt" />
       <include name="build.properties" />
       <include name="CustomTasks.build" />
       <include name="${references.dir}/NAnt.Core.dll" />
@@ -21,7 +21,6 @@
       <exclude name="**/*VS2008.csproj" />
       <include name="**/*.cs" />
       <include name="**/*.js" />
-      <include name="**/*.txt" />
       <include name="**/*.csproj" />
     </fileset>
   </copy>
@@ -72,7 +71,7 @@
       <include name="Ra.build" />
       <include name="CustomTasks.build" />
       <include name="build.properties" />
-      <include name="README.txt" />
+      <include name="*.txt" />
     </fileset>
     <fileset basedir="${output.dir}/${code.dir}/${ra.name}" prefix="${code.dir}/${ra.name}">
       <include name="**/*" />
