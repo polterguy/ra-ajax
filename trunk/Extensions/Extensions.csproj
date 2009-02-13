@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Widgets\ExtButton.cs" />
     <Compile Include="Widgets\AutoCompleter.cs" />
     <Compile Include="Widgets\AutoCompleterItem.cs" />
     <Compile Include="Widgets\Calendar.cs" />
