@@ -97,13 +97,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Js\Behaviors.js" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="changes.txt" />
-    <Content Include="license-GPL.txt" />
-    <Content Include="license.txt" />
-    <Content Include="ReadMe.txt" />
-    <Content Include="TODO.txt" />
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets. -->

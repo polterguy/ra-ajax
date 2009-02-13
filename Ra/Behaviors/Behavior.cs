@@ -34,9 +34,6 @@ namespace Ra.Widgets
 
         public override void RenderControl(ASP.HtmlTextWriter writer)
         {
-            if (DesignMode)
-                ;// throw new ApplicationException("Ra-Ajax doesn't support Design time");
-
 			// We roughly only needs to handle what happens for JSON changes in the Behaviors
             if (!DesignMode)
             {

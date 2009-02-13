@@ -4,7 +4,7 @@
   <nant buildfile="PublishWebsites.build" />
   <load-properties properties-file="build.properties" />
 
-  <copy overwrite="true" todir="${output.dir}">
+  <copy overwrite="true" todir="${output.dir}/${code.dir}">
     <fileset>
       <include name="Ra.sln" />
       <include name="Ra.build" />
@@ -15,7 +15,7 @@
     </fileset>
   </copy>
 
-  <copy overwrite="true" todir="${output.dir}/${ra.name}">
+  <copy overwrite="true" todir="${output.dir}/${code.dir}/${ra.name}">
     <fileset basedir="${ra.name}">
       <exclude name="obj/**/*.*" />
       <exclude name="**/*VS2008.csproj" />
@@ -26,7 +26,7 @@
     </fileset>
   </copy>
 
-  <copy overwrite="true" todir="${output.dir}/${ext.name}">
+  <copy overwrite="true" todir="${output.dir}/${code.dir}/${ext.name}">
     <fileset basedir="${ext.name}">
       <exclude name="obj/**/*.*" />
       <exclude name="**/*VS2008.csproj" />
@@ -36,7 +36,7 @@
     </fileset>
   </copy>
 
-  <copy overwrite="true" todir="${output.dir}/${resource.cacher.name}">
+  <copy overwrite="true" todir="${output.dir}/${code.dir}/${resource.cacher.name}">
     <fileset basedir="${resource.cacher.name}">
       <exclude name="obj/**/*.*" />
       <exclude name="**/*VS2008.csproj" />
@@ -45,7 +45,7 @@
     </fileset>
   </copy>
 
-  <copy overwrite="true" todir="${output.dir}/${ra.selector.name}">
+  <copy overwrite="true" todir="${output.dir}/${code.dir}/${ra.selector.name}">
     <fileset basedir="${ra.selector.name}">
       <exclude name="obj/**/*.*" />
       <exclude name="**/*VS2008.csproj" />
@@ -54,7 +54,7 @@
     </fileset>
   </copy>
 
-  <copy overwrite="true" todir="${output.dir}/${ra.build.tasks.name}">
+  <copy overwrite="true" todir="${output.dir}/${code.dir}/${ra.build.tasks.name}">
     <fileset basedir="${ra.build.tasks.name}">
       <exclude name="obj/**/*.*" />
       <exclude name="**/*VS2008.csproj" />
@@ -64,56 +64,43 @@
   </copy>
 
   <zip zipfile="${output.dir}/Ra-${ra.version}.zip">
-    <fileset basedir="${output.dir}">
+	<fileset basedir="${output.dir}/${library.dir}" prefix="${library.dir}">
+      <include name="**/*" />
+    </fileset>
+	<fileset basedir="${output.dir}/${code.dir}" prefix="${code.dir}">
       <include name="Ra.sln" />
       <include name="Ra.build" />
       <include name="CustomTasks.build" />
       <include name="build.properties" />
       <include name="README.txt" />
     </fileset>
-    <fileset basedir="${output.dir}/${ra.name}" prefix="${ra.name}">
+    <fileset basedir="${output.dir}/${code.dir}/${ra.name}" prefix="${code.dir}/${ra.name}">
       <include name="**/*" />
     </fileset>
-    <fileset basedir="${output.dir}/${library.dir}" prefix="${library.dir}">
+    <fileset basedir="${output.dir}/${code.dir}/${ext.name}" prefix="${code.dir}/${ext.name}">
       <include name="**/*" />
     </fileset>
-    <fileset basedir="${output.dir}/${ext.name}" prefix="${ext.name}">
+    <fileset basedir="${output.dir}/${code.dir}/${resource.cacher.name}" prefix="${code.dir}/${resource.cacher.name}">
       <include name="**/*" />
     </fileset>
-    <fileset basedir="${output.dir}/${resource.cacher.name}" prefix="${resource.cacher.name}">
+    <fileset basedir="${output.dir}/${code.dir}/${ra.selector.name}" prefix="${code.dir}/${ra.selector.name}">
       <include name="**/*" />
     </fileset>
-    <fileset basedir="${output.dir}/${ra.selector.name}" prefix="${ra.selector.name}">
+    <fileset basedir="${output.dir}/${code.dir}/${ra.build.tasks.name}" prefix="${code.dir}/${ra.build.tasks.name}">
       <include name="**/*" />
     </fileset>
-    <fileset basedir="${output.dir}/${ra.build.tasks.name}" prefix="${ra.build.tasks.name}">
+    <fileset basedir="${output.dir}/${code.dir}/${references.dir}" prefix="${code.dir}/${references.dir}">
       <include name="**/*" />
     </fileset>
-    <fileset basedir="${output.dir}/${references.dir}" prefix="${references.dir}">
-      <include name="**/*" />
-    </fileset>
-    <fileset basedir="${output.dir}/${samples.dir}" prefix="${samples.dir}">
+    <fileset basedir="${output.dir}/${code.dir}/${samples.dir}" prefix="${code.dir}/${samples.dir}">
       <include name="**/*" />
     </fileset>
   </zip>
 
   <delete>
-    <fileset basedir="${output.dir}">
-      <include name="Ra.sln" />
-      <include name="Ra.build" />
-      <include name="README.txt" />
-      <include name="build.properties" />
-      <include name="CustomTasks.build" />
-      <include name="${ra.name}/**" />
-      <include name="${ext.name}/**" />
-      <include name="${samples.dir}/**" />
-      <include name="${library.dir}/**" />
-      <include name="${ra.website.dir}/**" />
-      <include name="${references.dir}/**" />
-      <include name="${ra.selector.name}/**" />
-      <include name="${ra.build.tasks.name}/**" />
-      <include name="${resource.cacher.name}/**" />
-    </fileset>
+	<fileset basedir="${output.dir}">
+		<include name="${code.dir}/**" />
+		<include name="${library.dir}/**" />
+	</fileset>
   </delete>
-
 </project>
