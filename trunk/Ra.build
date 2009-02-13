@@ -17,14 +17,14 @@
   </target>
 
   <target name="compile.lib.uncompressed" depends="clean,init" description="Compile the DLLs with uncompressed JS files">
-    <jsmin gzip="false" todir="${output.dir}/${ra.name}/Js" concat-to="${concatenated.js.file}">
+    <jsmin gzip="false" todir="${output.dir}/${code.dir}/${ra.name}/Js" concat-to="${concatenated.js.file}">
       <fileset>
         <include name="${ra.name}/Js/Ra.js" asis="true" />
         <include name="${ra.name}/Js/Control.js" asis="true" />
         <include name="${ra.name}/Js/Behaviors.js" asis="true" />
       </fileset>
     </jsmin>
-    <jsmin gzip="false" todir="${output.dir}/${ext.name}/Js">
+    <jsmin gzip="false" todir="${output.dir}/${code.dir}/${ext.name}/Js">
       <fileset basedir="${ext.name}/Js">
         <include name="**/*.js" />
       </fileset>
@@ -42,7 +42,7 @@
       </sources>
       <resources failonempty="true" prefix="${ra.name}.Js">
         <include name="${ra.name}/Js/**/*.js" if="${debug}" />
-        <include name="${output.dir}/${ra.name}/Js/**/*.js" unless="${debug}" />
+        <include name="${output.dir}/${code.dir}/${ra.name}/Js/**/*.js" unless="${debug}" />
       </resources>
     </csc>
     <csc verbose="false" target="library" optimize="${not debug}" output="${output.dir}/${library.dir}/${uncompressed.dir}/${ext.name}.dll" debug="${debug}">
@@ -52,23 +52,23 @@
       </sources>
       <resources failonempty="true" prefix="${ext.name}.Js">
         <include name="${ext.name}/Js/**/*.js" if="${debug}" />
-        <include name="${output.dir}/${ext.name}/Js/**/*.js" unless="${debug}" />
+        <include name="${output.dir}/${code.dir}/${ext.name}/Js/**/*.js" unless="${debug}" />
       </resources>
       <references>
         <include name="${output.dir}/${library.dir}/${uncompressed.dir}/${ra.name}.dll" />
       </references>
     </csc>
-    <delete dir="${output.dir}/${ra.name}/Js" />
+    <delete dir="${output.dir}/${code.dir}/${ra.name}/Js" />
   </target>
   <target name="compile.lib.gzipped" depends="clean,init" description="Compile the DLLs with GZipped JS files">
-    <jsmin gzip="true" todir="${output.dir}/${ra.name}/Js" concat-to="${concatenated.js.file}">
+    <jsmin gzip="true" todir="${output.dir}/${code.dir}/${ra.name}/Js" concat-to="${concatenated.js.file}">
       <fileset>
         <include name="${ra.name}/Js/Ra.js" asis="true" />
         <include name="${ra.name}/Js/Control.js" asis="true" />
         <include name="${ra.name}/Js/Behaviors.js" asis="true" />
       </fileset>
     </jsmin>
-    <jsmin gzip="true" todir="${output.dir}/${ext.name}/Js">
+    <jsmin gzip="true" todir="${output.dir}/${code.dir}/${ext.name}/Js">
       <fileset basedir="${ext.name}/Js">
         <include name="**/*.js" />
       </fileset>
@@ -86,7 +86,7 @@
       </sources>
       <resources failonempty="true" prefix="${ra.name}.Js">
         <include name="${ra.name}/Js/**/*.js" if="${debug}" />
-        <include name="${output.dir}/${ra.name}/Js/**/*.js" unless="${debug}" />
+        <include name="${output.dir}/${code.dir}/${ra.name}/Js/**/*.js" unless="${debug}" />
       </resources>
     </csc>
     <csc verbose="false" target="library" optimize="${not debug}" output="${output.dir}/${library.dir}/${gzipped.dir}/${ext.name}.dll" debug="${debug}">
@@ -96,7 +96,7 @@
       </sources>
       <resources failonempty="true" prefix="${ext.name}.Js">
         <include name="${ext.name}/Js/**/*.js" if="${debug}" />
-        <include name="${output.dir}/${ext.name}/Js/**/*.js" unless="${debug}" />
+        <include name="${output.dir}/${code.dir}/${ext.name}/Js/**/*.js" unless="${debug}" />
       </resources>
       <references>
         <include name="${output.dir}/${library.dir}/${gzipped.dir}/${ra.name}.dll" />
@@ -122,7 +122,7 @@ void Application_EndRequest(object sender, EventArgs e)
 }]]>
       </content>
     </file-create>
-    <delete dir="${output.dir}/${ra.name}" unless="${debug}" />
-    <delete dir="${output.dir}/${ext.name}" unless="${debug}" />
+    <delete dir="${output.dir}/${code.dir}/${ra.name}" unless="${debug}" />
+    <delete dir="${output.dir}/${code.dir}/${ext.name}" unless="${debug}" />
   </target>
 </project>

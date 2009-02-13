@@ -181,9 +181,6 @@ namespace Ra.Widgets
 
 		public override void RenderControl(HtmlTextWriter writer)
 		{
-			if (DesignMode)
-                ;// throw new ApplicationException("Ra-Ajax doesn't support Design time");
-
 			if (Visible)
 			{
 				if (!DesignMode && AjaxManager.Instance.IsCallback)
@@ -466,9 +463,6 @@ namespace Ra.Widgets
 
 		protected override void OnInit(EventArgs e)
 		{
-			if (DesignMode)
-                ;// throw new ApplicationException("Ra-Ajax doesn't support Design time");
-
 			// To initialize control
             if (!DesignMode)
             {
