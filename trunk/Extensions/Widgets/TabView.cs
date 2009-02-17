@@ -60,6 +60,22 @@ namespace Ra.Extensions
             set { ViewState["Enabled"] = value; }
         }
 
+        /**
+         * Overridden to provide a sane default value
+         */
+        [DefaultValue("content")]
+        public override string CssClass
+        {
+            get
+            {
+                string retVal = base.CssClass;
+                if (retVal == string.Empty)
+                    retVal = "content";
+                return retVal;
+            }
+            set { base.CssClass = value; }
+        }
+
         protected override void OnPreRender(EventArgs e)
 		{
 			if ((Parent as TabControl).ActiveTabView.ClientID == this.ClientID)
