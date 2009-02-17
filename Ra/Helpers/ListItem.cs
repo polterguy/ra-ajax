@@ -44,7 +44,12 @@ namespace Ra.Widgets
          */
         public bool Selected
         {
-            get { return _selectList.SelectedItem.Equals(this); }
+            get
+            {
+                if (_selectList.SelectedItem == null)
+                    return false;
+                return _selectList.SelectedItem.Equals(this);
+            }
             set
             {
                 if (value)
