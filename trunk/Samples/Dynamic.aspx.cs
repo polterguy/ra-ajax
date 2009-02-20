@@ -20,11 +20,11 @@ namespace Samples
         {
             if (!IsPostBack)
             {
-                dynamic.ReLoadControls("Chart.ascx");
+                dynamic.LoadControls("Chart.ascx");
             }
         }
 
-        protected void dynamic_LoadControls(object sender, Ra.Widgets.Dynamic.LoadControlsEventArgs e)
+        protected void dynamic_Reload(object sender, Ra.Widgets.Dynamic.ReloadEventArgs e)
         {
             Control ctrl = Page.LoadControl(e.Key);
             if (e.Key == "Chart.ascx")
@@ -55,7 +55,7 @@ namespace Samples
 
         protected void reset_Click(object sender, EventArgs e)
         {
-            dynamic.ReLoadControls("ChartDataCollector.ascx");
+            dynamic.LoadControls("ChartDataCollector.ascx");
             reset.Visible = false;
         }
 
@@ -64,7 +64,7 @@ namespace Samples
             switch (from)
             {
                 case "ChartDataCollector.ascx":
-                    dynamic.ReLoadControls("Chart.ascx");
+                    dynamic.LoadControls("Chart.ascx");
                     break;
             }
         }

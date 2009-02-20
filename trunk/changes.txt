@@ -10,6 +10,28 @@
 
   ------------------------------------------------------------------
 
+                          Version 1.1.2
+
+           Bug fixes and Renaming Changes (code breaking)
+
+  ------------------------------------------------------------------
+
+* Fixed a bug in Ra.AjaxManager.Instance.Redirect(url) that 
+  prevented it from working in Safari.
+
+* Fixed a bug in BehaviorObscurable that made the obscuring div not
+  resize correctly when the browser window gets resized, revealing
+  parts of the page beneath it.
+
+* In the Dynamic Control, renamed the event 'LoadControls' to 
+  'Reload' and 'LoadControlsEventArgs' to 'ReloadEventArgs' and 
+  renamed the method 'ReLoadControls' to 'LoadControls'. This is
+  a code breaking change, you should modify your code to use these
+  new names.
+
+
+  ------------------------------------------------------------------
+
                           Version 1.1.1
 
                Bug fixes and minor changes...

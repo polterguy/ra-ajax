@@ -480,7 +480,8 @@ Ra.XHR.prototype = {
             if( hdr[idx].indexOf('Location') != -1 ) {
               // Found NEW location
               var nLoc = hdr[idx].substr(10);
-              window.location = nLoc;
+              // Fix for Safari
+              window.location = (nLoc.charAt(nLoc.length - 1) === '\r') ? nLoc.substring(0, nLoc.length - 1) : nLoc;
               break;
             }
           }
