@@ -31,7 +31,7 @@
     <p>
         <ra:Dynamic 
             runat="server" 
-            OnLoadControls="dynamic_LoadControls"
+            OnReload="dynamic_Reload"
             ID="dynamic" />
         <ra:Button 
             runat="server" 

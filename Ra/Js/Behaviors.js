@@ -136,9 +136,17 @@ Ra.BObscureCommon.prototype = {
       this.el.setStyle('top', valueT + 'px');
     }
 
+    var width = Math.max(
+      document.documentElement.clientWidth, document.documentElement.scrollWidth, 
+      document.documentElement.offsetWidth, document.body.scrollWidth, document.body.offsetWidth);
+      
+    var height = Math.max(
+      document.documentElement.clientHeight, document.documentElement.scrollHeight, 
+      document.documentElement.offsetHeight, document.body.scrollHeight, document.body.offsetHeight);
+
     // Setting width and height to size of viewport...
-    this.el.setStyle('width',parseInt(document.body.clientWidth, 10) + 'px');
-    this.el.setStyle('height',parseInt(document.body.clientHeight, 10) + 'px');
+    this.el.setStyle('width', parseInt(width, 10) + 'px');
+    this.el.setStyle('height', parseInt(height, 10) + 'px');
   },
 
   destroyObscurer: function(){

@@ -18,7 +18,7 @@ namespace Ra.Widgets
     {
         private string _key;
 
-        public class LoadControlsEventArgs : EventArgs
+        public class ReloadEventArgs : EventArgs
         {
             private string _key;
             private object _extra;
@@ -35,14 +35,14 @@ namespace Ra.Widgets
                 set { _extra = value; }
             }
 
-            internal LoadControlsEventArgs(string key, object extra)
+            internal ReloadEventArgs(string key, object extra)
             {
                 _key = key;
                 _extra = extra;
             }
         }
 
-        public event EventHandler<LoadControlsEventArgs> LoadControls;
+        public event EventHandler<ReloadEventArgs> Reload;
 
         protected override void LoadControlState(object savedState)
         {
@@ -79,19 +79,19 @@ namespace Ra.Widgets
 
         private void LoadDynamicControl(object extra)
         {
-            if (LoadControls != null && !string.IsNullOrEmpty(_key))
+            if (Reload != null && !string.IsNullOrEmpty(_key))
             {
-                LoadControlsEventArgs e = new LoadControlsEventArgs(_key, extra);
-                LoadControls(this, e);
+                ReloadEventArgs e = new ReloadEventArgs(_key, extra);
+                Reload(this, e);
             }
         }
 
-        public void ReLoadControls(string key)
+        public void LoadControls(string key)
         {
-            ReLoadControls(key, null);
+            LoadControls(key, null);
         }
 
-        public void ReLoadControls(string key, object extra)
+        public void LoadControls(string key, object extra)
         {
             Controls.Clear();
 
