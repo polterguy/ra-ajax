@@ -71,6 +71,5 @@
         being showcased on this page. It very effectively abstracts away all these problems 
         if used correctly.
     </p>
-    <a href="Updater.aspx">On to Ajax Updater Sample</a>
 </asp:Content>
 
