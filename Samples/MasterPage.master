@@ -83,9 +83,6 @@
 			                            <a href="Dynamic.aspx">Dynamic Ajax Controls</a>
 			                        </li>
 			                        <li>
-			                            <a href="Updater.aspx">Ajax Updaters</a>
-			                        </li>
-			                        <li>
 			                            <a href="Ajax-Comet.aspx">Ajax Comet</a>
 			                        </li>
 			                    </ul>
@@ -139,9 +136,6 @@
 			                        </li>
 			                        <li>
 			                            <a href="Ajax-InPlaceEdit.aspx">Ajax InPlaceEdit</a>
-			                        </li>
-			                        <li>
-			                            <a href="Ajax-RichEdit.aspx">Ajax RichEdit</a>
 			                        </li>
 			                        <li>
 			                            <a href="Ajax-Timer.aspx">Ajax Timer</a>
