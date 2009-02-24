@@ -177,13 +177,6 @@
         JavaScript developers in the world, and tuned down to <em>the last byte of JavaScript</em> they
         will still make you start out with an initial penalty when creating your Rich Internet Applications.
     </p>
-    <p>
-        To be fair, you can probably add up another 5 KB of JavaScript if you use the <em>Ajax RichEditor</em>
-        and the <em>Ajax Timer</em> in the extension projects. But then we are talking about a complete
-        Ajax Framework with 18 Ajax Controls which almost completely abstracts away the entire concept 
-        of JavaScript from developers and makes it possible for them to exclusively focus on developing
-        in a safe, compiled and well known language of their choice on the server.
-    </p>
     <h2>Is Ra-Ajax a RIA Framework?</h2>
     <p>
         Since Ra-Ajax has such extremely small amounts of JavaScript it is probably not even fair to call
@@ -214,7 +207,6 @@
         <li>Accordion</li>
         <li>Calendar</li>
         <li>InPlaceEdit</li>
-        <li>RichEdit</li>
         <li>TabControl</li>
         <li>Timer</li>
         <li>Button</li>
@@ -244,7 +236,7 @@
         <em>Ajax Panel, Ajax LinkButton and Ajax Effects</em>. This makes it possible to create
         a lot of Ajax Controls and still have no more than 11.6 KB of JavaScript. In fact, of the above
         Ajax Controls, the only ones which need their own "custom JavaScript" files are the Ajax Timer and
-        the Ajax RichEdit. Even our Ajax InPlaceEdit is created utilizing the LinkButton and the Label and 
+        the Tree. Even our Ajax InPlaceEdit is created utilizing the LinkButton and the Label and 
         nothing else.
     </p>
     <h2>We need you!</h2>

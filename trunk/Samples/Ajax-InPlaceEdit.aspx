@@ -104,5 +104,4 @@
         I also hope that you would be willing to also purchase our "commercial products" when we come out
         with them. The first will probably be a Wiki System which we're currently working on at Ra-Wiki.org.
     </p>
-    <a href="Ajax-RichEdit.aspx">On to Ajax RichEdit</a>
 </asp:Content>
