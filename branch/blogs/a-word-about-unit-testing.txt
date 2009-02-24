@@ -1,0 +1,158 @@
+How to create an Ajax Library part 9 - Unit Testing our Ajax Library
+
+
+When creating a library, any library, Unit Testing is more important than in anything else you can create in your system development life. And the reason is that while it is possible (all though impractical) to manually test all the steps and different sequences of steps in an "application". This is virtually *IMPOSSIBLE* for a library since you can never guess all the different usage scenarios for a library or an API.
+
+And all though a lot of problems can be excluded by having a conscious relationship to words like <a href="http://en.wikipedia.org/wiki/Cohesion_(computer_science)">Cohesion</a> and LSP, you can never completely be safe without a *lot* of Unit Tests for your library.
+
+So when creating an Ajax Library Unit Testing is more important than ever before in your professional system development life.
+
+
+<h2>nUnit and WatiN</h2>
+My personal preferences are to use <a href="http://www.nunit.org/">nUnit</a> and <a href="http://watin.sourceforge.net/">WatiN</a>.
+
+nUnit is an incredibly famous tool currently maintained by <a href="http://blogs.nunit.com/">Charlie Poole</a> which I met at the <a href="http://www.mono-project.com/">Mono</a> Summit in Madrid in 2007 and had a great time together with. nUnit is a brilliant Unit Testing framework for .Net and Charlie has done a *great* job on nUnit.
+
+WatiN is a very versatile tool for "simulating" user interaction in Internet Explorer or FireFox. It basically simulates user interaction by "clicking" buttons and making you able to manipulate the browser programmatically from your code. And combined with nUnit WatiN is a brilliant tool for creating Unit Tests for your Ajax Library. In fact you can even use them even if you do not use .Net as your development platform, though then the tests must be written in a .Net language. 
+
+In fact when I worked in Gaiaware we gave Jeroen van Menen $300 due to being so satisfied with it. This is BTW a general pattern you should follow, if you are happy with software you're using which is free as in free beer then you should donate to the project or person who maintains the project if he takes donations. $300 was for us way less than the value that WatiN gave us in Gaiaware.
+
+
+<h2>Some code samples</h2>
+This is the "base class" I use for testing Ra Ajax;
+<pre>
+using System;
+using System.Diagnostics;
+using System.Configuration;
+using NUnit.Framework;
+using WatiN.Core;
+using WatiN.Core.Interfaces;
+
+namespace NUnitTests
+{
+    public abstract class TestBase
+    {
+        private Process _server;
+        private IBrowser _browser;
+
+        protected IBrowser Browser
+        {
+            get { return _browser; }
+        }
+
+        [NUnit.Framework.TestFixtureSetUp]
+        public void Init()
+        {
+            StartWebDev();
+            StartBrowser();
+        }
+
+        protected void AssertSuccess(string errMsg)
+        {
+            string success = Browser.Div("results").InnerHtml;
+            Browser.Eval("init();");
+            Assert.AreEqual("success", success, errMsg);
+        }
+
+        private void StartBrowser()
+        {
+            string url = ConfigurationSettings.AppSettings["DefaultPageUrl"] + Url;
+            _browser = WatiN.Core.BrowserFactory.Create(BrowserType.InternetExplorer);
+            _browser.GoTo(url);
+        }
+
+        private void StartWebDev()
+        {
+            string webServerExePath = (string)ConfigurationSettings.AppSettings["WebServerExePath"];
+            _server = new Process();
+            _server = Process.Start(webServerExePath, GetWebServerArguments());
+        }
+
+        protected abstract string Url
+        {
+            get;
+        }
+
+        [NUnit.Framework.TestFixtureTearDown]
+        public void End()
+        {
+            _server.Kill();
+            _browser.Dispose();
+        }
+
+
+        private static string GetWebServerArguments()
+        {
+            string args = String.Format("/port:{0} /path:\"{1}\"", GetPort(), GetWebApplicationPath());
+            return args;
+        }
+
+        private static string GetPort()
+        {
+            string port = ConfigurationSettings.AppSettings["Port"] as String;
+            return port;
+        }
+
+        private static string GetWebApplicationPath()
+        {
+            string webApplicationPath = ConfigurationSettings.AppSettings["WebApplicationPath"] as String;
+            return webApplicationPath;
+        }
+    }
+}
+</pre>
+
+The above class is just an abstract class which helps you to start WebDev which is a WOS (Webserver On a Stick) included in Microsoft Visual Studio. In addition it helps you to create an instance of the IBrowser object from WatiN. The above class just tests with Internet Explorer, but you can easily extend it to also test with FireFox since WatiN as of from its latest release also have support for FireFox.
+
+Then when I "consume" the above class creating concrete implementations of my tests it will look something like this;
+<pre>
+using System;
+using System.Threading;
+using NUnit.Framework;
+
+namespace NUnitTests
+{
+    [TestFixture]
+    public class TestRaControlBasics : TestBase
+    {
+        protected override string Url
+        {
+            get { return "RaControlBasics.aspx"; }
+        }
+
+        [NUnit.Framework.Test]
+        public void JSONBasics()
+        {
+            Browser.Button("testJSONBasicsBtn").Click();
+            AssertSuccess("Ra JSON serialization doesn't work");
+        }
+    }
+}
+</pre>
+The above code assumes a webpage named <em>RaControlBasics.aspx</em> which must contain an input element looking like this; &lt;input type="button" id="testJSONBasicsBtn"...
+
+The above code will then CLICK that button and afterwards run the AssertSuccess function from the base class. The AssertSuccess method again assumes the existance of a JavaScript function called "init" which must exist in the global space of your webpage and it will Assert that the a DOM element with the id of "results" have the value of "success".
+
+Ra Ajax is publicly available from <a href="http://code.google.com/p/ra-ajax/">Google Code - Ra Ajax</a> and the complete Subversion branch can be publicly accessed from there. And the complete Unit Test Suite I use for Ra Ajax can be seen there coupled with the above concepts.
+
+The way I create new Unit Tests is by having an assumption which I think of that "should work". Then I create a sample reproducing that assumption and a test testing towards the DOM structure of my assumption. And then if the lights in nUnit is not green you can start fixing them. Then the whole advantage comes from the sheere volum of Unit Tests you will acquire after months of this type of development. It is not uncommon that you will create more than 1000 Unit Tests for a GUI library like Ra Ajax in less than a couple of months. Then later when you want to do refactorings or fix bugs or add features in your library you can test against this whole suite of test cases to verify that what you have done does not break anything that should work in other places.
+
+Creating Unit Tests for your Ajax Library certainly adds overhead and will "slow you down" in coding in the beginning, but believe me after a few months of development the stability of your Ajax Library will be orders of magnitudes higher than your next door neighbor who does NOT create Unit Tests.
+
+
+<h2>Debugging nUnit projects</h2>
+You can even debug nUnit projects in Visual Studio easily by setting the <em>Start Action</em> in your project settings the "Start External Program" to be <em>nunit.exe</em> and the "Command line arguments" to point to the fully path of the dll output from your project.
+
+
+<h2>FireBug</h2>
+Another tool I rely on 100% is <a href="http://getfirebug.com/">FireBug</a> which I find invaluable when debugging Ra Ajax. If you want to do advanced JavaScript development then this tool is not a choice, it is AIR! FireBug is basically what brought JavaScript development from the stoneage and into the technology age all by itself!
+
+I normally develop for FireFox using FireBug as a debugger and then later verify that things works in other browsers like IE, Safari and Opera.
+
+Those are the most important tools I have in my toolbox, I hope you found this of value for your own toolbox. Cheers.
+
+
+Thomas Hansen
+
+
+

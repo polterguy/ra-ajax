@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!-- 
+    Note: As an alternative to hand editing this file you can use the 
+    web admin tool to configure settings for your application. Use
+    the Website->Asp.Net Configuration option in Visual Studio.
+    A full list of settings and comments can be found in 
+    machine.config.comments usually located in 
+    \Windows\Microsoft.Net\Framework\v2.x\Config 
+-->
+<configuration>
+	<configSections>
+		<section name="activerecord" 
+      type="Castle.ActiveRecord.Framework.Config.ActiveRecordSectionHandler, Castle.ActiveRecord"/>
+    <section name="urlrewritingnet"  
+      type="UrlRewritingNet.Configuration.UrlRewriteSection, UrlRewritingNet.UrlRewriter"  />
+  </configSections>
+  <appSettings>
+    <add key="fromEmailAddress" value="post@ra-ajax.org"/>
+    <add key="smtpServer" value="smtp.domeneshop.no"/>
+    <add key="smtpServerPort" value="587"/>
+    <add key="smtpServerUserName" value="raajax1"/>
+    <add key="smtpServerPassword" value="Jeksbf1514"/>
+  </appSettings>
+	<connectionStrings/>
+
+  <activerecord isWeb="true">
+		<config>
+			<add key="hibernate.connection.driver_class" value="NHibernate.Driver.MySqlDataDriver"/>
+			<add key="hibernate.dialect" value="NHibernate.Dialect.MySQLDialect"/>
+			<add key="hibernate.connection.provider" value="NHibernate.Connection.DriverConnectionProvider"/>
+			<add key="hibernate.connection.connection_string" value="Database=RaForums;Server=localhost;User Id=;Password="/>
+		</config>
+	</activerecord>
+
+  <urlrewritingnet
+    rewriteOnlyVirtualUrls="true"   
+    contextItemsPrefix="QueryString" 
+    defaultProvider="RegEx"
+    xmlns="http://www.urlrewriting.net/schemas/config/2006/07">
+    <rewrites>
+      <add name="RewriteForForums"
+           virtualUrl="~/Forums/(.*).forum"
+           rewriteUrlParameter="ExcludeFromClientQueryString" 
+           destinationUrl="~/Forums/Post.aspx?id=$1"
+           ignoreCase="true" />
+      <add name="RewriteForBlogs"
+           virtualUrl="~/(.*).blogger"
+           rewriteUrlParameter="ExcludeFromClientQueryString" 
+           destinationUrl="~/Blog.aspx?blogger=$1"
+           ignoreCase="true" />
+      <add name="RewriteForBlogItems"
+           virtualUrl="~/(.*).blog"
+           rewriteUrlParameter="ExcludeFromClientQueryString" 
+           destinationUrl="~/BlogItem.aspx?id=$1"
+           ignoreCase="true" />
+    </rewrites>
+  </urlrewritingnet>
+  
+  <system.web>
+<!--
+	<httpHandlers>
+			<add verb="*" path="*.gif" type="ResourceCacher.FarFutureExpires, ResourceCacher"/>
+			<add verb="*" path="*.png" type="ResourceCacher.FarFutureExpires, ResourceCacher"/>
+			<add verb="*" path="*.jpg" type="ResourceCacher.FarFutureExpires, ResourceCacher"/>
+			<add verb="*" path="*.jpeg" type="ResourceCacher.FarFutureExpires, ResourceCacher"/>
+			<add verb="*" path="*.css" type="ResourceCacher.FarFutureExpires, ResourceCacher"/>
+    </httpHandlers>
+-->
+    <httpModules>
+      <add name="UrlRewriteModule" type="UrlRewritingNet.Web.UrlRewriteModule, UrlRewritingNet.UrlRewriter" />
+    </httpModules>
+		<compilation debug="true">
+			<assemblies>
+				<add assembly="System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A"/>
+      </assemblies>
+    </compilation>
+		<authentication mode="Windows"/>
+	</system.web>
+</configuration>

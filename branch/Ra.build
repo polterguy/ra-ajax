@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<project name="Ra-Ajax" default="all" xmlns="http://nant.sf.net/release/0.85/nant.xsd">
+
+  <nant buildfile="CustomTasks.build" />
+  <load-properties properties-file="build.properties" />
+
+  <!-- Targets -->
+  <target name="all" depends="clean,init,compile.lib.uncompressed,compile.lib.gzipped" />
+
+  <target name="clean" description="Remove Old Build Output Files">
+    <delete dir="${output.dir}" />
+  </target>
+
+  <target name="init" description="Necessary Initializations">
+    <mkdir dir="${output.dir}/${library.dir}/${gzipped.dir}" />
+    <mkdir dir="${output.dir}/${library.dir}/${uncompressed.dir}" />
+  </target>
+
+  <target name="compile.lib.uncompressed" depends="clean,init" description="Compile the DLLs with uncompressed JS files">
+    <jsmin gzip="false" todir="${output.dir}/${code.dir}/${ra.name}/Js" concat-to="${concatenated.js.file}">
+      <fileset>
+        <include name="${ra.name}/Js/Ra.js" asis="true" />
+        <include name="${ra.name}/Js/Control.js" asis="true" />
+        <include name="${ra.name}/Js/Behaviors.js" asis="true" />
+      </fileset>
+    </jsmin>
+    <jsmin gzip="false" todir="${output.dir}/${code.dir}/${ext.name}/Js">
+      <fileset basedir="${ext.name}/Js">
+        <include name="**/*.js" />
+      </fileset>
+    </jsmin>
+    <if test="${debug}">
+      <property name="concat" value="" />
+    </if>
+    <if test="${not debug}">
+      <property name="concat" value="CONCAT" />
+    </if>
+    <csc verbose="false" target="library" define="${concat}" optimize="${not debug}" output="${output.dir}/${library.dir}/${uncompressed.dir}/${ra.name}.dll" debug="${debug}">
+      <sources>
+        <include name="${ra.name}/**/*.cs" />
+        <exclude name="${ra.name}/obj/**/*.*" />
+      </sources>
+      <resources failonempty="true" prefix="${ra.name}.Js">
+        <include name="${ra.name}/Js/**/*.js" if="${debug}" />
+        <include name="${output.dir}/${code.dir}/${ra.name}/Js/**/*.js" unless="${debug}" />
+      </resources>
+    </csc>
+    <csc verbose="false" target="library" optimize="${not debug}" output="${output.dir}/${library.dir}/${uncompressed.dir}/${ext.name}.dll" debug="${debug}">
+      <sources>
+        <include name="${ext.name}/**/*.cs" />
+        <exclude name="${ext.name}/obj/**/*.*" />
+      </sources>
+      <resources failonempty="true" prefix="${ext.name}.Js">
+        <include name="${ext.name}/Js/**/*.js" if="${debug}" />
+        <include name="${output.dir}/${code.dir}/${ext.name}/Js/**/*.js" unless="${debug}" />
+      </resources>
+      <references>
+        <include name="${output.dir}/${library.dir}/${uncompressed.dir}/${ra.name}.dll" />
+      </references>
+    </csc>
+    <delete dir="${output.dir}/${code.dir}/${ra.name}/Js" />
+  </target>
+  <target name="compile.lib.gzipped" depends="clean,init" description="Compile the DLLs with GZipped JS files">
+    <jsmin gzip="true" todir="${output.dir}/${code.dir}/${ra.name}/Js" concat-to="${concatenated.js.file}">
+      <fileset>
+        <include name="${ra.name}/Js/Ra.js" asis="true" />
+        <include name="${ra.name}/Js/Control.js" asis="true" />
+        <include name="${ra.name}/Js/Behaviors.js" asis="true" />
+      </fileset>
+    </jsmin>
+    <jsmin gzip="true" todir="${output.dir}/${code.dir}/${ext.name}/Js">
+      <fileset basedir="${ext.name}/Js">
+        <include name="**/*.js" />
+      </fileset>
+    </jsmin>
+    <if test="${debug}">
+      <property name="concat" value="" />
+    </if>
+    <if test="${not debug}">
+      <property name="concat" value="CONCAT" />
+    </if>
+    <csc verbose="false" target="library" define="${concat}" optimize="${not debug}" output="${output.dir}/${library.dir}/${gzipped.dir}/${ra.name}.dll" debug="${debug}">
+      <sources>
+        <include name="${ra.name}/**/*.cs" />
+        <exclude name="${ra.name}/obj/**/*.*" />
+      </sources>
+      <resources failonempty="true" prefix="${ra.name}.Js">
+        <include name="${ra.name}/Js/**/*.js" if="${debug}" />
+        <include name="${output.dir}/${code.dir}/${ra.name}/Js/**/*.js" unless="${debug}" />
+      </resources>
+    </csc>
+    <csc verbose="false" target="library" optimize="${not debug}" output="${output.dir}/${library.dir}/${gzipped.dir}/${ext.name}.dll" debug="${debug}">
+      <sources>
+        <include name="${ext.name}/**/*.cs" />
+        <exclude name="${ext.name}/obj/**/*.*" />
+      </sources>
+      <resources failonempty="true" prefix="${ext.name}.Js">
+        <include name="${ext.name}/Js/**/*.js" if="${debug}" />
+        <include name="${output.dir}/${code.dir}/${ext.name}/Js/**/*.js" unless="${debug}" />
+      </resources>
+      <references>
+        <include name="${output.dir}/${library.dir}/${gzipped.dir}/${ra.name}.dll" />
+      </references>
+    </csc>
+    <file-create filename="${output.dir}/${library.dir}/${gzipped.dir}/ReadMe.txt">
+      <content>
+        <![CDATA[The DLLs in this folder contain GZipped JavaScript files. If you want to use them in your website, 
+you must have the following method in your Global.asax:
+
+void Application_EndRequest(object sender, EventArgs e)
+{
+	if (Request.Path.ToLowerInvariant().EndsWith("webresource.axd") && 
+		HttpContext.Current.Response.ContentType.ToLowerInvariant() == "text/javascript")
+	{
+		HttpContext.Current.Response.Cache.VaryByHeaders["Accept-Encoding"] = true;
+		HttpContext.Current.Response.Cache.SetExpires(DateTime.Now.AddYears(3));
+		HttpContext.Current.Response.Cache.SetCacheability(HttpCacheability.Public);
+		HttpContext.Current.Response.Cache.SetValidUntilExpires(false);
+            
+		HttpContext.Current.Response.AppendHeader("Content-Encoding", "gzip");
+	}
+}]]>
+      </content>
+    </file-create>
+    <delete dir="${output.dir}/${code.dir}/${ra.name}" unless="${debug}" />
+    <delete dir="${output.dir}/${code.dir}/${ext.name}" unless="${debug}" />
+  </target>
+</project>
