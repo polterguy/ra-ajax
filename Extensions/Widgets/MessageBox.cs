@@ -115,7 +115,6 @@ namespace Ra.Extensions
         private Button _no;
         private TextBox _userInput;
         private TextArea _userInputMultipleLines;
-        private BehaviorObscurable _obscurer;
         private Panel tmp;
 
         public MessageBox()
@@ -214,11 +213,6 @@ namespace Ra.Extensions
             _body.Style["padding-bottom"] = "35px";
             _body.ID = "body";
             Content.Add(_body);
-
-            // Making sure it's MODAL
-            _obscurer = new BehaviorObscurable();
-            _obscurer.ID = "obsc";
-            this.Controls.Add(_obscurer);
             
             switch( MessageBoxType)
             {

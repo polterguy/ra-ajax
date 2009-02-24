@@ -302,7 +302,6 @@
                     OnClick="editSave_Click"
                     style="position:absolute;right:10px;bottom:10px;" />
             </div>
-            <ra:BehaviorObscurable runat="server" ID="BehaviorObscurable1" />
         </ext:Window>
     </form>
 </body>
