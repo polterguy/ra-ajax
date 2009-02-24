@@ -28,34 +28,74 @@ namespace RaWebsite
                     Operator.Login(userName);
                 }
 
+                // Checking to see if this is a "confirm user" request
+                string newUserRegistration = Request.Params["NewUser"];
+
+                if (newUserRegistration != null)
+                {
+                    Operator oper = Operator.FindOne(
+                        Expression.Eq("Username", newUserRegistration),
+                        Expression.Eq("Confirmed", false));
+                    if (oper != null)
+                    {
+                        oper.Confirmed = true;
+                        oper.Save();
+                        pnlConfirmRegistration.Visible = true;
+                        newUserWelcome.Text = string.Format("  Welcome to Ra-Ajax {0}, your user account is now confiremed.", oper.Username);
+                    }
+                }
+
                 if (Operator.Current != null)
                     userInfoPanel.Visible = true;
                 else
                     loginPanel.Visible = true;
 
-                // Morphing in/out the GetFireFox panel
-                if (Request.Browser.Browser == "IE")
+                if (Request.Browser.Browser == "IE" && Request.Cookies["displayIEMessage"] == null)
                 {
                     pnlCrappyBrowser.Visible = true;
-                    Effect effect2 = new EffectFadeIn(pnlCrappyBrowser, 400);
-                    effect2.Render();
+                    new EffectFadeIn(pnlCrappyBrowser, 400).Render();
                 }
 
                 // Iterating through all bloggers showing links to them...
-                blogLinksWrapper.Text += "<ul  class=\"menuLinks\" style=\"margin-top:10px;margin-bottom:10px;\">";
+                blogLinksWrapper.Text += "<ul>";
                 foreach (Operator idx in Operator.FindAll(Order.Asc("Created"), Expression.Eq("IsBlogger", true)))
                 {
-                    blogLinksWrapper.Text += string.Format("\r\n<li><a href=\"{0}\">Blog of {1}</a></li>",
+                    blogLinksWrapper.Text += string.Format("\r\n<li><a href=\"{0}\" style=\"text-transform:capitalize;\">{1}</a></li>",
                         (Request.Url.ToString().Substring(0, Request.Url.ToString().LastIndexOf('/') + 1).Replace("/Forums", "") + idx.Username + ".blogger"),
                         idx.Username);
                 }
                 blogLinksWrapper.Text += "</ul>";
             }
+            else if (pnlConfirmRegistration.Visible)
+            {
+                pnlConfirmRegistration.Visible = false;
+            }
+        }
+
+        protected void pnlConfirmRegistration_Click(object sender, EventArgs e)
+        {
+            new EffectFadeOut(pnlConfirmRegistration, 400).Render();
         }
 
         protected void loginButton_Click(object sender, EventArgs e)
         {
-            Ra.AjaxManager.Instance.Redirect("~/Login.aspx?ReturnUrl=" + Request.Url.AbsolutePath);
+            userWindow.Caption = "Enter your login credentials";
+            userDyanmicPanel.LoadControls("Login.ascx");
+            userWindow.Visible = true;
+        }
+
+        protected void registerButton_Click(object sender, EventArgs e)
+        {
+            userWindow.Caption = "Register";
+            userDyanmicPanel.LoadControls("Register.ascx");
+            userWindow.Visible = true;
+        }
+
+        protected void editProfileButton_Click(object sender, EventArgs e)
+        {
+            userWindow.Caption = "Update Your Profile";
+            userDyanmicPanel.LoadControls("EditProfile.ascx", true);
+            userWindow.Visible = true;
         }
 
         protected void logout_Click(object sender, EventArgs e)
@@ -67,8 +107,22 @@ namespace RaWebsite
 
         protected void closeIE_Click(object sender, EventArgs e)
         {
-            Effect effect = new EffectFadeOut(pnlCrappyBrowser, 400);
-            effect.Render();
+            new EffectFadeOut(pnlCrappyBrowser, 400).Render();
+
+            HttpCookie ieMessage = new HttpCookie("displayIEMessage", "false");
+            ieMessage.Expires = DateTime.Now.AddMonths(1);
+            Response.Cookies.Add(ieMessage);
+        }
+
+        protected void userDyanmicPanel_Reload(object sender, Dynamic.ReloadEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(e.Key) && File.Exists(Server.MapPath("~/" + e.Key)))
+            {
+                System.Web.UI.Control control = LoadControl(e.Key);
+                if (e.Key == "EditProfile.ascx" && e.Extra != null)
+                    ((RaWebsite.EditProfile)control).ProfileLoaded = false;
+                userDyanmicPanel.Controls.Add(control);
+            }
         }
     }
 }

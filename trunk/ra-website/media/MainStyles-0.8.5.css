@@ -145,8 +145,8 @@ http://ra-ajax.org
 
 a { text-decoration:none; }
 a:hover { text-decoration:underline;color:Black; }
-#doc2 { width:1056px; background:url('bg.png') repeat-y;}
-#hd { background:url('sun_background.jpg') no-repeat; height:259px; margin:0 16px 0 16px; }
+#doc2 { width:836px; background:url('bg.png') repeat-y;}
+#hd { background:url('sun_background.jpg') no-repeat; height:205px; margin:0 12px 0 12px; }
 #bd { margin:25px 41px 0 41px; line-height:18px; font-family:"Lucida Grande","Lucida Sans Unicode",verdana,tahoma,arial,sans-serif;}
 #ft { margin-left:auto; margin-right:auto; text-align:center; width:50%; padding:25px; }
 th, td { border:0; padding:0.3em; }
@@ -156,11 +156,35 @@ span > input + label { padding-right:3px;padding-left:3px; vertical-align:middle
 ul { margin:10px 0 10px 25px; } 
 li { list-style-type:disc; list-style-position:outside; }
 
-#yui-main { width: 85%; }
+#yui-main { width: 95%; }
 
 ul.menuLinks { margin:0; }
 ul.menuLinks li { list-style:none; }
 
+/* Menu */
+ul#menu  
+{
+	margin: 0 0 0 12px; padding:0; list-style-type:none; width:812px; position:relative; display:block; 
+	text-transform:capitalize; font-size:13px; font-family: "Lucida Grande", "Lucida Sans Unicode", verdana, tahoma, arial, sans-serif;
+	height:40px; background:transparent url("black.jpg") repeat-x top left; z-index:9; 
+}
+
+ul#menu li { display:block; float:left; margin:0; padding:0; border-right:1px ridge #ffffff; position:relative; height:40px; }
+ul#menu li ul li { border: none 0; height:40px; }
+
+ul#menu li a,
+ul#menu li ul li a
+{ 
+	display:block; float:left; color:#ffffff; text-decoration:none; 
+	padding:12px 20px 0 20px; height:40px;
+}
+ul#menu li ul li a  { width:105px; }
+ul#menu li a:hover { background:transparent url("orange.jpg") repeat-x top left; }
+
+ul#menu li ul { display: none; }
+ul#menu li:hover ul { display: block; position: absolute; top:40px; left:0px; background:#333333; margin:0; width:145px; }
+                    
+                    
 /* Forum specific styles
  */
 .forumPost
@@ -351,12 +375,12 @@ border-bottom:solid 1px #F0F0EA; }
 .tab-control .content { padding:15px; background-color:#F0F0EA; border:solid 1px #91A7B4; }
 
 
-/* Window */
+/* Window 
 
 .window { border:solid 1px Black; background-color:#fff; }
 .window-head { border-bottom:solid 1px Black; background-color:#eef; padding:5px; font-size:1.3em; cursor:move; -moz-user-select:none; font-style:bold; }
 .window-close { font-size:0.8em; position:absolute; right:5px; top:5px; }
-
+*/
 
 /* Calendar specific CSS */
 
@@ -419,9 +443,12 @@ border-bottom:solid 1px #F0F0EA; }
 .thumbs .links { margin-left:auto; margin-right:auto; display:block; padding:15px; overflow:auto; border:dotted 1px #ddd; }
 .thumbs .links:hover { background-color:#eee; border:solid 1px #33f; }
 .thumbs .links .header { font-size:1.0em; font-weight:bold; display:block; }
-.thumbs .links .image1 { float:left; margin-right:10px; background:Transparent url(ajax-starter-kits.jpg) no-repeat -377px 0; display:block; width:188px; height:150px; }
-.thumbs .links .image2 { float:left; margin-right:10px; background:Transparent url(ajax-starter-kits.jpg) no-repeat 0 0; display:block; width:188px; height:150px; }
-.thumbs .links .image3 { float:left; margin-right:10px; background:Transparent url(ajax-starter-kits.jpg) no-repeat -188px 0; display:block; width:188px; height:150px; }
+.thumbs .links .image1 { float:left; margin-right:10px; background:url('ajax-starter-kits.jpg') no-repeat -377px 0; 
+display:block; width:188px; height:150px; }
+.thumbs .links .image2 { float:left; margin-right:10px; background:url('ajax-starter-kits.jpg') no-repeat 0 0; 
+display:block; width:188px; height:150px; }
+.thumbs .links .image3 { float:left; margin-right:10px; background:url('ajax-starter-kits.jpg') no-repeat -188px 0; 
+display:block; width:188px; height:150px; }
 .thumbs .links .text   { font-size:0.9em; padding-top:5px; display:block; }
 
 
