@@ -340,7 +340,6 @@
                     style="position:absolute;bottom:0;right:0;"
                     Text="Save" />
             </div>
-            <ra:BehaviorObscurable runat="server" ID="obscurer" />
         </ext:Window>
 
     </form>

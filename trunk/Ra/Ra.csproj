@@ -45,7 +45,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Behaviors\BehaviorObscurable.cs" />
     <Compile Include="Effects\EffectFocusAndSelect.cs" />
     <Compile Include="Effects\EffectHighlightText.cs" />
     <Compile Include="Effects\EffectMove.cs" />
@@ -86,7 +85,6 @@
     <Compile Include="Behaviors\BehaviorDroppable.cs" />
     <Compile Include="Effects\EffectHighlight.cs" />
     <Compile Include="Effects\EffectBorder.cs" />
-    <Compile Include="Behaviors\BehaviorUpdater.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Js\Ra.js" />
