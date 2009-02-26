@@ -1,0 +1,326 @@
+<%@ Master 
+    Language="C#" 
+    AutoEventWireup="true" 
+    CodeFile="MasterPage.master.cs" 
+    Inherits="Samples.MasterPage" %>
+
+<%@ Register 
+    Assembly="Ra" 
+    Namespace="Ra.Widgets" 
+    TagPrefix="ra" %>
+
+<%@ Register 
+    Assembly="Extensions" 
+    Namespace="Ra.Extensions" 
+    TagPrefix="ext" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+    <head runat="server">
+        <title>Untitled Page</title>
+        <link runat="server" id="includeSteel" href="media/skins/steel/Steel-1.1.css" rel="stylesheet" type="text/css" />
+        <link runat="server" id="includeAlphacube" href="media/skins/alphacube/alphacube-1.1.css" rel="stylesheet" type="text/css" />
+        <link runat="server" id="includeWhite" href="media/skins/white/white-1.1.css" rel="stylesheet" type="text/css" />
+        <link runat="server" id="includeMac" href="media/skins/mac/mac-1.1.css" rel="stylesheet" type="text/css" />
+        <link runat="server" id="includeSpread" href="media/skins/spread/spread-1.1.css" rel="stylesheet" type="text/css" />
+        <link runat="server" id="includeSapphire" href="media/skins/Sapphire/Sapphire-1.1.css" rel="stylesheet" type="text/css" />
+        <link href="media/MainStyles-1.0.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div id="doc2" class="yui-t5" style="position:relative;">
+	        <form id="form1" runat="server">
+	            <div id="hd">
+	            </div>
+                <div id="bd">
+                	<div class="yui-b navigation">
+					    <ext:Accordion 
+					        runat="server" 
+					        ClientSideChange="true"
+					        ID="accordion"
+					        AnimationSpeed="400">
+
+					        <ext:AccordionView 
+					            Caption="Ajax Starter-Kits" 
+					            runat="server" 
+					            ID="accView0">
+			                    <ul class="accLinks">
+			                        <li>
+			                            <a href="Ajax-Forum-Starter-Kit.aspx">Ajax Forum Starter-Kit (C#) - <strong>NEW!</strong></a>
+			                        </li>
+			                        <li>
+			                            <a href="Viewport-RSS-Starter-Kit.aspx">Ajax RSS Starter-Kit (C#)</a>
+			                        </li>
+			                        <li>
+			                            <a href="Viewport-Calendar-Starter-Kit.aspx">Ajax Calendar Starter-Kit (C#)</a>
+			                        </li>
+			                        <li>
+			                            <a href="Viewport-Sample.aspx">Ajax Viewport Starter-Kit (C#)</a>
+			                        </li>
+			                        <li>
+			                            <a href="Viewport-GridView-Sample.aspx">Ajax DataGrid Starter-Kit (VB.NET)</a>
+			                        </li>
+			                    </ul>
+					        </ext:AccordionView>
+					        <ext:AccordionView 
+					            Caption="Concept Samples" 
+					            runat="server" 
+					            ID="accView1">
+			                    <ul class="accLinks">
+			                        <li>
+			                            <a href="Flexible.aspx">Event System</a>
+			                        </li>
+			                        <li>
+			                            <a href="Effects.aspx">Ajax Effects</a>
+			                        </li>
+			                        <li>
+			                            <a href="Behaviors.aspx">Ajax Behaviors</a>
+			                        </li>
+			                        <li>
+			                            <a href="Combining.aspx">Combining Controls</a>
+			                        </li>
+			                        <li>
+			                            <a href="Dynamic.aspx">Dynamic Ajax Controls</a>
+			                        </li>
+			                        <li>
+			                            <a href="Updater.aspx">Ajax Updaters</a>
+			                        </li>
+			                        <li>
+			                            <a href="Ajax-Comet.aspx">Ajax Comet</a>
+			                        </li>
+			                    </ul>
+					        </ext:AccordionView>
+					        <ext:AccordionView 
+					            Caption="Reference Samples" 
+					            runat="server" 
+					            ID="accView2">
+			                    <ul class="accLinks">
+			                        <li>
+			                            <a href="Ajax-Button.aspx">Ajax Button</a>
+			                        </li>
+			                        <li>
+			                            <a href="Ajax-CheckBox.aspx">Ajax CheckBox</a>
+			                        </li>
+			                        <li>
+			                            <a href="Ajax-DropDownList.aspx">Ajax SelectList (DropDownList)</a>
+			                        </li>
+			                        <li>
+			                            <a href="Ajax-HiddenField.aspx">Ajax HiddenField</a>
+			                        </li>
+			                        <li>
+			                            <a href="Ajax-Image.aspx">Ajax Image</a>
+			                        </li>
+			                        <li>
+			                            <a href="Ajax-ImageButton.aspx">Ajax ImageButton</a>
+			                        </li>
+			                        <li>
+			                            <a href="Ajax-Label.aspx">Ajax Label</a>
+			                        </li>
+			                        <li>
+			                            <a href="Ajax-LinkButton.aspx">Ajax LinkButton</a>
+			                        </li>
+			                        <li>
+			                            <a href="Ajax-Panel.aspx">Ajax Panel</a>
+			                        </li>
+			                        <li>
+			                            <a href="Ajax-RadioButton.aspx">Ajax RadioButton</a>
+			                        </li>
+			                        <li>
+			                            <a href="Ajax-TextArea.aspx">Ajax TextArea</a>
+			                        </li>
+			                        <li>
+			                            <a href="Ajax-TextBox.aspx">Ajax TextBox</a>
+			                        </li>
+			                        <li>
+			                            <a href="Ajax-Accordion.aspx">Ajax Accordion</a>
+			                        </li>
+			                        <li>
+			                            <a href="Ajax-Calendar.aspx">Ajax Calendar</a>
+			                        </li>
+			                        <li>
+			                            <a href="Ajax-InPlaceEdit.aspx">Ajax InPlaceEdit</a>
+			                        </li>
+			                        <li>
+			                            <a href="Ajax-RichEdit.aspx">Ajax RichEdit</a>
+			                        </li>
+			                        <li>
+			                            <a href="Ajax-Timer.aspx">Ajax Timer</a>
+			                        </li>
+			                        <li>
+			                            <a href="Ajax-TabControl.aspx">Ajax TabControl</a>
+			                        </li>
+			                        <li>
+			                            <a href="Ajax-Window.aspx">Ajax Window</a>
+			                        </li>
+			                        <li>
+			                            <a href="Ajax-DataGrid.aspx">Ajax DataGrid</a>
+			                        </li>
+			                        <li>
+			                            <a href="Ajax-TreeView.aspx">Ajax TreeView</a>
+			                        </li>
+			                        <li>
+			                            <a href="Ajax-Menu.aspx">Ajax Menu</a>
+			                        </li>
+			                        <li>
+			                            <a href="Ajax-WebMethod.aspx">Ajax WebMethods</a>
+			                        </li>
+			                        <li>
+			                            <a href="Ajax-AutoCompleter.aspx">Ajax AutoCompleter</a>
+			                        </li>
+			                        <li>
+			                            <a href="Ajax-Wizard.aspx">Ajax Wizard</a>
+			                        </li>
+			                        <li>
+			                            <a href="Ajax-MessageBox.aspx">Ajax MessageBox</a>
+			                        </li>
+			                        <li>
+			                            <a href="Ajax-CRUD.aspx">Ajax CRUD forms</a>
+			                        </li>
+			                    </ul>
+					        </ext:AccordionView>
+					    </ext:Accordion>
+				    </div>
+				    <div id="yui-main">
+					    <div class="yui-b">
+					    	<div class="yui-gf">
+			                	<div class="yui-u first major-links">
+				                    <ul>
+				                        <li>
+				                            <a runat="server" href="~/">Main Ra-Ajax Samples</a>
+				                        </li>
+				                        <li>
+				                            <a href="http://code.google.com/p/ra-ajax/">Download Ra-Ajax</a>
+				                        </li>
+				                        <li>
+				                            <a runat="server"
+				                                href="http://ra-ajax.org" 
+				                                title="Back to main Ra-Ajax website">Main Ra-Ajax website</a>
+				                        </li>
+				                    </ul>
+                                    <div style="padding-top:15px;">
+                                        <p>
+                                            Skin:
+                                            <asp:DropDownList 
+                                                runat="server" 
+                                                ID="chooseSkin" 
+                                                AutoPostBack="true" 
+                                                OnSelectedIndexChanged="chooseSkin_SelectedIndexChanged">
+                                                <asp:ListItem Text="Steel" />
+                                                <asp:ListItem Text="Sapphire" />
+                                                <asp:ListItem Text="Alphacube" />
+                                                <asp:ListItem Text="White" />
+                                                <asp:ListItem Text="Mac OS X" />
+                                                <asp:ListItem Text="Spread" />
+                                            </asp:DropDownList>
+                                        </p>
+                                    </div>
+					                <div class="codeBtn">
+					                    <ra:ImageButton 
+					                        runat="server" 
+					                        ID="btnShowCode" 
+					                        ImageUrl="media/show_code.png" 
+					                        AlternateText="Show Code" 
+					                        Tooltip="Show code of this Ajax Sample"
+					                        OnClick="btnShowCode_Click" />
+					                </div>
+                                    <ext:Window 
+                                        ID="wowWnd" 
+                                        runat="server" 
+                                        OnMoved="wowWnd_Moved"
+                                        Caption="New Stuff - MUST Check Out - Starter-Kits" 
+                                        style="width:350px;position:absolute;z-index:1000;right:25px;top:10px;">
+                                        <div style="padding:5px;font-size:0.8em;height:190px;">
+                                            <div class="thumbsSmall">
+                                                <a href="Viewport-Calendar-Starter-Kit.aspx" class="linksSmall">
+                                                    <span class="image1Small">&nbsp;</span>
+                                                    <span class="headerSmall">Ajax Calendar Starter-Kit - C#<br />GCalendar kind of Starter-Kit</span>
+                                                </a>
+                                            </div>
+                                            <div class="thumbsSmall">
+                                                <a href="Viewport-Sample.aspx" class="linksSmall">
+                                                    <span class="image2Small">&nbsp;</span>
+                                                    <span class="headerSmall">Ajax Viewport Starter-Kit - C#<br />Features Ajax Login, TreeView++</span>
+                                                </a>
+                                            </div>
+                                            <div class="thumbsSmall">
+                                                <a href="Viewport-GridView-Sample.aspx" class="linksSmall">
+                                                    <span class="image3Small">&nbsp;</span>
+                                                    <span class="headerSmall">Ajax DataGrid Starter-Kit - VB.NET<br />VB.NET sample with Ajax DataGrid</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </ext:Window>
+				                </div>
+			                	<div class="yui-u cnt">
+                                    <ra:Panel 
+                                        runat="server" 
+                                        ID="pnlCrappyBrowser" 
+                                        Visible="false">
+                                        <p>
+	                                        You seem to be using a broken browser. (Internet Explorer)
+	                                        Please visit <a href="http://getfirefox.com">GetFireFox.com</a> for a real one!
+                                        </p>
+                                        <ra:Button 
+                                            runat="server" 
+                                            ID="closeIE" 
+                                            Text="Close panel" 
+                                            OnClick="closeIE_Click" />
+                                    </ra:Panel>
+                                    <ext:TabControl 
+                                        runat="server" 
+                                        Visible="false"
+                                        ID="tabShowCode">
+
+                                        <ext:TabView 
+                                            Caption="C# Code" 
+                                            runat="server" 
+                                            ID="tabCSCode" 
+                                            CssClass="content">
+	                                         <pre class="code">
+                                                <ra:Label 
+                                                    runat="server" 
+                                                    ID="lblCodeCS" />
+                                            </pre>
+                                        </ext:TabView>
+
+                                        <ext:TabView 
+                                            Caption=".ASPX Markup" 
+                                            runat="server" 
+                                            ID="tabASPXCode" 
+                                            CssClass="content">
+	                                         <pre class="code">
+                                                <ra:Label 
+                                                    runat="server" 
+                                                    ID="lblCodeASPX" />
+                                            </pre>
+                                        </ext:TabView>
+
+                                    </ext:TabControl>
+				                    <asp:contentplaceholder 
+				                        id="cnt1" 
+				                        runat="server">
+				                    </asp:contentplaceholder>
+			                    </div>
+		                    </div>
+	                    </div>
+                    </div>
+                </div>
+                <div id="ft">
+	                <p>
+	                	Copyright 2008 - 2009 - <a href="mailto:thomas@ra-ajax.org">Ra Software AS</a>.
+                        Ra-Ajax is Open Source (LGPL) and free of charge to use. 
+                        All the content (written text) at this webpage is licensed under the 
+                        <a href="http://www.gnu.org/copyleft/fdl.html">GFDL</a>.
+                    </p>
+	                <div class="w3c">
+                        <a href="http://validator.w3.org/check?uri=referer">
+                            <img 
+                                src="media/valid-xhtml10.png" 
+                                alt="Valid XHTML 1.0 Transitional" />
+                        </a>
+                    </div>
+                </div>
+	        </form>
+        </div>
+    </body>
+</html>

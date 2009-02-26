@@ -1,0 +1,33 @@
+WebResource.axd and JavaScript GZip Compression a Simple Solution
+
+Currently the most common way in ASP.NET to serve gzipped content, specially JavaScript, to the client is using HTTP modules and HTTP handlers. This could be convenient in a normal ASP.NET web application, but for an Ajax Controls library like Ra-Ajax this method is not the most convenient and flexible way to do this; because most likely it will require modifications to the core of the library and this in turn means that the library will be always tied to specific code (HTTP module or handler) that the user must have in the web application otherwise it will not work.
+
+It would have been very convenient if the JavaScript files (embedded in the assembly) were optionally pre-compressed (gzipped) as part of the build process with little to no modifications to the core of the Ajax library. Simply, because it should not be the concern of the core whether the JavaScript is gzipped or not, but rather the concern of the browser.
+
+The browser must know the MIME type as well as the encoding of the resource it is given back as a response from the server. This means that for gzipped JavaScript files we must indicate to the browser somehow that their encoding is gzip. Modern versions of all five major browsers support this encoding. Currently the WebResource attribute used to embed a specific resource, in our case the JavaScript files, with the compiled assembly is used like this:
+
+[assembly: WebResource("Extensions.Js.Comet.js", "text/javascript")] 
+
+where you can specify a resource name and MIME type but you can't specify the encoding of this resource. If it was possible to specify the encoding as well here, we would have pre-compressed the JavaScript files, compiled the assemblies and that would be basically it. The user then would not have to worry about using HTTP modules or HTTP handlers and he would automatically get the performance benefits of using gzipped JavaScript.
+
+Until this capability is available in the WebResource attribute (if it will ever be), we came up with a solution that is simpler than using HTTP modules and HTTP handlers and will allow us to pre-compress the JavaScript files before they are embedded with the compiled library assemblies and will require zero modifications to the core of the library.
+
+Simply if a user wants to use the library assemblies that contain the gzipped JavaScript, he would need to add the following code to Global.asax and everything will work just fine:
+<pre>
+void Application_EndRequest(object sender, EventArgs e)
+{
+  if (Request.Path.ToLowerInvariant().EndsWith("webresource.axd") && 
+    HttpContext.Current.Response.ContentType.ToLowerInvariant() == "text/javascript")
+  {
+    HttpContext.Current.Response.Cache.VaryByHeaders["Accept-Encoding"] = true;
+    HttpContext.Current.Response.Cache.SetExpires(DateTime.Now.AddYears(3));
+    HttpContext.Current.Response.Cache.SetCacheability(HttpCacheability.Public); 
+    HttpContext.Current.Response.Cache.SetValidUntilExpires(false);
+
+    HttpContext.Current.Response.AppendHeader("Content-Encoding", "gzip");
+  }
+}
+</pre>
+We simply upon the end of a Request check if it is a WebResource.axd request and if the type of the embedded resource is "text/javascript", if both are true, we enable some caching and most importantly at the last line of code we set the Content-Encoding header to gzip to indicate to the client that this resource is gzipped, and that's it.
+
+Regarding the gzipping itself, I blogged about our <a href="http://ra-ajax.org/custom-nant-jsmin-task-for-minifying-javascript-files.blog">custom JavaScript Minification NAnt Task</a> before, it now supports optional gzipping of the JavaScript files after minification. We also createed a CSS minification custom NAnt task that supports optional gzipping as well. Our <a href="http://code.google.com/p/ra-ajax/downloads/list">download</a> includes the source code of these NAnt custom tasks, you can use, modify and republish them as you like.

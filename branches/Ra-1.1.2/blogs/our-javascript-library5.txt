@@ -1,0 +1,133 @@
+How to create an Ajax Library part 6 - Serializing your forms
+
+
+This is the sixth chapter in our <em>"How to create an Ajax Library"</em> series of articles. If you haven't already you should read <a href="how-to-create-an-ajax-library-part-5-wrapping-the-xmlhttprequest-xhr-object.blog">wrapping the XMLHTTPRequest (XHR) object</a> first.
+
+In this chapter I will walk you through one of the most important steps while building your Ajax Requests, and at the end of the chapter we will have some beautiful code you can use which easily abstract away your web forms and makes it very easy to serialize web forms in JavaScript for creating Ajax Requests and callback to the server to retrieve data or manipulate the page back on the client.
+
+
+<h2>Why bother with forms?</h2>
+Forms might seem dull and uninteresting. At least not interesting enough to get their own chapter, but first of all to serialize a form is the definitely most important thing you can do in an Ajax Library, especially for a completely server-side binded Ajax Library. And second of all serializing forms might seem a little bit surprising for some since it builds on top of *two* standards. It uses both the HTTP standard and the (X)HTML standard which makes them slightly overlap which again makes the process slightly more complex than if it only used one standard.
+
+Also our Ajax Library should completely abstract away the very concept of JavaScript and we will build it on top of ASP.NET both to leverage the existing infrastructure in ASP.NET and also to make sure it is compatible with as much existing code as possible. And since ASP.NET are very strongly coupled towards HTTP/HTML forms we also need to be so. In addition this gives us the additional benefit of being able to also serialize "non-Ra Ajax" form elements which means that we can serialize back to the server also values of controls which are NOT Ra Ajax controls. This gives us a gigantic transparency benefit which will make our Ajax Library completely transparent to both the server and other existing 3rd party controls.
+
+But even for the people among you who do not build your Ajax Libraries on top of ASP.NET there will be many very interesting points in this article, so follow up while we dive down deep into HTTP/HTML web forms.
+
+
+<h2>The code</h2>
+<pre>
+Ra.Form = Ra.klass();
+
+Ra.extend(Ra.Form.prototype, {
+
+  init: function(form, options) {
+    // If no form is given we automagically wrap the FIRST form on page
+    this.form = form || document.getElementsByTagName('form')[0];
+
+    this.options = Ra.extend({
+      args:           '',
+      url:            this.form.action,
+      onFinished:     function(){},
+      onError:        function(){},
+      callingContext: null
+    }, options || {});
+  },
+
+  callback: function() {
+    var T = this;
+    var xhr = new Ra.XHR(this.options.url, {
+      body: this.serializeForm() + '&' + this.options.args,
+      onSuccess: function(response) {
+        if( !T.options.callingContext ) {
+          T.options.onFinished(response);
+        } else {
+          T.options.onFinished.call(T.options.callingContext, response);
+        }
+      },
+      onError: function(status, response) {
+        if( !T.options.callingContext ) {
+          T.options.onError(status, response);
+        } else {
+          T.options.onError.call(T.options.callingContext, status, response);
+        }
+      }
+    });
+  },
+
+  // Serializes a form
+  // Will return a string which is a vald HTTP POST body for the given form
+  // If no form is given, it will search for the _FIRST_ form on the page
+  serializeForm: function() {
+
+    // Return value
+    var retVal = '';
+
+    // Getting ALL elements inside of form element
+    var els = this.form.getElementsByTagName('*');
+
+    // Looping through all elements inside of form and checking to see if they're "form elements"
+    for( var idx = 0; idx < els.length; idx++ ) {
+      var el = els[idx];
+
+      // According to the HTTP/HTML specs we shouldn't serialize disabled controls
+      // Notice also that according to the HTTP/HTML standards we should also serialize the
+      // name/value pair meaning that the name attribute are being used as the ID of the control
+      // Though for Ra controls the name attribute will have the same value as the ID attribute
+      if( !el.disabled && el.name && el.name.length > 0 ) {
+        switch(el.tagName.toLowerCase()) {
+          case 'input':
+            switch( el.type ) {
+              // Note we SKIP Buttons and Submits since there are no reasons as to why we 
+              // should submit those anyway
+              case 'checkbox':
+              case 'radio':
+                if( el.checked ) {
+                  if( retVal.length > 0 ) {
+                    retVal += '&';
+                  }
+                  retVal += el.name + '=' + encodeURIComponent(el.value);
+                }
+                break;
+              case 'hidden':
+              case 'password':
+              case 'text':
+                if( retVal.length > 0 ) {
+                  retVal += '&';
+                }
+                retVal += el.name + '=' + encodeURIComponent(el.value);
+                break;
+            }
+            break;
+          case 'select':
+          case 'textarea':
+            if( retVal.length > 0 ) {
+              retVal += '&';
+            }
+            retVal += el.name + '=' + encodeURIComponent(el.value);
+            break;
+        }
+      }
+    }
+    return retVal;
+  }
+});
+</pre>
+
+<h2>The explanation of the code</h2>
+There are a couple of things to notice in the above code. First of all if no form are given to the constructor (init function) we take the first form available on the page. This is convenient for ASP.NET developers since ASP.NET basically only have support for one form per page. Or rather it HAS support for multiple forms, but to use them is so difficult that most ASP.NET developers choose to skip having more than one form per page. Also notice how we're by default using the <em>action</em> attribute of the form for the URL for our Ajax Request if not explicitly overridden in the options parameter. In addition our form class uses the Ra.XHR object directly itself and creates Ajax Requests back to the server itself in the callback function. This could probably be different and is just a matter of personal choice. I like as small code as possible so using the form class for me means to also use the XMLHTTPRequest which makes this logicical for me.
+
+Also another very interesting thing from the HTTP standard is the fact that we're *not* serializing form elements which are <em>disabled</em>. This is the correct behavior according to the HTTP standard and therefor we choose to do it likewise. In addition when creating HTTP POST requests posting forms back to the server then the HTTP standard also sugests that you do this by having the <em>name attribute</em> as the parameter name, so we'll have to copy this logic ourselves, all though it IS tempting to use the id attribute on this point. Remember the first chapter <a href="how-to-create-an-ajax-library-part-1-decisions.blog">decisions</a> where our conclusion was that we should obey by existing standards and that this is more important than *anything else* in our Ajax library.
+
+Then there is the loop in the inner <em>serializeForm</em> function which just loops through all the elements inside of our HTML form and checks to see if they are of a type we can serialize and if they are we serialize their values with help from <em>encodeURIComponent</em> and build up our complete request and then in the <em>callback function</em> we're calling the server with the request we built up. Notice also that you *can* use the Form class without automatically creating the Ajax Request since we have separated those into a two phase operation by having the <em>callback function</em> be separated from the serialize function and not automatically calling it from neither our init function nor from our serializeForm function.
+
+There is however one place where we are "optimizing" the HTTP standard which is on the &lt;input type="button"... elements. In fact according to the HTTP standard we should serialize the values of these types of controls, but this makes no sense what so ever, and to skip an input element in the form doesn't make any problems for us, at least not for the ASP.NET runtime. So therefor we "optimize away" the button types. Also this class does NOT have support for submit buttons. This is by design since our library will not have &lt;input type="submit"... elements. Meaning if you click a submit button on the page it is not ours and that button will probably be attached to some other library or run the default behavior which is to submit the whole form back to the URL given in the form element.
+
+But apart from the above point our Ajax Request will look 100% identically to an ASP.NET form submit or a normal HTTP web postback. This makes our Form class very useful since it will behave 100% transparent in regards to all other ways there is to create HTTP POST requests. So the ASP.NET runtime on the server will basically be "tricked" into believing that what it recieves is a normal ASP.NET HTTP POST postback. And the beauty of this is that we get to leverage the entire ASP.NET page lifecycle and everything will behave as if it was a <em>normal postback</em> for our server.
+
+So that's about it for now, until next time, have a nice day :)
+
+
+Thomas Hansen
+
+
+
