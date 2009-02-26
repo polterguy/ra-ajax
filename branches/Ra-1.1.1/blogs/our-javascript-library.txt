@@ -1,0 +1,145 @@
+How to create an Ajax Library part 2 - The basic JavaScript OO concerns
+
+
+This is the second chapter in our <em>"How to create an Ajax Library"</em> series of articles. If you haven't already you should read <a href="how-to-create-an-ajax-library-part-1-decisions.blog">decisions when creating an Ajax Library</a> first.
+
+In this chapter we will focus on the "core JavaScript library". As I concluded with in the first chapter we will not build on existing JavaScript libraries but rather build our own since we don't really need a JavaScript library since we're going to completely abstract away the very concept of JavaScript. Hence a fully fledged JavaScript library like Dojo Toolkit, jQuery, MooTools or Prototype.js however brilliantly put together will still be too fat for our needs.
+
+But we still need a basic JavaScript core library to abstract away things like the XMLHTTPRequest, OO class construction, DOM Element manipulation, HTTP form serialization etc. In this article we will look at the needs we have for such a libary and end up with a complete JavaScript Ajax core library of our own.
+
+
+<h3>Our JavaScript needs</h3>
+A good JavaScript library have all sorts of things for every thinkable scenario like CSS selectors, DOM manipulation, DOM element creation etc. We only need a very small subset of those features, but still we need some of those. So what will we need?
+
+
+<h3>Namespace</h3>
+The first thing we need is a namespace. Without a namespace we will run into serious risk of having clashes with other libraries due to the same names of functions, fields, properties and so on. We will use the namespace of <em>Ra</em> for our library. Then every single class, functions and fields will have to be within our JavaScript namespace.
+
+
+<h3>OOP and JavaScript</h3>
+Second of all we need a class OO construction abstraction. The first time I saw this construct was from Sam Stephenson's <a href="http://www.prototypejs.org/">Prototype.js</a> and it was a large reason for why I fell in love with JavaScript as a programming language. All of a sudden I actually had complete "OO" support in JavaScript and not only that but I also had a kind of support for Multiple Inheritance. When creating a GUI library you WANT to have Multiple Inheritance since then you can inherit functionality from several classes into your most derived classes which makes it easy for you to write the smallest possible code. This is of course especially important when creating and Ajax library since it significantly reduces the bandwidth consumption.
+
+The first thing we need is our "class construction function";
+<pre>
+// To create our namespace
+var Ra = {};
+
+// This is our class creation function
+Ra.klass = function() {
+  return function(){
+    if( this.init ) {
+      return this.init.apply(this, arguments);
+    } else {
+      throw 'Cannot have a Ra class without an init function...';
+    }
+  };
+};
+</pre>
+The above snippet of code makes it possible for you to write stuff like this;
+<code>Ra.SomeClass = Ra.klass();</code>
+And then later when you create objects of the <em>Ra.SomeClass</em> type, the init function of that class will automatically be called with all the given parameters. Just some "basic JavaScript candy", but very useful for creating short and beautiful code. I am not going to explain every detail of the code above since this whole series of articles assume some basic JavaScript knowledge, but what I can say is that we're basically creating a function which returns a function which again calls the init function in the context of the this pointer. This means that if we have a prototype function in our class/type which is called init, then this function will be called when we construct new instances of our newly created type.
+
+The next crucially imortant "glue" parts we need to get our complete OO abstraction together is the <code>Ra.extend</code> function. This function is patethically simple, but probably among the most important lines of code you will ever get to see implemented in JavaScript;
+<pre>
+Ra.extend = function(inherited, base) {
+  for (var prop in base) {
+    inherited[prop] = base[prop];
+  }
+  return inherited;
+};
+</pre>
+What the above code does is so extremely simple, yet without that piece of code inheritance and also multiple inheritance would be very difficult to achieve in JavaScript. The above code basically copies all properties from one object to another object and returns the modified object. This means we can write stuff like this;
+<pre>
+var twoD = {x:500, y:600};
+
+// "extend" the above object
+var threeD = Ra.extend({z:300}, twoDimensions);
+
+alert(threeD.x + ' ' + threeD.y + ' ' + threeD.z);
+</pre>
+Now the above snippet isn't really that interesting, but remember that in JavaScript also <em>functions are objects</em> which means if we create a complex type in JavaScript with lots of <em>prototype functions</em> and we want to "inherit" from that type having all the functions from the base class also copied into the inherited type, we can easily do that by passing in the type's prototype object. And in fact we can even override functions from the base class too by "overwriting" functions in the extended type. Imagine this;
+<pre>
+// Creating our "base class"
+var X = Ra.klass();
+
+X.prototype = {
+
+  init: function(param1, param2) {
+    // do stuff
+  },
+
+  foo: function() {
+    alert('X.foo');
+  },
+
+  bar: function() {
+    alert('X.bar');
+  }
+};
+
+// Then creating our "inherited class"
+var X2 = Ra.klass();
+
+// Inheriting from our X type
+Ra.extend(X2.prototype, X.prototype);
+
+// Implementing our custom logic
+// Note that we're "overriding" the foo function from the X type
+Ra.extend(X2.prototype, {
+
+  // "Overriding" the foo function
+  foo: function() {
+    alert('X2.foo');
+  }
+
+});
+</pre>
+Now the X2 type will be a perfect superset of the X type (well mostly) and you will have the X2 type "kind of" inherited from the X type which means you can write code like this;
+<pre>
+var x = new X('parameter1');
+
+x.bar(); // Calls the X.bar method
+
+x.foo(); // Calls the "overridden" X2.foo method
+</pre>
+Pretty cool, or...? ;)
+
+In fact with this syntax you can even inherit multiple times from different base classes and every time the "base class" will be completely unchanged and not tampered with at all. Like for instance we're doing her;
+<pre>
+// Assuming WidgetBase, WidgetUI and WidgetContainer is defined somewhere
+MyWidget = Ra.klass();
+
+// Inheriting from WidgetBase
+Ra.extend(MyWidget.prototype, WidgetBase.prototype);
+
+// Then inheriting from WidgetUI
+Ra.extend(MyWidget.prototype, WidgetUI.prototype);
+
+// Then inheriting from WidgetContainer
+Ra.extend(MyWidget.prototype, WidgetContainer.prototype);
+
+// And finally our own class' implementation
+Ra.extend(MyWidget.prototype, {
+  init: function(par1) {
+    // Do initialization stuff
+  },
+
+  foo: function(){
+    // Some other stuff here
+  },
+
+  someField = 6;
+});
+</pre>
+Now I realize that this isn't "perfect OO inheritance" the way LSP defines it, but as long as you're a little bit careful when constructing function names and field names it's as close as we can come in JavaScript and it will actually reduce the size of our code by orders of magnitudes by being able to not repeating ourselves at all in regards to implementation of classes and types. Very <a href="http://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY</a> or Once And Once Only (OAOO) as it used to be called in the early days of computing when I started out.
+
+And more importantly; our JavaScript files will be orders of magnitudes smaller due to using those basic ideas! And in Ajax <em>size matters</em>. Size is everything when dealing with JavaScript!
+
+Until next time, have a nice day :)
+
+
+Thomas Hansen
+
+
+
+

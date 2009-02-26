@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<project name="Package" xmlns="http://nant.sf.net/release/0.85/nant.xsd">
+
+  <nant buildfile="PublishWebsites.build" />
+  <load-properties properties-file="build.properties" />
+
+  <copy overwrite="true" todir="${output.dir}/${code.dir}">
+    <fileset>
+      <include name="Ra.sln" />
+      <include name="Ra.build" />
+      <include name="*.txt" />
+      <include name="build.properties" />
+      <include name="CustomTasks.build" />
+      <include name="${references.dir}/NAnt.Core.dll" />
+    </fileset>
+  </copy>
+
+  <copy overwrite="true" todir="${output.dir}/${code.dir}/${ra.name}">
+    <fileset basedir="${ra.name}">
+      <exclude name="obj/**/*.*" />
+      <exclude name="**/*VS2008.csproj" />
+      <include name="**/*.cs" />
+      <include name="**/*.js" />
+      <include name="**/*.csproj" />
+    </fileset>
+  </copy>
+
+  <copy overwrite="true" todir="${output.dir}/${code.dir}/${ext.name}">
+    <fileset basedir="${ext.name}">
+      <exclude name="obj/**/*.*" />
+      <exclude name="**/*VS2008.csproj" />
+      <include name="**/*.cs" />
+      <include name="**/*.js" />
+      <include name="**/*.csproj" />
+    </fileset>
+  </copy>
+
+  <copy overwrite="true" todir="${output.dir}/${code.dir}/${resource.cacher.name}">
+    <fileset basedir="${resource.cacher.name}">
+      <exclude name="obj/**/*.*" />
+      <exclude name="**/*VS2008.csproj" />
+      <include name="**/*.cs" />
+      <include name="**/*.csproj" />
+    </fileset>
+  </copy>
+
+  <copy overwrite="true" todir="${output.dir}/${code.dir}/${ra.selector.name}">
+    <fileset basedir="${ra.selector.name}">
+      <exclude name="obj/**/*.*" />
+      <exclude name="**/*VS2008.csproj" />
+      <include name="**/*.cs" />
+      <include name="**/*.csproj" />
+    </fileset>
+  </copy>
+
+  <copy overwrite="true" todir="${output.dir}/${code.dir}/${ra.build.tasks.name}">
+    <fileset basedir="${ra.build.tasks.name}">
+      <exclude name="obj/**/*.*" />
+      <exclude name="**/*VS2008.csproj" />
+      <include name="**/*.cs" />
+      <include name="**/*.csproj" />
+    </fileset>
+  </copy>
+
+  <zip zipfile="${output.dir}/Ra-${ra.version}.zip">
+	<fileset basedir="${output.dir}/${library.dir}" prefix="${library.dir}">
+      <include name="**/*" />
+    </fileset>
+	<fileset basedir="${output.dir}/${code.dir}" prefix="${code.dir}">
+      <include name="Ra.sln" />
+      <include name="Ra.build" />
+      <include name="CustomTasks.build" />
+      <include name="build.properties" />
+      <include name="*.txt" />
+    </fileset>
+    <fileset basedir="${output.dir}/${code.dir}/${ra.name}" prefix="${code.dir}/${ra.name}">
+      <include name="**/*" />
+    </fileset>
+    <fileset basedir="${output.dir}/${code.dir}/${ext.name}" prefix="${code.dir}/${ext.name}">
+      <include name="**/*" />
+    </fileset>
+    <fileset basedir="${output.dir}/${code.dir}/${resource.cacher.name}" prefix="${code.dir}/${resource.cacher.name}">
+      <include name="**/*" />
+    </fileset>
+    <fileset basedir="${output.dir}/${code.dir}/${ra.selector.name}" prefix="${code.dir}/${ra.selector.name}">
+      <include name="**/*" />
+    </fileset>
+    <fileset basedir="${output.dir}/${code.dir}/${ra.build.tasks.name}" prefix="${code.dir}/${ra.build.tasks.name}">
+      <include name="**/*" />
+    </fileset>
+    <fileset basedir="${output.dir}/${code.dir}/${references.dir}" prefix="${code.dir}/${references.dir}">
+      <include name="**/*" />
+    </fileset>
+    <fileset basedir="${output.dir}/${code.dir}/${samples.dir}" prefix="${code.dir}/${samples.dir}">
+      <include name="**/*" />
+    </fileset>
+  </zip>
+
+  <delete>
+	<fileset basedir="${output.dir}">
+		<include name="${code.dir}/**" />
+		<include name="${library.dir}/**" />
+	</fileset>
+  </delete>
+</project>

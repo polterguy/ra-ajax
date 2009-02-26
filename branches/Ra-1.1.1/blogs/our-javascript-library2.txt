@@ -1,0 +1,211 @@
+How to create an Ajax Library part 3 - The Element class and the $ function
+
+
+This is the third chapter in our <em>"How to create an Ajax Library"</em> series of articles. If you haven't already you should read <a href="how-to-create-an-ajax-library-part-2-the-basic-javascript-oo-concerns.blog">the basic JavaScript OO concerns when creating an Ajax Library</a> first.
+
+In the previous chapter we glued together all the "basic OO stuff" we need for our JavaScript library, in this chapter we will focus on some of the most important JavaScript classes we need to create for our Ajax Library.
+
+
+<h2>The Element class</h2>
+All JavaScript libraries with respect for themselves have an <em>Element class</em>. This class is to serve as a wrapper around DOM elements and also abstract away browser differences so that "client code" doesn't have to worry about whether or not it's running in Internet Explorer, FireFox, Opera or Safari etc. Here is some boiler code for such a class;
+<pre>
+// Note that I am assuming that you've read 
+// my previous chapter and understand our usage
+// of Ra.Klass and Ra.extend here...
+Ra.Element = Ra.klass();
+
+Ra.extend(Ra.Element.prototype, {
+  // Implementation...
+});
+</pre>
+So comes the hard parts, figuring out what we need to put into the "implementation" parts. Remember from the first chapters that we're NOT creating a JavaScript library so at this point we must recap and figure out what the server-side bindings will need to be able to do its job.
+
+We know that we will need to be able to set the content of the element, this could maybe have been skipped since most browser implement the innerHTML function on DOM elements, but still for the sake of beautiful code we would rather like to have it as a function.
+<pre>
+Ra.extend(Ra.Element.prototype, {
+
+  setContent: function(html) {
+    this.innerHTML = html;
+    return this;
+  }
+
+});
+</pre>
+The above function only wraps the DOM element's innerHTML function, but at least with a function like this we have the possibility of adding other types of logic for that function later if needed. We should always try to have at least "one level of abstraction" to be able to exchange functional parts of our code later down the road.
+
+Also notice the "return this" parts. The "return this pattern" is very useful for creating short and beautiful code. By adding that one line of code we can write stuff like this;
+<pre>
+var el = /*...retrieve element...*/
+el.setContent('x').doSomethingElse('y').doSomethingThird();
+</pre>
+Which makes very short and beautiful code. And in JavaScript this is especially important since in JavaScript <em>size matters</em>. So for all of your "setter functions" you should add up return this in your JavaScript functions. Of course for "getter functions" you cannot do this since there you would return something else, but the setter functions are great for doing such things. And when we call our functions from the server it will mostly be "setter functions" we're calling.
+
+Another very important function we will need is the <em>replace function</em>. The replace function will be similar to the setContent function, but it will replace the ENTIRE DOM element's HTML replacing it with any given HTML. This function will be used particulary useful when toggling the visibility of our Ajax Control from the server. This function will look like this;
+<pre>
+  replace: function(html) {
+
+    // Storing id for later to be able to "re-extend" 
+    // and return "this" back to caller...
+    var elId = this.id;
+
+    // Creating node to wrap HTML content to replace this content with
+    if( this.outerHTML ) {
+
+      // This works for Internet Explorer based browsers
+      this.outerHTML = html;
+
+    } else {
+
+      // While this will work for all OTHER browser types...
+      var range = this.ownerDocument.createRange();
+      range.selectNode(this);
+      var newEl = range.createContextualFragment(html);
+
+      // Doing replacing
+      this.parentNode.replaceChild(newEl, this);
+
+    }
+
+    // The Ra.$ function we will talk about later...
+    return Ra.$(elId);
+  }
+</pre>
+Then the two most important functions you will create for this class is the <em>observe and stopObserving</em> function. With these two function you will be able to observe events raised by DOM elements like for instance the <em>"click", "blur", "mouseover"</em> and so on. In "obtrusive" JavaScript you would write this as; <code>&lt;input type="button" onclick="alert('x');" /&gt;</code>, but we need to be able to add and remove event observers dynamically so we will have to do this in a non-obtrusive way by having functions for this in our Element class.
+<pre>
+  observe: function(evtName, func, callingContext, extraParams) {
+
+    // Creating wrapper to wrap around function event handler
+    // Note that this logic only handles ONE event handler per event type / element
+    if( !this._wrappers ) {
+      this._wrappers = [];
+    }
+
+    var wr = function() {
+      if( extraParams ) {
+        func.apply(callingContext, extraParams);
+      } else {
+        func.call(callingContext);
+      }
+    };
+
+    this._wrappers[evtName] = wr;
+
+    // Adding up event handler
+    if (this.addEventListener) {
+      this.addEventListener(evtName, wr, false);
+    } else {
+      this.attachEvent('on' + evtName, wr);
+    }
+    return this;
+  },
+
+  stopObserving: function(evtName, func) {
+
+    // Retrieving event handler wrapper
+    var wr = this._wrappers[evtName];
+
+    // Removing event handler from list
+    if (this.removeEventListener) {
+      this.removeEventListener(evtName, wr, false);
+    } else {
+      this.detachEvent('on' + evtName, wr);
+    }
+    return this;
+  }
+</pre>
+The above two functions should work on most browser and their usage is like this;
+<pre>
+var el = /*...Retrieve element...*/;
+
+var func = function(){ alert('x'); };
+
+// Will observe the onClick event
+el.observe(
+  'click', 
+  func, 
+  null, /*context to call event handler in. 
+          Will become the "this" pointer in 
+          your function*/
+  extraParametersPassedIn1,
+  extraParametersPassedIn2,
+  extraParametersEtc
+  );
+
+// Will STOP observing the "onClick" event
+el.stopObserving('click', func);
+</pre>
+Apart from the above functions you can choose to add up whatever you feel for, though remember that when you're creating a server-sentric Ajax Library, you will not need all the functions you're used to using when doing Ajax "by hand" in JavaScript. And remember the rule of <em>"YAGNI"</em> which comes from eXtreme Programming and means You Ain't Gonna Need It and means that you should NEVER implement anything BEFORE you actually need it!
+
+One particulary great set of functions which I am found of is the <em>setOpacity and getOpacity functions</em>. These two buggers are very useful as long as Internet Explorer users are in "non-conformance land" in regards to the standards brought to us by W3C. Here is a basic implementation of those two functions for you to fiddle with;
+<pre>
+  setOpacity: function(value) {
+    if( Ra.Browser.IE ) {
+      this.style.filter = 'alpha(opacity=' + (Math.round(value * 100)) + ')';
+    } else {
+      this.style.opacity = value == 1 ? '' : value < 0.0001 ? 0 : value;
+    }
+    return this;
+  },
+
+  // Returns opacity value of element 1 == completely visible and 0 == completely invisible
+  getOpacity: function() {
+    if( Ra.Browser.IE ) {
+      var value = this.style.filter.match(/alpha\(opacity=(.*)\)/);
+      if( value[1] ) {
+        return parseFloat(value[1]) / 100;
+      }
+      return 1.0;
+    } else {
+      if( this.style.opacity === '' ) {
+        return 1.0;
+      }
+      return this.style.opacity;
+    }
+  }
+</pre>
+The reason why the setOpacity and getOpacity are of special interest to us is because IE doesn't implement the opacity on DOM elements even remotely close to the way all other browsers implement this feature. By adding the above two functions you have a uniform way of changing the opacity of your DOM elements without needing to check the browser type every time you do so. 
+
+
+<h2>Checking the browser type</h2>
+Notice also that we're using a Ra.Browser type in this function, this logic looks something like this;
+<pre>
+Ra.Browser = {
+  IE:             window.attachEvent && !window.opera,
+  Opera:          !!window.opera,
+  WebKit:         navigator.userAgent.indexOf('AppleWebKit') != -1,
+  Gecko:          navigator.userAgent.indexOf('Gecko') != -1,
+  MobileSafari:   !!navigator.userAgent.match(/Apple.*Mobile.*Safari/)
+};
+</pre>
+The above code is mostly inspired by <a href="http://www.prototypejs.org/">Prototype.js</a> and borrowed from Sam Stephenson with pride. It checks which browser the user is accessing your page with. And if the user is using Internet Explorer then the Ra.Browser.IE will be <em>true</em>, but all other values be <em>false</em>. If the user is using some WebKit based browser like for instance Safari then the Ra.Browser.WebKit value will be true and so on.
+
+
+<h2>The $ function</h2>
+The <em>$ function</em> is probably the most used function in the world in JavaScript. This is since all JavaScript libraries with respect for themselves are using the $ function as a wrapper around retrieving DOM elements. While some are using it to the extreme like for instance prototype.js which enables you to pass in arrays of strings and so on as ids of elements, we are only going to allow one string as the parameter. We will find the DOM element, extend it with the methods from the Element class and return the DOM element back to the caller.
+
+This is how we implement our $ function;
+<pre>
+// $ method, used to retrieve elements on document
+Ra.$ = function(id) {
+  var el = document.getElementById(id);
+  if( !el ) {
+    return null;
+  }
+  Ra.extend(el, Ra.Element.prototype);
+  return el;
+};
+</pre>
+Notice that before we return the DOM element we extend it like we discussed in our <a href="how-to-create-an-ajax-library-part-2-the-basic-javascript-oo-concerns.blog">Basic JavaScript OO concerns</a> article. Our Element class is "abstract" which means that you cannot directly instantiate instances of it since it doesn't implement an <em>init function</em>, so for now this is in fact the only possible way of getting a reference to an Element object.
+
+Notice also that what we are returning is in fact the DOM element meaning you will have access to all the DOM element functions on the returned object in addition to all the functions from your Element class. Though this comes with a catch. If you have a function in your Element class which have the same name as any of the existing functions in the DOM Element prototype, then your functions will "override" (or rather overwrite) the functions from your DOM Element prototype. This means that you should be careful when creating function names and field names for your Element class.
+
+In fact this is one of very few places where prototype.js has been seriously attacked for its architecture since prototype.js extends system objects all over the place and even changes basic JavaScript objects to such an extreme that JavaScript as a lanaguage doesn't even behave the way you're used to from "normal" JavaScript. So be very careful when extending System Objects. Though I think that the $ function and the Element class are a very versatile place to do this as long as you're a little bit careful when doing it.
+
+So that's about it for now, our JavaScript Ajax library should now start to look like something we can actually start using.
+
+Until next time, have a nice day :)
+
+
+Thomas Hansen
+
+
