@@ -119,8 +119,8 @@ namespace RaWebsite
             if (!string.IsNullOrEmpty(e.Key) && File.Exists(Server.MapPath("~/" + e.Key)))
             {
                 System.Web.UI.Control control = LoadControl(e.Key);
-                if (e.Key == "EditProfile.ascx" && e.Extra != null)
-                    ((RaWebsite.EditProfile)control).ProfileLoaded = false;
+                if (e.Key == "EditProfile.ascx")
+                    ((RaWebsite.EditProfile)control).ProfileLoaded = !e.FirstReload;
                 userDyanmicPanel.Controls.Add(control);
             }
         }

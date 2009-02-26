@@ -17,11 +17,14 @@ namespace Ra.Widgets
     public class Dynamic : Panel
     {
         private string _key;
+        private object _extra;
+        private bool _firstReload;
 
         public class ReloadEventArgs : EventArgs
         {
             private string _key;
             private object _extra;
+            private bool _firstReload;
 
             public string Key
             {
@@ -34,11 +37,17 @@ namespace Ra.Widgets
                 get { return _extra; }
                 set { _extra = value; }
             }
+            
+            public bool FirstReload
+            {
+                get { return _firstReload; }
+            }
 
-            internal ReloadEventArgs(string key, object extra)
+            internal ReloadEventArgs(string key, object extra, bool firstReload)
             {
                 _key = key;
                 _extra = extra;
+                _firstReload = firstReload;
             }
         }
 
@@ -54,17 +63,23 @@ namespace Ra.Widgets
                 {
                     if (controlSatate[0] != null && controlSatate[0].GetType() == typeof(string))
                         _key = controlSatate[0].ToString();
+                    if (controlSatate[1] != null)
+                        _extra = controlSatate[1];
+                    if (controlSatate[2] != null && controlSatate[2].GetType() == typeof(bool))
+                        _firstReload = (bool)controlSatate[2];
                     
-                    base.LoadControlState(controlSatate[1]);
+                    base.LoadControlState(controlSatate[3]);
                 }
             }
         }
 
         protected override object SaveControlState()
         {
-            object[] controlState = new object[2];
+            object[] controlState = new object[4];
             controlState[0] = _key;
-            controlState[1] = base.SaveControlState();
+            controlState[1] = _extra;
+            controlState[2] = _firstReload;
+            controlState[3] = base.SaveControlState();
             return controlState;
         }
 
@@ -72,16 +87,16 @@ namespace Ra.Widgets
         {
             if (Page.IsPostBack)
             {
-                LoadDynamicControl(null);
+                LoadDynamicControl();
             }
             base.OnLoad(e);
         }
 
-        private void LoadDynamicControl(object extra)
+        private void LoadDynamicControl()
         {
             if (Reload != null && !string.IsNullOrEmpty(_key))
             {
-                ReloadEventArgs e = new ReloadEventArgs(_key, extra);
+                ReloadEventArgs e = new ReloadEventArgs(_key, _extra, _firstReload);
                 Reload(this, e);
             }
         }
@@ -96,7 +111,19 @@ namespace Ra.Widgets
             Controls.Clear();
 
             _key = key;
-            LoadDynamicControl(extra);
+            _extra = extra;
+            _firstReload = true;
+            LoadDynamicControl();
+            _firstReload = false;
+            ReRender();
+        }
+
+        public void ClearControls()
+        {
+            Controls.Clear();
+            
+            _key = string.Empty;
+            _extra = null;
             ReRender();
         }
     }

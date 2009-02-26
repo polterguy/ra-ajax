@@ -23,8 +23,6 @@ namespace RaWebsite
 
                 changeNickname.Focus();
                 changeNickname.Select();
-
-                ProfileLoaded = true;
             }
         }
 
