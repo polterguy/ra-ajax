@@ -4,15 +4,12 @@
     CodeFile="MasterPage.master.cs" 
     Inherits="RaWebsite.MasterPage" %>
 
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
+<%@ Register Assembly="Ra" Namespace="Ra.Widgets" TagPrefix="ra" %>
+<%@ Register Assembly="Extensions" Namespace="Ra.Extensions" TagPrefix="ext" %>
+    
+<%@ Register Src="~/Login.ascx" TagName="Login" TagPrefix="uc" %>
+<%@ Register Src="~/Register.ascx" TagName="Register" TagPrefix="uc" %>
+<%@ Register Src="~/EditProfile.ascx" TagName="EditProfile" TagPrefix="uc" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
