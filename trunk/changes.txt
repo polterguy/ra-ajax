@@ -10,6 +10,26 @@
 
   ------------------------------------------------------------------
 
+                          Version 1.1.3
+
+                     Enhancements to Dynamic
+
+  ------------------------------------------------------------------
+
+* Added a new method 'ClearControls()' that allows you to reset the
+  dynamic control and clear its child controls.
+
+* The 'Extra' property of 'ReloadEventArgs' is now persisted between 
+  callbacks.
+
+* Added a new boolean property 'FirstReload' to 'ReloadEventArgs' 
+  This property is very useful in many scenarios, it is only true 
+  the first time the 'Reload' event is fired, i.e. when you call 
+  the 'LoadControls(...)' method on the dynamic control thus 
+  raising the 'Reload' event, otherwise it is false.
+
+  ------------------------------------------------------------------
+
                           Version 1.1.2
 
            Bug fixes and Renaming Changes (code breaking)
