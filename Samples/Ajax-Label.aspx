@@ -51,7 +51,7 @@
     </p>
     <h2>Ra-Ajax Renders Invisible Controls as Invisible</h2>
     <p>
-        Ra-Ajax has a very nice feature that is borrowed from <a href="http://anthemdotnet.com/">Anthem.NET</a>.
+        Ra-Ajax has a very nice feature that is borrowed from <a href="http://anthem-dot-net.sourceforge.net/">Anthem.NET</a>.
         If an Ajax Control, like the Ajax Label below, is rendered invisible, then that label
         will not occupy any space at all in the DOM, except for a "generic" <em>span element</em>, which is used as 
         a placeholder. This span serves the purpose of knowing exactly where in the DOM we should render the Control 
