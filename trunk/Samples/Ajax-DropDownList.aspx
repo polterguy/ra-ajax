@@ -134,7 +134,7 @@
     </p>
     <p>
         In fact when Jason Diamond, who "invented" Ajax Libraries for ASP.NET utilizing the whole Page Life Cycle,
-        created <a rel="nofollow" href="http://anthemdotnet.com/">Anthem.NET</a> he himself refered to the Partial Rendering
+        created <a rel="nofollow" href="http://anthem-dot-net.sourceforge.net/">Anthem.NET</a> he himself refered to the Partial Rendering
         (though before it had a name) as a "dirty hack". Most server-side binded Ajax Libraries, including those 
         for ASP.NET today are exclusively created utilizing Partial Rendering. 
     </p>

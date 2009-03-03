@@ -75,7 +75,7 @@
     <p>
         If you click the Show Code button you will see that there is no 
         JavaScript at all written to run the Ajax functionality you just observed. Ra-Ajax is heavily inspired by 
-        <a rel="nofollow" href="http://anthemdotnet.com/">Anthem.Net</a> in that you can run pretty advanced Ajax 
+        <a rel="nofollow" href="http://anthem-dot-net.sourceforge.net/">Anthem.Net</a> in that you can run pretty advanced Ajax 
         functionality without being forced into writing JavaScript at all. Though there is one crucial 
         difference between Ra-Ajax and most other Ajax Frameworks - Ra-Ajax uses 
         <a href="http://weblogs.asp.net/despos/archive/2007/09/19/partial-rendering-misses-ajax-architectural-points.aspx">Partial Rendering</a>
