@@ -402,6 +402,7 @@
                     </tr>
                 </table>
             </div>
+            <ra:BehaviorObscurable runat="server" ID="loginModal" />
         </ext:Window>
     </form>
 </body>
