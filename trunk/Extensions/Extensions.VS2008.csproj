@@ -65,6 +65,7 @@
     <Compile Include="Widgets\MenuItem.cs" />
     <Compile Include="Widgets\MenuItems.cs" />
     <Compile Include="Widgets\TreeNodes.cs" />
+    <Compile Include="Widgets\RichEdit.cs" />
     <Compile Include="Widgets\InPlaceEdit.cs" />
     <Compile Include="Widgets\Timer.cs" />
     <Compile Include="Widgets\TabView.cs" />
@@ -77,6 +78,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Js\Timer.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Js\RichEdit.js" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Js\Comet.js" />

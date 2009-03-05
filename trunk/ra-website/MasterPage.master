@@ -54,6 +54,7 @@
                         Visible="false"
                         style="z-index:11;border:0;width:330px;float:right;position:relative;right:-75px;top:35px;">
                         <ra:Dynamic runat="server" ID="userDyanmicPanel" OnReload="userDyanmicPanel_Reload" />
+                        <ra:BehaviorObscurable ID="userWindowObscurer" runat="server" />
                     </ext:Window>
                     <ra:Panel 
                         runat="server" 

@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Behaviors\BehaviorObscurable.cs" />
     <Compile Include="Effects\EffectFocusAndSelect.cs" />
     <Compile Include="Effects\EffectHighlightText.cs" />
     <Compile Include="Effects\EffectTimeout.cs" />
@@ -91,13 +92,16 @@
     <Compile Include="Behaviors\BehaviorDroppable.cs" />
     <Compile Include="Effects\EffectHighlight.cs" />
     <Compile Include="Effects\EffectBorder.cs" />
+    <Compile Include="Behaviors\BehaviorUpdater.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Js\Ra.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Js\Behaviors.js" />
     <EmbeddedResource Include="Js\Control.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Js\Behaviors.js" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

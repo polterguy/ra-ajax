@@ -198,6 +198,10 @@
             <ra:HiddenField 
                 runat="server" 
                 ID="parentPostID" />
+            <ra:BehaviorObscurable 
+                runat="server" 
+                ID="obscureNewWindow" />
+
         </ext:Window>
 
     </form>
