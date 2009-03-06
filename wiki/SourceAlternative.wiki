@@ -1,11 +1,11 @@
-#summary One-sentence summary of this page.
+#summary Lawsuit update
 #labels Featured
 
 = Lawsuit update =
 
-UPDATE 6th of March 2009: Due to a Temporary Precautionary Measure verdict court of first instance we have to remove Ra-Ajax while the lawsuit proceeds. Therefore, we have removed the download options for Ra-Ajax.
+UPDATE 6th of March 2009: Due to a Temporary Precautionary Measure verdict court of first instance we have to remove Ra-Ajax while the lawsuit proceeds. Therefore, we have removed the download options for Ra-Ajax in addition to the source-code for Ra-Ajax.
 
-In addition, we will not sell, market or publish Ra-Ajax from this day forward until this lawsuit is settled. Therefor some pages have been removed so that they are impossible to read. This page are among these pages.
+In addition, we will not sell, market or publish Ra-Ajax from this day forward until this lawsuit is settled.
 
 We hope that this will just be a minor hick up, and we believe that we'll get to publish Ra-Ajax again when this lawsuit is finished. First, we will appeal this temporary verdict to the court of second instance.
 
