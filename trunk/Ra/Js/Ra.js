@@ -216,6 +216,12 @@ Ra.Element.prototype = {
       this.style[key] = value;
     }
   },
+  
+  setStyles: function(styles) {
+    for (var style in styles) {
+      this.setStyle(style, styles[style]);
+    }
+  },
 
   absolutize: function() {
     if( this._hasAbsTized ) {
