@@ -131,6 +131,24 @@ namespace Ra.Widgets
             }
         }
 
+        /**
+         * Gets or sets the maximum number of characters allowed in the TextBox. Default value is 0 which 
+         * means that the property is not set.
+         */ 
+        [DefaultValue(0)]
+        public int MaxLength
+        {
+            get { return ViewState["MaxLength"] == null ? 0 : (int)ViewState["MaxLength"]; }
+            set 
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException("value", "The MaxLength property can not have a negative value.");
+                if (value != MaxLength)
+                    SetJSONGenericValue("maxLength", value.ToString());
+                ViewState["MaxLength"] = value;
+            }
+        }
+
         #endregion
 
         /**
@@ -270,12 +288,13 @@ namespace Ra.Widgets
         protected override string GetOpeningHTML()
         {
             string accessKey = string.IsNullOrEmpty(AccessKey) ? "" : string.Format(" accesskey=\"{0}\"", AccessKey);
-            return string.Format("<input type=\"{3}\" id=\"{0}\" name=\"{0}\" value=\"{1}\"{2}{4}{5} />",
+            return string.Format("<input type=\"{3}\" id=\"{0}\" name=\"{0}\" value=\"{1}\"{2}{4}{5}{6} />",
                 ClientID,
                 Text,
                 accessKey,
                 (TextMode == TextBoxMode.SingleLine ? "text" : "password"),
                 (Enabled ? "" : " disabled=\"disabled\""),
+                (MaxLength > 0 ? " maxlength=\"" + MaxLength.ToString() + "\"" : ""),
                 GetWebControlAttributes());
         }
 

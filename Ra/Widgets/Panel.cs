@@ -24,7 +24,7 @@ namespace Ra.Widgets
         #region [ -- Overridden (abstract/virtual) methods from RaControl -- ]
 
         /**
-         * The HTML tag used to render the label, defaults to span
+         * The HTML tag used to render the label, defaults to div
          */
         [DefaultValue("div")]
         public string Tag
