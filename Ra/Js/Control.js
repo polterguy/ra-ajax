@@ -40,7 +40,31 @@ Ra.Control._controls = [];
 
 Ra.Control.errorHandler = function(stat, trc) {
   if( stat !== 0 ) { // Probably "unload" process
-    alert(stat + '\r\n' + trc);
+    var errDiv = document.createElement('div');
+    Ra.extend(errDiv, Ra.Element.prototype);
+    errDiv.setStyles({position: 'fixed', textAlign: 'center', top: '0px', left: '0px', width: '100%', height: '100%', zIndex: 1000 });
+    
+    var close = document.createElement('a');
+    Ra.extend(close, Ra.Element.prototype);
+    close.setContent('Close');
+    close.setAttribute('href', '#');
+    close.setStyles({position: 'relative', top: '20px', zIndex: '1000'});
+    close.observe('click', function(){ document.body.removeChild(errDiv); }, this);
+  
+    var frame = document.createElement('iframe');
+    Ra.extend(frame, Ra.Element.prototype);
+    frame.setStyles({width: '90%', height: '90%', border: 'solid 1px black'});
+
+    errDiv.appendChild(close);
+    errDiv.appendChild(document.createElement('br'));
+    errDiv.appendChild(frame);
+    document.body.appendChild(errDiv);
+    
+    var doc = frame.contentDocument || frame.contentWindow.document;
+
+    doc.open();
+    doc.write(trc);
+    doc.close();
   }
 };
 
