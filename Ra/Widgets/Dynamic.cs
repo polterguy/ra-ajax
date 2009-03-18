@@ -18,7 +18,6 @@ namespace Ra.Widgets
     {
         private string _key;
         private object _extra;
-        private bool _firstReload;
 
         public class ReloadEventArgs : EventArgs
         {
@@ -29,13 +28,11 @@ namespace Ra.Widgets
             public string Key
             {
                 get { return _key; }
-                set { _key = value; }
             }
 
             public object Extra
             {
                 get { return _extra; }
-                set { _extra = value; }
             }
             
             public bool FirstReload
@@ -65,21 +62,18 @@ namespace Ra.Widgets
                         _key = controlSatate[0].ToString();
                     if (controlSatate[1] != null)
                         _extra = controlSatate[1];
-                    if (controlSatate[2] != null && controlSatate[2].GetType() == typeof(bool))
-                        _firstReload = (bool)controlSatate[2];
                     
-                    base.LoadControlState(controlSatate[3]);
+                    base.LoadControlState(controlSatate[2]);
                 }
             }
         }
 
         protected override object SaveControlState()
         {
-            object[] controlState = new object[4];
+            object[] controlState = new object[3];
             controlState[0] = _key;
             controlState[1] = _extra;
-            controlState[2] = _firstReload;
-            controlState[3] = base.SaveControlState();
+            controlState[2] = base.SaveControlState();
             return controlState;
         }
 
@@ -87,16 +81,16 @@ namespace Ra.Widgets
         {
             if (Page.IsPostBack)
             {
-                LoadDynamicControl();
+                LoadDynamicControl(false);
             }
             base.OnLoad(e);
         }
 
-        private void LoadDynamicControl()
+        private void LoadDynamicControl(bool firstReload)
         {
             if (Reload != null && !string.IsNullOrEmpty(_key))
             {
-                ReloadEventArgs e = new ReloadEventArgs(_key, _extra, _firstReload);
+                ReloadEventArgs e = new ReloadEventArgs(_key, _extra, firstReload);
                 Reload(this, e);
             }
         }
@@ -112,9 +106,7 @@ namespace Ra.Widgets
 
             _key = key;
             _extra = extra;
-            _firstReload = true;
-            LoadDynamicControl();
-            _firstReload = false;
+            LoadDynamicControl(true);
             ReRender();
         }
 
