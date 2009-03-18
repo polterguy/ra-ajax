@@ -76,24 +76,15 @@ Ra.BObscureCommon.prototype = {
     var el = this.el;
     Ra.extend(el, Ra.Element.prototype);
     el.id = this.id;
-    el.setStyle('position','absolute');
-    el.setStyle('left','0px');
-    el.setStyle('top','0px');
-    el.setStyle('zIndex',this.options.zIndex);
-
+    el.setStyles(
+      {position: 'fixed', left: '0px', top: '0px', width: '100%', height: '100%', zIndex: this.options.zIndex, textAlign: 'center'}
+    );
+    
+    if( this.options.image )
+      el.setStyle('background', 'url(' + this.options.image + ') no-repeat center center');
+    
     // We must add the node to the DOM before we can begin computing its offset according to the browser...
     parentElement.appendChild(el);
-
-    // Listening to the "resized" event since we then want to resize our obscurer surface...
-    if( !window.observe ) {
-      Ra.extend(window, Ra.Element.prototype);
-    }
-    window.observe('resize', this.onResized, this);
-
-    // In case we have margins, borders and so on (e.g. margin-right:auto etc) we need to calculate
-    // the exact position of the element after being added to the DOM and then add the element with
-    // that NEGATIVE value as its top/left position...
-    this.onResized();
 
     // Only when we HAVE calculated the node's exact position we can make it IN-visible...
     el.setStyle('display','none');
@@ -102,56 +93,8 @@ Ra.BObscureCommon.prototype = {
     // If we do this earlier the browser will "flash"...
     el.setStyle('backgroundColor',this.options.color);
   },
-
-  onResized: function() {
-
-    // If some DOM node inbetween obscurer and window root has
-    // e.g. borders or margins (e.g. margin-left:auto) we need to
-    // accommodate for that by subtracting those parts AWAY and creating
-    // a "negative position" for our obscurer element
-    var valueT = this.el.offsetTop  || 0;
-    var valueL = this.el.offsetLeft  || 0;
-    var el = this.el.offsetParent;
-
-    while (el) {
-      valueT += el.offsetTop  || 0;
-      valueL += el.offsetLeft || 0;
-      el = el.offsetParent;
-    }
-
-    if( valueL ) {
-      if( valueL > 0 ) {
-        valueL *= -1;
-      } else {
-        valueL = 0;
-      }
-      this.el.setStyle('left', valueL + 'px');
-    }
-    if( valueT ) {
-      if( valueT > 0 ) {
-        valueT *= -1;
-      } else {
-        valueL = 0;
-      }
-      this.el.setStyle('top', valueT + 'px');
-    }
-
-    var width = Math.max(
-      document.documentElement.clientWidth, document.documentElement.scrollWidth, 
-      document.documentElement.offsetWidth, document.body.scrollWidth, document.body.offsetWidth);
-      
-    var height = Math.max(
-      document.documentElement.clientHeight, document.documentElement.scrollHeight, 
-      document.documentElement.offsetHeight, document.body.scrollHeight, document.body.offsetHeight);
-
-    // Setting width and height to size of viewport...
-    this.el.setStyle('width', parseInt(width, 10) + 'px');
-    this.el.setStyle('height', parseInt(height, 10) + 'px');
-  },
-
-  destroyObscurer: function(){
-    window.stopObserving('resize', this.onResized, this);
-  }
+  
+  destroyObscurer: function(){ }
 };
 
 
@@ -605,7 +548,8 @@ Ra.extend(Ra.BUpDel.prototype, {
     this.options = Ra.extend({
       color:'#000',
       delay: 500,
-      opacity: 0.5
+      opacity: 0.5,
+      image: ''
     }, this.options || {});
     this.options.onStart = function() {
 
@@ -625,34 +569,6 @@ Ra.extend(Ra.BUpDel.prototype, {
 
     // Creating obscurer from base class
     this.createObscurer(document.getElementsByTagName('body')[0]);
-  },
-
-  onResized: function() {
-
-    // If some DOM node inbetween obscurer and window root has
-    // e.g. borders or margins (e.g. margin-left:auto) we need to
-    // accommodate for that by subtracting those parts AWAY and creating
-    // a "negative position" for our obscurer element
-    var valueT = this.el.offsetTop  || 0;
-    var valueL = this.el.offsetLeft  || 0;
-    var el = this.el.offsetParent;
-
-    while (el) {
-      valueT += el.offsetTop  || 0;
-      valueL += el.offsetLeft || 0;
-      el = el.offsetParent;
-    }
-
-    if( valueL ) {
-      this.el.setStyle('left',(-valueL) + 'px');
-    }
-    if( valueT ) {
-      this.el.setStyle('top',(-valueT) + 'px');
-    }
-
-    // Setting width and height to size of viewport...
-    this.el.setStyle('width',parseInt(document.body.clientWidth || self.innerWidth || document.documentElement.clientWidth, 10) + 'px');
-    this.el.setStyle('height',parseInt(document.body.clientHeight || self.innerHeight || document.documentElement.clientHeight, 10) + 'px');
   },
 
   Opacity: function(value) {

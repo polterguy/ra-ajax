@@ -92,6 +92,17 @@ namespace Ra.Widgets
             }
         }
 
+        public string ImageUrl
+        {
+            get { return ViewState["ImageUrl"] == null ? "" : ViewState["ImageUrl"].ToString(); }
+            set
+            {
+                if (value != ImageUrl)
+                    SetJSONValueString("ImageUrl", value);
+                ViewState["ImageUrl"] = value;
+            }
+        }
+
 		public override string GetRegistrationScript()
 		{
 			string options = string.Empty;
@@ -110,6 +121,12 @@ namespace Ra.Widgets
                 if (options != string.Empty)
                     options += ",";
                 options += string.Format("opacity:'{0}'", Opacity.ToString(System.Globalization.CultureInfo.InvariantCulture));
+            }
+            if (ImageUrl != string.Empty)
+            {
+                if (options != string.Empty)
+                    options += ",";
+                options += string.Format("image:'{0}'", ResolveUrl(ImageUrl));
             }
             if (options != string.Empty)
 				options = ",{" + options + "}";
