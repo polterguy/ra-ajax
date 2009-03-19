@@ -51,9 +51,7 @@ Ra.extend(Ra.TreeNode.prototype, {
             this.element.setStyle('overflow','hidden');
           },
           onFinished: function() {
-            this.element.setStyle('display','none');
-            this.element.setStyle('height','');
-            this.element.setStyle('overflow',this._overflow);
+            this.element.setStyles({display: 'none', height: '', overflow: this._overflow});
           },
           onRender: function(pos) {
             this.element.setStyle('height',((1.0-pos)*this._fromHeight) + 'px');
@@ -68,14 +66,12 @@ Ra.extend(Ra.TreeNode.prototype, {
         Ra.E(this.options.childCtrl, {
           onStart: function() {
             this._toHeight = this.element.getDimensions().height;
-            this.element.setStyle('height','0px');
-            this.element.setStyle('display','block');
+            this.element.setStyles({height: '0px', display: 'block'});
             this._overflow = this.element.getStyle('overflow');
             this.element.setStyle('overflow','hidden');
           },
           onFinished: function() {
-            this.element.setStyle('height', '');
-            this.element.setStyle('overflow',this._overflow);
+            this.element.setStyles({height: '', overflow: this._overflow});
           },
           onRender: function(pos) {
             this.element.setStyle('height', parseInt(this._toHeight*pos) + 'px');

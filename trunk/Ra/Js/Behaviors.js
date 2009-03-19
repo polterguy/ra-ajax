@@ -316,8 +316,9 @@ Ra.extend(Ra.BDrag.prototype, {
       xDelta -= xDelta % this.options.snap.x;
       yDelta -= yDelta % this.options.snap.y;
       var bn = this.options.bounds;
-      this.parent.element.setStyle('left',Math.min(Math.max(this._oldX + xDelta, bn.left), bn.width + bn.left) + 'px');
-      this.parent.element.setStyle('top',Math.min(Math.max(this._oldY + yDelta, bn.top), bn.height + bn.top) + 'px');
+      this.parent.element.setStyles({
+        left: Math.min(Math.max(this._oldX + xDelta, bn.left), bn.width + bn.left) + 'px', 
+        top: Math.min(Math.max(this._oldY + yDelta, bn.top), bn.height + bn.top) + 'px'});
 
       // Signaling affected droppers
       var affectedDroppers = Ra.BDrop.getAffected(pos.x, pos.y);
