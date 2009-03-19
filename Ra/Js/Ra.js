@@ -249,9 +249,7 @@ Ra.Element.prototype = {
       valueL += el.offsetLeft || 0;
       el = el.offsetParent;
     }
-    this.setStyle('left',valueL + 'px');
-    this.setStyle('top',valueT + 'px');
-    this.setStyle('position','absolute');
+    this.setStyles({left: valueL + 'px', top: valueT + 'px', position: 'absolute'});
     this._hasAbsTized = true;
   },
 

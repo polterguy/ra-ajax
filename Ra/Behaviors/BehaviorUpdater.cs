@@ -91,6 +91,21 @@ namespace Ra.Widgets
                 ViewState["Color"] = value;
             }
         }
+        
+        /**
+         * Explicitly overridden z-index style value of upadter.
+         */
+        [DefaultValue(1000)]
+        public int ZIndex
+        {
+            get { return ViewState["ZIndex"] == null ? 1000 : (int)ViewState["ZIndex"]; }
+            set
+            {
+                if (value != ZIndex)
+                    SetJSONValueObject("ZIndex", value);
+                ViewState["ZIndex"] = value;
+            }
+        }
 
         public string ImageUrl
         {
@@ -128,6 +143,12 @@ namespace Ra.Widgets
                     options += ",";
                 options += string.Format("image:'{0}'", ResolveUrl(ImageUrl));
             }
+            
+            if (options != string.Empty)
+                options += ",";
+            
+            options += string.Format("zIndex:'{0}'", ZIndex);
+
             if (options != string.Empty)
 				options = ",{" + options + "}";
 			return string.Format("new Ra.BUpDel('{0}'{1})", this.ClientID, options);
