@@ -1,12 +1,42 @@
 
-
-
   ******************************************************************
 
                         ChangeLog for Ra-Ajax
 
   ******************************************************************
 
+  ------------------------------------------------------------------
+
+                          Version 1.?.?
+
+                     XXXXXXXXXXXXXXXXXXXXXXXX
+
+  ------------------------------------------------------------------
+
+* Added MaxLength property to TextBox to specify the Maximum number 
+  of allowed characters the user can enter.
+  
+* Much nicer server error/exception	display (less obtrusive). The 
+  user can optionally view the full error details or ignore it.
+  
+* Support for setting multiple style values in Ra.Element using 
+  JS object literals with the function Ra.Element.setStyles(). Good 
+  for writing more compact code when setting multiple style values.
+  
+* Better cross-browser obscuring solution for BehaviorObscurable 
+  and BehaviorUpdater. Elliminates problems like revealing parts of 
+  the page behind the obscurer when resizing the browser window. 
+  This solution is pure CSS, no JS is used to adjust for resizing, 
+  scrlling etc...
+  
+* Support of displaying an image with BehaviorUpdater. Nice for
+  displaying things like loading.gif image (http://ajaxload.info) or
+  something similar while the Ajax request is being processed on the 
+  server.
+  
+* Added zIndex property to BehaviorUpdater.
+
+* Removed unnecessary code form Dynamic.
 
   ------------------------------------------------------------------
 
@@ -27,6 +57,7 @@
   the first time the 'Reload' event is fired, i.e. when you call 
   the 'LoadControls(...)' method on the dynamic control thus 
   raising the 'Reload' event, otherwise it is false.
+
 
   ------------------------------------------------------------------
 
@@ -71,9 +102,6 @@
   which will be passed in to your "LoadControls" event handler.
 
 
-
-
-
   ------------------------------------------------------------------
 
                           Version 1.1.0
@@ -89,7 +117,6 @@
   done on the client.
 
 * Fixed a bug in HTML select form element serialization
-
 
 
   ------------------------------------------------------------------
@@ -129,7 +156,6 @@
 
 * Fixed a bug in InPlaceEdit that made it not work properly in
   Opera and on Mono.
-
 
 
   ------------------------------------------------------------------
@@ -176,9 +202,6 @@
   effectively means Trees that purely live on the client.
   Say like for instance a "menu" which can't handle selections
   anyway etc...
-
-
-
 
 
   ------------------------------------------------------------------
@@ -239,9 +262,6 @@
   Starter-Kit when paging the DataGrid.
 
 
-
-
-
   ------------------------------------------------------------------
 
                           Version 1.0.0
@@ -251,9 +271,6 @@
   ------------------------------------------------------------------
 
 * Ra-Ajax now has 100% Mono compatibility with all its samples
-
-
-
 
 
   ------------------------------------------------------------------
@@ -311,9 +328,6 @@
   our guess is that about 40% in average of the ViewState will
   be returned fromj the server which means you're saving 20%
   of ViewState bandwidth in total...
-
-
-
 
 
   ------------------------------------------------------------------
@@ -400,9 +414,6 @@
   of that they're "less interactive" then previously.
 
 
-
-
-
   ------------------------------------------------------------------
 
                           Version 0.9.0
@@ -456,9 +467,6 @@
   This project is called RaSelector and can be thought of like
   an "advanced version" of a recursive FindControl 
   implementation...
-
-
-
 
 
   ------------------------------------------------------------------
@@ -602,9 +610,6 @@
 * Added support for Tooltips for AutoCompleter
 
 
-
-
-
   -------------------------------------------------------------------------------
 
                                 Version 0.8.5
@@ -717,8 +722,4 @@
 
 * Fixed so that MouseOver does NOT trigger when mouse re-enters from a child 
   element and back into the main surface of the control.
-
-
-
-
 
