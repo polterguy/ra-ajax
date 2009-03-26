@@ -203,7 +203,7 @@ function checkExtendInheritanceOverride() {
 // extensions
 function checkRaElementExtendWorks() {
   var el = Ra.$('results');
-  if( el.replace ) {
+  if( el.replaceWith ) {
     Ra.$('results').innerHTML = 'success';
   } else {
     Ra.$('results').innerHTML = 'failure';
@@ -211,10 +211,10 @@ function checkRaElementExtendWorks() {
 }
 
 
-// Checks to see if Ra.Element.replace works
+// Checks to see if Ra.Element.replaceWith works
 function checkRaElementReplaceWorks() {
   var el = Ra.$('results');
-  el.replace('<div id="results">success</div>');
+  el.replaceWith('<div id="results">success</div>');
 }
 
 

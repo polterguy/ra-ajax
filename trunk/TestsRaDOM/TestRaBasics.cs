@@ -107,7 +107,7 @@ namespace NUnitTests
         public void ElementReplace()
         {
             Browser.Eval("checkRaElementReplaceWorks();");
-            AssertSuccess("Ra.Element.replace doesn't work");
+            AssertSuccess("Ra.Element.replaceWith doesn't work");
         }
 
         [NUnit.Framework.Test]

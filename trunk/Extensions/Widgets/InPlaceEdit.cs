@@ -71,7 +71,7 @@ namespace Ra.Extensions
             _text = new TextBox();
             _text.ID = "txt";
             _text.Text = _link.Text;
-            _text.Style["display"] = "none";
+            _text.Visible = false;
 			_text.Blur += _text_Updated;
             _text.EnterPressed += _text_Updated;
             _text.EscPressed += _text_EscPressed;
@@ -80,15 +80,15 @@ namespace Ra.Extensions
 
         void _text_EscPressed(object sender, EventArgs e)
         {
-            _text.Style["display"] = "none";
-            _link.Style["display"] = "inline";
+            _text.Visible = false;
+            _link.Visible = true;
         }
 
         private void _text_Updated(object sender, EventArgs e)
         {
             _link.Text = _text.Text;
-            _text.Style["display"] = "none";
-            _link.Style["display"] = "inline";
+            _text.Visible = false;
+            _link.Visible = true;
             Text = _link.Text;
 
             if (TextChanged != null)
@@ -101,8 +101,8 @@ namespace Ra.Extensions
                 _text.Text = "";
             else
                 _text.Text = _link.Text;
-            _text.Style["display"] = "inline";
-            _link.Style["display"] = "none";
+            _text.Visible = true;
+            _link.Visible = false;
             new EffectFocusAndSelect(_text).Render();
         }
 
