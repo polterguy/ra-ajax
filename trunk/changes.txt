@@ -25,9 +25,9 @@
   
 * Better cross-browser obscuring solution for BehaviorObscurable 
   and BehaviorUpdater. Elliminates problems like revealing parts of 
-  the page behind the obscurer when resizing the browser window. 
+  the page behind the obscurer while resizing the browser window. 
   This solution is pure CSS, no JS is used to adjust for resizing, 
-  scrlling etc...
+  scrolling etc...
   
 * Support of displaying an image with BehaviorUpdater. Nice for
   displaying things like loading.gif image (http://ajaxload.info) or
