@@ -166,7 +166,7 @@ namespace Ra.Widgets
 
 		private void RenderControlVisibleForFirstTime(HtmlTextWriter writer)
 		{
-			AjaxManager.Instance.Writer.Write("Ra.$('{0}').replace('{1}",
+			AjaxManager.Instance.Writer.Write("Ra.$('{0}').replaceWith('{1}",
 				ClientID,
 				GetOpeningHTML().Replace("\\", "\\\\").Replace("'", "\\'").Replace("\r", "\\r").Replace("\n", "\\n"));
 

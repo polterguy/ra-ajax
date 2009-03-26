@@ -399,7 +399,7 @@ Ra.Control.prototype = {
     this._destroyChildControls();
     this._unlistenEventHandlers();
 
-    this.element = this.element.replace(html);
+    this.element = this.element.replaceWith(html);
 
     // Then we must RE init the events
     this.initEvents();
@@ -426,9 +426,9 @@ Ra.Control.prototype = {
     // there is no need to do this for the child controls since their HTML will disappear
     // anyway.
     if (!ht) {
-        this.element.replace("<span id=\"" + this.element.id + "\" style=\"display:none;\" />");
+        this.element.replaceWith("<span id=\"" + this.element.id + "\" style=\"display:none;\" />");
     } else {
-        this.element.replace(ht);
+        this.element.replaceWith(ht);
     }
   },
 
