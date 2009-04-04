@@ -40,6 +40,16 @@
 
 * Removed unnecessary code form Dynamic.
 
+* Fixed a bug in TreeView which occured when ClientSideExpansion
+  was turned on and TreeNodes was either expanding slowly because
+  of server overhead or nodes was being clicked very fast. If 
+  those criteria was met then sometimes nodes would come out
+  "empty" and not have content at all which was a bug.
+
+
+
+
+
   ------------------------------------------------------------------
 
                           Version 1.1.3
