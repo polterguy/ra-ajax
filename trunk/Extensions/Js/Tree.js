@@ -28,13 +28,24 @@ Ra.extend(Ra.TreeNode.prototype, {
   },
 
   expand: function() {
+    var T = this;
+    if( this.isExecExpansion ) {
+      setTimeout(function() {
+        T.expand();
+      }, 50);
+      return;
+    }
+    this.isExecExpansion = true;
+
     if(!this.options.hasChildren) {
 
       // Need to fetch children from server...
       this.options.hasChildren = true;
 
       // We're basically just "faking" a click on the expander control here...
-      this.onEvent('clientClick');
+      this.callback('clientClick', function() {
+        T.isExecExpansion = false;
+      });
 
     } else {
 
@@ -52,6 +63,7 @@ Ra.extend(Ra.TreeNode.prototype, {
           },
           onFinished: function() {
             this.element.setStyles({display: 'none', height: '', overflow: this._overflow});
+            T.isExecExpansion = false;
           },
           onRender: function(pos) {
             this.element.setStyle('height',((1.0-pos)*this._fromHeight) + 'px');
@@ -72,6 +84,7 @@ Ra.extend(Ra.TreeNode.prototype, {
           },
           onFinished: function() {
             this.element.setStyles({height: '', overflow: this._overflow});
+            T.isExecExpansion = false;
           },
           onRender: function(pos) {
             this.element.setStyle('height', parseInt(this._toHeight*pos) + 'px');

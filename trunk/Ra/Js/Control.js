@@ -360,12 +360,23 @@ Ra.Control.prototype = {
     return !stop;
   },
 
-  callback: function(evt) {
+  callback: function(evt, func) {
+    var T = this;
     var x = new Ra.Ajax({
       args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=' + evt,
       raCallback:true,
-      onSuccess: this.onFinishedRequest,
-      onError: this.onFailedRequest,
+      onSuccess: function(resp) {
+        T.onFinishedRequest(resp);
+        if( func ) {
+          func();
+        }
+      },
+      onError: function(stat, trc) {
+        T.onFailedRequest(stat, trc);
+        if( func ) {
+          func();
+        }
+      },
       callingContext: this
     });
   },
