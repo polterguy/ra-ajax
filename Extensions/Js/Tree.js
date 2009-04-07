@@ -29,28 +29,21 @@ Ra.extend(Ra.TreeNode.prototype, {
 
   expand: function() {
     var T = this;
-    if( this.isExecExpansion ) {
-      setTimeout(function() {
-        T.expand();
-      }, 50);
-      return;
-    }
-    this.isExecExpansion = true;
-
     if(!this.options.hasChildren) {
 
       // Need to fetch children from server...
       this.options.hasChildren = true;
 
       // We're basically just "faking" a click on the expander control here...
-      this.callback('clientClick', function() {
-        T.isExecExpansion = false;
-      });
+      this.callback('clientClick');
 
     } else {
 
       // Children already fetched from server...
       // Running effect to show/hide...
+      if( this.isRunningEffect )
+        return;
+      this.isRunningEffect = true;
       if( Ra.$(this.options.childCtrl).style.display != 'none') {
         this.element.removeClassName('expanded');
         if( this.element.className.indexOf('collapsed') == -1 )
@@ -60,13 +53,16 @@ Ra.extend(Ra.TreeNode.prototype, {
             this._fromHeight = this.element.getDimensions().height;
             this._overflow = this.element.getStyle('overflow');
             this.element.setStyle('overflow','hidden');
+            this.element.setOpacity(1);
           },
           onFinished: function() {
             this.element.setStyles({display: 'none', height: '', overflow: this._overflow});
-            T.isExecExpansion = false;
+            T.isRunningEffect = false;
+            this.element.setOpacity(0);
           },
           onRender: function(pos) {
             this.element.setStyle('height',((1.0-pos)*this._fromHeight) + 'px');
+            this.element.setOpacity(1.0-pos);
           },
           duration:200,
           transition:'Explosive'
@@ -81,13 +77,16 @@ Ra.extend(Ra.TreeNode.prototype, {
             this.element.setStyles({height: '0px', display: 'block'});
             this._overflow = this.element.getStyle('overflow');
             this.element.setStyle('overflow','hidden');
+            this.element.setOpacity(0);
           },
           onFinished: function() {
             this.element.setStyles({height: '', overflow: this._overflow});
-            T.isExecExpansion = false;
+            this.element.setOpacity(1);
+            T.isRunningEffect = false;
           },
           onRender: function(pos) {
             this.element.setStyle('height', parseInt(this._toHeight*pos) + 'px');
+            this.element.setOpacity(pos);
           },
           duration:200,
           transition:'Explosive'
