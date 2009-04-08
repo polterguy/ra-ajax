@@ -239,4 +239,5 @@
         I figured I could do this in an hour and at the same time demonstrate the CRUD capabilities of 
         Ra-Ajax, so I did ;)
     </p>
+    <a href="Ajax-WebPart.aspx">On to Ajax WebPart</a>
 </asp:Content>

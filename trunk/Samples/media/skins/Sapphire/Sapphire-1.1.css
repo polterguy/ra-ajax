@@ -271,9 +271,12 @@ http://ra-ajax.org
 
 /* Extended Button */
 .button { border:none 0; background-color:Transparent; }
-.button .bLeft { background:Transparent url(window-sprite.png) no-repeat 0 0; padding-left:7px; display:block; height:32px; }
-.button .bCenter { background:Transparent url(window-h-sprite.png) repeat-x 0 0; display:block; height:32px; padding-top:7px; }
-.button .bRight { background:Transparent url(window-sprite.png) no-repeat top right; padding-right:7px; display:block; height:32px; }
+.button .bLeft { background:url('window-sprite.png') no-repeat 0 0; 
+padding-left:7px; display:block; height:32px; }
+.button .bCenter { background:url('window-h-sprite.png') repeat-x 0 0; 
+display:block; height:32px; padding-top:7px; }
+.button .bRight { background:url('window-sprite.png') no-repeat right top; 
+padding-right:7px; display:block; height:32px; }
 
 
 /* Window-LIGHT...! */
