@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{DA39B87F-8E68-4461-9C24-5778921497A5}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -46,10 +46,12 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Widgets\WebPart.cs" />
     <Compile Include="Widgets\ExtButton.cs" />
     <Compile Include="Widgets\Calendar.cs" />
     <Compile Include="Widgets\Accordion.cs" />

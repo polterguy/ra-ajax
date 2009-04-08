@@ -143,6 +143,29 @@ http://ra-ajax.org
 */
 
 
+/* WebPart specific CSS */
+
+.webpart { border:solid 1px #666; max-height:100%; overflow:hidden; }
+.webpart .header { border-bottom:solid 1px #666; background:transparent url(window-h-sprite.png) repeat-x 0 -1px; position:relative; }
+.webpart .header .caption { padding:3px; line-height:23px; }
+
+.webpart .header .toggle,
+.webpart .header .toggled,
+.webpart .header .maximize,
+.webpart .header .close
+{
+	position:absolute; top:1px; width:12px; display:block; 
+	text-decoration:none;
+}
+
+.webpart .header .toggle { right:33px; background:transparent url(window-sprite.png) no-repeat -16px -64px; }
+.webpart .header .toggled { right:33px; background:transparent url(window-sprite.png) no-repeat -16px -80px; }
+.webpart .header .maximize { right:17px; background:transparent url(window-sprite.png) no-repeat -16px -96px; }
+.webpart .header .close { right:1px; background:transparent url(window-sprite.png) no-repeat -15px -1px; }
+
+.webpart .content { padding:0; overflow:hidden; }
+.webpart .content div { padding:5px; }
+
 /* Calendar specific CSS */
 
 .calendar				{ display:block; }
@@ -270,9 +293,12 @@ http://ra-ajax.org
 
 /* Extended Button */
 .button { border:none 0; background-color:Transparent; }
-.button .bLeft { background:Transparent url(window-sprite.png) no-repeat 0 0; padding-left:7px; display:block; height:32px; }
-.button .bCenter { background:Transparent url(window-h-sprite.png) repeat-x 0 0; display:block; height:32px; padding-top:7px; }
-.button .bRight { background:Transparent url(window-sprite.png) no-repeat top right; padding-right:7px; display:block; height:32px; }
+.button .bLeft { background:url('window-sprite.png') no-repeat 0 0; 
+padding-left:7px; display:block; height:32px; }
+.button .bCenter { background:url('window-h-sprite.png') repeat-x 0 0; 
+display:block; height:32px; padding-top:7px; }
+.button .bRight { background:url('window-sprite.png') no-repeat right top; 
+padding-right:7px; display:block; height:32px; }
 
 
 /* Window-LIGHT...! */

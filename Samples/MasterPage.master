@@ -176,6 +176,9 @@
 			                        <li>
 			                            <a href="Ajax-CRUD.aspx">Ajax CRUD forms</a>
 			                        </li>
+			                        <li>
+			                            <a href="Ajax-WebPart.aspx">Ajax WebPart</a>
+			                        </li>
 			                    </ul>
 					        </ext:AccordionView>
 					    </ext:Accordion>
