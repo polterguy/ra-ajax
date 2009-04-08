@@ -127,6 +127,7 @@ namespace Ra.Extensions
             set
             {
                 _content.Style[Styles.display] = value ? "" : "none";
+                _content.Style[Styles.opacity] = value ? "1" : "0";
                 _toggle.CssClass = value ? "toggle" : "toggled";
             }
         }
@@ -153,6 +154,7 @@ namespace Ra.Extensions
 
         private void Maximize()
         {
+            IsExpanded = true;
             _maximize.CssClass = "maximized";
             string width = this.Style[Styles.width];
             string height = this.Style[Styles.height];
