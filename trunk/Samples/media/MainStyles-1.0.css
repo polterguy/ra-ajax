@@ -56,17 +56,70 @@ span > input + label { padding-right:3px;padding-left:3px; vertical-align:middle
 
 /* Ajax Samples Landing Page */
 
-.thumbs { width:500px; overflow:hidden; height:188px; }
-.thumbs .links { margin-left:auto; margin-right:auto; display:block; padding:15px; overflow:auto; border:dotted 1px #ddd; }
-.thumbs .links:hover { border:solid 1px #00f; }
-.thumbs .links .header { font-size:1.0em; font-weight:bold; display:block; }
-.thumbs .links .image1 { float:left; margin-right:10px; background:url('ajax-starter-kits.jpg') no-repeat -377px 0; 
-display:block; width:188px; height:150px; }
-.thumbs .links .image2 { float:left; margin-right:10px; background:url('ajax-starter-kits.jpg') no-repeat 0 0; 
-display:block; width:188px; height:150px; }
-.thumbs .links .image3 { float:left; margin-right:10px; background:url('ajax-starter-kits.jpg') no-repeat -188px 0; 
-display:block; width:188px; height:150px; }
-.thumbs .links .text   { font-size:0.9em; padding-top:5px; display:block; }
+.thumbs
+{
+	margin:5px;
+}
+
+.thumbs .links
+{
+	margin-left:auto;
+	margin-right:auto;
+	display:block;
+	padding:15px;
+	overflow:auto;
+	border:dotted 1px #ddd;
+	text-decoration:none;
+	color:#000;
+}
+
+.thumbs .links:hover
+{
+	background-color:#ffffff;
+	color:#000;
+	border:solid 1px #ddf;
+}
+
+.thumbs .links .header
+{
+	font-size:1.0em;
+	font-weight:bold;
+	display:block;
+}
+
+.thumbs .links .image1,
+.thumbs .links .image2,
+.thumbs .links .image3
+{
+	float:left;
+	margin-right:10px;
+	display:block;
+	width:300px;
+	height:185px;
+	background-image:url('big-thumbs.png');
+}
+
+.thumbs .links .image1
+{
+	background-position:0 0;
+}
+
+.thumbs .links .image2
+{
+	background-position:-300px 0;
+}
+
+.thumbs .links .image3
+{
+	background-position:-600px 0;
+}
+
+.thumbs .links .text
+{
+	font-size:0.9em;
+	padding-top:5px;
+	display:block;
+}
 
 
 /* Master page thumbs in window */
