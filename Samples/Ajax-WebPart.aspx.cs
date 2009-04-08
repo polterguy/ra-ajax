@@ -13,5 +13,19 @@ namespace Samples
 {
     public partial class WebPart : System.Web.UI.Page
     {
+        protected void btn_Click(object sender, EventArgs e)
+        {
+            webpart.Visible = true;
+            webpart.Style[Styles.display] = "none";
+            new EffectFadeOut(btn, 200)
+                .ChainThese(new EffectFadeIn(webpart, 400))
+                .Render();
+        }
+
+        protected void webpart_Closed(object sender, EventArgs e)
+        {
+            btn.Visible = true;
+            new EffectFadeIn(btn, 200).Render();
+        }
     }
 }

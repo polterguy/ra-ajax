@@ -34,6 +34,31 @@ namespace Ra.Extensions
         private Panel _content = new Panel();
 
         /**
+         * Raised when WebPart is being expanded
+         */
+        public event EventHandler Expanded;
+
+        /**
+         * Raised when WebPart is being collapsed
+         */
+        public event EventHandler Collapsed;
+
+        /**
+         * Raised when WebPart is being closed
+         */
+        public event EventHandler Closed;
+
+        /**
+         * Raised when WebPart is being maximized
+         */
+        public event EventHandler Maximized;
+
+        /**
+         * Raised when WebPart is being restored
+         */
+        public event EventHandler Restored;
+
+        /**
          * Overridden to provide a sane default value
          */
         [DefaultValue("webpart")]
@@ -50,7 +75,7 @@ namespace Ra.Extensions
         }
 
         /**
-         * Header text of window
+         * Header text of WebPart
          */
         [DefaultValue("&nbsp;")]
         public string Caption
@@ -60,14 +85,111 @@ namespace Ra.Extensions
         }
 
         /**
-         * If true (default value) then Window will have a "Close" icon which makes it possible
+         * If true (default value) then WebPart will have a "Close" icon which makes it possible
          * to close it by clicking.
          */
         [DefaultValue(true)]
-        public bool Closable
+        public bool IsClosable
         {
             get { return _close.Visible; }
             set { _close.Visible = value; }
+        }
+
+        /**
+         * If true (default value) then WebPart will have a "Maximize" icon which makes it possible
+         * to maximize and restore.
+         */
+        [DefaultValue(true)]
+        public bool IsMaximizable
+        {
+            get { return _maximize.Visible; }
+            set { _maximize.Visible = value; }
+        }
+
+        /**
+         * If true (default value) then WebPart will have a "Maximize" icon which makes it possible
+         * to maximize and restore.
+         */
+        [DefaultValue(true)]
+        public bool IsExpandable
+        {
+            get { return _toggle.Visible; }
+            set { _toggle.Visible = value; }
+        }
+
+        /**
+         * If true (default value) then WebPart is expanded
+         */
+        [DefaultValue(true)]
+        public bool IsExpanded
+        {
+            get { return _content.Style[Styles.display] != "none"; }
+            set
+            {
+                _content.Style[Styles.display] = value ? "" : "none";
+                _toggle.CssClass = value ? "toggle" : "toggled";
+            }
+        }
+
+        /**
+         * If true then WebPart is maximized. The default value is false.
+         */
+        [DefaultValue(false)]
+        public bool IsMaximized
+        {
+            get { return this.Style[Styles.width] == "100%" && this.Style[Styles.height] == "100%"; }
+            set
+            {
+                if (value)
+                {
+                    Maximize();
+                }
+                else
+                {
+                    Restore();
+                }
+            }
+        }
+
+        private void Maximize()
+        {
+            _maximize.CssClass = "maximized";
+            string width = this.Style[Styles.width];
+            string height = this.Style[Styles.height];
+            if (string.IsNullOrEmpty(width))
+            {
+                width = "-1";
+            }
+            if (string.IsNullOrEmpty(height))
+            {
+                height = "-1";
+            }
+            RestoreSize = new Size(
+                int.Parse(width.Replace("px", ""), System.Globalization.NumberStyles.AllowLeadingSign),
+                int.Parse(height.Replace("px", ""), System.Globalization.NumberStyles.AllowLeadingSign));
+            this.Style[Styles.width] = "100%";
+            this.Style[Styles.height] = "100%";
+        }
+
+        private void Restore()
+        {
+            _maximize.CssClass = "maximize";
+            if (RestoreSize.Width != -1)
+            {
+                this.Style[Styles.width] = RestoreSize.Width.ToString() + "px";
+            }
+            else
+            {
+                this.Style[Styles.width] = "";
+            }
+            if (RestoreSize.Height != -1)
+            {
+                this.Style[Styles.height] = RestoreSize.Height.ToString() + "px";
+            }
+            else
+            {
+                this.Style[Styles.height] = "";
+            }
         }
 
         protected override void OnInit(EventArgs e)
@@ -103,12 +225,14 @@ namespace Ra.Extensions
             _caption.CssClass = "caption";
 
             _toggle.ID = "toggle";
-            _toggle.CssClass = "toggle";
+            if (string.IsNullOrEmpty(_toggle.CssClass))
+                _toggle.CssClass = "toggle";
             _toggle.Text = "&nbsp;";
             _toggle.Click += _toggle_Click;
 
             _maximize.ID = "max";
-            _maximize.CssClass = "maximize";
+            if (string.IsNullOrEmpty(_maximize.CssClass))
+                _maximize.CssClass = "maximize";
             _maximize.Text = "&nbsp;";
             _maximize.Click += _maximize_Click;
 
@@ -131,54 +255,29 @@ namespace Ra.Extensions
         void _close_Click(object sender, EventArgs e)
         {
             this.Visible = false;
+            if (Closed != null)
+                Closed(this, new EventArgs());
         }
 
         private Size RestoreSize
         {
-            get { return (Size)ViewState["RestoreSize"]; }
+            get { return ViewState["RestoreSize"] == null ? new Size(-1, -1) : (Size)ViewState["RestoreSize"]; }
             set { ViewState["RestoreSize"] = value; }
         }
 
         void _maximize_Click(object sender, EventArgs e)
         {
-            if (this.Style["width"] == "100%")
+            if (IsMaximized)
             {
-                _maximize.CssClass = "maximize";
-                if (RestoreSize.Width != -1)
-                {
-                    this.Style[Styles.width] = RestoreSize.Width.ToString() + "px";
-                }
-                else
-                {
-                    this.Style[Styles.width] = "";
-                }
-                if (RestoreSize.Height != -1)
-                {
-                    this.Style[Styles.height] = RestoreSize.Height.ToString() + "px";
-                }
-                else
-                {
-                    this.Style[Styles.height] = "";
-                }
+                Restore();
+                if (Restored != null)
+                    Restored(this, new EventArgs());
             }
             else
             {
-                _maximize.CssClass = "maximized";
-                string width = this.Style[Styles.width];
-                string height = this.Style[Styles.height];
-                if (string.IsNullOrEmpty(width))
-                {
-                    width = "-1";
-                }
-                if (string.IsNullOrEmpty(height))
-                {
-                    height = "-1";
-                }
-                RestoreSize = new Size(
-                    int.Parse(width.Replace("px", ""), System.Globalization.NumberStyles.AllowLeadingSign),
-                    int.Parse(height.Replace("px", ""), System.Globalization.NumberStyles.AllowLeadingSign));
-                this.Style[Styles.width] = "100%";
-                this.Style[Styles.height] = "100%";
+                Maximize();
+                if (Maximized != null)
+                    Maximized(this, new EventArgs());
             }
         }
 
@@ -190,6 +289,8 @@ namespace Ra.Extensions
                 new EffectRollUp(_content, 300)
                     .JoinThese(new EffectFadeOut())
                     .Render();
+                if (Collapsed != null)
+                    Collapsed(this, new EventArgs());
             }
             else
             {
@@ -197,6 +298,8 @@ namespace Ra.Extensions
                 new EffectRollDown(_content, 300)
                     .JoinThese(new EffectFadeIn())
                     .Render();
+                if (Expanded != null)
+                    Expanded(this, new EventArgs());
             }
         }
 
