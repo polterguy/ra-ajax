@@ -152,16 +152,29 @@ http://ra-ajax.org
 .webpart .header .toggle,
 .webpart .header .toggled,
 .webpart .header .maximize,
+.webpart .header .maximized,
 .webpart .header .close
 {
 	position:absolute; top:1px; width:12px; display:block; 
 	text-decoration:none;
+	background-image:url(window-sprite.png);
+	background-repeat:no-repeat;
+	background-color:Transparent;
+	-moz-user-select:none;
+	-khtml-user-select:none;
+	user-select:none;
 }
 
-.webpart .header .toggle { right:33px; background:transparent url(window-sprite.png) no-repeat -16px -64px; }
-.webpart .header .toggled { right:33px; background:transparent url(window-sprite.png) no-repeat -16px -80px; }
-.webpart .header .maximize { right:17px; background:transparent url(window-sprite.png) no-repeat -16px -96px; }
-.webpart .header .close { right:1px; background:transparent url(window-sprite.png) no-repeat -15px -1px; }
+.webpart .header .toggle { right:33px;  background-position:-16px -64px; }
+.webpart .header .toggle:hover { right:33px; background-position:-16px -128px; }
+.webpart .header .toggled { right:33px; background-position:-16px -80px; }
+.webpart .header .toggled:hover { right:33px; background-position:-16px -144px; }
+.webpart .header .maximize { right:17px; background-position:-16px -96px; }
+.webpart .header .maximize:hover { right:17px; background-position:-16px -160px; }
+.webpart .header .maximized { right:17px; background-position:-16px -112px; }
+.webpart .header .maximized:hover { right:17px; background-position:-16px -176px; }
+.webpart .header .close { right:1px; background-position:-15px -1px; }
+.webpart .header .close:hover { right:1px; background-position:-15px -17px; }
 
 .webpart .content { padding:0; overflow:hidden; }
 .webpart .content div { padding:5px; }

@@ -143,6 +143,7 @@ namespace Ra.Extensions
         {
             if (this.Style["width"] == "100%")
             {
+                _maximize.CssClass = "maximize";
                 if (RestoreSize.Width != -1)
                 {
                     this.Style[Styles.width] = RestoreSize.Width.ToString() + "px";
@@ -162,6 +163,7 @@ namespace Ra.Extensions
             }
             else
             {
+                _maximize.CssClass = "maximized";
                 string width = this.Style[Styles.width];
                 string height = this.Style[Styles.height];
                 if (string.IsNullOrEmpty(width))
