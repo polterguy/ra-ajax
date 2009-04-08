@@ -19,13 +19,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
     <head runat="server">
         <title>Untitled Page</title>
-        <link runat="server" id="includeSteel" href="media/skins/steel/Steel-1.1.css" rel="stylesheet" type="text/css" />
-        <link runat="server" id="includeAlphacube" href="media/skins/alphacube/alphacube-1.1.css" rel="stylesheet" type="text/css" />
-        <link runat="server" id="includeWhite" href="media/skins/white/white-1.1.css" rel="stylesheet" type="text/css" />
-        <link runat="server" id="includeMac" href="media/skins/mac/mac-1.1.css" rel="stylesheet" type="text/css" />
-        <link runat="server" id="includeSpread" href="media/skins/spread/spread-1.1.css" rel="stylesheet" type="text/css" />
-        <link runat="server" id="includeSapphire" href="media/skins/Sapphire/Sapphire-1.1.css" rel="stylesheet" type="text/css" />
-        <link href="media/MainStyles-1.0.css" rel="stylesheet" type="text/css" />
+        <link 
+            runat="server" 
+            id="includeSteel" 
+            href="media/skins/steel/Steel-1.1.css" rel="stylesheet" type="text/css" />
+
+        <link 
+            runat="server" 
+            id="includeSapphire" 
+            href="media/skins/Sapphire/Sapphire-1.1.css" rel="stylesheet" type="text/css" />
+
+        <link 
+            href="media/MainStyles-1.0.css" 
+            rel="stylesheet" 
+            type="text/css" />
     </head>
     <body>
         <div id="doc2" class="yui-t5" style="position:relative;">
@@ -210,10 +217,6 @@
                                                 OnSelectedIndexChanged="chooseSkin_SelectedIndexChanged">
                                                 <asp:ListItem Text="Steel" />
                                                 <asp:ListItem Text="Sapphire" />
-                                                <asp:ListItem Text="Alphacube" />
-                                                <asp:ListItem Text="White" />
-                                                <asp:ListItem Text="Mac OS X" />
-                                                <asp:ListItem Text="Spread" />
                                             </asp:DropDownList>
                                         </p>
                                     </div>
@@ -226,49 +229,8 @@
 					                        Tooltip="Show code of this Ajax Sample"
 					                        OnClick="btnShowCode_Click" />
 					                </div>
-                                    <ext:Window 
-                                        ID="wowWnd" 
-                                        runat="server" 
-                                        OnMoved="wowWnd_Moved"
-                                        Caption="New Stuff - MUST Check Out - Starter-Kits" 
-                                        style="width:350px;position:absolute;z-index:1000;right:25px;top:10px;">
-                                        <div style="padding:5px;font-size:0.8em;height:190px;">
-                                            <div class="thumbsSmall">
-                                                <a href="Viewport-Calendar-Starter-Kit.aspx" class="linksSmall">
-                                                    <span class="image1Small">&nbsp;</span>
-                                                    <span class="headerSmall">Ajax Calendar Starter-Kit - C#<br />GCalendar kind of Starter-Kit</span>
-                                                </a>
-                                            </div>
-                                            <div class="thumbsSmall">
-                                                <a href="Viewport-Sample.aspx" class="linksSmall">
-                                                    <span class="image2Small">&nbsp;</span>
-                                                    <span class="headerSmall">Ajax Viewport Starter-Kit - C#<br />Features Ajax Login, TreeView++</span>
-                                                </a>
-                                            </div>
-                                            <div class="thumbsSmall">
-                                                <a href="Viewport-GridView-Sample.aspx" class="linksSmall">
-                                                    <span class="image3Small">&nbsp;</span>
-                                                    <span class="headerSmall">Ajax DataGrid Starter-Kit - VB.NET<br />VB.NET sample with Ajax DataGrid</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </ext:Window>
 				                </div>
 			                	<div class="yui-u cnt">
-                                    <ra:Panel 
-                                        runat="server" 
-                                        ID="pnlCrappyBrowser" 
-                                        Visible="false">
-                                        <p>
-	                                        You seem to be using a broken browser. (Internet Explorer)
-	                                        Please visit <a href="http://getfirefox.com">GetFireFox.com</a> for a real one!
-                                        </p>
-                                        <ra:Button 
-                                            runat="server" 
-                                            ID="closeIE" 
-                                            Text="Close panel" 
-                                            OnClick="closeIE_Click" />
-                                    </ra:Panel>
                                     <ext:TabControl 
                                         runat="server" 
                                         Visible="false"

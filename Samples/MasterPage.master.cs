@@ -19,39 +19,7 @@ namespace Samples
         protected void Page_Load(object sender, EventArgs e)
         {
             // Defaulting "alphacube" skin to be visible...
-            includeAlphacube.Visible = false;
-            includeWhite.Visible = false;
-            includeMac.Visible = false;
-            includeSpread.Visible = false;
             includeSapphire.Visible = false;
-            if (!IsPostBack)
-            {
-                if (Session["wndWowPosition"] != null)
-                {
-                    Point pt = (Point)Session["wndWowPosition"];
-                    wowWnd.Style["left"] = pt.X.ToString() + "px";
-                    wowWnd.Style["top"] = pt.Y.ToString() + "px";
-                }
-                string url = this.Request.Url.ToString();
-                url = url.Substring(url.LastIndexOf("/") + 1);
-                int idxNo = 0;
-                foreach (AccordionView idx in accordion.Views)
-                {
-                    foreach (System.Web.UI.Control idxCtrl in idx.Controls)
-                    {
-                        if (idxCtrl is System.Web.UI.LiteralControl)
-                        {
-                            System.Web.UI.LiteralControl lit = idxCtrl as System.Web.UI.LiteralControl;
-                            if (lit.Text.IndexOf(url) != -1)
-                            {
-                                accordion.ActiveAccordionViewIndex = idxNo;
-                                break;
-                            }
-                        }
-                    }
-                    idxNo += 1;
-                }
-            }
         }
 
         protected void chooseSkin_SelectedIndexChanged(object sender, EventArgs e)
@@ -60,58 +28,13 @@ namespace Samples
             {
                 case "Steel":
                     includeSteel.Visible = true;
-                    includeWhite.Visible = false;
-                    includeAlphacube.Visible = false;
-                    includeMac.Visible = false;
-                    includeSpread.Visible = false;
-                    includeSapphire.Visible = false;
-                    break;
-                case "Alphacube":
-                    includeSteel.Visible = false;
-                    includeWhite.Visible = false;
-                    includeAlphacube.Visible = true;
-                    includeMac.Visible = false;
-                    includeSpread.Visible = false;
-                    includeSapphire.Visible = false;
-                    break;
-                case "White":
-                    includeSteel.Visible = false;
-                    includeWhite.Visible = true;
-                    includeAlphacube.Visible = false;
-                    includeMac.Visible = false;
-                    includeSpread.Visible = false;
-                    includeSapphire.Visible = false;
-                    break;
-                case "Mac OS X":
-                    includeSteel.Visible = false;
-                    includeWhite.Visible = false;
-                    includeAlphacube.Visible = false;
-                    includeMac.Visible = true;
-                    includeSpread.Visible = false;
-                    includeSapphire.Visible = false;
-                    break;
-                case "Spread":
-                    includeSteel.Visible = false;
-                    includeWhite.Visible = false;
-                    includeAlphacube.Visible = false;
-                    includeMac.Visible = false;
-                    includeSpread.Visible = true;
                     includeSapphire.Visible = false;
                     break;
                 case "Sapphire":
                     includeSteel.Visible = false;
-                    includeWhite.Visible = false;
-                    includeAlphacube.Visible = false;
-                    includeMac.Visible = false;
-                    includeSpread.Visible = false;
                     includeSapphire.Visible = true;
                     break;
             }
-        }
-
-        protected void wowWnd_Moved(object sender, EventArgs e)
-        {
-            Session["wndWowPosition"] = new Point(Int32.Parse(wowWnd.Style["left"].Replace("px", "")), Int32.Parse(wowWnd.Style["top"].Replace("px", "")));
         }
 
         protected void btnShowCode_Click(object sender, EventArgs e)
@@ -135,12 +58,6 @@ namespace Samples
                 effect.Joined.Add(new EffectRollUp());
                 effect.Render();
             }
-        }
-
-        protected void closeIE_Click(object sender, EventArgs e)
-        {
-            Effect effect = new EffectFadeOut(pnlCrappyBrowser, 400);
-            effect.Render();
         }
 
         private void GetASPXCode()

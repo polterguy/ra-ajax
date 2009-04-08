@@ -6,27 +6,38 @@
  * 
  */
 
+using Ra;
 using System;
 using Ra.Widgets;
+using System.Web.UI;
 
 namespace Samples
 {
     public partial class _Default : System.Web.UI.Page
     {
-        protected void submit_Click(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
-            string gn = string.IsNullOrEmpty(name.Text.Trim()) ? "stranger" : name.Text;
-            lblResults.Text = "Hello " + gn + " and welcome to the world :)";
-            Effect effect = new EffectFadeIn(lblResults, 800);
-            effect.Joined.Add(new EffectHighlight());
-            effect.Render();
-            name.Focus();
-            name.Select();
-        }
+            if (!IsPostBack)
+            {
+                new EffectFadeIn(thumbsWrapper, 500)
+                    .ChainThese(
+                        new EffectHighlight(thumbs1, 200),
+                        new EffectHighlight(thumbs2, 200),
+                        new EffectHighlight(thumbs3, 200))
+                    .Render();
+                foreach (Control idx in new Control[] { thumbs1, thumbs2, thumbs3 })
+                {
+                AjaxManager.Instance.WriterAtBack.Write(@"
+Ra.$('{0}').observe('mouseover', function() {{
+  RaFadeIn('{0}');
+}});
 
-        protected void submit2_Click(object sender, EventArgs e)
-        {
-            pnl.Style[Styles.backgroundColor] = pnl.Style[Styles.backgroundColor] == "Orange" ? "Yellow" : "Orange";
+Ra.$('{0}').observe('mouseout', function() {{
+  RaFadeOut('{0}');
+}});
+", idx.ClientID);
+                }
+            }
         }
     }
 }
