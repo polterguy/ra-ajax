@@ -93,7 +93,7 @@ namespace Ra.Widgets
         }
         
         /**
-         * Explicitly overridden z-index style value of upadter.
+         * Explicitly overridden z-index style value of updater.
          */
         [DefaultValue(1000)]
         public int ZIndex
@@ -107,6 +107,9 @@ namespace Ra.Widgets
             }
         }
 
+        /**
+         * The url of an optional image to display with the updater.
+         */
         public string ImageUrl
         {
             get { return ViewState["ImageUrl"] == null ? "" : ViewState["ImageUrl"].ToString(); }
