@@ -209,27 +209,27 @@
 
 .thumbsSmall .links .image1
 {
-	background-position:0 0;
+	background-position:-200px 0;
 }
 
 .thumbsSmall .links .image2
 {
-	background-position:-100px 0;
+	background-position:-300px 0;
 }
 
 .thumbsSmall .links .image3
 {
-	background-position:-200px 0;
+	background-position:-400px 0;
 }
 
 .thumbsSmall .links .image4
 {
-	background-position:-300px 0;
+	background-position:-100px 0;
 }
 
 .thumbsSmall .links .image5
 {
-	background-position:-400px 0;
+	background-position:0 0;
 }
 
 .thumbsSmall .links .text
@@ -237,6 +237,7 @@
 	float:left;
 	width:140px;
 	margin-left:5px;
+	margin-top:15px;
 	font-size:12px;
 	font-family:Arial;
 }
