@@ -21,6 +21,47 @@
         <title>Untitled Page</title>
         <link href="media/skins/steel/Steel-1.1.css" rel="stylesheet" type="text/css" />
         <link href="media/MainStyles-1.0.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript">
+function RaFadeIn(el) {
+  el = Ra.$(el);
+  el.RaEffectFadeIn = Ra.E(el, {
+    onStart: function() {
+      if( el.RaEffectFadeOut )
+        el.RaEffectFadeOut.stopped = true;
+      this.element.setOpacity(0.3);
+      this.element.setStyle('display','block');
+  },
+    onFinished: function() {
+      this.element.setOpacity(1);
+  },
+    onRender: function(pos) {
+      this.element.setOpacity((pos*0.7) + 0.3);
+  },
+    duration:500,
+    transition:'Explosive'
+  });
+}
+
+function RaFadeOut(el) {
+  el = Ra.$(el);
+  el.RaEffectFadeOut = Ra.E(el, {
+    onStart: function() {
+      if( el.RaEffectFadeIn )
+        el.RaEffectFadeIn.stopped = true;
+      this.element.setOpacity(1);
+      this.element.setStyle('display','block');
+  },
+    onFinished: function() {
+      this.element.setOpacity(0.3);
+  },
+    onRender: function(pos) {
+      this.element.setOpacity(((1-pos)*0.7) + 0.3);
+  },
+    duration:500,
+    transition:'Explosive'
+  });
+}
+        </script>
     </head>
     <body>
         <form id="form1" runat="server">
@@ -46,13 +87,97 @@
 	                                Caption="Ajax Starter-Kits" 
 	                                runat="server" 
 	                                ID="accView0">
-                                    <ul class="accList">
-                                        <li><a href="Ajax-Forum-Starter-Kit.aspx">Forum</a></li>
-                                        <li><a href="Viewport-Calendar-Starter-Kit.aspx">Calendar</a></li>
-                                        <li><a href="Viewport-GridView-Sample.aspx">DataGrid - VB.NET</a></li>
-                                        <li><a href="Viewport-RSS-Starter-Kit.aspx">RSS</a></li>
-                                        <li><a href="Viewport-Sample.aspx">Viewport</a></li>
-                                    </ul>
+
+                                    <ra:Panel 
+                                        runat="server" 
+                                        ID="thumbs1" 
+                                        style="opacity:0.3;"
+                                        CssClass="thumbsSmall">
+                                        <a href="Viewport-Calendar-Starter-Kit.aspx" class="links">
+                                            <ra:Panel 
+                                                runat="server" 
+                                                ID="thbs1" 
+                                                CssClass="image1" 
+                                                Tag="span"
+                                                Tooltip="Calendar Starter-Kit">&nbsp;</ra:Panel>
+                                            <span class="text">
+                                                Create your own Ajax Calendar Application starting with this sample
+                                            </span>
+                                        </a>
+                                    </ra:Panel>
+
+                                    <ra:Panel 
+                                        runat="server" 
+                                        ID="thumbs2" 
+                                        style="opacity:0.3;"
+                                        CssClass="thumbsSmall">
+                                        <a href="Viewport-Sample.aspx" class="links">
+                                            <ra:Panel 
+                                                runat="server" 
+                                                ID="thbs2" 
+                                                CssClass="image2" 
+                                                Tag="span"
+                                                Tooltip="Viewport Starter-Kit">&nbsp;</ra:Panel>
+                                            <span class="text">
+                                                Viewport Starter-Kit. Great place to start for filling the whole browser
+                                            </span>
+                                        </a>
+                                    </ra:Panel>
+
+                                    <ra:Panel 
+                                        runat="server" 
+                                        ID="thumbs3" 
+                                        style="opacity:0.3;"
+                                        CssClass="thumbsSmall">
+                                        <a href="Viewport-GridView-Sample.aspx" class="links">
+                                            <ra:Panel 
+                                                runat="server" 
+                                                ID="thbs3" 
+                                                CssClass="image3" 
+                                                Tag="span"
+                                                Tooltip="DataGrid Starter-Kit">&nbsp;</ra:Panel>
+                                            <span class="text">
+                                                DataGrid Starter-Kit. Ever wondered how to create that perfect Ajax DataGrid
+                                            </span>
+                                        </a>
+                                    </ra:Panel>
+
+                                    <ra:Panel 
+                                        runat="server" 
+                                        ID="thumbs4" 
+                                        style="opacity:0.3;"
+                                        CssClass="thumbsSmall">
+                                        <a href="Viewport-RSS-Starter-Kit.aspx" class="links">
+                                            <ra:Panel 
+                                                runat="server" 
+                                                ID="thbs4" 
+                                                CssClass="image4" 
+                                                Tag="span"
+                                                Tooltip="RSS Starter-Kit">&nbsp;</ra:Panel>
+                                            <span class="text">
+                                                RSS Starter-Kit. Syndicate your friend's blogs with this your own Ajax RSS Application
+                                            </span>
+                                        </a>
+                                    </ra:Panel>
+
+                                    <ra:Panel 
+                                        runat="server" 
+                                        ID="thumbs5" 
+                                        style="opacity:0.3;"
+                                        CssClass="thumbsSmall">
+                                        <a href="Ajax-Forum-Starter-Kit.aspx" class="links">
+                                            <ra:Panel 
+                                                runat="server" 
+                                                ID="thbs5" 
+                                                CssClass="image5" 
+                                                Tag="span"
+                                                Tooltip="Forum Starter-Kit">&nbsp;</ra:Panel>
+                                            <span class="text">
+                                                Forum Starter-Kit. Create your own CodeProject like forums. 100% Ajaxified
+                                            </span>
+                                        </a>
+                                    </ra:Panel>
+
 	                            </ext:AccordionView>
 	                            <ext:AccordionView 
 	                                Caption="Concept Samples" 

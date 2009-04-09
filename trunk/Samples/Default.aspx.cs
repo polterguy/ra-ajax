@@ -20,12 +20,8 @@ namespace Samples
             if (!IsPostBack)
             {
                 new EffectFadeIn(thumbsWrapper, 500)
-                    .ChainThese(
-                        new EffectHighlight(thumbs1, 200),
-                        new EffectHighlight(thumbs2, 200),
-                        new EffectHighlight(thumbs3, 200))
                     .Render();
-                foreach (Control idx in new Control[] { thumbs1, thumbs2, thumbs3 })
+                foreach (Control idx in new Control[] { thumbs1, thumbs2, thumbs3, thumbs4, thumbs5 })
                 {
                 AjaxManager.Instance.WriterAtBack.Write(@"
 Ra.$('{0}').observe('mouseover', function() {{
