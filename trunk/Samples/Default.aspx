@@ -20,7 +20,7 @@
 
     <ra:Panel runat="server" style="opacity:0;" ID="thumbsWrapper">
         
-        <ra:Panel runat="server" ID="thumbs1" style="opacity:0.3;" CssClass="thumbs">
+        <ra:Panel runat="server" ID="thumbs1" CssClass="thumbs">
             <a href="Viewport-Calendar-Starter-Kit.aspx" class="links">
                 <span class="image1">&nbsp;</span>
                 <span class="header">Calendar Starter-Kit</span>
