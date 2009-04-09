@@ -21,47 +21,6 @@
         <title>Untitled Page</title>
         <link href="media/skins/steel/Steel-1.1.css" rel="stylesheet" type="text/css" />
         <link href="media/MainStyles-1.0.css" rel="stylesheet" type="text/css" />
-        <script type="text/javascript">
-function RaFadeIn(el) {
-  el = Ra.$(el);
-  el.RaEffectFadeIn = Ra.E(el, {
-    onStart: function() {
-      if( el.RaEffectFadeOut )
-        el.RaEffectFadeOut.stopped = true;
-      this.element.setOpacity(0.3);
-      this.element.setStyle('display','block');
-  },
-    onFinished: function() {
-      this.element.setOpacity(1);
-  },
-    onRender: function(pos) {
-      this.element.setOpacity((pos*0.7) + 0.3);
-  },
-    duration:500,
-    transition:'Explosive'
-  });
-}
-
-function RaFadeOut(el) {
-  el = Ra.$(el);
-  el.RaEffectFadeOut = Ra.E(el, {
-    onStart: function() {
-      if( el.RaEffectFadeIn )
-        el.RaEffectFadeIn.stopped = true;
-      this.element.setOpacity(1);
-      this.element.setStyle('display','block');
-  },
-    onFinished: function() {
-      this.element.setOpacity(0.3);
-  },
-    onRender: function(pos) {
-      this.element.setOpacity(((1-pos)*0.7) + 0.3);
-  },
-    duration:500,
-    transition:'Explosive'
-  });
-}
-        </script>
     </head>
     <body>
         <form id="form1" runat="server">
@@ -104,6 +63,7 @@ function RaFadeOut(el) {
                                                 Create your own Ajax Calendar Application starting with this sample
                                             </span>
                                         </a>
+                                        <ra:BehaviorUnveiler runat="server" id="unveiler1" />
                                     </ra:Panel>
 
                                     <ra:Panel 
@@ -122,6 +82,7 @@ function RaFadeOut(el) {
                                                 Viewport Starter-Kit. Great place to start for filling the whole browser
                                             </span>
                                         </a>
+                                        <ra:BehaviorUnveiler runat="server" id="unveiler2" />
                                     </ra:Panel>
 
                                     <ra:Panel 
@@ -140,6 +101,7 @@ function RaFadeOut(el) {
                                                 DataGrid Starter-Kit. Ever wondered how to create that perfect Ajax DataGrid
                                             </span>
                                         </a>
+                                        <ra:BehaviorUnveiler runat="server" id="unveiler3" />
                                     </ra:Panel>
 
                                     <ra:Panel 
@@ -158,6 +120,7 @@ function RaFadeOut(el) {
                                                 RSS Starter-Kit. Syndicate your friend's blogs with this your own Ajax RSS Application
                                             </span>
                                         </a>
+                                        <ra:BehaviorUnveiler runat="server" id="unveiler4" />
                                     </ra:Panel>
 
                                     <ra:Panel 
@@ -176,6 +139,7 @@ function RaFadeOut(el) {
                                                 Forum Starter-Kit. Create your own CodeProject like forums. 100% Ajaxified
                                             </span>
                                         </a>
+                                        <ra:BehaviorUnveiler runat="server" id="unveiler5" />
                                     </ra:Panel>
 
 	                            </ext:AccordionView>
