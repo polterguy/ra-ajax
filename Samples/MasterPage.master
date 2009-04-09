@@ -39,7 +39,7 @@
                                         <a href="Viewport-Calendar-Starter-Kit.aspx" class="links">
                                             <span class="image1">&nbsp;</span>
                                             <span class="text">
-                                                How to create your own Ajax Calendar Application
+                                                Calendar Application
                                             </span>
                                         </a>
                                         <ra:BehaviorUnveiler runat="server" id="unveiler1" />
@@ -49,7 +49,7 @@
                                         <a href="Viewport-Sample.aspx" class="links">
                                             <span class="image2">&nbsp;</span>
                                             <span class="text">
-                                                Fill the whole screen, Viewport Starter-Kit
+                                                Viewport Login
                                             </span>
                                         </a>
                                         <ra:BehaviorUnveiler runat="server" id="unveiler2" />
