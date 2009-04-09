@@ -632,6 +632,60 @@ Ra.extend(Ra.BUpDel.prototype, {
     this.el.remove();
   }
 });
+
+
+
+Ra.BUnveil = Ra.klass();
+
+Ra.extend(Ra.BUnveil.prototype, Ra.Beha.prototype);
+
+Ra.extend(Ra.BUnveil.prototype, {
+    
+  initBehavior: function(parent) {
+    this.parent = parent;
+    this.parent.element.observe('mouseout', this.onMouseOut, this);
+    this.parent.element.observe('mouseover', this.onMouseOver, this);
+  },
+  
+  onMouseOut: function() {
+    var el = this.parent.element;
+    el.RaEffectFadeOut = Ra.E(el, {
+      onStart: function() {
+        if( el.RaEffectFadeIn )
+          el.RaEffectFadeIn.stopped = true;
+        this.element.setOpacity(1);
+        this.element.setStyle('display','block');
+      },
+      onFinished: function() { this.element.setOpacity(0.3); },
+      onRender: function(pos) { this.element.setOpacity(((1-pos)*0.7) + 0.3); },
+      duration:500,
+      transition:'Explosive'
+    });
+  },
+  
+  onMouseOver: function() {
+    var el = this.parent.element;
+    el.RaEffectFadeIn = Ra.E(el, {
+      onStart: function() {
+        if( el.RaEffectFadeOut )
+          el.RaEffectFadeOut.stopped = true;
+        this.element.setOpacity(0.3);
+        this.element.setStyle('display','block');
+      },
+      onFinished: function() { this.element.setOpacity(1); },
+      onRender: function(pos) { this.element.setOpacity((pos*0.7) + 0.3); },
+      duration:500,
+      transition:'Explosive'
+    });
+  },
+  
+  destroy: function() {
+    this.prnt.stopObserving('mouseout', this.onMouseOut, this);
+    this.prnt.stopObserving('mouseover', this.onMouseOver, this);
+  }
+  
+});
+
 })();
 
 

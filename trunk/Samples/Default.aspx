@@ -33,6 +33,7 @@
                 <span class="header">Calendar Starter-Kit</span>
                 <span class="text">Starter-kit for your Calendar Application. Features Calendar, DataGrids, Modal Windows and more. Written in C#.</span>
             </a>
+            <ra:BehaviorUnveiler runat="server" id="unveiler1" />
         </ra:Panel>
 
         <ra:Panel 
@@ -45,6 +46,7 @@
                 <span class="header">Viewport Starter-Kit</span>
                 <span class="text">Starter-kit for Ajax Login. Features TreeView, TabControl, Modal Windows and more. Written in C#.</span>
             </a>
+            <ra:BehaviorUnveiler runat="server" id="unveiler2" />
         </ra:Panel>
 
         <ra:Panel 
@@ -57,6 +59,7 @@
                 <span class="header">DataGrid Starter-Kit</span>
                 <span class="text">Starter-kit for Ajax DataGrid. Features GridView, Modal Windows, keyboard shortcuts and more. Written in VB.NET.</span>
             </a>
+            <ra:BehaviorUnveiler runat="server" id="unveiler3" />
         </ra:Panel>
 
         <ra:Panel 
@@ -69,6 +72,7 @@
                 <span class="header">RSS Starter-Kit</span>
                 <span class="text">Nice starting point for creating an Ajax RSS portal. Written in C#.</span>
             </a>
+            <ra:BehaviorUnveiler runat="server" id="unveiler4" />
         </ra:Panel>
 
         <ra:Panel 
@@ -81,6 +85,7 @@
                 <span class="header">Forum Starter-Kit</span>
                 <span class="text">For those who wants to create an Ajax Forum. Written in C#.</span>
             </a>
+            <ra:BehaviorUnveiler runat="server" id="unveiler5" />
         </ra:Panel>
 
     </ra:Panel>
