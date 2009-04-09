@@ -41,8 +41,7 @@
                                                 runat="server" 
                                                 ID="thbs1" 
                                                 CssClass="image1" 
-                                                Tag="span"
-                                                Tooltip="Calendar Starter-Kit">&nbsp;</ra:Panel>
+                                                Tag="span">&nbsp;</ra:Panel>
                                             <span class="text">
                                                 Create your own Ajax Calendar Application starting with this sample
                                             </span>
@@ -56,8 +55,7 @@
                                                 runat="server" 
                                                 ID="thbs2" 
                                                 CssClass="image2" 
-                                                Tag="span"
-                                                Tooltip="Viewport Starter-Kit">&nbsp;</ra:Panel>
+                                                Tag="span">&nbsp;</ra:Panel>
                                             <span class="text">
                                                 Viewport Starter-Kit. Great place to start for filling the whole browser
                                             </span>
@@ -71,8 +69,7 @@
                                                 runat="server" 
                                                 ID="thbs3" 
                                                 CssClass="image3" 
-                                                Tag="span"
-                                                Tooltip="DataGrid Starter-Kit">&nbsp;</ra:Panel>
+                                                Tag="span">&nbsp;</ra:Panel>
                                             <span class="text">
                                                 DataGrid Starter-Kit. Ever wondered how to create that perfect Ajax DataGrid
                                             </span>
@@ -86,8 +83,7 @@
                                                 runat="server" 
                                                 ID="thbs4" 
                                                 CssClass="image4" 
-                                                Tag="span"
-                                                Tooltip="RSS Starter-Kit">&nbsp;</ra:Panel>
+                                                Tag="span">&nbsp;</ra:Panel>
                                             <span class="text">
                                                 RSS Starter-Kit. Syndicate your friend's blogs with this your own Ajax RSS Application
                                             </span>
@@ -101,8 +97,7 @@
                                                 runat="server" 
                                                 ID="thbs5" 
                                                 CssClass="image5" 
-                                                Tag="span"
-                                                Tooltip="Forum Starter-Kit">&nbsp;</ra:Panel>
+                                                Tag="span">&nbsp;</ra:Panel>
                                             <span class="text">
                                                 Forum Starter-Kit. Create your own CodeProject like forums. 100% Ajaxified
                                             </span>
