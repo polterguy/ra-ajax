@@ -667,6 +667,8 @@ Ra.extend(Ra.BUnveil.prototype, {
   
   onMouseOver: function() {
     var el = this.parent.element;
+    if( this.parent.element.getOpacity() == this.options.maxOpacity )
+      return;
     var T = this;
     el.RaEffectFadeIn = Ra.E(el, {
       onStart: function() {
