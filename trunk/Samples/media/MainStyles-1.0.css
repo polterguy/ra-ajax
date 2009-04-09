@@ -121,22 +121,15 @@ span > input + label { padding-right:3px;padding-left:3px; vertical-align:middle
 	display:block;
 }
 
+.dataGrid
+{
+	width:100%;
+	border-collapse:collapse;
+}
 
-/* Master page thumbs in window */
-
-.thumbsSmall { width:320px; overflow:hidden; height:63px; margin-left:auto; margin-right:auto; }
-.thumbsSmall .linksSmall { display:block; padding:5px; overflow:auto; border:dotted 1px #ddd; }
-.thumbsSmall .linksSmall:hover { border:solid 1px #00f; }
-.thumbsSmall .linksSmall .headerSmall { font-size:1.0em; font-weight:bold; display:block; }
-.thumbsSmall .linksSmall .image1Small { float:left; margin-right:10px; background:url('ajax-starter-kits.jpg') no-repeat -691px 0; 
-display:block; width:63px; height:50px; }
-.thumbsSmall .linksSmall .image2Small { float:left; margin-right:10px; background:url('ajax-starter-kits.jpg') no-repeat -565px 0; 
-display:block; width:63px; height:50px; }
-.thumbsSmall .linksSmall .image3Small { float:left; margin-right:10px; background:url('ajax-starter-kits.jpg') no-repeat -628px 0; 
-display:block; width:63px; height:50px; }
-.accLinks li { display:block; }
-.accLinks li a { display:block; }
-
-
+.dataGrid tr th
+{
+	background:Transparent url(window-h-sprite.png) repeat-x 0 0;
+}
 
 
