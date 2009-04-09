@@ -135,27 +135,27 @@
 
 .thumbs .links .image1
 {
-	background-position:0 0;
+	background-position:-600px 0;
 }
 
 .thumbs .links .image2
 {
-	background-position:-300px 0;
+	background-position:-900px 0;
 }
 
 .thumbs .links .image3
 {
-	background-position:-600px 0;
+	background-position:-1200px 0;
 }
 
 .thumbs .links .image4
 {
-	background-position:-900px 0;
+	background-position:-300px 0;
 }
 
 .thumbs .links .image5
 {
-	background-position:-1200px 0;
+	background-position:0 0;
 }
 
 .thumbs .links .text
