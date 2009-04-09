@@ -16,48 +16,6 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <script type="text/javascript">
-function RaFadeIn(el) {
-  el = Ra.$(el);
-  el.RaEffectFadeIn = Ra.E(el, {
-    onStart: function() {
-      if( el.RaEffectFadeOut )
-        el.RaEffectFadeOut.stopped = true;
-      this.element.setOpacity(0.3);
-      this.element.setStyle('display','block');
-  },
-    onFinished: function() {
-      this.element.setOpacity(1);
-  },
-    onRender: function(pos) {
-      this.element.setOpacity((pos*0.7) + 0.3);
-  },
-    duration:500,
-    transition:'Explosive'
-  });
-}
-
-function RaFadeOut(el) {
-  el = Ra.$(el);
-  el.RaEffectFadeOut = Ra.E(el, {
-    onStart: function() {
-      if( el.RaEffectFadeIn )
-        el.RaEffectFadeIn.stopped = true;
-      this.element.setOpacity(1);
-      this.element.setStyle('display','block');
-  },
-    onFinished: function() {
-      this.element.setOpacity(0.3);
-  },
-    onRender: function(pos) {
-      this.element.setOpacity(((1-pos)*0.7) + 0.3);
-  },
-    duration:500,
-    transition:'Explosive'
-  });
-}
-    </script>
-
     <h1>Ra-Ajax Samples</h1>
 
     <ra:Panel 
@@ -98,6 +56,30 @@ function RaFadeOut(el) {
                 <span class="image3">&nbsp;</span>
                 <span class="header">DataGrid Starter-Kit</span>
                 <span class="text">Starter-kit for Ajax DataGrid. Features GridView, Modal Windows, keyboard shortcuts and more. Written in VB.NET.</span>
+            </a>
+        </ra:Panel>
+
+        <ra:Panel 
+            runat="server" 
+            ID="thumbs4" 
+            style="opacity:0.3;"
+            CssClass="thumbs">
+            <a href="Viewport-RSS-Starter-Kit.aspx" class="links">
+                <span class="image4">&nbsp;</span>
+                <span class="header">RSS Starter-Kit</span>
+                <span class="text">Nice starting point for creating an Ajax RSS portal. Written in C#.</span>
+            </a>
+        </ra:Panel>
+
+        <ra:Panel 
+            runat="server" 
+            ID="thumbs5" 
+            style="opacity:0.3;"
+            CssClass="thumbs">
+            <a href="Ajax-Forum-Starter-Kit.aspx" class="links">
+                <span class="image5">&nbsp;</span>
+                <span class="header">Forum Starter-Kit</span>
+                <span class="text">For those who wants to create an Ajax Forum. Written in C#.</span>
             </a>
         </ra:Panel>
 

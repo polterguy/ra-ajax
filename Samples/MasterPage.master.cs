@@ -11,11 +11,32 @@ using Ra.Extensions;
 using System.IO;
 using System.Web;
 using System.Drawing;
+using System.Web.UI;
+using Ra;
 
 namespace Samples
 {
     public partial class MasterPage : System.Web.UI.MasterPage
     {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                foreach (Control idx in new Control[] { thumbs1, thumbs2, thumbs3, thumbs4, thumbs5 })
+                {
+                    AjaxManager.Instance.WriterAtBack.Write(@"
+Ra.$('{0}').observe('mouseover', function() {{
+  RaFadeIn('{0}');
+}});
+
+Ra.$('{0}').observe('mouseout', function() {{
+  RaFadeOut('{0}');
+}});
+", idx.ClientID);
+                }
+            }
+        }
+
         protected void btnShowCode_Click(object sender, EventArgs e)
         {
             if (!tabShowCode.Visible)
