@@ -39,7 +39,7 @@
                                         <a href="Viewport-Calendar-Starter-Kit.aspx" class="links">
                                             <span class="image1">&nbsp;</span>
                                             <span class="text">
-                                                Create your own Ajax Calendar Application starting with this sample
+                                                How to create your own Ajax Calendar Application
                                             </span>
                                         </a>
                                         <ra:BehaviorUnveiler runat="server" id="unveiler1" />
@@ -49,7 +49,7 @@
                                         <a href="Viewport-Sample.aspx" class="links">
                                             <span class="image2">&nbsp;</span>
                                             <span class="text">
-                                                Viewport Starter-Kit. Great place to start for filling the whole browser
+                                                Fill the whole screen, Viewport Starter-Kit
                                             </span>
                                         </a>
                                         <ra:BehaviorUnveiler runat="server" id="unveiler2" />
@@ -59,7 +59,7 @@
                                         <a href="Viewport-GridView-Sample.aspx" class="links">
                                             <span class="image3">&nbsp;</span>
                                             <span class="text">
-                                                DataGrid Starter-Kit. Ever wondered how to create that perfect Ajax DataGrid
+                                                Create an Ajax DataGrid with this Starter-Kit
                                             </span>
                                         </a>
                                         <ra:BehaviorUnveiler runat="server" id="unveiler3" />
@@ -69,7 +69,7 @@
                                         <a href="Viewport-RSS-Starter-Kit.aspx" class="links">
                                             <span class="image4">&nbsp;</span>
                                             <span class="text">
-                                                RSS Starter-Kit. Syndicate your friend's blogs with this your own Ajax RSS Application
+                                                Syndicate blogs with this RSS Starter-Kit
                                             </span>
                                         </a>
                                         <ra:BehaviorUnveiler runat="server" id="unveiler4" />
@@ -79,7 +79,7 @@
                                         <a href="Ajax-Forum-Starter-Kit.aspx" class="links">
                                             <span class="image5">&nbsp;</span>
                                             <span class="text">
-                                                Forum Starter-Kit. Create your own CodeProject like forums. 100% Ajaxified
+                                                An Ajax Forum Starter-Kit, CodeProject style
                                             </span>
                                         </a>
                                         <ra:BehaviorUnveiler runat="server" id="unveiler5" />
