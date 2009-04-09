@@ -643,21 +643,23 @@ Ra.extend(Ra.BUnveil.prototype, {
     
   initBehavior: function(parent) {
     this.parent = parent;
+    this.options = Ra.extend({minOpacity: 0.3, maxOpacity: 1.0}, this.options || {});
     this.parent.element.observe('mouseout', this.onMouseOut, this);
     this.parent.element.observe('mouseover', this.onMouseOver, this);
   },
   
   onMouseOut: function() {
     var el = this.parent.element;
+    var T = this;
     el.RaEffectFadeOut = Ra.E(el, {
       onStart: function() {
         if( el.RaEffectFadeIn )
           el.RaEffectFadeIn.stopped = true;
-        this.element.setOpacity(1);
+        this.element.setOpacity(T.options.maxOpacity);
         this.element.setStyle('display','block');
       },
-      onFinished: function() { this.element.setOpacity(0.3); },
-      onRender: function(pos) { this.element.setOpacity(((1-pos)*0.7) + 0.3); },
+      onFinished: function() { this.element.setOpacity(T.options.minOpacity); },
+      onRender: function(pos) { this.element.setOpacity(((T.options.maxOpacity-pos)*0.7) + T.options.minOpacity); },
       duration:500,
       transition:'Explosive'
     });
@@ -665,23 +667,24 @@ Ra.extend(Ra.BUnveil.prototype, {
   
   onMouseOver: function() {
     var el = this.parent.element;
+    var T = this;
     el.RaEffectFadeIn = Ra.E(el, {
       onStart: function() {
         if( el.RaEffectFadeOut )
           el.RaEffectFadeOut.stopped = true;
-        this.element.setOpacity(0.3);
+        this.element.setOpacity(T.options.minOpacity);
         this.element.setStyle('display','block');
       },
-      onFinished: function() { this.element.setOpacity(1); },
-      onRender: function(pos) { this.element.setOpacity((pos*0.7) + 0.3); },
+      onFinished: function() { this.element.setOpacity(T.options.maxOpacity); },
+      onRender: function(pos) { this.element.setOpacity((pos*0.7) + T.options.minOpacity); },
       duration:500,
       transition:'Explosive'
     });
   },
   
   destroy: function() {
-    this.prnt.stopObserving('mouseout', this.onMouseOut, this);
-    this.prnt.stopObserving('mouseover', this.onMouseOver, this);
+    this.parent.element.stopObserving('mouseout', this.onMouseOut, this);
+    this.parent.element.stopObserving('mouseover', this.onMouseOver, this);
   }
   
 });
