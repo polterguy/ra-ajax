@@ -16,8 +16,6 @@
     ContentPlaceHolderID="cnt1" 
     runat="server">
 
-    <h1>Ra-Ajax Samples</h1>
-
     <ra:Panel runat="server" style="opacity:0;" ID="thumbsWrapper">
         
         <ra:Panel runat="server" ID="thumbs1" CssClass="thumbs">
