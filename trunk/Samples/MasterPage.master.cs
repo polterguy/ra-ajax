@@ -37,11 +37,21 @@ namespace Samples
             if (!tabShowCode.Visible || tabShowCode.Style["display"] == "none")
             {
                 tabShowCode.Visible = true;
-                new EffectFadeIn(tabShowCode, 400).JoinThese(new EffectRollDown()).Render();
+                new EffectRollUp(cntWrp, 400)
+                    .JoinThese(new EffectFadeOut())
+                    .ChainThese(
+                        new EffectFadeIn(tabShowCode, 400)
+                            .JoinThese(new EffectRollDown()))
+                    .Render();
             }
             else
             {
-               new EffectFadeOut(tabShowCode, 400).JoinThese(new EffectRollUp()).Render();
+                new EffectRollUp(tabShowCode, 400)
+                    .JoinThese(new EffectFadeOut())
+                    .ChainThese(
+                        new EffectFadeIn(cntWrp, 400)
+                            .JoinThese(new EffectRollDown()))
+                    .Render();
             }
         }
 

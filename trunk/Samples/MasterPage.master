@@ -27,120 +27,198 @@
             <div id="paper">
                 <div id="paperContent">
                     <div id="header">
-                        <ra:LinkButton runat="server" ID="showCode" CssClass="showCode" Text="&nbsp;" OnClick="btnShowCode_Click" />
+                        <ra:LinkButton 
+                            runat="server" 
+                            ID="showCode" 
+                            CssClass="showCode" 
+                            Text="&nbsp;" 
+                            OnClick="btnShowCode_Click" />
                     </div>
                     <div id="navigation">
                         <div id="navigationContent">
-	                        <ext:Accordion runat="server" ClientSideChange="true" ID="accordion" AnimationSpeed="400">
+	                        <ext:Accordion 
+	                            runat="server" 
+	                            ClientSideChange="true" 
+	                            ID="accordion" 
+	                            AnimationSpeed="400">
 
-	                            <ext:AccordionView Caption="Ajax Starter-Kits" runat="server" ID="accView1">
+	                            <ext:AccordionView 
+	                                Caption="Ajax Starter-Kits" 
+	                                runat="server" 
+	                                ID="accView1">
 
-                                    <ra:Panel runat="server" ID="thumbs1" style="opacity:0.3;" CssClass="thumbsSmall">
+                                    <ra:Panel 
+                                        runat="server" 
+                                        ID="thumbs1" 
+                                        style="opacity:0.3;" 
+                                        CssClass="thumbsSmall">
                                         <a href="Viewport-Calendar-Starter-Kit.aspx" class="links">
                                             <span class="image1">&nbsp;</span>
                                             <span class="text">
                                                 Calendar Application
                                             </span>
                                         </a>
-                                        <ra:BehaviorUnveiler runat="server" id="unveiler1" />
+                                        <ra:BehaviorUnveiler 
+                                            runat="server" 
+                                            id="unveiler1" />
                                     </ra:Panel>
 
-                                    <ra:Panel runat="server" ID="thumbs2" style="opacity:0.3;" CssClass="thumbsSmall">
+                                    <ra:Panel 
+                                        runat="server" 
+                                        ID="thumbs2" 
+                                        style="opacity:0.3;" 
+                                        CssClass="thumbsSmall">
                                         <a href="Viewport-Sample.aspx" class="links">
                                             <span class="image2">&nbsp;</span>
                                             <span class="text">
                                                 Viewport Login
                                             </span>
                                         </a>
-                                        <ra:BehaviorUnveiler runat="server" id="unveiler2" />
+                                        <ra:BehaviorUnveiler 
+                                            runat="server" 
+                                            id="unveiler2" />
                                     </ra:Panel>
 
-                                    <ra:Panel runat="server" ID="thumbs3" style="opacity:0.3;" CssClass="thumbsSmall">
+                                    <ra:Panel 
+                                        runat="server" 
+                                        ID="thumbs3" 
+                                        style="opacity:0.3;" 
+                                        CssClass="thumbsSmall">
                                         <a href="Viewport-GridView-Sample.aspx" class="links">
                                             <span class="image3">&nbsp;</span>
                                             <span class="text">
                                                 Create an Ajax DataGrid with this Starter-Kit
                                             </span>
                                         </a>
-                                        <ra:BehaviorUnveiler runat="server" id="unveiler3" />
+                                        <ra:BehaviorUnveiler 
+                                            runat="server" 
+                                            id="unveiler3" />
                                     </ra:Panel>
 
-                                    <ra:Panel runat="server" ID="thumbs4" style="opacity:0.3;" CssClass="thumbsSmall">
+                                    <ra:Panel 
+                                        runat="server" 
+                                        ID="thumbs4" 
+                                        style="opacity:0.3;" 
+                                        CssClass="thumbsSmall">
                                         <a href="Viewport-RSS-Starter-Kit.aspx" class="links">
                                             <span class="image4">&nbsp;</span>
                                             <span class="text">
                                                 Syndicate blogs with this RSS Starter-Kit
                                             </span>
                                         </a>
-                                        <ra:BehaviorUnveiler runat="server" id="unveiler4" />
+                                        <ra:BehaviorUnveiler 
+                                            runat="server" 
+                                            id="unveiler4" />
                                     </ra:Panel>
 
-                                    <ra:Panel runat="server" ID="thumbs5" style="opacity:0.3;" CssClass="thumbsSmall">
+                                    <ra:Panel 
+                                        runat="server" 
+                                        ID="thumbs5" 
+                                        style="opacity:0.3;" 
+                                        CssClass="thumbsSmall">
                                         <a href="Ajax-Forum-Starter-Kit.aspx" class="links">
                                             <span class="image5">&nbsp;</span>
                                             <span class="text">
                                                 An Ajax Forum Starter-Kit, CodeProject style
                                             </span>
                                         </a>
-                                        <ra:BehaviorUnveiler runat="server" id="unveiler5" />
+                                        <ra:BehaviorUnveiler 
+                                            runat="server" 
+                                            id="unveiler5" />
                                     </ra:Panel>
 
 	                            </ext:AccordionView>
 
-	                            <ext:AccordionView Caption="Concept Samples" runat="server" ID="accView2">
+	                            <ext:AccordionView 
+	                                Caption="Concept Samples" 
+	                                runat="server" 
+	                                ID="accView2">
 	                                second
 	                            </ext:AccordionView>
 
-	                            <ext:AccordionView Caption="Navigation" runat="server" ID="accView3">
+	                            <ext:AccordionView 
+	                                Caption="Navigation" 
+	                                runat="server" 
+	                                ID="accView3">
 
-                                    <ra:Panel runat="server" ID="Panel1" style="opacity:0.3;" CssClass="thumbsSmallNav">
+                                    <ra:Panel 
+                                        runat="server" 
+                                        ID="Panel1" 
+                                        style="opacity:0.3;" 
+                                        CssClass="thumbsSmallNav">
                                         <a href="http://ra-ajax.org/" class="links">
                                             <span class="image1">&nbsp;</span>
                                             <span class="text">
                                                 Home to main landing page
                                             </span>
                                         </a>
-                                        <ra:BehaviorUnveiler runat="server" id="BehaviorUnveiler1" />
+                                        <ra:BehaviorUnveiler 
+                                            runat="server" 
+                                            id="BehaviorUnveiler1" />
                                     </ra:Panel>
 
-                                    <ra:Panel runat="server" ID="Panel2" style="opacity:0.3;" CssClass="thumbsSmallNav">
+                                    <ra:Panel 
+                                        runat="server" 
+                                        ID="Panel2" 
+                                        style="opacity:0.3;" 
+                                        CssClass="thumbsSmallNav">
                                         <a href="Viewport-Sample.aspx" class="links">
                                             <span class="image2">&nbsp;</span>
                                             <span class="text">
                                                 Read our blogs
                                             </span>
                                         </a>
-                                        <ra:BehaviorUnveiler runat="server" id="BehaviorUnveiler2" />
+                                        <ra:BehaviorUnveiler 
+                                            runat="server" 
+                                            id="BehaviorUnveiler2" />
                                     </ra:Panel>
 
-                                    <ra:Panel runat="server" ID="Panel3" style="opacity:0.3;" CssClass="thumbsSmallNav">
+                                    <ra:Panel 
+                                        runat="server" 
+                                        ID="Panel3" 
+                                        style="opacity:0.3;" 
+                                        CssClass="thumbsSmallNav">
                                         <a href="Viewport-GridView-Sample.aspx" class="links">
                                             <span class="image3">&nbsp;</span>
                                             <span class="text">
                                                 Get support for Ra-Ajax
                                             </span>
                                         </a>
-                                        <ra:BehaviorUnveiler runat="server" id="BehaviorUnveiler3" />
+                                        <ra:BehaviorUnveiler 
+                                            runat="server" 
+                                            id="BehaviorUnveiler3" />
                                     </ra:Panel>
 
-                                    <ra:Panel runat="server" ID="Panel4" style="opacity:0.3;" CssClass="thumbsSmallNav">
+                                    <ra:Panel 
+                                        runat="server" 
+                                        ID="Panel4" 
+                                        style="opacity:0.3;" 
+                                        CssClass="thumbsSmallNav">
                                         <a href="Viewport-RSS-Starter-Kit.aspx" class="links">
                                             <span class="image4">&nbsp;</span>
                                             <span class="text">
                                                 Read the frequently asked questions
                                             </span>
                                         </a>
-                                        <ra:BehaviorUnveiler runat="server" id="BehaviorUnveiler4" />
+                                        <ra:BehaviorUnveiler 
+                                            runat="server" 
+                                            id="BehaviorUnveiler4" />
                                     </ra:Panel>
 
-                                    <ra:Panel runat="server" ID="Panel5" style="opacity:0.3;" CssClass="thumbsSmallNav">
+                                    <ra:Panel 
+                                        runat="server" 
+                                        ID="Panel5" 
+                                        style="opacity:0.3;" 
+                                        CssClass="thumbsSmallNav">
                                         <a href="Ajax-Forum-Starter-Kit.aspx" class="links">
                                             <span class="image5">&nbsp;</span>
                                             <span class="text">
                                                 Go to the main samples
                                             </span>
                                         </a>
-                                        <ra:BehaviorUnveiler runat="server" id="BehaviorUnveiler5" />
+                                        <ra:BehaviorUnveiler 
+                                            runat="server" 
+                                            id="BehaviorUnveiler5" />
                                     </ra:Panel>
 
 	                            </ext:AccordionView>
@@ -150,19 +228,48 @@
                     </div>
                     <div id="content">
                         <div id="contentContent">
-                            <ext:TabControl runat="server" ID="tabShowCode" Visible="false" CssClass="tab codeWrapper">
+                            <div style="padding:0; overflow:hidden;">
+                                <ext:TabControl 
+                                    runat="server" 
+                                    ID="tabShowCode" 
+                                    style="display:none;"
+                                    Visible="false" 
+                                    CssClass="tab codeWrapper">
 
-                                <ext:TabView runat="server" ID="tabCSCode" Caption="C# Code" CssClass="content">
-                                    <ra:Label runat="server" ID="lblCodeCS" Tag="pre" CssClass="code" />
-                                </ext:TabView>
+                                    <ext:TabView 
+                                        runat="server" 
+                                        ID="tabCSCode" 
+                                        Caption="C# Code" 
+                                        CssClass="content">
+                                        <ra:Label 
+                                            runat="server" 
+                                            ID="lblCodeCS" 
+                                            Tag="pre" 
+                                            CssClass="code" />
+                                    </ext:TabView>
 
-                                <ext:TabView runat="server" ID="tabASPXCode" Caption=".ASPX Markup" CssClass="content">
-                                    <ra:Label runat="server" ID="lblCodeASPX" Tag="pre" CssClass="code" />
-                                </ext:TabView>
+                                    <ext:TabView 
+                                        runat="server" 
+                                        ID="tabASPXCode" 
+                                        Caption=".ASPX Markup" 
+                                        CssClass="content">
+                                        <ra:Label 
+                                            runat="server" 
+                                            ID="lblCodeASPX" 
+                                            Tag="pre" 
+                                            CssClass="code" />
+                                    </ext:TabView>
 
-                            </ext:TabControl>
+                                </ext:TabControl>
+                            </div>
                             <div id="pageContent">
-                                <asp:contentplaceholder id="cnt1" runat="server"></asp:contentplaceholder>
+                                <ra:Panel 
+                                    runat="server" 
+                                    ID="cntWrp">
+                                    <asp:contentplaceholder 
+                                        id="cnt1" 
+                                        runat="server" />
+                                </ra:Panel>
                             </div>
                         </div>
                     </div>
