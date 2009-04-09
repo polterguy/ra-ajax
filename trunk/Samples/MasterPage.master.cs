@@ -18,14 +18,6 @@ namespace Samples
 {
     public partial class MasterPage : System.Web.UI.MasterPage
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            if (!IsPostBack)
-            {
-                new EffectFadeIn(accordion, 500).JoinThese(new EffectRollDown()).Render();
-            }
-        }
-
         protected void btnShowCode_Click(object sender, EventArgs e)
         {
             if (!tabShowCode.Visible)
