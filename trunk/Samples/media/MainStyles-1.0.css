@@ -1,61 +1,93 @@
-/* Customized "base" and Grid */
-
-a { text-decoration:none; }
-a:hover { text-decoration:underline;background-color:#eee;color:Black; }
-h2 { margin-top:2.7em; }
-#doc2 { width:1056px; background:url('bg.png') repeat-y;}
-#hd { background:url('sun_background.jpg') no-repeat; height:140px; margin:0 16px 0 16px; }
-#bd { margin:25px 41px 0 41px; line-height:18px; font-family:"Lucida Grande","Lucida Sans Unicode",verdana,tahoma,arial,sans-serif;}
-#ft { margin-left:auto; margin-right:auto; text-align:center; width:50%; padding:25px; }
-th, td { border:0; padding:0.3em; }
-table { border-collapse:separate; border-spacing:2px; }
-input[type="radio"], input[type="checkbox"] { vertical-align:middle; }
-span > input + label { padding-right:3px;padding-left:3px; vertical-align:middle; }
-
-
 /* Special classes for website only */
 
-.navigation { padding-top:0.7em; }
-.major-links { padding-top:3.0em; }
-.cnt { text-align:justify; }
-.codeBtn { margin-top:2.0em; margin-left:12px; }
-.updateLbl { color:#33f; }
-.panel { background-color:Yellow; border:solid 1px Black; padding:15px; }
-.chat { width:100%; height:220px; padding:5px; overflow:auto; }
-.pnlAnimation { position:absolute;background-color:#ddd;border:solid 1px Black;padding:15px;height:100px;width:100px; }
-.pnlInv { display:none; }
-.pnlAbs { position:absolute; }
-.bulList { margin:1em; }
-.bulList li { list-style:disc outside; margin-left:2em; }
-.datagrid { width:100%;background-color:#eee; }
-.spacer { height:200px; }
-.spacerLarge { height:320px; }
-.spacerSmall { height:50px; }
-.smallWnd { width:250px; height:280px; z-index:500; position:absolute; *left:1px; *top:1px; }
-.wndWrapper { position:absolute; }
-.nameTbl { border-collapse:collapse; }
-.nameTbl tr td { border:none; padding-left:5px; padding-right:5px; padding-top:1px; padding-bottom:1px; }
-.errLbl { color:Red; font-style:italic; }
-.infoLbl { font-size:90%;color:#666; }
-.showCode { background-color:#eee; overflow:auto; z-index:2000; font-size:0.8em; padding:4px; }
-.keyword { color:Blue; }
-.w3c { margin-top:15px; margin-left:25px; }
-.code { margin:0;padding:0; width:100%; height:450px; overflow:auto; font-size:0.8em; }
+.accList a
+{
+	text-decoration:none;
+	display:block;
+}
 
+.accList a:hover
+{
+	background-color:#e0e0e0;
+}
 
-/* Droppables and Draggable sample */
+/* MasterPage CSS */
 
-.dragContainer { position:relative; margin-top:15px; }
-.dragger1 { cursor:move; position:absolute; color:#33f; border:solid 1px #33f; padding:5px; width:100px; -moz-user-select:none; z-index:2; background-color:White; *left:0px; *top:0px; }
-.dragger2 { cursor:move; position:absolute; color:#33f; border:solid 1px #33f; padding:5px; width:100px; -moz-user-select:none; z-index:2; background-color:White; left:200px; *top:1px; }
-.dropper { position:absolute; left:350px; color:#bbb; border:solid 1px #bbb; padding:5px; width:100px; z-index:1; }
-.droppablesTouched { background-color:Yellow; }
-.slider { width:198px; border:solid 1px Black; padding-top:1px; padding-left:1px; position:absolute; height:21px; }
-.slidThumb { display:block; cursor:move; position:absolute; color:#33f; border:solid 1px #33f; width:25px; height:18px; -moz-user-select:none;*left:1px;*top:1px; }
+#paper
+{
+	width:1056px;
+	background:url('bg.png') repeat-y 0 0;
+	margin:0 auto 0 auto;
+	overflow:auto;
+}
+
+#paperContent
+{
+	margin-left:16px;
+	margin-right:16px;
+	overflow:auto;
+}
+
+#header
+{
+	height:140px;
+	background:url('sun_background.jpg') no-repeat 0 0;
+	width:1024px;
+	position:relative;
+}
+
+#navigation
+{
+	width:250px;
+	float:left;
+}
+
+#navigationContent
+{
+	padding:25px 15px 25px 15px;
+}
+
+#content
+{
+	float:left;
+	width:774px;
+}
+
+#contentContent
+{
+	padding:25px 15px 25px 15px;
+}
+
+.showCode
+{
+	background:url('curl.png') no-repeat 0 0;
+	position:absolute;
+	right:0px;
+	top:0px;
+	width:40px;
+	height:40px;
+	text-decoration:none;
+}
+
+.codeWrapper
+{
+	margin-top:25px;
+	overflow:hidden;
+}
+
+.code
+{
+	font-size:10px;
+	overflow:hidden;
+	font-family:Arial;
+}
+
+#pageContent
+{
+}
 
 
 /* Ajax Samples Landing Page */
-
 .thumbs
 {
 	margin:5px;
@@ -121,6 +153,10 @@ span > input + label { padding-right:3px;padding-left:3px; vertical-align:middle
 	display:block;
 }
 
+
+
+/* CRM sample */
+
 .dataGrid
 {
 	width:100%;
@@ -129,7 +165,7 @@ span > input + label { padding-right:3px;padding-left:3px; vertical-align:middle
 
 .dataGrid tr th
 {
-	background:Transparent url(window-h-sprite.png) repeat-x 0 0;
+	background:url('window-h-sprite.png') repeat-x 0 0;
 }
 
 

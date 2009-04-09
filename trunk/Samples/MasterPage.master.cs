@@ -16,27 +16,6 @@ namespace Samples
 {
     public partial class MasterPage : System.Web.UI.MasterPage
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            // Defaulting "alphacube" skin to be visible...
-            includeSapphire.Visible = false;
-        }
-
-        protected void chooseSkin_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            switch (chooseSkin.SelectedItem.Text)
-            {
-                case "Steel":
-                    includeSteel.Visible = true;
-                    includeSapphire.Visible = false;
-                    break;
-                case "Sapphire":
-                    includeSteel.Visible = false;
-                    includeSapphire.Visible = true;
-                    break;
-            }
-        }
-
         protected void btnShowCode_Click(object sender, EventArgs e)
         {
             if (!tabShowCode.Visible)
