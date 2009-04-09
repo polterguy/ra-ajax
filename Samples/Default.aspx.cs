@@ -19,20 +19,7 @@ namespace Samples
         {
             if (!IsPostBack)
             {
-                new EffectFadeIn(thumbsWrapper, 500)
-                    .Render();
-                foreach (Control idx in new Control[] { thumbs1, thumbs2, thumbs3, thumbs4, thumbs5 })
-                {
-                AjaxManager.Instance.WriterAtBack.Write(@"
-Ra.$('{0}').observe('mouseover', function() {{
-  RaFadeIn('{0}');
-}});
-
-Ra.$('{0}').observe('mouseout', function() {{
-  RaFadeOut('{0}');
-}});
-", idx.ClientID);
-                }
+                new EffectFadeIn(thumbsWrapper, 500).Render();
             }
         }
     }
