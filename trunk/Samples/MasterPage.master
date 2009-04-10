@@ -37,17 +37,17 @@
                             runat="server" 
                             ID="menuPanel" 
                             CssClass="menuWrapper"
-                            style="opacity:0.2;">
+                            style="opacity:0.4;">
                             <ul id="menu">
                                 <ra:Label 
                                     ID="Label1" 
                                     runat="server" 
                                     Tag="li"
-                                    style="opacity:0.6;">
+                                    style="opacity:0.7;">
                                     <ra:BehaviorUnveiler 
                                         ID="BehaviorUnveiler6" 
                                         runat="server" 
-                                        MinOpacity="0.6" 
+                                        MinOpacity="0.7" 
                                         MaxOpacity="1" />
                                     <a href="http://ra-ajax.org/">Home</a>
                                 </ra:Label>
@@ -55,11 +55,11 @@
                                     ID="Label2" 
                                     runat="server" 
                                     Tag="li"
-                                    style="opacity:0.6;">
+                                    style="opacity:0.7;">
                                     <ra:BehaviorUnveiler 
                                         ID="BehaviorUnveiler7" 
                                         runat="server" 
-                                        MinOpacity="0.6" 
+                                        MinOpacity="0.7" 
                                         MaxOpacity="1" />
                                     <a href="http://ra-ajax.org/samples/">Samples</a>
                                 </ra:Label>
@@ -67,11 +67,11 @@
                                     ID="Label3" 
                                     runat="server" 
                                     Tag="li"
-                                    style="opacity:0.6;">
+                                    style="opacity:0.7;">
                                     <ra:BehaviorUnveiler 
                                         ID="BehaviorUnveiler8" 
                                         runat="server" 
-                                        MinOpacity="0.6" 
+                                        MinOpacity="0.7" 
                                         MaxOpacity="1" />
                                     <a href="http://ra-ajax.org/Support.aspx">Support</a>
                                 </ra:Label>
@@ -79,11 +79,11 @@
                                     ID="Label4" 
                                     runat="server" 
                                     Tag="li"
-                                    style="opacity:0.6;">
+                                    style="opacity:0.7;">
                                     <ra:BehaviorUnveiler 
                                         ID="BehaviorUnveiler9" 
                                         runat="server" 
-                                        MinOpacity="0.6" 
+                                        MinOpacity="0.7" 
                                         MaxOpacity="1" />
                                     <a href="http://ra-ajax.org/Testimonials.aspx">Testimonials</a>
                                 </ra:Label>
@@ -91,11 +91,11 @@
                                     ID="Label5" 
                                     runat="server" 
                                     Tag="li"
-                                    style="opacity:0.6;">
+                                    style="opacity:0.7;">
                                     <ra:BehaviorUnveiler 
                                         ID="BehaviorUnveiler10" 
                                         runat="server" 
-                                        MinOpacity="0.6" 
+                                        MinOpacity="0.7" 
                                         MaxOpacity="1" />
                                     <a href="http://ra-ajax.org/Blogs.aspx">Blogs</a>
                                 </ra:Label>
@@ -103,8 +103,8 @@
                             <ra:BehaviorUnveiler 
                                 runat="server" 
                                 ID="menuUnveiler" 
-                                MaxOpacity="0.8" 
-                                MinOpacity="0.2" />
+                                MaxOpacity="1.0" 
+                                MinOpacity="0.4" />
                         </ra:Panel>
                     </div>
                     
