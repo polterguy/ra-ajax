@@ -94,24 +94,23 @@
             OnEnterPressed="ChangeChart"
             Text="77" />
     </div>
-    <div style="clear:both;">&nbsp;</div>
-
-
     <ra:Panel 
         runat="server" 
         ID="infoPanel" 
-        style="margin-top:15px;padding:15px;border:dashed 1px #aaa;opacity:0.3;cursor:pointer;">
+        style="float:left;margin-top:15px;padding:15px;border:dashed 1px #aaa;opacity:0.3;cursor:pointer;width:200px;">
         <p>
             Features shown in this sample;
         </p>
         <ul class="list">
-            <li>Using ASP.NET Charting with Ra-Ajax</li>
+            <li>ASP.NET Charts and Ra-Ajax</li>
             <li>Key handling in TextBoxes</li>
-            <li>Effects - Fading and Highlight etc</li>
+            <li>Fading and Highlight effects</li>
             <li>Enter pressed in TextBox</li>
         </ul>
         <ra:BehaviorUnveiler 
             runat="server" 
             ID="unveilInfo" />
     </ra:Panel>
+    <div style="clear:both;">&nbsp;</div>
+
 </asp:Content>
