@@ -319,7 +319,7 @@ ul.list li
 
 .thumbsSmallNav .links .image5
 {
-	background-position:-400px 0;
+	background-position:-100px 0;
 }
 
 .thumbsSmallNav .links .text
@@ -363,3 +363,18 @@ ul.list li
 }
 
 
+
+/* Chat sample */
+.allChats
+{
+	width:580px;
+}
+
+.chat
+{
+	padding:10px;
+	border:dashed 1px #eee;
+	width:100%;
+	margin-bottom:5px;
+	overflow:hidden;
+}

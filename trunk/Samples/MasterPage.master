@@ -155,10 +155,10 @@
                                         ID="Panel2" 
                                         style="opacity:0.3;" 
                                         CssClass="thumbsSmallNav">
-                                        <a href="Viewport-Sample.aspx" class="links">
+                                        <a href="Chat-Sample.aspx" class="links">
                                             <span class="image2">&nbsp;</span>
                                             <span class="text">
-                                                Viewport Login
+                                                Chat Sample
                                             </span>
                                         </a>
                                         <ra:BehaviorUnveiler 
@@ -203,10 +203,10 @@
                                         ID="Panel5" 
                                         style="opacity:0.3;" 
                                         CssClass="thumbsSmallNav">
-                                        <a href="Ajax-Forum-Starter-Kit.aspx" class="links">
+                                        <a runat="server" href="~/" class="links">
                                             <span class="image5">&nbsp;</span>
                                             <span class="text">
-                                                An Ajax Forum Starter-Kit, CodeProject style
+                                                Main samples
                                             </span>
                                         </a>
                                         <ra:BehaviorUnveiler 

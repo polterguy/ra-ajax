@@ -23,7 +23,7 @@
 
     <h1>Ra-Ajax CRM Sample</h1>
     <p>
-        Below is a small example of an Ajax Customer Relationship System built using Ra-Ajax.
+        Below is a small example of an Ajax Customer Relationship System built using Ra-Ajax
     </p>
     <p>
         <ra:TextBox 
