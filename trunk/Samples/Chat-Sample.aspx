@@ -53,4 +53,21 @@
                 ID="txt" />
         </div>
     </ext:Window>
+    <ra:Panel 
+        runat="server" 
+        ID="infoPanel" 
+        style="margin-top:15px;padding:15px;border:dashed 1px #aaa;opacity:0.3;cursor:pointer;width:620px;">
+        <p>
+            Features shown in this sample;
+        </p>
+        <ul class="list">
+            <li>The Ra-Ajax Timer</li>
+            <li>Key handling in TextBoxes</li>
+            <li>Effects - Fading and Highlight etc</li>
+            <li>Ajax Windows</li>
+        </ul>
+        <ra:BehaviorUnveiler 
+            runat="server" 
+            ID="unveilInfo" />
+    </ra:Panel>
 </asp:Content>
