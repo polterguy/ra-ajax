@@ -61,7 +61,7 @@
                                 <asp:Literal runat="server" ID="blogLinksWrapper" />
                             </li>
                         </ul>
-                        <ra:BehaviorUnveiler runat="server" ID="menuUnveiler" MaxOpacity="0.9" />
+                        <ra:BehaviorUnveiler runat="server" ID="menuUnveiler" />
                     </ra:Panel>
                     </div>
                     
