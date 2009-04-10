@@ -27,6 +27,7 @@ namespace Samples
                 switch (url)
                 {
                     case "crm-sample.aspx":
+                    case "chat-sample.aspx":
                         accordion.ActiveAccordionViewIndex = 1;
                         break;
                 }
