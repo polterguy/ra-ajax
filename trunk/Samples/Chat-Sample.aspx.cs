@@ -19,8 +19,9 @@ namespace Samples
             if (!IsPostBack)
             {
                 DataBindChats();
-                txt.Focus();
-                txt.Select();
+                new EffectFadeIn(chatWindow, 500)
+                    .ChainThese(new EffectFocusAndSelect(txt))
+                    .Render();
             }
         }
 
@@ -34,7 +35,7 @@ namespace Samples
                 content += tmp;
             }
             chatCnt.Text = content;
-            if (oldChat != chatCnt.Text)
+            if (oldChat != chatCnt.Text && !IsPostBack)
             {
                 // New chat since last time...
                 chatCnt.Style["display"] = "none";
