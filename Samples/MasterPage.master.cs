@@ -18,6 +18,21 @@ namespace Samples
 {
     public partial class MasterPage : System.Web.UI.MasterPage
     {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                string url = Page.Request.Url.ToString();
+                url = url.Substring(url.LastIndexOf("/") + 1).ToLower();
+                switch (url)
+                {
+                    case "crm-sample.aspx":
+                        accordion.ActiveAccordionViewIndex = 1;
+                        break;
+                }
+            }
+        }
+
         protected void btnShowCode_Click(object sender, EventArgs e)
         {
             if (!tabShowCode.Visible)
@@ -29,19 +44,19 @@ namespace Samples
             if (!tabShowCode.Visible || tabShowCode.Style["display"] == "none")
             {
                 tabShowCode.Visible = true;
-                new EffectRollUp(cntWrp, 400)
+                new EffectRollUp(cntWrp, 500)
                     .JoinThese(new EffectFadeOut())
                     .ChainThese(
-                        new EffectFadeIn(tabShowCode, 400)
+                        new EffectFadeIn(tabShowCode, 500)
                             .JoinThese(new EffectRollDown()))
                     .Render();
             }
             else
             {
-                new EffectRollUp(tabShowCode, 400)
+                new EffectRollUp(tabShowCode, 500)
                     .JoinThese(new EffectFadeOut())
                     .ChainThese(
-                        new EffectFadeIn(cntWrp, 400)
+                        new EffectFadeIn(cntWrp, 500)
                             .JoinThese(new EffectRollDown()))
                     .Render();
             }

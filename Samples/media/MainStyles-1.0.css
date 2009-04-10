@@ -1,14 +1,15 @@
 /* Special classes for website only */
 
-.accList a
+ul.list
 {
-	text-decoration:none;
-	display:block;
+	margin:5px 0 5px 0;
 }
 
-.accList a:hover
+ul.list li
 {
-	background-color:#e0e0e0;
+	list-style-type:disc;
+	list-style-position:outside;
+	margin-left:25px;
 }
 
 /* MasterPage CSS */
@@ -81,6 +82,16 @@
 	font-size:10px;
 	overflow:hidden;
 	font-family:Arial;
+}
+
+.keyword
+{
+	color:Blue;
+}
+
+.comment
+{
+	color:Green;
 }
 
 #pageContent
@@ -316,7 +327,8 @@
 	float:left;
 	width:140px;
 	margin-left:5px;
-	font-size:9px;
+	margin-top:15px;
+	font-size:12px;
 	font-family:Arial;
 }
 
@@ -332,6 +344,22 @@
 .dataGrid tr th
 {
 	background:url('window-h-sprite.png') repeat-x 0 0;
+}
+
+.dataGrid tr td,
+.dataGrid tr th
+{
+	border:none 0;
+}
+
+.dataGrid tr.odd td
+{
+	background-color:#fefefe;
+}
+
+.dataGrid tr.even td
+{
+	background-color:#fafafa;
 }
 
 

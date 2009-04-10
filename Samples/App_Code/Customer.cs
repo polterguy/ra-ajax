@@ -6,13 +6,13 @@ public class Customer
 {
     private string _name;
     private string _address;
-    private int _id;
+    private Guid _id;
 
-    public Customer(string name, string adr, int id)
+    public Customer(string name, string adr)
     {
         _name = name;
         _address = adr;
-        _id = id;
+        _id = Guid.NewGuid();
     }
 
     public string Name
@@ -27,10 +27,9 @@ public class Customer
         set { _address = value; }
     }
 
-    public int ID
+    public Guid ID
     {
         get { return _id; }
-        set { _id = value; }
     }
 
     public static List<Customer> Customers
@@ -40,11 +39,11 @@ public class Customer
             if (HttpContext.Current.Session["__Customers"] == null)
             {
                 List<Customer> retVal = new List<Customer>();
-                retVal.Add(new Customer("John Doe", "Seattle 64", 1));
-                retVal.Add(new Customer("Jane Doe", "Seattle 64", 2));
-                retVal.Add(new Customer("Peter Janson", "NYC 43", 3));
-                retVal.Add(new Customer("Samuel Jackson", "Hollywood 654", 4));
-                retVal.Add(new Customer("Peter Tosh", "Trenchtown 11", 5));
+                retVal.Add(new Customer("John Doe", "Seattle 64"));
+                retVal.Add(new Customer("Jane Doe", "Seattle 64"));
+                retVal.Add(new Customer("Peter Janson", "NYC 43"));
+                retVal.Add(new Customer("Samuel Jackson", "Hollywood 654"));
+                retVal.Add(new Customer("Peter Tosh", "Trenchtown 11"));
                 HttpContext.Current.Session["__Customers"] = retVal;
             }
             return HttpContext.Current.Session["__Customers"] as List<Customer>;
