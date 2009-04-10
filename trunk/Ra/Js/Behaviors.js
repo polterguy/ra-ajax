@@ -643,7 +643,7 @@ Ra.extend(Ra.BUnveil.prototype, {
     
   initBehavior: function(parent) {
     this.parent = parent;
-    this.options = Ra.extend({minOpacity: 0.3, maxOpacity: 1.0}, this.options || {});
+    this.options = Ra.extend({minOpacity: 0.3, maxOpacity: 1.0, duration: 500}, this.options || {});
     this.parent.element.observe('mouseout', this.onMouseOut, this);
     this.parent.element.observe('mouseover', this.onMouseOver, this);
   },
@@ -664,7 +664,7 @@ Ra.extend(Ra.BUnveil.prototype, {
         var value = ((T.options.maxOpacity - T.options.minOpacity) * (1.0-pos)) + T.options.minOpacity;
         this.element.setOpacity(value);
       },
-      duration:500,
+      duration:T.options.duration,
       transition:'Explosive'
     });
   },
@@ -688,7 +688,7 @@ Ra.extend(Ra.BUnveil.prototype, {
         var value = ((T.options.maxOpacity - T.options.minOpacity) * pos) + T.options.minOpacity;
         this.element.setOpacity(value);
       },
-      duration:500,
+      duration:T.options.duration,
       transition:'Explosive'
     });
   },

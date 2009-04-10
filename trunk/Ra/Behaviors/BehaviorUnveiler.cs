@@ -30,7 +30,7 @@ namespace Ra.Widgets
         }
 
         /**
-         * The initial opacity of the Control when it is veiled.
+         * The initial opacity of the Control when it is veiled. The default value is 0.3.
          */
         [DefaultValue(0.3)]
         public decimal MinOpacity
@@ -47,7 +47,8 @@ namespace Ra.Widgets
         }
 
         /**
-         * The maximum opacity of the Control when the mouse hovers over it.
+         * The maximum opacity of the Control when the mouse hovers over it. The default 
+         * value is 1.0 which is the maximum possible value.
          */
         [DefaultValue(1.0)]
         public decimal MaxOpacity
@@ -63,6 +64,22 @@ namespace Ra.Widgets
             }
         }
 
+        /**
+         * The duration of time in milliseconds that the unveiling effect will take to execute. The
+         * default value is 500 milliseconds.
+         */
+        [DefaultValue(500)]
+        public int Duration
+        {
+            get { return ViewState["Duration"] == null ? 500 : (int)ViewState["Duration"]; }
+            set
+            {
+                if (value != Duration)
+                    SetJSONValueObject("Duration", value);
+                ViewState["Duration"] = value;
+            }
+        }
+
 		public override string GetRegistrationScript()
 		{
             string options = string.Empty;
@@ -75,6 +92,12 @@ namespace Ra.Widgets
                 if (options != string.Empty)
                     options += ",";
                 options += string.Format("maxOpacity:{0}", MaxOpacity.ToString(System.Globalization.CultureInfo.InvariantCulture));
+            }
+            if (Duration != 500)
+            {
+                if (options != string.Empty)
+                    options += ",";
+                options += string.Format("duration:{0}", Duration.ToString(System.Globalization.CultureInfo.InvariantCulture));
             }
             if (options != string.Empty)
                 options = ",{" + options + "}";
