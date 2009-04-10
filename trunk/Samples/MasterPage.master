@@ -33,27 +33,79 @@
                             CssClass="showCode" 
                             Text="&nbsp;" 
                             OnClick="btnShowCode_Click" />
-                    <ra:Panel runat="server" ID="menuPanel" style="position:absolute;bottom:0px;width:100%;opacity:0.3;">
-                        <ul id="menu">
-                            <li>
-                                <a id="A2" runat="server" href="~/" title="Home Page">Home</a>
-                            </li>
-                            <li>
-                                <a href="http://ra-ajax.org/samples/" title="Samples and Demos">Samples</a>
-                            </li>
-                            <li>
-                                <a id="A4" runat="server" href="~/Forums/Forums.aspx" title="Ask questions and find answers">Support</a>
-                            </li>
-                            <li>
-                                <a id="A8" runat="server" href="~/Testimonials.aspx" title="Find out what others think of Ra-Ajax">Testimonials</a>
-                            </li>
-                            <li>
-                                <a href="#" title="Read our blog posts about Ajax, programming and life">Blogs</a>
-                                <asp:Literal runat="server" ID="blogLinksWrapper" />
-                            </li>
-                        </ul>
-                        <ra:BehaviorUnveiler runat="server" ID="menuUnveiler" />
-                    </ra:Panel>
+                        <ra:Panel 
+                            runat="server" 
+                            ID="menuPanel" 
+                            CssClass="menuWrapper"
+                            style="opacity:0.2;">
+                            <ul id="menu">
+                                <ra:Label 
+                                    ID="Label1" 
+                                    runat="server" 
+                                    Tag="li"
+                                    style="opacity:0.6;">
+                                    <ra:BehaviorUnveiler 
+                                        ID="BehaviorUnveiler6" 
+                                        runat="server" 
+                                        MinOpacity="0.6" 
+                                        MaxOpacity="1" />
+                                    <a href="http://ra-ajax.org/">Home</a>
+                                </ra:Label>
+                                <ra:Label 
+                                    ID="Label2" 
+                                    runat="server" 
+                                    Tag="li"
+                                    style="opacity:0.6;">
+                                    <ra:BehaviorUnveiler 
+                                        ID="BehaviorUnveiler7" 
+                                        runat="server" 
+                                        MinOpacity="0.6" 
+                                        MaxOpacity="1" />
+                                    <a href="http://ra-ajax.org/samples/">Samples</a>
+                                </ra:Label>
+                                <ra:Label 
+                                    ID="Label3" 
+                                    runat="server" 
+                                    Tag="li"
+                                    style="opacity:0.6;">
+                                    <ra:BehaviorUnveiler 
+                                        ID="BehaviorUnveiler8" 
+                                        runat="server" 
+                                        MinOpacity="0.6" 
+                                        MaxOpacity="1" />
+                                    <a href="http://ra-ajax.org/Support.aspx">Support</a>
+                                </ra:Label>
+                                <ra:Label 
+                                    ID="Label4" 
+                                    runat="server" 
+                                    Tag="li"
+                                    style="opacity:0.6;">
+                                    <ra:BehaviorUnveiler 
+                                        ID="BehaviorUnveiler9" 
+                                        runat="server" 
+                                        MinOpacity="0.6" 
+                                        MaxOpacity="1" />
+                                    <a href="http://ra-ajax.org/Testimonials.aspx">Testimonials</a>
+                                </ra:Label>
+                                <ra:Label 
+                                    ID="Label5" 
+                                    runat="server" 
+                                    Tag="li"
+                                    style="opacity:0.6;">
+                                    <ra:BehaviorUnveiler 
+                                        ID="BehaviorUnveiler10" 
+                                        runat="server" 
+                                        MinOpacity="0.6" 
+                                        MaxOpacity="1" />
+                                    <a href="http://ra-ajax.org/Blogs.aspx">Blogs</a>
+                                </ra:Label>
+                            </ul>
+                            <ra:BehaviorUnveiler 
+                                runat="server" 
+                                ID="menuUnveiler" 
+                                MaxOpacity="0.8" 
+                                MinOpacity="0.2" />
+                        </ra:Panel>
                     </div>
                     
                     <div id="navigation">
