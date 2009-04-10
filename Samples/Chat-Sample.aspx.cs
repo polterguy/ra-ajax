@@ -27,21 +27,24 @@ namespace Samples
 
         private void DataBindChats()
         {
-            string content = "";
-            string oldChat = chatCnt.Text;
-            foreach (Message idx in Message.Messages)
+            lock (this.GetType())
             {
-                string tmp = string.Format(@"<div class=""chat"">{0}</div>", idx.Content);
-                content += tmp;
-            }
-            chatCnt.Text = content;
-            if (oldChat != chatCnt.Text && !IsPostBack)
-            {
-                // New chat since last time...
-                chatCnt.Style["display"] = "none";
-                new EffectFadeIn(chatCnt, 200)
-                    .JoinThese(new EffectHighlight())
-                    .Render();
+                string content = "";
+                string oldChat = chatCnt.Text;
+                foreach (Message idx in Message.Messages)
+                {
+                    string tmp = string.Format(@"<div class=""chat"">{0}</div>", idx.Content);
+                    content += tmp;
+                }
+                chatCnt.Text = content;
+                if (oldChat != chatCnt.Text)
+                {
+                    // New chat since last time...
+                    chatCnt.Style["display"] = "none";
+                    new EffectFadeIn(chatCnt, 200)
+                        .JoinThese(new EffectHighlight())
+                        .Render();
+                }
             }
         }
 
@@ -52,11 +55,14 @@ namespace Samples
 
         protected void SubmitChat(object sender, EventArgs e)
         {
-            if (Message.Messages.Count >= 5)
+            lock (this.GetType())
             {
-                Message.Messages.RemoveAt(0);
+                if (Message.Messages.Count >= 5)
+                {
+                    Message.Messages.RemoveAt(0);
+                }
+                Message.Messages.Add(new Message(txt.Text));
             }
-            Message.Messages.Add(new Message(txt.Text));
             DataBindChats();
             txt.Text = "Type here...";
             txt.Select();
