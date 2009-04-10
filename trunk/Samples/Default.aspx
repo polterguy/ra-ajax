@@ -64,9 +64,5 @@
         </ra:Panel>
 
     </ra:Panel>
-    <p>
-        Ra-Ajax is an <em>Open Source - LGPL licensed Ajax Library for ASP.NET</em> and Mono. This is our samples
-        which you will also get when you <a href="http://code.google.com/p/ra-ajax/">download</a> Ra-Ajax.
-    </p>
 </asp:Content>
 

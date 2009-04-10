@@ -24,7 +24,7 @@ namespace Samples
             rep.DataSource = Customer.Customers.FindAll(
                 delegate(Customer idx)
                 {
-                    if (search.Text == "" || search.Text == "Search")
+                    if (search.Text == "" || search.Text == "Filter")
                         return true;
                     else
                         return 
@@ -36,14 +36,15 @@ namespace Samples
 
         protected void search_Focused(object sender, EventArgs e)
         {
-            search.Text = "";
+            if (search.Text == "Filter")
+                search.Text = "";
         }
 
         protected void search_Blur(object sender, EventArgs e)
         {
             if (search.Text == "")
             {
-                search.Text = "Search";
+                search.Text = "Filter";
             }
         }
 
@@ -53,10 +54,75 @@ namespace Samples
             repWrp.ReRender();
         }
 
-        protected void ViewContacts(object sender, EventArgs e)
+        protected void ViewCustomer(object sender, EventArgs e)
         {
             ExtButton btn = sender as ExtButton;
-            int contactID = int.Parse(btn.Xtra);
+            Guid customerID = new Guid(btn.Xtra);
+            createNew.Visible = true;
+            createNew.Caption = "Edit existing customer";
+            Customer cust = Customer.Customers.Find(
+                delegate(Customer idx)
+                {
+                    return idx.ID == customerID;
+                });
+            custID.Value = cust.ID.ToString();
+            name.Text = cust.Name;
+            adr.Text = cust.Address;
+            name.Focus();
+            name.Select();
+        }
+
+        protected void DeleteCustomer(object sender, EventArgs e)
+        {
+            ExtButton btn = sender as ExtButton;
+            Guid customerID = new Guid(btn.Xtra);
+            Customer.Customers.RemoveAll(
+                delegate(Customer idx)
+                {
+                    return idx.ID == customerID;
+                });
+            DataBindRepeater();
+            repWrp.ReRender();
+        }
+
+        protected void btnNew_Click(object sender, EventArgs e)
+        {
+            createNew.Visible = true;
+            createNew.Caption = "Create new customer";
+            custID.Value = "";
+            name.Text = "Name of customer";
+            adr.Text = "Adr of customer";
+            name.Select();
+            name.Focus();
+        }
+
+        protected void ok_Click(object sender, EventArgs e)
+        {
+            createNew.Visible = false;
+            Customer cust = null;
+            if (custID.Value != "")
+            {
+                Guid id = new Guid(custID.Value);
+                cust = Customer.Customers.Find(
+                    delegate(Customer idx)
+                    {
+                        return idx.ID == id;
+                    });
+                cust.Name = name.Text;
+                cust.Address = adr.Text;
+            }
+            else
+            {
+                cust = new Customer(name.Text, adr.Text);
+                Customer.Customers.Add(cust);
+            }
+            DataBindRepeater();
+            repWrp.ReRender();
+        }
+
+        protected void cancel_Click(object sender, EventArgs e)
+        {
+            createNew.Visible = false;
         }
     }
 }
