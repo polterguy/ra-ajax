@@ -68,13 +68,13 @@ namespace Ra.Widgets
             string options = string.Empty;
             if (MinOpacity != 0.3M)
             {
-                options += string.Format("minOpacity:'{0}'", MinOpacity.ToString(System.Globalization.CultureInfo.InvariantCulture));
+                options += string.Format("minOpacity:{0}", MinOpacity.ToString(System.Globalization.CultureInfo.InvariantCulture));
             }
             if (MaxOpacity != 1.0M)
             {
                 if (options != string.Empty)
                     options += ",";
-                options += string.Format("maxOpacity:'{0}'", MaxOpacity.ToString(System.Globalization.CultureInfo.InvariantCulture));
+                options += string.Format("maxOpacity:{0}", MaxOpacity.ToString(System.Globalization.CultureInfo.InvariantCulture));
             }
             if (options != string.Empty)
                 options = ",{" + options + "}";

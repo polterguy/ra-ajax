@@ -656,10 +656,14 @@ Ra.extend(Ra.BUnveil.prototype, {
         if( el.RaEffectFadeIn )
           el.RaEffectFadeIn.stopped = true;
         this.element.setOpacity(T.options.maxOpacity);
-        this.element.setStyle('display','block');
       },
-      onFinished: function() { this.element.setOpacity(T.options.minOpacity); },
-      onRender: function(pos) { this.element.setOpacity(((T.options.maxOpacity-pos)*0.7) + T.options.minOpacity); },
+      onFinished: function() {
+        this.element.setOpacity(T.options.minOpacity);
+      },
+      onRender: function(pos) {
+        var value = ((T.options.maxOpacity - T.options.minOpacity) * (1.0-pos)) + T.options.minOpacity;
+        this.element.setOpacity(value);
+      },
       duration:500,
       transition:'Explosive'
     });
@@ -677,8 +681,13 @@ Ra.extend(Ra.BUnveil.prototype, {
         this.element.setOpacity(T.options.minOpacity);
         this.element.setStyle('display','block');
       },
-      onFinished: function() { this.element.setOpacity(T.options.maxOpacity); },
-      onRender: function(pos) { this.element.setOpacity((pos*0.7) + T.options.minOpacity); },
+      onFinished: function() {
+        this.element.setOpacity(T.options.maxOpacity);
+      },
+      onRender: function(pos) {
+        var value = ((T.options.maxOpacity - T.options.minOpacity) * pos) + T.options.minOpacity;
+        this.element.setOpacity(value);
+      },
       duration:500,
       transition:'Explosive'
     });
