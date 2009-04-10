@@ -52,6 +52,8 @@ namespace Samples
             lastVal.Select();
             lastVal.Focus();
             chartWrp.Style["display"] = "none";
+            new EffectFadeIn(chartWrp, 400)
+                .Render();
         }
     }
 }
