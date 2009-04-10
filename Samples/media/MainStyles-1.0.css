@@ -105,6 +105,28 @@ ul.list li
 	padding:0;
 }
 
+/* Menu */
+ul#menu  
+{
+	margin:0 0 0 130px; padding:0; list-style-type:none; width:734px; position:relative; display:block; 
+	text-transform:capitalize; font-size:13px; font-family: "Lucida Grande", "Lucida Sans Unicode", verdana, tahoma, arial, sans-serif;
+	height:40px; background:transparent url("black.jpg") repeat-x top left; z-index:9; 
+}
+
+ul#menu li { display:block; float:left; margin:0; padding:0; border-right:1px ridge #ffffff; position:relative; height:40px; }
+ul#menu li ul li { border: none 0; height:40px; }
+
+ul#menu li a,
+ul#menu li ul li a
+{ 
+	display:block; float:left; color:#ffffff; text-decoration:none; 
+	padding:12px 20px 0 20px; height:40px;
+}
+ul#menu li ul li a  { width:105px; }
+ul#menu li a:hover { background:transparent url("orange.jpg") repeat-x top left; }
+
+ul#menu li ul { display: none; }
+ul#menu li:hover ul { display: block; position: absolute; top:40px; left:0px; background:#333333; margin:0; width:145px; }
 
 /* Ajax Samples Landing Page */
 .thumbs
