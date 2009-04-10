@@ -42,19 +42,10 @@
                                 <a href="http://ra-ajax.org/samples/" title="Samples and Demos">Samples</a>
                             </li>
                             <li>
-                                <a id="A3" runat="server" href="~/Facts.aspx" title="Frequently Asked Questions">FAQ</a>
-                            </li>
-                            <li>
                                 <a id="A4" runat="server" href="~/Forums/Forums.aspx" title="Ask questions and find answers">Support</a>
                             </li>
                             <li>
-                                <a id="A6" runat="server" href="~/Author.aspx" title="About us">About us</a>
-                            </li>
-                            <li>
                                 <a id="A8" runat="server" href="~/Testimonials.aspx" title="Find out what others think of Ra-Ajax">Testimonials</a>
-                            </li>
-                            <li>
-                                <a id="A9" runat="server" href="~/Starter-Kits.aspx" title="Get a head start on your app while learning Ra-Ajax">Starter Kits</a>
                             </li>
                             <li>
                                 <a href="#" title="Read our blog posts about Ajax, programming and life">Blogs</a>

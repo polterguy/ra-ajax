@@ -108,7 +108,7 @@ ul.list li
 /* Menu */
 ul#menu  
 {
-	margin:0 0 0 130px; padding:0; list-style-type:none; width:734px; position:relative; display:block; 
+	margin:0 0 0 284px; padding:0; list-style-type:none; width:458px; position:relative; display:block; 
 	text-transform:capitalize; font-size:13px; font-family: "Lucida Grande", "Lucida Sans Unicode", verdana, tahoma, arial, sans-serif;
 	height:40px; background:transparent url("black.jpg") repeat-x top left; z-index:9; 
 }
