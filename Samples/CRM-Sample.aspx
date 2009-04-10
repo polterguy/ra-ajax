@@ -168,7 +168,6 @@
             <li>ReRendering non-Ajax controls</li>
             <li>Using Ra-Ajax controls inside DataBinded controls</li>
             <li>Using modal Ajax Windows</li>
-            <li>Using the Ra-Ajax TabControl</li>
         </ul>
         <ra:BehaviorUnveiler 
             runat="server" 

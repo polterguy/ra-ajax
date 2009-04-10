@@ -100,10 +100,10 @@
                                         ID="Panel3" 
                                         style="opacity:0.3;" 
                                         CssClass="thumbsSmallNav">
-                                        <a href="Viewport-GridView-Sample.aspx" class="links">
+                                        <a href="Chart-Sample.aspx" class="links">
                                             <span class="image3">&nbsp;</span>
                                             <span class="text">
-                                                Create an Ajax DataGrid with this Starter-Kit
+                                                Charting sample
                                             </span>
                                         </a>
                                         <ra:BehaviorUnveiler 

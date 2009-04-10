@@ -1,5 +1,10 @@
 /* Special classes for website only */
 
+h1
+{
+	margin-bottom:15px;
+}
+
 ul.list
 {
 	margin:5px 0 5px 0;
