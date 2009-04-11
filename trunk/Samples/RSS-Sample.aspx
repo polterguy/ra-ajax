@@ -50,7 +50,7 @@
     <ext:Window 
         runat="server" 
         Visible="false"
-        style="z-index:100;position:absolute;top:100px;left:100px;width:700px;"
+        style="z-index:100;position:absolute;top:25px;left:25px;width:700px;"
         ID="wndBlog">
         <div style="height:500px;overflow:auto;padding:15px;">
             <ra:Label 
