@@ -189,10 +189,10 @@
                                         ID="Panel4" 
                                         style="opacity:0.3;" 
                                         CssClass="thumbsSmallNav">
-                                        <a href="Viewport-RSS-Starter-Kit.aspx" class="links">
-                                            <span class="image4">&nbsp;</span>
+                                        <a href="RSS-Sample.aspx" class="links">
+                                            <span class="image5">&nbsp;</span>
                                             <span class="text">
-                                                Syndicate blogs with this RSS Starter-Kit
+                                                RSS Application
                                             </span>
                                         </a>
                                         <ra:BehaviorUnveiler 
