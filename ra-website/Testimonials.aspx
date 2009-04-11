@@ -39,5 +39,8 @@ Senior Partner
         professional help with Ra-Ajax. If you're interested in such an arrangement then please send 
         <a href="mailto:thomas@ra-ajax.org">Thomas an email</a> and tell us about your problem.
     </p>
+    <p>
+        <a href="Author.aspx">Read about our qualifications here</a>.
+    </p>
 </asp:Content>
 

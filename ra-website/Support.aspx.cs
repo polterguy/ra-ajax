@@ -11,11 +11,7 @@ using Ra.Widgets;
 
 namespace RaWebsite
 {
-    public partial class Sitemap : System.Web.UI.Page
+    public partial class Support : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
