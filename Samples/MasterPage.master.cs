@@ -18,6 +18,17 @@ namespace Samples
 {
     public partial class MasterPage : System.Web.UI.MasterPage
     {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                if (!Request.Url.ToString().ToLower().Contains("/samples"))
+                {
+                    showCode.Visible = false;
+                }
+            }
+        }
+
         protected void btnShowCode_Click(object sender, EventArgs e)
         {
             if (!tabShowCode.Visible)
@@ -66,10 +77,6 @@ namespace Samples
             {
                 string allCode = "\r\n" + reader.ReadToEnd();
                 allCode = allCode.Replace("<", "&lt;").Replace(">", "&gt;").Replace("\t", "    ");
-                allCode = ReplaceCodeEntities(allCode, "keyword", new string[] { 
-                "Page", 
-                "Register", 
-                "asp:Content"});
                 lblCodeASPX.Text = allCode;
             }
         }
@@ -93,37 +100,10 @@ namespace Samples
             {
                 string allCode = "\r\n" + reader.ReadToEnd();
                 allCode = allCode.Replace("<", "&lt;").Replace(">", "&gt;");
-                allCode = ReplaceCodeEntities(allCode, "keyword", new string[] { 
-                "class", 
-                "using", 
-                "string", 
-                "foreach", 
-                "if", 
-                "else", 
-                "int", 
-                "public", 
-                "partial", 
-                "protected", 
-                "private", 
-                "false",
-                "true",
-                "null",
-                "void", 
-                "object"});
                 allCode = allCode.Replace("/*", "<span class=\"comment\">/*");
                 allCode = allCode.Replace("*/", "*/</span>");
                 lblCodeCS.Text = allCode.Replace("\t", "    ");
             }
-        }
-
-        private string ReplaceCodeEntities(string allCode, string cssClass, string[] words)
-        {
-            string retVal = allCode;
-            foreach (string idx in words)
-            {
-                retVal = retVal.Replace(idx, string.Format("<span class=\"{1}\">{0}</span>", idx, cssClass));
-            }
-            return retVal;
         }
     }
 }
