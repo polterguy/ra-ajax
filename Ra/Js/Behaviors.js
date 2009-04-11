@@ -679,7 +679,6 @@ Ra.extend(Ra.BUnveil.prototype, {
         if( el.RaEffectFadeOut )
           el.RaEffectFadeOut.stopped = true;
         this.element.setOpacity(T.options.minOpacity);
-        this.element.setStyle('display','block');
       },
       onFinished: function() {
         this.element.setOpacity(T.options.maxOpacity);

@@ -103,13 +103,7 @@
                 <div style="padding:15px;">
                     <ul>
                         <li><a id="A1" runat="server" href="~/">Main Ajax Samples</a></li>
-                        <li><a href="Viewport-Sample.aspx">Sapphire Ajax Starter-Kit Sample (C#)</a></li>
-                        <li><a href="Viewport-GridView-Sample.aspx">GridView Ajax Starter-Kit Sample (VB.NET)</a></li>
-                        <li><a href="Ajax-TreeView.aspx">Ajax TreeView Sample</a></li>
-                        <li><a href="Ajax-TabControl.aspx">Ajax TabControl Sample</a></li>
-                        <li><a href="Ajax-Calendar.aspx">Ajax Calendar Sample</a></li>
-                        <li><a href="Ajax-Wizard.aspx">Ajax Wizard Sample</a></li>
-                        <li><a href="http://ra-ajax.org">Main Ra-Ajax Website</a></li>
+                        <li><a href="http://ra-ajax.org/">Main Ra-Ajax Website</a></li>
                     </ul>
                 </div>
             </ra:Panel>

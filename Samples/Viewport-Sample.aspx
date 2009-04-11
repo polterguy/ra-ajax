@@ -128,26 +128,8 @@
                         <ext:TreeNodes ID="TreeNodes1" runat="server" Expanded="true">
                             <ext:TreeNode runat="server" ID="good" Text="Wow samples...">
                                 <ext:TreeNodes ID="TreeNodes2" runat="server" Expanded="true">
-                                    <ext:TreeNode runat="server" ID="TreeNode10">
-                                        <a href="Viewport-Calendar-Starter-Kit.aspx">Calendar Starter-Kit (C#)</a>
-                                    </ext:TreeNode>
-                                    <ext:TreeNode runat="server" ID="TreeNode9">
-                                        <a href="Viewport-GridView-Sample.aspx">GridView Starter-Kit (VB)</a>
-                                    </ext:TreeNode>
                                     <ext:TreeNode runat="server" ID="TreeNode1">
                                         <a runat="server" href="~">Main Ajax Samples</a>
-                                    </ext:TreeNode>
-                                    <ext:TreeNode runat="server" ID="TreeNode5">
-                                        <a href="Ajax-TreeView.aspx">Ajax TreeView Sample</a>
-                                    </ext:TreeNode>
-                                    <ext:TreeNode runat="server" ID="TreeNode2">
-                                        <a href="Ajax-TabControl.aspx">Ajax TabControl Sample</a>
-                                    </ext:TreeNode>
-                                    <ext:TreeNode runat="server" ID="TreeNode3">
-                                        <a href="Ajax-Calendar.aspx">Ajax Calendar Sample</a>
-                                    </ext:TreeNode>
-                                    <ext:TreeNode runat="server" ID="TreeNode4">
-                                        <a href="Ajax-Wizard.aspx">Ajax Wizard Sample</a>
                                     </ext:TreeNode>
                                     <ext:TreeNode runat="server" ID="TreeNode6">
                                         <a href="http://ra-ajax.org">Main Ra-Ajax website</a>

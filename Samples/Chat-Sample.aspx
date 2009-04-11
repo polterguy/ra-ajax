@@ -29,7 +29,7 @@
         runat="server" 
         Closable="false"
         Caption="Chat with other visitors"
-        style="width:650px;"
+        style="width:650px;position:absolute;z-index:50;"
         ID="chatWindow">
         <ext:Timer 
             runat="server" 
@@ -53,6 +53,7 @@
                 ID="txt" />
         </div>
     </ext:Window>
+    <div style="height:400px;">&nbsp;</div>
     <ra:Panel 
         runat="server" 
         ID="infoPanel" 
