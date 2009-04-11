@@ -103,11 +103,10 @@
                             <ra:BehaviorUnveiler 
                                 runat="server" 
                                 ID="menuUnveiler" 
-                                MaxOpacity="1.0" 
+                                MaxOpacity="0.8" 
                                 MinOpacity="0.4" />
                         </ra:Panel>
                     </div>
-                    
                     <div id="navigation">
                         <div id="navigationContent">
 	                        <ext:Accordion 
@@ -248,7 +247,7 @@
                                         <a href="Viewport-GridView-Sample.aspx" class="links">
                                             <span class="image3">&nbsp;</span>
                                             <span class="text">
-                                                Create an Ajax DataGrid with this Starter-Kit
+                                                Ajax DataGrid
                                             </span>
                                         </a>
                                         <ra:BehaviorUnveiler 
@@ -264,7 +263,7 @@
                                         <a href="Viewport-RSS-Starter-Kit.aspx" class="links">
                                             <span class="image4">&nbsp;</span>
                                             <span class="text">
-                                                Syndicate blogs with this RSS Starter-Kit
+                                                RSS Reader
                                             </span>
                                         </a>
                                         <ra:BehaviorUnveiler 
@@ -280,7 +279,7 @@
                                         <a href="Ajax-Forum-Starter-Kit.aspx" class="links">
                                             <span class="image5">&nbsp;</span>
                                             <span class="text">
-                                                An Ajax Forum Starter-Kit, CodeProject style
+                                                Ajax Forum
                                             </span>
                                         </a>
                                         <ra:BehaviorUnveiler 

@@ -67,7 +67,7 @@ ul.list li
 
 .showCode
 {
-	background:Transparent url('curl.png') no-repeat 0 0;
+	background:url('curl.png') no-repeat 0 0;
 	position:absolute;
 	right:0px;
 	top:0px;
@@ -305,7 +305,7 @@ ul#menu li a:hover
 	float:left;
 	width:140px;
 	margin-left:5px;
-	margin-top:15px;
+	margin-top:25px;
 	font-size:12px;
 	font-family:Arial;
 }
@@ -381,7 +381,7 @@ ul#menu li a:hover
 	float:left;
 	width:140px;
 	margin-left:5px;
-	margin-top:15px;
+	margin-top:25px;
 	font-size:12px;
 	font-family:Arial;
 }
