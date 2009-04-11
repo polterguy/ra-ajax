@@ -26,6 +26,10 @@ namespace Samples
                 {
                     showCode.Visible = false;
                 }
+                if (Request.Browser.Browser == "IE")
+                {
+                    ieWarning.Visible = true;
+                }
             }
         }
 

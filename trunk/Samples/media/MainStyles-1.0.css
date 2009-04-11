@@ -77,6 +77,28 @@ ul.list li
 	z-index:6;
 }
 
+.ieWarning
+{
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:400px;
+	z-index:6;
+	color:White;
+	padding:5px;
+}
+
+.ieWarning a
+{
+	color:#aaaaff;
+	text-decoration:none;
+}
+
+.ieWarning a:hover
+{
+	color:#6666ff;
+}
+
 .codeWrapper
 {
 	margin-top:0;
