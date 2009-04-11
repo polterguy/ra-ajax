@@ -140,7 +140,7 @@
                                         ID="Panel5" 
                                         style="opacity:0.3;" 
                                         CssClass="thumbsSmallNav">
-                                        <a id="A1" runat="server" href="~/" class="links">
+                                        <a href="http://ra-ajax.org/samples/" class="links">
                                             <span class="image5">&nbsp;</span>
                                             <span class="text">
                                                 Main samples
@@ -156,7 +156,7 @@
                                         ID="Panel1" 
                                         style="opacity:0.3;" 
                                         CssClass="thumbsSmallNav">
-                                        <a href="CRM-Sample.aspx" class="links">
+                                        <a href="http://ra-ajax.org/samples/CRM-Sample.aspx" class="links">
                                             <span class="image1">&nbsp;</span>
                                             <span class="text">
                                                 CRM Application
@@ -172,7 +172,7 @@
                                         ID="Panel2" 
                                         style="opacity:0.3;" 
                                         CssClass="thumbsSmallNav">
-                                        <a href="Chat-Sample.aspx" class="links">
+                                        <a href="http://ra-ajax.org/samples/Chat-Sample.aspx" class="links">
                                             <span class="image2">&nbsp;</span>
                                             <span class="text">
                                                 Chat Sample
@@ -188,7 +188,7 @@
                                         ID="Panel3" 
                                         style="opacity:0.3;" 
                                         CssClass="thumbsSmallNav">
-                                        <a href="Chart-Sample.aspx" class="links">
+                                        <a href="http://ra-ajax.org/samples/Chart-Sample.aspx" class="links">
                                             <span class="image3">&nbsp;</span>
                                             <span class="text">
                                                 Charting sample
@@ -204,7 +204,7 @@
                                         ID="Panel4" 
                                         style="opacity:0.3;" 
                                         CssClass="thumbsSmallNav">
-                                        <a href="RSS-Sample.aspx" class="links">
+                                        <a href="http://ra-ajax.org/samples/RSS-Sample.aspx" class="links">
                                             <span class="image5">&nbsp;</span>
                                             <span class="text">
                                                 RSS Application
@@ -227,7 +227,7 @@
                                         ID="thumbs1" 
                                         style="opacity:0.3;" 
                                         CssClass="thumbsSmall">
-                                        <a href="Viewport-Calendar-Starter-Kit.aspx" class="links">
+                                        <a href="http://ra-ajax.org/samples/Viewport-Calendar-Starter-Kit.aspx" class="links">
                                             <span class="image1">&nbsp;</span>
                                             <span class="text">
                                                 Calendar Application
@@ -243,7 +243,7 @@
                                         ID="thumbs2" 
                                         style="opacity:0.3;" 
                                         CssClass="thumbsSmall">
-                                        <a href="Viewport-Sample.aspx" class="links">
+                                        <a href="http://ra-ajax.org/samples/Viewport-Sample.aspx" class="links">
                                             <span class="image2">&nbsp;</span>
                                             <span class="text">
                                                 Viewport Login
@@ -259,7 +259,7 @@
                                         ID="thumbs3" 
                                         style="opacity:0.3;" 
                                         CssClass="thumbsSmall">
-                                        <a href="Viewport-GridView-Sample.aspx" class="links">
+                                        <a href="http://ra-ajax.org/samples/Viewport-GridView-Sample.aspx" class="links">
                                             <span class="image3">&nbsp;</span>
                                             <span class="text">
                                                 Ajax DataGrid
@@ -275,7 +275,7 @@
                                         ID="thumbs4" 
                                         style="opacity:0.3;" 
                                         CssClass="thumbsSmall">
-                                        <a href="Viewport-RSS-Starter-Kit.aspx" class="links">
+                                        <a href="http://ra-ajax.org/samples/Viewport-RSS-Starter-Kit.aspx" class="links">
                                             <span class="image4">&nbsp;</span>
                                             <span class="text">
                                                 RSS Reader
@@ -291,7 +291,7 @@
                                         ID="thumbs5" 
                                         style="opacity:0.3;" 
                                         CssClass="thumbsSmall">
-                                        <a href="Ajax-Forum-Starter-Kit.aspx" class="links">
+                                        <a href="http://ra-ajax.org/samples/Ajax-Forum-Starter-Kit.aspx" class="links">
                                             <span class="image5">&nbsp;</span>
                                             <span class="text">
                                                 Ajax Forum
@@ -354,6 +354,9 @@
                             </div>
                         </div>
                     </div>
+                    <p class="copyright">
+                        Copyright 2008 - 2009 - Ra Software AS and <a href="mailto:thomas@ra-ajax.org">Thomas Hansen</a>
+                    </p>
                 </div>
             </div>
         </form>

@@ -17,6 +17,16 @@ ul.list li
 	margin-left:25px;
 }
 
+a
+{
+	text-decoration:none;
+}
+
+a:hover
+{
+	background-color:#eaeaea;
+}
+
 /* MasterPage CSS */
 
 #paper
@@ -32,6 +42,7 @@ ul.list li
 	margin-left:16px;
 	margin-right:16px;
 	overflow:auto;
+	position:relative;
 }
 
 #header
@@ -62,7 +73,7 @@ ul.list li
 #contentContent
 {
 	padding:25px 15px 25px 15px;
-	min-height:900px;
+	min-height:600px;
 }
 
 .showCode
@@ -174,6 +185,7 @@ ul#menu li a
 ul#menu li a:hover
 {
 	color:#cc4444;
+	background-color:Transparent;
 }
 
 
@@ -467,3 +479,16 @@ ul#menu li a:hover
 {
 	background-color:#f0f0f0;
 }
+
+
+.copyright
+{
+	position:absolute;
+	bottom:0;
+	display:block;
+	text-align:center;
+	width:100%;
+}
+
+
+
