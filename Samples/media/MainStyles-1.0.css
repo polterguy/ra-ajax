@@ -373,7 +373,7 @@ ul#menu li a:hover
 
 .thumbsSmallNav .links .image5
 {
-	background-position:-100px 0;
+	background-position:-400px 0;
 }
 
 .thumbsSmallNav .links .text
@@ -431,4 +431,17 @@ ul#menu li a:hover
 	width:100%;
 	margin-bottom:5px;
 	overflow:hidden;
+}
+
+
+/* RSS Sample */
+.rssLink
+{
+	text-decoration:none;
+	color:#99f;
+}
+
+.rssLink:hover
+{
+	background-color:#f0f0f0;
 }

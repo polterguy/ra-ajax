@@ -122,15 +122,15 @@ public sealed class RSSDatabase
     {
         get
         {
-            if (HttpContext.Current.Session["RSSDatabase"] == null)
+            if (HttpContext.Current.Application["RSSDatabase"] == null)
             {
                 List<RSS> tmp = new List<RSS>();
                 tmp.Add(new RSS("http://ra-ajax.org/thomas.blogger?rss=true"));
                 tmp.Add(new RSS("http://ra-ajax.org/Kariem.blogger?rss=true"));
                 tmp.Add(new RSS("http://ra-ajax.org/Rick.blogger?rss=true"));
-                HttpContext.Current.Session["RSSDatabase"] = tmp;
+                HttpContext.Current.Application["RSSDatabase"] = tmp;
             }
-            return (List<RSS>)HttpContext.Current.Session["RSSDatabase"];
+            return (List<RSS>)HttpContext.Current.Application["RSSDatabase"];
         }
     }
 
@@ -147,5 +147,15 @@ public sealed class RSSDatabase
                 return tmp;
         }
         return null;
+    }
+
+    public static void MakeSureOneExists()
+    {
+        if (HttpContext.Current.Application["RSSDatabase"] == null)
+        {
+            List<RSS> tmp = new List<RSS>();
+            tmp.Add(new RSS("http://ra-ajax.org/thomas.blogger?rss=true"));
+            HttpContext.Current.Application["RSSDatabase"] = tmp;
+        }
     }
 }
