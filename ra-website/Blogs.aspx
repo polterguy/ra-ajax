@@ -16,7 +16,7 @@
     ContentPlaceHolderID="cnt1" 
     Runat="Server">
 
-    <h1>Ra-Ajax Blogs</h1>
+    <h1>Bloggers at Ra-Ajax</h1>
     <a href="http://ra-ajax.org/Kariem.blogger" class="blogLinks">
         <img src="media/Kariem.jpg" alt="Kariem Ali" style="float:left;padding:10px;" />
         <span style="display:block;font-size:24px;color:Black;">Kariem Ali</span>
@@ -31,8 +31,8 @@
         <span style="display:block;font-size:24px;color:Black;">Thomas Hansen</span>
         <span>
             Thomas Hansen is the founder and owner of Ra-Software. Thomas is also one of the core
-            developers and arcitects behind Ra-Ajax. Thomas blogs about politics, (Ra-)Ajax, development
-            and all other things of immediate interest.
+            developers and arcitects behind Ra-Ajax. Thomas blogs about politics, religion, (Ra-)Ajax, 
+            development and all other things of immediate interest.
         </span>
     </a>
     <a href="http://ra-ajax.org/Rick.blogger" class="blogLinks">
@@ -43,5 +43,8 @@
             supporter of Ra-Ajax. Rick blogs about Ra-Ajax and other things he is interested in.
         </span>
     </a>
+    <p style="text-align:center;">
+        <a href="Login.aspx">Login</a>
+    </p>
 </asp:Content>
 
