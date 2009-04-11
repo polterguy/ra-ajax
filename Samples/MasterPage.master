@@ -27,6 +27,21 @@
             <div id="paper">
                 <div id="paperContent">
                     <div id="header">
+                        <ra:Panel 
+                            runat="server" 
+                            Visible="false"
+                            CssClass="ieWarning"
+                            ID="ieWarning">
+                            This website doesn't display as it should with Internet Explorer due 
+                            to lack of standard compliance with IE. For the best experience of 
+                            this website you should download one of these browsers;
+                            <ul class="list">
+                                <li><a href="http://getfirefox.com">FireFox</a></li>
+                                <li><a href="http://google.com/chrome">Google Chrome</a></li>
+                                <li><a href="http://apple.com/safari">Safari</a></li>
+                                <li><a href="http://opera.com">Opera</a></li>
+                            </ul>
+                        </ra:Panel>
                         <ra:LinkButton 
                             runat="server" 
                             ID="showCode" 
