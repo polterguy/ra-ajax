@@ -7,7 +7,7 @@ h1
 
 ul.list
 {
-	margin:5px 0 5px 0;
+	margin:5px 0 15px 0;
 }
 
 ul.list li
@@ -490,5 +490,18 @@ ul#menu li a:hover
 	width:100%;
 }
 
+.blogLinks
+{
+	border:dotted 1px #eee;
+	display:block;
+	overflow:auto;
+	padding:5px;
+	margin-bottom:15px;
+}
 
+.blogLinks:hover
+{
+	border:solid 1px #aaa;
+	background-color:Transparent;
+}
 
