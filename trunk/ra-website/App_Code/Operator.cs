@@ -130,14 +130,6 @@ namespace Entity
             smtp.Send(msg);
         }
 
-        public int NumberOfPosts
-        {
-            get
-            {
-                return ForumPost.GetCount(Expression.Eq("Operator", this));
-            }
-        }
-
         public override void Save()
         {
             if (Id == 0)

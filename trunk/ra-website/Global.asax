@@ -11,7 +11,6 @@
         Castle.ActiveRecord.ActiveRecordStarter.Initialize(
             Castle.ActiveRecord.Framework.Config.ActiveRecordSectionHandler.Instance,
             new Type[] { 
-                typeof(Entity.ForumPost),
                 typeof(Entity.Blog),
                 typeof(Entity.Todo),
                 typeof(Entity.Operator)
@@ -41,15 +40,6 @@
             oper.Created = DateTime.Now;
             oper.Create();
 
-            // Creating default forum post
-            Entity.ForumPost defPost = new Entity.ForumPost();
-            defPost.Body = "This is a sample forum post";
-            defPost.Url = "default-post-for-forums.forum";
-            defPost.Created = DateTime.Now;
-            defPost.Header = "Default post";
-            defPost.Operator = oper;
-            defPost.Create();
-            
             // Creating default blog
             Entity.Blog blog = new Entity.Blog();
             blog.Operator = oper;
