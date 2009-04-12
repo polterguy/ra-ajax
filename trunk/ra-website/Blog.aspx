@@ -71,7 +71,7 @@
 	        ID="confirmDeleteWindow"
 	        Caption="Confirm Delete"
 	        Visible="false"
-	        style="position:absolute;top:390px;">
+	        style="position:absolute;top:390px;z-index:50;">
 	        <div>
 	            Are you sure you want to delete this blog post?
 	            <div style="padding:10px;text-align:center;">
@@ -85,7 +85,7 @@
 	        ID="pnlNewBlog"
 	        Caption="Add New Blog Post"
 	        Visible="false"
-	        style="position:absolute;top:290px;left:250px;"> 
+	        style="position:absolute;top:290px;left:250px;z-index:50;"> 
 	        <div style="padding:15px;">
                 <ra:HiddenField 
                     runat="server" 
