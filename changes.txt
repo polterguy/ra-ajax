@@ -46,6 +46,14 @@
   those criteria was met then sometimes nodes would come out
   "empty" and not have content at all which was a bug.
 
+* Added a new Behavior which is called BehaviorUnveiler which will
+  animate the opacity of any widget when widget is hovered by
+  mouse.
+
+* New widget - WebPart. A WebPart is kind of like a minimalistic
+  window. Usage would probably be portal creation and similar
+  features like IGoogle and such.
+
 
 
 
