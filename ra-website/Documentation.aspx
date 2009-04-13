@@ -25,17 +25,24 @@
         runat="server"
         Tag="h1" 
         ID="header" />
-    <ra:Label 
+    <ra:Panel 
         runat="server" 
-        CssClass="inherits"
         Visible="false"
-        ID="inherit" />
+        ID="pnlInherits">
+        <ra:Label 
+            runat="server" 
+            CssClass="inherits"
+            ID="inherit" />
+    </ra:Panel>
     <ra:Label 
         runat="server" 
         Text="Reference documentation for Ra-Ajax. Click a class in the class browser above and see its documentation"
         CssClass="description"
         ID="description" />
-    <ra:Panel runat="server" id="repWrapper">
+    <ra:Panel 
+        runat="server" 
+        style="margin:0;overflow:hidden;"
+        id="repWrapper">
         <asp:Repeater runat="server" ID="repProperties">
             <HeaderTemplate>
                 <ul class="docsList">
@@ -62,7 +69,7 @@
     </ra:Panel>
     <ext:Window 
         runat="server" 
-        style="width:480px;position:absolute;top:5px;right:5px;z-index:50;"
+        style="width:480px;position:absolute;top:5px;right:15px;z-index:50;"
         Caption="Class browser"
         ID="wnd">
         <div style="height:120px;overflow:auto;">
