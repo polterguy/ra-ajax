@@ -62,11 +62,14 @@ namespace RaWebsite
             {
                 string inheritsFrom = lst[0].InnerText;
                 inherit.Text = inheritsFrom;
-                inherit.Visible = true;
+                pnlInherits.Visible = true;
+                new EffectRollDown(pnlInherits, 500)
+                    .ChainThese(new EffectRollDown(repWrapper, 500))
+                    .Render();
             }
             else
             {
-                inherit.Text = "nothing";
+                pnlInherits.Visible = false;
             }
 
             // Description
@@ -84,23 +87,35 @@ namespace RaWebsite
             repProperties.DataSource = tmp;
             repProperties.DataBind();
             repWrapper.ReRender();
+            repWrapper.Style["display"] = "none";
         }
 
         protected void PropertyChosen(object sender, EventArgs e)
         {
             LinkButton btn = sender as LinkButton;
-            string fileName = btn.Xtra.Substring(0, btn.Xtra.LastIndexOf("_")) + ".xml";
-            XmlDocument doc = new XmlDocument();
-            doc.Load(Server.MapPath("~/docs-xml/" + fileName));
-            XmlNodeList node = doc.SelectNodes(
-                string.Format("/doxygen/compounddef/sectiondef/memberdef[@id=\"{0}\"]", btn.Xtra));
             Panel pnl = RaSelector.Selector.SelectFirst<Panel>(btn.Parent);
             Label lbl = RaSelector.Selector.SelectFirst<Label>(pnl);
-            lbl.Text = node[0].InnerText;
-            pnl.Visible = true;
-            pnl.Style["display"] = "none";
-            new EffectRollDown(pnl, 500)
-                .Render();
+            if (!pnl.Visible || pnl.Style["display"] == "none")
+            {
+                if (lbl.Text == "")
+                {
+                    string fileName = btn.Xtra.Substring(0, btn.Xtra.LastIndexOf("_")) + ".xml";
+                    XmlDocument doc = new XmlDocument();
+                    doc.Load(Server.MapPath("~/docs-xml/" + fileName));
+                    XmlNodeList node = doc.SelectNodes(
+                        string.Format("/doxygen/compounddef/sectiondef/memberdef[@id=\"{0}\"]", btn.Xtra));
+                    lbl.Text = node[0].SelectNodes("detaileddescription")[0].InnerText;
+                }
+                pnl.Visible = true;
+                pnl.Style["display"] = "none";
+                new EffectRollDown(pnl, 500)
+                    .Render();
+            }
+            else
+            {
+                new EffectRollUp(pnl, 500)
+                    .Render();
+            }
         }
     }
 }
