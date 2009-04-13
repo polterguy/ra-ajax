@@ -23,11 +23,9 @@
         Mostly you will get an answer to your question within 24 hours, but since we have no income
         from answering questions by non-paying users we obviously can't give you any guarantees.
     </p>
+    <h2>Documentation</h2>
     <p>
-        Our support mechanism is not a traditional <em>forum</em> but an inhouse developed question/answer
-        application built after the ideas of StackOverflow.com. It is Open Source licensed and can
-        be found <a href="http://code.google.com/p/stacked/">here</a> if you want it for your own
-        project.
+        You can find the documentation for Ra-Ajax <a href="Documentation.aspx">here</a>.
     </p>
     <h2>Professional Support</h2>
     <p>
@@ -43,6 +41,13 @@
     </p>
     <p>
         Read about <a href="Author.aspx">our qualifications here</a> or <a href="Testimonials.aspx">what our customers say about us</a>.
+    </p>
+    <h2>About Stacked</h2>
+    <p>
+        Our support mechanism is not a traditional <em>forum</em> but an inhouse developed question/answer
+        application built after the ideas of StackOverflow.com. It is Open Source licensed and can
+        be found <a href="http://code.google.com/p/stacked/">here</a> if you want it for your own
+        project.
     </p>
 </asp:Content>
 

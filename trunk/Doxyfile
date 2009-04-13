@@ -6,7 +6,7 @@
 DOXYFILE_ENCODING      = UTF-8
 PROJECT_NAME           = Ra-Ajax
 PROJECT_NUMBER         = 0.5.4
-OUTPUT_DIRECTORY       = D:\Projects\Ra\dox_output
+OUTPUT_DIRECTORY       = D:/Projects/ra-own-server/dox-output
 CREATE_SUBDIRS         = NO
 OUTPUT_LANGUAGE        = English
 BRIEF_MEMBER_DESC      = YES
@@ -221,11 +221,11 @@ MAN_LINKS              = NO
 #---------------------------------------------------------------------------
 # configuration options related to the XML output
 #---------------------------------------------------------------------------
-GENERATE_XML           = NO
+GENERATE_XML           = YES
 XML_OUTPUT             = xml
 XML_SCHEMA             = 
 XML_DTD                = 
-XML_PROGRAMLISTING     = YES
+XML_PROGRAMLISTING     = NO
 #---------------------------------------------------------------------------
 # configuration options for the AutoGen Definitions output
 #---------------------------------------------------------------------------
