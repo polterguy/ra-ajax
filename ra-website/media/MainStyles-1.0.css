@@ -81,6 +81,7 @@ a:hover
 {
 	padding:25px 15px 25px 15px;
 	min-height:600px;
+	margin-bottom:25px;
 }
 
 .showCode
@@ -511,4 +512,51 @@ ul#menu li a:hover
 	border:solid 1px #aaa;
 	background-color:Transparent;
 }
+
+
+
+
+/* Documentation */
+.inherits
+{
+	display:block;
+	padding:15px;
+	border:dashed 1px #ddd;
+	background-color:#fdfdfd;
+	margin-bottom:10px;
+}
+
+.description
+{
+	display:block;
+	padding:15px;
+	border:dashed 1px #ddd;
+	background-color:#f0f0f0;
+	margin-bottom:10px;
+}
+
+.docsList
+{
+	margin:15px 15px 15px 25px;
+}
+
+.docsList li
+{
+	list-style-position:inside;
+	list-style-type:disc;
+}
+
+.property
+{
+	display:block;
+}
+
+.property span
+{
+	padding:15px;
+	display:block;
+	background-color:#eef;
+	margin-left:15px;
+}
+
 
