@@ -537,7 +537,7 @@ ul#menu li a:hover
 	display:block;
 	padding:15px;
 	border:dashed 1px #ddd;
-	background-color:#f0f0f0;
+	background-color:#fdfdfd;
 	margin-bottom:10px;
 }
 
@@ -546,10 +546,28 @@ ul#menu li a:hover
 	margin:15px 15px 15px 25px;
 }
 
-.docsList li
+.docsList li.xx_event,
+.docsList li.xx_function,
+.docsList li.xx_property
 {
-	list-style-position:inside;
-	list-style-type:circle;
+	background-image:url(code-icons.png);
+	background-repeat:no-repeat;
+	padding-left:20px;
+}
+
+.docsList li.xx_event
+{
+	background-position:-16px -16px;
+}
+
+.docsList li.xx_function
+{
+	background-position:0 -32px;
+}
+
+.docsList li.xx_property
+{
+	background-position:-32px 0px;
 }
 
 .property
@@ -561,8 +579,9 @@ ul#menu li a:hover
 {
 	padding:15px;
 	display:block;
-	background-color:#eef;
-	margin-left:15px;
+	padding:15px;
+	border:dashed 1px #ddd;
+	background-color:#fdfdfd;
 }
 
 

@@ -4,6 +4,7 @@ public class DocsItem
 {
     private string _name;
     private string _id;
+    private string _kind;
 
     public string Name
     {
@@ -15,6 +16,12 @@ public class DocsItem
     {
         get { return _id; }
         set { _id = value; }
+    }
+
+    public string Kind
+    {
+        get { return _kind; }
+        set { _kind = value; }
     }
 
     public DocsItem(string name, string id)

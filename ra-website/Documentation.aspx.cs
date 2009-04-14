@@ -65,8 +65,27 @@ namespace RaWebsite
 
         protected void tree_SelectedNodeChanged(object sender, EventArgs e)
         {
+            string itemToLookAt = tree.SelectedNodes[0].ID;
+            ShowClass(itemToLookAt);
+        }
+
+        protected void ViewInherited(object sender, EventArgs e)
+        {
+            if (inherit.Text == "none")
+            {
+                new EffectHighlight(inherit, 500)
+                    .Render();
+            }
+            else
+            {
+                ShowClass(inherit.Xtra);
+            }
+        }
+
+        private void ShowClass(string itemToLookAt)
+        {
             bool first = pnlInfo.Style["display"] != "none";
-            string fileName = tree.SelectedNodes[0].ID + ".xml";
+            string fileName = itemToLookAt + ".xml";
             XmlDocument doc = new XmlDocument();
             doc.Load(Server.MapPath("~/docs-xml/" + fileName));
             string className = doc.SelectNodes("/doxygen/compounddef/compoundname")[0].InnerText;
@@ -78,6 +97,7 @@ namespace RaWebsite
             {
                 string inheritsFrom = lst[0].InnerText;
                 inherit.Text = inheritsFrom;
+                inherit.Xtra = lst[0].Attributes["refid"].Value;
             }
             else
             {
@@ -116,10 +136,21 @@ namespace RaWebsite
             // Properties, ONLY showing public stuff...
             lst = doc.SelectNodes("/doxygen/compounddef/listofallmembers/member[@prot=\"public\"]");
             List<DocsItem> tmp = new List<DocsItem>();
-            foreach( XmlNode idx in lst)
+            foreach (XmlNode idx in lst)
             {
-                tmp.Add(new DocsItem(idx.ChildNodes[1].InnerText, idx.Attributes["refid"].Value));
+                if (idx.Attributes["refid"].Value.Contains(itemToLookAt))
+                {
+                    DocsItem item = new DocsItem(idx.ChildNodes[1].InnerText, idx.Attributes["refid"].Value);
+                    string type = doc.SelectNodes("/doxygen/compounddef/sectiondef/memberdef[@id=\"" + idx.Attributes["refid"].Value + "\"]")[0].Attributes["kind"].Value;
+                    item.Kind = "xx_" + type;
+                    tmp.Add(item);
+                }
             }
+            tmp.Sort(
+                delegate(DocsItem left, DocsItem right)
+                {
+                    return right.Kind.CompareTo(left.Kind);
+                });
             repProperties.DataSource = tmp;
             repProperties.DataBind();
             repWrapper.ReRender();
