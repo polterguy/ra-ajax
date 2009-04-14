@@ -553,6 +553,7 @@ ul#menu li a:hover
 	background-image:url(code-icons.png);
 	background-repeat:no-repeat;
 	padding-left:20px;
+	margin-bottom:4px;
 }
 
 .docsList li.xx_event

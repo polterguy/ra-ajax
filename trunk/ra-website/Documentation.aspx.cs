@@ -153,6 +153,7 @@ namespace RaWebsite
                 });
             repProperties.DataSource = tmp;
             repProperties.DataBind();
+            repWrapper.Visible = true;
             repWrapper.ReRender();
         }
 
@@ -175,11 +176,13 @@ namespace RaWebsite
                 pnl.Visible = true;
                 pnl.Style["display"] = "none";
                 new EffectRollDown(pnl, 500)
+                    .JoinThese(new EffectFadeIn())
                     .Render();
             }
             else
             {
                 new EffectRollUp(pnl, 500)
+                    .JoinThese(new EffectFadeOut())
                     .Render();
             }
         }

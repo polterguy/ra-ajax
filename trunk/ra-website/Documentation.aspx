@@ -59,6 +59,7 @@
     <ra:Panel 
         runat="server" 
         style="margin:0;overflow:hidden;"
+        Visible="false"
         id="repWrapper">
         <h2 style="margin:5px;">Functions, Properties and Events</h2>
         <asp:Repeater runat="server" ID="repProperties">
