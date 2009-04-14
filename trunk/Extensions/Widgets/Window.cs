@@ -18,7 +18,12 @@ using System.Collections.Generic;
 namespace Ra.Extensions
 {
     /**
-     * window control, Panel with extra capabilities
+     * Window control. This is the equivalent of a Window on desktop systems. Have lots of "candy features"
+     * like the possibility to set the Window into "Modal" mode. In Modal mode none of the controls behind it
+     * on the page can be clicked. Can also be moved around on screen, have support for Caption and a 
+     * closing icon to close it. You can also easily create your own "icons" by overriding the 
+     * CreateNavigationalButtons event. Note that to make the Window Modal you need to add up the 
+     * BehaviorObscurer to the Controls collection of the Window.
      */
     [ASP.ToolboxData("<{0}:Window runat=\"server\"></{0}:Window>")]
     [ASP.PersistChildren(true)]
@@ -26,7 +31,8 @@ namespace Ra.Extensions
     public class Window : Panel, ASP.INamingContainer
     {
         /**
-         * EventArgs being passed into the CreateNavigationalButtons events
+         * EventArgs being passed into the CreateNavigationalButtons event for the Window Widget.
+         * Use the Caption property to inject your own controls or other logic.
          */
         public class CreateNavigationalButtonsEvtArgs : EventArgs
         {

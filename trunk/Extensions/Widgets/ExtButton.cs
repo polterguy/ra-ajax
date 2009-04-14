@@ -17,7 +17,7 @@ using HTML = System.Web.UI.HtmlControls;
 namespace Ra.Extensions
 {
     /**
-     * Extended button (nicer/prettier interface, skinnable)
+     * A nicer button with skinning capablities, support for adding buttons and lots of other "candy goodies".
      */
     [ASP.ToolboxData("<{0}:ExtButton runat=server />")]
     public class ExtButton : RaWebControl

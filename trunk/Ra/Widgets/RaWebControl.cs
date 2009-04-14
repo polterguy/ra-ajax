@@ -14,8 +14,10 @@ using System.Collections.Generic;
 namespace Ra.Widgets
 {
     /**
-     * class for "visual" Ajax Controls. Mostly all Ajax Controls in Ra-Ajax inherits from this class
-     * instead of the RaControl class since this class implements logic for the Style property collection.
+     * Class for "visual" Ajax Controls. Mostly all Ajax Controls in Ra-Ajax inherits from this class
+     * instead of the RaControl class since this class implements logic for the Style property collection
+     * and also for the CssClass property. In addition this control have events for virtually every event
+     * you can dream up, including MouseOver, MouseOut, Click, DblClick, MouseDown, KeyPress and many more.
      */
     public abstract class RaWebControl : RaControl, IAttributeAccessor, IRaControl
     {

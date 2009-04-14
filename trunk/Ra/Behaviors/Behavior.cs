@@ -15,7 +15,10 @@ namespace Ra.Widgets
 {
     /**
      * Abstract base class for all behaviors. A behavior is an extra capability you can assign to an
-     * Ajax control. Use by adding to the Controls collection of your controls.
+     * Ajax control. Use by adding to the Controls collection of your controls. A Behavior can be many
+     * things. It can give your Widget drag and drop capabilities. Or it can make your widget fade in and
+     * out when mouse is moved over etc. It is also very easy to create your own behaviors if you're 
+     * knowledged in JavaScript.
      */
 	public abstract class Behavior : RaControl
 	{

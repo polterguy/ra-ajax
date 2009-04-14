@@ -17,7 +17,9 @@ using HTML = System.Web.UI.HtmlControls;
 namespace Ra.Extensions
 {
     /**
-     * MessageBox control for easily getting confirmations, displaying modal data etc...
+     * MessageBox control for easily getting confirmations, displaying modal data etc. Contains shorthands
+     * for most "MessageBox scenarios". Mostly just a shorthand wrapper around the Window with some contained
+     * controls like labels for body and TextBox for taking input, if the control is set into "input mode".
      */
     [ASP.ToolboxData("<{0}:MessageBox runat=\"server\" />")]
     public class MessageBox : Window
@@ -84,6 +86,11 @@ namespace Ra.Extensions
             No
         }
 
+        /**
+         * EventArgs object passed into the Closed event of the MessageBox. Contains information about
+         * how the MessageBox was closed and also (if in "input mode") the text the user typed into the 
+         * MessageBox.
+         */
         public class ClosedEventArgs : EventArgs
         {
             private ClosedHow _closedHow;

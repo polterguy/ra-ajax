@@ -18,7 +18,7 @@ using System.Collections.Generic;
 namespace Ra.Extensions
 {
     /**
-     * Wrapper arouns TreeNodes which again is a wrapper around TreeNode, this is the "root" 
+     * Wrapper around TreeNodes which again is a wrapper around TreeNode. This is the "root" 
      * element of a TreeView. The basic logis is that you have one Tree root object in your 
      * code. Then you have one TreeNodes inside of there where you put your TreeNode objects.
      * Then for every TreeNode that have children you add up one TreeNodes and inside of

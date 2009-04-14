@@ -15,7 +15,7 @@ namespace Ra.Widgets
 {
     /**
      * Label control, renders normally as a span, but the tag used to render the element can be overridden
-     * by setting the Tag property.
+     * by setting the Tag property. This is the "display some text control" of Ra-Ajax.
      */
     [DefaultProperty("Text")]
     [ASP.ToolboxData("<{0}:Label runat=server />")]

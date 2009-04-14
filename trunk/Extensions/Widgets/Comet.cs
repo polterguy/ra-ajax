@@ -24,16 +24,16 @@ using System.Reflection;
 namespace Ra.Extensions
 {
     /**
-     * comet component, also known as LazyHttp, StreamingHttp and several other pseudonyms.
-     * Basically real-time event capability for the client. You can also send new comet events
-     * to the comet queue by using the URL of your page and append a GET parameter called "cometEvent"
-     * with the value of your event ID, but only if the AllowExternalEvents property is set to true
+     * Comet component, also known under the LazyHttp name, StreamingHttp and several other pseudonyms.
+     * Basically real-time event capability for the client. You can also send new Comet events
+     * to the Comet queue by using the URL of your page and append a GET parameter called "cometEvent"
+     * with the value of your event ID, but only if the AllowExternalEvents property is set to true.
      */
     [ASP.ToolboxData("<{0}:Comet runat=\"server\" />")]
     public class Comet : RaControl, IRaControl
     {
         /**
-         * Passed into the Tick event handler
+         * Passed into the Tick event handler. Just a wrapper around the ID of the Comet Event being raised.
          */
 		public class CometEventArgs : EventArgs
 		{

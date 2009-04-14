@@ -13,7 +13,10 @@ using System.Web.UI;
 namespace Ra.Widgets
 {
     /**
-     * Base class for all effects
+     * Base class for all effects. This class is highly plugable and it is very easy to create your 
+     * own extension effects. Even without having to resort to JavaScript since all effects by default are
+     * rendered on the server. By joining effects (simultaneously executed) and chaining (linearly executed
+     * one after the other) effects it is very easy to create highly visually appealing effects with Ra-Ajax.
      */
     public abstract class Effect
     {

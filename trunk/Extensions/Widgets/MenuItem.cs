@@ -17,6 +17,9 @@ using System.Collections.Generic;
 
 namespace Ra.Extensions
 {
+    /**
+     * A single MenuItem within a MenuItems collection which again should be within a Menu Widget.
+     */
     [ASP.ToolboxData("<{0}:MenuItem runat=\"server\"></{0}:MenuItem>")]
     public class MenuItem : Label, ASP.INamingContainer
     {

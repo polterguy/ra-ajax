@@ -15,8 +15,8 @@ using ASP = System.Web.UI;
 namespace Ra.Widgets
 {
     /**
-     * BehaviorObscurable, obscures all elements with higher z-index than the Parent Control.
-     * Useful for e.g. creating modal windows and similar constructs...
+     * BehaviorObscurable, obscures all elements with lower z-index than the Parent Control.
+     * Useful for e.g. creating modal windows and similar constructs.
      */
     [ASP.ToolboxData("<{0}:BehaviorObscurable runat=\"server\" />")]
     public class BehaviorObscurable : Behavior

@@ -27,18 +27,32 @@
         ID="header" />
     <ra:Panel 
         runat="server" 
+        ID="pnlInfo">
+        <p class="docsInfo">
+            This is the reference documentation for Ra-Ajax. Click any of the classes in the TreeView above
+            to see the documentation for that class.
+        </p>
+    </ra:Panel>
+    <ra:Panel 
+        runat="server" 
         Visible="false"
+        style="margin:0;overflow:hidden;display:none;"
         ID="pnlInherits">
         <ra:Label 
             runat="server" 
             CssClass="inherits"
             ID="inherit" />
     </ra:Panel>
-    <ra:Label 
+    <ra:Panel 
         runat="server" 
-        Text="Reference documentation for Ra-Ajax. Click a class in the class browser above and see its documentation"
-        CssClass="description"
-        ID="description" />
+        Visible="false"
+        style="margin:0;overflow:hidden;display:none;"
+        ID="pnlDescription">
+        <ra:Label 
+            runat="server" 
+            CssClass="description"
+            ID="description" />
+    </ra:Panel>
     <ra:Panel 
         runat="server" 
         style="margin:0;overflow:hidden;"

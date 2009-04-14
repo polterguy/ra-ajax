@@ -17,7 +17,8 @@ using HTML = System.Web.UI.HtmlControls;
 namespace Ra.Extensions
 {
     /**
-     * Panels for the Accordion control
+     * Panels for the Accordion control. An Accordion is basically just a collection of widgets
+     * of this type.
      */
     [ASP.ToolboxData("<{0}:AccordionView runat=server></{0}:AccordionView>")]
     public class AccordionView : Panel

@@ -15,7 +15,8 @@ using ASP = System.Web.UI;
 namespace Ra.Widgets
 {
     /**
-     * Will make the Control veiled by default and will be unveiled only upon mouse hover.
+     * Will make the Control veiled by default and will be unveiled only upon mouse hover. Useful for
+     * moving "focus" around on the screen according to where the user have his mouse.
      */
     [ASP.ToolboxData("<{0}:BehaviorUnveiler runat=\"server\" />")]
 	public class BehaviorUnveiler : Behavior

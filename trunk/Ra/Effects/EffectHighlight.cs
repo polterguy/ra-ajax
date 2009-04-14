@@ -12,7 +12,8 @@ using System.Web.UI;
 namespace Ra.Widgets
 {
     /**
-     * Will flash (highlight with color yellow) control's root DOM element
+     * Will flash (highlight with color yellow) control's root DOM element. Think of it as an advanced version
+     * (and standard version) of the "blink" HTML element.
      */
     public class EffectHighlight : Effect
     {

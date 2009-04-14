@@ -14,7 +14,9 @@ using ASP = System.Web.UI;
 namespace Ra.Widgets
 {
     /**
-     * ImageButton control, renders &lt;input type="image"...
+     * ImageButton control. The equivalent of the HTML input type="image" control. Useful
+     * for creating Image Buttons which needs to trigger click events on the server. Though kind
+     * of redundant in Ra-Ajax due to that all controls in Ra-Ajax can handle Click evnts anyway.
      */
     [DefaultProperty("Text")]
     [ASP.ToolboxData("<{0}:Button runat=server />")]

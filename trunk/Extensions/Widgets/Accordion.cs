@@ -22,8 +22,9 @@ namespace Ra.Extensions
 {
     /**
      * An accordion is a list of panels where only one can be visible at any time. When header of any
-     * one is clicked that panel will be visibe and the previously visible one will be in-vsibe except
-     * for its header
+     * one is clicked that panel will be visibe and the previously visible one will be in-visibe except
+     * for its header. Kind of like the left navigational parts of Microsoft Outlook. Every panel within
+     * the Accordion must be AccordionView instances.
      */
     [ASP.ToolboxData("<{0}:Accordion runat=server></{0}:Accordion>")]
     public class Accordion : Panel, ASP.INamingContainer

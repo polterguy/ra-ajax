@@ -20,7 +20,8 @@ using System.Collections.Generic;
 namespace Ra.Extensions
 {
     /**
-     * TreeNodes actual child items. This is the actual treenode for the TreeNodes control
+     * TreeNodes actual child items. This is the actual TreeNode for the TreeNodes control. Put these
+     * into your TreeNodes collection which again should be put into a Tree widget to get your TreeView.
      */
     [ASP.ToolboxData("<{0}:TreeNode runat=\"server\"></{0}:TreeNode>")]
     public class TreeNode : Label, ASP.INamingContainer

@@ -19,8 +19,9 @@ using HTML = System.Web.UI.HtmlControls;
 namespace Ra.Extensions
 {
     /**
-     * Ajax timer, raises Tick evnt handler back to server periodically. Alternative to Comet component and
-     * far "safer" to use than Comet
+     * Ajax timer, raises its Tick event handler back to server periodically. Alternative to Comet 
+     * component and far "safer" to use than Comet. Think of it as "polling the server to see if updates
+     * have arrived".
      */
     [ASP.ToolboxData("<{0}:Timer runat=\"server\" />")]
     public class Timer : RaControl, IRaControl

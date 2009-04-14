@@ -517,6 +517,12 @@ ul#menu li a:hover
 
 
 /* Documentation */
+.docsInfo
+{
+	padding:15px;
+	border:dashed 1px #eee;
+}
+
 .inherits
 {
 	display:block;
@@ -543,7 +549,7 @@ ul#menu li a:hover
 .docsList li
 {
 	list-style-position:inside;
-	list-style-type:disc;
+	list-style-type:circle;
 }
 
 .property

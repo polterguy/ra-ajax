@@ -14,8 +14,11 @@ using ASP = System.Web.UI;
 namespace Ra.Widgets
 {
     /**
-     * Textbox control, maps to the &lt;input type="text" HTML element. If you need a multi column textbox
-     * you should rather use the TextAre control.
+     * Textbox control.The equivalent of the HTML input type="text" element. If you need a multi column 
+     * textbox you should rather use the TextAre control. In some few places Ra-Ajax diverts from the 
+     * ASP.NET (non-Ajax) counterpart controls. This is one of those areas since the TextBox does NOT
+     * have support for Multiple Line inputs. To retrieve multiple lines of input (textarea) use the
+     * TextArea control instead.
      */
     [DefaultProperty("Text")]
     [ASP.ToolboxData("<{0}:TextBox runat=server />")]

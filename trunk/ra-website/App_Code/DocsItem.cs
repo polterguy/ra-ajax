@@ -10,7 +10,7 @@ public class DocsItem
         get { return _name; }
         set { _name = value; }
     }
-    
+
     public string ID
     {
         get { return _id; }

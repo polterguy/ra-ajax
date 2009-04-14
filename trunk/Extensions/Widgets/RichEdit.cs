@@ -19,7 +19,9 @@ using HTML = System.Web.UI.HtmlControls;
 namespace Ra.Extensions
 {
     /**
-     * TextBox control with rich formatting capabilities (HTML)
+     * TextBox control with rich formatting capabilities (HTML). Notice though that this control is 
+     * NOT STABLE and is only included for research reasons and will be broken in future version of
+     * Ra-Ajax.
      */
     [ASP.ToolboxData("<{0}:RichEdit runat=server></{0}:RichEdit>")]
     public class RichEdit : RaWebControl, IRaControl

@@ -94,8 +94,8 @@ WARN_LOGFILE           =
 #---------------------------------------------------------------------------
 # configuration options related to the input files
 #---------------------------------------------------------------------------
-INPUT                  = D:/Projects/Ra/Ra \
-                         D:\Projects\Ra\Extensions
+INPUT                  = D:\Projects\ra-own-server\Ra \
+                         D:\Projects\ra-own-server\Extensions
 INPUT_ENCODING         = UTF-8
 FILE_PATTERNS          = *.c \
                          *.cc \

@@ -14,7 +14,8 @@ using ASP = System.Web.UI;
 namespace Ra.Widgets
 {
     /**
-     * CheckBox control, renders &lt;input type="checkbox"...
+     * CheckBox control. The equivalent of the HTML input type="checkbox" control. Can be either on or off.
+     * Useful for "tagging off" things on a list.
      */
     [DefaultProperty("Text")]
     [ASP.ToolboxData("<{0}:CheckBox runat=server />")]

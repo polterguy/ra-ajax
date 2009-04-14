@@ -32,10 +32,25 @@ namespace RaWebsite
             List<TreeNode> l = new List<TreeNode>();
             foreach (XmlNode idx in doc.SelectNodes("/doxygenindex/compound[@kind=\"class\"]"))
             {
-                TreeNode n = new TreeNode();
-                n.ID = idx.Attributes["refid"].Value;
-                n.Text = idx.ChildNodes[0].InnerText.Replace("::", ".");
-                l.Add(n);
+                switch (idx.ChildNodes[0].InnerText.Replace("::", "."))
+                {
+                    case "Extensions.Helpers.CometQueue":
+                    case "Ra.CallbackFilter":
+                    case "Ra.Extensions.AccordionView.EffectChange":
+                    case "Ra.Extensions.AutoCompleter.RetrieveAutoCompleterItemsEventArgs":
+                    case "Ra.PostbackFilter":
+                    case "Ra.Widgets.ListItemCollection":
+                    case "Ra.Widgets.StyleCollection":
+                    case "Ra.Widgets.StyleCollection.StyleValue":
+                    case "Ra.Widgets.ListItem":
+                        break;
+                    default:
+                        TreeNode n = new TreeNode();
+                        n.ID = idx.Attributes["refid"].Value;
+                        n.Text = idx.ChildNodes[0].InnerText.Replace("::", ".");
+                        l.Add(n);
+                        break;
+                }
             }
             l.Sort(
                 delegate(TreeNode left, TreeNode right)
@@ -50,6 +65,7 @@ namespace RaWebsite
 
         protected void tree_SelectedNodeChanged(object sender, EventArgs e)
         {
+            bool first = pnlInfo.Style["display"] != "none";
             string fileName = tree.SelectedNodes[0].ID + ".xml";
             XmlDocument doc = new XmlDocument();
             doc.Load(Server.MapPath("~/docs-xml/" + fileName));
@@ -62,15 +78,35 @@ namespace RaWebsite
             {
                 string inheritsFrom = lst[0].InnerText;
                 inherit.Text = inheritsFrom;
-                pnlInherits.Visible = true;
-                new EffectRollDown(pnlInherits, 500)
-                    .ChainThese(new EffectRollDown(repWrapper, 500))
-                    .Render();
             }
             else
             {
-                pnlInherits.Visible = false;
+                inherit.Text = "none";
             }
+            pnlInherits.Visible = true;
+            pnlDescription.Visible = true;
+            if (first)
+            {
+                new EffectRollUp(pnlInfo, 500)
+                    .ChainThese(
+                    new EffectRollDown(pnlInherits, 500)
+                        .ChainThese(new EffectRollDown(pnlDescription, 500)
+                            .ChainThese(new EffectRollDown(repWrapper, 500))))
+                    .Render();
+                repWrapper.Style["display"] = "none";
+            }
+            else
+            {
+                new EffectRollUp(repWrapper, 100)
+                    .ChainThese(new EffectRollUp(pnlDescription, 100),
+                        new EffectRollUp(pnlInherits, 100),
+                        new EffectRollDown(pnlInherits, 300)
+                            .ChainThese(new EffectRollDown(pnlDescription, 300)
+                                .ChainThese(new EffectRollDown(repWrapper, 300))))
+                    .Render();
+            }
+            new EffectHighlight(header, 500)
+                .Render();
 
             // Description
             string txtDescription = doc.SelectNodes("/doxygen/compounddef/detaileddescription")[0].InnerText;
@@ -87,7 +123,6 @@ namespace RaWebsite
             repProperties.DataSource = tmp;
             repProperties.DataBind();
             repWrapper.ReRender();
-            repWrapper.Style["display"] = "none";
         }
 
         protected void PropertyChosen(object sender, EventArgs e)

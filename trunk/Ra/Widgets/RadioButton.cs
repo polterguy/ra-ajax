@@ -14,7 +14,8 @@ using ASP = System.Web.UI;
 namespace Ra.Widgets
 {
     /**
-     * RadioButton control, renders &lt;input type="radio"...
+     * RadioButton control. This is the equivalent of the HTML input type="radio" element. By grouping
+     * several of these together you can create a "single answer, multiple choice" control.
      */
     [DefaultProperty("Text")]
     [ASP.ToolboxData("<{0}:RadioButton runat=server />")]

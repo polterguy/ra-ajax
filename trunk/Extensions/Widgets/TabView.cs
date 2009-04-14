@@ -17,7 +17,7 @@ using HTML = System.Web.UI.HtmlControls;
 namespace Ra.Extensions
 {
     /**
-     * Instance tabviews of the TabControl
+     * Instance TabViews of the TabControl. These are the items a TabControl are made of.
      */
     [ASP.ToolboxData("<{0}:TabView runat=\"server\"></{0}:TabView>")]
     public class TabView : Panel

@@ -17,7 +17,9 @@ using HTML = System.Web.UI.HtmlControls;
 namespace Ra.Extensions
 {
     /**
-     * AutoCompleterItem, item control type for AutoCompleter Widget
+     * AutoCompleterItem, item control type for AutoCompleter Widget. When the RetrieveAutoCompleterItems
+     * of the AutoCompleter widget is raised then this is the type of widget which is expected by
+     * you to append into the Control eollection of the AutoCompleter.
      */
     public class AutoCompleterItem : Label, ASP.INamingContainer
     {

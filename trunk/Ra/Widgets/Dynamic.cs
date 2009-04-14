@@ -13,12 +13,24 @@ using WEBCTRLS = System.Web.UI.WebControls;
 
 namespace Ra.Widgets
 {
+    /**
+     * The Dynamic Control is very useful for having portions of your page dynamically rendered with
+     * different control collections. By utilizing this control it is very easy to create support for
+     * dynamically loaded controls in your own applications. If used correctly this control also
+     * have the capacity to significantly reduce the amount of ViewState in your applications. This is 
+     * especially true for "single webside Ajax Applications" where you have tons of features and controls
+     * in the same page.
+     */
     [ASP.ToolboxData("<{0}:Dynamic runat=\"server\" />")]
     public class Dynamic : Panel
     {
         private string _key;
         private object _extra;
 
+        /**
+         * This is the EventArgs which will be passed into the Reload event of the Dynamic Control.
+         * You must ALWAYS load the EXACT same Control Tree when the same Key is passed in.
+         */
         public class ReloadEventArgs : EventArgs
         {
             private string _key;

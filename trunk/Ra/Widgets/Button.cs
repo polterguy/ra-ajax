@@ -14,7 +14,8 @@ using ASP = System.Web.UI;
 namespace Ra.Widgets
 {
     /**
-     * Button control, renders as &lt;input type="button"...
+     * Button control. The equivalent of the HTML input type="text" control. Basically a minimalistic "clickable"
+     * thing for your applications. Use ExtButton from the Extensions project if you need something more "fancy".
      */
     [DefaultProperty("Text")]
     [ASP.ToolboxData("<{0}:Button runat=server />")]

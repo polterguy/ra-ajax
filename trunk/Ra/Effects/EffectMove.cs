@@ -12,7 +12,7 @@ using System.Web.UI;
 namespace Ra.Widgets
 {
     /**
-     * Will move control to specified location in absolute pixel position
+     * Will move control to specified location from its current position in absolute pixels.
      */
     public class EffectMove : Effect
     {
