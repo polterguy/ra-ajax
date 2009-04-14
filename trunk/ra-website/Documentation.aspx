@@ -28,15 +28,30 @@
     <ra:Panel 
         runat="server" 
         ID="pnlInfo">
-        <p class="docsInfo">
-            This is the reference documentation for Ra-Ajax. Click any of the classes in the TreeView above
-            to see the documentation for that class.
+        <div class="docsInfo">
+            <p>
+                This is the reference documentation for Ra-Ajax. Click any of the classes in the TreeView above
+                to see the documentation for that class. If there is anything wrong with the documentation in
+                any ways, then please let us know by sending either <a href="mailto:thomas@ra-ajax.org">Thomas</a>
+                or <a href="mailto:kariem@ra-ajax.org">Kariem</a> an email.
+            </p>
+        <p>
+            If you don't find the information you need here, you might try <a href="http://stacked.ra-ajax.org">our forums</a>
+            or if you need even more support and/or help we are available to hire for consultancy work with Ra-Ajax.
+            If you want to hire us then please send <a href="mailto:thomas@ra-ajax.org">Thomas Hansen</a> an email
+            shortly describing what you want us to do for you.
         </p>
+        <p>
+            We can do software for hire - as in you've got a software idea but none to implement it for you. We can do
+            Ra-Ajax training, and other types of development training. We can beef up your existing development department
+            if you either need a pair of extra hands or some bigger muscles to coach your existing developers.
+        </p>
+        </div>
     </ra:Panel>
     <ra:Panel 
         runat="server" 
         Visible="false"
-        style="margin:0;overflow:hidden;display:none;"
+        style="margin:0;overflow:hidden;display:none;opacity:0.3;"
         ID="pnlInherits">
         <h2 style="margin:5px;">Inherits</h2>
         <ra:LinkButton 
@@ -44,6 +59,9 @@
             OnClick="ViewInherited"
             CssClass="inherits"
             ID="inherit" />
+        <ra:BehaviorUnveiler 
+            runat="server" 
+            id="unveiler" />
     </ra:Panel>
     <ra:Panel 
         runat="server" 
