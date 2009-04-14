@@ -54,6 +54,10 @@
   window. Usage would probably be portal creation and similar
   features like IGoogle and such.
 
+* Removed the WindowLight control since the WebPart control is
+  a far better to use for circumstances when you really need
+  a "lighter window".
+
 
 
 
