@@ -38,8 +38,10 @@
         Visible="false"
         style="margin:0;overflow:hidden;display:none;"
         ID="pnlInherits">
-        <ra:Label 
+        <h2 style="margin:5px;">Inherits</h2>
+        <ra:LinkButton 
             runat="server" 
+            OnClick="ViewInherited"
             CssClass="inherits"
             ID="inherit" />
     </ra:Panel>
@@ -48,6 +50,7 @@
         Visible="false"
         style="margin:0;overflow:hidden;display:none;"
         ID="pnlDescription">
+        <h2 style="margin:5px;">Description</h2>
         <ra:Label 
             runat="server" 
             CssClass="description"
@@ -57,6 +60,7 @@
         runat="server" 
         style="margin:0;overflow:hidden;"
         id="repWrapper">
+        <h2 style="margin:5px;">Functions, Properties and Events</h2>
         <asp:Repeater runat="server" ID="repProperties">
             <HeaderTemplate>
                 <ul class="docsList">
@@ -65,7 +69,7 @@
                 </ul>
             </FooterTemplate>
             <ItemTemplate>
-                <li>
+                <li class='<%#Eval("Kind")%>'>
                     <ra:LinkButton 
                         runat="server" 
                         Xtra='<%#Eval("ID")%>'
