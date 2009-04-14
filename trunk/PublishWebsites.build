@@ -118,6 +118,7 @@
     <mkdir dir="${output.dir}/${code.dir}/${ra.website.dir}/bin" />
     <copy flatten="true" todir="${output.dir}/${code.dir}/${ra.website.dir}/bin">
       <fileset>
+        <include name="${output.dir}/${library.dir}/${ra.selector.name}.dll" />
         <include name="${output.dir}/${library.dir}/${gzipped.dir}/${ra.name}.dll" />
         <include name="${output.dir}/${library.dir}/${gzipped.dir}/${ext.name}.dll" />
         <include name="${output.dir}/${library.dir}/${resource.cacher.name}.dll" />
@@ -165,6 +166,17 @@ if (Request.Path.ToLowerInvariant().EndsWith("webresource.axd") &&
         <include name="media/**/*.css" />
       </fileset>
     </cssmin>
+
+    <if test="${generate.docs}">
+      <echo message="Generating Docs in '${output.dir}/${ra.website.precompiled.dir}/${ra.docs.dir}'." />
+      <exec program="${doxygen.path}" commandline="Doxyfile" />
+      <copy overwrite="true" todir="${output.dir}/${ra.website.precompiled.dir}/${ra.docs.dir}">
+        <fileset basedir="${doxygen.output.dir}/xml">
+          <include name="**/*.xml" />
+        </fileset>
+      </copy>
+    </if>
+    
   </target>
 
 </project>
