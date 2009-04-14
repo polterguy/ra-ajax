@@ -528,8 +528,13 @@ ul#menu li a:hover
 	display:block;
 	padding:15px;
 	border:dashed 1px #ddd;
-	background-color:#fdfdfd;
+	background-color:#ededed;
 	margin-bottom:10px;
+}
+
+.inherits:hover
+{
+	background-color:#ededed;
 }
 
 .description
