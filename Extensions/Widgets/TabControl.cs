@@ -18,7 +18,9 @@ using HTML = System.Web.UI.HtmlControls;
 namespace Ra.Extensions
 {
     /**
-     * tabcontrol widget. An alternative to Accordiong, though renders as a tabcontrol
+     * TabControl widget. An alternative to Accordion. Contains several sheets in horizontal layout
+     * which can be clicked to change the currently "active view". Useful for grouping information on
+     * screen into different categories. A TabControl is a collection of TabView items.
      */
     [ASP.ToolboxData("<{0}:TabControl runat=server></{0}:TabControl>")]
     public class TabControl : Panel, ASP.INamingContainer

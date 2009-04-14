@@ -14,7 +14,9 @@ using ASP = System.Web.UI;
 namespace Ra.Widgets
 {
     /**
-     * HiddenField control, renders &lt;input type="hidden"...
+     * HiddenField control. Useful for storing values into your page which you need to access later down
+     * the road but don't need to actually display to the user. Alternatives to this control is to directly
+     * us the ViewState.
      */
     [DefaultProperty("Text")]
     [ASP.ToolboxData("<{0}:HiddenField runat=server />")]

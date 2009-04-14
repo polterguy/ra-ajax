@@ -17,13 +17,15 @@ namespace Ra.Widgets
     /**
      * Adds "dropping" capabilities to a Control. Tighly coupled with BehaviorDraggable. Basically
      * a draggable can be dropped onto a droppable which then will fire a "dropped onto" event in
-     * addition to the draggable's dropped event
+     * addition to the draggable's dropped event. Useful for creating for instance shopping carts
+     * and similar functionality which needs to track where widgets which are modified with the
+     * BehaviorDraggable are actually dropped.
      */
     [ASP.ToolboxData("<{0}:BehaviorDroppable runat=\"server\" />")]
 	public class BehaviorDroppable : Behavior
 	{
         /**
-         * EventArgs being passed into the Dropped event
+         * EventArgs being passed into the Dropped event of the BehaviorDroppable.
          */
 		public class DroppedEventArgs : EventArgs
 		{

@@ -12,7 +12,7 @@ using System.Web.UI;
 namespace Ra.Widgets
 {
     /**
-     * Animates a Control from its current size to a new specified size.
+     * Animates a Control from its current size to a new specified size. Uses pixel values.
      */
     public class EffectSize : Effect
     {

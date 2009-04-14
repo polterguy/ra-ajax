@@ -15,7 +15,9 @@ namespace Ra.Extensions
 {
     /**
      * DateTimePicker Ajax Control. Inherits from Calendar and handles 
-     * the CreateExtraControlsAtBottom event to create hour and minute controls
+     * the CreateExtraControlsAtBottom event to create hour and minute controls. While the calendar can only
+     * choose whole days, this control can also choose hours and minutes within those specific dates. In all
+     * other ways it is identical to the Calendar Widget.
      */
     [ASP.ToolboxData("<{0}:DateTimePicker runat=server />")]
     public class DateTimePicker : Calendar, ASP.INamingContainer

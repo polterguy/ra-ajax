@@ -17,7 +17,9 @@ using HTML = System.Web.UI.HtmlControls;
 namespace Ra.Extensions
 {
     /**
-     * Label control which enables editing when clicked
+     * Label control which enables editing when clicked. This is kind of like a middle-man between a Label and 
+     * a TextBox. It will display as a Label until clicked. Then it will enable the user to edit the text portions
+     * of the Label through anormal TextBox.
      */
     [ASP.ToolboxData("<{0}:InPlaceEdit runat=server />")]
     public class InPlaceEdit : Panel, ASP.INamingContainer

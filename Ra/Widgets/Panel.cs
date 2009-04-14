@@ -15,7 +15,12 @@ using System.IO;
 namespace Ra.Widgets
 {
     /**
-     * Panel control, renders as &lt;div...
+     * Panel control. Think of this as the "collection of other controls" in Ra-Ajax. Though most controls
+     * in Ra-Ajax can actually contain other controls, this is the prefered one to use when you need a "wrapper"
+     * to "host" other controls.It also have a very useful feature in the forms of the ReRender method which
+     * will mke the Panel transform into an "UpdatePanel" and actually do Partial Rendering when called. This
+     * feature is highly useful coupled with other 3rd party (non Ra-Ajax) controls or even when you need to
+     * Ajaxify conventional ASP.NET Controls like a GridView or a Repeater.
      */
     [DefaultProperty("CssClass")]
     [ASP.ToolboxData("<{0}:Panel runat=server></{0}:Panel>")]

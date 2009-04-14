@@ -13,7 +13,10 @@ namespace Ra.Widgets
 {
     /**
      * Empty effect or a "place holder of time" effect. Only purpose is to make a specified duration
-     * of time ellapse. Don't need a specified Control to animate upon.
+     * of time ellapse. Don't need a specified Control to animate upon. Useful if you create advanced
+     * effect chains and want to have a "pause" between the end of one effect and the starting of anoter effect.
+     * Or if you want to have "delayed effects" which doesn't occur before some n seconds after the Ajax request
+     * returns from the server.
      */
     public class EffectTimeout : Effect
     {

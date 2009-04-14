@@ -15,7 +15,9 @@ using ASP = System.Web.UI;
 namespace Ra.Widgets
 {
     /**
-     * Adds dragging capabilities to your Ajax controls
+     * Adds dragging capabilities to your Ajax controls. Add this to the Control Collection of any of
+     * your widget and your widget can be dragged and dropped around on screen. When Widget is dropped the
+     * Dropped event will be raised and the widget will have updated left and top style collection values.
      */
     [ASP.ToolboxData("<{0}:BehaviorDraggable runat=\"server\" />")]
     public class BehaviorDraggable : Behavior, IRaControl

@@ -21,7 +21,8 @@ namespace Ra.Widgets
 {
     /**
      * Base control for all other Ajax Controls in Ra-Ajax. Inherit from this if you want a 
-     * minimalistic extension Ajax control without the overhead from RaWebControl.
+     * minimalistic extension Ajax control without the overhead from RaWebControl. By inheriting from RaControl
+     * you can also create non-visual controls. The Timer for instance is inherited from the RaControl.
      */
 	public abstract class RaControl : Control
 	{

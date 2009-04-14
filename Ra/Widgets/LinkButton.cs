@@ -14,7 +14,7 @@ using ASP = System.Web.UI;
 namespace Ra.Widgets
 {
     /**
-     * LinkButton control, renders as &lt;a href="... HTML element
+     * LinkButton control. Thi sis the equivalent of the HTML anchor element.
      * Note though that this will NOT be a link but overridden through JavaScript to handle click events.
      * DO NOT use this element instead of hyperlinks if you want search engine visibility! Think
      * of it as an alternative to the Button and ImageButton controls.

@@ -17,6 +17,12 @@ using System.Collections.Generic;
 
 namespace Ra.Extensions
 {
+    /**
+     * A Menu Widget for creating Menus on your websites and applications. Use in combination with
+     * the MenuItems and the MenuItem widgets. The theory is that a Menu consists of one or several
+     * MenuItems which again consists of one of several MenuItem (singular form) which again can contain
+     * MenuItems again. And so it goes recursively.
+     */
     [ASP.ToolboxData("<{0}:Menu runat=\"server\"></{0}:Menu>")]
     public class Menu : RaWebControl, ASP.INamingContainer
     {

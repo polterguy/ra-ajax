@@ -18,13 +18,16 @@ using System.Collections.Generic;
 namespace Ra.Extensions
 {
     /**
-     * calendar widget for choosing dates
+     * Calendar widget for choosing dates. Basically just a DateTime Picker control which makes
+     * it possible to choose dates, though with no Time part. Use the DateTimePicker widget if 
+     * you also need Time support.
      */
     [ASP.ToolboxData("<{0}:Calendar runat=server />")]
     public class Calendar : Panel, ASP.INamingContainer
     {
         /**
-         * EventArgs being passed into the CreateNavigationalButtons events
+         * EventArgs being passed into the CreateNavigationalButtons events. This is the EventArgs
+         * type being passed into the RetrieveAutoCompleterItems event of the Calendar Widget.
          */
         public class CreateExtraControlsAtBottomEvtArgs : EventArgs
         {
@@ -48,7 +51,9 @@ namespace Ra.Extensions
         }
 
         /**
-         * EventArgs class for the RenderDay Event
+         * EventArgs class for the RenderDay Event. Basically the EventArgs passed into 
+         * the RenderDay event. Modify the Cell property to e.g. add up child controls
+         * or special styles and CSS classes.
          */
         public class RenderDayEventArgs : EventArgs
         {

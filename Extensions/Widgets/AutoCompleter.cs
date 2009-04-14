@@ -17,7 +17,10 @@ using HTML = System.Web.UI.HtmlControls;
 namespace Ra.Extensions
 {
     /**
-     * AutoCompleter for displaying dynamically items searched for through a TextBox
+     * AutoCompleter for displaying dynamically items searched for through a TextBox. When something
+     * is written into the AutoCompleter then the RetrieveAutoCompleterItems event will be raised
+     * so that your code can populate the AutoCompleterItems collection. Then when a user selects
+     * one of those items the AutoCompleterItemSelected event will be raised.
      */
     [ASP.ToolboxData("<{0}:AutoCompleter runat=server />")]
     public class AutoCompleter : Panel, ASP.INamingContainer

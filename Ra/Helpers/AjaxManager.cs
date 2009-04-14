@@ -30,7 +30,7 @@ namespace Ra
     /**
      * Singleton class (acces through Instance property) 
      * The "glue" that ties everything together, contains lots of helper metods, though most of them are for
-     * extension control developers.
+     * extension control developers. Use WriterAtBack to add up e.g. JavaScript in callbacks.
      */
     public sealed class AjaxManager
     {

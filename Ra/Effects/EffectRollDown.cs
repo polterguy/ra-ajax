@@ -12,7 +12,13 @@ using System.Web.UI;
 namespace Ra.Widgets
 {
     /**
-     * Will roll down control from in-visibility to a specified height.
+     * Will roll down control from in-visibility to its "needed height to fully display". Note that this
+     * effect does not play nicely together with neither padding nor margin styles or CSS values. If margin
+     * is needed on a Widget which you want to animate through the RollDown (or RollUp) effect you must add
+     * an extra DOM element within the control which you put the actual margin or padding into. Also the
+     * Widget which you run this effect upon should have overflow:hidde as the style value or CSS value)
+     * since otherwise it'll "jump" when running and create visually non-appealing artifacts. This is the opposite
+     * of the EffectRollUp.
      */
     public class EffectRollDown : Effect
     {

@@ -14,7 +14,7 @@ using ASP = System.Web.UI;
 namespace Ra.Widgets
 {
     /**
-     * Image control, renders &lt;img src="...
+     * Image control. Renders an img HTML tag with the given property values.
      */
     [DefaultProperty("Text")]
     [ASP.ToolboxData("<{0}:Image runat=server />")]

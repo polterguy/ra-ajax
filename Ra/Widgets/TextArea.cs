@@ -14,8 +14,9 @@ using ASP = System.Web.UI;
 namespace Ra.Widgets
 {
     /**
-     * Control which renders as &lt;textarea. Alternative to TextBox for long strings that requires a textarea
-     * HTML element instead of the &lt;input type="text" that the textbox renders. Otherwise mostly the
+     * Text input control for retrieving multiple lines of text. The equivalent of the HTML 
+     * textarea control. Alternative to TextBox for long strings that requires a textarea HTML 
+     * element instead of TextBox that the textbox renders. Otherwise mostly the
      * same implementation as textbox.
      */
     [DefaultProperty("Text")]

@@ -15,7 +15,9 @@ using System.Collections.Generic;
 namespace Ra.Widgets
 {
     /**
-     * SelectList control, renders &lt;select...
+     * SelectList control. This is the equivalent of the HTML select element. Also the equivalent of the 
+     * ASP.NET DropDownList (and partially also) the ListBox control. This one only have support for single
+     * selections.
      */
     [ASP.ParseChildren(true, "Items")]
     [ASP.ToolboxData("<{0}:SelectList runat=server />")]

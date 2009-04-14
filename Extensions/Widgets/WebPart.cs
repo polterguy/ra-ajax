@@ -19,7 +19,8 @@ using System.Drawing;
 namespace Ra.Extensions
 {
     /**
-     * WebPart - kind of like a "mini Window" or a "special panel"
+     * WebPart - kind of like a "mini Window" or a "special panel". Useful for creating among other things
+     * portal applications like iGoogle, PageFlakes or NetVibes.
      */
     [ASP.ToolboxData("<{0}:WebPart runat=\"server\"></{0}:WebPart>")]
     [ASP.PersistChildren(true)]

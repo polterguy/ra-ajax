@@ -17,6 +17,10 @@ using System.Collections.Generic;
 
 namespace Ra.Extensions
 {
+    /**
+     * A collection of MenuItem(s). This is a single MenuItem in which a MenuItems (collection) can have many
+     * of.
+     */
     [ASP.ToolboxData("<{0}:MenuItems runat=\"server\"></{0}:MenuItems>")]
     public class MenuItems : Panel, ASP.INamingContainer
     {

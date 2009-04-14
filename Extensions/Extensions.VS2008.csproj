@@ -76,7 +76,6 @@
     <Compile Include="Widgets\Tree.cs" />
     <Compile Include="Widgets\TreeNode.cs" />
     <Compile Include="Widgets\Window.cs" />
-    <Compile Include="Widgets\WindowLight.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Js\Timer.js" />

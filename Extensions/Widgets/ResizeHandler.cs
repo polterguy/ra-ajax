@@ -19,14 +19,16 @@ using HTML = System.Web.UI.HtmlControls;
 namespace Ra.Extensions
 {
     /**
-     * Ajax timer, raises Tick evnt handler back to server periodically. Alternative to Comet component and
-     * far "safer" to use than Comet
+     * A ResizeHandler widget is a special (non-visual) control which will raise an event when
+     * the browser window is resized. Very useful for creating "portal websites" which needs to
+     * know the exact size of the browser window at all times.
      */
     [ASP.ToolboxData("<{0}:ResizeHandler runat=\"server\" />")]
     public class ResizeHandler : RaControl, IRaControl
     {
         /**
-         * EventArgs passed when Viewport is resized
+         * EventArgs passed when Viewport is resized. Contains information about the Viewport (browser)
+         * width and height.
          */
         public class ResizedEventArgs : EventArgs
         {
