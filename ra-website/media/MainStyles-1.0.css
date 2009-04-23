@@ -541,7 +541,7 @@ ul#menu li a:hover
 
 .filter-left
 {
-	background:Transparent url(filter-icon.png) no-repeat 0 0;
+	background:url('filter-icon.png') no-repeat 0 0;
 	width:17px;
 	height:19px;
 	display:block;
@@ -552,22 +552,24 @@ ul#menu li a:hover
 
 .filter
 {
-	background:Transparent url(filter-icon.png) repeat-x 0 -38px;
+	border-style: none;
+	border-color: inherit;
+	border-width: 0;
+	background: url('filter-icon.png') repeat-x 0 -38px;
 	width:100px !important;
-	height:19px;
-	display:block;
-	padding:3px;
-	border:none 0;
-	position:absolute;
-	top:0;
-	left:17px;
-	font-size:11px;
-	color:#606060;
+		height:19px;
+		display:block;
+		padding:3px;
+		position:absolute;
+		top:0;
+		left:17px;
+		font-size:11px;
+		color:#606060;
 }
 
 .filter-right
 {
-	background:Transparent url(filter-icon.png) no-repeat 0 -19px;
+	background:url('filter-icon.png') no-repeat 0 -19px;
 	width:17px;
 	height:19px;
 	display:block;
@@ -597,7 +599,8 @@ ul#menu li a:hover
 
 .docsList li.xx_event,
 .docsList li.xx_function,
-.docsList li.xx_property
+.docsList li.xx_property,
+.docsList li.xx_enum
 {
 	background-image:url(code-icons.png);
 	background-repeat:no-repeat;
@@ -607,17 +610,22 @@ ul#menu li a:hover
 
 .docsList li.xx_event
 {
-	background-position:-16px -16px;
+	background-position:-32px -16px;
 }
 
 .docsList li.xx_function
 {
-	background-position:0 -32px;
+	background-position:-16px -32px;
 }
 
 .docsList li.xx_property
 {
-	background-position:-32px 0px;
+	background-position:-48px 0px;
+}
+
+.docsList li.xx_enum
+{
+	background-position:0px -48px;
 }
 
 .property
