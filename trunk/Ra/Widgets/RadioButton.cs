@@ -10,6 +10,8 @@ using System;
 using System.ComponentModel;
 using WEBCTRLS = System.Web.UI.WebControls;
 using ASP = System.Web.UI;
+using System.Web.UI;
+using System.Web;
 
 namespace Ra.Widgets
 {
@@ -126,10 +128,10 @@ namespace Ra.Widgets
             // Since if ViewState is DISABLED we will NEVER come into LoadViewState we need to
             // have the same logic in OnInit since we really should modify the Text value to
             // the postback value BEFORE Page_Load event is fired...
-            if (Enabled && !this.IsViewStateEnabled && AjaxManager.Instance.CurrentPage.IsPostBack)
+            if (Enabled && !this.IsViewStateEnabled && ((Page)HttpContext.Current.CurrentHandler).IsPostBack)
             {
                 bool valueOfChecked = 
-                    AjaxManager.Instance.CurrentPage.Request.Params[
+                    ((Page)HttpContext.Current.CurrentHandler).Request.Params[
                         string.IsNullOrEmpty(GroupName) ? ClientID : GroupName] == ClientID;
                 if (valueOfChecked != Checked)
 				{
@@ -149,10 +151,10 @@ namespace Ra.Widgets
             // Since if ViewState is DISABLED we will NEVER come into this bugger we need to
             // have the same logic in OnInit since we really should modify the Text value to
             // the postback value BEFORE Page_Load event is fired...
-            if (Enabled && AjaxManager.Instance.CurrentPage.IsPostBack)
+            if (Enabled && ((Page)HttpContext.Current.CurrentHandler).IsPostBack)
             {
                 bool valueOfChecked =
-                    AjaxManager.Instance.CurrentPage.Request.Params[
+                    ((Page)HttpContext.Current.CurrentHandler).Request.Params[
                         string.IsNullOrEmpty(GroupName) ? ClientID : GroupName] == ClientID;
                 if (valueOfChecked != Checked)
 				{

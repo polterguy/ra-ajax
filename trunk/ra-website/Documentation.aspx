@@ -106,7 +106,9 @@
     </ra:Panel>
     <ext:Window 
         runat="server" 
-        style="width:480px;position:absolute;top:5px;right:15px;z-index:50;"
+        style="width:480px;position:absolute;top:5px;right:15px;z-index:50;" 
+        OnCreateNavigationalButtons="wnd_CreateNavigationalButtons" 
+        Closable="false"
         Caption="Class browser"
         ID="wnd">
         <div style="height:120px;overflow:auto;">

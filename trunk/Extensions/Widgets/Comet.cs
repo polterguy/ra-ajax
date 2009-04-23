@@ -28,6 +28,7 @@ namespace Ra.Extensions
      * Basically real-time event capability for the client. You can also send new Comet events
      * to the Comet queue by using the URL of your page and append a GET parameter called "cometEvent"
      * with the value of your event ID, but only if the AllowExternalEvents property is set to true.
+     * Notice that this control should be considered HIGHLY EXPERIMENTAL and is probably not very stable.
      */
     [ASP.ToolboxData("<{0}:Comet runat=\"server\" />")]
     public class Comet : RaControl, IRaControl
@@ -57,12 +58,14 @@ namespace Ra.Extensions
         private EnterQueue _enter;
 
         /**
-         * Raised when an event have been raised
+         * Raised when an event have been raised. The EventArgs for this type will be of
+         * type CometEventArgs from which you can retrieve the ID property to see which
+         * event this is.
          */
         public event EventHandler<CometEventArgs> Tick;
 
         /**
-         * If true comet component is enabled, otherwise disabled
+         * If true then the Comet control is enabled, otherwise it is disabled.
          */
         [DefaultValue(true)]
         public bool Enabled
@@ -78,8 +81,10 @@ namespace Ra.Extensions
 
         /**
          * If true you can create events on the comet queue by appending "cometEvent=xxx" as GET 
-         * parameter to the URL and sending a GET request. Which will return true on as the response
-         * and not actually HTML
+         * parameter to the URL and sending a GET request. Which will return true back as the response
+         * and not actual HTML.Be careful with this one though since raising a Comet event is pretty
+         * expensive and having this publicly exposed might pose a security risk since then all the
+         * user needs to do to create a "DDOS attack" is to keep posting events to your pages.
          */
         [DefaultValue(true)]
         public bool AllowExternalEvents
@@ -89,11 +94,13 @@ namespace Ra.Extensions
         }
 
         /**
-         * if true this request can actually connect to comet queue. If MaxClients are reached
-         * then the return value will be false and no actual comet request will be enabled 
-         * for this user since queue is filled up. Note you can actually override this value in e.g.
-         * Page_Load by explicitingly setting the Enabled property of the comet object to true, but
-         * then you will have no effect of the MaxClients and might as well set it to -1.
+         * If this property is true then this request can actually NOT connect to comet queue. 
+         * If MaxClients are reached then the return value will be true and no actual comet request 
+         * will be enabled for this user since queue is filled up. Note you can actually override 
+         * this value in e.g. Page_Load by explicitingly setting the Enabled property of the comet 
+         * object to true, but then you will have no effect of the MaxClients and might as well set 
+         * it to -1. If the value of the MaxClients is -1 then no user will be denied and your webserver
+         * will keep on accepting Comet requests until the sere breaks down or no more users exists.
          */
         public bool IsQueueFull
         {
@@ -154,7 +161,8 @@ namespace Ra.Extensions
         }
 
         /**
-         * Will raise a Tick event with the given Id releasing all locked requests
+         * Will raise a Tick event with the given ID which will release all locked requests and fire
+         * the Tick event with the given ID.
          */
         public void SendMessage(string id)
         {

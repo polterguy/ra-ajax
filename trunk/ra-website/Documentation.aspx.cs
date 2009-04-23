@@ -45,11 +45,23 @@ namespace RaWebsite
                     case "Ra.Widgets.ListItem":
                         break;
                     default:
-                        TreeNode n = new TreeNode();
-                        n.ID = idx.Attributes["refid"].Value;
-                        n.Text = idx.ChildNodes[0].InnerText.Replace("::", ".");
-                        l.Add(n);
-                        break;
+                        {
+                            string value = idx.ChildNodes[0].InnerText.Replace("::", ".");
+                            if (!string.IsNullOrEmpty(Filter) && value.ToLower().Contains(Filter.ToLower()))
+                            {
+                                TreeNode n = new TreeNode();
+                                n.ID = idx.Attributes["refid"].Value;
+                                n.Text = value;
+                                l.Add(n);
+                            }
+                            else if(string.IsNullOrEmpty(Filter))
+                            {
+                                TreeNode n = new TreeNode();
+                                n.ID = idx.Attributes["refid"].Value;
+                                n.Text = value;
+                                l.Add(n);
+                            }
+                        } break;
                 }
             }
             l.Sort(
@@ -149,12 +161,74 @@ namespace RaWebsite
             tmp.Sort(
                 delegate(DocsItem left, DocsItem right)
                 {
+                    if (right.Kind == left.Kind)
+                        return left.Name.CompareTo(right.Name);
                     return right.Kind.CompareTo(left.Kind);
                 });
             repProperties.DataSource = tmp;
             repProperties.DataBind();
             repWrapper.Visible = true;
             repWrapper.ReRender();
+        }
+
+        protected void wnd_CreateNavigationalButtons(object sender, Window.CreateNavigationalButtonsEvtArgs e)
+        {
+            // Filter panel
+            Panel p = new Panel();
+            p.CssClass = "filterBox";
+            p.ID = "fltPnl";
+
+            // Left side
+            Label l = new Label();
+            l.Text = "&nbsp;";
+            l.CssClass = "filter-left";
+            p.Controls.Add(l);
+
+            // Actual textbox
+            TextBox b = new TextBox();
+            b.ID = "filter";
+            b.Text = "Filter";
+            b.CssClass = "filter";
+            b.Focused += b_Focused;
+            b.KeyUp += b_KeyUp;
+            b.Blur += b_Blur;
+            p.Controls.Add(b);
+
+            // Left side
+            Label r = new Label();
+            r.Text = "&nbsp;";
+            r.CssClass = "filter-right";
+            p.Controls.Add(r);
+
+            e.Caption.Controls.Add(p);
+        }
+
+        private string Filter
+        {
+            get { return ViewState["Filter"] as string; }
+            set { ViewState["Filter"] = value; }
+        }
+
+        void b_KeyUp(object sender, EventArgs e)
+        {
+            root.Controls.Clear();
+            Filter = (sender as TextBox).Text;
+            BuildRoot();
+            tree.ReRender();
+        }
+
+        void b_Blur(object sender, EventArgs e)
+        {
+            TextBox b = sender as TextBox;
+            if (b.Text == "")
+                b.Text = "Filter";
+        }
+
+        void b_Focused(object sender, EventArgs e)
+        {
+            TextBox b = sender as TextBox;
+            if (b.Text == "Filter")
+                b.Text = "";
         }
 
         protected void PropertyChosen(object sender, EventArgs e)

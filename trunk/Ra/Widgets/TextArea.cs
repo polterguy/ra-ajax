@@ -10,6 +10,8 @@ using System;
 using System.ComponentModel;
 using WEBCTRLS = System.Web.UI.WebControls;
 using ASP = System.Web.UI;
+using System.Web;
+using System.Web.UI;
 
 namespace Ra.Widgets
 {
@@ -150,9 +152,9 @@ namespace Ra.Widgets
             // Since if ViewState is DISABLED we will NEVER come into LoadViewState we need to
             // have the same logic in OnInit since we really should modify the Text value to
             // the postback value BEFORE Page_Load event is fired...
-            if (Enabled && !this.IsViewStateEnabled && AjaxManager.Instance.CurrentPage.IsPostBack)
+            if (Enabled && !this.IsViewStateEnabled && ((Page)HttpContext.Current.CurrentHandler).IsPostBack)
             {
-                string valueOfTextBox = AjaxManager.Instance.CurrentPage.Request.Params[ClientID];
+                string valueOfTextBox = ((Page)HttpContext.Current.CurrentHandler).Request.Params[ClientID];
                 if (valueOfTextBox != Text)
 				{
 					// Note that to avoid the string taking up bandwidth BACK to the client
@@ -171,9 +173,9 @@ namespace Ra.Widgets
             // Since if ViewState is DISABLED we will NEVER come into this bugger we need to
             // have the same logic in OnInit since we really should modify the Text value to
             // the postback value BEFORE Page_Load event is fired...
-            if (Enabled && AjaxManager.Instance.CurrentPage.IsPostBack)
+            if (Enabled && ((Page)HttpContext.Current.CurrentHandler).IsPostBack)
             {
-                string valueOfTextBox = AjaxManager.Instance.CurrentPage.Request.Params[ClientID];
+                string valueOfTextBox = ((Page)HttpContext.Current.CurrentHandler).Request.Params[ClientID];
                 if (valueOfTextBox != Text)
 				{
 					// Note that to avoid the string taking up bandwidth BACK to the client

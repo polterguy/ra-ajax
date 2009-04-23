@@ -17,13 +17,16 @@ using HTML = System.Web.UI.HtmlControls;
 namespace Ra.Extensions
 {
     /**
-     * A nicer button with skinning capablities, support for adding buttons and lots of other "candy goodies".
+     * A nicer button with skinning capablities, support for adding buttons and lots of other 
+     * "candy goodies". In all other regards it's pretty similar to the normal Ra.Widgets.Button
+     * control. This one will render as the HTML button element though and not as an input type="button"
+     * element.
      */
     [ASP.ToolboxData("<{0}:ExtButton runat=server />")]
     public class ExtButton : RaWebControl
     {
         /**
-         * The text that is displayed within the button, default value is string.Empty
+         * The text that is displayed within the button, default value is string.Empty.
          */
         [DefaultValue("")]
         public string Text
@@ -58,7 +61,8 @@ namespace Ra.Extensions
         }
 
         /**
-         * If false then the button is disabled, otherwise it is enabled
+         * If false then the button is disabled, otherwise it is enabled. A disabled button cannot be
+         * clicked and will not raise events on the server when clicked.
          */
         [DefaultValue(true)]
         public bool Enabled
@@ -73,7 +77,7 @@ namespace Ra.Extensions
         }
 
         /**
-         * Overridden to provide a sane default value
+         * Overridden to provide a sane default value. The default value of this property is "button".
          */
         [DefaultValue("button")]
         public override string CssClass
