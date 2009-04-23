@@ -89,6 +89,28 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "TestWebSite", "TestWebSite\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaSelector.VS2008", "RaSelector\RaSelector.VS2008.csproj", "{DAB72895-17EF-4146-86B9-CDF24FD678B2}"
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "reference-samples", "reference-samples\", "{705EB0F2-FE7C-4653-85E7-FF601AF6CC76}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFramework = "2.0"
+		ProjectReferences = "{DA39B87F-8E68-4461-9C24-5778921497A5}|Extensions.dll;{704AE5D2-665F-472F-9BC2-C48B8E33DD0C}|Ra.Build.Tasks.dll;{82727C73-0B10-4F58-93F4-841E9397302C}|Ra.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/reference-samples"
+		Debug.AspNetCompiler.PhysicalPath = "reference-samples\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\reference-samples\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/reference-samples"
+		Release.AspNetCompiler.PhysicalPath = "reference-samples\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\reference-samples\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "64209"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -188,6 +210,16 @@ Global
 		{DAB72895-17EF-4146-86B9-CDF24FD678B2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DAB72895-17EF-4146-86B9-CDF24FD678B2}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{DAB72895-17EF-4146-86B9-CDF24FD678B2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{705EB0F2-FE7C-4653-85E7-FF601AF6CC76}.Debug|.NET.ActiveCfg = Debug|.NET
+		{705EB0F2-FE7C-4653-85E7-FF601AF6CC76}.Debug|.NET.Build.0 = Debug|.NET
+		{705EB0F2-FE7C-4653-85E7-FF601AF6CC76}.Debug|Any CPU.ActiveCfg = Debug|.NET
+		{705EB0F2-FE7C-4653-85E7-FF601AF6CC76}.Debug|Mixed Platforms.ActiveCfg = Debug|.NET
+		{705EB0F2-FE7C-4653-85E7-FF601AF6CC76}.Debug|Mixed Platforms.Build.0 = Debug|.NET
+		{705EB0F2-FE7C-4653-85E7-FF601AF6CC76}.Release|.NET.ActiveCfg = Debug|.NET
+		{705EB0F2-FE7C-4653-85E7-FF601AF6CC76}.Release|.NET.Build.0 = Debug|.NET
+		{705EB0F2-FE7C-4653-85E7-FF601AF6CC76}.Release|Any CPU.ActiveCfg = Debug|.NET
+		{705EB0F2-FE7C-4653-85E7-FF601AF6CC76}.Release|Mixed Platforms.ActiveCfg = Debug|.NET
+		{705EB0F2-FE7C-4653-85E7-FF601AF6CC76}.Release|Mixed Platforms.Build.0 = Debug|.NET
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
