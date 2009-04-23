@@ -45,7 +45,9 @@ namespace Ra
         private string _requestViewState;
 
         /**
-         * Public accessor, only way to access instance of class
+         * Public accessor, only way to access instance of AjaxManager. The AjaxManager is
+         * the "glue" that ties everything together. Use this property to retrieve the only
+         * existing object of type AjaxManager.
          */
         public static AjaxManager Instance
         {
@@ -62,30 +64,22 @@ namespace Ra
             get { return _raControls; }
         }
 
-        // TODO: Check to see if we can delete CurrentPage...!
-        /** 
-         * Returns the active page object, of the request
-         */
-        public Page CurrentPage
-        {
-            get { return ((Page)HttpContext.Current.CurrentHandler); }
-        }
-
         /**
          * Returns true if this is a Ra-Ajax callback. A Ra-Ajax callback is also a "subset" of
-         * a normal Postback, which means if this is true, also the IsPostBack from ASP.NET will
-         * be true
+         * a normal Postback, which means that if this property is true, then the IsPostBack from 
+         * ASP.NET's System.Web.UI.Page will also be true.
          */
         public bool IsCallback
         {
-            get { return CurrentPage.Request.Params["__RA_CALLBACK"] == "true" && CurrentPage.Request.Params["HTTP_X_MICROSOFTAJAX"] == null; }
+            get { return HttpContext.Current.Request.Params["__RA_CALLBACK"] == "true" && HttpContext.Current.Request.Params["HTTP_X_MICROSOFTAJAX"] == null; }
         }
 
         // Set this one to true to bypass the Response.Filter logic and toss in your own version of it...
         /**
          * Surpress the rendering filter on the response. WARNING; Unless you completely understand what this
          * property does, then do NOT USE IT! It will shut off all the default Ajax engine since it will
-         * make the rendering return to "default" postback rendering.
+         * make the rendering return to "default" postback rendering. This is only meant for really advanced
+         * control developers and also those that wants to handle requests in their own special way.
          */
         public bool SupressAjaxFilters
         {
@@ -93,7 +87,7 @@ namespace Ra
             set { _supressFilters = value; }
         }
 
-        public Control FindControl(Control current, string id)
+        internal Control FindControl(Control current, string id)
         {
             if (current.ID == id)
                 return current;
@@ -119,37 +113,29 @@ namespace Ra
             return null;
         }
 
-        /**
-         * Recursively traverses all controls on Page and MasterPage and returns the first control with the 
-         * given ID
-         */
-        public Control FindControl(string id)
+        private Control FindControl(string id)
         {
-            Control tmpRetVal = FindControl(CurrentPage, id);
+            Control tmpRetVal = FindControl(((Page)HttpContext.Current.CurrentHandler), id);
             if (tmpRetVal != null)
                 return tmpRetVal;
-            if (CurrentPage.Master != null)
-                tmpRetVal = FindControl(CurrentPage.Master, id);
+            if (((Page)HttpContext.Current.CurrentHandler).Master != null)
+                tmpRetVal = FindControl(((Page)HttpContext.Current.CurrentHandler).Master, id);
+            return tmpRetVal;
+        }
+
+        private Control FindControlClientID(string id)
+        {
+            Control tmpRetVal = FindControlClientID(((Page)HttpContext.Current.CurrentHandler), id);
+            if (tmpRetVal != null)
+                return tmpRetVal;
+            if (((Page)HttpContext.Current.CurrentHandler).Master != null)
+                tmpRetVal = FindControlClientID(((Page)HttpContext.Current.CurrentHandler).Master, id);
             return tmpRetVal;
         }
 
         /**
          * Recursively traverses all controls on Page and MasterPage and returns the first control with the 
-         * given ClientID
-         */
-        public Control FindControlClientID(string id)
-        {
-            Control tmpRetVal = FindControlClientID(CurrentPage, id);
-            if (tmpRetVal != null)
-                return tmpRetVal;
-            if (CurrentPage.Master != null)
-                tmpRetVal = FindControlClientID(CurrentPage.Master, id);
-            return tmpRetVal;
-        }
-
-        /**
-         * Recursively traverses all controls on Page and MasterPage and returns the first control with the 
-         * given ID casting it to typeof(T)
+         * given ID casting it to typeof(T).
          */
         public T FindControl<T>(string id) where T : Control
         {
@@ -165,11 +151,7 @@ namespace Ra
             return (T)FindControl(childOf, id);
         }
 
-        /**
-         * Recursively traverses all controls on Page and MasterPage and returns the first control with the 
-         * given ClientID casting it to typeof(T)
-         */
-        public T FindControlClientID<T>(string id) where T : Control
+        internal T FindControlClientID<T>(string id) where T : Control
         {
             return (T)FindControlClientID(id);
         }
@@ -182,7 +164,7 @@ namespace Ra
             // Making sure we only run the initialization logic ONCE...!!
             if (RaControls.Count == 1)
             {
-                if (CurrentPage.Request.Params["HTTP_X_MICROSOFTAJAX"] != null)
+                if (((Page)HttpContext.Current.CurrentHandler).Request.Params["HTTP_X_MICROSOFTAJAX"] != null)
                     return;
 
                 if (IsCallback)
@@ -190,21 +172,21 @@ namespace Ra
                     // This is a Ra-Ajax callback, we need to wait until the Page Load 
                     // events are finished loading and then find the control which
                     // wants to fire an event and do so...
-                    CurrentPage.LoadComplete += CurrentPage_LoadComplete;
+                    ((Page)HttpContext.Current.CurrentHandler).LoadComplete += CurrentPage_LoadComplete;
 
                     // Checking to see if the Filtering logic has been supressed
                     if (!SupressAjaxFilters)
                     {
-                        CurrentPage.Response.Filter = new CallbackFilter(CurrentPage.Response.Filter);
+                        ((Page)HttpContext.Current.CurrentHandler).Response.Filter = new CallbackFilter(((Page)HttpContext.Current.CurrentHandler).Response.Filter);
                     }
                 }
                 else
                 {
-                    CurrentPage.LoadComplete += CurrentPage_LoadComplete_NO_AJAX;
+                    ((Page)HttpContext.Current.CurrentHandler).LoadComplete += CurrentPage_LoadComplete_NO_AJAX;
 
                     // Checking to see if the Filtering logic has been supressed
                     if (!SupressAjaxFilters)
-                        CurrentPage.Response.Filter = new PostbackFilter(CurrentPage.Response.Filter);
+                        ((Page)HttpContext.Current.CurrentHandler).Response.Filter = new PostbackFilter(((Page)HttpContext.Current.CurrentHandler).Response.Filter);
                 }
             }
         }
@@ -216,31 +198,31 @@ namespace Ra
             // including the ViewState which practically will completely break the back
             // button in addition to breaking down all Ajax when clicking back, forward or refresh
             // in FireFox...
-            if (CurrentPage.Request.Browser.Browser == "Firefox" || CurrentPage.Request.Browser.Browser == "Iceweasel")
-                CurrentPage.Form.Attributes.Add("autocomplete", "off");
+            if (((Page)HttpContext.Current.CurrentHandler).Request.Browser.Browser == "Firefox" || ((Page)HttpContext.Current.CurrentHandler).Request.Browser.Browser == "Iceweasel")
+                ((Page)HttpContext.Current.CurrentHandler).Form.Attributes.Add("autocomplete", "off");
         }
 
         private void CurrentPage_LoadComplete(object sender, EventArgs e)
         {
             // Storing request viewstate in order to be able to "diff" 
             // them in rendering of response
-            _requestViewState = CurrentPage.Request.Params["__VIEWSTATE"];
+            _requestViewState = ((Page)HttpContext.Current.CurrentHandler).Request.Params["__VIEWSTATE"];
 
             // Finding the Control which initiated the request
-            string idOfControl = CurrentPage.Request.Params["__RA_CONTROL"];
+            string idOfControl = ((Page)HttpContext.Current.CurrentHandler).Request.Params["__RA_CONTROL"];
 
             // Setting Response Content-Type to JavaScript
-            CurrentPage.Response.ContentType = "text/javascript";
+            ((Page)HttpContext.Current.CurrentHandler).Response.ContentType = "text/javascript";
 
             // Checking to see if this is a "non-Control" callback...
             if (string.IsNullOrEmpty(idOfControl))
             {
-                string functionName = CurrentPage.Request.Params["__FUNCTION_NAME"];
+                string functionName = ((Page)HttpContext.Current.CurrentHandler).Request.Params["__FUNCTION_NAME"];
                 
                 if (string.IsNullOrEmpty(functionName))
                     return;
 
-                Control ctrlToCallFor = CurrentPage;
+                Control ctrlToCallFor = ((Page)HttpContext.Current.CurrentHandler);
                 MethodInfo webMethod = ExtractMethod(functionName, ref ctrlToCallFor);
 
                 if (webMethod == null || webMethod.GetCustomAttributes(typeof(Ra.WebMethod), false).Length == 0)
@@ -249,9 +231,9 @@ namespace Ra
                 ParameterInfo[] parameters = webMethod.GetParameters();
 
                 object[] args = new object[parameters.Length];
-                for (int idx = 0; idx < parameters.Length && CurrentPage.Request.Params["__ARG" + idx] != null; idx++)
+                for (int idx = 0; idx < parameters.Length && ((Page)HttpContext.Current.CurrentHandler).Request.Params["__ARG" + idx] != null; idx++)
                 {
-                    args[idx] = Convert.ChangeType(CurrentPage.Request.Params["__ARG" + idx], parameters[idx].ParameterType);
+                    args[idx] = Convert.ChangeType(((Page)HttpContext.Current.CurrentHandler).Request.Params["__ARG" + idx], parameters[idx].ParameterType);
                 }
 
                 object retVal = webMethod.Invoke(ctrlToCallFor, args);
@@ -270,7 +252,7 @@ namespace Ra
                 });
 
             // Getting the name of the event the control raised
-            string eventName = CurrentPage.Request.Params["__EVENT_NAME"];
+            string eventName = ((Page)HttpContext.Current.CurrentHandler).Request.Params["__EVENT_NAME"];
 
             // Casting the initiated control to the interface expected all Ra Controls to be
             IRaControl raCtrl = ctrl as IRaControl;
@@ -289,18 +271,18 @@ namespace Ra
             if (functionName.IndexOf(".") == -1)
             {
                 // No UserControls in the picture here...
-                webMethod = CurrentPage.GetType().BaseType.GetMethod(functionName,
+                webMethod = ((Page)HttpContext.Current.CurrentHandler).GetType().BaseType.GetMethod(functionName,
                     BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
                 if (webMethod != null)
                 {
-                    ctrlToCallFor = CurrentPage;
+                    ctrlToCallFor = ((Page)HttpContext.Current.CurrentHandler);
                 }
                 else
                 {
                     // Couldn't find method in Page, looking in MasterPage
-                    webMethod = CurrentPage.Master.GetType().BaseType.GetMethod(functionName,
+                    webMethod = ((Page)HttpContext.Current.CurrentHandler).Master.GetType().BaseType.GetMethod(functionName,
                         BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-                    ctrlToCallFor = CurrentPage.Master;
+                    ctrlToCallFor = ((Page)HttpContext.Current.CurrentHandler).Master;
                 }
             }
             else
@@ -343,9 +325,9 @@ namespace Ra
             if (this.SupressAjaxFilters)
             {
                 // Need to explicitly include JS files if filters are surpressed...
-                CurrentPage.ClientScript.RegisterClientScriptResource(typeof(AjaxManager), "Ra.Js." + script);
+                ((Page)HttpContext.Current.CurrentHandler).ClientScript.RegisterClientScriptResource(typeof(AjaxManager), "Ra.Js." + script);
             }
-            string resource = CurrentPage.ClientScript.GetWebResourceUrl(typeof(AjaxManager), "Ra.Js." + script);
+            string resource = ((Page)HttpContext.Current.CurrentHandler).ClientScript.GetWebResourceUrl(typeof(AjaxManager), "Ra.Js." + script);
 
 			if( _scriptIncludes.Exists(
                 delegate(string idx)
@@ -357,16 +339,20 @@ namespace Ra
         }
 
         /**
-         * Includes a JavaScript file from a resource with the given resource if
+         * Includes a JavaScript file from a resource with the given resource id. This one is mostly 
+         * for Control developers to make sure your script files are being included. Note that this
+         * will NOT include scripts included during an Ajax CallBack. If you have an Ajax Control
+         * that needs a JavaScript file, you must make sure it's being included during the initial
+         * rendering.
          */
         public void IncludeScriptFromResource(Type type, string id)
         {
             if (this.SupressAjaxFilters)
             {
                 // Need to explicitly include JS files if filters are surpressed...
-                CurrentPage.ClientScript.RegisterClientScriptResource(type, id);
+                ((Page)HttpContext.Current.CurrentHandler).ClientScript.RegisterClientScriptResource(type, id);
             }
-            string resource = CurrentPage.ClientScript.GetWebResourceUrl(type, id);
+            string resource = ((Page)HttpContext.Current.CurrentHandler).ClientScript.GetWebResourceUrl(type, id);
             if (!_scriptIncludes.Exists(
                 delegate(string idx)
                 {
@@ -379,20 +365,21 @@ namespace Ra
 
         /**
          * Use to redirect to another page from a Ra-Ajax Callback. Note the default ASP.NET implementation
-         * that redirects on Response.Redirect does NOT work in Ra-Ajax callbacks.
+         * that redirects on Response.Redirect does NOT work in Ra-Ajax callbacks. This method might be used
+         * instead of the default Response.Redirect method though.
          */
         public void Redirect(string url)
         {
             if (!IsCallback)
-                CurrentPage.Response.Redirect(url);
+                ((Page)HttpContext.Current.CurrentHandler).Response.Redirect(url);
             else
             {
-                CurrentPage.Response.AddHeader("Location", CurrentPage.Response.ApplyAppPathModifier(url));
+                ((Page)HttpContext.Current.CurrentHandler).Response.AddHeader("Location", ((Page)HttpContext.Current.CurrentHandler).Response.ApplyAppPathModifier(url));
 
                 // Note that due to w3c standardizing the XHR should TRANSPARENTLY
                 // do 301 and 302 redirects we need another mechanism to inform client side that
                 // the user code is RE-directing to another page!
-                CurrentPage.Response.StatusCode = 278;
+                ((Page)HttpContext.Current.CurrentHandler).Response.StatusCode = 278;
                 _redirectUrl = url;
             }
         }
@@ -413,7 +400,13 @@ namespace Ra
 
         // TODO: Why is this an HTMLTextWriter?
         /**
-         * Use this method to append you own script which will be executed on the client when the request returns
+         * Use this method to append you own script and/or HTML or other output which will be executed 
+         * on the client when the request returns. Notice though that the JavaScript Ajax engine of
+         * Ra-Ajax will expect whatever is being returned to the client to be JavaScript. This means that
+         * if you want to return other types of values and objects back to the client you need to wrap this
+         * somehow inside of JavaScript by using e.g. JSON or some similar mechanism. Also you should always
+         * end your JavaScript statements with semicolon (;) since otherwise other parts of the JavaScript
+         * returned probably will fissle.
          */
         public HtmlTextWriter WriterAtBack
         {

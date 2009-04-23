@@ -532,6 +532,50 @@ ul#menu li a:hover
 	margin-bottom:10px;
 }
 
+.filterBox
+{
+	position:absolute;
+	top:3px;
+	right:150px;
+}
+
+.filter-left
+{
+	background:Transparent url(filter-icon.png) no-repeat 0 0;
+	width:17px;
+	height:19px;
+	display:block;
+	position:absolute;
+	top:0;
+	left:0;
+}
+
+.filter
+{
+	background:Transparent url(filter-icon.png) repeat-x 0 -38px;
+	width:100px !important;
+	height:19px;
+	display:block;
+	padding:3px;
+	border:none 0;
+	position:absolute;
+	top:0;
+	left:17px;
+	font-size:11px;
+	color:#606060;
+}
+
+.filter-right
+{
+	background:Transparent url(filter-icon.png) no-repeat 0 -19px;
+	width:17px;
+	height:19px;
+	display:block;
+	position:absolute;
+	top:0;
+	left:116px;
+}
+
 .inherits:hover
 {
 	background-color:#ededed;
@@ -589,5 +633,6 @@ ul#menu li a:hover
 	border:dashed 1px #ddd;
 	background-color:#fdfdfd;
 }
+
 
 

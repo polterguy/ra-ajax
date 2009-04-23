@@ -18,16 +18,22 @@ using System.Collections.Generic;
 namespace Ra.Extensions
 {
     /**
-     * Calendar widget for choosing dates. Basically just a DateTime Picker control which makes
-     * it possible to choose dates, though with no Time part. Use the DateTimePicker widget if 
-     * you also need Time support.
+     * Calendar widget for choosing dates. Basically just a DateTimePicker control without the Time portions
+     * which makes it possible to choose dates. Use the DateTimePicker widget if you also need Time support.
+     * This is a highly flexible control and you can even override the rendering of cells by handling the 
+     * RenderDay event from which you can even inject your own controls into specific dates and such. Highly
+     * versatile Control for date manipulations.
      */
     [ASP.ToolboxData("<{0}:Calendar runat=server />")]
     public class Calendar : Panel, ASP.INamingContainer
     {
         /**
          * EventArgs being passed into the CreateNavigationalButtons events. This is the EventArgs
-         * type being passed into the RetrieveAutoCompleterItems event of the Calendar Widget.
+         * type being passed into the CreateExtraControlsAtBottom event of the Calendar Widget.
+         * To add your own custom controls at the bottom append these controls into the Controls
+         * property of this EventArgs instance. A good example of using this can be seen in the 
+         * DateTimePicker of Ra-Ajax which injects its TextBoxes for choosing the time parts
+         * through this logic.
          */
         public class CreateExtraControlsAtBottomEvtArgs : EventArgs
         {
@@ -51,9 +57,10 @@ namespace Ra.Extensions
         }
 
         /**
-         * EventArgs class for the RenderDay Event. Basically the EventArgs passed into 
-         * the RenderDay event. Modify the Cell property to e.g. add up child controls
-         * or special styles and CSS classes.
+         * EventArgs class for the RenderDay Event. Modify the Cell property to e.g. add up 
+         * child controls or special styles and CSS classes and such. Useful for creating e.g. 
+         * "activities" or something similar on specific dates according to your own entity 
+         * DateTime objects.
          */
         public class RenderDayEventArgs : EventArgs
         {
@@ -61,7 +68,9 @@ namespace Ra.Extensions
             private HTML.HtmlTableCell _cell;
 
             /**
-             * Cell which renders the given Date
+             * Cell which renders the given Date. This is an HTML table td element which you can inject your
+             * own controls within. You can also modify the style or CssClass properties of this control
+             * to reflect different visual appearance for different dates.
              */
             public HTML.HtmlTableCell Cell
             {
@@ -69,7 +78,8 @@ namespace Ra.Extensions
             }
 
             /**
-             * Date which are currently rendered
+             * Date which are currently rendered. This is the DateTime object for the cell currently being
+             * rendered.
              */
             public DateTime Date
             {
@@ -96,15 +106,19 @@ namespace Ra.Extensions
         protected Label _caption;
 
         /**
-         * Raised when Value is changed by user. Can be raised by chaning month and year contrary
-         * to the DateClicked event
+         * Raised when Value is changed by user. Can be raised by changing month and year contrary
+         * to the DateClicked event. This is NOT normally supposed to be thought of as the
+         * "date chosen by user event" but rather the DateClicked event serves that purpose. The
+         * reason to that is that the user might just browse around to find th "correct" month or year
+         * etc. Not before the DateClicked event is raised one would normally consider the user to
+         * have finished his selection of date.
          */
         public event EventHandler SelectedValueChanged;
 
         /**
          * Raised when a specific date is clicked, this event will not be raised when
          * year or month is changed, only when a specific date is clicked or the "Today" date
-         * is clicked
+         * is clicked. This can be thought of as the "date was selected event".
          */
         public event EventHandler DateClicked;
 
@@ -116,12 +130,20 @@ namespace Ra.Extensions
         public event EventHandler<CreateExtraControlsAtBottomEvtArgs> CreateExtraControlsAtBottom;
 
         /**
-         * Called once for every date which is rendered within the current month if defined
+         * Called once for every date which is rendered within the current month if defined. Use this
+         * event to render your own custom content within specific dates. The EventArgs of this
+         * event handler is RenderDayEventArgs which has one property for what date is currently being 
+         * rendered, and another property called Cell which is the currently rendered HTML table td 
+         * cell of the control. Inside of this Cell control you can add up your own controls and such.
+         * Or modify the CssClass and such to have different colors and such for different dates.
+         * Notice though that this event will be raise once for EVERY date within the currently 
+         * selected month. So be careful with adding too much overhead into your event handlers handling
+         * this event.
          */
         public event EventHandler<RenderDayEventArgs> RenderDay;
 
         /**
-         * Overridden to provide a sane default value
+         * Overridden to provide a sane default value. The default value of this property is "calendar".
          */
         [DefaultValue("calendar")]
         public override string CssClass
@@ -144,7 +166,9 @@ namespace Ra.Extensions
         }
 
         /**
-         * Selected value of calendar
+         * Selected value of calendar. This is the currently selected DateTime value of the control.
+         * You can also set this value which will be reflected back to the client once returned from
+         * the Ajax Request.
          */
         public DateTime Value
         {
@@ -165,7 +189,10 @@ namespace Ra.Extensions
         }
 
         /**
-         * Defines the leftmost weekday of the calendar
+         * Defines the leftmost weekday of the calendar. In Norway for instance a week starts on Mondays, 
+         * while in most other countries the week starts on Sunday. Change this property to define
+         * which weekday you wish to have to the left on the Calendar surface. You can choose any weekday
+         * you wish here.
          */
         [DefaultValue(DayOfWeek.Monday)]
         public DayOfWeek StartsOn
@@ -177,14 +204,9 @@ namespace Ra.Extensions
             }
         }
 
-        public Label ContentControl
-        {
-            get { return _content; }
-        }
-
         /**
          * Overrides the caption of the Calendar. The caption will normally display the "current date" unless
-         * this property is set to something else than null
+         * this property is set to something else than null.
          */
         [DefaultValue(null)]
         public string Caption

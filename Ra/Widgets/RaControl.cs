@@ -12,6 +12,7 @@ using System.Text;
 using System.Web.UI;
 using System.ComponentModel;
 using System.Collections.Generic;
+using System.Web;
 
 /**
  * Namespace where all the Widgets from the Ra core can be found together with some of their
@@ -474,7 +475,7 @@ namespace Ra.Widgets
                 AjaxManager.Instance.IncludeMainControlScripts();
 
                 // Registering control with the AjaxManager
-                AjaxManager.Instance.CurrentPage.RegisterRequiresControlState(this);
+                ((Page)HttpContext.Current.CurrentHandler).RegisterRequiresControlState(this);
             }
 
 			base.OnInit(e);

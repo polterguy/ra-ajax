@@ -60,18 +60,22 @@ namespace Ra.Extensions
         Label _items;
 
         /**
-         * EventHandler fired when AutoCompleter needs new items
+         * EventHandler fired when AutoCompleter needs new items. The EventArgs passed to this
+         * event handler will be of type AutoCompleter.RetrieveAutoCompleterItemsEventArgs.
+         * Use the Controls property of this EventArgs object to populate the AutoCompleter with
+         * new AutoCompleter items. Note though that ONLY AutoCompleterItem widgets should be
+         * added into this collection of controls.
          */
         public event EventHandler<RetrieveAutoCompleterItemsEventArgs> RetrieveAutoCompleterItems;
 
         /**
          * Fired when the user selects an AutoCompleterItem. Use SelectedItem property to figure
-         * out which item was selected. SelectedItem will contain the ID of the Item which was selected
+         * out which item was selected. SelectedItem will contain the ID of the Item which was selected.
          */
         public event EventHandler AutoCompleterItemSelected;
 
         /**
-         * Overridden to provide a sane default value
+         * Overridden to provide a sane default value. The default value of this property is "auto".
          */
         [DefaultValue("auto")]
         public override string CssClass
@@ -87,7 +91,10 @@ namespace Ra.Extensions
         }
 
         /**
-         * This is the item which currently is selected (if any)
+         * This is the item which currently is selected (if any). Will return null if no
+         * items are selected. Notice that this will return a STRING which is the ID of the
+         * AutoCompleterItem which the user has selected. Use e.g. the RaSelector or something 
+         * similar to retrieve the actual control (if needed)
          */
         [DefaultValue(null)]
         public string SelectedItem
@@ -97,7 +104,10 @@ namespace Ra.Extensions
         }
 
         /**
-         * Keyboard shortcut to reach the TextBox of the autocompleter
+         * Keyboard shortcut to reach the TextBox of the autocompleter. Normally this will be differently
+         * implemented with different browsers. For a default English FireFox installation for instance
+         * you need to combine the key with pressing ALT and SHIFT. For other browsers this may vary
+         * further.
          */
         [DefaultValue("")]
         public string AccessKey
@@ -107,17 +117,8 @@ namespace Ra.Extensions
         }
 
         /**
-         * Tooltip for control
-         */
-        [DefaultValue("")]
-        public override string Tooltip
-        {
-            get { return _txt.Tooltip; }
-            set { _txt.Tooltip = value; }
-        }
-
-        /**
-         * Text for control
+         * Text for control. You can modify through code the Text portions of the AutoCompleter TextBox.
+         * Often this will be used to give "sane default" values. If used at all.
          */
         [DefaultValue("")]
         public string Text
@@ -218,11 +219,19 @@ namespace Ra.Extensions
             }
         }
 
+        /**
+         * Overridden to let the Focus method implementation from RaControl give focus to the TextBox
+         * portions of this control.
+         */
         public override void Focus()
         {
             _txt.Focus();
         }
 
+        /**
+         * Overridden to let the Select method implementation from RaControl select the TextBox
+         * portions text property of this control.
+         */
         public void Select()
         {
             _txt.Select();

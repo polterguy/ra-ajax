@@ -10,6 +10,8 @@ using System;
 using System.ComponentModel;
 using WEBCTRLS = System.Web.UI.WebControls;
 using ASP = System.Web.UI;
+using System.Web.UI;
+using System.Web;
 
 namespace Ra.Widgets
 {
@@ -48,9 +50,9 @@ namespace Ra.Widgets
             // Since if ViewState is DISABLED we will NEVER come into LoadViewState we need to
             // have the same logic in OnInit since we really should modify the Text value to
             // the postback value BEFORE Page_Load event is fired...
-            if (!this.IsViewStateEnabled && AjaxManager.Instance.CurrentPage.IsPostBack)
+            if (!this.IsViewStateEnabled && ((Page)HttpContext.Current.CurrentHandler).IsPostBack)
             {
-                string value = AjaxManager.Instance.CurrentPage.Request.Params[ClientID];
+                string value = ((Page)HttpContext.Current.CurrentHandler).Request.Params[ClientID];
                 if (value != Value)
                     Value = value;
             }
@@ -64,9 +66,9 @@ namespace Ra.Widgets
             // Since if ViewState is DISABLED we will NEVER come into this bugger we need to
             // have the same logic in OnInit since we really should modify the Text value to
             // the postback value BEFORE Page_Load event is fired...
-            if (AjaxManager.Instance.CurrentPage.IsPostBack)
+            if (((Page)HttpContext.Current.CurrentHandler).IsPostBack)
             {
-                string value = AjaxManager.Instance.CurrentPage.Request.Params[ClientID];
+                string value = ((Page)HttpContext.Current.CurrentHandler).Request.Params[ClientID];
                 if (value != Value)
                     Value = value;
             }

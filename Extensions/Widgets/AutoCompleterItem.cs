@@ -19,7 +19,9 @@ namespace Ra.Extensions
     /**
      * AutoCompleterItem, item control type for AutoCompleter Widget. When the RetrieveAutoCompleterItems
      * of the AutoCompleter widget is raised then this is the type of widget which is expected by
-     * you to append into the Control eollection of the AutoCompleter.
+     * you to append into the Control collection of the AutoCompleter. This is basically just a normal
+     * Label control which has overridden the Tag property to render as "li" (list elements) instead
+     * of as "span" elements.
      */
     public class AutoCompleterItem : Label, ASP.INamingContainer
     {

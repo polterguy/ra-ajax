@@ -13,6 +13,8 @@ using ASP = System.Web.UI;
 using Ra.Widgets;
 using System.IO;
 using HTML = System.Web.UI.HtmlControls;
+using System.Web.UI;
+using System.Web;
 
 [assembly: ASP.WebResource("Extensions.Js.RichEdit.js", "text/javascript")]
 
@@ -67,7 +69,7 @@ namespace Ra.Extensions
 
         protected override void OnInit(EventArgs e)
         {
-            if (!this.IsViewStateEnabled && AjaxManager.Instance.CurrentPage.IsPostBack && this.Visible)
+            if (!this.IsViewStateEnabled && ((Page)HttpContext.Current.CurrentHandler).IsPostBack && this.Visible)
             {
                 // Making sure we get our NEW value loaded...
                 string value = Page.Request.Params[ClientID + "__VALUE"];
@@ -83,7 +85,7 @@ namespace Ra.Extensions
         {
             base.LoadViewState(savedState);
 
-            if (AjaxManager.Instance.CurrentPage.IsPostBack && this.Visible)
+            if (((Page)HttpContext.Current.CurrentHandler).IsPostBack && this.Visible)
             {
                 // Making sure we get our NEW value loaded...
                 string value = Page.Request.Params[ClientID + "__VALUE"];

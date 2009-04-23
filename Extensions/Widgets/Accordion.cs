@@ -30,12 +30,15 @@ namespace Ra.Extensions
     public class Accordion : Panel, ASP.INamingContainer
     {
         /**
-         * Raised when active accordion is changed
+         * Raised when the active AccordionView is changed. When the user clicks an inactive 
+         * AccordionView, then this event will be raised and the currently active AccordionView 
+         * will be accessible through e.g. the ActiveAccordionViewIndex property of the Accordion.
          */
         public event EventHandler ActiveAccordionViewChanged;
 
         /**
-         * Index of currently viewing panel
+         * Index of currently viewing panel. Note that the first AccordionView has an index of 0 and the
+         * second has an index of 1, etc.
          */
         [DefaultValue(0)]
         public int ActiveAccordionViewIndex
@@ -48,7 +51,7 @@ namespace Ra.Extensions
         }
 
         /**
-         * Overridden to provide a sane default value
+         * Overridden to provide a sane default value. The default value of this property is "accordion".
          */
         [DefaultValue("accordion")]
         public override string CssClass
@@ -65,7 +68,7 @@ namespace Ra.Extensions
 
         /**
          * When changing active panel there will be a drop-down/up effect. This property defines the
-         * number of milliseconds the animation will spend.
+         * number of milliseconds that animation will spend.
          */
         [DefaultValue(400)]
         public int AnimationDuration
@@ -106,7 +109,8 @@ namespace Ra.Extensions
         }
 
         /**
-         * All AccordionViews within the accordion
+         * All AccordionViews within the Accordion. This method will return all child controls which 
+         * are of type AccordionView.
          */
         [Browsable(false)]
         public IEnumerable<AccordionView> Views

@@ -17,14 +17,15 @@ using HTML = System.Web.UI.HtmlControls;
 namespace Ra.Extensions
 {
     /**
-     * Panels for the Accordion control. An Accordion is basically just a collection of widgets
-     * of this type.
+     * Panels for the Accordion control. An Accordion is basically just a collection of 
+     * AccordionView controls.
      */
     [ASP.ToolboxData("<{0}:AccordionView runat=server></{0}:AccordionView>")]
     public class AccordionView : Panel
     {
         /**
-         * header string for accordionview
+         * Header string for AccordionView. This is the text that will be displayed at the top "select area"
+         * of the AccordionView.
          */
         [DefaultValue("")]
         public string Caption
@@ -76,6 +77,10 @@ namespace Ra.Extensions
                 string func = string.Format(@"function() {{
 Ra.E('{0}_CHILDREN', {{
   onStart: function() {{
+    if( this.element.style.display != 'none' ) {{
+      this.stopped = true;
+      return;
+    }}
     var others = [{1}];
     var other = '';
     for( var idx = 0; idx < others.length; idx++ ) {{
@@ -179,7 +184,7 @@ Ra.E('{0}', {{
             SetActive();
         }
 
-        public void SetActive()
+        private void SetActive()
         {
             if (IsActive())
                 return;
@@ -219,10 +224,7 @@ Ra.E('{0}', {{
             writer.Write("</div>");
         }
 
-        /**
-         * Returns true if this is the activce accordionview in the parent Accordion
-         */
-        public bool IsActive()
+        private bool IsActive()
         {
             bool isActive = false;
             Accordion acc = Parent as Accordion;
