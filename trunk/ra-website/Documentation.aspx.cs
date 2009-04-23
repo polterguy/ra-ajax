@@ -47,14 +47,7 @@ namespace RaWebsite
                     default:
                         {
                             string value = idx.ChildNodes[0].InnerText.Replace("::", ".");
-                            if (!string.IsNullOrEmpty(Filter) && value.ToLower().Contains(Filter.ToLower()))
-                            {
-                                TreeNode n = new TreeNode();
-                                n.ID = idx.Attributes["refid"].Value;
-                                n.Text = value;
-                                l.Add(n);
-                            }
-                            else if(string.IsNullOrEmpty(Filter))
+                            if ((!string.IsNullOrEmpty(Filter) && value.ToLower().Contains(Filter.ToLower())) || (string.IsNullOrEmpty(Filter)))
                             {
                                 TreeNode n = new TreeNode();
                                 n.ID = idx.Attributes["refid"].Value;
