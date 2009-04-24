@@ -79,6 +79,9 @@ http://ra-ajax.org
 {
 	position:relative;
 	overflow:hidden;
+	border-left:solid 1px #999;
+	border-right:solid 1px #999;
+	border-bottom:solid 1px #999;
 }
 
 .slider-menu .bread-crumb
@@ -145,6 +148,7 @@ http://ra-ajax.org
 .slider-menu .top-level
 {
 	position:inherit;
+	*margin-top:32px;
 	margin-left:0;
 }
 
