@@ -112,7 +112,12 @@
                 <ext:SliderMenuItem 
                     runat="server" 
                     ID="window" 
-                    Text="Window" />
+                    Text="Window">
+                    <ext:SliderMenuLevel 
+                        runat="server" 
+                        OnGetChildNodes="window_GetChildNodes"
+                        ID="SliderMenuLevel1" />
+                </ext:SliderMenuItem>
                 <ext:SliderMenuItem 
                     runat="server" 
                     ID="settings" 

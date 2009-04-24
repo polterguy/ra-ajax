@@ -84,20 +84,23 @@ http://ra-ajax.org
 .slider-menu .bread-crumb
 {
 	width:100%;
-	background: transparent url(window-h-sprite.png) repeat-x 0 0;
-	height:15px;
-	padding:5px;
+	background: transparent url(window-h-sprite.png) repeat 0 0;
+	min-height:32px;
+	overflow:auto;
+	padding-left:10px;
 }
 
 .slider-menu .bread-crumb .bread-item-left
 {
-	padding-left:8px;
 	height:16px;
+	margin-bottom:8px;
+	margin-left:-8px;
+	margin-top:8px;
+	padding-left:8px;
 	float:left;
 	display:block;
 	font-size:9px;
 	background:Transparent url(bread-crumb.png) no-repeat 0 -48px;
-	margin-left:-8px;
 }
 
 .slider-menu .bread-crumb .bread-item-right
@@ -125,7 +128,9 @@ http://ra-ajax.org
 .slider-menu .bread-crumb .first
 {
 	padding-left:2px;
-	margin-left:0px;
+	margin-bottom:8px;
+	margin-left:0;
+	margin-top:8px;
 	background:Transparent url(bread-crumb.png) no-repeat 0 0;
 }
 
@@ -139,7 +144,7 @@ http://ra-ajax.org
 
 .slider-menu .top-level
 {
-	margin-top:25px;
+	position:inherit;
 	margin-left:0;
 }
 
