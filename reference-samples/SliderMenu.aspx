@@ -22,10 +22,10 @@
     Runat="Server">
 
     <h1>Slider Menu Sample</h1>
-    <div style="border:solid 1px Black;width:250px;height:200px;">
+    <div>
         <ext:SliderMenu 
             runat="server" 
-            style="width:100%;height:100%;" 
+            style="width:250px;height:200px;" 
             OnItemClicked="slider_ItemClicked"
             ID="slider">
 

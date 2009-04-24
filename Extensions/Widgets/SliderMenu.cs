@@ -162,6 +162,7 @@ namespace Ra.Extensions
                             btn.ID = "BTN" + idx2.ID;
                     }
                     btn.Text = (idx as SliderMenuItem).Text;
+                    btn.CssClass = "bread-item";
                     btn.Click += btn_Click;
                     _bread.Controls.AddAt(0, btn);
                 }
@@ -172,6 +173,7 @@ namespace Ra.Extensions
                 LinkButton home = new LinkButton();
                 home.ID = "BTNbreadGoHome";
                 home.Text = "Home";
+                home.CssClass = "bread-item";
                 home.Click += btn_Click;
                 _bread.Controls.AddAt(0, home);
             }
