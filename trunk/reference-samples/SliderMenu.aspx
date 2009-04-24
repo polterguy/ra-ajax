@@ -42,12 +42,10 @@
                         <ext:SliderMenuItem 
                             runat="server" 
                             ID="open" 
-                            IsLeaf="true"
                             Text="Open" />
                         <ext:SliderMenuItem 
                             runat="server" 
                             ID="save" 
-                            IsLeaf="true"
                             Text="Save" />
                         <ext:SliderMenuItem 
                             runat="server" 
@@ -59,7 +57,6 @@
                                 <ext:SliderMenuItem 
                                     runat="server" 
                                     ID="pdf" 
-                                    IsLeaf="true"
                                     Text="PDF" />
                                 <ext:SliderMenuItem 
                                     runat="server" 
@@ -71,12 +68,10 @@
                                         <ext:SliderMenuItem 
                                             runat="server" 
                                             ID="odf1" 
-                                            IsLeaf="true"
                                             Text="ODF1" />
                                         <ext:SliderMenuItem 
                                             runat="server" 
                                             ID="odf2" 
-                                            IsLeaf="true"
                                             Text="ODF2" />
                                     </ext:SliderMenuLevel>
                                 </ext:SliderMenuItem>
@@ -94,24 +89,26 @@
                         <ext:SliderMenuItem 
                             runat="server" 
                             ID="copy" 
-                            IsLeaf="true"
                             Text="Copy" />
                         <ext:SliderMenuItem 
                             runat="server" 
                             ID="paste" 
-                            IsLeaf="true"
                             Text="Paste" />
                         <ext:SliderMenuItem 
                             runat="server" 
                             ID="cut" 
-                            IsLeaf="true"
                             Text="Cut" />
                     </ext:SliderMenuLevel>
                 </ext:SliderMenuItem>
                 <ext:SliderMenuItem 
                     runat="server" 
                     ID="view" 
-                    Text="View" />
+                    Text="View">
+                    <ext:SliderMenuLevel 
+                        runat="server" 
+                        OnGetChildNodes="views_GetChildNodes"
+                        ID="views" />
+                </ext:SliderMenuItem>
                 <ext:SliderMenuItem 
                     runat="server" 
                     ID="window" 
@@ -119,12 +116,14 @@
                 <ext:SliderMenuItem 
                     runat="server" 
                     ID="settings" 
-                    IsLeaf="true"
                     Text="Settings" />
             </ext:SliderMenuLevel>
 
         </ext:SliderMenu>
     </div>
+    <ra:Label 
+        runat="server" 
+        ID="lbl" />
 
 </asp:Content>
 

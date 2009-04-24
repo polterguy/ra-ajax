@@ -122,18 +122,29 @@ this.element.setStyle('marginLeft',val);";
         {
             get
             {
-                if (ViewState["IsLeaf"] == null)
-                    return false;
-                return (bool)ViewState["IsLeaf"];
+                foreach (ASP.Control idx in Controls)
+                {
+                    if (idx is SliderMenuLevel)
+                        return false;
+                }
+                return true;
             }
-            set { ViewState["IsLeaf"] = value; }
         }
 
         protected override void OnInit(EventArgs e)
         {
             Tag = "li";
-            EnsureChildControls();
             base.OnInit(e);
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            // We MUST call the EnsureChildControls AFTER the ControlState has been loaded
+            // since we're depending on some value from ControlState in order to correctly
+            // instantiate the composition controls
+            EnsureChildControls();
         }
 
         protected override void CreateChildControls()
@@ -186,6 +197,8 @@ this.element.setStyle('marginLeft',val);";
 
             child.Style["display"] = "";
             Root.SetActiveLevel(child);
+            if (child.EnsureChildNodes())
+                child.ReRender();
             Root.SetAllChildrenNonVisible(Root);
             ASP.Control idxFromThis = child;
             while (idxFromThis != null && !(idxFromThis is SliderMenu))
