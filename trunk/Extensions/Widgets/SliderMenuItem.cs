@@ -28,15 +28,23 @@ namespace Ra.Extensions
         internal class EffectRollOut : Effect
         {
             private bool _reversed;
+            private int _noLevels;
 
             public EffectRollOut(ASP.Control control, int milliseconds)
-                : base(control, milliseconds)
+                : this(control, milliseconds, false)
             { }
 
             public EffectRollOut(ASP.Control control, int milliseconds, bool reversed)
+                : this(control, milliseconds, reversed, 1)
+            {
+                _reversed = reversed;
+            }
+
+            public EffectRollOut(ASP.Control control, int milliseconds, bool reversed, int noLevels)
                 : base(control, milliseconds)
             {
                 _reversed = reversed;
+                _noLevels = noLevels;
             }
 
             private void UpdateStyleCollection()
@@ -47,10 +55,10 @@ namespace Ra.Extensions
             public override string RenderParalledOnStart()
             {
                 UpdateStyleCollection();
-                return @"
-    this._fromWidth = this.element.getDimensions().width;
+                return string.Format(@"
+    this._fromWidth = this.element.getDimensions().width * {0};
     this._oldMargin = parseInt(this.element.getStyle('marginLeft')) || 0;
-";
+", _noLevels);
             }
 
             public override string RenderParalledOnFinished()

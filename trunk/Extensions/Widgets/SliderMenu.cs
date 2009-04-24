@@ -160,7 +160,18 @@ namespace Ra.Extensions
         {
             LinkButton btn = sender as LinkButton;
             string idOfToBecomeActive = btn.ID.Substring(3);
+            SliderMenuLevel previousActive = AjaxManager.Instance.FindControl<SliderMenuLevel>(ActiveLevel);
             SliderMenuLevel level = AjaxManager.Instance.FindControl<SliderMenuLevel>(idOfToBecomeActive);
+            int noLevels = 0;
+            ASP.Control idxLevel = previousActive.Parent;
+            while (true)
+            {
+                if (idxLevel is SliderMenuLevel)
+                    noLevels += 1;
+                if (idxLevel == level)
+                    break;
+                idxLevel = idxLevel.Parent;
+            }
             SetActiveLevel(level);
 
             // Animating Menu levels...
@@ -173,7 +184,7 @@ namespace Ra.Extensions
                     break;
                 }
             }
-            new Ra.Extensions.SliderMenuItem.EffectRollOut(rootLevel, 800, true)
+            new Ra.Extensions.SliderMenuItem.EffectRollOut(rootLevel, 800, true, noLevels)
                 .Render();
         }
     }
