@@ -113,11 +113,16 @@ namespace Ra.Widgets
         protected override string GetOpeningHTML()
         {
             string accessKey = string.IsNullOrEmpty(AccessKey) ? "" : string.Format(" accesskey=\"{0}\"", AccessKey);
-            return string.Format("<a href=\"javascript:Ra.emptyFunction();\" id=\"{0}\"{2}{3}>{1}</a>", 
+            return string.Format("<a href=\"javascript:Ra.emptyFunction();\" id=\"{0}\"{2}{3}>{1}", 
                 ClientID,
                 Text,
                 accessKey,
                 GetWebControlAttributes());
+        }
+
+        protected override string GetClosingHTML()
+        {
+            return "</a>";
         }
 
         #endregion

@@ -66,6 +66,9 @@
   and redundant methods and properties for many widgets and
   classes.
 
+* Fixed a bug in LinkButton which made it impossible for the
+  LinkButon to have Child Controls.
+
 
 
 

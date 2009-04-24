@@ -48,6 +48,7 @@ namespace Ra.Extensions
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
+            EnsureChildControls();
             if (ActiveLevel == null)
             {
                 foreach (ASP.Control idx in Controls)
@@ -58,10 +59,9 @@ namespace Ra.Extensions
                     }
                 }
             }
-            EnsureChildControls();
         }
 
-        private void SetAllChildrenNonVisible(ASP.Control from)
+        internal void SetAllChildrenNonVisible(ASP.Control from)
         {
             foreach (ASP.Control idx in from.Controls)
             {
@@ -162,7 +162,18 @@ namespace Ra.Extensions
             string idOfToBecomeActive = btn.ID.Substring(3);
             SliderMenuLevel level = AjaxManager.Instance.FindControl<SliderMenuLevel>(idOfToBecomeActive);
             SetActiveLevel(level);
-            new Ra.Extensions.SliderMenuItem.EffectRollOut(level, 800, true)
+
+            // Animating Menu levels...
+            ASP.Control rootLevel = null;
+            foreach (ASP.Control idx in Controls)
+            {
+                if (idx is SliderMenuLevel)
+                {
+                    rootLevel = idx;
+                    break;
+                }
+            }
+            new Ra.Extensions.SliderMenuItem.EffectRollOut(rootLevel, 800, true)
                 .Render();
         }
     }
