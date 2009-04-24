@@ -85,23 +85,48 @@ http://ra-ajax.org
 {
 	width:100%;
 	background: transparent url(window-h-sprite.png) repeat-x 0 0;
-	height:25px;
+	height:15px;
+	padding:5px;
 }
 
-.slider-menu .bread-crumb .bread-item
+.slider-menu .bread-crumb .bread-item-left
 {
-	padding-top:8px;
-	margin-left:4px;
-	display:block;
-	background-color:inherit;
+	padding-left:8px;
+	height:16px;
 	float:left;
+	display:block;
 	font-size:9px;
+	background:Transparent url(bread-crumb.png) no-repeat 0 -48px;
+	margin-left:-8px;
 }
 
-.slider-menu .bread-crumb .bread-item:hover
+.slider-menu .bread-crumb .bread-item-right
+{
+	height:16px;
+	display:block;
+	padding-right:8px;
+	background:Transparent url(bread-crumb.png) no-repeat right -32px;
+}
+
+.slider-menu .bread-crumb .bread-item-center
+{
+	height:12px;
+	display:block;
+	background:Transparent url(bread-crumb.png) repeat-x 0 -16px;
+	padding:2px;
+}
+
+.slider-menu .bread-crumb .bread-item-left:hover
 {
 	text-decoration:underline;
 	color:#00a;
+}
+
+.slider-menu .bread-crumb .first
+{
+	padding-left:2px;
+	margin-left:0px;
+	background:Transparent url(bread-crumb.png) no-repeat 0 0;
 }
 
 .slider-menu .level
@@ -114,7 +139,7 @@ http://ra-ajax.org
 
 .slider-menu .top-level
 {
-	margin-top:35px;
+	margin-top:25px;
 	margin-left:0;
 }
 

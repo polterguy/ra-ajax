@@ -161,9 +161,20 @@ namespace Ra.Extensions
                         if (idx2 is SliderMenuLevel)
                             btn.ID = "BTN" + idx2.ID;
                     }
-                    btn.Text = (idx as SliderMenuItem).Text;
-                    btn.CssClass = "bread-item";
+                    btn.CssClass = "bread-item-left";
                     btn.Click += btn_Click;
+
+                    Label right = new Label();
+                    right.ID = btn.ID + "r";
+                    right.CssClass = "bread-item-right";
+                    btn.Controls.Add(right);
+
+                    Label center = new Label();
+                    center.ID = btn.ID + "c";
+                    center.CssClass = "bread-item-center";
+                    center.Text = (idx as SliderMenuItem).Text;
+                    right.Controls.Add(center);
+
                     _bread.Controls.AddAt(0, btn);
                 }
                 idx = idx.Parent;
@@ -172,9 +183,20 @@ namespace Ra.Extensions
             {
                 LinkButton home = new LinkButton();
                 home.ID = "BTNbreadGoHome";
-                home.Text = "Home";
-                home.CssClass = "bread-item";
+                home.CssClass = "bread-item-left first";
                 home.Click += btn_Click;
+
+                Label right = new Label();
+                right.ID = home.ID + "r";
+                right.CssClass = "bread-item-right";
+                home.Controls.Add(right);
+
+                Label center = new Label();
+                center.ID = home.ID + "c";
+                center.CssClass = "bread-item-center";
+                center.Text = "Home";
+                right.Controls.Add(center);
+
                 _bread.Controls.AddAt(0, home);
             }
         }
