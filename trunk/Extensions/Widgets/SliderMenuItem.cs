@@ -18,6 +18,9 @@ using System.Collections.Generic;
 namespace Ra.Extensions
 {
     /**
+     * This is on item in the SliderMenu. Note that a SliderMenu consists of a SliderMenuLevel which
+     * in turn consists of one or more SliderMenuItems which in turn can have one SliderMenuLevel and 
+     * so on. This means that the parent of SliderMenuItems MUST be SliderMenuLevel items.
      */
     [ASP.ToolboxData("<{0}:SliderMenuItem runat=\"server\"></{0}:SliderMenuItem>")]
     public class SliderMenuItem : Panel, ASP.INamingContainer
@@ -25,6 +28,7 @@ namespace Ra.Extensions
         private LinkButton _button = new LinkButton();
         private Label _childLbl = new Label();
 
+        // TODO: Make pulicly available effect...?
         internal class EffectRollOut : Effect
         {
             private bool _reversed;
@@ -49,6 +53,7 @@ namespace Ra.Extensions
 
             private void UpdateStyleCollection()
             {
+                // TODO: Implement...?
                 //RaWebControl tmp = this.Control as RaWebControl;
             }
 
@@ -66,15 +71,13 @@ namespace Ra.Extensions
                 if (_reversed)
                 {
                     return @"
-    var val = this._oldMargin + this._fromWidth + 'px';
-    this.element.setStyle('marginLeft',val);
+    this.element.setStyle('marginLeft',this._oldMargin + this._fromWidth + 'px');
 ";
                 }
                 else
                 {
                     return @"
-    var val = this._oldMargin - this._fromWidth + 'px';
-    this.element.setStyle('marginLeft',val);
+    this.element.setStyle('marginLeft',this._oldMargin - this._fromWidth + 'px');
 ";
                 }
             }
@@ -84,14 +87,12 @@ namespace Ra.Extensions
                 if (_reversed)
                 {
                     return @"
-var val = this._oldMargin + parseInt(pos*this._fromWidth) + 'px';
-this.element.setStyle('marginLeft',val);";
+this.element.setStyle('marginLeft',this._oldMargin + parseInt(pos*this._fromWidth) + 'px');";
                 }
                 else
                 {
                     return @"
-var val = this._oldMargin - parseInt(pos*this._fromWidth) + 'px';
-this.element.setStyle('marginLeft',val);";
+this.element.setStyle('marginLeft',this._oldMargin - parseInt(pos*this._fromWidth) + 'px');";
                 }
             }
         }
@@ -103,7 +104,7 @@ this.element.setStyle('marginLeft',val);";
         }
 
         /**
-         * Overridden to provide a sane default value
+         * Overridden to provide a sane default value. The default CSS class is "item".
          */
         [DefaultValue("item")]
         public override string CssClass
@@ -118,6 +119,10 @@ this.element.setStyle('marginLeft',val);";
             set { base.CssClass = value; }
         }
 
+        /**
+         * Readonly property, will be true if SliderMenuItem have no SliderMenuLevel control. Which
+         * basically is the definition of a "leaf node".
+         */
         public bool IsLeaf
         {
             get
@@ -176,7 +181,7 @@ this.element.setStyle('marginLeft',val);";
             }
         }
 
-        void _button_Click(object sender, EventArgs e)
+        private void _button_Click(object sender, EventArgs e)
         {
             // Raising MenuItem clicked event
             Root.RaiseItemClicked(this);
