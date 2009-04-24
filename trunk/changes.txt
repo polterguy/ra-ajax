@@ -69,6 +69,13 @@
 * Fixed a bug in LinkButton which made it impossible for the
   LinkButon to have Child Controls.
 
+* New Widget - SliderMenu. A SliderMenu is a cross-over 
+  between a TreeView and a Menu. It contains most features
+  from a TreeView like dynamically loading of items and such,
+  but at the same time it "appears" more like a Menu in that
+  it can only display one level of items at the same time.
+  It's quite heavily inspired from Apple's way of doing UI.
+
 
 
 

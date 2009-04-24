@@ -84,9 +84,24 @@ http://ra-ajax.org
 .slider-menu .bread-crumb
 {
 	width:100%;
-	background-color:Red;
-	height:15px;
-	padding:5px;
+	background: transparent url(window-h-sprite.png) repeat-x 0 0;
+	height:25px;
+}
+
+.slider-menu .bread-crumb .bread-item
+{
+	padding-top:8px;
+	margin-left:4px;
+	display:block;
+	background-color:inherit;
+	float:left;
+	font-size:9px;
+}
+
+.slider-menu .bread-crumb .bread-item:hover
+{
+	text-decoration:underline;
+	color:#00a;
 }
 
 .slider-menu .level
@@ -99,7 +114,7 @@ http://ra-ajax.org
 
 .slider-menu .top-level
 {
-	margin-top:25px;
+	margin-top:35px;
 	margin-left:0;
 }
 
@@ -117,7 +132,7 @@ http://ra-ajax.org
 
 .slider-menu .level .item .leaf
 {
-	background:Transparent url(tree-sprites.png) no-repeat -144px 0;
+	background:url('tree-sprites.png') no-repeat -144px 0;
 	position:absolute;
 	right:5px;
 	top:4px;
