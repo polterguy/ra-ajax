@@ -14,6 +14,22 @@ namespace RefSamples
             }
         }
 
+        protected void window_GetChildNodes(object sender, EventArgs e)
+        {
+            SliderMenuLevel level = sender as SliderMenuLevel;
+            for (int idx = 0; idx < 5; idx++)
+            {
+                SliderMenuItem i = new SliderMenuItem();
+                i.ID = level.ID + idx;
+                i.Text = "Window " + idx;
+                level.Controls.Add(i);
+                SliderMenuLevel l = new SliderMenuLevel();
+                l.ID = level.ID + "LL" + idx;
+                l.GetChildNodes += window_GetChildNodes;
+                i.Controls.Add(l);
+            }
+        }
+
         protected void views_GetChildNodes(object sender, EventArgs e)
         {
             SliderMenuLevel level = sender as SliderMenuLevel;
