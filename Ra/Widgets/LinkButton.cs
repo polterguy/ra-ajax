@@ -44,6 +44,8 @@ namespace Ra.Widgets
             get { return ViewState["Text"] == null ? "" : (string)ViewState["Text"]; }
             set
             {
+                if (Controls.Count > 0)
+                    throw new ApplicationException("Can't set the Text property of a LinkButton if you have Child controls in it");
                 if (value != Text)
                     SetJSONValueString("Text", value);
                 ViewState["Text"] = value;
