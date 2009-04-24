@@ -18,6 +18,16 @@ using System.Collections.Generic;
 namespace Ra.Extensions
 {
     /**
+     * A SliderMenu is maybe easiest to define as a combination of a Tree and a Menu. Though while the
+     * Tree can display every active and opened nodes at the same time, the SliderMenu can only display
+     * one "level" at the time. Then when you select SliderMenuItems that have child menu items the 
+     * "current" level will "phase out" and the child menu items of the newly selected item will
+     * be displayed. It's extremely versatile for displaying MASSIVE menu hierarchies due to that
+     * in addition to having static menu items it also have support for having dynamically rendered
+     * menu items, just like the TreeView. The SliderMenu also features a Bread Crumb at the top which
+     * the user can use to fast scroll backwards in the hierarchy to his original place.
+     * A SliderMenu consists of SliderMenuLevel items. Which in turn consists of SliderMenuItem items
+     * which in turn can have SliderMenuLevel items and so on.
      */
     [ASP.ToolboxData("<{0}:SliderMenu runat=\"server\"></{0}:SliderMenu>")]
     public class SliderMenu : Panel, ASP.INamingContainer
@@ -25,12 +35,13 @@ namespace Ra.Extensions
         private Panel _bread = new Panel();
 
         /**
-         * Raised when a MenuItem is selected by the user
+         * Raised when a SliderMenuItem is selected by the user
          */
         public event EventHandler ItemClicked;
 
         /**
-         * Overridden to provide a sane default value
+         * Overridden to provide a sane default value. The default CSS class of the SliderMenu is
+         * "slider-menu".
          */
         [DefaultValue("slider-menu")]
         public override string CssClass
@@ -166,7 +177,7 @@ namespace Ra.Extensions
             }
         }
 
-        void btn_Click(object sender, EventArgs e)
+        private void btn_Click(object sender, EventArgs e)
         {
             LinkButton btn = sender as LinkButton;
             string idOfToBecomeActive = btn.ID.Substring(3);

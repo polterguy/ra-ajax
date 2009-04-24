@@ -18,6 +18,10 @@ using System.Collections.Generic;
 namespace Ra.Extensions
 {
     /**
+     * This is a "level" in a SliderMenu. Every level can have SliderMenuItems which in turn can
+     * have SliderMenuLevels and so on recursively. Note that the SliderMenuLevel have support
+     * for dynamically rendered nodes in addition to statically rendered nodes. Though NOT both
+     * types of items at the same time.
      */
     [ASP.ToolboxData("<{0}:SliderMenuLevel runat=\"server\"></{0}:SliderMenuLevel>")]
     public class SliderMenuLevel : Panel, ASP.INamingContainer
@@ -25,11 +29,15 @@ namespace Ra.Extensions
         private bool _hasLoadedDynamicControls;
 
         /**
+         * Raised when the SliderMenuLevel needs to get its SliderMenuItem children. Note that this
+         * event will be raised on EVERY postback for every SliderMenuLevel controls on your page which
+         * have dynamically rendered nodes. This means you should make sure the event handler for this
+         * event executes FAST!
          */
         public event EventHandler GetChildNodes;
 
         /**
-         * Overridden to provide a sane default value
+         * Overridden to provide a sane default value. The default CSS class is "level".
          */
         [DefaultValue("level")]
         public override string CssClass
