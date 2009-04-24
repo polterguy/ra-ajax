@@ -49,6 +49,7 @@ namespace Ra.Extensions
                 UpdateStyleCollection();
                 return @"
     this._fromWidth = this.element.getDimensions().width;
+    this._oldMargin = parseInt(this.element.getStyle('marginLeft')) || 0;
 ";
             }
 
@@ -57,13 +58,15 @@ namespace Ra.Extensions
                 if (_reversed)
                 {
                     return @"
-    this.element.setStyle('marginLeft','0px');
+    var val = this._oldMargin + this._fromWidth + 'px';
+    this.element.setStyle('marginLeft',val);
 ";
                 }
                 else
                 {
                     return @"
-    this.element.setStyle('marginLeft','-' + this._fromWidth + 'px');
+    var val = this._oldMargin - this._fromWidth + 'px';
+    this.element.setStyle('marginLeft',val);
 ";
                 }
             }
@@ -73,12 +76,14 @@ namespace Ra.Extensions
                 if (_reversed)
                 {
                     return @"
-this.element.setStyle('marginLeft','-' + parseInt((1-pos)*this._fromWidth) + 'px');";
+var val = this._oldMargin + parseInt(pos*this._fromWidth) + 'px';
+this.element.setStyle('marginLeft',val);";
                 }
                 else
                 {
                     return @"
-this.element.setStyle('marginLeft','-' + parseInt(pos*this._fromWidth) + 'px');";
+var val = this._oldMargin - parseInt(pos*this._fromWidth) + 'px';
+this.element.setStyle('marginLeft',val);";
                 }
             }
         }
@@ -133,7 +138,7 @@ this.element.setStyle('marginLeft','-' + parseInt(pos*this._fromWidth) + 'px');"
             _childLbl.ID = "leaf";
             _childLbl.CssClass = "leaf";
             _childLbl.Text = "&nbsp;";
-            this.Controls.AddAt(0, _childLbl);
+            _button.Controls.Add(_childLbl);
 
             _button.ID = "btn";
             _button.CssClass = "menu-btn";
@@ -171,14 +176,30 @@ this.element.setStyle('marginLeft','-' + parseInt(pos*this._fromWidth) + 'px');"
                 }
             }
 
-            // Setting "to-be-active" menu to Visible and a couple of styles to make it NOT appear in fact
             child.Style["display"] = "";
-            child.Style["left"] = "100%";
             Root.SetActiveLevel(child);
+            Root.SetAllChildrenNonVisible(Root);
+            ASP.Control idxFromThis = child;
+            while (idxFromThis != null && !(idxFromThis is SliderMenu))
+            {
+                if (idxFromThis is SliderMenuLevel)
+                {
+                    (idxFromThis as SliderMenuLevel).Style["display"] = "";
+                }
+                idxFromThis = idxFromThis.Parent;
+            }
 
             // Animating Menu levels...
-            SliderMenuLevel active = Parent as SliderMenuLevel;
-            new EffectRollOut(active, 800)
+            ASP.Control rootLevel = null;
+            foreach (ASP.Control idx in Root.Controls)
+            {
+                if (idx is SliderMenuLevel)
+                {
+                    rootLevel = idx;
+                    break;
+                }
+            }
+            new EffectRollOut(rootLevel, 800)
                 .Render();
         }
 

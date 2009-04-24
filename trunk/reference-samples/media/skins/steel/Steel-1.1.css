@@ -89,37 +89,39 @@ http://ra-ajax.org
 	padding:5px;
 }
 
-.slider-menu .top-level
-{
-	margin-top:25px;
-}
-
 .slider-menu .level
 {
 	width:100%;
 	position:absolute;
 	top:0px;
+	margin-left:100%;
+}
+
+.slider-menu .top-level
+{
+	margin-top:25px;
+	margin-left:0;
 }
 
 .slider-menu .level .item
 {
 	width:100%;
-	position:relative;
 }
 
 .slider-menu .level .item .menu-btn
 {
 	padding:5px;
 	display:block;
+	position:relative;
 }
 
 .slider-menu .level .item .leaf
 {
+	background:Transparent url(tree-sprites.png) no-repeat -144px 0;
 	position:absolute;
 	right:5px;
 	top:4px;
-	z-index:5;
-	background:Transparent url(tree-sprites.png) no-repeat -144px 0;
+	display:block;
 	width:16px;
 	height:16px;
 }
