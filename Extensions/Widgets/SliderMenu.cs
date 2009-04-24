@@ -48,7 +48,13 @@ namespace Ra.Extensions
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
+
+            // We MUST call the EnsureChildControls AFTER the ControlState has been loaded
+            // since we're depending on some value from ControlState in order to correctly
+            // instantiate the composition controls
             EnsureChildControls();
+
+            // Defaulting all SliderMenuLevels to non-visible
             if (ActiveLevel == null)
             {
                 foreach (ASP.Control idx in Controls)
@@ -61,21 +67,13 @@ namespace Ra.Extensions
             }
         }
 
-        internal void SetAllChildrenNonVisible(ASP.Control from)
-        {
-            foreach (ASP.Control idx in from.Controls)
-            {
-                if (idx is SliderMenuLevel)
-                {
-                    (idx as SliderMenuLevel).Style["display"] = "none";
-                }
-                SetAllChildrenNonVisible(idx);
-            }
-        }
-
         protected override void CreateChildControls()
         {
             CreateBreadCrumbWrapper();
+        }
+
+        internal void EnsureBreadCrumbCreated()
+        {
             if (ActiveLevel != null)
             {
                 UpdateBreadCrumb(AjaxManager.Instance.FindControl<SliderMenuLevel>(ActiveLevel));
@@ -94,6 +92,18 @@ namespace Ra.Extensions
             _bread.Controls.Add(lit);
 
             Controls.AddAt(0, _bread);
+        }
+
+        internal void SetAllChildrenNonVisible(ASP.Control from)
+        {
+            foreach (ASP.Control idx in from.Controls)
+            {
+                if (idx is SliderMenuLevel)
+                {
+                    (idx as SliderMenuLevel).Style["display"] = "none";
+                }
+                SetAllChildrenNonVisible(idx);
+            }
         }
 
         internal void RaiseItemClicked(SliderMenuItem item)
