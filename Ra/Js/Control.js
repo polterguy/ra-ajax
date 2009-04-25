@@ -45,11 +45,10 @@ Ra.Control.errorHandler = function(stat, trc) {
       Ra.extend(errDiv, Ra.Element.prototype);
       errDiv.setStyles({position: 'fixed', textAlign: 'center', top: '0px', left: '0px', width: '100%', height: '100%', zIndex: 10000 });
     
-      var close = document.createElement('a');
+      var close = document.createElement('span');
       Ra.extend(close, Ra.Element.prototype);
       close.setContent('Close');
-      close.setAttribute('href', '#');
-      close.setStyles({position: 'relative', top: '20px', zIndex: '1000'});
+      close.setStyles({position: 'relative', top: '20px', zIndex: '1000', cursor: 'pointer', textDecoration: 'underline', color: '#32c'});
       close.observe('click', function(){ document.body.removeChild(errDiv); }, this);
   
       var frame = document.createElement('iframe');
