@@ -78,7 +78,8 @@
   it can only display one level of items at the same time.
   It's quite heavily inspired from Apple's way of doing UI.
 
-
+* Fixed a bug in SelectList that caused the SelectedIndex to 
+  not change when a ListItem's Selected property was set to true.
 
 
 
