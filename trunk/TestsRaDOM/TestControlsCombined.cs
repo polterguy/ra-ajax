@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using NUnit.Framework;
+using WatiN.Core.Interfaces;
 
 namespace NUnitTests
 {
@@ -115,8 +116,17 @@ namespace NUnitTests
         [NUnit.Framework.Test]
         public void ChangeSelectedValueOfDDLFromButton()
         {
-            Browser.Button("selectNewDDLValue").Click();
-            Assert.AreEqual("Text of fourth", Browser.SelectList("dropDownListCallback").SelectedItem);
+            IButton selectNewDDLValue = Browser.Button("selectNewDDLValue");
+            IButton selectNewDDLValueUsingSelectedProperty = Browser.Button("selectNewDDLValueUsingSelectedProperty");
+            ISelectList dropDownListCallback = Browser.SelectList("dropDownListCallback");
+
+            selectNewDDLValue.Click();
+            Assert.AreEqual(3, dropDownListCallback.SelectedOption.Index);
+            Assert.AreEqual("Text of fourth", dropDownListCallback.SelectedItem);
+
+            selectNewDDLValueUsingSelectedProperty.Click();
+            Assert.AreEqual(2, dropDownListCallback.SelectedOption.Index);
+            Assert.AreEqual("Text of third", dropDownListCallback.SelectedItem);
         }
 
         [NUnit.Framework.Test]

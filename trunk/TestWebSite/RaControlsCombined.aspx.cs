@@ -134,6 +134,11 @@ public partial class RaControlsCombined : System.Web.UI.Page
         dropDownListCallback.SelectedItem = dropDownListCallback.Items[3];
     }
 
+    protected void selectNewDDLValueUsingSelectedProperty_Click(object sender, EventArgs e)
+    {
+        dropDownListCallback.Items[2].Selected = true;
+    }
+
     protected void disabledDDL_Click(object sender, EventArgs e)
     {
         testDisabledDDL.Enabled = false;

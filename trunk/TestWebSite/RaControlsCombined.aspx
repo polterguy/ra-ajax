@@ -240,6 +240,11 @@ function verifyAfterDelete2() {
                     <ra:ListItem Text="Text of fourth" Value="valueOfFourth" />
                 </ra:SelectList>
                 <ra:Button runat="server" ID="selectNewDDLValue" Text="Selects new DDL value" OnClick="selectNewDDLValue_Click" />
+                <ra:Button 
+                    runat="server" 
+                    ID="selectNewDDLValueUsingSelectedProperty" 
+                    Text="Select new DDL value (using Selected property)" 
+                    OnClick="selectNewDDLValueUsingSelectedProperty_Click" />
                 
                 <br />
                 <br />
