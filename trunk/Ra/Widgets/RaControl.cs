@@ -377,6 +377,13 @@ namespace Ra.Widgets
 		protected virtual void SerializeJSONValue(string key, object value, StringBuilder builder)
 		{
 			// TODO: Create more general approach, this one only handles TWO level deep JSON objects...
+            if (value == null)
+            {
+                if (builder.Length > 0)
+                    builder.Append(",");
+                builder.AppendFormat("\"{0}\":\"\"", key);
+                return;
+            }
 			if (value.GetType() == typeof(string))
 			{
                 if (builder.Length > 0 )
