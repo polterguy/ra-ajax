@@ -136,6 +136,7 @@ namespace Ra.Widgets
                 {
                     this.SetJSONValueString("Value", value.Value);
                 }
+                SelectedIndex = Items.IndexOf(value);
             }
         }
 
@@ -148,12 +149,10 @@ namespace Ra.Widgets
             {
                 if (Items == null || Items.Count == 0)
                     return -1;
-                int idxNo = 0;
-                foreach (ListItem idx in Items)
+                for (int i = 0; i < Items.Count; i++)
                 {
-                    if (idx.Selected)
-                        return idxNo;
-                    idxNo += 1;
+                    if (Items[i].Selected)
+                        return i;
                 }
                 return 0;
             }
@@ -161,12 +160,10 @@ namespace Ra.Widgets
             {
                 if (value == SelectedIndex)
                     return;
-                int idxNo = 0;
-                foreach (ListItem idx in Items)
+                for (int i = 0; i < Items.Count; i++)
                 {
-                    if(idxNo == value)
-                        _selectedItemValue = idx.Value;
-                    idxNo += 1;
+                    if (i == value)
+                        _selectedItemValue = Items[i].Value;
                 }
                 if (IsTrackingViewState)
                 {
