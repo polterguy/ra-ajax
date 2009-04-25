@@ -9,8 +9,6 @@
 
                           Version 1.5.0
 
-                     LOTS of changes...!!
-
   ------------------------------------------------------------------
 
 * Added MaxLength property to TextBox to specify the Maximum number 
@@ -38,7 +36,7 @@
   
 * Added zIndex property to BehaviorUpdater.
 
-* Removed unnecessary code form Dynamic.
+* Removed unnecessary code from Dynamic.
 
 * Fixed a bug in TreeView which occured when ClientSideExpansion
   was turned on and TreeNodes was either expanding slowly because
@@ -81,7 +79,8 @@
 * Fixed a bug in SelectList that caused the SelectedIndex to 
   not change when a ListItem's Selected property was set to true.
 
-
+* Fixed a bug in RaControl that made the JSON serialization fail 
+  if the value passed in is null.
 
   ------------------------------------------------------------------
 
