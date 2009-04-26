@@ -29,8 +29,8 @@ namespace Ra.Extensions
      * A SliderMenu consists of SliderMenuLevel items. Which in turn consists of SliderMenuItem items
      * which in turn can have SliderMenuLevel items and so on.
      */
-    [ASP.ToolboxData("<{0}:SliderMenu runat=\"server\"></{0}:SliderMenu>")]
-    public class SliderMenu : Panel, ASP.INamingContainer
+    [ASP.ToolboxData("<{0}:SlidingMenu runat=\"server\"></{0}:SlidingMenu>")]
+    public class SlidingMenu : Panel, ASP.INamingContainer
     {
         private Panel _bread = new Panel();
 
@@ -70,7 +70,7 @@ namespace Ra.Extensions
             {
                 foreach (ASP.Control idx in Controls)
                 {
-                    if (idx is SliderMenuLevel)
+                    if (idx is SlidingMenuLevel)
                     {
                         SetAllChildrenNonVisible(idx);
                     }
@@ -87,7 +87,7 @@ namespace Ra.Extensions
         {
             if (ActiveLevel != null)
             {
-                UpdateBreadCrumb(AjaxManager.Instance.FindControl<SliderMenuLevel>(ActiveLevel));
+                UpdateBreadCrumb(AjaxManager.Instance.FindControl<SlidingMenuLevel>(ActiveLevel));
             }
         }
 
@@ -109,15 +109,15 @@ namespace Ra.Extensions
         {
             foreach (ASP.Control idx in from.Controls)
             {
-                if (idx is SliderMenuLevel)
+                if (idx is SlidingMenuLevel)
                 {
-                    (idx as SliderMenuLevel).Style["display"] = "none";
+                    (idx as SlidingMenuLevel).Style["display"] = "none";
                 }
                 SetAllChildrenNonVisible(idx);
             }
         }
 
-        internal void RaiseItemClicked(SliderMenuItem item)
+        internal void RaiseItemClicked(SlidingMenuItem item)
         {
             if (ItemClicked != null)
                 ItemClicked(item, new EventArgs());
@@ -129,7 +129,7 @@ namespace Ra.Extensions
             set { ViewState["ActiveLevel"] = value; }
         }
 
-        internal void SetActiveLevel(SliderMenuLevel level)
+        internal void SetActiveLevel(SlidingMenuLevel level)
         {
             if (level == null)
             {
@@ -144,21 +144,21 @@ namespace Ra.Extensions
             _bread.ReRender();
         }
 
-        private void UpdateBreadCrumb(SliderMenuLevel to)
+        private void UpdateBreadCrumb(SlidingMenuLevel to)
         {
             ASP.Control idx = to == null ? null : to.Parent.Parent;
             while (true)
             {
-                if (idx == null || idx is SliderMenu)
+                if (idx == null || idx is SlidingMenu)
                 {
                     break; // Finished
                 }
-                else if (idx is SliderMenuItem)
+                else if (idx is SlidingMenuItem)
                 {
                     LinkButton btn = new LinkButton();
                     foreach (ASP.Control idx2 in idx.Controls)
                     {
-                        if (idx2 is SliderMenuLevel)
+                        if (idx2 is SlidingMenuLevel)
                             btn.ID = "BTN" + idx2.ID;
                     }
                     btn.CssClass = "bread-item-left";
@@ -172,7 +172,7 @@ namespace Ra.Extensions
                     Label center = new Label();
                     center.ID = btn.ID + "c";
                     center.CssClass = "bread-item-center";
-                    center.Text = (idx as SliderMenuItem).Text;
+                    center.Text = (idx as SlidingMenuItem).Text;
                     right.Controls.Add(center);
 
                     _bread.Controls.AddAt(0, btn);
@@ -205,14 +205,17 @@ namespace Ra.Extensions
         {
             LinkButton btn = sender as LinkButton;
             string idOfToBecomeActive = btn.ID.Substring(3);
-            SliderMenuLevel previousActive = AjaxManager.Instance.FindControl<SliderMenuLevel>(ActiveLevel);
-            SliderMenuLevel level = AjaxManager.Instance.FindControl<SliderMenuLevel>(idOfToBecomeActive);
+            SlidingMenuLevel previousActive = AjaxManager.Instance.FindControl<SlidingMenuLevel>(ActiveLevel);
+            SlidingMenuLevel level = AjaxManager.Instance.FindControl<SlidingMenuLevel>(idOfToBecomeActive);
             int noLevels = 0;
             ASP.Control idxLevel = previousActive.Parent;
             while (true)
             {
-                if (idxLevel is SliderMenuLevel)
+                if (idxLevel is SlidingMenuLevel)
+                {
+                    (idxLevel as SlidingMenuLevel).SetForReRendering();
                     noLevels += 1;
+                }
                 if (idxLevel == level)
                     break;
                 idxLevel = idxLevel.Parent;
@@ -223,13 +226,13 @@ namespace Ra.Extensions
             ASP.Control rootLevel = null;
             foreach (ASP.Control idx in Controls)
             {
-                if (idx is SliderMenuLevel)
+                if (idx is SlidingMenuLevel)
                 {
                     rootLevel = idx;
                     break;
                 }
             }
-            new Ra.Extensions.SliderMenuItem.EffectRollOut(rootLevel, 800, true, noLevels)
+            new Ra.Extensions.SlidingMenuItem.EffectRollOut(rootLevel, 800, true, noLevels)
                 .Render();
         }
     }

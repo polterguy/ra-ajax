@@ -23,108 +23,112 @@
 
     <h1>Slider Menu Sample</h1>
     <div>
-        <ext:SliderMenu 
+        <ra:Label 
+            runat="server" 
+            ID="count" 
+            Text="0" />
+        <ext:SlidingMenu 
             runat="server" 
             style="width:250px;height:200px;" 
             OnItemClicked="slider_ItemClicked"
             ID="slider">
 
-            <ext:SliderMenuLevel 
+            <ext:SlidingMenuLevel 
                 runat="server" 
                 ID="root">
-                <ext:SliderMenuItem 
+                <ext:SlidingMenuItem 
                     runat="server" 
                     ID="file"
                     Text="File">
-                    <ext:SliderMenuLevel 
+                    <ext:SlidingMenuLevel 
                         runat="server" 
                         ID="files">
-                        <ext:SliderMenuItem 
+                        <ext:SlidingMenuItem 
                             runat="server" 
                             ID="open" 
                             Text="Open" />
-                        <ext:SliderMenuItem 
+                        <ext:SlidingMenuItem 
                             runat="server" 
                             ID="save" 
                             Text="Save" />
-                        <ext:SliderMenuItem 
+                        <ext:SlidingMenuItem 
                             runat="server" 
                             ID="saveAs" 
                             Text="Save as...">
-                            <ext:SliderMenuLevel 
+                            <ext:SlidingMenuLevel 
                                 runat="server" 
                                 ID="saveAsDocument">
-                                <ext:SliderMenuItem 
+                                <ext:SlidingMenuItem 
                                     runat="server" 
                                     ID="pdf" 
                                     Text="PDF" />
-                                <ext:SliderMenuItem 
+                                <ext:SlidingMenuItem 
                                     runat="server" 
                                     ID="odf" 
                                     Text="ODF">
-                                    <ext:SliderMenuLevel 
+                                    <ext:SlidingMenuLevel 
                                         runat="server" 
                                         ID="odfs">
-                                        <ext:SliderMenuItem 
+                                        <ext:SlidingMenuItem 
                                             runat="server" 
                                             ID="odf1" 
                                             Text="ODF1" />
-                                        <ext:SliderMenuItem 
+                                        <ext:SlidingMenuItem 
                                             runat="server" 
                                             ID="odf2" 
                                             Text="ODF2" />
-                                    </ext:SliderMenuLevel>
-                                </ext:SliderMenuItem>
-                            </ext:SliderMenuLevel>
-                        </ext:SliderMenuItem>
-                    </ext:SliderMenuLevel>
-                </ext:SliderMenuItem>
-                <ext:SliderMenuItem 
+                                    </ext:SlidingMenuLevel>
+                                </ext:SlidingMenuItem>
+                            </ext:SlidingMenuLevel>
+                        </ext:SlidingMenuItem>
+                    </ext:SlidingMenuLevel>
+                </ext:SlidingMenuItem>
+                <ext:SlidingMenuItem 
                     runat="server" 
                     ID="edit" 
                     Text="Edit">
-                    <ext:SliderMenuLevel 
+                    <ext:SlidingMenuLevel 
                         runat="server" 
                         ID="edits">
-                        <ext:SliderMenuItem 
+                        <ext:SlidingMenuItem 
                             runat="server" 
                             ID="copy" 
                             Text="Copy" />
-                        <ext:SliderMenuItem 
+                        <ext:SlidingMenuItem 
                             runat="server" 
                             ID="paste" 
                             Text="Paste" />
-                        <ext:SliderMenuItem 
+                        <ext:SlidingMenuItem 
                             runat="server" 
                             ID="cut" 
                             Text="Cut" />
-                    </ext:SliderMenuLevel>
-                </ext:SliderMenuItem>
-                <ext:SliderMenuItem 
+                    </ext:SlidingMenuLevel>
+                </ext:SlidingMenuItem>
+                <ext:SlidingMenuItem 
                     runat="server" 
                     ID="view" 
                     Text="View">
-                    <ext:SliderMenuLevel 
+                    <ext:SlidingMenuLevel 
                         runat="server" 
                         OnGetChildNodes="views_GetChildNodes"
                         ID="views" />
-                </ext:SliderMenuItem>
-                <ext:SliderMenuItem 
+                </ext:SlidingMenuItem>
+                <ext:SlidingMenuItem 
                     runat="server" 
                     ID="window" 
                     Text="Window">
-                    <ext:SliderMenuLevel 
+                    <ext:SlidingMenuLevel 
                         runat="server" 
                         OnGetChildNodes="window_GetChildNodes"
                         ID="SliderMenuLevel1" />
-                </ext:SliderMenuItem>
-                <ext:SliderMenuItem 
+                </ext:SlidingMenuItem>
+                <ext:SlidingMenuItem 
                     runat="server" 
                     ID="settings" 
                     Text="Settings" />
-            </ext:SliderMenuLevel>
+            </ext:SlidingMenuLevel>
 
-        </ext:SliderMenu>
+        </ext:SlidingMenu>
     </div>
     <ra:Label 
         runat="server" 

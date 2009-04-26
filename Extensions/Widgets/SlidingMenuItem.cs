@@ -22,13 +22,13 @@ namespace Ra.Extensions
      * in turn consists of one or more SliderMenuItems which in turn can have one SliderMenuLevel and 
      * so on. This means that the parent of SliderMenuItems MUST be SliderMenuLevel items.
      */
-    [ASP.ToolboxData("<{0}:SliderMenuItem runat=\"server\"></{0}:SliderMenuItem>")]
-    public class SliderMenuItem : Panel, ASP.INamingContainer
+    [ASP.ToolboxData("<{0}:SlidingMenuItem runat=\"server\"></{0}:SlidingMenuItem>")]
+    public class SlidingMenuItem : Panel, ASP.INamingContainer
     {
         private LinkButton _button = new LinkButton();
         private Label _childLbl = new Label();
 
-        // TODO: Make pulicly available effect...?
+        // TODO: Make publicly available effect...?
         internal class EffectRollOut : Effect
         {
             private bool _reversed;
@@ -129,7 +129,7 @@ this.element.setStyle('marginLeft',this._oldMargin - parseInt(pos*this._fromWidt
             {
                 foreach (ASP.Control idx in Controls)
                 {
-                    if (idx is SliderMenuLevel)
+                    if (idx is SlidingMenuLevel)
                         return false;
                 }
                 return true;
@@ -170,14 +170,14 @@ this.element.setStyle('marginLeft',this._oldMargin - parseInt(pos*this._fromWidt
             this.Controls.AddAt(0, _button);
         }
 
-        private SliderMenu Root
+        private SlidingMenu Root
         {
             get
             {
                 ASP.Control idx = this.Parent;
-                while (idx != null && !(idx is SliderMenu))
+                while (idx != null && !(idx is SlidingMenu))
                     idx = idx.Parent;
-                return idx as SliderMenu;
+                return idx as SlidingMenu;
             }
         }
 
@@ -190,12 +190,12 @@ this.element.setStyle('marginLeft',this._oldMargin - parseInt(pos*this._fromWidt
                 return;
 
             // Finding child SliderMenuLevel control
-            SliderMenuLevel child = null;
+            SlidingMenuLevel child = null;
             foreach (ASP.Control idx in Controls)
             {
-                if (idx is SliderMenuLevel)
+                if (idx is SlidingMenuLevel)
                 {
-                    child = idx as SliderMenuLevel;
+                    child = idx as SlidingMenuLevel;
                     break;
                 }
             }
@@ -206,11 +206,11 @@ this.element.setStyle('marginLeft',this._oldMargin - parseInt(pos*this._fromWidt
                 child.ReRender();
             Root.SetAllChildrenNonVisible(Root);
             ASP.Control idxFromThis = child;
-            while (idxFromThis != null && !(idxFromThis is SliderMenu))
+            while (idxFromThis != null && !(idxFromThis is SlidingMenu))
             {
-                if (idxFromThis is SliderMenuLevel)
+                if (idxFromThis is SlidingMenuLevel)
                 {
-                    (idxFromThis as SliderMenuLevel).Style["display"] = "";
+                    (idxFromThis as SlidingMenuLevel).Style["display"] = "";
                 }
                 idxFromThis = idxFromThis.Parent;
             }
@@ -219,7 +219,7 @@ this.element.setStyle('marginLeft',this._oldMargin - parseInt(pos*this._fromWidt
             ASP.Control rootLevel = null;
             foreach (ASP.Control idx in Root.Controls)
             {
-                if (idx is SliderMenuLevel)
+                if (idx is SlidingMenuLevel)
                 {
                     rootLevel = idx;
                     break;
