@@ -33,22 +33,24 @@ namespace Ra.Extensions
         {
             private bool _reversed;
             private int _noLevels;
+            private ASP.Control _bread;
 
-            public EffectRollOut(ASP.Control control, int milliseconds)
-                : this(control, milliseconds, false)
+            public EffectRollOut(ASP.Control control, ASP.Control bread, int milliseconds)
+                : this(control, bread, milliseconds, false)
             { }
 
-            public EffectRollOut(ASP.Control control, int milliseconds, bool reversed)
-                : this(control, milliseconds, reversed, 1)
+            public EffectRollOut(ASP.Control control, ASP.Control bread, int milliseconds, bool reversed)
+                : this(control, bread, milliseconds, reversed, 1)
             {
                 _reversed = reversed;
             }
 
-            public EffectRollOut(ASP.Control control, int milliseconds, bool reversed, int noLevels)
+            public EffectRollOut(ASP.Control control, ASP.Control bread, int milliseconds, bool reversed, int noLevels)
                 : base(control, milliseconds)
             {
                 _reversed = reversed;
                 _noLevels = noLevels;
+                _bread = bread;
             }
 
             private void UpdateStyleCollection()
@@ -61,9 +63,25 @@ namespace Ra.Extensions
             {
                 UpdateStyleCollection();
                 return string.Format(@"
-    this._fromWidth = this.element.getDimensions().width * {0};
-    this._oldMargin = parseInt(this.element.getStyle('marginLeft')) || 0;
-", _noLevels);
+this._bread = Ra.$('{1}');
+if( this._bread ) {{
+  this._bread.style.visibility='hidden';
+  this._bread.setStyle('display', '');
+  var el = this._bread.lastChild;
+  if( el ) {{
+    var toMargin = (el.offsetLeft + el.offsetWidth) - this.element.getDimensions().width;
+    var el2 = el.previousSibling;
+    if( el2 && toMargin > 0) {{
+      this._fromMargin = (el2.offsetLeft + el2.offsetWidth) - this.element.getDimensions().width;
+      this._breadAnimateWidth = toMargin - this._fromMargin;
+      this._bread.setStyle('marginLeft', this._fromMargin);
+    }}
+  }}
+  this._bread.style.visibility='';
+}}
+this._fromWidth = this.element.getDimensions().width * {0};
+this._oldMargin = parseInt(this.element.getStyle('marginLeft')) || 0;
+", _noLevels, _bread.ClientID);
             }
 
             public override string RenderParalledOnFinished()
@@ -72,12 +90,18 @@ namespace Ra.Extensions
                 {
                     return @"
     this.element.setStyle('marginLeft',this._oldMargin + this._fromWidth + 'px');
+    if( this._breadAnimateWidth > 0 ) {
+      this._bread.setStyle('marginLeft',(-(this._breadAnimateWidth+this._fromMargin))+'px');
+    }
 ";
                 }
                 else
                 {
                     return @"
     this.element.setStyle('marginLeft',this._oldMargin - this._fromWidth + 'px');
+    if( this._breadAnimateWidth > 0 ) {
+      this._bread.setStyle('marginLeft',(-(this._breadAnimateWidth+this._fromMargin))+'px');
+    }
 ";
                 }
             }
@@ -87,12 +111,20 @@ namespace Ra.Extensions
                 if (_reversed)
                 {
                     return @"
-this.element.setStyle('marginLeft',this._oldMargin + parseInt(pos*this._fromWidth) + 'px');";
+this.element.setStyle('marginLeft',this._oldMargin + parseInt(pos*this._fromWidth) + 'px');
+if( this._breadAnimateWidth > 0 ) {
+  this._bread.setStyle('marginLeft',(-((pos*this._breadAnimateWidth)+this._fromMargin))+'px');
+}
+";
                 }
                 else
                 {
                     return @"
-this.element.setStyle('marginLeft',this._oldMargin - parseInt(pos*this._fromWidth) + 'px');";
+this.element.setStyle('marginLeft',this._oldMargin - parseInt(pos*this._fromWidth) + 'px');
+if( this._breadAnimateWidth > 0 ) {
+  this._bread.setStyle('marginLeft',(-((pos*this._breadAnimateWidth)+this._fromMargin))+'px');
+}
+";
                 }
             }
         }
@@ -225,7 +257,9 @@ this.element.setStyle('marginLeft',this._oldMargin - parseInt(pos*this._fromWidt
                     break;
                 }
             }
-            new EffectRollOut(rootLevel, 800)
+            Root.BreadCrumb.Style["display"] = "gokk"; // To force a new value to the display property...
+            Root.BreadCrumb.Style["display"] = "none";
+            new EffectRollOut(rootLevel, Root.BreadCrumb, 800)
                 .Render();
         }
 
