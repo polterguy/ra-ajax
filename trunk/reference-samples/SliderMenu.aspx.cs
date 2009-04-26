@@ -5,9 +5,14 @@ namespace RefSamples
 {
     public partial class SliderMenuSample : System.Web.UI.Page
     {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            count.Text = "0";
+        }
+
         protected void slider_ItemClicked(object sender, EventArgs e)
         {
-            SliderMenuItem item = sender as SliderMenuItem;
+            SlidingMenuItem item = sender as SlidingMenuItem;
             if (item.IsLeaf)
             {
                 lbl.Text = item.ID;
@@ -16,14 +21,18 @@ namespace RefSamples
 
         protected void window_GetChildNodes(object sender, EventArgs e)
         {
-            SliderMenuLevel level = sender as SliderMenuLevel;
+            int ct = int.Parse(count.Text);
+            ct += 1;
+            count.Text = ct.ToString();
+
+            SlidingMenuLevel level = sender as SlidingMenuLevel;
             for (int idx = 0; idx < 5; idx++)
             {
-                SliderMenuItem i = new SliderMenuItem();
+                SlidingMenuItem i = new SlidingMenuItem();
                 i.ID = level.ID + idx;
                 i.Text = "Window " + idx;
                 level.Controls.Add(i);
-                SliderMenuLevel l = new SliderMenuLevel();
+                SlidingMenuLevel l = new SlidingMenuLevel();
                 l.ID = level.ID + "LL" + idx;
                 l.GetChildNodes += window_GetChildNodes;
                 i.Controls.Add(l);
@@ -32,17 +41,17 @@ namespace RefSamples
 
         protected void views_GetChildNodes(object sender, EventArgs e)
         {
-            SliderMenuLevel level = sender as SliderMenuLevel;
+            SlidingMenuLevel level = sender as SlidingMenuLevel;
             for (int idx = 0; idx < 5; idx++)
             {
-                SliderMenuItem i = new SliderMenuItem();
+                SlidingMenuItem i = new SlidingMenuItem();
                 i.ID = "dyn" + idx;
                 i.Text = "View " + idx;
                 level.Controls.Add(i);
 
                 if (idx < 3)
                 {
-                    SliderMenuLevel l = new SliderMenuLevel();
+                    SlidingMenuLevel l = new SlidingMenuLevel();
                     l.ID = "dynChild" + idx;
                     l.GetChildNodes += l_GetChildNodes;
                     i.Controls.Add(l);
@@ -52,14 +61,14 @@ namespace RefSamples
 
         void l_GetChildNodes(object sender, EventArgs e)
         {
-            SliderMenuLevel level = sender as SliderMenuLevel;
+            SlidingMenuLevel level = sender as SlidingMenuLevel;
 
-            SliderMenuItem i = new SliderMenuItem();
+            SlidingMenuItem i = new SlidingMenuItem();
             i.ID = "dynOpen" + level.ID;
             i.Text = "Open View";
             level.Controls.Add(i);
 
-            i = new SliderMenuItem();
+            i = new SlidingMenuItem();
             i.ID = "dynClose" + level.ID;
             i.Text = "Close View";
             level.Controls.Add(i);

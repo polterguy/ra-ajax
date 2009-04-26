@@ -51,9 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Widgets\SliderMenuItem.cs" />
-    <Compile Include="Widgets\SliderMenuLevel.cs" />
-    <Compile Include="Widgets\SliderMenu.cs" />
+    <Compile Include="Widgets\SlidingMenuItem.cs" />
+    <Compile Include="Widgets\SlidingMenuLevel.cs" />
+    <Compile Include="Widgets\SlidingMenu.cs" />
     <Compile Include="Widgets\WebPart.cs" />
     <Compile Include="Widgets\ExtButton.cs" />
     <Compile Include="Widgets\Calendar.cs" />
