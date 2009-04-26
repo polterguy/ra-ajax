@@ -90,7 +90,6 @@ http://ra-ajax.org
 	background: transparent url(window-h-sprite.png) repeat 0 0;
 	min-height:32px;
 	overflow:auto;
-	padding-left:10px;
 }
 
 .slider-menu .bread-crumb .bread-item-left
@@ -132,7 +131,7 @@ http://ra-ajax.org
 {
 	padding-left:2px;
 	margin-bottom:8px;
-	margin-left:0;
+	margin-left:8px;
 	margin-top:8px;
 	background:Transparent url(bread-crumb.png) no-repeat 0 0;
 }
