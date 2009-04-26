@@ -32,6 +32,7 @@ namespace Ra.Extensions
     [ASP.ToolboxData("<{0}:SlidingMenu runat=\"server\"></{0}:SlidingMenu>")]
     public class SlidingMenu : Panel, ASP.INamingContainer
     {
+        private Panel _breadParent = new Panel();
         private Panel _bread = new Panel();
 
         /**
@@ -93,6 +94,9 @@ namespace Ra.Extensions
 
         private void CreateBreadCrumbWrapper()
         {
+            _breadParent.ID = "breadParent";
+            _breadParent.CssClass = "bread-crumb-parent";
+
             _bread.ID = "bread";
             _bread.CssClass = "bread-crumb";
 
@@ -102,7 +106,9 @@ namespace Ra.Extensions
             lit.Text = "&nbsp;";
             _bread.Controls.Add(lit);
 
-            Controls.AddAt(0, _bread);
+            _breadParent.Controls.Add(_bread);
+
+            Controls.AddAt(0, _breadParent);
         }
 
         internal void SetAllChildrenNonVisible(ASP.Control from)
@@ -127,6 +133,11 @@ namespace Ra.Extensions
         {
             get { return ViewState["ActiveLevel"] as string; }
             set { ViewState["ActiveLevel"] = value; }
+        }
+
+        internal Panel BreadCrumb
+        {
+            get { return _bread; }
         }
 
         internal void SetActiveLevel(SlidingMenuLevel level)
@@ -181,6 +192,7 @@ namespace Ra.Extensions
             }
             if (to != null)
             {
+                // Creating home bread-crumb button
                 LinkButton home = new LinkButton();
                 home.ID = "BTNbreadGoHome";
                 home.CssClass = "bread-item-left first";
@@ -213,11 +225,14 @@ namespace Ra.Extensions
             {
                 if (idxLevel is SlidingMenuLevel)
                 {
-                    (idxLevel as SlidingMenuLevel).SetForReRendering();
                     noLevels += 1;
                 }
                 if (idxLevel == level)
                     break;
+                if (idxLevel is SlidingMenuLevel)
+                {
+                    (idxLevel as SlidingMenuLevel).SetForReRendering();
+                }
                 idxLevel = idxLevel.Parent;
             }
             SetActiveLevel(level);
@@ -232,7 +247,9 @@ namespace Ra.Extensions
                     break;
                 }
             }
-            new Ra.Extensions.SlidingMenuItem.EffectRollOut(rootLevel, 800, true, noLevels)
+            _bread.Style["display"] = "gokk"; // To force a new value to the display property...
+            _bread.Style["display"] = "none";
+            new Ra.Extensions.SlidingMenuItem.EffectRollOut(rootLevel, _bread, 800, true, noLevels)
                 .Render();
         }
     }
