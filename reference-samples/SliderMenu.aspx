@@ -119,6 +119,7 @@
                     Text="Window">
                     <ext:SlidingMenuLevel 
                         runat="server" 
+                        Caption="Window"
                         OnGetChildNodes="window_GetChildNodes"
                         ID="SliderMenuLevel1" />
                 </ext:SlidingMenuItem>

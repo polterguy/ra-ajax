@@ -66,8 +66,7 @@
 
 * Fixed a bug in LinkButton which made it impossible for the
   LinkButon to have Child Controls. Now though the LinkButton
-  can have Child Controls, but you can not both have Child
-  Controls and also set the Text property of it.
+  can have Child Controls.
 
 * New Widget - SliderMenu. A SliderMenu is a cross-over 
   between a TreeView and a Menu. It contains most features
