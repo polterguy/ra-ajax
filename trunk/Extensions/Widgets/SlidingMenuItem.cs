@@ -25,7 +25,7 @@ namespace Ra.Extensions
     [ASP.ToolboxData("<{0}:SlidingMenuItem runat=\"server\"></{0}:SlidingMenuItem>")]
     public class SlidingMenuItem : Panel, ASP.INamingContainer
     {
-        private LinkButton _button = new LinkButton();
+        private Label _button = new Label();
         private Label _childLbl = new Label();
 
         // TODO: Make publicly available effect...?
@@ -159,13 +159,20 @@ if( this._breadAnimateWidth > 0 ) {
         {
             get
             {
-                foreach (ASP.Control idx in Controls)
+                foreach (ASP.Control idx in base.Controls)
                 {
                     if (idx is SlidingMenuLevel)
                         return false;
                 }
                 return true;
             }
+        }
+
+        /**
+         */
+        public RaWebControl Content
+        {
+            get { return _button; }
         }
 
         protected override void OnInit(EventArgs e)

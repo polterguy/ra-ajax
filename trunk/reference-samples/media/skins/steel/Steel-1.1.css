@@ -170,6 +170,12 @@ http://ra-ajax.org
 	margin:1px;
 }
 
+.slider-menu .level .item .menu-btn:hover
+{
+	background-color:#eee;
+	cursor:pointer;
+}
+
 .slider-menu .level .item .leaf
 {
 	background:url('tree-sprites.png') no-repeat -144px 0;

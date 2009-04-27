@@ -52,6 +52,13 @@ namespace Ra.Extensions
             set { base.CssClass = value; }
         }
 
+        [DefaultValue("")]
+        public string Caption
+        {
+            get { return ViewState["Caption"] == null ? "" : (string)ViewState["Caption"]; }
+            set { ViewState["Caption"] = value; }
+        }
+
         protected override void OnInit(EventArgs e)
         {
             Tag = "ul";

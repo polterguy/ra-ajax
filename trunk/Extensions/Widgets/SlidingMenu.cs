@@ -183,7 +183,7 @@ namespace Ra.Extensions
                     Label center = new Label();
                     center.ID = btn.ID + "c";
                     center.CssClass = "bread-item-center";
-                    center.Text = (idx as SlidingMenuItem).Text;
+                    center.Text = string.IsNullOrEmpty((idx.Parent as SlidingMenuLevel).Caption) ? (idx as SlidingMenuItem).Text : (idx.Parent as SlidingMenuLevel).Caption;
                     right.Controls.Add(center);
 
                     _bread.Controls.AddAt(0, btn);
@@ -206,8 +206,14 @@ namespace Ra.Extensions
                 Label center = new Label();
                 center.ID = home.ID + "c";
                 center.CssClass = "bread-item-center";
-                center.Text = "Home";
+                center.Text = "&nbsp;";
                 right.Controls.Add(center);
+
+                Label centerContent = new Label();
+                centerContent.ID = home.ID + "cc";
+                centerContent.CssClass = "slider-bread-home";
+                centerContent.Text = "&nbsp;";
+                center.Controls.Add(centerContent);
 
                 _bread.Controls.AddAt(0, home);
             }

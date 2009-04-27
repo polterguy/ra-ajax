@@ -1,5 +1,6 @@
 ﻿using System;
 using Ra.Extensions;
+using Ra.Widgets;
 
 namespace RefSamples
 {
@@ -30,9 +31,15 @@ namespace RefSamples
             {
                 SlidingMenuItem i = new SlidingMenuItem();
                 i.ID = level.ID + idx;
-                i.Text = "Window " + idx;
+                //i.Text = "Window " + idx;
                 level.Controls.Add(i);
+
+                LinkButton b = new LinkButton();
+                b.Text = "asdfoijh";
+                i.Content.Controls.Add(b);
+
                 SlidingMenuLevel l = new SlidingMenuLevel();
+                l.Caption = "Window " + idx;
                 l.ID = level.ID + "LL" + idx;
                 l.GetChildNodes += window_GetChildNodes;
                 i.Controls.Add(l);

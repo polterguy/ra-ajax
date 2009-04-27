@@ -36,7 +36,10 @@ namespace Ra.Widgets
         #region [ -- Properties -- ]
 
         /**
-         * The text that is displayed within the linkbutton, default value is string.Empty
+         * The text that is displayed within the linkbutton, default value is string.Empty.
+         * Note that the Ra LinkButton can have Child Controls in the Controls Collection. If it
+         * does however then the Text property will NOT be rendered but overridden by the rendering
+         * of the Child Controls.
          */
         [DefaultValue("")]
         public string Text
@@ -44,8 +47,6 @@ namespace Ra.Widgets
             get { return ViewState["Text"] == null ? "" : (string)ViewState["Text"]; }
             set
             {
-                if (Controls.Count > 0)
-                    throw new ApplicationException("Can't set the Text property of a LinkButton if you have Child controls in it");
                 if (value != Text)
                     SetJSONValueString("Text", value);
                 ViewState["Text"] = value;
