@@ -62,19 +62,43 @@ namespace Ra.Extensions
             public override string RenderParalledOnStart()
             {
                 UpdateStyleCollection();
-                return string.Format(@"
+                if (_reversed)
+                {
+                    return string.Format(@"
+this._bread = Ra.$('{1}');
+if( this._bread ) {{
+  this._bread.setOpacity(0);
+  this._bread.setStyle('display', '');
+  var el = this._bread.lastChild;
+  if( el ) {{
+    var toMargin = Math.max((el.offsetLeft + el.offsetWidth) - this.element.getDimensions().width, 0);
+    this._bread.setStyle('marginLeft', (-toMargin) + 'px');
+  }}
+  this._bread.style.visibility='';
+}}
+this._fromWidth = this.element.getDimensions().width * {0};
+this._oldMargin = parseInt(this.element.getStyle('marginLeft')) || 0;
+", _noLevels, this._bread.ClientID);
+                }
+                else
+                {
+                    return string.Format(@"
 this._bread = Ra.$('{1}');
 if( this._bread ) {{
   this._bread.style.visibility='hidden';
   this._bread.setStyle('display', '');
   var el = this._bread.lastChild;
+  this._lastBread = el;
   if( el ) {{
-    var toMargin = (el.offsetLeft + el.offsetWidth) - this.element.getDimensions().width;
+    this._lastBread.setOpacity(0);
+    this._breadToMargin = Math.max((el.offsetLeft + el.offsetWidth) - this.element.getDimensions().width, 0);
     var el2 = el.previousSibling;
-    if( el2 && toMargin > 0) {{
-      this._fromMargin = (el2.offsetLeft + el2.offsetWidth) - this.element.getDimensions().width;
-      this._breadAnimateWidth = toMargin - this._fromMargin;
-      this._bread.setStyle('marginLeft', this._fromMargin);
+    this._breadFromMargin = 0;
+    if( el2 && this._breadToMargin > 0) {{
+      this._breadFromMargin = Math.max((el2.offsetLeft + el2.offsetWidth) - this.element.getDimensions().width, 0);
+      if( this._breadFromMargin > 0 ) {{
+        this._bread.setStyle('marginLeft', (-this._breadFromMargin) + 'px');
+      }}
     }}
   }}
   this._bread.style.visibility='';
@@ -82,6 +106,7 @@ if( this._bread ) {{
 this._fromWidth = this.element.getDimensions().width * {0};
 this._oldMargin = parseInt(this.element.getStyle('marginLeft')) || 0;
 ", _noLevels, _bread.ClientID);
+                }
             }
 
             public override string RenderParalledOnFinished()
@@ -90,17 +115,18 @@ this._oldMargin = parseInt(this.element.getStyle('marginLeft')) || 0;
                 {
                     return @"
     this.element.setStyle('marginLeft',this._oldMargin + this._fromWidth + 'px');
-    if( this._breadAnimateWidth > 0 ) {
-      this._bread.setStyle('marginLeft',(-(this._breadAnimateWidth+this._fromMargin))+'px');
-    }
+    this._bread.setOpacity(1);
 ";
                 }
                 else
                 {
                     return @"
     this.element.setStyle('marginLeft',this._oldMargin - this._fromWidth + 'px');
-    if( this._breadAnimateWidth > 0 ) {
-      this._bread.setStyle('marginLeft',(-(this._breadAnimateWidth+this._fromMargin))+'px');
+    if( this._breadToMargin > 0 ) {
+      this._bread.setStyle('marginLeft',(-(this._breadToMargin))+'px');
+    }
+    if( this._lastBread ) {
+      this._lastBread.setOpacity(1);
     }
 ";
                 }
@@ -112,27 +138,45 @@ this._oldMargin = parseInt(this.element.getStyle('marginLeft')) || 0;
                 {
                     return @"
 this.element.setStyle('marginLeft',this._oldMargin + parseInt(pos*this._fromWidth) + 'px');
-if( this._breadAnimateWidth > 0 ) {
-  this._bread.setStyle('marginLeft',(-((pos*this._breadAnimateWidth)+this._fromMargin))+'px');
-}
+this._bread.setOpacity(pos);
 ";
                 }
                 else
                 {
                     return @"
 this.element.setStyle('marginLeft',this._oldMargin - parseInt(pos*this._fromWidth) + 'px');
-if( this._breadAnimateWidth > 0 ) {
-  this._bread.setStyle('marginLeft',(-((pos*this._breadAnimateWidth)+this._fromMargin))+'px');
+if( this._breadToMargin > 0 ) {
+  this._bread.setStyle('marginLeft',(-((pos*(this._breadToMargin - this._breadFromMargin)) + this._breadFromMargin))+'px');
+}
+if( this._lastBread ) {
+  this._lastBread.setOpacity(pos);
 }
 ";
                 }
             }
         }
 
+        /**
+         * This is the Text of the MenuItem.
+         */
         public string Text
         {
             get { return _button.Text; }
             set { _button.Text = value; }
+        }
+
+        /**
+         * If this one is true then the MenuItem will not trigger a click event. This can be useful
+         * if you have other types of controls within the MenuItem which are relying on click interactions
+         * like for instance hyperlinks and such that should navigate away from the page. Or if you have
+         * CheckBox or other controls that needs to themselves trap the "click" event. Notice though
+         * that this will also make it impossible to EXPAND the MenuItem. This means that it this 
+         * property should only be true for LEAF menu items. The default value is false.
+         */
+        public bool NoClick
+        {
+            get { return ViewState["NoClick"] == null ? false : (bool)ViewState["NoClick"]; }
+            set { ViewState["NoClick"] = value; }
         }
 
         /**
@@ -169,6 +213,8 @@ if( this._breadAnimateWidth > 0 ) {
         }
 
         /**
+         * If you want to have child controls within the item then this is where you are supposed
+         * to add those up.
          */
         public RaWebControl Content
         {
@@ -205,18 +251,24 @@ if( this._breadAnimateWidth > 0 ) {
 
             _button.ID = "btn";
             _button.CssClass = "menu-btn";
-            _button.Click += _button_Click;
+            if (!NoClick)
+                _button.Click += _button_Click;
             this.Controls.AddAt(0, _button);
         }
 
+        private SlidingMenu _root;
         private SlidingMenu Root
         {
             get
             {
-                ASP.Control idx = this.Parent;
-                while (idx != null && !(idx is SlidingMenu))
-                    idx = idx.Parent;
-                return idx as SlidingMenu;
+                if (_root == null)
+                {
+                    ASP.Control idx = this.Parent;
+                    while (idx != null && !(idx is SlidingMenu))
+                        idx = idx.Parent;
+                    _root = idx as SlidingMenu;
+                }
+                return _root;
             }
         }
 
@@ -266,7 +318,7 @@ if( this._breadAnimateWidth > 0 ) {
             }
             Root.BreadCrumb.Style["display"] = "gokk"; // To force a new value to the display property...
             Root.BreadCrumb.Style["display"] = "none";
-            new EffectRollOut(rootLevel, Root.BreadCrumb, 800)
+            new EffectRollOut(rootLevel, Root.BreadCrumb, Root.AnimationDuration)
                 .Render();
         }
 

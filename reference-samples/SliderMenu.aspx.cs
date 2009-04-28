@@ -6,11 +6,6 @@ namespace RefSamples
 {
     public partial class SliderMenuSample : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            count.Text = "0";
-        }
-
         protected void slider_ItemClicked(object sender, EventArgs e)
         {
             SlidingMenuItem item = sender as SlidingMenuItem;
@@ -22,21 +17,13 @@ namespace RefSamples
 
         protected void window_GetChildNodes(object sender, EventArgs e)
         {
-            int ct = int.Parse(count.Text);
-            ct += 1;
-            count.Text = ct.ToString();
-
             SlidingMenuLevel level = sender as SlidingMenuLevel;
             for (int idx = 0; idx < 5; idx++)
             {
                 SlidingMenuItem i = new SlidingMenuItem();
                 i.ID = level.ID + idx;
-                //i.Text = "Window " + idx;
+                i.Text = "Window " + idx;
                 level.Controls.Add(i);
-
-                LinkButton b = new LinkButton();
-                b.Text = "asdfoijh";
-                i.Content.Controls.Add(b);
 
                 SlidingMenuLevel l = new SlidingMenuLevel();
                 l.Caption = "Window " + idx;

@@ -23,10 +23,6 @@
 
     <h1>Slider Menu Sample</h1>
     <div>
-        <ra:Label 
-            runat="server" 
-            ID="count" 
-            Text="0" />
         <ext:SlidingMenu 
             runat="server" 
             style="width:250px;height:200px;" 
@@ -42,6 +38,7 @@
                     Text="File">
                     <ext:SlidingMenuLevel 
                         runat="server" 
+                        Caption="Some files"
                         ID="files">
                         <ext:SlidingMenuItem 
                             runat="server" 
@@ -119,7 +116,7 @@
                     Text="Window">
                     <ext:SlidingMenuLevel 
                         runat="server" 
-                        Caption="Window"
+                        Caption="Windows"
                         OnGetChildNodes="window_GetChildNodes"
                         ID="SliderMenuLevel1" />
                 </ext:SlidingMenuItem>
