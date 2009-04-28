@@ -96,7 +96,8 @@ namespace Ra.Extensions
             if (_hasLoadedDynamicControls)
                 GetDynamicNodes();
 
-            if (Root.ActiveLevel == this.ID)
+            if (Root.ActiveLevel == this.ID || 
+                (string.IsNullOrEmpty(Root.ActiveLevel) && this.Parent is SlidingMenu))
                 Root.EnsureBreadCrumbCreated();
         }
 
