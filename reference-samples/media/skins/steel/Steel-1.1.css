@@ -180,6 +180,12 @@ http://ra-ajax.org
 	background:url('bread-crumb.png') no-repeat right -64px;
 }
 
+.slider-menu .bread-crumb .bread-item-last:hover
+{
+	text-decoration:none;
+	color:inherit;
+}
+
 .slider-menu .level
 {
 	width:100%;
