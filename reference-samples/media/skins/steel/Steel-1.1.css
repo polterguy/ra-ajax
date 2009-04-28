@@ -165,7 +165,7 @@ http://ra-ajax.org
 	left:3px;
 }
 
-.slider-menu .bread-crumb .first:hover .slider-bread-home
+.slider-menu .bread-crumb a.first:hover .slider-bread-home
 {
 	background:Transparent url(tree-sprites.png) no-repeat -176px 0;
 }

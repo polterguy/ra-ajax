@@ -102,6 +102,10 @@ namespace Ra.Extensions
             {
                 UpdateBreadCrumb(AjaxManager.Instance.FindControl<SlidingMenuLevel>(ActiveLevel));
             }
+            else
+            {
+                UpdateBreadCrumb(null);
+            }
         }
 
         private void CreateBreadCrumbWrapper()
@@ -220,33 +224,38 @@ namespace Ra.Extensions
                 }
                 idx = idx.Parent;
             }
-            if (to != null)
+            // Creating home bread-crumb button
+            RaWebControl home = null;
+            if (to == null)
             {
-                // Creating home bread-crumb button
-                LinkButton home = new LinkButton();
-                home.ID = "BTNbreadGoHome";
-                home.CssClass = "bread-item-left first";
-                home.Click += btn_Click;
-
-                Label right = new Label();
-                right.ID = home.ID + "r";
-                right.CssClass = "bread-item-right";
-                home.Controls.Add(right);
-
-                Label center = new Label();
-                center.ID = home.ID + "c";
-                center.CssClass = "bread-item-center";
-                center.Text = "&nbsp;";
-                right.Controls.Add(center);
-
-                Label centerContent = new Label();
-                centerContent.ID = home.ID + "cc";
-                centerContent.CssClass = "slider-bread-home";
-                centerContent.Text = "&nbsp;";
-                center.Controls.Add(centerContent);
-
-                _bread.Controls.AddAt(0, home);
+                home = new Label();
             }
+            else
+            {
+                home = new LinkButton();
+                home.Click += btn_Click;
+            }
+            home.ID = "BTNbreadGoHome";
+            home.CssClass = "bread-item-left first";
+
+            Label right2 = new Label();
+            right2.ID = home.ID + "r";
+            right2.CssClass = "bread-item-right";
+            home.Controls.Add(right2);
+
+            Label center2 = new Label();
+            center2.ID = home.ID + "c";
+            center2.CssClass = "bread-item-center";
+            center2.Text = "&nbsp;";
+            right2.Controls.Add(center2);
+
+            Label centerContent = new Label();
+            centerContent.ID = home.ID + "cc";
+            centerContent.CssClass = "slider-bread-home";
+            centerContent.Text = "&nbsp;";
+            center2.Controls.Add(centerContent);
+
+            _bread.Controls.AddAt(0, home);
         }
 
         private void btn_Click(object sender, EventArgs e)
