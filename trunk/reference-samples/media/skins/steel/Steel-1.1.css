@@ -89,7 +89,7 @@ http://ra-ajax.org
 	width:1000%;
 	background: transparent url(window-h-sprite.png) repeat 0 0;
 	height:32px;
-	overflow:auto;
+	overflow:hidden;
 }
 
 .slider-menu .bread-crumb
@@ -109,7 +109,7 @@ http://ra-ajax.org
 	float:left;
 	display:block;
 	font-size:9px;
-	background:Transparent url(bread-crumb.png) no-repeat 0 -48px;
+	background:url('bread-crumb.png') no-repeat 0 -48px;
 }
 
 .slider-menu .bread-crumb .bread-item-right
@@ -117,14 +117,14 @@ http://ra-ajax.org
 	height:16px;
 	display:block;
 	padding-right:8px;
-	background:Transparent url(bread-crumb.png) no-repeat right -32px;
+	background:url('bread-crumb.png') no-repeat right -32px;
 }
 
 .slider-menu .bread-crumb .bread-item-center
 {
 	height:12px;
 	display:block;
-	background:Transparent url(bread-crumb.png) repeat-x 0 -16px;
+	background:url('bread-crumb.png') repeat-x 0 -16px;
 	padding:2px;
 }
 
@@ -140,7 +140,44 @@ http://ra-ajax.org
 	margin-bottom:8px;
 	margin-left:8px;
 	margin-top:8px;
-	background:Transparent url(bread-crumb.png) no-repeat 0 0;
+	background:url('bread-crumb.png') no-repeat 0 0;
+	position:relative;
+}
+
+.slider-menu .bread-crumb .first:hover
+{
+	text-decoration:none;
+}
+
+.slider-menu .bread-crumb .first .bread-item-center
+{
+	width:10px;
+}
+
+.slider-menu .bread-crumb .first .slider-bread-home
+{
+	background:Transparent url(tree-sprites.png) no-repeat -160px 0;
+	width:16px;
+	height:16px;
+	display:block;
+	position:absolute;
+	top:0;
+	left:3px;
+}
+
+.slider-menu .bread-crumb .first:hover .slider-bread-home
+{
+	background:Transparent url(tree-sprites.png) no-repeat -176px 0;
+}
+
+.slider-menu .bread-crumb .bread-item-left .slider-bread-home:hover
+{
+	text-decoration:none;
+}
+
+.slider-menu .bread-crumb .bread-item-last .bread-item-right
+{
+	background:url('bread-crumb.png') no-repeat right -64px;
 }
 
 .slider-menu .level

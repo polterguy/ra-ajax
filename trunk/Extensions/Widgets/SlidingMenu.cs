@@ -57,6 +57,18 @@ namespace Ra.Extensions
             set { base.CssClass = value; }
         }
 
+        /**
+         * Number of milliseconds that the MenuItems will spend animating when changing level.
+         * The default value is 500 which is 0.5 seconds. The higher this number is, the more
+         * time the menu items will spend "animating" into view when changing levels.
+         */
+        [DefaultValue(500)]
+        public int AnimationDuration
+        {
+            get { return ViewState["AnimationDuration"] == null ? 500 : (int)ViewState["AnimationDuration"]; }
+            set { ViewState["AnimationDuration"] = value; }
+        }
+
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -157,7 +169,8 @@ namespace Ra.Extensions
 
         private void UpdateBreadCrumb(SlidingMenuLevel to)
         {
-            ASP.Control idx = to == null ? null : to.Parent.Parent;
+            ASP.Control idx = to;
+            bool first = true;
             while (true)
             {
                 if (idx == null || idx is SlidingMenu)
@@ -166,14 +179,28 @@ namespace Ra.Extensions
                 }
                 else if (idx is SlidingMenuItem)
                 {
-                    LinkButton btn = new LinkButton();
+                    RaWebControl btn = null;
+                    if (first)
+                    {
+                        btn = new Label();
+                        btn.CssClass = "bread-item-left bread-item-last";
+                        first = false;
+                    }
+                    else
+                    {
+                        btn = new LinkButton();
+                        btn.CssClass = "bread-item-left";
+                        btn.Click += btn_Click;
+                    }
+                    SlidingMenuLevel curLevel = null;
                     foreach (ASP.Control idx2 in idx.Controls)
                     {
                         if (idx2 is SlidingMenuLevel)
+                        {
                             btn.ID = "BTN" + idx2.ID;
+                            curLevel = idx2 as SlidingMenuLevel;
+                        }
                     }
-                    btn.CssClass = "bread-item-left";
-                    btn.Click += btn_Click;
 
                     Label right = new Label();
                     right.ID = btn.ID + "r";
@@ -183,7 +210,10 @@ namespace Ra.Extensions
                     Label center = new Label();
                     center.ID = btn.ID + "c";
                     center.CssClass = "bread-item-center";
-                    center.Text = string.IsNullOrEmpty((idx.Parent as SlidingMenuLevel).Caption) ? (idx as SlidingMenuItem).Text : (idx.Parent as SlidingMenuLevel).Caption;
+                    center.Text =
+                        string.IsNullOrEmpty(curLevel.Caption) ? 
+                            (idx as SlidingMenuItem).Text :
+                            curLevel.Caption;
                     right.Controls.Add(center);
 
                     _bread.Controls.AddAt(0, btn);
@@ -255,7 +285,7 @@ namespace Ra.Extensions
             }
             _bread.Style["display"] = "gokk"; // To force a new value to the display property...
             _bread.Style["display"] = "none";
-            new Ra.Extensions.SlidingMenuItem.EffectRollOut(rootLevel, _bread, 800, true, noLevels)
+            new Ra.Extensions.SlidingMenuItem.EffectRollOut(rootLevel, _bread, AnimationDuration, true, noLevels)
                 .Render();
         }
     }
