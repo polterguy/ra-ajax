@@ -33,8 +33,6 @@ namespace Ra.Widgets
             return null;
         }
 
-
-
         #region ICollection Members
 
         public void CopyTo(Array array, int index)
@@ -59,8 +57,6 @@ namespace Ra.Widgets
 
         #endregion
 
-
-
         #region IEnumerable Members
 
         public IEnumerator GetEnumerator()
@@ -69,8 +65,6 @@ namespace Ra.Widgets
         }
 
         #endregion
-
-
 
         #region IList<ListItem> Members
 
@@ -107,8 +101,6 @@ namespace Ra.Widgets
         }
 
         #endregion
-
-
 
         #region ICollection<ListItem> Members
 
@@ -147,8 +139,6 @@ namespace Ra.Widgets
         }
 
         #endregion
-
-
 
         #region IEnumerable<ListItem> Members
 

@@ -76,6 +76,22 @@ Ra.$F = function(id, newValue, offset) {
   return el;
 };
 
+// Dynamically includes a JavaScript file using it's path (src)
+Ra.$I = function(src) {
+  this.xhr = (window.XMLHttpRequest && new XMLHttpRequest()) || 
+     new ActiveXObject('Msxml2.XMLHTTP') || 
+     new ActiveXObject('Microsoft.XMLHTTP');
+
+  this.xhr.open('GET', src, false);
+  this.xhr.setRequestHeader('Accept', 'text/javascript');
+
+  this.xhr.send('');
+  if( this.xhr.responseText && this.xhr.status ) {
+    if( this.xhr.status >= 200 && this.xhr.status < 300 ) {
+      eval(this.xhr.responseText);
+    }
+  }
+};
 
 // To create a class which will automatically call "init" on objects 
 // when created with the arguments applied
