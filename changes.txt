@@ -38,7 +38,7 @@
 
 * Removed unnecessary code from Dynamic.
 
-* Fixed a bug in TreeView which occured when ClientSideExpansion
+* Fixed a bug in TreeView which occurred when ClientSideExpansion
   was turned on and TreeNodes was either expanding slowly because
   of server overhead or nodes was being clicked very fast. If 
   those criteria was met then sometimes nodes would come out
@@ -60,7 +60,7 @@
   would let the user click an active AccordionView which again
   would trigger a JavaScript bug.
 
-* Cleaned up the API significantly an removed unnessecary 
+* Cleaned up the API significantly an removed unnecessary 
   and redundant methods and properties for many widgets and
   classes.
 
@@ -80,6 +80,11 @@
 
 * Fixed a bug in RaControl that made the JSON serialization fail 
   if the value passed in is null.
+  
+* Added support for dynamic inclusion of JavaScript files on 
+  Ajax callbacks.
+  
+* Minor refactorings in AjaxManager.
 
   ------------------------------------------------------------------
 
