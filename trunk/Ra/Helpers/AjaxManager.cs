@@ -37,6 +37,7 @@ namespace Ra
         private List<RaControl> _raControls = new List<RaControl>();
         private bool _supressFilters;
         private List<string> _scriptIncludes = new List<string>();
+        private List<string> _dynamicScriptIncludes = new List<string>();
         private string _redirectUrl;
         private MemoryStream _memStream;
         private HtmlTextWriter _writer;
@@ -85,6 +86,44 @@ namespace Ra
         {
             get { return _supressFilters; }
             set { _supressFilters = value; }
+        }
+        
+        internal HtmlTextWriter Writer
+        {
+            get
+            {
+                if (_writer == null)
+                {
+                    _memStream = new MemoryStream();
+                    TextWriter tw = new StreamWriter(_memStream);
+                    _writer = new HtmlTextWriter(tw);
+                }
+                return _writer;
+            }
+        }
+
+        // TODO: Why is this an HTMLTextWriter?
+        /**
+         * Use this method to append you own script and/or HTML or other output which will be executed 
+         * on the client when the request returns. Notice though that the JavaScript Ajax engine of
+         * Ra-Ajax will expect whatever is being returned to the client to be JavaScript. This means that
+         * if you want to return other types of values and objects back to the client you need to wrap this
+         * somehow inside of JavaScript by using e.g. JSON or some similar mechanism. Also you should always
+         * end your JavaScript statements with semicolon (;) since otherwise other parts of the JavaScript
+         * returned probably will fissle.
+         */
+        public HtmlTextWriter WriterAtBack
+        {
+            get
+            {
+                if (_writerBack == null)
+                {
+                    _memStreamBack = new MemoryStream();
+                    TextWriter tw = new StreamWriter(_memStreamBack);
+                    _writerBack = new HtmlTextWriter(tw);
+                }
+                return _writerBack;
+            }
         }
 
         internal Control FindControl(Control current, string id)
@@ -353,13 +392,23 @@ namespace Ra
                 ((Page)HttpContext.Current.CurrentHandler).ClientScript.RegisterClientScriptResource(type, id);
             }
             string resource = ((Page)HttpContext.Current.CurrentHandler).ClientScript.GetWebResourceUrl(type, id);
-            if (!_scriptIncludes.Exists(
-                delegate(string idx)
-                {
-                    return idx == resource;
-                }))
+
+            if (string.IsNullOrEmpty(resource))
+                return;
+
+            if (IsCallback)
             {
-                _scriptIncludes.Add(resource);
+                if (!_dynamicScriptIncludes.Contains(resource))
+                {
+                    _dynamicScriptIncludes.Add(resource);
+                }
+            }
+            else
+            {
+                if (!_scriptIncludes.Contains(resource))
+                {
+                    _scriptIncludes.Add(resource);
+                }
             }
         }
 
@@ -384,42 +433,29 @@ namespace Ra
             }
         }
 
-        internal HtmlTextWriter Writer
+        // Here we are if this is a POSTBACK or the initial rendering of the page... (Page.IsPostBack == false)
+        // The content parameter is a stream containing the entire page's HTML output
+        internal void RenderPostback(Stream next, MemoryStream content)
         {
-            get
-            {
-                if (_writer == null)
-                {
-                    _memStream = new MemoryStream();
-                    TextWriter tw = new StreamWriter(_memStream);
-                    _writer = new HtmlTextWriter(tw);
-                }
-                return _writer;
-            }
-        }
+            // First reading the WHOLE page content into memory since we need
+            // to add up the "register control" script for all of our visible controls
+            content.Position = 0;
+            TextReader reader = new StreamReader(content);
+            string wholePageContent = reader.ReadToEnd();
 
-        // TODO: Why is this an HTMLTextWriter?
-        /**
-         * Use this method to append you own script and/or HTML or other output which will be executed 
-         * on the client when the request returns. Notice though that the JavaScript Ajax engine of
-         * Ra-Ajax will expect whatever is being returned to the client to be JavaScript. This means that
-         * if you want to return other types of values and objects back to the client you need to wrap this
-         * somehow inside of JavaScript by using e.g. JSON or some similar mechanism. Also you should always
-         * end your JavaScript statements with semicolon (;) since otherwise other parts of the JavaScript
-         * returned probably will fissle.
-         */
-        public HtmlTextWriter WriterAtBack
-        {
-            get
-            {
-                if (_writerBack == null)
-                {
-                    _memStreamBack = new MemoryStream();
-                    TextWriter tw = new StreamWriter(_memStreamBack);
-                    _writerBack = new HtmlTextWriter(tw);
-                }
-                return _writerBack;
-            }
+            // Stringbuilder to hold our "register script" parts...
+            StringBuilder builder = new StringBuilder();
+            AddScriptIncludes(builder);
+            AddInitializationScripts(builder);
+
+            // Replacing the </body> element with the client-side object creation scripts for the Ra Controls...
+            Regex reg = new Regex("</body>", RegexOptions.IgnoreCase);
+            wholePageContent = reg.Replace(wholePageContent, builder.ToString());
+
+            // Now writing everything back to client (or next Filter)
+            TextWriter writer = new StreamWriter(next);
+            writer.Write(wholePageContent);
+            writer.Flush();
         }
 
         // We only come here if this is a Ra-Ajax Callback (IsCallback == true)
@@ -433,40 +469,21 @@ namespace Ra
                 Writer.Flush();
                 _memStream.Flush();
                 _memStream.Position = 0;
+                
                 TextReader readerContent = new StreamReader(_memStream);
                 string allContent = readerContent.ReadToEnd();
                 TextWriter writer = new StreamWriter(next);
+
+                AddDynamicScriptIncludes(writer);
                 writer.WriteLine(allContent);
 
                 // Retrieving ViewState (+++) changes and returning back to client
-                content.Position = 0;
-                TextReader reader = new StreamReader(content);
-                string wholePageContent = reader.ReadToEnd();
-
-                if (wholePageContent.IndexOf("__VIEWSTATE") != -1)
-                {
-                    int idxOfChange = 0;
-                    string responseViewState = GetViewState(wholePageContent, "__VIEWSTATE");
-                    if (!string.IsNullOrEmpty(_requestViewState))
-                    {
-                        for (; idxOfChange < responseViewState.Length && idxOfChange < _requestViewState.Length; idxOfChange++)
-                        {
-                            if (_requestViewState[idxOfChange] != responseViewState[idxOfChange])
-                                break;
-                        }
-                        if (idxOfChange >= responseViewState.Length)
-                            responseViewState = "";
-                        else
-                            responseViewState = responseViewState.Substring(idxOfChange);
-                    }
-                    writer.WriteLine("Ra.$F('__VIEWSTATE', '{0}', {1});", responseViewState, idxOfChange);
-                }
-                if (wholePageContent.IndexOf("__EVENTVALIDATION") != -1)
-                    writer.WriteLine("Ra.$F('__EVENTVALIDATION').value = '{0}';", GetViewState(wholePageContent, "__EVENTVALIDATION"));
+                UpdateViewState(content, writer);
 
                 WriterAtBack.Flush();
                 _memStreamBack.Flush();
                 _memStreamBack.Position = 0;
+                
                 readerContent = new StreamReader(_memStreamBack);
                 string allContentAtBack = readerContent.ReadToEnd();
                 writer.WriteLine(allContentAtBack);
@@ -478,7 +495,7 @@ namespace Ra
                 ;// Do nothing, headers changed in setter
             }
         }
-
+        
         private string GetViewState(string wholePageContent, string searchString)
         {
             string viewStateStart = string.Format("<input type=\"hidden\" name=\"{0}\" id=\"{0}\" value=\"", searchString);
@@ -498,26 +515,38 @@ namespace Ra
             return value;
         }
 
-        // Here we are if this is a POSTBACK or the initial rendering of the page... (Page.IsPostBack == false)
-        // The content parameter is a stream containing the entire page's HTML output
-        internal void RenderPostback(Stream next, MemoryStream content)
+        private void UpdateViewState(MemoryStream content, TextWriter writer)
         {
-            // First reading the WHOLE page content into memory since we need
-            // to add up the "register control" script for all of our visible controls
             content.Position = 0;
             TextReader reader = new StreamReader(content);
             string wholePageContent = reader.ReadToEnd();
 
-            // Stringbuilder to hold our "register script" parts...
-            StringBuilder builder = new StringBuilder();
-            foreach (string idx in _scriptIncludes)
+            if (wholePageContent.IndexOf("__VIEWSTATE") != -1)
             {
-                string script = idx.Replace("&", "&amp;");
-                string scriptInclusion = string.Format("<script src=\"{0}\" type=\"text/javascript\"></script>\r\n", script);
-                builder.Append(scriptInclusion);
+                int idxOfChange = 0;
+                string responseViewState = GetViewState(wholePageContent, "__VIEWSTATE");
+                if (!string.IsNullOrEmpty(_requestViewState))
+                {
+                    for (; idxOfChange < responseViewState.Length && idxOfChange < _requestViewState.Length; idxOfChange++)
+                    {
+                        if (_requestViewState[idxOfChange] != responseViewState[idxOfChange])
+                            break;
+                    }
+                    if (idxOfChange >= responseViewState.Length)
+                        responseViewState = "";
+                    else
+                        responseViewState = responseViewState.Substring(idxOfChange);
+                }
+                writer.WriteLine("Ra.$F('__VIEWSTATE', '{0}', {1});", responseViewState, idxOfChange);
             }
+            if (wholePageContent.IndexOf("__EVENTVALIDATION") != -1)
+                writer.WriteLine("Ra.$F('__EVENTVALIDATION').value = '{0}';", GetViewState(wholePageContent, "__EVENTVALIDATION"));
+        }
+        
+        private void AddInitializationScripts(StringBuilder builder)
+        {
             builder.Append("<script type=\"text/javascript\">");
-			builder.Append(@"
+            builder.Append(@"
 function RAInitialize() {
 ");
 
@@ -536,7 +565,7 @@ function RAInitialize() {
             builder.Append(allContentAtBack);
 
             // Adding script closing element
-			builder.Append(@"
+            builder.Append(@"
 }
 (function() {
 if (window.addEventListener) {
@@ -549,38 +578,25 @@ if (window.addEventListener) {
 ");
             builder.Append("</script>");
             builder.Append("</body>");
+        }
 
-            // Replacing the </body> element with the client-side object creation scripts for the Ra Controls...
-            Regex reg = new Regex("</body>", RegexOptions.IgnoreCase);
-            wholePageContent = reg.Replace(wholePageContent, builder.ToString());
+        private void AddScriptIncludes(StringBuilder builder)
+        {
+            foreach (string idx in _scriptIncludes)
+            {
+                string script = idx.Replace("&", "&amp;");
+                string scriptInclusion = string.Format("<script src=\"{0}\" type=\"text/javascript\"></script>\r\n", script);
+                builder.Append(scriptInclusion);
+            }
+        }
 
-            // Now writing everything back to client (or next Filter)
-            TextWriter writer = new StreamWriter(next);
-            writer.Write(wholePageContent);
-            writer.Flush();
+        private void AddDynamicScriptIncludes(TextWriter writer)
+        {
+            foreach (string script in _dynamicScriptIncludes)
+            {
+                writer.WriteLine("Ra.$I('{0}');", script.Replace("&", "&amp;"));
+            }
+            _dynamicScriptIncludes.Clear();
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
