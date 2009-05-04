@@ -71,7 +71,8 @@ if( this._bread ) {{
   this._bread.setStyle('display', '');
   var el = this._bread.lastChild;
   if( el ) {{
-    var toMargin = Math.max((el.offsetLeft + el.offsetWidth) - this.element.getDimensions().width, 0);
+    var fullWidth = Ra.$(this._bread.parentNode.parentNode.id).getDimensions().width;
+    var toMargin = Math.max((el.offsetLeft + el.offsetWidth) - fullWidth, 0);
     this._bread.setStyle('marginLeft', (-toMargin) + 'px');
   }}
   this._bread.style.visibility='';
@@ -91,11 +92,12 @@ if( this._bread ) {{
   this._lastBread = el;
   if( el ) {{
     this._lastBread.setOpacity(0);
-    this._breadToMargin = Math.max((el.offsetLeft + el.offsetWidth) - this.element.getDimensions().width, 0);
+    var fullWidth = Ra.$(this._bread.parentNode.parentNode.id).getDimensions().width;
+    this._breadToMargin = Math.max((el.offsetLeft + el.offsetWidth) - fullWidth, 0);
     var el2 = el.previousSibling;
     this._breadFromMargin = 0;
     if( el2 && this._breadToMargin > 0) {{
-      this._breadFromMargin = Math.max((el2.offsetLeft + el2.offsetWidth) - this.element.getDimensions().width, 0);
+      this._breadFromMargin = Math.max((el2.offsetLeft + el2.offsetWidth) - fullWidth, 0);
       if( this._breadFromMargin > 0 ) {{
         this._bread.setStyle('marginLeft', (-this._breadFromMargin) + 'px');
       }}
@@ -182,14 +184,14 @@ if( this._lastBread ) {
         /**
          * Overridden to provide a sane default value. The default CSS class is "item".
          */
-        [DefaultValue("item")]
+        [DefaultValue("sliding-item")]
         public override string CssClass
         {
             get
             {
                 string retVal = base.CssClass;
                 if (retVal == string.Empty)
-                    retVal = "item";
+                    retVal = "sliding-item";
                 return retVal;
             }
             set { base.CssClass = value; }
@@ -244,16 +246,16 @@ if( this._lastBread ) {
 
         private void CreateMenuControls()
         {
-            _childLbl.ID = "leaf";
-            _childLbl.CssClass = "leaf";
-            _childLbl.Text = "&nbsp;";
-            _button.Controls.Add(_childLbl);
-
             _button.ID = "btn";
-            _button.CssClass = "menu-btn";
+            _button.CssClass = "sliding-menu-btn";
             if (!NoClick)
                 _button.Click += _button_Click;
-            this.Controls.AddAt(0, _button);
+            Controls.AddAt(0, _button);
+
+            _childLbl.ID = "slLeaf";
+            _childLbl.CssClass = "sliding-leaf";
+            _childLbl.Text = "&nbsp;";
+            _button.Controls.Add(_childLbl);
         }
 
         private SlidingMenu _root;

@@ -75,7 +75,7 @@ http://ra-ajax.org
 */
 
 
-.slider-menu
+.sliding-menu
 {
 	position:relative;
 	overflow:hidden;
@@ -84,7 +84,7 @@ http://ra-ajax.org
 	border-bottom:solid 1px #999;
 }
 
-.slider-menu .bread-crumb-parent
+.bread-crumb-parent
 {
 	width:1000%;
 	background: transparent url(window-h-sprite.png) repeat 0 0;
@@ -92,14 +92,14 @@ http://ra-ajax.org
 	overflow:hidden;
 }
 
-.slider-menu .bread-crumb
+.bread-crumb
 {
 	width:100%;
 	height:32px;
 	overflow:auto;
 }
 
-.slider-menu .bread-crumb .bread-item-left
+.bread-crumb .bread-item-left
 {
 	height:16px;
 	margin-bottom:8px;
@@ -112,7 +112,7 @@ http://ra-ajax.org
 	background:url('bread-crumb.png') no-repeat 0 -48px;
 }
 
-.slider-menu .bread-crumb .bread-item-right
+.bread-crumb .bread-item-right
 {
 	height:16px;
 	display:block;
@@ -120,7 +120,7 @@ http://ra-ajax.org
 	background:url('bread-crumb.png') no-repeat right -32px;
 }
 
-.slider-menu .bread-crumb .bread-item-center
+.bread-crumb .bread-item-center
 {
 	height:12px;
 	display:block;
@@ -128,13 +128,13 @@ http://ra-ajax.org
 	padding:2px;
 }
 
-.slider-menu .bread-crumb .bread-item-left:hover
+.bread-crumb .bread-item-left:hover
 {
 	text-decoration:underline;
 	color:#00a;
 }
 
-.slider-menu .bread-crumb .first
+.bread-crumb .bread-item-first
 {
 	padding-left:2px;
 	margin-bottom:8px;
@@ -144,17 +144,17 @@ http://ra-ajax.org
 	position:relative;
 }
 
-.slider-menu .bread-crumb .first:hover
+.bread-crumb .bread-item-first:hover
 {
 	text-decoration:none;
 }
 
-.slider-menu .bread-crumb .first .bread-item-center
+.bread-crumb .bread-item-first .bread-item-center
 {
 	width:10px;
 }
 
-.slider-menu .bread-crumb .first .slider-bread-home
+.bread-crumb .bread-item-first .sliding-bread-home
 {
 	background:Transparent url(tree-sprites.png) no-repeat -160px 0;
 	width:16px;
@@ -165,28 +165,28 @@ http://ra-ajax.org
 	left:3px;
 }
 
-.slider-menu .bread-crumb a.first:hover .slider-bread-home
+.bread-crumb a.bread-item-first:hover .sliding-bread-home
 {
 	background:Transparent url(tree-sprites.png) no-repeat -176px 0;
 }
 
-.slider-menu .bread-crumb .bread-item-left .slider-bread-home:hover
+.bread-crumb .bread-item-left .sliding-bread-home:hover
 {
 	text-decoration:none;
 }
 
-.slider-menu .bread-crumb .bread-item-last .bread-item-right
+.bread-crumb .bread-item-last .bread-item-right
 {
-	background:url('bread-crumb.png') no-repeat right -64px;
+	background:Transparent url('bread-crumb.png') no-repeat right -64px;
 }
 
-.slider-menu .bread-crumb .bread-item-last:hover
+.bread-crumb .bread-item-last:hover
 {
 	text-decoration:none;
 	color:inherit;
 }
 
-.slider-menu .level
+.sliding-menu .sliding-level
 {
 	width:100%;
 	position:absolute;
@@ -194,18 +194,18 @@ http://ra-ajax.org
 	margin-left:100%;
 }
 
-.slider-menu .top-level
+.sliding-menu .sliding-top-level
 {
 	margin-top:32px;
 	margin-left:0;
 }
 
-.slider-menu .level .item
+.sliding-menu .sliding-level .sliding-item
 {
 	width:100%;
 }
 
-.slider-menu .level .item .menu-btn
+.sliding-menu .sliding-level .sliding-item .sliding-menu-btn
 {
 	padding:5px;
 	display:block;
@@ -213,13 +213,13 @@ http://ra-ajax.org
 	margin:1px;
 }
 
-.slider-menu .level .item .menu-btn:hover
+.sliding-menu .sliding-level .sliding-item .sliding-menu-btn:hover
 {
 	background-color:#eee;
 	cursor:pointer;
 }
 
-.slider-menu .level .item .leaf
+.sliding-menu .sliding-level .sliding-item .sliding-leaf
 {
 	background:url('tree-sprites.png') no-repeat -144px 0;
 	position:absolute;

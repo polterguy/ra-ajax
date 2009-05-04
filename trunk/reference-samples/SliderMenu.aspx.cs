@@ -6,6 +6,12 @@ namespace RefSamples
 {
     public partial class SliderMenuSample : System.Web.UI.Page
     {
+        protected override void OnInit(EventArgs e)
+        {
+            base.OnInit(e);
+            //slider.BreadCrumbControl = customBreadParent;
+        }
+
         protected void slider_ItemClicked(object sender, EventArgs e)
         {
             SlidingMenuItem item = sender as SlidingMenuItem;
