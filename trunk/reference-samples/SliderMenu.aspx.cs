@@ -9,7 +9,7 @@ namespace RefSamples
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
-            //slider.BreadCrumbControl = customBreadParent;
+            slider.BreadCrumbControl = customBreadParent;
         }
 
         protected void slider_ItemClicked(object sender, EventArgs e)
