@@ -238,7 +238,7 @@ namespace RaWebsite
                     doc.Load(Server.MapPath("~/docs-xml/" + fileName));
                     XmlNodeList node = doc.SelectNodes(
                         string.Format("/doxygen/compounddef/sectiondef/memberdef[@id=\"{0}\"]", btn.Xtra));
-                    lbl.Text = node[0].SelectNodes("detaileddescription")[0].InnerText;
+                    lbl.Text = node[0].SelectNodes("detaileddescription")[0].InnerXml.Replace("preformatted", "pre");
                 }
                 pnl.Visible = true;
                 pnl.Style["display"] = "none";

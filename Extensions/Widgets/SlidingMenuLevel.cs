@@ -39,14 +39,14 @@ namespace Ra.Extensions
         /**
          * Overridden to provide a sane default value. The default CSS class is "level".
          */
-        [DefaultValue("level")]
+        [DefaultValue("sliding-level")]
         public override string CssClass
         {
             get
             {
                 string retVal = base.CssClass;
                 if (retVal == string.Empty)
-                    retVal = "level";
+                    retVal = "sliding-level";
                 return retVal;
             }
             set { base.CssClass = value; }
@@ -64,7 +64,7 @@ namespace Ra.Extensions
             Tag = "ul";
             base.OnInit(e);
             if (this.Parent is SlidingMenu)
-                CssClass += " top-level";
+                CssClass += " sliding-top-level";
         }
 
         protected override void OnLoad(EventArgs e)

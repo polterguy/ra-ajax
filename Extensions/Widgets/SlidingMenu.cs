@@ -34,6 +34,7 @@ namespace Ra.Extensions
     {
         private Panel _breadParent = new Panel();
         private Panel _bread = new Panel();
+        private ASP.Control _breadCrumbControl;
 
         /**
          * Raised when a SliderMenuItem is selected by the user
@@ -44,17 +45,50 @@ namespace Ra.Extensions
          * Overridden to provide a sane default value. The default CSS class of the SliderMenu is
          * "slider-menu".
          */
-        [DefaultValue("slider-menu")]
+        [DefaultValue("sliding-menu")]
         public override string CssClass
         {
             get
             {
                 string retVal = base.CssClass;
                 if (retVal == string.Empty)
-                    retVal = "slider-menu";
+                    retVal = "sliding-menu";
                 return retVal;
             }
             set { base.CssClass = value; }
+        }
+
+        /**
+         * If you set this property then the Control you set here will be used instead of the
+         * bread-crumb wrapped within the actual SlidingMenu. This is useful for scenarios
+         * where you don't want the bread-crumb to be a part of the actual SlidingMenu but
+         * rather on the "outside" so that e.g the bread-crumb wraps your entire page istead
+         * of being constrained to the width of the SlidingMenu itself. Note that you should
+         * set this property as EARLY AS POSSIBLE in e.g. the OnInit of your page. Note also 
+         * though that if you set this value then the Control you choose as the BreadCrumbControl 
+         * MUST have a Parent HTML element (doesn't need to be a server control) and that
+         * HTML element MUST have an id property. It must also have an explicit width,
+         * overflow hidden and a position of relative. The BreadCrumb control you choose
+         * as the bread crumb should also probably have the CssClass property of 
+         * "bread-crumb-parent" unless you want to build your own CSS which might be quite 
+         * difficult unless you really know what you're doing. A good example of this would
+         * normally be something like this;
+         * <pre>
+         * &lt;div 
+         *    style="width:400px;overflow:hidden;position:relative;" 
+         *    id="something"&gt;
+         *    &lt;ra:Panel 
+         *       runat="server" 
+         *       ID="customBreadParent" 
+         *       CssClass="bread-crumb-parent" /&gt;
+         * &lt;/div&gt;
+         * </pre>
+         * And then set the BreadCrumbControl in the OnInit of your page/control to "customBreadParent".
+         */
+        public ASP.Control BreadCrumbControl
+        {
+            get { return _breadCrumbControl == null ? _breadParent : _breadCrumbControl; }
+            set { _breadCrumbControl = value; }
         }
 
         /**
@@ -112,28 +146,22 @@ namespace Ra.Extensions
         {
             _breadParent.ID = "breadParent";
             _breadParent.CssClass = "bread-crumb-parent";
+            Controls.AddAt(0, _breadParent);
 
             _bread.ID = "bread";
             _bread.CssClass = "bread-crumb";
-
-            // To make sure it shows even when no path...
-            WEBCTRLS.Literal lit = new WEBCTRLS.Literal();
-            lit.ID = "litDummy";
-            lit.Text = "&nbsp;";
-            _bread.Controls.Add(lit);
-
-            _breadParent.Controls.Add(_bread);
-
-            Controls.AddAt(0, _breadParent);
+            BreadCrumbControl.Controls.Add(_bread);
         }
 
         internal void SetAllChildrenNonVisible(ASP.Control from)
         {
             foreach (ASP.Control idx in from.Controls)
             {
-                if (idx is SlidingMenuLevel)
+                SlidingMenuLevel lev = idx as SlidingMenuLevel;
+                if (lev != null)
                 {
-                    (idx as SlidingMenuLevel).Style["display"] = "none";
+                    if (lev.Style[Styles.display] != "none")
+                        lev.Style["display"] = "none";
                 }
                 SetAllChildrenNonVisible(idx);
             }
@@ -236,7 +264,7 @@ namespace Ra.Extensions
                 home.Click += btn_Click;
             }
             home.ID = "BTNbreadGoHome";
-            home.CssClass = "bread-item-left first";
+            home.CssClass = "bread-item-left bread-item-first";
 
             Label right2 = new Label();
             right2.ID = home.ID + "r";
@@ -251,7 +279,7 @@ namespace Ra.Extensions
 
             Label centerContent = new Label();
             centerContent.ID = home.ID + "cc";
-            centerContent.CssClass = "slider-bread-home";
+            centerContent.CssClass = "sliding-bread-home";
             centerContent.Text = "&nbsp;";
             center2.Controls.Add(centerContent);
 

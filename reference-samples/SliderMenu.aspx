@@ -21,6 +21,12 @@
     ContentPlaceHolderID="cnt1" 
     Runat="Server">
 
+    <div style="width:400px;overflow:hidden;position:relative;" id="something">
+        <ra:Panel 
+            runat="server" 
+            ID="customBreadParent" 
+            CssClass="bread-crumb-parent" />
+    </div>
     <h1>Slider Menu Sample</h1>
     <div>
         <ext:SlidingMenu 

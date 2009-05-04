@@ -34,6 +34,11 @@ a:hover
 	background-color:#eaeaea;
 }
 
+pre
+{
+	margin:5px;
+}
+
 /* MasterPage CSS */
 
 #paper

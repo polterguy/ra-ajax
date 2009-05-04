@@ -68,12 +68,13 @@
   LinkButon to have Child Controls. Now though the LinkButton
   can have Child Controls.
 
-* New Widget - SliderMenu. A SliderMenu is a cross-over 
-  between a TreeView and a Menu. It contains most features
+* New Widget - SlidingMenu. A SlidingMenu is a cross-over 
+  between a Tree and a Menu. It contains most features
   from a TreeView like dynamically loading of items and such,
   but at the same time it "appears" more like a Menu in that
   it can only display one level of items at the same time.
-  It's quite heavily inspired from Apple's way of doing UI.
+  It's quite heavily inspired from Apple's way of doing UI
+  on the iPhone.
 
 * Fixed a bug in SelectList that caused the SelectedIndex to 
   not change when a ListItem's Selected property was set to true.
@@ -82,9 +83,17 @@
   if the value passed in is null.
   
 * Added support for dynamic inclusion of JavaScript files on 
-  Ajax callbacks.
+  Ajax callbacks. This is 100% transparently which means that
+  there is nothing you need to do with your JS files to get 
+  them ready to be dynamically included. This also fixes 
+  several bugs in dynamically including extension controls
+  in Ajax Callbacks.
   
 * Minor refactorings in AjaxManager.
+
+
+
+
 
   ------------------------------------------------------------------
 
