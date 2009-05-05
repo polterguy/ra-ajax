@@ -82,12 +82,12 @@
 * Fixed a bug in RaControl that made the JSON serialization fail 
   if the value passed in is null.
   
-* Added support for dynamic inclusion of JavaScript files on 
-  Ajax callbacks. This is 100% transparently which means that
-  there is nothing you need to do with your JS files to get 
-  them ready to be dynamically included. This also fixes 
-  several bugs in dynamically including extension controls
-  in Ajax Callbacks.
+* Added support for dynamic inclusion of JavaScript files 
+  (from resource and file path) on Ajax callbacks. This is 
+  100% transparent which means that there is nothing special 
+  you need to add to your JS files to use this feature. This 
+  also fixes several bugs related to dynamically including 
+  extension controls in Ajax callbacks.
   
 * Minor refactorings in AjaxManager.
 

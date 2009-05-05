@@ -27,7 +27,7 @@
 // Ra will extend the DOM object with the Ra specific methods
 Ra = {};
 
-// Browser sniffing (yes I know, it's bad, but sometimes necessary ... ;)
+// Browser detection
 Ra.Browser = {
   IE:             window.attachEvent && !window.opera,
   IE6:            window.attachEvent && !window.opera && navigator.userAgent.indexOf('MSIE 6') != -1,
@@ -76,20 +76,26 @@ Ra.$F = function(id, newValue, offset) {
   return el;
 };
 
-// Dynamically includes a JavaScript file using it's path (src)
+// The dynamically included JavaScript files
+Ra._dynScripts = {};
+
+// Dynamically includes a JavaScript file from its path
 Ra.$I = function(src) {
-  this.xhr = (window.XMLHttpRequest && new XMLHttpRequest()) || 
+  if( Ra._dynScripts[src] ) {
+    return;
+  }
+    
+  var xhr = (window.XMLHttpRequest && new XMLHttpRequest()) || 
      new ActiveXObject('Msxml2.XMLHTTP') || 
      new ActiveXObject('Microsoft.XMLHTTP');
 
-  this.xhr.open('GET', src, false);
-  this.xhr.setRequestHeader('Accept', 'text/javascript');
+  xhr.open('GET', src, false);
+  xhr.setRequestHeader('Accept', 'text/javascript');
 
-  this.xhr.send('');
-  if( this.xhr.responseText && this.xhr.status ) {
-    if( this.xhr.status >= 200 && this.xhr.status < 300 ) {
-      eval(this.xhr.responseText);
-    }
+  xhr.send('');
+  if( xhr.status && xhr.status >= 200 && xhr.status < 300 && xhr.responseText ) {
+    Ra._dynScripts[src] = true;
+    eval(xhr.responseText);
   }
 };
 
