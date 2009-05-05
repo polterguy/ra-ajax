@@ -378,11 +378,8 @@ namespace Ra
         }
 
         /**
-         * Includes a JavaScript file from a resource with the given resource id. This one is mostly 
-         * for Control developers to make sure your script files are being included. Note that this
-         * will NOT include scripts included during an Ajax CallBack. If you have an Ajax Control
-         * that needs a JavaScript file, you must make sure it's being included during the initial
-         * rendering.
+         * Includes a JavaScript file from a resource with the given resource id. This one 
+         * is mostly for Control developers to make sure your script files are being included.
          */
         public void IncludeScriptFromResource(Type type, string id)
         {
@@ -391,23 +388,44 @@ namespace Ra
                 // Need to explicitly include JS files if filters are surpressed...
                 ((Page)HttpContext.Current.CurrentHandler).ClientScript.RegisterClientScriptResource(type, id);
             }
+            
             string resource = ((Page)HttpContext.Current.CurrentHandler).ClientScript.GetWebResourceUrl(type, id);
 
-            if (string.IsNullOrEmpty(resource))
+            if (!string.IsNullOrEmpty(resource))
+                IncludeScript(resource);
+        }
+
+        /**
+         * Includes a JavaScript file from a file path.
+         */
+        public void IncludeScriptFromFile(string path)
+        {
+            if (string.IsNullOrEmpty(path))
                 return;
 
+            if (this.SupressAjaxFilters)
+            {
+                // Need to explicitly include JS files if filters are surpressed...
+                ((Page)HttpContext.Current.CurrentHandler).ClientScript.RegisterClientScriptInclude(path.GetHashCode().ToString(), path);
+            }
+
+            IncludeScript(path);
+        }
+
+        private void IncludeScript(string path)
+        {
             if (IsCallback)
             {
-                if (!_dynamicScriptIncludes.Contains(resource))
+                if (!_dynamicScriptIncludes.Contains(path) && !_scriptIncludes.Contains(path))
                 {
-                    _dynamicScriptIncludes.Add(resource);
+                    _dynamicScriptIncludes.Add(path);
                 }
             }
             else
             {
-                if (!_scriptIncludes.Contains(resource))
+                if (!_scriptIncludes.Contains(path))
                 {
-                    _scriptIncludes.Add(resource);
+                    _scriptIncludes.Add(path);
                 }
             }
         }
