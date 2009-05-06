@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.Design.Serialization;
 using System.Web.UI;
+using System.Web;
 
 namespace Ra.Widgets
 {
@@ -141,41 +142,50 @@ namespace Ra.Widgets
 
         private void AddStyleToCollection(string idx, string value, bool viewStateOnly)
         {
+            string styleName = idx;
+            string styleValue = value;
+
+            if (HttpContext.Current.Request.Browser.Browser == "IE" && idx == "opacity")
+            {
+                styleName = "filter";
+                styleValue = string.Format("alpha(opacity={0:0})", Math.Round(decimal.Parse(value) * 100));
+            }
+
             if (_styleValues.ContainsKey(idx))
             {
                 // Key exists from before
-                StyleValue oldValue = _styleValues[idx];
+                StyleValue oldValue = _styleValues[styleName];
                 if (viewStateOnly)
                 {
-                    oldValue.OnlyViewStateValue = value;
+                    oldValue.OnlyViewStateValue = styleValue;
                 }
                 else
                 {
                     if (_trackingViewState)
-                        oldValue.AfterViewStateTrackingValue = value;
+                        oldValue.AfterViewStateTrackingValue = styleValue;
                     else
-                        oldValue.BeforeViewStateTrackingValue = value;
+                        oldValue.BeforeViewStateTrackingValue = styleValue;
                 }
             }
             else
             {
                 // Key doesn't exist from before
                 StyleValue nValue = new StyleValue();
-
+                
                 if (viewStateOnly)
                 {
-                    nValue.OnlyViewStateValue = value;
+                    nValue.OnlyViewStateValue = styleValue;
                 }
                 else
                 {
                     if (_trackingViewState)
-                        nValue.AfterViewStateTrackingValue = value;
+                        nValue.AfterViewStateTrackingValue = styleValue;
                     else
-                        nValue.BeforeViewStateTrackingValue = value;
+                        nValue.BeforeViewStateTrackingValue = styleValue;
                 }
 
                 // Storing it in our dictionary...
-                _styleValues[idx] = nValue;
+                _styleValues[styleName] = nValue;
             }
         }
 
