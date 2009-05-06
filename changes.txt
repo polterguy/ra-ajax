@@ -91,6 +91,9 @@
   
 * Minor refactorings in AjaxManager.
 
+* Fixed a bug that caused initial setting of opacity style value 
+  in the ASPX markup to not work properly in IE.
+
 
 
 
