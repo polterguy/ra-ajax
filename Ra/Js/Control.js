@@ -119,7 +119,10 @@ Ra.Control.prototype = {
       def_wdg: null,
 
       // If set defines the element of an associated label which contains the text value and so on...
-      label: null
+      label: null,
+
+      // If true then multiple Ajax Requests will NOT be queued up when there's an ongoing request executing
+      noQueue:false
     }, opt || {});
 
     // Checking to see if a "real" control was passed
@@ -360,17 +363,27 @@ Ra.Control.prototype = {
   },
 
   callback: function(evt, func) {
+    if( this.options.noQueue && this._hasRequest ) {
+      return;
+    }
+    this._hasRequest = true;
     var T = this;
     var x = new Ra.Ajax({
       args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=' + evt,
       raCallback:true,
       onSuccess: function(resp) {
-        T.onFinishedRequest(resp);
-        if( func ) {
-          func();
+        try {
+          this._hasRequest = false;
+          T.onFinishedRequest(resp);
+          if( func ) {
+            func();
+          }
+        } catch(e) {
+          alert(e); // Nothing else to do here. Just inform user of JS bug through alert...
         }
       },
       onError: function(stat, trc) {
+        this._hasRequest = false;
         T.onFailedRequest(stat, trc);
         if( func ) {
           func();

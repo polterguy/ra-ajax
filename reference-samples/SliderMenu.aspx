@@ -21,6 +21,13 @@
     ContentPlaceHolderID="cnt1" 
     Runat="Server">
 
+    <ra:Button 
+        runat="server" 
+        ID="btn" 
+        OnClick="foo" QueueMultipleRequests="false"
+        Text="click" />
+
+
     <div style="width:400px;overflow:hidden;position:relative;" id="something">
         <ra:Panel 
             runat="server" 
@@ -32,7 +39,8 @@
         <ext:SlidingMenu 
             runat="server" 
             style="width:250px;height:200px;" 
-            OnItemClicked="slider_ItemClicked"
+            OnItemClicked="slider_ItemClicked" 
+            OnNavigate="slider_Navigate"
             ID="slider">
 
             <ext:SlidingMenuLevel 
