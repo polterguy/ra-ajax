@@ -119,6 +119,28 @@
                     ID="sampleDyn" />
             </ext:TabView>
 
+            <ext:TabView 
+                runat="server" 
+                ID="codeTab" 
+                style="padding:15px;"
+                Caption="Code">
+                <ra:Label 
+                    runat="server" 
+                    Tag="pre"
+                    ID="codeLbl" />
+            </ext:TabView>
+
+            <ext:TabView 
+                runat="server" 
+                ID="markupTab" 
+                style="padding:15px;"
+                Caption=".ASPX">
+                <ra:Label 
+                    runat="server" 
+                    Tag="pre"
+                    ID="markupLbl" />
+            </ext:TabView>
+
         </ext:TabControl>
 
     </ra:Panel>
