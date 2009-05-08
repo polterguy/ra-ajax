@@ -188,6 +188,8 @@ namespace RaWebsite
             else
             {
                 sampleDyn.ClearControls();
+                codeLbl.Text = "no-code";
+                markupLbl.Text = "no-code";
             }
         }
 
