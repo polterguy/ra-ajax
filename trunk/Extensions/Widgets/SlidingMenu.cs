@@ -42,6 +42,12 @@ namespace Ra.Extensions
         public event EventHandler ItemClicked;
 
         /**
+         * Raised when user navigates within the SlidingMenu by either going to a sub-level
+         * or by clicking the bread-crumb items to go backwards.
+         */
+        public event EventHandler Navigate;
+
+        /**
          * Overridden to provide a sane default value. The default CSS class of the SliderMenu is
          * "slider-menu".
          */
@@ -171,12 +177,15 @@ namespace Ra.Extensions
         {
             if (ItemClicked != null)
                 ItemClicked(item, new EventArgs());
+
+            if (Navigate != null)
+                Navigate(this, new EventArgs());
         }
 
-        internal string ActiveLevel
+        public string ActiveLevel
         {
             get { return ViewState["ActiveLevel"] as string; }
-            set { ViewState["ActiveLevel"] = value; }
+            internal set { ViewState["ActiveLevel"] = value; }
         }
 
         internal Panel BreadCrumb
@@ -188,7 +197,7 @@ namespace Ra.Extensions
         {
             if (level == null)
             {
-                ActiveLevel = "breadCrumbHome";
+                ActiveLevel = null;
             }
             else
             {
@@ -197,6 +206,13 @@ namespace Ra.Extensions
             _bread.Controls.Clear();
             UpdateBreadCrumb(level);
             _bread.ReRender();
+        }
+
+        protected override void OnPreRender(EventArgs e)
+        {
+            if (_breadCrumbControl != null)
+                _breadParent.Visible = false;
+            base.OnPreRender(e);
         }
 
         private void UpdateBreadCrumb(SlidingMenuLevel to)
@@ -261,7 +277,7 @@ namespace Ra.Extensions
             else
             {
                 home = new LinkButton();
-                home.Click += btn_Click;
+                home.Click += btnHome_Click;
             }
             home.ID = "BTNbreadGoHome";
             home.CssClass = "bread-item-left bread-item-first";
@@ -289,7 +305,24 @@ namespace Ra.Extensions
         private void btn_Click(object sender, EventArgs e)
         {
             LinkButton btn = sender as LinkButton;
-            string idOfToBecomeActive = btn.ID.Substring(3);
+            SlideBackwards(btn, false);
+
+            if (Navigate != null)
+                Navigate(this, new EventArgs());
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = sender as LinkButton;
+            SlideBackwards(btn, true);
+
+            if (Navigate != null)
+                Navigate(this, new EventArgs());
+        }
+
+        private void SlideBackwards(LinkButton sender, bool allTheWay)
+        {
+            string idOfToBecomeActive = sender.ID.Substring(3);
             SlidingMenuLevel previousActive = AjaxManager.Instance.FindControl<SlidingMenuLevel>(ActiveLevel);
             SlidingMenuLevel level = AjaxManager.Instance.FindControl<SlidingMenuLevel>(idOfToBecomeActive);
             int noLevels = 0;
@@ -322,7 +355,13 @@ namespace Ra.Extensions
             }
             _bread.Style["display"] = "gokk"; // To force a new value to the display property...
             _bread.Style["display"] = "none";
-            new Ra.Extensions.SlidingMenuItem.EffectRollOut(rootLevel, _bread, AnimationDuration, true, noLevels)
+            new Ra.Extensions.SlidingMenuItem.EffectRollOut(
+                rootLevel, 
+                _bread, 
+                AnimationDuration, 
+                true, 
+                noLevels,
+                allTheWay)
                 .Render();
         }
     }

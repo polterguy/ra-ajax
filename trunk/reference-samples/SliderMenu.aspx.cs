@@ -10,6 +10,22 @@ namespace RefSamples
         {
             base.OnInit(e);
             slider.BreadCrumbControl = customBreadParent;
+
+            if (!IsPostBack)
+            {
+                btn.Text = slider.ActiveLevel;
+            }
+        }
+
+        protected void slider_Navigate(object sender, EventArgs e)
+        {
+            btn.Text = slider.ActiveLevel;
+        }
+
+        protected void foo(object sender, EventArgs e)
+        {
+            btn.Text = btn.Text + "howdy";
+            System.Threading.Thread.Sleep(2000);
         }
 
         protected void slider_ItemClicked(object sender, EventArgs e)

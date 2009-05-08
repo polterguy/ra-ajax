@@ -34,23 +34,39 @@ namespace Ra.Extensions
             private bool _reversed;
             private int _noLevels;
             private ASP.Control _bread;
+            private bool _allTheWay;
 
             public EffectRollOut(ASP.Control control, ASP.Control bread, int milliseconds)
                 : this(control, bread, milliseconds, false)
             { }
 
-            public EffectRollOut(ASP.Control control, ASP.Control bread, int milliseconds, bool reversed)
+            public EffectRollOut(ASP.Control control, 
+                ASP.Control bread, 
+                int milliseconds, 
+                bool reversed)
                 : this(control, bread, milliseconds, reversed, 1)
-            {
-                _reversed = reversed;
-            }
+            { }
 
-            public EffectRollOut(ASP.Control control, ASP.Control bread, int milliseconds, bool reversed, int noLevels)
+            public EffectRollOut(ASP.Control control, 
+                ASP.Control bread, 
+                int milliseconds, 
+                bool reversed, 
+                int noLevels)
+                : this(control, bread, milliseconds, reversed, noLevels, false)
+            { }
+
+            public EffectRollOut(ASP.Control control, 
+                ASP.Control bread, 
+                int milliseconds, 
+                bool reversed, 
+                int noLevels, 
+                bool allTheWay)
                 : base(control, milliseconds)
             {
                 _reversed = reversed;
                 _noLevels = noLevels;
                 _bread = bread;
+                _allTheWay = allTheWay;
             }
 
             private void UpdateStyleCollection()
@@ -115,10 +131,20 @@ this._oldMargin = parseInt(this.element.getStyle('marginLeft')) || 0;
             {
                 if (_reversed)
                 {
-                    return @"
+                    if (_allTheWay)
+                    {
+                        return @"
+    this.element.setStyle('marginLeft', '0px');
+    this._bread.setOpacity(1);
+";
+                    }
+                    else
+                    {
+                        return @"
     this.element.setStyle('marginLeft',this._oldMargin + this._fromWidth + 'px');
     this._bread.setOpacity(1);
 ";
+                    }
                 }
                 else
                 {
@@ -138,10 +164,20 @@ this._oldMargin = parseInt(this.element.getStyle('marginLeft')) || 0;
             {
                 if (_reversed)
                 {
-                    return @"
+                    if (_allTheWay)
+                    {
+                        return @"
+this.element.setStyle('marginLeft',this._oldMargin - parseInt(pos*this._oldMargin) + 'px');
+this._bread.setOpacity(pos);
+";
+                    }
+                    else
+                    {
+                        return @"
 this.element.setStyle('marginLeft',this._oldMargin + parseInt(pos*this._fromWidth) + 'px');
 this._bread.setOpacity(pos);
 ";
+                    }
                 }
                 else
                 {
@@ -249,7 +285,10 @@ if( this._lastBread ) {
             _button.ID = "btn";
             _button.CssClass = "sliding-menu-btn";
             if (!NoClick)
+            {
+                _button.QueueMultipleRequests = false;
                 _button.Click += _button_Click;
+            }
             Controls.AddAt(0, _button);
 
             _childLbl.ID = "slLeaf";
@@ -276,12 +315,6 @@ if( this._lastBread ) {
 
         private void _button_Click(object sender, EventArgs e)
         {
-            // Raising MenuItem clicked event
-            Root.RaiseItemClicked(this);
-
-            if (this.IsLeaf)
-                return;
-
             // Finding child SliderMenuLevel control
             SlidingMenuLevel child = null;
             foreach (ASP.Control idx in Controls)
@@ -293,8 +326,18 @@ if( this._lastBread ) {
                 }
             }
 
-            child.Style["display"] = "";
-            Root.SetActiveLevel(child);
+            if (child != null)
+            {
+                child.Style["display"] = "";
+                Root.SetActiveLevel(child);
+            }
+
+            // Raising MenuItem clicked event
+            Root.RaiseItemClicked(this);
+
+            if (this.IsLeaf)
+                return;
+
             if (child.EnsureChildNodes())
                 child.ReRender();
             Root.SetAllChildrenNonVisible(Root);

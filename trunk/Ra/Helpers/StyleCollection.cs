@@ -145,10 +145,11 @@ namespace Ra.Widgets
             string styleName = idx;
             string styleValue = value;
 
-            if (HttpContext.Current.Request.Browser.Browser == "IE" && idx == "opacity")
+            if (HttpContext.Current.Request.Browser.Browser == "IE" && 
+                idx == "opacity")
             {
                 styleName = "filter";
-                styleValue = string.Format("alpha(opacity={0:0})", Math.Round(decimal.Parse(value) * 100));
+                styleValue = string.Format("alpha(opacity={0:0})", Math.Round(decimal.Parse(value, System.Globalization.CultureInfo.InvariantCulture) * 100));
             }
 
             if (_styleValues.ContainsKey(idx))

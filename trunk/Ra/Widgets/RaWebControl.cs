@@ -96,6 +96,25 @@ namespace Ra.Widgets
         }
 
         /**
+         * If true then the wiget can raise multiple events (Ajax Requests) even though the first 
+         * Ajax Request have still not returned. The default value is true.
+         * If this value is false then the widget will NOT queue up consecutive Ajax Requests
+         * even though the user interacts with the widget in such a way that it is supposed to
+         * before the previous Ajax Request have returned. This is very useful for scenarios
+         * where you have e.g. a Button which spends a lot of time when clicked on the server
+         * due to server execution overhead and you don't want the user to queue up new Ajax
+         * Requests if he clicks the Button multiple times due to that the user feels that 
+         * "nothing is happening" when clicked the first time. Kind of like an alternative to
+         * a BehaviorUpdater, but locally for a specific widget.
+         */
+        [DefaultValue(true)]
+        public bool QueueMultipleRequests
+        {
+            get { return ViewState["QueueMultipleRequests"] == null ? true : (bool)ViewState["QueueMultipleRequests"]; }
+            set { ViewState["QueueMultipleRequests"] = value; }
+        }
+
+        /**
          * Tooltip text of control, will show when mouse is hovered over control...
          */
         [DefaultValue("")]
@@ -329,6 +348,12 @@ namespace Ra.Widgets
                 if (!string.IsNullOrEmpty(retVal))
                     retVal += ",";
                 retVal += "clientClick:" + OnClickClientSide;
+            }
+            if (!QueueMultipleRequests)
+            {
+                if (!string.IsNullOrEmpty(retVal))
+                    retVal += ",";
+                retVal += "noQueue:true";
             }
             return retVal;
         }
