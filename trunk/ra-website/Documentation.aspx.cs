@@ -184,12 +184,14 @@ namespace RaWebsite
                 {
                     markupLbl.Text = reader.ReadToEnd().Replace("<", "&lt;").Replace(">", "&gt;");
                 }
+                tab.Style[Styles.display] = "";
             }
             else
             {
                 sampleDyn.ClearControls();
                 codeLbl.Text = "no-code";
                 markupLbl.Text = "no-code";
+                tab.Style[Styles.display] = "none";
             }
         }
 
