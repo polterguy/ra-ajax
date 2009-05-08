@@ -103,7 +103,26 @@
                 </li>
             </ItemTemplate>
         </asp:Repeater>
+
+        <ext:TabControl 
+            runat="server" 
+            ID="tab">
+
+            <ext:TabView 
+                runat="server" 
+                ID="sample" 
+                style="padding:15px;"
+                Caption="Sample">
+                <ra:Dynamic 
+                    runat="server" 
+                    OnReload="sampleDyn_Reload"
+                    ID="sampleDyn" />
+            </ext:TabView>
+
+        </ext:TabControl>
+
     </ra:Panel>
+
     <ext:Window 
         runat="server" 
         style="width:480px;position:absolute;top:5px;right:15px;z-index:50;" 

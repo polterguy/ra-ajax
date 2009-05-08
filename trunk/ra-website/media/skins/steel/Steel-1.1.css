@@ -75,6 +75,161 @@ http://ra-ajax.org
 */
 
 
+.sliding-menu
+{
+	position:relative;
+	overflow:hidden;
+	border-left:solid 1px #999;
+	border-right:solid 1px #999;
+	border-bottom:solid 1px #999;
+}
+
+.bread-crumb-parent
+{
+	width:1000%;
+	background: transparent url(window-h-sprite.png) repeat 0 0;
+	height:32px;
+	overflow:hidden;
+}
+
+.bread-crumb
+{
+	width:100%;
+	height:32px;
+	overflow:auto;
+}
+
+.bread-crumb .bread-item-left
+{
+	height:16px;
+	margin-bottom:8px;
+	margin-left:-8px;
+	margin-top:8px;
+	padding-left:8px;
+	float:left;
+	display:block;
+	font-size:9px;
+	background:url('bread-crumb.png') no-repeat 0 -48px;
+}
+
+.bread-crumb .bread-item-right
+{
+	height:16px;
+	display:block;
+	padding-right:8px;
+	background:url('bread-crumb.png') no-repeat right -32px;
+}
+
+.bread-crumb .bread-item-center
+{
+	height:12px;
+	display:block;
+	background:url('bread-crumb.png') repeat-x 0 -16px;
+	padding:2px;
+}
+
+.bread-crumb .bread-item-left:hover
+{
+	text-decoration:underline;
+	color:#00a;
+}
+
+.bread-crumb .bread-item-first
+{
+	padding-left:2px;
+	margin-bottom:8px;
+	margin-left:8px;
+	margin-top:8px;
+	background:url('bread-crumb.png') no-repeat 0 0;
+	position:relative;
+}
+
+.bread-crumb .bread-item-first:hover
+{
+	text-decoration:none;
+}
+
+.bread-crumb .bread-item-first .bread-item-center
+{
+	width:10px;
+}
+
+.bread-crumb .bread-item-first .sliding-bread-home
+{
+	background:Transparent url(tree-sprites.png) no-repeat -160px 0;
+	width:16px;
+	height:16px;
+	display:block;
+	position:absolute;
+	top:0;
+	left:3px;
+}
+
+.bread-crumb a.bread-item-first:hover .sliding-bread-home
+{
+	background:Transparent url(tree-sprites.png) no-repeat -176px 0;
+}
+
+.bread-crumb .bread-item-left .sliding-bread-home:hover
+{
+	text-decoration:none;
+}
+
+.bread-crumb .bread-item-last .bread-item-right
+{
+	background:Transparent url('bread-crumb.png') no-repeat right -64px;
+}
+
+.bread-crumb .bread-item-last:hover
+{
+	text-decoration:none;
+	color:inherit;
+}
+
+.sliding-menu .sliding-level
+{
+	width:100%;
+	position:absolute;
+	top:0px;
+	margin-left:100%;
+}
+
+.sliding-menu .sliding-top-level
+{
+	margin-top:32px;
+	margin-left:0;
+}
+
+.sliding-menu .sliding-level .sliding-item
+{
+	width:100%;
+}
+
+.sliding-menu .sliding-level .sliding-item .sliding-menu-btn
+{
+	padding:5px;
+	display:block;
+	position:relative;
+	margin:1px;
+}
+
+.sliding-menu .sliding-level .sliding-item .sliding-menu-btn:hover
+{
+	background-color:#eee;
+	cursor:pointer;
+}
+
+.sliding-menu .sliding-level .sliding-item .sliding-leaf
+{
+	background:url('tree-sprites.png') no-repeat -144px 0;
+	position:absolute;
+	right:5px;
+	top:4px;
+	display:block;
+	width:16px;
+	height:16px;
+}
+
 /* WebPart specific CSS */
 
 .webpart { border:solid 1px #666; max-height:100%; overflow:hidden; }
