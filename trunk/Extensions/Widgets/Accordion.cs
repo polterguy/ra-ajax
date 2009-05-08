@@ -113,15 +113,17 @@ namespace Ra.Extensions
          * are of type AccordionView.
          */
         [Browsable(false)]
-        public IEnumerable<AccordionView> Views
+        public List<AccordionView> Views
         {
             get
             {
+                List<AccordionView> retVal = new List<AccordionView>();
                 foreach (ASP.Control idx in Controls)
                 {
                     if (idx is AccordionView)
-                        yield return idx as AccordionView;
+                        retVal.Add(idx as AccordionView);
                 }
+                return retVal;
             }
         }
 
