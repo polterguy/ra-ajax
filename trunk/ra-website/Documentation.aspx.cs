@@ -173,6 +173,21 @@ namespace RaWebsite
             if (File.Exists(Server.MapPath("~/Docs-Controls/" + className)))
             {
                 sampleDyn.LoadControls(className);
+
+                string fileName = Server.MapPath("~/Docs-Controls/" + className + ".cs");
+                using (TextReader reader = new StreamReader(fileName))
+                {
+                    codeLbl.Text = reader.ReadToEnd();
+                }
+                fileName = Server.MapPath("~/Docs-Controls/" + className);
+                using (TextReader reader = new StreamReader(fileName))
+                {
+                    markupLbl.Text = reader.ReadToEnd().Replace("<", "&lt;").Replace(">", "&gt;");
+                }
+            }
+            else
+            {
+                sampleDyn.ClearControls();
             }
         }
 
