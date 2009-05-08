@@ -93,7 +93,8 @@
 
 * Fixed a bug that caused initial setting of opacity style value 
   in the ASPX markup to not work properly in IE.
-* Added support for settin any RaWebControls into "noQueue mode"
+
+* Added support for setting any RaWebControls into "noQueue mode"
   which if set (through the QueueMultipleRequests property) will
   make sure that all Ajax Requests generated when the control 
   already have an ongoing Ajax Request will never be queued up.
@@ -102,8 +103,14 @@
   clicks on those buttons (can be any widget) since they're just
   a result of a reckless user clicking the same button multiple
   times.
+
 * Fixed a bug that caused initial setting of opacity style value 
   in the ASPX markup to not work properly in IE.
+
+* Changed the Views property of the Accordion control to
+  be a List<AccordionView> property to make it easier to access
+  the individual views by index of the ActiveAccordionViewIndex
+  property.
 
 
 

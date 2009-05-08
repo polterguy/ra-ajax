@@ -109,7 +109,7 @@ namespace Ra.Extensions
          * Raised when Value is changed by user. Can be raised by changing month and year contrary
          * to the DateClicked event. This is NOT normally supposed to be thought of as the
          * "date chosen by user event" but rather the DateClicked event serves that purpose. The
-         * reason to that is that the user might just browse around to find th "correct" month or year
+         * reason to that is that the user might just browse around to find the "correct" month or year
          * etc. Not before the DateClicked event is raised one would normally consider the user to
          * have finished his selection of date.
          */
