@@ -416,7 +416,7 @@ namespace Ra
         {
             if (IsCallback)
             {
-                if (!_dynamicScriptIncludes.Contains(path) && !_scriptIncludes.Contains(path))
+                if (!_dynamicScriptIncludes.Contains(path))
                 {
                     _dynamicScriptIncludes.Add(path);
                 }
@@ -594,6 +594,9 @@ if (window.addEventListener) {
 })();
 
 ");
+            _scriptIncludes.ForEach(delegate(string script) {
+                builder.AppendFormat("Ra._loadedScripts['{0}']=true;\r\n", script.Replace("&", "&amp;")); 
+            });
             builder.Append("</script>");
             builder.Append("</body>");
         }
@@ -614,7 +617,6 @@ if (window.addEventListener) {
             {
                 writer.WriteLine("Ra.$I('{0}');", script.Replace("&", "&amp;"));
             }
-            _dynamicScriptIncludes.Clear();
         }
     }
 }

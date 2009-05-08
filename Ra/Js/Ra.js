@@ -77,11 +77,11 @@ Ra.$F = function(id, newValue, offset) {
 };
 
 // The dynamically included JavaScript files
-Ra._dynScripts = {};
+Ra._loadedScripts = {};
 
 // Dynamically includes a JavaScript file from its path
 Ra.$I = function(src) {
-  if( Ra._dynScripts[src] ) {
+  if( Ra._loadedScripts[src] ) {
     return;
   }
     
@@ -94,7 +94,7 @@ Ra.$I = function(src) {
 
   xhr.send('');
   if( xhr.status && xhr.status >= 200 && xhr.status < 300 && xhr.responseText ) {
-    Ra._dynScripts[src] = true;
+    Ra._loadedScripts[src] = true;
     eval(xhr.responseText);
   }
 };
