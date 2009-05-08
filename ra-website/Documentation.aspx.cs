@@ -11,6 +11,7 @@ using Ra.Widgets;
 using System.Xml;
 using Ra.Extensions;
 using System.Collections.Generic;
+using System.IO;
 
 namespace RaWebsite
 {
@@ -162,6 +163,23 @@ namespace RaWebsite
             repProperties.DataBind();
             repWrapper.Visible = true;
             repWrapper.ReRender();
+
+            LoadSample(header.Text);
+        }
+
+        private void LoadSample(string className)
+        {
+            className = className + ".ascx";
+            if (File.Exists(Server.MapPath("~/Docs-Controls/" + className)))
+            {
+                sampleDyn.LoadControls(className);
+            }
+        }
+
+        protected void sampleDyn_Reload(object sender, Dynamic.ReloadEventArgs e)
+        {
+            System.Web.UI.Control ctrl = Page.LoadControl("~/Docs-Controls/" + e.Key);
+            sampleDyn.Controls.Add(ctrl);
         }
 
         protected void wnd_CreateNavigationalButtons(object sender, Window.CreateNavigationalButtonsEvtArgs e)
