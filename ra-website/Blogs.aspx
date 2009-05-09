@@ -32,7 +32,8 @@
         <span>
             Thomas Hansen is the founder and owner of Ra-Software. Thomas is also one of the core
             developers and arcitects behind Ra-Ajax. Thomas blogs about politics, religion, (Ra-)Ajax, 
-            development and all other things of immediate interest.
+            development and all other things of immediate interest. Thomas is the copyright holder 
+            of Ra-Ajax.
         </span>
     </a>
     <a href="http://ra-ajax.org/Rick.blogger" class="blogLinks">
