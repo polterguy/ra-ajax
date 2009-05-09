@@ -664,7 +664,6 @@ ul#menu li a:hover
 	padding: 7pt;
 	font: 9pt ""Courier New"", Courier, mono;
 	white-space: pre;
-	width: 100%;
 }
 
 .cpp-comment  
