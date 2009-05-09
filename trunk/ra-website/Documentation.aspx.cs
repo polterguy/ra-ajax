@@ -136,7 +136,7 @@ namespace RaWebsite
                 .Render();
 
             // Description
-            string txtDescription = doc.SelectNodes("/doxygen/compounddef/detaileddescription")[0].InnerText;
+            string txtDescription = doc.SelectNodes("/doxygen/compounddef/detaileddescription")[0].InnerXml.Replace("preformatted", "pre");
 
             description.Text = txtDescription;
 
@@ -209,6 +209,7 @@ namespace RaWebsite
         protected void sampleDyn_Reload(object sender, Dynamic.ReloadEventArgs e)
         {
             System.Web.UI.Control ctrl = Page.LoadControl("~/Docs-Controls/" + e.Key);
+            ctrl.ID = "DocsUserControl";
             sampleDyn.Controls.Add(ctrl);
         }
 
