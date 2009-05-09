@@ -12,6 +12,7 @@ using System.Xml;
 using Ra.Extensions;
 using System.Collections.Generic;
 using System.IO;
+using ColorizerLibrary;
 
 namespace RaWebsite
 {
@@ -175,14 +176,24 @@ namespace RaWebsite
                 sampleDyn.LoadControls(className);
 
                 string fileName = Server.MapPath("~/Docs-Controls/" + className + ".cs");
+                string serverPath = Server.MapPath("~/");
                 using (TextReader reader = new StreamReader(fileName))
                 {
-                    codeLbl.Text = reader.ReadToEnd();
+                    CodeColorizer colorizer = ColorizerLibrary.Config.DOMConfigurator.Configure();
+                    codeLbl.Text = colorizer.ProcessAndHighlightText("<pre lang=\"cs\">" + reader.ReadToEnd() + "</pre>");
                 }
                 fileName = Server.MapPath("~/Docs-Controls/" + className);
                 using (TextReader reader = new StreamReader(fileName))
                 {
-                    markupLbl.Text = reader.ReadToEnd().Replace("<", "&lt;").Replace(">", "&gt;");
+                    CodeColorizer colorizer = ColorizerLibrary.Config.DOMConfigurator.Configure();
+                    markupLbl.Text = colorizer.ProcessAndHighlightText(
+                        "<pre lang=\"xml\">" + 
+                        reader.ReadToEnd() +
+                        "</pre>")
+                        .Replace("&amp;lt;", "<")
+                        .Replace("&amp;gt;", ">")
+                        .Replace("></</", ">&lt;/</")
+                        .Replace("%@", "<span class=\"yellow-code\">%@</span>");
                 }
                 tab.Style[Styles.display] = "";
             }
