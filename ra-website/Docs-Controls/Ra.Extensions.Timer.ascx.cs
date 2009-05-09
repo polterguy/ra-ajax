@@ -15,5 +15,7 @@ public partial class Docs_Controls_Timer : System.Web.UI.UserControl
     {
         lbl.Text = DateTime.Now.ToString("dddd dd.MMM yyyy - HH:mm:ss");
         new EffectHighlight(lbl, 200).Render();
+        Random rnd = new Random();
+        new EffectMove(lbl, 400, rnd.Next(0, 350), rnd.Next(0, 250)).Render();
     }
 }

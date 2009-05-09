@@ -14,11 +14,13 @@
     Namespace="Ra.Extensions" 
     TagPrefix="ext" %>
 
+<div style="position:relative;height:270px;border:dotted 1px #999;">
 <ra:Label 
     runat="server" 
     Text="Changes..."
-    style="display:block;padding:15px;font-size:24px;"
+    style="display:block;padding:5px;font-size:14px;position:absolute;"
     ID="lbl" />
+</div>
 
 <ext:Timer 
     runat="server" 
