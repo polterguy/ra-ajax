@@ -28,12 +28,16 @@ namespace Ra.Extensions
         private TextBox _text = new TextBox();
 
         /**
-         * Raised when Text property is changed
+         * Raised when Text property is changed. The Text property of this control
+         * will change when the user have clicked the control to make it editable
+         * and then either moved focus away from the control or pressed the enter key.
          */
         public event EventHandler TextChanged;
 
         /**
-         * text of label
+         * Text of label. This is the Text property of the control and will be changed
+         * when the user chooses to change it. It's kind of the equivalent to the Text
+         * property of the TextBox.
          */
         [DefaultValue("")]
         public string Text

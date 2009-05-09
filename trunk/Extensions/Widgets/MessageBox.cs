@@ -134,7 +134,8 @@ namespace Ra.Extensions
         }
 
         /**
-         * Body of MessageBox - the stuff displayed in the middle of the box
+         * Body of MessageBox, this is the main text displayed in the center of the
+         * MessageBox.
          */
         [DefaultValue("")]
         public string Body
@@ -152,7 +153,9 @@ namespace Ra.Extensions
         }
 
         /**
-         * Body of MessageBox - the stuff displayed in the middle of the box
+         * This decides which type of MessageBox you want to display. Available options
+         * are e.g. to only show an information MessageBox (OK button only), get
+         * data from user (Get_Text) and many more.
          */
         [DefaultValue(MessageBox.TypeOfMessageBox.OK)]
         public TypeOfMessageBox MessageBoxType
@@ -169,6 +172,10 @@ namespace Ra.Extensions
             }
         }
 
+        /**
+         * Overridden to make sure control are initialized upon setting the 
+         * MessageBox to visible.
+         */
         public override bool Visible
         {
             get { return base.Visible; }
