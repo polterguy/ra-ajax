@@ -113,6 +113,11 @@ namespace Ra.Extensions
             }
         }
 
+        /**
+         * This event is raised when the MessageBox is closed. The EventArgs will contain
+         * information about how the MessageBox was closed and (if applicable) what input
+         * the user submitted.
+         */
         public new event EventHandler<ClosedEventArgs> Closed;
 
         private Label _body;
@@ -125,6 +130,10 @@ namespace Ra.Extensions
         private BehaviorObscurable _obscurer;
         private Panel tmp;
 
+        /**
+         * Overridden constructor tomake sure properties from the base class (Window) 
+         * is being correctly initialized.
+         */
         public MessageBox()
         {
             // Defaulting some of the properties from Window
