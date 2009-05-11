@@ -19,7 +19,7 @@
     <ra:Panel 
         runat="server" 
         ID="pnl" 
-        style="position:absolute;border:dashed 2px #999;cursor:move;">
+        style="position:absolute;border:dashed 2px #999;cursor:move;padding:5px;">
 
         <ra:Label 
             runat="server" 
@@ -35,7 +35,7 @@
     <ra:Panel 
         runat="server" 
         ID="pnlDropper" 
-        style="position:absolute;border:dashed 2px #999;cursor:move;top:5px;right:5px;">
+        style="position:absolute;border:dashed 2px #999;cursor:move;top:5px;right:5px;padding:5px;">
 
         <ra:Label 
             runat="server" 

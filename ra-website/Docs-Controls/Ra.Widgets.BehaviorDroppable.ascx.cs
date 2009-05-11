@@ -13,8 +13,8 @@ public partial class Docs_Controls_BehaviorDroppable : System.Web.UI.UserControl
 {
     protected void Dropped(object sender, EventArgs e)
     {
-        lbl.Text = "Thank you for shopping here :)";
-        lbl.Style[Styles.left] = "5px;";
-        lbl.Style[Styles.top] = "5px;";
+        lbl.Text = "STOP WASTING MY MONEY...!!";
+        lbl2.Text = "Thank you for shopping here :)";
+        new EffectMove(pnl, 400, 15, 15).Render();
     }
 }
