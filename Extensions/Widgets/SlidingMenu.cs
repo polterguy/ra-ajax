@@ -182,6 +182,10 @@ namespace Ra.Extensions
                 Navigate(this, new EventArgs());
         }
 
+        /**
+         * The ActiveLevel of the SlidingMenu. This is the ID of the SlidingMenuLevel which
+         * is currently showing in the pane. Or null if the root level is showing.
+         */
         public string ActiveLevel
         {
             get { return ViewState["ActiveLevel"] as string; }
