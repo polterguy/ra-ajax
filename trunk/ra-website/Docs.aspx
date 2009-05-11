@@ -2,8 +2,8 @@
     Language="C#" 
     MasterPageFile="~/MasterPage.master" 
     AutoEventWireup="true" 
-    CodeFile="Documentation.aspx.cs" 
-    Inherits="RaWebsite.Documentation" 
+    CodeFile="Docs.aspx.cs" 
+    Inherits="RaWebsite.Docs" 
     Title="Ra-Ajax Documentation" %>
 
 <%@ Register 

@@ -25,7 +25,7 @@
     </p>
     <h2>Documentation</h2>
     <p>
-        You can find the documentation for Ra-Ajax <a href="Documentation.aspx">here</a>.
+        You can find the documentation for Ra-Ajax <a href="Docs.aspx">here</a>.
     </p>
     <h2>Professional Support</h2>
     <p>

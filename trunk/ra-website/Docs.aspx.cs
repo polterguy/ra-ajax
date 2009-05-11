@@ -16,7 +16,7 @@ using ColorizerLibrary;
 
 namespace RaWebsite
 {
-    public partial class Documentation : System.Web.UI.Page
+    public partial class Docs : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
