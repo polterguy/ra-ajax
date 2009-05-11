@@ -16,6 +16,8 @@ public partial class Docs_Controls_BehaviorUpdater : System.Web.UI.UserControl
     {
         if (sel.SelectedItem.Value != "nothing")
             dyn.LoadControls(sel.SelectedItem.Value);
+        else
+            dyn.ClearControls();
     }
 
     protected void dyn_Reload(object sender, Dynamic.ReloadEventArgs e)

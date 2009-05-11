@@ -44,7 +44,7 @@ namespace Ra.Widgets
 			if (tmp != null)
 			{
                 tmp.Style.SetStyleValueViewStateOnly("opacity", "1.0");
-                tmp.Style.SetStyleValueViewStateOnly("display", "block");
+                tmp.Style.SetStyleValueViewStateOnly("display", "");
 			}
 		}
 
@@ -53,7 +53,7 @@ namespace Ra.Widgets
 			UpdateStyleCollection();
             return @"
     this.element.setOpacity(0);
-    this.element.setStyle('display','block');
+    this.element.setStyle('display','');
 ";
         }
 
