@@ -112,6 +112,12 @@
   the individual views by index of the ActiveAccordionViewIndex
   property.
 
+* Fixed a bug in EffectFadeIn which made it make the element
+  you ran it on always display with block style when ran.
+
+* Fixed a bug in EffectFadeOut which made it impossible to
+  run the effect on a widget which already was not visible.
+
 
 
 

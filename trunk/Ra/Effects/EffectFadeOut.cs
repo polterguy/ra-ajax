@@ -46,6 +46,7 @@ namespace Ra.Widgets
 			UpdateStyleCollection();
             return @"
     this.element.setOpacity(1);
+    this.element.setStyle('display','');
 ";
         }
 
