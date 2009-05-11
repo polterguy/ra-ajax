@@ -76,7 +76,7 @@ Ra.Control.$ = function(id) {
   var ctrls = Ra.Control._controls;
   var idx = ctrls.length;
   while(idx--) {
-    if( ctrls[idx].element.id == id ) {
+    if( ctrls[idx].element && ctrls[idx].element.id == id ) {
       return ctrls[idx];
     }
   }
@@ -475,7 +475,7 @@ Ra.Control.prototype = {
       // And if it's a child control (defined as starting with the same id followed by an '_')
       // NOT bulletproof, but close enough...
       var tId = this.element.id;
-      if( ctrls[idx].element.id.indexOf(tId) === 0 &&
+      if( ctrls[idx].element && ctrls[idx].element.id.indexOf(tId) === 0 &&
         ctrls[idx].element.id.substring(tId.length, tId.length + 1) == '_' ) {
           children.push(ctrls[idx]);
       }
@@ -523,7 +523,7 @@ Ra.Control.prototype = {
     var ctrls = Ra.Control._controls;
     idx = ctrls.length;
     while( idx-- ) {
-      if( ctrls[idx].element.id == this.element.id ) {
+      if( ctrls[idx].element && ctrls[idx].element.id == this.element.id ) {
         // We have found our instance, idxToRemove now should contain the index of the control
         break;
       }

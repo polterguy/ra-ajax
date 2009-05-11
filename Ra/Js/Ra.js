@@ -76,7 +76,7 @@ Ra.$F = function(id, newValue, offset) {
   return el;
 };
 
-// The dynamically included JavaScript files
+// The included JavaScript files
 Ra._loadedScripts = {};
 
 // Dynamically includes a JavaScript file from its path
