@@ -42,6 +42,8 @@ caption{margin-bottom:.5em;text-align:center;}
 p,fieldset,table,pre{margin-bottom:1em;}
 input[type=text],input[type=password],textarea{width:12.25em;*width:11.9em;}
 
+input[type=checkbox]{margin-right:3px;}
+
 
 
 
