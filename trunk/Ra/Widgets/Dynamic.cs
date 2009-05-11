@@ -19,7 +19,11 @@ namespace Ra.Widgets
      * dynamically loaded controls in your own applications. If used correctly this control also
      * have the capacity to significantly reduce the amount of ViewState in your applications. This is 
      * especially true for "single webside Ajax Applications" where you have tons of features and controls
-     * in the same page.
+     * in the same page. The basic logi cof the control is that it will internally keep a reference to
+     * a "key" which you submit to it and then call an even handler with that key in which you decide 
+     * which Control collection to load and stuff into the Controls collection of the Dynamic Control.
+     * Then when an Ajax Callback (or postback) occurs it will re-call that same Event Handler with
+     * the same key to give the impression of "statefulness"...
      */
     [ASP.ToolboxData("<{0}:Dynamic runat=\"server\" />")]
     public class Dynamic : Panel
