@@ -118,6 +118,9 @@
 * Fixed a bug in EffectFadeOut which made it impossible to
   run the effect on a widget which already was not visible.
 
+* Fixed a bug in EffectRollUp which made it impossible to
+  run it on a non-block displayed element.
+
 
 
 
