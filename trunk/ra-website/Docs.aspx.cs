@@ -53,6 +53,8 @@ namespace RaWebsite
                             {
                                 TreeNode n = new TreeNode();
                                 n.ID = idx.Attributes["refid"].Value;
+                                if (File.Exists(Server.MapPath("~/Docs-Controls/" + value + ".ascx")))
+                                    n.CssClass += " hasSample";
                                 n.Text = value;
                                 l.Add(n);
                             }
@@ -96,7 +98,8 @@ namespace RaWebsite
             XmlDocument doc = new XmlDocument();
             doc.Load(Server.MapPath("~/docs-xml/" + fileName));
             string className = doc.SelectNodes("/doxygen/compounddef/compoundname")[0].InnerText;
-            header.Text = className.Replace("::", ".");
+            string classText = className.Replace("::", ".");
+            header.Text = classText;
 
             // Inherits from
             XmlNodeList lst = doc.SelectNodes("/doxygen/compounddef/basecompoundref");
