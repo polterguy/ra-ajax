@@ -18,12 +18,12 @@ namespace Ra.Widgets
      * different control collections. By utilizing this control it is very easy to create support for
      * dynamically loaded controls in your own applications. If used correctly this control also
      * have the capacity to significantly reduce the amount of ViewState in your applications. This is 
-     * especially true for "single webside Ajax Applications" where you have tons of features and controls
-     * in the same page. The basic logi cof the control is that it will internally keep a reference to
-     * a "key" which you submit to it and then call an even handler with that key in which you decide 
+     * especially true for "single website Ajax Applications" where you have tons of features and controls
+     * on the same page. The basic logic of the control is that it will internally keep a reference to
+     * a "key" which you submit to it and then call an event handler with that key in which you decide 
      * which Control collection to load and stuff into the Controls collection of the Dynamic Control.
      * Then when an Ajax Callback (or postback) occurs it will re-call that same Event Handler with
-     * the same key to give the impression of "statefulness"...
+     * the same key to give the impression of statefulness.
      */
     [ASP.ToolboxData("<{0}:Dynamic runat=\"server\" />")]
     public class Dynamic : Panel
@@ -33,7 +33,7 @@ namespace Ra.Widgets
 
         /**
          * This is the EventArgs which will be passed into the Reload event of the Dynamic Control.
-         * You must ALWAYS load the EXACT same Control Tree when the same Key is passed in.
+         * You must ALWAYS load the EXACT same Controls when the same Key is passed in.
          */
         public class ReloadEventArgs : EventArgs
         {
@@ -104,11 +104,16 @@ namespace Ra.Widgets
 
         private void LoadDynamicControl(bool firstReload)
         {
-            if (Reload != null && !string.IsNullOrEmpty(_key))
+            if (Reload != null && _key != null)
             {
                 ReloadEventArgs e = new ReloadEventArgs(_key, _extra, firstReload);
                 Reload(this, e);
             }
+        }
+
+        public void LoadControls()
+        {
+            LoadControls(string.Empty, null);
         }
 
         public void LoadControls(string key)
@@ -130,7 +135,7 @@ namespace Ra.Widgets
         {
             Controls.Clear();
             
-            _key = string.Empty;
+            _key = null;
             _extra = null;
             ReRender();
         }
