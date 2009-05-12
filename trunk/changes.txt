@@ -112,16 +112,18 @@
   the individual views by index of the ActiveAccordionViewIndex
   property.
 
-* Fixed a bug in EffectFadeIn which made it make the element
-  you ran it on always display with block style when ran.
+* Fixed a bug in EffectFadeIn which made the element you ran it 
+  on always display with block style while the Effect was running.
 
 * Fixed a bug in EffectFadeOut which made it impossible to
-  run the effect on a widget which already was not visible.
+  run the effect on a widget which initially was invisible.
 
 * Fixed a bug in EffectRollUp which made it impossible to
   run it on a non-block displayed element.
 
-
+* Fixed a bug in Dynamic that didn't allow specifying no key or
+  using an empty a string as a key. This is useful in simple 
+  scenarios when the user doesn't need to use a key.
 
 
 
