@@ -54,7 +54,12 @@ namespace RaWebsite
                                 TreeNode n = new TreeNode();
                                 n.ID = idx.Attributes["refid"].Value;
                                 if (File.Exists(Server.MapPath("~/Docs-Controls/" + value + ".ascx")))
+                                {
                                     n.CssClass += " hasSample";
+                                    n.Tooltip = "Have sample code";
+                                }
+                                else
+                                    n.CssClass += " noSample";
                                 n.Text = value;
                                 l.Add(n);
                             }
