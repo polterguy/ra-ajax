@@ -166,9 +166,16 @@
                 runat="server" 
                 OnSelectedNodeChanged="tree_SelectedNodeChanged"
                 ID="tree">
-                <ext:TreeNodes 
-                    runat="server" 
-                    ID="root" />
+                <ext:TreeNodes runat="server" ID="topNodes">
+                    <ext:TreeNode 
+                        runat="server" 
+                        ID="rootNode" 
+                        Text="Classes Reference Documentation">
+                        <ext:TreeNodes 
+                            runat="server" 
+                            ID="root" />
+                    </ext:TreeNode>
+                </ext:TreeNodes>
             </ext:Tree>
         </div>
     </ext:Window>
