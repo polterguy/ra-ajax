@@ -738,4 +738,27 @@ ul#menu li a:hover
 }
 
 
+.description ul
+{
+	margin:15px;
+}
+
+.description img
+{
+	margin:15px;
+}
+
+.description h3
+{
+	margin:15px 15px 15px 0;
+}
+
+.description ul li
+{
+	list-style-position:outside;
+	margin-left:15px;
+	list-style-type:disc;
+}
+
+
 

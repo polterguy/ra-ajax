@@ -77,7 +77,12 @@
         Visible="false"
         style="margin:0;overflow:hidden;display:none;"
         ID="pnlDescription">
-        <h2 style="margin:5px;">Description</h2>
+        <ra:Label 
+            runat="server" 
+            ID="descTag" 
+            Tag="h2"
+            Text="Description" 
+            style="margin:5px;" />
         <ra:Label 
             runat="server" 
             CssClass="description"
@@ -174,6 +179,14 @@
                         <ext:TreeNodes 
                             runat="server" 
                             ID="root" />
+                    </ext:TreeNode>
+                    <ext:TreeNode 
+                        runat="server" 
+                        ID="tutorials" 
+                        Text="Tutorials">
+                        <ext:TreeNodes 
+                            runat="server" 
+                            ID="rootTutorials" />
                     </ext:TreeNode>
                 </ext:TreeNodes>
             </ext:Tree>

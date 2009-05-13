@@ -1,0 +1,141 @@
+﻿<h3>Aim of this tutorial</h3>
+<ul>
+	<li>Get you started with Ra-Ajax development</li>
+	<li>Teach you the basic controls</li>
+	<li>Teach you the basic semantics and internals of Ra-Ajax</li>
+	<li>Give you a nice starting point for further research</li>
+</ul>
+
+<h3>Prerequisites</h3>
+<ul>
+	<li>That you have <a href="http://code.google.com/p/ra-ajax/">Downloaded Ra-Ajax</a></li>
+	<li>That you're using Visual Studio 2005 or later and have it running</li>
+	<li>That you're familiar with basic C# and ASP.NET concepts</li>
+	<li>To follow the last parts of this tutorial you will also need to have FireFox installed in addition to <a href="http://getfirebug.com">FireBug</a>, but this is not strictly necessary.</li>
+</ul>
+
+<h3>Getting started</h3>
+<p>
+	The first thing you must do is to start a new <i>ASP.NET Web Site</i> in Visual Studio. This can be
+	done by going to the <b>File | New | Web Site...</b> menu in Visual Studio. Select the name
+	"Hello World" for this website, make sure you have chosen C# as the primary language and 
+	"File System" as the location for it and then click OK.
+</p>
+<p>
+	Then you need to add a reference to <i>Ra.dll</i> in your project. This DLL should be within
+	the <i>binaries</i> folder where you unzipped Ra-Ajax. Make sure you use the uncompressed
+	version of Ra. Do this by right-clicking the "Hello World" website node in your solution 
+	explorer and choose <i>Add Reference...</i> Browse to the <i>uncompressed</i> folder within
+	the <i>binaries</i> folder of the place you unzipped Ra-Ajax after downloading it.
+</p>
+<p>
+	Now you should have a Default.aspx file which you can run. Of course it doesn't do anything
+	interesting at all yet, but press F5 to verify that you've done everything correctly so far.
+</p>
+
+<h3>Adding your first Ra-Ajax Control</h3>
+<p>
+	Before we can start adding Ra-Ajax Controls we must make sure that Ra-Ajax is being included
+	on our page for Control parsing. Make sure you add the code below just below you Page directive
+	in your Default.aspx file.
+</p>
+<pre>
+&lt;%@ Register 
+    Assembly="Ra" 
+    Namespace="Ra.Widgets" 
+    TagPrefix="ra" %&gt;
+</pre>
+<p>
+	Without this directive we cannot include Ra-Ajax controls on our page.
+</p>
+<p>
+	Then copy and paste the code below anywhere within your &lt;form element.
+</p>
+<pre>
+&lt;ra:Button 
+    runat="server" 
+    ID="btn" 
+    Text="Click me..." 
+    OnClick="btn_Click" /&gt;
+</pre>
+<p>
+	Then in your codebehind file (<i>Default.aspx.cs</i>) you must add the code below. 
+	Make sure you add it up within your class as a method.
+</p>
+<pre>
+protected void btn_Click(object sender, EventArgs e)
+{
+    btn.Text = "I was clicked...";
+}
+</pre>
+
+<h3>Explanation - Ra Internals... [Advanced]</h3>
+<p>
+	Now we have added a Ra-Ajax Button to our page. Then we have attached an Event Handler (btn_Click)
+	for the <i>Click</i> event. Whenever the Button is clicked, then our event handler will be called
+	on the server.
+</p>
+<p>
+	Our event will just change the Text property of our button and nothing more. But there are some
+	interesting points here which we can take a look at if we use FireBug. If we open FireBug and
+	take a look at the POST request which was being raised we will see something similar to this.
+	<img src="tutorials/hello-world-tutorial.jpg" alt="Screenshot of FireBug" />
+</p>
+<p>
+	There are two important facts about Ra-Ajax in that screenshot. First of all you can see that
+	there is absolutely no HTML being rendered back to the client. In fact the line;
+	<pre>Ra.Control.$('btn').handleJSON({"Value":"I was clicked..."});</pre>
+	Is the only evidence of anything except from the ViewState being updated at all.
+</p>
+
+<h3>Ra-Ajax and Partial Rendering</h3>
+<p>
+	Ra-Ajax does not use Partial Rendering almost at all. At least not when it doesn't have to.
+	Partial Rendering is the concept of rendering back HTML to "some parts" of the page. This
+	is the way UpdatePanels in ASP.NET AJAX works for instance. It is also the way Anthem.NET works.
+	But instead of using Partial Rendering Ra-Ajax can change specific properties and attributes of 
+	widgets on the client side without having to render back HTML.
+</p>
+<p>
+	This makes Ra-Ajax <i>stateful</i> which in turn makes it possible to create really rich
+	functionality within Ra-Ajax applications. If we were to render the entire Button when
+	we changed properties and attributes of it, then we would loose state. This is a BAD thing
+	since even for the really simple example above the Button would loose Focus. This would
+	happen since the entire HTML for the Button would be re-rendered through Partial Rendering
+	and whatever state the browser was in in regards to the Button would be completely lost.
+</p>
+<p>
+	But instead by just changing the properties on the Button which actually did change on
+	the Ajax Request, we are able to completely keep state and not loose any "value" for our
+	end users. The updates are returned from the server using JSON and the <i>Value</i> property
+	is actually being mapped to a function in Ra-Ajax which will only change the Text property
+	of the button.
+</p>
+<p>
+	For a simple example like this you might say that it's not a big deal to get rid of Partial
+	Rendering. And you're right. For such a simple example it doesn't really matter. However
+	if you start playing around with more complex and rich functionality like Windows, 
+	DateTimePickers, AutoCompleters and such then getting rid of Partial Rendering is not only
+	a need, but also a MUST.
+</p>
+<p>
+	Without getting rid of Partial Rendering then all your logic which is slightly more advanced
+	then this example wold end up forcing you into writing lots and lots of JavaScript. This is
+	why ASP.NET AJAX forces its users to write so much JavaScript and why they need to have 
+	WebServices for their AutoCompleters and many of their more "advanced" controls. While Ra-Ajax
+	can use a purely <i>Event Driven</i> model.
+</p>
+<p>
+	This makes your code far easier to maintain. Far easier to understand. Far easier to track
+	bugs in. And far easier to change and add features to. In addition to that ALL your code 
+	will be C# and you almost never have to resort to writing JavaScript. Even for your most 
+	complex and richest scenarios.
+</p>
+<p>
+	This is why we call Ra-Ajax for a <b>No JavaScript Ajax Framework</b>. Kind of like GWT, 
+	though with a completely different foundation.
+</p>
+
+
+
+
