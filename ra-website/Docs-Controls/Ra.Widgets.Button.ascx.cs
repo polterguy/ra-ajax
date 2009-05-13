@@ -12,7 +12,7 @@ using Ra.Widgets;
 
 public partial class Docs_Controls_BehaviorUpdater : System.Web.UI.UserControl
 {
-    protected void btn_Click(object semder, EventArgs e)
+    protected void btn_Click(object sender, EventArgs e)
     {
         btn.Text = "I was clicked...";
         if (btn.Style[Styles.width] == "200px")

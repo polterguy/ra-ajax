@@ -13,6 +13,7 @@ using Ra.Extensions;
 using System.Collections.Generic;
 using System.IO;
 using ColorizerLibrary;
+using RaSelector;
 
 namespace RaWebsite
 {
@@ -28,6 +29,25 @@ namespace RaWebsite
         }
 
         private void BuildRoot()
+        {
+            BuildRootClasses();
+            BuildRootTutorials();
+        }
+
+        private void BuildRootTutorials()
+        {
+            foreach (string idx in Directory.GetFiles(Server.MapPath("~/tutorials/"), "*.txt"))
+            {
+                TreeNode n = new TreeNode();
+                n.ID = "tutorial_" + idx.Replace(".txt", "").Replace(" ", "_").Replace(Server.MapPath("~/tutorials/"), "");
+                n.Text = idx.Replace(".txt", "").Replace(Server.MapPath("~/tutorials/"), "");
+                n.Xtra = idx;
+                n.CssClass = "hasSample";
+                rootTutorials.Controls.Add(n);
+            }
+        }
+
+        private void BuildRootClasses()
         {
             XmlDocument doc = new XmlDocument();
             doc.Load(Server.MapPath("~/docs-xml/index.xml"));
@@ -79,10 +99,49 @@ namespace RaWebsite
 
         protected void tree_SelectedNodeChanged(object sender, EventArgs e)
         {
-            if (tree.SelectedNodes[0].ID == "rootNode")
-                return;
             string itemToLookAt = tree.SelectedNodes[0].ID;
-            ShowClass(itemToLookAt);
+            if (itemToLookAt == "rootNode" || itemToLookAt == "tutorials")
+                return;
+            if (itemToLookAt.Contains("tutorial_"))
+                ShowTutorial(itemToLookAt);
+            else
+                ShowClass(itemToLookAt);
+        }
+
+        private void ShowTutorial(string tutorialID)
+        {
+            bool first = pnlInfo.Style["display"] != "none";
+            TreeNode node = Selector.FindControl<TreeNode>(rootTutorials, tutorialID);
+            header.Text = node.Text;
+
+            inherit.Text = "none";
+
+            pnlInherits.Visible = true;
+            pnlInfo.Style[Styles.display] = "none";
+            repWrapper.Style["display"] = "none";
+            pnlDescription.Visible = true;
+            descTag.Text = "Content";
+            using (TextReader reader = new StreamReader(node.Xtra))
+            {
+                description.Text = reader.ReadToEnd();
+            }
+            if (first)
+            {
+                new EffectRollUp(pnlInfo, 500)
+                    .ChainThese(
+                        new EffectRollDown(pnlDescription, 500))
+                    .Render();
+            }
+            else
+            {
+                new EffectRollUp(repWrapper, 100)
+                    .ChainThese(new EffectRollUp(pnlDescription, 100),
+                        new EffectRollUp(pnlInherits, 100),
+                        new EffectRollDown(pnlDescription, 300))
+                    .Render();
+            }
+            new EffectHighlight(header, 500)
+                .Render();
         }
 
         protected void ViewInherited(object sender, EventArgs e)
@@ -122,6 +181,7 @@ namespace RaWebsite
             }
             pnlInherits.Visible = true;
             pnlDescription.Visible = true;
+            descTag.Text = "Description";
             if (first)
             {
                 new EffectRollUp(pnlInfo, 500)
