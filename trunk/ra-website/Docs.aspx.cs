@@ -79,6 +79,8 @@ namespace RaWebsite
 
         protected void tree_SelectedNodeChanged(object sender, EventArgs e)
         {
+            if (tree.SelectedNodes[0].ID == "rootNode")
+                return;
             string itemToLookAt = tree.SelectedNodes[0].ID;
             ShowClass(itemToLookAt);
         }

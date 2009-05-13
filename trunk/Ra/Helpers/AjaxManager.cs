@@ -380,6 +380,9 @@ namespace Ra
         /**
          * Includes a JavaScript file from a resource with the given resource id. This one 
          * is mostly for Control developers to make sure your script files are being included.
+         * Note that Ra-Ajax can include ANY JavaScrip file even in Ajax Callbacks. But in order for
+         * this to work you must use the methods for JavaScript file inclusions in the
+         * AjaxManager like for instance this method.
          */
         public void IncludeScriptFromResource(Type type, string id)
         {
@@ -396,7 +399,10 @@ namespace Ra
         }
 
         /**
-         * Includes a JavaScript file from a file path.
+         * Includes a JavaScript file from a file path. Note that Ra-Ajax can 
+         * include ANY JavaScrip file even in Ajax Callbacks. But in order for
+         * this to work you must use the methods for JavaScript file inclusions in the
+         * AjaxManager like for instance this method.
          */
         public void IncludeScriptFromFile(string path)
         {
