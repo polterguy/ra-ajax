@@ -727,7 +727,15 @@ ul#menu li a:hover
 }
 
 
-.hasSample
+.tree .hasSample .icon
 {
-	color:#00e;
+	background:url(skins/steel/tree-sprites.png) no-repeat -208px 0px;
 }
+
+.tree .noSample .icon
+{
+	background:url(skins/steel/tree-sprites.png) no-repeat -192px 0px;
+}
+
+
+
