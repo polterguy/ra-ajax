@@ -40,25 +40,31 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Widgets\SlidingMenuItem.cs" />
+    <Compile Include="Widgets\SlidingMenuLevel.cs" />
+    <Compile Include="Widgets\SlidingMenu.cs" />
     <Compile Include="Widgets\WebPart.cs" />
     <Compile Include="Widgets\ExtButton.cs" />
-    <Compile Include="Widgets\AutoCompleter.cs" />
-    <Compile Include="Widgets\AutoCompleterItem.cs" />
     <Compile Include="Widgets\Calendar.cs" />
     <Compile Include="Widgets\Accordion.cs" />
     <Compile Include="Widgets\AccordionView.cs" />
     <Compile Include="Widgets\Comet.cs" />
     <Compile Include="Helpers\CometQueue.cs" />
+    <Compile Include="Widgets\AutoCompleter.cs" />
+    <Compile Include="Widgets\AutoCompleterItem.cs" />
+    <Compile Include="Widgets\MessageBox.cs" />
     <Compile Include="Widgets\DateTimePicker.cs" />
+    <Compile Include="Widgets\ResizeHandler.cs" />
     <Compile Include="Widgets\Menu.cs" />
     <Compile Include="Widgets\MenuItem.cs" />
     <Compile Include="Widgets\MenuItems.cs" />
-    <Compile Include="Widgets\MessageBox.cs" />
-    <Compile Include="Widgets\ResizeHandler.cs" />
+    <Compile Include="Widgets\TreeNodes.cs" />
     <Compile Include="Widgets\RichEdit.cs" />
     <Compile Include="Widgets\InPlaceEdit.cs" />
     <Compile Include="Widgets\Timer.cs" />
@@ -67,15 +73,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Widgets\Tree.cs" />
     <Compile Include="Widgets\TreeNode.cs" />
-    <Compile Include="Widgets\TreeNodes.cs" />
     <Compile Include="Widgets\Window.cs" />
-    <Compile Include="Widgets\WindowLight.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Ra\Ra.csproj">
-      <Project>{82727C73-0B10-4F58-93F4-841E9397302C}</Project>
-      <Name>Ra</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Js\Timer.js" />
@@ -85,6 +83,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Js\Comet.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ra\Ra.csproj">
+      <Project>{82727C73-0B10-4F58-93F4-841E9397302C}</Project>
+      <Name>Ra</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Js\ResizeHandler.js" />

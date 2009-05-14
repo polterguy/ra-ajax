@@ -20,7 +20,7 @@ namespace Ra.Widgets
      * Dropped event will be raised and the widget will have updated left and top style collection values.
      */
     [ASP.ToolboxData("<{0}:BehaviorDraggable runat=\"server\" />")]
-    public class BehaviorDraggable : Behavior, IRaControl
+    public class BehaviorDraggable : Behavior, IRaControl, IDisableableBehavior
 	{
         /**
          * Event raised when control has been dropped into a new location on form
@@ -95,6 +95,13 @@ namespace Ra.Widgets
 					options += ",{";
 				options += string.Format("handle:Ra.$('{0}')", Handle);
 			}
+
+            if (options != string.Empty)
+                options += ",";
+            else
+                options += ",{";
+            options += string.Format("enabled:{0}", Enabled.ToString().ToLowerInvariant());
+
 			if( options != string.Empty)
 				options += "}";
 			return string.Format("new Ra.BDrag('{0}'{1})", this.ClientID, options);
@@ -131,5 +138,24 @@ namespace Ra.Widgets
                     throw new ApplicationException("Unknown event fired for control");
             }
         }
-	}
+
+        #region IDisableableBehavior Members
+
+        /**
+         * Determines whether a Behviour that implements IDisableableBehvior is enabled or disabled
+         */ 
+        [DefaultValue(true)]
+        public bool Enabled
+        {
+            get { return ViewState["Enabled"] == null ? true : (bool)ViewState["Enabled"]; }
+            set
+            {
+                if (value != Enabled)
+                    SetJSONValueBool("Enabled", value);
+                ViewState["Enabled"] = value;
+            }
+        }
+
+        #endregion
+    }
 }

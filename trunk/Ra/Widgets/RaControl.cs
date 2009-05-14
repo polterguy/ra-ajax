@@ -105,7 +105,7 @@ namespace Ra.Widgets
 		}
 
         // TODO: Refactor, change Behavior to make it possible to make this private, or investigate options...
-		internal void RenderOnlyJSON(HtmlTextWriter writer)
+		internal virtual void RenderOnlyJSON(HtmlTextWriter writer)
 		{
 			string JSON = SerializeJSON();
 			if (!string.IsNullOrEmpty(JSON))
@@ -114,8 +114,8 @@ namespace Ra.Widgets
 			}
 			RenderChildren(writer);
 		}
-		
-		private void RenderAllChildrenToAjaxManager()
+
+        private void RenderAllChildrenToAjaxManager()
 		{
 			// Note that we're NOT rendering the Children directly into the AjaxManager stream
 			// but rather we're creating a wrapper stream which we're pushing everything into
@@ -351,7 +351,7 @@ namespace Ra.Widgets
 			}
 		}
 
-		private string SerializeJSON()
+		protected string SerializeJSON()
 		{
 			// Short circuting
 			if (_JSONValues.Count == 0)

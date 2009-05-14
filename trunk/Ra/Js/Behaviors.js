@@ -215,7 +215,8 @@ Ra.extend(Ra.BDrag.prototype, {
     this.options = Ra.extend({
       bounds: {left:-2000, top:-2000, width: 4000, height: 4000},
       snap:{x:1,y:1},
-      handle: this.parent.element
+      handle: this.parent.element,
+      enabled: true
     }, this.options || {});
 
     // To prevent selection for non-mozilla browsers
@@ -236,6 +237,10 @@ Ra.extend(Ra.BDrag.prototype, {
     this.options.handle = Ra.$(handle);
     handle.observe('mousedown', this.onMouseDown, this);
   },
+  
+  Enabled: function(value) {
+    this.options.enabled = value;
+  },
 
   // Setter for the Snap Point which determines how the 
   // control is supposed to "snap" when dragged
@@ -249,26 +254,28 @@ Ra.extend(Ra.BDrag.prototype, {
 
   // Called when mouse is being pushed DOWN on top of the Control
   onMouseDown: function(event) {
-    this._hasCaption = true;
-    this._hasDragged = false;
-    this._pos = this.pointer(event);
+    if( this.options.enabled ) {
+      this._hasCaption = true;
+      this._hasDragged = false;
+      this._pos = this.pointer(event);
     
-    this.parent.element.absolutize();
+      this.parent.element.absolutize();
     
-    // Storing old position
-    this._oldX = parseInt(this.parent.element.getStyle('left'), 10);
-    this._oldY = parseInt(this.parent.element.getStyle('top'), 10);
+      // Storing old position
+      this._oldX = parseInt(this.parent.element.getStyle('left'), 10);
+      this._oldY = parseInt(this.parent.element.getStyle('top'), 10);
 
-    // Stopping "selection mode"
-    document.body.observe('selectstart', this.onStopEvent);
-    document.body.observe('dragstart', this.onStopEvent);
+      // Stopping "selection mode"
+      document.body.observe('selectstart', this.onStopEvent);
+      document.body.observe('dragstart', this.onStopEvent);
+    }
   },
 
   // Called when mouse is released. Note that this
   // is currently being trapped for the DOM element of the control
   // but should be trapped for the document.body element.
   onMouseUp: function(event) {
-    if( !this._hasCaption || !this._hasDragged ) {
+    if( !this._hasCaption || !this._hasDragged || !this.options.enabled) {
       return;
     }
     this._hasCaption = false;
@@ -308,7 +315,7 @@ Ra.extend(Ra.BDrag.prototype, {
   // Called when mouse is moved. This too have the same "bug" as the
   // function above.
   onMouseMove: function(event) {
-    if( this._hasCaption ) {
+    if( this._hasCaption && this.options.enabled) {
       this._hasDragged = true;
       var pos = this.pointer(event);
       var xDelta = pos.x - this._pos.x;

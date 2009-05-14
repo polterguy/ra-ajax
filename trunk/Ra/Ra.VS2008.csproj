@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Behaviors\BehaviorObscurable.cs" />
     <Compile Include="Behaviors\BehaviorUnveiler.cs" />
+    <Compile Include="Interfaces\IDisableableBehavior.cs" />
     <Compile Include="Effects\EffectFocusAndSelect.cs" />
     <Compile Include="Effects\EffectHighlightText.cs" />
     <Compile Include="Effects\EffectTimeout.cs" />
