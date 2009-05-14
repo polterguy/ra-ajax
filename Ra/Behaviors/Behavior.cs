@@ -22,7 +22,7 @@ namespace Ra.Widgets
      */
 	public abstract class Behavior : RaControl
 	{
-	    protected override void OnInit(EventArgs e)
+        protected override void OnInit(EventArgs e)
 	    {
 	        base.OnInit(e);
 #if !CONCAT
@@ -37,7 +37,7 @@ namespace Ra.Widgets
 
         public override void RenderControl(ASP.HtmlTextWriter writer)
         {
-			// We roughly only needs to handle what happens for JSON changes in the Behaviors
+			// We roughly only need to handle what happens for JSON changes in the Behaviors
             if (!DesignMode)
             {
                 if (Visible)
@@ -50,6 +50,15 @@ namespace Ra.Widgets
                         }
                     }
                 }
+            }
+        }
+
+        internal override void RenderOnlyJSON(System.Web.UI.HtmlTextWriter writer)
+        {
+            string JSON = SerializeJSON();
+            if (!string.IsNullOrEmpty(JSON))
+            {
+                AjaxManager.Instance.Writer.WriteLine("Ra.Beha.$('{0}').handleJSON({1});", ClientID, JSON);
             }
         }
 
