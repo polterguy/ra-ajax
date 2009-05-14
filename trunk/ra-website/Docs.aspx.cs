@@ -123,7 +123,11 @@ namespace RaWebsite
             descTag.Text = "Content";
             using (TextReader reader = new StreamReader(node.Xtra))
             {
-                description.Text = reader.ReadToEnd();
+                CodeColorizer colorizer = ColorizerLibrary.Config.DOMConfigurator.Configure();
+                description.Text = colorizer.ProcessAndHighlightText(
+                    reader.ReadToEnd())
+                    .Replace("%@", "<span class=\"yellow-code\">%@</span>")
+                    .Replace(" %", " <span class=\"yellow-code\">%</span>");
             }
             if (first)
             {
@@ -260,10 +264,8 @@ namespace RaWebsite
                         "<pre lang=\"xml\">" + 
                         reader.ReadToEnd() +
                         "</pre>")
-                        .Replace("&amp;lt;", "<")
-                        .Replace("&amp;gt;", ">")
-                        .Replace("></</", ">&lt;/</")
-                        .Replace("%@", "<span class=\"yellow-code\">%@</span>");
+                        .Replace("%@", "<span class=\"yellow-code\">%@</span>")
+                        .Replace(" %", " <span class=\"yellow-code\">%</span>");
                 }
                 tab.Style[Styles.display] = "";
             }

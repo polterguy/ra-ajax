@@ -31,8 +31,8 @@
 </xsl:template>
 
 <xsl:template match="xml-value"><xsl:value-of select="text()"   disable-output-escaping="yes" /></xsl:template>
-<xsl:template match="xml-tag"><span class="xml-tag"><xsl:value-of select="text()"   disable-output-escaping="yes" /></span></xsl:template>
-<xsl:template match="xml-bracket"><span class="xml-bracket"><xsl:value-of select="text()"/></span></xsl:template>
+<xsl:template match="xml-tag"><span class="xml-tag"><xsl:value-of select="text()" disable-output-escaping="no" /></span></xsl:template>
+<xsl:template match="xml-bracket"><span class="xml-bracket"><xsl:value-of disable-output-escaping="yes" select="text()"/></span></xsl:template>
 <xsl:template match="xml-comment"><span class="xml-comment"><xsl:value-of select="text()"/></span></xsl:template>
 <xsl:template match="xml-cdata">
 	<span class="xml-bracket"><xsl:text>&lt;![CDATA[</xsl:text></span>
