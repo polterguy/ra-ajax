@@ -15,7 +15,7 @@ namespace Ra.Extensions
 {
     /**
      * DateTimePicker Ajax Control. Inherits from Calendar and handles 
-     * the CreateExtraControlsAtBottom event to create hour and minute controls. While the calendar can only
+     * the CreateFooterControls event to create hour and minute controls. While the calendar can only
      * choose whole days, this control can also choose hours and minutes within those specific dates. In all
      * other ways it is identical to the Calendar Widget.
      */
@@ -27,7 +27,7 @@ namespace Ra.Extensions
 
         protected override void OnInit(EventArgs e)
         {
-            this.CreateExtraControlsAtBottom += new EventHandler<CreateExtraControlsAtBottomEvtArgs>(DateTimePicker_CreateExtraControlsAtBottom);
+            this.CreateFooterControls += new EventHandler<CreateFooterControlsEventArgs>(DateTimePicker_CreateFooterControls);
             base.OnInit(e);
         }
 
@@ -40,7 +40,7 @@ namespace Ra.Extensions
             _caption.Text += " - " + this.Value.ToString("HH:mm", System.Globalization.CultureInfo.InvariantCulture);
         }
 
-        void DateTimePicker_CreateExtraControlsAtBottom(object sender, Calendar.CreateExtraControlsAtBottomEvtArgs e)
+        void DateTimePicker_CreateFooterControls(object sender, Calendar.CreateFooterControlsEventArgs e)
         {
             Panel lit = new Panel();
             lit.ID = "time";

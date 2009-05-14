@@ -22,7 +22,7 @@ namespace Ra.Extensions
      * like the possibility to set the Window into "Modal" mode. In Modal mode none of the controls behind it
      * on the page can be clicked. Can also be moved around on screen, have support for Caption and a 
      * closing icon to close it. You can also easily create your own "icons" by overriding the 
-     * CreateNavigationalButtons event. Note that to make the Window Modal you need to add up the 
+     * CreateTitleBarControls event. Note that to make the Window Modal you need to add up the 
      * BehaviorObscurer to the Controls collection of the Window.
      */
     [ASP.ToolboxData("<{0}:Window runat=\"server\"></{0}:Window>")]
@@ -31,20 +31,19 @@ namespace Ra.Extensions
     public class Window : Panel, ASP.INamingContainer
     {
         /**
-         * EventArgs being passed into the CreateNavigationalButtons event for the Window Widget.
-         * Use the Caption property to inject your own controls or other logic.
+         * EventArgs passed to the CreateTitleBarControls event of the Window.
          */
-        public class CreateNavigationalButtonsEvtArgs : EventArgs
+        public class CreateTitleBarControlsEventArgs : EventArgs
         {
             private ASP.Control _ctrl;
 
-            internal CreateNavigationalButtonsEvtArgs(ASP.Control ctrl)
+            internal CreateTitleBarControlsEventArgs(ASP.Control ctrl)
             {
                 _ctrl = ctrl;
             }
 
             /**
-             * This is the Caption control which you can add child controls onto
+             * This is the Caption control which you can add child controls onto.
              */
             public ASP.Control Caption
             {
@@ -67,20 +66,21 @@ namespace Ra.Extensions
         BehaviorDraggable _dragger = new BehaviorDraggable();
 
         /**
-         * Raised when window is closed by clicking the close icon
+         * Raised when window is closed by clicking the close icon.
          */
         public event EventHandler Closed;
 
         /**
-         * Raised when window is moved and dropped at new position
+         * Raised when window is moved and dropped at new position.
          */
         public event EventHandler Moved;
 
         /**
-         * Raised when window needs "additional navigational buttons" (next to the close button)
-         * Called immediately before Close button is created (if it is created)
+         * Handle this event if you need to create extra controls at the Window TitleBar 
+         * (next to the close button) for any reasons. Called immediately before Close button 
+         * is created (if it is created).
          */
-        public event EventHandler<CreateNavigationalButtonsEvtArgs> CreateNavigationalButtons;
+        public event EventHandler<CreateTitleBarControlsEventArgs> CreateTitleBarControls;
 
         /**
          * Overridden to provide a sane default value
@@ -124,8 +124,7 @@ namespace Ra.Extensions
         }
 
         /**
-         * If true (default value) then Window will have a "Close" icon which makes it possible
-         * to close it by clicking.
+         * If true (default value) then Window will have a Close icon to close it.
          */
         [DefaultValue(true)]
         public bool Closable
@@ -140,10 +139,11 @@ namespace Ra.Extensions
         [DefaultValue(true)]
         public bool Movable
         {
-            get { return _dragger.Visible; }
+            get { return _dragger.Enabled; }
             set
             {
-                _dragger.Visible = value;
+                _dragger.Enabled = value;
+
                 _caption.Style["cursor"] = value ? "" : "default";
             }
         }
@@ -211,8 +211,8 @@ namespace Ra.Extensions
             _caption.CssClass = cssClass + "_title";
             _n.Controls.Add(_caption);
 
-            if (CreateNavigationalButtons != null)
-                CreateNavigationalButtons(this, new CreateNavigationalButtonsEvtArgs(_n));
+            if (CreateTitleBarControls != null)
+                CreateTitleBarControls(this, new CreateTitleBarControlsEventArgs(_n));
 
             _close.ID = "XXclose";
             _close.Click += new EventHandler(_close_Click);
