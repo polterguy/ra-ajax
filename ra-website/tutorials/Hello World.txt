@@ -1,7 +1,7 @@
 ﻿<h3>Aim of this tutorial</h3>
 <ul>
 	<li>Get you started with Ra-Ajax development</li>
-	<li>Teach you the basic controls</li>
+	<li>Teach you the basics of Ra-Ajax</li>
 	<li>Teach you the basic semantics and internals of Ra-Ajax</li>
 	<li>Give you a nice starting point for further research</li>
 </ul>
@@ -26,7 +26,8 @@
 	the <i>binaries</i> folder where you unzipped Ra-Ajax. Make sure you use the uncompressed
 	version of Ra. Do this by right-clicking the "Hello World" website node in your solution 
 	explorer and choose <i>Add Reference...</i> Browse to the <i>uncompressed</i> folder within
-	the <i>binaries</i> folder of the place you unzipped Ra-Ajax after downloading it.
+	the <i>binaries</i> folder of the place you unzipped Ra-Ajax after downloading it and click OK
+	after selecting Ra.dll.
 </p>
 <p>
 	Now you should have a Default.aspx file which you can run. Of course it doesn't do anything
@@ -36,38 +37,41 @@
 <h3>Adding your first Ra-Ajax Control</h3>
 <p>
 	Before we can start adding Ra-Ajax Controls we must make sure that Ra-Ajax is being included
-	on our page for Control parsing. Make sure you add the code below just below you Page directive
+	on our page for Control parsing. Make sure you add the code below just below your Page directive
 	in your Default.aspx file.
 </p>
-<pre>
-&lt;%@ Register 
+<pre lang="xml">
+<%@ Register 
     Assembly="Ra" 
     Namespace="Ra.Widgets" 
-    TagPrefix="ra" %&gt;
+    TagPrefix="ra" %>
 </pre>
 <p>
 	Without this directive we cannot include Ra-Ajax controls on our page.
 </p>
 <p>
-	Then copy and paste the code below anywhere within your &lt;form element.
+	Then copy and paste the code below anywhere within your &lt;form... element.
 </p>
-<pre>
-&lt;ra:Button 
+<pre lang="xml">
+<ra:Button 
     runat="server" 
     ID="btn" 
     Text="Click me..." 
-    OnClick="btn_Click" /&gt;
+    OnClick="btn_Click" />
 </pre>
 <p>
 	Then in your codebehind file (<i>Default.aspx.cs</i>) you must add the code below. 
 	Make sure you add it up within your class as a method.
 </p>
-<pre>
+<pre lang="cs">
 protected void btn_Click(object sender, EventArgs e)
 {
     btn.Text = "I was clicked...";
 }
 </pre>
+<p>
+	And that's it. Press F5 to run and test your first Ra-Ajax Application :)
+</p>
 
 <h3>Explanation - Ra Internals... [Advanced]</h3>
 <p>
@@ -84,7 +88,11 @@ protected void btn_Click(object sender, EventArgs e)
 <p>
 	There are two important facts about Ra-Ajax in that screenshot. First of all you can see that
 	there is absolutely no HTML being rendered back to the client. In fact the line;
-	<pre>Ra.Control.$('btn').handleJSON({"Value":"I was clicked..."});</pre>
+</p>
+<pre lang="cs">
+Ra.Control.$('btn').handleJSON({"Value":"I was clicked..."});
+</pre>
+<p>
 	Is the only evidence of anything except from the ViewState being updated at all.
 </p>
 
@@ -120,7 +128,7 @@ protected void btn_Click(object sender, EventArgs e)
 </p>
 <p>
 	Without getting rid of Partial Rendering then all your logic which is slightly more advanced
-	then this example wold end up forcing you into writing lots and lots of JavaScript. This is
+	then this example would end up forcing you into writing lots and lots of JavaScript. This is
 	why ASP.NET AJAX forces its users to write so much JavaScript and why they need to have 
 	WebServices for their AutoCompleters and many of their more "advanced" controls. While Ra-Ajax
 	can use a purely <i>Event Driven</i> model.
@@ -133,9 +141,11 @@ protected void btn_Click(object sender, EventArgs e)
 </p>
 <p>
 	This is why we call Ra-Ajax for a <b>No JavaScript Ajax Framework</b>. Kind of like GWT, 
-	though with a completely different foundation.
+	though with a completely different foundation. Many people have faulty interpreted this
+	fact as if Ra-Ajax developers hates JavaScript. This is simply not true. We love JavaScript
+	but we just don't think it has anything to do in the application layer of your code.
+	We think of JavaScript as the driver to your graphic card, or the <i>new Assembly Language</i>. 
+	Sometimes you need to know about its internals, but for most office applications and such you 
+	don't even need to know about its existance. Just like JavaScript in regards to Web-Application 
+	development :)
 </p>
-
-
-
-
