@@ -159,6 +159,156 @@ protected void mouseOut(object sender, EventArgs e)
 <h3>Chaining and Joining Effects...</h3>
 <p>
 	In addition to just running Effects like we are doing here, Ra-Ajax also have support
-	for joining Effects and chaining Effects.
+	for joining Effects and chaining Effects. When you <i>join</i> two or more effects 
+	then those two effects will run simultaneously. When you <i>chain</i> effects then
+	these effects will run in a chain so that when the first one is finished the next
+	on in the "queue" will run. Change your foo method as shown below to see two joined
+	effects.
 </p>
+<pre lang="cs">
+protected void foo(object sender, EventArgs e)
+{
+    new EffectRollUp(pnl, 400)
+        .JoinThese(new EffectFadeOut())
+        .Render();
+}
+</pre>
+<p>
+	This will at the same time the Panel is being "rolled up" also fade the Panel away.
+</p>
+<p>
+	Note that both the <i>JoinThese</i> and the <i>ChainThese</i> methods can take
+	any number of Effects. If you embed multiple effects into the JoinThese method
+	then all will run at the same time. If you embed multiple Effects into the
+	ChainThese method then those effects will be "queued up" in such a way that the
+	first effect will run, then the second, then the third and so on. To really see 
+	this in action change your foo method to the code below.
+</p>
+
+<pre lang="cs">
+protected void foo(object sender, EventArgs e)
+{
+    new EffectRollUp(btn, 400)
+        .JoinThese(
+            new EffectFadeOut())
+        .ChainThese(
+            new EffectRollDown(btn, 400)
+                .JoinThese(new EffectFadeIn()),
+            new EffectSize(btn, 500, 150, 150),
+            new EffectTimeout(500),
+            new EffectSize(btn, 500, 200, 200),
+            new EffectTimeout(500),
+            new EffectSize(btn, 500, 250, 250))
+        .Render();
+}
+</pre>
+<p>
+	Then run the sample and click the Button.
+</p>
+<p>
+	As you can see the FadeOut effect runs at the same time as the RollUp effect.
+	Then the Button will RollDown while at the same time FadeIn. Then the button
+	will grow to 150x150 pixels before a small pause of 0.5 seconds occurs.
+	Then the Button will grow yet again, this time to 200x200 pixels, another
+	small pause before the Button finally grows to its end size of 250x250 pixels.
+</p>
+<p>
+	So you can create any amount of complexity when you join and chain effects.
+</p>
+
+<h3>State, ViewState and your Styles Collection</h3>
+<p>
+	When you run an effect or change the Style collection of your Controls
+	then the state of whatever value you change will be preserved in the ViewState.
+	This means that if you click the button and then set a break point in your 
+	Page_Load event handler you will see that the width and height of the Button is
+	250 pixels. So that even though the effects are running on the client (browser)
+	the Effect library will actually update any style values it changes before
+	it returns back to the client as they will be in their "end position" and
+	store this in the ViewState.
+</p>
+<p>
+	The entire code for this sample is pasted in below for your convenience.
+</p>
+<b>Default.aspx</b>
+<pre lang="xml">
+<%@ Page 
+    Language="C#" 
+    AutoEventWireup="true"  
+    CodeFile="Default.aspx.cs" 
+    Inherits="_Default" %>
+
+<%@ Register 
+    Assembly="Ra" 
+    Namespace="Ra.Widgets" 
+    TagPrefix="ra" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head runat="server">
+        <title>Untitled Page</title>
+    </head>
+    <body>
+        <form id="form1" runat="server">
+            <div>
+                <ra:Panel 
+                    runat="server" 
+                    style="width:200px;height:200px;"
+                    OnMouseOver="mouseOver"
+                    OnMouseOut="mouseOut"
+                    ID="pnl">
+                    Howdy world. I'm *READY* to ROCK...!!
+                    <ra:Button 
+                        runat="server" 
+                        ID="btn" 
+                        OnClick="foo" 
+                        Text="Click me..." />
+                </ra:Panel>
+            </div>
+        </form>
+    </body>
+</html>
+</pre>
+<b>Default.aspx.cs</b>
+<pre lang="cs">
+using System;
+using Ra.Widgets;
+
+public partial class _Default : System.Web.UI.Page 
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        pnl.Style[Styles.backgroundColor] = "Yellow";
+        pnl.Style[Styles.border] = "dashed 2px #999";
+    }
+
+    protected void foo(object sender, EventArgs e)
+    {
+        new EffectRollUp(btn, 400)
+            .JoinThese(
+                new EffectFadeOut())
+            .ChainThese(
+                new EffectRollDown(btn, 400)
+                    .JoinThese(new EffectFadeIn()),
+                new EffectSize(btn, 500, 150, 150),
+                new EffectTimeout(500),
+                new EffectSize(btn, 500, 200, 200),
+                new EffectTimeout(500),
+                new EffectSize(btn, 500, 250, 250))
+            .Render();
+    }
+
+    protected void mouseOver(object sender, EventArgs e)
+    {
+        new EffectSize(pnl, 500, 600, 600).Render();
+    }
+
+    protected void mouseOut(object sender, EventArgs e)
+    {
+        new EffectSize(pnl, 500, 300, 300).Render();
+    }
+}
+</pre>
+
 
