@@ -22,7 +22,7 @@
   for writing more compact code when setting multiple style values.
   
 * Better cross-browser obscuring solution for BehaviorObscurable 
-  and BehaviorUpdater. Elliminates problems like revealing parts of 
+  and BehaviorUpdater. Eliminates problems like revealing parts of 
   the page behind the obscurer while resizing the browser window. 
   This solution is pure CSS, no JS is used to adjust for resizing, 
   scrolling etc...
@@ -53,7 +53,7 @@
   features like IGoogle and such.
 
 * Removed the WindowLight control since the WebPart control is
-  a far better to use for circumstances when you really need
+  far better to use for circumstances when you really need
   a "lighter window".
 
 * Fixed a bug with Accordion which when set to ClientSideChange
@@ -94,7 +94,7 @@
 * Fixed a bug that caused initial setting of opacity style value 
   in the ASPX markup to not work properly in IE.
 
-* Added support for setting any RaWebControls into "noQueue mode"
+* Added support for setting any RaWebControls into "no-queue mode"
   which if set (through the QueueMultipleRequests property) will
   make sure that all Ajax Requests generated when the control 
   already have an ongoing Ajax Request will never be queued up.
@@ -122,10 +122,23 @@
   run it on a non-block displayed element.
 
 * Fixed a bug in Dynamic that didn't allow specifying no key or
-  using an empty a string as a key. This is useful in simple 
+  using an empty string as a key. This is useful in simple 
   scenarios when the user doesn't need to use a key.
 
+* Added support for changing Behaviors' properties on Ajax 
+  callbacks.
 
+* Added support for enabling/disabling Behaviors through 
+  implementing IDisableableBehavior (implemented only for 
+  BehaviorDraggable for now).
+  
+* Renamed CreateExtraControlsAtBottom and 
+  CreateExtraControlsAtBottomEvtArgs to CreateFooterControls and 
+  CreateFooterControlsEventArgs in Calendar.cs (Breaking Change).
+  
+* Renamed CreateNavigationalButtons and 
+  CreateNavigationalButtonsEvtArgs to CreateTitleBarControls and 
+  CreateTitleBarControlsEventArgs in Window.cs (Breaking Change).
 
   ------------------------------------------------------------------
 
