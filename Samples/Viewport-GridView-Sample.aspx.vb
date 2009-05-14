@@ -155,7 +155,7 @@ Namespace Samples
             editShowCalendar.Text = editBirth.Value.ToString("dddd dd.MMMM yyyy", System.Globalization.CultureInfo.InvariantCulture)
         End Sub
 
-        Protected Sub wndRight_CreateNavigationalButtons(ByVal sender As Object, ByVal e As Window.CreateNavigationalButtonsEvtArgs)
+        Protected Sub wndRight_CreateTitleBarControls(ByVal sender As Object, ByVal e As Window.CreateTitleBarControlsEventArgs)
             Dim prev As New LinkButton()
             prev.ID = "prev"
             prev.CssClass = "window_prev"

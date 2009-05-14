@@ -28,18 +28,17 @@ namespace Ra.Extensions
     public class Calendar : Panel, ASP.INamingContainer
     {
         /**
-         * EventArgs being passed into the CreateNavigationalButtons events. This is the EventArgs
-         * type being passed into the CreateExtraControlsAtBottom event of the Calendar Widget.
-         * To add your own custom controls at the bottom append these controls into the Controls
-         * property of this EventArgs instance. A good example of using this can be seen in the 
-         * DateTimePicker of Ra-Ajax which injects its TextBoxes for choosing the time parts
-         * through this logic.
+         * EventArgs passed to the CreateFooterControls events. This is the EventArgs
+         * passed to the CreateFooterControls event of the Calendar Widget. To add your 
+         * own custom controls at the bottom append these controls into the Controls property 
+         * of this EventArgs instance. A good example of using this can be seen in the DateTimePicker 
+         * of Ra-Ajax which injects its TextBoxes for choosing the time parts using this logic.
          */
-        public class CreateExtraControlsAtBottomEvtArgs : EventArgs
+        public class CreateFooterControlsEventArgs : EventArgs
         {
             private List<ASP.Control> _ctrls = new List<ASP.Control>();
 
-            internal CreateExtraControlsAtBottomEvtArgs()
+            internal CreateFooterControlsEventArgs()
             { }
 
             /**
@@ -123,11 +122,11 @@ namespace Ra.Extensions
         public event EventHandler DateClicked;
 
         /**
-         * Handle this event if you need to create "extra controls" at the bottom of
+         * Handle this event if you need to create extra controls at the bottom of
          * the calendar for any reasons. Ra-Ajax uses this one internally to create its
          * DateTimePicker control
          */
-        public event EventHandler<CreateExtraControlsAtBottomEvtArgs> CreateExtraControlsAtBottom;
+        public event EventHandler<CreateFooterControlsEventArgs> CreateFooterControls;
 
         /**
          * Called once for every date which is rendered within the current month if defined. Use this
@@ -352,10 +351,10 @@ namespace Ra.Extensions
             }
 
             // Creating "extra controls" to append at bottom
-            if (CreateExtraControlsAtBottom != null)
+            if (CreateFooterControls != null)
             {
-                CreateExtraControlsAtBottomEvtArgs evt = new CreateExtraControlsAtBottomEvtArgs();
-                CreateExtraControlsAtBottom(this, evt);
+                CreateFooterControlsEventArgs evt = new CreateFooterControlsEventArgs();
+                CreateFooterControls(this, evt);
                 int idxNo = 0;
                 foreach (ASP.Control idx in evt.Controls)
                 {

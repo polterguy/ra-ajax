@@ -148,7 +148,7 @@
                 runat="server" 
                 Closable="false" 
                 Movable="false" 
-                OnCreateNavigationalButtons="wndRight_CreateNavigationalButtons"
+                OnCreateTitleBarControls="wndRight_CreateTitleBarControls"
                 Caption="Main Content - "
                 style="width:750px;position:absolute;top:63px;left:260px;"
                 ID="wndRight">
