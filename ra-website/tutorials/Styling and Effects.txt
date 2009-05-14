@@ -1,7 +1,7 @@
 ﻿<h3>Aim of this tutorial</h3>
 <ul>
-	<li>Help you understand the styling ofRa-Ajax Controls</li>
-	<li>Teach you some basic animations</li>
+	<li>Help you understand the styling logc of Ra-Ajax Controls</li>
+	<li>Teach you how to use Effects on your controls</li>
 </ul>
 
 <h3>Prerequisites</h3>
@@ -19,9 +19,9 @@
 	is the <i>CssClass</i> which exists for almost every control in Ra-Ajax. This property
 	maps to the <i>class attribute</i> which should be familiar to most CSS and HTML
 	coders. Though there is also a very powerful wrapper around the <i>style</i>
-	HTML atribute - the <i>Style property</i> in addition to an extremely powerful
-	Effect library. The Effect library is also highly extensible so that you can create
-	your own Effects.
+	HTML atribute - the <i>Style property</i>. In addition to both those constructs Ra-Ajax
+	also contains an extremely powerful Effect library. The Effect library is also highly 
+	extensible so that you can create your own Effects.
 </p>
 <p>
 	First start of by creating a default ASP.NET Website which you should know how to
@@ -65,6 +65,14 @@ protected void Page_Load(object sender, EventArgs e)
 	size.
 </p>
 <p>
+	Note also that all Style values can be changed in any Event Handler and they
+	will be sent back to the client and update your widget. Notice also that these
+	changes will be stored in the ViewState so that you at any time can read out 
+	the current value of any style attribute of all your controls.
+</p>
+
+<h3>Ra-Ajax Effects for bling</h3>
+<p>
 	Now you can add up a Ra Button within your Panel.
 </p>
 <pre lang="xml">
@@ -106,7 +114,7 @@ protected void foo(object sender, EventArgs e)
 	But the short version is more then enough since we don't need to de-reference the
 	Effect at all later anyway. So we'll go with the short version...
 </p>
-<h3>Even System in Ra-Ajax</h3>
+<h3>About the Event System of Ra-Ajax</h3>
 <p>
 	Ra-Ajax have <b>many</b> more events for all widgets then you are used to in ASP.NET.
 	Among some of these events are;
@@ -226,6 +234,10 @@ protected void foo(object sender, EventArgs e)
 	the Effect library will actually update any style values it changes before
 	it returns back to the client as they will be in their "end position" and
 	store this in the ViewState.
+</p>
+<p>
+	All Effects in Ra-Ajax can easily be found by filtering the classes docs for "Effect".
+	Most of them also have samples running for you too for watching them in action.
 </p>
 <p>
 	The entire code for this sample is pasted in below for your convenience.

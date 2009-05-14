@@ -327,8 +327,11 @@ namespace RaWebsite
         {
             root.Controls.Clear();
             Filter = (sender as TextBox).Text;
-            BuildRoot();
-            tree.ReRender();
+            BuildRootClasses();
+            root.ReRender();
+            new EffectHighlight(tree, 500).Render();
+            if (!root.Expanded)
+                root.RollDown();
         }
 
         void b_Blur(object sender, EventArgs e)
