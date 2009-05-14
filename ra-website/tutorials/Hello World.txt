@@ -73,6 +73,58 @@ protected void btn_Click(object sender, EventArgs e)
 	And that's it. Press F5 to run and test your first Ra-Ajax Application :)
 </p>
 
+<h3>Entire code</h3>
+<p>
+	Note your code might look slightly different depending upon the version of Visual Studio
+	and .Net Framework you've created your website in, but don't panic. It probably is 
+	semantically the same anyway ... ;)
+</p>
+<b>Default.aspx</b>
+<pre lang="xml">
+<%@ Page 
+    Language="C#" 
+    AutoEventWireup="true"  
+    CodeFile="Default.aspx.cs" 
+    Inherits="_Default" %>
+
+<%@ Register 
+    Assembly="Ra" 
+    Namespace="Ra.Widgets" 
+    TagPrefix="ra" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head runat="server">
+        <title>Untitled Page</title>
+    </head>
+    <body>
+        <form id="form1" runat="server">
+            <div>
+                <ra:Button 
+                    runat="server" 
+                    ID="btn" 
+                    Text="Click me..." 
+                    OnClick="btn_Click" />
+            </div>
+        </form>
+    </body>
+</html>
+</pre>
+
+<b>C# code</b>
+<pre lang="cs">
+using System;
+
+public partial class _Default : System.Web.UI.Page 
+{
+    protected void btn_Click(object sender, EventArgs e)
+    {
+        btn.Text = "I was clicked...";
+    }
+}
+</pre>
+
 <h3>Explanation - Ra Internals... [Advanced]</h3>
 <p>
 	Now we have added a Ra-Ajax Button to our page. Then we have attached an Event Handler (btn_Click)
