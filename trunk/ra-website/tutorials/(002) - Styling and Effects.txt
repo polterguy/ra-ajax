@@ -1,7 +1,8 @@
 ﻿<h3>Aim of this tutorial</h3>
 <ul>
-	<li>Help you understand the styling logc of Ra-Ajax Controls</li>
+	<li>Help you understand the styling logic of Ra-Ajax Controls</li>
 	<li>Teach you how to use Effects on your controls</li>
+	<li>Teach you about Partial Rendering and why Ra-Ajax does <b>*NOT*</b> use it</li>
 </ul>
 
 <h3>Prerequisites</h3>

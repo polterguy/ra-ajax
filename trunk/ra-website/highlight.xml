@@ -122,7 +122,7 @@
           <!-- " " literals -->
           <regexp id="literal" attribute="literal" context="code" expression="&quot;(.|\\&quot;|\\\r\n)*?((\\\\)+&quot;|[^\\]{1}&quot;)" />
 
-          <regexp id="klass" attribute="klass" context="code" expression="(EventArgs|UserControl|SlidingMenuLevel|SlidingMenuItem|Button|CheckBox|Dynamic|HiddenField|Image|ImageButton|Label|LinkButton|Panel|RaControl|RadioButton|RaWebControl|SelectList|TextArea|TextBox|Accordion|AccordionView|AutoCompleter|AutoCompleterItem|Calendar|Comet|DateTimePicker|ExtButton|InPlaceEdit|Menu|MenuItem|MenuItems|MessageBox|ResizeHandler|RichEdit|SlidingMenu|SlidingMenuItem|SlidingMenuLevel|TabControl|TabView|Timer|Tree|TreeNode|TreeNodes|WebPart|Window)" />
+          <regexp id="klass" attribute="klass" context="code" expression="(EventArgs|UserControl|SlidingMenuLevel|SlidingMenuItem|Button|CheckBox|Dynamic|HiddenField|Image|ImageButton|Label|LinkButton|Panel|RaControl|RadioButton|RaWebControl|SelectList|TextArea|TextBox|Accordion|AccordionView|AutoCompleter|AutoCompleterItem|Calendar|Comet|DateTimePicker|ExtButton|InPlaceEdit|Menu|MenuItem|MenuItems|MessageBox|ResizeHandler|RichEdit|SlidingMenu|SlidingMenuItem|SlidingMenuLevel|TabControl|TabView|Timer|Tree|TreeNode|TreeNodes|WebPart|Window|Random|EffectBorder|EffectFadeIn|EffectFadeOut|EffectFocusAndSelect|EffectHighlight|EffectHiglightText|EffectMove|EffectRollDown|EffectRollUp|EffectSize|EffectTimeOut|Effect|BehaviorDraggable|BehaviorDroppabe|BehaviorObscurable|BehaviorUnveiler|BehaviorUpdater|Behavior)" />
 
           <!-- keyword c++ -->
           <keyword attribute="keyword" context="code" family="kwcs-keywords" />

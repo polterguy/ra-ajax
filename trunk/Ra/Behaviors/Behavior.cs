@@ -30,6 +30,9 @@ namespace Ra.Widgets
 #endif
 	    }
 
+        internal virtual void EnsureViewStateLoads()
+        { }
+
         protected override string GetOpeningHTML()
 		{
 			return string.Empty;

@@ -11,7 +11,7 @@
 	<li>That you have <a href="http://code.google.com/p/ra-ajax/">Downloaded Ra-Ajax</a></li>
 	<li>That you're using Visual Studio 2005 or later and have it running</li>
 	<li>That you're familiar with basic C# and ASP.NET concepts</li>
-	<li>To follow the last parts of this tutorial you will also need to have FireFox installed in addition to <a href="http://getfirebug.com">FireBug</a>, but this is strictly not necessary.</li>
+	<li>To follow the last parts of this tutorial you will also need to have FireFox installed in addition to <a href="http://getfirebug.com">FireBug</a>, but this is strictly not necessary</li>
 </ul>
 
 <h3>Getting started</h3>

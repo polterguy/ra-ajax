@@ -125,6 +125,14 @@
   using an empty string as a key. This is useful in simple 
   scenarios when the user doesn't need to use a key.
 
+* Fixed a ViewState serialization problem between Behaviors
+  and their associated controls that made them incorrectly
+  load Style properties they were changing on Widgets. All
+  though this was a "core bug" it would only manifest itself
+  as a bug in the BehaviorDraggable which would incorrectly
+  modify the top/left properties of the owning control when
+  dragged around on screen.
+
 * Added support for changing Behaviors' properties on Ajax 
   callbacks.
 
@@ -134,11 +142,17 @@
   
 * Renamed CreateExtraControlsAtBottom and 
   CreateExtraControlsAtBottomEvtArgs to CreateFooterControls and 
-  CreateFooterControlsEventArgs in Calendar.cs (Breaking Change).
+  CreateFooterControlsEventArgs in Calendar.cs
+  (Breaking Change).
   
 * Renamed CreateNavigationalButtons and 
   CreateNavigationalButtonsEvtArgs to CreateTitleBarControls and 
-  CreateTitleBarControlsEventArgs in Window.cs (Breaking Change).
+  CreateTitleBarControlsEventArgs in Window.cs
+  (Breaking Change).
+
+
+
+
 
   ------------------------------------------------------------------
 

@@ -338,6 +338,17 @@ namespace Ra.Widgets
 
             // When we save the ViewState we save the base class object as the second instance in the array...
             base.LoadViewState(content[1]);
+
+            // Making sure any Behaviors gets to manipulate correctly any Style values
+            // they are changing (if any) on this control.
+            foreach (Control idx in Controls)
+            {
+                Behavior b = idx as Behavior;
+                if (b != null)
+                {
+                    b.EnsureViewStateLoads();
+                }
+            }
         }
 
         protected override string GetClientSideScriptOptions()
