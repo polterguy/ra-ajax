@@ -160,4 +160,78 @@ protected void btn_Click(object sender, EventArgs e)
 	<i>Class Browser</i>.
 </p>
 
+<h3>Entire code</h3>
+<p>
+	Below are the entire code for this tutorial for reference purposes.
+</p>
+<b>Default.aspx</b>
+<pre lang="xml">
+<%@ Page 
+    Language="C#" 
+    AutoEventWireup="true"  
+    CodeFile="Default.aspx.cs" 
+    Inherits="_Default" %>
+
+<%@ Register 
+    Assembly="Ra" 
+    Namespace="Ra.Widgets" 
+    TagPrefix="ra" %>
+
+<%@ Register 
+    Assembly="Extensions" 
+    Namespace="Ra.Extensions" 
+    TagPrefix="ext" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head runat="server">
+        <title>Untitled Page</title>
+        <link href="skins/steel/Steel.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <form id="form1" runat="server">
+            <div>
+                <ra:Button 
+                    runat="server" 
+                    ID="btn" 
+                    Text="Click me..." 
+                    OnClick="btn_Click" />
+                <ext:Window 
+                    runat="server" 
+                    ID="wnd" 
+                    style="position:absolute;left:50px;top:50px;z-index:50;"
+                    Caption="Hello World Window"
+                    Visible="false">
+                    <div style="padding:15px;">
+                        Howdy world! I'm BACK...!
+                    </div>
+                    <ra:BehaviorObscurable 
+                        runat="server" 
+                        ID="obsc" />
+                </ext:Window>
+            </div>
+        </form>
+    </body>
+</html>
+</pre>
+
+<b>Default.aspx.cs</b>
+<pre lang="cs">
+using System;
+using Ra.Widgets;
+
+public partial class _Default : System.Web.UI.Page 
+{
+    protected void btn_Click(object sender, EventArgs e)
+    {
+        wnd.Visible = true;
+    }
+}
+</pre>
+
+<p>
+	Also make sure that you correctly include the CSS file in your folder structure within
+	your website.
+</p>
 
