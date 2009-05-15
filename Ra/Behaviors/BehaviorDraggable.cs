@@ -112,15 +112,23 @@ namespace Ra.Widgets
 			return "";
 		}
 
+        internal override void EnsureViewStateLoads()
+        {
+            if (((System.Web.UI.Page)System.Web.HttpContext.Current.CurrentHandler).Request.Params["__RA_CONTROL"] == this.ClientID &&
+                ((System.Web.UI.Page)System.Web.HttpContext.Current.CurrentHandler).Request.Params["__EVENT_NAME"] == "dropped")
+            {
+                RaWebControl parent = Parent as RaWebControl;
+                parent.Style.SetStyleValueViewStateOnly("left", Page.Request.Params["x"] + "px");
+                parent.Style.SetStyleValueViewStateOnly("top", Page.Request.Params["y"] + "px");
+                parent.Style.SetStyleValueViewStateOnly("position", "absolute");
+            }
+        }
+
         void IRaControl.DispatchEvent(string name)
         {
             switch (name)
             {
                 case "dropped":
-                    RaWebControl parent = Parent as RaWebControl;
-                    parent.Style.SetStyleValueViewStateOnly("left", Page.Request.Params["x"] + "px");
-                    parent.Style.SetStyleValueViewStateOnly("top", Page.Request.Params["y"] + "px");
-                    parent.Style.SetStyleValueViewStateOnly("position", "absolute");
                     if (Dropped != null)
                         Dropped(this, new EventArgs());
 				    string drops = Page.Request.Params["drops"];
