@@ -55,7 +55,10 @@ protected void Page_Load(object sender, EventArgs e)
 </pre>
 <p>
 	So as you can see we can add up styles both declaratively in addition to
-	also in code. The Styles part within the brackets are just a very large
+	also in code. And in fact semantically there are no differences from the above
+	two different scenarios, though obviously the markup version might in general
+	terms be considered "better" since it separates code/logic and appearance/HTML('ish).
+	And the Styles part within the brackets are just a very large
 	enum which holds most of the commonly used style values for your convenience.
 	The Style indexer property also have a version taking a string in case you
 	wish to use style properties which does not exist in our enum.
@@ -85,6 +88,7 @@ protected void Page_Load(object sender, EventArgs e)
         runat="server" 
         ID="btn" 
         OnClick="foo" 
+        style="border:none 0;margin:0;padding:0;"
         Text="Click me..." />
 </ra:Panel>
 </pre>
@@ -142,11 +146,12 @@ protected void foo(object sender, EventArgs e)
         runat="server" 
         ID="btn" 
         OnClick="foo" 
+        style="border:none 0;margin:0;padding:0;"
         Text="Click me..." />
 </ra:Panel>
 </pre>
 <p>
-	Then add up these two event method in your codebehind.
+	Then add up these two event handlers in your codebehind.
 </p>
 <pre lang="cs">
 protected void mouseOver(object sender, EventArgs e)
@@ -168,9 +173,10 @@ protected void mouseOut(object sender, EventArgs e)
 <p>
 	In addition to just running Effects like we are doing here, Ra-Ajax also have support
 	for joining Effects and chaining Effects. When you <i>join</i> two or more effects 
-	then those two effects will run simultaneously. When you <i>chain</i> effects then
+	then those effects will run simultaneously. When you <i>chain</i> effects then
 	these effects will run in a chain so that when the first one is finished the next
-	on in the "queue" will run. Change your foo method as shown below to see two joined
+	one in the "queue" will run, and so on sequentially in the order they where added to
+	the Chained collection. Change your foo method as shown below to see two joined
 	effects.
 </p>
 <pre lang="cs">
@@ -182,10 +188,18 @@ protected void foo(object sender, EventArgs e)
 }
 </pre>
 <p>
-	This will at the same time the Panel is being "rolled up" also fade the Panel away.
+	This will at the same time the Panel is being "rolled up" also fade the Panel away. 
+	Notice that for <i>Joined</i> effects you don't need to give neither a Control
+	nor a duration since both of these are implicitly expected to be the same as
+	the "mother" effect when joining. In fact if you give it a Control and a duration
+	then those values will be ignored!
 </p>
 <p>
-	Note that both the <i>JoinThese</i> and the <i>ChainThese</i> methods can take
+	While for Chained effects you will get a runtime exception unless you explicitly
+	give them both a Control and a duration value, just as a "loose" effect also will do.
+</p>
+<p>
+	Notice that both the <i>JoinThese</i> and the <i>ChainThese</i> methods can take
 	any number of Effects. If you embed multiple effects into the JoinThese method
 	then all will run at the same time. If you embed multiple Effects into the
 	ChainThese method then those effects will be "queued up" in such a way that the
@@ -222,6 +236,16 @@ protected void foo(object sender, EventArgs e)
 </p>
 <p>
 	So you can create any amount of complexity when you join and chain effects.
+</p>
+<p>
+	Ohh yeah, the <i>duration</i> value passed into the constructor of your effects
+	are obviously <b>milliseconds</b> for the effect to execute. 1 second == 1000 
+	milliseconds, in case you're one of our "disabled friends" from the wrong side
+	of the Atlantic Ocean in regards to usage of the Metric System. ;)
+</p>
+<p>
+	You also have some other properties to play with if you store a reference to 
+	the Effect into a variable.
 </p>
 
 <h3>State, ViewState and your Styles Collection</h3>
@@ -275,6 +299,7 @@ protected void foo(object sender, EventArgs e)
                         runat="server" 
                         ID="btn" 
                         OnClick="foo" 
+                        style="border:none 0;margin:0;padding:0;"
                         Text="Click me..." />
                 </ra:Panel>
             </div>

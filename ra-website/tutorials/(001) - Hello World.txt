@@ -11,7 +11,7 @@
 	<li>That you have <a href="http://code.google.com/p/ra-ajax/">Downloaded Ra-Ajax</a></li>
 	<li>That you're using Visual Studio 2005 or later and have it running</li>
 	<li>That you're familiar with basic C# and ASP.NET concepts</li>
-	<li>To follow the last parts of this tutorial you will also need to have FireFox installed in addition to <a href="http://getfirebug.com">FireBug</a>, but this is not strictly necessary.</li>
+	<li>To follow the last parts of this tutorial you will also need to have FireFox installed in addition to <a href="http://getfirebug.com">FireBug</a>, but this is strictly not necessary.</li>
 </ul>
 
 <h3>Getting started</h3>
@@ -127,14 +127,15 @@ public partial class _Default : System.Web.UI.Page
 
 <h3>Explanation - Ra Internals... [Advanced]</h3>
 <p>
-	Now we have added a Ra-Ajax Button to our page. Then we have attached an Event Handler (btn_Click)
-	for the <i>Click</i> event. Whenever the Button is clicked, then our event handler will be called
-	on the server.
+	Now we have added a Ra-Ajax Button to our page. Then we attached an Event Handler (btn_Click)
+	for the <i>Click</i> event - (<i>OnClick</i> in .ASPX markup). Whenever the Button is clicked, 
+	our event handler will be called on the server.
 </p>
 <p>
-	Our event will just change the Text property of our button and nothing more. But there are some
-	interesting points here which we can take a look at if we use FireBug. If we open FireBug and
-	take a look at the POST request which was being raised we will see something similar to this.
+	The <i>btn_Click</i> method above will just change the Text property of our button and nothing 
+	more. But there are some interesting points here which we can take a look at if we use FireBug. 
+	If we open FireBug and take a look at the POST request which was being raised we will see 
+	something similar to this. 
 	<img src="tutorials/hello-world-tutorial.jpg" alt="Screenshot of FireBug" />
 </p>
 <p>
@@ -151,10 +152,87 @@ Ra.Control.$('btn').handleJSON({"Value":"I was clicked..."});
 <h3>Ra-Ajax and Partial Rendering</h3>
 <p>
 	Ra-Ajax does not use Partial Rendering almost at all. At least not when it doesn't have to.
-	Partial Rendering is the concept of rendering back HTML to "some parts" of the page. This
-	is the way UpdatePanels in ASP.NET AJAX works for instance. It is also the way Anthem.NET works.
-	But instead of using Partial Rendering Ra-Ajax can change specific properties and attributes of 
-	widgets on the client side without having to render back HTML.
+	Partial Rendering is the concept of rendering back HTML to "some parts" of the page. From there 
+	the word <i>Partial Rendering</i>. As in <i>"<b>render</b> some <b>parts</b> of the webside's HTML"</i>.
+	This is the way UpdatePanels in ASP.NET AJAX works for instance, and also the way Anthem.NET 
+	works. But it is unfortunately neither the optimal methodology nor the best architecture 
+	to base your Ajax Framework on top of. This becomes visible by the amount of JavaScript
+	development you have to do when using those Ajax Frameworks. With Ra-Ajax you can almost forget
+	about JavaScript programming almost as if it was as remote as CISCx86 OPCODES for your CPU. In
+	binary format!
+</p>
+<p>
+	Instead of using Partial Rendering Ra-Ajax can change specific properties and attributes of 
+	widgets on the client side without having to render back HTML. So when you update the
+	HTML <i>class</i> attribute's value on the server through the CssClass property, then 
+	<b>*ONLY*</b> the <i>class</i> attribute's value is changed!
+</p>
+<p>
+	This means that all the other attributes and event handlers of the HTML element - basically
+	the entire <i>state</i> - remains unchanged on the client. This again have the benefit of 
+	significantly reducing the amount of bandwidth usage. Think in terms of updating the class 
+	attribute for your Panel which again contains 13 pages of written text within and you can 
+	quite easily get the picture!
+</p>
+<p>
+	The <i>"Partial Rendering"</i> versions of those callbacks would have to render the entire
+	contents of that Panel back to the client - 13 pages of written text. While the Non-Partial
+	Rendering based framework would get away with only a small call to a method on an object.
+	Probably less then 50 bytes in total!
+</p>
+<p>
+	Not to mention that Event Handlers and such doesn't need to be updated, and <b>*NO*</b> state
+	from your HTML and DOM is changed or removed except for <b>*ONLY*</b> the attributes and
+	such you <b>*CHOOSE*</b> to change yourself in a <b>*STATICALLY*</b> typed programming language (C#, 
+	VB.NET, Boo and more then 50 other languages to choose from) on the server, behind your 
+	firewall and in a secure environment. Which brings me to the third point...
+</p>
+<p>
+	<b>Absolutely NO Busines Logic in JavaScript</b>. This basically translates to orders of
+	magnitude more <b>*SAFE*</b> code, thousands of times <b>*EASIER TO MAINTAIN CODE*</b>, 
+	orders of magnitudes <b>*LESS*</b> code and <b>*WAY LESS COMPLEX*</b> code. <b>*ZERO 
+	DUPLICATES*</b> of code since nothing needs to be implemented in JavaScript. Which all 
+	together basically translates into <b>*LESS*</b> developer costs for management, 
+	<b>*BETTER*</b> control of deadlines. <b>*LESS*</b> overtime and <b>*MORE HAPPY*</b> 
+	employees!
+</p>
+
+<h3>Infomercial. 3..., 2..., 1..., GO!</h3>
+<p>
+	<b>Batman's elder brother, Tim</b>; <i>"So if you have trouble at home, with your soccer training instructor or your girlfriend/boyfriend,
+	what are you waiting for...?"</i>
+</p>
+<p>
+	<b>Superhero coder Berney</b>; <i>"Take a pill against headache, take two, take a chill pill, take your own personal, 
+	free as in free beer and free as in freedom version of Ra-Ajax TODAY! ;)"</i>
+</p>
+<p>
+	<i>Mr. Joe Average gasps for air while trying to support his upper body on his knees with his hands</i>
+</p>
+<p>
+	<b>Berney el Magnifico, still understands punchcards, COBOL and occasionally even his own code according to
+	an un-supported rumour</b>; <i>"Today you even get two for the cost of one - ZERO dollars ... ;)"</i>
+</p>
+<p>
+	<i>J. Average falls dead to the ground while stuttering out his final words</i>
+</p>
+<p>
+	<i>"Ra-Ajax, give me some. I am sorry I didn't believe in you, can you forgive me...?"</i>
+</p>
+<p>
+	<i>Curtain Drops</i>
+</p>
+<p>
+	The audience bursts out into invoulentary explosions of evangelistic and exstatic laughter while
+	shouting; <i>"Praise Ra-Ajax. It's what the Egyptians would have used when building the Pyramids, 
+	if they only could..."</i>
+</p>
+
+<h3>Back to tech again...</h3>
+<p>
+	Anyway...
+	<br/>
+	To get technical again... ;)
 </p>
 <p>
 	This makes Ra-Ajax <i>stateful</i> which in turn makes it possible to create really rich
@@ -201,3 +279,9 @@ Ra.Control.$('btn').handleJSON({"Value":"I was clicked..."});
 	don't even need to know about its existance. Just like JavaScript in regards to Web-Application 
 	development :)
 </p>
+<p>
+	This is why we call Ra-Ajax a <a href="http://ra-ajax.org/managed-ajax-a-new-approach-to-ajax.blog">
+	Managed Ajax</a> Framework...
+</p>
+
+
