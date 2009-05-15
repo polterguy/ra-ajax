@@ -14,4 +14,11 @@ public partial class Docs_Controls_BehaviorDraggable : System.Web.UI.UserControl
     {
         dragger.Bounds = new System.Drawing.Rectangle(0, 0, 450, 250);
     }
+
+    protected void toggleBehavior_Click(object sender, EventArgs e)
+    {
+        dragger.Enabled = !dragger.Enabled;
+        toggleBehavior.Text = string.Format(
+            "{0} Behavior", dragger.Enabled ? "Disable" : "Enable");
+    }
 }
