@@ -20,11 +20,47 @@
     ID="Content1" 
     ContentPlaceHolderID="cnt1" 
     Runat="Server">
-
+        
+    <ext:Window 
+        runat="server" 
+        OnCreateTitleBarControls="wnd_CreateTitleBarControls" 
+        Closable="false"
+        Movable="false"
+        Caption="Class browser"
+        ID="wnd"
+        style="margin:0 15px 15px 0">
+        <div style="height:120px;overflow:auto;">
+            <ext:Tree 
+                runat="server" 
+                OnSelectedNodeChanged="tree_SelectedNodeChanged"
+                ID="tree">
+                <ext:TreeNodes runat="server" ID="topNodes">
+                    <ext:TreeNode 
+                        runat="server" 
+                        ID="rootNode" 
+                        Text="Classes Reference Documentation">
+                        <ext:TreeNodes 
+                            runat="server" 
+                            ID="root" />
+                    </ext:TreeNode>
+                    <ext:TreeNode 
+                        runat="server" 
+                        ID="tutorials" 
+                        Text="Tutorials">
+                        <ext:TreeNodes 
+                            runat="server" 
+                            ID="rootTutorials" />
+                    </ext:TreeNode>
+                </ext:TreeNodes>
+            </ext:Tree>
+        </div>
+    </ext:Window>
+    
     <ra:Label 
         runat="server"
         Tag="h1" 
         ID="header" />
+    
     <ra:Panel 
         runat="server" 
         ID="pnlInfo">
@@ -158,39 +194,5 @@
         </ext:TabControl>
 
     </ra:Panel>
-
-    <ext:Window 
-        runat="server" 
-        style="width:480px;position:absolute;top:5px;right:15px;z-index:50;" 
-        OnCreateNavigationalButtons="wnd_CreateNavigationalButtons" 
-        Closable="false"
-        Caption="Class browser"
-        ID="wnd">
-        <div style="height:120px;overflow:auto;">
-            <ext:Tree 
-                runat="server" 
-                OnSelectedNodeChanged="tree_SelectedNodeChanged"
-                ID="tree">
-                <ext:TreeNodes runat="server" ID="topNodes">
-                    <ext:TreeNode 
-                        runat="server" 
-                        ID="rootNode" 
-                        Text="Classes Reference Documentation">
-                        <ext:TreeNodes 
-                            runat="server" 
-                            ID="root" />
-                    </ext:TreeNode>
-                    <ext:TreeNode 
-                        runat="server" 
-                        ID="tutorials" 
-                        Text="Tutorials">
-                        <ext:TreeNodes 
-                            runat="server" 
-                            ID="rootTutorials" />
-                    </ext:TreeNode>
-                </ext:TreeNodes>
-            </ext:Tree>
-        </div>
-    </ext:Window>
 </asp:Content>
 

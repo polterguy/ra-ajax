@@ -285,7 +285,7 @@ namespace RaWebsite
             sampleDyn.Controls.Add(ctrl);
         }
 
-        protected void wnd_CreateNavigationalButtons(object sender, Window.CreateNavigationalButtonsEvtArgs e)
+        protected void wnd_CreateTitleBarControls(object sender, Window.CreateTitleBarControlsEventArgs e)
         {
             // Filter panel
             Panel p = new Panel();
@@ -308,13 +308,39 @@ namespace RaWebsite
             b.Blur += b_Blur;
             p.Controls.Add(b);
 
-            // Left side
+            // Right side
             Label r = new Label();
             r.Text = "&nbsp;";
             r.CssClass = "filter-right";
             p.Controls.Add(r);
 
+            CheckBox c = new CheckBox();
+            c.Text = "Pin";
+            c.CssClass = "pushPin";
+            c.Checked = !wnd.Movable;
+            c.CheckedChanged += delegate
+            {
+                if (c.Checked)
+                {
+                    wnd.Movable = false;
+                    wnd.Style["width"] = wnd.Style["position"] =
+                    wnd.Style["top"] = wnd.Style["right"] =
+                    wnd.Style["z-index"] = string.Empty;
+                }
+                else
+                {
+                    wnd.Movable = true;
+
+                    wnd.Style["width"] = "480px";
+                    wnd.Style["position"] = "absolute";
+                    wnd.Style["top"] = "5px";
+                    wnd.Style["right"] = "15px";
+                    wnd.Style["z-index"] = "50";
+                }
+            };
+
             e.Caption.Controls.Add(p);
+            e.Caption.Controls.Add(c);
         }
 
         private string Filter
