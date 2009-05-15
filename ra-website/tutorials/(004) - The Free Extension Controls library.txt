@@ -1,0 +1,163 @@
+﻿<h3>Aim of this tutorial</h3>
+<ul>
+	<li>Get you started with using the Extension Controls library</li>
+	<li>Teach you the basics of the Ra-Ajax skinning model</li>
+</ul>
+
+<h3>Prerequisites</h3>
+<ul>
+	<li>That you have read and understood the previous tutorials in this series</li>
+</ul>
+
+<h3>Getting started</h3>
+<p>
+	So far except for some Effects and Behaviors we have only used the "core controls" of
+	Ra-Ajax. This time we will dive into some of the more "rich" controls that exists in
+	the Extension Project.
+</p>
+<p>
+	Start out by creating an ASP.NET Website just like in the previous tutorials, but this
+	time make sure you also reference and include the <i>Extensions.dll</i> since this
+	dll is the place of all the more "rich" controls like
+</p>
+<ul>
+	<li>Window</li>
+	<li>Timer</li>
+	<li>Calendars and DateTimePickers</li>
+	<li>plus many more...</li>
+</ul>
+<p>
+	Code follows...
+</p>
+<pre lang="xml">
+<%@ Register 
+    Assembly="Ra" 
+    Namespace="Ra.Widgets" 
+    TagPrefix="ra" %>
+
+<%@ Register 
+    Assembly="Extensions" 
+    Namespace="Ra.Extensions" 
+    TagPrefix="ext" %>
+</pre>
+<p>
+	Now you can reference all the Extension Controls by typing in <i>&lt;ext:</i> in your .ASPX
+	markup.
+</p>
+
+<h3>Creating a Modal Window</h3>
+<p>
+	We're going to create a Modal Window in this tutorial which will open only when the 
+	user clicks a button, and initially be rendered as in-visible. Copy and paste the code 
+	below into your website code files.
+</p>
+<b>Default.aspx</b>
+<pre lang="xml">
+<ra:Button 
+    runat="server" 
+    ID="btn" 
+    Text="Click me..." 
+    OnClick="btn_Click" />
+<ext:Window 
+    runat="server" 
+    ID="wnd" 
+    style="position:absolute;left:50px;top:50px;z-index:50;"
+    Caption="Hello World Window"
+    Visible="false">
+    <div style="padding:15px;">
+        Howdy world! I'm BACK...!
+    </div>
+    <ra:BehaviorObscurable 
+        runat="server" 
+        ID="obsc" />
+</ext:Window>
+</pre>
+<b>Default.aspx.cs</b>
+<pre lang="cs">
+protected void btn_Click(object sender, EventArgs e)
+{
+    wnd.Visible = true;
+}
+</pre>
+
+<h3>The two second guide to skinning and CSS in regards to Ra-Ajax</h3>
+<p>
+	If you tried to run this now you would see that nothing looks like it is supposed
+	to look like. This is because we haven't included any <i>skin CSS files</i>. You can
+	easily do this by copying and pasting the <i>skins</i> folder to your root website
+	folder and add the inclusion of the <i>Steel CSS file</i> like we have done below.
+</p>
+<pre lang="xml">
+<head runat="server">
+    <title>Untitled Page</title>
+    <link href="skins/steel/Steel.css" rel="stylesheet" type="text/css" />
+</head>
+</pre>
+<p>
+	Most Extension Controls relies on skins to render correctly. Ra-Ajax is distributed
+	with several skin files included, but you can also easily create your own skins by
+	modifying existing ones. These skins are just CSS. And coupled with the <i>inspect</i> 
+	feature from FireBug, it is actually very easy to create your own skins.
+</p>
+<p>
+	The skin CSS files in Ra-Ajax are all built in the same way, the <i>Window skin</i>
+	is within the <i>.window</i> parts of the CSS files. And the Calendar skin within the
+	<i>.calendar</i> parts of the CSS files. And so on...
+</p>
+<p>
+	When you have included the CSS file for your skin, you can click F5 and test your 
+	application. You should be able to see something like this.
+</p>
+<img src="tutorials/rich-controls-tutorial.jpg" alt="Modal Ajax Window with Ra-Ajax" />
+<p>
+	If you don't get something looking similar to the above image, then you have probably
+	not included the skin CSS file correctly. Make sure your paths are correctly set up
+	to point to the CSS file of your choice...
+</p>
+<p>
+	The reason why the Window is <i>modal</i> is because we have added the <i>BehaviorObscurer</i>
+	within the content parts of the Window. If you don't want to have a Modal Window then
+	just remove the BehaviorObscurer and the Window will become "non-modal".
+</p>
+<p>
+	The BehaviorObscurer can be set for <b>any</b> control you wish. Even Buttons if you wish.
+	Though if you use it your Control <b>must</b> have an explicit <i>z-index</i>. Without
+	an explicit z-index then the obscurer will probably also obscure the control it is added to
+	since the obscurer will add an explicit z-index itself with one value lower then whatever
+	z-index value you choose for its parent control.
+</p>
+
+<h3>About the Extension Controls</h3>
+<p>
+	Most Extension Controls (like the Window above) are entirely created without resorting
+	to JavaScript. This is a pretty strong testimonial towards the extremely strong
+	code-model of Ra-Ajax. Even most of our own Ajax Controls are created without having
+	to develop in JavaScript ourselves.
+</p>
+<p>
+	If you want to create your own Extension Controls then probably the Extension Control 
+	library, and also probably the <i>Window.cs</i> file within here will prove a very 
+	valuable resource for you to start out with.
+</p>
+<p>
+	The Window Control have tons of useful properties. It has a <i>Caption</i> and a
+	<i>Movable</i> property and it also have many more. But the Window control is
+	only one of many controls within the Extension Controls library. In addition
+	to the Window there are many more Controls that exists within the Extension 
+	Controls library. Here is a small subset of those controls.
+</p>
+<ul>
+	<li>Calendar and DateTimePicker</li>
+	<li>Timer</li>
+	<li>Tree (TreeView Control)</li>
+	<li>Menu</li>
+	<li>SlidingMenu</li>
+	<li>Extended Button</li>
+	<li>And many, many more...</li>
+</ul>
+<p>
+	And <b>*ALL*</b> of them are heavily documented, with good examples above in the 
+	<i>Class Browser</i>.
+</p>
+
+
