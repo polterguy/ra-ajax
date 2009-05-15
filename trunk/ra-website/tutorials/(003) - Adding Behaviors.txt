@@ -2,7 +2,6 @@
 <ul>
 	<li>Understand how Behaviors works</li>
 	<li>Teach you how to modify behavior on your controls through the Ra-Ajax Behaviors</li>
-	<li>Teach you how to use the Extension Controls in the Extension Project of Ra-Ajax</li>
 </ul>
 
 <h3>Prerequisites</h3>
@@ -13,38 +12,14 @@
 <h3>Getting started</h3>
 <p>
 	Create a default <i>ASP.NET Website</i> as described in the Hello World tutorial and make sure
-	you also reference <i>Ra.dll</i> in this website. Though in addition to the Ra.dll you also
-	need to include the <i>Extensions.dll</i> this time. Then we need to add up the reference to
-	also our Extensions.dll in our markup at the top of the page. Make sure you add the code below
-	in your <i>Default.aspx</i> page just below the Page directive.
+	you reference <i>Ra.dll</i> in this website.
 </p>
 <pre lang="xml">
 <%@ Register 
     Assembly="Ra" 
     Namespace="Ra.Widgets" 
     TagPrefix="ra" %>
-
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
 </pre>
-<p>
-	Now we can in addition to the many controls which exists in our Ra.dll also use the many
-	controls which resides in our Extensions.dll. The Extension project contains all the
-	more "advanced" Ajax Controls like.
-</p>
-<ul>
-	<li>Ajax Windows</li>
-	<li>Our Calendar and DateTimePicker controls</li>
-	<li>The Timer Control</li>
-	<li>and many, many more...</li>
-</ul>
-<p>
-	If you need an "advanced" control then it is highly likely that this is the place you'll find
-	it. While the Ra.dll only contains the "core" controls like Button, CheckBoxes, plus the
-	base effects and behaviors.
-</p>
 
 <h3>What's the position of my panel?</h3>
 <p>
@@ -64,8 +39,11 @@
 </pre>
 <p>
 	Then try to run the code and observer how you can drag and drop the Panel around on the
-	screen to change its position. On to Mysteries Things...
+	screen to change its position. Though the observant coder might already have notice a couple
+	of Mysteries Things...
 </p>
+
+<h3>Ra-Ajax Behaviors and Styles..</h3>
 <p>
 	For those with FireBug installed you may have already observed something mysteries. Every
 	time you let go of the Panel a new Ajax Request is being created. This is to go to the 
@@ -192,8 +170,21 @@ protected void dropped(object sender, EventArgs e)
 }
 </pre>
 <p>
-	But thn we won't get to show of that the style collection is automatically
+	But then we won't get to show of that the style collection is automatically
 	updated before the Load Event of your Page fires ... ;)
+</p>
+<p>
+	This is a higly useful feature since often both Effects and Behaviors will update
+	style values and/or other properties of your Controls. And when this happens you
+	will want to know the new values of those controls. As in how your controls
+	will appear in the browser after the behavior/effect is finished with its
+	"changing logic". This is not only possible in Ra-Ajax but also in fact 100%
+	transparently implicit when you are using Ra-Ajax. You get it even though you
+	didn't ask for it. And even though you didn't realize you needed it ... ;)
+</p>
+<p>
+	Kind of like your own clairvoyant server fetching your newspaper and breakfast 
+	before you even knew you wanted it yourself...
 </p>
 
 <h3>Wrapping up the code</h3>
