@@ -153,6 +153,9 @@
 * Fixed a bug in Timer which made it include the JavaScript
   file even though it was not visible.
 
+* Fixed a bug in TreeNode which made it include the JavaScript
+  file even though it was not visible if the JS file was needed.
+
 
 
 

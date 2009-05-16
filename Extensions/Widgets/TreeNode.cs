@@ -40,7 +40,6 @@ namespace Ra.Extensions
                     this.Click += TreeNode_Selected;
                 if (ParentTree.ClientSideExpansion)
                 {
-                    AjaxManager.Instance.IncludeScriptFromResource(typeof(TreeNode), "Extensions.Js.Tree.js");
                     this.OnClickClientSide += 
                         string.Format("function(){{Ra.Control.$('{0}').expand();return false;}}", ClientID);
                 }
@@ -55,7 +54,6 @@ namespace Ra.Extensions
                     this.Click += TreeNode_Selected;
                 if (ParentTree.ClientSideExpansion)
                 {
-                    AjaxManager.Instance.IncludeScriptFromResource(typeof(TreeNode), "Extensions.Js.Tree.js");
                     _expander.OnClickClientSide +=
                         string.Format("function(){{Ra.Control.$('{0}').expand();return false;}}", ClientID);
                 }
@@ -280,6 +278,11 @@ namespace Ra.Extensions
 
         protected override void OnPreRender(EventArgs e)
         {
+            if (ParentTree.ClientSideExpansion)
+            {
+                AjaxManager.Instance.IncludeScriptFromResource(typeof(TreeNode), "Extensions.Js.Tree.js");
+            }
+
             if (!(this.Parent is TreeNodes))
                 throw new Exception("Cannot have a TreeNode being a child of anything else but a TreeNodes collection");
             int count = 0;
