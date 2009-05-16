@@ -1,7 +1,8 @@
 ﻿<h3>Aim of this tutorial</h3>
 <ul>
 	<li>Get you started with using the Extension Controls library</li>
-	<li>Teach you the basics of the Ra-Ajax skinning model</li>
+	<li>Teach you the basics of how extension controls are built</li>
+	<li>Teach you the first things you need to know in regards to skinning Ra-Ajax</li>
 </ul>
 
 <h3>Prerequisites</h3>
@@ -233,5 +234,136 @@ public partial class _Default : System.Web.UI.Page
 <p>
 	Also make sure that you correctly include the CSS file in your folder structure within
 	your website.
+</p>
+
+<h3>Ra doesn't render in-visible widgets</h3>
+<p>
+	The above sentence might sound obvious, but very often an Ajax Library will in fact render in-visible
+	widgets and just set its style properties to not show it. This means that you will get markup and
+	DOM elements for your control even though they're not needed (yet). With such solutions you will
+	get a very big DOM structure for a page if it is somewhat complex and contains a lot of widgets
+	which you have set to in-visible. And all in vain...
+<p>
+<p>
+	If you use FireBug and choose inspect on your DOM structure before you click the button to show 
+	the Window you will not see any trace of the window at all except for this tiny <i>span</i> element.
+</p>
+<pre lang="xml">
+<span id="wnd" style="display:none" />
+</pre>
+
+<p>
+	And the above span would not be anymore complex even if your window contained 1000 of different
+	widgets of 100 of different types. In fact the above span is just a reference to a place in your
+	DOM where the entire Window, with all its child widgets, can be rendered later when you in your
+	code for some reasons choose to show it.
+</p>
+<p>
+	If you click the button though you will see a completely different DOM structure. This is because
+	now the Window are being rendered and the span element will be <i>replaces</i> with the Window
+	DOM elements and its child widget's DOM structure.
+</p>
+
+<pre lang="xml">
+<div 
+  style="position: absolute; left: 50px; top: 50px; z-index: 50;" 
+  class="window" 
+  id="wnd">
+  <div class="window_nw" id="wnd_XXnw">
+    <div class="window_ne" id="wnd_XXne">
+      <div class="window_n" id="wnd_XXn">
+        <span class="window_title" id="wnd_XXcaption">
+          Hello World Window
+        </span>
+        <a class="window_close" id="wnd_XXclose" href="javascript:Ra.emptyFunction();"/>
+      </div>
+    </div>
+  </div>
+  <div class="window_body" id="wnd_XXbody">
+    <div class="window_w" id="wnd_XXw">
+      <div class="window_e" id="wnd_XXe">
+        <div class="window_content" id="wnd_XXcontent">
+          <div style="padding: 15px;">
+            Howdy world! I'm BACK...!
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="window_sw" id="wnd_XXsw">
+      <div class="window_se" id="wnd_XXse">
+        <div class="window_s" id="wnd_XXs"> </div>
+      </div>
+    </div>
+  </div>
+</div>
+</pre>
+
+<p>
+	If Ra-Ajax didn't work with this "replace logic" then all the above HTML markup would
+	not only pollute the wire with extra bandwidth consumption, but also pollute your DOM
+	for your browser which would result in less responsive DOM manipulation.
+</p>
+<p>
+	In fact nothing which is related to a widget will be rendered before you explicitly
+	say in code that you want that widget to become visible. Even in some occassions
+	as we will see in a later tutorial also the JavaScript files for your widgets.
+</p>
+
+<h3>2 second guide to the CSS structure of Ra-Ajax</h3>
+<p>
+	For the trained CSS guru there will be many familar constructs in the DOM above.
+	First of all the <i>window</i> element at the root HTML node. The default CSS class
+	of the Window is <i>"window"</i>. This can be overridden, and must in fact be 
+	overridden if you want to have multiple skins for your windows on the same page.
+</p>
+<p>
+	Also Ra-Ajax very seldom uses <i>table design</i>. Instead of using table design
+	we're cascading divs and spans inside of eachother where possible to create the
+	DOM layout. This can be seen above. This is another strength of Ra-Ajax since
+	this makes your applications more accessible for disabled people and screen-readers 
+	etc. It also stresses the browser less and gives you and your designers more
+	flexibility.
+</p>
+<p>
+	Far too often developers would have chosen table design to create an Ajax Window 
+	like the one above, which is an inferior solution in most ways.
+</p>
+<p>
+	However this means actually that the <i>width</i> of the window must be set on the window
+	itself, while the <i>height</i> of the window must be set on e.g. a DIV element contained
+	within the Window or something. You cannot set the style property <i>height</i> on the 
+	Window and expect it to work!
+</p>
+<p>
+	So to get a working Window with an explicit width and height you must do something like this.
+</p>
+<pre lang="xml">
+<ext:Window 
+    runat="server" 
+    ID="wnd" 
+    style="position:absolute;left:50px;top:50px;z-index:50;width:300px;"
+    Caption="Hello World Window">
+    <div style="height:250px;">
+        Howdy world! I'm BACK...!
+    </div>
+</ext:Window>
+</pre>
+
+<p>
+	Notice how we set the <i>width</i> on the Window style collection, while we set the 
+	<i>height</i> on the DIV which is within the Window. If you tried to do this any other
+	ways you would not get it to work.
+</p>
+<p>
+	Also notice how we set the pixel height on the DIV which means that the height of the
+	Window as shown would be the height of the DIV (250px) <b>*PLUS*</b> the height
+	of the Window Chrome. Which would be roughly 32px for the default skins. 25px for the 
+	top parts and 7px for the bottom parts. So in fact the Window above would be a total
+	of 282px in height.
+</p>
+<p>
+	Which might be interesting for you when figuring out why all of a suddes you don't 
+	seem to be able to do basic calculus since your design doesn't come out as you wish 
+	them to ... ;)
 </p>
 
