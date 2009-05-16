@@ -2,7 +2,6 @@
 <ul>
 	<li>Show you how the Timer control works</li>
 	<li>Teach you how the dynamic inclusion of JavaScript works in Ra-Ajax</li>
-	<li>Teach you the basics of developing an Extension Control with JavaScript</li>
 </ul>
 
 <h3>Prerequisites</h3>
@@ -194,4 +193,13 @@ protected override void OnPreRender(EventArgs e)
 	"port them" to get to leverage old legacy code in combination with Ra-Ajax.
 	The only thing you need to modify is the way you include those JavaScript files.
 </p>
+<p>
+	For the JavaScript gurus out there the internals of this is being done by creating
+	a <b>synchronous</b> XMLHTTPRequest which will fetch the JavaScript file and just
+	run an eval on the returned JavaScript. Then the included JavaScript files will
+	be tracked by an array of paths which any JavaScript file will be checked against
+	before it is being fetched.
+</p>
+
+
 

@@ -22,7 +22,7 @@
 <ext:Tree 
     runat="server" 
     style="width:250px;height:200px;overflow:auto;" 
-    OnSelectedNodeChanged="tree_ItemClicked" 
+    OnSelectedNodeChanged="tree_ItemClicked"
     ID="tree">
 
     <ext:TreeNodes 
