@@ -42,7 +42,7 @@ namespace RaWebsite
                 n.ID = "tutorial_" + idx.Replace(".txt", "").Replace(" ", "_").Replace(Server.MapPath("~/tutorials/"), "");
                 n.Text = idx.Replace(".txt", "").Replace(Server.MapPath("~/tutorials/"), "");
                 n.Xtra = idx;
-                n.CssClass = "hasSample";
+                n.CssClass = "noSample";
                 rootTutorials.Controls.Add(n);
             }
         }

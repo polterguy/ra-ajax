@@ -150,6 +150,9 @@
   CreateTitleBarControlsEventArgs in Window.cs
   (Breaking Change).
 
+* Fixed a bug in Timer which made it include the JavaScript
+  file even though it was not visible.
+
 
 
 

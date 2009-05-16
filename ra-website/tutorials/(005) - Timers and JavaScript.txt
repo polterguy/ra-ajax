@@ -1,0 +1,184 @@
+﻿<h3>Aim of this tutorial</h3>
+<ul>
+	<li>Show you how the Timer control works</li>
+	<li>Teach you how the dynamic inclusion of JavaScript works in Ra-Ajax</li>
+	<li>Teach you the basics of developing an Extension Control with JavaScript</li>
+</ul>
+
+<h3>Prerequisites</h3>
+<ul>
+	<li>That you have read and understood the previous tutorials in this series</li>
+</ul>
+
+<h3>Getting started</h3>
+<p>
+	The Timer Control is one of very few "non-visible" Controls in Ra-Ajax. And it's
+	purpose is not to render HTML but rather to call up the server and call your
+	own Event Handler every n'th second.
+</p>
+<p>
+	This time though we will start out with the entire code for our sample. And later 
+	analyze the code and see what happens when interacting with Ra-Ajax to further
+	understand some of the really great points about Ra-Ajax. Create a default
+	ASP.NET Website and copy the code below into your codefiles.
+</p>
+<b>Default.aspx</b>
+<pre lang="xml">
+<%@ Page 
+    Language="C#" 
+    AutoEventWireup="true"  
+    CodeFile="Default.aspx.cs" 
+    Inherits="_Default" %>
+
+<%@ Register 
+    Assembly="Ra" 
+    Namespace="Ra.Widgets" 
+    TagPrefix="ra" %>
+
+<%@ Register 
+    Assembly="Extensions" 
+    Namespace="Ra.Extensions" 
+    TagPrefix="ext" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head runat="server">
+        <title>Untitled Page</title>
+        <link href="skins/steel/Steel.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <form id="form1" runat="server">
+            <div>
+                <ra:Button 
+                    runat="server" 
+                    ID="btn" 
+                    Text="Click me..." 
+                    OnClick="btn_Click" />
+                <ext:Window 
+                    runat="server" 
+                    ID="wnd" 
+                    style="position:absolute;left:50px;top:50px;z-index:50;"
+                    Caption="Hello World Window"
+                    Visible="false">
+                    <div style="padding:45px;">
+                        <ext:Timer 
+                            runat="server" 
+                            ID="timer" 
+                            OnTick="timer_Tick" />
+                        <ra:Label 
+                            runat="server" 
+                            ID="lbl" 
+                            Text="Watch me..." />
+                    </div>
+                    <ra:BehaviorObscurable 
+                        runat="server" 
+                        ID="obsc" />
+                </ext:Window>
+            </div>
+        </form>
+    </body>
+</html>
+</pre>
+<b>Default.aspx.cs</b>
+<pre lang="cs">
+using System;
+using Ra.Widgets;
+
+public partial class _Default : System.Web.UI.Page 
+{
+    protected void btn_Click(object sender, EventArgs e)
+    {
+        wnd.Visible = true;
+    }
+
+    protected void timer_Tick(object sender, EventArgs e)
+    {
+        lbl.Text = DateTime.Now.ToString();
+    }
+}
+</pre>
+
+<h3>Dynamically including JavaScript 100% automagically</h3>
+<p>
+	The dynamic inclusion of JavaScript in callbacks are one of Ra-Ajax really great
+	features. The Timer control have a JavaScript file associated with it. It must in
+	order to be able to call your server every n'th second. Though when you run the 
+	above sample there are no trace of this custom "JavaScript file" anywhere to
+	be seen...
+</p>
+<p>
+	Though when you click the Button the Timer will be rendered since it's a child
+	control of the Window, which is being made visible. And then the Timer
+	will work 100% correctly. This is because Ra-Ajax have support for dynamically
+	including JavaScript files 100% automagically in Ajax Callbacks. This works
+	100% transparently and the Timer Control itself will keep track of when it
+	needs to include its JavaScript file.
+</p>
+<p>
+	Just before the Timer is about to be "rendered" (it doesn't really have any
+	visible HTML to render, but think conceptually anyway) it will automatically
+	make sure that its JavaScript file (Timer.js) is being included on the client.
+	And it will wait until the JavaScript file is finished being included too in 
+	fact before referencing types and functions in its JavaScript file. All this is
+	being done 100% transparently without you needing to think about it at all.
+</p>
+<p>
+	This have the benefit of <b>*SIGNIFICANTLY*</b> reducing pressure on the browser
+	and making your solutions behave significantly more responsive. You can even include
+	<b>*ANY*</b> JavaScript file you wish, even jQuery can be dynamically included
+	in Ajax Callbacks like this.
+</p>
+<p>
+	If you open up the Timer.cs file in the Extensions project of Ra-Ajax and look at its 
+	code you will see that the Timer class is overriding the <i>OnPreRender</i> method 
+	from ASP.NET. 
+</p>
+<b>Timer.cs</b>
+<pre lang="cs">
+...
+protected override void OnPreRender(EventArgs e)
+{
+    AjaxManager.Instance.IncludeScriptFromResource(typeof(Timer), "Extensions.Js.Timer.js");
+    base.OnPreRender(e);
+}
+...
+</pre>
+
+<p>
+	The <i>OnPreRender</i> method will only be called when the widget is about to
+	be rendered. Meaning it's somehow visible and needs to include its JavaScript
+	file.
+</p>
+<p>
+	As you can see Ra-Ajax have its own methods for including JavaScript files. These
+	methods can be found on the <i>AjaxManager</i> class in the core. Ra-Ajax have two
+	different methods for including JavaScript files. One to include JavaScript files
+	from resources, typically used by control developers. And another method for 
+	including any other JavaScript files.
+</p>
+<p>
+	If you observe what happens in your browser the first time you click the Button
+	to show the Window you will notice that FireBug reports an extra GET request
+	going to your server. This request will be automatically created when you include
+	a JavaScript file and will be the request fetching your JavaScript file and make 
+	sure it's being "included". Actually it's not being "included" semantically but 
+	rather in fact "executed" when the fetching request returns...
+</p>
+
+<p>
+	Now if you think about this for a second you will pretty soon realize that this
+	makes it possible for you to create extremely lightweight solutions that only
+	includes for the browser what it at any times needs to include and "push" 
+	everything it doesn't instantly needs to whenever it actually needs it - which may
+	be somewhere into the future, or never at all. Depending upon whatever actions
+	the user performs on your solution.
+</p>
+<p>
+	If you use FireBug coupled with YSlow on this page for instance you will see
+	that the amount of JavaScript on this page is less then 10KB. Which is a magically
+	small number for such a complex behavior that this page creates. The dynamic
+	inclusion of JavaScript files are one of the reasons behind this extremely 
+	lightweight result.
+</p>
+
