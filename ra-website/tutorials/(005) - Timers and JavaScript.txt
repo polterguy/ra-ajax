@@ -165,7 +165,13 @@ protected override void OnPreRender(EventArgs e)
 	sure it's being "included". Actually it's not being "included" semantically but 
 	rather in fact "executed" when the fetching request returns...
 </p>
-
+<img src="tutorials/timer-tutorial.jpg" alt="JavaScript being included in an Ajax Callback" />
+<p>
+	<i>Look at the extra GET request above which is being created after the Button
+	is being clicked. This is to fetch the Timer.js file from the server and is
+	being 100% transparently executed automagically for you when the Timer becomes
+	visible.</i>
+</p>
 <p>
 	Now if you think about this for a second you will pretty soon realize that this
 	makes it possible for you to create extremely lightweight solutions that only
@@ -180,5 +186,12 @@ protected override void OnPreRender(EventArgs e)
 	small number for such a complex behavior that this page creates. The dynamic
 	inclusion of JavaScript files are one of the reasons behind this extremely 
 	lightweight result.
+</p>
+<p>
+	And the best part is that you don't even need to modify your JavaScript files 
+	at all to make them become possible to include in Ra-Ajax Callbacks. You can take
+	existing JavaScript files written for completely different purposes and still 
+	"port them" to get to leverage old legacy code in combination with Ra-Ajax.
+	The only thing you need to modify is the way you include those JavaScript files.
 </p>
 
