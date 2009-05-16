@@ -63,7 +63,12 @@ namespace Ra.Extensions
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
+        }
+
+        protected override void OnPreRender(EventArgs e)
+        {
             AjaxManager.Instance.IncludeScriptFromResource(typeof(Timer), "Extensions.Js.Timer.js");
+            base.OnPreRender(e);
         }
 
         void IRaControl.DispatchEvent(string name)
