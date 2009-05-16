@@ -38,12 +38,15 @@ namespace RaWebsite
         {
             foreach (string idx in Directory.GetFiles(Server.MapPath("~/tutorials/"), "*.txt"))
             {
-                TreeNode n = new TreeNode();
-                n.ID = "tutorial_" + idx.Replace(".txt", "").Replace(" ", "_").Replace(Server.MapPath("~/tutorials/"), "");
-                n.Text = idx.Replace(".txt", "").Replace(Server.MapPath("~/tutorials/"), "");
-                n.Xtra = idx;
-                n.CssClass = "noSample";
-                rootTutorials.Controls.Add(n);
+                if ((!string.IsNullOrEmpty(Filter) && idx.ToLower().Contains(Filter.ToLower())) || (string.IsNullOrEmpty(Filter)))
+                {
+                    TreeNode n = new TreeNode();
+                    n.ID = "tutorial_" + idx.Replace(".txt", "").Replace(" ", "_").Replace(Server.MapPath("~/tutorials/"), "");
+                    n.Text = idx.Replace(".txt", "").Replace(Server.MapPath("~/tutorials/"), "");
+                    n.Xtra = idx;
+                    n.CssClass = "noSample";
+                    rootTutorials.Controls.Add(n);
+                }
             }
         }
 
@@ -56,6 +59,7 @@ namespace RaWebsite
             {
                 switch (idx.ChildNodes[0].InnerText.Replace("::", "."))
                 {
+                    // removing the classes we don't really NEED documentation for...
                     case "Extensions.Helpers.CometQueue":
                     case "Ra.CallbackFilter":
                     case "Ra.Extensions.AccordionView.EffectChange":
@@ -355,9 +359,15 @@ namespace RaWebsite
             Filter = (sender as TextBox).Text;
             BuildRootClasses();
             root.ReRender();
-            new EffectHighlight(tree, 500).Render();
+
+            rootTutorials.Controls.Clear();
+            BuildRootTutorials();
+            rootTutorials.ReRender();
+
             if (!root.Expanded)
                 root.RollDown();
+            if (!rootTutorials.Expanded)
+                rootTutorials.RollDown();
         }
 
         void b_Blur(object sender, EventArgs e)
