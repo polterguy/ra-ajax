@@ -364,10 +364,18 @@ namespace RaWebsite
             BuildRootTutorials();
             rootTutorials.ReRender();
 
-            if (!root.Expanded)
-                root.RollDown();
-            if (!rootTutorials.Expanded)
-                rootTutorials.RollDown();
+            if (Filter == string.Empty)
+            {
+                root.RollUp();
+                rootTutorials.RollUp();
+            }
+            else
+            {
+                if (!root.Expanded && root.Controls.Count > 0)
+                    root.RollDown();
+                if (!rootTutorials.Expanded && rootTutorials.Controls.Count > 0)
+                    rootTutorials.RollDown();
+            }
         }
 
         void b_Blur(object sender, EventArgs e)
