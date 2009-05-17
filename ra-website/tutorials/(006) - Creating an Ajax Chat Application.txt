@@ -29,24 +29,26 @@
 	that it's possible to create a Chat Application utilizing "xxx Ajax Framework".
 </p>
 <p>
-	When we want to create a Chat Application there is an immediate problem we face when
-	doing this in the web-world. This problem is whether or not we should use polling or
-	push technology. <em>Polling</em> is the concept where you have something which every 
+	When we want to create a Chat Application there is an immediate question you must face when
+	doing this in the web-world. This problem is whether or not you should use polling or
+	push technology. <em>Polling</em> is the concept where you have some mechanism that every 
 	n'th second goes to the server to "poll" to check if there are any new "messages"
 	in the message queue. While <em>push</em> is a technology often referred to as 
-	<em>Comet</em>, <em>LazyHTTP</em>, <em>StreamingHTTP</em> etc. Push is a trick
-	on top of the HTTP protocol where we can by locking an HTTP request down and denying
-	it to return on the server actually create an <em>"open channel"</em> from where we
-	can "push" data back to the client at the very same instant that the data is being 
-	made available. For this tutorial we will use polling through the Ra-Ajax Timer 
-	control. All though Ra-Ajax actually have a Comet component for creating push HTTP
-	solutions, we will not dive into that one just yet.
+	<em>Comet</em>, <em>LazyHTTP</em>, <em>StreamingHTTP</em> etc.
+</p>
+<p>
+	Push is a trick on top of the HTTP protocol where we can by locking an HTTP request 
+	down and denying it to return from the server actually create an <em>"open channel"</em> 
+	from where we can "push" data back to the client at the very same instant that the 
+	data is being made available. For this tutorial we will use polling through the 
+	Ra-Ajax Timer control. All though Ra-Ajax actually have a Comet component for 
+	creating push HTTP solutions, we will not dive into that one yet.
 </p>
 <p>
 	Create a default ASP.NET Website the way you should be familiar with doing it by now...
 </p>
 
-<h3>What do we need</h3>
+<h3>What we need</h3>
 <p>
 	When you come to a website it should be an option or conscious choice whether or not 
 	you want to enter the chat room or not. First of all because it's quite resource 
@@ -58,14 +60,17 @@
 </p>
 <p>
 	For the chat output, as in the place where we show the messages, we could have
-	chosen a number of different technologies. Including GridViews, Repeaters and
-	several other controls. To make this tutorial easy to follow and not too complex
+	chosen a number of different techniques. Including GridViews, Repeaters and
+	several other techniques. To make this tutorial easy to follow and not too complex
 	however we will choose to use a plain and simple Label for this though.
 </p>
 <p>
 	Then <b>inside</b> the Window we will obviously need to have a Timer to poll 
-	our server to see if there are any new chats available, and if there are update
-	our "output Label".
+	our server to see if there are any new chats available, and if there are any updates
+	to our "output Label". Notice that by putting this Timer control inside of our
+	Window it will not be active before the Window is being shown. This means that the Timer
+	will not carry overhead at all before the user has actively chosen to enter
+	the Chat Room.
 </p>
 <p>
 	And then finally we obviously need to have a TextBox and a submit Button to
@@ -225,7 +230,7 @@ public partial class _Default : System.Web.UI.Page
 }
 </pre>
 
-
+<h3>About the lock</h3>
 <p>
 	Notice how we run a <em>lock</em> around our <em>Chat.Messages</em> property. All though
 	threading and such are beyond the scope of this tutorial I can assure you that without
@@ -241,7 +246,8 @@ public partial class _Default : System.Web.UI.Page
 <p>
 	If you do not see something like the image above then please verify that have included
 	the CSS file for the skin correctly. If you get a compiler error or something, then
-	please verify that you have included a reference to both Ra.dll and Extensions.dll.
+	please verify that you have included a reference to both <em>Ra.dll</em> and 
+	<em>Extensions.dll</em>.
 </p>
 
 <h3>Explanation</h3>
@@ -250,8 +256,7 @@ public partial class _Default : System.Web.UI.Page
 	BehaviorObscurable to make our Window Modal. Second of all we're using a Timer
 	to poll the server every 1 seconds. 1 second (or 1000) is the default value
 	for the Duration property of the Timer. Then we're using a Window and making
-	it visible only when a Button is being clicked And Labels too we have looked at
-	previously.
+	it visible only when a Button is being clicked. Labels we have also used previously.
 </p>
 <p>
 	Though when we start playing around with this we realize that there's several 
@@ -296,7 +301,9 @@ public partial class _Default : System.Web.UI.Page
 
 <p>
 	Notice how we also chose to add up a defaut text value for our TextBox when
-	the Window becomes visible.
+	the Window becomes visible. And also the way we use the <em>Select</em> method
+	to not only give focus to the control, but also to make the entire text of the 
+	TextBox selected.
 </p>
 <p>
 	The second problem is also very easy to fix. The Panel control have a property
@@ -326,12 +333,12 @@ public partial class _Default : System.Web.UI.Page
 <p>
 	Notice how the <em>DefaultWidget property</em> is the same value as the 
 	<em>ID property</em> of the Button. This property is also something which
-	all Ra-Ajax Controls that inheritd from the Panel have. This includes e.g. 
-	the Window and many more controls.
+	all Ra-Ajax Controls that inherits from the Panel control have. This 
+	includes e.g. the Window and many more controls.
 </p>
 <p>
 	By creating a construct like this then the Widget which is the DefaultWidget
-	will have "simulated" a click event every time the user press Enter whenever
+	will have simulated a click event every time the user press Enter whenever
 	anything <b>*WITHIN*</b> the Panel have focus. This means you can have multiple
 	Panels on the page which have DefaultWidget setup like this. But if you cascade
 	these Panels inside of eachother you're playing with fire.
