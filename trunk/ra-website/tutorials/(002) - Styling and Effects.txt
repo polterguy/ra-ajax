@@ -172,11 +172,11 @@ protected void mouseOut(object sender, EventArgs e)
 
 <h3>Chaining and Joining Effects...</h3>
 <p>
-	In addition to just running Effects like we are doing here, Ra-Ajax also have support
-	for joining Effects and chaining Effects. When you <i>join</i> two or more effects 
-	then those effects will run simultaneously. When you <i>chain</i> effects then
-	these effects will run in a chain so that when the first one is finished the next
-	one in the "queue" will run, and so on sequentially in the order they where added to
+	In addition to just running Effects like we are doing here, Ra-Ajax also has support
+	for <i>joining</i> Effects and <i>chaining</i> Effects. When you <i>join</i> two or more 
+	effects, then those effects will run simultaneously. When you <i>chain</i> effects, then
+	those effects will run in a chain so that when the first one is finished the next
+	one in the "queue" will run, and so on - sequentially in the order they were added to
 	the Chained collection. Change your foo method as shown below to see two joined
 	effects.
 </p>
@@ -189,11 +189,11 @@ protected void foo(object sender, EventArgs e)
 }
 </pre>
 <p>
-	This will at the same time the Panel is being "rolled up" also fade the Panel away. 
-	Notice that for <i>Joined</i> effects you don't need to give neither a Control
-	nor a duration since both of these are implicitly expected to be the same as
-	the "mother" effect when joining. In fact if you give it a Control and a duration
-	then those values will be ignored!
+	Now you will get the effect of the Panel being "rolled up" at the same time the 
+	Panel will fade away. Notice that for <i>Joined</i> effects you don't need to give 
+	neither a Control nor a duration, since both of these are implicitly expected to be 
+	the same as the "mother" effect when joining. In fact if you give it a Control and 
+	a duration then those values will be ignored!
 </p>
 <p>
 	While for Chained effects you will get a runtime exception unless you explicitly
@@ -226,7 +226,7 @@ protected void foo(object sender, EventArgs e)
 }
 </pre>
 <p>
-	Then run the sample and click the Button.
+	Now run the sample and click the Button.
 </p>
 <p>
 	As you can see the FadeOut effect runs at the same time as the RollUp effect.
@@ -239,10 +239,10 @@ protected void foo(object sender, EventArgs e)
 	So you can create any amount of complexity when you join and chain effects.
 </p>
 <p>
-	Ohh yeah, the <i>duration</i> value passed into the constructor of your effects
-	are obviously <b>milliseconds</b> for the effect to execute. 1 second == 1000 
-	milliseconds, in case you're one of our "disabled friends" from the wrong side
-	of the Atlantic Ocean in regards to usage of the Metric System. ;)
+	Oh yeah, the <i>duration</i> value passed into the constructor of your effects
+	are obviously <b>milliseconds</b> for the effect to execute. 1 second = 1000 
+	milliseconds, in case you're one of our "held back friends" from the wrong side
+	of the Atlantic Ocean in regards to the usage of the Metric System. ;)
 </p>
 <p>
 	You also have some other properties to play with if you store a reference to 
@@ -251,7 +251,7 @@ protected void foo(object sender, EventArgs e)
 
 <h3>State, ViewState and your Styles Collection</h3>
 <p>
-	When you run an effect or change the Style collection of your Controls
+	When you run an effect or change the Style collection of your Controls,
 	then the state of whatever value you change will be preserved in the ViewState.
 	This means that if you click the button and then set a break point in your 
 	Page_Load event handler you will see that the width and height of the Button is
@@ -261,11 +261,12 @@ protected void foo(object sender, EventArgs e)
 	store this in the ViewState.
 </p>
 <p>
-	All Effects in Ra-Ajax can easily be found by filtering the classes docs for "Effect".
-	Most of them also have samples running for you too for watching them in action.
+	All Effects in Ra-Ajax can easily be found by filtering the Classes Reference 
+	Documentation for "Effect".	Most of them also have samples running for you, 
+	so you can watch them in action.
 </p>
 <p>
-	The entire code for this sample is pasted in below for your convenience.
+	The entire code for this sample is pasted below for your convenience.
 </p>
 <b>Default.aspx</b>
 <pre lang="xml">
