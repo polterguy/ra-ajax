@@ -17,7 +17,7 @@
 <h3>Getting started</h3>
 <p>
 	The first thing you must do is to start a new <i>ASP.NET Web Site</i> in Visual Studio. This can be
-	done by going to the <b>File | New | Web Site...</b> menu in Visual Studio. Select the name
+	done by going to the <b>File | New | Web Site...</b> menu in Visual Studio. Enter the name
 	"Hello World" for this website, make sure you have chosen C# as the primary language and 
 	"File System" as the location for it and then click OK.
 </p>
@@ -61,12 +61,12 @@
 </pre>
 <p>
 	Then in your codebehind file (<i>Default.aspx.cs</i>) you must add the code below. 
-	Make sure you add it up within your class as a method.
+	Make sure you add it within your class as a method.
 </p>
 <pre lang="cs">
 protected void btn_Click(object sender, EventArgs e)
 {
-    btn.Text = "I was clicked...";
+    btn.Text = "Hello World!";
 }
 </pre>
 <p>
@@ -76,8 +76,8 @@ protected void btn_Click(object sender, EventArgs e)
 <h3>Entire code</h3>
 <p>
 	Note your code might look slightly different depending upon the version of Visual Studio
-	and .Net Framework you've created your website in, but don't panic. It probably is 
-	semantically the same anyway ... ;)
+	and .Net Framework you're using, but don't panic. It probably is semantically the 
+	same anyway ... ;)
 </p>
 <b>Default.aspx</b>
 <pre lang="xml">
@@ -120,7 +120,7 @@ public partial class _Default : System.Web.UI.Page
 {
     protected void btn_Click(object sender, EventArgs e)
     {
-        btn.Text = "I was clicked...";
+        btn.Text = "Hello World!";
     }
 }
 </pre>
@@ -143,20 +143,20 @@ public partial class _Default : System.Web.UI.Page
 	there is absolutely no HTML being rendered back to the client. In fact the line;
 </p>
 <pre lang="cs">
-Ra.Control.$('btn').handleJSON({"Value":"I was clicked..."});
+Ra.Control.$('btn').handleJSON({"Value":"Hello World!"});
 </pre>
 <p>
-	Is the only evidence of anything except from the ViewState being updated at all.
+	is the only evidence of anything except for the ViewState being updated at all.
 </p>
 
 <h3>Ra-Ajax and Partial Rendering</h3>
 <p>
-	Ra-Ajax does not use Partial Rendering almost at all. At least not when it doesn't have to.
+	Ra-Ajax rarely uses Partial Rendering, at least not when it doesn't have to.
 	Partial Rendering is the concept of rendering back HTML to "some parts" of the page. From there 
-	the word <i>Partial Rendering</i>. As in <i>"<b>render</b> some <b>parts</b> of the webside's HTML"</i>.
+	the phrase <i>Partial Rendering</i>. as in <i>"<b>render</b> some <b>parts</b> of the website's HTML"</i>.
 	This is the way UpdatePanels in ASP.NET AJAX works for instance, and also the way Anthem.NET 
 	works. But it is unfortunately neither the optimal methodology nor the best architecture 
-	to base your Ajax Framework on top of. This becomes visible by the amount of JavaScript
+	to base your Ajax Framework on top of. This becomes obvious by the amount of JavaScript
 	development you have to do when using those Ajax Frameworks. With Ra-Ajax you can almost forget
 	about JavaScript programming almost as if it was as remote as CISCx86 OPCODES for your CPU. In
 	binary format!
@@ -169,9 +169,9 @@ Ra.Control.$('btn').handleJSON({"Value":"I was clicked..."});
 </p>
 <p>
 	This means that all the other attributes and event handlers of the HTML element - basically
-	the entire <i>state</i> - remains unchanged on the client. This again have the benefit of 
+	the entire <i>state</i> - remains unchanged on the client. This has the benefit of 
 	significantly reducing the amount of bandwidth usage. Think in terms of updating the class 
-	attribute for your Panel which again contains 13 pages of written text within and you can 
+	attribute for your Panel which contains 13 pages of written text within and you can 
 	quite easily get the picture!
 </p>
 <p>
@@ -181,20 +181,22 @@ Ra.Control.$('btn').handleJSON({"Value":"I was clicked..."});
 	Probably less then 50 bytes in total!
 </p>
 <p>
-	Not to mention that Event Handlers and such doesn't need to be updated, and <b>*NO*</b> state
-	from your HTML and DOM is changed or removed except for <b>*ONLY*</b> the attributes and
-	such you <b>*CHOOSE*</b> to change yourself in a <b>*STATICALLY*</b> typed programming language (C#, 
+	Not to mention that Event Handlers and such don't need to be updated, and <b>*NO*</b> state
+	from your HTML and DOM is changed or removed except <b>*ONLY*</b> the attributes that
+	you <b>*CHOOSE*</b> to change yourself in a <b>*STATICALLY*</b> typed programming language (C#, 
 	VB.NET, Boo and more then 50 other languages to choose from) on the server, behind your 
 	firewall and in a secure environment. Which brings me to the third point...
 </p>
 <p>
-	<b>Absolutely NO Busines Logic in JavaScript</b>. This basically translates to orders of
+	<b>*Absolutely NO Busines Logic in JavaScript*</b>. This translates into orders of
 	magnitude more <b>*SAFE*</b> code, thousands of times <b>*EASIER TO MAINTAIN CODE*</b>, 
-	orders of magnitudes <b>*LESS*</b> code and <b>*WAY LESS COMPLEX*</b> code. <b>*ZERO 
+	a small quantity of <b>*LESS*</b> code, and <b>*WAY LESS COMPLEX*</b> code. <b>*ZERO 
 	DUPLICATES*</b> of code since nothing needs to be implemented in JavaScript. Which all 
-	together basically translates into <b>*LESS*</b> developer costs for management, 
-	<b>*BETTER*</b> control of deadlines. <b>*LESS*</b> overtime and <b>*MORE HAPPY*</b> 
-	employees!
+	together translates into 
+	<b>*LESS*</b> developer costs for management, 
+	<b>*BETTER*</b> control of deadlines. 
+	<b>*LESS*</b> overtime and 
+	<b>*MORE HAPPY*</b> employees!
 </p>
 
 <h3>Infomercial. 3..., 2..., 1..., GO!</h3>
@@ -203,7 +205,7 @@ Ra.Control.$('btn').handleJSON({"Value":"I was clicked..."});
 	what are you waiting for...?"</i>
 </p>
 <p>
-	<b>Superhero coder Berney</b>; <i>"Take a pill against headache, take two, take a chill pill, take your own personal, 
+	<b>Superhero coder Berney</b>; <i>"Take a pill for a headache, take two, take a chill pill, take your own personal, 
 	free as in free beer and free as in freedom version of Ra-Ajax TODAY! ;)"</i>
 </p>
 <p>
@@ -211,21 +213,21 @@ Ra.Control.$('btn').handleJSON({"Value":"I was clicked..."});
 </p>
 <p>
 	<b>Berney el Magnifico, still understands punchcards, COBOL and occasionally even his own code according to
-	an un-supported rumour</b>; <i>"Today you even get two for the cost of one - ZERO dollars ... ;)"</i>
+	an unconfirmed rumor</b>; <i>"Today you even get two for the price of one - $0.00 dollars ... ;)"</i>
 </p>
 <p>
-	<i>J. Average falls dead to the ground while stuttering out his final words</i>
+	<i>Joe Average falls dead to the ground while stuttering out his final words</i>
 </p>
 <p>
-	<i>"Ra-Ajax, give me some. I am sorry I didn't believe in you, can you forgive me...?"</i>
+	<i>"Ra-Ajax, give me some. I wished I would have believed in you, can you forgive me...?"</i>
 </p>
 <p>
 	<i>Curtain Drops</i>
 </p>
 <p>
 	The audience bursts out into invoulentary explosions of evangelistic and exstatic laughter while
-	shouting; <i>"Praise Ra-Ajax. It's what the Egyptians would have used when building the Pyramids, 
-	if they only could..."</i>
+	shouting: <i>"Praise Ra-Ajax! Long live Ra-Ajax!" It's what the Egyptians would have used when building the Pyramids, 
+	if they only could.</i>
 </p>
 
 <h3>Back to tech again...</h3>
@@ -239,11 +241,11 @@ Ra.Control.$('btn').handleJSON({"Value":"I was clicked..."});
 	functionality within Ra-Ajax applications. If we were to render the entire Button when
 	we changed properties and attributes of it, then we would loose state. This is a BAD thing
 	since even for the really simple example above the Button would loose Focus. This would
-	happen since the entire HTML for the Button would be re-rendered through Partial Rendering
-	and whatever state the browser was in in regards to the Button would be completely lost.
+	happen since the entire HTML for the Button would re-render through Partial Rendering
+	and whatever state the browser was in, in regards to the Button would be completely lost.
 </p>
 <p>
-	But instead by just changing the properties on the Button which actually did change on
+	Now, by just changing the properties on the Button which actually did change on
 	the Ajax Request, we are able to completely keep state and not loose any "value" for our
 	end users. The updates are returned from the server using JSON and the <i>Value</i> property
 	is actually being mapped to a function in Ra-Ajax which will only change the Text property
@@ -254,7 +256,7 @@ Ra.Control.$('btn').handleJSON({"Value":"I was clicked..."});
 	Rendering. And you're right. For such a simple example it doesn't really matter. However
 	if you start playing around with more complex and rich functionality like Windows, 
 	DateTimePickers, AutoCompleters and such then getting rid of Partial Rendering is not only
-	a need, but also a MUST.
+	a need, but a MUST.
 </p>
 <p>
 	Without getting rid of Partial Rendering then all your logic which is slightly more advanced
@@ -264,19 +266,19 @@ Ra.Control.$('btn').handleJSON({"Value":"I was clicked..."});
 	can use a purely <i>Event Driven</i> model.
 </p>
 <p>
-	This makes your code far easier to maintain. Far easier to understand. Far easier to track
-	bugs in. And far easier to change and add features to. In addition to that ALL your code 
+	This makes your code much easier to maintain. Much easier to understand. Much easier to track
+	bugs. And much easier to change and add features to. In addition to that, ALL your code 
 	will be C# and you almost never have to resort to writing JavaScript. Even for your most 
 	complex and richest scenarios.
 </p>
 <p>
-	This is why we call Ra-Ajax for a <b>No JavaScript Ajax Framework</b>. Kind of like GWT, 
+	This is why we call Ra-Ajax a <b>No JavaScript Ajax Framework</b>. Kind of like GWT, 
 	though with a completely different foundation. Many people have faulty interpreted this
-	fact as if Ra-Ajax developers hates JavaScript. This is simply not true. We love JavaScript
+	fact as if Ra-Ajax developers hate JavaScript. This is simply not true. We love JavaScript
 	but we just don't think it has anything to do in the application layer of your code.
 	We think of JavaScript as the driver to your graphic card, or the <i>new Assembly Language</i>. 
 	Sometimes you need to know about its internals, but for most office applications and such you 
-	don't even need to know about its existance. Just like JavaScript in regards to Web-Application 
+	don't even need to know about its existence. Just like JavaScript in regards to Web-Application 
 	development :)
 </p>
 <p>

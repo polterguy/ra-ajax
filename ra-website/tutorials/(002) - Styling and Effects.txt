@@ -15,22 +15,22 @@
 
 <h3>Getting started</h3>
 <p>
-	Ra-Ajax have a very powerful styling mechanism which helps you to give your
+	Ra-Ajax has a very powerful styling mechanism which enables you to give your
 	controls the exact look you want to. The most important property in such regards
 	is the <i>CssClass</i> which exists for almost every control in Ra-Ajax. This property
 	maps to the <i>class attribute</i> which should be familiar to most CSS and HTML
 	coders. Though there is also a very powerful wrapper around the <i>style</i>
-	HTML atribute - the <i>Style property</i>. In addition to both those constructs Ra-Ajax
+	HTML attribute - the <i>Style property</i>. In addition to both of these constructs, Ra-Ajax
 	also contains an extremely powerful Effect library. The Effect library is also highly 
 	extensible so that you can create your own Effects.
 </p>
 <p>
-	First start of by creating a default ASP.NET Website which you should know how to
+	First start off by creating a default ASP.NET Website which you should know how to
 	do after reading our <i>Hello World</i> tutorial. Make sure you reference the 
 	<i>Ra.dll</i> in this website.
 </p>
 <p>
-	Then add up a Ra Panel into your <i>Default.aspx</i> page and add up some 
+	Then add a Ra Panel into your <i>Default.aspx</i> page and enter some 
 	mumbo-jumbo text within your Panel.
 </p>
 <pre lang="xml">
@@ -43,8 +43,8 @@
 </pre>
 <p>
 	As you can see we have added some style properties to our Panel. This
-	will just map out to plain old style values within our HTML. Now we
-	will in addition add up some style values in our <i>Page_Load</i> 
+	will be mapped to the plain old Style values within our HTML. Now we
+	will also add some style values in our <i>Page_Load</i> 
 	Event Handler.
 </p>
 <pre lang="cs">
@@ -55,13 +55,13 @@ protected void Page_Load(object sender, EventArgs e)
 }
 </pre>
 <p>
-	So as you can see we can add up styles both declaratively in addition to
-	also in code. And in fact semantically there are no differences from the above
-	two different scenarios, though obviously the markup version might in general
+	So, as you can see we can add up styles both declaratively in and also
+	in code. In fact, semantically there are no differences from the above
+	two different scenarios, although obviously the markup version might, in general
 	terms be considered "better" since it separates code/logic and appearance/HTML('ish).
-	And the Styles part within the brackets are just a very large
+	The Styles part within the brackets are just a very large
 	enum which holds most of the commonly used style values for your convenience.
-	The Style indexer property also have a version taking a string in case you
+	The Style indexer property also has a version taking a string in case you
 	wish to use style properties which does not exist in our enum.
 </p>
 <p>
@@ -69,15 +69,15 @@ protected void Page_Load(object sender, EventArgs e)
 	size.
 </p>
 <p>
-	Note also that all Style values can be changed in any Event Handler and they
-	will be sent back to the client and update your widget. Notice also that these
+	Note that all Style values can be changed in any Event Handler and they
+	will be sent back to the client and update your widget. Notice also, that these
 	changes will be stored in the ViewState so that you at any time can read out 
 	the current value of any style attribute of all your controls.
 </p>
 
 <h3>Ra-Ajax Effects for bling</h3>
 <p>
-	Now you can add up a Ra Button within your Panel.
+	Now you can add a Ra Button within your Panel.
 </p>
 <pre lang="xml">
 <ra:Panel 
@@ -94,7 +94,7 @@ protected void Page_Load(object sender, EventArgs e)
 </ra:Panel>
 </pre>
 <p>
-	Then we're going to add up some <i>Effects</i> within our Button Click Event Handler.
+	Then we're going to add some <i>Effects</i> within our Button Click Event Handler.
 </p>
 
 <pre lang="cs">
@@ -116,13 +116,13 @@ protected void foo(object sender, EventArgs e)
 }
 </pre>
 <p>
-	But the short version is more then enough since we don't need to de-reference the
-	Effect at all later anyway. So we'll go with the short version...
+	But the short version is more than enough, since we don't need to de-reference the
+	Effect at all. So we'll go with the short version...
 </p>
 <h3>About the Event System of Ra-Ajax</h3>
 <p>
-	Ra-Ajax have <b>many</b> more events for all widgets then you are used to in ASP.NET.
-	Among some of these events are;
+	Ra-Ajax widgets have <b>many</b> more events - much more than 
+	you are used to with the ASP.NET controls. Among some of these events are:
 </p>
 <ul>
 	<li>MouseOver</li>
@@ -132,8 +132,8 @@ protected void foo(object sender, EventArgs e)
 	<li>etc...</li>
 </ul>
 <p>
-	We're going to handle the <i>MouseOut</i> and the <i>MouseOver</i> events here
-	for some additional candy. Change the markup for your Panel to this;
+	We're going to handle the <i>MouseOut</i> and the <i>MouseOver</i> events here, to show 
+	how to take advantage of manipulating this widget. Change the markup for your Panel to this;
 </p>
 <pre lang="xml">
 <ra:Panel 
@@ -152,7 +152,7 @@ protected void foo(object sender, EventArgs e)
 </ra:Panel>
 </pre>
 <p>
-	Then add up these two event handlers in your codebehind.
+	Then add these two event handlers in your codebehind.
 </p>
 <pre lang="cs">
 protected void mouseOver(object sender, EventArgs e)
