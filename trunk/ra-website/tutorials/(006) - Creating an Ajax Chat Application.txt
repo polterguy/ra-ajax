@@ -33,14 +33,14 @@
 	doing this in the web-world. This problem is whether or not we should use polling or
 	push technology. <em>Polling</em> is the concept where you have something which every 
 	n'th second goes to the server to "poll" to check if there are any new "messages"
-	in the message queue. While <em>push</em> is a technology often refered to as 
+	in the message queue. While <em>push</em> is a technology often referred to as 
 	<em>Comet</em>, <em>LazyHTTP</em>, <em>StreamingHTTP</em> etc. Push is a trick
 	on top of the HTTP protocol where we can by locking an HTTP request down and denying
 	it to return on the server actually create an <em>"open channel"</em> from where we
 	can "push" data back to the client at the very same instant that the data is being 
 	made available. For this tutorial we will use polling through the Ra-Ajax Timer 
-	control. Though Ra-Ajax actually have a Comet component for creating push HTTP
-	solutions, we will touch upon the Comet component of Ra-Ajax later.
+	control. All though Ra-Ajax actually have a Comet component for creating push HTTP
+	solutions, we will not dive into that one just yet.
 </p>
 <p>
 	Create a default ASP.NET Website the way you should be familiar with doing it by now...
@@ -225,6 +225,15 @@ public partial class _Default : System.Web.UI.Page
 }
 </pre>
 
+
+<p>
+	Notice how we run a <em>lock</em> around our <em>Chat.Messages</em> property. All though
+	threading and such are beyond the scope of this tutorial I can assure you that without
+	those two locks we may run the risk of having multiple threads manipulate the same
+	List object at the same time. Or even have one thread enumerating the List while another
+	thread adds to it - which WILL explode in your face some beautiful day and create
+	all sorts of obscur and really hard-to-track-down bugs for you...
+</p>
 <p>
 	When you click the Button you should see something similar to the screenshot below.
 </p>
@@ -319,6 +328,13 @@ public partial class _Default : System.Web.UI.Page
 	<em>ID property</em> of the Button. This property is also something which
 	all Ra-Ajax Controls that inheritd from the Panel have. This includes e.g. 
 	the Window and many more controls.
+</p>
+<p>
+	By creating a construct like this then the Widget which is the DefaultWidget
+	will have "simulated" a click event every time the user press Enter whenever
+	anything <b>*WITHIN*</b> the Panel have focus. This means you can have multiple
+	Panels on the page which have DefaultWidget setup like this. But if you cascade
+	these Panels inside of eachother you're playing with fire.
 </p>
 <p>
 	Our third problem can also easily be fixed by checking to see if the content
