@@ -153,7 +153,7 @@ Ra.Control.$('btn').handleJSON({"Value":"Hello World!"});
 <p>
 	Ra-Ajax rarely uses Partial Rendering, at least not when it doesn't have to.
 	Partial Rendering is the concept of rendering back HTML to "some parts" of the page. From there 
-	the phrase <i>Partial Rendering</i>. as in <i>"<b>render</b> some <b>parts</b> of the website's HTML"</i>.
+	the phrase <i>Partial Rendering</i>, as in <i>"<b>render</b> some <b>parts</b> of the website's HTML"</i>.
 	This is the way UpdatePanels in ASP.NET AJAX works for instance, and also the way Anthem.NET 
 	works. But it is unfortunately neither the optimal methodology nor the best architecture 
 	to base your Ajax Framework on top of. This becomes obvious by the amount of JavaScript
@@ -171,20 +171,20 @@ Ra.Control.$('btn').handleJSON({"Value":"Hello World!"});
 	This means that all the other attributes and event handlers of the HTML element - basically
 	the entire <i>state</i> - remains unchanged on the client. This has the benefit of 
 	significantly reducing the amount of bandwidth usage. Think in terms of updating the class 
-	attribute for your Panel which contains 13 pages of written text within and you can 
+	attributes for your Panel which contains 13 pages of written text within and you can 
 	quite easily get the picture!
 </p>
 <p>
 	The <i>"Partial Rendering"</i> versions of those callbacks would have to render the entire
 	contents of that Panel back to the client - 13 pages of written text. While the Non-Partial
 	Rendering based framework would get away with only a small call to a method on an object.
-	Probably less then 50 bytes in total!
+	Probably less than 50 bytes in total!
 </p>
 <p>
 	Not to mention that Event Handlers and such don't need to be updated, and <b>*NO*</b> state
 	from your HTML and DOM is changed or removed except <b>*ONLY*</b> the attributes that
 	you <b>*CHOOSE*</b> to change yourself in a <b>*STATICALLY*</b> typed programming language (C#, 
-	VB.NET, Boo and more then 50 other languages to choose from) on the server, behind your 
+	VB.NET, Boo and more than 50 other languages to choose from) on the server, behind your 
 	firewall and in a secure environment. Which brings me to the third point...
 </p>
 <p>
@@ -212,7 +212,7 @@ Ra.Control.$('btn').handleJSON({"Value":"Hello World!"});
 	<i>Mr. Joe Average gasps for air while trying to support his upper body on his knees with his hands</i>
 </p>
 <p>
-	<b>Berney el Magnifico, still understands punchcards, COBOL and occasionally even his own code according to
+	<b>Berney el Magnifico, still understands punch cards, COBOL and occasionally even his own code according to
 	an unconfirmed rumor</b>; <i>"Today you even get two for the price of one - $0.00 dollars ... ;)"</i>
 </p>
 <p>
@@ -225,7 +225,7 @@ Ra.Control.$('btn').handleJSON({"Value":"Hello World!"});
 	<i>Curtain Drops</i>
 </p>
 <p>
-	The audience bursts out into invoulentary explosions of evangelistic and exstatic laughter while
+	The audience bursts out into involuntary explosions of evangelistic and ecstatic laughter while
 	shouting: <i>"Praise Ra-Ajax! Long live Ra-Ajax!" It's what the Egyptians would have used when building the Pyramids, 
 	if they only could.</i>
 </p>
@@ -260,7 +260,7 @@ Ra.Control.$('btn').handleJSON({"Value":"Hello World!"});
 </p>
 <p>
 	Without getting rid of Partial Rendering then all your logic which is slightly more advanced
-	then this example would end up forcing you into writing lots and lots of JavaScript. This is
+	than this example, would end up forcing you into writing lots and lots of JavaScript. This is
 	why ASP.NET AJAX forces its users to write so much JavaScript and why they need to have 
 	WebServices for their AutoCompleters and many of their more "advanced" controls. While Ra-Ajax
 	can use a purely <i>Event Driven</i> model.

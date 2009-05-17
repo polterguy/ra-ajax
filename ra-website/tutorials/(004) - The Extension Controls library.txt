@@ -12,14 +12,14 @@
 
 <h3>Getting started</h3>
 <p>
-	So far except for some Effects and Behaviors we have only used the "core controls" of
-	Ra-Ajax. This time we will dive into some of the more "rich" controls that exists in
+	So far, except for some Effects and Behaviors we have only used the "core controls" of
+	Ra-Ajax. This time we will dive into some of the more "rich" controls that exist in
 	the Extension Project.
 </p>
 <p>
-	Start out by creating an ASP.NET Website just like in the previous tutorials, but this
-	time make sure you also reference and include the <i>Extensions.dll</i> since this
-	dll is the place of all the more "rich" controls like
+	Start out by creating an <i>ASP.NET Website</i> just like in the previous tutorials, but this
+	time make sure you also reference and include the <i>Extensions.dll</i> along with the <i>Ra.dll</i>
+	since this dll is being used for all of the more "rich" controls like
 </p>
 <ul>
 	<li>Window</li>
@@ -81,7 +81,7 @@ protected void btn_Click(object sender, EventArgs e)
 }
 </pre>
 
-<h3>The two second guide to skinning and CSS in regards to Ra-Ajax</h3>
+<h3>The 2 second guide to skinning and CSS in regards to Ra-Ajax</h3>
 <p>
 	If you tried to run this now you would see that nothing looks like it is supposed
 	to look like. This is because we haven't included any <i>skin CSS files</i>. You can
@@ -95,9 +95,9 @@ protected void btn_Click(object sender, EventArgs e)
 </head>
 </pre>
 <p>
-	Most Extension Controls relies on skins to render correctly. Ra-Ajax is distributed
+	Most Extension Controls rely on skins to render correctly. Ra-Ajax is distributed
 	with several skin files included, but you can also easily create your own skins by
-	modifying existing ones. These skins are just CSS. And coupled with the <i>inspect</i> 
+	modifying the existing ones. These skins are just CSS. And along with the <i>inspect</i> 
 	feature from FireBug, it is actually very easy to create your own skins.
 </p>
 <p>
@@ -122,8 +122,8 @@ protected void btn_Click(object sender, EventArgs e)
 </p>
 <p>
 	The BehaviorObscurer can be set for <b>any</b> control you wish. Even Buttons if you wish.
-	Though if you use it your Control <b>must</b> have an explicit <i>z-index</i>. Without
-	an explicit z-index then the obscurer will probably also obscure the control it is added to
+	Although, if you use it your Control <b>must</b> have an explicit <i>z-index</i>. Without
+	an explicit z-index then the obscurer will probably also obscure the control it is added to,
 	since the obscurer will add an explicit z-index itself with one value lower then whatever
 	z-index value you choose for its parent control.
 </p>
@@ -133,18 +133,18 @@ protected void btn_Click(object sender, EventArgs e)
 	Most Extension Controls (like the Window above) are entirely created without resorting
 	to JavaScript. This is a pretty strong testimonial towards the extremely strong
 	code-model of Ra-Ajax. Even most of our own Ajax Controls are created without having
-	to develop in JavaScript ourselves.
+	to use a lot of JavaScript ourselves.
 </p>
 <p>
-	If you want to create your own Extension Controls then probably the Extension Control 
-	library, and also probably the <i>Window.cs</i> file within here will prove a very 
+	If you want to create your own Extension Controls, then the Extension Control 
+	library, and also, the <i>Window.cs</i> file within here will prove a very 
 	valuable resource for you to start out with.
 </p>
 <p>
-	The Window Control have tons of useful properties. It has a <i>Caption</i> and a
-	<i>Movable</i> property and it also have many more. But the Window control is
+	The Window Control has tons of useful properties. It has a <i>Caption</i> and a
+	<i>Movable</i> property and it also has many more. But the Window control is
 	only one of many controls within the Extension Controls library. In addition
-	to the Window there are many more Controls that exists within the Extension 
+	to the Window there are many more Controls that are included in the Extension 
 	Controls library. Here is a small subset of those controls.
 </p>
 <ul>
@@ -157,13 +157,13 @@ protected void btn_Click(object sender, EventArgs e)
 	<li>And many, many more...</li>
 </ul>
 <p>
-	And <b>*ALL*</b> of them are heavily documented, with good examples above in the 
+	And, <b>*ALL*</b> of them are heavily documented, with good examples above in the 
 	<i>Class Browser</i>.
 </p>
 
 <h3>Entire code</h3>
 <p>
-	Below are the entire code for this tutorial for reference purposes.
+	Below is the entire code for this tutorial for reference purposes.
 </p>
 <b>Default.aspx</b>
 <pre lang="xml">
@@ -238,29 +238,29 @@ public partial class _Default : System.Web.UI.Page
 
 <h3>Ra doesn't render in-visible widgets</h3>
 <p>
-	The above sentence might sound obvious, but very often an Ajax Library will in fact render in-visible
+	The above sentence might sound obvious, but very often an Ajax Library will in fact render not-visible
 	widgets and just set its style properties to not show it. This means that you will get markup and
 	DOM elements for your control even though they're not needed (yet). With such solutions you will
 	get a very big DOM structure for a page if it is somewhat complex and contains a lot of widgets
-	which you have set to in-visible. And all in vain...
+	which you have set to not-visible. And, all is in vain...
 <p>
 <p>
 	If you use FireBug and choose inspect on your DOM structure before you click the button to show 
-	the Window you will not see any trace of the window at all except for this tiny <i>span</i> element.
+	the Window you will not see any trace of the window at all, except for this tiny <i>span</i> element.
 </p>
 <pre lang="xml">
 <span id="wnd" style="display:none" />
 </pre>
 
 <p>
-	And the above span would not be anymore complex even if your window contained 1000 of different
+	The above span would not be any more complex even if your window contained 1000 of different
 	widgets of 100 of different types. In fact the above span is just a reference to a place in your
-	DOM where the entire Window, with all its child widgets, can be rendered later when you in your
+	DOM where the entire Window, with all its child widgets, can be rendered later, when you, in your
 	code for some reasons choose to show it.
 </p>
 <p>
-	If you click the button though you will see a completely different DOM structure. This is because
-	now the Window are being rendered and the span element will be <i>replaces</i> with the Window
+	If you click the button you will see a completely different DOM structure. This is because
+	now the Window is being rendered and the span element will be <i>replaced</i> with the Window
 	DOM elements and its child widget's DOM structure.
 </p>
 
@@ -299,40 +299,41 @@ public partial class _Default : System.Web.UI.Page
 </pre>
 
 <p>
-	If Ra-Ajax didn't work with this "replace logic" then all the above HTML markup would
+	If Ra-Ajax didn't work with this "replace logic" then all of the above HTML markup would
 	not only pollute the wire with extra bandwidth consumption, but also pollute your DOM
 	for your browser which would result in less responsive DOM manipulation.
 </p>
 <p>
-	In fact nothing which is related to a widget will be rendered before you explicitly
-	say in code that you want that widget to become visible. Even in some occassions
-	as we will see in a later tutorial also the JavaScript files for your widgets.
+	In fact, nothing which is related to a widget will be rendered before you explicitly
+	say in code that you want that widget to become visible. Even in some occasions,
+	as we will see in a later tutorial, the same is true for JavaScript files associated 
+	with your widgets.
 </p>
 
 <h3>2 second guide to the CSS structure of Ra-Ajax</h3>
 <p>
-	For the trained CSS guru there will be many familar constructs in the DOM above.
-	First of all the <i>window</i> element at the root HTML node. The default CSS class
+	For the trained CSS guru there will be many familiar constructs in the DOM above.
+	First of all, the <i>window</i> element at the root HTML node. The default CSS class
 	of the Window is <i>"window"</i>. This can be overridden, and must in fact be 
 	overridden if you want to have multiple skins for your windows on the same page.
 </p>
 <p>
-	Also Ra-Ajax very seldom uses <i>table design</i>. Instead of using table design
-	we're cascading divs and spans inside of eachother where possible to create the
+	Also, Ra-Ajax very seldom uses <i>table design</i>. Instead of using table design
+	we use cascading divs and spans inside of each other where ever possible to create the
 	DOM layout. This can be seen above. This is another strength of Ra-Ajax since
-	this makes your applications more accessible for disabled people and screen-readers 
+	this makes your applications more accessible for disabled people and screen-readers, 
 	etc. It also stresses the browser less and gives you and your designers more
 	flexibility.
 </p>
 <p>
 	Far too often developers would have chosen table design to create an Ajax Window 
-	like the one above, which is an inferior solution in most ways.
+	like the one above, which is an inferior solution in many ways.
 </p>
 <p>
-	However this means actually that the <i>width</i> of the window must be set on the window
-	itself, while the <i>height</i> of the window must be set on e.g. a DIV element contained
-	within the Window or something. You cannot set the style property <i>height</i> on the 
-	Window and expect it to work!
+	However, what this means actually, is that the <i>width</i> of the window must be set on 
+	the window itself, while the <i>height</i> of the window must be set on a DIV element or
+	a SPAN element contained within the Window. You cannot set the style property <i>height</i> 
+	on the Window and expect it to work!
 </p>
 <p>
 	So to get a working Window with an explicit width and height you must do something like this.
@@ -352,18 +353,18 @@ public partial class _Default : System.Web.UI.Page
 <p>
 	Notice how we set the <i>width</i> on the Window style collection, while we set the 
 	<i>height</i> on the DIV which is within the Window. If you tried to do this any other
-	ways you would not get it to work.
+	way you would not get it to work.
 </p>
 <p>
 	Also notice how we set the pixel height on the DIV which means that the height of the
 	Window as shown would be the height of the DIV (250px) <b>*PLUS*</b> the height
 	of the Window Chrome. Which would be roughly 32px for the default skins. 25px for the 
-	top parts and 7px for the bottom parts. So in fact the Window above would be a total
-	of 282px in height.
+	top parts and 7px for the bottom parts. So, the Window above would be a total of
+	282px in height.
 </p>
 <p>
-	Which might be interesting for you when figuring out why all of a suddes you don't 
-	seem to be able to do basic calculus since your design doesn't come out as you wish 
-	them to ... ;)
+	Which might be interesting for you when figuring out why all of a sudden you are
+	not able to do basic calculus, since your design doesn't come out as you planned 
+	on ... ;)
 </p>
 
