@@ -24,7 +24,7 @@
 </ul>
 
 <p>
-	There exists a billion different chat components or chat applications out there. It 
+	There are a lot of different chat components or chat applications out there. It 
 	seems as though every Ajax Framework or CMS with respect for itself needs to demonstrate 
 	that it's possible to create a Chat Application utilizing "xxx Ajax Framework".
 </p>
@@ -41,39 +41,39 @@
 	down and denying it to return from the server actually create an <em>"open channel"</em> 
 	from where we can "push" data back to the client at the very same instant that the 
 	data is being made available. For this tutorial we will use polling through the 
-	Ra-Ajax Timer control. All though Ra-Ajax actually have a Comet component for 
+	Ra-Ajax Timer control. All though Ra-Ajax actually has a Comet component for 
 	creating push HTTP solutions, we will not dive into that one yet.
 </p>
 <p>
-	Create a default ASP.NET Website the way you should be familiar with doing it by now...
+	Create a default <i>ASP.NET Website</i> the way you should be familiar with doing it by now...
 </p>
 
 <h3>What we need</h3>
 <p>
-	When you come to a website it should be an option or conscious choice whether or not 
-	you want to enter the chat room or not. First of all because it's quite resource 
-	demanding to poll for every visitor at your page. And second of all because most
-	people visiting your website are probably not interested in entering your chat room
+	When you arrive at a website, there should be an option or a conscious choice whether 
+	you want to enter the chat room or not. First of all, because it's quite resource 
+	demanding to poll for every visitor at your page. And second, because most
+	people visiting your website are probably not interested in entering your chat room,
 	but might rather be looking around for some other information. We will do this
 	by having our Timer and chat logic inside of a Modal Window which we choose to make
-	in-visible by default and only open when the user clicks a button.
+	non-visible by default and only open when the user clicks a button.
 </p>
 <p>
-	For the chat output, as in the place where we show the messages, we could have
-	chosen a number of different techniques. Including GridViews, Repeaters and
-	several other techniques. To make this tutorial easy to follow and not too complex
-	however we will choose to use a plain and simple Label for this though.
+	Next we need a chat output control, as in the place where we show the messages, we 
+	could have 	used a number of different controls, including GridViews, Repeaters, 
+	Textboxes or many other controls. However, to make this tutorial easy to follow and 
+	not too complex we will choose to use a plain and simple Label. 
 </p>
 <p>
-	Then <b>inside</b> the Window we will obviously need to have a Timer to poll 
+	Then <b>inside</b> the Window we will need to have a Timer to poll for
 	our server to see if there are any new chats available, and if there are any updates
 	to our "output Label". Notice that by putting this Timer control inside of our
 	Window it will not be active before the Window is being shown. This means that the Timer
-	will not carry overhead at all before the user has actively chosen to enter
+	will not carry any overhead before the user has actively chosen to enter
 	the Chat Room.
 </p>
 <p>
-	And then finally we obviously need to have a TextBox and a submit Button to
+	And then finally we need to have a TextBox and a submit Button to
 	make it possible to send your chat messages to the server.
 </p>
 <p>
@@ -232,12 +232,12 @@ public partial class _Default : System.Web.UI.Page
 
 <h3>About the lock</h3>
 <p>
-	Notice how we run a <em>lock</em> around our <em>Chat.Messages</em> property. All though
+	Notice how we run a <em>lock</em> around our <em>Chat.Messages</em> property. Although
 	threading and such are beyond the scope of this tutorial I can assure you that without
 	those two locks we may run the risk of having multiple threads manipulate the same
-	List object at the same time. Or even have one thread enumerating the List while another
+	List object at the same time. Or, even have one thread enumerating the List while another
 	thread adds to it - which WILL explode in your face some beautiful day and create
-	all sorts of obscur and really hard-to-track-down bugs for you...
+	all sorts of obscure and really hard-to-track-down bugs for you...
 </p>
 <p>
 	When you click the Button you should see something similar to the screenshot below.
@@ -246,32 +246,33 @@ public partial class _Default : System.Web.UI.Page
 <p>
 	If you do not see something like the image above then please verify that have included
 	the CSS file for the skin correctly. If you get a compiler error or something, then
-	please verify that you have included a reference to both <em>Ra.dll</em> and 
-	<em>Extensions.dll</em>.
+	please verify that you have included a reference to both <em>Ra.dll</em> and the
+	<em>Extensions.dll</em> files.
 </p>
 
 <h3>Explanation</h3>
 <p>
 	There are many familiar constructs in this code. First of all we have a 
-	BehaviorObscurable to make our Window Modal. Second of all we're using a Timer
-	to poll the server every 1 seconds. 1 second (or 1000) is the default value
-	for the Duration property of the Timer. Then we're using a Window and making
-	it visible only when a Button is being clicked. Labels we have also used previously.
+	BehaviorObscurable to make our Window Modal. Secondly, we're using a Timer
+	to poll the server every 1 second. 1 second (or 1000) is the default value
+	for the Duration property of the Timer. Then we are using a Window and making
+	it visible only when a Button is being clicked, along with the Labels we 
+	have used previously.
 </p>
 <p>
-	Though when we start playing around with this we realize that there's several 
+	When we start playing around with this we realize that there are several 
 	problems with this solution. Let's try to pinpoint some of them below.
 </p>
 <ul>
-	<li>TextBox is not intuitively given focus automagically</li>
+	<li>TextBox is not intuitively given focus automatically</li>
 	<li>Enter key does not work correctly</li>
 	<li>We have no visual clues telling us when a new chat message have arrived</li>
 	<li>Every second is probably too often to check for new chat messages</li>
 </ul>
 <p>
-	The first one is really easy to fix by in our <em>btn_Click</em> method call
+	The first one is really easy to fix - in our <em>btn_Click</em> method call
 	the <em>Focus</em> method of our TextBox. In addition we can also choose to 
-	automagically give the TextBox focus also after a new chat has been added 
+	automatically give the TextBox focus also after a new chat has been added 
 	in our <em>add_Click</em> method.
 </p>
 <pre lang="cs">
@@ -300,18 +301,18 @@ public partial class _Default : System.Web.UI.Page
 </pre>
 
 <p>
-	Notice how we also chose to add up a defaut text value for our TextBox when
-	the Window becomes visible. And also the way we use the <em>Select</em> method
+	Notice how we chose to add the defaut text value for our TextBox when
+	the Window becomes visible. And, also the way we use the <em>Select</em> method
 	to not only give focus to the control, but also to make the entire text of the 
 	TextBox selected.
 </p>
 <p>
-	The second problem is also very easy to fix. The Panel control have a property
+	The second problem is also very easy to fix. The Panel control has a property
 	called <em>DefaultWidget</em> which can be the ID of any widget inside of the
-	panel. This Widget will be <em>"clicked"</em> when the user presses the Enter
-	key anywhere inside of the Panel. So by wrapping our TextBox and Button inside
-	of a Panel instead of a normal HTML DIV we can get the Enter key to work 
-	perfectly for us.
+	panel. This Widget will be <em>"clicked"</em> when the user hits the Enter
+	key when the focus is anywhere inside of the Panel. So by wrapping our TextBox 
+	and Button inside of a Panel instead of a normal HTML DIV we can get the Enter 
+	key to work perfectly for us.
 </p>
 <pre lang="xml">
 <ra:Panel
@@ -333,15 +334,15 @@ public partial class _Default : System.Web.UI.Page
 <p>
 	Notice how the <em>DefaultWidget property</em> is the same value as the 
 	<em>ID property</em> of the Button. This property is also something which
-	all Ra-Ajax Controls that inherits from the Panel control have. This 
-	includes e.g. the Window and many more controls.
+	all Ra-Ajax Controls that inherits from the Panel control have,	including
+	the Window and many more controls.
 </p>
 <p>
-	By creating a construct like this then the Widget which is the DefaultWidget
-	will have simulated a click event every time the user press Enter whenever
+	By creating a construct like this the Widget which is the DefaultWidget
+	will have simulated a click event every time the user hits Enter whenever
 	anything <b>*WITHIN*</b> the Panel have focus. This means you can have multiple
-	Panels on the page which have DefaultWidget setup like this. But if you cascade
-	these Panels inside of eachother you're playing with fire.
+	Panels on the page which can have the DefaultWidget setup like this. But if you 
+	cascade these Panels inside of eachother you're playing with fire.
 </p>
 <p>
 	Our third problem can also easily be fixed by checking to see if the content
@@ -375,7 +376,7 @@ private void GetChats()
 </pre>
 
 <p>
-	Notice how we check to see if the text have actually changed, and if it has we
+	Notice how we check to see if the text has actually changed, and if it has we
 	run an EffectHighlight in addition to setting the Text property of the Label.
 </p>
 <p>
