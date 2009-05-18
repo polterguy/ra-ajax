@@ -319,7 +319,7 @@ namespace RaWebsite
             p.Controls.Add(r);
 
             CheckBox c = new CheckBox();
-            c.Text = "Pin";
+            c.Text = wnd.Movable ? "Dock" : "Float";
             c.CssClass = "pushPin";
             c.Checked = !wnd.Movable;
             c.CheckedChanged += delegate
@@ -330,16 +330,17 @@ namespace RaWebsite
                     wnd.Style["width"] = wnd.Style["position"] =
                     wnd.Style["top"] = wnd.Style["right"] =
                     wnd.Style["z-index"] = string.Empty;
+                    c.Text = "Float";
                 }
                 else
                 {
                     wnd.Movable = true;
-
                     wnd.Style["width"] = "480px";
                     wnd.Style["position"] = "absolute";
                     wnd.Style["top"] = "5px";
                     wnd.Style["right"] = "15px";
                     wnd.Style["z-index"] = "50";
+                    c.Text = "Dock";
                 }
             };
 

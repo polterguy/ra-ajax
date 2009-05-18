@@ -545,9 +545,25 @@ ul#menu li a:hover
 
 .pushPin
 {
-	margin:6px;
+	margin:5px;
 	position:absolute;
 	right:160px;
+	background: transparent url(application_double.png) no-repeat 0 0;
+	height:16px;
+}
+
+span.pushPin > input[type="checkbox"] 
+{
+	position:absolute;
+	left:-99999px;
+}
+
+span.pushPin > label
+{
+	padding-left:18px;
+	cursor: pointer;
+	color:#606060;
+	font-size:12px;
 }
 
 .filter-left
@@ -568,14 +584,14 @@ ul#menu li a:hover
 	border-width: 0;
 	background: url('filter-icon.png') repeat-x 0 -38px;
 	width:100px !important;
-		height:19px;
-		display:block;
-		padding:3px;
-		position:absolute;
-		top:0;
-		left:17px;
-		font-size:11px;
-		color:#606060;
+	height:19px;
+	display:block;
+	padding:3px;
+	position:absolute;
+	top:0;
+	left:17px;
+	font-size:11px;
+	color:#606060;
 }
 
 .filter-right
