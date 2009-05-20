@@ -12,6 +12,7 @@ using System.ComponentModel;
 using System.ComponentModel.Design.Serialization;
 using System.Web.UI;
 using System.Web;
+using System.Globalization;
 
 namespace Ra.Widgets
 {
@@ -142,17 +143,29 @@ namespace Ra.Widgets
 
         private void AddStyleToCollection(string idx, string value, bool viewStateOnly)
         {
-            string styleName = idx;
-            string styleValue = value;
-
-            if (HttpContext.Current.Request.Browser.Browser == "IE" && 
-                idx == "opacity")
+            string styleName = idx.Trim().ToLowerInvariant();
+            string styleValue = value.Trim();
+            
+            if (styleName == "opacity")
             {
-                styleName = "filter";
-                styleValue = string.Format("alpha(opacity={0:0})", Math.Round(decimal.Parse(value, System.Globalization.CultureInfo.InvariantCulture) * 100));
+                decimal opacity;
+                
+                // use full opacity if the user didn't specify a correct value
+                if (!decimal.TryParse(styleValue, NumberStyles.Float, CultureInfo.InvariantCulture, out opacity))
+                    opacity = 1.0M;
+
+                if (HttpContext.Current.Request.Browser.Browser == "IE")
+                {
+                    styleName = "filter";
+                    styleValue = string.Format("alpha(opacity={0:0})", Math.Round(opacity * 100));
+                }
+                else
+                {
+                    styleValue = opacity.ToString();
+                }
             }
 
-            if (_styleValues.ContainsKey(idx))
+            if (_styleValues.ContainsKey(styleName))
             {
                 // Key exists from before
                 StyleValue oldValue = _styleValues[styleName];
@@ -172,7 +185,7 @@ namespace Ra.Widgets
             {
                 // Key doesn't exist from before
                 StyleValue nValue = new StyleValue();
-                
+
                 if (viewStateOnly)
                 {
                     nValue.OnlyViewStateValue = styleValue;
