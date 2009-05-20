@@ -44,9 +44,9 @@
   those criteria was met then sometimes nodes would come out
   "empty" and not have content at all which was a bug.
 
-* Added a new Behavior which is called BehaviorUnveiler which will
-  animate the opacity of any widget when widget is hovered by
-  mouse.
+* Added a new Behavior called BehaviorUnveiler which will fade-in 
+  any widget into MaxOpcity on mouse over. And fade-out the widget 
+  to MinOpacity on mouse out.
 
 * New widget - WebPart. A WebPart is kind of like a minimalistic
   window. Usage would probably be portal creation and similar
@@ -69,12 +69,11 @@
   can have Child Controls.
 
 * New Widget - SlidingMenu. A SlidingMenu is a cross-over 
-  between a Tree and a Menu. It contains most features
-  from a TreeView like dynamically loading of items and such,
-  but at the same time it "appears" more like a Menu in that
-  it can only display one level of items at the same time.
-  It's quite heavily inspired from Apple's way of doing UI
-  on the iPhone.
+  between a Tree and a Menu. It contains most features from 
+  a TreeView like dynamically loading of items and such, but 
+  at the same time it "appears" more like a Menu in that it 
+  can only display one level of items at any time. It is
+  heavily inspired by Apple's iPhone/iPod UI.
 
 * Fixed a bug in SelectList that caused the SelectedIndex to 
   not change when a ListItem's Selected property was set to true.
@@ -92,7 +91,8 @@
 * Minor refactorings in AjaxManager.
 
 * Fixed a bug that caused initial setting of opacity style value 
-  in the ASPX markup to not work properly in IE.
+  in the ASPX markup to not work properly in IE. And added special
+  handling of opacity for IE.
 
 * Added support for setting any RaWebControls into "no-queue mode"
   which if set (through the QueueMultipleRequests property) will
