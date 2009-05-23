@@ -1,0 +1,40 @@
+﻿<h3>Aim of this tutorial</h3>
+<ul>
+	<li>Help you understand how you can combine Ra-Ajax with ASP.NET Controls and also 3rd Party Controls</li>
+	<li>Teach you how to create a minimalistic Ajax GridView application</li>
+</ul>
+
+<h3>Prerequisites</h3>
+<ul>
+	<li>That you have read and understood the previous tutorials in this series</li>
+</ul>
+
+<h3>Getting started</h3>
+<p>
+	One of the real strengths of Ra-Ajax is how well it combines with other control toolkits,
+	including the native ASP.NET controls. However when working with Controls which does
+	not follow the rendering logic of Ra-Ajax it is important that you know a couple of
+	tricks which comes together with Ra-Ajax. Since basically what we're doing is 
+	forcing non-Ajax controls to become Ajaxified and play as nice Ajax Citizens.
+</p>
+<p>
+	The first obstacle we will meet when using a non-Ra-Ajax control like the <em>GridView</em>,
+	which we are going to use here, is the fact that the ASP.NET GridView cannot render
+	within the page rendering logic that Ra-Ajax is built upon. The GridView's <b>only</b> 
+	rendering mode is pure HTML. But fear not since for most cases this is actually 
+	easy to fix.
+</p>
+
+<h3>ReRender to the rescue!</h3>
+<p>
+	All 
+</p>
+
+
+
+
+
+
+
+
+
