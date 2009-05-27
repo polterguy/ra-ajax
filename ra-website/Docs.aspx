@@ -20,7 +20,6 @@
     ID="Content1" 
     ContentPlaceHolderID="cnt1" 
     Runat="Server">
-        
     <ext:Window 
         runat="server" 
         OnCreateTitleBarControls="wnd_CreateTitleBarControls" 

@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Widgets\GlobalUpdater.cs" />
     <Compile Include="Widgets\SlidingMenuItem.cs" />
     <Compile Include="Widgets\SlidingMenuLevel.cs" />
     <Compile Include="Widgets\SlidingMenu.cs" />
@@ -100,6 +101,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Js\Tree.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Js\GlobalUpdater.js" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
