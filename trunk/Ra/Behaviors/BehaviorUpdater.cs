@@ -17,7 +17,9 @@ namespace Ra.Widgets
     /**
      * Will render an "obscure entire webpage" div with a very high z-index when control attached
      * to raises an Ajax Request. This is kind of like the Ra-Ajax version of the (in)famous Ajax GIF
-     * feature.
+     * feature. Notice that your GlobalUpdater will NEVER be visible except for when there's an Ajax 
+     * Request going on. Which means it will be rendered as in-visible and only made visible when
+     * there's an Ajax Request being initiated.
      */
     [ASP.ToolboxData("<{0}:BehaviorUpdater runat=\"server\" />")]
 	public class BehaviorUpdater : Behavior

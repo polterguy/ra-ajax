@@ -161,7 +161,7 @@ namespace Ra.Widgets
                 }
                 else
                 {
-                    styleValue = opacity.ToString();
+                    styleValue = opacity.ToString(CultureInfo.InvariantCulture);
                 }
             }
 

@@ -556,18 +556,18 @@ Ra.Form.prototype = {
     }, opt || {});
   },
 
-  callback: function() {
+  callback: function(onSuccess, onError) {
     var T = this;
     var xhr = new Ra.XHR(this.options.url, {
       body: this.serializeForm() + '&' + this.options.args,
-      onSuccess: function(response) {
+      onSuccess: onSuccess || function(response) {
         if( !T.options.callingContext ) {
           T.options.onFinished(response);
         } else {
           T.options.onFinished.call(T.options.callingContext, response);
         }
       },
-      onError: function(status, response) {
+      onError: onError || function(status, response) {
         if( !T.options.callingContext ) {
           T.options.onError(status, response);
         } else {
