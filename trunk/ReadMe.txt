@@ -7,17 +7,11 @@
 
 **********************************************************************************************
 
-* Ra-Ajax is licensed under the LGPL version 3 and can be used 
-  free of charge in proprietary (closed source) projects.
+* Ra-Ajax is licensed under the GPL version 3.
 
 * The pre-built library DLLs exist within the "binaries" folder and
   are the ones that should be used in your projects since they are
   minified and optimized.
-
-* In the "Samples/bin" directory you can find the ResourceCacher.dll
-  which if configured correctly in Web.Config will add up a "far 
-  future expires" date for your CSS and images and other static 
-  content.
 
 * The "Ra.Build.Tasks" project contains custom NAnt build tasks to 
   minify and GZip JavaScript and CSS. Feel free to use it in 
@@ -33,13 +27,7 @@
   In Mono on Linux use the xsp2 command from a command line within the
   samples directory and browse to http://localhost:8080/
 
-* All project files should be compatible with MonoDevelop, Visual
-  Studio 2005 and Visual Studio 2008.
-
-* If you find bugs then report them in our forums at 
-  http://ra-ajax.org/Forums/Forums.aspx
-
 
 Have a nice day :)
 
-Thomas & Kariem
+Thomas Hansen CEO of Ra-Software

@@ -156,6 +156,8 @@
 * Fixed a bug in TreeNode which made it include the JavaScript
   file even though it was not visible if the JS file was needed.
 
+* Changed license from LGPL to GPL.
+
 
 
 
