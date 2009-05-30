@@ -43,9 +43,11 @@
         <li>Coaching other developers</li>
         <li>Teaching system development concepts</li>
         <li>Supplying extra hands on projects</li>
+        <li>Code Reviews</li>
+        <li>Quality Assurance</li>
     </ul>
     <p>
-        All consulting customers of Ra-Ajax will be given the rights to use Ra-Ajax within
+        All customers of Ra-Software will be given the rights to use Ra-Ajax within
         their organization in a non-GLP license, which means that your software will not
         be restricted by the GPL in any ways. As a consulting customer of Ra-Software you
         will get to use Ra-Ajax in a proprietary license.
