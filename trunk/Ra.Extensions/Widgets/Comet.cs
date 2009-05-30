@@ -19,7 +19,7 @@ using Extensions.Helpers;
 using System.Web;
 using System.Reflection;
 
-[assembly: ASP.WebResource("Extensions.Js.Comet.js", "text/javascript")]
+[assembly: ASP.WebResource("Ra.Extensions.Js.Comet.js", "text/javascript")]
 
 namespace Ra.Extensions.Widgets
 {
@@ -224,7 +224,7 @@ namespace Ra.Extensions.Widgets
                 this.Enabled = false;
             }
             base.OnInit(e);
-            AjaxManager.Instance.IncludeScriptFromResource(typeof(Comet), "Extensions.Js.Comet.js");
+            AjaxManager.Instance.IncludeScriptFromResource(typeof(Comet), "Ra.Extensions.Js.Comet.js");
         }
 
         private IAsyncResult BeginEnterCometQueue(object src, EventArgs args, AsyncCallback cb, object state)
