@@ -78,7 +78,7 @@
                                         runat="server" 
                                         MinOpacity="0.7" 
                                         MaxOpacity="1" />
-                                    <a href="http://ra-ajax.org/Support.aspx">Support</a>
+                                    <a href="http://ra-ajax.org/Support.aspx">Help</a>
                                 </ra:Label>
                                 <ra:Label 
                                     ID="Label4" 
@@ -90,7 +90,7 @@
                                         runat="server" 
                                         MinOpacity="0.7" 
                                         MaxOpacity="1" />
-                                    <a href="http://ra-ajax.org/Testimonials.aspx">Testimonials</a>
+                                    <a href="http://ra-ajax.org/Testimonials.aspx">Kudos</a>
                                 </ra:Label>
                                 <ra:Label 
                                     ID="Label5" 
