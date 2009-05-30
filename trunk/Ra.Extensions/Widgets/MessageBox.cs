@@ -13,8 +13,9 @@ using ASP = System.Web.UI;
 using Ra.Widgets;
 using System.IO;
 using HTML = System.Web.UI.HtmlControls;
+using Ra.Behaviors;
 
-namespace Ra.Extensions
+namespace Ra.Extensions.Widgets
 {
     /**
      * MessageBox control for easily getting confirmations, displaying modal data etc. Contains shorthands

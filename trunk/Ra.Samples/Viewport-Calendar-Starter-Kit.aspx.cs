@@ -11,6 +11,8 @@ using Ra.Widgets;
 using Ra.Extensions;
 using System.Collections.Generic;
 using Ra;
+using Ra.Extensions.Widgets;
+using Ra.Effects;
 
 namespace Samples
 {

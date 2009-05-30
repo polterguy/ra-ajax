@@ -10,8 +10,9 @@ using System;
 using System.ComponentModel;
 using WEBCTRLS = System.Web.UI.WebControls;
 using ASP = System.Web.UI;
+using Ra.Widgets;
 
-namespace Ra.Widgets
+namespace Ra.Behaviors
 {
     /**
      * Abstract base class for all behaviors. A behavior is an extra capability you can assign to an

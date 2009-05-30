@@ -9,7 +9,7 @@
 using System;
 using System.Web.UI;
 
-namespace Ra.Widgets
+namespace Ra.Effects
 {
     /**
      * Will flash (highlight with color yellow) control's root DOM element. Think of it as an advanced version

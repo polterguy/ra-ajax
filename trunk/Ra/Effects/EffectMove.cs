@@ -8,8 +8,9 @@
 
 using System;
 using System.Web.UI;
+using Ra.Widgets;
 
-namespace Ra.Widgets
+namespace Ra.Effects
 {
     /**
      * Will move control to specified location from its current position in absolute pixels.

@@ -10,6 +10,7 @@ using System;
 using Ra.Widgets;
 using Ra.Extensions;
 using System.Web.UI.DataVisualization.Charting;
+using Ra.Effects;
 
 namespace Samples
 {

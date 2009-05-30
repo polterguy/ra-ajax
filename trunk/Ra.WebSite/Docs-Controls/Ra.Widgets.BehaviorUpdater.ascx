@@ -4,17 +4,7 @@
     CodeFile="Ra.Widgets.BehaviorUpdater.ascx.cs" 
     Inherits="Docs_Controls_BehaviorUpdater" %>
 
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
-
-<ext:ExtButton 
+<ra:ExtButton 
     runat="server" 
     ID="btn" 
     OnClick="btn_Click" 
@@ -24,7 +14,7 @@
         Delay="500" 
         Color="#999999"
         ID="updater" />
-</ext:ExtButton>
+</ra:ExtButton>
 
 <ra:Panel 
     runat="server" 

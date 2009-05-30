@@ -4,27 +4,17 @@
     CodeFile="Ra.Extensions.Accordion.ascx.cs" 
     Inherits="Docs_Controls_Accordion" %>
 
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
-
 <ra:Label 
     runat="server" 
     Text="Changes..."
     ID="lbl" />
 
-<ext:Accordion 
+<ra:Accordion 
     runat="server" 
     OnActiveAccordionViewChanged="acc_ActiveAccordionViewChanged"
     ID="acc">
 
-    <ext:AccordionView 
+    <ra:AccordionView 
         runat="server" 
         ID="acc1" 
         Caption="First accordion">
@@ -36,9 +26,9 @@
         malesuada nisl, eget fermentum ligula leo at nunc. Cras 
         a justo est, condimentum adipiscing metus. Quisque eu arcu 
         felis, sit amet auctor sapien. 
-    </ext:AccordionView>
+    </ra:AccordionView>
 
-    <ext:AccordionView 
+    <ra:AccordionView 
         runat="server" 
         ID="acc2" 
         Caption="Second accordion">
@@ -57,13 +47,13 @@
         vehicula lacinia tristique. Suspendisse a felis at nulla 
         convallis vehicula consequat eget ipsum. Praesent nec 
         quam ac felis mattis facilisis ac auctor massa. 
-    </ext:AccordionView>
+    </ra:AccordionView>
 
-    <ext:AccordionView 
+    <ra:AccordionView 
         runat="server" 
         ID="acc3" 
         Caption="Third accordion">
-        <ext:Calendar 
+        <ra:Calendar 
             runat="server" 
             style="width:200px;"
             ID="cal" />
@@ -71,6 +61,6 @@
             Here's an example of embedding controls within 
             an AccordionView.
         </p>
-    </ext:AccordionView>
+    </ra:AccordionView>
 
-</ext:Accordion>
+</ra:Accordion>

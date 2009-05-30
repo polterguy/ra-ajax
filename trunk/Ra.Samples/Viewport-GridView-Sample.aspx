@@ -4,16 +4,6 @@
     CodeFile="Viewport-GridView-Sample.aspx.vb" 
     Inherits="Samples.ViewportGridView" %>
 
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -30,7 +20,7 @@
             runat="server" 
             ID="everything" 
             class="main">
-            <ext:ResizeHandler 
+            <ra:ResizeHandler 
                 runat="server" 
                 OnResized="resizer_Resized"
                 ID="resizer" />
@@ -44,62 +34,62 @@
             </ra:Panel>
 
             <!-- Menu -->
-            <ext:Menu 
+            <ra:Menu 
                 runat="server" 
                 ID="menu">
-                <ext:MenuItems runat="server" ID="mainItems">
-                    <ext:MenuItem runat="server" ID="file">
+                <ra:MenuItems runat="server" ID="mainItems">
+                    <ra:MenuItem runat="server" ID="file">
                         File
-                        <ext:MenuItems runat="server" ID="fileMenus">
-                            <ext:MenuItem runat="server" id="openFileMenu">
+                        <ra:MenuItems runat="server" ID="fileMenus">
+                            <ra:MenuItem runat="server" id="openFileMenu">
                                 Open file
-                            </ext:MenuItem>
-                            <ext:MenuItem runat="server" id="saveFile">
+                            </ra:MenuItem>
+                            <ra:MenuItem runat="server" id="saveFile">
                                 Save file
-                            </ext:MenuItem>
-                            <ext:MenuItem runat="server" id="saveFileAs">
+                            </ra:MenuItem>
+                            <ra:MenuItem runat="server" id="saveFileAs">
                                 Save file as...
-                            </ext:MenuItem>
-                        </ext:MenuItems>
-                    </ext:MenuItem>
-                    <ext:MenuItem runat="server" ID="edit">
+                            </ra:MenuItem>
+                        </ra:MenuItems>
+                    </ra:MenuItem>
+                    <ra:MenuItem runat="server" ID="edit">
                         Edit
-                        <ext:MenuItems runat="server" ID="editMenus">
-                            <ext:MenuItem runat="server" id="copy">
+                        <ra:MenuItems runat="server" ID="editMenus">
+                            <ra:MenuItem runat="server" id="copy">
                                 Copy
-                            </ext:MenuItem>
-                            <ext:MenuItem runat="server" id="paste">
+                            </ra:MenuItem>
+                            <ra:MenuItem runat="server" id="paste">
                                 Paste
-                            </ext:MenuItem>
-                            <ext:MenuItem runat="server" id="cut">
+                            </ra:MenuItem>
+                            <ra:MenuItem runat="server" id="cut">
                                 Cut
-                            </ext:MenuItem>
-                        </ext:MenuItems>
-                    </ext:MenuItem>
-                    <ext:MenuItem runat="server" ID="windows">
+                            </ra:MenuItem>
+                        </ra:MenuItems>
+                    </ra:MenuItem>
+                    <ra:MenuItem runat="server" ID="windows">
                         Windows
-                        <ext:MenuItems runat="server" ID="windowsSub">
-                            <ext:MenuItem runat="server" id="arrange">
+                        <ra:MenuItems runat="server" ID="windowsSub">
+                            <ra:MenuItem runat="server" id="arrange">
                                 Arrange
-                                <ext:MenuItems runat="server" ID="arrWindows">
-                                    <ext:MenuItem runat="server" id="leftAligned">
+                                <ra:MenuItems runat="server" ID="arrWindows">
+                                    <ra:MenuItem runat="server" id="leftAligned">
                                         Left-Aligned
-                                    </ext:MenuItem>
-                                    <ext:MenuItem runat="server" id="rightAligned">
+                                    </ra:MenuItem>
+                                    <ra:MenuItem runat="server" id="rightAligned">
                                         Right-Aligned
-                                    </ext:MenuItem>
-                                </ext:MenuItems>
-                            </ext:MenuItem>
-                            <ext:MenuItem runat="server" id="closeAll">
+                                    </ra:MenuItem>
+                                </ra:MenuItems>
+                            </ra:MenuItem>
+                            <ra:MenuItem runat="server" id="closeAll">
                                 Close all
-                            </ext:MenuItem>
-                        </ext:MenuItems>
-                    </ext:MenuItem>
-                </ext:MenuItems>
-            </ext:Menu>
+                            </ra:MenuItem>
+                        </ra:MenuItems>
+                    </ra:MenuItem>
+                </ra:MenuItems>
+            </ra:Menu>
 
             <!-- Top left parts -->
-            <ext:Window 
+            <ra:Window 
                 runat="server" 
                 ID="wndTopLeft" 
                 Caption="Top left"
@@ -120,10 +110,10 @@
                         ALT+SHIFT+F gives focus to filtering TextBox in FireFox. ALT + F in Chrome
                     </p>
                 </div>
-            </ext:Window>
+            </ra:Window>
 
             <!-- Bottom left -->
-            <ext:Window 
+            <ra:Window 
                 runat="server" 
                 Closable="false" 
                 Movable="false"
@@ -141,10 +131,10 @@
                         </ul>
                     </div>
                 </ra:Panel>
-            </ext:Window>
+            </ra:Window>
 
             <!-- Right - main content -->
-            <ext:Window 
+            <ra:Window 
                 runat="server" 
                 Closable="false" 
                 Movable="false" 
@@ -239,11 +229,11 @@
                         </asp:GridView>
                     </ra:Panel>
                 </ra:Panel>
-            </ext:Window>
+            </ra:Window>
         </ra:Panel>
 
         <!-- Login Window -->
-        <ext:Window 
+        <ra:Window 
             runat="server" 
             Caption="Edit entry" 
             DefaultWidget="editSave"
@@ -278,7 +268,7 @@
                                 runat="server" 
                                 OnClick="editShowCalendar_Click"
                                 ID="editShowCalendar" />
-                            <ext:Calendar 
+                            <ra:Calendar 
                                 runat="server" 
                                 ID="editBirth" 
                                 Visible="false" 
@@ -297,7 +287,7 @@
                     style="position:absolute;right:10px;bottom:10px;" />
             </div>
             <ra:BehaviorObscurable runat="server" ID="BehaviorObscurable1" />
-        </ext:Window>
+        </ra:Window>
     </form>
 </body>
 </html>

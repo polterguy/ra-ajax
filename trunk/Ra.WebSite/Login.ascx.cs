@@ -5,6 +5,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Entity;
 using Ra.Widgets;
+using Ra.Effects;
 
 namespace RaWebsite
 {

@@ -4,16 +4,6 @@
     CodeFile="Ra.WebMethod.ascx.cs" 
     Inherits="Docs_Controls_WebMethod" %>
 
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
-
 <script type="text/javascript">
 
 function foo() {

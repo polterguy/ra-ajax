@@ -4,16 +4,6 @@
     CodeFile="Viewport-Sample.aspx.cs" 
     Inherits="Samples.Viewport" %>
 
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -30,7 +20,7 @@
             runat="server" 
             ID="everything" 
             class="main">
-            <ext:ResizeHandler 
+            <ra:ResizeHandler 
                 runat="server" 
                 OnResized="resizer_Resized"
                 ID="resizer" />
@@ -55,63 +45,63 @@
             </ra:Panel>
 
             <!-- Menu -->
-            <ext:Menu 
+            <ra:Menu 
                 runat="server" 
                 ID="menu" 
                 OnMenuItemSelected="menu_MenuItemSelected">
-                <ext:MenuItems runat="server" ID="mainItems">
-                    <ext:MenuItem runat="server" ID="file">
+                <ra:MenuItems runat="server" ID="mainItems">
+                    <ra:MenuItem runat="server" ID="file">
                         File
-                        <ext:MenuItems runat="server" ID="fileMenus">
-                            <ext:MenuItem runat="server" id="openFile">
+                        <ra:MenuItems runat="server" ID="fileMenus">
+                            <ra:MenuItem runat="server" id="openFile">
                                 Open file
-                            </ext:MenuItem>
-                            <ext:MenuItem runat="server" id="saveFile">
+                            </ra:MenuItem>
+                            <ra:MenuItem runat="server" id="saveFile">
                                 Save file
-                            </ext:MenuItem>
-                            <ext:MenuItem runat="server" id="saveFileAs">
+                            </ra:MenuItem>
+                            <ra:MenuItem runat="server" id="saveFileAs">
                                 Save file as...
-                            </ext:MenuItem>
-                        </ext:MenuItems>
-                    </ext:MenuItem>
-                    <ext:MenuItem runat="server" ID="edit">
+                            </ra:MenuItem>
+                        </ra:MenuItems>
+                    </ra:MenuItem>
+                    <ra:MenuItem runat="server" ID="edit">
                         Edit
-                        <ext:MenuItems runat="server" ID="editMenus">
-                            <ext:MenuItem runat="server" id="copy">
+                        <ra:MenuItems runat="server" ID="editMenus">
+                            <ra:MenuItem runat="server" id="copy">
                                 Copy
-                            </ext:MenuItem>
-                            <ext:MenuItem runat="server" id="paste">
+                            </ra:MenuItem>
+                            <ra:MenuItem runat="server" id="paste">
                                 Paste
-                            </ext:MenuItem>
-                            <ext:MenuItem runat="server" id="cut">
+                            </ra:MenuItem>
+                            <ra:MenuItem runat="server" id="cut">
                                 Cut
-                            </ext:MenuItem>
-                        </ext:MenuItems>
-                    </ext:MenuItem>
-                    <ext:MenuItem runat="server" ID="windows">
+                            </ra:MenuItem>
+                        </ra:MenuItems>
+                    </ra:MenuItem>
+                    <ra:MenuItem runat="server" ID="windows">
                         Windows
-                        <ext:MenuItems runat="server" ID="windowsSub">
-                            <ext:MenuItem runat="server" id="arrange">
+                        <ra:MenuItems runat="server" ID="windowsSub">
+                            <ra:MenuItem runat="server" id="arrange">
                                 Arrange
-                                <ext:MenuItems runat="server" ID="arrWindows">
-                                    <ext:MenuItem runat="server" id="leftAligned">
+                                <ra:MenuItems runat="server" ID="arrWindows">
+                                    <ra:MenuItem runat="server" id="leftAligned">
                                         Left-Aligned
-                                    </ext:MenuItem>
-                                    <ext:MenuItem runat="server" id="rightAligned">
+                                    </ra:MenuItem>
+                                    <ra:MenuItem runat="server" id="rightAligned">
                                         Right-Aligned
-                                    </ext:MenuItem>
-                                </ext:MenuItems>
-                            </ext:MenuItem>
-                            <ext:MenuItem runat="server" id="closeAll">
+                                    </ra:MenuItem>
+                                </ra:MenuItems>
+                            </ra:MenuItem>
+                            <ra:MenuItem runat="server" id="closeAll">
                                 Close all
-                            </ext:MenuItem>
-                        </ext:MenuItems>
-                    </ext:MenuItem>
-                </ext:MenuItems>
-            </ext:Menu>
+                            </ra:MenuItem>
+                        </ra:MenuItems>
+                    </ra:MenuItem>
+                </ra:MenuItems>
+            </ra:Menu>
 
             <!-- Top left parts -->
-            <ext:Window 
+            <ra:Window 
                 runat="server" 
                 ID="wndTopLeft" 
                 Caption="Top left"
@@ -119,65 +109,65 @@
                 Movable="false" 
                 Closable="false">
                 <div style="height:250px;overflow:auto;">
-                    <ext:Tree 
+                    <ra:Tree 
                         runat="server" 
                         ID="tree" 
                         OnSelectedNodeChanged="tree_SelectedNodeChanged"
                         Expansion="SingleClickPlusSign">
 
-                        <ext:TreeNodes ID="TreeNodes1" runat="server" Expanded="true">
-                            <ext:TreeNode runat="server" ID="good" Text="Wow samples...">
-                                <ext:TreeNodes ID="TreeNodes2" runat="server" Expanded="true">
-                                    <ext:TreeNode runat="server" ID="TreeNode1">
+                        <ra:TreeNodes ID="TreeNodes1" runat="server" Expanded="true">
+                            <ra:TreeNode runat="server" ID="good" Text="Wow samples...">
+                                <ra:TreeNodes ID="TreeNodes2" runat="server" Expanded="true">
+                                    <ra:TreeNode runat="server" ID="TreeNode1">
                                         <a runat="server" href="~">Main Ajax Samples</a>
-                                    </ext:TreeNode>
-                                    <ext:TreeNode runat="server" ID="TreeNode6">
+                                    </ra:TreeNode>
+                                    <ra:TreeNode runat="server" ID="TreeNode6">
                                         <a href="http://ra-ajax.org">Main Ra-Ajax website</a>
-                                    </ext:TreeNode>
-                                </ext:TreeNodes>
-                            </ext:TreeNode>
-                            <ext:TreeNode runat="server" ID="bad">
+                                    </ra:TreeNode>
+                                </ra:TreeNodes>
+                            </ra:TreeNode>
+                            <ra:TreeNode runat="server" ID="bad">
                                 <span title="This is the stuff we really dislike... :(">
                                     Proprietary lock-in crap
                                 </span>
-                                <ext:TreeNodes ID="TreeNodes6" runat="server">
-                                    <ext:TreeNode runat="server" ID="rigid" Text="Adobe Flex" />
-                                    <ext:TreeNode runat="server" ID="silvercrap" Text="Silverlight" />
-                                    <ext:TreeNode runat="server" ID="ActiveX" Text="ActiveX">
-                                        <ext:TreeNodes ID="TreeNodes7" runat="server">
-                                            <ext:TreeNode runat="server" ID="activex1" Text="ActiveX 1.0" />
-                                            <ext:TreeNode runat="server" ID="activex2" Text="ActiveX 2.0" />
-                                        </ext:TreeNodes>
-                                    </ext:TreeNode>
-                                </ext:TreeNodes>
-                            </ext:TreeNode>
-                            <ext:TreeNode runat="server" ID="recipes">
+                                <ra:TreeNodes ID="TreeNodes6" runat="server">
+                                    <ra:TreeNode runat="server" ID="rigid" Text="Adobe Flex" />
+                                    <ra:TreeNode runat="server" ID="silvercrap" Text="Silverlight" />
+                                    <ra:TreeNode runat="server" ID="ActiveX" Text="ActiveX">
+                                        <ra:TreeNodes ID="TreeNodes7" runat="server">
+                                            <ra:TreeNode runat="server" ID="activex1" Text="ActiveX 1.0" />
+                                            <ra:TreeNode runat="server" ID="activex2" Text="ActiveX 2.0" />
+                                        </ra:TreeNodes>
+                                    </ra:TreeNode>
+                                </ra:TreeNodes>
+                            </ra:TreeNode>
+                            <ra:TreeNode runat="server" ID="recipes">
                                 <span title="Cakes...">
                                     Cakes recipes
                                 </span>
-                                <ext:TreeNodes ID="cakeRecipes" runat="server">
-                                    <ext:TreeNode runat="server" ID="brownie" Text="Brownies" />
-                                    <ext:TreeNode runat="server" ID="applecake" Text="Apple Cake" />
-                                    <ext:TreeNode runat="server" ID="crackers" Text="Crackers">
-                                        <ext:TreeNodes ID="cracks" runat="server">
-                                            <ext:TreeNode runat="server" ID="ritz" Text="Ritz" />
-                                            <ext:TreeNode runat="server" ID="chochips" Text="Chocolate chips" />
-                                        </ext:TreeNodes>
-                                    </ext:TreeNode>
-                                </ext:TreeNodes>
-                            </ext:TreeNode>
+                                <ra:TreeNodes ID="cakeRecipes" runat="server">
+                                    <ra:TreeNode runat="server" ID="brownie" Text="Brownies" />
+                                    <ra:TreeNode runat="server" ID="applecake" Text="Apple Cake" />
+                                    <ra:TreeNode runat="server" ID="crackers" Text="Crackers">
+                                        <ra:TreeNodes ID="cracks" runat="server">
+                                            <ra:TreeNode runat="server" ID="ritz" Text="Ritz" />
+                                            <ra:TreeNode runat="server" ID="chochips" Text="Chocolate chips" />
+                                        </ra:TreeNodes>
+                                    </ra:TreeNode>
+                                </ra:TreeNodes>
+                            </ra:TreeNode>
 
-                            <ext:TreeNode runat="server" ID="dynamicNode" Text="Dynamically loaded nodes...">
-                                <ext:TreeNodes ID="dynamicNodes" runat="server" />
-                            </ext:TreeNode>
+                            <ra:TreeNode runat="server" ID="dynamicNode" Text="Dynamically loaded nodes...">
+                                <ra:TreeNodes ID="dynamicNodes" runat="server" />
+                            </ra:TreeNode>
 
-                        </ext:TreeNodes>
-                    </ext:Tree>
+                        </ra:TreeNodes>
+                    </ra:Tree>
                 </div>
-            </ext:Window>
+            </ra:Window>
 
             <!-- Bottom left -->
-            <ext:Window 
+            <ra:Window 
                 runat="server" 
                 Closable="false" 
                 Movable="false"
@@ -213,10 +203,10 @@
                         </p>
                     </div>
                 </ra:Panel>
-            </ext:Window>
+            </ra:Window>
 
             <!-- Right - main content -->
-            <ext:Window 
+            <ra:Window 
                 runat="server" 
                 Closable="false" 
                 Movable="false"
@@ -229,8 +219,8 @@
                     ID="pnlRight" 
                     style="height:488px;overflow:auto;">
                     <div style="padding:5px;">
-                        <ext:TabControl runat="server" ID="tab">
-                            <ext:TabView 
+                        <ra:TabControl runat="server" ID="tab">
+                            <ra:TabView 
                                 Caption="Starter-Kit Tab 1" 
                                 runat="server" 
                                 ID="tab1" 
@@ -269,8 +259,8 @@
                                     work towards other skins. Especially if that other skin have different size
                                     of the borders and such for the Ajax Windows, Ajax TabControls etc...
                                 </p>
-                            </ext:TabView>
-                            <ext:TabView 
+                            </ra:TabView>
+                            <ra:TabView 
                                 Caption="Tab 2" 
                                 runat="server" 
                                 ID="tab2" 
@@ -307,8 +297,8 @@
         	                        world when it comes to Ra-Ajax development. We also do training in use of Ra-Ajax. If you have needs
         	                        we have the skills!
         	                    </p>
-                            </ext:TabView>
-                            <ext:TabView 
+                            </ra:TabView>
+                            <ra:TabView 
                                 Caption="Third" 
                                 runat="server" 
                                 ID="tab3" 
@@ -335,15 +325,15 @@
         	                        Epsim lorum considari, 
         	                        Epsim lorum considari, 
         	                    </p>
-                            </ext:TabView>
-                        </ext:TabControl>
+                            </ra:TabView>
+                        </ra:TabControl>
                     </div>
                 </ra:Panel>
-            </ext:Window>
+            </ra:Window>
         </ra:Panel>
 
         <!-- Login Window -->
-        <ext:Window 
+        <ra:Window 
             runat="server" 
             Caption="Please login"
             Visible="false" 
@@ -385,7 +375,7 @@
                 </table>
             </div>
             <ra:BehaviorObscurable runat="server" ID="loginModal" />
-        </ext:Window>
+        </ra:Window>
     </form>
 </body>
 </html>

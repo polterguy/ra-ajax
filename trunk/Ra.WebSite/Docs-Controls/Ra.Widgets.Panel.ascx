@@ -4,16 +4,6 @@
     CodeFile="Ra.Widgets.Panel.ascx.cs" 
     Inherits="Docs_Controls_Panel" %>
 
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
-
 <ra:LinkButton 
     runat="server" 
     ID="lnk" 

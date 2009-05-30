@@ -7,6 +7,7 @@
 
 using System;
 using Ra.Extensions;
+using Ra.Extensions.Widgets;
 
 public partial class Docs_Controls_MessageBox : System.Web.UI.UserControl
 {

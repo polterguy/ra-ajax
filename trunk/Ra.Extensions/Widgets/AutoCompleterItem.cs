@@ -14,7 +14,7 @@ using Ra.Widgets;
 using System.IO;
 using HTML = System.Web.UI.HtmlControls;
 
-namespace Ra.Extensions
+namespace Ra.Extensions.Widgets
 {
     /**
      * AutoCompleterItem, item control type for AutoCompleter Widget. When the RetrieveAutoCompleterItems

@@ -13,6 +13,7 @@ using System.Web.UI;
 using System.ComponentModel;
 using System.Collections.Generic;
 using System.Web;
+using Ra.Behaviors;
 
 /**
  * Namespace where all the Widgets from the Ra core can be found together with some of their

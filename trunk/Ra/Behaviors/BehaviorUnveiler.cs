@@ -12,7 +12,7 @@ using System.Drawing;
 using WEBCTRLS = System.Web.UI.WebControls;
 using ASP = System.Web.UI;
 
-namespace Ra.Widgets
+namespace Ra.Behaviors
 {
     /**
      * Will make the Control veiled by default and will be unveiled only upon mouse hover. Useful for

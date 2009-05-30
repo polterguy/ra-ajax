@@ -15,7 +15,7 @@ using System.IO;
 using HTML = System.Web.UI.HtmlControls;
 using System.Collections.Generic;
 
-namespace Ra.Extensions
+namespace Ra.Extensions.Widgets
 {
     /**
      * Wrapper around TreeNodes which again is a wrapper around TreeNode. This is the "root" 

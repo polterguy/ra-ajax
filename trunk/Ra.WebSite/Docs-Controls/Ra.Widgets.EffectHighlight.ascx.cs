@@ -9,6 +9,7 @@ using System;
 using Ra.Extensions;
 using System.Threading;
 using Ra.Widgets;
+using Ra.Effects;
 
 public partial class Docs_Controls_EffectHighlight : System.Web.UI.UserControl
 {

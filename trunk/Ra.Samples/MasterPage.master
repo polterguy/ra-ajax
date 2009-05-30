@@ -4,16 +4,6 @@
     CodeFile="MasterPage.master.cs" 
     Inherits="Samples.MasterPage" %>
 
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
@@ -124,13 +114,13 @@
                     </div>
                     <div id="navigation">
                         <div id="navigationContent">
-	                        <ext:Accordion 
+	                        <ra:Accordion 
 	                            runat="server" 
 	                            ClientSideChange="true" 
 	                            ID="accordion" 
 	                            AnimationSpeed="400">
 
-	                            <ext:AccordionView 
+	                            <ra:AccordionView 
 	                                Caption="Concept Samples" 
 	                                runat="server" 
 	                                ID="accView2">
@@ -215,9 +205,9 @@
                                             id="BehaviorUnveiler4" />
                                     </ra:Panel>
 
-	                            </ext:AccordionView>
+	                            </ra:AccordionView>
 
-	                            <ext:AccordionView 
+	                            <ra:AccordionView 
 	                                Caption="Ajax Starter-Kits" 
 	                                runat="server" 
 	                                ID="accView1">
@@ -302,22 +292,22 @@
                                             id="unveiler5" />
                                     </ra:Panel>
 
-	                            </ext:AccordionView>
+	                            </ra:AccordionView>
 
-	                        </ext:Accordion>
+	                        </ra:Accordion>
 	                    </div>
                     </div>
                     <div id="content">
                         <div id="contentContent">
                             <div style="padding:0; overflow:hidden;">
-                                <ext:TabControl 
+                                <ra:TabControl 
                                     runat="server" 
                                     ID="tabShowCode" 
                                     style="display:none;"
                                     Visible="false" 
                                     CssClass="tab codeWrapper">
 
-                                    <ext:TabView 
+                                    <ra:TabView 
                                         runat="server" 
                                         ID="tabCSCode" 
                                         Caption="C# Code" 
@@ -327,9 +317,9 @@
                                             ID="lblCodeCS" 
                                             Tag="pre" 
                                             CssClass="code" />
-                                    </ext:TabView>
+                                    </ra:TabView>
 
-                                    <ext:TabView 
+                                    <ra:TabView 
                                         runat="server" 
                                         ID="tabASPXCode" 
                                         Caption=".ASPX Markup" 
@@ -339,9 +329,9 @@
                                             ID="lblCodeASPX" 
                                             Tag="pre" 
                                             CssClass="code" />
-                                    </ext:TabView>
+                                    </ra:TabView>
 
-                                </ext:TabControl>
+                                </ra:TabControl>
                             </div>
                             <div id="pageContent">
                                 <ra:Panel 

@@ -4,16 +4,6 @@
     CodeFile="Ra.Widgets.EffectFadeIn.ascx.cs" 
     Inherits="Docs_Controls_EffectFadeIn" %>
 
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
-
 <ra:Button 
     runat="server" 
     ID="btn" 

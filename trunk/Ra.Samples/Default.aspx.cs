@@ -10,6 +10,7 @@ using Ra;
 using System;
 using Ra.Widgets;
 using System.Web.UI;
+using Ra.Effects;
 
 namespace Samples
 {

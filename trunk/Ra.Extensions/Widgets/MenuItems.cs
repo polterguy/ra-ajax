@@ -14,8 +14,9 @@ using Ra.Widgets;
 using System.IO;
 using HTML = System.Web.UI.HtmlControls;
 using System.Collections.Generic;
+using Ra.Effects;
 
-namespace Ra.Extensions
+namespace Ra.Extensions.Widgets
 {
     /**
      * A collection of MenuItem(s). This is a single MenuItem in which a MenuItems (collection) can have many

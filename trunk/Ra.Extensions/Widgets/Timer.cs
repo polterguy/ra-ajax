@@ -16,7 +16,7 @@ using HTML = System.Web.UI.HtmlControls;
 
 [assembly: ASP.WebResource("Extensions.Js.Timer.js", "text/javascript")]
 
-namespace Ra.Extensions
+namespace Ra.Extensions.Widgets
 {
     /**
      * Ajax timer, raises its Tick event handler back to server periodically. Alternative to Comet 

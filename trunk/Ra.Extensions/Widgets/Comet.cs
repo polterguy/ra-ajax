@@ -21,7 +21,7 @@ using System.Reflection;
 
 [assembly: ASP.WebResource("Extensions.Js.Comet.js", "text/javascript")]
 
-namespace Ra.Extensions
+namespace Ra.Extensions.Widgets
 {
     /**
      * Comet component, also known under the LazyHttp name, StreamingHttp and several other pseudonyms.

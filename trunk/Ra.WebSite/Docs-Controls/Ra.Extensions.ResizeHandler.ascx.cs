@@ -8,6 +8,8 @@
 using System;
 using Ra.Extensions;
 using Ra.Widgets;
+using Ra.Extensions.Widgets;
+using Ra.Effects;
 
 public partial class Docs_Controls_ResizeHandler : System.Web.UI.UserControl
 {

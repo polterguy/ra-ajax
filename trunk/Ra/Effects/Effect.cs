@@ -10,7 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Web.UI;
 
-namespace Ra.Widgets
+namespace Ra.Effects
 {
     /**
      * Base class for all effects. This class is highly plugable and it is very easy to create your 

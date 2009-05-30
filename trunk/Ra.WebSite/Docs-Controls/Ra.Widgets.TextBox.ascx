@@ -4,16 +4,6 @@
     CodeFile="Ra.Widgets.TextBox.ascx.cs" 
     Inherits="Docs_Controls_TextBox" %>
 
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
-
 <ra:TextBox 
     runat="server" 
     ID="txt" 

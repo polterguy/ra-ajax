@@ -25,6 +25,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Ra.Samples", "Ra.Samples\", "{9917585A-2ED0-4338-80D2-B9DDD3183F90}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFramework = "2.0"
+		ProjectReferences = "{82727C73-0B10-4F58-93F4-841E9397302C}|Ra.dll;{DA39B87F-8E68-4461-9C24-5778921497A5}|Extensions.dll;{1D24FB65-C035-44E5-83A4-34AA1DA84BF4}|Ra.Selector.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/Ra.Samples"
 		Debug.AspNetCompiler.PhysicalPath = "Ra.Samples\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Ra.Samples\"
@@ -65,6 +66,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Ra.WebSite", "Ra.WebSite\", "{A323A312-843F-4168-94E0-580D0B4E80F4}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFramework = "2.0"
+		ProjectReferences = "{82727C73-0B10-4F58-93F4-841E9397302C}|Ra.dll;{DA39B87F-8E68-4461-9C24-5778921497A5}|Ra.Extensions.dll;{1D24FB65-C035-44E5-83A4-34AA1DA84BF4}|Ra.Selector.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/Ra.WebSite"
 		Debug.AspNetCompiler.PhysicalPath = "Ra.WebSite\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Ra.WebSite\"
@@ -136,7 +138,6 @@ Global
 		{DB118D01-8674-4843-9A57-F99B810E4D16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DB118D01-8674-4843-9A57-F99B810E4D16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB118D01-8674-4843-9A57-F99B810E4D16}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{DB118D01-8674-4843-9A57-F99B810E4D16}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{DB118D01-8674-4843-9A57-F99B810E4D16}.Release|.NET.ActiveCfg = Release|Any CPU
 		{DB118D01-8674-4843-9A57-F99B810E4D16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB118D01-8674-4843-9A57-F99B810E4D16}.Release|Any CPU.Build.0 = Release|Any CPU
@@ -156,7 +157,6 @@ Global
 		{EF017E8B-C5FA-4E8D-92F4-710BA7933DDF}.Debug|.NET.Build.0 = Debug|.NET
 		{EF017E8B-C5FA-4E8D-92F4-710BA7933DDF}.Debug|Any CPU.ActiveCfg = Debug|.NET
 		{EF017E8B-C5FA-4E8D-92F4-710BA7933DDF}.Debug|Mixed Platforms.ActiveCfg = Debug|.NET
-		{EF017E8B-C5FA-4E8D-92F4-710BA7933DDF}.Debug|Mixed Platforms.Build.0 = Debug|.NET
 		{EF017E8B-C5FA-4E8D-92F4-710BA7933DDF}.Release|.NET.ActiveCfg = Debug|.NET
 		{EF017E8B-C5FA-4E8D-92F4-710BA7933DDF}.Release|.NET.Build.0 = Debug|.NET
 		{EF017E8B-C5FA-4E8D-92F4-710BA7933DDF}.Release|Any CPU.ActiveCfg = Debug|.NET

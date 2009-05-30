@@ -4,17 +4,7 @@
     CodeFile="Ra.Extensions.InPlaceEdit.ascx.cs" 
     Inherits="Docs_Controls_InPlaceEdit" %>
 
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
-
-<ext:InPlaceEdit 
+<ra:InPlaceEdit 
     runat="server" 
     ID="edit" 
     OnTextChanged="edit_TextChanged"

@@ -6,16 +6,6 @@
     Inherits="Samples.Chat" 
     Title="Ra-Ajax Chat Sample" %>
 
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
-
 <asp:Content 
     ID="Content1" 
     ContentPlaceHolderID="cnt1" 
@@ -25,13 +15,13 @@
     <p>
         How to create an Ajax chat application in less then 100 lines of code
     </p>
-    <ext:Window 
+    <ra:Window 
         runat="server" 
         Closable="false"
         Caption="Chat with other visitors"
         style="width:650px;position:absolute;z-index:50;"
         ID="chatWindow">
-        <ext:Timer 
+        <ra:Timer 
             runat="server" 
             ID="timer" 
             OnTick="timer_Tick"
@@ -52,7 +42,7 @@
                 Text="Type here..." 
                 ID="txt" />
         </div>
-    </ext:Window>
+    </ra:Window>
     <div style="height:400px;">&nbsp;</div>
     <ra:Panel 
         runat="server" 

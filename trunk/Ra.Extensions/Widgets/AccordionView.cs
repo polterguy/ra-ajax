@@ -13,8 +13,9 @@ using ASP = System.Web.UI;
 using Ra.Widgets;
 using System.IO;
 using HTML = System.Web.UI.HtmlControls;
+using Ra.Effects;
 
-namespace Ra.Extensions
+namespace Ra.Extensions.Widgets
 {
     /**
      * Panels for the Accordion control. An Accordion is basically just a collection of 

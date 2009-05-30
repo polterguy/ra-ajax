@@ -12,7 +12,7 @@ using System.Drawing;
 using WEBCTRLS = System.Web.UI.WebControls;
 using ASP = System.Web.UI;
 
-namespace Ra.Widgets
+namespace Ra.Behaviors
 {
     /**
      * BehaviorObscurable, obscures all elements with lower z-index than the Parent Control.

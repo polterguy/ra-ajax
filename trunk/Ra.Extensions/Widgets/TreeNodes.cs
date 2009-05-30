@@ -14,8 +14,9 @@ using Ra.Widgets;
 using System.IO;
 using HTML = System.Web.UI.HtmlControls;
 using System.Collections.Generic;
+using Ra.Effects;
 
-namespace Ra.Extensions
+namespace Ra.Extensions.Widgets
 {
     /**
      * Collection of TreeNode items within either a Tree or a TreeNode control. Every Tree and TreeNode

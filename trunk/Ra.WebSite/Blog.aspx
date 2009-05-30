@@ -7,16 +7,6 @@
     ValidateRequest="false"
     Title="Untitled Page" %>
 
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
-
 <asp:Content 
     ID="Content1" 
     ContentPlaceHolderID="cnt1" 
@@ -66,7 +56,7 @@
             OnClick="btnCreate_Click"
             Text="Create new blog" 
             Visible="false" />
-         <ext:Window 
+         <ra:Window 
 	        runat="server"
 	        ID="confirmDeleteWindow"
 	        Caption="Confirm Delete"
@@ -79,8 +69,8 @@
 	                <ra:Button runat="server" ID="cancelDeleteButton" Text="No" OnClick="cancelDeleteButton_Click" />
 	            </div>
 	        </div>
-	    </ext:Window>
-        <ext:Window 
+	    </ra:Window>
+        <ra:Window 
 	        runat="server"
 	        ID="pnlNewBlog"
 	        Caption="Add New Blog Post"
@@ -118,8 +108,8 @@
                     Text="Images" 
                     OnClick="btnImages_Click" />
             </div>
-        </ext:Window>
-        <ext:Window 
+        </ra:Window>
+        <ra:Window 
 	        runat="server"
 	        ID="pnlImages"
 	        Caption="Add New Image"
@@ -150,7 +140,7 @@
                 </ItemTemplate>
             </asp:Repeater>
             </div>
-        </ext:Window>
+        </ra:Window>
         <div style="height:500px;">&nbsp;</div>
     </div>
 </asp:Content>

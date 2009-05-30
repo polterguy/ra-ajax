@@ -4,16 +4,6 @@
     CodeFile="Ajax-Forum-Starter-Kit.aspx.cs" 
     Inherits="Samples.AjaxForum" %>
 
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -26,7 +16,7 @@
 <body>
     <form id="form1" runat="server">
     
-        <ext:ResizeHandler 
+        <ra:ResizeHandler 
             runat="server" 
             OnResized="resizer_Resized"
             ID="resizer" />
@@ -49,7 +39,7 @@
         </ra:Panel>
 
         <!-- Top left parts -->
-        <ext:Window 
+        <ra:Window 
             runat="server" 
             ID="wndTopLeft" 
             Caption="Top left parts"
@@ -86,10 +76,10 @@
                     </strong>
                 </p>
             </div>
-        </ext:Window>
+        </ra:Window>
 
         <!-- Bottom left -->
-        <ext:Window 
+        <ra:Window 
             runat="server" 
             Closable="false" 
             Movable="false"
@@ -107,10 +97,10 @@
                     </ul>
                 </div>
             </ra:Panel>
-        </ext:Window>
+        </ra:Window>
 
         <!-- Right - main content -->
-        <ext:Window 
+        <ra:Window 
             runat="server" 
             Closable="false" 
             Movable="false"
@@ -123,7 +113,7 @@
                 ID="pnlRight" 
                 style="background:White url('media/ajax.jpg') no-repeat;min-height:280px;overflow:auto;padding:15px;">
                 <div style="padding:5px;">
-                    <ext:Tree 
+                    <ra:Tree 
                         runat="server" 
                         ID="tree" 
                         CssClass="tree"
@@ -136,7 +126,7 @@
                         <div class="dateTop">Date</div>
                         <div class="headerSpacer">&nbsp;</div>
 
-                        <ext:TreeNodes 
+                        <ra:TreeNodes 
                             ID="rootNodes" 
                             runat="server" 
                             Expanded="true" />
@@ -158,12 +148,12 @@
                                 OnClick="next_Click"
                                 Text="next >>" />
                         </div>
-                    </ext:Tree>
+                    </ra:Tree>
                 </div>
             </ra:Panel>
-        </ext:Window>
+        </ra:Window>
 
-        <ext:Window 
+        <ra:Window 
             runat="server" 
             ID="newPostWnd" 
             Visible="false"
@@ -196,7 +186,7 @@
                 runat="server" 
                 ID="obscureNewWindow" />
 
-        </ext:Window>
+        </ra:Window>
 
     </form>
 </body>

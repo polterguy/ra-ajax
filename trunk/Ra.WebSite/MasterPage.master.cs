@@ -13,6 +13,7 @@ using System.Web;
 using System.Drawing;
 using System.Web.UI;
 using Ra;
+using Ra.Effects;
 
 namespace Samples
 {

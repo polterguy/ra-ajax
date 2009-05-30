@@ -11,7 +11,7 @@ using Ra.Widgets;
 using Ra.Extensions;
 using ASP = System.Web.UI;
 
-namespace Ra.Extensions
+namespace Ra.Extensions.Widgets
 {
     /**
      * DateTimePicker Ajax Control. Inherits from Calendar and handles 

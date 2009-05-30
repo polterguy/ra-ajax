@@ -12,7 +12,7 @@ using System.Drawing;
 using WEBCTRLS = System.Web.UI.WebControls;
 using ASP = System.Web.UI;
 
-namespace Ra.Widgets
+namespace Ra.Behaviors
 {
     /**
      * Will render an "obscure entire webpage" div with a very high z-index when control attached

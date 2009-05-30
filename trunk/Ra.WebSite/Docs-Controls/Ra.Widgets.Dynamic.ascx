@@ -4,16 +4,6 @@
     CodeFile="Ra.Widgets.Dynamic.ascx.cs" 
     Inherits="Docs_Controls_BehaviorUpdater" %>
 
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
-
 <ra:SelectList 
     runat="server" 
     OnSelectedIndexChanged="sel_SelectedIndexChanged"

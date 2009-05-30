@@ -9,10 +9,12 @@
 Imports System
 Imports Ra.Widgets
 Imports Ra.Extensions
+Imports Ra.Extensions.Widgets
+Imports Ra.Effects
 
 Namespace Samples
-    Public Partial Class ViewportGridView
-        Inherits System.Web.UI.Page
+    Partial Public Class ViewportGridView
+        Inherits System.Web.UI.Page
 
         Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs)
             ' Remove this line, just here for "testing purposes" to make it easy to "log out"

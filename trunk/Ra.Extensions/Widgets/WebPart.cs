@@ -15,8 +15,10 @@ using System.IO;
 using HTML = System.Web.UI.HtmlControls;
 using System.Collections.Generic;
 using System.Drawing;
+using Ra.Behaviors;
+using Ra.Effects;
 
-namespace Ra.Extensions
+namespace Ra.Extensions.Widgets
 {
     /**
      * WebPart - kind of like a "mini Window" or a "special panel". Useful for creating among other things

@@ -4,16 +4,6 @@
     CodeFile="Viewport-Calendar-Starter-Kit.aspx.cs" 
     Inherits="Samples.CalendarStarter" %>
 
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -26,7 +16,7 @@
     <form id="form1" runat="server">
     
         <!-- Main surface -->
-        <ext:ResizeHandler 
+        <ra:ResizeHandler 
             runat="server" 
             OnResized="resizer_Resized"
             ID="resizer" />
@@ -43,62 +33,62 @@
         </ra:Panel>
 
         <!-- Menu -->
-        <ext:Menu 
+        <ra:Menu 
             runat="server" 
             ID="menu">
-            <ext:MenuItems runat="server" ID="mainItems">
-                <ext:MenuItem runat="server" ID="file">
+            <ra:MenuItems runat="server" ID="mainItems">
+                <ra:MenuItem runat="server" ID="file">
                     File
-                    <ext:MenuItems runat="server" ID="fileMenus">
-                        <ext:MenuItem runat="server" id="openFile">
+                    <ra:MenuItems runat="server" ID="fileMenus">
+                        <ra:MenuItem runat="server" id="openFile">
                             Open file
-                        </ext:MenuItem>
-                        <ext:MenuItem runat="server" id="saveFile">
+                        </ra:MenuItem>
+                        <ra:MenuItem runat="server" id="saveFile">
                             Save file
-                        </ext:MenuItem>
-                        <ext:MenuItem runat="server" id="saveFileAs">
+                        </ra:MenuItem>
+                        <ra:MenuItem runat="server" id="saveFileAs">
                             Save file as...
-                        </ext:MenuItem>
-                    </ext:MenuItems>
-                </ext:MenuItem>
-                <ext:MenuItem runat="server" ID="edit">
+                        </ra:MenuItem>
+                    </ra:MenuItems>
+                </ra:MenuItem>
+                <ra:MenuItem runat="server" ID="edit">
                     Edit
-                    <ext:MenuItems runat="server" ID="editMenus">
-                        <ext:MenuItem runat="server" id="copy">
+                    <ra:MenuItems runat="server" ID="editMenus">
+                        <ra:MenuItem runat="server" id="copy">
                             Copy
-                        </ext:MenuItem>
-                        <ext:MenuItem runat="server" id="paste">
+                        </ra:MenuItem>
+                        <ra:MenuItem runat="server" id="paste">
                             Paste
-                        </ext:MenuItem>
-                        <ext:MenuItem runat="server" id="cut">
+                        </ra:MenuItem>
+                        <ra:MenuItem runat="server" id="cut">
                             Cut
-                        </ext:MenuItem>
-                    </ext:MenuItems>
-                </ext:MenuItem>
-                <ext:MenuItem runat="server" ID="windows">
+                        </ra:MenuItem>
+                    </ra:MenuItems>
+                </ra:MenuItem>
+                <ra:MenuItem runat="server" ID="windows">
                     Windows
-                    <ext:MenuItems runat="server" ID="windowsSub">
-                        <ext:MenuItem runat="server" id="arrange">
+                    <ra:MenuItems runat="server" ID="windowsSub">
+                        <ra:MenuItem runat="server" id="arrange">
                             Arrange
-                            <ext:MenuItems runat="server" ID="arrWindows">
-                                <ext:MenuItem runat="server" id="leftAligned">
+                            <ra:MenuItems runat="server" ID="arrWindows">
+                                <ra:MenuItem runat="server" id="leftAligned">
                                     Left-Aligned
-                                </ext:MenuItem>
-                                <ext:MenuItem runat="server" id="rightAligned">
+                                </ra:MenuItem>
+                                <ra:MenuItem runat="server" id="rightAligned">
                                     Right-Aligned
-                                </ext:MenuItem>
-                            </ext:MenuItems>
-                        </ext:MenuItem>
-                        <ext:MenuItem runat="server" id="closeAll">
+                                </ra:MenuItem>
+                            </ra:MenuItems>
+                        </ra:MenuItem>
+                        <ra:MenuItem runat="server" id="closeAll">
                             Close all
-                        </ext:MenuItem>
-                    </ext:MenuItems>
-                </ext:MenuItem>
-            </ext:MenuItems>
-        </ext:Menu>
+                        </ra:MenuItem>
+                    </ra:MenuItems>
+                </ra:MenuItem>
+            </ra:MenuItems>
+        </ra:Menu>
 
         <!-- Calendar begin -->
-        <ext:Calendar 
+        <ra:Calendar 
             runat="server" 
             ID="calendarStart" 
             Caption="Start of period"
@@ -108,7 +98,7 @@
             style="width:170px;position:absolute;left:5px;top:63px;" />
 
         <!-- Calendar end -->
-        <ext:Calendar 
+        <ra:Calendar 
             runat="server" 
             ID="calendarEnd" 
             Caption="End of period" 
@@ -118,7 +108,7 @@
             style="width:170px;position:absolute;left:180px;top:63px;" />
 
         <!-- Bottom left parts -->
-        <ext:Window 
+        <ra:Window 
             runat="server" 
             ID="wndBottomLeft" 
             Caption="Top left"
@@ -204,10 +194,10 @@
                     OnClick="create_Click"
                     ID="create" />
             </div>
-        </ext:Window>
+        </ra:Window>
 
         <!-- Right - Main Content -->
-        <ext:Window 
+        <ra:Window 
             runat="server" 
             Closable="false" 
             Movable="false"
@@ -226,7 +216,7 @@
                         <ra:HiddenField 
                             runat="server" 
                             ID="activityId" />
-                        <ext:InPlaceEdit 
+                        <ra:InPlaceEdit 
                             runat="server"
                             Tag="h2"
                             style="cursor:pointer;"
@@ -235,7 +225,7 @@
                             runat="server" 
                             style="background-color:Transparent;width:50%;height:170px;border:dotted 1px #999;float:left;margin-right:10px;"
                             ID="activityBody" />
-                        <ext:Calendar 
+                        <ra:Calendar 
                             runat="server" 
                             ID="activityWhen" 
                             StartsOn="Sunday"
@@ -285,10 +275,10 @@
                     </ra:Panel>
                 </div>
             </ra:Panel>
-        </ext:Window>
+        </ra:Window>
 
         <!-- Create new activity Window -->
-        <ext:Window 
+        <ra:Window 
             runat="server" 
             Visible="false"
             Caption="Create new Activity"
@@ -320,7 +310,7 @@
                     </div>
                 </div>
                 <div style="float:left;width:34%;">
-                    <ext:Calendar 
+                    <ra:Calendar 
                         runat="server" 
                         ID="createDate" 
                         StartsOn="Sunday"
@@ -334,7 +324,7 @@
                     Text="Save" />
             </div>
             <ra:BehaviorObscurable runat="server" ID="obscurer" />
-        </ext:Window>
+        </ra:Window>
 
     </form>
 </body>

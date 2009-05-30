@@ -6,11 +6,6 @@
     Inherits="RaWebsite.Blogs" 
     Title="Ra-Ajax Blogs" %>
 
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-
 <asp:Content 
     ID="Content1" 
     ContentPlaceHolderID="cnt1" 
