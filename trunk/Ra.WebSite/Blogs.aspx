@@ -26,7 +26,7 @@
         <span style="display:block;font-size:24px;color:Black;">Thomas Hansen</span>
         <span>
             Thomas Hansen is the founder and owner of Ra-Software. Thomas is also one of the core
-            developers and arcitects behind Ra-Ajax. Thomas blogs about politics, religion, (Ra-)Ajax, 
+            developers and architects behind Ra-Ajax. Thomas blogs about politics, religion, (Ra-)Ajax, 
             development and all other things of immediate interest. Thomas is the copyright holder 
             of Ra-Ajax.
         </span>
@@ -35,8 +35,9 @@
         <img src="media/Rick-Gibson.jpg" alt="Rick Gibson" style="float:left;padding:10px;" />
         <span style="display:block;font-size:24px;color:Black;">Rick Gibson</span>
         <span>
-            Rick lives in Tehama County about twenty miles from Chico, CA. Rick is a community member, user and
-            supporter of Ra-Ajax. Rick blogs about Ra-Ajax and other things he is interested in.
+            Rick lives in Tehama County about twenty miles from Chico, CA. Rick's dog is named
+            John Lennon which should give you an idea of Rick's interests. Rick blogs about sharing, 
+            Ra-Ajax and other things he is interested in.
         </span>
     </a>
     <p style="text-align:center;">
