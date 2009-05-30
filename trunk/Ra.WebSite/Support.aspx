@@ -42,6 +42,17 @@
         physical appearance in Northern California, Oslo Norway and Alexandria Egypt.
     </p>
     <p>
+        You choose how many hours or how much of our services you would like to purchase
+        but smaller jobs will obviously be more expensive then larger jobs. Our prices ranges from
+        $250 per hour to $100 per hour depending on what you would want us to do, the length of the
+        contract and so on. Normally we say yes to most jobs, though we might turn some jobs down
+        due to ideological reasons. For instance we don't create weapon systems, gambling software and
+        software which is illegal or contains obvious moral questions.
+    </p>
+    <p>
+        Ra-Software is an <em>Ethical Company</em>...
+    </p>
+    <p>
         Read about <a href="Author.aspx">our qualifications here</a> or <a href="Testimonials.aspx">what our customers say about us</a>.
     </p>
 </asp:Content>
