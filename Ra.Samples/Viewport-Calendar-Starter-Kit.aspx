@@ -9,7 +9,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Ra-Ajax Calendar Starter-Kit Sample</title>
-    <link href="media/skins/Sapphire/Sapphire-1.1.css" rel="stylesheet" type="text/css" />
+    <link href="media/skins/sapphire/sapphire.css" rel="stylesheet" type="text/css" />
     <link href="media/Calendar-1.0.css" rel="stylesheet" type="text/css" />
 </head>
 <body>

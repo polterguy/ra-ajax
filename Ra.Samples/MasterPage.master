@@ -9,7 +9,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
     <head runat="server">
         <title>Untitled Page</title>
-        <link href="media/skins/steel/Steel-1.1.css" rel="stylesheet" type="text/css" />
+        <link href="media/skins/steel/steel.css" rel="stylesheet" type="text/css" />
         <link href="media/MainStyles-1.0.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
