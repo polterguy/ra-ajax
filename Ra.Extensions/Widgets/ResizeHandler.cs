@@ -14,7 +14,7 @@ using Ra.Widgets;
 using System.IO;
 using HTML = System.Web.UI.HtmlControls;
 
-[assembly: ASP.WebResource("Extensions.Js.ResizeHandler.js", "text/javascript")]
+[assembly: ASP.WebResource("Ra.Extensions.Js.ResizeHandler.js", "text/javascript")]
 
 namespace Ra.Extensions.Widgets
 {
@@ -60,7 +60,7 @@ namespace Ra.Extensions.Widgets
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
-            AjaxManager.Instance.IncludeScriptFromResource(typeof(Timer), "Extensions.Js.ResizeHandler.js");
+            AjaxManager.Instance.IncludeScriptFromResource(typeof(Timer), "Ra.Extensions.Js.ResizeHandler.js");
         }
 
         public int Width

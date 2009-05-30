@@ -15,7 +15,7 @@ using System.IO;
 using HTML = System.Web.UI.HtmlControls;
 using System.Collections.Generic;
 
-[assembly: ASP.WebResource("Extensions.Js.Tree.js", "text/javascript")]
+[assembly: ASP.WebResource("Ra.Extensions.Js.Tree.js", "text/javascript")]
 
 namespace Ra.Extensions.Widgets
 {
@@ -280,7 +280,7 @@ namespace Ra.Extensions.Widgets
         {
             if (ParentTree.ClientSideExpansion)
             {
-                AjaxManager.Instance.IncludeScriptFromResource(typeof(TreeNode), "Extensions.Js.Tree.js");
+                AjaxManager.Instance.IncludeScriptFromResource(typeof(TreeNode), "Ra.Extensions.Js.Tree.js");
             }
 
             if (!(this.Parent is TreeNodes))
