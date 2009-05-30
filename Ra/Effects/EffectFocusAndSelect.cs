@@ -9,7 +9,7 @@
 using System;
 using System.Web.UI;
 
-namespace Ra.Widgets
+namespace Ra.Effects
 {
     /**
      * Will make sure control gets focus when run. Useful for effect which fades a control in and afterwards

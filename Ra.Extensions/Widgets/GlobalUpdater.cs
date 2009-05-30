@@ -18,7 +18,7 @@ using System.Globalization;
 
 [assembly: ASP.WebResource("Extensions.Js.GlobalUpdater.js", "text/javascript")]
 
-namespace Ra.Extensions
+namespace Ra.Extensions.Widgets
 {
     /**
      * A GlobalUpdater is an updater which will be for your entire page. This means that

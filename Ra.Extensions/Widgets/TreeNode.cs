@@ -17,7 +17,7 @@ using System.Collections.Generic;
 
 [assembly: ASP.WebResource("Extensions.Js.Tree.js", "text/javascript")]
 
-namespace Ra.Extensions
+namespace Ra.Extensions.Widgets
 {
     /**
      * TreeNodes actual child items. This is the actual TreeNode for the TreeNodes control. Put these

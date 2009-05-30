@@ -14,6 +14,8 @@ using System.Collections.Generic;
 using System.IO;
 using ColorizerLibrary;
 using RaSelector;
+using Ra.Extensions.Widgets;
+using Ra.Effects;
 
 namespace RaWebsite
 {

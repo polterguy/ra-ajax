@@ -4,28 +4,18 @@
     CodeFile="Ra.Extensions.MessageBox.ascx.cs" 
     Inherits="Docs_Controls_MessageBox" %>
 
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
-
 <ra:Label 
     runat="server" 
     Text="Changes..."
     ID="lbl" />
 
-<ext:ExtButton 
+<ra:ExtButton 
     runat="server" 
     ID="btn" 
     OnCLick="btn_Click"
     Text="Show message box" />
 
-<ext:MessageBox 
+<ra:MessageBox 
     runat="server" 
     ID="msg" 
     MessageBoxType="Get_Text" 

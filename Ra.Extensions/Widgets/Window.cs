@@ -14,8 +14,9 @@ using Ra.Widgets;
 using System.IO;
 using HTML = System.Web.UI.HtmlControls;
 using System.Collections.Generic;
+using Ra.Behaviors;
 
-namespace Ra.Extensions
+namespace Ra.Extensions.Widgets
 {
     /**
      * Window control. This is the equivalent of a Window on desktop systems. Have lots of "candy features"

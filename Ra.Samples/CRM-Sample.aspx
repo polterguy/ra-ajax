@@ -6,16 +6,6 @@
     Inherits="Samples.CRMSample" 
     Title="Ra-Ajax CRM Sample" %>
 
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
-
 <asp:Content 
     ID="Content1" 
     ContentPlaceHolderID="cnt1" 
@@ -59,14 +49,14 @@
                         <%# Eval("Address") %>
                     </td>
                     <td style="text-align:center;">
-                        <ext:ExtButton 
+                        <ra:ExtButton 
                             runat="server" 
                             Xtra='<%# Eval("ID") %>' 
                             OnClick="ViewCustomer"
                             Text="Edit" />
                     </td>
                     <td style="text-align:center;">
-                        <ext:ExtButton 
+                        <ra:ExtButton 
                             runat="server" 
                             Xtra='<%# Eval("ID") %>' 
                             OnClick="DeleteCustomer"
@@ -83,14 +73,14 @@
                         <%# Eval("Address") %>
                     </td>
                     <td style="text-align:center;">
-                        <ext:ExtButton ID="ExtButton1" 
+                        <ra:ExtButton ID="ExtButton1" 
                             runat="server" 
                             Xtra='<%# Eval("ID") %>' 
                             OnClick="ViewCustomer"
                             Text="Edit" />
                     </td>
                     <td style="text-align:center;">
-                        <ext:ExtButton ID="ExtButton2" 
+                        <ra:ExtButton ID="ExtButton2" 
                             runat="server" 
                             Xtra='<%# Eval("ID") %>' 
                             OnClick="DeleteCustomer"
@@ -100,14 +90,14 @@
             </AlternatingItemTemplate>
         </asp:Repeater>
     </ra:Panel>
-    <ext:ExtButton 
+    <ra:ExtButton 
         runat="server" 
         ID="btnNew" 
         OnClick="btnNew_Click" 
         AccessKey="N" 
         Tooltip="Keyboard shortcut N"
         Text="New Customer" />
-    <ext:Window 
+    <ra:Window 
         runat="server" 
         style="position:absolute;left:150px;top:150px;width:500px;z-index:5;"
         Visible="false" 
@@ -138,12 +128,12 @@
                 </tr>
                 <tr>
                     <td colspan="2" style="text-align:right;">
-                        <ext:ExtButton 
+                        <ra:ExtButton 
                             runat="server" 
                             ID="ok" 
                             OnClick="ok_Click" 
                             Text="OK" />
-                        <ext:ExtButton 
+                        <ra:ExtButton 
                             runat="server" 
                             ID="cancel" 
                             OnClick="cancel_Click"
@@ -155,7 +145,7 @@
         <ra:BehaviorObscurable 
             runat="server" 
             ID="obscurer" />
-    </ext:Window>
+    </ra:Window>
     <ra:Panel 
         runat="server" 
         ID="infoPanel" 

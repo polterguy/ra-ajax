@@ -7,6 +7,7 @@
 
 using System;
 using Ra.Extensions;
+using Ra.Extensions.Widgets;
 
 public partial class Docs_Controls_Tree : System.Web.UI.UserControl
 {

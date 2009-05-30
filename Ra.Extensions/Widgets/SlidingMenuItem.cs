@@ -14,8 +14,9 @@ using Ra.Widgets;
 using System.IO;
 using HTML = System.Web.UI.HtmlControls;
 using System.Collections.Generic;
+using Ra.Effects;
 
-namespace Ra.Extensions
+namespace Ra.Extensions.Widgets
 {
     /**
      * This is on item in the SliderMenu. Note that a SliderMenu consists of a SliderMenuLevel which

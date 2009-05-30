@@ -6,21 +6,11 @@
     Inherits="RaWebsite.Docs" 
     Title="Ra-Ajax Documentation" %>
 
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
-
 <asp:Content 
     ID="Content1" 
     ContentPlaceHolderID="cnt1" 
     Runat="Server">
-    <ext:Window 
+    <ra:Window 
         runat="server" 
         OnCreateTitleBarControls="wnd_CreateTitleBarControls" 
         Closable="false"
@@ -29,31 +19,31 @@
         ID="wnd"
         style="margin:0 15px 15px 0">
         <div style="height:120px;overflow:auto;">
-            <ext:Tree 
+            <ra:Tree 
                 runat="server" 
                 OnSelectedNodeChanged="tree_SelectedNodeChanged"
                 ID="tree">
-                <ext:TreeNodes runat="server" ID="topNodes">
-                    <ext:TreeNode 
+                <ra:TreeNodes runat="server" ID="topNodes">
+                    <ra:TreeNode 
                         runat="server" 
                         ID="rootNode" 
                         Text="Classes Reference Documentation">
-                        <ext:TreeNodes 
+                        <ra:TreeNodes 
                             runat="server" 
                             ID="root" />
-                    </ext:TreeNode>
-                    <ext:TreeNode 
+                    </ra:TreeNode>
+                    <ra:TreeNode 
                         runat="server" 
                         ID="tutorials" 
                         Text="Tutorials">
-                        <ext:TreeNodes 
+                        <ra:TreeNodes 
                             runat="server" 
                             ID="rootTutorials" />
-                    </ext:TreeNode>
-                </ext:TreeNodes>
-            </ext:Tree>
+                    </ra:TreeNode>
+                </ra:TreeNodes>
+            </ra:Tree>
         </div>
-    </ext:Window>
+    </ra:Window>
     
     <ra:Label 
         runat="server"
@@ -153,11 +143,11 @@
             </ItemTemplate>
         </asp:Repeater>
 
-        <ext:TabControl 
+        <ra:TabControl 
             runat="server" 
             ID="tab">
 
-            <ext:TabView 
+            <ra:TabView 
                 runat="server" 
                 ID="sample" 
                 style="padding:15px;"
@@ -166,9 +156,9 @@
                     runat="server" 
                     OnReload="sampleDyn_Reload"
                     ID="sampleDyn" />
-            </ext:TabView>
+            </ra:TabView>
 
-            <ext:TabView 
+            <ra:TabView 
                 runat="server" 
                 ID="codeTab" 
                 style="padding:15px;"
@@ -177,9 +167,9 @@
                     runat="server" 
                     Tag="pre"
                     ID="codeLbl" />
-            </ext:TabView>
+            </ra:TabView>
 
-            <ext:TabView 
+            <ra:TabView 
                 runat="server" 
                 ID="markupTab" 
                 style="padding:15px;"
@@ -188,9 +178,9 @@
                     runat="server" 
                     Tag="pre"
                     ID="markupLbl" />
-            </ext:TabView>
+            </ra:TabView>
 
-        </ext:TabControl>
+        </ra:TabControl>
 
     </ra:Panel>
 </asp:Content>

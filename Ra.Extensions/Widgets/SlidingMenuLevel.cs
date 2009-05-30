@@ -15,7 +15,7 @@ using System.IO;
 using HTML = System.Web.UI.HtmlControls;
 using System.Collections.Generic;
 
-namespace Ra.Extensions
+namespace Ra.Extensions.Widgets
 {
     /**
      * This is a "level" in a SliderMenu. Every level can have SliderMenuItems which in turn can

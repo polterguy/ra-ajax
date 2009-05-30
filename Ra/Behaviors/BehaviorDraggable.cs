@@ -11,8 +11,9 @@ using System.ComponentModel;
 using System.Drawing;
 using WEBCTRLS = System.Web.UI.WebControls;
 using ASP = System.Web.UI;
+using Ra.Widgets;
 
-namespace Ra.Widgets
+namespace Ra.Behaviors
 {
     /**
      * Adds dragging capabilities to your Ajax controls. Add this to the Control Collection of any of

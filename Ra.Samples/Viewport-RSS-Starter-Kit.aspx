@@ -4,16 +4,6 @@
     CodeFile="Viewport-RSS-Starter-Kit.aspx.cs" 
     Inherits="Samples.RSSStarterKit" %>
 
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -26,7 +16,7 @@
 <body>
     <form id="form1" runat="server">
     
-        <ext:ResizeHandler 
+        <ra:ResizeHandler 
             runat="server" 
             OnResized="resizer_Resized"
             ID="resizer" />
@@ -49,7 +39,7 @@
         </ra:Panel>
 
         <!-- Top left parts -->
-        <ext:Window 
+        <ra:Window 
             runat="server" 
             ID="wndTopLeft" 
             Caption="RSS Items"
@@ -57,18 +47,18 @@
             Movable="false" 
             Closable="false">
             <div style="height:250px;overflow:auto;">
-                <ext:Tree 
+                <ra:Tree 
                     runat="server" 
                     ID="tree" 
                     OnSelectedNodeChanged="tree_SelectedNodeChanged"
                     Expansion="SingleClickEntireRow">
-                    <ext:TreeNodes ID="RSSFeeds" runat="server" />
-                </ext:Tree>
+                    <ra:TreeNodes ID="RSSFeeds" runat="server" />
+                </ra:Tree>
             </div>
-        </ext:Window>
+        </ra:Window>
 
         <!-- Bottom left -->
-        <ext:Window 
+        <ra:Window 
             runat="server" 
             Closable="false" 
             Movable="false"
@@ -146,10 +136,10 @@
                     Tooltip="Keyboard shortcut ALT+SHIFT+A (FireFox)"
                     ID="add" />
             </div>
-        </ext:Window>
+        </ra:Window>
 
         <!-- Right - main content -->
-        <ext:Window 
+        <ra:Window 
             runat="server" 
             Closable="false" 
             Movable="false"
@@ -191,11 +181,11 @@
                     </ra:Panel>
                 </div>
             </ra:Panel>
-        </ext:Window>
+        </ra:Window>
 
 
         <!-- Create new activity Window -->
-        <ext:Window 
+        <ra:Window 
             runat="server" 
             Visible="false"
             Caption="Add new RSS Feed - MUST be RSS 2.0"
@@ -226,7 +216,7 @@
                     Text="Save" />
             </div>
             <ra:BehaviorObscurable runat="server" ID="obscurer" />
-        </ext:Window>
+        </ra:Window>
     </form>
 </body>
 </html>

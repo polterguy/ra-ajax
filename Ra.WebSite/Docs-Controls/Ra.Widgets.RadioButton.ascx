@@ -4,16 +4,6 @@
     CodeFile="Ra.Widgets.RadioButton.ascx.cs" 
     Inherits="Docs_Controls_RadioButton" %>
 
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
-
 <ra:Label 
     runat="server" 
     ID="lbl" 

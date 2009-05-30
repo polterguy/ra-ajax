@@ -4,77 +4,67 @@
     CodeFile="Ra.Extensions.Tree.ascx.cs" 
     Inherits="Docs_Controls_Tree" %>
 
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
-
 <ra:Label 
     runat="server" 
     Text="Changes..."
     ID="lbl" />
 
-<ext:Tree 
+<ra:Tree 
     runat="server" 
     style="width:250px;height:200px;overflow:auto;" 
     OnSelectedNodeChanged="tree_ItemClicked"
     ID="tree">
 
-    <ext:TreeNodes 
+    <ra:TreeNodes 
         runat="server" 
         ID="root">
 
-        <ext:TreeNode runat="server" ID="file" Text="File">
+        <ra:TreeNode runat="server" ID="file" Text="File">
 
-            <ext:TreeNodes runat="server" Caption="Some files" ID="files">
-                <ext:TreeNode runat="server" ID="open" Text="Open" />
-                <ext:TreeNode runat="server" ID="save" Text="Save" />
-                <ext:TreeNode runat="server" ID="saveAs" Text="Save as...">
-                    <ext:TreeNodes runat="server" ID="saveAsDocument">
-                        <ext:TreeNode runat="server" ID="pdf" Text="PDF" />
-                        <ext:TreeNode runat="server" ID="odf" Text="ODF">
-                            <ext:TreeNodes runat="server" ID="odfs">
-                                <ext:TreeNode 
+            <ra:TreeNodes runat="server" Caption="Some files" ID="files">
+                <ra:TreeNode runat="server" ID="open" Text="Open" />
+                <ra:TreeNode runat="server" ID="save" Text="Save" />
+                <ra:TreeNode runat="server" ID="saveAs" Text="Save as...">
+                    <ra:TreeNodes runat="server" ID="saveAsDocument">
+                        <ra:TreeNode runat="server" ID="pdf" Text="PDF" />
+                        <ra:TreeNode runat="server" ID="odf" Text="ODF">
+                            <ra:TreeNodes runat="server" ID="odfs">
+                                <ra:TreeNode 
                                     runat="server" 
                                     ID="odf1" 
                                     Text="ODF1" />
-                                <ext:TreeNode 
+                                <ra:TreeNode 
                                     runat="server" 
                                     ID="odf2" 
                                     Text="ODF2" />
-                            </ext:TreeNodes>
-                        </ext:TreeNode>
-                    </ext:TreeNodes>
-                </ext:TreeNode>
-            </ext:TreeNodes>
-        </ext:TreeNode>
+                            </ra:TreeNodes>
+                        </ra:TreeNode>
+                    </ra:TreeNodes>
+                </ra:TreeNode>
+            </ra:TreeNodes>
+        </ra:TreeNode>
 
-        <ext:TreeNode runat="server" ID="edit" Text="Edit">
-            <ext:TreeNodes runat="server" ID="edits">
-                <ext:TreeNode runat="server" ID="copy" Text="Copy" />
-                <ext:TreeNode runat="server" ID="paste" Text="Paste" />
-                <ext:TreeNode runat="server" ID="cut" Text="Cut" />
-            </ext:TreeNodes>
-        </ext:TreeNode>
+        <ra:TreeNode runat="server" ID="edit" Text="Edit">
+            <ra:TreeNodes runat="server" ID="edits">
+                <ra:TreeNode runat="server" ID="copy" Text="Copy" />
+                <ra:TreeNode runat="server" ID="paste" Text="Paste" />
+                <ra:TreeNode runat="server" ID="cut" Text="Cut" />
+            </ra:TreeNodes>
+        </ra:TreeNode>
 
-        <ext:TreeNode runat="server" ID="window" Text="Window">
-            <ext:TreeNodes 
+        <ra:TreeNode runat="server" ID="window" Text="Window">
+            <ra:TreeNodes 
                 runat="server" 
                 Caption="Windows"
                 OnGetChildNodes="window_GetChildNodes"
                 ID="SliderMenuLevel1" />
-        </ext:TreeNode>
+        </ra:TreeNode>
 
-        <ext:TreeNode runat="server" ID="settings" Text="Settings" />
+        <ra:TreeNode runat="server" ID="settings" Text="Settings" />
 
-    </ext:TreeNodes>
+    </ra:TreeNodes>
 
-</ext:Tree>
+</ra:Tree>
 
 <p style="margin:5px;">
     Above you can see both statically and dynamically create TreeNodes.

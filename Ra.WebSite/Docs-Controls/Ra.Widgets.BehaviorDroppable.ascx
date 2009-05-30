@@ -4,16 +4,6 @@
     CodeFile="Ra.Widgets.BehaviorDroppable.ascx.cs" 
     Inherits="Docs_Controls_BehaviorDroppable" %>
 
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
-
 <div style="position:relative;width:550px;height:350px;">
 
     <ra:Panel 

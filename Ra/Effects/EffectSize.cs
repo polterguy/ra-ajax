@@ -8,8 +8,9 @@
 
 using System;
 using System.Web.UI;
+using Ra.Widgets;
 
-namespace Ra.Widgets
+namespace Ra.Effects
 {
     /**
      * Animates a Control from its current size to a new specified size. Uses pixel values.

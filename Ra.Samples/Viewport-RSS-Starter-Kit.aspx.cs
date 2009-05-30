@@ -9,6 +9,8 @@
 using System;
 using Ra.Widgets;
 using Ra.Extensions;
+using Ra.Extensions.Widgets;
+using Ra.Effects;
 
 namespace Samples
 {

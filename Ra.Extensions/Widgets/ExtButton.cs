@@ -14,7 +14,7 @@ using Ra.Widgets;
 using System.IO;
 using HTML = System.Web.UI.HtmlControls;
 
-namespace Ra.Extensions
+namespace Ra.Extensions.Widgets
 {
     /**
      * A nicer button with skinning capablities, support for adding buttons and lots of other 

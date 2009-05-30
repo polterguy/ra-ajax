@@ -13,8 +13,9 @@ using ASP = System.Web.UI;
 using Ra.Widgets;
 using System.IO;
 using HTML = System.Web.UI.HtmlControls;
+using Ra.Effects;
 
-namespace Ra.Extensions
+namespace Ra.Extensions.Widgets
 {
     /**
      * Label control which enables editing when clicked. This is kind of like a middle-man between a Label and 

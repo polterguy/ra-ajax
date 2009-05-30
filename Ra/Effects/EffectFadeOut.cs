@@ -8,8 +8,9 @@
 
 using System;
 using System.Web.UI;
+using Ra.Widgets;
 
-namespace Ra.Widgets
+namespace Ra.Effects
 {
     /**
      * Will fade control's root DOM element out of visibility

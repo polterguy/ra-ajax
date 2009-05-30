@@ -9,7 +9,7 @@
 using System;
 using System.Web.UI;
 
-namespace Ra.Widgets
+namespace Ra.Effects
 {
     /**
      * Empty effect or a "place holder of time" effect. Only purpose is to make a specified duration

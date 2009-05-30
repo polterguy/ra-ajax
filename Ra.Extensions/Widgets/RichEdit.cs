@@ -18,7 +18,7 @@ using System.Web;
 
 [assembly: ASP.WebResource("Extensions.Js.RichEdit.js", "text/javascript")]
 
-namespace Ra.Extensions
+namespace Ra.Extensions.Widgets
 {
     /**
      * TextBox control with rich formatting capabilities (HTML). Notice though that this control is 

@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using Ra.Widgets;
 using System.IO;
 using System.Xml;
+using Ra.Effects;
 
 namespace RaWebsite
 {

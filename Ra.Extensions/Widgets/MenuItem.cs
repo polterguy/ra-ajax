@@ -15,7 +15,7 @@ using System.IO;
 using HTML = System.Web.UI.HtmlControls;
 using System.Collections.Generic;
 
-namespace Ra.Extensions
+namespace Ra.Extensions.Widgets
 {
     /**
      * A single MenuItem within a MenuItems collection which again should be within a Menu Widget.

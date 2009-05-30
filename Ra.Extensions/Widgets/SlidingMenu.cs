@@ -15,7 +15,7 @@ using System.IO;
 using HTML = System.Web.UI.HtmlControls;
 using System.Collections.Generic;
 
-namespace Ra.Extensions
+namespace Ra.Extensions.Widgets
 {
     /**
      * A SliderMenu is maybe easiest to define as a combination of a Tree and a Menu. Though while the
@@ -359,7 +359,7 @@ namespace Ra.Extensions
             }
             _bread.Style["display"] = "gokk"; // To force a new value to the display property...
             _bread.Style["display"] = "none";
-            new Ra.Extensions.SlidingMenuItem.EffectRollOut(
+            new SlidingMenuItem.EffectRollOut(
                 rootLevel, 
                 _bread, 
                 AnimationDuration, 

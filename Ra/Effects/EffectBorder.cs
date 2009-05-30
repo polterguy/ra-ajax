@@ -8,8 +8,9 @@
 
 using System;
 using System.Web.UI;
+using Ra.Widgets;
 
-namespace Ra.Widgets
+namespace Ra.Effects
 {
     /**
      * Animates borders of Control element. Will make the borders of the element dashed and

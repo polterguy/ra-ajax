@@ -4,19 +4,9 @@
     CodeFile="Ra.Extensions.TabControl.ascx.cs" 
     Inherits="Docs_Controls_TabControl" %>
 
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
+<ra:TabControl runat="server" ID="tab" OnActiveTabViewChanged="TabChaged">
 
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
-
-<ext:TabControl runat="server" ID="tab" OnActiveTabViewChanged="TabChaged">
-
-    <ext:TabView runat="server" ID="tab1" Caption="First tab">
+    <ra:TabView runat="server" ID="tab1" Caption="First tab">
     
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
         Etiam eu metus nisi, et venenatis eros. Nunc imperdiet 
@@ -27,18 +17,18 @@
         a justo est, condimentum adipiscing metus. Quisque eu arcu 
         felis, sit amet auctor sapien. 
 
-    </ext:TabView>
+    </ra:TabView>
 
-    <ext:TabView runat="server" ID="tab2" Caption="Second tab">
+    <ra:TabView runat="server" ID="tab2" Caption="Second tab">
 
-        <ext:Calendar 
+        <ra:Calendar 
             runat="server" 
             style="width:200px;"
             ID="cal" />
 
-    </ext:TabView>
+    </ra:TabView>
 
-    <ext:TabView 
+    <ra:TabView 
         runat="server" 
         ID="tab3" 
         Enabled="false"
@@ -46,6 +36,6 @@
 
         Disabled until you chose the second tab.
 
-    </ext:TabView>
+    </ra:TabView>
 
-</ext:TabControl>
+</ra:TabControl>

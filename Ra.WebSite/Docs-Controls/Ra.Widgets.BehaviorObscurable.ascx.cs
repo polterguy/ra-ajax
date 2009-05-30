@@ -8,6 +8,7 @@
 using System;
 using Ra.Extensions;
 using Ra.Widgets;
+using Ra.Effects;
 
 public partial class Docs_Controls_BehaviorObscurable : System.Web.UI.UserControl
 {

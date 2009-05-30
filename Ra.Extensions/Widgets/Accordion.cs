@@ -18,7 +18,7 @@ using System.Collections.Generic;
 /**
  * Extension widgets for Ra-Ajax
  */
-namespace Ra.Extensions
+namespace Ra.Extensions.Widgets
 {
     /**
      * An accordion is a list of panels where only one can be visible at any time. When header of any

@@ -7,16 +7,6 @@
     Title="Ra-Ajax Chart Sample" %>
 
 <%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
-
-<%@ Register 
     Assembly="System.Web.DataVisualization" 
     Namespace="System.Web.UI.DataVisualization.Charting" 
     TagPrefix="chart" %>

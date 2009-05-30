@@ -6,16 +6,6 @@
     Inherits="RaWebsite.Login" 
     Title="Ra-Ajax Login Page" %>
 
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-    
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
-
 <asp:Content 
     ID="Content1" 
     ContentPlaceHolderID="cnt1" 

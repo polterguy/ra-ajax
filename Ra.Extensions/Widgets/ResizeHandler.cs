@@ -16,7 +16,7 @@ using HTML = System.Web.UI.HtmlControls;
 
 [assembly: ASP.WebResource("Extensions.Js.ResizeHandler.js", "text/javascript")]
 
-namespace Ra.Extensions
+namespace Ra.Extensions.Widgets
 {
     /**
      * A ResizeHandler widget is a special (non-visual) control which will raise an event when

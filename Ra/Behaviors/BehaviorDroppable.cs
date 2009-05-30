@@ -12,7 +12,7 @@ using System.Drawing;
 using WEBCTRLS = System.Web.UI.WebControls;
 using ASP = System.Web.UI;
 
-namespace Ra.Widgets
+namespace Ra.Behaviors
 {
     /**
      * Adds "dropping" capabilities to a Control. Tighly coupled with BehaviorDraggable. Basically

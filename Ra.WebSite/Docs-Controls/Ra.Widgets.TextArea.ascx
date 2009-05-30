@@ -4,16 +4,6 @@
     CodeFile="Ra.Widgets.TextArea.ascx.cs" 
     Inherits="Docs_Controls_TextArea" %>
 
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
-
 <ra:TextArea 
     runat="server" 
     ID="txt" 

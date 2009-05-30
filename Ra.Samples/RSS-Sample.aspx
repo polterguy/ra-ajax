@@ -6,16 +6,6 @@
     Inherits="Samples.RSSSample" 
     Title="Ra-Ajax RSS Sample" %>
 
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
-
 <asp:Content 
     ID="Content1" 
     ContentPlaceHolderID="cnt1" 
@@ -26,7 +16,7 @@
         How to create an RSS Reader
     </p>
     <div style="width:650px;">
-        <ext:WebPart 
+        <ra:WebPart 
             runat="server" 
             Caption="RSS Application"
             style="width:450px;"
@@ -45,9 +35,9 @@
                     </ItemTemplate>
                 </asp:Repeater>
             </div>
-        </ext:WebPart>
+        </ra:WebPart>
     </div>
-    <ext:Window 
+    <ra:Window 
         runat="server" 
         Visible="false"
         style="z-index:100;position:absolute;top:25px;left:25px;width:700px;"
@@ -65,7 +55,7 @@
         <ra:BehaviorObscurable 
             runat="server"
             ID="obscurer" />
-    </ext:Window>
+    </ra:Window>
     <ra:Panel 
         runat="server" 
         ID="infoPanel" 

@@ -4,16 +4,6 @@
     CodeFile="Ra.Extensions.Timer.ascx.cs" 
     Inherits="Docs_Controls_Timer" %>
 
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
-
 <div style="position:relative;height:270px;border:dotted 1px #999;">
 <ra:Label 
     runat="server" 
@@ -22,7 +12,7 @@
     ID="lbl" />
 </div>
 
-<ext:Timer 
+<ra:Timer 
     runat="server" 
     ID="timer" 
     Duration="1000"

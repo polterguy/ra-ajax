@@ -15,7 +15,7 @@ using Ra.Widgets;
 using System.IO;
 using HTML = System.Web.UI.HtmlControls;
 
-namespace Ra.Extensions
+namespace Ra.Extensions.Widgets
 {
     /**
      * TabControl widget. An alternative to Accordion. Contains several sheets in horizontal layout

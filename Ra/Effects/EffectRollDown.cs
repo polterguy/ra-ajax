@@ -8,8 +8,9 @@
 
 using System;
 using System.Web.UI;
+using Ra.Widgets;
 
-namespace Ra.Widgets
+namespace Ra.Effects
 {
     /**
      * Will roll down control from in-visibility to its "needed height to fully display". Note that this

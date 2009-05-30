@@ -2,13 +2,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.50727</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{DA39B87F-8E68-4461-9C24-5778921497A5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Extensions</RootNamespace>
-    <AssemblyName>Extensions</AssemblyName>
+    <RootNamespace>Ra.Extensions</RootNamespace>
+    <AssemblyName>Ra.Extensions</AssemblyName>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>2.0</OldToolsVersion>
@@ -24,8 +24,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <OutputType>Library</OutputType>
-    <AssemblyName>Extensions</AssemblyName>
-    <RootNamespace>Extensions</RootNamespace>
+    <AssemblyName>Ra.Extensions</AssemblyName>
+    <RootNamespace>Ra.Extensions</RootNamespace>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
   </PropertyGroup>
@@ -37,9 +37,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <OutputType>Library</OutputType>
-    <AssemblyName>Extensions</AssemblyName>
+    <AssemblyName>Ra.Extensions</AssemblyName>
     <DebugSymbols>true</DebugSymbols>
-    <RootNamespace>Extensions</RootNamespace>
+    <RootNamespace>Ra.Extensions</RootNamespace>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
   </PropertyGroup>
@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Widgets\GlobalUpdater.cs" />
     <Compile Include="Widgets\SlidingMenuItem.cs" />
     <Compile Include="Widgets\SlidingMenuLevel.cs" />
     <Compile Include="Widgets\SlidingMenu.cs" />

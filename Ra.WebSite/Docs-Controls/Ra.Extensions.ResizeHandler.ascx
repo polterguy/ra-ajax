@@ -4,16 +4,6 @@
     CodeFile="Ra.Extensions.ResizeHandler.ascx.cs" 
     Inherits="Docs_Controls_ResizeHandler" %>
 
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
-
 <ra:Label 
     runat="server" 
     Text="Changes..."
@@ -24,7 +14,7 @@
     Try to resize the Browser Window...
 </p>
 
-<ext:ResizeHandler 
+<ra:ResizeHandler 
     runat="server" 
     OnResized="re_Resized"
     ID="res" />

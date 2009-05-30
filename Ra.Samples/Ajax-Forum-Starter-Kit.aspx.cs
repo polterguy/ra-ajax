@@ -11,6 +11,8 @@ using Ra.Widgets;
 using Ra.Extensions;
 using RaSelector;
 using Entities;
+using Ra.Extensions.Widgets;
+using Ra.Effects;
 
 namespace Samples
 {

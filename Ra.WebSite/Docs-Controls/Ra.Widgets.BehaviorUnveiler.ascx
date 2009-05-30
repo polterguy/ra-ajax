@@ -4,16 +4,6 @@
     CodeFile="Ra.Widgets.BehaviorUnveiler.ascx.cs" 
     Inherits="Docs_Controls_BehaviorUnveiler" %>
 
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
-
 <ra:Label 
     runat="server" 
     ID="Label1" 

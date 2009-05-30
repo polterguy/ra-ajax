@@ -15,7 +15,7 @@ using System.IO;
 using HTML = System.Web.UI.HtmlControls;
 using System.Collections.Generic;
 
-namespace Ra.Extensions
+namespace Ra.Extensions.Widgets
 {
     /**
      * A Menu Widget for creating Menus on your websites and applications. Use in combination with

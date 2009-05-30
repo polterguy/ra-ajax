@@ -4,23 +4,13 @@
     CodeFile="Ra.Extensions.Window.ascx.cs" 
     Inherits="Docs_Controls_Window" %>
 
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
-
-<ext:ExtButton 
+<ra:ExtButton 
     runat="server" 
     ID="btn" 
     Text="Show Window" 
     OnClick="btn_Click" />
 
-<ext:Window 
+<ra:Window 
     runat="server" 
     ID="wnd" 
     Visible="false"
@@ -30,4 +20,4 @@
     <div style="height:150px;padding:50px;">Here's an example of a Window.</div>
     <ra:BehaviorObscurable runat="server" ID="obscurr" />
 
-</ext:Window>
+</ra:Window>

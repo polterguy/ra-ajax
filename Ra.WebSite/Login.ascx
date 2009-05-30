@@ -4,16 +4,6 @@
     CodeFile="Login.ascx.cs" 
     Inherits="RaWebsite.Login" %>
     
-<%@ Register 
-    Assembly="Ra" 
-    Namespace="Ra.Widgets" 
-    TagPrefix="ra" %>
-    
-<%@ Register 
-    Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
-    
 <table style="margin-bottom:0em;">
     <tr>
         <td>Username:</td>
