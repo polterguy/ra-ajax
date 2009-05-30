@@ -54,7 +54,7 @@
                                         runat="server" 
                                         MinOpacity="0.7" 
                                         MaxOpacity="1" />
-                                    <a href="http://ra-ajax.org/">Home</a>
+                                    <a runat="server" href="~/">Home</a>
                                 </ra:Label>
                                 <ra:Label 
                                     ID="Label2" 
@@ -66,7 +66,7 @@
                                         runat="server" 
                                         MinOpacity="0.7" 
                                         MaxOpacity="1" />
-                                    <a href="http://ra-ajax.org/samples/">Samples</a>
+                                    <a runat="server" href="~/samples/">Samples</a>
                                 </ra:Label>
                                 <ra:Label 
                                     ID="Label3" 
@@ -78,7 +78,7 @@
                                         runat="server" 
                                         MinOpacity="0.7" 
                                         MaxOpacity="1" />
-                                    <a href="http://ra-ajax.org/Support.aspx">Support</a>
+                                    <a runat="server" href="~/Support.aspx">Help</a>
                                 </ra:Label>
                                 <ra:Label 
                                     ID="Label4" 
@@ -90,7 +90,7 @@
                                         runat="server" 
                                         MinOpacity="0.7" 
                                         MaxOpacity="1" />
-                                    <a href="http://ra-ajax.org/Testimonials.aspx">Testimonials</a>
+                                    <a runat="server" href="~/Testimonials.aspx">Kudos</a>
                                 </ra:Label>
                                 <ra:Label 
                                     ID="Label5" 
@@ -102,7 +102,7 @@
                                         runat="server" 
                                         MinOpacity="0.7" 
                                         MaxOpacity="1" />
-                                    <a href="http://ra-ajax.org/Blogs.aspx">Blogs</a>
+                                    <a runat="server" href="~/Blogs.aspx">Blogs</a>
                                 </ra:Label>
                             </ul>
                             <ra:BehaviorUnveiler 

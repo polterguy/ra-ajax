@@ -1,8 +1,9 @@
 ﻿/*
+ * Ra-Ajax - A Managed Ajax Library for ASP.NET and Mono
  * Copyright 2008 - 2009 - Thomas Hansen thomas@ra-ajax.org
- * This code is licensed under the the MIT license which 
- * means you can use it (almost) exactly as you wish in your 
- * own projects and copy and paste as much as you want.
+ * This code is licensed under the GPL version 3 which 
+ * can be found in the license.txt file on disc.
+ * 
  */
 
 using System;
