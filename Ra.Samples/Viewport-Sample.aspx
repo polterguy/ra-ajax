@@ -248,7 +248,7 @@
                                     
                                 </p>
                                 <p>
-                                    This Starter-Kit is licensed just as the rest of Ra-Ajax as LGPL. If this does not suite
+                                    This Starter-Kit is licensed just as the rest of Ra-Ajax as GPL. If this does not suite
                                     your needs you can also purchase a commercial license of this Starter-Kit by visiting 
                                     our "buy page" in our main website.
                                 </p>
