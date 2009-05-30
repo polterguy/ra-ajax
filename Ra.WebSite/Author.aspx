@@ -39,29 +39,9 @@
         the copyright holder of Ra-Ajax and also the founder of Ra-Ajax - together with Kariem. Thomas has
         worked with everything imaginable in the IT industry; ERP systems, CRM systems, ORM libraries, C++,
         COM, Database systems, C++ GUI libraries but his heart is warmest when he does Ajax. Thomas have
-        been doing System Development since he was 8 years old which now is 26 years ago. Thomas have been CTO
+        been doing System Development since he was 8 years old which now is 27 years ago. Thomas have been CTO
         of his own company which he himself founded (Gaiaware), working with consultancy, done coaching, overall
         architecture, done teaching and tutoring and mostly everything imaginable.
-    </p>
-    <h2 style="clear:both;">Hire us</h2>
-    <p>
-        We are both available for hire through the company Ra-Software AS which is a Norwegian privately held company 
-        mainly focusing on system development on consultancy basis. If you would like to hire us then 
-        <a href="mailto:thomas@ra-ajax.org">send Thomas an email</a> and explain the job you would want to get done 
-        with some few words and we'll pick it up from there.
-    </p>
-    <p>
-        You might want to check out our <a href="Testimonials.aspx">testimonials</a> to see out what other people
-        who have previously hired us thinks of us.
-    </p>
-    <h2>Hire community members</h2>
-    <p>
-        In addition to ourselves we also have a growing community of dedidacted users, contributers and evangelists
-        whom some of are also available for hire. Often you might even get lucky and find someone who lives just next to
-        your own business which makes it possible for you to actually easily see these people without having to organize
-        a flight across half the world. And in some occassions these community members have slightly different profiles
-        than us which might fit you better than hiring us. Below you can find some of these dedicated
-        Ra-Ajax community members. Most of them use Ra-Ajax on a daily basis.
     </p>
     <img src="media/Rick-Gibson.jpg" alt="Rick Gibson" style="float:left;padding:10px;" />
     <h2>Rick Gibson</h2>
@@ -74,6 +54,17 @@
         stay current with changes in the industry. Rick can be emailed at; <em>rick atat crystaldatabases dot com</em>.
         Remove the spaces, change the dot to "." and the atat to "@". See 
         <a href="http://ra-ajax.org/Rick.blogger">Rick's blog</a>
+    </p>
+    <h2 style="clear:both;">Hire us</h2>
+    <p>
+        We are all available for hire through the company Ra-Software AS which is a Norwegian privately held company 
+        mainly focusing on system development on consultancy basis. If you would like to hire us then 
+        <a href="mailto:thomas@ra-ajax.org">send Thomas an email</a> and explain the job you would want to get done 
+        with some few words and we'll pick it up from there.
+    </p>
+    <p>
+        You might want to check out our <a href="Testimonials.aspx">testimonials</a> to see out what other people
+        who have previously hired us thinks of us.
     </p>
 </asp:Content>
 

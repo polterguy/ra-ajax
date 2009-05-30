@@ -13,15 +13,15 @@
 
     <h1>Ra-Ajax</h1>
     <p>
-        Ra-Ajax is a no JavaScript Ajax library for ASP.NET. It is licensed as GPL and free 
-        of charge to use.
+        Ra-Ajax is a <em>no-JavaScript</em> Ajax library for ASP.NET. It is Open Source and
+        licensed as GPL software.
     </p>
     <ul class="list">
-        <li><a href="http://ra-ajax.org/samples/">View the samples</a></li>
-        <li><a href="http://ra-ajax.org/Testimonials.aspx">Testimonials</a></li>
+        <li><a runat="server" href="~/samples/">View the samples</a></li>
+        <li><a runat="server" href="~/Testimonials.aspx">Testimonials</a></li>
         <li><a href="http://code.google.com/p/ra-ajax/">Download Ra-Ajax</a></li>
-        <li><a href="http://ra-ajax.org/Support.aspx">Get help</a></li>
-        <li><a href="http://ra-ajax.org/Blogs.aspx">Read our blogs</a></li>
+        <li><a runat="server" href="~/Support.aspx">Get help</a></li>
+        <li><a runat="server" href="~/SoftwareFactory.aspx">Need software?</a></li>
     </ul>
     <p>
         Ra-Ajax is extremely lightweight and consumes only tiny amounts of bandwidth. Since
