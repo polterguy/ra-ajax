@@ -16,6 +16,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Reflection;
 using System.Globalization;
+using Ra._Internals;
 
 
 [assembly: WebResource("Ra.Js.Ra.js", "text/javascript")]

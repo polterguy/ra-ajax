@@ -13,7 +13,7 @@ using Ra.Extensions;
 using System.Collections.Generic;
 using System.IO;
 using ColorizerLibrary;
-using RaSelector;
+using Ra.Selector;
 using Ra.Extensions.Widgets;
 using Ra.Effects;
 
@@ -398,8 +398,8 @@ namespace RaWebsite
         protected void PropertyChosen(object sender, EventArgs e)
         {
             LinkButton btn = sender as LinkButton;
-            Panel pnl = RaSelector.Selector.SelectFirst<Panel>(btn.Parent);
-            Label lbl = RaSelector.Selector.SelectFirst<Label>(pnl);
+            Panel pnl = Selector.SelectFirst<Panel>(btn.Parent);
+            Label lbl = Selector.SelectFirst<Label>(pnl);
             if (!pnl.Visible || pnl.Style["display"] == "none")
             {
                 if (lbl.Text == "")

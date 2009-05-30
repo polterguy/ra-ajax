@@ -12,7 +12,6 @@
             Castle.ActiveRecord.Framework.Config.ActiveRecordSectionHandler.Instance,
             new Type[] { 
                 typeof(Entity.Blog),
-                typeof(Entity.Todo),
                 typeof(Entity.Operator)
             });
 

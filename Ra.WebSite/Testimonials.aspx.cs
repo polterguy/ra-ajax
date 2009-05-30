@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections;
-using System.Configuration;
-using System.Data;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
+﻿/*
+ * Ra-Ajax - A Managed Ajax Library for ASP.NET and Mono
+ * Copyright 2008 - 2009 - Thomas Hansen thomas@ra-ajax.org
+ * This code is licensed under the GPL version 3 which 
+ * can be found in the license.txt file on disc.
+ * 
+ */
+
+using System;
 
 public partial class Testimonials : System.Web.UI.Page
 {

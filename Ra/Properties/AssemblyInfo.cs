@@ -19,7 +19,7 @@ using System.Web.UI;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Ra-Ajax")]
-[assembly: AssemblyCopyright("Copyright ©  2008 - Thomas Hansen")]
+[assembly: AssemblyCopyright("Copyright ©  2008-2009 Thomas Hansen")]
 [assembly: AssemblyTrademark("Ra-Ajax")]
 [assembly: AssemblyCulture("")]
 
@@ -40,8 +40,8 @@ using System.Web.UI;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("0.3.11.0")]
-[assembly: AssemblyFileVersion("0.3.11.0")]
+[assembly: AssemblyVersion("2.0.0.0")]
+[assembly: AssemblyFileVersion("2.0.0.0")]
 
 
 

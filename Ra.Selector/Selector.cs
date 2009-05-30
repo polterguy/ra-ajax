@@ -11,7 +11,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Collections.Generic;
 
-namespace RaSelector
+namespace Ra.Selector
 {
     /**
      * Helper class for doing selector queries on Controls to retrieve specific 

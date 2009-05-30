@@ -9,7 +9,7 @@
 using System;
 using Ra.Widgets;
 using Ra.Extensions;
-using RaSelector;
+using Ra.Selector;
 using Entities;
 using Ra.Extensions.Widgets;
 using Ra.Effects;
