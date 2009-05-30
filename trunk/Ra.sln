@@ -1,6 +1,17 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{BD21978B-74BC-4F16-B755-77E6929DA129}"
+	ProjectSection(SolutionItems) = preProject
+		build.properties = build.properties
+		changes.txt = changes.txt
+		CustomTasks.build = CustomTasks.build
+		license-GPL.txt = license-GPL.txt
+		license.txt = license.txt
+		Ra.build = Ra.build
+		ReadMe.txt = ReadMe.txt
+	EndProjectSection
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions", "Extensions\Extensions.csproj", "{DA39B87F-8E68-4461-9C24-5778921497A5}"
 	ProjectSection(WebsiteProperties) = preProject
 		Debug.AspNetCompiler.Debug = "True"
@@ -8,10 +19,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions", "Extensions\Ex
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ra", "Ra\Ra.csproj", "{82727C73-0B10-4F58-93F4-841E9397302C}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceCacher", "ResourceCacher\ResourceCacher.csproj", "{D71BF1F1-FA92-4CA7-B76F-7E239CC2D69C}"
 	ProjectSection(WebsiteProperties) = preProject
@@ -21,6 +28,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceCacher", "ResourceC
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "C:\...\Samples\", "Samples\", "{3522C0C4-2191-4FC1-AE82-B46E7B31BBF6}"
 	ProjectSection(WebsiteProperties) = preProject
+		TargetFramework = "2.0"
 		ProjectReferences = "{82727C73-0B10-4F58-93F4-841E9397302C}|Ra.dll;{DA39B87F-8E68-4461-9C24-5778921497A5}|Extensions.dll;{D71BF1F1-FA92-4CA7-B76F-7E239CC2D69C}|ResourceCacher.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/Samples"
 		Debug.AspNetCompiler.PhysicalPath = "Samples\"
@@ -40,25 +48,6 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "C:\...\Samples\", "Samples\
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ra.Build.Tasks", "Ra.Build.Tasks\Ra.Build.Tasks.csproj", "{704AE5D2-665F-472F-9BC2-C48B8E33DD0C}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{BD21978B-74BC-4F16-B755-77E6929DA129}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-	ProjectSection(SolutionItems) = preProject
-		build.properties = build.properties
-		changes.txt = changes.txt
-		CustomTasks.build = CustomTasks.build
-		license-GPL.txt = license-GPL.txt
-		license.txt = license.txt
-		Ra.build = Ra.build
-		ReadMe.txt = ReadMe.txt
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaSelector", "RaSelector\RaSelector.csproj", "{1D24FB65-C035-44E5-83A4-34AA1DA84BF4}"
 	ProjectSection(WebsiteProperties) = preProject
