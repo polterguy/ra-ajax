@@ -34,9 +34,25 @@
         <li>Create DotNetNuke modules for your website</li>
         <li>And many more things...</li>
     </ul>
-    <h2>"Power Development"</h2>
     <p>
-        We do also provide "power development" if you need to beef up your existing development
+        Ra-Software can also adopt applications or application development for your company. 
+        If you have problems finding enough skilled developers then we can create modules, 
+        parts or entire suites of applications for your company.
+    </p>
+    <p>
+        Think of it this way; Music Artists or Painters don't create their concert buildings
+        and galleries. So why should not a Software Company out source its software development
+        to a Software Factory...?
+    </p>
+    <p>
+        Then your company can do what it knows best, create specifications, talk to customers, 
+        market, sell the software. While a highly specialized and extremely skilled Software Factory
+        can assemble the software for you. This has been a natural part of conventional business 
+        for more then 150 years now, we in Ra-Software think it's time to do this for Software too.
+    </p>
+    <h2>Power Development</h2>
+    <p>
+        We do also provide <em>power development</em> if you need to beef up your existing development
         department. We are all highly skilled senior developers and much of the work we do is.
     </p>
     <ul class="list">
@@ -45,6 +61,8 @@
         <li>Supplying extra hands on projects</li>
         <li>Code Reviews</li>
         <li>Quality Assurance</li>
+        <li>Create custom Ajax Controls</li>
+        <li>Give advice...</li>
     </ul>
     <p>
         All customers of Ra-Software will be given the rights to use Ra-Ajax within

@@ -37,5 +37,18 @@
         Ra-Ajax also is 100% Mono compatible which means you can deploy your applications
         on Linux servers in addition to Windows Servers.
     </p>
+    <h2>GPL problems...?</h2>
+    <p>
+        Do you want to use Ra-Ajax without being restricted by the GPL?
+    </p>
+    <p>
+        Ra-Software does not publish Ra-Ajax under any other license then the GPL. However,
+        if you want to use Ra-Ajax under another license you can hire us as consultants and
+        we will use Ra-Ajax under a proprietary license which gives you a license to freely use
+        Ra-Ajax in your organization without having any restrictions in regards to the GPL.
+    </p>
+    <p>
+        <a href="SoftwareFactory.aspx">Read more about our consulting services here...</a>
+    </p>
 </asp:Content>
 
