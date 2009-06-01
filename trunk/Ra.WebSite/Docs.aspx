@@ -66,19 +66,12 @@
                 If you want to hire us then please send <a href="mailto:thomas@ra-ajax.org">Thomas Hansen</a> an email
                 shortly describing what you want us to do for you.
             </p>
-            <h2>Ra-Software is a Software Factory</h2>
+            <h2>Need even more help...?</h2>
             <p>
-                Ra-Software, the company behind Ra-Ajax is a <em>Software Factory</em> which means that we can create
-                your ideas. If you need some piece of Software created, then we are the right guys to do just that.
-                We can do software for hire - as in you've got a software idea but none to implement it for you. You can outsource
-                entire projects to us and we can do Ra-Ajax training, and other types of development training. We can beef up 
-                your existing development department if you either need a pair of extra hands or some bigger muscles to coach 
-                your existing developers.
-            </p>
-            <p>
-                Mostly anything that has to do something with development or creation of Software we can help you out with.
-                If you want to discuss your ideas with us then please <a href="mailto:thomas@ra-ajax.org">email Thomas</a> 
-                and tell us something about your idea and we'll come back to you.
+                We have <a href="http://stacked.ra-ajax.org">publicly available forums</a> where
+                you can post your questions. And if that's not even enough take a look at our
+                <a href="SoftwareFactory.aspx">consulting offerings</a> which btw is the only
+                way to get hold of a proprietary license of Ra-Ajax.
             </p>
         </div>
     </ra:Panel>

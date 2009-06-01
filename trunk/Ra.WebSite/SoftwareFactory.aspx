@@ -18,8 +18,8 @@
         want to create then we can create it for you.
     </p>
     <p>
-        We will then use Ra-Ajax in this project and you will be given a special proprietary license
-        of Ra-Ajax which does not restrict your project in any ways by the GPL. So if you need to
+        We will then use Ra-Ajax in this project and you will be given a special <strong>proprietary license
+        of Ra-Ajax</strong> which does not restrict your project in any ways by the GPL. So if you need to
         have some software created or you have some problem which we can solve for you, then please
         send <a href="mailto:thomas@ra-ajax.org">Thomas and email</a> and explain what you would
         want to get done.
@@ -40,8 +40,8 @@
         parts or entire suites of applications for your company.
     </p>
     <p>
-        Think of it this way; Music Artists or Painters don't create their concert buildings
-        and galleries. So why should not a Software Company out source its software development
+        Think of it this way; Music Artists and Painters don't create their own instruments
+        and canvas. So why should not a Software Company out source its software development
         to a Software Factory...?
     </p>
     <p>
@@ -58,17 +58,33 @@
     <ul class="list">
         <li>Coaching other developers</li>
         <li>Teaching system development concepts</li>
+        <li>Teaching C#, ASP.NET, Ajax etc</li>
         <li>Supplying extra hands on projects</li>
         <li>Code Reviews</li>
         <li>Quality Assurance</li>
         <li>Create custom Ajax Controls</li>
+        <li>Optimize solutions</li>
+        <li>Refactor and clean up code</li>
         <li>Give advice...</li>
     </ul>
     <p>
-        All customers of Ra-Software will be given the rights to use Ra-Ajax within
-        their organization in a non-GLP license, which means that your software will not
+        <strong>All customers of Ra-Software will be given the rights to use Ra-Ajax within
+        their organization in a non-GLP license</strong>, which means that your software will not
         be restricted by the GPL in any ways. As a consulting customer of Ra-Software you
-        will get to use Ra-Ajax in a proprietary license.
+        will get to use Ra-Ajax as you wish within a proprietary license.
+    </p>
+    <p>
+        According to several international studies about 75% of all software projects
+        fails in some way or another. Ra-Software does not fail. If we take on ourselves a job
+        we know we will be able to deliver the expected results. We can't promise you success,
+        money and eternal happines, but we can guarantee that we will not fail on our part 
+        - which is the software construction parts!
+    </p>
+    <p>
+        <a href="Testimonials.aspx">Read what previous customers of Ra-Software has to say about us</a>.
+    </p>
+    <p>
+        Or <a href="Author.aspx">read about our qualifications here</a>.
     </p>
 
 </asp:Content>

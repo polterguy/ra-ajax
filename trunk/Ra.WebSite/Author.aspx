@@ -66,5 +66,8 @@
         You might want to check out our <a href="Testimonials.aspx">testimonials</a> to see out what other people
         who have previously hired us thinks of us.
     </p>
+    <p>
+        Or if you want to read about our <a href="SoftwareFactory.aspx">consulting services</a>.
+    </p>
 </asp:Content>
 
