@@ -13,8 +13,7 @@
 
     <h1>About us - Hire us</h1>
     <p>
-        Ra-Ajax is maintained by Ra-Software AS. Ra-Software is a privately held Norwegian company with 
-        two employees, Kariem Ali in Egypt and Thomas Hansen in Norway. And we are available for hire.
+        Ra-Ajax is maintained by Ra-Software AS. Ra-Software is a privately held Norwegian company. 
     </p>
     <img src="media/Kariem.jpg" alt="Kariem Ali" style="float:left;padding:10px;" />
     <h2 style="margin-top:0;">Kariem Ali</h2>
