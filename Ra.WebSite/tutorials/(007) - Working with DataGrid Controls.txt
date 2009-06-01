@@ -368,3 +368,13 @@ public partial class _Default : System.Web.UI.Page
     }
 }
 </pre>
+
+<p>
+	Next things to explore in regards to a GridView would be how to do CRUD operations
+	on a GridView, as in Create new rows, Read existing ones, Update existing ones
+	and Delete existing rows in your GridView. But that will be saved for a later article.
+</p>
+
+
+
+
