@@ -229,7 +229,7 @@ public partial class _Default : System.Web.UI.Page
 
 <p>
 	If you run the above code, with some valid Image values for the List of images
-	you will get to see something like the this.
+	you will get to see something like this.
 </p>
 <img src="tutorials/extension-controls-screen-shot.jpg" alt="Screenshot" />
 <p>
@@ -238,7 +238,29 @@ public partial class _Default : System.Web.UI.Page
 	X at the top right corner.
 </p>
 
-<h3>Explenation</h3>
+<h3>Explanation</h3>
+<p>
+	There are a couple of really important steps to understand in this code. The
+	most important one being that we call <em>EnsureChildControls</em> from
+	and override of the <em>OnInit</em> method in our LightBox class. This is
+	to make sure that our child controls are being created correctly. By child 
+	controls I mean to the Image controls which are being dynamically created
+	from the List&lt;string&gt; property. The EnsureChildControls will internally
+	make sure that the <em>CreateChildControls</em> are being called, and from 
+	this method we create our own Image controls.
+</p>
+<p>
+	Then it's the ordering of things. Unfortunately some parts of ASP.NET and 
+	WebControls are not perfectly written in regards to Cohesion. This means
+	that we must do some things in "the correct order". The way I set all 
+	properties on the Images *BEFORE* I add the control to the Controls collection 
+	of the LightBox is crucial! The reason for that is that we really want to have
+	the ViewState values which are serialized on the page to be read and "overwrite"
+	whatever values we have for the <em>Visible</em> and the <em>Style[Styles.display]</em>
+	values. Since otherwise we would never be able to see anything but the first image...
+</p>
+
+<h3>Contribute</h3>
 <p>
 	Now this is far from a complete LightBox implementation, it has several flaws. 
 	For instance the style properties are pretty "hard coded" and should be more
