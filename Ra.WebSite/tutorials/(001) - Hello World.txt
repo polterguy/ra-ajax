@@ -3,6 +3,7 @@
 	<li>Get you started with Ra-Ajax development</li>
 	<li>Teach you the basics of Ra-Ajax</li>
 	<li>Teach you the basic semantics and internals of Ra-Ajax</li>
+	<li>Teach you about Partial Rendering and why Ra-Ajax does <b>*NOT*</b> use it</li>
 	<li>Give you a nice starting point for further research</li>
 </ul>
 
@@ -199,7 +200,8 @@ Ra.Control.$('btn').handleJSON({"Value":"Hello World!"});
 	<b>*MORE HAPPY*</b> employees!
 </p>
 
-<h3>Infomercial. 3..., 2..., 1..., GO!</h3>
+<div style="border:dashed 1px #999;padding:15px;background-color:White;">
+<h3>Infomercial. 3..., 2..., 1..., GO! - Attempt at being funny ... ;)</h3>
 <p>
 	<b>Batman's elder brother, Tim</b>; <i>"So if you have trouble at home, with your soccer training instructor or your girlfriend/boyfriend,
 	what are you waiting for...?"</i>
@@ -229,6 +231,7 @@ Ra.Control.$('btn').handleJSON({"Value":"Hello World!"});
 	shouting: <i>"Praise Ra-Ajax! Long live Ra-Ajax!" It's what the Egyptians would have used when building the Pyramids, 
 	if they only could.</i>
 </p>
+</div>
 
 <h3>Back to tech again...</h3>
 <p>
