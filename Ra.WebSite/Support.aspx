@@ -21,18 +21,19 @@
     <ul class="list">
         <li><a href="http://stacked.ra-ajax.org">Forums</a></li>
         <li><a id="A1" runat="server" href="~/Docs.aspx">Documentation</a></li>
+        <li><a href="SoftwareFactory.aspx">Hire us</a></li>
     </ul>
     <h2>Documentation</h2>
     <p>
-        You can find the documentation for Ra-Ajax <a href="Docs.aspx">here</a>. The documentation
+        You can find the <a href="Docs.aspx">documentation for Ra-Ajax here</a>. The documentation
         is highly organized and includes several tutorials for you to get started.
     </p>
     <h2>Professional help or want to use Ra-Ajax in closed source projects?</h2>
     <p>
         Ra-Software does not publish Ra-Ajax under any other license then the GPL, we also do
         not sell proprietary licenses of Ra-Ajax. However, Ra-Software is a consulting company 
-        and when we do consulting we will use Ra-Ajax ourselves and you will be granted a 
-        commercial/proprietary license of Ra-Ajax which we and you will use in your project 
+        and when we do consulting we will use Ra-Ajax ourselves and <strong>you will be granted a 
+        commercial/proprietary license of Ra-Ajax</strong> which we and you will use in your project 
         which does not restrict your project to the GPL license.
     </p>
     <p>
@@ -54,6 +55,9 @@
     </p>
     <p>
         Read about <a href="Author.aspx">our qualifications here</a> or <a href="Testimonials.aspx">what our customers say about us</a>.
+    </p>
+    <p>
+        And read more about our <a href="SoftwareFactory.aspx">consulting services or Software Factory options here</a>...
     </p>
 </asp:Content>
 

@@ -39,15 +39,17 @@
     </p>
     <h2>GPL problems...?</h2>
     <p>
-        Do you want to use Ra-Ajax without being restricted by the GPL?
+        Do you need a non-GPL version of Ra-Ajax...?
     </p>
     <p>
-        Ra-Software does not publish Ra-Ajax under any other license then the GPL. However,
-        if you want to use Ra-Ajax under another license you can hire us as consultants and
-        we will use Ra-Ajax under a proprietary license which gives you a license to freely use
-        Ra-Ajax in your organization without having any restrictions in regards to the GPL.
+        If you want to use Ra-Ajax without being restricted by the GPL all you need
+        to do is to hire us as consultants and we will give you a proprietary license
+        which you can use Ra-Ajax together with which will not restrict your product
+        in any way.
     </p>
     <p>
+        Send <a href="mailto:thomas@ra-ajax.org">Thomas an email</a> to get in contact
+        with us regarding hiring us as consultants.
         <a href="SoftwareFactory.aspx">Read more about our consulting services here...</a>
     </p>
 </asp:Content>
