@@ -13,27 +13,27 @@
 
 * Added MaxLength property to TextBox to specify the Maximum number 
   of allowed characters the user can enter.
-  
+
 * Much nicer server error/exception	display (less obtrusive). The 
   user can optionally view the full error details or ignore it.
-  
+
 * Support for setting multiple style values in Ra.Element using 
   JS object literals with the function Ra.Element.setStyles(). Good 
   for writing more compact code when setting multiple style values.
-  
+
 * Better cross-browser obscuring solution for BehaviorObscurable 
   and BehaviorUpdater. Eliminates problems like revealing parts of 
   the page behind the obscurer while resizing the browser window. 
   This solution is pure CSS, no JS is used to adjust for resizing, 
   scrolling etc...
-  
+
 * Support of displaying an image with BehaviorUpdater. Nice for
   displaying things like loading.gif image (http://ajaxload.info) or
   something similar while the Ajax request is being processed on the 
   server.
-  
+
 * Fixed a bug that made the Visible property not work in Opera.
-  
+
 * Added zIndex property to BehaviorUpdater.
 
 * Removed unnecessary code from Dynamic.
@@ -80,14 +80,14 @@
 
 * Fixed a bug in RaControl that made the JSON serialization fail 
   if the value passed in is null.
-  
+
 * Added support for dynamic inclusion of JavaScript files 
   (from resource and file path) on Ajax callbacks. This is 
   100% transparent which means that there is nothing special 
   you need to add to your JS files to use this feature. This 
   also fixes several bugs related to dynamically including 
   extension controls in Ajax callbacks.
-  
+
 * Minor refactorings in AjaxManager.
 
 * Fixed a bug that caused initial setting of opacity style value 
@@ -98,7 +98,7 @@
   which if set (through the QueueMultipleRequests property) will
   make sure that all Ajax Requests generated when the control 
   already have an ongoing Ajax Request will never be queued up.
-  This is useful if you have "slow buttons" which are spending 
+  This is useful e.g. if you have "slow buttons" which are spending 
   a lot of time on the server and you wish to discard consecutive
   clicks on those buttons (can be any widget) since they're just
   a result of a reckless user clicking the same button multiple
@@ -129,9 +129,9 @@
   and their associated controls that made them incorrectly
   load Style properties they were changing on Widgets. All
   though this was a "core bug" it would only manifest itself
-  as a bug in the BehaviorDraggable which would incorrectly
-  modify the top/left properties of the owning control when
-  dragged around on screen.
+  as a bug in the BehaviorDraggable as far as we know which 
+  would incorrectly modify the top/left properties of the 
+  owning control when dragged around on screen.
 
 * Added support for changing Behaviors' properties on Ajax 
   callbacks.
@@ -139,12 +139,12 @@
 * Added support for enabling/disabling Behaviors through 
   implementing IDisableableBehavior (implemented only for 
   BehaviorDraggable for now).
-  
+
 * Renamed CreateExtraControlsAtBottom and 
   CreateExtraControlsAtBottomEvtArgs to CreateFooterControls and 
   CreateFooterControlsEventArgs in Calendar.cs
   (Breaking Change).
-  
+
 * Renamed CreateNavigationalButtons and 
   CreateNavigationalButtonsEvtArgs to CreateTitleBarControls and 
   CreateTitleBarControlsEventArgs in Window.cs
@@ -157,10 +157,23 @@
   file even though it was not visible if the JS file was needed.
 
 * Changed license from LGPL to GPL.
+  BREAKING CHANGE!!
 
 * Fixed a bug in EffectRollDown and EffectRollUp that made 
   the animated element loose its old overflow values if 
   overflow-x was different from overflow-y.
+
+* Changed almost every namespace to become far more 
+  intuitive. Note you'll probably going to have to seriously
+  rewrite usage of Ra-Ajax. Also changed name of assembly
+  Extensions to Ra.Extensions.dll.
+  BREAKING CHANGE!!
+
+* Seriously updated the documentation for Ra-Ajax. Now it
+  should be really versatile and useful.
+
+* Seriously updated the entire website and also samples.
+  Hopefully to the better :)
 
 
 
