@@ -13,5 +13,5 @@
 <ra:Label 
     runat="server" 
     Text="Watch me as you click button..."
-    style="display:none;background-color:#eee;"
+    style="display:none;background-color:#eee;overflow-x:auto;overflow-y:visible;"
     ID="lbl" />

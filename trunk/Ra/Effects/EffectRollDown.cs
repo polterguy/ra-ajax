@@ -56,7 +56,8 @@ namespace Ra.Effects
     this._toHeight = this.element.getDimensions().height;
     this.element.setStyle('height','0px');
     this.element.setStyle('display','block');
-    this._overflow = this.element.getStyle('overflow');
+    this._overflow_x = this.element.getStyle('overflowX');
+    this._overflow_y = this.element.getStyle('overflowY');
     this.element.setStyle('overflow','hidden');
 ";
         }
@@ -65,7 +66,8 @@ namespace Ra.Effects
         {
             return @"
     this.element.setStyle('height', '');
-    this.element.setStyle('overflow',this._overflow);
+    this.element.setStyle('overflowX',this._overflow_x);
+    this.element.setStyle('overflowY',this._overflow_y);
 ";
         }
 
