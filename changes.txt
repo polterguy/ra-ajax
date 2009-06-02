@@ -9,6 +9,13 @@
 
                           Version 2.0.0
 
+                           IMPORTANT!
+                      CHANGED LICENSE TO GPL
+                 If this cause problems for you, then 
+                 please see our consulting offerings at 
+                http://ra-ajax.org which comes together 
+               with a proprietary license to use Ra-Ajax.
+
   ------------------------------------------------------------------
 
 * Added MaxLength property to TextBox to specify the Maximum number 
@@ -174,6 +181,10 @@
 
 * Seriously updated the entire website and also samples.
   Hopefully to the better :)
+
+* Added a whole bunch of really great new tutorials which
+  are now an integrated part of the documentation for 
+  Ra-Ajax.
 
 
 
