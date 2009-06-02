@@ -16,7 +16,7 @@ using HTML = System.Web.UI.HtmlControls;
 using System.Collections.Generic;
 using System.Globalization;
 
-[assembly: ASP.WebResource("Extensions.Js.GlobalUpdater.js", "text/javascript")]
+[assembly: ASP.WebResource("Ra.Extensions.Js.GlobalUpdater.js", "text/javascript")]
 
 namespace Ra.Extensions.Widgets
 {
@@ -74,7 +74,7 @@ namespace Ra.Extensions.Widgets
 
         protected override void OnPreRender(EventArgs e)
         {
-            AjaxManager.Instance.IncludeScriptFromResource(typeof(GlobalUpdater), "Extensions.Js.GlobalUpdater.js");
+            AjaxManager.Instance.IncludeScriptFromResource(typeof(GlobalUpdater), "Ra.Extensions.Js.GlobalUpdater.js");
             base.OnPreRender(e);
         }
 

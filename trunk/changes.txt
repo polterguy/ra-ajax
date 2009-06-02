@@ -158,6 +158,10 @@
 
 * Changed license from LGPL to GPL.
 
+* Fixed a bug in EffectRollDown and EffectRollUp that made 
+  the animated element loose its old overflow values if 
+  overflow-x was different from overflow-y.
+
 
 
 
