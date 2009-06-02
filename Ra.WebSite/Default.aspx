@@ -11,6 +11,18 @@
     ContentPlaceHolderID="cnt1" 
     Runat="Server">
 
+    <a href="http://code.google.com/p/ra-ajax/">
+        <ra:Image 
+            runat="server" 
+            ID="imgDownload" 
+            ImageUrl="media/download.png" 
+            AlternateText="Download Ra-Ajax" 
+            style="float:right;opacity:0.3;">
+            <ra:BehaviorUnveiler 
+                runat="server" 
+                id="behUnveiler" />
+        </ra:Image>
+    </a>
     <h1>Ra-Ajax</h1>
     <p>
         Ra-Ajax is a <em>no-JavaScript</em> Ajax library for ASP.NET. Ra-Ajax is Free Software and
