@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 
-namespace Extensions.Helpers
+namespace Ra.Extensions.Helpers
 {
     // This is the "driver" for our Comet Control
     // This one just contains the logic to "lock" until an Event is raised and then fetch that

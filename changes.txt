@@ -11,7 +11,7 @@
 
                            IMPORTANT!
                       CHANGED LICENSE TO GPL
-                 If this cause problems for you, then 
+                 If this causes problems for you, then 
                  please see our consulting offerings at 
                 http://ra-ajax.org which comes together 
                with a proprietary license to use Ra-Ajax.

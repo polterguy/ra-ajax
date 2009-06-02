@@ -4,6 +4,13 @@
   <add key="ChartImageHandler" value="storage=file;timeout=20;dir=TempImageFiles;" />
 </appSettings>
 <system.web>
+  <pages>
+    <controls>
+      <add assembly="Ra" namespace="Ra.Widgets" tagPrefix="ra" />
+      <add assembly="Ra" namespace="Ra.Behaviors" tagPrefix="ra" />
+      <add assembly="Ra.Extensions" namespace="Ra.Extensions.Widgets" tagPrefix="ra" />
+    </controls>
+  </pages>
   <httpHandlers>
     <add
         path="ChartImg.axd"
@@ -22,13 +29,6 @@
           verb="GET,HEAD"
           path="ChartImg.axd"
           type="System.Web.UI.DataVisualization.Charting.ChartHttpHandler, System.Web.DataVisualization, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
-      <!--
-      <add verb="*" path="*.gif" type="ResourceCacher.FarFutureExpires, ResourceCacher"/>
-      <add verb="*" path="*.png" type="ResourceCacher.FarFutureExpires, ResourceCacher"/>
-      <add verb="*" path="*.jpg" type="ResourceCacher.FarFutureExpires, ResourceCacher"/>
-      <add verb="*" path="*.jpeg" type="ResourceCacher.FarFutureExpires, ResourceCacher"/>
-      <add verb="*" path="*.css" type="ResourceCacher.FarFutureExpires, ResourceCacher"/>
-      -->
     </handlers>
   </system.webServer>
 </configuration>

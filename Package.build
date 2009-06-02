@@ -35,15 +35,6 @@
     </fileset>
   </copy>
 
-  <copy overwrite="true" todir="${output.dir}/${code.dir}/${resource.cacher.name}">
-    <fileset basedir="${resource.cacher.name}">
-      <exclude name="obj/**/*.*" />
-      <exclude name="**/*VS2008.csproj" />
-      <include name="**/*.cs" />
-      <include name="**/*.csproj" />
-    </fileset>
-  </copy>
-
   <copy overwrite="true" todir="${output.dir}/${code.dir}/${ra.selector.name}">
     <fileset basedir="${ra.selector.name}">
       <exclude name="obj/**/*.*" />
@@ -77,9 +68,6 @@
       <include name="**/*" />
     </fileset>
     <fileset basedir="${output.dir}/${code.dir}/${ext.name}" prefix="${code.dir}/${ext.name}">
-      <include name="**/*" />
-    </fileset>
-    <fileset basedir="${output.dir}/${code.dir}/${resource.cacher.name}" prefix="${code.dir}/${resource.cacher.name}">
       <include name="**/*" />
     </fileset>
     <fileset basedir="${output.dir}/${code.dir}/${ra.selector.name}" prefix="${code.dir}/${ra.selector.name}">

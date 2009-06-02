@@ -38,8 +38,8 @@
 
 <%@ Register 
     Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
+    Namespace="Ra.Extensions.Widgets" 
+    TagPrefix="ra" %>
 </pre>
 <p>
 	Now you can reference all the Extension Controls by typing in <i>&lt;ext:</i> in your .ASPX
@@ -59,7 +59,7 @@
     ID="btn" 
     Text="Click me..." 
     OnClick="btn_Click" />
-<ext:Window 
+<ra:Window 
     runat="server" 
     ID="wnd" 
     style="position:absolute;left:50px;top:50px;z-index:50;"
@@ -71,7 +71,7 @@
     <ra:BehaviorObscurable 
         runat="server" 
         ID="obsc" />
-</ext:Window>
+</ra:Window>
 </pre>
 <b>Default.aspx.cs</b>
 <pre lang="cs">
@@ -180,8 +180,8 @@ protected void btn_Click(object sender, EventArgs e)
 
 <%@ Register 
     Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
+    Namespace="Ra.Extensions.Widgets" 
+    TagPrefix="ra" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -198,7 +198,7 @@ protected void btn_Click(object sender, EventArgs e)
                     ID="btn" 
                     Text="Click me..." 
                     OnClick="btn_Click" />
-                <ext:Window 
+                <ra:Window 
                     runat="server" 
                     ID="wnd" 
                     style="position:absolute;left:50px;top:50px;z-index:50;"
@@ -210,7 +210,7 @@ protected void btn_Click(object sender, EventArgs e)
                     <ra:BehaviorObscurable 
                         runat="server" 
                         ID="obsc" />
-                </ext:Window>
+                </ra:Window>
             </div>
         </form>
     </body>
@@ -339,7 +339,7 @@ public partial class _Default : System.Web.UI.Page
 	So to get a working Window with an explicit width and height you must do something like this.
 </p>
 <pre lang="xml">
-<ext:Window 
+<ra:Window 
     runat="server" 
     ID="wnd" 
     style="position:absolute;left:50px;top:50px;z-index:50;width:300px;"
@@ -347,7 +347,7 @@ public partial class _Default : System.Web.UI.Page
     <div style="height:250px;">
         Howdy world! I'm BACK...!
     </div>
-</ext:Window>
+</ra:Window>
 </pre>
 
 <p>

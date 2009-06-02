@@ -1,6 +1,6 @@
 ﻿using System;
 using Ra.Widgets;
-using RaSelector;
+using Ra.Selector;
 
 public partial class SelectorTests : System.Web.UI.Page
 {

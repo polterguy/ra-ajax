@@ -6,15 +6,6 @@
 
   <target name="all" depends="publish.samples,publish.ra.website" />
 
-  <target name="compile.resource.cacher" description="Compile the Resource Cacher used By the Websites">
-    <csc verbose="false" target="library" optimize="${not debug}" output="${output.dir}/${library.dir}/${resource.cacher.name}.dll" debug="${debug}">
-      <sources>
-        <include name="${resource.cacher.name}/**/*.cs" />
-        <exclude name="${resource.cacher.name}/obj/**/*.*" />
-      </sources>
-    </csc>
-  </target>
-
   <target name="compile.ra.selector" description="Compile Ra Selector">
     <csc verbose="false" target="library" optimize="${not debug}" output="${output.dir}/${library.dir}/${ra.selector.name}.dll" debug="${debug}">
       <sources>
@@ -24,7 +15,7 @@
     </csc>
   </target>
 
-  <target name="publish.samples" depends="compile.resource.cacher,compile.ra.selector" description="Publish and Precompile the Samples Website">
+  <target name="publish.samples" depends="compile.ra.selector" description="Publish and Precompile the Samples Website">
     <copy overwrite="true" todir="${output.dir}/${code.dir}/${samples.dir}">
       <fileset basedir="${samples.dir}">
         <include name="**/*.cs" />
@@ -37,6 +28,10 @@
         <include name="ChartImages/**/*.*" />
       </fileset>
     </copy>
+    <copy 
+      file="${samples.dir}/Web.Config.template" 
+      tofile="${output.dir}/${code.dir}/${samples.dir}/Web.Config" 
+      overwrite="true" />
 
     <mkdir dir="${output.dir}/${code.dir}/${samples.dir}/bin" />
     <copy flatten="true" todir="${output.dir}/${code.dir}/${samples.dir}/bin">
@@ -44,7 +39,6 @@
         <include name="${output.dir}/${library.dir}/${gzipped.dir}/${ra.name}.dll" />
         <include name="${output.dir}/${library.dir}/${gzipped.dir}/${ext.name}.dll" />
         <include name="${output.dir}/${library.dir}/${ra.selector.name}.dll" />
-        <include name="${output.dir}/${library.dir}/${resource.cacher.name}.dll" />
 		<include name="${references.dir}/System.Web.DataVisualization.dll" />
 	  </fileset>
     </copy>
@@ -70,6 +64,11 @@
             
 			HttpContext.Current.Response.AppendHeader("Content-Encoding", "gzip");
 		}
+    else if (Request.Path.ToLowerInvariant().EndsWith(".css") &&
+        HttpContext.Current.Response.ContentType.ToLowerInvariant() == "text/css")
+    {
+        HttpContext.Current.Response.AppendHeader("Content-Encoding", "gzip");
+    }
 	}
 </script>]]>
       </content>
@@ -103,7 +102,7 @@
     </copy>
   </target>
 
-  <target name="publish.ra.website" depends="compile.resource.cacher" description="Publish and Precompile the Ra-Ajax Website">
+  <target name="publish.ra.website" description="Publish and Precompile the Ra-Ajax Website">
     <copy overwrite="true" todir="${output.dir}/${code.dir}/${ra.website.dir}">
       <fileset basedir="${ra.website.dir}">
         <include name="**/*.cs" />
@@ -114,6 +113,10 @@
         <include name="media/**/*.*" />
       </fileset>
     </copy>
+    <copy 
+      file="${ra.website.dir}/Web.Config.template" 
+      tofile="${output.dir}/${code.dir}/${ra.website.dir}/Web.Config" 
+      overwrite="true" />
 
     <mkdir dir="${output.dir}/${code.dir}/${ra.website.dir}/bin" />
     <copy flatten="true" todir="${output.dir}/${code.dir}/${ra.website.dir}/bin">
@@ -121,7 +124,6 @@
         <include name="${output.dir}/${library.dir}/${ra.selector.name}.dll" />
         <include name="${output.dir}/${library.dir}/${gzipped.dir}/${ra.name}.dll" />
         <include name="${output.dir}/${library.dir}/${gzipped.dir}/${ext.name}.dll" />
-        <include name="${output.dir}/${library.dir}/${resource.cacher.name}.dll" />
         <include name="${references.dir}/**/*.dll" />
         <exclude name="${references.dir}/NAnt.Core.dll" />
       </fileset>
@@ -151,6 +153,11 @@ if (Request.Path.ToLowerInvariant().EndsWith("webresource.axd") &&
 	HttpContext.Current.Response.Cache.SetValidUntilExpires(false);
     
 	HttpContext.Current.Response.AppendHeader("Content-Encoding", "gzip");
+}
+else if (Request.Path.ToLowerInvariant().EndsWith(".css") &&
+    HttpContext.Current.Response.ContentType.ToLowerInvariant() == "text/css")
+{
+    HttpContext.Current.Response.AppendHeader("Content-Encoding", "gzip");
 }
 				]]>
       </text-to-insert>

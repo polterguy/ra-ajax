@@ -12,13 +12,13 @@
     Runat="Server">
 
     <h1>Bloggers at Ra-Ajax</h1>
-    <a href="http://ra-ajax.org/Kariem.blogger" class="blogLinks">
+    <a href="http://kariem.net" class="blogLinks" target="_blank">
         <img src="media/Kariem.jpg" alt="Kariem Ali" style="float:left;padding:10px;" />
         <span style="display:block;font-size:24px;color:Black;">Kariem Ali</span>
         <span>
-            Kariem's blog. Kariem lives in Alexandria in Egypt and is an employee in Ra-Software - the company
+            Kariem lives in Alexandria, Egypt and is a Senior Software Architect in Ra-Software - the company
             that creates and maintains Ra-Ajax. Kariem is one of the core developers and architects behind Ra-Ajax.
-            Kariem blogs about Ra-Ajax, development in general and other things he is interested in.
+            He blogs about Ra-Ajax, development in general and other things he is interested in.
         </span>
     </a>
     <a href="http://ra-ajax.org/thomas.blogger" class="blogLinks">
@@ -36,7 +36,7 @@
         <span style="display:block;font-size:24px;color:Black;">Rick Gibson</span>
         <span>
             Rick lives in Tehama County about twenty miles from Chico, CA. Rick's dog is named
-            John Lennon which should give you an idea of Rick's interests. Rick blogs about sharing, 
+            John Lennon which should give you an idea of Rick's interests. He blogs about sharing, 
             Ra-Ajax and other things he is interested in.
         </span>
     </a>
