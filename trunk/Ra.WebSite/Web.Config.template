@@ -64,6 +64,13 @@
   </ColorizerLibrary>
 
   <system.web>
+    <pages>
+      <controls>
+        <add assembly="Ra" namespace="Ra.Widgets" tagPrefix="ra" />
+        <add assembly="Ra" namespace="Ra.Behaviors" tagPrefix="ra" />
+        <add assembly="Ra.Extensions" namespace="Ra.Extensions.Widgets" tagPrefix="ra" />
+      </controls>
+    </pages>
     <httpModules>
       <add name="UrlRewriteModule" type="UrlRewritingNet.Web.UrlRewriteModule, UrlRewritingNet.UrlRewriter" />
     </httpModules>

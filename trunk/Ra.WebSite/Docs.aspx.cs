@@ -62,11 +62,11 @@ namespace RaWebsite
                 switch (idx.ChildNodes[0].InnerText.Replace("::", "."))
                 {
                     // removing the classes we don't really NEED documentation for...
-                    case "Extensions.Helpers.CometQueue":
-                    case "Ra.CallbackFilter":
+                    case "Ra.Extensions.Helpers.CometQueue":
+                    case "Ra.Core.CallbackFilter":
                     case "Ra.Extensions.AccordionView.EffectChange":
                     case "Ra.Extensions.AutoCompleter.RetrieveAutoCompleterItemsEventArgs":
-                    case "Ra.PostbackFilter":
+                    case "Ra.Core.PostbackFilter":
                     case "Ra.Widgets.ListItemCollection":
                     case "Ra.Widgets.StyleCollection":
                     case "Ra.Widgets.StyleCollection.StyleValue":

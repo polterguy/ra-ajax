@@ -8,6 +8,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		CustomTasks.build = CustomTasks.build
 		license-GPL.txt = license-GPL.txt
 		license.txt = license.txt
+		Package.build = Package.build
+		PublishWebsites.build = PublishWebsites.build
 		Ra.build = Ra.build
 		ReadMe.txt = ReadMe.txt
 	EndProjectSection

@@ -29,25 +29,25 @@
         licensed under the GPL version 3.
     </p>
     <ul class="list">
-        <li><a runat="server" href="~/samples/">View the samples</a></li>
+        <li><a runat="server" href="~/samples/">Ra-Ajax Samples</a></li>
         <li><a runat="server" href="~/Testimonials.aspx">Testimonials</a></li>
         <li><a href="http://code.google.com/p/ra-ajax/">Download Ra-Ajax</a></li>
-        <li><a runat="server" href="~/Support.aspx">Get help</a></li>
+        <li><a runat="server" href="~/Support.aspx">Get Help</a></li>
         <li><a runat="server" href="~/SoftwareFactory.aspx">Need software?</a></li>
     </ul>
-    <h2>GPL problems...?</h2>
+    <h2>GPL problems?</h2>
     <p>
-        Do you need a non-GPL version of Ra-Ajax...?
+        Do you need a non-GPL version of Ra-Ajax?
     </p>
     <p>
-        If you want to use Ra-Ajax without being restricted by the GPL you need
-        to hire us as consultants and we will give you a proprietary license
-        which you can use Ra-Ajax by which will not restrict you to the GPL.
+        If you want to use Ra-Ajax without being restricted by the GPL, you need
+        to hire us as consultants and we will give you a proprietary license. This
+        license will entitle you to use Ra-Ajax without the restrictions of the GPL.
     </p>
     <p>
         Send <a href="mailto:thomas@ra-ajax.org">Thomas an email</a> to get in contact
-        with us regarding hiring us as consultants.
-        <a href="SoftwareFactory.aspx">Read more about our consulting services here...</a>
+        in regards to hiring us as consultants. Read more about our 
+        <a href="SoftwareFactory.aspx">consulting services</a>.
     </p>
 </asp:Content>
 

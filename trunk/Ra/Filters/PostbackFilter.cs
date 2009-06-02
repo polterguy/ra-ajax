@@ -9,7 +9,7 @@
 using System;
 using System.IO;
 
-namespace Ra._Internals
+namespace Ra.Core
 {
     internal class PostbackFilter : Stream
     {

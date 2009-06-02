@@ -101,8 +101,8 @@
 
 <%@ Register 
     Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
+    Namespace="Ra.Extensions.Widgets" 
+    TagPrefix="ra" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -119,14 +119,14 @@
                     ID="btn" 
                     Text="Open Chat Window..." 
                     OnClick="btn_Click" />
-                <ext:Window 
+                <ra:Window 
                     runat="server" 
                     ID="wnd" 
                     style="position:absolute;left:50px;top:50px;z-index:50;width:400px;"
                     Caption="Chat room Window"
                     Visible="false">
                     <div style="height:250px;padding:15px;">
-                        <ext:Timer 
+                        <ra:Timer 
                             runat="server" 
                             ID="timer" 
                             OnTick="timer_Tick" />
@@ -148,7 +148,7 @@
                     <ra:BehaviorObscurable 
                         runat="server" 
                         ID="obsc" />
-                </ext:Window>
+                </ra:Window>
             </div>
         </form>
     </body>
@@ -397,8 +397,8 @@ private void GetChats()
 
 <%@ Register 
     Assembly="Extensions" 
-    Namespace="Ra.Extensions" 
-    TagPrefix="ext" %>
+    Namespace="Ra.Extensions.Widgets" 
+    TagPrefix="ra" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -415,14 +415,14 @@ private void GetChats()
                     ID="btn" 
                     Text="Open Chat Window..." 
                     OnClick="btn_Click" />
-                <ext:Window 
+                <ra:Window 
                     runat="server" 
                     ID="wnd" 
                     style="position:absolute;left:50px;top:50px;z-index:50;width:400px;"
                     Caption="Chat room Window"
                     Visible="false">
                     <div style="height:250px;padding:15px;">
-                        <ext:Timer 
+                        <ra:Timer 
                             runat="server" 
                             ID="timer" 
                             OnTick="timer_Tick" />
@@ -449,7 +449,7 @@ private void GetChats()
                     <ra:BehaviorObscurable 
                         runat="server" 
                         ID="obsc" />
-                </ext:Window>
+                </ra:Window>
             </div>
         </form>
     </body>

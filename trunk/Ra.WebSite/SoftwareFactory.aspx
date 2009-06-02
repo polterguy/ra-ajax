@@ -21,7 +21,7 @@
         We will then use Ra-Ajax in this project and you will be given a special <strong>proprietary license
         of Ra-Ajax</strong> which does not restrict your project in any ways by the GPL. So if you need to
         have some software created or you have some problem which we can solve for you, then please
-        send <a href="mailto:thomas@ra-ajax.org">Thomas and email</a> and explain what you would
+        send <a href="mailto:thomas@ra-ajax.org">Thomas an email</a> and explain what you would
         want to get done.
     </p>
     <p>
@@ -81,7 +81,7 @@
         - which is the software construction parts!
     </p>
     <p>
-        <a href="Testimonials.aspx">Read what previous customers of Ra-Software has to say about us</a>.
+        <a href="Testimonials.aspx">Read what previous customers of Ra-Software had to say about us</a>.
     </p>
     <p>
         Or <a href="Author.aspx">read about our qualifications here</a>.
