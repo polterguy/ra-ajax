@@ -66,8 +66,12 @@ namespace Ra.Effects
         {
             return @"
     this.element.setStyle('height', '');
-    this.element.setStyle('overflowX',this._overflow_x);
-    this.element.setStyle('overflowY',this._overflow_y);
+    if( this._overflow_x ) {
+      this.element.setStyle('overflowX',this._overflow_x);
+    }
+    if( this._overflow_y ) {
+      this.element.setStyle('overflowY',this._overflow_y);
+    }
 ";
         }
 
