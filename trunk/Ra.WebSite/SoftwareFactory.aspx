@@ -57,9 +57,9 @@
     </p>
     <ul class="list">
         <li>Coaching other developers</li>
-        <li>Teaching Ra-Ajax</li>
+        <li>Ra-Ajax training</li>
         <li>Teaching architecture and software design</li>
-        <li>Teaching C#, ASP.NET, Ajax etc</li>
+        <li>C#, ASP.NET and Ajax training</li>
         <li>Supplying extra hands on projects</li>
         <li>Code Reviews</li>
         <li>Quality Assurance</li>
