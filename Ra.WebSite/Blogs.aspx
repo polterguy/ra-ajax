@@ -40,6 +40,13 @@
             Ra-Ajax and other things he is interested in.
         </span>
     </a>
+    <a href="http://ra-ajax.org/dave.blogger" class="blogLinks">
+        <span style="display:block;font-size:24px;color:Black;">Dave Lazarov</span>
+        <span>
+            Dave lives in South Africa and is a user of Ra-Ajax and writes about Ra-Ajax and
+            other things he is interested in.
+        </span>
+    </a>
     <p style="text-align:center;">
         <a href="Login.aspx">Login</a>
     </p>
