@@ -1,8 +1,8 @@
 ﻿<%@ Control 
     Language="C#" 
     AutoEventWireup="true" 
-    CodeFile="Ra.Widgets.EffectFadeIn.ascx.cs" 
-    Inherits="Docs_Controls_EffectFadeIn" %>
+    CodeFile="Ra.Effects.EffectSize.ascx.cs" 
+    Inherits="Docs_Controls_EffectSize" %>
 
 <ra:Button 
     runat="server" 
@@ -12,7 +12,6 @@
 
 <ra:Label 
     runat="server" 
-    ID="lbl" 
-    style="display:none;"
-    Text="Watch me as you click button" />
-
+    Text="Watch me as you click button..."
+    style="background-color:#eee;display:block;"
+    ID="lbl" />

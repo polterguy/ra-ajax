@@ -1,8 +1,8 @@
 ﻿<%@ Control 
     Language="C#" 
     AutoEventWireup="true" 
-    CodeFile="Ra.Widgets.EffectHighlight.ascx.cs" 
-    Inherits="Docs_Controls_EffectHighlight" %>
+    CodeFile="Ra.Effects.EffectHighlightText.ascx.cs" 
+    Inherits="Docs_Controls_EffectHighlightText" %>
 
 <ra:Button 
     runat="server" 

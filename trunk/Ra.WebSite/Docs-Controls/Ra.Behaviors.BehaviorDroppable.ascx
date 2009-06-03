@@ -1,7 +1,7 @@
 ﻿<%@ Control 
     Language="C#" 
     AutoEventWireup="true" 
-    CodeFile="Ra.Widgets.BehaviorDroppable.ascx.cs" 
+    CodeFile="Ra.Behaviors.BehaviorDroppable.ascx.cs" 
     Inherits="Docs_Controls_BehaviorDroppable" %>
 
 <div style="position:relative;width:550px;height:350px;">

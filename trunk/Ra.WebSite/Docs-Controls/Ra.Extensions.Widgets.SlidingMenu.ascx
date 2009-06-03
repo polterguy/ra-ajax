@@ -1,7 +1,7 @@
 ﻿<%@ Control 
     Language="C#" 
     AutoEventWireup="true" 
-    CodeFile="Ra.Extensions.SlidingMenu.ascx.cs" 
+    CodeFile="Ra.Extensions.Widgets.SlidingMenu.ascx.cs" 
     Inherits="Docs_Controls_SlidingMenu" %>
 
 <ra:Label 

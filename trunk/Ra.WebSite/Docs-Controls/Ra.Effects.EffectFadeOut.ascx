@@ -1,8 +1,8 @@
 ﻿<%@ Control 
     Language="C#" 
     AutoEventWireup="true" 
-    CodeFile="Ra.Widgets.EffectHighlightText.ascx.cs" 
-    Inherits="Docs_Controls_EffectHighlightText" %>
+    CodeFile="Ra.Effects.EffectFadeOut.ascx.cs" 
+    Inherits="Docs_Controls_EffectFadeOut" %>
 
 <ra:Button 
     runat="server" 
@@ -12,6 +12,6 @@
 
 <ra:Label 
     runat="server" 
-    Text="Watch me as you click button..."
-    ID="lbl" />
+    ID="lbl" 
+    Text="Watch me as you click button" />
 

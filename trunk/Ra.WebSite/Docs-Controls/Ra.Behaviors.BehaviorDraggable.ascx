@@ -1,7 +1,7 @@
 ﻿<%@ Control 
     Language="C#" 
     AutoEventWireup="true" 
-    CodeFile="Ra.Widgets.BehaviorDraggable.ascx.cs" 
+    CodeFile="Ra.Behaviors.BehaviorDraggable.ascx.cs" 
     Inherits="Docs_Controls_BehaviorDraggable" %>
 
 <div style="position:relative;width:550px;height:350px;">

@@ -1,7 +1,7 @@
 ﻿<%@ Control 
     Language="C#" 
     AutoEventWireup="true" 
-    CodeFile="Ra.Extensions.Window.ascx.cs" 
+    CodeFile="Ra.Extensions.Widgets.Window.ascx.cs" 
     Inherits="Docs_Controls_Window" %>
 
 <ra:ExtButton 

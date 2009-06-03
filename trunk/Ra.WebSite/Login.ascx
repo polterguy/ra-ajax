@@ -2,7 +2,7 @@
     Language="C#" 
     AutoEventWireup="true" 
     CodeFile="Login.ascx.cs" 
-    Inherits="RaWebsite.Login" %>
+    Inherits="RaWebsiteUserControl.Login" %>
     
 <table style="margin-bottom:0em;">
     <tr>

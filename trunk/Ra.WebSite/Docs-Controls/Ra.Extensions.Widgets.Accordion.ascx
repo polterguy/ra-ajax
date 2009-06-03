@@ -1,7 +1,7 @@
 ﻿<%@ Control 
     Language="C#" 
     AutoEventWireup="true" 
-    CodeFile="Ra.Extensions.Accordion.ascx.cs" 
+    CodeFile="Ra.Extensions.Widgets.Accordion.ascx.cs" 
     Inherits="Docs_Controls_Accordion" %>
 
 <ra:Label 

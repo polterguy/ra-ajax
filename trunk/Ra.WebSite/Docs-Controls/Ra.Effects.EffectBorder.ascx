@@ -1,7 +1,7 @@
 ﻿<%@ Control 
     Language="C#" 
     AutoEventWireup="true" 
-    CodeFile="Ra.Widgets.EffectBorder.ascx.cs" 
+    CodeFile="Ra.Effects.EffectBorder.ascx.cs" 
     Inherits="Docs_Controls_EffectBorder" %>
 
 <ra:Label 

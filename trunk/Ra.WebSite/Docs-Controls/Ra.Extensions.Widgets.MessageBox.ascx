@@ -1,7 +1,7 @@
 ﻿<%@ Control 
     Language="C#" 
     AutoEventWireup="true" 
-    CodeFile="Ra.Extensions.MessageBox.ascx.cs" 
+    CodeFile="Ra.Extensions.Widgets.MessageBox.ascx.cs" 
     Inherits="Docs_Controls_MessageBox" %>
 
 <ra:Label 

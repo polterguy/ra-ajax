@@ -1,7 +1,7 @@
 ﻿<%@ Control 
     Language="C#" 
     AutoEventWireup="true" 
-    CodeFile="Ra.Widgets.EffectFocusAndSelect.ascx.cs" 
+    CodeFile="Ra.Effects.EffectFocusAndSelect.ascx.cs" 
     Inherits="Docs_Controls_EffectFocusAndSelect" %>
 
 <ra:Button 

@@ -1,7 +1,7 @@
 ﻿<%@ Control 
     Language="C#" 
     AutoEventWireup="true" 
-    CodeFile="Ra.Extensions.Tree.ascx.cs" 
+    CodeFile="Ra.Extensions.Widgets.Tree.ascx.cs" 
     Inherits="Docs_Controls_Tree" %>
 
 <ra:Label 

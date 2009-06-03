@@ -1,7 +1,7 @@
 ﻿<%@ Control 
     Language="C#" 
     AutoEventWireup="true" 
-    CodeFile="Ra.Extensions.Calendar.ascx.cs" 
+    CodeFile="Ra.Extensions.Widgets.Calendar.ascx.cs" 
     Inherits="Docs_Controls_Calendar" %>
 
 <ra:Label 

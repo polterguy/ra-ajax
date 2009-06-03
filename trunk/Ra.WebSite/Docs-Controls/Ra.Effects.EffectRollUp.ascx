@@ -1,8 +1,8 @@
 ﻿<%@ Control 
     Language="C#" 
     AutoEventWireup="true" 
-    CodeFile="Ra.Widgets.EffectTimeout.ascx.cs" 
-    Inherits="Docs_Controls_EffectTimeout" %>
+    CodeFile="Ra.Effects.EffectRollUp.ascx.cs" 
+    Inherits="Docs_Controls_EffectRollUp" %>
 
 <ra:Button 
     runat="server" 

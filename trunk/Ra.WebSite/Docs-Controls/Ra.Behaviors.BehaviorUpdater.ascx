@@ -1,7 +1,7 @@
 ﻿<%@ Control 
     Language="C#" 
     AutoEventWireup="true" 
-    CodeFile="Ra.Widgets.BehaviorUpdater.ascx.cs" 
+    CodeFile="Ra.Behaviors.BehaviorUpdater.ascx.cs" 
     Inherits="Docs_Controls_BehaviorUpdater" %>
 
 <ra:ExtButton 

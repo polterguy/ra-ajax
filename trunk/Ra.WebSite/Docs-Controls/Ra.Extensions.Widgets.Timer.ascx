@@ -1,7 +1,7 @@
 ﻿<%@ Control 
     Language="C#" 
     AutoEventWireup="true" 
-    CodeFile="Ra.Extensions.Timer.ascx.cs" 
+    CodeFile="Ra.Extensions.Widgets.Timer.ascx.cs" 
     Inherits="Docs_Controls_Timer" %>
 
 <div style="position:relative;height:270px;border:dotted 1px #999;">
