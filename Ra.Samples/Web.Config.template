@@ -18,7 +18,7 @@
         type="System.Web.UI.DataVisualization.Charting.ChartHttpHandler, System.Web.DataVisualization, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
         validate="false"/>
   </httpHandlers>
-  <compilation debug="true"/>
+  <compilation debug="false"/>
   <authentication mode="Windows"/>
 </system.web>
   <system.webServer>
