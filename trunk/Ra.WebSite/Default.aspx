@@ -35,6 +35,13 @@
         <li><a runat="server" href="~/Support.aspx">Get Help</a></li>
         <li><a runat="server" href="~/SoftwareFactory.aspx">Need software?</a></li>
     </ul>
+    <h2>Daily Builds of Ra-Ajax</h2>
+    <p>
+        We now have <a href="/daily">daily builds of Ra-Aja</a>. At around 1 am 
+        (Norway Local Time) each day, a new build will be available for download. This
+        only takes place if there are any changes in the code repository since the previous
+        daily build. So some days might be skipped.
+    </p>
     <h2>Not comfortable with the GPL?</h2>
     <p>
         Do you need a non-GPL version of Ra-Ajax?
