@@ -35,7 +35,7 @@
         <li><a runat="server" href="~/Support.aspx">Get Help</a></li>
         <li><a runat="server" href="~/SoftwareFactory.aspx">Need software?</a></li>
     </ul>
-    <h2>GPL problems?</h2>
+    <h2>Not comfortable with the GPL?</h2>
     <p>
         Do you need a non-GPL version of Ra-Ajax?
     </p>
