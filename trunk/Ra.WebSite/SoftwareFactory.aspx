@@ -87,22 +87,17 @@
     <p>
         Or <a href="Author.aspx">read about our qualifications here</a>.
     </p>
-    <h2>Are you really, really poor?</h2>
+    <h2>Can't afford to hire us?</h2>
     <p>
-        Maybe you're a garage startup, maybe an hour with us are worth weeks of food for your
-        children, or maybe you for any other reason are really, really broke but still want to
-        use Ra-Ajax commercially with a proprietary license?
-    </p>
-    <p>
-        Fear not, Ra-Software have a <em>Serve the Underserved Program</em> where we can give you
-        some time of consultancy very cheap which then also includes the proprietary
+        Fear not, Ra-Software has a <em>Serve the Underserved Initiative</em> where we can give you
+        some time of consultancy very inexpensively which then also includes the proprietary
         license of Ra-Ajax.
     </p>
     <p>
         Most of the consultancy given this way would be in the form of access to videos
-        and similar concepts. And our <em>Serve the Underserved Program</em> is highly dependant
+        and similar concepts. And our <em>Serve the Underserved Initiative</em> is highly dependant
         upon that you really need it. If you're working from home and just registered your 
-        company and you still haven't made much of buck at all you're worthy. If you live in a 
+        company and you still haven't made much buck at all, then you're worthy. If you live in a 
         very poor country where our consultancy rates are too much for you to pay, and your 
         company is really broke, then you're worthy. And if you work for free for a voluntary 
         organization that just wants to help the world you're also worthy.
