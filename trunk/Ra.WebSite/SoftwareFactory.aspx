@@ -100,7 +100,8 @@
         company and you still haven't made much buck at all, then you're worthy. If you live in a 
         very poor country where our consultancy rates are too much for you to pay, and your 
         company is really broke, then you're worthy. And if you work for free for a voluntary 
-        organization that just wants to help the world you're also worthy.
+        organization that just wants to help the world you're also worthy. All students would 
+        normally be considered worthy.
     </p>
     <p>
         Still you need to tell us about what you're going to do, and it must be a really 
