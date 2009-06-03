@@ -103,11 +103,6 @@
         organization that just wants to help the world you're also worthy. All students would 
         normally be considered worthy.
     </p>
-    <p>
-        Still you need to tell us about what you're going to do, and it must be a really 
-        heartbreaking story! Even though you're a startup we will not give you consulting
-        if you're going to build Nuclear Missile Guiding Systems.
-    </p>
 
 </asp:Content>
 
