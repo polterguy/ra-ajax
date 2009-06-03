@@ -111,6 +111,7 @@
         <include name="**/*.ascx" />
         <include name="**/*.master" />
         <include name="media/**/*.*" />
+        <include name="tutorials/**/*.*" />
       </fileset>
     </copy>
     <copy 
