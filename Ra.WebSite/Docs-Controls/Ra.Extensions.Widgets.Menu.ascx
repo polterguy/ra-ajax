@@ -1,7 +1,7 @@
 ﻿<%@ Control 
     Language="C#" 
     AutoEventWireup="true" 
-    CodeFile="Ra.Extensions.Menu.ascx.cs" 
+    CodeFile="Ra.Extensions.Widgets.Menu.ascx.cs" 
     Inherits="Docs_Controls_Menu" %>
 
 <ra:Label 

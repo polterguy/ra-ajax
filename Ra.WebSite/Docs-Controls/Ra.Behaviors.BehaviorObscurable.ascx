@@ -1,7 +1,7 @@
 ﻿<%@ Control 
     Language="C#" 
     AutoEventWireup="true" 
-    CodeFile="Ra.Widgets.BehaviorObscurable.ascx.cs" 
+    CodeFile="Ra.Behaviors.BehaviorObscurable.ascx.cs" 
     Inherits="Docs_Controls_BehaviorObscurable" %>
 
 <ra:ExtButton 

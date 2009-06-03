@@ -12,12 +12,12 @@ h2
 	font-size:14px;
 }
 
-ul.list
+ul.list, .blog ul
 {
 	margin:5px 0 15px 0;
 }
 
-ul.list li
+ul.list li, .blog ul li
 {
 	list-style-type:disc;
 	list-style-position:outside;

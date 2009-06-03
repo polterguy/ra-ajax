@@ -1,7 +1,7 @@
 ﻿<%@ Control 
     Language="C#" 
     AutoEventWireup="true" 
-    CodeFile="Ra.Widgets.EffectMove.ascx.cs" 
+    CodeFile="Ra.Effects.EffectMove.ascx.cs" 
     Inherits="Docs_Controls_EffectMove" %>
 
 <ra:Button 

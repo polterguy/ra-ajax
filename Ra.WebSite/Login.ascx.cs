@@ -15,7 +15,7 @@ using Entity;
 using Ra.Widgets;
 using Ra.Effects;
 
-namespace RaWebsite
+namespace RaWebsiteUserControl
 {
     public partial class Login : System.Web.UI.UserControl
     {

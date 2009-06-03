@@ -1,7 +1,7 @@
 ﻿<%@ Control 
     Language="C#" 
     AutoEventWireup="true" 
-    CodeFile="Ra.Widgets.BehaviorUnveiler.ascx.cs" 
+    CodeFile="Ra.Behaviors.BehaviorUnveiler.ascx.cs" 
     Inherits="Docs_Controls_BehaviorUnveiler" %>
 
 <ra:Label 

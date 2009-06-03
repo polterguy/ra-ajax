@@ -1,7 +1,7 @@
 ﻿<%@ Control 
     Language="C#" 
     AutoEventWireup="true" 
-    CodeFile="Ra.Extensions.ResizeHandler.ascx.cs" 
+    CodeFile="Ra.Extensions.Widgets.ResizeHandler.ascx.cs" 
     Inherits="Docs_Controls_ResizeHandler" %>
 
 <ra:Label 

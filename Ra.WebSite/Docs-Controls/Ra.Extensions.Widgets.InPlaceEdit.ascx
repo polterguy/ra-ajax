@@ -1,7 +1,7 @@
 ﻿<%@ Control 
     Language="C#" 
     AutoEventWireup="true" 
-    CodeFile="Ra.Extensions.InPlaceEdit.ascx.cs" 
+    CodeFile="Ra.Extensions.Widgets.InPlaceEdit.ascx.cs" 
     Inherits="Docs_Controls_InPlaceEdit" %>
 
 <ra:InPlaceEdit 

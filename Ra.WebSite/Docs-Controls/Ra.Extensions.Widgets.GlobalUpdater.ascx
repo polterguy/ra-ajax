@@ -1,7 +1,7 @@
 ﻿<%@ Control 
     Language="C#" 
     AutoEventWireup="true" 
-    CodeFile="Ra.Extensions.GlobalUpdater.ascx.cs" 
+    CodeFile="Ra.Extensions.Widgets.GlobalUpdater.ascx.cs" 
     Inherits="Docs_Controls_Accordion" %>
 
 <ra:GlobalUpdater 

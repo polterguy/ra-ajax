@@ -1,7 +1,7 @@
 ﻿<%@ Control 
     Language="C#" 
     AutoEventWireup="true" 
-    CodeFile="Ra.Extensions.TabControl.ascx.cs" 
+    CodeFile="Ra.Extensions.Widgets.TabControl.ascx.cs" 
     Inherits="Docs_Controls_TabControl" %>
 
 <ra:TabControl runat="server" ID="tab" OnActiveTabViewChanged="TabChaged">

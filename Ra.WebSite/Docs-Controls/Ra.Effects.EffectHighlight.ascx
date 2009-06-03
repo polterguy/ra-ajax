@@ -1,8 +1,8 @@
 ﻿<%@ Control 
     Language="C#" 
     AutoEventWireup="true" 
-    CodeFile="Ra.Widgets.EffectRollDown.ascx.cs" 
-    Inherits="Docs_Controls_EffectRollDown" %>
+    CodeFile="Ra.Effects.EffectHighlight.ascx.cs" 
+    Inherits="Docs_Controls_EffectHighlight" %>
 
 <ra:Button 
     runat="server" 
@@ -13,5 +13,5 @@
 <ra:Label 
     runat="server" 
     Text="Watch me as you click button..."
-    style="display:none;background-color:#eee;overflow-x:auto;overflow-y:visible;"
     ID="lbl" />
+
