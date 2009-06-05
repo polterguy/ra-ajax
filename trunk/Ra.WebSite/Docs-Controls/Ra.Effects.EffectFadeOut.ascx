@@ -10,8 +10,9 @@
     Text="Click me..." 
     OnClick="btn_Click" />
 
-<ra:Label 
+<ra:Panel 
     runat="server" 
-    ID="lbl" 
-    Text="Watch me as you click button" />
+    ID="lbl">
+    Watch me as you click button
+</ra:Panel>
 

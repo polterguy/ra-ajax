@@ -7,6 +7,39 @@
 
   ------------------------------------------------------------------
 
+                          Version 2.0.1
+
+  ------------------------------------------------------------------
+
+* Fixed a bug in setOpacity in Ra.js which for IE based browsers
+  would make transparent PNGs if they were within the hierarchy
+  of the element being called setOpacity for would display the
+  transparent parts of the PNG become black. Notice that this
+  bug is not fixed, but it's fixed so that once you set the 
+  opacity to 1.0 it will DISABLE the alpha filter for the 
+  element which means that once the element is finished fading 
+  back into 100% opaque it will not show these transparent 
+  regions of the PNG as black.
+  This bug-fix is especially visible for EffectFadeIn when
+  you have transparent PNGs within the Control being faded into
+  view.
+
+* Fixed a bug in the rendering logic on the server for opacity
+  which made in IE (any versions) if you set the opacity to
+  1.0 - the text for that element would render "funny". This
+  is due to the alpha-channeling of IE where it renders text
+  of HTML elements with alpha transparency to "smoothen" or 
+  "blur" the text. This is fixed by in the StyleCollection 
+  class checking to see if the opacity being set is 1.0, and
+  if it is then *DISABLE* the alpha channeling.
+
+
+
+
+
+
+  ------------------------------------------------------------------
+
                           Version 2.0.0
 
                            IMPORTANT!

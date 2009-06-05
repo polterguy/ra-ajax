@@ -16,6 +16,7 @@ public partial class Docs_Controls_EffectFadeOut : System.Web.UI.UserControl
 {
     protected void btn_Click(object sender, EventArgs e)
     {
-        new EffectFadeOut(lbl, 800).Render();
+        new EffectFadeOut(lbl, 800)
+            .Render();
     }
 }

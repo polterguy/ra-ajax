@@ -286,6 +286,7 @@ ul#menu li a:hover
 .thumbsSmall
 {
 	margin:5px;
+	cursor:pointer;
 }
 
 .thumbsSmall .links
@@ -320,6 +321,7 @@ ul#menu li a:hover
 	width:100px;
 	height:62px;
 	background-image:url('small-thumbs.png');
+	cursor:pointer;
 }
 
 .thumbsSmall .links .image1
@@ -349,6 +351,7 @@ ul#menu li a:hover
 
 .thumbsSmall .links .text
 {
+	cursor:pointer;
 	float:left;
 	width:140px;
 	margin-left:5px;
@@ -362,6 +365,8 @@ ul#menu li a:hover
 .thumbsSmallNav
 {
 	margin:5px;
+	display:block;
+	cursor:pointer;
 }
 
 .thumbsSmallNav .links
@@ -391,6 +396,7 @@ ul#menu li a:hover
 .thumbsSmallNav .links .image4,
 .thumbsSmallNav .links .image5
 {
+	cursor:pointer;
 	float:left;
 	display:block;
 	width:100px;
@@ -425,6 +431,7 @@ ul#menu li a:hover
 
 .thumbsSmallNav .links .text
 {
+	cursor:pointer;
 	float:left;
 	width:140px;
 	margin-left:5px;
