@@ -157,7 +157,10 @@ namespace Ra.Widgets
                 if (HttpContext.Current.Request.Browser.Browser == "IE")
                 {
                     styleName = "filter";
-                    styleValue = string.Format("alpha(opacity={0:0})", Math.Round(opacity * 100));
+                    if (opacity == 1.0M)
+                        styleValue = "alpha(enabled=false)";
+                    else
+                        styleValue = string.Format("alpha(opacity={0:0})", Math.Round(opacity * 100));
                 }
                 else
                 {

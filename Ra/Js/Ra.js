@@ -291,7 +291,11 @@ Ra.Element.prototype = {
   // Sets opacity, expects a value between 0.0 and 1.0 where 0 == invisible and 1 == completely visible
   setOpacity: function(val) {
     if(Ra.Browser.IE || !('opacity' in this.style)) {
-      this.setStyle('filter', 'alpha(opacity=' + Math.round(val * 100) + ')');
+      if( val == 1 ) {
+        this.style.filter = 'alpha(enabled=false)';
+      } else {
+        this.style.filter = 'alpha(opacity=' + Math.round(val * 100) + ',enabled=true)';
+      }
     } else {
       this.style.opacity = (val >= 0.99 ? '' : (val <= 0.01 ? 0 : val));
     }
