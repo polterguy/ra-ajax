@@ -354,6 +354,13 @@ Ra.Element.prototype = {
     if( !this._wrappers ) {
       this._wrappers = [];
     }
+    if( Ra.Browser.IE ) {
+      if( evN == 'mouseover' ) {
+        evN = 'mouseenter';
+      } else if( evN == 'mouseout' ) {
+        evN = 'mouseleave';
+      }
+    }
 
     var T = this;
     var wr = function(event) {
@@ -413,6 +420,14 @@ Ra.Element.prototype = {
     // Here we're "defaulting" the clTx to the function unless it is explicitly given
     if( !clTx ) {
       clTx = func;
+    }
+
+    if( Ra.Browser.IE ) {
+      if( evN == 'mouseover' ) {
+        evN = 'mouseenter';
+      } else if( evN == 'mouseout' ) {
+        evN = 'mouseleave';
+      }
     }
 
     // Retrieving event handler wrapper
