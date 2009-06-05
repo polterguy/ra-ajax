@@ -88,7 +88,7 @@ namespace Ra.Effects
 			}
 		}
 
-        public override string RenderParalledOnStart()
+        protected override string RenderParalledOnStart()
         {
 			UpdateStyleCollection();
             return @"
@@ -96,7 +96,7 @@ namespace Ra.Effects
 ";
         }
 
-        public override string RenderParalledOnFinished()
+        protected override string RenderParalledOnFinished()
         {
             string retVal = "";
             if (_height != -1)
@@ -112,7 +112,7 @@ namespace Ra.Effects
             return retVal;
         }
 
-        public override string RenderParalledOnRender()
+        protected override string RenderParalledOnRender()
         {
             string retVal = "";
             if (_height != -1)

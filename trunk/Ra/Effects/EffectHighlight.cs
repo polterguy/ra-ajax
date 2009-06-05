@@ -32,7 +32,7 @@ namespace Ra.Effects
 			: base(control, milliseconds)
 		{ }
 
-        public override string RenderParalledOnStart()
+        protected override string RenderParalledOnStart()
         {
             return @"
     this._startColor = this.element.getStyle('backgroundColor') || '#ffffff';
@@ -43,14 +43,14 @@ namespace Ra.Effects
 ";
         }
 
-        public override string RenderParalledOnFinished()
+        protected override string RenderParalledOnFinished()
         {
             return @"
     this.element.setStyle('backgroundColor',this._orColor);
 ";
         }
 
-        public override string RenderParalledOnRender()
+        protected override string RenderParalledOnRender()
         {
             return @"
     var color;

@@ -42,7 +42,7 @@ namespace Ra.Effects
 			}
 		}
 
-        public override string RenderParalledOnStart()
+        protected override string RenderParalledOnStart()
         {
 			UpdateStyleCollection();
             return @"
@@ -51,7 +51,7 @@ namespace Ra.Effects
 ";
         }
 
-        public override string RenderParalledOnFinished()
+        protected override string RenderParalledOnFinished()
         {
             return @"
     this.element.setStyle('display','none');
@@ -59,7 +59,7 @@ namespace Ra.Effects
 ";
         }
 
-        public override string RenderParalledOnRender()
+        protected override string RenderParalledOnRender()
         {
             return @"
     this.element.setOpacity(1.0 - pos);

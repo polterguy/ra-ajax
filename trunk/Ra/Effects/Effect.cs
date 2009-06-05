@@ -140,17 +140,17 @@ namespace Ra.Effects
         /**
          * Implementation of the body rendering of the OnStart logic
          */
-        public abstract string RenderParalledOnStart();
+        protected abstract string RenderParalledOnStart();
 
         /**
          * Implementation of the body rendering of the OnFinished logic
          */
-        public abstract string RenderParalledOnFinished();
+        protected abstract string RenderParalledOnFinished();
 
         /**
          * Implementation of the body rendering of the OnRender logic
          */
-        public abstract string RenderParalledOnRender();
+        protected abstract string RenderParalledOnRender();
 
         #endregion
 

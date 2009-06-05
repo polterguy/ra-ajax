@@ -76,7 +76,7 @@ namespace Ra.Extensions.Widgets
                 //RaWebControl tmp = this.Control as RaWebControl;
             }
 
-            public override string RenderParalledOnStart()
+            protected override string RenderParalledOnStart()
             {
                 UpdateStyleCollection();
                 if (_reversed)
@@ -128,7 +128,7 @@ this._oldMargin = parseInt(this.element.getStyle('marginLeft')) || 0;
                 }
             }
 
-            public override string RenderParalledOnFinished()
+            protected override string RenderParalledOnFinished()
             {
                 if (_reversed)
                 {
@@ -161,7 +161,7 @@ this._oldMargin = parseInt(this.element.getStyle('marginLeft')) || 0;
                 }
             }
 
-            public override string RenderParalledOnRender()
+            protected override string RenderParalledOnRender()
             {
                 if (_reversed)
                 {
