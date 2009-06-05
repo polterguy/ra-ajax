@@ -16,6 +16,7 @@ using ColorizerLibrary;
 using Ra.Selector;
 using Ra.Extensions.Widgets;
 using Ra.Effects;
+using Ra;
 
 namespace RaWebsite
 {
@@ -23,11 +24,63 @@ namespace RaWebsite
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            BuildRoot();
             if (!IsPostBack)
             {
                 header.Text = "Reference Documentation";
+                string className = Request.Params["class"];
+                if (!string.IsNullOrEmpty(className))
+                {
+                    SelectClass(className);
+                    linkToThis.Visible = false;
+                }
+                else
+                {
+                    string tutorial = Request.Params["tutorial"];
+                    if (!string.IsNullOrEmpty(tutorial))
+                    {
+                        tutorial = "(" + tutorial.Replace("_", " ").Replace("-", ") - ");
+                        SelectTutorial(tutorial);
+                        linkToThis.Visible = false;
+                    }
+                }
             }
-            BuildRoot();
+        }
+
+        private void SelectTutorial(string tutorial)
+        {
+            TreeNode node = Ra.Selector.Selector.SelectFirst<TreeNode>(rootTutorials,
+                delegate(System.Web.UI.Control idx)
+                {
+                    TreeNode n = idx as TreeNode;
+                    if (n != null)
+                        return n.Text == tutorial;
+                    return false;
+                });
+            if (node != null)
+            {
+                rootTutorials.RollDown();
+                tree.SelectedNodes = new TreeNode[] { node };
+                ShowTutorial(node.ID);
+            }
+        }
+
+        private void SelectClass(string className)
+        {
+            TreeNode node = Ra.Selector.Selector.SelectFirst<TreeNode>(rootNode,
+                delegate(System.Web.UI.Control idx)
+                {
+                    TreeNode n = idx as TreeNode;
+                    if (n != null)
+                        return n.Text == className;
+                    return false;
+                });
+            if (node != null)
+            {
+                root.RollDown();
+                tree.SelectedNodes = new TreeNode[] { node };
+                ShowClass(node.ID);
+            }
         }
 
         private void BuildRoot()
@@ -109,9 +162,17 @@ namespace RaWebsite
             if (itemToLookAt == "rootNode" || itemToLookAt == "tutorials")
                 return;
             if (itemToLookAt.Contains("tutorial_"))
+            {
+                linkToThis.Visible = true;
+                linkToThis.Xtra = "Docs.aspx?tutorial=" + tree.SelectedNodes[0].Text.Replace("(", "").Replace(") - ", "-").Replace(" ", "_");
                 ShowTutorial(itemToLookAt);
+            }
             else
+            {
+                linkToThis.Visible = true;
+                linkToThis.Xtra = "Docs.aspx?class=" + tree.SelectedNodes[0].Text;
                 ShowClass(itemToLookAt);
+            }
         }
 
         private void ShowTutorial(string tutorialID)
@@ -163,6 +224,8 @@ namespace RaWebsite
             }
             else
             {
+                linkToThis.Visible = true;
+                linkToThis.Xtra = "Docs.aspx?class=" + inherit.Text;
                 ShowClass(inherit.Xtra);
             }
         }
@@ -246,6 +309,11 @@ namespace RaWebsite
             repWrapper.ReRender();
 
             LoadSample(header.Text);
+        }
+
+        protected void linkToThis_Click(object sender, EventArgs e)
+        {
+            AjaxManager.Instance.Redirect(linkToThis.Xtra);
         }
 
         private void LoadSample(string className)
