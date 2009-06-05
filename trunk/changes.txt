@@ -33,6 +33,12 @@
   class checking to see if the opacity being set is 1.0, and
   if it is then *DISABLE* the alpha channeling.
 
+* Changed the (IE only) implementation of the mouseover
+  and mouseout to use the native support in IE for 
+  mouseenter and mouseleave instead of the "emulated" once
+  in Ra. This should make the Ra mouseover and mouseout 
+  faster for IE.
+
 
 
 
