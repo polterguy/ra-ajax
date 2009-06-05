@@ -117,8 +117,8 @@ namespace RaWebsite
                     // removing the classes we don't really NEED documentation for...
                     case "Ra.Extensions.Helpers.CometQueue":
                     case "Ra.Core.CallbackFilter":
-                    case "Ra.Extensions.AccordionView.EffectChange":
-                    case "Ra.Extensions.AutoCompleter.RetrieveAutoCompleterItemsEventArgs":
+                    case "Ra.Extensions.Widgets.AccordionView.EffectChange":
+                    case "Ra.Extensions.Widgets.AutoCompleter.RetrieveAutoCompleterItemsEventArgs":
                     case "Ra.Core.PostbackFilter":
                     case "Ra.Widgets.ListItemCollection":
                     case "Ra.Widgets.StyleCollection":
