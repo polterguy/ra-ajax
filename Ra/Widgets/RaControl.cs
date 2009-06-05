@@ -667,7 +667,7 @@ namespace Ra.Widgets
          * Scenarios where this might be reasonable is where your control is e.g. a &lt;li... type
          * of control and rendering an invisible span will break XHTML compliance.
          */
-		public virtual string GetInvisibleHTML()
+		protected virtual string GetInvisibleHTML()
 		{
 			return string.Empty;
 		}

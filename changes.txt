@@ -39,6 +39,10 @@
   in Ra. This should make the Ra mouseover and mouseout 
   faster for IE.
 
+* Made several methods on both Effects and RaControl 
+  protected instead of public to make the API more clean 
+  and less confusing.
+
 
 
 

@@ -29,7 +29,7 @@ namespace Ra.Effects
 			: base(control, 1)
 		{ }
 
-        public override string RenderParalledOnStart()
+        protected override string RenderParalledOnStart()
         {
             return @"
     this.element.focus();
@@ -39,12 +39,12 @@ namespace Ra.Effects
 ";
         }
 
-        public override string RenderParalledOnFinished()
+        protected override string RenderParalledOnFinished()
         {
             return "";
         }
 
-        public override string RenderParalledOnRender()
+        protected override string RenderParalledOnRender()
         {
             return "";
         }

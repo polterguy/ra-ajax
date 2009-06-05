@@ -31,17 +31,17 @@ namespace Ra.Effects
         protected override void ValidateEffect()
         { }
 
-        public override string RenderParalledOnStart()
+        protected override string RenderParalledOnStart()
         {
             return string.Empty;
         }
 
-        public override string RenderParalledOnFinished()
+        protected override string RenderParalledOnFinished()
         {
             return string.Empty;
         }
 
-        public override string RenderParalledOnRender()
+        protected override string RenderParalledOnRender()
         {
             return string.Empty;
         }

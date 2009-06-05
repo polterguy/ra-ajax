@@ -75,7 +75,7 @@ namespace Ra.Effects
 			}
 		}
 
-        public override string RenderParalledOnStart()
+        protected override string RenderParalledOnStart()
         {
 			UpdateStyleCollection();
             return @"
@@ -84,14 +84,14 @@ namespace Ra.Effects
 ";
         }
 
-        public override string RenderParalledOnFinished()
+        protected override string RenderParalledOnFinished()
         {
             return string.Format(@"
     this.element.setStyle('borderWidth','{0}px');
 ", BorderTo);
         }
 
-        public override string RenderParalledOnRender()
+        protected override string RenderParalledOnRender()
         {
             return string.Format(@"
     var x = parseInt(pos*{0});

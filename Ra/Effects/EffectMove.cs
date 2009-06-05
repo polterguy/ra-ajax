@@ -84,7 +84,7 @@ namespace Ra.Effects
 			}
 		}
 
-        public override string RenderParalledOnStart()
+        protected override string RenderParalledOnStart()
         {
 			UpdateStyleCollection();
             return @"
@@ -93,7 +93,7 @@ namespace Ra.Effects
 ";
         }
 
-        public override string RenderParalledOnFinished()
+        protected override string RenderParalledOnFinished()
         {
             return string.Format(@"
     this.element.setStyle('left','{0}px');
@@ -102,7 +102,7 @@ namespace Ra.Effects
                 _left, _top);
         }
 
-        public override string RenderParalledOnRender()
+        protected override string RenderParalledOnRender()
         {
             return string.Format(@"
     var deltaL = (({0}) - this.startL) * pos;

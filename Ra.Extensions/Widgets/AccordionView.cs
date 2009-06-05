@@ -150,7 +150,7 @@ Ra.E('{0}', {{
                     Effect.Transition.Explosive);
             }
 
-            public override string RenderParalledOnStart()
+            protected override string RenderParalledOnStart()
             {
                 return string.Format(@"
     this.other = Ra.$('{1}');
@@ -162,7 +162,7 @@ Ra.E('{0}', {{
                     _idRemove, _idShow);
             }
 
-            public override string RenderParalledOnFinished()
+            protected override string RenderParalledOnFinished()
             {
                 return @"
     this.element.setStyle('display','none');
@@ -171,7 +171,7 @@ Ra.E('{0}', {{
 ";
             }
 
-            public override string RenderParalledOnRender()
+            protected override string RenderParalledOnRender()
             {
                 return @"
     this.other.setStyle('height',(this.otherToHeight * pos) + 'px');
