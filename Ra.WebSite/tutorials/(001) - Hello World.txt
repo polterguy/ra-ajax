@@ -128,7 +128,9 @@ public partial class _Default : System.Web.UI.Page
 
 <h3>Explanation - Ra Internals... [Advanced]</h3>
 <p>
-	Now we have added a Ra-Ajax Button to our page. Then we attached an Event Handler (btn_Click)
+	Now we have added a 
+	<a href="Docs.aspx?class=Ra.Widgets.Button">Ra-Ajax Button</a> 
+	to our page. Then we attached an Event Handler (btn_Click)
 	for the <i>Click</i> event - (<i>OnClick</i> in .ASPX markup). Whenever the Button is clicked, 
 	our event handler will be called on the server.
 </p>
@@ -257,9 +259,11 @@ Ra.Control.$('btn').handleJSON({"Value":"Hello World!"});
 <p>
 	For a simple example like this you might say that it's not a big deal to get rid of Partial
 	Rendering. And you're right. For such a simple example it doesn't really matter. However
-	if you start playing around with more complex and rich functionality like Windows, 
-	DateTimePickers, AutoCompleters and such then getting rid of Partial Rendering is not only
-	a need, but a MUST.
+	if you start playing around with more complex and rich functionality like 
+	<a href="Docs.aspx?class=Ra.Extensions.Widgets.Window">Windows</a>, 
+	<a href="Docs.aspx?class=Ra.Extensions.Widgets.DateTimePicker">DateTimePickers</a>, 
+	<a href="Docs.aspx?class=Ra.Extensions.Widgets.AutoCompleter">AutoCompleters</a> 
+	and such then getting rid of Partial Rendering is not only a need, but a MUST.
 </p>
 <p>
 	Without getting rid of Partial Rendering then all your logic which is slightly more advanced
@@ -288,5 +292,7 @@ Ra.Control.$('btn').handleJSON({"Value":"Hello World!"});
 	This is why we call Ra-Ajax a <a href="http://ra-ajax.org/managed-ajax-a-new-approach-to-ajax.blog">
 	Managed Ajax</a> Framework...
 </p>
-
+<p>
+	On to <a href="Docs.aspx?tutorial=002-Styling_and_Effects">Styling and Effects in Ra-Ajax</a>...
+</p>
 

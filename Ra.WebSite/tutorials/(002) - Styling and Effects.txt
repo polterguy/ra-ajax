@@ -20,17 +20,17 @@
 	maps to the <i>class attribute</i> which should be familiar to most CSS and HTML
 	coders. Though there is also a very powerful wrapper around the <i>style</i>
 	HTML attribute - the <i>Style property</i>. In addition to both of these constructs, Ra-Ajax
-	also contains an extremely powerful Effect library. The Effect library is also highly 
-	extensible so that you can create your own Effects.
+	also contains an extremely powerful <a href="Docs.aspx?class=Ra.Effects.Effect">Effect</a> library. 
+	The Effect library is also highly extensible so that you can create your own Effects.
 </p>
 <p>
 	First start off by creating a default ASP.NET Website which you should know how to
-	do after reading our <i>Hello World</i> tutorial. Make sure you reference the 
-	<i>Ra.dll</i> in this website.
+	do after reading our <a href="Docs.aspx?tutorial=001-Hello_World">Hello World</a> tutorial. 
+	Make sure you reference the <i>Ra.dll</i> in this website.
 </p>
 <p>
-	Then add a Ra Panel into your <i>Default.aspx</i> page and enter some 
-	mumbo-jumbo text within your Panel.
+	Then add a <a href="Docs.aspx?class=Ra.Widgets.Panel">Ra-Panel</a> into your 
+	<i>Default.aspx</i> page and enter some mumbo-jumbo text within your Panel.
 </p>
 <pre lang="xml">
 <ra:Panel 
@@ -76,7 +76,7 @@ protected void Page_Load(object sender, EventArgs e)
 
 <h3>Ra-Ajax Effects for bling</h3>
 <p>
-	Now you can add a Ra Button within your Panel.
+	Now you can add a <a href="Docs.aspx?class=Ra.Widgets.Button">Ra-Button</a> within your Panel.
 </p>
 <pre lang="xml">
 <ra:Panel 
@@ -93,7 +93,7 @@ protected void Page_Load(object sender, EventArgs e)
 </ra:Panel>
 </pre>
 <p>
-	Then we're going to add some <i>Effects</i> within our Button Click Event Handler.
+	Then we're going to add some <a href="Docs.aspx?class=Ra.Effects.Effect">Effects</a> within our Button Click Event Handler.
 </p>
 
 <pre lang="cs">
@@ -103,7 +103,8 @@ protected void foo(object sender, EventArgs e)
 }
 </pre>
 <p>
-	Notice how we are just instantiating our Effect and immediately calling the Render
+	Notice how we are just instantiating our <a href="Docs.aspx?class=Ra.Effects.EffectRollUp">EffectRollUp</a> 
+	and immediately calling the Render
 	method on it. We could store the Effect into a variable and then call Render on the
 	reference to it like this;
 </p>
@@ -130,6 +131,9 @@ protected void foo(object sender, EventArgs e)
 	<li>DblClick</li>
 	<li>etc...</li>
 </ul>
+<p>
+	Most of these events can be found in the <a href="Docs.aspx?class=Ra.Widgets.RaWebControl">RaWebControl class</a>.
+</p>
 <p>
 	We're going to handle the <i>MouseOut</i> and the <i>MouseOver</i> events here, to show 
 	how to take advantage of manipulating this widget. Change the markup for your Panel to this;
@@ -228,9 +232,12 @@ protected void foo(object sender, EventArgs e)
 	Now run the sample and click the Button.
 </p>
 <p>
-	As you can see the FadeOut effect runs at the same time as the RollUp effect.
-	Then the Button will RollDown while at the same time FadeIn. Then the button
-	will grow to 150x150 pixels before a small pause of 0.5 seconds occurs.
+	As you can see the <a href="Docs.aspx?class=Ra.Effects.EffectFadeOut">FadeOut effect</a> 
+	runs at the same time as the <a href="Docs.aspx?class=Ra.Effects.EffectRollUp">RollUp effect</a>.
+	Then the Button will <a href="Docs.aspx?class=Ra.Effects.EffectRollDown">RollDown</a> while at 
+	the same time <a href="Docs.aspx?class=Ra.Effects.EffectFadeIn">FadeIn</a>. Then the button
+	will <a href="Docs.aspx?class=Ra.Effects.EffectSize">grow</a> to 150x150 pixels before a small 
+	<a href="Docs.aspx?class=Ra.Effects.EffectTimeout">pause</a> of 0.5 seconds occurs.
 	Then the Button will grow yet again, this time to 200x200 pixels, another
 	small pause before the Button finally grows to its end size of 250x250 pixels.
 </p>

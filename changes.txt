@@ -43,6 +43,9 @@
   protected instead of public to make the API more clean 
   and less confusing.
 
+* Created support for deep linking in the documentation
+  system so that you can link to specific tutorials and
+  classes.
 
 
 
