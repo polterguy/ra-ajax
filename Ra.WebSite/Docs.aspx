@@ -81,6 +81,9 @@
                 <a href="SoftwareFactory.aspx">consulting offerings</a> which btw is the only
                 way to get hold of a proprietary license of Ra-Ajax.
             </p>
+            <p>
+                <a href="Documentation-SiteMap.aspx">Documentation SiteMap</a>
+            </p>
         </div>
     </ra:Panel>
     <ra:Panel 
