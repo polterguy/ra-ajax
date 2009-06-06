@@ -7,6 +7,7 @@
 <ra:Label 
     runat="server" 
     Text="Changes..."
+    style="margin-bottom:10px;display:block;"
     ID="lbl" />
 
 <ra:Menu 
