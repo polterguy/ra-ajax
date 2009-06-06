@@ -51,6 +51,9 @@
   and so on on the website to make it easier to browse
   around and read the tutorials.
 
+* Seriously revamped the Menu widget to be more up to
+  the quality of the SlidingMenu Widget.
+
 
 
 
