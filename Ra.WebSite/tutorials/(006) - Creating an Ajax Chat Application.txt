@@ -13,13 +13,13 @@
 <p>
 	So far we have only skimmed the surface of Ra-Ajax and haven't really created
 	anything of real use or value. Today we are going to fix that by combining our existing
-	knowledge together to create an Ajax Chat Application using features from Ra-Ajax like;
+	knowledge together to create an <em>Ajax Chat Application</em> using features from Ra-Ajax like;
 </p>
 <ul>
-	<li>Window</li>
-	<li>Behaviors</li>
-	<li>Effects</li>
-	<li>Timer</li>
+	<li><a href="Docs.aspx?class=Ra.Extensions.Widgets.Window">Window</a></li>
+	<li><a href="Docs.aspx?class=Ra.Behaviors.Behavior">Behaviors</a></li>
+	<li><a href="Docs.aspx?class=Ra.Effects.Effect">Effects</a></li>
+	<li><a href="Docs.aspx?class=Ra.Extensions.Widgets.Timer">Timer</a></li>
 	<li>And more...</li>
 </ul>
 
@@ -55,26 +55,31 @@
 	demanding to poll for every visitor at your page. And second, because most
 	people visiting your website are probably not interested in entering your chat room,
 	but might rather be looking around for some other information. We will do this
-	by having our Timer and chat logic inside of a Modal Window which we choose to make
-	non-visible by default and only open when the user clicks a button.
+	by having our <a href="Docs.aspx?class=Ra.Extensions.Widgets.Timer">Timer</a> and chat 
+	logic inside of a <a href="Docs.aspx?class=Ra.Extensions.Widgets.Window">Modal Window</a> 
+	which we choose to make non-visible by default and only open when the user clicks a 
+	<a href="Docs.aspx?class=Ra.Widgets.Button">button</a>.
 </p>
 <p>
 	Next we need a chat output control, as in the place where we show the messages, we 
 	could have 	used a number of different controls, including GridViews, Repeaters, 
-	Textboxes or many other controls. However, to make this tutorial easy to follow and 
-	not too complex we will choose to use a plain and simple Label. 
+	<a href="Docs.aspx?class=Ra.Widgets.TextBox">Textboxes</a> or many other controls. 
+	However, to make this tutorial easy to follow and not too complex we will choose 
+	to use a plain and simple <a href="Docs.aspx?class=Ra.Widgets.Label">Label</a>. 
 </p>
 <p>
-	Then <b>inside</b> the Window we will need to have a Timer to poll for
+	Then <b>inside</b> the <a href="Docs.aspx?class=Ra.Extensions.Widgets.Window">Window</a> 
+	we will need to have a <a href="Docs.aspx?class=Ra.Extensions.Widgets.Timer">Timer</a> to poll for
 	our server to see if there are any new chats available, and if there are any updates
-	to our "output Label". Notice that by putting this Timer control inside of our
-	Window it will not be active before the Window is being shown. This means that the Timer
-	will not carry any overhead before the user has actively chosen to enter
+	to our "output <a href="Docs.aspx?class=Ra.Widgets.Label">Label</a>". Notice that by putting 
+	this Timer control inside of our Window it will not be active before the Window is being shown. 
+	This means that the Timer will not carry any overhead before the user has actively chosen to enter
 	the Chat Room.
 </p>
 <p>
-	And then finally we need to have a TextBox and a submit Button to
-	make it possible to send your chat messages to the server.
+	And then finally we need to have a <a href="Docs.aspx?class=Ra.Widgets.TextBox">TextBox</a> and a 
+	submit <a href="Docs.aspx?class=Ra.Widgets.Button">Button</a> to make it possible to send your 
+	chat messages to the server.
 </p>
 <p>
 	In addition we need to have some sort of "database" to store our chat messages
@@ -253,7 +258,8 @@ public partial class _Default : System.Web.UI.Page
 <h3>Explanation</h3>
 <p>
 	There are many familiar constructs in this code. First of all we have a 
-	BehaviorObscurable to make our Window Modal. Secondly, we're using a Timer
+	<a href="Docs.aspx?class=Ra.Behaviors.BehaviorObscurable">BehaviorObscurable</a> to make our 
+	Window Modal. Secondly, we're using a Timer
 	to poll the server every 1 second. 1 second (or 1000) is the default value
 	for the Duration property of the Timer. Then we are using a Window and making
 	it visible only when a Button is being clicked, along with the Labels we 
@@ -307,7 +313,8 @@ public partial class _Default : System.Web.UI.Page
 	TextBox selected.
 </p>
 <p>
-	The second problem is also very easy to fix. The Panel control has a property
+	The second problem is also very easy to fix. The <a href="Docs.aspx?class=Ra.Widgets.Panel">Panel</a> 
+	control has a property
 	called <em>DefaultWidget</em> which can be the ID of any widget inside of the
 	panel. This Widget will be <em>"clicked"</em> when the user hits the Enter
 	key when the focus is anywhere inside of the Panel. So by wrapping our TextBox 
@@ -347,7 +354,7 @@ public partial class _Default : System.Web.UI.Page
 <p>
 	Our third problem can also easily be fixed by checking to see if the content
 	area of the chats are about to change when we <em>tick</em> towards the server,
-	and if it does we throw in an EffectHighlight into the cake. Change your 
+	and if it does we throw in an <a href="Docs.aspx?class=Ra.Effects.EffectHighlight">EffectHighlight</a> into the cake. Change your 
 	<em>GetChats</em> method to the following. Though to get this trick to work
 	we also need to change the rendering of the Label to become a DIV. Change
 	the Tag property of the Label in the .ASPX file to have the value of "div". In
@@ -540,7 +547,9 @@ public partial class _Default : System.Web.UI.Page
     }
 }
 </pre>
-
+<p>
+	Now on to the <a href="Docs.aspx?tutorial=007-Working_with_DataGrid_Controls">Working with DataGrids in Ra-Ajax tutorial</a>...
+</p>
 
 
 

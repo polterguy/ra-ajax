@@ -1,6 +1,6 @@
 ﻿<h3>Aim of this tutorial</h3>
 <ul>
-	<li>Show you how the Timer control works</li>
+	<li>Show you how the <a href="Docs.aspx?class=Ra.Extensions.Widgets.Timer">Timer control</a> works</li>
 	<li>Teach you how the dynamic inclusion of JavaScript works in Ra-Ajax</li>
 </ul>
 
@@ -11,7 +11,8 @@
 
 <h3>Getting started</h3>
 <p>
-	The Timer Control is one of very few "non-visible" controls in Ra-Ajax, and it's
+	The <a href="Docs.aspx?class=Ra.Extensions.Widgets.Timer">Timer Control</a> is one of very 
+	few "non-visible" controls in Ra-Ajax, and it's
 	purpose is not to render HTML but rather to call up the server and call your
 	own Event Handler every n'th second.
 </p>
@@ -108,8 +109,9 @@ public partial class _Default : System.Web.UI.Page
 	anywhere to be seen...
 </p>
 <p>
-	When you click the Button the Timer will be rendered since it's a child
-	control of the Window, which is being made visible. And, then the Timer
+	When you click the <a href="Docs.aspx?class=Ra.Widgets.Button">Button</a> the 
+	<a href="Docs.aspx?class=Ra.Extensions.Widgets.Timer">Timer</a> will be rendered since it's a child
+	control of the <a href="Docs.aspx?class=Ra.Extensions.Widgets.Window">Window</a>, which is being made visible. And, then the Timer
 	will work 100% correctly. This is because Ra-Ajax has support for dynamically
 	including JavaScript files 100% automatically in Ajax Callbacks. This works
 	100% transparent and the Timer Control itself will keep track of when it
@@ -118,7 +120,7 @@ public partial class _Default : System.Web.UI.Page
 <p>
 	Just before the Timer is about to be "rendered" (it doesn't really have any
 	visible HTML to render, but think conceptually anyway) it will automatically
-	make sure that its JavaScript file (Timer.js) is being included on the client.
+	make sure that its JavaScript file (<a href="http://code.google.com/p/ra-ajax/source/browse/trunk/Ra.Extensions/Js/Timer.js">Timer.js</a>) is being included on the client.
 	It will wait until the JavaScript file is finished being included, in fact 
 	before referencing types and functions in its JavaScript file. All this is
 	being done 100% transparently without you needing to think about it at all.
@@ -126,11 +128,11 @@ public partial class _Default : System.Web.UI.Page
 <p>
 	This has the benefit of <b>*SIGNIFICANTLY*</b> reducing pressure on the browser
 	and making your solutions behave significantly more responsive. You can even include
-	<b>*ANY*</b> JavaScript file you wish, even jQuery can be dynamically included
+	<b>*ANY*</b> JavaScript file you wish, even <a href="http://jquery.com/">jQuery</a> can be dynamically included
 	in Ajax Callbacks like this.
 </p>
 <p>
-	If you open up the Timer.cs file in the Extensions project of Ra-Ajax and look at its 
+	If you open up the <a href="http://code.google.com/p/ra-ajax/source/browse/trunk/Ra.Extensions/Widgets/Timer.cs">Timer.cs</a> file in the Extensions project of Ra-Ajax and look at its 
 	code, you will see that the Timer class is overriding the <i>OnPreRender</i> method 
 	from ASP.NET. 
 </p>
@@ -181,7 +183,7 @@ protected override void OnPreRender(EventArgs e)
 	the user performs on your solution.
 </p>
 <p>
-	If you use FireBug coupled with YSlow on this page for instance you will see
+	If you use FireBug coupled with <a href="http://developer.yahoo.com/yslow/">YSlow</a> on this page for instance you will see
 	that the amount of JavaScript on this page is less than 10KB. Which is an incredibly
 	small number for such a complex behavior that this page creates. The dynamic
 	inclusion of JavaScript files are one of the reasons behind this extremely 
@@ -192,7 +194,7 @@ protected override void OnPreRender(EventArgs e)
 	at all to make them become possible to include in Ra-Ajax Callbacks. You can take
 	existing JavaScript files written for completely different purposes and still 
 	"port them" so you can take advantage of old legacy code in combination with Ra-Ajax.
-	The only thing you need to modify is the way you include those JavaScript files.
+	The only thing you need to modify is the way you include those JavaScript files on the server.
 </p>
 <p>
 	For the JavaScript gurus out there, the internals of this is being done by creating
@@ -201,6 +203,8 @@ protected override void OnPreRender(EventArgs e)
 	be tracked by an array of paths which any JavaScript file will be checked against
 	before it is being fetched.
 </p>
-
+<p>
+	Now on to something funny; <a href="Docs.aspx?tutorial=006-Creating_an_Ajax_Chat_Application">How to create an Ajax Chat client</a> using Ra-Ajax ... :)
+</p>
 
 
