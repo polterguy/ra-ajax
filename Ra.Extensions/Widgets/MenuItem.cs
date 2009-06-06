@@ -110,8 +110,13 @@ namespace Ra.Extensions.Widgets
         // Build CSS classes for the "root" DOM element ("this control")
         private void BuildCssForRootElement()
         {
-            if (CssClass.IndexOf("item") == -1)
+            if (!CssClass.Contains("item"))
                 CssClass += " item";
+            if (ChildMenuItems != null && 
+                ChildMenuItems.Controls.Count > 0 && 
+                !CssClass.Contains("has-children") && 
+                !CssClass.Contains("top"))
+                CssClass += " has-children";
         }
                 
         private void SetPropertiesForChildren()
