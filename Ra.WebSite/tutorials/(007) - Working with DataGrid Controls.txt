@@ -28,7 +28,7 @@
 <h3>ReRender to the rescue!</h3>
 <p>
 	All Ra-Ajax controls have a special method which is called <em>ReRender</em>. This method
-	is inherited from <em>RaControl</em>. Normally Ra-Ajax controls doesn't render HTML at
+	is inherited from <a href="Docs.aspx?class=Ra.Widgets.RaControl">RaControl</a>. Normally Ra-Ajax controls doesn't render HTML at
 	all back to the client once it has been rendered, but instead JSON is sent back to the
 	client with only the attributes that actually changed. When you call the ReRender method
 	you signalize to the control that it should bypass this JSON logic and instead work as
@@ -42,7 +42,7 @@
 <p>
 	This means that if you have a GridView (or any other non-Ra-Ajax control) which obviously 
 	cannot render in the Ra-Ajax rendering logic, you can just wrap this control into any
-	Ra-Ajax control, like for instance a Panel. And then every Ajax Callback you want that 
+	Ra-Ajax control, like for instance a <a href="Docs.aspx?class=Ra.Widgets.Panel">Panel</a>. And then every Ajax Callback you want that 
 	non-Ajax control to re-render, all you need to do is call <em>ReRender</em> on the parent 
 	Ra-Ajax control. This would look something like this...
 </p>
@@ -101,7 +101,7 @@ public partial class _Default : System.Web.UI.Page
 }
 </pre>
 <p>
-	When you run the above code and click the Ra-Ajax Button, you will see that even
+	When you run the above code and click the <a href="Docs.aspx?class=Ra.Widgets.Button">Ra-Ajax Button</a>, you will see that even
 	though this raises a Ra-Ajax Callback, and even though the first button (within the
 	panel) is not an Ajax Button, it will still be updated with the new text. Now if you
 	comment away the pnl.ReRender() line in the C# code, the button will NOT update.
@@ -120,7 +120,9 @@ public partial class _Default : System.Web.UI.Page
 	instead. (like ASP.NET UpdatePanels will)
 	<br />
 	And if those non-Ajax controls includes JavaScript, CSS or some other resource when
-	being re-rendered, then those resources will not be included back to the client.
+	being re-rendered, then those resources will not be included back to the client. At least
+	not without being able to change the JavaScript inclusion logic the way explained in our
+	<a href="Docs.aspx?tutorial=005-Timers_and_JavaScript_inclusion">Timers and Dynamic JavaScript inclusion tutorial</a>...
 </p>
 
 <h3>Now back to our DataGrid (GridView)</h3>
@@ -226,7 +228,8 @@ pnl.ReRender();
 <h3>Adding Ajax Filtering</h3>
 <p>
 	Many times you need to be able to filter your DataGrids. Let us just
-	for the fun of it add up a Filtering TextBox to our grid, just like the one which is
+	for the fun of it add up a Filtering <a href="Docs.aspx?class=Ra.Widgets.TextBox">TextBox</a> to 
+	our grid, just like the one which is
 	at the top of this webpage to filter classes and tutorials.
 </p>
 <p>
@@ -374,7 +377,9 @@ public partial class _Default : System.Web.UI.Page
 	on a GridView, as in Create new rows, Read existing ones, Update existing ones
 	and Delete existing rows in your GridView. But that will be saved for a later article.
 </p>
-
+<p>
+	Now on to <a href="Docs.aspx?tutorial=008-Creating_your_first_Ajax_Extension_Control">How to create your own Ajax Extension Controls</a>...
+</p>
 
 
 
