@@ -12,7 +12,8 @@
 
 <h3>Getting started</h3>
 <p>
-	So far, except for some Effects and Behaviors we have only used the "core controls" of
+	So far, except for some <a href="Docs.aspx?class=Ra.Effects.Effect">Effects</a> and 
+	<a href="Docs.aspx?class=Ra.Behaviors.Behavior">Behaviors</a> we have only used the "core controls" of
 	Ra-Ajax. This time we will dive into some of the more "rich" controls that exist in
 	the Extension Project.
 </p>
@@ -22,9 +23,9 @@
 	since this dll is being used for all of the more "rich" controls like
 </p>
 <ul>
-	<li>Window</li>
-	<li>Timer</li>
-	<li>Calendars and DateTimePickers</li>
+	<li><a href="Docs.aspx?class=Ra.Extensions.Widgets.Window">Window</a></li>
+	<li><a href="Docs.aspx?class=Ra.Extensions.Widgets.Timer">Timer</a></li>
+	<li><a href="Docs.aspx?class=Ra.Extensions.Widgets.Calendar">Calendars</a> and <a href="Docs.aspx?class=Ra.Extensions.Widgets.DateTimePicker">DateTimePickers</a></li>
 	<li>plus many more...</li>
 </ul>
 <p>
@@ -42,15 +43,16 @@
     TagPrefix="ra" %>
 </pre>
 <p>
-	Now you can reference all the Extension Controls by typing in <i>&lt;ext:</i> in your .ASPX
+	Now you can reference all the Extension Controls by typing in <i>&lt;ra:</i> in your .ASPX
 	markup.
 </p>
 
 <h3>Creating a Modal Window</h3>
 <p>
-	We're going to create a Modal Window in this tutorial which will open only when the 
-	user clicks a button, and initially be rendered as in-visible. Copy and paste the code 
-	below into your website code files.
+	We're going to create a <a href="Docs.aspx?class=Ra.Extensions.Widgets.Window">Modal Ajax Window</a> 
+	in this tutorial which will open only when the 
+	user clicks a <a href="Docs.aspx?class=Ra.Widgets.Button">button</a>, and initially be rendered 
+	as in-visible. Copy and paste the code below into your website code files.
 </p>
 <b>Default.aspx</b>
 <pre lang="xml">
@@ -116,12 +118,12 @@ protected void btn_Click(object sender, EventArgs e)
 	to point to the CSS file of your choice...
 </p>
 <p>
-	The reason why the Window is <i>modal</i> is because we have added the <i>BehaviorObscurer</i>
+	The reason why the Window is <i>modal</i> is because we have added the <a href="Docs.aspx?class=Ra.Behaviors.BehaviorObscurable">BehaviorObscurable</a>
 	within the content parts of the Window. If you don't want to have a Modal Window then
-	just remove the BehaviorObscurer and the Window will become "non-modal".
+	just remove the BehaviorObscurable and the Window will become "non-modal".
 </p>
 <p>
-	The BehaviorObscurer can be set for <b>any</b> control you wish. Even Buttons if you wish.
+	The BehaviorObscurable can be set for <b>any</b> control you wish. Even Buttons if you wish.
 	Although, if you use it your Control <b>must</b> have an explicit <i>z-index</i>. Without
 	an explicit z-index then the obscurer will probably also obscure the control it is added to,
 	since the obscurer will add an explicit z-index itself with one value lower then whatever
@@ -137,7 +139,7 @@ protected void btn_Click(object sender, EventArgs e)
 </p>
 <p>
 	If you want to create your own Extension Controls, then the Extension Control 
-	library, and also, the <i>Window.cs</i> file within here will prove a very 
+	library, and also, the <a href="http://code.google.com/p/ra-ajax/source/browse/trunk/Ra.Extensions/Widgets/Window.cs">Window.cs</a> file within here will prove a very 
 	valuable resource for you to start out with.
 </p>
 <p>
@@ -148,12 +150,12 @@ protected void btn_Click(object sender, EventArgs e)
 	Controls library. Here is a small subset of those controls.
 </p>
 <ul>
-	<li>Calendar and DateTimePicker</li>
-	<li>Timer</li>
-	<li>Tree (TreeView Control)</li>
-	<li>Menu</li>
-	<li>SlidingMenu</li>
-	<li>Extended Button</li>
+	<li><a href="Docs.aspx?class=Ra.Extensions.Widgets.Calendar">Calendar</a> and <a href="Docs.aspx?class=Ra.Extensions.Widgets.DateTimePicker">DateTimePicker</a></li>
+	<li><a href="Docs.aspx?class=Ra.Extensions.Widgets.Timer">Timer</a></li>
+	<li><a href="Docs.aspx?class=Ra.Extensions.Widgets.Tree">Tree</a> (TreeView Control)</li>
+	<li><a href="Docs.aspx?class=Ra.Extensions.Widgets.Menu">Menu</a></li>
+	<li><a href="Docs.aspx?class=Ra.Extensions.Widgets.SlidingMenu">SlidingMenu</a></li>
+	<li><a href="Docs.aspx?class=Ra.Extensions.Widgets.ExtButton">Extended Button</a></li>
 	<li>And many, many more...</li>
 </ul>
 <p>
@@ -366,5 +368,8 @@ public partial class _Default : System.Web.UI.Page
 	Which might be interesting for you when figuring out why all of a sudden you are
 	not able to do basic calculus, since your design doesn't come out as you planned 
 	on ... ;)
+</p>
+<p>
+	Now on to <a href="Docs.aspx?tutorial=005-Timers_and_JavaScript_inclusion">Timers and dynamic JavaScript inclusion</a>...
 </p>
 

@@ -1,6 +1,6 @@
 ﻿<h3>Aim of this tutorial</h3>
 <ul>
-	<li>Understand how Behaviors works</li>
+	<li>Understand how <a href="Docs.aspx?class=Ra.Behaviors.Behavior">Ra-Ajax Behaviors</a> works</li>
 	<li>Teach you how to modify behavior on your controls, using the Ra-Ajax Behaviors</li>
 </ul>
 
@@ -11,7 +11,8 @@
 
 <h3>Getting started</h3>
 <p>
-	Create a default <i>ASP.NET Website</i> as described in the Hello World tutorial and make sure
+	Create a default <i>ASP.NET Website</i> as described in the 
+	<a href="Docs.aspx?tutorial=001-Hello_World">Hello World tutorial</a> and make sure
 	you reference <i>Ra.dll</i> in this website.
 </p>
 <pre lang="xml">
@@ -23,7 +24,8 @@
 
 <h3>What's the position of my panel?</h3>
 <p>
-	We're going to make a Panel which we make draggable through the <i>BehaviorDraggable</i>
+	We're going to make a <a href="Docs.aspx?class=Ra.Widgets.Panel">Panel</a> which we make 
+	draggable through the <a href="Docs.aspx?class=Ra.Behaviors.BehaviorDraggable">BehaviorDraggable</a>
 	behavior. Copy and paste this code into your website.
 </p>
 <pre lang="xml">
@@ -136,9 +138,9 @@ protected void dropped(object sender, EventArgs e)
 </pre>
 <p>
 	If you execute the above code you will see that when you drag the Panel
-	your Load Event Handler will set the Text of the first Label
+	your Load Event Handler will set the Text of the first <a href="Docs.aspx?class=Ra.Widgets.Label">Label</a>
 	to the left/top values that you dragged your Panel to. Then the
-	Effect will run before the code has set its second Label to the left/top
+	<a href="Docs.aspx?class=Ra.Effects.Effect">Effect</a> will run before the code has set its second Label to the left/top
 	properties of the Panel after the effect has ran. These two property
 	pairs will be <b>*DIFFERENT*</b>. This is because when the Effect is
 	finished running then the top/left property of your widget has 
@@ -266,4 +268,8 @@ public partial class _Default : System.Web.UI.Page
 	Yet again I must remind you, that depending upon which version of Visual Studio
 	and/or which version of .Net Framework you are using your code might look slightly
 	different then the code above...
+</p>
+<p>
+	The next tutorial for you is 
+	<a href="Docs.aspx?tutorial=004-The_Extension_Controls_library">The Extension Controls Library tutorial</a>...
 </p>
