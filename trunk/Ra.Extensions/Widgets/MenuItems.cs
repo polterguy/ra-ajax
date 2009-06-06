@@ -91,6 +91,7 @@ namespace Ra.Extensions.Widgets
                     Style["display"] = "";
                 else
                     new EffectFadeIn(this, 300)
+                        .JoinThese(new EffectRollDown())
                         .Render();
             }
         }
@@ -104,6 +105,7 @@ namespace Ra.Extensions.Widgets
                     Style["display"] = "none";
                 else
                     new EffectFadeOut(this, 300)
+                        .JoinThese(new EffectRollUp())
                         .Render();
             }
         }
