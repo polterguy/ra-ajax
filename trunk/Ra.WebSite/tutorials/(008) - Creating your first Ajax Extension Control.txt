@@ -17,7 +17,9 @@
 	and only in the extreme cases you need to resort to writing JavaScript yourself.
 </p>
 <p>
-	In fact almost all our Extension Controls like Window, Calendar, InPlaceEdit
+	In fact almost all our Extension Controls like <a href="Docs.aspx?class=Ra.Extensions.Widgets.Window">Window</a>, 
+	<a href="Docs.aspx?class=Ra.Extensions.Widgets.Calendar">Calendar</a>, 
+	<a href="Docs.aspx?class=Ra.Extensions.Widgets.InPlaceEdit">InPlaceEdit</a>
 	and so on are purely built without any custom JavaScript at all. And most of 
 	the Controls that actually have custom JavaScript are using it mostly for
 	optimization reasons and not because they inheritingly need it.
@@ -233,7 +235,7 @@ public partial class _Default : System.Web.UI.Page
 </p>
 <img src="tutorials/extension-controls-screen-shot.jpg" alt="Screenshot" />
 <p>
-	Then when you click the image surface the image will "morph out" and a new image
+	Then when you click the <a href="Docs.aspx?class=Ra.Widgets.Image">image</a> surface the image will "morph out" and a new image
 	will fade in and become visible. You can close the LightBox by clicking the 
 	X at the top right corner.
 </p>
