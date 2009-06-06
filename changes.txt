@@ -47,6 +47,10 @@
   system so that you can link to specific tutorials and
   classes.
 
+* Interlinked all the tutorials with relevant classes
+  and so on on the website to make it easier to browse
+  around and read the tutorials.
+
 
 
 
