@@ -54,6 +54,16 @@
 * Seriously revamped the Menu widget to be more up to
   the quality of the SlidingMenu Widget.
 
+* Added support for hover expanding on the Menu widget.
+  This comes in addition to the click expansion already
+  existing and can be set with the property called
+  "ExpandMethod". Notice that for a large webpage
+  which have expensive logic or large viewstate
+  or is intended to run on a narrow wire or something
+  this is not optimal since due to the logic behind
+  it will trigger quite many more Ajax Requests which
+  will increase the bandwidth usage significantly.
+
 
 
 
