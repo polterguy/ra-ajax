@@ -17,7 +17,17 @@
                 <ra:MenuItem runat="server" ID="save" Text="Save" />
                 <ra:MenuItem runat="server" ID="load" Text="Load" />
                 <ra:MenuItem runat="server" ID="saveas" Text="Save as..." />
-                <ra:MenuItem runat="server" ID="Print" Text="Print" />
+                <ra:MenuItem runat="server" ID="Print" Text="Print">
+                    <ra:MenuItems runat="server" ID="printOptions">
+                        <ra:MenuItem runat="server" ID="fastPrint" Text="Fast Print" />
+                        <ra:MenuItem runat="server" ID="printPreview" Text="Print Preview">
+                            <ra:MenuItems runat="server" ID="previews">
+                                <ra:MenuItem runat="server" ID="preview1" Text="Preview 1" />
+                                <ra:MenuItem runat="server" ID="preview2" Text="Preview 2" />
+                            </ra:MenuItems>
+                        </ra:MenuItem>
+                    </ra:MenuItems>
+                </ra:MenuItem>
             </ra:MenuItems>
         </ra:MenuItem>
         <ra:MenuItem runat="server" ID="edit" Text="Edit">
