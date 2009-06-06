@@ -26,7 +26,41 @@ namespace Ra.Extensions.Widgets
     [ASP.ToolboxData("<{0}:Menu runat=\"server\"></{0}:Menu>")]
     public class Menu : RaWebControl, ASP.INamingContainer
     {
+        /**
+         * Raised when a MenuItem is clicked. This event will be raised not only for leaf
+         * items, but also for menu items that have children.
+         */
         public event EventHandler MenuItemSelected;
+
+        /**
+         * Enum used to define how to expand child menu items
+         */
+        public enum HowToExpand
+        {
+            /**
+             * Click to expand child items
+             */
+            Click,
+
+            /**
+             * Hover mouse over to expand child items
+             */
+            Hover
+        }
+
+        /**
+         * The expansion method of the Menu. Can be either expanded by clicking menu items (default) or
+         * by hovering over menu items. Notice that if you set this to hover mode there will be created
+         * a significant higher amount of Ajax Requests on your application, and this might be sub-optimal
+         * for large webpages or pages with costy logic in their page life-cycles or for pages that are
+         * created for phone-based browsers.
+         */
+        [DefaultValue(HowToExpand.Click)]
+        public HowToExpand ExpandMethod
+        {
+            get { return ViewState["ExpandMethod"] == null ? HowToExpand.Click : (HowToExpand)ViewState["ExpandMethod"]; }
+            set { ViewState["ExpandMethod"] = value; }
+        }
 
         /**
          * Overridden to provide a sane default value

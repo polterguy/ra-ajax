@@ -386,6 +386,7 @@ http://ra-ajax.org
 	position:relative;
 	float:left;
 	line-height:28px;
+	min-width:50px;
 }
 
 .menu .item

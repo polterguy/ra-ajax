@@ -26,9 +26,26 @@ namespace Ra.Extensions.Widgets
         protected override void OnInit(EventArgs e)
         {
             this.Tag = "li";
-            this.Click += MenuItem_Click;
-            this.MouseOut += MenuItem_MouseOut;
             base.OnInit(e);
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            this.Click += MenuItem_Click;
+            if (ChildMenuItems != null && ChildMenuItems.Controls.Count > 0)
+            {
+                if (ParentMenu.ExpandMethod == Menu.HowToExpand.Click)
+                {
+                    this.Click += MenuItem_Expand;
+                    this.MouseOut += MenuItem_MouseOut;
+                }
+                else
+                {
+                    this.MouseOver += MenuItem_Expand;
+                    this.MouseOut += MenuItem_MouseOut;
+                }
+            }
         }
 
         void MenuItem_MouseOut(object sender, EventArgs e)
@@ -91,6 +108,18 @@ namespace Ra.Extensions.Widgets
                         (parent as MenuItems).Expanded = false;
                     }
                     parent = parent.Parent;
+                }
+            }
+        }
+
+        private void MenuItem_Expand(object sender, EventArgs e)
+        {
+            if (ChildMenuItems != null)
+            {
+                if (!ChildMenuItems.Expanded)
+                {
+                    ChildMenuItems.RollDown();
+                    ChildMenuItems.Expanded = true;
                 }
             }
         }
