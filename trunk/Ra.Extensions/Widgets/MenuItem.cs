@@ -27,7 +27,20 @@ namespace Ra.Extensions.Widgets
         {
             this.Tag = "li";
             this.Click += MenuItem_Click;
+            this.MouseOut += MenuItem_MouseOut;
             base.OnInit(e);
+        }
+
+        void MenuItem_MouseOut(object sender, EventArgs e)
+        {
+            if (ChildMenuItems != null)
+            {
+                if (ChildMenuItems.Expanded)
+                {
+                    ChildMenuItems.RollUp();
+                    ChildMenuItems.Expanded = false;
+                }
+            }
         }
 
         private Menu ParentMenu
@@ -61,11 +74,11 @@ namespace Ra.Extensions.Widgets
             ParentMenu.RaiseMenuItemSelected(this);
             if (ChildMenuItems != null)
             {
-                if (ChildMenuItems.Expanded)
-                    ChildMenuItems.RollUp();
-                else
+                if (!ChildMenuItems.Expanded)
+                {
                     ChildMenuItems.RollDown();
-                ChildMenuItems.Expanded = !ChildMenuItems.Expanded;
+                    ChildMenuItems.Expanded = true;
+                }
             }
             else
             {

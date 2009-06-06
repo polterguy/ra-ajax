@@ -370,9 +370,9 @@ http://ra-ajax.org
 	background: transparent url(window-h-sprite.png) repeat-x 0 0;
 	width:100%;
 	position:relative;
-	height:25px;
+	height:29px;
 	font-size:12px;
-	padding:7px 0 0 0;
+	padding:3px 0 0 0;
 }
 
 .menu ul
@@ -382,16 +382,17 @@ http://ra-ajax.org
 
 .menu .top
 {
-	display:inline;
-	padding:2px;
+	display:block;
 	position:relative;
+	float:left;
+	line-height:28px;
 }
 
 .menu .item
 {
 	cursor:pointer;
 	color:#333;
-	margin:5px;
+	margin-left:10px;
 }
 
 .menu .item:hover
@@ -409,7 +410,7 @@ http://ra-ajax.org
 	position:absolute;
 	left:0px;
 	width:150px;
-	margin-top:9px;
+	margin-left:-10px;
 }
 
 .menu .menu-dropper .drop-item
