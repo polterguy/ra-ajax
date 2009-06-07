@@ -86,6 +86,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Ra.WebSite", "Ra.WebSite\",
 		VWDPort = "63312"
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ra.Builder", "Ra.Builder\Ra.Builder.csproj", "{500E1B00-9C19-4A39-BBAF-D60BCFB76552}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -140,6 +142,7 @@ Global
 		{DB118D01-8674-4843-9A57-F99B810E4D16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DB118D01-8674-4843-9A57-F99B810E4D16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB118D01-8674-4843-9A57-F99B810E4D16}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{DB118D01-8674-4843-9A57-F99B810E4D16}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{DB118D01-8674-4843-9A57-F99B810E4D16}.Release|.NET.ActiveCfg = Release|Any CPU
 		{DB118D01-8674-4843-9A57-F99B810E4D16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB118D01-8674-4843-9A57-F99B810E4D16}.Release|Any CPU.Build.0 = Release|Any CPU
@@ -174,6 +177,16 @@ Global
 		{A323A312-843F-4168-94E0-580D0B4E80F4}.Release|Any CPU.ActiveCfg = Debug|.NET
 		{A323A312-843F-4168-94E0-580D0B4E80F4}.Release|Mixed Platforms.ActiveCfg = Debug|.NET
 		{A323A312-843F-4168-94E0-580D0B4E80F4}.Release|Mixed Platforms.Build.0 = Debug|.NET
+		{500E1B00-9C19-4A39-BBAF-D60BCFB76552}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{500E1B00-9C19-4A39-BBAF-D60BCFB76552}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{500E1B00-9C19-4A39-BBAF-D60BCFB76552}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{500E1B00-9C19-4A39-BBAF-D60BCFB76552}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{500E1B00-9C19-4A39-BBAF-D60BCFB76552}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{500E1B00-9C19-4A39-BBAF-D60BCFB76552}.Release|.NET.ActiveCfg = Release|Any CPU
+		{500E1B00-9C19-4A39-BBAF-D60BCFB76552}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{500E1B00-9C19-4A39-BBAF-D60BCFB76552}.Release|Any CPU.Build.0 = Release|Any CPU
+		{500E1B00-9C19-4A39-BBAF-D60BCFB76552}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{500E1B00-9C19-4A39-BBAF-D60BCFB76552}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -398,7 +398,7 @@ http://ra-ajax.org
 
 .menu .has-children
 {
-	background:transparent url(menu.png) no-repeat 0 11px;
+	background:transparent url(menu.png) no-repeat -2px 11px;
 }
 
 .menu .item:hover
@@ -436,7 +436,7 @@ http://ra-ajax.org
 .menu .menu-dropper .sub-dropper
 {
 	left:150px;
-	margin-top:-22px;
+	margin-top:-24px;
 }
 
 
