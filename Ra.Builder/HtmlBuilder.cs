@@ -112,7 +112,7 @@ namespace Ra.Builder
          * work if the CTOR taking no arguments is being used, since otherwise the HtmlBuilder
          * will have no mechanism for retrieving the underlaying Stream in any ways - which is
          * needed to be able to set the Position for the stream and create a new TextReader
-         * which is what this method actually does.
+         * which is what this method actually internally does.
          */
         public override string ToString()
         {
