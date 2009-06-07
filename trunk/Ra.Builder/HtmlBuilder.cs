@@ -45,6 +45,11 @@ namespace Ra.Builder
             }
         }
 
+        internal TextWriter WriterUnClosed
+        {
+            get { return _writer; }
+        }
+
         public Stream Stream
         {
             get { return _stream; }

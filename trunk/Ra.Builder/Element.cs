@@ -12,8 +12,7 @@ namespace Ra.Builder
 {
     public class Element : DeterministicExecutor
     {
-        private string elementName;
-        HtmlBuilder _builder;
+        private HtmlBuilder _builder;
         private bool _closed;
 
         public Element(HtmlBuilder builder, string elementName)
@@ -25,6 +24,13 @@ namespace Ra.Builder
         {
             _builder = builder;
             _builder.Writer.Write("<" + elementName);
+        }
+
+        public void AddAttribute(string name, string content)
+        {
+            if (_closed)
+                throw new Exception("Can't add an attribute once the attribute is closed due to accessing the underlaying Writer or something else");
+            _builder.WriterUnClosed.Write(" " + name + "=\"" + content + "\"");
         }
 
         internal void CloseOpeningElement()
