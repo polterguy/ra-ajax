@@ -3,7 +3,7 @@ using System.Threading;
 using NUnit.Framework;
 using WatiN.Core.Interfaces;
 
-namespace NUnitTests
+namespace Ra.Tests.Ajax
 {
     [TestFixture]
     public class TestControlsCombined : TestBase

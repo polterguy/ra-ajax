@@ -6,7 +6,7 @@ using WatiN.Core;
 using WatiN.Core.Interfaces;
 using System.IO;
 
-namespace NUnitTests
+namespace Ra.Tests.Ajax
 {
     public abstract class TestBase
     {

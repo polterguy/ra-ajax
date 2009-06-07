@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using NUnit.Framework;
 
-namespace NUnitTests
+namespace Ra.Tests.Ajax
 {
     [TestFixture]
     public class TestRaBasics : TestBase
