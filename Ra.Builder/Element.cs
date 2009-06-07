@@ -33,6 +33,16 @@ namespace Ra.Builder
             _builder.WriterUnClosed.Write(" " + name + "=\"" + content + "\"");
         }
 
+        public void Write(string content, params object[] args)
+        {
+            _builder.Writer.Write(content, args);
+        }
+
+        public void Write(string content)
+        {
+            _builder.Writer.Write(content);
+        }
+
         internal void CloseOpeningElement()
         {
             if (_closed)
