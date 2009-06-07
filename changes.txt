@@ -64,6 +64,16 @@
   it will trigger quite many more Ajax Requests which
   will increase the bandwidth usage significantly.
 
+* Added a new project called Ra.Builder which is a 
+  helper for creating HTML markup in C# on the server.
+  It implements the IDisposable pattern to create
+  guarantees for that the HTML Elements you create
+  will be closed in the right place.
+
+* Seriously refactored all the core HTML rendering
+  logic of Ra-Ajax to use the new HtmlBuilder logic
+  which is new in this release.
+
 
 
 
