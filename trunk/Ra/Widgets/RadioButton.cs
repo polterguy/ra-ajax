@@ -249,10 +249,12 @@ namespace Ra.Widgets
                 using (Element el = builder.CreateElement("input"))
                 {
                     el.AddAttribute("type", "radio");
+                    el.AddAttribute("value", ClientID);
                     if (!string.IsNullOrEmpty(GroupName))
                         el.AddAttribute("name", GroupName);
                     else
                         el.AddAttribute("name", ClientID);
+                    el.AddAttribute("id", ClientID + "_CTRL");
                     if (!string.IsNullOrEmpty(AccessKey))
                         el.AddAttribute("accesskey", AccessKey);
                     if (!Enabled)

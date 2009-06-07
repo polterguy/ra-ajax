@@ -120,6 +120,7 @@ namespace Ra.Widgets
             {
                 AddAttributes(el);
                 el.Write(Text);
+                RenderChildren(builder.Writer);
             }
         }
 
