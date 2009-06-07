@@ -90,6 +90,70 @@ namespace Ra.Tests.Builder
                 Assert.AreEqual("<div attribute=\"value\" howdy=\"yahoo\">howdyyahoo</div>", builder.ToString());
             }
         }
+
+        [NUnit.Framework.Test]
+        public void MultipleElements()
+        {
+            using (HtmlBuilder builder = new HtmlBuilder())
+            {
+                using (Element el = builder.CreateElement("div"))
+                {
+                }
+                using (Element el = builder.CreateElement("span"))
+                {
+                }
+                Assert.AreEqual("<div></div><span></span>", builder.ToString());
+            }
+        }
+
+        [NUnit.Framework.Test]
+        public void NestedElements()
+        {
+            using (HtmlBuilder builder = new HtmlBuilder())
+            {
+                using (Element el = builder.CreateElement("div"))
+                {
+                    using (Element el2 = builder.CreateElement("span"))
+                    {
+                    }
+                }
+                Assert.AreEqual("<div><span></span></div>", builder.ToString());
+            }
+        }
+
+        [NUnit.Framework.Test]
+        public void NestedElementsWithAttributes()
+        {
+            using (HtmlBuilder builder = new HtmlBuilder())
+            {
+                using (Element el = builder.CreateElement("div"))
+                {
+                    el.AddAttribute("howdy", "hello");
+                    using (Element el2 = builder.CreateElement("span"))
+                    {
+                        el2.AddAttribute("thomas", "hansen");
+                    }
+                }
+                Assert.AreEqual("<div howdy=\"hello\"><span thomas=\"hansen\"></span></div>", builder.ToString());
+            }
+        }
+
+        [NUnit.Framework.Test]
+        public void NestedElementsWithContent()
+        {
+            using (HtmlBuilder builder = new HtmlBuilder())
+            {
+                using (Element el = builder.CreateElement("div"))
+                {
+                    builder.Writer.Write("thomas");
+                    using (Element el2 = builder.CreateElement("span"))
+                    {
+                        builder.Writer.Write("hansen");
+                    }
+                }
+                Assert.AreEqual("<div>thomas<span>hansen</span></div>", builder.ToString());
+            }
+        }
     }
 }
 
