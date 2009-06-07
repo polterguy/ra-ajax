@@ -10,6 +10,7 @@ using System;
 using System.ComponentModel;
 using WEBCTRLS = System.Web.UI.WebControls;
 using ASP = System.Web.UI;
+using Ra.Builder;
 
 namespace Ra.Widgets
 {
@@ -113,19 +114,21 @@ namespace Ra.Widgets
 			return evts;
         }
 
-        protected override string GetOpeningHTML()
+        protected override void RenderRaControl(HtmlBuilder builder)
         {
-            string accessKey = string.IsNullOrEmpty(AccessKey) ? "" : string.Format(" accesskey=\"{0}\"", AccessKey);
-            return string.Format("<a href=\"javascript:Ra.emptyFunction();\" id=\"{0}\"{2}{3}>{1}", 
-                ClientID,
-                Text,
-                accessKey,
-                GetWebControlAttributes());
+            using (Element el = builder.CreateElement("a"))
+            {
+                AddAttributes(el);
+                el.Write(Text);
+            }
         }
 
-        protected override string GetClosingHTML()
+        protected override void AddAttributes(Element el)
         {
-            return "</a>";
+            el.AddAttribute("href", "javascript:Ra.emptyFunction();");
+            if (!string.IsNullOrEmpty(AccessKey))
+                el.AddAttribute("accesskey", AccessKey);
+            base.AddAttributes(el);
         }
 
         #endregion

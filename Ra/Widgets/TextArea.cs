@@ -12,6 +12,7 @@ using WEBCTRLS = System.Web.UI.WebControls;
 using ASP = System.Web.UI;
 using System.Web;
 using System.Web.UI;
+using Ra.Builder;
 
 namespace Ra.Widgets
 {
@@ -260,18 +261,25 @@ namespace Ra.Widgets
             return evts;
         }
 
-        // Override this one to create specific HTML for your widgets
-        protected override string GetOpeningHTML()
+        protected override void RenderRaControl(HtmlBuilder builder)
         {
-            string accessKey = string.IsNullOrEmpty(AccessKey) ? "" : string.Format(" accesskey=\"{0}\"", AccessKey);
-            return string.Format("<textarea id=\"{0}\" name=\"{0}\" rows=\"{3}\" cols=\"{4}\"{2}{5}{6}>{1}</textarea>",
-                ClientID,
-                Text,
-                accessKey,
-                Rows,
-                Columns,
-                (Enabled ? "" : " disabled=\"disabled\""),
-                GetWebControlAttributes());
+            using (Element el = builder.CreateElement("textarea"))
+            {
+                AddAttributes(el);
+                el.Write(Text);
+            }
+        }
+
+        protected override void AddAttributes(Element el)
+        {
+            el.AddAttribute("name", ClientID);
+            el.AddAttribute("rows", Rows.ToString());
+            el.AddAttribute("cols", Columns.ToString());
+            if (!string.IsNullOrEmpty(AccessKey))
+                el.AddAttribute("accesskey", AccessKey);
+            if (!Enabled)
+                el.AddAttribute("disabled", "disabled");
+            base.AddAttributes(el);
         }
 
         #endregion

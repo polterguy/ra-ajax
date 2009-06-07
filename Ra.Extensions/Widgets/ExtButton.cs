@@ -13,6 +13,7 @@ using ASP = System.Web.UI;
 using Ra.Widgets;
 using System.IO;
 using HTML = System.Web.UI.HtmlControls;
+using Ra.Builder;
 
 namespace Ra.Extensions.Widgets
 {
@@ -100,15 +101,39 @@ namespace Ra.Extensions.Widgets
             return retVal;
         }
 
-        protected override string GetOpeningHTML()
+        protected override void RenderRaControl(HtmlBuilder builder)
         {
-            string accessKey = string.IsNullOrEmpty(AccessKey) ? "" : string.Format(" accesskey=\"{0}\"", AccessKey);
-            return string.Format("<button type=\"button\" id=\"{0}\"{2}{3}{4}><span class=\"bLeft\"><span class=\"bRight\"><span class=\"bCenter\"><span id=\"{0}_LBL\">{1}</span></span></span></span></button>",
-                ClientID,
-                Text,
-                accessKey,
-                (Enabled ? "" : " disabled=\"disabled\""),
-                GetWebControlAttributes());
+            using (Element el = builder.CreateElement("button"))
+            {
+                AddAttributes(el);
+                using (Element bRight = builder.CreateElement("span"))
+                {
+                    bRight.AddAttribute("class", "bRight");
+                    using (Element bLeft = builder.CreateElement("span"))
+                    {
+                        bLeft.AddAttribute("class", "bLeft");
+                        using (Element bCenter = builder.CreateElement("span"))
+                        {
+                            bCenter.AddAttribute("class", "bCenter");
+                            using (Element content = builder.CreateElement("span"))
+                            {
+                                content.AddAttribute("id", ClientID + "_LBL");
+                                content.Write(Text);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        protected override void AddAttributes(Element el)
+        {
+            el.AddAttribute("type", "button");
+            if (!string.IsNullOrEmpty(AccessKey))
+                el.AddAttribute("accesskey", AccessKey);
+            if (!Enabled)
+                el.AddAttribute("disabled", "disabled");
+            base.AddAttributes(el);
         }
     }
 }

@@ -10,6 +10,7 @@ using System;
 using System.ComponentModel;
 using WEBCTRLS = System.Web.UI.WebControls;
 using ASP = System.Web.UI;
+using Ra.Builder;
 
 namespace Ra.Widgets
 {
@@ -52,18 +53,20 @@ namespace Ra.Widgets
 
         #region [ -- Overridden (abstract/virtual) methods from RaControl -- ]
 
-        protected override string GetOpeningHTML()
+        protected override void RenderRaControl(HtmlBuilder builder)
         {
-            return string.Format("<{2} id=\"{0}\"{3}>{1}",
-                ClientID,
-                Text,
-                Tag,
-                GetWebControlAttributes());
+            using (Element el = builder.CreateElement(Tag))
+            {
+                AddAttributes(el);
+                el.Write(Text);
+                // TODO: Either have Text OR Children, or...?
+                RenderChildren(builder.Writer as System.Web.UI.HtmlTextWriter);
+            }
         }
 
-        protected override string GetClosingHTML()
+        protected override void AddAttributes(Element el)
         {
-            return string.Format("</{0}>", Tag);
+            base.AddAttributes(el);
         }
 
         #endregion

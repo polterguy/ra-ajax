@@ -10,6 +10,7 @@ using System;
 using System.ComponentModel;
 using WEBCTRLS = System.Web.UI.WebControls;
 using ASP = System.Web.UI;
+using Ra.Builder;
 
 namespace Ra.Widgets
 {
@@ -140,21 +141,25 @@ namespace Ra.Widgets
 			return evts;
         }
 
-        protected override string GetOpeningHTML()
+        protected override void RenderRaControl(HtmlBuilder builder)
         {
-            if (string.IsNullOrEmpty(ImageUrl) || string.IsNullOrEmpty(AlternateText))
-                throw new ApplicationException("Cannot have empty Src or AlternateText of ImageButton");
-            string accessKey = string.IsNullOrEmpty(AccessKey) ? "" : string.Format(" accesskey=\"{0}\"", AccessKey);
+            using (Element el = builder.CreateElement("input"))
+            {
+                AddAttributes(el);
+            }
+        }
 
-            // Note that since the input type="image" creates a SUBMIT button we need to handle the onclick and return false 
-            // to prevent the form from submitting for ImageButtons...
-            return string.Format("<input onclick=\"return false;\" type=\"image\" id=\"{0}\" src=\"{1}\" alt=\"{2}\"{3}{4}{5} />",
-                ClientID,
-                ImageUrl,
-                AlternateText,
-                accessKey,
-                (Enabled ? "" : " disabled=\"disabled\""),
-                GetWebControlAttributes());
+        protected override void AddAttributes(Element el)
+        {
+            el.AddAttribute("onclick", "return false;");
+            el.AddAttribute("type", "image");
+            el.AddAttribute("src", ImageUrl);
+            el.AddAttribute("alt", AlternateText);
+            if (!string.IsNullOrEmpty(AccessKey))
+                el.AddAttribute("accesskey", AccessKey);
+            if (!Enabled)
+                el.AddAttribute("disabled", "disabled");
+            base.AddAttributes(el);
         }
 
         #endregion

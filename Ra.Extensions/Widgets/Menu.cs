@@ -14,6 +14,7 @@ using Ra.Widgets;
 using System.IO;
 using HTML = System.Web.UI.HtmlControls;
 using System.Collections.Generic;
+using Ra.Builder;
 
 namespace Ra.Extensions.Widgets
 {
@@ -107,16 +108,12 @@ namespace Ra.Extensions.Widgets
             base.OnPreRender(e);
         }
 
-        protected override string GetOpeningHTML()
+        protected override void RenderRaControl(HtmlBuilder builder)
         {
-            return string.Format("<div id=\"{0}\"{1}>",
-                ClientID,
-                GetWebControlAttributes());
-        }
-
-        protected override string GetClosingHTML()
-        {
-            return "</div>";
+            using (Element el = builder.CreateElement("div"))
+            {
+                AddAttributes(el);
+            }
         }
 
         internal void RollUpAllExceptThis(MenuItems menuItems, ASP.ControlCollection cols)

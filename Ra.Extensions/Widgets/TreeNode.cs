@@ -14,6 +14,7 @@ using Ra.Widgets;
 using System.IO;
 using HTML = System.Web.UI.HtmlControls;
 using System.Collections.Generic;
+using Ra.Builder;
 
 [assembly: ASP.WebResource("Ra.Extensions.Js.Tree.js", "text/javascript")]
 
@@ -91,12 +92,13 @@ namespace Ra.Extensions.Widgets
         // Overriding to REMOVE the rendering of the Text property
         // since we're dealing with that in the RenderChildren parts
         // of this class...
-        protected override string GetOpeningHTML()
+        protected override void RenderRaControl(HtmlBuilder builder)
         {
-            return string.Format("<{1} id=\"{0}\"{2}>",
-                ClientID,
-                Tag,
-                GetWebControlAttributes());
+            using (Element el = builder.CreateElement(Tag))
+            {
+                AddAttributes(el);
+                RenderChildren(builder.Writer as System.Web.UI.HtmlTextWriter);
+            }
         }
 
         public RaWebControl ExpanderControl

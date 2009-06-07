@@ -15,6 +15,7 @@ using System.IO;
 using HTML = System.Web.UI.HtmlControls;
 using System.Web.UI;
 using System.Web;
+using Ra.Builder;
 
 [assembly: ASP.WebResource("Ra.Extensions.Js.RichEdit.js", "text/javascript")]
 
@@ -125,16 +126,29 @@ namespace Ra.Extensions.Widgets
 			return evts;
 		}
 
-        protected override string GetOpeningHTML()
+        protected override void RenderRaControl(HtmlBuilder builder)
         {
-            // Rich Edit DIV editing element plus hidden field which is "value" part 
-            // to make sure we submit the new value back to server whan changes occurs...
-            // In additiont we've also got a hidden input field which serves as the "selected text"
-            // field and contains the value which is currently selected in the RichEdit...
-            return string.Format("<div id=\"{0}\"{2}><div id=\"{0}_LBL\">{1}</div><input type=\"hidden\" id=\"{0}__VALUE\" name=\"{0}__VALUE\" /><input type=\"hidden\" id=\"{0}__SELECTED\" name=\"{0}__SELECTED\" /></div>",
-                ClientID,
-                Text,
-                GetWebControlAttributes());
+            using (Element el = builder.CreateElement("div"))
+            {
+                AddAttributes(el);
+                using (Element txt = builder.CreateElement("div"))
+                {
+                    txt.AddAttribute("id", ClientID + "_LBL");
+                    txt.Write(Text);
+                }
+                using (Element value = builder.CreateElement("input"))
+                {
+                    value.AddAttribute("type", "hidden");
+                    value.AddAttribute("id", ClientID + "__VALUE");
+                    value.AddAttribute("name", ClientID + "__VALUE");
+                }
+                using (Element sel = builder.CreateElement("input"))
+                {
+                    sel.AddAttribute("type", "hidden");
+                    sel.AddAttribute("id", ClientID + "__SELECTED");
+                    sel.AddAttribute("name", ClientID + "__SELECTED");
+                }
+            }
         }
     }
 }
