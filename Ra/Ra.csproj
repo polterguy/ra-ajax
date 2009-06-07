@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.50727</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{82727C73-0B10-4F58-93F4-841E9397302C}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -104,6 +104,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Js\Behaviors.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ra.Builder\Ra.Builder.csproj">
+      <Project>{500E1B00-9C19-4A39-BBAF-D60BCFB76552}</Project>
+      <Name>Ra.Builder</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
