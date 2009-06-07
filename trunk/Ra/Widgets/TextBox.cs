@@ -303,6 +303,7 @@ namespace Ra.Widgets
         {
             el.AddAttribute("type", TextMode == TextBoxMode.SingleLine ? "text" : "password");
             el.AddAttribute("value", Text);
+            el.AddAttribute("name", ClientID);
             if (!string.IsNullOrEmpty(AccessKey))
                 el.AddAttribute("accesskey", AccessKey);
             if (!Enabled)

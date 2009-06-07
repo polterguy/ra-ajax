@@ -277,12 +277,12 @@ namespace Ra.Widgets
                 {
                     using (Element l = builder.CreateElement("option"))
                     {
-                        el.AddAttribute("value", idx.Value);
+                        l.AddAttribute("value", idx.Value);
                         if (!idx.Enabled)
-                            el.AddAttribute("disabled", "disabled");
-                        if (!idx.Selected)
-                            el.AddAttribute("selected", "selected");
-                        el.Write(idx.Text);
+                            l.AddAttribute("disabled", "disabled");
+                        if (idx.Selected)
+                            l.AddAttribute("selected", "selected");
+                        l.Write(idx.Text);
                     }
                 }
             }
@@ -290,6 +290,7 @@ namespace Ra.Widgets
 
         protected override void AddAttributes(Element el)
         {
+            el.AddAttribute("name", ClientID);
             if (!string.IsNullOrEmpty(AccessKey))
                 el.AddAttribute("accesskey", AccessKey);
             if (Size != -1)

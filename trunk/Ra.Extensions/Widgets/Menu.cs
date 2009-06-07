@@ -113,6 +113,7 @@ namespace Ra.Extensions.Widgets
             using (Element el = builder.CreateElement("div"))
             {
                 AddAttributes(el);
+                RenderChildren(builder.Writer);
             }
         }
 

@@ -97,7 +97,7 @@ namespace Ra.Extensions.Widgets
             using (Element el = builder.CreateElement(Tag))
             {
                 AddAttributes(el);
-                RenderChildren(builder.Writer as System.Web.UI.HtmlTextWriter);
+                RenderChildren(builder.Writer);
             }
         }
 
