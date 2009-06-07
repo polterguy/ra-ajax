@@ -154,6 +154,44 @@ namespace Ra.Tests.Builder
                 Assert.AreEqual("<div>thomas<span>hansen</span></div>", builder.ToString());
             }
         }
+
+        [NUnit.Framework.Test]
+        public void NestedElementsWithContentAndAttributes()
+        {
+            using (HtmlBuilder builder = new HtmlBuilder())
+            {
+                using (Element el = builder.CreateElement("div"))
+                {
+                    el.AddAttribute("h", "a");
+                    builder.Writer.Write("thomas");
+                    using (Element el2 = builder.CreateElement("span"))
+                    {
+                        el2.AddAttribute("f", "g");
+                        builder.Writer.Write("hansen");
+                    }
+                }
+                Assert.AreEqual("<div h=\"a\">thomas<span f=\"g\">hansen</span></div>", builder.ToString());
+            }
+        }
+
+        [NUnit.Framework.Test]
+        public void NestedElementsWithContentAndAttributesUseElementWrite()
+        {
+            using (HtmlBuilder builder = new HtmlBuilder())
+            {
+                using (Element el = builder.CreateElement("div"))
+                {
+                    el.AddAttribute("h", "a");
+                    el.Write("thomas");
+                    using (Element el2 = builder.CreateElement("span"))
+                    {
+                        el2.AddAttribute("f", "g");
+                        el2.Write("hansen");
+                    }
+                }
+                Assert.AreEqual("<div h=\"a\">thomas<span f=\"g\">hansen</span></div>", builder.ToString());
+            }
+        }
     }
 }
 
