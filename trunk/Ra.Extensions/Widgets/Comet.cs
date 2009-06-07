@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using Ra.Extensions.Helpers;
 using System.Web;
 using System.Reflection;
+using Ra.Builder;
 
 [assembly: ASP.WebResource("Ra.Extensions.Js.Comet.js", "text/javascript")]
 
@@ -310,11 +311,19 @@ namespace Ra.Extensions.Widgets
 			return "new Ra.Comet";
 		}
 
-        protected override string GetOpeningHTML()
+        protected override void RenderRaControl(HtmlBuilder builder)
         {
-            // Dummy HTML DOM element to make registration and such easier...
-			// TODO: Make it possible to have IN-visible controls (maybe...?)
-            return string.Format("<span style=\"display:none;\" id=\"{0}\">&nbsp;</span>", ClientID);
+            using (Element el = builder.CreateElement("span"))
+            {
+                AddAttributes(el);
+                el.Write("&nbsp;");
+            }
+        }
+
+        protected override void AddAttributes(Element el)
+        {
+            el.AddAttribute("style", "display:none;");
+            base.AddAttributes(el);
         }
     }
 }

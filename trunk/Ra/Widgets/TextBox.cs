@@ -12,6 +12,7 @@ using WEBCTRLS = System.Web.UI.WebControls;
 using ASP = System.Web.UI;
 using System.Web;
 using System.Web.UI;
+using Ra.Builder;
 
 namespace Ra.Widgets
 {
@@ -290,17 +291,25 @@ namespace Ra.Widgets
 			return evts;
         }
 
-        protected override string GetOpeningHTML()
+        protected override void RenderRaControl(HtmlBuilder builder)
         {
-            string accessKey = string.IsNullOrEmpty(AccessKey) ? "" : string.Format(" accesskey=\"{0}\"", AccessKey);
-            return string.Format("<input type=\"{3}\" id=\"{0}\" name=\"{0}\" value=\"{1}\"{2}{4}{5}{6} />",
-                ClientID,
-                Text,
-                accessKey,
-                (TextMode == TextBoxMode.SingleLine ? "text" : "password"),
-                (Enabled ? "" : " disabled=\"disabled\""),
-                (MaxLength > 0 ? " maxlength=\"" + MaxLength.ToString() + "\"" : ""),
-                GetWebControlAttributes());
+            using (Element el = builder.CreateElement("input"))
+            {
+                AddAttributes(el);
+            }
+        }
+
+        protected override void AddAttributes(Element el)
+        {
+            el.AddAttribute("type", TextMode == TextBoxMode.SingleLine ? "text" : "password");
+            el.AddAttribute("value", Text);
+            if (!string.IsNullOrEmpty(AccessKey))
+                el.AddAttribute("accesskey", AccessKey);
+            if (!Enabled)
+                el.AddAttribute("disabled", "disabled");
+            if (MaxLength > 0)
+                el.AddAttribute("maxlength", MaxLength.ToString());
+            base.AddAttributes(el);
         }
 
         #endregion

@@ -13,6 +13,7 @@ using ASP = System.Web.UI;
 using Ra.Widgets;
 using System.IO;
 using HTML = System.Web.UI.HtmlControls;
+using Ra.Builder;
 
 [assembly: ASP.WebResource("Ra.Extensions.Js.ResizeHandler.js", "text/javascript")]
 
@@ -100,10 +101,19 @@ namespace Ra.Extensions.Widgets
 			return "new Ra.ResHand";
 		}
 
-        protected override string GetOpeningHTML()
+        protected override void RenderRaControl(HtmlBuilder builder)
         {
-            // Dummy HTML DOM element to make registration and such easier...
-            return string.Format("<span style=\"display:hidden;\" id=\"{0}\" />", ClientID);
+            using (Element el = builder.CreateElement("span"))
+            {
+                AddAttributes(el);
+                el.Write("&nbsp;");
+            }
+        }
+
+        protected override void AddAttributes(Element el)
+        {
+            el.AddAttribute("style", "display:none;");
+            base.AddAttributes(el);
         }
     }
 }

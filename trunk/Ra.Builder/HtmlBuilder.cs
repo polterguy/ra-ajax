@@ -8,6 +8,7 @@
 
 using System;
 using System.IO;
+using System.Web.UI;
 
 namespace Ra.Builder
 {
@@ -16,7 +17,7 @@ namespace Ra.Builder
      */
     public class HtmlBuilder : IDisposable
     {
-        private TextWriter _writer;
+        private HtmlTextWriter _writer;
         private Element _lastElement;
         private bool disposed;
         private MemoryStream _stream;
@@ -36,12 +37,13 @@ namespace Ra.Builder
          * "take ownership" of the Writer in any ways and the TextWriter will not be 
          * disposed in the Dispose method of this class.
          */
-        public HtmlBuilder(TextWriter writer)
+        public HtmlBuilder(HtmlTextWriter writer)
         {
             if (writer == null)
             {
                 _stream = new MemoryStream();
-                _writer = new StreamWriter(_stream);
+                TextWriter tmp = new StreamWriter(_stream);
+                _writer = new HtmlTextWriter(tmp);
             }
             else
             {
@@ -53,7 +55,7 @@ namespace Ra.Builder
          * Closes the opening element (if any) and returns the TextWriter back so that you can
          * write contents to the current Element.
          */
-        public TextWriter Writer
+        public HtmlTextWriter Writer
         {
             get
             {
@@ -63,7 +65,7 @@ namespace Ra.Builder
             }
         }
 
-        internal TextWriter WriterUnClosed
+        internal HtmlTextWriter WriterUnClosed
         {
             get { return _writer; }
         }
@@ -123,6 +125,27 @@ namespace Ra.Builder
             _stream.Position = 0;
             TextReader reader = new StreamReader(_stream);
             return reader.ReadToEnd();
+        }
+
+        /**
+         * Returns the entire HTML of the HtmlBuilder. Notice that this method will ONLY
+         * work if the CTOR taking no arguments is being used, since otherwise the HtmlBuilder
+         * will have no mechanism for retrieving the underlaying Stream in any ways - which is
+         * needed to be able to set the Position for the stream and create a new TextReader
+         * which is what this method actually internally does. This version will return the 
+         * HTML as escaped so that it's useful for 
+         */
+        public string ToJSONString()
+        {
+            if (_stream == null)
+                return base.ToString();
+            _writer.Flush();
+            _stream.Flush();
+            _stream.Position = 0;
+            TextReader reader = new StreamReader(_stream);
+            string retVal = reader.ReadToEnd();
+            retVal = retVal.Replace("\\", "\\\\").Replace("'", "\\'").Replace("\r", "\\r").Replace("\n", "\\n");
+            return retVal;
         }
     }
 }

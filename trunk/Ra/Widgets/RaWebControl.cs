@@ -11,6 +11,7 @@ using System.Web.UI;
 using System.ComponentModel;
 using System.Collections.Generic;
 using Ra.Behaviors;
+using Ra.Builder;
 
 namespace Ra.Widgets
 {
@@ -172,21 +173,16 @@ namespace Ra.Widgets
             get { return _styles; }
         }
 
-        protected string GetWebControlAttributes()
+        protected override void AddAttributes(Element el)
         {
-            string retVal = GetCssClassHTMLFormatedAttribute() + GetStyleHTMLFormatedAttribute() + GetTooltipAttribute();
-            if (TabIndex != 0)
-            {
-                if (!string.IsNullOrEmpty(retVal))
-                    retVal += " ";
-                retVal += "tabindex=\"" + TabIndex + "\"";
-            }
-            return retVal;
-        }
-
-        private string GetTooltipAttribute()
-        {
-            return Tooltip == "" ? "" : (" title=\"" + Tooltip + "\"");
+            if (!string.IsNullOrEmpty(Tooltip))
+                el.AddAttribute("title", Tooltip);
+            if (!string.IsNullOrEmpty(CssClass))
+                el.AddAttribute("class", CssClass);
+            string style = Style.GetStylesForResponse();
+            if (!string.IsNullOrEmpty(style))
+                el.AddAttribute("style", style);
+            base.AddAttributes(el);
         }
 
         public virtual void DispatchEvent(string name)
@@ -395,20 +391,6 @@ namespace Ra.Widgets
                     Style[keyValue[0]] = keyValue[1];
                 }
             }
-        }
-
-        private string GetStyleHTMLFormatedAttribute()
-        {
-            string style = Style.GetStylesForResponse();
-            if (!string.IsNullOrEmpty(style))
-                style = string.Format(" style=\"{0}\"", style);
-            return style;
-        }
-
-        private string GetCssClassHTMLFormatedAttribute()
-        {
-            string cssClass = string.IsNullOrEmpty(CssClass) ? "" : " class=\"" + CssClass + "\"";
-            return cssClass;
         }
 
         #endregion

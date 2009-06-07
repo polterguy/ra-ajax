@@ -10,6 +10,7 @@ using System;
 using System.ComponentModel;
 using WEBCTRLS = System.Web.UI.WebControls;
 using ASP = System.Web.UI;
+using Ra.Builder;
 
 namespace Ra.Widgets
 {
@@ -56,17 +57,21 @@ namespace Ra.Widgets
 
         #region [ -- Overridden (abstract/virtual) methods from RaControl -- ]
 
-        // Override this one to create specific HTML for your widgets
-        protected override string GetOpeningHTML()
+        protected override void RenderRaControl(HtmlBuilder builder)
         {
-            if (string.IsNullOrEmpty(AlternateText) || string.IsNullOrEmpty(ImageUrl))
-                throw new ApplicationException("Cannot have an image without src and alt text");
+            using (Element el = builder.CreateElement("img"))
+            {
+                AddAttributes(el);
+            }
+        }
 
-            return string.Format("<img id=\"{0}\" src=\"{1}\" alt=\"{2}\"{3} />",
-                ClientID,
-                ImageUrl,
-                AlternateText,
-                GetWebControlAttributes());
+        protected override void AddAttributes(Element el)
+        {
+            if (string.IsNullOrEmpty(ImageUrl) || string.IsNullOrEmpty(AlternateText))
+                throw new ApplicationException("Cannot have empty ImageUrl or AlternateText of Image");
+            el.AddAttribute("src", ImageUrl);
+            el.AddAttribute("alt", AlternateText);
+            base.AddAttributes(el);
         }
 
         #endregion

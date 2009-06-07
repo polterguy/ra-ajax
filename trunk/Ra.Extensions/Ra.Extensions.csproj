@@ -91,6 +91,10 @@
     <EmbeddedResource Include="Js\Comet.js" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ra.Builder\Ra.Builder.csproj">
+      <Project>{500E1B00-9C19-4A39-BBAF-D60BCFB76552}</Project>
+      <Name>Ra.Builder</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ra\Ra.csproj">
       <Project>{82727C73-0B10-4F58-93F4-841E9397302C}</Project>
       <Name>Ra</Name>

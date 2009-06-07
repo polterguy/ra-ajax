@@ -13,6 +13,7 @@ using ASP = System.Web.UI;
 using System.Collections.Generic;
 using System.Web;
 using System.Web.UI;
+using Ra.Builder;
 
 namespace Ra.Widgets
 {
@@ -267,35 +268,35 @@ namespace Ra.Widgets
 			return evts;
         }
 
-        // Override this one to create specific HTML for your widgets
-        protected override string GetOpeningHTML()
+        protected override void RenderRaControl(HtmlBuilder builder)
         {
-            string accessKey = string.IsNullOrEmpty(AccessKey) ? "" : string.Format(" accesskey=\"{0}\"", AccessKey);
-            string sizeString = Size == -1 ? "" : (" size=\"" + Size + "\"");
-            return string.Format("<select{4} name=\"{0}\" id=\"{0}\"{1}{3}{5}>{2}</select>",
-                ClientID,
-                accessKey,
-                GetHTMLForOptions(),
-                (Enabled ? "" : " disabled=\"disabled\""),
-                sizeString,
-                GetWebControlAttributes());
+            using (Element el = builder.CreateElement("select"))
+            {
+                AddAttributes(el);
+                foreach (ListItem idx in Items)
+                {
+                    using (Element l = builder.CreateElement("option"))
+                    {
+                        el.AddAttribute("value", idx.Value);
+                        if (!idx.Enabled)
+                            el.AddAttribute("disabled", "disabled");
+                        if (!idx.Selected)
+                            el.AddAttribute("selected", "selected");
+                        el.Write(idx.Text);
+                    }
+                }
+            }
         }
 
-        private string GetHTMLForOptions()
+        protected override void AddAttributes(Element el)
         {
-            string retVal = "";
-            foreach (ListItem idx in Items)
-            {
-                bool isSelected = false;
-                if (_selectedItemValue != null)
-                    isSelected = _selectedItemValue == idx.Value;
-                retVal += string.Format("<option value=\"{0}\"{2}{3}>{1}</option>",
-                    idx.Value,
-                    (string.IsNullOrEmpty(idx.Text) ? idx.Value : idx.Text),
-                    (idx.Enabled ? "" : " disabled=\"disabled\""),
-                    (isSelected ? " selected=\"selected\"" : ""));
-            }
-            return retVal;
+            if (!string.IsNullOrEmpty(AccessKey))
+                el.AddAttribute("accesskey", AccessKey);
+            if (Size != -1)
+                el.AddAttribute("size", Size.ToString());
+            if (!Enabled)
+                el.AddAttribute("disabled", "disabled");
+            base.AddAttributes(el);
         }
 
         #endregion

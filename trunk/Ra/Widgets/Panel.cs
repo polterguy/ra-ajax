@@ -11,6 +11,7 @@ using System.ComponentModel;
 using WEBCTRLS = System.Web.UI.WebControls;
 using ASP = System.Web.UI;
 using System.IO;
+using Ra.Builder;
 
 namespace Ra.Widgets
 {
@@ -49,12 +50,13 @@ namespace Ra.Widgets
             set { ViewState["DefaultWidget"] = value; }
         }
 
-        protected override string GetOpeningHTML()
+        protected override void RenderRaControl(HtmlBuilder builder)
         {
-            return string.Format("<{2} id=\"{0}\"{1}>",
-                ClientID,
-                GetWebControlAttributes(),
-                Tag);
+            using (Element el = builder.CreateElement(Tag))
+            {
+                AddAttributes(el);
+                RenderChildren(builder.Writer as System.Web.UI.HtmlTextWriter);
+            }
         }
 
         protected override string GetClientSideScriptOptions()
@@ -66,11 +68,6 @@ namespace Ra.Widgets
                 retVal += ",focus:true";
             return retVal;
         }
-		
-		protected override string GetClosingHTML ()
-		{
-			return string.Format("</{0}>", Tag);
-		}
 
         #endregion
 	}

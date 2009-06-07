@@ -10,6 +10,7 @@ using System;
 using System.ComponentModel;
 using WEBCTRLS = System.Web.UI.WebControls;
 using ASP = System.Web.UI;
+using Ra.Builder;
 
 namespace Ra.Widgets
 {
@@ -123,15 +124,23 @@ namespace Ra.Widgets
 			return evts;
         }
 
-        protected override string GetOpeningHTML()
+        protected override void RenderRaControl(HtmlBuilder builder)
         {
-            string accessKey = string.IsNullOrEmpty(AccessKey) ? "" : string.Format(" accesskey=\"{0}\"", AccessKey);
-            return string.Format("<input type=\"button\" id=\"{0}\" value=\"{1}\"{2}{3}{4} />", 
-                ClientID,
-                Text,
-                accessKey,
-                (Enabled ? "" : " disabled=\"disabled\""),
-                GetWebControlAttributes());
+            using (Element el = builder.CreateElement("input"))
+            {
+                AddAttributes(el);
+            }
+        }
+
+        protected override void AddAttributes(Element el)
+        {
+            el.AddAttribute("type", "button");
+            el.AddAttribute("value", Text);
+            if (!string.IsNullOrEmpty(AccessKey))
+                el.AddAttribute("accesskey", AccessKey);
+            if (!Enabled)
+                el.AddAttribute("disabled", "disabled");
+            base.AddAttributes(el);
         }
 
         #endregion

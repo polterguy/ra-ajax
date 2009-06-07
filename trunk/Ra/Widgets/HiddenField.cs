@@ -12,6 +12,7 @@ using WEBCTRLS = System.Web.UI.WebControls;
 using ASP = System.Web.UI;
 using System.Web.UI;
 using System.Web;
+using Ra.Builder;
 
 namespace Ra.Widgets
 {
@@ -74,12 +75,20 @@ namespace Ra.Widgets
             }
         }
 
-        // Override this one to create specific HTML for your widgets
-        protected override string GetOpeningHTML()
+        protected override void RenderRaControl(HtmlBuilder builder)
         {
-            return string.Format("<input type=\"hidden\" id=\"{0}\" name=\"{0}\" value=\"{1}\" />",
-                ClientID,
-                Value);
+            using (Element el = builder.CreateElement("input"))
+            {
+                AddAttributes(el);
+            }
+        }
+
+        protected override void AddAttributes(Element el)
+        {
+            el.AddAttribute("type", "hidden");
+            el.AddAttribute("name", ClientID);
+            el.AddAttribute("value", Value);
+            base.AddAttributes(el);
         }
 
         #endregion

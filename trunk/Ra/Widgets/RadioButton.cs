@@ -12,6 +12,7 @@ using WEBCTRLS = System.Web.UI.WebControls;
 using ASP = System.Web.UI;
 using System.Web.UI;
 using System.Web;
+using Ra.Builder;
 
 namespace Ra.Widgets
 {
@@ -240,18 +241,32 @@ namespace Ra.Widgets
 			return evts;
         }
 
-        protected override string GetOpeningHTML()
+        protected override void RenderRaControl(HtmlBuilder builder)
         {
-            string accessKey = string.IsNullOrEmpty(AccessKey) ? "" : string.Format(" accesskey=\"{0}\"", AccessKey);
-            string groupName = string.IsNullOrEmpty(GroupName) ? string.Format(" name=\"{0}\"", ClientID) : string.Format(" name=\"{0}\"", GroupName);
-            return string.Format("<span id=\"{0}\"{6}><input type=\"radio\" value=\"{0}\" id=\"{0}_CTRL\"{2}{3}{4}{5} /><label id=\"{0}_LBL\" for=\"{0}_CTRL\">{1}</label></span>",
-                ClientID,
-                Text,
-                accessKey,
-                (Enabled ? "" : " disabled=\"disabled\""),
-                groupName,
-                (Checked ? " checked=\"checked\"" : ""),
-                GetWebControlAttributes());
+            using (Element span = builder.CreateElement("span"))
+            {
+                AddAttributes(span);
+                using (Element el = builder.CreateElement("input"))
+                {
+                    el.AddAttribute("type", "radio");
+                    if (!string.IsNullOrEmpty(GroupName))
+                        el.AddAttribute("name", GroupName);
+                    else
+                        el.AddAttribute("name", ClientID);
+                    if (!string.IsNullOrEmpty(AccessKey))
+                        el.AddAttribute("accesskey", AccessKey);
+                    if (!Enabled)
+                        el.AddAttribute("disabled", "disabled");
+                    if (Checked)
+                        el.AddAttribute("checked", "checked");
+                    using (Element label = builder.CreateElement("label"))
+                    {
+                        label.AddAttribute("id", ClientID + "_LBL");
+                        label.AddAttribute("for", ClientID + "_CTRL");
+                        label.Write(Text);
+                    }
+                }
+            }
         }
 
         #endregion

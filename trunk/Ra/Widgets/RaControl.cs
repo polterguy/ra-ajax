@@ -14,6 +14,7 @@ using System.ComponentModel;
 using System.Collections.Generic;
 using System.Web;
 using Ra.Behaviors;
+using Ra.Builder;
 
 /**
  * Namespace where all the Widgets from the Ra core can be found together with some of their
@@ -145,15 +146,13 @@ namespace Ra.Widgets
 			// render the contents of that into the AjaxManager.Stream wrapped inside of the "this element" HTML...
 			
             // Rendering the "this widget" Opening HTML
-			AjaxManager.Instance.Writer.Write("Ra.Control.$('{0}').reRender('{1}",
-				ClientID,
-				GetOpeningHTML());
-			
-			RenderAllChildrenToAjaxManager();
-
-            // "Ending" process...
-			AjaxManager.Instance.Writer.Write(GetClosingHTML());
-			AjaxManager.Instance.Writer.WriteLine("');");
+            using (HtmlBuilder builder = new HtmlBuilder())
+            {
+                RenderRaControl(builder);
+                AjaxManager.Instance.Writer.Write("Ra.Control.$('{0}').reRender('", ClientID);
+                AjaxManager.Instance.Writer.Write(builder.ToJSONString());
+                AjaxManager.Instance.Writer.WriteLine("');");
+            }
 			
 			// THEN we get the scripts. It is VERY important that the scripts are rendered after the HTML for the widgets
             // ALL of the widgets...!!
@@ -162,21 +161,19 @@ namespace Ra.Widgets
 
 		private void ReRenderDueToParentReRendering(HtmlTextWriter writer)
 		{
-			writer.Write(GetOpeningHTML());
-			RenderChildren(writer);
-			writer.Write(GetClosingHTML());
-		}
+            HtmlBuilder builder = new HtmlBuilder(writer);
+            RenderRaControl(builder);
+        }
 
 		private void RenderControlVisibleForFirstTime(HtmlTextWriter writer)
 		{
-			AjaxManager.Instance.Writer.Write("Ra.$('{0}').replaceWith('{1}",
-				ClientID,
-				GetOpeningHTML().Replace("\\", "\\\\").Replace("'", "\\'").Replace("\r", "\\r").Replace("\n", "\\n"));
-
-			RenderAllChildrenToAjaxManager();
-
-			AjaxManager.Instance.Writer.Write("{0}');\r\n",
-				GetClosingHTML().Replace("\\", "\\\\").Replace("'", "\\'").Replace("\r", "\\r").Replace("\n", "\\n"));
+			AjaxManager.Instance.Writer.Write("Ra.$('{0}').replaceWith('", ClientID);
+            using (HtmlBuilder builder = new HtmlBuilder())
+            {
+                RenderRaControl(builder);
+                AjaxManager.Instance.Writer.Write(builder.ToJSONString());
+            }
+			AjaxManager.Instance.Writer.Write("');");
 
 			AjaxManager.Instance.Writer.WriteLine(GetClientSideScript());
 			AjaxManager.Instance.Writer.WriteLine(GetChildrenClientSideScript());
@@ -216,9 +213,8 @@ namespace Ra.Widgets
 				}
 				else
 				{
-					writer.Write(GetOpeningHTML());
-					RenderChildren(writer);
-					writer.Write(GetClosingHTML());
+                    HtmlBuilder builder = new HtmlBuilder(writer);
+                    RenderRaControl(builder);
                     if (!DesignMode)
                         AjaxManager.Instance.Writer.WriteLine(GetClientSideScript());
 				}
@@ -643,22 +639,14 @@ namespace Ra.Widgets
 			return retVal;
 		}
 
-        /**
-         * Opening HTML for your control. If you control can have child controls in the Controls collection
-         * you would probably want to override also the GetClosingHTML method if you override this one.
-         * If your widget cannot have child controls then only override this one and drop overriding 
-         * the GetClosingHTML method.
-         */
-		protected abstract string GetOpeningHTML();
+        protected virtual void RenderRaControl(HtmlBuilder builder)
+        {
+        }
 
-        /**
-         * If your widget can have child controls in the Controls collection then override this one to
-         * return the closing HTML element tag of your widget.
-         */
-		protected virtual string GetClosingHTML()
-		{
-			return string.Empty;
-		}
+        protected virtual void AddAttributes(Element el)
+        {
+            el.AddAttribute("id", ClientID);
+        }
 
 		// The INVISIBLE HTML for the control
         /**

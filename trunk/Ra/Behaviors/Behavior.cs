@@ -34,11 +34,6 @@ namespace Ra.Behaviors
         internal virtual void EnsureViewStateLoads()
         { }
 
-        protected override string GetOpeningHTML()
-		{
-			return string.Empty;
-		}
-
         public override void RenderControl(ASP.HtmlTextWriter writer)
         {
 			// We roughly only need to handle what happens for JSON changes in the Behaviors
