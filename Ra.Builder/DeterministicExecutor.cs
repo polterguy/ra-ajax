@@ -25,6 +25,11 @@ namespace Ra.Builder
         private Functor _start;
         private bool disposed;
 
+        /**
+         * CTOR taking only a end functor. Normally you'd use this one only when inheriting from class
+         * and you need to set the Start functor later. Then the Start functor will be executed immediately
+         * when you set it with the Start property.
+         */
         public DeterministicExecutor(Functor end)
             : this(null, end)
         { }
@@ -41,6 +46,10 @@ namespace Ra.Builder
             _end = end;
         }
 
+        /**
+         * Use this one ONLY in combination with the CTOR taking only the End functor. The method
+         * passed will be executed immediately when this property is called.
+         */
         public Functor Start
         {
             set
