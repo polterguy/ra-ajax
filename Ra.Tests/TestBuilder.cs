@@ -33,6 +33,63 @@ namespace Ra.Tests.Builder
                 Assert.AreEqual("<div>howdy</div>", builder.ToString());
             }
         }
+
+        [NUnit.Framework.Test]
+        public void ElementWithMultipleContent()
+        {
+            using (HtmlBuilder builder = new HtmlBuilder())
+            {
+                using (Element el = builder.CreateElement("div"))
+                {
+                    builder.Writer.Write("howdy");
+                    builder.Writer.Write("howdy");
+                }
+                Assert.AreEqual("<div>howdyhowdy</div>", builder.ToString());
+            }
+        }
+
+        [NUnit.Framework.Test]
+        public void ElementWithAttribute()
+        {
+            using (HtmlBuilder builder = new HtmlBuilder())
+            {
+                using (Element el = builder.CreateElement("div"))
+                {
+                    el.AddAttribute("attribute", "value");
+                }
+                Assert.AreEqual("<div attribute=\"value\"></div>", builder.ToString());
+            }
+        }
+
+        [NUnit.Framework.Test]
+        public void ElementWithMultipleAttributes()
+        {
+            using (HtmlBuilder builder = new HtmlBuilder())
+            {
+                using (Element el = builder.CreateElement("div"))
+                {
+                    el.AddAttribute("attribute", "value");
+                    el.AddAttribute("howdy", "yahoo");
+                }
+                Assert.AreEqual("<div attribute=\"value\" howdy=\"yahoo\"></div>", builder.ToString());
+            }
+        }
+
+        [NUnit.Framework.Test]
+        public void ElementWithMultipleAttributesAndMultipleContent()
+        {
+            using (HtmlBuilder builder = new HtmlBuilder())
+            {
+                using (Element el = builder.CreateElement("div"))
+                {
+                    el.AddAttribute("attribute", "value");
+                    el.AddAttribute("howdy", "yahoo");
+                    builder.Writer.Write("howdy");
+                    builder.Writer.Write("yahoo");
+                }
+                Assert.AreEqual("<div attribute=\"value\" howdy=\"yahoo\">howdyyahoo</div>", builder.ToString());
+            }
+        }
     }
 }
 
