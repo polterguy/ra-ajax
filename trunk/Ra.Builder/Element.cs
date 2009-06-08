@@ -43,11 +43,11 @@ namespace Ra.Builder
          * This means you must add ALL attributes BEFORE you start writing any other content
          * to the Element/Stream.
          */
-        public void AddAttribute(string name, string content)
+        public void AddAttribute(string name, string value)
         {
             if (_closed)
                 throw new Exception("Can't add an attribute once the attribute is closed due to accessing the underlaying Writer or something else");
-            _builder.WriterUnClosed.Write(" " + name + "=\"" + content + "\"");
+            _builder.WriterUnClosed.Write(" " + name + "=\"" + value + "\"");
         }
 
         /**
