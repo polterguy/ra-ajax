@@ -14,6 +14,15 @@
     Try to resize the Browser Window...
 </p>
 
+<ra:GlobalUpdater 
+    runat="server" 
+    MaxOpacity="0.7" 
+    Delay="300"
+    style="z-index:1500;position:absolute;top:0;left:0;width:100%;height:100%;background-color:Red;color:White;font-size:48px;"
+    ID="updater">
+    <div style="padding-top:45%;">GlobalUpdater kicking in</div>
+</ra:GlobalUpdater>
+
 <ra:ResizeHandler 
     runat="server" 
     OnResized="re_Resized"

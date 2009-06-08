@@ -18,5 +18,6 @@ public partial class Docs_Controls_ResizeHandler : System.Web.UI.UserControl
     {
         lbl.Text = string.Format("New size width {0}px and height {1}px", e.Width, e.Height);
         new EffectHighlight(lbl, 400).Render();
+        System.Threading.Thread.Sleep(1000);
     }
 }

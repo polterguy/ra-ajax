@@ -74,6 +74,10 @@
   logic of Ra-Ajax to use the new HtmlBuilder logic
   which is new in this release.
 
+* Fixed a severe bug in ResizeHandler which would
+  create many requests in IE when the viewport was
+  being resize by dragging the borders of the browser.
+
 
 
 

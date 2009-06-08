@@ -25,11 +25,12 @@ Ra.extend(Ra.ResHand.prototype, {
     window.observe('resize', this.onResized, this);
     this._size = {      width: window.innerWidth || document.body.clientWidth,       height: window.innerHeight || document.body.clientHeight    };    this.callback(this._size);
   },
-  onResized: function() {    this._size = {      width: window.innerWidth || document.body.clientWidth,       height: window.innerHeight || document.body.clientHeight    };    var T = this;    setTimeout(function(){      T.checkToSeeIfCallback();    }, 500);  },
+  onResized: function() {    if( this._inCheck ) {      return;    }    this._inCheck = true;    this._size = {      width: window.innerWidth || document.body.clientWidth,       height: window.innerHeight || document.body.clientHeight    };    var T = this;    setTimeout(function(){      T.checkToSeeIfCallback();    }, 500);  },
   checkToSeeIfCallback: function() {
-    var sz = {      width: window.innerWidth || document.body.clientWidth,       height: window.innerHeight || document.body.clientHeight    };    if( sz.width == this._size.width && sz.height == this._size.height ) {      this.callback(this._size);    } else {      this._size = sz;      var T = this;      setTimeout(function(){        T.checkToSeeIfCallback();      }, 500);    }  },
+    var sz = {      width: window.innerWidth || document.body.clientWidth,       height: window.innerHeight || document.body.clientHeight    };    if( sz.width == this._size.width && sz.height == this._size.height ) {      this._raiseResize(this._size);    } else {      this._size = sz;      var T = this;      setTimeout(function() {        T.checkToSeeIfCallback();      }, 500);    }  },
 
-  callback: function(sz) {
+  _raiseResize: function(sz) {
+    this._inCheck = false;
     new Ra.Ajax({
       args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=resized' + '&width=' + sz.width + '&height=' + sz.height,
       raCallback:true,
