@@ -16,7 +16,16 @@
     <mkdir dir="${output.dir}/${library.dir}/${uncompressed.dir}" />
   </target>
 
-  <target name="compile.lib.uncompressed" depends="clean,init" description="Compile the DLLs with uncompressed JS files">
+  <target name="compile.ra.builder" depends="clean,init" description="Compile Ra HTML Builder">
+    <csc verbose="false" target="library" optimize="${not debug}" output="${output.dir}/${library.dir}/${ra.builder.name}.dll" debug="${debug}">
+      <sources>
+        <include name="${ra.builder.name}/**/*.cs" />
+        <exclude name="${ra.builder.name}/obj/**/*.*" />
+      </sources>
+    </csc>
+  </target>
+
+  <target name="compile.lib.uncompressed" depends="compile.ra.builder" description="Compile the DLLs with uncompressed JS files">
     <jsmin gzip="false" todir="${output.dir}/${code.dir}/${ra.name}/Js" concat-to="${concatenated.js.file}">
       <fileset>
         <include name="${ra.name}/Js/Ra.js" asis="true" />
@@ -44,6 +53,9 @@
         <include name="${ra.name}/Js/**/*.js" if="${debug}" />
         <include name="${output.dir}/${code.dir}/${ra.name}/Js/**/*.js" unless="${debug}" />
       </resources>
+      <references>
+        <include name="${output.dir}/${library.dir}/${ra.builder.name}.dll" />
+      </references>
     </csc>
     <csc verbose="false" target="library" optimize="${not debug}" output="${output.dir}/${library.dir}/${uncompressed.dir}/${ext.name}.dll" debug="${debug}">
       <sources>
@@ -55,12 +67,14 @@
         <include name="${output.dir}/${code.dir}/${ext.name}/Js/**/*.js" unless="${debug}" />
       </resources>
       <references>
+        <include name="${output.dir}/${library.dir}/${ra.builder.name}.dll" />
         <include name="${output.dir}/${library.dir}/${uncompressed.dir}/${ra.name}.dll" />
       </references>
     </csc>
     <delete dir="${output.dir}/${code.dir}/${ra.name}/Js" />
   </target>
-  <target name="compile.lib.gzipped" depends="clean,init" description="Compile the DLLs with GZipped JS files">
+  
+  <target name="compile.lib.gzipped" depends="compile.ra.builder" description="Compile the DLLs with GZipped JS files">
     <jsmin gzip="true" todir="${output.dir}/${code.dir}/${ra.name}/Js" concat-to="${concatenated.js.file}">
       <fileset>
         <include name="${ra.name}/Js/Ra.js" asis="true" />
@@ -88,6 +102,9 @@
         <include name="${ra.name}/Js/**/*.js" if="${debug}" />
         <include name="${output.dir}/${code.dir}/${ra.name}/Js/**/*.js" unless="${debug}" />
       </resources>
+      <references>
+        <include name="${output.dir}/${library.dir}/${ra.builder.name}.dll" />
+      </references>
     </csc>
     <csc verbose="false" target="library" optimize="${not debug}" output="${output.dir}/${library.dir}/${gzipped.dir}/${ext.name}.dll" debug="${debug}">
       <sources>
@@ -99,6 +116,7 @@
         <include name="${output.dir}/${code.dir}/${ext.name}/Js/**/*.js" unless="${debug}" />
       </resources>
       <references>
+        <include name="${output.dir}/${library.dir}/${ra.builder.name}.dll" />
         <include name="${output.dir}/${library.dir}/${gzipped.dir}/${ra.name}.dll" />
       </references>
     </csc>
