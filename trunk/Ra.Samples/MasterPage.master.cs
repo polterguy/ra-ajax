@@ -15,6 +15,7 @@ using System.Drawing;
 using System.Web.UI;
 using Ra;
 using Ra.Effects;
+using ColorizerLibrary;
 
 namespace Samples
 {
@@ -24,7 +25,7 @@ namespace Samples
         {
             if (!IsPostBack)
             {
-                if (!Request.Url.ToString().ToLower().Contains("/samples"))
+                if (!Request.Url.ToString().ToLower().Contains("samples/"))
                 {
                     showCode.Visible = false;
                 }
@@ -81,9 +82,13 @@ namespace Samples
             }
             using (TextReader reader = new StreamReader(File.OpenRead(path)))
             {
-                string allCode = "\r\n" + reader.ReadToEnd();
-                allCode = allCode.Replace("<", "&lt;").Replace(">", "&gt;").Replace("\t", "    ");
-                lblCodeASPX.Text = allCode;
+                CodeColorizer colorizer = ColorizerLibrary.Config.DOMConfigurator.Configure();
+                lblCodeASPX.Text = colorizer.ProcessAndHighlightText(
+                    "<pre lang=\"xml\">" +
+                    reader.ReadToEnd() +
+                    "</pre>")
+                    .Replace("%@", "<span class=\"yellow-code\">%@</span>")
+                    .Replace(" %", " <span class=\"yellow-code\">%</span>");
             }
         }
 
@@ -104,11 +109,13 @@ namespace Samples
             }
             using (TextReader reader = new StreamReader(File.OpenRead(path)))
             {
-                string allCode = "\r\n" + reader.ReadToEnd();
-                allCode = allCode.Replace("<", "&lt;").Replace(">", "&gt;");
-                allCode = allCode.Replace("/*", "<span class=\"comment\">/*");
-                allCode = allCode.Replace("*/", "*/</span>");
-                lblCodeCS.Text = allCode.Replace("\t", "    ");
+                CodeColorizer colorizer = ColorizerLibrary.Config.DOMConfigurator.Configure();
+                lblCodeCS.Text = colorizer.ProcessAndHighlightText(
+                    "<pre lang=\"cs\">" + 
+                    reader.ReadToEnd() + 
+                    "</pre>")
+                    .Replace("%@", "<span class=\"yellow-code\">%@</span>")
+                    .Replace(" %", " <span class=\"yellow-code\">%</span>");
             }
         }
     }
