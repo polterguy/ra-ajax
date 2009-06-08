@@ -44,14 +44,6 @@
             </ra:Tree>
         </div>
     </ra:Window>
-    
-    <ra:LinkButton 
-        runat="server" 
-        ID="linkToThis" 
-        Text="Link to this..." 
-        Visible="false"
-        style="position:absolute;right:0;top:0;color:Yellow;z-index:1000;"
-        OnClick="linkToThis_Click" />
 
     <ra:Label 
         runat="server"

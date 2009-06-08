@@ -17,11 +17,18 @@ using Ra.Selector;
 using Ra.Extensions.Widgets;
 using Ra.Effects;
 using Ra;
+using Ra.Builder;
 
 namespace RaWebsite
 {
     public partial class Docs : System.Web.UI.Page
     {
+        private enum DocType
+        {
+	        Class,
+            Tutorial
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             BuildRoot();
@@ -32,7 +39,6 @@ namespace RaWebsite
                 if (!string.IsNullOrEmpty(className))
                 {
                     SelectClass(className);
-                    linkToThis.Visible = false;
                 }
                 else
                 {
@@ -41,7 +47,6 @@ namespace RaWebsite
                     {
                         tutorial = "(" + tutorial.Replace("_", " ").Replace("-", ") - ");
                         SelectTutorial(tutorial);
-                        linkToThis.Visible = false;
                     }
                 }
             }
@@ -163,16 +168,22 @@ namespace RaWebsite
                 return;
             if (itemToLookAt.Contains("tutorial_"))
             {
-                linkToThis.Visible = true;
-                linkToThis.Xtra = "Docs.aspx?tutorial=" + tree.SelectedNodes[0].Text.Replace("(", "").Replace(") - ", "-").Replace(" ", "_");
                 ShowTutorial(itemToLookAt);
             }
             else
             {
-                linkToThis.Visible = true;
-                linkToThis.Xtra = "Docs.aspx?class=" + tree.SelectedNodes[0].Text;
                 ShowClass(itemToLookAt);
             }
+        }
+
+        private void LinkToDoc(DocType type, string doc)
+        {
+            HtmlBuilder builder = new HtmlBuilder();
+            Element element = builder.CreateElement("a");
+            element.AddAttribute("href", String.Format("Docs.aspx?{0}={1}", type.ToString().ToLower(), doc));
+            element.Write(header.Text);
+            element.Dispose();
+            header.Text = builder.ToString();
         }
 
         private void ShowTutorial(string tutorialID)
@@ -213,6 +224,7 @@ namespace RaWebsite
             }
             new EffectHighlight(header, 500)
                 .Render();
+            LinkToDoc(DocType.Tutorial, header.Text.Replace("(", "").Replace(") - ", "-").Replace(" ", "_"));
         }
 
         protected void ViewInherited(object sender, EventArgs e)
@@ -224,8 +236,6 @@ namespace RaWebsite
             }
             else
             {
-                linkToThis.Visible = true;
-                linkToThis.Xtra = "Docs.aspx?class=" + inherit.Text;
                 ShowClass(inherit.Xtra);
             }
         }
@@ -309,11 +319,7 @@ namespace RaWebsite
             repWrapper.ReRender();
 
             LoadSample(header.Text);
-        }
-
-        protected void linkToThis_Click(object sender, EventArgs e)
-        {
-            AjaxManager.Instance.Redirect(linkToThis.Xtra);
+            LinkToDoc(DocType.Class, header.Text);
         }
 
         private void LoadSample(string className)
