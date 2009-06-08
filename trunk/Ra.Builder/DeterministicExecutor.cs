@@ -25,6 +25,9 @@ namespace Ra.Builder
         private Functor _start;
         private bool disposed;
 
+        public DeterministicExecutor()
+        { }
+
         /**
          * CTOR taking only a end functor. Normally you'd use this one only when inheriting from class
          * and you need to set the Start functor later. Then the Start functor will be executed immediately
@@ -62,6 +65,14 @@ namespace Ra.Builder
             }
         }
 
+        public Functor End
+        {
+            set
+            {
+                _end = value;
+            }
+        }
+
         public void Dispose()
         {
             Dispose(true);
@@ -74,7 +85,8 @@ namespace Ra.Builder
             {
                 if (disposing)
                 {
-                    _end();
+                    if (_end != null)
+                        _end();
                 }
             }
             disposed = true;

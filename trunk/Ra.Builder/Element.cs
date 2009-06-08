@@ -25,14 +25,14 @@ namespace Ra.Builder
          * CTOR taking an HtmlBuilder and the element tag name.
          */
         public Element(HtmlBuilder builder, string elementName)
-            : base(delegate
-        {
-            this.CloseOpeningElement();
-            this._builder.Writer.Write("</" + elementName + ">");
-        })
         {
             _builder = builder;
             _builder.Writer.Write("<" + elementName);
+            End = delegate 
+            {
+                this.CloseOpeningElement();
+                this._builder.Writer.Write("</" + elementName + ">");
+            };
         }
 
         /**
