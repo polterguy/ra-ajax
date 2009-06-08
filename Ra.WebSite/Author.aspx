@@ -58,15 +58,8 @@
     <p>
         We are all available for hire through the company Ra-Software AS which is a Norwegian privately held company 
         mainly focusing on system development on consultancy basis. If you would like to hire us then 
-        <a href="mailto:thomas@ra-ajax.org">send Thomas an email</a> and explain the job you would want to get done 
-        with some few words and we'll pick it up from there.
-    </p>
-    <p>
-        You might want to check out our <a href="Testimonials.aspx">testimonials</a> to see out what other people
-        who have previously hired us thinks of us.
-    </p>
-    <p>
-        Or if you want to read about our <a href="SoftwareFactory.aspx">consulting services</a>.
+        check out our <a href="SoftwareFactory.aspx">consulting services here</a>. Or 
+        <a href="Testimonials.aspx">read what previous customers of Ra-Software had to say about us</a>.
     </p>
 </asp:Content>
 

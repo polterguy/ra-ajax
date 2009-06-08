@@ -467,3 +467,80 @@ ul#menu li a:hover
 {
 	background-color:#f0f0f0;
 }
+
+
+
+.cpp-inline 
+{
+	color: #990000;
+	font-family: ""Courier New"", Courier, mono;
+}
+
+.cpp-pre 
+{
+	background-color: #FBEDBB;
+	padding: 7pt;
+	font: 9pt ""Courier New"", Courier, mono;
+	white-space: pre;
+}
+
+.cpp-comment  
+{
+	color: #006633;
+}
+
+.cpp-literal  
+{
+	color: #CC0000;
+}
+
+.cpp-keyword  
+{
+	color:#0000FF;
+}
+
+.cpp-klass
+{
+	color:#0088ff;
+}
+
+.cpp-preprocessor
+{
+	color:#0000FF;
+}
+
+.xml-tag  
+{
+	color:#AA4400
+}
+
+.xml-bracket  
+{
+	color:#0000FF;
+}
+
+.xml-comment 
+{ 
+	color:#008800;
+}
+
+.xml-cdata  
+{
+	color:#AA0088;
+}
+
+.xml-attribute-name 
+{
+	color:#FF0000;
+}
+
+.xml-attribute-value
+{
+	color:#0000FF;
+}
+
+.yellow-code
+{
+	background-color:#fafa00;
+}
+

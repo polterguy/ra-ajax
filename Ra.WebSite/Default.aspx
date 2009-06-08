@@ -37,24 +37,16 @@
     </ul>
     <h2>Daily Builds of Ra-Ajax</h2>
     <p>
-        We now have <a href="/daily">daily builds of Ra-Aja</a>. At around 1 am 
+        We now have <a href="/daily">daily builds of Ra-Ajax</a>. At around 1 am 
         (Norway Local Time) each day, a new build will be available for download. This
         only takes place if there are any changes in the code repository since the previous
         daily build. So some days might be skipped.
     </p>
-    <h2>Not comfortable with the GPL?</h2>
+    <h2>Need Software?</h2>
     <p>
-        Do you need a non-GPL version of Ra-Ajax?
-    </p>
-    <p>
-        If you want to use Ra-Ajax without being restricted by the GPL, you need
-        to hire us as consultants and we will give you a proprietary license. This
-        license will entitle you to use Ra-Ajax without the restrictions of the GPL.
-    </p>
-    <p>
-        Send <a href="mailto:thomas@ra-ajax.org">Thomas an email</a> to get in contact
-        in regards to hiring us as consultants. Read more about our 
-        <a href="SoftwareFactory.aspx">consulting services</a>.
+        Ra-Software AS is a consultancy company and we are what we refer to ourselves as
+        a <em>Software Factory</em>. Check out our <a href="SoftwareFactory.aspx">consulting services</a> 
+        for details about what we can help you out with.
     </p>
 </asp:Content>
 

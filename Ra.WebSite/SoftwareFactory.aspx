@@ -18,9 +18,7 @@
         want to create then we can create it for you.
     </p>
     <p>
-        We will then use Ra-Ajax in this project and you will be given a special <strong>proprietary license
-        of Ra-Ajax</strong> which does not restrict your project in any ways by the GPL. So if you need to
-        have some software created or you have some problem which we can solve for you, then please
+        If you have some software created or you have some problem which we can solve for you, then please
         send <a href="mailto:thomas@ra-ajax.org">Thomas an email</a> and explain what you would
         want to get done.
     </p>
@@ -69,12 +67,6 @@
         <li>Give advice...</li>
     </ul>
     <p>
-        <strong>All customers of Ra-Software will be given the rights to use Ra-Ajax within
-        their organization in a non-GPL license</strong>, which means that your software will not
-        be restricted by the GPL in any ways. As a consulting customer of Ra-Software you
-        will get to use Ra-Ajax as you wish within a proprietary license.
-    </p>
-    <p>
         According to several international studies about 75% of all software projects
         fails in some way or another. Ra-Software does not fail. If we take on ourselves a job
         we know we will be able to deliver the expected results. We can't promise you success,
@@ -82,26 +74,13 @@
         - which is the software construction parts!
     </p>
     <p>
-        <a href="Testimonials.aspx">Read what previous customers of Ra-Software had to say about us</a>.
+        For our work <strong>we do not have to use Ra-Ajax under the GPL</strong>. We can 
+        also use Ra-Ajax under a proprietary license or a commercial license if this is a 
+        problem for you.
     </p>
     <p>
-        Or <a href="Author.aspx">read about our qualifications here</a>.
-    </p>
-    <h2>Can't afford to hire us?</h2>
-    <p>
-        Fear not, Ra-Software has a <em>Serve the Underserved Initiative</em> where we can give you
-        some time of consultancy very inexpensively which then also includes the proprietary
-        license of Ra-Ajax.
-    </p>
-    <p>
-        Most of the consultancy given this way would be in the form of access to videos
-        and similar concepts. And our <em>Serve the Underserved Initiative</em> is highly dependant
-        upon that you really need it. If you're working from home and just registered your 
-        company and you still haven't made much buck at all, then you're worthy. If you live in a 
-        very poor country where our consultancy rates are too much for you to pay, and your 
-        company is really broke, then you're worthy. And if you work for free for a voluntary 
-        organization that just wants to help the world you're also worthy. All students would 
-        normally be considered worthy.
+        Read what <a href="Testimonials.aspx">previous customers of Ra-Software had to say</a> about us,
+        or read about <a href="Author.aspx">our qualifications here</a>.
     </p>
 
 </asp:Content>

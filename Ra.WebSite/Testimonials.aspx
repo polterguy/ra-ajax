@@ -36,15 +36,9 @@ Senior Partner
     <p>
         Ra-Software AS is a Norwegian based <em>Software Factory</em> which means we can do your Ajax Development.
         If you have an Ajax Application you need to build we can do it for you. We can also offer training and
-        professional help with Ra-Ajax. If you're interested in such an arrangement then please send 
-        <a href="mailto:thomas@ra-ajax.org">Thomas an email</a> and tell us about your problem.
-    </p>
-    <p>
-        All customers of Ra-Software will be given a proprietary/commercial license of Ra-Ajax so that they
-        won't be restricted by the GPL in their own applications.
-    </p>
-    <p>
-        <a href="Author.aspx">Read about our qualifications here</a>.
+        professional help with Ra-Ajax. If you're interested in such an arrangement then please check out
+        our <a href="SoftwareFactory.aspx">consulting offers</a> or check out 
+        <a href="Author.aspx">our qualifications here</a>.
     </p>
 </asp:Content>
 
