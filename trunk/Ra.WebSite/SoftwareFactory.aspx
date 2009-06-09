@@ -82,6 +82,25 @@
         Read what <a href="Testimonials.aspx">previous customers of Ra-Software had to say</a> about us,
         or read about <a href="Author.aspx">our qualifications here</a>.
     </p>
+    <p>
+        Company information.
+    </p>
+    <p>
+        Ra-Software AS
+        <br />
+        Marsvn. 18
+        <br />
+        3942 PORSGRUNN
+        <br />
+        Norway
+    </p>
+    <p>
+        Phone; +47 915 94 779
+        <br />
+        Contact email; <a href="mailto:thomas@ra-ajax.org">thomas@ra-ajax.org</a>
+        <br />
+        VAT no; 991686029
+    </p>
 
 </asp:Content>
 

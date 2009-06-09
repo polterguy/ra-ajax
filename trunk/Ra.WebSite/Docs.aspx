@@ -63,8 +63,8 @@
             <p>
                 If you don't find the information you need here, you might try <a href="http://stacked.ra-ajax.org">our forums</a>
                 or if you need even more support and/or help we are available to hire for consultancy work with Ra-Ajax.
-                If you want to hire us then please send <a href="mailto:thomas@ra-ajax.org">Thomas Hansen</a> an email
-                shortly describing what you want us to do for you.
+                If you want to hire us then please check out our <a href="SoftwareFactory.aspx">consulting services</a> 
+                for details about what we can help you out with..
             </p>
             <h2>Need even more help...?</h2>
             <p>

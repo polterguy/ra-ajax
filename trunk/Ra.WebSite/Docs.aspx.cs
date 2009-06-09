@@ -178,12 +178,15 @@ namespace RaWebsite
 
         private void LinkToDoc(DocType type, string doc)
         {
-            HtmlBuilder builder = new HtmlBuilder();
-            Element element = builder.CreateElement("a");
-            element.AddAttribute("href", String.Format("Docs.aspx?{0}={1}", type.ToString().ToLower(), doc));
-            element.Write(header.Text);
-            element.Dispose();
-            header.Text = builder.ToString();
+            using (HtmlBuilder builder = new HtmlBuilder())
+            {
+                using (Element element = builder.CreateElement("a"))
+                {
+                    element.AddAttribute("href", String.Format("Docs.aspx?{0}={1}", type.ToString().ToLower(), doc));
+                    element.Write(header.Text);
+                }
+                header.Text = builder.ToString();
+            }
         }
 
         private void ShowTutorial(string tutorialID)
