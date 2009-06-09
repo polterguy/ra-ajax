@@ -38,6 +38,7 @@
       <fileset>
         <include name="${output.dir}/${library.dir}/${gzipped.dir}/${ra.name}.dll" />
         <include name="${output.dir}/${library.dir}/${gzipped.dir}/${ext.name}.dll" />
+        <include name="${output.dir}/${library.dir}/${ra.builder.name}.dll" />
         <include name="${output.dir}/${library.dir}/${ra.selector.name}.dll" />
         <include name="${references.dir}/System.Web.DataVisualization.dll" />
         <include name="${references.dir}/ColorizerLibrary.dll" />
@@ -65,11 +66,6 @@
             
 			HttpContext.Current.Response.AppendHeader("Content-Encoding", "gzip");
 		}
-    else if (Request.Path.ToLowerInvariant().EndsWith(".css") &&
-        HttpContext.Current.Response.ContentType.ToLowerInvariant() == "text/css")
-    {
-        HttpContext.Current.Response.AppendHeader("Content-Encoding", "gzip");
-    }
 	}
 </script>]]>
       </content>
@@ -156,11 +152,6 @@ if (Request.Path.ToLowerInvariant().EndsWith("webresource.axd") &&
 	HttpContext.Current.Response.Cache.SetValidUntilExpires(false);
     
 	HttpContext.Current.Response.AppendHeader("Content-Encoding", "gzip");
-}
-else if (Request.Path.ToLowerInvariant().EndsWith(".css") &&
-    HttpContext.Current.Response.ContentType.ToLowerInvariant() == "text/css")
-{
-    HttpContext.Current.Response.AppendHeader("Content-Encoding", "gzip");
 }
 				]]>
       </text-to-insert>
