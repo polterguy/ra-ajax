@@ -39,7 +39,8 @@
         <include name="${output.dir}/${library.dir}/${gzipped.dir}/${ra.name}.dll" />
         <include name="${output.dir}/${library.dir}/${gzipped.dir}/${ext.name}.dll" />
         <include name="${output.dir}/${library.dir}/${ra.selector.name}.dll" />
-		<include name="${references.dir}/System.Web.DataVisualization.dll" />
+        <include name="${references.dir}/System.Web.DataVisualization.dll" />
+        <include name="${references.dir}/ColorizerLibrary.dll" />
 	  </fileset>
     </copy>
 
@@ -123,6 +124,7 @@
     <copy flatten="true" todir="${output.dir}/${code.dir}/${ra.website.dir}/bin">
       <fileset>
         <include name="${output.dir}/${library.dir}/${ra.selector.name}.dll" />
+        <include name="${output.dir}/${library.dir}/${ra.builder.name}.dll" />
         <include name="${output.dir}/${library.dir}/${gzipped.dir}/${ra.name}.dll" />
         <include name="${output.dir}/${library.dir}/${gzipped.dir}/${ext.name}.dll" />
         <include name="${references.dir}/**/*.dll" />
