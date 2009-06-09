@@ -23,7 +23,7 @@ Ra.extend(Ra.ResHand.prototype, {
     this.initControl(el, opt);
     Ra.extend(window, Ra.Element.prototype);
     window.observe('resize', this.onResized, this);
-    this._size = {      width: window.innerWidth || document.body.clientWidth,       height: window.innerHeight || document.body.clientHeight    };    this.callback(this._size);
+    this._size = {      width: window.innerWidth || document.body.clientWidth,       height: window.innerHeight || document.body.clientHeight    };    this._raiseResize(this._size);
   },
   onResized: function() {    if( this._inCheck ) {      return;    }    this._inCheck = true;    this._size = {      width: window.innerWidth || document.body.clientWidth,       height: window.innerHeight || document.body.clientHeight    };    var T = this;    setTimeout(function(){      T.checkToSeeIfCallback();    }, 500);  },
   checkToSeeIfCallback: function() {
