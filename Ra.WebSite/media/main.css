@@ -152,7 +152,37 @@ pre
 	padding:0;
 }
 
+/* Main website landing page */
+.button
+{
+	color:#00b;
+	width:200px;
+	height:50px;
+	display:inline-table;
+	border:solid 1px #b60;
+	border-width:1px 1px 2px 15px;
+	background-color:#EFEFEF;
+	margin:5px;
+	padding:5px;
+}
 
+.buttonImage 
+{
+	float:left;
+	margin-left:3px;
+	width:48px;
+	height:48px;
+}
+
+.buttonText 
+{
+	display:block;
+	margin-top:8px;
+	margin-bottom:0;
+	text-align:center;
+	font-size:15px;
+	font-family:Verdana, Helvetica, Arial;
+}
 
 
 /* Menu */

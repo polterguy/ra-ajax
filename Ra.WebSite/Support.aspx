@@ -18,11 +18,34 @@
         Mostly you will get an answer to your question within 24 hours, but we cannot supply any guarantees
         for non-paying customers.
     </p>
-    <ul class="list">
-        <li><a href="http://stacked.ra-ajax.org">Forums</a></li>
-        <li><a id="A1" runat="server" href="~/Docs.aspx">Documentation</a></li>
-        <li><a href="SoftwareFactory.aspx">Hire us</a></li>
-    </ul>
+    <div class="button">
+        <a href="Docs.aspx">
+            <img class="buttonImage" src="media/book_48.png" alt="Docs" />
+            <span class="buttonText">Documentation</span>
+            <span class="buttonText" style="margin-top:0;font-size:10px;">Docs &amp; Tutorials</span>
+        </a>
+    </div>
+    <div class="button">
+        <a href="http://stacked.ra-ajax.org">
+            <img class="buttonImage" src="media/questionmark_48.png" alt="Forums" />
+            <span class="buttonText">Forums</span>
+            <span class="buttonText" style="margin-top:0;font-size:10px;">Quesions &amp; Answers</span>
+        </a>
+    </div>
+    <div class="button">
+        <a href="Blogs.aspx">
+            <img class="buttonImage" src="media/kate.png" alt="Software" />
+            <span class="buttonText">Read our Blogs</span>
+            <span class="buttonText" style="margin-top:0;font-size:10px;">We frequently blog about Ra-Ajax</span>
+        </a>
+    </div>
+    <div class="button">
+        <a href="SoftwareFactory.aspx">
+            <img class="buttonImage" src="media/blockdevice.png" alt="Software" />
+            <span class="buttonText">Need Software?</span>
+            <span class="buttonText" style="margin-top:0;font-size:10px;">We are a Software Factory</span>
+        </a>
+    </div>
     <h2>Documentation</h2>
     <p>
         You can find the <a href="Docs.aspx">documentation for Ra-Ajax here</a>. The documentation
