@@ -24,6 +24,8 @@
         <include name="**/*.asax" />
         <include name="**/*.ascx" />
         <include name="**/*.master" />
+        <include name="highlight.xml" />
+        <include name="highlight.xsl" />
         <include name="media/**/*.*" />
         <include name="ChartImages/**/*.*" />
       </fileset>
@@ -108,6 +110,8 @@
         <include name="**/*.asax" />
         <include name="**/*.ascx" />
         <include name="**/*.master" />
+        <include name="highlight.xml" />
+        <include name="highlight.xsl" />
         <include name="media/**/*.*" />
         <include name="tutorials/**/*.*" />
       </fileset>
