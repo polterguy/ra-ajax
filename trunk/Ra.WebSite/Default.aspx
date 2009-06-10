@@ -11,30 +11,38 @@
     ContentPlaceHolderID="cnt1" 
     Runat="Server">
 
-    <a href="http://code.google.com/p/ra-ajax/">
-        <ra:Image 
-            runat="server" 
-            ID="imgDownload" 
-            ImageUrl="media/download.png" 
-            AlternateText="Download Ra-Ajax" 
-            style="float:right;opacity:0.3;">
-            <ra:BehaviorUnveiler 
-                runat="server" 
-                id="behUnveiler" />
-        </ra:Image>
-    </a>
     <h1>Ra-Ajax</h1>
     <p>
         Ra-Ajax is a <em>no-JavaScript</em> Ajax library for ASP.NET. Ra-Ajax is Free Software and
         licensed under the GPL version 3.
     </p>
-    <ul class="list">
-        <li><a runat="server" href="~/samples/">Ra-Ajax Samples</a></li>
-        <li><a runat="server" href="~/Testimonials.aspx">Testimonials</a></li>
-        <li><a href="http://code.google.com/p/ra-ajax/">Download Ra-Ajax</a></li>
-        <li><a runat="server" href="~/Support.aspx">Get Help</a></li>
-        <li><a runat="server" href="~/SoftwareFactory.aspx">Need software?</a></li>
-    </ul>
+    <div class="button">
+        <a href="http://code.google.com/p/ra-ajax/">
+            <img class="buttonImage" src="media/box_download_48.png" alt="Download" />
+            <span class="buttonText">Download Ra-Ajax</span>
+            <span class="buttonText" style="margin-top:0;font-size:10px;">Latest version 2.0.1</span>
+        </a>
+    </div>
+    <div class="button">
+        <a href="Testimonials.aspx">
+            <img class="buttonImage" src="media/accepted_48.png" alt="Docs" />
+            <span class="buttonText">Testimonials</span>
+            <span class="buttonText" style="margin-top:0;font-size:10px;">Cutomers' Opinions</span>
+        </a>
+    </div>
+    <div class="button">
+        <a href="Support.aspx">
+            <img class="buttonImage" src="media/questionmark_48.png" alt="Help" />
+            <span class="buttonText">Help &amp; Support</span>
+        </a>
+    </div>
+    <div class="button">
+        <a href="SoftwareFactory.aspx">
+            <img class="buttonImage" src="media/blockdevice.png" alt="Software" />
+            <span class="buttonText">Need Software?</span>
+            <span class="buttonText" style="margin-top:0;font-size:10px;">More about Ra-Software</span>
+        </a>
+    </div>
     <h2>Daily Builds of Ra-Ajax</h2>
     <p>
         We now have <a href="/daily">daily builds of Ra-Ajax</a>. At around 1 am 
