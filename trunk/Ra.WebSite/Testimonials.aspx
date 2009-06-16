@@ -15,6 +15,7 @@
     <p>
         Here are some testimonials from customers we've done projects for.
     </p>
+    <h2>Adrian Biffen - Canada</h2>
     <p>
         <img style="float:left;padding:15px;" src="media/ab.jpg" alt="Adrian Biffen" />
         <em>
@@ -28,7 +29,25 @@ Senior Partner
 <a href="http://CreateSimpleDatabase.com/">Masterise(TM) Mobile Data Systems</a>
         </pre>
     </p>
-    <p style="clear:both;">
+    <h2 style="clear:both;">
+        Dave Lazarow - South Africa
+    </h2>
+    <p>
+        Dave was so happy about Ra-Ajax that he created a video showing off his application and
+        how it uses Ra-Ajax. Note that this is a purely "one page application" which means that
+        after you open the URL you never navigate away from the page at all. Even logging in and 
+        out is doe on the same page. Also he has integrated ASP.NET Charts with Ra-Ajax. So it
+        is a pretty interesting use-case for Ra-Ajax.
+    </p>
+    <object width="500" height="380">
+        <param name="allowfullscreen" value="true" />
+        <param name="allowscriptaccess" value="always" />
+        <param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=4241922&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" />
+        <embed src="http://vimeo.com/moogaloop.swf?clip_id=4241922&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="500" height="380">
+        </embed>
+    </object>
+    <h2>Want to be up here?</h2>
+    <p>
         If you want to be up here then please let us now by <a href="mailto:thomas@ra-ajax.org">sending us an email</a>
         with some statement you'd like to tell the world about us and also a link plus an image you want us to use.
     </p>
