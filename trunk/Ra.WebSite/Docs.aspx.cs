@@ -18,6 +18,7 @@ using Ra.Extensions.Widgets;
 using Ra.Effects;
 using Ra;
 using Ra.Builder;
+using Doxygen.NET;
 
 namespace RaWebsite
 {
@@ -27,6 +28,16 @@ namespace RaWebsite
         {
 	        Class,
             Tutorial
+        }
+
+        private Doxygen.NET.Docs RaDocs
+        {
+            get
+            {
+                if (Session["RaDocs"] == null)
+                    Session["RaDocs"] = new Doxygen.NET.Docs(Server.MapPath("~/docs-xml"));
+                return (Doxygen.NET.Docs)Session["RaDocs"];
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -112,12 +123,10 @@ namespace RaWebsite
 
         private void BuildRootClasses()
         {
-            XmlDocument doc = new XmlDocument();
-            doc.Load(Server.MapPath("~/docs-xml/index.xml"));
             List<TreeNode> l = new List<TreeNode>();
-            foreach (XmlNode idx in doc.SelectNodes("/doxygenindex/compound[@kind=\"class\"]"))
+            foreach (Class idx in RaDocs.GetAllClasses())
             {
-                switch (idx.ChildNodes[0].InnerText.Replace("::", "."))
+                switch (idx.FullName)
                 {
                     // removing the classes we don't really NEED documentation for...
                     case "Ra.Extensions.Helpers.CometQueue":
@@ -132,19 +141,18 @@ namespace RaWebsite
                         break;
                     default:
                         {
-                            string value = idx.ChildNodes[0].InnerText.Replace("::", ".");
-                            if ((!string.IsNullOrEmpty(Filter) && value.ToLower().Contains(Filter.ToLower())) || (string.IsNullOrEmpty(Filter)))
+                            if ((!string.IsNullOrEmpty(Filter) && idx.FullName.ToLower().Contains(Filter.ToLower())) || (string.IsNullOrEmpty(Filter)))
                             {
                                 TreeNode n = new TreeNode();
-                                n.ID = idx.Attributes["refid"].Value;
-                                if (File.Exists(Server.MapPath("~/Docs-Controls/" + value + ".ascx")))
+                                n.ID = idx.FullName;
+                                if (File.Exists(Server.MapPath("~/Docs-Controls/" + idx.FullName + ".ascx")))
                                 {
                                     n.CssClass += " hasSample";
                                     n.Tooltip = "Have sample code";
                                 }
                                 else
                                     n.CssClass += " noSample";
-                                n.Text = value;
+                                n.Text = idx.FullName;
                                 l.Add(n);
                             }
                         } break;
@@ -246,20 +254,13 @@ namespace RaWebsite
         private void ShowClass(string itemToLookAt)
         {
             bool first = pnlInfo.Style["display"] != "none";
-            string fileName = itemToLookAt + ".xml";
-            XmlDocument doc = new XmlDocument();
-            doc.Load(Server.MapPath("~/docs-xml/" + fileName));
-            string className = doc.SelectNodes("/doxygen/compounddef/compoundname")[0].InnerText;
-            string classText = className.Replace("::", ".");
-            header.Text = classText;
-
+            Class classToShow = RaDocs.GetTypeByName(itemToLookAt) as Class;
+            header.Text = classToShow.FullName;
+            
             // Inherits from
-            XmlNodeList lst = doc.SelectNodes("/doxygen/compounddef/basecompoundref");
-            if (lst != null && lst.Count > 0)
+            if (classToShow.BaseTypes.Count > 0 && !string.IsNullOrEmpty(classToShow.BaseTypes[0]))
             {
-                string inheritsFrom = lst[0].InnerText;
-                inherit.Text = inheritsFrom;
-                inherit.Xtra = lst[0].Attributes["refid"].Value;
+                inherit.Text = inherit.Xtra = RaDocs.GetTypeByID(classToShow.BaseTypes[0]).FullName;
             }
             else
             {
@@ -292,20 +293,22 @@ namespace RaWebsite
                 .Render();
 
             // Description
-            string txtDescription = doc.SelectNodes("/doxygen/compounddef/detaileddescription")[0].InnerXml.Replace("preformatted", "pre");
+            description.Text = classToShow.Description;
 
-            description.Text = txtDescription;
+            // Members, ONLY showing public members
+            List<string> showOnly = new List<string>(new string[] { "function", "property", "event" });
+            List<Member> publicMembers = classToShow.Members.FindAll(delegate(Member m) 
+            { 
+                return m.AccessModifier == "public" && showOnly.Contains(m.Kind); 
+            });
 
-            // Properties, ONLY showing public stuff...
-            lst = doc.SelectNodes("/doxygen/compounddef/listofallmembers/member[@prot=\"public\"]");
             List<DocsItem> tmp = new List<DocsItem>();
-            foreach (XmlNode idx in lst)
+            foreach (Member idx in publicMembers)
             {
-                if (idx.Attributes["refid"].Value.Contains(itemToLookAt))
+                if (idx.FullName.Contains(itemToLookAt))
                 {
-                    DocsItem item = new DocsItem(idx.ChildNodes[1].InnerText, idx.Attributes["refid"].Value);
-                    string type = doc.SelectNodes("/doxygen/compounddef/sectiondef/memberdef[@id=\"" + idx.Attributes["refid"].Value + "\"]")[0].Attributes["kind"].Value;
-                    item.Kind = "xx_" + type;
+                    DocsItem item = new DocsItem(idx.Name, idx.FullName);
+                    item.Kind = "xx_" + idx.Kind;
                     tmp.Add(item);
                 }
             }
@@ -481,12 +484,14 @@ namespace RaWebsite
             {
                 if (lbl.Text == "")
                 {
-                    string fileName = btn.Xtra.Substring(0, btn.Xtra.LastIndexOf("_")) + ".xml";
-                    XmlDocument doc = new XmlDocument();
-                    doc.Load(Server.MapPath("~/docs-xml/" + fileName));
-                    XmlNodeList node = doc.SelectNodes(
-                        string.Format("/doxygen/compounddef/sectiondef/memberdef[@id=\"{0}\"]", btn.Xtra));
-                    lbl.Text = node[0].SelectNodes("detaileddescription")[0].InnerXml.Replace("preformatted", "pre");
+                    Class c = RaDocs.GetTypeByName(btn.Xtra.Remove(btn.Xtra.LastIndexOf("."))) as Class;
+                    Member selectedMemebr = c.Members.Find(delegate(Member m)
+                    {
+                        return m.FullName == btn.Xtra;
+                    });
+
+                    if (selectedMemebr != null)
+                        lbl.Text = selectedMemebr.Description;
                 }
                 pnl.Visible = true;
                 pnl.Style["display"] = "none";
