@@ -3,6 +3,14 @@
  * Copyright 2008 - 2009 - Thomas Hansen thomas@ra-ajax.org
  * This code is licensed under the GPL version 3 which 
  * can be found in the license.txt file on disc.
+ *
+ * Authors: 
+ * Thomas Hansen (thomas@ra-ajax.org)
+ * Kariem Ali (kariem@ra-ajax.org)
+ *
+ * Authors: 
+ * Thomas Hansen (thomas@ra-ajax.org)
+ * Kariem Ali (kariem@ra-ajax.org)
  * 
  */
 
