@@ -127,8 +127,15 @@
                     <ra:LinkButton 
                         runat="server" 
                         Xtra='<%#Eval("ID")%>'
-                        OnClick="PropertyChosen"
-                        Text='<%#Eval("Name")%>' />
+                        OnClick="PropertyChosen">
+                        <ra:Label runat="server" Text='<%#Eval("Returns")%>' style="opacity:0.3;">
+                            <ra:BehaviorUnveiler ID="unveiler1" runat="server" />
+                        </ra:Label>
+                        <ra:Label runat="server" Text='<%#Eval("Name")%>' />
+                        <ra:Label runat="server" ID="unveiler2" Text='<%#Eval("Params")%>' style="opacity:0.3;">
+                            <ra:BehaviorUnveiler runat="server" />
+                        </ra:Label>
+                    </ra:LinkButton>
                     <ra:Panel 
                         runat="server" 
                         CssClass="property"

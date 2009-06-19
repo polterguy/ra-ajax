@@ -34,9 +34,9 @@ namespace RaWebsite
         {
             get
             {
-                if (Session["RaDocs"] == null)
-                    Session["RaDocs"] = new Doxygen.NET.Docs(Server.MapPath("~/docs-xml"));
-                return (Doxygen.NET.Docs)Session["RaDocs"];
+                if (Application["RaDocs"] == null)
+                    Application["RaDocs"] = new Doxygen.NET.Docs(Server.MapPath("~/docs-xml"));
+                return (Doxygen.NET.Docs)Application["RaDocs"];
             }
         }
 
@@ -296,18 +296,23 @@ namespace RaWebsite
             description.Text = classToShow.Description;
 
             // Members, ONLY showing public members
-            List<string> showOnly = new List<string>(new string[] { "function", "property", "event" });
-            List<Member> publicMembers = classToShow.Members.FindAll(delegate(Member m) 
+            List<string> showOnly = new List<string>(new string[] { "function", "ctor", "property", "event" });
+            List<Member> membersToShow = classToShow.Members.FindAll(delegate(Member m) 
             { 
-                return m.AccessModifier == "public" && showOnly.Contains(m.Kind); 
+                return showOnly.Contains(m.Kind) && m.AccessModifier == "public" && !string.IsNullOrEmpty(m.Description); 
             });
 
             List<DocsItem> tmp = new List<DocsItem>();
-            foreach (Member idx in publicMembers)
+            foreach (Member idx in membersToShow)
             {
                 if (idx.FullName.Contains(itemToLookAt))
                 {
-                    DocsItem item = new DocsItem(idx.Name, idx.FullName);
+                    string signature = string.Empty;
+                    if (idx is Method) 
+                        signature = (idx as Method).Signature;
+                    else if (idx is Property)
+                        signature = (idx as Property).Signature;
+                    DocsItem item = new DocsItem(idx.Name, idx.FullName, idx.Kind, signature);
                     item.Kind = "xx_" + idx.Kind;
                     tmp.Add(item);
                 }
@@ -480,6 +485,7 @@ namespace RaWebsite
             LinkButton btn = sender as LinkButton;
             Panel pnl = Selector.SelectFirst<Panel>(btn.Parent);
             Label lbl = Selector.SelectFirst<Label>(pnl);
+                        
             if (!pnl.Visible || pnl.Style["display"] == "none")
             {
                 if (lbl.Text == "")

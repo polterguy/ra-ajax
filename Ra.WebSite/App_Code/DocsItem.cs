@@ -13,6 +13,20 @@ public class DocsItem
     private string _name;
     private string _id;
     private string _kind;
+    private string _params;
+    private string _returns;
+
+    public string Params
+    {
+        get { return _params; }
+        set { _params = value; }
+    }
+
+    public string Returns
+    {
+        get { return _returns; }
+        set { _returns = value; }
+    }
 
     public string Name
     {
@@ -32,9 +46,16 @@ public class DocsItem
         set { _kind = value; }
     }
 
-    public DocsItem(string name, string id)
+    public DocsItem(string name, string id, string kind, string signature)
     {
         Name = name;
         ID = id;
+        Kind = kind;
+        if (!string.IsNullOrEmpty(signature))
+        {
+            Returns = signature.Substring(0, signature.IndexOf(name));
+            if (Kind == "function" || Kind == "ctor")
+                Params = signature.Substring(signature.IndexOf("("));
+        }
     }
 }
