@@ -158,7 +158,7 @@ http://ra-ajax.org
 
 .bread-crumb .bread-item-first .sliding-bread-home
 {
-	background:Transparent url(tree-sprites.png) no-repeat -160px 0;
+	background:url('tree-sprites.png') no-repeat -160px 0;
 	width:16px;
 	height:16px;
 	display:block;
@@ -169,7 +169,7 @@ http://ra-ajax.org
 
 .bread-crumb a.bread-item-first:hover .sliding-bread-home
 {
-	background:Transparent url(tree-sprites.png) no-repeat -176px 0;
+	background:url('tree-sprites.png') no-repeat -176px 0;
 }
 
 .bread-crumb .bread-item-left .sliding-bread-home:hover
@@ -179,7 +179,7 @@ http://ra-ajax.org
 
 .bread-crumb .bread-item-last .bread-item-right
 {
-	background:Transparent url('bread-crumb.png') no-repeat right -64px;
+	background:url('bread-crumb.png') no-repeat right -64px;
 }
 
 .bread-crumb .bread-item-last:hover
@@ -455,7 +455,7 @@ http://ra-ajax.org
 /* Extended Button */
 .button { width:auto; padding:0; border:none 0; background-color:Transparent; }
 .button .bLeft { background:url('window-sprite.png') no-repeat 0 0; padding-left:7px; display:block; height:32px; }
-.button .bCenter { background:url('window-h-sprite.png') repeat-x 0 0; display:block; height:32px; padding-top:7px; }
+.button .bCenter { background:url('window-h-sprite.png') repeat-x 0 0; display:block; height:32px; padding-top:7px; white-space:nowrap; }
 .button .bRight { background:url('window-sprite.png') no-repeat right top; padding-right:7px; display:block; height:32px; }
 
 
