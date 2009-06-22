@@ -7,10 +7,6 @@
  * Authors: 
  * Thomas Hansen (thomas@ra-ajax.org)
  * Kariem Ali (kariem@ra-ajax.org)
- *
- * Authors: 
- * Thomas Hansen (thomas@ra-ajax.org)
- * Kariem Ali (kariem@ra-ajax.org)
  * 
  */
 
