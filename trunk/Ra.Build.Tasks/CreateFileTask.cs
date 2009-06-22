@@ -1,5 +1,5 @@
 /* 
-Copyright 2008 - 2009 - Thomas Hansen thomas@ra-ajax.org
+Copyright 2008 - 2009 - Ra-Software AS
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
@@ -20,6 +20,11 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+ 
+Authors: 
+Thomas Hansen (thomas@ra-ajax.org)
+Kariem Ali (kariem@ra-ajax.org)
+
 */
 
 using System;
