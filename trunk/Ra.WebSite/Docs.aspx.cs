@@ -489,7 +489,9 @@ namespace RaWebsite
             LinkButton btn = sender as LinkButton;
             Panel pnl = Selector.SelectFirst<Panel>(btn.Parent);
             Label lbl = Selector.SelectFirst<Label>(pnl);
-                        
+            Label paramsLabel = Selector.FindControl<Label>(btn, "paramsLabel");
+            Label returnTypeLabel = Selector.FindControl<Label>(btn, "returnTypeLabel");
+
             if (!pnl.Visible || pnl.Style["display"] == "none")
             {
                 if (lbl.Text == "")
@@ -501,9 +503,13 @@ namespace RaWebsite
                     });
 
                     if (selectedMemebr != null)
+                    {
                         lbl.Text = selectedMemebr.Description;
+                    }
                 }
                 pnl.Visible = true;
+                paramsLabel.Visible = true;
+                returnTypeLabel.Visible = true;
                 pnl.Style["display"] = "none";
                 new EffectRollDown(pnl, 500)
                     .JoinThese(new EffectFadeIn())
@@ -511,6 +517,8 @@ namespace RaWebsite
             }
             else
             {
+                paramsLabel.Visible = false;
+                returnTypeLabel.Visible = false;
                 new EffectRollUp(pnl, 500)
                     .JoinThese(new EffectFadeOut())
                     .Render();
