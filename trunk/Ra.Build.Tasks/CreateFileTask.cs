@@ -27,13 +27,12 @@ Kariem Ali (kariem@ra-ajax.org)
 
 */
 
-using System;
+using System.Globalization;
 using System.IO;
 using System.Xml;
-using System.Globalization;
 using NAnt.Core;
-using NAnt.Core.Types;
 using NAnt.Core.Attributes;
+using NAnt.Core.Types;
 
 namespace Ra.Build.Tasks
 {
