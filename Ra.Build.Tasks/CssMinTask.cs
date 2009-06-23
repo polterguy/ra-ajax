@@ -29,10 +29,10 @@ Kariem Ali (kariem@ra-ajax.org)
 
 using System;
 using System.IO;
+using System.IO.Compression;
 using System.Text;
 using System.Text.RegularExpressions;
 using NAnt.Core.Attributes;
-using System.IO.Compression;
 
 namespace Ra.Build.Tasks
 {

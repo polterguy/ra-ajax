@@ -27,11 +27,10 @@ Kariem Ali (kariem@ra-ajax.org)
 
 */
 
-using System.IO;
-using NAnt.Core.Attributes;
 using System;
+using System.IO;
 using System.IO.Compression;
-using System.Text;
+using NAnt.Core.Attributes;
 
 namespace Ra.Build.Tasks
 {
