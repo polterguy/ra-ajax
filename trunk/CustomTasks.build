@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project name="CustomTasks" default="load.custom.tasks" xmlns="http://nant.sourceforge.net/release/0.86-beta1/nant.xsd">
+<project name="CustomTasks" default="load.custom.tasks" xmlns="http://nant.sf.net/release/0.86-beta1/nant.xsd">
 
   <property name="framework.dir" value="${framework::get-framework-directory('net-2.0')}" />
   

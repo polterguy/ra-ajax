@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project name="Package" xmlns="http://nant.sourceforge.net/release/0.86-beta1/nant.xsd">
+<project name="Package" xmlns="http://nant.sf.net/release/0.86-beta1/nant.xsd">
 
   <nant buildfile="PublishWebsites.build" />
   <load-properties properties-file="build.properties" />
