@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project name="Ra-Ajax" default="all" xmlns="http://nant.sourceforge.net/release/0.86-beta1/nant.xsd">
+<project name="Ra-Ajax" default="all" xmlns="http://nant.sf.net/release/0.86-beta1/nant.xsd">
 
   <nant buildfile="CustomTasks.build" />
   <load-properties properties-file="build.properties" />
