@@ -26,6 +26,7 @@ Ra.GlobalUpdater._widget = null;
 
 // Creating IMPLEMENTATION of class
 Ra.extend(Ra.GlobalUpdater.prototype, {
+
   init: function(el, opt) {
     this.initControl(el, opt);
     this.options = Ra.extend({
@@ -43,51 +44,15 @@ Ra.extend(Ra.GlobalUpdater.prototype, {
   callback: function() {
     var T = Ra.GlobalUpdater._current;
     Ra.GlobalUpdater._widget = this;
-    setTimeout(function(){
+    T._previousTimeout = setTimeout(function() {
       T.startAnimation();
     }, T.options.delay);
     T._active = true;
     T._oldCallback.apply(this, [T.onSuccess, T.onError]);
   },
 
-  onSuccess: function(response) {
-    var T = Ra.GlobalUpdater._current;
-    T._active = false;
-    var widget = Ra.GlobalUpdater._widget;
-    T.element.setStyle('display', 'none');
-    T.element.setOpacity(0);
-    if( !widget.options.callingContext ) {
-      widget.options.onFinished(response);
-    } else {
-      widget.options.onFinished.call(widget.options.callingContext, response);
-    }
-  },
-
-  Delay: function(value) {
-    this.options.delay = value;
-  },
-
-  MaxOpacity: function(value) {
-    this.options.maxOpacity = value;
-  },
-
-  onError: function(status, response) {
-    var T = Ra.GlobalUpdater._current;
-    T._active = false;
-    var widget = Ra.GlobalUpdater._widget;
-    if( T._effect ) {
-      T._effect.stopped = true;
-    }
-    T.element.setStyle('display', 'none');
-    T.element.setOpacity(0);
-    if( !widget.options.callingContext ) {
-      widget.options.onError(status, response);
-    } else {
-      widget.options.onError.call(T.options.callingContext, status, response);
-    }
-  },
-
   startAnimation: function() {
+    this._previousTimeout = null;
     if(this._active) {
       var T = this;
       this._effect = Ra.E(T.element, {
@@ -106,6 +71,51 @@ Ra.extend(Ra.GlobalUpdater.prototype, {
         transition:'Explosive'
       });
     }
+  },
+
+  onSuccess: function(response) {
+    var T = Ra.GlobalUpdater._current;
+    T._active = false;
+    var widget = Ra.GlobalUpdater._widget;
+    if( T._previousTimeout !== null) {
+      clearTimeout(T._previousTimeout);
+      T._previousTimeout = null;
+    }
+    T.element.setStyle('display', 'none');
+    T.element.setOpacity(0);
+    if( !widget.options.callingContext ) {
+      widget.options.onFinished(response);
+    } else {
+      widget.options.onFinished.call(widget.options.callingContext, response);
+    }
+  },
+
+  onError: function(status, response) {
+    var T = Ra.GlobalUpdater._current;
+    T._active = false;
+    var widget = Ra.GlobalUpdater._widget;
+    if( T._previousTimeout !== null) {
+      clearTimeout(T._previousTimeout);
+      T._previousTimeout = null;
+    }
+    if( T._effect ) {
+      T._effect.stopped = true;
+    }
+    T.element.setStyle('display', 'none');
+    T.element.setOpacity(0);
+    if( !widget.options.callingContext ) {
+      widget.options.onError(status, response);
+    } else {
+      widget.options.onError.call(T.options.callingContext, status, response);
+    }
+  },
+
+  Delay: function(value) {
+    this.options.delay = value;
+  },
+
+  MaxOpacity: function(value) {
+    this.options.maxOpacity = value;
   },
 
   destroyThis: function() {
