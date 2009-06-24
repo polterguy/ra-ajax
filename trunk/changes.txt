@@ -82,6 +82,17 @@
   better to conform with the syntax highlightning of
   the documentation.
 
+* Fixed a bug in GlobalUpdater which made consecutive
+  queued up Ajax Request trigger the Updater even 
+  though they were not supposed to since timer that
+  triggers the fading of the Updater wouldn't be 
+  correctly reset after an Ajax Request returns.
+  This had the effect of "flimmering" the updater
+  if you had several buttons that was slow in server-
+  side though not on their own slow enough to validate
+  the showing of the GlobalUpdater and you clicked
+  all those really fast.
+
 
 
 
