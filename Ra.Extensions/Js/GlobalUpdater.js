@@ -123,4 +123,5 @@ Ra.extend(Ra.GlobalUpdater.prototype, {
     // Forward call to allow overriding in inherited classes...
     this._destroyThisControl();
   }
-});})();
+});
+})();

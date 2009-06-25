@@ -249,18 +249,18 @@ namespace Ra.Extensions.Widgets
                     {
                         if (idx2 is SlidingMenuLevel)
                         {
-                            btn.ID = "BTN" + idx2.ID;
+                            btn.ID = "rxB" + idx2.ID;
                             curLevel = idx2 as SlidingMenuLevel;
                         }
                     }
 
                     Label right = new Label();
-                    right.ID = btn.ID + "r";
+                    right.ID = btn.ID + "rxq";
                     right.CssClass = "bread-item-right";
                     btn.Controls.Add(right);
 
                     Label center = new Label();
-                    center.ID = btn.ID + "c";
+                    center.ID = btn.ID + "cxq";
                     center.CssClass = "bread-item-center";
                     center.Text =
                         string.IsNullOrEmpty(curLevel.Caption) ? 
