@@ -16,24 +16,24 @@
         Ra-Ajax is a <em>no-JavaScript</em> Ajax library for ASP.NET. Ra-Ajax is Free Software and
         licensed under the GPL version 3.
     </p>
-    <a class="button" href="http://code.google.com/p/ra-ajax/">
-        <img class="buttonImage" src="media/box_download_48.png" alt="Download" />
-        <span class="buttonText">Download Ra-Ajax</span>
-        <span class="buttonText" style="margin-top:0;font-size:10px;">Latest version 2.0.1</span>
+    <a class="website-button" href="http://code.google.com/p/ra-ajax/">
+        <img class="website-button-image" src="media/box_download_48.png" alt="Download" />
+        <span class="website-button-text">Download Ra-Ajax</span>
+        <span class="website-button-text" style="margin-top:0;font-size:10px;">Latest version 2.0.1</span>
     </a>
-    <a class="button" href="Testimonials.aspx">
-        <img class="buttonImage" src="media/accepted_48.png" alt="Docs" />
-        <span class="buttonText">Testimonials</span>
-        <span class="buttonText" style="margin-top:0;font-size:10px;">Cutomers' Opinions</span>
+    <a class="website-button" href="Testimonials.aspx">
+        <img class="website-button-image" src="media/accepted_48.png" alt="Docs" />
+        <span class="website-button-text">Testimonials</span>
+        <span class="website-button-text" style="margin-top:0;font-size:10px;">Cutomers' Opinions</span>
     </a>
-    <a class="button" href="Support.aspx">
-        <img class="buttonImage" src="media/questionmark_48.png" alt="Help" />
-        <span class="buttonText">Help &amp; Support</span>
+    <a class="website-button" href="Support.aspx">
+        <img class="website-button-image" src="media/questionmark_48.png" alt="Help" />
+        <span class="website-button-text">Help &amp; Support</span>
     </a>
-    <a class="button" href="SoftwareFactory.aspx">
-        <img class="buttonImage" src="media/blockdevice.png" alt="Software" />
-        <span class="buttonText">Need Software?</span>
-        <span class="buttonText" style="margin-top:0;font-size:10px;">More about Ra-Software</span>
+    <a class="website-button" href="SoftwareFactory.aspx">
+        <img class="website-button-image" src="media/blockdevice.png" alt="Software" />
+        <span class="website-button-text">Need Software?</span>
+        <span class="website-button-text" style="margin-top:0;font-size:10px;">More about Ra-Software</span>
     </a>
     <br style="clear:left;" />
     <h2>Daily Builds of Ra-Ajax</h2>
