@@ -153,7 +153,7 @@ pre
 }
 
 /* Main website landing page */
-.button
+.website-button
 {
 	color:#00b;
 	width:200px;
@@ -167,7 +167,7 @@ pre
 	float:left;
 }
 
-.buttonImage 
+.website-button-image 
 {
 	float:left;
 	margin-left:3px;
@@ -175,7 +175,7 @@ pre
 	height:48px;
 }
 
-.buttonText 
+.website-button-text 
 {
 	display:block;
 	margin-top:8px;

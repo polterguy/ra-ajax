@@ -18,25 +18,25 @@
         Mostly you will get an answer to your question within 24 hours, but we cannot supply any guarantees
         for non-paying customers.
     </p>
-    <a class="button" href="Docs.aspx">
-        <img class="buttonImage" src="media/book_48.png" alt="Docs" />
-        <span class="buttonText">Documentation</span>
-        <span class="buttonText" style="margin-top:0;font-size:10px;">Docs &amp; Tutorials</span>
+    <a class="website-button" href="Docs.aspx">
+        <img class="website-button-image" src="media/book_48.png" alt="Docs" />
+        <span class="website-button-text">Documentation</span>
+        <span class="website-button-text" style="margin-top:0;font-size:10px;">Docs &amp; Tutorials</span>
     </a>
-    <a class="button" href="http://stacked.ra-ajax.org">
-        <img class="buttonImage" src="media/questionmark_48.png" alt="Forums" />
-        <span class="buttonText">Forums</span>
-        <span class="buttonText" style="margin-top:0;font-size:10px;">Quesions &amp; Answers</span>
+    <a class="website-button" href="http://stacked.ra-ajax.org">
+        <img class="website-button-image" src="media/questionmark_48.png" alt="Forums" />
+        <span class="website-button-text">Forums</span>
+        <span class="website-button-text" style="margin-top:0;font-size:10px;">Quesions &amp; Answers</span>
     </a>
-    <a class="button" href="Blogs.aspx">
-        <img class="buttonImage" src="media/kate.png" alt="Software" />
-        <span class="buttonText">Read our Blogs</span>
-        <span class="buttonText" style="margin-top:0;font-size:10px;">We frequently blog about Ra-Ajax</span>
+    <a class="website-button" href="Blogs.aspx">
+        <img class="website-button-image" src="media/kate.png" alt="Software" />
+        <span class="website-button-text">Read our Blogs</span>
+        <span class="website-button-text" style="margin-top:0;font-size:10px;">We frequently blog about Ra-Ajax</span>
     </a>
-    <a class="button" href="SoftwareFactory.aspx">
-        <img class="buttonImage" src="media/blockdevice.png" alt="Software" />
-        <span class="buttonText">Need Software?</span>
-        <span class="buttonText" style="margin-top:0;font-size:10px;">We are a Software Factory</span>
+    <a class="website-button" href="SoftwareFactory.aspx">
+        <img class="website-button-image" src="media/blockdevice.png" alt="Software" />
+        <span class="website-button-text">Need Software?</span>
+        <span class="website-button-text" style="margin-top:0;font-size:10px;">We are a Software Factory</span>
     </a>
     <br style="clear:left;" />
     <h2>Documentation</h2>
