@@ -35,36 +35,41 @@ namespace Ra.Tests.Ajax
             {
                 string webServerExePath = ConfigurationSettings.AppSettings["WebServerExePath"];
                 _server = new Process();
-                _server = Process.Start(webServerExePath, GetWebServerArguments());
+                _server = Process.Start(webServerExePath, WebServerArguments);
             }
 
             private void PreCompileTestWebsite()
             {
                 Process aspnetCompiler = new Process();
                 aspnetCompiler.StartInfo.FileName = ConfigurationSettings.AppSettings["ASPNETCompilerPath"];
-                aspnetCompiler.StartInfo.Arguments = string.Format("-p \"{0}\"", GetWebApplicationPath());
+                aspnetCompiler.StartInfo.Arguments = string.Format("-p \"{0}\"", WebApplicationPath);
                 aspnetCompiler.Start();
                 aspnetCompiler.WaitForExit();
             }
 
-            private static string GetWebServerArguments()
+            private static string WebServerArguments
             {
-                return String.Format("/port:{0} /path:\"{1}\"", GetPort(), GetWebApplicationPath());
+                get 
+                { 
+                    return String.Format("/port:{0} /path:\"{1}\"", Port, WebApplicationPath); 
+                }
             }
 
-            private static string GetPort()
+            private static string Port
             {
-                return ConfigurationSettings.AppSettings["Port"];
+                get { return ConfigurationSettings.AppSettings["Port"]; }
             }
 
-            private static string GetWebApplicationPath()
+            private static string WebApplicationPath
             {
-                return Path.Combine(
-                    Directory.GetParent(Directory.GetParent(Directory.GetParent(
-                        Environment.CurrentDirectory
-                    ).ToString()).ToString()).ToString(),
-                    ConfigurationSettings.AppSettings["WebApplicationPath"]
-                );
+                get
+                {
+                    return Path.Combine(
+                        Directory.GetParent(Directory.GetParent(Directory.GetParent(
+                            Environment.CurrentDirectory).ToString()).ToString()).ToString(),
+                        ConfigurationSettings.AppSettings["WebApplicationPath"]
+                    );
+                }
             }
             
         }
