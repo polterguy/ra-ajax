@@ -29,14 +29,41 @@ Senior Partner
 <a href="http://CreateSimpleDatabase.com/">Masterise(TM) Mobile Data Systems</a>
         </pre>
     </p>
-    <h2 style="clear:both;">
+    <h2 style="clear:both;">Morten Andresen - Norway</h2>
+    <p>
+        <em>"When we hired Ra-Software to help us out with developing the next
+        version of Imatis Portal we expected a lot from them. Though even with
+        our already very high hopes they were able to deliver far above even
+        those expectations! Ra-Software in addition to having a marvelous Ajax
+        Framework - which significantly reduced the problem of delivering a
+        highly interactive and portable portal application and framework - also delivered
+        stunning high quality in addition to that the people from Ra-Software
+        also served as a source of inspiration to the rest of the developers
+        on the project. To such an extend that we've already placed an order
+        for a course for all developers which will be held by Ra-Software
+        later this year. I would recommend Ra-Software to help you out with
+        your software project any day of the week!"</em>
+    </p>
+    <p>
+        <i>Morten Andresen - CEO @ Imatis AS</i>
+    </p>
+    <p>
+        Below is a demonstration of what we created for Imatis using Ra-Ajax.
+    </p>
+    <object width="500" height="380">
+        <param name="allowfullscreen" value="true" />
+        <param name="allowscriptaccess" value="always" />
+        <param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=5372246&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" />
+        <embed src="http://vimeo.com/moogaloop.swf?clip_id=5372246&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="500" height="380"></embed>
+    </object>
+    <h2>
         Dave Lazarow - South Africa
     </h2>
     <p>
-        Dave was so happy about Ra-Ajax that he created a video showing off his application and
+        Dave was so happy about Ra-Ajax that he created a video himself showing off his application and
         how it uses Ra-Ajax. Note that this is a purely "one page application" which means that
         after you open the URL you never navigate away from the page at all. Even logging in and 
-        out is doe on the same page. Also he has integrated ASP.NET Charts with Ra-Ajax. So it
+        out is done on the same page. Also he has integrated ASP.NET Charts with Ra-Ajax. So it
         is a pretty interesting use-case for Ra-Ajax.
     </p>
     <object width="500" height="380">
