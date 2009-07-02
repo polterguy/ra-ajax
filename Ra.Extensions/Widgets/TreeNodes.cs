@@ -162,18 +162,32 @@ namespace Ra.Extensions.Widgets
         public void RollDown()
         {
             Expanded = true;
-            new EffectRollDown(this, 200)
-                .JoinThese(new EffectFadeIn())
-                .Render();
+            if (Page.Request.Browser.Browser == "IE")
+            {
+                this.Style[Styles.display] = "";
+            }
+            else
+            {
+                new EffectRollDown(this, 200)
+                    .JoinThese(new EffectFadeIn())
+                    .Render();
+            }
         }
 
         // Used for animating up when collapsed
         public void RollUp()
         {
             Expanded = false;
-            new EffectRollUp(this, 200)
-                .JoinThese(new EffectFadeOut())
-                .Render();
+            if (Page.Request.Browser.Browser == "IE")
+            {
+                this.Style[Styles.display] = "none";
+            }
+            else
+            {
+                new EffectRollUp(this, 200)
+                    .JoinThese(new EffectFadeOut())
+                    .Render();
+            }
         }
     }
 }
