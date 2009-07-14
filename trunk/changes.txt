@@ -11,8 +11,12 @@
 
   ------------------------------------------------------------------
 
-* Completely removed the animation of TreeNodes in IE because that
-  browser *SUCK*...!!!!!!!!!!
+* Completely removed the animation of TreeNodes in IE because in IE
+  animating the TreeNodes had just too many issues...
+
+* Fixed a bug with the GlobalUpdater that would not display errors
+  correctly that occured on the server. E.g. Exceptions thrown or
+  similar things...
 
 
 

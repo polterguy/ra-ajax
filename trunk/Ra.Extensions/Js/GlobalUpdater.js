@@ -102,7 +102,7 @@ Ra.extend(Ra.GlobalUpdater.prototype, {
     if( !widget.options.callingContext ) {
       widget.options.onError(status, response);
     } else {
-      widget.options.onError.call(T.options.callingContext, status, response);
+      widget.options.onError.call(widget.options.callingContext, status, response);
     }
   },
 
