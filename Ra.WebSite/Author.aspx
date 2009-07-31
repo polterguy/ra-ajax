@@ -55,21 +55,19 @@
             style="float:left;padding-right:10px;" />
         <h2 style="margin-top:0;">Rick Gibson</h2>
         <p>
-            Rick lives in Tehama County about twenty miles from Chico, CA. Rick is in addition to being a great system developer
-            also our administrative hand, kind of like our "grown up supervisor". He is a highly seasoned programmer, working with 
+            Rick lives in US, Tehama County about twenty miles from Chico, CA. Rick is in addition to being a highly seasoned <em>Software Creator</em>
+            also our administrative hand, kind of like our "grown up supervisor". He is a highly skilled developer, working with 
             Microsoft technologies with 14 years of hands-on IT experience. A proficient problem-solver who envisions business 
             and technical perspectives to develop workable solutions. A motivated achiever who guides organizations in applying 
-            technology to business settings, provides added value, and creates project deliverables in a timely manner. A desire to 
-            stay current with changes in the industry. Rick can be emailed at; <em>rick atat crystaldatabases dot com</em>.
-            Remove the spaces, change the dot to "." and the atat to "@". See 
-            <a href="http://ra-ajax.org/Rick.blogger">Rick's blog</a>
+            technology to business settings, provides added value, and creates project deliverables in a timely manner. And a craving to 
+            stay current with changes in the industry. 
+            <a href="http://ra-ajax.org/Rick.blogger">See Rick's blog</a>
         </p>
     </div>
     <h2 style="clear:both;">Hire us</h2>
     <p>
-        We are all available for hire through the company Ra-Software AS which is a Norwegian privately held company 
-        mainly focusing on system development on consultancy basis. If you would like to hire us then 
-        check out our <a href="SoftwareFactory.aspx">consulting services here</a>. Or 
+        If you need web-applications built with Ajax Technology then you can hire us as your 
+        <em>Software Factory</em>. Read about our <a href="SoftwareFactory.aspx">services here</a>. Or 
         <a href="Testimonials.aspx">read what previous customers of Ra-Software had to say about us</a>.
     </p>
     <h2>Company Information</h2>
