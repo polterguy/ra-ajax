@@ -28,8 +28,8 @@
         <li>Adopt entire suites of web-applications for you</li>
     </ul>
     <p>
-        Then your company can do what it knows best, create specifications, talk to customers, 
-        market and sell your products. While a highly specialized and extremely skilled <em>Software Factory</em>
+        Then your organization can do what it knows best, create specifications, talk to customers, 
+        market and sell your products, etc. While a highly specialized and extremely skilled <em>Software Factory</em>
         can assemble your software. This has been a natural part of conventional industry 
         for more then 150 years, we in Ra-Software think it's time to do this for Software too.
     </p>
@@ -56,8 +56,8 @@
     <div style="background-color:#fafafa;padding:15px;border:dashed 1px #e0e0e0;">
         <h2 style="margin-top:0;">Our Guarantee</h2>
         <p>
-            <em style="font-size:larger;">"We will deliver your software on time, for a fraction of 
-            the costs with orders of magnitudes higher quality."</em>
+            <em style="font-size:larger;">"We will deliver your software as expected, on time, 
+            for a fraction of the costs and with orders of magnitudes higher quality."</em>
         </p>
     </div>
     <h2>How we can achieve that</h2>
@@ -68,7 +68,8 @@
         We don't spread ourselves around on Desktop Systems, Flash Applications or multiple languages
         and platforms. We focus purely on web-applications, following all the Open Standards out there.
         But most important is that we use our own modular based web-application framework which 
-        reduces the development time and increases the quality by orders of magnitudes.
+        reduces the development time and increases the quality by orders of magnitudes. In addition we
+        create software which ends up with zero licensing costs for you.
     </p>
     <p>
         In fact the tools in addition to our process are at the core of our <em>Software Factory</em> 
@@ -77,7 +78,17 @@
     </p>
     <p>
         We refer to this process and our tools as the <em>Lego Process</em>, which explains
-        why we are so confident in our service and its quality.
+        why we are so confident in our service and its quality. So while most other Software Companies
+        are using hammer and chisel to carve software out of the mountain, with all the risks that creates
+        on your behalf, we assemble software for you as
+        if it was Lego. This gives you an extreme flexibility, orders of magnitudes less development
+        time for us which in turn ends up on your behalf as a fraction of the costs and orders of magnitudes
+        higher amounts of quality and predictability.
+    </p>
+    <p>
+        That's why we don't even refer to ourselves as <em>System Developers</em> - because what we
+        do is not what other development companies are doing. We are <em>Software Creators</em> and our
+        company is a <em>Software Factory</em>.
     </p>
     <p>
         Read what <a href="Testimonials.aspx">previous customers of Ra-Software had to say</a> about us,
@@ -100,6 +111,10 @@
         Phone: +47 915 94 779
         <br />
         Email: <a href="mailto:thomas@ra-ajax.org">thomas@ra-ajax.org</a>
+    </p>
+    <p>
+        Are you a highly skilled developer, looking for a job and liking what you just read above?
+        <a href="Hiring.aspx">Ra-Software is hiring!</a>
     </p>
 
 </asp:Content>
