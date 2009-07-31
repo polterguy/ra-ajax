@@ -15,51 +15,80 @@
     <p>
         Ra-Ajax is maintained by Ra-Software AS. Ra-Software is a privately held Norwegian company. 
     </p>
-    <img src="media/Kariem.jpg" alt="Kariem Ali" style="float:left;padding:10px;" />
-    <h2 style="margin-top:0;">Kariem Ali</h2>
-    <p>
-        Kariem is from Alexandria, Egypt he was born in 1982 and has been working together with Thomas almost since the 
-        beginning of Gaiaware and Gaia Ajax Widgets. Kariem has extensive experience with COM, the .NET platform,
-        DotNetNuke, Ajax and JavaScript. In addition to extensive knowledge of Unit 
-        Testing, with a special touch on Unit Testing for Web GUI using tools like WatiN and so on. He has worked with 
-        System Development since he was 12 years old, first as a hobby, later in his grown up life as a professional.  
-        He speaks English and Arabic fluently. Kariem is a great system developer, very dedicated to delivering quality, loves 
-        to give great service and lives to please.
-    </p>
-    <img 
-        src="media/Thomas-Hansen.jpg" 
-        alt="Thomas Hansen" 
-        style="clear:right;float:right;padding:10px;" />
-    <h2>Thomas Hansen</h2>
-    <p>
-        Thomas Hansen is the founding father of <em>SmartWin++, Gaia Ajax Widgets and Gaiaware AS</em>. 
-        Thomas have mostly developed libraries his entire carreer with a special focus on Ajax, Open Source and 
-        Open Standards. Thomas is born in 1974 in Norway and speak Norwegian and English fluently. Thomas is
-        the copyright holder of Ra-Ajax and also the founder of Ra-Ajax - together with Kariem. Thomas has
-        worked with everything imaginable in the IT industry; ERP systems, CRM systems, ORM libraries, C++,
-        COM, Database systems, C++ GUI libraries but his heart is warmest when he does Ajax. Thomas have
-        been doing System Development since he was 8 years old which now is 27 years ago. Thomas have been CTO
-        of his own company which he himself founded (Gaiaware), working with consultancy, done coaching, overall
-        architecture, done teaching and tutoring and mostly everything imaginable.
-    </p>
-    <img src="media/Rick-Gibson.jpg" alt="Rick Gibson" style="float:left;padding:10px;" />
-    <h2>Rick Gibson</h2>
-    <p>
-        Rick lives in Tehama County about twenty miles from Chico, CA. As he says, "One day I stumbled across Ra-Ajax 
-        and I’ve been very excited about it every since". He is a seasoned programmer, working with Microsoft technologies 
-        with 14 years of hands-on IT experience. A proficient problem-solver who envisions business and technical 
-        perspectives to develop workable solutions. A motivated achiever who guides organizations in applying technology 
-        to business settings, provides added value, and creates project deliverables in a timely manner. A desire to 
-        stay current with changes in the industry. Rick can be emailed at; <em>rick atat crystaldatabases dot com</em>.
-        Remove the spaces, change the dot to "." and the atat to "@". See 
-        <a href="http://ra-ajax.org/Rick.blogger">Rick's blog</a>
-    </p>
+    <div style="border:dashed 1px #999;padding:15px;margin-bottom:15px;overflow:auto;">
+        <img 
+            src="media/Thomas-Hansen.jpg" 
+            alt="Thomas Hansen" 
+            style="clear:right;float:left;padding-right:10px;" />
+        <h2 style="margin-top:0;">Thomas Hansen</h2>
+        <p>
+            Thomas Hansen is the founder of Ra-Software and Ra-Ajax in addition to previously also SmartWin++, 
+            Gaia Ajax Widgets and Gaiaware AS. 
+            Thomas have mostly developed libraries his entire carreer with a special focus on Ajax, Open Source and 
+            Open Standards. Thomas is born in 1974 in Norway and speak Norwegian and English fluently. Thomas has
+            worked with everything imaginable in the IT industry; ERP systems, CRM systems, ORM libraries, C++,
+            COM, Database systems, C++ GUI libraries but his heart is warmest when he creates Ajax software projects.
+            Thomas have been doing System Development since he was 8 years old which now is 27 years ago. Thomas 
+            is the CEO and the owner of Ra-Software. <a href="http://ra-ajax.org/thomas.blogger">Read Thomas' blog</a>
+        </p>
+    </div>
+    <div style="border:dashed 1px #999;padding:15px;margin-bottom:15px;overflow:auto;">
+        <img 
+            src="media/Kariem.jpg" 
+            alt="Kariem Ali" 
+            style="float:right;padding-left:10px;" />
+        <h2 style="margin-top:0;">Kariem Ali</h2>
+        <p>
+            Kariem is from Alexandria, Egypt he was born in 1982 and has been working together with Thomas almost since the 
+            beginning of Gaiaware and Gaia Ajax Widgets. Kariem has extensive experience with COM, the .NET platform,
+            DotNetNuke, Ajax and JavaScript. In addition to extensive knowledge of Unit 
+            Testing, with a special touch on Unit Testing for Web GUI using tools like WatiN and so on. He has worked with 
+            System Development since he was 12 years old, first as a hobby, later in his grown up life as a professional.  
+            He speaks English and Arabic fluently. Kariem is together with Thomas one of the core architects on all current
+            Software products Ra-Software runs. <a href="http://kariem.net/">Read Kariem's blog</a>
+        </p>
+    </div>
+    <div style="border:dashed 1px #999;padding:15px;margin-bottom:15px;overflow:auto;">
+        <img 
+            src="media/Rick-Gibson.jpg" 
+            alt="Rick Gibson" 
+            style="float:left;padding-right:10px;" />
+        <h2 style="margin-top:0;">Rick Gibson</h2>
+        <p>
+            Rick lives in Tehama County about twenty miles from Chico, CA. Rick is in addition to being a great system developer
+            also our administrative hand, kind of like our "grown up supervisor". He is a highly seasoned programmer, working with 
+            Microsoft technologies with 14 years of hands-on IT experience. A proficient problem-solver who envisions business 
+            and technical perspectives to develop workable solutions. A motivated achiever who guides organizations in applying 
+            technology to business settings, provides added value, and creates project deliverables in a timely manner. A desire to 
+            stay current with changes in the industry. Rick can be emailed at; <em>rick atat crystaldatabases dot com</em>.
+            Remove the spaces, change the dot to "." and the atat to "@". See 
+            <a href="http://ra-ajax.org/Rick.blogger">Rick's blog</a>
+        </p>
+    </div>
     <h2 style="clear:both;">Hire us</h2>
     <p>
         We are all available for hire through the company Ra-Software AS which is a Norwegian privately held company 
         mainly focusing on system development on consultancy basis. If you would like to hire us then 
         check out our <a href="SoftwareFactory.aspx">consulting services here</a>. Or 
         <a href="Testimonials.aspx">read what previous customers of Ra-Software had to say about us</a>.
+    </p>
+    <h2>Company Information</h2>
+    <p>
+        Ra-Software AS,
+        <br />
+        Marsvn. 18,
+        <br />
+        3942 PORSGRUNN,
+        <br />
+        Norway
+    </p>
+    <p>
+        VAT Number: 991.686.029
+    </p>
+    <p>
+        Phone: +47 915 94 779
+        <br />
+        Email: <a href="mailto:thomas@ra-ajax.org">thomas@ra-ajax.org</a>
     </p>
 </asp:Content>
 

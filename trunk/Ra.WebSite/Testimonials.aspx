@@ -34,18 +34,23 @@ Senior Partner
         <em>"When we hired Ra-Software to help us out with developing the next
         version of Imatis Portal we expected a lot from them. Though even with
         our already very high hopes they were able to deliver far above even
-        those expectations! Ra-Software in addition to having a marvelous Ajax
-        Framework - which significantly reduced the problem of delivering a
-        highly interactive and portable portal application and framework - also delivered
-        stunning high quality in addition to that the people from Ra-Software
+        those expectations!
+    </p>
+    <p>
+        Ra-Software delivered
+        stunningly high quality in addition to that the people from Ra-Software
         also served as a source of inspiration to the rest of the developers
-        on the project. To such an extend that we've already placed an order
-        for a course for all developers which will be held by Ra-Software
+        on the team. We have already placed an order
+        for training for all our in-house developers which will be held by Ra-Software
         later this year. I would recommend Ra-Software to help you out with
         your software project any day of the week!"</em>
     </p>
     <p>
-        <i>Morten Andresen - CEO @ Imatis AS</i>
+        <pre>
+Morten Andresen
+CEO @ Imatis AS
+<a href="http://imatis.no/">Imatis AS</a>
+        </pre>
     </p>
     <p>
         Below is a demonstration of what we created for Imatis using Ra-Ajax.
