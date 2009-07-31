@@ -14,12 +14,9 @@
     <h1>Software Factory</h1>
     <p>
         Ra-Software, the company behind Ra-Ajax is a <em>Software Factory</em>. This means that
-        we can create software for you. If you have some piece of software or website you would
-        want to create then we can create it for you.
-    </p>
-    <p>
-        If you have some software created or you have some problem which we can solve for you, then please
-        send <a href="mailto:thomas@ra-ajax.org">Thomas an email</a> and explain what you would
+        we can create software for you. We all define ourselves as <em>Software Creators</em>.
+        If you need software created or you have some problems which we can solve for you, then please
+        send <a href="mailto:thomas@ra-ajax.org">us an email</a> and explain what you would
         want to get done.
     </p>
     <p>
@@ -28,55 +25,34 @@
     <ul class="list">
         <li>Create websites for your company</li>
         <li>Create applications for your company</li>
-        <li>Create modules for an existing website</li>
-        <li>Create DotNetNuke modules for you</li>
+        <li>Adopt entire suites of web applications for you</li>
         <li>And many more things...</li>
     </ul>
     <p>
-        Ra-Software can also adopt applications or application development for your company. 
-        If you have problems finding enough skilled developers then we can create modules, 
-        parts or entire suites of applications for your company.
-    </p>
-    <p>
-        Think of it this way; Music Artists and Painters don't create their own instruments
-        and canvas. So why should not a Software Company out source its software development
-        to a Software Factory...?
-    </p>
-    <p>
         Then your company can do what it knows best, create specifications, talk to customers, 
-        market, sell the software. While a highly specialized and extremely skilled Software Factory
-        can assemble the software for you. This has been a natural part of conventional business 
-        for more then 150 years now, we in Ra-Software think it's time to do this for Software too.
+        market and sell the software. While a highly specialized and extremely skilled <em>Software Factory</em>
+        can assemble the software for you. This has been a natural part of conventional industry 
+        for more then 150 years, we in Ra-Software think it's time to do this for Software too.
     </p>
-    <h2>Power Development</h2>
+    <h2>Why so many Software Project fails...</h2>
     <p>
-        We do also provide <em>power development</em> if you need to beef up your existing development
-        department. We are all highly skilled senior developers and much of the work we do is.
-    </p>
-    <ul class="list">
-        <li>Coaching other developers</li>
-        <li>Ra-Ajax training</li>
-        <li>Teaching architecture and software design</li>
-        <li>C#, ASP.NET and Ajax training</li>
-        <li>Supplying extra hands on projects</li>
-        <li>Code Reviews</li>
-        <li>Quality Assurance</li>
-        <li>Create custom Ajax Controls</li>
-        <li>Optimize solutions</li>
-        <li>Refactor and clean up code</li>
-        <li>Give advice...</li>
-    </ul>
-    <p>
-        According to several international studies about 75% of all software projects
-        fails in some way or another. Ra-Software does not fail. If we take on ourselves a job
-        we know we will be able to deliver the expected results. We can't promise you success,
-        money and eternal happines, but we can guarantee that we will not fail on our part 
-        - which is the software construction parts!
+        Software Development is a craftsmanship-skill many people claim to posess, but few are able to 
+        master. Kind of like masonry used to be hundreds of years ago.
+        Think of it like this; Music Artists and Painters don't create their own instruments
+        or paint and Toys'R'Us and MacDonalds don't manufacture their own toys or grow their own potatoes. 
+        So why should not a Software Company have a specialized <em>Software Factory</em> create
+        their Software.
     </p>
     <p>
-        For our work <strong>we do not have to use Ra-Ajax under the GPL</strong>. We can 
-        also use Ra-Ajax under a proprietary license or a commercial license if this is a 
-        problem for you.
+        Or think of it like this; Software is highly complex and difficult to create, so why should
+        the process of creating your software be given to randomly chosen self proclaimed Software 
+        Developers - nobody in your company are able to evaluate the skills of?
+    </p>
+    <p>
+        According to several international studies about <strong>75% of all software projects
+        fails</strong>. Ra-Software does not fail. If we chose to create software for you then 
+        we know we will be able to deliver the expected results, within the expected budget at the 
+        expected time.
     </p>
     <p>
         Read what <a href="Testimonials.aspx">previous customers of Ra-Software had to say</a> about us,
@@ -93,7 +69,7 @@
         Norway
     </p>
     <p>
-        VAT Number: 991686029
+        VAT Number: 991.686.029
     </p>
     <p>
         Phone: +47 915 94 779
