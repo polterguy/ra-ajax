@@ -33,7 +33,7 @@
         can assemble your software. This has been a natural part of conventional industry 
         for more then 150 years, we in Ra-Software think it's time to do this for Software too.
     </p>
-    <h2>Why so many Software Project fails...</h2>
+    <h2>Why so many Software Projects fail...</h2>
     <p>
         Software Development is a craftsmanship-skill many people claim to posess, but few are able to 
         master. Kind of like masonry used to be hundreds of years ago.
@@ -88,8 +88,8 @@
         are using hammer and chisel to carve software out of the mountain, with all the risks that creates
         on your behalf, we assemble software for you as
         if it was Lego. This gives you an extreme flexibility, a great deal less development
-        time for us which in turn ends up on your behalf as a fraction of the costs, and much
-        better quality and more predictability.
+        time for us, which in turn ends up on your behalf as a fraction of the costs. In addition it 
+        also means much better quality and more predictability for you.
     </p>
     <p>
         In fact the tools and our process are at the core of our Software Factory
@@ -98,7 +98,7 @@
         When Henry Ford introduced the Conveyor Belt he reduced the time it took to construct a car by
         several orders of magnitudes. The <em>Lego Process</em> just like the Conveyor Belt reduces the 
         time it takes to construct Software by several orders of magnitudes. The Lego Process also eliminates 
-        the risk and gives you far more flexibility. This also translates into significantly reduced costs for you.
+        the risk and gives you far more flexibility. This translates into significantly reduced costs for you.
     </p>
     <p>
         <strong>We also pride ourselves in that we are constantly improving our technology, tools and processes.</strong>
@@ -109,7 +109,7 @@
         company is a <em>Software Factory</em>.
     </p>
     <p>
-        Now you know how we work and why it translatest into less problems for you. Here's a short-list of 
+        Now you know how we work and why it translates into less problems for you. Here's a short-list of 
         what's in it for you;
     </p>
     <ul class="list">
