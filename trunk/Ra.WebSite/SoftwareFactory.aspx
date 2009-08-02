@@ -20,7 +20,7 @@
         what you would want us to do.
     </p>
     <p>
-        Some of the things we can do...
+        Some of the things we can do for you;
     </p>
     <ul class="list">
         <li>Create new web or intranet enterprise applications</li>
@@ -99,6 +99,9 @@
         several orders of magnitudes. The <em>Lego Process</em> reduces the time it takes to construct
         Software by several orders of magnitudes. The Lego Process also eliminates the risk and gives you
         far more flexibility. This also translates into significantly reduced costs for you.
+    </p>
+    <p>
+        <strong>We also pride ourselves in that we are constantly improving our technology, tools and processes.</strong>
     </p>
     <p>
         That's why we don't even refer to ourselves as <em>System Developers</em> - because what we
