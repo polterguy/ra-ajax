@@ -49,7 +49,7 @@
     </p>
     <p>
         According to several international studies about <strong>75% of all software projects
-        fails. Ra-Software does not fail</strong>. If we chose to create your software then 
+        fails. Ra-Software does not fail</strong>. If we create your software then 
         we know we will be able to deliver the expected results, within the expected budget at the 
         expected time.
     </p>
@@ -80,15 +80,15 @@
     </p>
     <p>
         But most important is that we use our own modular based web-application framework which 
-        seriously reduces the development time and increases the quality of your products by orders of magnitudes.
+        seriously reduces the development time and greatly increases the quality of your products.
     </p>
     <p>
         We refer to this process and our tools as the <em>Lego Process</em>, which explains
         why we are so confident in our service and its quality. So while most other Software Companies
         are using hammer and chisel to carve software out of the mountain, with all the risks that creates
         on your behalf, we assemble software for you as
-        if it was Lego. This gives you an extreme flexibility, orders of magnitudes less development
-        time for us which in turn ends up on your behalf as a fraction of the costs, and orders of magnitudes
+        if it was Lego. This gives you an extreme flexibility, a great deal less development
+        time for us which in turn ends up on your behalf as a fraction of the costs, and much
         better quality and more predictability.
     </p>
     <p>
@@ -96,16 +96,16 @@
         concept and can be thought of as the software version of what Henry Ford did to 
         the car manufacturing industry with his tool; the Conveyor Belt.
         When Henry Ford introduced the Conveyor Belt he reduced the time it took to construct a car by
-        several orders of magnitudes. The <em>Lego Process</em> reduces the time it takes to construct
-        Software by several orders of magnitudes. The Lego Process also eliminates the risk and gives you
-        far more flexibility. This also translates into significantly reduced costs for you.
+        several orders of magnitudes. The <em>Lego Process</em> just like the Conveyor Belt reduces the 
+        time it takes to construct Software by several orders of magnitudes. The Lego Process also eliminates 
+        the risk and gives you far more flexibility. This also translates into significantly reduced costs for you.
     </p>
     <p>
         <strong>We also pride ourselves in that we are constantly improving our technology, tools and processes.</strong>
     </p>
     <p>
         That's why we don't even refer to ourselves as <em>System Developers</em> - because what we
-        do is not what other development companies are doing. We are <em>Software Creators</em> and our
+        do is not what other Software companies are doing. We are <em>Software Creators</em> and our
         company is a <em>Software Factory</em>.
     </p>
     <p>
