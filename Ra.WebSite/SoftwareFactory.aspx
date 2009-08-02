@@ -14,7 +14,7 @@
     <h1>Software Factory</h1>
     <p>
         Ra-Software, the company behind Ra-Ajax is a <em>Software Factory</em>. This means that
-        we can <em>create software</em> for you. We all define ourselves as <em>Software Creators</em>.
+        we can create software for you. In fact we all define ourselves as <em>Software Creators</em>.
         If you need software created or you have some problems which you think that we can solve 
         for you, then please send <a href="mailto:thomas@ra-ajax.org">us an email</a> and explain 
         what you would want us to do.
@@ -23,7 +23,7 @@
         Some of the things we can do...
     </p>
     <ul class="list">
-        <li>Create web-applications for your company</li>
+        <li>Create web or intranet enterprise applications</li>
         <li>Create intranet or enterprise applications for your company</li>
         <li>Adopt entire suites of web-applications for you</li>
     </ul>
@@ -49,18 +49,20 @@
     </p>
     <p>
         According to several international studies about <strong>75% of all software projects
-        fails</strong>. Ra-Software does not fail. If we chose to create your software then 
+        fails. Ra-Software does not fail</strong>. If we chose to create your software then 
         we know we will be able to deliver the expected results, within the expected budget at the 
         expected time.
     </p>
     <div style="background-color:#fafafa;padding:15px;border:dashed 1px #e0e0e0;">
-        <h2 style="margin-top:0;">Our Guarantee</h2>
         <p>
-            <em style="font-size:larger;">"We will deliver your software as expected, on time, 
-            for a fraction of the costs and with orders of magnitudes higher quality."</em>
+            <em style="font-size:larger;">
+                "Ra-Software delivered our online database component far above expectations: on time, 
+                well under industry pricing and well above feature requirements. I recommend anyone who 
+                needs Ajax work done to use Ra-Software - it sets a new standard for Ajax applications."
+            </em>
         </p>
     </div>
-    <h2>How we can achieve that</h2>
+    <h2>How we succeed</h2>
     <p>
         First of all we say <b>no</b> to projects where we are uncertain about whether or not we can fulfill our
         guarantee. Second of all we are all extremely seasoned developers with an average of more then 

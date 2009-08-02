@@ -2,7 +2,7 @@
 
 <script runat="server">
 
-    void Application_Start(object sender, EventArgs e) 
+    void Application_Start(object sender, EventArgs e)
     {
         // Setting number of viewers to ZERO
         Entity.Operator.ViewersCount = 0;
@@ -50,11 +50,11 @@
         }
     }
     
-    void Application_End(object sender, EventArgs e) 
+    void Application_End(object sender, EventArgs e)
     {
     }
         
-    void Application_Error(object sender, EventArgs e) 
+    void Application_Error(object sender, EventArgs e)
     { 
     }
 
@@ -62,12 +62,12 @@
     { 
     }
 
-    void Session_Start(object sender, EventArgs e) 
+    void Session_Start(object sender, EventArgs e)
     {
         Entity.Operator.ViewersCount += 1;
     }
 
-    void Session_End(object sender, EventArgs e) 
+    void Session_End(object sender, EventArgs e)
     {
         Entity.Operator.ViewersCount -= 1;
     }
