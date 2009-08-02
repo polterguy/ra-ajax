@@ -23,8 +23,8 @@
         Some of the things we can do...
     </p>
     <ul class="list">
-        <li>Create web or intranet enterprise applications</li>
-        <li>Create intranet or enterprise applications for your company</li>
+        <li>Create new web or intranet enterprise applications</li>
+        <li>Move existing desktop based applications onto the web</li>
         <li>Adopt entire suites of web-applications for you</li>
     </ul>
     <p>
@@ -55,20 +55,29 @@
     </p>
     <div style="background-color:#fafafa;padding:15px;border:dashed 1px #e0e0e0;">
         <p>
-            <em style="font-size:larger;">
+            <em style="font-size:larger;margin-bottom:15px;display:block;">
                 "Ra-Software delivered our online database component far above expectations: on time, 
                 well under industry pricing and well above feature requirements. I recommend anyone who 
                 needs Ajax work done to use Ra-Software - it sets a new standard for Ajax applications."
+                <br />
             </em>
+            --
+            <br />
+            Adrian Biffen
+            <br />
+            Senior Partner
+            <br />
+            Masterise(TM) Mobile Data Systems
         </p>
     </div>
     <h2>How we succeed</h2>
     <p>
         First of all we say <b>no</b> to projects where we are uncertain about whether or not we can fulfill our
         guarantee. Second of all we are all extremely seasoned developers with an average of more then 
-        20 years of software creation experience. In addition we focus purely on Ajax and Web-Applications.
-        We don't spread ourselves around on Desktop Systems, Flash Applications or multiple languages
-        and platforms. We focus purely on web-applications, following all the Open Standards out there.
+        20 years of software creation experience. In addition we focus purely on Web-Applications, and to
+        save you money we follow all the Open Standards out there.
+    </p>
+    <p>
         But most important is that we use our own modular based web-application framework which 
         reduces the development time and increases the quality by orders of magnitudes. In addition we
         create software which ends up with zero licensing costs for you.
