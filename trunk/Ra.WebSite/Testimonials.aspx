@@ -68,7 +68,7 @@ CEO @ Imatis AS
         Dave Lazarow - South Africa
     </h2>
     <p>
-        Dave was so happy about Ra-Ajax that he created a video himself showing off his application and
+        Dave was so happy about Ra-Software that he created a video himself showing off his application and
         how it uses Ra-Ajax. Note that this is a purely "one page application" which means that
         after you open the URL you never navigate away from the page at all. Even logging in and 
         out is done on the same page. Also he has integrated ASP.NET Charts with Ra-Ajax. So it
