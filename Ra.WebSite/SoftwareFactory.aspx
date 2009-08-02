@@ -25,7 +25,7 @@
     <ul class="list">
         <li>Create new web or intranet enterprise applications</li>
         <li>Move existing desktop based applications onto the web</li>
-        <li>Adopt entire suites of web-applications for you</li>
+        <li>Replace your existing system-development department</li>
     </ul>
     <p>
         Then your organization can do what it knows best, create specifications, talk to customers, 
@@ -45,7 +45,7 @@
     <p>
         Or think of it like this; Software is highly complex and difficult to create, so why should
         the process of creating your software be given to randomly chosen self proclaimed Software 
-        Developers - whom nobody in your organization are able to evaluate the skills of.
+        Developers - whom nobody in your organization fully are able to evaluate the skills of.
     </p>
     <p>
         According to several international studies about <strong>75% of all software projects
@@ -72,20 +72,15 @@
     </div>
     <h2>How we succeed</h2>
     <p>
-        First of all we say <b>no</b> to projects where we are uncertain about whether or not we can fulfill our
-        guarantee. Second of all we are all extremely seasoned developers with an average of more then 
+        First of all we say <b>no</b> to projects where we are uncertain about whether or not we can deliver the
+        expected results. Second of all we are all extremely seasoned developers with an average of more then 
         20 years of software creation experience. In addition we focus purely on Web-Applications, and to
-        save you money we follow all the Open Standards out there.
+        save you money and increase your flexibility we follow all the Open Standards out there. This translates
+        into zero licensing costs for you.
     </p>
     <p>
         But most important is that we use our own modular based web-application framework which 
-        reduces the development time and increases the quality by orders of magnitudes. In addition we
-        create software which ends up with zero licensing costs for you.
-    </p>
-    <p>
-        In fact the tools in addition to our process are at the core of our <em>Software Factory</em> 
-        concept and can be thought of as the software version of what Henry Ford did in regards to 
-        the car manufacturing industry with his tool; the <em>Conveyor Belt</em>.
+        seriously reduces the development time and increases the quality of your products by orders of magnitudes.
     </p>
     <p>
         We refer to this process and our tools as the <em>Lego Process</em>, which explains
@@ -93,14 +88,32 @@
         are using hammer and chisel to carve software out of the mountain, with all the risks that creates
         on your behalf, we assemble software for you as
         if it was Lego. This gives you an extreme flexibility, orders of magnitudes less development
-        time for us which in turn ends up on your behalf as a fraction of the costs and orders of magnitudes
-        higher amounts of quality and predictability.
+        time for us which in turn ends up on your behalf as a fraction of the costs, and orders of magnitudes
+        better quality and more predictability.
+    </p>
+    <p>
+        In fact the tools and our process are at the core of our Software Factory
+        concept and can be thought of as the software version of what Henry Ford did to 
+        the car manufacturing industry with his tool; the Conveyor Belt.
+        When Henry Ford introduced the Conveyor Belt he reduced the time it took to construct a car by
+        several orders of magnitudes. The <em>Lego Process</em> reduces the time it takes to construct
+        Software by several orders of magnitudes. The Lego Process also eliminates the risk and gives you
+        far more flexibility. This also translates into significantly reduced costs for you.
     </p>
     <p>
         That's why we don't even refer to ourselves as <em>System Developers</em> - because what we
         do is not what other development companies are doing. We are <em>Software Creators</em> and our
         company is a <em>Software Factory</em>.
     </p>
+    <p>
+        Now you know how we work and why it translatest into less problems for you. Here's a short-list of 
+        what's in it for you;
+    </p>
+    <ul class="list">
+        <li>Costs reduced to a fraction</li>
+        <li>Unmatched flexibility</li>
+        <li>Time2Market reduced drastically</li>
+    </ul>
     <p>
         Read what <a href="Testimonials.aspx">previous customers of Ra-Software had to say</a> about us,
         or read about <a href="Author.aspx">our qualifications here</a>.
