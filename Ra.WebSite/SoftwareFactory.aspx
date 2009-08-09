@@ -121,6 +121,9 @@
         Read what <a href="Testimonials.aspx">previous customers of Ra-Software had to say</a> about us,
         or read about <a href="Author.aspx">our qualifications here</a>.
     </p>
+    <p>
+        <a href="LegoProcess.aspx">Read more about the Lego Process here...</a>
+    </p>
     <h2>Company Information</h2>
     <p>
         Ra-Software AS,
