@@ -79,41 +79,50 @@ namespace Ra.Effects
 			RaWebControl tmp = this.Control as RaWebControl;
 			if (tmp != null)
 			{
-                tmp.Style.SetStyleValueViewStateOnly("left", _left.ToString() + "px");
-                tmp.Style.SetStyleValueViewStateOnly("top", _top.ToString() + "px");
+                if (_left != -1)
+                    tmp.Style.SetStyleValueViewStateOnly("left", _left.ToString() + "px");
+                if (_top != -1)
+                    tmp.Style.SetStyleValueViewStateOnly("top", _top.ToString() + "px");
 			}
 		}
 
         protected override string RenderParalledOnStart()
         {
 			UpdateStyleCollection();
-            return @"
-    this.startL = parseInt(this.element.getStyle('left'), 10) || 0;
-    this.startT = parseInt(this.element.getStyle('top'), 10) || 0;
-";
+            string retVal = "";
+            if (_left != -1)
+                retVal += "this.startL = parseInt(this.element.getStyle('left'), 10) || 0;";
+            if (_top != -1)
+                retVal += "this.startT = parseInt(this.element.getStyle('top'), 10) || 0;";
+            return retVal;
         }
 
         protected override string RenderParalledOnFinished()
         {
-            return string.Format(@"
-    this.element.setStyle('left','{0}px');
-    this.element.setStyle('top','{1}px');
-",
-                _left, _top);
+            string retVal = "";
+            if (_left != -1)
+                retVal += string.Format("this.element.setStyle('left','{0}px');", _left);
+            if (_top != -1)
+                retVal += string.Format("this.element.setStyle('top','{0}px');", _top);
+            return retVal;
         }
 
         protected override string RenderParalledOnRender()
         {
-            return string.Format(@"
+            string retVal = "";
+            if (_left != -1)
+                retVal += string.Format(@"
     var deltaL = (({0}) - this.startL) * pos;
     var newL = parseInt((deltaL) + this.startL, 10);
     this.element.setStyle('left',(newL) + 'px');
-
-    var deltaT = (({1}) - this.startT) * pos;
+", _left);
+            if (_top != -1)
+                retVal += string.Format(@"
+    var deltaT = (({0}) - this.startT) * pos;
     var newT = parseInt((deltaT) + this.startT, 10);
     this.element.setStyle('top',(newT) + 'px');
-",
-                _left, _top);
+", _top);
+            return retVal;
         }
     }
 }
