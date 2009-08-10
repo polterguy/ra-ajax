@@ -18,6 +18,10 @@
   correctly that occured on the server. E.g. Exceptions thrown or
   similar things...
 
+* Added support for having -1 as value for left and top properties
+  of EffectMove to indicate that particular parts of movement should
+  be ignored.
+
 
 
 
