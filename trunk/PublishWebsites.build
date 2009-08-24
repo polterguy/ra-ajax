@@ -31,7 +31,6 @@
         <include name="highlight.xml" />
         <include name="highlight.xsl" />
         <include name="media/**/*.*" />
-        <include name="ChartImages/**/*.*" />
       </fileset>
     </copy>
     <copy 
@@ -39,6 +38,8 @@
       tofile="${output.dir}/${code.dir}/${samples.dir}/Web.Config" 
       overwrite="true" />
 
+    <mkdir dir="${output.dir}/${code.dir}/${samples.dir}/ChartImages" />
+    
     <mkdir dir="${output.dir}/${code.dir}/${samples.dir}/bin" />
     <copy flatten="true" todir="${output.dir}/${code.dir}/${samples.dir}/bin">
       <fileset>
