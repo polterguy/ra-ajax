@@ -461,6 +461,15 @@ http://ra-ajax.org
 .button:hover .bLeft { background-image:url('button-hover.png'); }
 .button:hover .bCenter { background-image:url('button-hover.png'); }
 .button:hover .bRight { background-image:url('button-hover.png'); }
+.button:active .bLeft { background-image:url('button-active.png'); }
+.button:active .bCenter { background-image:url('button-active.png'); }
+.button:active .bRight { background-image:url('button-active.png'); }
+.button-selected .bLeft { background-image:url('button-selected.png'); }
+.button-selected .bCenter { background-image:url('button-selected.png'); }
+.button-selected .bRight { background-image:url('button-selected.png'); }
+.button-selected:hover .bLeft { background-image:url('button-selected.png'); }
+.button-selected:hover .bCenter { background-image:url('button-selected.png'); }
+.button-selected:hover .bRight { background-image:url('button-selected.png'); }
 
 
 /* Window-LIGHT...! */
