@@ -5,6 +5,12 @@ h1
 	margin-bottom:15px;
 }
 
+h2
+{
+	margin-top:25px;
+	margin-bottom:15px;
+	font-size:14px;
+}
 ul.list
 {
 	margin:5px 0 5px 0;
@@ -15,6 +21,16 @@ ul.list li
 	list-style-type:disc;
 	list-style-position:outside;
 	margin-left:25px;
+}
+
+a
+{
+	text-decoration:none;
+}
+
+a:hover
+{
+	background-color:#eaeaea;
 }
 
 /* MasterPage CSS */
@@ -32,6 +48,7 @@ ul.list li
 	margin-left:16px;
 	margin-right:16px;
 	overflow:auto;
+	position:relative;
 }
 
 #header
@@ -62,7 +79,8 @@ ul.list li
 #contentContent
 {
 	padding:25px 15px 25px 15px;
-	min-height:900px;
+	min-height:800px;
+	margin-bottom:25px;
 }
 
 .showCode
@@ -174,6 +192,7 @@ ul#menu li a
 ul#menu li a:hover
 {
 	color:#cc4444;
+	background-color:Transparent;
 }
 
 
@@ -261,6 +280,7 @@ ul#menu li a:hover
 .thumbsSmall
 {
 	margin:5px;
+	cursor:pointer;
 }
 
 .thumbsSmall .links
@@ -295,6 +315,7 @@ ul#menu li a:hover
 	width:100px;
 	height:62px;
 	background-image:url('small-thumbs.png');
+	cursor:pointer;
 }
 
 .thumbsSmall .links .image1
@@ -324,6 +345,7 @@ ul#menu li a:hover
 
 .thumbsSmall .links .text
 {
+	cursor:pointer;
 	float:left;
 	width:140px;
 	margin-left:5px;
@@ -337,6 +359,8 @@ ul#menu li a:hover
 .thumbsSmallNav
 {
 	margin:5px;
+	display:block;
+	cursor:pointer;
 }
 
 .thumbsSmallNav .links
@@ -366,6 +390,7 @@ ul#menu li a:hover
 .thumbsSmallNav .links .image4,
 .thumbsSmallNav .links .image5
 {
+	cursor:pointer;
 	float:left;
 	display:block;
 	width:100px;
@@ -400,6 +425,7 @@ ul#menu li a:hover
 
 .thumbsSmallNav .links .text
 {
+	cursor:pointer;
 	float:left;
 	width:140px;
 	margin-left:5px;
