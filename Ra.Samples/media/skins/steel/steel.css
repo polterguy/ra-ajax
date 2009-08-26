@@ -42,6 +42,8 @@ caption{margin-bottom:.5em;text-align:center;}
 p,fieldset,table,pre{margin-bottom:1em;}
 input[type=text],input[type=password],textarea{width:12.25em;*width:11.9em;}
 
+input[type=checkbox]{margin-right:3px;}
+
 
 
 
@@ -74,6 +76,161 @@ Code licensed under LGPL3
 http://ra-ajax.org
 */
 
+
+.sliding-menu
+{
+	position:relative;
+	overflow:hidden;
+	border-left:solid 1px #999;
+	border-right:solid 1px #999;
+	border-bottom:solid 1px #999;
+}
+
+.bread-crumb-parent
+{
+	width:1000%;
+	background: transparent url(window-h-sprite.png) repeat 0 0;
+	height:32px;
+	overflow:hidden;
+}
+
+.bread-crumb
+{
+	width:100%;
+	height:32px;
+	overflow:auto;
+}
+
+.bread-crumb .bread-item-left
+{
+	height:16px;
+	margin-bottom:8px;
+	margin-left:-8px;
+	margin-top:8px;
+	padding-left:8px;
+	float:left;
+	display:block;
+	font-size:9px;
+	background:url('bread-crumb.png') no-repeat 0 -48px;
+}
+
+.bread-crumb .bread-item-right
+{
+	height:16px;
+	display:block;
+	padding-right:8px;
+	background:url('bread-crumb.png') no-repeat right -32px;
+}
+
+.bread-crumb .bread-item-center
+{
+	height:12px;
+	display:block;
+	background:url('bread-crumb.png') repeat-x 0 -16px;
+	padding:2px;
+}
+
+.bread-crumb .bread-item-left:hover
+{
+	text-decoration:underline;
+	color:#00a;
+}
+
+.bread-crumb .bread-item-first
+{
+	padding-left:2px;
+	margin-bottom:8px;
+	margin-left:8px;
+	margin-top:8px;
+	background:url('bread-crumb.png') no-repeat 0 0;
+	position:relative;
+}
+
+.bread-crumb .bread-item-first:hover
+{
+	text-decoration:none;
+}
+
+.bread-crumb .bread-item-first .bread-item-center
+{
+	width:10px;
+}
+
+.bread-crumb .bread-item-first .sliding-bread-home
+{
+	background:url('tree-sprites.png') no-repeat -160px 0;
+	width:16px;
+	height:16px;
+	display:block;
+	position:absolute;
+	top:0;
+	left:3px;
+}
+
+.bread-crumb a.bread-item-first:hover .sliding-bread-home
+{
+	background:url('tree-sprites.png') no-repeat -176px 0;
+}
+
+.bread-crumb .bread-item-left .sliding-bread-home:hover
+{
+	text-decoration:none;
+}
+
+.bread-crumb .bread-item-last .bread-item-right
+{
+	background:url('bread-crumb.png') no-repeat right -64px;
+}
+
+.bread-crumb .bread-item-last:hover
+{
+	text-decoration:none;
+	color:inherit;
+}
+
+.sliding-menu .sliding-level
+{
+	width:100%;
+	position:absolute;
+	top:0px;
+	margin-left:100%;
+}
+
+.sliding-menu .sliding-top-level
+{
+	margin-top:32px;
+	margin-left:0;
+}
+
+.sliding-menu .sliding-level .sliding-item
+{
+	width:100%;
+}
+
+.sliding-menu .sliding-level .sliding-item .sliding-menu-btn
+{
+	padding:5px;
+	display:block;
+	position:relative;
+	margin:1px;
+}
+
+.sliding-menu .sliding-level .sliding-item .sliding-menu-btn:hover
+{
+	background-color:#eee;
+	cursor:pointer;
+}
+
+.sliding-menu .sliding-level .sliding-item .sliding-leaf
+{
+	background:url('tree-sprites.png') no-repeat -144px 0;
+	position:absolute;
+	right:5px;
+	top:4px;
+	display:block;
+	width:16px;
+	height:16px;
+}
 
 /* WebPart specific CSS */
 
@@ -204,27 +361,86 @@ http://ra-ajax.org
 .tree .no-childs .leaf { background:url(tree-sprites.png) no-repeat -64px 0px; }
 .tree .no-childs .no-leaf { background:url(tree-sprites.png) no-repeat -80px 0px; }
 
-/* Custom "icon" classes used in sample */
 
-/*
- * Remove these for efficiency, both in CSS file and in tree-sprites.png for your own application...
- */
-.tree .jquery .icon { background-position:-176px 0px; }
-.tree .mootools .icon { background-position:-144px 0px; }
-.tree .prototype .icon { background-position:-160px 0px; }
 
 
 /* Menu */
+.menu
+{
+	background: transparent url(window-h-sprite.png) repeat-x 0 0;
+	width:100%;
+	position:relative;
+	height:29px;
+	font-size:12px;
+	padding:3px 0 0 0;
+}
 
-.menu { background: transparent url(window-h-sprite.png) repeat-x 0 0; width:100%; position:relative; line-height:22px; height:28px; }
-.menu ul { display:inline; }
-.menu .item { cursor:pointer; color:#333; font-size:0.8em; margin:5px; }
-.menu .item:hover { color:#00f; }
-.menu .top { display:inline; padding:2px; position:relative; }
-.menu .menu-dropper { border:solid 1px #648CE8; background-color:#BDC8FD; position:absolute; left:0px; width:150px; *top:24px; }
-.menu .menu-dropper .drop-item { display:block; color:#333; padding-left:15px; padding:5px; }
-.menu .menu-dropper .drop-item:hover { color:#66f; background-color:#cDd8Ff; }
-.menu .menu-dropper .sub-dropper { left: 150px; top:-1px; }
+.menu ul
+{
+	display:block;
+}
+
+.menu .top
+{
+	display:block;
+	position:relative;
+	float:left;
+	line-height:28px;
+	min-width:50px;
+}
+
+.menu .item
+{
+	cursor:pointer;
+	color:#333;
+	margin-left:10px;
+}
+
+.menu .has-children
+{
+	background:transparent url(menu.png) no-repeat -2px 11px;
+}
+
+.menu .item:hover
+{
+	color:#00f;
+}
+
+.menu .menu-dropper
+{
+	border-left:solid 1px #648CE8;
+	border-right:solid 1px #648CE8;
+	border-bottom:solid 1px #648CE8;
+	border-top:solid 1px #727272;
+	background-color:#D1D1D1;
+	position:absolute;
+	left:0px;
+	width:150px;
+	margin-left:-10px;
+}
+
+.menu .menu-dropper .drop-item
+{
+	display:block;
+	color:#333;
+	padding-left:15px;
+	padding:5px;
+}
+
+.menu .menu-dropper .drop-item:hover
+{
+	color:#66f;
+	background-color:#cacaca;
+}
+
+.menu .menu-dropper .sub-dropper
+{
+	left:150px;
+	margin-top:-24px;
+}
+
+
+
 
 
 /* AutoCompleter CSS class */
@@ -239,7 +455,7 @@ http://ra-ajax.org
 /* Extended Button */
 .button { width:auto; padding:0; border:none 0; background-color:Transparent; }
 .button .bLeft { background:url('window-sprite.png') no-repeat 0 0; padding-left:7px; display:block; height:32px; }
-.button .bCenter { background:url('window-h-sprite.png') repeat-x 0 0; display:block; height:32px; padding-top:7px; }
+.button .bCenter { background:url('window-h-sprite.png') repeat-x 0 0; display:block; height:32px; padding-top:7px; white-space:nowrap; }
 .button .bRight { background:url('window-sprite.png') no-repeat right top; padding-right:7px; display:block; height:32px; }
 
 
