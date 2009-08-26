@@ -454,9 +454,13 @@ http://ra-ajax.org
 
 /* Extended Button */
 .button { width:auto; padding:0; border:none 0; background-color:Transparent; }
-.button .bLeft { background:url('window-sprite.png') no-repeat 0 0; padding-left:7px; display:block; height:32px; }
-.button .bCenter { background:url('window-h-sprite.png') repeat-x 0 0; display:block; height:32px; padding-top:7px; white-space:nowrap; }
-.button .bRight { background:url('window-sprite.png') no-repeat right top; padding-right:7px; display:block; height:32px; }
+.button .bLeft { background:url('button.png') no-repeat 0 0; padding-left:11px; display:block; height:36px; }
+.button .bCenter { background:url('button.png') repeat-x 0 -36px; display:block; height:26px; padding-top:10px; }
+.button .bRight { background:url('button.png') no-repeat right bottom; padding-right:11px; display:block; height:36px; }
+.button:hover { }
+.button:hover .bLeft { background-image:url('button-hover.png'); }
+.button:hover .bCenter { background-image:url('button-hover.png'); }
+.button:hover .bRight { background-image:url('button-hover.png'); }
 
 
 /* Window-LIGHT...! */
