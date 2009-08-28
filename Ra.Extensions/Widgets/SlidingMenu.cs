@@ -94,7 +94,14 @@ namespace Ra.Extensions.Widgets
         public ASP.Control BreadCrumbControl
         {
             get { return _breadCrumbControl == null ? _breadParent : _breadCrumbControl; }
-            set { _breadCrumbControl = value; }
+            set
+            {
+                if (value != BreadCrumbControl)
+                {
+                    _breadCrumbControl = value;
+                    CreateBreadCrumbWrapper();
+                }
+            }
         }
 
         /**
