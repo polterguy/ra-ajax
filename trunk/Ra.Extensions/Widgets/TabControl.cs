@@ -55,10 +55,7 @@ namespace Ra.Extensions.Widgets
         public int ActiveTabViewIndex
         {
             get { return ViewState["SelectedViewIndex"] == null ? 0 : (int)ViewState["SelectedViewIndex"]; }
-            set
-            {
-                ViewState["SelectedViewIndex"] = value;
-            }
+            set { ViewState["SelectedViewIndex"] = value; }
         }
 		
         /**
