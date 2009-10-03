@@ -649,7 +649,7 @@ Ra.Form.prototype = {
                   retVal.push(el.name + '=' + encodeURIComponent(el.options[i].value))
                 }
               }
-            } else {
+            } else if( el.options.length > 0 && el.value) {
               retVal.push(el.name + '=' + encodeURIComponent(el.value));
             }
             break;
