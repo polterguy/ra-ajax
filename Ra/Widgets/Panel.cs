@@ -61,11 +61,13 @@ namespace Ra.Widgets
 
         protected override string GetClientSideScriptOptions()
         {
-            string retVal = "";
+            string retVal = base.GetClientSideScriptOptions();
             if (!string.IsNullOrEmpty(DefaultWidget))
+            {
+                if (!string.IsNullOrEmpty(retVal))
+                    retVal += ",";
                 retVal += string.Format("def_wdg:'{0}'", AjaxManager.Instance.FindControl(this, DefaultWidget).ClientID);
-            if (_hasSetFocus)
-                retVal += ",focus:true";
+            }
             return retVal;
         }
 

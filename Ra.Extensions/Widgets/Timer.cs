@@ -86,11 +86,15 @@ namespace Ra.Extensions.Widgets
 		protected override string GetClientSideScriptOptions()
 		{
 			string retVal = base.GetClientSideScriptOptions();
-			if (Enabled && Tick != null)
-				retVal += "enabled:true";
+            if (Enabled && Tick != null)
+            {
+                if (!string.IsNullOrEmpty(retVal))
+                    retVal += ",";
+                retVal += "enabled:true";
+            }
 			if (Duration != 1000)
 			{
-				if (retVal != string.Empty)
+                if (!string.IsNullOrEmpty(retVal))
 					retVal += ",";
 				retVal += string.Format("duration:{0}", Duration);
 			}

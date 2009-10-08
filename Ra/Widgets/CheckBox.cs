@@ -178,9 +178,10 @@ namespace Ra.Widgets
 
 		protected override string GetClientSideScriptOptions()
 		{
-			string retVal = string.Format("ctrl:'{0}_CTRL',label:'{0}_LBL'", ClientID);
-			if (_hasSetFocus)
-				retVal += ",focus:true";
+            string retVal = base.GetClientSideScriptOptions();
+            if (!string.IsNullOrEmpty(retVal))
+                retVal += ",";
+			retVal += string.Format("ctrl:'{0}_CTRL',label:'{0}_LBL'", ClientID);
 			return retVal;
 		}
 
