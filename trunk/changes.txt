@@ -11,8 +11,15 @@
 
   ------------------------------------------------------------------
 
-* Fixed a bug in form serialization that caused an error when dealing 
-  with an ASP.NET ListBox that has no items.
+* Fixed a bug in form serialization that caused an error when 
+  dealing with an ASP.NET ListBox that has no initial items.
+
+* Fixed a bug in client-side script options for some widgets that 
+  affected 'OnClickClientSide' among other things.
+
+* Added a new effect 'EffectCssClass', developed by Karel Boek. This
+  effect enables you to easily change the CSS class of a widget as
+  part of a series of chained or joined effects.
 
 
   ------------------------------------------------------------------

@@ -298,7 +298,7 @@ namespace Ra.Extensions.Widgets
             }
         }
 		
-		protected override string GetClientSideScriptOptions ()
+		protected override string GetClientSideScriptOptions()
 		{
 			if (!Enabled || Tick == null)
 				return "enabled:false";

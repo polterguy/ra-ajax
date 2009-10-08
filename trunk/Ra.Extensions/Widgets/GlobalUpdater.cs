@@ -83,13 +83,13 @@ namespace Ra.Extensions.Widgets
             string retVal = base.GetClientSideScriptOptions();
             if (Delay != 1000)
             {
-                if (retVal != string.Empty)
+                if (!string.IsNullOrEmpty(retVal))
                     retVal += ",";
                 retVal += string.Format("delay:{0}", Delay);
             }
             if (MaxOpacity != 1.0M)
             {
-                if (retVal != string.Empty)
+                if (!string.IsNullOrEmpty(retVal))
                     retVal += ",";
                 retVal += string.Format("maxOpacity:{0}", MaxOpacity.ToString(CultureInfo.InvariantCulture));
             }

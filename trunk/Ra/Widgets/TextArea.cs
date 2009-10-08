@@ -218,13 +218,10 @@ namespace Ra.Widgets
 
 		protected override string GetClientSideScriptOptions()
 		{
-			string retVal = string.Empty;
-
-			if (_hasSetFocus)
-				retVal += "focus:true";
+            string retVal = base.GetClientSideScriptOptions();
 			if (_hasSetSelect)
 			{
-				if (retVal.Length != 0)
+                if (!string.IsNullOrEmpty(retVal))
 					retVal += ",";
 				retVal += "select:true";
 			}
