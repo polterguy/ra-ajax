@@ -19,7 +19,7 @@
     <a class="website-button" href="http://code.google.com/p/ra-ajax/">
         <img class="website-button-image" src="media/box_download_48.png" alt="Download" />
         <span class="website-button-text">Download Ra-Ajax</span>
-        <span class="website-button-text" style="margin-top:0;font-size:10px;">Latest version 2.0.2</span>
+        <span class="website-button-text" style="margin-top:0;font-size:10px;">Latest version 2.0.3</span>
     </a>
     <a class="website-button" href="Testimonials.aspx">
         <img class="website-button-image" src="media/accepted_48.png" alt="Docs" />
