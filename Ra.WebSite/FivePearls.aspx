@@ -4,14 +4,14 @@
     AutoEventWireup="true" 
     CodeFile="FivePearls.aspx.cs" 
     Inherits="RaWebsite.FivePearls" 
-    Title="5 Pillars of Ra-Software" %>
+    Title="The 5 Pearls of Ra-Software" %>
 
 <asp:Content 
     ID="Content1" 
     ContentPlaceHolderID="cnt1" 
     Runat="Server">
 
-    <h1>5 Pillars of Ra-Software</h1>
+    <h1>The 5 Pearls of Ra-Software</h1>
 
     <p>
 	    These are the Pillars Ra-Software is built on. Every action we take is measured against
@@ -43,7 +43,7 @@
     <p>
 	    Ra-Software is a courageous company. This makes us able to find alternative and better solutions. 
 	    We use existing Best Practices where these are proven, but to find new Best Practices and help the world 
-	    evolve, one needs courage to seek away from the safe path. Sheeps use only existing trails, 
+	    evolve, one needs courage to seek away from the safe path. Sheep use only existing trails, 
 	    well lit up, Lions are not afraid of the dark and hence can create new pathways, even through 
 	    the thickest of the night and hence do not need to walk as far to get to where they want to arrive.
 	    A man without courage is a slave to fear.
@@ -78,7 +78,8 @@
     <h2>Dedication</h2>
     <p>
         People without commitment and Dedication are like leaves. First breadth of wind and 
-        they'll fly away. With Dedication comes strength, strength to not give up.
+        they'll fly away. With Dedication comes strength. With Dedication comes the strength to 
+        not give up.
     </p>
     <p>
         Ra-Software does not give up. That is why we are so carefully choosing who we want to
