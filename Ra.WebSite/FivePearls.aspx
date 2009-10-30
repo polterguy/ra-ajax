@@ -16,7 +16,7 @@
     <p>
 	    These are the Pillars Ra-Software is built on. Every action we take is measured against
 	    these values. These Pillars might not be the reason why we can earn money, but they 
-	    definitely are the reason why we want to live. We make sure that all people in
+	    definitely are the reason why we want to live. All people in
 	    Ra-Software have a strong commitment to these values.
     </p>
 
@@ -52,7 +52,7 @@
     <h2>Beauty</h2>
     <p>
 	    Without Beauty there can be no unity or pride. Millions of people flock to see the Taj Mahal, 
-	    the Pyramids and the Golden Gate every year. Beauty is what inspires us to evolve. A beautiful 
+	    the Pyramids and the Golden Gate every year. Beauty is what inspires us to innovate. A beautiful 
 	    soul shines with the light of a thousand stars.
     </p>
     <p>
@@ -77,9 +77,8 @@
 
     <h2>Dedication</h2>
     <p>
-        People without commitment and Dedication are like leaves. First breadth of wind and 
-        they'll fly away. With Dedication comes strength. With Dedication comes the strength to 
-        not give up.
+        People without commitment and Dedication are like leaves. First breath of wind and 
+        they'll fly away. With Dedication comes the strength to not give up.
     </p>
     <p>
         Ra-Software does not give up. That is why we are so carefully choosing who we want to
