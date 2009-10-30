@@ -32,8 +32,8 @@ namespace Ra.Extensions.Widgets
     [ASP.ToolboxData("<{0}:SlidingMenu runat=\"server\"></{0}:SlidingMenu>")]
     public class SlidingMenu : Panel, ASP.INamingContainer
     {
-        private Panel _breadParent = new Panel();
-        private Panel _bread = new Panel();
+        private readonly Panel _breadParent = new Panel();
+        private readonly Panel _bread = new Panel();
         private ASP.Control _breadCrumbControl;
 
         /**
@@ -69,8 +69,8 @@ namespace Ra.Extensions.Widgets
          * bread-crumb wrapped within the actual SlidingMenu. This is useful for scenarios
          * where you don't want the bread-crumb to be a part of the actual SlidingMenu but
          * rather on the "outside" so that e.g the bread-crumb wraps your entire page istead
-         * of being constrained to the width of the SlidingMenu itself. Note that you should
-         * set this property as EARLY AS POSSIBLE in e.g. the OnInit of your page. Note also 
+         * of being constrained to the width of the SlidingMenu itself. Notice that you should
+         * set this property as EARLY AS POSSIBLE in e.g. the OnInit of your page. Notice also 
          * though that if you set this value then the Control you choose as the BreadCrumbControl 
          * MUST have a Parent HTML element (doesn't need to be a server control) and that
          * HTML element MUST have an id property. It must also have an explicit width,
@@ -206,17 +206,43 @@ namespace Ra.Extensions.Widgets
 
         internal void SetActiveLevel(SlidingMenuLevel level)
         {
-            if (level == null)
-            {
-                ActiveLevel = null;
-            }
-            else
-            {
-                ActiveLevel = level.ID;
-            }
+            ActiveLevel = level == null ? null : level.ID;
             _bread.Controls.Clear();
             UpdateBreadCrumb(level);
             _bread.ReRender();
+        }
+
+        /**
+         * Will expand menu programatically to given level.
+         */
+        public void ExpandTo(SlidingMenuLevel item)
+        {
+            foreach (ASP.Control idx in Controls)
+            {
+                if (idx is SlidingMenuLevel)
+                {
+                    SetAllChildrenNonVisible(idx);
+                }
+            }
+            ActiveLevel = item.ID;
+            ASP.Control cur = item;
+            SlidingMenuLevel topLevel = null;
+            int idxNoLevels = -1;
+            while (!(cur is SlidingMenu))
+            {
+                SlidingMenuLevel l = cur as SlidingMenuLevel;
+                if (l != null)
+                {
+                    idxNoLevels += 1;
+                    topLevel = l as SlidingMenuLevel;
+                    topLevel.Style[Styles.display] = "";
+                }
+                cur = cur.Parent;
+            }
+            AjaxManager.Instance.WriterAtBack.Write(@"
+var xNewWidth = Ra.$({0}).getDimensions().width * {1};
+Ra.$({0}).setStyle('marginLeft','-' + xNewWidth + 'px');
+", "'" + topLevel.ClientID + "'", idxNoLevels);
         }
 
         protected override void OnPreRender(EventArgs e)
@@ -358,11 +384,10 @@ namespace Ra.Extensions.Widgets
             ASP.Control rootLevel = null;
             foreach (ASP.Control idx in Controls)
             {
-                if (idx is SlidingMenuLevel)
-                {
-                    rootLevel = idx;
-                    break;
-                }
+                if (!(idx is SlidingMenuLevel))
+                    continue;
+                rootLevel = idx;
+                break;
             }
             _bread.Style["display"] = "gokk"; // To force a new value to the display property...
             _bread.Style["display"] = "none";
