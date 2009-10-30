@@ -7,7 +7,6 @@
  */
 
 using System;
-using Ra.Extensions;
 using Ra.Extensions.Widgets;
 
 public partial class Docs_Controls_SlidingMenu : System.Web.UI.UserControl
