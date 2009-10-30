@@ -23,7 +23,7 @@ namespace Ra.Extensions.Widgets
      * like the possibility to set the Window into "Modal" mode. In Modal mode none of the controls behind it
      * on the page can be clicked. Can also be moved around on screen, have support for Caption and a 
      * closing icon to close it. You can also easily create your own "icons" by overriding the 
-     * CreateTitleBarControls event. Note that to make the Window Modal you need to add up the 
+     * CreateTitleBarControls event. Notice that to make the Window Modal you need to add up the 
      * BehaviorObscurer to the Controls collection of the Window.
      */
     [ASP.ToolboxData("<{0}:Window runat=\"server\"></{0}:Window>")]
@@ -36,7 +36,7 @@ namespace Ra.Extensions.Widgets
          */
         public class CreateTitleBarControlsEventArgs : EventArgs
         {
-            private ASP.Control _ctrl;
+            private readonly ASP.Control _ctrl;
 
             internal CreateTitleBarControlsEventArgs(ASP.Control ctrl)
             {
@@ -57,14 +57,14 @@ namespace Ra.Extensions.Widgets
         Label _ne;
         Label _w;
         Label _body;
-        Label _content = new Label();
+        readonly Label _content = new Label();
         Label _e;
         Label _sw;
         Label _s;
         Label _se;
-        Label _caption = new Label();
-        LinkButton _close = new LinkButton();
-        BehaviorDraggable _dragger = new BehaviorDraggable();
+        readonly Label _caption = new Label();
+        readonly LinkButton _close = new LinkButton();
+        readonly BehaviorDraggable _dragger = new BehaviorDraggable();
 
         /**
          * Raised when window is closed by clicking the close icon.
@@ -190,22 +190,13 @@ namespace Ra.Extensions.Widgets
                 cssClass = cssClass.Split(' ')[0];
 
             // Top parts
-            _nw = new Label();
-            _nw.Tag = "div";
-            _nw.ID = "XXnw";
-            _nw.CssClass = cssClass + "_nw";
+            _nw = new Label {Tag = "div", ID = "XXnw", CssClass = cssClass + "_nw"};
             base.Controls.Add(_nw);
 
-            _ne = new Label();
-            _ne.Tag = "div";
-            _ne.ID = "XXne";
-            _ne.CssClass = cssClass + "_ne";
+            _ne = new Label {Tag = "div", ID = "XXne", CssClass = cssClass + "_ne"};
             _nw.Controls.Add(_ne);
 
-            _n = new Label();
-            _n.Tag = "div";
-            _n.ID = "XXn";
-            _n.CssClass = cssClass + "_n";
+            _n = new Label {Tag = "div", ID = "XXn", CssClass = cssClass + "_n"};
             _ne.Controls.Add(_n);
 
             _caption.ID = "XXcaption";
@@ -216,27 +207,18 @@ namespace Ra.Extensions.Widgets
                 CreateTitleBarControls(this, new CreateTitleBarControlsEventArgs(_n));
 
             _close.ID = "XXclose";
-            _close.Click += new EventHandler(_close_Click);
+            _close.Click += new EventHandler(CloseClick);
             _close.CssClass = cssClass + "_close";
             _n.Controls.Add(_close);
 
             // Middle parts
-            _body = new Label();
-            _body.Tag = "div";
-            _body.ID = "XXbody";
-            _body.CssClass = cssClass + "_body";
+            _body = new Label {Tag = "div", ID = "XXbody", CssClass = cssClass + "_body"};
             base.Controls.Add(_body);
 
-            _w = new Label();
-            _w.Tag = "div";
-            _w.ID = "XXw";
-            _w.CssClass = cssClass + "_w";
+            _w = new Label {Tag = "div", ID = "XXw", CssClass = cssClass + "_w"};
             _body.Controls.Add(_w);
 
-            _e = new Label();
-            _e.Tag = "div";
-            _e.ID = "XXe";
-            _e.CssClass = cssClass + "_e";
+            _e = new Label {Tag = "div", ID = "XXe", CssClass = cssClass + "_e"};
             _w.Controls.Add(_e);
 
             _content.Tag = "div";
@@ -245,38 +227,28 @@ namespace Ra.Extensions.Widgets
             _e.Controls.Add(_content);
 
             // Bottom parts
-            _sw = new Label();
-            _sw.Tag = "div";
-            _sw.ID = "XXsw";
-            _sw.CssClass = cssClass + "_sw";
+            _sw = new Label {Tag = "div", ID = "XXsw", CssClass = cssClass + "_sw"};
             _body.Controls.Add(_sw);
 
-            _se = new Label();
-            _se.Tag = "div";
-            _se.ID = "XXse";
-            _se.CssClass = cssClass + "_se";
+            _se = new Label {Tag = "div", ID = "XXse", CssClass = cssClass + "_se"};
             _sw.Controls.Add(_se);
 
-            _s = new Label();
-            _s.Tag = "div";
-            _s.ID = "XXs";
-            _s.Text = "&nbsp;";
-            _s.CssClass = cssClass + "_s";
+            _s = new Label {Tag = "div", ID = "XXs", Text = "&nbsp;", CssClass = cssClass + "_s"};
             _se.Controls.Add(_s);
 
             _dragger.ID = "XXdragger";
             _dragger.Handle = _caption.ClientID;
-            _dragger.Dropped += new EventHandler(_dragger_Dropped);
+            _dragger.Dropped += DraggerDropped;
             base.Controls.Add(_dragger);
         }
 
-        private void _dragger_Dropped(object sender, EventArgs e)
+        private void DraggerDropped(object sender, EventArgs e)
         {
             if (Moved != null)
                 Moved(this, new EventArgs());
         }
 
-        private void _close_Click(object sender, EventArgs e)
+        private void CloseClick(object sender, EventArgs e)
         {
             this.Visible = false;
             if (Closed != null)
@@ -308,7 +280,7 @@ namespace Ra.Extensions.Widgets
         private void SetCssClassesAndMore()
         {
             // Setting the CSS classes for all "decoration controls"
-            string cssClass = this.CssClass;
+            string cssClass = CssClass;
             if (cssClass.IndexOf(' ') != -1)
                 cssClass = cssClass.Split(' ')[0];
 
