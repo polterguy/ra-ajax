@@ -572,6 +572,9 @@ namespace Ra
         {
             builder.Append("<script type=\"text/javascript\">");
             builder.Append(@"
+function RAUnInitialize() {
+  Ra.Ajax._isUnloading = true;
+}
 function RAInitialize() {
 ");
 
@@ -595,8 +598,10 @@ function RAInitialize() {
 (function() {
 if (window.addEventListener) {
   window.addEventListener('load', RAInitialize, false);
+  window.addEventListener('unload', RAUnInitialize, false);
 } else {
   window.attachEvent('onload', RAInitialize);
+  window.attachEvent('onunload', RAUnInitialize);
 }
 })();
 

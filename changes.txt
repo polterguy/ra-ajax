@@ -15,6 +15,9 @@
   specific level is initially expanded to. This will NOT work with 
   dynamically created menu items though...
 
+* Now tracking unload of window and shutting down all future Ajax 
+  requests on page after unloading of Window. 
+
 
 
 
