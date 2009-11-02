@@ -688,6 +688,8 @@ Ra.Ajax = Ra.klass();
 // Static list of queued Ajax requests
 Ra.Ajax._activeRequests = [];
 
+Ra.Ajax._isUnloading = false;
+
 // Starting message queue pump dispatching all active requests sequentially
 Ra.Ajax._startPumping = function() {
   if( !Ra.XHR.activeRequest ) {
@@ -701,6 +703,9 @@ Ra.Ajax._startPumping = function() {
 
 Ra.Ajax.prototype = {
   init: function(opt) {
+    if(Ra.Ajax._isUnloading) {
+      return;
+    }
     this.options = Ra.extend({
 
       // Extra arguments passed to the server
@@ -886,5 +891,7 @@ Ra.Effect.prototype = {
     this.options.onRender.call(this, pos);
   }
 };
+
+
 
 })();
