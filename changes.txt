@@ -17,8 +17,8 @@
 
 * Now tracking unload of window and shutting down all future Ajax 
   requests on page after unloading of Window. 
-
-
+  
+* Revamped the RichEdit widget.
 
 
 
