@@ -467,4 +467,215 @@ padding-right:7px; display:block; height:32px; }
 .wnd-light-head { border-bottom:solid 1px #CCD1FF; background-color:#fff; padding:5px; cursor:move; -moz-user-select:none; font-style:bold; }
 .wnd-light-close { font-size:0.8em; position:absolute; right:5px; top:5px; }
 
+/* RichEdit */
+.rich-edit
+{
+	height: 100%;
+	position: relative;
+}
+
+.rich-edit .toolbar
+{
+	background-color: #CCD1FF;
+	padding: 2px;
+	width: 100%;
+	height: 62px;
+}
+
+.rich-edit .editorMain
+{
+	width: 100%;
+	border: solid 2px #CCD1FF;
+	overflow: auto;
+	background-color: White;
+	min-height:250px;
+}
+
+.rich-edit .strip
+{
+	height: 25px;
+	width: auto;
+	display: inline-block;
+	margin: 5px 0 0 5px;
+}
+
+.rich-edit .strip .right
+{
+	background: url( 'RichEdit/sprite-toolbar.png' ) no-repeat right -50px;
+	padding-right: 2px;
+	display: block;
+}
+
+.rich-edit .strip .left
+{
+	background: url( 'RichEdit/sprite-toolbar.png' ) no-repeat 0 0;
+	padding-left: 2px;
+	display: block;
+}
+
+.rich-edit .strip .center
+{
+	background: url( 'RichEdit/sprite-toolbar.png' ) repeat-x 0 -25px;
+	display: block;
+	height: 25px;
+}
+
+.rich-edit .strip .stripContent
+{
+	display: block;
+	text-align: left;
+	white-space: nowrap;
+	padding: 3px;
+}
+
+.rich-edit .editorBtn
+{
+	display: inline-block;
+	width: 22px;
+	height: 21px;
+	background-image: url( 'RichEdit/sprite-buttons.png' );
+	background-repeat: no-repeat;
+	background-color: Transparent;
+	background-repeat: no-repeat;
+	border: solid 1px Transparent;
+}
+
+.rich-edit .editorBtn:hover
+{
+	border: solid 1px #316ac5;
+	background-color: #c1d2ee;
+}
+
+.rich-edit .bold
+{
+	background-position: -63px 0;
+}
+
+.rich-edit .italic
+{
+	background-position: 0 -20px;
+}
+
+.rich-edit .underline
+{
+	background-position: -42px 0;
+}
+
+.rich-edit .justifyleft
+{
+	background-position: -42px -20px;
+}
+
+.rich-edit .justifyright
+{
+	background-position: -126px -20px;
+}
+
+.rich-edit .justifycenter
+{
+	background-position: -84px 0;
+}
+
+.rich-edit .justifyfull
+{
+	background-position: -21px -20px;
+}
+
+.insertunorderedlist
+{
+	background-position: 0 0;
+}
+
+.insertorderedlist
+{
+	background-position: -84px -20px;
+}
+
+.indent
+{
+	background-position: -147px 0;
+}
+
+.outdent
+{
+	background-position: -105px -20px;
+}
+
+.image
+{
+	background-position: -126px 0;
+}
+
+.hyperlink
+{
+	background-position: -63px -20px;
+}
+
+.bottomBar
+{
+	height: 28px;
+}
+
+.designButton
+{
+	background-color: #CCD1FF;
+	padding: 5px;
+	border: none 0;
+	margin-right: 5px;
+	cursor: pointer;
+}
+
+.designButton:hover
+{
+	background-color: #dCe1FF;
+}
+
+.htmlButton
+{
+	background-color: #CCD1FF;
+	padding: 5px;
+	border: none 0;
+	cursor: pointer;
+}
+
+.htmlButton:hover
+{
+	background-color: #dCe1FF;
+}
+
+.activeTypeButton
+{
+	background-color: #9Cb1cF;
+	cursor: default;
+}
+
+.activeTypeButton:hover
+{
+	background-color: #9Cb1cF;
+}
+
+.editorSelect
+{
+	background-color: White;
+	border: none 0;
+	font-size: 8pt;
+	padding: 0;
+	margin: 2px 2px 0 2px;
+}
+
+.resourceExplorerFiles
+{
+	float: left;
+	width: 66%;
+	padding: 1%;
+	margin-left: 1%;
+	background-color: #fff;
+	border: 1px solid #CCD1FF;
+	height: 250px;
+}
+
+.createLink tr td
+{
+	padding: 2px;
+}
 

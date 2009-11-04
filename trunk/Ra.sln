@@ -42,7 +42,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Ra.Samples", "Ra.Samples\",
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "63310"
+		VWDPort = "49691"
 	EndProjectSection
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Ra.Tests.WebSite", "Ra.Tests.WebSite\", "{EF017E8B-C5FA-4E8D-92F4-710BA7933DDF}"
@@ -63,7 +63,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Ra.Tests.WebSite", "Ra.Test
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "63311"
+		VWDPort = "49693"
 	EndProjectSection
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Ra.WebSite", "Ra.WebSite\", "{A323A312-843F-4168-94E0-580D0B4E80F4}"
@@ -84,7 +84,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Ra.WebSite", "Ra.WebSite\",
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "63312"
+		VWDPort = "49695"
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ra.Builder", "Ra.Builder\Ra.Builder.csproj", "{500E1B00-9C19-4A39-BBAF-D60BCFB76552}"
