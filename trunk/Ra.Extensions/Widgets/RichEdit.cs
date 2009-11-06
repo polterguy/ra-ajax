@@ -49,7 +49,7 @@ namespace Ra.Extensions.Widgets
         [DefaultValue("")]
         public string Text
         {
-            get { return ViewState["Text"] == null ? "" : (string)ViewState["Text"]; }
+            get { return ViewState["Text"] == null ? "" : HttpUtility.UrlDecode((string)ViewState["Text"]); }
             set
             {
                 if (value != Text)

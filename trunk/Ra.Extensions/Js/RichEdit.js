@@ -131,31 +131,42 @@ Ra.extend(Ra.RichEdit.prototype, {
       return false;
     }, this);
 
-    Ra.$(clid + 'design').observe('click', function(){
-      this.options.ctrl.innerHTML = this.getValueElement().value;
-      this.getValueElement().style.display = 'none';
-      this.options.ctrl.style.display = '';
-      Ra.$(clid + 'design').className = 'designButton activeTypeButton';
-      Ra.$(clid + 'html').className = 'htmlButton';
-      this.enableControls(true);
-      this.isDesign = true;
-      return false;
-    }, this);
-
-    Ra.$(clid + 'html').observe('click', function(){
-      this.getValueElement().value = this.options.ctrl.innerHTML;
-      this.getValueElement().style.display = '';
-      this.options.ctrl.style.display = 'none';
-      Ra.$(clid + 'design').className = 'designButton';
-      Ra.$(clid + 'html').className = 'htmlButton activeTypeButton';
-      this.enableControls(false);
-      this.isDesign = false;
-      return false;
-    }, this);
+    Ra.$(clid + 'design').observe('click', this.switchToDesign, this);
+    Ra.$(clid + 'html').observe('click', this.switchToHtml, this);
 
     // We must handle focus and blur to STORE the old range of the editable element
     this.options.ctrl.observe('focus', this.onFocus, this);
     this.options.ctrl.observe('blur', this.onBlur, this);
+  },
+  
+  switchToHtml: function(){
+    if( !this.isDesign ){
+      return;
+    }
+    this.getValueElement().value = this.options.ctrl.innerHTML;
+    
+    this.getValueElement().style.display = '';
+    this.options.ctrl.style.display = 'none';
+    Ra.$(this.element.id + 'design').className = 'designButton';
+    Ra.$(this.element.id + 'html').className = 'htmlButton activeTypeButton';
+    this.enableControls(false);
+    this.isDesign = false;
+    return false;
+  },
+  
+  switchToDesign: function(){
+    if( this.isDesign ){
+      return;
+    }
+    this.options.ctrl.innerHTML = unescape(this.getValueElement().value);
+    
+    this.getValueElement().style.display = 'none';
+    this.options.ctrl.style.display = '';
+    Ra.$(this.element.id + 'design').className = 'designButton activeTypeButton';
+    Ra.$(this.element.id + 'html').className = 'htmlButton';
+    this.enableControls(true);
+    this.isDesign = true;
+    return false;
   },
 
   onBlur: function() {
@@ -241,8 +252,8 @@ Ra.extend(Ra.RichEdit.prototype, {
       'insertunorderedlist', 'insertorderedlist', 'selectTextType',
       'selectFontName', 'selectFontSize',
       'indent', 'outdent', 'image', 'hyperlink'];
-    for (var idx = 0; idx < arr.length; idx++) {
-      Ra.$(clid + arr[idx]).disabled = enable ? false : true;
+    for (var idx = 0; (idx < arr.length) && Ra.$(clid + arr[idx]); idx++) {
+      Ra.$(clid + arr[idx]).disabled = !enable;
       Ra.$(clid + arr[idx]).setOpacity(enable ? 1 : 0.2);
     }
   },
@@ -259,7 +270,7 @@ Ra.extend(Ra.RichEdit.prototype, {
     // before pushing back a request to the server so here we set the 
     // value of our hidden value field(s)
 
-    var toRemove = [{from:'<br>', to:'<br/>'}];
+    var toRemove = [{from:/<br>/ig, to:'<br/>'}, {from:/<script([\s\S]*?)<\/script>/ig, to:''}];
     var selection = this._selection;
     if( selection ) {
 
@@ -273,11 +284,7 @@ Ra.extend(Ra.RichEdit.prototype, {
 
       // Looping through swapping non-XHTML-conforming HTML with CONFORMING HTML
       for( var idx = 0; idx < toRemove.length; idx++ ) {
-        while(true) {
-          if( val.indexOf(toRemove[idx].from) == -1 )
-            break;
-          val = val.replace(toRemove[idx].from, toRemove[idx].to);
-        }
+        val = val.replace(toRemove[idx].from, toRemove[idx].to);
       }
 
       // Now we have the "selected HTML string" of the RichEdit and we can set the 
@@ -291,15 +298,15 @@ Ra.extend(Ra.RichEdit.prototype, {
     // Looping through swapping non-XHTML-conforming HTML with CONFORMING HTML
     var val = this.isDesign ? this.options.label.getContent() : this.getValueElement().value;
     for( var idx = 0; idx < toRemove.length; idx++ ) {
-      while(true) {
-        if( val.indexOf(toRemove[idx].from) == -1 )
-          break;
-        val = val.replace(toRemove[idx].from, toRemove[idx].to);
-      }
+      val = val.replace(toRemove[idx].from, toRemove[idx].to);
     }
 
     // Setting the hidden field value to get it back to the server
-    this.getValueElement().value = val;
+    this.getValueElement().value = escape(val);
+        
+    if( !this.isDesign ){
+      this.switchToDesign();
+    }
   },
 
   getValue: function() {
