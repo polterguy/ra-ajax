@@ -18,7 +18,15 @@
 * Now tracking unload of window and shutting down all future Ajax 
   requests on page after unloading of Window. 
   
-* Revamped the RichEdit widget.
+* Seriously revamped the RichEdit widget. It's now actually close
+  to being useful :)
+
+* Added support for executing scripts contained in contents of
+  widgets. This means you can add scripts inside of widgets and
+  they will be executed (on *all* browsers) when the Ajax Request
+  returns.
+
+
 
 
 

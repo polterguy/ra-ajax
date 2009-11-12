@@ -133,6 +133,8 @@ Ra.Element = Ra.klass();
 
 Ra.Element._guid = 1;
 
+Ra.Element._scriptReplace = '<script[^>]*>([\\S\\s]*?)<\/script>';
+
 // Note that this class is an "abstract class" which means you cannot create
 // new objects like this; var x = new Ra.Element; since it doesn't implement
 // the "init" function.
@@ -142,9 +144,26 @@ Ra.Element._guid = 1;
 Ra.Element.prototype = {
   
   // Sets content of element (wrapper around innerHTML)
-  setContent: function(html) {
-    this.innerHTML = html;
+  setContent: function(htm) {
+    htm = this.execAndStripScripts(htm);
+    this.innerHTML = htm;
     return this;
+  },
+
+  // Executes scripts in HTML and returns the HTML stripped of the scripts...
+  execAndStripScripts: function(html) {
+    var regEx = new RegExp(Ra.Element._scriptReplace, 'img');
+    var match = regEx.exec(html);
+    var found = false;
+    while(match) {
+      found = true;
+      eval(match[1]);
+      match = regEx.exec(html);
+    }
+    if( found ) {
+      return html.replace(regEx, '');
+    }
+    return html;
   },
 
   getContent: function() {
@@ -153,6 +172,10 @@ Ra.Element.prototype = {
 
   // Replaces element with given HTML
   replaceWith: function(htm) {
+
+    // Executing scripts...
+    htm = this.execAndStripScripts(htm);
+
     // Storing id for later to be able to "re-extend" and return "this" back to caller
     var elId = this.id;
 
