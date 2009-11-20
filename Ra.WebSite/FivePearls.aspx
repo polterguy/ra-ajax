@@ -16,7 +16,7 @@
     <p>
 	    These are the Pillars Ra-Software is built on. Every action we take is measured against
 	    these values. These Pillars might not be the reason why we can earn money, but they 
-	    definitely are the reason why we want to live. All people in
+	    definitely are the reason why we want to wake up in the morning. All people in
 	    Ra-Software have a strong commitment to these values.
     </p>
 
