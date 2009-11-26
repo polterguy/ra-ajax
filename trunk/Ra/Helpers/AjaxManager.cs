@@ -238,7 +238,8 @@ namespace Ra
             // including the ViewState which practically will completely break the back
             // button in addition to breaking down all Ajax when clicking back, forward or refresh
             // in FireFox...
-            if (((Page)HttpContext.Current.CurrentHandler).Request.Browser.Browser == "Firefox" || ((Page)HttpContext.Current.CurrentHandler).Request.Browser.Browser == "Iceweasel")
+            string browser = ((Page) HttpContext.Current.CurrentHandler).Request.Browser.Browser;
+            if ( browser == "Firefox" || browser == "Iceweasel" || browser == "Netscape" || browser.Contains("Mozilla"))
                 ((Page)HttpContext.Current.CurrentHandler).Form.Attributes.Add("autocomplete", "off");
         }
 
