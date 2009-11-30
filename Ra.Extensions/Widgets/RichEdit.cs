@@ -77,14 +77,14 @@ namespace Ra.Extensions.Widgets
          * functionality with CTRL+S, "copy" with CTRL+C and "paste" with CTRL+P.
          */
         [DefaultValue("")]
-        public string Keys
+        public string CtrlKeys
         {
-            get { return ViewState["Keys"] == null ? "" : ViewState["Keys"] as string; }
+            get { return ViewState["CtrlKeys"] == null ? "" : ViewState["CtrlKeys"] as string; }
             set
             {
-                if (value != Keys)
+                if (value != CtrlKeys)
                     SetJSONValueString("Keys", value);
-                ViewState["Keys"] = value;
+                ViewState["CtrlKeys"] = value;
             }
         }
 
@@ -168,7 +168,7 @@ namespace Ra.Extensions.Widgets
                     {
                         if (CtrlKey != null)
                         {
-                            CtrlKey(this, new CtrlKeysEventArgs(Page.Request.Params["__key"][0]));
+                            CtrlKey(this, new CtrlKeysEventArgs(Page.Request.Params["__key"].ToLowerInvariant()[0]));
                         }
                     } break;
                 default:
@@ -184,11 +184,11 @@ namespace Ra.Extensions.Widgets
         protected override string GetClientSideScriptOptions()
         {
             string retVal = base.GetClientSideScriptOptions();
-            if(!string.IsNullOrEmpty(Keys))
+            if (!string.IsNullOrEmpty(CtrlKeys))
             {
                 if (!string.IsNullOrEmpty(retVal))
                     retVal += ",";
-                retVal += "keys:'" + Keys.ToUpper().Replace(" ", "") + "'";
+                retVal += "keys:'" + CtrlKeys.ToUpper().Replace(" ", "") + "'";
             }
             return retVal;
         }

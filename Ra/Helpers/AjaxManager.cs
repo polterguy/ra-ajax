@@ -282,7 +282,6 @@ namespace Ra
                 if (retVal != null)
                     WriterAtBack.Write("Ra.Control._methodReturnValue='{0}';", 
                         string.Format(CultureInfo.InvariantCulture, "{0}", retVal).Replace("\\", "\\\\").Replace("'", "\\'"));
-                
                 return;
             }
 

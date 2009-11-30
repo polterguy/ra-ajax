@@ -11,6 +11,6 @@
 <ra:RichEdit
     ID="editor" 
     CssClass="rich-edit"
-    Keys="s,g"
+    CtrlKeys="s,g"
     OnCtrlKey="editor_CtrlKey"
     runat="server" />
