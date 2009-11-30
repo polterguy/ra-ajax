@@ -26,6 +26,9 @@
   they will be executed (on *all* browsers) when the Ajax Request
   returns.
 
+* Added support for CTRL keys in the RichEditor which means you
+  can handle stuff like for instance CTRL+S in your own code.
+
 
 
 

@@ -362,14 +362,20 @@ Ra.Control.prototype = {
     return !stop;
   },
 
-  callback: function(evt, func) {
+  callback: function(evt, func, params) {
     if( this.options.noQueue && this._hasRequest ) {
       return;
     }
     this._hasRequest = true;
     var T = this;
+    var arguments = '__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=' + evt;
+    if( params ) {
+      for(var idx = 0; idx < params.length; idx++) {
+        arguments += '&' + params[idx]['name'] + '=' + params[idx]['value'];
+      }
+    }
     var x = new Ra.Ajax({
-      args:'__RA_CONTROL=' + this.element.id + '&__EVENT_NAME=' + evt,
+      args:arguments,
       raCallback:true,
       onSuccess: function(resp) {
         try {
