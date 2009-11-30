@@ -42,9 +42,9 @@ Ra.extend(Ra.RichEdit.prototype, {
     this.isDesign = true;
     this.modifyHeight();
 
-    if(this.options.keys) {
-      this.Keys(this.options.keys);
-    }
+    var doc = Ra.extend(document, Ra.Element.prototype);
+    doc.observe('keydown', this._ctrlKeys, this);
+    this.Keys(this.options.keys);
 
     // We must have a preSerializer handler to make sure we serialize 
     // the value back to the server
@@ -158,22 +158,21 @@ Ra.extend(Ra.RichEdit.prototype, {
     return false;
   },
 
-  Keys: function(val) {
-    this.options._keyListeners = val.split(',');
-    var T = this;
-    var doc = Ra.extend(document, Ra.Element.prototype);
-    doc.observe('keydown', function(e){
-      if(e.ctrlKey && e.keyCode != 17) {
-        for(var idx = 0; idx < T.options._keyListeners.length; idx++) {
-          var code = T.options._keyListeners[idx];
-          var keyCode = String.fromCharCode(e.keyCode);
-          if(code == keyCode ) {
-            T.callback('ctrlKeys', null, [{'name':'__key','value':code}]);
-            return false;
-          }
+  _ctrlKeys: function(e) {
+    if(e.ctrlKey && e.keyCode != 17) {
+      for(var idx = 0; idx < this.options._keyListeners.length; idx++) {
+        var code = this.options._keyListeners[idx];
+        var keyCode = String.fromCharCode(e.keyCode);
+        if(code == keyCode ) {
+          this.callback('ctrlKeys', null, [{'name':'__key','value':code}]);
+          return false;
         }
       }
-    });
+    }
+  },
+
+  Keys: function(val) {
+    this.options._keyListeners = val.split(',');
   },
 
   switchToDesign: function(){
@@ -348,6 +347,9 @@ Ra.extend(Ra.RichEdit.prototype, {
 
     // Calling base
     this._destroyThisControl();
+
+    // Unlisten document keydown
+    document.stopObserving('keydown', this._ctrlKeys, this);
   }
 });
 })();
