@@ -40,7 +40,6 @@ Ra.extend(Ra.RichEdit.prototype, {
     this.options.label = lbl;
     this.options.ctrl = lbl;
     this.isDesign = true;
-    this.modifyHeight();
 
     var doc = Ra.extend(document, Ra.Element.prototype);
     doc.observe('keydown', this._ctrlKeys, this);
@@ -250,15 +249,6 @@ Ra.extend(Ra.RichEdit.prototype, {
       this.options.label.focus();
       this._execCommand('insertHTML', value);
     }
-  },
-
-  modifyHeight: function() {
-    var parHeight = this.options.ctrl.parentNode.clientHeight;
-    var fHeight = this.options.ctrl.parentNode.childNodes[0].clientHeight;
-    var tHeight = this.options.ctrl.parentNode.childNodes[4].clientHeight;
-    var nHeight = (parHeight - (fHeight + tHeight + 5));
-    this.options.ctrl.style.height = nHeight + 'px';
-    this.getValueElement().style.height = nHeight + 'px';
   },
 
   Text: function(val) {
