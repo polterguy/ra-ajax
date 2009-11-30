@@ -405,7 +405,15 @@ Ra.Element.prototype = {
         evt.returnValue = false;
         if( evt.stopPropagation ) {
           evt.stopPropagation();
-          evt.preventDefault();
+          switch(evN)
+          {
+            case 'keydown':
+            case 'keyup':
+            case 'keypress':
+              // We only do "prevent default action" if it's a key type of event...
+              evt.preventDefault();
+              break;
+          }
         }
         return false;
       } else if( retVal && retVal.length == 2 && retVal[0] === false && retVal[1] === false ) {
