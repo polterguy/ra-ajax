@@ -402,8 +402,10 @@ Ra.Element.prototype = {
       var retVal = func.apply(clCtx, prs);
       if( retVal === false ) {
         evt.cancelBubble = true;
+        evt.returnValue = false;
         if( evt.stopPropagation ) {
           evt.stopPropagation();
+          evt.preventDefault();
         }
         return false;
       } else if( retVal && retVal.length == 2 && retVal[0] === false && retVal[1] === false ) {

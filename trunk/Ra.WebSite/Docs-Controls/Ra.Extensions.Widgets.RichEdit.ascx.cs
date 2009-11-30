@@ -6,12 +6,14 @@
  *
  */
 
-using System;
-using Ra.Extensions;
-using Ra.Widgets;
+using Ra.Extensions.Widgets;
 using Ra.Effects;
 
 public partial class Docs_Controls_RichEdit : System.Web.UI.UserControl
 {
-    
+    protected void editor_CtrlKey(object sender, RichEdit.CtrlKeysEventArgs e)
+    {
+        lbl.Text = "Dead key clicked; " + e.Key;
+        new EffectHighlight(lbl, 200).Render();
+    }
 }

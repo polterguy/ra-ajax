@@ -34,13 +34,24 @@ namespace Ra.Extensions.Widgets
                 Controls = col;
             }
 
-            public ControlCollection Controls { get; internal set; }
+            public ControlCollection Controls { get; private set; }
+        }
+
+        public class CtrlKeysEventArgs : EventArgs
+        {
+            internal CtrlKeysEventArgs(char key)
+            {
+                Key = key;
+            }
+
+            public char Key { get; private set; }
         }
 
         private Panel _extraToolbarControls = new Panel();
 
         public event EventHandler GetImageDialog;
         public event EventHandler GetHyperLinkDialog;
+        public event EventHandler<CtrlKeysEventArgs> CtrlKey;
         public event EventHandler<ExtraToolbarControlsEventArgs> GetExtraToolbarControls;
 
         /**
@@ -55,6 +66,25 @@ namespace Ra.Extensions.Widgets
                 if (value != Text)
                     SetJSONValueString("Text", value);
                 ViewState["Text"] = value;
+            }
+        }
+
+        /**
+         * A comma separated list (string) of keys you want to map up with the combination
+         * of CTRL to serve as "control keys". E.g. if you set this one to; "S,C,P" then
+         * you could through handling the CtrlKeyClicked event get to know whenever anyone
+         * of S, C or P keys was clicked while holding down CTRL. Then you could supply "save"
+         * functionality with CTRL+S, "copy" with CTRL+C and "paste" with CTRL+P.
+         */
+        [DefaultValue("")]
+        public string Keys
+        {
+            get { return ViewState["Keys"] == null ? "" : ViewState["Keys"] as string; }
+            set
+            {
+                if (value != Keys)
+                    SetJSONValueString("Keys", value);
+                ViewState["Keys"] = value;
             }
         }
 
@@ -110,7 +140,9 @@ namespace Ra.Extensions.Widgets
 
         protected override void OnPreRender(EventArgs e)
         {
-            AjaxManager.Instance.IncludeScriptFromResource(typeof(RichEdit), "Ra.Extensions.Js.RichEdit.js");
+            AjaxManager.Instance.IncludeScriptFromResource(
+                typeof(RichEdit), 
+                "Ra.Extensions.Js.RichEdit.js");
             base.OnPreRender(e);
         }
 
@@ -132,6 +164,13 @@ namespace Ra.Extensions.Widgets
                             GetHyperLinkDialog(this, new EventArgs());
                         }
                     } break;
+                case "ctrlKeys":
+                    {
+                        if (CtrlKey != null)
+                        {
+                            CtrlKey(this, new CtrlKeysEventArgs(Page.Request.Params["__key"][0]));
+                        }
+                    } break;
                 default:
                     throw new ArgumentException("Unknown event sent to RichEdit");
             }
@@ -140,6 +179,18 @@ namespace Ra.Extensions.Widgets
         protected override string GetClientSideScriptType()
         {
             return "new Ra.RichEdit";
+        }
+
+        protected override string GetClientSideScriptOptions()
+        {
+            string retVal = base.GetClientSideScriptOptions();
+            if(!string.IsNullOrEmpty(Keys))
+            {
+                if (!string.IsNullOrEmpty(retVal))
+                    retVal += ",";
+                retVal += "keys:'" + Keys.ToUpper().Replace(" ", "") + "'";
+            }
+            return retVal;
         }
 
         protected override void RenderRaControl(HtmlBuilder builder)

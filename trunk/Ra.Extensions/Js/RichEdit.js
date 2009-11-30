@@ -35,12 +35,16 @@ Ra.extend(Ra.RichEdit.prototype, {
 
   initRichEdit: function() {
     var lbl = Ra.$(this.element.id + '_LBL');
-    
+
     lbl.contentEditable = true;
     this.options.label = lbl;
     this.options.ctrl = lbl;
     this.isDesign = true;
     this.modifyHeight();
+
+    if(this.options.keys) {
+      this.Keys(this.options.keys);
+    }
 
     // We must have a preSerializer handler to make sure we serialize 
     // the value back to the server
@@ -153,7 +157,25 @@ Ra.extend(Ra.RichEdit.prototype, {
     this.isDesign = false;
     return false;
   },
-  
+
+  Keys: function(val) {
+    this.options._keyListeners = val.split(',');
+    var T = this;
+    var doc = Ra.extend(document, Ra.Element.prototype);
+    doc.observe('keydown', function(e){
+      if(e.ctrlKey && e.keyCode != 17) {
+        for(var idx = 0; idx < T.options._keyListeners.length; idx++) {
+          var code = T.options._keyListeners[idx];
+          var keyCode = String.fromCharCode(e.keyCode);
+          if(code == keyCode ) {
+            T.callback('ctrlKeys', null, [{'name':'__key','value':code}]);
+            return false;
+          }
+        }
+      }
+    });
+  },
+
   switchToDesign: function(){
     if( this.isDesign ){
       return;
