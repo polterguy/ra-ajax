@@ -60,7 +60,6 @@ namespace Ra.Widgets
 			{
 				_hasRendered = (bool)savedState;
 			}
-            AjaxManager.Instance.WriterAtBack.Write("/*{0} + {1}*/", ClientID, _hasRendered);
 		}
 
 		protected override object SaveControlState()
