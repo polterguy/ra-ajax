@@ -19,7 +19,10 @@
     </csc>
   </target>
 
-  <target name="publish.samples" depends="compile.ra.selector" description="Publish and Precompile the Samples Website">
+  <target 
+      name="publish.samples" 
+      depends="compile.ra.selector" 
+      description="Publish and Precompile the Samples Website">
     <copy overwrite="true" todir="${output.dir}/${code.dir}/${samples.dir}">
       <fileset basedir="${samples.dir}">
         <include name="**/*.cs" />
