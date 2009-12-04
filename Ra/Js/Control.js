@@ -416,8 +416,6 @@ Ra.Control.prototype = {
     Ra.Control.errorHandler(stat, trc);
   },
 
-
-
   reRender: function(html) {
 
     // Since we're re-rendering the control we have to destroy 

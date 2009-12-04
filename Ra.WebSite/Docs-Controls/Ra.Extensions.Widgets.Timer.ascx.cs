@@ -7,8 +7,6 @@
  */
 
 using System;
-using Ra.Extensions;
-using Ra.Widgets;
 using Ra.Effects;
 
 public partial class Docs_Controls_Timer : System.Web.UI.UserControl
@@ -19,5 +17,12 @@ public partial class Docs_Controls_Timer : System.Web.UI.UserControl
         new EffectHighlight(lbl, 200).Render();
         Random rnd = new Random();
         new EffectMove(lbl, 400, rnd.Next(0, 350), rnd.Next(0, 250)).Render();
+    }
+
+    protected void btn_Click(object sender, EventArgs e)
+    {
+        timer.Enabled = !timer.Enabled;
+        lbl.Text = timer.Enabled ? "Timer enabled..." : "DISABLED";
+        timer.Duration = new Random().Next(100, 1500);
     }
 }

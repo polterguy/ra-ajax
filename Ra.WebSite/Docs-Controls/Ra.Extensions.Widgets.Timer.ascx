@@ -12,6 +12,12 @@
     ID="lbl" />
 </div>
 
+<ra:Button 
+    runat="server" 
+    ID="btn" 
+    Text="Click me..."
+    OnClick="btn_Click" />
+
 <ra:Timer 
     runat="server" 
     ID="timer" 

@@ -29,6 +29,15 @@
 * Added support for CTRL keys in the RichEditor which means you
   can handle stuff like for instance CTRL+S in your own code.
 
+* Slightly mofified the Ra-Ajax Timer documentation sample.
+
+* Added support for changing the Duration of the Timer during 
+  AJax callbacks.
+
+* Added logic that throws an exception when ReRender is being
+  called on a Timer to avoid confusion since it doesn't work,
+  and there are no circumstances where it's needed.
+
 
 
 

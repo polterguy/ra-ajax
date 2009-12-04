@@ -58,6 +58,10 @@ Ra.extend(Ra.Timer.prototype, {
     }
   },
 
+  Duration: function(value) {
+    this.options.duration = value;
+  },
+
   onFinishedTicking: function(response){
     this.onFinishedRequest(response);
     if( this.options.enabled )
