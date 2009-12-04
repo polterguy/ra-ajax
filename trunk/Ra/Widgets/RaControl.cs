@@ -80,7 +80,7 @@ namespace Ra.Widgets
          * child controls in the Controls collection will be re-rendered. Meaning the innerHTML of
          * the control will be sent in its entirety back to the client.
          */
-		public void ReRender()
+		virtual public void ReRender()
 		{
 			if (!AjaxManager.Instance.IsCallback || !HasRendered)
 				return;

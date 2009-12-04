@@ -54,16 +54,18 @@ namespace Ra.Extensions.Widgets
         [DefaultValue(1000)]
         public int Duration
         {
-            get { return ViewState["Milliseconds"] == null ? 1000 : (int)ViewState["Milliseconds"]; }
+            get { return ViewState["Duration"] == null ? 1000 : (int)ViewState["Duration"]; }
             set
             {
-                ViewState["Milliseconds"] = value;
+                if (value != Duration)
+                    SetJSONValueObject("Duration", value);
+                ViewState["Duration"] = value;
             }
         }
 
-        protected override void OnInit(EventArgs e)
+        public override void ReRender()
         {
-            base.OnInit(e);
+            throw new ApplicationException("You cannot, and should not call ReRender on a Timer");
         }
 
         protected override void OnPreRender(EventArgs e)
