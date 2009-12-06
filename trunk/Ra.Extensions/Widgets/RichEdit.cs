@@ -15,7 +15,6 @@ using HTML = System.Web.UI.HtmlControls;
 using System.Web.UI;
 using System.Web;
 using Ra.Builder;
-using Ra;
 
 [assembly: ASP.WebResource("Ra.Extensions.Js.RichEdit.js", "text/javascript")]
 
@@ -50,6 +49,7 @@ namespace Ra.Extensions.Widgets
         private Panel _extraToolbarControls = new Panel();
 
         public event EventHandler GetImageDialog;
+        public event EventHandler GetResourceDialog;
         public event EventHandler GetHyperLinkDialog;
         public event EventHandler<CtrlKeysEventArgs> CtrlKey;
         public event EventHandler<ExtraToolbarControlsEventArgs> GetExtraToolbarControls;
@@ -155,6 +155,13 @@ namespace Ra.Extensions.Widgets
                         if (GetImageDialog != null)
                         {
                             GetImageDialog(this, new EventArgs());
+                        }
+                    } break;
+                case "getResource":
+                    {
+                        if (GetResourceDialog != null)
+                        {
+                            GetResourceDialog(this, new EventArgs());
                         }
                     } break;
                 case "getHyperLink":
@@ -347,7 +354,7 @@ namespace Ra.Extensions.Widgets
                         CreateButton(builder, "outdent");
                     });
 
-                if (GetImageDialog != null || GetHyperLinkDialog != null)
+                if (GetImageDialog != null || GetHyperLinkDialog != null || GetResourceDialog != null)
                 {
                     // Image strip
                     CreateStrip(builder,
@@ -360,6 +367,10 @@ namespace Ra.Extensions.Widgets
                             if (GetHyperLinkDialog != null)
                             {
                                 CreateButton(builder, "hyperlink");
+                            }
+                            if (GetResourceDialog != null)
+                            {
+                                CreateButton(builder, "resources");
                             }
                         });
                 }
