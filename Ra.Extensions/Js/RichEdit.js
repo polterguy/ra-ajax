@@ -103,6 +103,13 @@ Ra.extend(Ra.RichEdit.prototype, {
       }, this);
     }
 
+    var resources = Ra.$(clid + 'resources');
+    if(resources) {
+      resources.observe('click', function(){
+        this.callback('getResource');
+      }, this);
+    }
+
     var hpl = Ra.$(clid + 'hyperlink');
     if(hpl) {
       hpl.observe('click', function(){
