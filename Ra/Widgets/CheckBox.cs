@@ -115,16 +115,19 @@ namespace Ra.Widgets
             // Since if ViewState is DISABLED we will NEVER come into LoadViewState we need to
             // have the same logic in OnInit since we really should modify the Text value to
             // the postback value BEFORE Page_Load event is fired...
-            if (Enabled && !this.IsViewStateEnabled && ((Page)HttpContext.Current.CurrentHandler).IsPostBack)
+            if (HasRendered)
             {
-                bool valueOfChecked = ((Page)HttpContext.Current.CurrentHandler).Request.Params[ClientID] == "on";
-                if (valueOfChecked != Checked)
-				{
-					// Note that to avoid the string taking up bandwidth BACK to the client
-					// which it obviously does not need to do we set the ViewState value here directly instead
-					// of going through the Checked property which will also modify the JSON collection
-                    ViewState["Checked"] = valueOfChecked;
-				}
+                if (Enabled && !IsViewStateEnabled && ((Page) HttpContext.Current.CurrentHandler).IsPostBack)
+                {
+                    bool valueOfChecked = ((Page) HttpContext.Current.CurrentHandler).Request.Params[ClientID] == "on";
+                    if (valueOfChecked != Checked)
+                    {
+                        // Note that to avoid the string taking up bandwidth BACK to the client
+                        // which it obviously does not need to do we set the ViewState value here directly instead
+                        // of going through the Checked property which will also modify the JSON collection
+                        ViewState["Checked"] = valueOfChecked;
+                    }
+                }
             }
             base.OnInit(e);
         }
@@ -136,16 +139,19 @@ namespace Ra.Widgets
             // Since if ViewState is DISABLED we will NEVER come into this bugger we need to
             // have the same logic in OnInit since we really should modify the Text value to
             // the postback value BEFORE Page_Load event is fired...
-            if (Enabled && ((Page)HttpContext.Current.CurrentHandler).IsPostBack)
+            if (HasRendered)
             {
-                bool valueOfChecked = ((Page)HttpContext.Current.CurrentHandler).Request.Params[ClientID] == "on";
-                if (valueOfChecked != Checked)
-				{
-					// Note that to avoid the string taking up bandwidth BACK to the client
-					// which it obviously does not need to do we set the ViewState value here directly instead
-					// of going through the Checked property which will also modify the JSON collection
-                    ViewState["Checked"] = valueOfChecked;
-				}
+                if (Enabled && ((Page) HttpContext.Current.CurrentHandler).IsPostBack)
+                {
+                    bool valueOfChecked = ((Page) HttpContext.Current.CurrentHandler).Request.Params[ClientID] == "on";
+                    if (valueOfChecked != Checked)
+                    {
+                        // Note that to avoid the string taking up bandwidth BACK to the client
+                        // which it obviously does not need to do we set the ViewState value here directly instead
+                        // of going through the Checked property which will also modify the JSON collection
+                        ViewState["Checked"] = valueOfChecked;
+                    }
+                }
             }
         }
 

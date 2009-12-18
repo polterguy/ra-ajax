@@ -38,6 +38,10 @@
   called on a Timer to avoid confusion since it doesn't work,
   and there are no circumstances where it's needed.
 
+* Fixed a sever bug in RadioButton and CheckBox which made
+  it not able to set its Checked state if the control wasn't
+  visble by default on the first rendering of the page.
+
 
 
 
