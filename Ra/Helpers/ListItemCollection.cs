@@ -15,8 +15,8 @@ namespace Ra.Widgets
 {
     public class ListItemCollection : ICollection, IList<ListItem>, IStateManager
     {
-        private List<ListItem> _list = new List<ListItem>();
-        private SelectList _control;
+        private readonly List<ListItem> _list = new List<ListItem>();
+        private readonly SelectList _control;
 
         public ListItemCollection(SelectList control)
         {
@@ -31,6 +31,23 @@ namespace Ra.Widgets
                     return idx;
             }
             return null;
+        }
+
+        public void AddRange(IEnumerable<ListItem> items)
+        {
+            foreach (ListItem item in items)
+            {
+                Add(item);
+            }
+        }
+
+        public ListItem FindByValue(string value)
+        {
+            return Find(
+                delegate(ListItem idx)
+                {
+                    return idx.Value == value;
+                });
         }
 
         #region ICollection Members
