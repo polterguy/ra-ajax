@@ -178,7 +178,7 @@ Ra.extend(Ra.RichEdit.prototype, {
   },
 
   Keys: function(val) {
-    this.options._keyListeners = val.split(',');
+    this.options._keyListeners = val == null ? '' : val.split(',');
   },
 
   switchToDesign: function(){

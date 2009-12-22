@@ -42,6 +42,9 @@
   it not able to set its Checked state if the control wasn't
   visble by default on the first rendering of the page.
 
+* Fixed bug that would trigger if no keyboard shortcuts 
+  was given to RichEdit
+
 
 
 
