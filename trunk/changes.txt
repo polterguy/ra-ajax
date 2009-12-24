@@ -49,6 +49,10 @@
   called "active" will be added on mouse over and removed
   on mouseout on Tree Nodes.
 
+* Fixed a bug in BehaviorDraggable which would not remove
+  the dragger when mouse left button was released before 
+  doing any actual dragging of the element.
+
 
 
 
