@@ -17,6 +17,9 @@ Ra.TreeNode = Ra.klass();
 Ra.extend(Ra.TreeNode.prototype, Ra.Control.prototype);
 
 
+Ra.TreeNode._list = [];
+
+
 // Creating IMPLEMENTATION of class
 Ra.extend(Ra.TreeNode.prototype, {
   init: function(el, opt) {
@@ -25,6 +28,54 @@ Ra.extend(Ra.TreeNode.prototype, {
       hasChildren:false,
       childCtrl:null
     }, this.options || {});
+    this.element.observe('mouseover', this.over, this);
+    this.element.observe('mouseout', this.out, this);
+  },
+
+  over: function() {
+    var found = false;
+    var idx = Ra.TreeNode._list.length;
+    while(idx--) {
+      if( Ra.TreeNode._list[idx].id.indexOf(this.element.id) != -1 ) {
+        found = true;
+      } else {
+        Ra.TreeNode._list[idx].removeClassName('tree-active');
+      }
+    }
+    Ra.TreeNode._list.push(this.element);
+    if( !found ) {
+      this.element.addClassName('tree-active');
+    }
+    Ra.TreeNode._list.sort(function(a,b) {
+      if( a.id.length < b.id.length ) {
+        return -1;
+      } else if( a.id.length > b.id.length ) {
+        return 1;
+      }
+      return 0;
+    });
+  },
+
+  out: function() {
+    this.element.removeClassName('tree-active');
+    var idx = Ra.TreeNode._list.length;
+    while(idx--) {
+      if( Ra.TreeNode._list[idx].id == this.element.id) {
+        Ra.TreeNode._list.splice(idx, 1);
+        break;
+      }
+    }
+    if( Ra.TreeNode._list.length > 0 ) {
+      Ra.TreeNode._list[Ra.TreeNode._list.length - 1].addClassName('tree-active');
+    }
+  },
+
+  destroyThis: function() {
+
+    this.element.stopObserving('mouseover', this.over, this);
+
+    // Forward call to allow overriding in inherited classes...
+    this._destroyThisControl();
   },
 
   expand: function() {

@@ -231,26 +231,6 @@ namespace Ra.Extensions.Widgets
                     value.AddAttribute("name", ClientID + "__SELTEXT");
                     value.AddAttribute("type", "hidden");
                 }
-
-                // Creating the bottom bar - which holds the switch between HTML/DESIGN buttons
-                using (Element bottomBar = builder.CreateElement("div"))
-                {
-                    bottomBar.AddAttribute("class", "bottomBar");
-                    using (Element design = builder.CreateElement("button"))
-                    {
-                        design.AddAttribute("class", "designButton activeTypeButton");
-                        design.AddAttribute("id", ClientID + "design");
-                        design.AddAttribute("onclick", "return false;");
-                        design.Write("Design");
-                    }
-                    using (Element html = builder.CreateElement("button"))
-                    {
-                        html.AddAttribute("class", "htmlButton");
-                        html.AddAttribute("id", ClientID + "html");
-                        html.AddAttribute("onclick", "return false;");
-                        html.Write("HTML");
-                    }
-                }
             }
         }
 
@@ -260,6 +240,14 @@ namespace Ra.Extensions.Widgets
             {
                 toolbar.AddAttribute("class", "toolbar");
                 toolbar.AddAttribute("id", ClientID + "toolbar");
+
+                // HTML/WYSIWYG buttons
+                CreateStrip(builder,
+                    delegate
+                    {
+                        CreateButton(builder, "design");
+                        CreateButton(builder, "html");
+                    });
 
                 // Text style strip...
                 CreateStrip(builder,

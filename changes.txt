@@ -45,6 +45,10 @@
 * Fixed bug that would trigger if no keyboard shortcuts 
   was given to RichEdit
 
+* In Tree, if ClientSideExpansion is true, a CSS class 
+  called "active" will be added on mouse over and removed
+  on mouseout on Tree Nodes.
+
 
 
 
