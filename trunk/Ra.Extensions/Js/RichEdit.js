@@ -157,8 +157,6 @@ Ra.extend(Ra.RichEdit.prototype, {
     
     this.getValueElement().style.display = '';
     this.options.ctrl.style.display = 'none';
-    Ra.$(this.element.id + 'design').className = 'designButton';
-    Ra.$(this.element.id + 'html').className = 'htmlButton activeTypeButton';
     this.enableControls(false);
     this.isDesign = false;
     return false;
@@ -189,8 +187,6 @@ Ra.extend(Ra.RichEdit.prototype, {
     
     this.getValueElement().style.display = 'none';
     this.options.ctrl.style.display = '';
-    Ra.$(this.element.id + 'design').className = 'designButton activeTypeButton';
-    Ra.$(this.element.id + 'html').className = 'htmlButton';
     this.enableControls(true);
     this.isDesign = true;
     return false;

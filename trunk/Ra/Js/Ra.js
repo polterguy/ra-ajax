@@ -300,7 +300,9 @@ Ra.Element.prototype = {
 
   // Appends a class name to the class of the element
   addClassName: function(cls) {
-    this.className += (this.className ? ' ' : '') + cls;
+    if( this.className.indexOf(cls) == -1 ) {
+      this.className += (this.className ? ' ' : '') + cls;
+    }
     return this;
   },
 
