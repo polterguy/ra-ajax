@@ -73,6 +73,7 @@ Ra.extend(Ra.TreeNode.prototype, {
   destroyThis: function() {
 
     this.element.stopObserving('mouseover', this.over, this);
+    this.element.stopObserving('mouseout', this.out, this);
 
     // Forward call to allow overriding in inherited classes...
     this._destroyThisControl();

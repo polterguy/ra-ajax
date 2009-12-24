@@ -256,7 +256,6 @@ Ra.extend(Ra.BDrag.prototype, {
   onMouseDown: function(event) {
     if( this.options.enabled ) {
       this._hasCaption = true;
-      this._hasDragged = false;
       this._pos = this.pointer(event);
     
       this.parent.element.absolutize();
@@ -275,7 +274,7 @@ Ra.extend(Ra.BDrag.prototype, {
   // is currently being trapped for the DOM element of the control
   // but should be trapped for the document.body element.
   onMouseUp: function(event) {
-    if( !this._hasCaption || !this._hasDragged || !this.options.enabled) {
+    if( !this._hasCaption || !this.options.enabled) {
       return;
     }
     this._hasCaption = false;
@@ -316,7 +315,6 @@ Ra.extend(Ra.BDrag.prototype, {
   // function above.
   onMouseMove: function(event) {
     if( this._hasCaption && this.options.enabled) {
-      this._hasDragged = true;
       var pos = this.pointer(event);
       var xDelta = pos.x - this._pos.x;
       var yDelta = pos.y - this._pos.y;
