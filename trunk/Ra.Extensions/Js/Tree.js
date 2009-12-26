@@ -47,9 +47,9 @@ Ra.extend(Ra.TreeNode.prototype, {
       this.element.addClassName('tree-active');
     }
     Ra.TreeNode._list.sort(function(a,b) {
-      if( a.id.length < b.id.length ) {
+      if( a.id < b.id ) {
         return -1;
-      } else if( a.id.length > b.id.length ) {
+      } else if( a.id > b.id ) {
         return 1;
       }
       return 0;

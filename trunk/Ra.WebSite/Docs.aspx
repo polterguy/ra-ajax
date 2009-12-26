@@ -22,6 +22,7 @@
             <ra:Tree 
                 runat="server" 
                 OnSelectedNodeChanged="tree_SelectedNodeChanged"
+                UseRichAnimations="true"
                 ID="tree">
                 <ra:TreeNodes runat="server" ID="topNodes">
                     <ra:TreeNode 

@@ -112,6 +112,28 @@ namespace Ra.Extensions.Widgets
             }
         }
 
+        /**
+         * If true then the Tree will use the Tree.js file which will give you some
+         * additional benefits in regards to animation and such. The default value
+         * is false, but if you set ClientSideExpansion to true, the Tree.js file will
+         * anyway be included. The reason for this logic is so that you can logically
+         * choose rich animation but also at the same time choose "whole row selection".
+         */
+        [DefaultValue(false)]
+        public bool UseRichAnimations
+        {
+            get
+            {
+                if (ViewState["UseRichAnimations"] == null)
+                    return false;
+                return (bool)ViewState["UseRichAnimations"];
+            }
+            set
+            {
+                ViewState["UseRichAnimations"] = value;
+            }
+        }
+
         protected override void OnPreRender(EventArgs e)
         {
             int count = 0;
