@@ -11,7 +11,6 @@ using System.ComponentModel;
 using WEBCTRLS = System.Web.UI.WebControls;
 using ASP = System.Web.UI;
 using Ra.Widgets;
-using System.IO;
 using HTML = System.Web.UI.HtmlControls;
 using Ra.Effects;
 
@@ -25,7 +24,7 @@ namespace Ra.Extensions.Widgets
     [ASP.ToolboxData("<{0}:InPlaceEdit runat=server />")]
     public class InPlaceEdit : Panel, ASP.INamingContainer
     {
-        private Label _link = new Label();
+        private LinkButton _link = new LinkButton();
         private TextBox _text = new TextBox();
 
         /**
@@ -89,6 +88,7 @@ namespace Ra.Extensions.Widgets
         {
             _text.Visible = false;
             _link.Visible = true;
+            new EffectFocusAndSelect(_link).Render();
         }
 
         private void _text_Updated(object sender, EventArgs e)
