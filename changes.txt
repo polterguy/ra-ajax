@@ -59,6 +59,13 @@
   being forced to use SingleClickPlusSign expansion
   and ClientSideExpansions to set it.
 
+* Changed the InPlaceEdit to be a LinkButton since then it
+  will obey the tab ordering on the page...
+  Also made it get focus when esc is clicked to close the 
+  InPlaceEdit.
+  BREAKING CHANGE!!
+  Might break existing CSS!
+
 
 
 
