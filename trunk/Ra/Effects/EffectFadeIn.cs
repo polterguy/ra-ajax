@@ -41,7 +41,7 @@ namespace Ra.Effects
 		
 		private void UpdateStyleCollection()
 		{
-			RaWebControl tmp = this.Control as RaWebControl;
+			RaWebControl tmp = Control as RaWebControl;
 			if (tmp != null)
 			{
                 tmp.Style.SetStyleValueViewStateOnly("opacity", "1.0");
