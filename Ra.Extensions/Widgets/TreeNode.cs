@@ -7,11 +7,9 @@
  */
 
 using System;
-using System.ComponentModel;
 using WEBCTRLS = System.Web.UI.WebControls;
 using ASP = System.Web.UI;
 using Ra.Widgets;
-using System.IO;
 using HTML = System.Web.UI.HtmlControls;
 using System.Collections.Generic;
 using Ra.Builder;
@@ -38,21 +36,21 @@ namespace Ra.Extensions.Widgets
             if (ParentTree.Expansion == Tree.ExpansionType.SingleClickEntireRow)
             {
                 if (ParentTree.SelectionMode != Tree.SelectionModeType.NoSelection)
-                    this.Click += TreeNode_Selected;
+                    Click += TreeNode_Selected;
                 if (ParentTree.ClientSideExpansion)
                 {
-                    this.OnClickClientSide += 
+                    OnClickClientSide += 
                         string.Format("function(){{Ra.Control.$('{0}').expand();return false;}}", ClientID);
                 }
                 else
                 {
-                    this.Click += ExpandNode;
+                    Click += ExpandNode;
                 }
             }
             else if (ParentTree.Expansion == Tree.ExpansionType.SingleClickPlusSign)
             {
                 if (ParentTree.SelectionMode != Tree.SelectionModeType.NoSelection)
-                    this.Click += TreeNode_Selected;
+                    Click += TreeNode_Selected;
                 if (ParentTree.ClientSideExpansion)
                 {
                     _expander.OnClickClientSide +=
@@ -113,14 +111,11 @@ namespace Ra.Extensions.Widgets
 
         protected override string GetClientSideScriptType()
         {
-            if (ParentTree.ClientSideExpansion)
+            if (ParentTree.ClientSideExpansion || ParentTree.UseRichAnimations)
             {
                 return "new Ra.TreeNode";
             }
-            else
-            {
-                return base.GetClientSideScriptType();
-            }
+            return base.GetClientSideScriptType();
         }
 
         protected override string GetClientSideScriptOptions()
@@ -128,16 +123,16 @@ namespace Ra.Extensions.Widgets
             string retVal = base.GetClientSideScriptOptions();
             if (ParentTree.ClientSideExpansion)
             {
-                if (this.ChildTreeNodes != null)
+                if (ChildTreeNodes != null)
                 {
                     if (!string.IsNullOrEmpty(retVal))
                         retVal += ",";
-                    if (this.ChildTreeNodes.HasChildren)
+                    if (ChildTreeNodes.HasChildren)
                     {
                         // This value defaults to false in JS file anyway...
                         retVal += "hasChildren:true,";
                     }
-                    retVal += "childCtrl:'" + this.ChildTreeNodes.ClientID + "'";
+                    retVal += "childCtrl:'" + ChildTreeNodes.ClientID + "'";
                 }
             }
             return retVal;
@@ -280,12 +275,12 @@ namespace Ra.Extensions.Widgets
 
         protected override void OnPreRender(EventArgs e)
         {
-            if (ParentTree.ClientSideExpansion)
+            if (ParentTree.ClientSideExpansion || ParentTree.UseRichAnimations)
             {
                 AjaxManager.Instance.IncludeScriptFromResource(typeof(TreeNode), "Ra.Extensions.Js.Tree.js");
             }
 
-            if (!(this.Parent is TreeNodes))
+            if (!(Parent is TreeNodes))
                 throw new Exception("Cannot have a TreeNode being a child of anything else but a TreeNodes collection");
             int count = 0;
             foreach (ASP.Control idx in Controls)

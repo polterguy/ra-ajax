@@ -13,6 +13,7 @@
     runat="server" 
     style="width:250px;height:200px;overflow:auto;" 
     OnSelectedNodeChanged="tree_ItemClicked"
+    ClientSideExpansion="true"
     ID="tree">
 
     <ra:TreeNodes 

@@ -53,6 +53,13 @@
   the dragger when mouse left button was released before 
   doing any actual dragging of the element.
 
+* Added a property on the Tree Widget called 
+  "UseRichAnimations" which if set will turn on rich animations
+  with the mouse over/out effects on TreeNode items without
+  being forced to use SingleClickPlusSign expansion
+  and ClientSideExpansions to set it.
+
+
 
 
 
