@@ -66,6 +66,9 @@
   BREAKING CHANGE!!
   Might break existing CSS!
 
+* Fixed a bug in the SlidingMenu that would make links 
+  non-clickable in Chrome...
+
 
 
 
