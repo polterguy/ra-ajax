@@ -406,13 +406,13 @@ Ra.Element.prototype = {
         evt.cancelBubble = true;
         evt.returnValue = false;
         if( evt.stopPropagation ) {
-          evt.stopPropagation();
           switch(evN)
           {
             case 'keydown':
             case 'keyup':
             case 'keypress':
               // We only do "prevent default action" if it's a key type of event...
+              evt.stopPropagation();
               evt.preventDefault();
               break;
           }
