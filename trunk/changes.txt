@@ -69,6 +69,8 @@
 * Fixed a bug in the SlidingMenu that would make links 
   non-clickable in Chrome...
 
+* Fixed several bugs in the RichEdit widget. It should
+  be way more stable now.
 
 
 
