@@ -153,6 +153,7 @@ Ra.extend(Ra.RichEdit.prototype, {
     if( !this.isDesign ){
       return;
     }
+    this._selection = null;
     this.getValueElement().value = this.options.ctrl.innerHTML;
     
     this.getValueElement().style.display = '';
@@ -183,7 +184,7 @@ Ra.extend(Ra.RichEdit.prototype, {
     if( this.isDesign ){
       return;
     }
-    this.options.ctrl.innerHTML = unescape(this.getValueElement().value);
+    this.options.ctrl.innerHTML = this.getValueElement().value;
     
     this.getValueElement().style.display = 'none';
     this.options.ctrl.style.display = '';
@@ -265,7 +266,7 @@ Ra.extend(Ra.RichEdit.prototype, {
       'justifycenter', 'justifyright', 'justifyfull', 
       'insertunorderedlist', 'insertorderedlist', 'selectTextType',
       'selectFontName', 'selectFontSize',
-      'indent', 'outdent', 'image', 'hyperlink'];
+      'indent', 'outdent', 'image', 'hyperlink', 'resources'];
     for (var idx = 0; (idx < arr.length) && Ra.$(clid + arr[idx]); idx++) {
       Ra.$(clid + arr[idx]).disabled = !enable;
       Ra.$(clid + arr[idx]).setOpacity(enable ? 1 : 0.2);
@@ -313,13 +314,6 @@ Ra.extend(Ra.RichEdit.prototype, {
     var val = this.isDesign ? this.options.label.getContent() : this.getValueElement().value;
     for( var idx = 0; idx < toRemove.length; idx++ ) {
       val = val.replace(toRemove[idx].from, toRemove[idx].to);
-    }
-
-    // Setting the hidden field value to get it back to the server
-    this.getValueElement().value = escape(val);
-        
-    if( !this.isDesign ){
-      this.switchToDesign();
     }
   },
 
