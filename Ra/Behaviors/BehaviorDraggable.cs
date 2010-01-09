@@ -121,7 +121,8 @@ namespace Ra.Behaviors
                 RaWebControl parent = Parent as RaWebControl;
                 parent.Style.SetStyleValueViewStateOnly("left", Page.Request.Params["x"] + "px");
                 parent.Style.SetStyleValueViewStateOnly("top", Page.Request.Params["y"] + "px");
-                parent.Style.SetStyleValueViewStateOnly("position", "absolute");
+                if (parent.Style[Styles.position] != "fixed")
+                    parent.Style.SetStyleValueViewStateOnly("position", "absolute");
             }
         }
 

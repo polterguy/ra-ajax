@@ -315,6 +315,7 @@ Ra.extend(Ra.RichEdit.prototype, {
     for( var idx = 0; idx < toRemove.length; idx++ ) {
       val = val.replace(toRemove[idx].from, toRemove[idx].to);
     }
+    this.getValueElement().value = val;
   },
 
   getValue: function() {
