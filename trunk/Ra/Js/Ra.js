@@ -274,7 +274,8 @@ Ra.Element.prototype = {
     }
     var lft = this.getStyle('left');
     var top = this.getStyle('top');
-    if( this.getStyle('position') == 'absolute' && (lft && top) && (lft != 'auto' && top != 'auto') ) {
+    if( (this.getStyle('position') == 'absolute' || this.getStyle('position') == 'fixed') && 
+      (lft && top) && (lft != 'auto' && top != 'auto') ) {
       return;
     }
     var valueT = this.offsetTop  || 0;

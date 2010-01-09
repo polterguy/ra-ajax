@@ -121,6 +121,13 @@ namespace Ra.Widgets
             LoadControls(key, null);
         }
 
+        public void AppendControl(string key)
+        {
+            _key += "|" + key;
+            LoadDynamicControl(true);
+            ReRender();
+        }
+
         public void LoadControls(string key, object extra)
         {
             Controls.Clear();

@@ -72,6 +72,14 @@
 * Fixed several bugs in the RichEdit widget. It should
   be way more stable now.
 
+* Added support for "AppendControl" in Ra Dynamic.
+
+* Fixed a bug that would force "absolute" for 
+  BehaviorDraggable if style was set to "fixed". This
+  basically means that you can now also set the style 
+  "fixed" for the position of a Window or other draggable
+  widgets.
+
 
 
 
