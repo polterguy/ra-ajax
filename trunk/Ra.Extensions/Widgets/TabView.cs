@@ -23,12 +23,19 @@ namespace Ra.Extensions.Widgets
     public class TabView : Panel
     {
         private LinkButton _btnInParent;
+        private LinkButton _closeButton;
         private Panel _listElementInParent;
 
         public LinkButton Button
         {
             get { return _btnInParent; }
             set { _btnInParent = value; }
+        }
+
+        public LinkButton CloseButton
+        {
+            get { return _closeButton; }
+            set { _closeButton = value; }
         }
 
         internal Panel ListElement

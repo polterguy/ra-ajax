@@ -61,18 +61,28 @@ namespace Ra.Extensions.Widgets
         /**
          * Returns the collection of TabViews in the control
          */
-		public IEnumerable<TabView> Views
+		public List<TabView> Views
 		{
 			get
 			{
+                List<TabView> views = new List<TabView>();
 				foreach (ASP.Control idx in Controls)
 				{
-					if (idx is TabView)
-						yield return idx as TabView;
+                    if (idx is TabView)
+                        views.Add(idx as TabView);
 				}
+                return views;
 			}
 		}
-		
+
+        public List<TabView> EnabledVisibleViews
+        {
+            get
+            {
+                return Views.FindAll(delegate(TabView tab) { return tab.Enabled && tab.Visible; });
+            }
+        }
+        
         /**
          * Returns the active tabview
          */
@@ -132,24 +142,11 @@ namespace Ra.Extensions.Widgets
             Controls.AddAt(0, _topPanel);
 		}
 
-        private int Count
-        {
-            get
-            {
-                int retVal = 0;
-                foreach(TabView idx in Views)
-                {
-                    retVal += 1;
-                }
-                return retVal;
-            }
-        }
-
         private void CreateChildTabViews()
         {
             HTML.HtmlGenericControl ul = new HTML.HtmlGenericControl("ul");
 
-            Panel[] _tabHeaders = new Panel[Count];
+            Panel[] _tabHeaders = new Panel[Views.Count];
             int idxTabView = 0;
 
             int litCount = 0;
@@ -196,6 +193,15 @@ namespace Ra.Extensions.Widgets
                 right.InnerHtml = "&nbsp;";
                 _tabHeaders[idxTabView].Controls.Add(right);
 
+                LinkButton closeButton = new LinkButton();
+                closeButton.ID = "tab_view_xbtn" + tabView;
+                closeButton.Text = "&nbsp;";
+                right.Controls.Add(closeButton);
+                view.CloseButton = closeButton;
+
+                if (EnabledVisibleViews.Count < 2)
+                    closeButton.Visible = false;
+
                 ul.Controls.Add(_tabHeaders[idxTabView]);
                 idxTabView += 1;
             }
@@ -241,6 +247,7 @@ Ra.$('{3}').style.display = '';
                 else
                 {
                     idx.Button.Click += btn_Click;
+                    idx.CloseButton.Click += closeButton_Click;
                 }
             }
         }
@@ -279,6 +286,20 @@ Ra.$('{3}').style.display = '';
                 }
             }
 			this.SetActiveTabViewIndex(newIdx);
+            if (ActiveTabViewChanged != null)
+                ActiveTabViewChanged(this, new EventArgs());
+        }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = sender as LinkButton;
+            int newIdx = Int32.Parse(btn.ID.Replace("tab_view_xbtn", ""));
+
+            Views[newIdx].Visible = false;
+            
+            if (ActiveTabViewIndex == newIdx)
+                SetActiveTabViewIndex(Views.FindIndex(delegate(TabView tab) { return tab.Visible && tab.Enabled; }));
+
             if (ActiveTabViewChanged != null)
                 ActiveTabViewChanged(this, new EventArgs());
         }
