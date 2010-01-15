@@ -199,9 +199,6 @@ namespace Ra.Extensions.Widgets
                 right.Controls.Add(closeButton);
                 view.CloseButton = closeButton;
 
-                if (EnabledVisibleViews.Count < 2)
-                    closeButton.Visible = false;
-
                 ul.Controls.Add(_tabHeaders[idxTabView]);
                 idxTabView += 1;
             }
@@ -254,6 +251,7 @@ Ra.$('{3}').style.display = '';
 
         protected override void OnPreRender(EventArgs e)
         {
+            bool enabledClosedButtons = EnabledVisibleViews.Count >= 2;
             foreach (TabView idx in Views)
             {
                 idx.Button.Text = idx.Caption;
@@ -266,6 +264,10 @@ Ra.$('{3}').style.display = '';
                 {
                     if (idx.ListElement.CssClass.IndexOf(" tab-disabled") == -1)
                         idx.ListElement.CssClass += " tab-disabled";
+                }
+                if (enabledClosedButtons)
+                {
+                    idx.CloseButton.Visible = enabledClosedButtons;
                 }
             }
             base.OnPreRender(e);
