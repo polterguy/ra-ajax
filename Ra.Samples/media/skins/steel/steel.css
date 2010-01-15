@@ -304,7 +304,7 @@ http://ra-ajax.org
 .tab { width:95%; }
 .tab .tab-header { margin-bottom:-1px; }
 .tab .tab-header ul { }
-.tab .tab-header ul li { display:inline; padding-right:2px; }
+.tab .tab-header ul li { display:inline; padding-right:4px; }
 .tab .tab-header ul li.first { margin-left:3px; }
 .tab .tab-header ul li a { text-decoration:none; color:#777; padding:5px; }
 .tab .tab-header ul li a:hover { color:#00f; background-color:Transparent; }
@@ -314,13 +314,19 @@ http://ra-ajax.org
 .tab .tab-header ul li span { display:inline-block; *height:18px; padding-top:5px; }
 .tab .tab-header ul li span.left { background:url('tab-sprite.png') no-repeat; width:10px; border-bottom:solid 1px #d0d0d0; }
 .tab .tab-header ul li span.center { background:url('tab-h-sprite.png') repeat-x; border-bottom:solid 1px #d0d0d0; }
-.tab .tab-header ul li span.right { background:url('tab-sprite.png') no-repeat -10px 0; width:10px; border-bottom:solid 1px #d0d0d0; }
+.tab .tab-header ul li span.right { background:url('tab-sprite.png') no-repeat -2px 0; width:18px; border-bottom:solid 1px #d0d0d0; }
 .tab .tab-header ul li.active a { cursor:default; }
 .tab .tab-header ul li.active a:hover { color:inherit; }
 .tab .tab-header ul li.active span.left { background:url('tab-sprite.png') no-repeat; border-bottom:solid 1px #fff; }
 .tab .tab-header ul li.active span.center { background:url('tab-h-sprite.png') repeat-x; border-bottom:solid 1px #fff; }
-.tab .tab-header ul li.active span.right { background:url('tab-sprite.png') no-repeat -10px 0; border-bottom:solid 1px #fff; }
+.tab .tab-header ul li.active span.right { background:url('tab-sprite.png') no-repeat -2px 0; border-bottom:solid 1px #fff; }
 .tab .content { padding:5px; background-color:#fdfdfd; border:solid 1px #d0d0d0; }
+
+.tab .tab-header ul li span.right a { width:10px; padding:2px 5px 0; background:transparent url(window-sprite.png) no-repeat -16px 0; }
+.tab .tab-header ul li span.right a:hover	{ background-color:transparent; background-position:-16px -16px; }
+
+.tab .tab-header ul li.active span.right a { cursor:pointer; width:10px; padding:2px 5px 0; background:transparent url(window-sprite.png) no-repeat -16px 0; }
+.tab .tab-header ul li.active span.right a:hover	{ background-color:transparent; background-position:-16px -16px; }
 
 
 /* Accordion */
