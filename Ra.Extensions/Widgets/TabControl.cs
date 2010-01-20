@@ -79,7 +79,11 @@ namespace Ra.Extensions.Widgets
         {
             get
             {
-                return Views.FindAll(delegate(TabView tab) { return tab.Enabled && tab.Visible; });
+                return Views.FindAll(
+                    delegate(TabView tab)
+                    {
+                        return tab.Enabled && tab.Visible;
+                    });
             }
         }
         
@@ -265,10 +269,7 @@ Ra.$('{3}').style.display = '';
                     if (idx.ListElement.CssClass.IndexOf(" tab-disabled") == -1)
                         idx.ListElement.CssClass += " tab-disabled";
                 }
-                if (enabledClosedButtons)
-                {
-                    idx.CloseButton.Visible = enabledClosedButtons;
-                }
+                idx.CloseButton.Visible = enabledClosedButtons;
             }
             base.OnPreRender(e);
         }
