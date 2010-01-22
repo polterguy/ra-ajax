@@ -417,7 +417,10 @@ Ra.Control.prototype = {
   },
 
   reRender: function(html) {
+    this._reRender(html);
+  },
 
+  _reRender: function(html) {
     // Since we're re-rendering the control we have to destroy 
     // the child controls in addition to unlistening all the event handlers
     // for the "this control" before re initializing the event handlers again 
