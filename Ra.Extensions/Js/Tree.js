@@ -9,15 +9,46 @@
 
 (function(){
 
+// Creating class for Tree
+Ra.Tree = Ra.klass();
+
+Ra.Tree._list = [];
+
+// Inheriting from Ra.Control
+Ra.extend(Ra.Tree.prototype, Ra.Control.prototype);
+
+Ra.extend(Ra.Tree.prototype, {
+  init: function(el, opt) {
+    this.initControl(el, opt);
+    Ra.Tree._list = [];
+  },
+
+  reRender: function(html) {
+    Ra.Tree._list = [];
+    this._reRender(html);
+  }
+});
+
+// Creating class for Tree
+Ra.TreeNodes = Ra.klass();
+
+// Inheriting from Ra.Control
+Ra.extend(Ra.TreeNodes.prototype, Ra.Control.prototype);
+
+Ra.extend(Ra.TreeNodes.prototype, {
+
+  reRender: function(html) {
+    Ra.Tree._list = [];
+    this._reRender(html);
+  }
+});
+
 // Creating class
 Ra.TreeNode = Ra.klass();
 
 
 // Inheriting from Ra.Control
 Ra.extend(Ra.TreeNode.prototype, Ra.Control.prototype);
-
-
-Ra.TreeNode._list = [];
 
 
 // Creating IMPLEMENTATION of class
@@ -34,19 +65,19 @@ Ra.extend(Ra.TreeNode.prototype, {
 
   over: function() {
     var found = false;
-    var idx = Ra.TreeNode._list.length;
+    var idx = Ra.Tree._list.length;
     while(idx--) {
-      if( Ra.TreeNode._list[idx].id.indexOf(this.element.id) != -1 ) {
+      if( Ra.Tree._list[idx].id.indexOf(this.element.id) != -1 ) {
         found = true;
       } else {
-        Ra.TreeNode._list[idx].removeClassName('tree-active');
+        Ra.Tree._list[idx].removeClassName('tree-active');
       }
     }
-    Ra.TreeNode._list.push(this.element);
+    Ra.Tree._list.push(this.element);
     if( !found ) {
       this.element.addClassName('tree-active');
     }
-    Ra.TreeNode._list.sort(function(a,b) {
+    Ra.Tree._list.sort(function(a,b) {
       if( a.id < b.id ) {
         return -1;
       } else if( a.id > b.id ) {
@@ -58,21 +89,16 @@ Ra.extend(Ra.TreeNode.prototype, {
 
   out: function() {
     this.element.removeClassName('tree-active');
-    var idx = Ra.TreeNode._list.length;
+    var idx = Ra.Tree._list.length;
     while(idx--) {
-      if( Ra.TreeNode._list[idx].id == this.element.id) {
-        Ra.TreeNode._list.splice(idx, 1);
+      if( Ra.Tree._list[idx].id == this.element.id) {
+        Ra.Tree._list.splice(idx, 1);
         break;
       }
     }
-    if( Ra.TreeNode._list.length > 0 ) {
-      Ra.TreeNode._list[Ra.TreeNode._list.length - 1].addClassName('tree-active');
+    if( Ra.Tree._list.length > 0 ) {
+      Ra.Tree._list[Ra.Tree._list.length - 1].addClassName('tree-active');
     }
-  },
-
-  reRender: function(html) {
-    Ra.TreeNode._list = [];
-    this._reRender(html);
   },
 
   destroyThis: function() {
