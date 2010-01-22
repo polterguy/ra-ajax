@@ -228,6 +228,15 @@ namespace Ra.Extensions.Widgets
             }
         }
 
+        protected override string GetClientSideScriptType()
+        {
+            if (ClientSideExpansion || UseRichAnimations)
+            {
+                return "new Ra.Tree";
+            }
+            return base.GetClientSideScriptType();
+        }
+
         internal void RaiseSelectedNodeChanged()
         {
             if (SelectedNodeChanged != null)

@@ -158,6 +158,28 @@ namespace Ra.Extensions.Widgets
             }
         }
 
+        private Tree ParentTree
+        {
+            get
+            {
+                // Looping upwards in the Control hierarchy until we 
+                // find a Control of type "Tree"
+                ASP.Control ctrl = this.Parent;
+                while (ctrl != null && !(ctrl is Tree))
+                    ctrl = ctrl.Parent;
+                return ctrl as Tree;
+            }
+        }
+
+        protected override string GetClientSideScriptType()
+        {
+            if (ParentTree.ClientSideExpansion || ParentTree.UseRichAnimations)
+            {
+                return "new Ra.TreeNodes";
+            }
+            return base.GetClientSideScriptType();
+        }
+
         // Used for animating down when expanded
         public void RollDown()
         {
