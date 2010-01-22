@@ -70,6 +70,11 @@ Ra.extend(Ra.TreeNode.prototype, {
     }
   },
 
+  reRender: function(html) {
+    Ra.TreeNode._list = [];
+    this._reRender(html);
+  },
+
   destroyThis: function() {
 
     this.element.stopObserving('mouseover', this.over, this);
