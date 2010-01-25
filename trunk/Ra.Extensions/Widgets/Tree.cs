@@ -136,6 +136,11 @@ namespace Ra.Extensions.Widgets
 
         protected override void OnPreRender(EventArgs e)
         {
+            if (ClientSideExpansion || UseRichAnimations)
+            {
+                AjaxManager.Instance.IncludeScriptFromResource(typeof(TreeNode), "Ra.Extensions.Js.Tree.js");
+            }
+
             int count = 0;
             foreach (ASP.Control idx in Controls)
             {

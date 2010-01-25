@@ -275,11 +275,6 @@ namespace Ra.Extensions.Widgets
 
         protected override void OnPreRender(EventArgs e)
         {
-            if (ParentTree.ClientSideExpansion || ParentTree.UseRichAnimations)
-            {
-                AjaxManager.Instance.IncludeScriptFromResource(typeof(TreeNode), "Ra.Extensions.Js.Tree.js");
-            }
-
             if (!(Parent is TreeNodes))
                 throw new Exception("Cannot have a TreeNode being a child of anything else but a TreeNodes collection");
             int count = 0;
