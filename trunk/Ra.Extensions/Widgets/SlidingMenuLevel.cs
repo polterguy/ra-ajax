@@ -29,7 +29,16 @@ namespace Ra.Extensions.Widgets
         private bool _hasLoadedDynamicControls;
 
         /**
-         * Raised when the SliderMenuLevel needs to get its SliderMenuItem children. Note that this
+         * Returns true if the child menu items of this SlidingMenuLevel have been loaded, otherwise 
+         * returns false
+         */
+        public bool ChildNodesLoaded
+        {
+            get { return _hasLoadedDynamicControls; }
+        }
+
+        /**
+         * Raised when the SlidingMenuLevel needs to get its SliderMenuItem children. Note that this
          * event will be raised on EVERY postback for every SliderMenuLevel controls on your page which
          * have dynamically rendered nodes. This means you should make sure the event handler for this
          * event executes FAST!
@@ -94,7 +103,7 @@ namespace Ra.Extensions.Widgets
 
             // Reloading dynamic items, but only if the have been loaded before...
             if (_hasLoadedDynamicControls)
-                GetDynamicNodes();
+                RaiseGetChildNodes();
 
             if (Root.ActiveLevel == this.ID || 
                 (string.IsNullOrEmpty(Root.ActiveLevel) && this.Parent is SlidingMenu))
@@ -150,11 +159,11 @@ namespace Ra.Extensions.Widgets
                 if (idx is SlidingMenuItem)
                     return false;
             }
-            GetDynamicNodes();
+            RaiseGetChildNodes();
             return true;
         }
 
-        private void GetDynamicNodes()
+        public void RaiseGetChildNodes()
         {
             if (GetChildNodes != null)
             {

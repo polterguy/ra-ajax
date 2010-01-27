@@ -224,7 +224,7 @@ namespace Ra.Extensions.Widgets
                     SetAllChildrenNonVisible(idx);
                 }
             }
-            ActiveLevel = item.ID;
+            SetActiveLevel(item);
             ASP.Control cur = item;
             SlidingMenuLevel topLevel = null;
             int idxNoLevels = -1;
