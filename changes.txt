@@ -7,6 +7,22 @@
 
   ------------------------------------------------------------------
 
+                          Version 2.0.5
+
+  ------------------------------------------------------------------
+
+* Fixed a bug in the "ExpandTo" method of "SlidingMenu".
+
+* Added support to programmatically raise the "GetChildNodes" event
+  of the "SlidingMenuLevel" by calling the "RaiseGetChildNodes" 
+  method.
+
+* Added a new property to "SlidingMenuLevel" called 
+  "ChildNodesLoaded" to determine whether the dynamic child 
+  menu items of this "SlidingMenuLevel" have been loaded or not.
+
+  ------------------------------------------------------------------
+
                           Version 2.0.4
 
   ------------------------------------------------------------------
