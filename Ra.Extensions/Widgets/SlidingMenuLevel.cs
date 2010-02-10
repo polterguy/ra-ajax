@@ -34,7 +34,24 @@ namespace Ra.Extensions.Widgets
          */
         public bool ChildNodesLoaded
         {
-            get { return _hasLoadedDynamicControls; }
+            get
+            {
+                bool retVal = _hasLoadedDynamicControls;
+                if (retVal)
+                    return retVal;
+                else
+                {
+                    foreach (System.Web.UI.Control idx in Controls)
+                    {
+                        if (idx is SlidingMenuItem)
+                        {
+                            retVal = true;
+                            break;
+                        }
+                    }
+                    return retVal;
+                }
+            }
         }
 
         /**
@@ -132,7 +149,7 @@ namespace Ra.Extensions.Widgets
         protected override object SaveControlState()
         {
             object[] retVal = new object[2];
-            retVal[0] = _hasLoadedDynamicControls;
+            retVal[0] = ChildNodesLoaded;
             retVal[1] = base.SaveControlState();
             return retVal;
         }
