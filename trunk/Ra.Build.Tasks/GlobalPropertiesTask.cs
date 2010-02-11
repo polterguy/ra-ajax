@@ -74,7 +74,7 @@ namespace Ra.Build.Tasks
                 throw new BuildException(
                     string.Format(CultureInfo.InvariantCulture, FILE_NOT_FOUND, _propertiesFile), Location);
         }
-        
+
         protected override void ExecuteTask()
         {
             XmlDocument xml = new XmlDocument();
@@ -112,9 +112,14 @@ namespace Ra.Build.Tasks
                 if (property.Attributes["projects"] != null && !string.IsNullOrEmpty(property.Attributes["projects"].Value))
                 {
                     string[] projects = property.Attributes["projects"].Value.Split(
-                        new char[]{','}, StringSplitOptions.RemoveEmptyEntries);
+                        new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
-                    if (Array.Exists(projects, delegate(string project) { return project == Project.ProjectName; }))
+                    bool propertyBelongsToProject = Array.Exists(projects, delegate(string project)
+                    {
+                        return (project == Project.ProjectName) || (project.ToLowerInvariant() == "all");
+                    });
+
+                    if (propertyBelongsToProject)
                     {
                         PropertyTask task = new PropertyTask();
                         task.Project = Project;
