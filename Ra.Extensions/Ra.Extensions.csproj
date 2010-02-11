@@ -95,6 +95,10 @@
       <Project>{500E1B00-9C19-4A39-BBAF-D60BCFB76552}</Project>
       <Name>Ra.Builder</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Ra.Selector\Ra.Selector.csproj">
+      <Project>{1D24FB65-C035-44E5-83A4-34AA1DA84BF4}</Project>
+      <Name>Ra.Selector</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ra\Ra.csproj">
       <Project>{82727C73-0B10-4F58-93F4-841E9397302C}</Project>
       <Name>Ra</Name>

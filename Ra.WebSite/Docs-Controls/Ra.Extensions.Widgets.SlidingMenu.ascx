@@ -9,10 +9,33 @@
     Text="Changes..."
     ID="lbl" />
 
+<br />
+<ra:Button 
+    runat="server" 
+    Text="Switch to SaveAs..."
+    OnClick="switchToSaveAs_Click"
+    ID="switchToSaveAs" />
+
+<ra:Button 
+    runat="server" 
+    Text="Switch to Window-0-1-2..."
+    OnClick="switchToWindow_Click"
+    ID="switchToWindow" />
+
+<div 
+    style="width:400px;overflow:hidden;position:relative;" 
+    id="something">
+    <ra:Panel 
+        runat="server" 
+        ID="customBreadParent" 
+        CssClass="bread-crumb-parent" />
+</div>
+
 <ra:SlidingMenu 
     runat="server" 
     style="width:250px;height:200px;" 
     OnItemClicked="slider_ItemClicked" 
+    CustomBreadCrumbControl="customBreadParent"
     OnNavigate="slider_Navigate"
     ID="slider">
 

@@ -316,6 +316,59 @@ if( this._lastBread ) {
 
         private void _button_Click(object sender, EventArgs e)
         {
+            ExpandChildren();
+
+            // Raising MenuItem clicked event
+            Root.RaiseItemClicked(this);
+            return;
+        }
+
+        internal void ExpandChildren()
+        {
+            SlidingMenuLevel child = FindChildLevel();
+
+            if (child != null)
+            {
+                child.Style["display"] = "";
+                Root.SetActiveLevel(child);
+            }
+
+            if (!this.IsLeaf)
+            {
+                if (child.EnsureChildNodes())
+                    child.ReRender();
+                Root.SetAllChildrenNonVisible(Root);
+                ASP.Control idxFromThis = child;
+                while (idxFromThis != null && !(idxFromThis is SlidingMenu))
+                {
+                    if (idxFromThis is SlidingMenuLevel)
+                    {
+                        (idxFromThis as SlidingMenuLevel).Style["display"] = "";
+                    }
+                    idxFromThis = idxFromThis.Parent;
+                }
+
+                // Animating Menu levels...
+                ASP.Control rootLevel = null;
+                foreach (ASP.Control idx in Root.Controls)
+                {
+                    if (idx is SlidingMenuLevel)
+                    {
+                        rootLevel = idx;
+                        break;
+                    }
+                }
+                Root.BreadCrumb.Style["display"] = "gokk"; // To force a new value to the display property...
+                Root.BreadCrumb.Style["display"] = "none";
+                new EffectRollOut(rootLevel, 
+                    Root.BreadCrumb, 
+                    Root.AnimationDuration)
+                    .Render();
+            }
+        }
+
+        internal SlidingMenuLevel FindChildLevel()
+        {
             // Finding child SliderMenuLevel control
             SlidingMenuLevel child = null;
             foreach (ASP.Control idx in Controls)
@@ -326,46 +379,7 @@ if( this._lastBread ) {
                     break;
                 }
             }
-
-            if (child != null)
-            {
-                child.Style["display"] = "";
-                Root.SetActiveLevel(child);
-            }
-
-            // Raising MenuItem clicked event
-            Root.RaiseItemClicked(this);
-
-            if (this.IsLeaf)
-                return;
-
-            if (child.EnsureChildNodes())
-                child.ReRender();
-            Root.SetAllChildrenNonVisible(Root);
-            ASP.Control idxFromThis = child;
-            while (idxFromThis != null && !(idxFromThis is SlidingMenu))
-            {
-                if (idxFromThis is SlidingMenuLevel)
-                {
-                    (idxFromThis as SlidingMenuLevel).Style["display"] = "";
-                }
-                idxFromThis = idxFromThis.Parent;
-            }
-
-            // Animating Menu levels...
-            ASP.Control rootLevel = null;
-            foreach (ASP.Control idx in Root.Controls)
-            {
-                if (idx is SlidingMenuLevel)
-                {
-                    rootLevel = idx;
-                    break;
-                }
-            }
-            Root.BreadCrumb.Style["display"] = "gokk"; // To force a new value to the display property...
-            Root.BreadCrumb.Style["display"] = "none";
-            new EffectRollOut(rootLevel, Root.BreadCrumb, Root.AnimationDuration)
-                .Render();
+            return child;
         }
 
         protected override void OnPreRender(EventArgs e)

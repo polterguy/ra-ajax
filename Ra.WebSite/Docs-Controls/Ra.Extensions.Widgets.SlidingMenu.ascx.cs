@@ -8,6 +8,8 @@
 
 using System;
 using Ra.Extensions.Widgets;
+using Ra;
+using Ra.Widgets;
 
 public partial class Docs_Controls_SlidingMenu : System.Web.UI.UserControl
 {
@@ -32,6 +34,16 @@ public partial class Docs_Controls_SlidingMenu : System.Web.UI.UserControl
     protected void slider_Navigate(object sender, EventArgs e)
     {
         lbl.Text = slider.ActiveLevel == null ? "null" : slider.ActiveLevel;
+    }
+
+    protected void switchToSaveAs_Click(object sender, EventArgs e)
+    {
+        slider.ExpandTo("file/saveAs");
+    }
+
+    protected void switchToWindow_Click(object sender, EventArgs e)
+    {
+        slider.ExpandTo("window/SliderMenuLevel11/SliderMenuLevel1LL10");
     }
 
     protected void slider_ItemClicked(object sender, EventArgs e)

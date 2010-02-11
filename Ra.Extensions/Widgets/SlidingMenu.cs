@@ -34,7 +34,6 @@ namespace Ra.Extensions.Widgets
     {
         private readonly Panel _breadParent = new Panel();
         private readonly Panel _bread = new Panel();
-        private ASP.Control _breadCrumbControl;
 
         /**
          * Raised when a SliderMenuItem is selected by the user
@@ -69,8 +68,7 @@ namespace Ra.Extensions.Widgets
          * bread-crumb wrapped within the actual SlidingMenu. This is useful for scenarios
          * where you don't want the bread-crumb to be a part of the actual SlidingMenu but
          * rather on the "outside" so that e.g the bread-crumb wraps your entire page istead
-         * of being constrained to the width of the SlidingMenu itself. Notice that you should
-         * set this property as EARLY AS POSSIBLE in e.g. the OnInit of your page. Notice also 
+         * of being constrained to the width of the SlidingMenu itself. Notice also 
          * though that if you set this value then the Control you choose as the BreadCrumbControl 
          * MUST have a Parent HTML element (doesn't need to be a server control) and that
          * HTML element MUST have an id property. It must also have an explicit width,
@@ -89,19 +87,28 @@ namespace Ra.Extensions.Widgets
          *       CssClass="bread-crumb-parent" /&gt;
          * &lt;/div&gt;
          * </pre>
-         * And then set the BreadCrumbControl in the OnInit of your page/control to "customBreadParent".
          */
-        public ASP.Control BreadCrumbControl
+        public string CustomBreadCrumbControl
         {
-            get { return _breadCrumbControl == null ? _breadParent : _breadCrumbControl; }
-            set
+            get { return ViewState["CustomBreadCrumbControl"] as string; }
+            set { ViewState["CustomBreadCrumbControl"] = value; }
+        }
+
+        internal RaWebControl ActualBreadCrumbParent
+        {
+            get
             {
-                if (value != BreadCrumbControl)
+                if (!string.IsNullOrEmpty(CustomBreadCrumbControl))
                 {
-                    _breadCrumbControl = value;
-                    CreateBreadCrumbWrapper();
+                    return AjaxManager.Instance.FindControl<RaWebControl>(CustomBreadCrumbControl);
                 }
+                return _breadParent;
             }
+        }
+
+        internal RaWebControl BreadCrumb
+        {
+            get { return _bread; }
         }
 
         /**
@@ -163,7 +170,7 @@ namespace Ra.Extensions.Widgets
 
             _bread.ID = "bread";
             _bread.CssClass = "bread-crumb";
-            BreadCrumbControl.Controls.Add(_bread);
+            ActualBreadCrumbParent.Controls.Add(_bread);
         }
 
         internal void SetAllChildrenNonVisible(ASP.Control from)
@@ -199,11 +206,6 @@ namespace Ra.Extensions.Widgets
             internal set { ViewState["ActiveLevel"] = value; }
         }
 
-        internal Panel BreadCrumb
-        {
-            get { return _bread; }
-        }
-
         internal void SetActiveLevel(SlidingMenuLevel level)
         {
             ActiveLevel = level == null ? null : level.ID;
@@ -213,42 +215,94 @@ namespace Ra.Extensions.Widgets
         }
 
         /**
-         * Will expand menu programatically to given level.
+         * Will expand menu programatically to given path. The path should contain all ID's of
+         * elements starting from first SlidingMenuItem. Note the ID's should be only the ID's to
+         * the SlidingMenuItem's and not the Levels. The seperator between the ID's are slash (/).
          */
-        public void ExpandTo(SlidingMenuLevel item)
+        public void ExpandTo(string path)
         {
-            foreach (ASP.Control idx in Controls)
+            List<string> ids = new List<string>(path.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries));
+            SlidingMenuItem item = Selector.Selector.FindControl<SlidingMenuItem>(this, ids[0]);
+            ids.RemoveAt(0);
+            OpenMenuItem(item, ids, ids.Count + 1);
+        }
+
+        private void OpenMenuItem(SlidingMenuItem item, List<string> ids, int totalLevels)
+        {
+            // Making sure item has loaded its children
+            SlidingMenuLevel childLevel = item.FindChildLevel();
+            if (childLevel.EnsureChildNodes())
+                childLevel.ReRender();
+
+            // Checking to see if we're finished
+            if (ids.Count == 0)
             {
-                if (idx is SlidingMenuLevel)
+                // Wrapping up...
+                SetAllChildrenNonVisible(this);
+                ASP.Control idxFromThis = childLevel;
+                while (idxFromThis != null && !(idxFromThis is SlidingMenu))
                 {
-                    SetAllChildrenNonVisible(idx);
+                    if (idxFromThis is SlidingMenuLevel)
+                    {
+                        (idxFromThis as SlidingMenuLevel).Style["display"] = "";
+                    }
+                    idxFromThis = idxFromThis.Parent;
                 }
+                // Animating Menu levels...
+                ASP.Control rootLevel = null;
+                foreach (ASP.Control idx in Controls)
+                {
+                    if (idx is SlidingMenuLevel)
+                    {
+                        rootLevel = idx;
+                        break;
+                    }
+                }
+                BreadCrumb.Style["display"] = "gokk"; // To force a new value to the display property...
+                BreadCrumb.Style["display"] = "none";
+                if (ActiveLevel == null)
+                {
+                    new SlidingMenuItem.EffectRollOut(rootLevel,
+                        BreadCrumb,
+                        AnimationDuration,
+                        false,
+                        totalLevels)
+                        .Render();
+                }
+                else
+                {
+                    new SlidingMenuItem.EffectRollOut(rootLevel,
+                        BreadCrumb,
+                        AnimationDuration,
+                        true,
+                        -1,
+                        true)
+                        .ChainThese(
+                            new SlidingMenuItem.EffectRollOut(rootLevel,
+                                BreadCrumb,
+                                AnimationDuration,
+                                false,
+                                totalLevels))
+                        .Render();
+                }
+                childLevel.Style["display"] = "";
+                SetActiveLevel(childLevel);
             }
-            SetActiveLevel(item);
-            ASP.Control cur = item;
-            SlidingMenuLevel topLevel = null;
-            int idxNoLevels = -1;
-            while (!(cur is SlidingMenu))
+            else
             {
-                SlidingMenuLevel l = cur as SlidingMenuLevel;
-                if (l != null)
-                {
-                    idxNoLevels += 1;
-                    topLevel = l as SlidingMenuLevel;
-                    topLevel.Style[Styles.display] = "";
-                }
-                cur = cur.Parent;
+                SlidingMenuItem itemNext = Selector.Selector.FindControl<SlidingMenuItem>(childLevel, ids[0]);
+                ids.RemoveAt(0);
+                OpenMenuItem(itemNext, ids, totalLevels);
             }
-            AjaxManager.Instance.WriterAtBack.Write(@"
-var xNewWidth = Ra.$({0}).getDimensions().width * {1};
-Ra.$({0}).setStyle('marginLeft','-' + xNewWidth + 'px');
-", "'" + topLevel.ClientID + "'", idxNoLevels);
         }
 
         protected override void OnPreRender(EventArgs e)
         {
-            if (_breadCrumbControl != null)
+            // If a custom bread crumb is given, we make the default system given
+            // one invisible...
+            if (CustomBreadCrumbControl != null)
                 _breadParent.Visible = false;
+
             base.OnPreRender(e);
         }
 
