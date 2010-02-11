@@ -28,7 +28,20 @@
     </csc>
   </target>
 
-  <target name="compile.lib.uncompressed" depends="compile.ra.builder" description="Compile the DLLs with uncompressed JS files">
+  <target name="compile.ra.selector" description="Compile Ra Selector">
+    <csc target="library" optimize="${not debug}" noconfig="true" filealign="512" output="${output.dir}/${library.dir}/${ra.selector.name}.dll" debug="${debug}">
+      <sources>
+        <include name="${ra.selector.name}/**/*.cs" />
+        <exclude name="${ra.selector.name}/obj/**/*.*" />
+      </sources>
+      <references basedir="${framework.dir}">
+        <include name="System.dll" />
+        <include name="System.Web.dll" />
+      </references>
+    </csc>
+  </target>
+
+  <target name="compile.lib.uncompressed" depends="compile.ra.builder,compile.ra.selector" description="Compile the DLLs with uncompressed JS files">
     <jsmin gzip="false" todir="${output.dir}/${code.dir}/${ra.name}/Js" concat-to="${concatenated.js.file}">
       <fileset>
         <include name="${ra.name}/Js/Ra.js" asis="true" />
@@ -77,13 +90,14 @@
         <include name="${framework.dir}/System.Web.dll" />
         <include name="${framework.dir}/System.Drawing.dll" />
         <include name="${output.dir}/${library.dir}/${ra.builder.name}.dll" />
+        <include name="${output.dir}/${library.dir}/${ra.selector.name}.dll" />
         <include name="${output.dir}/${library.dir}/${uncompressed.dir}/${ra.name}.dll" />
       </references>
     </csc>
     <delete dir="${output.dir}/${code.dir}/${ra.name}/Js" />
   </target>
   
-  <target name="compile.lib.gzipped" depends="compile.ra.builder" description="Compile the DLLs with GZipped JS files">
+  <target name="compile.lib.gzipped" depends="compile.ra.builder,compile.ra.selector" description="Compile the DLLs with GZipped JS files">
     <jsmin gzip="true" todir="${output.dir}/${code.dir}/${ra.name}/Js" concat-to="${concatenated.js.file}">
       <fileset>
         <include name="${ra.name}/Js/Ra.js" asis="true" />
@@ -132,6 +146,7 @@
         <include name="${framework.dir}/System.Web.dll" />
         <include name="${framework.dir}/System.Drawing.dll" />
         <include name="${output.dir}/${library.dir}/${ra.builder.name}.dll" />
+        <include name="${output.dir}/${library.dir}/${ra.selector.name}.dll" />
         <include name="${output.dir}/${library.dir}/${gzipped.dir}/${ra.name}.dll" />
       </references>
     </csc>
