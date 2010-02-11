@@ -150,6 +150,17 @@ namespace Ra.Extensions.Widgets
             CreateBreadCrumbWrapper();
         }
 
+        private void CreateBreadCrumbWrapper()
+        {
+            _breadParent.ID = "breadParent";
+            _breadParent.CssClass = "bread-crumb-parent";
+            Controls.AddAt(0, _breadParent);
+
+            _bread.ID = "bread";
+            _bread.CssClass = "bread-crumb";
+            ActualBreadCrumbParent.Controls.Add(_bread);
+        }
+
         internal void EnsureBreadCrumbCreated()
         {
             if (ActiveLevel != null)
@@ -160,17 +171,6 @@ namespace Ra.Extensions.Widgets
             {
                 UpdateBreadCrumb(null);
             }
-        }
-
-        private void CreateBreadCrumbWrapper()
-        {
-            _breadParent.ID = "breadParent";
-            _breadParent.CssClass = "bread-crumb-parent";
-            Controls.AddAt(0, _breadParent);
-
-            _bread.ID = "bread";
-            _bread.CssClass = "bread-crumb";
-            ActualBreadCrumbParent.Controls.Add(_bread);
         }
 
         internal void SetAllChildrenNonVisible(ASP.Control from)
@@ -231,8 +231,18 @@ namespace Ra.Extensions.Widgets
         {
             // Making sure item has loaded its children
             SlidingMenuLevel childLevel = item.FindChildLevel();
-            if (childLevel.EnsureChildNodes())
-                childLevel.ReRender();
+            if (childLevel == null)
+            {
+                // No more items underneath...
+                childLevel = item.Parent as SlidingMenuLevel;
+                totalLevels -= (ids.Count + 1);
+                ids.Clear();
+            }
+            else
+            {
+                if (childLevel.EnsureChildNodes())
+                    childLevel.ReRender();
+            }
 
             // Checking to see if we're finished
             if (ids.Count == 0)
