@@ -38,12 +38,12 @@ public partial class Docs_Controls_SlidingMenu : System.Web.UI.UserControl
 
     protected void switchToSaveAs_Click(object sender, EventArgs e)
     {
-        slider.ExpandTo("file/saveAs/pdf");
+        slider.SlideTo("file/saveAs/pdf");
     }
 
     protected void switchToWindow_Click(object sender, EventArgs e)
     {
-        slider.ExpandTo("window/SliderMenuLevel11/SliderMenuLevel1LL10");
+        slider.SlideTo("window/SliderMenuLevel11/SliderMenuLevel1LL10");
     }
 
     protected void slider_ItemClicked(object sender, EventArgs e)
