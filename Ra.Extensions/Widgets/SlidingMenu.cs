@@ -219,7 +219,7 @@ namespace Ra.Extensions.Widgets
          * elements starting from first SlidingMenuItem. Note the ID's should be only the ID's to
          * the SlidingMenuItem's and not the Levels. The seperator between the ID's are slash (/).
          */
-        public void ExpandTo(string path)
+        public void SlideTo(string path)
         {
             List<string> ids = new List<string>(path.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries));
             SlidingMenuItem item = Selector.Selector.FindControl<SlidingMenuItem>(this, ids[0]);
