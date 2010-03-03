@@ -95,7 +95,12 @@ if( this._bread ) {{
   this._bread.style.visibility='';
 }}
 this._fromWidth = this.element.getDimensions().width * {0};
-this._oldMargin = parseInt(this.element.getStyle('marginLeft')) || 0;
+var tmpOldLeft = parseInt(this.element.getStyle('marginLeft')) || 0;
+if(this.element.getStyle('marginLeft').indexOf('%') != -1) {{
+  tmpOldLeft /= 100;
+  tmpOldLeft *= this.element.getDimensions().width;
+}}
+this._oldMargin = tmpOldLeft;
 ", _noLevels, this._bread.ClientID);
                 }
                 else
