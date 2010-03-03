@@ -221,13 +221,18 @@ namespace Ra.Extensions.Widgets
          */
         public void SlideTo(string path)
         {
+            SlideTo(path, true);
+        }
+
+        public void SlideTo(string path, bool animate)
+        {
             List<string> ids = new List<string>(path.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries));
             SlidingMenuItem item = Selector.Selector.FindControl<SlidingMenuItem>(this, ids[0]);
             ids.RemoveAt(0);
-            OpenMenuItem(item, ids, ids.Count + 1);
+            OpenMenuItem(item, ids, ids.Count + 1, animate);
         }
 
-        private void OpenMenuItem(SlidingMenuItem item, List<string> ids, int totalLevels)
+        private void OpenMenuItem(SlidingMenuItem item, List<string> ids, int totalLevels, bool animate)
         {
             // Making sure item has loaded its children
             SlidingMenuLevel childLevel = item.FindChildLevel();
@@ -269,31 +274,48 @@ namespace Ra.Extensions.Widgets
                     }
                 }
                 BreadCrumb.Style["display"] = "gokk"; // To force a new value to the display property...
-                BreadCrumb.Style["display"] = "none";
+                if (animate)
+                    BreadCrumb.Style["display"] = "none";
                 if (ActiveLevel == null)
                 {
-                    new SlidingMenuItem.EffectRollOut(rootLevel,
-                        BreadCrumb,
-                        AnimationDuration,
-                        false,
-                        totalLevels)
-                        .Render();
+                    if (!animate)
+                    {
+                        ((SlidingMenuLevel)rootLevel).Style[Styles.marginLeft] = 
+                            "-" + (100 * totalLevels) + "%";
+                    }
+                    else
+                    {
+                        new SlidingMenuItem.EffectRollOut(rootLevel,
+                            BreadCrumb,
+                            AnimationDuration,
+                            false,
+                            totalLevels)
+                            .Render();
+                    }
                 }
                 else
                 {
-                    new SlidingMenuItem.EffectRollOut(rootLevel,
-                        BreadCrumb,
-                        AnimationDuration,
-                        true,
-                        -1,
-                        true)
-                        .ChainThese(
-                            new SlidingMenuItem.EffectRollOut(rootLevel,
-                                BreadCrumb,
-                                AnimationDuration,
-                                false,
-                                totalLevels))
-                        .Render();
+                    if (!animate)
+                    {
+                        ((SlidingMenuLevel)rootLevel).Style[Styles.marginLeft] = 
+                            "-" + (100 * totalLevels) + "%";
+                    }
+                    else
+                    {
+                        new SlidingMenuItem.EffectRollOut(rootLevel,
+                            BreadCrumb,
+                            AnimationDuration,
+                            true,
+                            -1,
+                            true)
+                            .ChainThese(
+                                new SlidingMenuItem.EffectRollOut(rootLevel,
+                                    BreadCrumb,
+                                    AnimationDuration,
+                                    false,
+                                    totalLevels))
+                            .Render();
+                    }
                 }
                 childLevel.Style["display"] = "";
                 SetActiveLevel(childLevel);
@@ -302,7 +324,7 @@ namespace Ra.Extensions.Widgets
             {
                 SlidingMenuItem itemNext = Selector.Selector.FindControl<SlidingMenuItem>(childLevel, ids[0]);
                 ids.RemoveAt(0);
-                OpenMenuItem(itemNext, ids, totalLevels);
+                OpenMenuItem(itemNext, ids, totalLevels, animate);
             }
         }
 
