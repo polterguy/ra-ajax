@@ -109,7 +109,9 @@ namespace RaWebsite
         {
             foreach (string idx in Directory.GetFiles(Server.MapPath("~/tutorials/"), "*.txt"))
             {
-                if ((!string.IsNullOrEmpty(Filter) && idx.ToLower().Contains(Filter.ToLower())) || (string.IsNullOrEmpty(Filter)))
+                if ((!string.IsNullOrEmpty(Filter) && 
+                    idx.ToLower().Contains(Filter.ToLower())) || 
+                    (string.IsNullOrEmpty(Filter)))
                 {
                     TreeNode n = new TreeNode();
                     n.ID = "tutorial_" + idx.Replace(".txt", "").Replace(" ", "_").Replace(Server.MapPath("~/tutorials/"), "");
