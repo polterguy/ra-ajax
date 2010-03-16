@@ -29,11 +29,42 @@
     <body>
         <form id="form1" runat="server">
             <div>
-                <ra:ExtButton 
+                <ra:TabControl 
                     runat="server" 
-                    Text="Click me..."
-                    OnClick="btn_Click"
-                    ID="btn" />
+                    style="display:table;width:500px;margin-left:auto;margin-right:auto;margin-top:150px;"
+                    ID="tab">
+                    <ra:TabView 
+                        runat="server" 
+                        ID="tab1" 
+                        Caption="Sample">
+                        <div style="margin:10px;">
+                            <a href="http://ra-ajax.org">Go to Ra-Ajax.Org</a> and see the documentation for Ra-Ajax for some more exhaustive samples...
+                        </div>
+                        <ra:ExtButton 
+                            runat="server" 
+                            Text="Click me..."
+                            OnClick="btn_Click"
+                            ID="btn" />
+                    </ra:TabView>
+                    <ra:TabView 
+                        runat="server" 
+                        ID="tab2" 
+                        Caption="Another tab">
+                        Epsim lorum, bananium consiprium, slumselummedum...!
+                    </ra:TabView>
+                    <ra:TabView 
+                        runat="server" 
+                        ID="tab3" 
+                        Caption="Calendar tab">
+                        <div style="padding:15px;">
+                            <ra:Calendar 
+                                runat="server" 
+                                ID="cal" 
+                                style="width:200px;" />
+                        </div>
+                    </ra:TabView>
+                </ra:TabControl>
+
                 <ra:Window 
                     runat="server" 
                     Caption="Hello World 2.0 :)"
