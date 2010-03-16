@@ -22,13 +22,7 @@
         <include name="media/**/*.*" />
       </fileset>
     </copy>
-    <copy 
-      file="${samples.dir}/Web.Config.template" 
-      tofile="${output.dir}/${code.dir}/${samples.dir}/Web.Config" 
-      overwrite="true" />
 
-    <mkdir dir="${output.dir}/${code.dir}/${samples.dir}/ChartImages" />
-    
     <mkdir dir="${output.dir}/${code.dir}/${samples.dir}/bin" />
     <copy flatten="true" todir="${output.dir}/${code.dir}/${samples.dir}/bin">
       <fileset>
@@ -110,11 +104,6 @@
         <include name="tutorials/**/*.*" />
       </fileset>
     </copy>
-    <copy 
-      file="${ra.website.dir}/Web.Config.template" 
-      tofile="${output.dir}/${code.dir}/${ra.website.dir}/Web.Config" 
-      overwrite="true" />
-
     <mkdir dir="${output.dir}/${code.dir}/${ra.website.dir}/bin" />
     <copy flatten="true" todir="${output.dir}/${code.dir}/${ra.website.dir}/bin">
       <fileset>
