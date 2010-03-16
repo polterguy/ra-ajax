@@ -1,0 +1,1350 @@
+﻿/*
+Copyright (c) 2008, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.net/yui/license.txt
+version: 2.5.2
+*/
+
+/* Reset CSS */
+html{color:#000;background:#FFF;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin: 0;padding: 0;font-family:Helvetica;}
+table{border-collapse:collapse;border-spacing:0;}
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
+li{list-style:none;}
+caption,th{text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+q:before,q:after{content:'';}
+abbr,acronym {border:0;font-variant:normal;}
+sup {vertical-align:text-top;}
+sub {vertical-align:text-bottom;}
+input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}
+input,textarea,select{*font-size:100%;}
+legend{color:#000;}
+body {font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small;*font:x-small;}
+table {font-size:inherit;font:100%;}
+pre,code,kbd,samp,tt{font-family:monospace;*font-size:108%;line-height:100%;}
+
+
+/* Base CSS */
+h1{font-size:138.5%;}
+h2{font-size:123.1%;}
+h3{font-size:108%;}
+h1,h2,h3{margin:0;}
+h1,h2,h3,h4,h5,h6,strong{font-weight:bold;}
+abbr,acronym{border-bottom:1px dotted #000;cursor:help;}
+em{font-style:italic;}
+dl dd{margin-left:1em;}
+th,td{border:1px solid #000;padding:.5em;}
+th{font-weight:bold;text-align:center;}
+caption{margin-bottom:.5em;text-align:center;}
+p,fieldset,table,pre{margin-bottom:1em;}
+input[type=text],input[type=password],textarea{width:12.25em;*width:11.9em;}
+input[type=checkbox]{margin-right:3px;vertical-align:sub;}
+
+
+/*
+Copyright (c) 2008 - 2010, Thomas Hansen
+Code licensed under GPL3
+http://ra-ajax.org
+*/
+
+/* Window CSS */
+.window
+{
+	display:block;
+}
+
+.window_nw
+{
+	background: transparent url(window-sprite.png) no-repeat 0 0;
+	padding-left:40px;
+	position:relative;
+}
+
+.window_ne
+{
+	background: transparent url(window-sprite.png) no-repeat right 0;
+	padding-right:40px;
+}
+
+.window_n
+{
+	background: transparent url(sprites.png) repeat-x 0 -896px;
+	overflow:hidden;
+	height:40px;
+}
+
+.window_w
+{
+	background: transparent url(window-v-sprite.png) repeat-y 0 0;
+	padding-left:40px;
+}
+
+.window_e
+{
+	background: transparent url(window-v-sprite.png) repeat-y right 0;
+	padding-right:40px;
+}
+
+.window_content
+{
+	background-color:#cfecff;
+	margin-left:-20px;
+	margin-right:-20px;
+	margin-bottom:-20px;
+}
+
+.window_sw
+{
+	background: transparent url(window-sprite.png) no-repeat 0 -40px;
+	padding-left:40px;
+}
+
+.window_se
+{
+	background: transparent url(window-sprite.png) no-repeat right -40px;
+	padding-right:40px;
+}
+
+.window_s
+{
+	background: transparent url(sprites.png) repeat-x 0 -936px;
+	height:40px;
+}
+
+.window_title
+{
+	font-size:0.8em;
+	position:absolute;
+	top:4px;
+	color:#333;
+	margin-left:-15px;
+	-moz-user-select:none;
+	-khtml-user-select: none;
+	user-select: none;
+	cursor:move;
+	width:100%;
+}
+
+.window_close
+{
+	width:12px;
+	height:12px;
+	display:block;
+	background:transparent url(sprites.png) no-repeat -2px -725px;
+	position:absolute;
+	top:4px;
+	right:23px;
+}
+
+.window_pin
+{
+	width:12px;
+	height:12px;
+	display:block;
+	background:transparent url(sprites.png) no-repeat -2px -798px;
+	position:absolute;
+	top:4px;
+	right:40px;
+}
+
+.window_pin:hover
+{
+	background:transparent url(sprites.png) no-repeat -2px -810px;
+}
+
+.window_pinned:hover
+{
+	background:transparent url(sprites.png) no-repeat -2px -785px;
+}
+
+.window_pinned
+{
+	width:12px;
+	height:12px;
+	display:block;
+	background:transparent url(sprites.png) no-repeat -2px -773px;
+	position:absolute;
+	top:4px;
+	right:40px;
+}
+
+.window_close:hover
+{
+	background-color:transparent;
+	background-position:-2px -737px;
+}
+
+.window_body
+{
+	overflow:hidden;
+	position:relative;
+}
+
+/* Sliding Menu */
+.sliding-menu
+{
+	position:relative;
+	overflow:hidden;
+	border-left:solid 1px #999;
+	border-right:solid 1px #999;
+	border-bottom:solid 1px #999;
+}
+
+.bread-crumb-parent
+{
+	width:1000%;
+	background: transparent url(sprites.png) repeat 0 -896;
+	height:35px;
+	overflow:hidden;
+	margin-top:-2px;
+}
+
+.bread-crumb
+{
+	width:100%;
+	height:35px;
+	overflow:auto;
+	margin-top:-3px;
+}
+
+.bread-crumb .bread-item-left
+{
+	height:25px;
+	margin-bottom:5px;
+	margin-left:-16px;
+	margin-top:5px;
+	padding-left:16px;
+	float:left;
+	display:block;
+	font-size:11px;
+	background:url('sprites.png') no-repeat 0 -75px;
+}
+
+.bread-crumb .bread-item-right
+{
+	height:25px;
+	display:block;
+	padding-right:16px;
+	background:url('sprites.png') no-repeat right -50px;
+}
+
+.bread-crumb .bread-item-center
+{
+	height:14px;
+	display:block;
+	background:url('sprites.png') repeat-x 0 -25px;
+	padding:6px 4px 5px 4px;
+}
+
+.bread-crumb .bread-item-first
+{
+	padding-left:16px;
+	margin-bottom:5px;
+	margin-left:16px;
+	margin-top:5px;
+	background:url('sprites.png') no-repeat 0 0;
+	position:relative;
+}
+
+.bread-crumb .bread-item-first .bread-item-center
+{
+	width:3px;
+}
+
+.bread-crumb .bread-item-first .sliding-bread-home
+{
+	background:url('sprites.png') no-repeat 0 -1152px;
+	width:16px;
+	height:16px;
+	display:block;
+	position:absolute;
+	top:5px;
+	left:12px;
+}
+
+.bread-crumb a.bread-item-first:hover .sliding-bread-home
+{
+}
+
+.bread-crumb .bread-item-last .bread-item-right
+{
+	background:url('sprites.png') no-repeat right -100px;
+}
+
+.bread-crumb a.bread-item-left:hover
+{
+	background-position:left -250px;
+}
+
+.bread-crumb a.bread-item-left:hover + .bread-item-left
+{
+	background-position:left -200px;
+}
+
+.bread-crumb a.bread-item-first:hover
+{
+	background-position:left -125px;
+}
+
+.bread-crumb a.bread-item-left:hover .bread-item-center
+{
+	background-position:left -150px;
+}
+
+.bread-crumb a.bread-item-first:hover .bread-item-right
+{
+	background-position:right -175px;
+}
+
+.sliding-menu .sliding-level
+{
+	width:100%;
+	position:absolute;
+	top:0px;
+	margin-left:100%;
+}
+
+.sliding-menu .sliding-top-level
+{
+	margin-top:10px;
+	margin-left:0;
+	position:relative;
+}
+
+.sliding-menu .sliding-level .sliding-item
+{
+	width:100%;
+}
+
+.sliding-menu .sliding-level .sliding-item .sliding-menu-btn
+{
+	padding:5px;
+	display:block;
+	position:relative;
+	margin:1px;
+}
+
+.sliding-menu .sliding-level .sliding-item .sliding-menu-btn:hover
+{
+	cursor:pointer;
+}
+
+.sliding-menu .sliding-level .sliding-item .sliding-leaf
+{
+	background:url('sprites.png') no-repeat -1px -1120px;
+	position:absolute;
+	right:7px;
+	top:-1px;
+	display:block;
+	width:16px;
+	height:16px;
+}
+
+.sliding-menu .sliding-level .sliding-item .sliding-leaf:hover
+{
+	background:url('sprites.png') no-repeat -1px -1200px;
+}
+
+/* WebPart specific CSS */
+.webpart
+{
+	border:solid 1px #666;
+	max-height:100%;
+	overflow:hidden;
+}
+
+.webpart .header
+{
+	border-bottom:solid 1px #666;
+	background:transparent url(sprites.png) repeat-x 0 -896px;
+	position:relative;
+}
+
+.webpart .header .caption
+{
+	padding:3px;
+	line-height:23px;
+}
+
+.webpart .header .toggle,
+.webpart .header .toggled,
+.webpart .header .maximize,
+.webpart .header .maximized,
+.webpart .header .close
+{
+	position:absolute; top:1px; width:12px; display:block; 
+	text-decoration:none;
+	background-image:url(window-sprite.png);
+	background-repeat:no-repeat;
+	background-color:Transparent;
+	-moz-user-select:none;
+	-khtml-user-select:none;
+	user-select:none;
+}
+
+.webpart .header .toggle
+{
+	right:33px;
+	background-position:-16px -64px;
+}
+
+.webpart .header .toggle:hover
+{
+	right:33px;
+	background-position:-16px -128px;
+}
+
+.webpart .header .toggled
+{
+	right:33px;
+	background-position:-16px -80px;
+}
+
+.webpart .header .toggled:hover
+{
+	right:33px;
+	background-position:-16px -144px;
+}
+
+.webpart .header .maximize
+{
+	right:17px;
+	background-position:-16px -96px;
+}
+
+.webpart .header .maximize:hover
+{
+	right:17px;
+	background-position:-16px -160px;
+}
+
+.webpart .header .maximized
+{
+	right:17px;
+	background-position:-16px -112px;
+}
+
+.webpart .header .maximized:hover
+{
+	right:17px;
+	background-position:-16px -176px;
+}
+
+.webpart .header .close
+{
+	right:1px;
+	background-position:-15px -1px;
+}
+
+.webpart .header .close:hover
+{
+	right:1px;
+	background-position:-15px -17px;
+}
+
+.webpart .content
+{
+	padding:0;
+	overflow:hidden;
+}
+
+.webpart .content div
+{
+	padding:5px;
+}
+
+/* Calendar specific CSS */
+.calendar
+{
+	display:block;
+}
+
+.calendar_nw
+{
+	background: transparent url(window-sprite.png) no-repeat 0 0;
+	padding-left:40px;
+	position:relative;
+}
+
+.calendar_ne
+{
+	background: transparent url(window-sprite.png) no-repeat right 0;
+	padding-right:40px;
+}
+
+.calendar_n
+{
+	background: transparent url(sprites.png) repeat-x 0 -896px;
+	overflow:hidden;
+	height:40px;
+}
+
+.calendar_title
+{
+	font-size:0.8em;
+	position:absolute;
+	top:4px;
+	color:#333;
+	margin-left:-15px;
+	width:100%;
+}
+
+.calendar_body
+{
+	overflow:hidden;
+	position:relative;
+}
+
+.calendar_w
+{
+	background: transparent url(window-v-sprite.png) repeat-y 0 0;
+	padding-left:40px;
+}
+
+.calendar_e
+{
+	background: transparent url(window-v-sprite.png) repeat-y right 0;
+	padding-right:40px;
+}
+
+.calendar_content
+{
+	background-color:#cfecff;
+	font-size:0.7em;
+	margin-left:-20px;
+	margin-right:-20px;
+}
+
+.calendar_sw
+{
+	background: transparent url(window-sprite.png) no-repeat 0 -55px;
+	padding-left:40px;
+}
+
+.calendar_se
+{
+	background: transparent url(window-sprite.png) no-repeat right -55px;
+	padding-right:40px;
+}
+
+.calendar_s
+{
+	background: transparent url(sprites.png) repeat-x 0 -951px;
+	height:25px;
+}
+
+.calendar select
+{
+	border:none;
+	margin:0 5px 0 5px;
+	background-color:Transparent;
+	color:#333;
+}
+
+.calendar table
+{
+	border-collapse:collapse;
+	margin:0;
+}
+
+.calendar table tr td
+{
+	border:none;
+	padding:0 !important;
+}
+
+.calendar table tr.weekdays td
+{
+	color:#333;
+	padding:2px;
+}
+
+.calendar table tr td.weekno
+{
+	color:#333;
+}
+
+.calendar a
+{
+	display:block;
+	text-decoration:none;
+	color:#333;
+	margin:1px;
+	border:solid 1px Transparent;
+	background-color:Transparent;
+}
+
+.calendar a:hover
+{
+	border:solid 1px #99f;
+}
+
+.calendar a.offMonth
+{
+	color:#99d;
+}
+
+.calendar a.selected
+{
+	background-color:#eef;
+	border:solid 1px #999;
+}
+
+.calendar_content table
+{
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.calendar .hour
+{
+	display:inline;
+	width:20px;
+	margin-right:5px;
+}
+
+.calendar .minutes
+{
+	display:inline;
+	width:20px;
+}
+
+/* TabControl styles */
+.tab
+{
+}
+
+.tab .tab-header
+{
+	margin-bottom:-1px;
+}
+
+.tab .tab-header ul
+{
+	height:25px;
+}
+
+.tab .tab-header ul li
+{
+	display:block;
+	float:left;
+	height:100%;
+	padding-right:2px;
+}
+
+.tab .tab-header ul li.first
+{
+	margin-left:3px;
+}
+
+.tab .tab-header ul li a
+{
+	text-decoration:none;
+	padding:5px;
+}
+
+.tab .tab-header ul li a:hover
+{ }
+
+.tab .tab-header ul li.tab-disabled a
+{
+	color:#aaa;
+	cursor:default;
+}
+
+.tab .tab-header ul li.active  a
+{
+	text-decoration:none;
+	color:#000;
+	padding:5px;
+}
+
+.tab .tab-header ul li span
+{
+	display:block;
+	float:left;
+	padding-top:7px;
+	height:17px;
+}
+
+.tab .tab-header ul li span.left
+{
+	background:transparent url('sprites.png') no-repeat 0 -500px;
+	width:9px;
+	border-bottom:solid 1px #c9ac07;
+}
+
+.tab .tab-header ul li span.center
+{
+	background:transparent url('sprites.png') repeat-x 0 -550px;
+	border-bottom:solid 1px #c9ac07;
+}
+
+.tab .tab-header ul li span.right
+{
+	background:transparent url('sprites.png') no-repeat right -525px;
+	width:9px;
+	border-bottom:solid 1px #c9ac07;
+}
+
+/* TODO: Remove this one if you're using close tab-control functionality ... */
+.tab .tab-header ul li span.right a
+{
+	display:none;
+}
+
+.tab .tab-header ul li:hover span.left
+{
+	background:transparent url('sprites.png') no-repeat 0 -575px;
+}
+
+.tab .tab-header ul li:hover span.center
+{
+	background:transparent url('sprites.png') repeat-x 0 -625px;
+}
+
+.tab .tab-header ul li:hover span.right
+{
+	background:transparent url('sprites.png') no-repeat right -600px;
+}
+
+.tab .tab-header ul li.tab-disabled:hover span.left
+{
+	background:transparent url('sprites.png') no-repeat 0 -500;
+}
+
+.tab .tab-header ul li.tab-disabled:hover span.center
+{
+	background:transparent url('sprites.png') repeat-x 0 -550px;
+}
+
+.tab .tab-header ul li.tab-disabled:hover span.right
+{
+	background:transparent url('sprites.png') no-repeat right -525px;
+}
+
+.tab .tab-header ul li.active span.left
+{
+	background:transparent url('sprites.png') no-repeat 0 -650px;
+	border-bottom:solid 1px #cfecff;
+}
+
+.tab .tab-header ul li.active span.center
+{
+	background:transparent url('sprites.png') repeat-x 0 -700px;
+	border-bottom:solid 1px #cfecff;
+}
+
+.tab .tab-header ul li.active span.right
+{
+	background:transparent url('sprites.png') no-repeat right -675px;
+	border-bottom:solid 1px #cfecff;
+}
+
+.tab .tab-header ul li.active a
+{
+	cursor:default;
+}
+
+.tab .tab-header ul li a:hover
+{
+	background-color:Transparent;
+}
+
+.tab .tab-header ul li.tab-disabled a
+{
+	color:#999;
+}
+
+.tab .tab-header ul li.tab-disabled a:hover
+{
+	color:#999;
+}
+
+.tab .content
+{
+	padding:5px;
+	background-color:#cfecff;
+	border:solid 1px #c9ac07;
+}
+
+/* Accordion */
+.accordion { }
+.accordion .body
+{
+	overflow:hidden;
+	background-color:#fdfdfd;
+	font-size:small;
+}
+
+.accordion .body-content
+{
+	padding:5px;
+	border-left:solid 1px #CCD1FF;
+	border-right:solid 1px #CCD1FF;
+	border-bottom:solid 1px #CCD1FF;
+}
+
+.accordion .accordion-header
+{
+	background:transparent url(sprites.png) repeat-x 0 -896px;
+}
+
+.accordion .accordion-header a
+{
+	text-decoration:none;
+	padding:5px;
+	display:block;
+	color:#333;
+	font-size:0.8em;
+}
+
+.accordion .accordion-header a:hover
+{
+	background: transparent url(sprites.png) repeat-x 0 -896px;
+	color:#00f;
+}
+
+/* The TreeView control uses some images from YUI which are BSD 
+ * licensed and we distribute them just like Yahoo under the BSD 
+ * license terms...
+ */
+
+/* TreeView */
+.tree
+{
+	padding:5px;
+	font-size:0.9em;
+	overflow:auto;
+}
+
+.tree .item
+{
+	cursor:pointer;
+	line-height:14px;
+	white-space:nowrap;
+}
+
+.tree .item a:hover
+{
+	background-color:Transparent;
+}
+
+.tree .tree-active
+{
+	background-color:#bfdcef;
+}
+
+.tree .tree-active ul
+{
+	background-color:#cfecff;
+}
+
+.tree .selected:hover,
+.tree .selected
+{
+	background-color:#afccdf;
+}
+
+.tree .selected ul
+{
+	background-color:#cfecff;
+}
+
+.tree .spacer
+{
+	padding-left:16px;
+}
+
+.tree .icon
+{
+	background:transparent url(sprites.png) no-repeat;
+}
+
+.tree .expanded .icon
+{
+	background-position: 0 -976px;
+}
+
+.tree .collapsed .icon
+{
+	background-position: 0 -992px;
+}
+
+.tree .no-childs .icon
+{
+	background-position: 0 -992px;
+}
+
+.tree .lines
+{
+	background:Transparent url(sprites.png) no-repeat 0 -1072px;
+}
+
+.tree .linesElbow
+{
+	background:Transparent url(sprites.png) no-repeat 0 -1056px;
+}
+
+.tree .expanded .leaf
+{
+	background:Transparent url(sprites.png) no-repeat 0 -1024px;
+}
+
+.tree .expanded .no-leaf
+{
+	background:Transparent url(sprites.png) no-repeat 0 -1104px;
+}
+
+.tree .collapsed .leaf
+{
+	background:Transparent url(sprites.png) no-repeat 0 -1008px;
+}
+
+.tree .collapsed .no-leaf
+{
+	background:Transparent url(sprites.png) no-repeat 0 -1088px;
+}
+
+.tree .no-childs .leaf
+{
+	background:Transparent url(sprites.png) no-repeat 0 -1040px;
+}
+
+.tree .no-childs .no-leaf
+{
+	background:Transparent url(sprites.png) no-repeat 0 -1056px;
+}
+
+/* Menu */
+.menu
+{
+	background: transparent url(sprites.png) repeat-x 0 -896px;
+	width:100%;
+	position:relative;
+	height:29px;
+	font-size:12px;
+	padding:3px 0 0 0;
+}
+
+.menu ul
+{
+	display:block;
+}
+
+.menu .top
+{
+	display:block;
+	position:relative;
+	float:left;
+	line-height:28px;
+	min-width:50px;
+}
+
+.menu .item
+{
+	cursor:pointer;
+	color:#333;
+	margin-left:10px;
+}
+
+.menu .item:hover
+{
+	color:#00f;
+}
+
+.menu .menu-dropper
+{
+	border-left:solid 1px #648CE8;
+	border-right:solid 1px #648CE8;
+	border-bottom:solid 1px #648CE8;
+	border-top:solid 1px #727272;
+	background-color:#D1D1D1;
+	position:absolute;
+	left:0px;
+	width:150px;
+	margin-left:-10px;
+}
+
+.menu .menu-dropper .drop-item
+{
+	display:block;
+	color:#333;
+	padding-left:15px;
+	padding:5px;
+}
+
+.menu .menu-dropper .drop-item:hover
+{
+	color:#66f;
+	background-color:#cacaca;
+}
+
+.menu .menu-dropper .sub-dropper
+{
+	left:150px;
+	margin-top:-24px;
+}
+
+/* AutoCompleter CSS class */
+.auto
+{
+	background-color:#fff;
+	border:solid 1px #CCD1FF;
+	padding:5px;
+	height:20px;
+	width:200px;
+	overflow:visible;
+}
+
+.auto-text
+{
+	display:block;
+}
+
+.auto-items
+{
+	position:absolute;
+	border:solid 1px #CCD1FF;
+	background-color:#fff;
+	width:170px;
+	padding:5px;
+}
+
+.auto-item
+{
+	border:solid 1px Transparent;
+	cursor:pointer;
+}
+
+.auto-item:hover
+{
+	border-top:solid 1px #CCD1FF;
+	border-bottom:solid 1px #CCD1FF;
+	background-color:#fafaff;
+}
+
+/* Extended Button */
+.button
+{
+	width: auto;
+	border: none 0;
+	background-color: Transparent;
+	margin-bottom: 3px;
+}
+
+.button .bLeft
+{
+	background:Transparent url('sprites.png') no-repeat 0 -275px;
+	padding-left:13px;
+	display:block;
+	*display:inline-block;
+}
+
+.button .bCenter
+{
+	background:Transparent url('sprites.png') repeat-x 0 -325px;
+	display:block;
+	height:20px;
+	padding-top:5px;
+	*display:inline-block;
+}
+
+.button .bCenter span
+{
+	display:block;
+	text-align:left;
+	white-space:nowrap;
+}
+
+.button .bRight
+{
+	background:Transparent url('sprites.png') no-repeat right -300px;
+	padding-right:13px;
+	display:block;
+	*display:inline-block;
+}
+
+.button:hover
+{ }
+
+.button:hover .bLeft
+{
+	background:Transparent url('sprites.png') no-repeat 0 -350px;
+}
+
+.button:hover .bCenter
+{
+	background:Transparent url('sprites.png') repeat-x 0 -400px;
+}
+
+.button:hover .bRight
+{
+	background:Transparent url('sprites.png') no-repeat right -375px;
+}
+
+.button-selected .bLeft
+{
+	background:Transparent url('sprites.png') no-repeat 0 -425px;
+}
+
+.button-selected .bCenter
+{
+	background:Transparent url('sprites.png') repeat-x 0 -475px;
+}
+
+.button-selected .bRight
+{
+	background:Transparent url('sprites.png') no-repeat right -450px;
+}
+
+.button-selected:hover .bLeft
+{
+	background:Transparent url('sprites.png') no-repeat 0 -425px;
+}
+
+.button-selected:hover .bCenter
+{
+	background:Transparent url('sprites.png') repeat-x 0 -475px;
+}
+
+.button-selected:hover .bRight
+{
+	background:Transparent url('sprites.png') no-repeat right -450px;
+}
+
+/* WYSIWYG Editor */
+.editor
+{
+	position:relative;
+	overflow:hidden;
+}
+
+.editor .toolbar
+{
+	padding:25px 2px 2px 2px;
+	width: 100%;
+	overflow:auto;
+}
+
+.editor .toolbar br
+{
+	clear:both;
+}
+
+.editor .editorMain
+{
+	width:100%;
+	overflow: auto;
+	background-color: White;
+	height:350px;
+	margin-top:5px;
+}
+
+.editor .strip
+{
+	height: 25px;
+	width: auto;
+	display: block;
+	float:left;
+	margin: 5px 0 0 5px;
+}
+
+.editor .strip .right
+{
+	background:transparent url(sprites.png) no-repeat right -871px;
+	padding-right: 2px;
+	display: block;
+}
+
+.editor .strip .left
+{
+	background:transparent url(sprites.png) no-repeat 0 -821px;
+	padding-left: 2px;
+	display: block;
+}
+
+.editor .strip .center
+{
+	background: url(sprites.png) repeat-x 0 -846px;
+	display: block;
+	height: 25px;
+}
+
+.editor .strip .stripContent
+{
+	display: block;
+	text-align: left;
+	white-space: nowrap;
+	padding: 3px;
+}
+
+.editor .strip .stripContent select
+{
+}
+
+.editor .editorBtn
+{
+	display: inline-block;
+	width: 22px;
+	height: 16px;
+	background-image: url(sprites.png);
+	background-repeat: no-repeat;
+	background-color: Transparent;
+	background-repeat: no-repeat;
+	border: solid 1px Transparent;
+}
+
+.editor .editorBtn:hover
+{
+	border: solid 1px #316ac5;
+	background-color: #c1d2ee;
+	opacity:0.5;
+}
+
+.editor .design
+{
+	background-position: 0 -1648px;
+}
+
+.editor .html
+{
+	background-position: 0 -1664px;
+}
+
+.editor .bold
+{
+	background-position: 0 -1344px;
+}
+
+.editor .italic
+{
+	background-position: 0 -1424px;
+}
+
+.editor .underline
+{
+	background-position: 0 -1328px;
+}
+
+.editor .justifyleft
+{
+	background-position: 0 -1456px;
+}
+
+.editor .justifyright
+{
+	background-position: 0 -1522px;
+}
+
+.editor .justifycenter
+{
+	background-position: 0 -1358px;
+}
+
+.editor .justifyfull
+{
+	background-position: 0 -1440px;
+}
+
+.insertunorderedlist
+{
+	background-position: 0 -1296px;
+}
+
+.insertorderedlist
+{
+	background-position: 0 -1488px;
+}
+
+.indent
+{
+	background-position: 0 -1408px;
+}
+
+.outdent
+{
+	background-position: 0 -1504px;
+}
+
+.image
+{
+	background-position: 0 -1392px;
+}
+
+.resources
+{
+	background-position: 0 -1634px;
+}
+
+.hyperlink
+{
+	background-position: 0 -1472px;
+}
+
+.delete
+{
+	background-position: 0 -1616px;
+}
+
+.save
+{
+	background-position: 0 -1601px;
+}
+
+.bottomBar
+{
+	height: 28px;
+}
+
+.designButton
+{
+	background-color: #CCD1FF;
+	padding: 5px;
+	border: none 0;
+	margin-right: 5px;
+	cursor: pointer;
+}
+
+.designButton:hover
+{
+	background-color: #dCe1FF;
+}
+
+.htmlButton
+{
+	background-color: #CCD1FF;
+	padding: 5px;
+	border: none 0;
+	cursor: pointer;
+}
+
+.htmlButton:hover
+{
+	background-color: #dCe1FF;
+}
+
+.activeTypeButton
+{
+	background-color: #9Cb1cF;
+	cursor: default;
+}
+
+.activeTypeButton:hover
+{
+	background-color: #9Cb1cF;
+}
+
+.editorSelect
+{
+	background-color: White;
+	border: none 0;
+	font-size: 8pt;
+	padding: 0;
+	margin: 2px 2px 0 2px;
+}
+
+
