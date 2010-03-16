@@ -28,6 +28,10 @@
   a minimalistic sample since the documentation at ra-ajax.org 
   should be enough now.
 
+* Created a completely fresh skin called "Gold". Removed 
+  previous skins due to not meeting the quality standards in our
+  Beauty perl.
+
 
 
 
