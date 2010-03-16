@@ -23,6 +23,11 @@
   breaking changes in this fix though which are changes in the 
   API of how to use it...
 
+* Completely removed all website code since it's now a Ra-Brix 
+  website. In addition removed the samples and replaces with
+  a minimalistic sample since the documentation at ra-ajax.org 
+  should be enough now.
+
 
 
 
