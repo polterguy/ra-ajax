@@ -148,7 +148,7 @@ Ra.extend(Ra.RichEdit.prototype, {
     this.options.ctrl.observe('focus', this.onFocus, this);
     this.options.ctrl.observe('blur', this.onBlur, this);
   },
-  
+
   switchToHtml: function(){
     if( !this.isDesign ){
       return;
@@ -274,10 +274,26 @@ Ra.extend(Ra.RichEdit.prototype, {
   },
 
   _execCommand: function(cmd, params) {
-      document.execCommand(cmd, false, params);
-      this.getValueElement().value = this.options.ctrl.innerHTML;
-      this.options.ctrl.focus();
-      return false;
+    document.execCommand(cmd, false, params);
+    this.getValueElement().value = this.options.ctrl.innerHTML;
+    this.options.ctrl.focus();
+    return false;
+  },
+
+  // Sets focus to control
+  Focus: function() {
+  },
+
+  // Selects a range from e.g. a TextBox
+  Select: function() {
+    var r = document.createRange();
+    if(this.options.ctrl.childNodes.length == 1) {
+      r.selectNodeContents(this.options.ctrl.childNodes[0]);
+    } else {
+      r.selectNodeContents(this.options.ctrl);
+    }
+    window.getSelection().addRange(r);
+    this.options.ctrl.focus();
   },
 
   onPreSerializeForm: function() {
