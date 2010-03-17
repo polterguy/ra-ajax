@@ -8,6 +8,7 @@
 
 using System;
 using System.Web.UI;
+using Ra.Widgets;
 
 namespace Ra.Effects
 {
@@ -22,21 +23,38 @@ namespace Ra.Effects
      */
     public class EffectFocusAndSelect : Effect
     {
+        private bool isRaControl;
+
         /**
          * CTOR - control to animate and milliseconds to spend executing
          */
         public EffectFocusAndSelect(Control control)
 			: base(control, 1)
-		{ }
+		{
+            isRaControl = control is RaWebControl;
+        }
 
         protected override string RenderParalledOnStart()
         {
-            return @"
+            if (isRaControl)
+            {
+                return @"
+    var ctrl = Ra.Control.$(this.element.id);
+    ctrl.Focus();
+    if( ctrl.Select ) {
+      ctrl.Select();
+    }
+";
+            }
+            else
+            {
+                return @"
     this.element.focus();
     if( this.element.select ) {
       this.element.select();
     }
 ";
+            }
         }
 
         protected override string RenderParalledOnFinished()
