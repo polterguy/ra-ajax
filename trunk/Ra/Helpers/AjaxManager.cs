@@ -546,12 +546,12 @@ namespace Ra
             TextReader reader = new StreamReader(content);
             string wholePageContent = reader.ReadToEnd();
 
-            if (wholePageContent.IndexOf("__VIEWSTATE") != -1)
+            if (!string.IsNullOrEmpty(_requestViewState))
             {
-                int idxOfChange = 0;
-                string responseViewState = GetViewState(wholePageContent, "__VIEWSTATE");
-                if (!string.IsNullOrEmpty(_requestViewState))
+                if (wholePageContent.IndexOf("__VIEWSTATE") != -1)
                 {
+                    int idxOfChange = 0;
+                    string responseViewState = GetViewState(wholePageContent, "__VIEWSTATE");
                     for (; idxOfChange < responseViewState.Length && idxOfChange < _requestViewState.Length; idxOfChange++)
                     {
                         if (_requestViewState[idxOfChange] != responseViewState[idxOfChange])
@@ -561,8 +561,8 @@ namespace Ra
                         responseViewState = "";
                     else
                         responseViewState = responseViewState.Substring(idxOfChange);
+                    writer.WriteLine("Ra.$F('__VIEWSTATE', '{0}', {1});", responseViewState, idxOfChange);
                 }
-                writer.WriteLine("Ra.$F('__VIEWSTATE', '{0}', {1});", responseViewState, idxOfChange);
             }
             if (wholePageContent.IndexOf("__EVENTVALIDATION") != -1)
                 writer.WriteLine("Ra.$F('__EVENTVALIDATION').value = '{0}';", GetViewState(wholePageContent, "__EVENTVALIDATION"));
