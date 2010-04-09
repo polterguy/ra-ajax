@@ -50,7 +50,98 @@
                         runat="server" 
                         ID="tab2" 
                         Caption="Another tab">
-                        Epsim lorum, bananium consiprium, slumselummedum...!
+                        <ra:Panel 
+                            runat="server" 
+                            id="pnl" 
+                            style="height:200px;overflow:auto;-moz-user-select:none;-webkit-user-select:none;">
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            Epsim lorum, bananium consiprium, slumselummedum...!<br />
+                            <ra:BehaviorFingerScroll 
+                                runat="server" 
+                                id="finger" />
+                        </ra:Panel>
                     </ra:TabView>
                     <ra:TabView 
                         runat="server" 

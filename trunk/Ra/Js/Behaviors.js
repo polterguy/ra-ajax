@@ -361,9 +361,169 @@ Ra.extend(Ra.BDrag.prototype, {
   // Called when Control is being destroyed
   destroy: function() {
     this.options.handle.stopObserving('mousedown', this.onMouseDown, this);
-    this.options.handle.stopObserving('mousedown', this.onMouseDown, this);
     document.body.stopObserving('mouseup', this.onMouseUp, this);
     document.body.stopObserving('mousemove', this.onMouseMove, this);
+  }
+});
+
+
+
+
+
+
+// ==============================================================================
+//
+// This is the BehaviorFingerScroll
+// Mimics the Apple way of scrolling so that you can scroll by dragging
+// your finger...
+//
+// ==============================================================================
+Ra.BFScroll = Ra.klass();
+
+
+// Inheriting from Behavior base class
+Ra.extend(Ra.BFScroll.prototype, Ra.Beha.prototype);
+
+
+// Creating IMPLEMENTATION of class
+Ra.extend(Ra.BFScroll.prototype, {
+
+  // Delayed CTOR, actually called by the Ra.Control class
+  // for all Behaviors within the Control
+  initBehavior: function(parent) {
+
+    var T = this;
+    setTimeout(function() {
+      T.parent = parent;
+      T.position = 0;
+      T.parent.element.style.webkitTransform = 'translate3d(0, ' + T.position + 'px, 0)';
+      T.refresh();
+      T.parent.element.style.webkitTransitionTimingFunction = 'cubic-bezier(0, 0, 0.2, 1)';
+      T.acceleration = 0.009;
+      T.parent.element.addEventListener('touchstart', T, false);
+    }, 100);
+  },
+
+  handleEvent: function(e) {
+    switch(e.type) {
+      case 'touchstart': this.onTouchStart(e); break;
+      case 'touchmove': this.onTouchMove(e); break;
+      case 'touchend': this.onTouchEnd(e); break;
+      case 'webkitTransitionEnd': this.onTransitionEnd(e); break;
+    }
+  },
+
+  refresh: function() {
+    this.parent.element.style.webkitTransitionDuration = '0';
+    if( this.parent.element.offsetHeight < this.parent.element.parentNode.clientHeight ) {
+      this.maxScroll = 0;
+    } else {
+      this.maxScroll = this.parent.element.parentNode.offsetHeight - this.parent.element.offsetHeight;
+    }
+  },
+
+  onTouchStart: function(e) {
+    if( this.parent.element.offsetHeight < this.parent.element.parentNode.clientHeight ) {
+      this.maxScroll = 0;
+    } else {
+      this.maxScroll = this.parent.element.parentNode.offsetHeight - this.parent.element.offsetHeight;
+    }
+    e.preventDefault();
+    this.parent.element.style.webkitTransitionDuration = '0';
+    var theTransform = window.getComputedStyle(this.parent.element).webkitTransform;
+    theTransform = new WebKitCSSMatrix(theTransform).m42;
+    if( theTransform != this.position ) {
+      this.position = theTransform;
+      this.parent.element.style.webkitTransform = 'translate3d(0, ' + this.position + 'px, 0)';
+    }
+    this.startY = e.targetTouches[0].clientY;
+    this.scrollStartY = this.position;
+    this.scrollStartTime = e.timeStamp;
+    this.moved = false;
+    this.parent.element.addEventListener('touchmove', this, false);
+    this.parent.element.addEventListener('touchend', this, false);
+    return false;
+  },
+
+  onTouchMove: function(e) {
+    if( e.targetTouches.length != 1 ) {
+      return false;
+    }
+    var topDelta = e.targetTouches[0].clientY - this.startY;
+    if( this.position > 0 || this.position < this.maxScroll ) {
+      topDelta /= 2;
+    }
+    this.position = this.position + topDelta;
+    this.parent.element.style.webkitTransform = 'translate3d(0, ' + this.position + 'px, 0)';
+    this.startY = e.targetTouches[0].clientY;
+    this.moved = true;
+    if( e.timeStamp - this.scrollStartTime > 100 ) {
+      this.scrollStartY = this.position;
+      this.scrollStartTime = e.timeStamp;
+    }
+    return false;
+  },
+
+  onTouchEnd: function(e) {
+    this.parent.element.removeEventListener('touchmove', this, false);
+    this.parent.element.removeEventListener('touchend', this, false);
+    if( this.position > 0 || this.position < this.maxScroll ) {
+      this.scrollTo(this.position > 0 ? 0 : this.maxScroll);
+      return false;
+    }
+    if( !this.moved ) {
+      var theTarget = e.target;
+      if(theTarget.nodeType == 3) {
+        theTarget = theTarget.parentNode;
+      }
+      var theEvent = document.createEvent("MouseEvents");
+      theEvent.initEvent('click', true, true);
+      theTarget.dispatchEvent(theEvent);
+      return false
+    }
+    var scrollDistance = this.position - this.scrollStartY;
+    var scrollDuration = e.timeStamp - this.scrollStartTime;
+    var newDuration = (2 * scrollDistance / scrollDuration) / this.acceleration;
+    var newScrollDistance = (this.acceleration / 2) * (newDuration * newDuration);
+    if( newDuration < 0 ) {
+      newDuration = -newDuration;
+      newScrollDistance = -newScrollDistance;
+    }
+    var newPosition = this.position + newScrollDistance;
+    if( newPosition > this.parent.element.parentNode.clientHeight / 2 ) {
+      newPosition = this.parent.element.parentNode.clientHeight / 2;
+    } else if( newPosition>0 ) {
+      newPosition /= 1.5;
+    } else if( newPosition < this.maxScroll - this.parent.element.parentNode.clientHeight / 2 ) {
+      newPosition = this.maxScroll - this.parent.element.parentNode.clientHeight / 2;
+    } else if( newPosition<this.maxScroll ) {
+      newPosition = (newPosition - this.maxScroll) / 1.5 + this.maxScroll;
+    } else {
+      newDuration *= 6;
+    }
+    this.scrollTo(newPosition, Math.round(newDuration) + 'ms');
+    return false;
+  },
+
+  onTransitionEnd: function() {
+    this.parent.element.removeEventListener('webkitTransitionEnd', this, false);
+    this.scrollTo( this.position > 0 ? 0 : this.maxScroll );
+  },
+
+  scrollTo: function(dest, runtime) {
+    this.parent.element.style.webkitTransitionDuration = runtime ? runtime : '300ms';
+    this.position = dest ? dest : 0;
+    this.parent.element.style.webkitTransform = 'translate3d(0, ' + this.position + 'px, 0)';
+    if( this.position > 0 || this.position < this.maxScroll ) {
+      this.parent.element.addEventListener('webkitTransitionEnd', this, false);
+    }
+  },
+
+  destroy: function() {
+    if(!this.parent.element.style.webkitTransitionTimingFunction) {
+      return;
+    }
+    this.parent.element.removeEventListener('touchstart', this, false);
   }
 });
 
