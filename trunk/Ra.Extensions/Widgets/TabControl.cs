@@ -25,12 +25,27 @@ namespace Ra.Extensions.Widgets
     [ASP.ToolboxData("<{0}:TabControl runat=server></{0}:TabControl>")]
     public class TabControl : Panel, ASP.INamingContainer
     {
+        public class ActiveTabViewClosedEventArgs : EventArgs
+        {
+            internal ActiveTabViewClosedEventArgs(int tabViewIndex)
+            {
+                TabViewIndex = tabViewIndex;
+            }
+
+            public int TabViewIndex { get; set; }
+        }
+
         private Panel _topPanel;
 
         /**
          * Raised when ActiveTabViewIndex property is changed
          */
         public event EventHandler ActiveTabViewChanged;
+
+        /**
+         * Raised when TabView is being closed
+         */
+        public event EventHandler<ActiveTabViewClosedEventArgs> ActiveTabViewClosed;
 
         /**
          * Overridden to provide a sane default value
@@ -297,6 +312,11 @@ Ra.$('{3}').style.display = '';
         {
             LinkButton btn = sender as LinkButton;
             int newIdx = Int32.Parse(btn.ID.Replace("tab_view_xbtn", ""));
+
+            if (ActiveTabViewClosed != null)
+            {
+                ActiveTabViewClosed(this, new ActiveTabViewClosedEventArgs(newIdx));
+            }
 
             Views[newIdx].Visible = false;
             
