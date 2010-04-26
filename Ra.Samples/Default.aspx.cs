@@ -7,19 +7,14 @@
  */
 
 using System;
+using Ra.Builder;
 using Ra.Effects;
 
 public partial class _Default : System.Web.UI.Page
 {
-    protected void btn_Click(object sender, EventArgs e)
+    protected void acc_ActiveAccordionViewChanged(object sender, EventArgs e)
     {
-        wnd.Visible = true;
-    }
-
-    protected void timer_Tick(object sender, EventArgs e)
-    {
-        lbl.Text = DateTime.Now.ToString();
-        new EffectHighlight(lbl, 500)
-            .Render();
+        acc1.Caption = "Hello";
+        acc2.Caption = "...world...!";
     }
 }
