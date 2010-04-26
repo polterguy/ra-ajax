@@ -771,42 +771,130 @@ http://ra-ajax.org
 	border:solid 1px #c9ac07;
 }
 
-/* Accordion */
-.accordion { }
-.accordion .body
-{
-	overflow:hidden;
-	background-color:#fdfdfd;
-	font-size:small;
-}
 
-.accordion .body-content
-{
-	padding:5px;
-	border-left:solid 1px #CCD1FF;
-	border-right:solid 1px #CCD1FF;
-	border-bottom:solid 1px #CCD1FF;
-}
 
-.accordion .accordion-header
-{
-	background:transparent url(sprites.png) repeat-x 0 -896px;
-}
 
-.accordion .accordion-header a
+
+
+
+
+
+/* Window CSS */
+.ra-accordion
 {
-	text-decoration:none;
-	padding:5px;
 	display:block;
-	color:#333;
-	font-size:0.8em;
 }
 
-.accordion .accordion-header a:hover
+.ra-acc-view .ra-acc-view-nw
+{
+	background: transparent url(window-sprite.png) no-repeat 0 0;
+	padding-left:40px;
+	position:relative;
+}
+
+.ra-acc-view .ra-acc-view-ne
+{
+	background: transparent url(window-sprite.png) no-repeat right 0;
+	padding-right:40px;
+}
+
+.ra-acc-view .ra-acc-view-n
 {
 	background: transparent url(sprites.png) repeat-x 0 -896px;
-	color:#00f;
+	overflow:hidden;
+	height:40px;
+	position:relative;
 }
+
+.ra-acc-view .ra-acc-view-caption
+{
+    overflow:hidden;
+    white-space:nowrap;
+    display:block;
+    text-decoration:none;
+    position:absolute;
+    left:1px;
+    top:1px;
+    z-index:50;
+    width:100%;
+}
+
+.ra-acc-view .ra-acc-view-collapse-icon,
+.ra-acc-view-collapsed .ra-acc-view-collapse-icon
+{
+    background-image:url(sprites.png);
+    background-repeat:no-repeat;
+    background-color:transparent;
+	width:16px; 
+	height:16px;
+	position:absolute;
+	top:2px;
+	right:5px;
+	z-index:1; 
+}
+
+
+.ra-acc-view .ra-acc-view-collapse-icon
+{
+    background-position:0 -1247px;
+}
+
+.ra-acc-view-collapsed .ra-acc-view-collapse-icon
+{
+    background-position:0 -1265px;
+}
+
+.ra-acc-view .ra-acc-view-w
+{
+	background: transparent url(window-v-sprite.png) repeat-y 0 0;
+	padding-left:40px;
+}
+
+.ra-acc-view .ra-acc-view-e
+{
+	background: transparent url(window-v-sprite.png) repeat-y right 0;
+	padding-right:40px;
+}
+
+.ra-acc-view .ra-acc-view-content
+{
+	background-color:#cfecff;
+	overflow:hidden;
+	
+}
+
+.ra-acc-view .ra-acc-view-sw
+{
+	background: transparent url(window-sprite.png) no-repeat 0 -40px;
+	padding-left:40px;
+}
+
+.ra-acc-view .ra-acc-view-se
+{
+	background: transparent url(window-sprite.png) no-repeat right -40px;
+	padding-right:40px;
+}
+
+.ra-acc-view .ra-acc-view-s
+{
+	background: transparent url(sprites.png) repeat-x 0 -936px;
+	height:40px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* The TreeView control uses some images from YUI which are BSD 
  * licensed and we distribute them just like Yahoo under the BSD 
@@ -881,42 +969,42 @@ http://ra-ajax.org
 
 .tree .lines
 {
-	background:Transparent url(sprites.png) no-repeat 0 -1072px;
+	background:url('sprites.png') no-repeat 0 -1072px;
 }
 
 .tree .linesElbow
 {
-	background:Transparent url(sprites.png) no-repeat 0 -1056px;
+	background:url('sprites.png') no-repeat 0 -1056px;
 }
 
 .tree .expanded .leaf
 {
-	background:Transparent url(sprites.png) no-repeat 0 -1024px;
+	background:url('sprites.png') no-repeat 0 -1024px;
 }
 
 .tree .expanded .no-leaf
 {
-	background:Transparent url(sprites.png) no-repeat 0 -1104px;
+	background:url('sprites.png') no-repeat 0 -1104px;
 }
 
 .tree .collapsed .leaf
 {
-	background:Transparent url(sprites.png) no-repeat 0 -1008px;
+	background:url('sprites.png') no-repeat 0 -1008px;
 }
 
 .tree .collapsed .no-leaf
 {
-	background:Transparent url(sprites.png) no-repeat 0 -1088px;
+	background:url('sprites.png') no-repeat 0 -1088px;
 }
 
 .tree .no-childs .leaf
 {
-	background:Transparent url(sprites.png) no-repeat 0 -1040px;
+	background:url('sprites.png') no-repeat 0 -1040px;
 }
 
 .tree .no-childs .no-leaf
 {
-	background:Transparent url(sprites.png) no-repeat 0 -1056px;
+	background:url('sprites.png') no-repeat 0 -1056px;
 }
 
 /* Menu */
@@ -1038,7 +1126,7 @@ http://ra-ajax.org
 
 .button .bLeft
 {
-	background:Transparent url('sprites.png') no-repeat 0 -275px;
+	background:url('sprites.png') no-repeat 0 -275px;
 	padding-left:13px;
 	display:block;
 	*display:inline-block;
@@ -1046,7 +1134,7 @@ http://ra-ajax.org
 
 .button .bCenter
 {
-	background:Transparent url('sprites.png') repeat-x 0 -325px;
+	background:url('sprites.png') repeat-x 0 -325px;
 	display:block;
 	height:20px;
 	padding-top:5px;
@@ -1062,7 +1150,7 @@ http://ra-ajax.org
 
 .button .bRight
 {
-	background:Transparent url('sprites.png') no-repeat right -300px;
+	background:url('sprites.png') no-repeat right -300px;
 	padding-right:13px;
 	display:block;
 	*display:inline-block;
@@ -1073,47 +1161,47 @@ http://ra-ajax.org
 
 .button:hover .bLeft
 {
-	background:Transparent url('sprites.png') no-repeat 0 -350px;
+	background:url('sprites.png') no-repeat 0 -350px;
 }
 
 .button:hover .bCenter
 {
-	background:Transparent url('sprites.png') repeat-x 0 -400px;
+	background:url('sprites.png') repeat-x 0 -400px;
 }
 
 .button:hover .bRight
 {
-	background:Transparent url('sprites.png') no-repeat right -375px;
+	background:url('sprites.png') no-repeat right -375px;
 }
 
 .button-selected .bLeft
 {
-	background:Transparent url('sprites.png') no-repeat 0 -425px;
+	background:url('sprites.png') no-repeat 0 -425px;
 }
 
 .button-selected .bCenter
 {
-	background:Transparent url('sprites.png') repeat-x 0 -475px;
+	background:url('sprites.png') repeat-x 0 -475px;
 }
 
 .button-selected .bRight
 {
-	background:Transparent url('sprites.png') no-repeat right -450px;
+	background:url('sprites.png') no-repeat right -450px;
 }
 
 .button-selected:hover .bLeft
 {
-	background:Transparent url('sprites.png') no-repeat 0 -425px;
+	background:url('sprites.png') no-repeat 0 -425px;
 }
 
 .button-selected:hover .bCenter
 {
-	background:Transparent url('sprites.png') repeat-x 0 -475px;
+	background:url('sprites.png') repeat-x 0 -475px;
 }
 
 .button-selected:hover .bRight
 {
-	background:Transparent url('sprites.png') no-repeat right -450px;
+	background:url('sprites.png') no-repeat right -450px;
 }
 
 /* WYSIWYG Editor */

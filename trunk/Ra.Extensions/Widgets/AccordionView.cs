@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Ra-Ajax - A Managed Ajax Library for ASP.NET and Mono
  * Copyright 2008 - 2009 - Thomas Hansen thomas@ra-ajax.org
  * This code is licensed under the GPL version 3 which 
@@ -8,12 +8,10 @@
 
 using System;
 using System.ComponentModel;
-using WEBCTRLS = System.Web.UI.WebControls;
-using ASP = System.Web.UI;
+using System.Web.UI;
+using Ra.Builder;
 using Ra.Widgets;
-using System.IO;
-using HTML = System.Web.UI.HtmlControls;
-using Ra.Effects;
+using ASP = System.Web.UI;
 
 namespace Ra.Extensions.Widgets
 {
@@ -21,9 +19,15 @@ namespace Ra.Extensions.Widgets
      * Panels for the Accordion control. An Accordion is basically just a collection of 
      * AccordionView controls.
      */
-    [ASP.ToolboxData("<{0}:AccordionView runat=server></{0}:AccordionView>")]
-    public class AccordionView : Panel
+
+    [ToolboxData("<{0}:AccordionView runat=server></{0}:AccordionView>")]
+    [PersistChildren(true)]
+    [ParseChildren(true, "Content")]
+    public class AccordionView : Panel, INamingContainer
     {
+        private readonly Panel _content = new Panel();
+        private readonly LinkButton _caption = new LinkButton();
+
         /**
          * Header string for AccordionView. This is the text that will be displayed at the top "select area"
          * of the AccordionView.
@@ -31,214 +35,151 @@ namespace Ra.Extensions.Widgets
         [DefaultValue("")]
         public string Caption
         {
-            get { return ViewState["Caption"] == null ? "" : (string)ViewState["Caption"]; }
-            set
-            {
-                ViewState["Caption"] = value;
-            }
+            get { return _caption.Text; }
+            set { _caption.Text = value; }
         }
 
-        protected override void LoadViewState(object savedState)
+        /**
+         * Overridden to provide a sane default value. The default value of this property is "ra-acc-view".
+         */
+        [DefaultValue("ra-acc-view")]
+        public override string CssClass
         {
-            base.LoadViewState(savedState);
+            get
+            {
+                string retVal = base.CssClass;
+                if (retVal == string.Empty)
+                    retVal = "ra-acc-view";
+                return retVal;
+            }
+            set { base.CssClass = value; }
+        }
 
-            // Since we're dependant upon that the ViewState has finished loading before
-            // we initialize the ChildControls since how the child controls (and which)
-            // child controls are being re-created is dependant upon a ViewState saved value
-            // this is the earliest possible time we can reload the ChildControls for the
-            // Control
+        /**
+         * Overridden to provide a sane default value. The default value of this property is "li".
+         */
+        [DefaultValue("li")]
+        public override string Tag
+        {
+            get { return ViewState["Tag"] == null ? "li" : (string)ViewState["Tag"]; }
+            set { ViewState["Tag"] = value; }
+        }
+
+
+        /**
+         * The actual "content part" of the Window. This is where your child controls from the markup
+         * will be added. If you add up items dynamically to the Window then this is where you should
+         * add them up. So instead of using "myWindow.Controls.Add" you should normally use 
+         * "myWindow.Content.Add" when adding Controls dynamically to the Window.
+         */
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [PersistenceMode(PersistenceMode.InnerDefaultProperty)]
+        public ControlCollection Content
+        {
+            get { return _content.Controls; }
+        }
+
+        /**
+         * The Control that contains the Child Controls of the AccordionView
+         */
+        public ASP.Control ContentControl
+        {
+            get { return _content; }
+        }
+
+        protected override void OnInit(EventArgs e)
+        {
+            base.OnInit(e);
             EnsureChildControls();
         }
 
         protected override void CreateChildControls()
         {
-            CreateCompositionControls();
+            base.CreateChildControls();
+            CreateContentControls();
         }
 
-        private void CreateCompositionControls()
+        private void CreateContentControls()
         {
-            // Creating top wrapper
-            Panel topWrapper = new Panel();
-            topWrapper.ID = "top";
-            topWrapper.CssClass = "accordion-header";
+            _content.ID = "cont";
+            _content.CssClass = "ra-acc-view-content";
+            SetVisibility();
+            Controls.Add(_content);
 
-            // Creating button inside of top wrapper
-            LinkButton btn = new LinkButton();
-            btn.ID = "change_active";
-            btn.Text = Caption;
-            if ((Parent as Accordion).ClientSideChange)
+            _caption.ID = "capt";
+            _caption.CssClass = "ra-acc-view-caption";
+            _caption.Click +=
+                delegate
+                    {
+                        (Parent as Accordion).SetActiveView(this);
+                    };
+            Controls.Add(_caption);
+        }
+
+        private void SetVisibility()
+        {
+            int idxCurrentVisibleView = (Parent as Accordion).ActiveAccordionViewIndex;
+            int idxOfThisView = (Parent as Accordion).GetIndex(this);
+            if(idxCurrentVisibleView == idxOfThisView)
             {
-                string exAccs = "";
-                foreach (AccordionView idx in (Parent as Accordion).Views)
-                {
-                    if (!string.IsNullOrEmpty(exAccs))
-                        exAccs += ",";
-                    exAccs += "'" + idx.ClientID + "_CHILDREN'";
-                }
-                string func = string.Format(@"function() {{
-Ra.E('{0}_CHILDREN', {{
-  onStart: function() {{
-    if( this.element.style.display != 'none' ) {{
-      this.stopped = true;
-      return;
-    }}
-    var others = [{1}];
-    var other = '';
-    for( var idx = 0; idx < others.length; idx++ ) {{
-      if( Ra.$(others[idx]).style.display != 'none')
-        other = others[idx];
-    }}
-    this.other = Ra.$(other);
-    this.otherToHeight = this.element.getDimensions().height;
-    this.elementFromHeight = this.other.getDimensions().height;
-    this.element.setStyle('height','0px');
-    this.element.setStyle('display','');
-}},
-  onFinished: function() {{
-    this.other.setStyle('display','none');
-    this.other.setStyle('height','');
-    this.element.setStyle('height','');
-}},
-  onRender: function(pos) {{
-    this.element.setStyle('height',(this.otherToHeight * pos) + 'px');
-    this.other.setStyle('height',(this.elementFromHeight * (1.0 - pos)) + 'px');
-}},
-  duration:{2},
-  transition:'Explosive'
-}});
-}}", ClientID, exAccs, (Parent as Accordion).AnimationDuration);
-                btn.OnClickClientSide = func;
+                _content.Style[Styles.display] = "";
             }
             else
             {
-                btn.Click += new EventHandler(btn_Click);
-            }
-            topWrapper.Controls.Add(btn);
-
-            Controls.AddAt(0, topWrapper);
-        }
-
-        private class EffectChange : Effect
-        {
-            private string _idRemove;
-            private string _idShow;
-            private Accordion _parent;
-
-            public EffectChange(string idRemove, string idShow, Accordion parent)
-			: base(null, 0)
-            {
-                _idRemove = idRemove;
-                _idShow = idShow;
-                _parent = parent;
-            }
-
-            public override void Render()
-            {
-                AjaxManager.Instance.WriterAtBack.WriteLine(@"
-Ra.E('{0}', {{
-  onStart: function() {{{2}}},
-  onFinished: function() {{{3}}},
-  onRender: function(pos) {{{4}}},
-  duration:{1},
-  transition:'{5}'
-}});", 
-                    _idRemove, 
-                    _parent.AnimationDuration.ToString(System.Globalization.CultureInfo.InvariantCulture),
-                    RenderParalledOnStart(),
-                    RenderParalledOnFinished(),
-                    RenderParalledOnRender(),
-                    Effect.Transition.Explosive);
-            }
-
-            protected override string RenderParalledOnStart()
-            {
-                return string.Format(@"
-    this.other = Ra.$('{1}');
-    this.otherToHeight = this.other.getDimensions().height;
-    this.elementFromHeight = this.element.getDimensions().height;
-    this.other.setStyle('height','0px');
-    this.other.setStyle('display','');
-",
-                    _idRemove, _idShow);
-            }
-
-            protected override string RenderParalledOnFinished()
-            {
-                return @"
-    this.element.setStyle('display','none');
-    this.element.setStyle('height','');
-    this.other.setStyle('height',this.otherToHeight + 'px');
-";
-            }
-
-            protected override string RenderParalledOnRender()
-            {
-                return @"
-    this.other.setStyle('height',(this.otherToHeight * pos) + 'px');
-    this.element.setStyle('height',(this.elementFromHeight * (1.0 - pos)) + 'px');
-";
+                _content.Style[Styles.display] = "none";
+                if (!CssClass.Contains("ra-acc-view-collapsed"))
+                    CssClass += " ra-acc-view-collapsed";
             }
         }
 
-        private void btn_Click(object sender, EventArgs e)
+        protected override void RenderRaControl(HtmlBuilder builder)
         {
-            SetActive();
-        }
-
-        private void SetActive()
-        {
-            if (IsActive())
-                return;
-            string oldActiveClientId = "";
-            int idxNoThis = 0;
-            bool foundThis = false;
-            foreach (AccordionView idx in (Parent as Accordion).Views)
+            using (Element el = builder.CreateElement(Tag))
             {
-                if (idx.IsActive())
+                AddAttributes(el);
+                using (Element nw = builder.CreateElement("div"))
                 {
-                    oldActiveClientId = idx.ClientID + "_CHILDREN";
+                    nw.AddAttribute("class", "ra-acc-view-nw");
+                    using (Element ne = builder.CreateElement("div"))
+                    {
+                        ne.AddAttribute("class", "ra-acc-view-ne");
+                        using (Element n = builder.CreateElement("div"))
+                        {
+                            n.AddAttribute("class", "ra-acc-view-n");
+                            using (Element icon = builder.CreateElement("span"))
+                            {
+                                icon.AddAttribute("class", "ra-acc-view-icon");
+                            }
+                            _caption.RenderControl(builder.Writer);
+                            using (Element icon = builder.CreateElement("span"))
+                            {
+                                icon.AddAttribute("class", "ra-acc-view-collapse-icon");
+                            }
+                        }
+                    }
                 }
-                if (!foundThis)
+                using (Element w = builder.CreateElement("div"))
                 {
-                    if (this == idx)
-                        foundThis = true;
-                    else
-                        idxNoThis += 1;
+                    w.AddAttribute("class", "ra-acc-view-w");
+                    using (Element e = builder.CreateElement("div"))
+                    {
+                        e.AddAttribute("class", "ra-acc-view-e");
+                        _content.RenderControl(builder.Writer);
+                    }
+                }
+                using (Element nw = builder.CreateElement("div"))
+                {
+                    nw.AddAttribute("class", "ra-acc-view-sw");
+                    using (Element ne = builder.CreateElement("div"))
+                    {
+                        ne.AddAttribute("class", "ra-acc-view-se");
+                        using (Element n = builder.CreateElement("div"))
+                        {
+                            n.AddAttribute("class", "ra-acc-view-s");
+                        }
+                    }
                 }
             }
-            Effect effect = new EffectChange(oldActiveClientId, ClientID + "_CHILDREN", Parent as Accordion);
-            effect.Render();
-            (Parent as Accordion).ActiveAccordionViewIndex = idxNoThis;
-            (Parent as Accordion).RaiseActiveChanged();
-        }
-
-        protected override void RenderChildren(System.Web.UI.HtmlTextWriter writer)
-        {
-            Controls[0].RenderControl(writer);
-            writer.Write("<div class=\"body\" id=\"{0}_CHILDREN\"{1}>", ClientID, IsActive() ? "" : " style=\"display:none;\"");
-            writer.Write("<div class=\"body-content\">");
-            for (int idx = 1; idx < Controls.Count; idx++)
-            {
-                Controls[idx].RenderControl(writer);
-            }
-            writer.Write("</div>");
-            writer.Write("</div>");
-        }
-
-        private bool IsActive()
-        {
-            bool isActive = false;
-            Accordion acc = Parent as Accordion;
-            int idxNo = 0;
-            foreach (AccordionView idx in acc.Views)
-            {
-                if (idx == this)
-                    break;
-                idxNo += 1;
-            }
-            if (idxNo == acc.ActiveAccordionViewIndex)
-                isActive = true;
-            return isActive;
         }
     }
 }

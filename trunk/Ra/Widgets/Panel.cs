@@ -33,7 +33,7 @@ namespace Ra.Widgets
          * The HTML tag used to render the label, defaults to div
          */
         [DefaultValue("div")]
-        public string Tag
+        virtual public string Tag
         {
             get { return ViewState["Tag"] == null ? "div" : (string)ViewState["Tag"]; }
             set { ViewState["Tag"] = value; }
