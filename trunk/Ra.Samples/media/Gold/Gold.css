@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright (c) 2008, Yahoo! Inc. All rights reserved.
 Code licensed under the BSD License:
 http://developer.yahoo.net/yui/license.txt
@@ -44,143 +44,123 @@ input[type=checkbox]{margin-right:3px;vertical-align:sub;}
 
 
 /*
-Copyright (c) 2008 - 2010, Thomas Hansen
+Copyright (c) 2008 - 2010, Ra-Software, Inc.
 Code licensed under GPL3
 http://ra-ajax.org
 */
 
+
 /* Window CSS */
-.window
+.ra-window
 {
 	display:block;
 }
 
-.window_nw
+.ra-window .ra-window-nw
 {
 	background: transparent url(window-sprite.png) no-repeat 0 0;
 	padding-left:40px;
 	position:relative;
 }
 
-.window_ne
+.ra-window .ra-window-ne
 {
 	background: transparent url(window-sprite.png) no-repeat right 0;
 	padding-right:40px;
 }
 
-.window_n
+.ra-window .ra-window-n
 {
 	background: transparent url(sprites.png) repeat-x 0 -896px;
 	overflow:hidden;
 	height:40px;
+	position:relative;
+ 
 }
 
-.window_w
+.ra-window .ra-window-close
+{
+	background: transparent url(sprites.png) no-repeat 0 -1247px;
+	position:absolute;
+	right:5px;
+	top:2px;
+	display: block;
+	width: 16px;
+	height:16px;
+	z-index: 50;
+}
+
+.ra-window .ra-window-close:hover
+{
+	background: transparent url(sprites.png) no-repeat 0 -1265px;
+}
+
+.ra-window .ra-window-caption
+{
+    overflow:hidden;
+    white-space:nowrap;
+    display:block;
+    text-decoration:none;
+    position:absolute;
+    left:1px;
+    top:1px;
+    z-index:1;
+    width:100%;
+}
+
+.ra-window .ra-window-w
 {
 	background: transparent url(window-v-sprite.png) repeat-y 0 0;
 	padding-left:40px;
 }
 
-.window_e
+.ra-window .ra-window-e
 {
 	background: transparent url(window-v-sprite.png) repeat-y right 0;
 	padding-right:40px;
 }
 
-.window_content
+.ra-window .ra-window-content
 {
 	background-color:#cfecff;
-	margin-left:-20px;
-	margin-right:-20px;
-	margin-bottom:-20px;
+	overflow:hidden;
 }
 
-.window_sw
+.ra-window .ra-window-sw
 {
 	background: transparent url(window-sprite.png) no-repeat 0 -40px;
 	padding-left:40px;
 }
 
-.window_se
+.ra-window .ra-window-se
 {
 	background: transparent url(window-sprite.png) no-repeat right -40px;
 	padding-right:40px;
 }
 
-.window_s
+.ra-window .ra-window-s
 {
 	background: transparent url(sprites.png) repeat-x 0 -936px;
 	height:40px;
 }
 
-.window_title
-{
-	font-size:0.8em;
-	position:absolute;
-	top:4px;
-	color:#333;
-	margin-left:-15px;
-	-moz-user-select:none;
-	-khtml-user-select: none;
-	user-select: none;
-	cursor:move;
-	width:100%;
-}
 
-.window_close
-{
-	width:12px;
-	height:12px;
-	display:block;
-	background:transparent url(sprites.png) no-repeat -2px -725px;
-	position:absolute;
-	top:4px;
-	right:23px;
-}
 
-.window_pin
-{
-	width:12px;
-	height:12px;
-	display:block;
-	background:transparent url(sprites.png) no-repeat -2px -798px;
-	position:absolute;
-	top:4px;
-	right:40px;
-}
 
-.window_pin:hover
-{
-	background:transparent url(sprites.png) no-repeat -2px -810px;
-}
 
-.window_pinned:hover
-{
-	background:transparent url(sprites.png) no-repeat -2px -785px;
-}
 
-.window_pinned
-{
-	width:12px;
-	height:12px;
-	display:block;
-	background:transparent url(sprites.png) no-repeat -2px -773px;
-	position:absolute;
-	top:4px;
-	right:40px;
-}
 
-.window_close:hover
-{
-	background-color:transparent;
-	background-position:-2px -737px;
-}
 
-.window_body
-{
-	overflow:hidden;
-	position:relative;
-}
+
+
+
+
+
+
+
+
+
+
 
 /* Sliding Menu */
 .sliding-menu
@@ -779,7 +759,7 @@ http://ra-ajax.org
 
 
 
-/* Window CSS */
+/* Accordion CSS */
 .ra-accordion
 {
 	display:block;
@@ -1434,5 +1414,10 @@ http://ra-ajax.org
 	padding: 0;
 	margin: 2px 2px 0 2px;
 }
+
+
+
+
+
 
 
