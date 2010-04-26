@@ -7,7 +7,7 @@
 
   ------------------------------------------------------------------
 
-                          Version 2.5.1
+                          Version 3.0.0
 
   ------------------------------------------------------------------
 
@@ -16,6 +16,26 @@
   Focus and Select methods.
 
 * Created a new behavior for doing scrolling on iPad and iPhone.
+
+* Completely refactored the DOM structure for the Accordion, this
+  have significantly improved the speed and DOM structure when using
+  the Accordion. In addition the Accordion is now much easier to skin
+  and modify for your own needs.
+
+* Added Caption and Collapse icon support to the AccordionView.
+
+* Completely refactored the DOM structure and the server side
+  control structure of the Window. This has significantly improved
+  the speed and reduced the markup and amount of JavaScript and also
+  reduced the ViewState of the Window control.
+
+* Fixed a bug in the CheckBox which made it render the Label
+  for the CheckBox inside of the input HTML element which was a 
+  sever bug.
+
+* Fixed a bug in the RadioButton which made it render the Label
+  for the CheckBox inside of the input HTML element which was a 
+  sever bug.
 
 
 

@@ -98,6 +98,21 @@ namespace Ra.Widgets
         }
 
         /**
+         * attribute to support right to left languages such as Arabic. 
+         */
+        [DefaultValue("")]
+        public virtual string Dir
+        {
+            get { return ViewState["Dir"] == null ? "" : (string)ViewState["Dir"]; }
+            set
+            {
+                if (value != Dir)
+                    SetJSONValueString("Dir", value);
+                ViewState["Dir"] = value;
+            }
+        }
+
+        /**
          * If true then the wiget can raise multiple events (Ajax Requests) even though the first 
          * Ajax Request have still not returned. The default value is true.
          * If this value is false then the widget will NOT queue up consecutive Ajax Requests
@@ -179,6 +194,8 @@ namespace Ra.Widgets
                 el.AddAttribute("title", Tooltip);
             if (!string.IsNullOrEmpty(CssClass))
                 el.AddAttribute("class", CssClass);
+            if (!string.IsNullOrEmpty(Dir))
+                el.AddAttribute("dir", Dir);
             string style = Style.GetStylesForResponse();
             if (!string.IsNullOrEmpty(style))
                 el.AddAttribute("style", style);

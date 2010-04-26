@@ -232,8 +232,14 @@ Ra.Control.prototype = {
 
   // Expects a text value, sets the "value" of the control to the given value
   // Useful for TextBoxes (input type="text") and so on...
-  Value: function(val) {
+  Value: function (val) {
     this.element.value = val;
+  },
+
+  // Expects a text value, sets the "value" of the control to the given value
+  // Useful for TextBoxes (input type="text") and so on...
+  Dir: function (val) {
+    this.element.dir = val;
   },
 
   // Sets focus to control
