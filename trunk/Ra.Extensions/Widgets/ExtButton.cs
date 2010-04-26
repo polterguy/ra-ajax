@@ -6,12 +6,10 @@
  *
  */
 
-using System;
 using System.ComponentModel;
 using WEBCTRLS = System.Web.UI.WebControls;
 using ASP = System.Web.UI;
 using Ra.Widgets;
-using System.IO;
 using HTML = System.Web.UI.HtmlControls;
 using Ra.Builder;
 
@@ -80,14 +78,14 @@ namespace Ra.Extensions.Widgets
         /**
          * Overridden to provide a sane default value. The default value of this property is "button".
          */
-        [DefaultValue("button")]
+        [DefaultValue("ra-button")]
         public override string CssClass
         {
             get
             {
                 string retVal = base.CssClass;
                 if (retVal == string.Empty)
-                    retVal = "button";
+                    retVal = "ra-button";
                 return retVal;
             }
             set { base.CssClass = value; }
@@ -109,15 +107,16 @@ namespace Ra.Extensions.Widgets
                 AddAttributes(el);
                 using (Element bRight = builder.CreateElement("span"))
                 {
-                    bRight.AddAttribute("class", "bRight");
+                    bRight.AddAttribute("class", "ra-button-right");
                     using (Element bLeft = builder.CreateElement("span"))
                     {
-                        bLeft.AddAttribute("class", "bLeft");
+                        bLeft.AddAttribute("class", "ra-button-left");
                         using (Element bCenter = builder.CreateElement("span"))
                         {
-                            bCenter.AddAttribute("class", "bCenter");
+                            bCenter.AddAttribute("class", "ra-button-center");
                             using (Element content = builder.CreateElement("span"))
                             {
+                                content.AddAttribute("class", "ra-button-content");
                                 content.AddAttribute("id", ClientID + "_LBL");
                                 content.Write(Text);
                             }

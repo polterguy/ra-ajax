@@ -245,12 +245,12 @@ namespace Ra.Widgets
                         el.AddAttribute("disabled", "disabled");
                     if (Checked)
                         el.AddAttribute("checked", "checked");
-                    using (Element label = builder.CreateElement("label"))
-                    {
-                        label.AddAttribute("id", ClientID + "_LBL");
-                        label.AddAttribute("for", ClientID + "_CTRL");
-                        label.Write(Text);
-                    }
+                }
+                using (Element label = builder.CreateElement("label"))
+                {
+                    label.AddAttribute("id", ClientID + "_LBL");
+                    label.AddAttribute("for", ClientID + "_CTRL");
+                    label.Write(Text);
                 }
             }
         }

@@ -88,6 +88,7 @@ http://ra-ajax.org
 	width: 16px;
 	height:16px;
 	z-index: 50;
+	text-decoration: none;
 }
 
 .ra-window .ra-window-close:hover
@@ -103,6 +104,19 @@ http://ra-ajax.org
     text-decoration:none;
     position:absolute;
     left:1px;
+    top:1px;
+    z-index:1;
+    width:100%;
+}
+
+.ra-window[dir=rtl] .ra-window-caption
+{
+    overflow:hidden;
+    white-space:nowrap;
+    display:block;
+    text-decoration:none;
+    position:absolute;
+    right:1px;
     top:1px;
     z-index:1;
     width:100%;
@@ -1096,90 +1110,90 @@ http://ra-ajax.org
 }
 
 /* Extended Button */
-.button
+.ra-button
 {
 	width: auto;
 	border: none 0;
 	background-color: Transparent;
-	margin-bottom: 3px;
 }
 
-.button .bLeft
+.ra-button .ra-button-left
 {
 	background:url('sprites.png') no-repeat 0 -275px;
 	padding-left:13px;
 	display:block;
-	*display:inline-block;
+	height:25px;
 }
 
-.button .bCenter
-{
-	background:url('sprites.png') repeat-x 0 -325px;
-	display:block;
-	height:20px;
-	padding-top:5px;
-	*display:inline-block;
-}
-
-.button .bCenter span
-{
-	display:block;
-	text-align:left;
-	white-space:nowrap;
-}
-
-.button .bRight
+.ra-button .ra-button-right
 {
 	background:url('sprites.png') no-repeat right -300px;
 	padding-right:13px;
 	display:block;
-	*display:inline-block;
+	height:100%;
 }
 
-.button:hover
+.ra-button .ra-button-center
+{
+	background:url('sprites.png') repeat-x 0 -325px;
+	display:block;
+	height:100%;
+}
+
+.ra-button .ra-button-center .ra-button-content
+{
+	display:block;
+	text-align:left;
+	white-space:nowrap;
+	margin-top:5px;
+	padding-top:5px;
+	height:15px;
+}
+
+.ra-button:hover
 { }
 
-.button:hover .bLeft
+.ra-button:hover .ra-button-left
 {
 	background:url('sprites.png') no-repeat 0 -350px;
 }
 
-.button:hover .bCenter
+.ra-button:hover .ra-button-center
 {
 	background:url('sprites.png') repeat-x 0 -400px;
 }
 
-.button:hover .bRight
+.ra-button:hover .ra-button-right
 {
 	background:url('sprites.png') no-repeat right -375px;
 }
 
-.button-selected .bLeft
+.ra-button-selected .ra-button-left
 {
 	background:url('sprites.png') no-repeat 0 -425px;
 }
 
-.button-selected .bCenter
-{
-	background:url('sprites.png') repeat-x 0 -475px;
-}
-
-.button-selected .bRight
+.ra-button-selected .ra-button-right
 {
 	background:url('sprites.png') no-repeat right -450px;
 }
 
-.button-selected:hover .bLeft
-{
-	background:url('sprites.png') no-repeat 0 -425px;
-}
-
-.button-selected:hover .bCenter
+.ra-button-selected .ra-button-center
 {
 	background:url('sprites.png') repeat-x 0 -475px;
 }
 
-.button-selected:hover .bRight
+.ra-button-selected:hover .ra-button-left
+{
+	background:url('sprites.png') no-repeat 0 -425px;
+}
+
+.ra-button-selected:hover .ra-button-center
+{
+	background:url('sprites.png') repeat-x 0 -475px;
+}
+
+.ra-button-selected:hover .ra-button-right
 {
 	background:url('sprites.png') no-repeat right -450px;
 }
@@ -1414,6 +1428,7 @@ http://ra-ajax.org
 	padding: 0;
 	margin: 2px 2px 0 2px;
 }
+
 
 
 
