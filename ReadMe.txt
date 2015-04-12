@@ -7,7 +7,7 @@
 
 **********************************************************************************************
 
-* Ra-Ajax is licensed under the GPL version 3.
+* Ra-Ajax is licensed under the MITx11 License.
 
 * The pre-built library DLLs exist within the "binaries" folder and
   are the ones that should be used in your projects since they are
